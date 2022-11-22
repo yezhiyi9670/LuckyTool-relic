@@ -54,10 +54,8 @@
     <!-- Menu -->
     <string name="menu_reboot">Меню перезагрузки</string>
     <string name="menu_settings">Настройки</string>
-    <string name="restart_scope">Область перезапуска</string>
-    <string name="restart_scope_message">Вы уверены, что хотите перезапустить все области видимости, кроме системной среды?
-Доступно, когда модуль не функционирует!
-Убедитесь, что все соответствующие области отмечены!</string>
+    <string name="restart_scope">Restart scoped processes</string>
+    <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
     <string name="reboot">Перезагрузить</string>
     <string name="fast_reboot">Быстрая перезагрузка</string>
     <string name="menu_versioninfo">Информация о версии</string>
@@ -69,9 +67,9 @@
     <string name="package_name">Имя пакета</string>
     <string name="version">Версия</string>
     <!-- CorePatch -->
-    <string name="corepatch">Патчи ядра</string>
-    <string name="corepatch_summary">Снятие ограничений на установку, поддержка Android 10–12</string>
-    <string name="downgr">Разрешить установку приложений с более ранними версиями</string>
+    <string name="corepatch">Core Patch</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–13</string>
+    <string name="downgr">Разрешить понижение версии</string>
     <string name="downgr_summary">Разрешить приложению перезаписывать установку старой версии непосредственно в случае установки новой версии</string>
     <string name="authcreak">Отключить проверку подписи диспетчера пакетов</string>
     <string name="authcreak_summary">Отключить проверку подписи при установке приложений, вы можете устанавливать поддельные приложения</string>
@@ -143,12 +141,12 @@
     <string name="remove_drop_down_statusbar_mydevice">Удалить выпадающую строку состояния моего устройства</string>
     <string name="StatusBar_Tile_Related">Плитки строки состояния</string>
     <string name="statusbar_tile_enable">Включить/отключить плитки в строке состояния</string>
-    <string name="tile_unexpanded_columns_vertical">Количество неразвернутых столбцов плитки</string>
-    <string name="tile_unexpanded_columns_horizontal">Количество неразвернутых столбцов плитки</string>
-    <string name="tile_expanded_columns_vertical">Расширенные столбцы плитки (вертикально)</string>
-    <string name="tile_expanded_columns_horizontal">Расширенные столбцы плитки (горизонтально)</string>
+    <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
+    <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
+    <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>
+    <string name="tile_expanded_columns_horizontal">Expanded tile columns (horizontal)</string>
     <string name="tile_expanded_rows_vertical">Развернуть ряды плитки (по вертикали)</string>
-    <string name="tile_columns_horizontal_c13">Мозаичные столбцы (альбомная ориентация)</string>
+    <string name="tile_columns_horizontal_c13">Tile Columns (horizontal)</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
@@ -176,11 +174,11 @@
     <string name="launcher_layout_max_columns">Количество столбцов для сетки рабочего стола</string>
     <string name="remove_recent_task_list_clear_button">Удалить кнопку очистки списка последних задач</string>
     <!--Application-->
-    <string name="Application">Приложения</string>
-    <string name="ApplyOtherRestrictions">Применить другие ограничения</string>
+    <string name="Application">Application related</string>
+    <string name="ApplyOtherRestrictions">Other Limits</string>
     <string name="remove_adb_install_confirm">Удалить подтверждение установки ADB</string>
     <string name="remove_adb_install_confirm_summary">Установите приложение напрямую с помощью ADB</string>
-    <string name="unlock_startup_limit">Разблокировать количество автозапусков</string>
+    <string name="unlock_startup_limit">Разблокировать ограничение на автозапусков приложения</string>
     <string name="unlock_startup_limit_summary">Разблокировать ограничение на количество автозапусков приложения</string>
     <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
     <string name="AppStartupRelated">Запуск приложения</string>
@@ -217,12 +215,12 @@
     <string name="disable_dpi_reboot_recovery_summary">Этот модуль не несет ответственности за любые сбои загрузки из-за установки слишком большого значения DPI\nЧтобы восстановить значение DPI по умолчанию, вам необходимо включить эту функцию и сбросить значение DPI по умолчанию после перезагрузки</string>
     <string name="remove_low_battery_dialog_warning">Удалить диалоговое предупреждение о низком заряде батареи</string>
     <string name="remove_low_battery_dialog_warning_summary">Удалите предупреждающие диалоговые окна для режима энергосбережения и суперэнергосбережения</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop">Удалить диалоговое окно с предупреждением о том, что приложение запускается на рабочем столе</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Диалоговое окно с предупреждением обнаружило, что приложение запущено на системном рабочем столе</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">Remove warning dialog that app displaying over the desktop</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Warning dialog box found that an application displaying over the system desktop</string>
     <string name="remove_storage_limit">Удалить ограничение хранилища</string>
     <string name="remove_storage_limit_summary">Снять ограничение, на использование хранилища</string>
     <string name="media_volume_level">Уровень громкости мультимедиа</string>
-    <string name="media_volume_level_summary">Установите 0, чтобы отключить функцию, и перезагрузите систему, чтобы она вступила в силу</string>
+    <string name="media_volume_level_summary">Set to 0 to disable this function, restart the system to take effect</string>
     <string name="open_screen_power_save">Открыть режим энергосбережения</string>
     <string name="open_screen_power_save_summary">Настройки - Батарея - Дополнительные настройки - Энергосбережение экрана</string>
     <string name="open_battery_health">Открыть вход состояния батареи</string>
@@ -230,7 +228,7 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
     <!--Camera-->
-    <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
+    <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
     <!--OplusGames-->
     <string name="remove_root_check">Удалить определение игрового фильтра</string>

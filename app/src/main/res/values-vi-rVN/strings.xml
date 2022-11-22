@@ -53,8 +53,8 @@
     <!-- Menu -->
     <string name="menu_reboot">Menu khởi động lại</string>
     <string name="menu_settings">Menu cài đặt</string>
-    <string name="restart_scope">Khởi động lại các trường</string>
-    <string name="restart_scope_message">Bạn có chắc chắn muốn khởi động lại tất cả các trường ngoại trừ khung hệ thống không?\nmô-đun không khả dụng khi nó không khả dụng!\nĐảm bảo rằng tất cả các phạm vi tương ứng đều được chọn!</string>
+    <string name="restart_scope">Restart scoped processes</string>
+    <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
     <string name="reboot">Khởi động lại hệ thống</string>
     <string name="fast_reboot">Khởi động nhanh</string>
     <string name="menu_versioninfo">Thông tin phiên bản</string>
@@ -66,9 +66,9 @@
     <string name="package_name">Tên gói</string>
     <string name="version">Phiên bản</string>
     <!-- CorePatch -->
-    <string name="corepatch">Bẻ khóa Core</string>
-    <string name="corepatch_summary">Giới hạn Android 11–13</string>
-    <string name="downgr">Cho phép hạ cấp cài đặt ứng dụng</string>
+    <string name="corepatch">Core Patch</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–13</string>
+    <string name="downgr">Allow downgrade apps</string>
     <string name="downgr_summary">Cho phép ứng dụng ghi đè các phiên bản cũ hơn nếu các phiên bản mới được cài đặt.</string>
     <string name="authcreak">Tắt xác thực chữ ký của trình quản lý gói</string>
     <string name="authcreak_summary">Xác minh chữ ký khi cài đặt ứng dụng.</string>
@@ -140,12 +140,12 @@
     <string name="remove_drop_down_statusbar_mydevice">xóa thanh trạng thái thả xuống thiết bị của tôi</string>
     <string name="StatusBar_Tile_Related">Thanh trạng thái</string>
     <string name="statusbar_tile_enable">Số ô thanh trạng thái</string>
-    <string name="tile_unexpanded_columns_vertical">Không mở rộng ô (dọc)</string>
-    <string name="tile_unexpanded_columns_horizontal">Không mở rộng ô (ngang)</string>
-    <string name="tile_expanded_columns_vertical">Expand sticker columns (portrait)</string>
-    <string name="tile_expanded_columns_horizontal">Expand sticker columns (Landscape)</string>
+    <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
+    <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
+    <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>
+    <string name="tile_expanded_columns_horizontal">Expanded tile columns (horizontal)</string>
     <string name="tile_expanded_rows_vertical">Expand tile rows (vertical)</string>
-    <string name="tile_columns_horizontal_c13">Tile Columns (Landscape)</string>
+    <string name="tile_columns_horizontal_c13">Tile Columns (horizontal)</string>
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
@@ -173,11 +173,11 @@
     <string name="launcher_layout_max_columns">Maximum Desktop Layout Columns</string>
     <string name="remove_recent_task_list_clear_button">Remove recent task list clear button</string>
     <!--Application-->
-    <string name="Application">Apply related</string>
-    <string name="ApplyOtherRestrictions">Apply Other Limit</string>
+    <string name="Application">Application related</string>
+    <string name="ApplyOtherRestrictions">Other Limits</string>
     <string name="remove_adb_install_confirm">Remove ADB installation confirmation</string>
     <string name="remove_adb_install_confirm_summary">Use ADB to install APP without tapping</string>
-    <string name="unlock_startup_limit">Unlock Auto-Enabled Limit</string>
+    <string name="unlock_startup_limit">Unlock Self-Startup Limit</string>
     <string name="unlock_startup_limit_summary">Unlock app self-startup limit</string>
     <string name="unlock_task_locks">Unlocks the number of background tasks</string>
     <string name="AppStartupRelated">Application startup related</string>
@@ -214,12 +214,12 @@
     <string name="disable_dpi_reboot_recovery_summary">This module is not responsible for any failure to boot due to the setting of too large DPI value\nTo restore the default DPI, you need to enable this feature and reset the default DPI value after restarting the scope</string>
     <string name="remove_low_battery_dialog_warning">Remove low battery dialog warning</string>
     <string name="remove_low_battery_dialog_warning_summary">Remove warning dialogs for power save mode and super power save</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop">Remove warning dialog that app runs on desktop</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Warning dialog box found that an application is running on the system desktop</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">Remove warning dialog that app displaying over the desktop</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Warning dialog box found that an application displaying over the system desktop</string>
     <string name="remove_storage_limit">Remove storage limit</string>
     <string name="remove_storage_limit_summary">Remove the restriction that this folder cannot be used</string>
     <string name="media_volume_level">Media volume level</string>
-    <string name="media_volume_level_summary">Set to 0 to disable the function, and the system restarts to take effect</string>
+    <string name="media_volume_level_summary">Set to 0 to disable this function, restart the system to take effect</string>
     <string name="open_screen_power_save">Open battery screen power saving entrance</string>
     <string name="open_screen_power_save_summary">Settings - Battery - More settings - Screen Power Saving</string>
     <string name="open_battery_health">Open battery health entrance</string>
@@ -227,7 +227,7 @@
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <!--Camera-->
-    <string name="remove_watermark_word_limit">Xóa giới hạn hình mờ</string>
+    <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
     <!--OplusGames-->
     <string name="remove_root_check">Xóa giới hạn bộ lọc trò chơi</string>

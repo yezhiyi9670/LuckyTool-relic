@@ -54,7 +54,7 @@
     <string name="menu_reboot">重启菜单</string>
     <string name="menu_settings">设置菜单</string>
     <string name="restart_scope">重启作用域</string>
-    <string name="restart_scope_message">确定要重启除系统框架外的全部作用域?\n模块不生效时可用!\n确保已经勾选全部对应作用域!</string>
+    <string name="restart_scope_message">确定要重启除系统框架以外的所有作用域？\n模块不生效时使用！\n请确保已勾选所有对应作用域！</string>
     <string name="reboot">重启系统</string>
     <string name="fast_reboot">快速重启</string>
     <string name="menu_versioninfo">版本信息</string>
@@ -140,8 +140,8 @@
     <string name="remove_drop_down_statusbar_mydevice">移除下拉状态栏我的设备</string>
     <string name="StatusBar_Tile_Related">状态栏磁贴相关</string>
     <string name="statusbar_tile_enable">状态栏磁贴总开关</string>
-    <string name="tile_unexpanded_columns_vertical">未展开磁贴列数(竖屏)</string>
-    <string name="tile_unexpanded_columns_horizontal">未展开磁贴列数(横屏)</string>
+    <string name="tile_unexpanded_columns_vertical">磁贴未展开列数(竖屏)</string>
+    <string name="tile_unexpanded_columns_horizontal">磁贴未展开列数(横屏)</string>
     <string name="tile_expanded_columns_vertical">展开磁贴列数(竖屏)</string>
     <string name="tile_expanded_columns_horizontal">展开磁贴列数(横屏)</string>
     <string name="tile_expanded_rows_vertical">展开磁贴行数(竖屏)</string>
@@ -174,10 +174,10 @@
     <string name="remove_recent_task_list_clear_button">移除最近任务列表清除按钮</string>
     <!--Application-->
     <string name="Application">应用相关</string>
-    <string name="ApplyOtherRestrictions">应用其他限制</string>
+    <string name="ApplyOtherRestrictions">其他限制</string>
     <string name="remove_adb_install_confirm">移除ADB安装确认</string>
     <string name="remove_adb_install_confirm_summary">无需点击即可直接使用ADB安装APP</string>
-    <string name="unlock_startup_limit">解锁自启数量限制</string>
+    <string name="unlock_startup_limit">解锁应用自启数量限制</string>
     <string name="unlock_startup_limit_summary">解锁应用自启动数量限制</string>
     <string name="unlock_task_locks">解锁后台任务锁定数量</string>
     <string name="AppStartupRelated">应用启动相关</string>
@@ -214,7 +214,7 @@
     <string name="disable_dpi_reboot_recovery_summary">一切因设置DPI数值过大导致无法开机, 本模块概不负责\n若要恢复默认DPI, 需要开启此功能并且重启作用域后重新设置默认DPI数值</string>
     <string name="remove_low_battery_dialog_warning">移除低电量警告对话框</string>
     <string name="remove_low_battery_dialog_warning_summary">移除省电模式和超级省电模式的警告对话框</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop">移除应用运行在桌面上警告对话框</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">移除应用显示在桌面上的警告对话框</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">发现有应用运行在系统桌面上的警告对话框</string>
     <string name="remove_storage_limit">移除存储限制</string>
     <string name="remove_storage_limit_summary">移除无法使用此文件夹的限制</string>

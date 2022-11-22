@@ -7,6 +7,7 @@ group for feedback
 ### 3.6
 
 [适配] C13高性能通知  
+[修复] 部分英语翻译问题@Nyrest  
 
 ### 3.5
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">LuckyTool</string>
-    
     <!-- Application -->
     <string name="xposeddescription">Xposed module optimized for extensions to ColorOS</string>
     <!-- Nav Menu -->
@@ -143,12 +142,12 @@
     
     <string name="StatusBar_Tile_Related">StatusBar Tile Related</string>
     <string name="statusbar_tile_enable">Total statusbar tiles switch</string>
-    <string name="tile_unexpanded_columns_vertical">No tiles expanded (portrait)</string>
-    <string name="tile_unexpanded_columns_horizontal">No tiles expanded (Landscape)</string>
-    <string name="tile_expanded_columns_vertical">Expand sticker columns (portrait)</string>
-    <string name="tile_expanded_columns_horizontal">Expand sticker columns (Landscape)</string>
+    <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
+    <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
+    <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>
+    <string name="tile_expanded_columns_horizontal">Expanded tile columns (horizontal)</string>
     <string name="tile_expanded_rows_vertical">Expand tile rows (vertical)</string>
-    <string name="tile_columns_horizontal_c13">Tile Columns (Landscape)</string>
+    <string name="tile_columns_horizontal_c13">Tile Columns (horizontal)</string>
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
