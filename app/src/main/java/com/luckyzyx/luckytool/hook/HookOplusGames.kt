@@ -7,32 +7,36 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 class HookOplusGames : YukiBaseHooker() {
     override fun onHook() {
         //游戏滤镜-->Root检测
-        if (prefs(XposedPrefs).getBoolean("remove_root_check", false)) loadHooker(RemoveRootCheck())
+        if (prefs(XposedPrefs).getBoolean("remove_root_check", false)) {
+            loadHooker(RemoveRootCheck())
+        }
 
         //简洁页面
-        if (prefs(XposedPrefs).getBoolean("remove_startup_animation", false)) loadHooker(
-            RemoveStartupAnimation()
-        )
+        if (prefs(XposedPrefs).getBoolean("remove_startup_animation", false)) {
+            loadHooker(RemoveStartupAnimation())
+        }
 
         //启用开发者选项
-        if (prefs(XposedPrefs).getBoolean("enable_developer_page", false)) loadHooker(
-            EnableDeveloperPage()
-        )
+        if (prefs(XposedPrefs).getBoolean("enable_developer_page", false)) {
+            loadHooker(EnableDeveloperPage())
+        }
 
         //启用EVA主题
-        if (prefs(XposedPrefs).getBoolean("enable_eva_theme", false)) loadHooker(EnableEVATheme())
+        if (prefs(XposedPrefs).getBoolean("enable_eva_theme", false)) {
+            loadHooker(EnableEVATheme())
+        }
 
         //启用原神定制UI
 //        if (prefs(XposedPrefs).getBoolean("enable_genshin_impact_theme",false)) loadHooker(EnableGenshinImpactTheme())
 
         //启用GPU控制器
-        if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) loadHooker(
-            EnableAdrenoGpuController()
-        )
+        if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) {
+            loadHooker(EnableAdrenoGpuController())
+        }
         //启用赛事支持模式
-        if (prefs(XposedPrefs).getBoolean("enable_support_competition_mode", false)) loadHooker(
-            EnableSupportCompetitionMode()
-        )
+        if (prefs(XposedPrefs).getBoolean("enable_support_competition_mode", false)) {
+            loadHooker(EnableSupportCompetitionMode())
+        }
 
         //游戏变声VIP (作废)
 //        findClass("com.oplus.games.account.bean.VipInfoBean.VipInfosDTO").hook {

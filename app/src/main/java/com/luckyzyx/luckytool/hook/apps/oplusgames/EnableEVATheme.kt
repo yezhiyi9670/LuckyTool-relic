@@ -16,8 +16,8 @@ class EnableEVATheme : YukiBaseHooker() {
         }
         val oldClass = "com.coloros.gamespaceui"
         val member = when (appSet[2]) {
-            //7150
-            "3d6a985" -> arrayOf("jc.f0", "A")
+            //7150,7151
+            "3d6a985", "b3bbe50" -> arrayOf("jc.f0", "A")
             //7140,7141,7142,7143
             "cfded43", "46a2960", "bbf8f04", "f70f7f4" -> arrayOf("ic.e0", "A")
             //7130,7131,7133,7123,7100
@@ -33,7 +33,7 @@ class EnableEVATheme : YukiBaseHooker() {
         //Search isEvaThemePhone
         findClass(member[0]).hook {
             injectMember {
-                constructor {  }
+                constructor { }
                 method {
                     name = member[1]
                     returnType = BooleanType
