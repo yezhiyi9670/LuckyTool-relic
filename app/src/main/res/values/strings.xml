@@ -49,19 +49,18 @@
     <string name="open_source_summary">Click to view the open source list</string>
     <string name="participate_translation">Participate in module translations</string>
     <string name="participate_translation_summary">Go to Crowdin to contribute your translation</string>
-    <!-- check Lsposed -->
+    <!-- check lsposed -->
     <string name="unsupported_xposed">Please use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Restart menu</string>
     <string name="menu_settings">Set menu</string>
     <string name="restart_scope">Restart scoped processes</string>
-    <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn't working!\nMake sure all the relevant scopes are checked!</string>
+    <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
     <string name="reboot">Restart System</string>
     <string name="fast_reboot">Fast reboot</string>
     <string name="menu_versioninfo">Version Information</string>
-    <string name="scope_version_info">Role domain version information</string>
+    <string name="scope_version_info">Scope version information</string>
     <!--Xposed-->
-    <string name="restart_scope_summary">Reboot domain in top right</string>
     <string name="Android">System Related</string>
     <string name="app_label">App Name</string>
     <string name="package_name">Package Name</string>
@@ -139,7 +138,6 @@
     <string name="remove_statusbar_date_comma">Remove dropdown status bar date comma</string>
     <string name="remove_statusbar_date_comma_summary">Guessing is limited to ZH users</string>
     <string name="remove_drop_down_statusbar_mydevice">remove drop down statusbar my device</string>
-    
     <string name="StatusBar_Tile_Related">StatusBar Tile Related</string>
     <string name="statusbar_tile_enable">Total statusbar tiles switch</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
@@ -324,5 +322,4 @@
     <string name="adb_port">ADB Port</string>
     <string name="enable_remote_adb_debugging">Enable remote ADB debugging</string>
     <string name="adb_debug_port_cannot_null">ADB debug port cannot be null</string>
-
 </resources>

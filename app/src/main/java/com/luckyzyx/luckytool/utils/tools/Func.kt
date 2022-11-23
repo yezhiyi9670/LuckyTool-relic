@@ -124,7 +124,12 @@ fun Context.getAppLabel(packName: String): CharSequence? = safeOf(default = null
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadLabel(packageManager)
 }
 
-
+/**
+ * 判断Activity是否存在
+ * @receiver Context
+ * @param intent Intent
+ * @return Boolean
+ */
 fun Context.checkResolveActivity(intent: Intent): Boolean = safeOf(default = false) {
     return PackageUtils(packageManager).resolveActivity(intent, 0) != null
 }

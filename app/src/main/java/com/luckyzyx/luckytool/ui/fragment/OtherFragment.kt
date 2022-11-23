@@ -152,6 +152,10 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.system_interface_adjustment)
                 isIconSpaceReserved = false
+                isVisible = context.checkResolveActivity(Intent().setClassName(
+                    "com.android.systemui",
+                    "com.android.systemui.DemoMode"
+                ))
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.android.systemui/.DemoMode", true)
                     true
@@ -160,7 +164,10 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.AOSPSettingsPage)
                 isIconSpaceReserved = false
-                isVisible = SDK >= A13
+                isVisible = context.checkResolveActivity(Intent().setClassName(
+                    "com.android.settings",
+                    "com.android.settings.homepage.DeepLinkHomepageActivityInternal"
+                ))
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.android.settings/.homepage.DeepLinkHomepageActivityInternal", true)
                     true
@@ -182,6 +189,10 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.very_dark_mode)
                 isIconSpaceReserved = false
+                isVisible = context.checkResolveActivity(Intent().setClassName(
+                    "com.android.settings",
+                    "com.android.settings.Settings\$ReduceBrightColorsSettingsActivity"
+                ))
                 setOnPreferenceClickListener {
                     Intent().apply {
                         setClassName("com.android.settings", "com.android.settings.Settings\$ReduceBrightColorsSettingsActivity")
@@ -193,7 +204,10 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.battery_health)
                 isIconSpaceReserved = false
-                isVisible = SDK >= A13
+                isVisible = context.checkResolveActivity(Intent().setClassName(
+                    "com.oplus.battery",
+                    "com.oplus.powermanager.fuelgaue.BatteryHealthActivity"
+                ))
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.oplus.battery/com.oplus.powermanager.fuelgaue.BatteryHealthActivity", true)
                     true
@@ -202,7 +216,10 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.camera_algo_page)
                 isIconSpaceReserved = false
-                isVisible = SDK >= A13
+                isVisible = context.checkResolveActivity(Intent().setClassName(
+                    "com.oplus.camera",
+                    "com.oplus.camera.ui.menu.algoswitch.AlgoSwitchActivity"
+                ))
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.oplus.camera/.ui.menu.algoswitch.AlgoSwitchActivity", true)
                     true
@@ -219,7 +236,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                             putExtra("key.fragment.name","com.heytap.browser.settings.homepage.HomepagePreferenceFragment")
                             startActivity(this)
                         }
-                    } catch (ignore: java.lang.Exception) {
+                    } catch (ignore: Exception) {
                         context.toast("Error: Please check your browser version!")
                     }
                     true

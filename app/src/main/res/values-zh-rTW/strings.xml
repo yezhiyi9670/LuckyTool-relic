@@ -48,7 +48,7 @@
     <string name="open_source_summary">点击查看开放源代码列表</string>
     <string name="participate_translation">参与模块翻译</string>
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
-    <!-- check Lsposed -->
+    <!-- check lsposed -->
     <string name="unsupported_xposed">请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
     <!-- Menu -->
     <string name="menu_reboot">重启菜单</string>
@@ -60,7 +60,6 @@
     <string name="menu_versioninfo">版本信息</string>
     <string name="scope_version_info">作用域版本信息</string>
     <!--Xposed-->
-    <string name="restart_scope_summary">右上角菜单重启作用域</string>
     <string name="Android">系统相关</string>
     <string name="app_label">应用名</string>
     <string name="package_name">包名</string>
