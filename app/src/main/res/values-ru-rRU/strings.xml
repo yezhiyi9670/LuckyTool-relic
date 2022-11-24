@@ -16,6 +16,7 @@
     <string name="use_dynamic_color_summary">Использовать динамический цвет</string>
     <string name="dark_theme">Темная тема</string>
     <string name="follow_system">Выбор системы</string>
+    <string name="language">Язык</string>
     <string name="privacy_agreement">Соглашение о конфиденциальности</string>
     <string name="auto_check_update">Автоматически проверять наличие обновлений</string>
     <string name="auto_check_update_summary">Автоматически проверять наличие обновлений при открытии главной страницы модуля</string>

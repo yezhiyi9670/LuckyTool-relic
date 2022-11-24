@@ -16,6 +16,7 @@
     <string name="use_dynamic_color_summary">Sử dụng màu động</string>
     <string name="dark_theme">Chủ đề tối</string>
     <string name="follow_system">Theo hệ thống</string>
+    <string name="language">Ngôn ngữ</string>
     <string name="privacy_agreement">Thỏa thuận bảo mật</string>
     <string name="auto_check_update">Tự động kiểm tra cập nhật</string>
     <string name="auto_check_update_summary">Tự động kiểm tra cập nhật khi mở trang chủ module</string>
@@ -27,7 +28,7 @@
     <string name="other_settings">Tùy chỉnh khác</string>
     <string name="hide_xp_page_icon">Ẩn biểu tượng trang XP</string>
     <string name="hide_desktop_appicon">Ẩn biểu tượng ứng dụng trên màn hình chính</string>
-    <string name="hide_desktop_appicon_summary">LSPosed phải được tắt để buộc các biểu tượng trên màn hình</string>
+    <string name="hide_desktop_appicon_summary">LSPosed phải được tắt để buộc hiển thị các biểu tượng trên màn hình</string>
     <!-- About -->
     <string name="about_title">Thông tin</string>
     <string name="about_author">Tác giả</string>
@@ -49,7 +50,7 @@
     <string name="participate_translation">Tham gia dịch module</string>
     <string name="participate_translation_summary">Truy cập Crowdin để đóng góp bản dịch của bạn</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Vui lòng sử dụng phiên bản LS Posed mới nhất để kiểm tra phạm vi của mô-đun.\n Nếu bạn đã hoàn thành các bước trên, bạn có thể nhấp vào OK để thoát khỏi ứng dụng và mở module</string>
+    <string name="unsupported_xposed">Vui lòng sử dụng phiên bản mới nhất của LSPosed để kiểm tra phạm vi của mô-đun!\nNếu phần trên đã được hoàn thành, hãy nhấp vào OK để thoát khỏi ứng dụng, sau đó mở mô-đun</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu khởi động lại</string>
     <string name="menu_settings">Menu cài đặt</string>
@@ -65,16 +66,16 @@
     <string name="package_name">Tên gói</string>
     <string name="version">Phiên bản</string>
     <!-- CorePatch -->
-    <string name="corepatch">Vá Core</string>
+    <string name="corepatch">Vá lõi hệ thống</string>
     <string name="corepatch_summary">Xóa giới hạn cài đặt, hỗ trợ Android 11–13</string>
     <string name="downgr">Cho phép hạ cấp ứng dụng</string>
     <string name="downgr_summary">Cho phép ứng dụng ghi đè các phiên bản cũ hơn nếu các phiên bản mới được cài đặt.</string>
     <string name="authcreak">Tắt xác thực chữ ký của trình quản lý gói</string>
     <string name="authcreak_summary">Xác minh chữ ký khi cài đặt ứng dụng.</string>
-    <string name="digestCreak">Tắt xác thực chữ ký APK</string>
+    <string name="digestCreak">Vô hiệu chữ ký xác thực APK</string>
     <string name="digestCreak_summary">Cho phép ghi đè các ứng dụng được cài đặt trực tiếp có chữ ký khác nhau</string>
     <string name="UsePreSig">Luôn sử dụng cài đặt APP có chữ ký</string>
-    <string name="UsePreSig_summary">Bất thường! Nguy hiểm! Chỉ kích hoạt khi thực sự cần thiết</string>
+    <string name="UsePreSig_summary">Bất thường! Nguy hiểm! Chỉ bật khi thực sự cần thiết</string>
     <string name="enhancedMode">Chế độ nâng cao</string>
     <string name="enhancedMode_summary">Bạn có thể giải quyết một số kiểm tra tính toàn vẹn nội bộ trong ứng dụng mà không cần phải bật</string>
     <string name="usepresig_warn">!!! Tất cả các gói có thể ghi đè ứng dụng đã cài đặt!!\nđể cài đặt các gói không xác định</string>
@@ -112,7 +113,7 @@
     <string name="remove_vpn_active_notification_summary">Xóa thông báo VPN</string>
     <string name="remove_statusbar_bottom_networkwarn">Xóa cảnh báo mạng bên dưới thanh trạng thái</string>
     <string name="remove_statusbar_bottom_networkwarn_summary">Xóa thông tin mạng bên dưới khi thanh trạng thái kéo xuống được mở rộng</string>
-    <string name="remove_flashlight_open_notification">Xóa thông báo mở đèn pin</string>
+    <string name="remove_flashlight_open_notification">Xóa thông báo bật đèn pin</string>
     <string name="remove_app_high_battery_consumption_warning">Xóa cảnh báo ứng dụng tiêu thụ pin cao</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
@@ -180,7 +181,7 @@
     <string name="unlock_startup_limit_summary">Mở khóa giới hạn ứng dụng tự khởi động</string>
     <string name="unlock_task_locks">Mở khóa số lượng tác vụ nền</string>
     <string name="AppStartupRelated">Khởi động ứng dụng</string>
-    <string name="disable_splash_screen">Vô hiệu hóa màn hình chớp</string>
+    <string name="disable_splash_screen">Vô hiệu hóa màn hình khởi động ứng dụng</string>
     <!--MultiApp-->
     <string name="MultiApp">Kệ ứng dụng</string>
     <string name="multi_app_enable">Kích hoạt biểu đồ ứng dụng</string>
@@ -195,7 +196,7 @@
     <string name="allow_downgrade_install">Cho phép hạ cấp cài đặt</string>
     <string name="allow_downgrade_install_summary">Xóa cảnh báo hạ cấp, v. v.</string>
     <string name="disable_apk_signature_verification">Tắt xác thực chữ ký APK</string>
-    <string name="disable_apk_signature_verification_summary">Có thể cài đặt các ứng dụng có chữ ký khác nhau</string>
+    <string name="disable_apk_signature_verification_summary">Cho phép cài đặt các ứng dụng với chữ kí khác nhau đè lên nhau</string>
     <string name="remove_install_ads">Xóa quảng cáo khi cài đặt khi hoàn tất</string>
     <string name="remove_install_ads_summary">Đóng Cài đặt - Đề xuất ứng dụng bảo mật</string>
     <string name="replase_aosp_installer">Thay thế trình cài đặt AOSP</string>
@@ -226,7 +227,7 @@
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <!--Camera-->
-    <string name="remove_watermark_word_limit">Xóa giới hạn độ dài chữ hình mờ</string>
+    <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
     <!--OplusGames-->
     <string name="remove_root_check">Xóa giới hạn bộ lọc trò chơi</string>
@@ -234,14 +235,14 @@
     <string name="remove_startup_animation">Xóa hoạt ảnh khởi động</string>
     <string name="enable_developer_page">Bật chế độ nhà phát triển</string>
     <string name="enable_eva_theme">Bật chủ đề EVA</string>
-    <string name="enable_developer_page_summary">Sau khi bật tính năng này và khởi động lại, \n có thể chuyển đến tính năng này qua cổng lối tắt</string>
+    <string name="enable_developer_page_summary">Sau khi bật chức năng này và khởi động lại\nbạn có thể chuyển sang sử dụng chức năng này thông qua lối tắt</string>
     <string name="enable_genshin_impact_theme">Kích hoạt giao diện người dùng phiên bản giới hạn Genshin Impact</string>
     <string name="enable_genshin_impact_theme_summary">Không cần thiết lập trong Game Assistant</string>
     <string name="enable_adreno_gpu_controller">Kích hoạt bộ điều khiển GPU Adreno</string>
-    <string name="enable_support_competition_mode">Kích hoạt chế độ cạnh tranh hỗ trợ</string>
+    <string name="enable_support_competition_mode">Kích hoạt chế độ hỗ trợ sự kiện</string>
     <!--CloudService-->
     <string name="remove_network_limit">Xóa giới hạn mạng dữ liệu</string>
-    <string name="remove_network_limit_summary">Xóa bỏ giới hạn sao lưu/khôi phục không dùng được dữ liệu di động</string>
+    <string name="remove_network_limit_summary">Xóa giới hạn sao lưu/khôi phục không thể sử dụng dữ liệu di động</string>
     <!--ThemeStore-->
     <string name="unlock_themestore_vip">Mở khóa một số tính năng VIP</string>
     <string name="unlock_themestore_vip_summary">Mở khóa một phần của tính năng và tự mình dùng thử</string>
@@ -259,17 +260,17 @@
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">Xóa phát hiện giấy phép</string>
     <!--Home-->
-    <string name="fps_title">Buộc tốc độ làm mới</string>
+    <string name="fps_title">KHÓA TỐC ĐỘ LÀM TƯƠI</string>
     <string name="fps_summary">Xung đột với các quy trình tốc độ làm mới động khác, chẳng hạn như “dpfs”</string>
     <string name="brand">Nhãn hiệu</string>
     <string name="model">Tên đời máy</string>
-    <string name="flash">Đèn flash</string>
+    <string name="flash">Bộ nhớ</string>
     <string name="build_version">Phiên bản</string>
     <string name="device">Thiết bị</string>
-    <string name="system">Hệ thống</string>
+    <string name="system">Android</string>
     <string name="Restore_default_refresh_rate">Khôi phục tốc độ làm mới mặc định</string>
-    <string name="module_isactivated">Mô-đun được kích hoạt</string>
-    <string name="module_notactive">Mô-đun không được kích hoạt</string>
+    <string name="module_isactivated">Mô-đun đã kích hoạt</string>
+    <string name="module_notactive">Mô-đun chưa kích hoạt</string>
     <string name="module_version">Phiên bản mô-đun:</string>
     <string name="enable_module">Bật mô-đun</string>
     <string name="version_name">Tên phiên bản</string>
@@ -296,18 +297,18 @@
     <!-- Logs -->
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <!-- Other -->
-    <string name="quick_entry">Nhập nhanh hệ thống</string>
+    <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>
     <string name="display_refresh_rate">Hiển thị tốc độ làm mới</string>
     <string name="SystemDebuggingRelated">Gỡ lỗi hệ thống</string>
     <string name="engineering_mode">Chế độ kỹ thuật</string>
     <string name="charging_test">Kiểm tra sạc</string>
-    <string name="process_manager">Process management</string>
+    <string name="process_manager">Trình quản lý quy trình</string>
     <string name="system_interface_adjustment">Điều chỉnh giao diện người dùng hệ thống</string>
     <string name="developer_option">Tuỳ chọn nhà phát triển</string>
     <string name="HidePageRelated">Ẩn trang</string>
     <string name="camera_algo_page">Trang thuật toán máy ảnh</string>
-    <string name="browser_concise_mode">Chế độ ngắn gọn của trình duyệt</string>
+    <string name="browser_concise_mode">Bố cục trang chủ</string>
     <string name="battery_health">Tình trạng pin</string>
     <string name="system_not_support">Hệ thống hiện tại không hỗ trợ!</string>
     <string name="very_dark_mode">Chế độ rất tối</string>

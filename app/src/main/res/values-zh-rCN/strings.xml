@@ -16,6 +16,7 @@
     <string name="use_dynamic_color_summary">使用动态取色</string>
     <string name="dark_theme">深色主题</string>
     <string name="follow_system">跟随系统</string>
+    <string name="language">语言</string>
     <string name="privacy_agreement">隐私协议</string>
     <string name="auto_check_update">自动检查更新</string>
     <string name="auto_check_update_summary">打开模块主页时自动检查更新</string>

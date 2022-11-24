@@ -39,6 +39,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     setTitle(R.string.use_dynamic_color)
                     setSummary(R.string.use_dynamic_color_summary)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
             addPreference(
@@ -50,6 +54,26 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     entryValues = resources.getStringArray(R.array.dark_theme_value)
                     setDefaultValue("MODE_NIGHT_FOLLOW_SYSTEM")
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            addPreference(
+                DropDownPreference(context).apply {
+                    key = "language"
+                    title = getString(R.string.language)
+                    summary = "%s"
+                    entries = resources.getStringArray(R.array.language)
+                    entryValues = resources.getStringArray(R.array.language_value)
+                    setDefaultValue("SYSTEM")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                    isVisible = false
                 }
             )
             addPreference(
@@ -73,6 +97,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     title = getString(R.string.hide_xp_page_icon)
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
             addPreference(
@@ -93,10 +121,15 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                         MaterialAlertDialogBuilder(context).apply {
                             setMessage(getString(R.string.clear_all_data_message))
                             setPositiveButton(android.R.string.ok) { _, _ ->
-                                context.clearAll(SettingsPrefs, XposedPrefs, OtherPrefs, MagiskPrefs)
+                                context.clearAll(
+                                    SettingsPrefs,
+                                    XposedPrefs,
+                                    OtherPrefs,
+                                    MagiskPrefs
+                                )
                                 exitProcess(0)
                             }
-                            setNeutralButton(android.R.string.cancel,null)
+                            setNeutralButton(android.R.string.cancel, null)
                             show()
                         }
                         true
@@ -115,12 +148,17 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     summary = getString(R.string.donate_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        val donateList = arrayOf(getString(R.string.qq),getString(R.string.wechat),getString(R.string.alipay),getString(R.string.donation_list))
+                        val donateList = arrayOf(
+                            getString(R.string.qq),
+                            getString(R.string.wechat),
+                            getString(R.string.alipay),
+                            getString(R.string.donation_list)
+                        )
                         MaterialAlertDialogBuilder(context)
                             .setItems(donateList) { _, which ->
                                 when (which) {
                                     0 -> {
-                                        MaterialAlertDialogBuilder(context,dialogCentered)
+                                        MaterialAlertDialogBuilder(context, dialogCentered)
                                             .setTitle(getString(R.string.qq))
                                             .setView(
                                                 ImageView(context).apply {
@@ -131,7 +169,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                             .show()
                                     }
                                     1 -> {
-                                        MaterialAlertDialogBuilder(context,dialogCentered)
+                                        MaterialAlertDialogBuilder(context, dialogCentered)
                                             .setTitle(getString(R.string.wechat))
                                             .setView(
                                                 ImageView(context).apply {
@@ -142,7 +180,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                             .show()
                                     }
                                     2 -> {
-                                        MaterialAlertDialogBuilder(context,dialogCentered)
+                                        MaterialAlertDialogBuilder(context, dialogCentered)
                                             .setTitle(getString(R.string.alipay))
                                             .setView(
                                                 ImageView(context).apply {
@@ -158,7 +196,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                             .setView(
                                                 RecyclerView(context).apply {
                                                     setPadding(0, 10.dp, 0, 10.dp)
-                                                    adapter = DonateListAdapter(context, DonateData.getDonateList())
+                                                    adapter = DonateListAdapter(
+                                                        context,
+                                                        DonateData.getDonateList()
+                                                    )
                                                     layoutManager = LinearLayoutManager(context)
                                                 }
                                             )
@@ -177,14 +218,39 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     summary = getString(R.string.feedback_download_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        val updatelist = arrayOf(getString(R.string.coolmarket),getString(R.string.telegram_channel),getString(R.string.telegram_group),getString(R.string.lsposed_repo))
+                        val updatelist = arrayOf(
+                            getString(R.string.coolmarket),
+                            getString(R.string.telegram_channel),
+                            getString(R.string.telegram_group),
+                            getString(R.string.lsposed_repo)
+                        )
                         MaterialAlertDialogBuilder(context)
                             .setItems(updatelist) { _, which ->
                                 when (which) {
-                                    0 -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("coolmarket://u/1930284")))
-                                    1 -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/LuckyTool")))
-                                    2 -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")))
-                                    3 -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")))
+                                    0 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("coolmarket://u/1930284")
+                                        )
+                                    )
+                                    1 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/LuckyTool")
+                                        )
+                                    )
+                                    2 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
+                                        )
+                                    )
+                                    3 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")
+                                        )
+                                    )
                                 }
                             }.show()
                         true
@@ -197,7 +263,12 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     summary = getString(R.string.participate_translation_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://crwd.in/luckytool")))
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("https://crwd.in/luckytool")
+                            )
+                        )
                         true
                     }
                 }
@@ -228,10 +299,11 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "use_dynamic_color") (activity as MainActivity).restart()
-        if (key == "dark_theme") (activity as MainActivity).restart()
-        if (key == "hide_xp_page_icon") (activity as MainActivity).restart()
-        if (key == "hide_desktop_appicon") sharedPreferences?.let { requireActivity().setDesktopIcon(it.getBoolean("hide_desktop_appicon",false)) }
+        if (key == "hide_desktop_appicon") sharedPreferences?.let {
+            requireActivity().setDesktopIcon(
+                it.getBoolean("hide_desktop_appicon", false)
+            )
+        }
     }
 
     override fun onResume() {

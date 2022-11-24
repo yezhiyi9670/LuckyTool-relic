@@ -713,15 +713,6 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_alarmclock_widget_redone_pro)
-                    summary = getString(R.string.remove_alarmclock_widget_redone_pro_summary)
-                    key = "remove_alarmclock_widget_redone_pro"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_recent_task_list_clear_button)
                     key = "remove_recent_task_list_clear_button"
                     setDefaultValue(false)

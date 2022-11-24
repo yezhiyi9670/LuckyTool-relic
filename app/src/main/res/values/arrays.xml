@@ -32,5 +32,25 @@
         <item>MODE_NIGHT_YES</item>
         <item>MODE_NIGHT_FOLLOW_SYSTEM</item>
     </string-array>
-
+    
+    <string-array name="language" translatable="false">
+        <item>@string/follow_system</item>
+        <item>English</item>
+        <item>Russian</item>
+        <item>Vietnamese</item>
+        <item>中文(简体)</item>
+        <item>中文(香港)</item>
+        <item>中文(台湾)</item>
+    </string-array>
+    
+    <string-array name="language_value" translatable="false">
+        <item>SYSTEM</item>
+        <item />
+        <item>ru</item>
+        <item>vi</item>
+        <item>zh-CN</item>
+        <item>zh-HK</item>
+        <item>zh-TW</item>
+    </string-array>
+    
 </resources>
