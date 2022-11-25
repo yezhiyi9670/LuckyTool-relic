@@ -41,7 +41,8 @@ object DonateData {
             add(DonateInfo("程", 20.0))
             add(DonateInfo("miro", 3.0))
             add(DonateInfo("你会振刀么", 18.88))
-            add(DonateInfo("大挪移", 20.00))
+            add(DonateInfo("大挪移", 20.0))
+            add(DonateInfo("小林", 10.0))
         }
     }
 }

@@ -6,12 +6,12 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.core.view.setPadding
 import androidx.navigation.fragment.findNavController
 import androidx.preference.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
@@ -154,46 +154,44 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                             getString(R.string.alipay),
                             getString(R.string.donation_list)
                         )
-                        MaterialAlertDialogBuilder(context)
-                            .setItems(donateList) { _, which ->
+                        MaterialAlertDialogBuilder(context).apply {
+
+                            setItems(donateList) { _, which ->
                                 when (which) {
                                     0 -> {
-                                        MaterialAlertDialogBuilder(context, dialogCentered)
-                                            .setTitle(getString(R.string.qq))
-                                            .setView(
-                                                ImageView(context).apply {
-                                                    setPadding(20.dp)
-                                                    setImageBitmap(baseDecode(Base64Code().qqCode))
-                                                }
-                                            )
-                                            .show()
+                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                            setTitle(getString(R.string.qq))
+                                            setView(R.layout.layout_donate_dialog)
+                                        }.show()
+                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
+                                            getString(R.string.donate_message)
+                                        dialog.findViewById<ImageView>(R.id.donate_image)
+                                            ?.setImageBitmap(baseDecode(Base64Code.qqCode))
                                     }
                                     1 -> {
-                                        MaterialAlertDialogBuilder(context, dialogCentered)
-                                            .setTitle(getString(R.string.wechat))
-                                            .setView(
-                                                ImageView(context).apply {
-                                                    setPadding(20.dp)
-                                                    setImageBitmap(baseDecode(Base64Code().wechatCode))
-                                                }
-                                            )
-                                            .show()
+                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                            setTitle(getString(R.string.qq))
+                                            setView(R.layout.layout_donate_dialog)
+                                        }.show()
+                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
+                                            getString(R.string.donate_message)
+                                        dialog.findViewById<ImageView>(R.id.donate_image)
+                                            ?.setImageBitmap(baseDecode(Base64Code.wechatCode))
                                     }
                                     2 -> {
-                                        MaterialAlertDialogBuilder(context, dialogCentered)
-                                            .setTitle(getString(R.string.alipay))
-                                            .setView(
-                                                ImageView(context).apply {
-                                                    setPadding(20.dp)
-                                                    setImageBitmap(baseDecode(Base64Code().alipayCode))
-                                                }
-                                            )
-                                            .show()
+                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                            setTitle(getString(R.string.qq))
+                                            setView(R.layout.layout_donate_dialog)
+                                        }.show()
+                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
+                                            getString(R.string.donate_message)
+                                        dialog.findViewById<ImageView>(R.id.donate_image)
+                                            ?.setImageBitmap(baseDecode(Base64Code.alipayCode))
                                     }
                                     3 -> {
-                                        MaterialAlertDialogBuilder(context, dialogCentered)
-                                            .setTitle(getString(R.string.donation_list))
-                                            .setView(
+                                        MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                            setTitle(getString(R.string.donation_list))
+                                            setView(
                                                 RecyclerView(context).apply {
                                                     setPadding(0, 10.dp, 0, 10.dp)
                                                     adapter = DonateListAdapter(
@@ -203,11 +201,11 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                                     layoutManager = LinearLayoutManager(context)
                                                 }
                                             )
-                                            .show()
+                                        }.show()
                                     }
                                 }
                             }
-                            .show()
+                        }.show()
                         true
                     }
                 }

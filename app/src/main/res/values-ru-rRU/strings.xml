@@ -33,7 +33,8 @@
     <string name="about_title">Информация</string>
     <string name="about_author">Авторы</string>
     <string name="donate">Донат</string>
-    <string name="donate_summary">Ваше пожертвование станет движущей силой обновления модуля\nНе забудьте оставить свой никнейм или ID при пожертвовании</string>
+    <string name="donate_message">Be sure to note your nickname or ID when donating</string>
+    <string name="donate_summary">Your donation will be the driving force for the module update</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>

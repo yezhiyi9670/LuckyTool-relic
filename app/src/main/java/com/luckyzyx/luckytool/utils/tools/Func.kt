@@ -113,7 +113,7 @@ fun Context.getAppVersionName(packName: String): String? = safeOf(default = null
  * @param packName String
  * @return Long?
  */
-fun Context.getAppVersionCode(packName: String): Long? = safeOf(default = null){
+fun Context.getAppVersionCode(packName: String): Long? = safeOf(default = null) {
     return PackageUtils(packageManager).getPackageInfo(packName, 0).longVersionCode
 }
 
@@ -312,6 +312,8 @@ fun Context.copyStr(string: String) {
 
 /**
  * Base64转Bitmap图片
+ * @param code String
+ * @return Bitmap?
  */
 fun baseDecode(code: String): Bitmap? {
     val decode: ByteArray = Base64.decode(code.split(",")[1], Base64.DEFAULT)

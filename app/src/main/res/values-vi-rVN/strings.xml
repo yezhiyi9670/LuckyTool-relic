@@ -33,7 +33,8 @@
     <string name="about_title">Thông tin</string>
     <string name="about_author">Tác giả</string>
     <string name="donate">Ủng hộ</string>
-    <string name="donate_summary">Khoản quyên góp của bạn sẽ là động lực để cập nhật mô-đun\nHãy nhớ để lại tên tài khoản hoặc ID của bạn khi quyên góp</string>
+    <string name="donate_message">Hãy chắc chắn ghi chú tên gọi hoặc ID của bạn khi quyên góp</string>
+    <string name="donate_summary">Đóng góp của bạn sẽ là động lực để chúng tôi cập nhật mô-đun</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
@@ -127,7 +128,7 @@
     <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
     <string name="remove_statusbar_user_switcher">Xóa biểu tượng nhiều người dùng trên thanh trạng thái thả xuống</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
-    <string name="remove_mobile_data_inout">Xóa biểu tượng dữ liệu di động</string>
+    <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>

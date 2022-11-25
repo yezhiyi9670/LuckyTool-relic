@@ -34,7 +34,8 @@
     <string name="about_title">About</string>
     <string name="about_author">Author</string>
     <string name="donate">Donate reward</string>
-    <string name="donate_summary">Your donation will be the driving force for the module update\nBe sure to leave your nickname or ID when donating</string>
+    <string name="donate_message">Be sure to note your nickname or ID when donating</string>
+    <string name="donate_summary">Your donation will be the driving force for the module update</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>

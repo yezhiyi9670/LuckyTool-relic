@@ -33,7 +33,8 @@
     <string name="about_title">关于</string>
     <string name="about_author">作者</string>
     <string name="donate">捐赠打赏</string>
-    <string name="donate_summary">您的捐赠将是模块更新的动力\n请务必在捐赠时留下您的昵称或ID</string>
+    <string name="donate_message">务必在捐赠时备注昵称或ID</string>
+    <string name="donate_summary">您的捐赠将是模块更新的动力</string>
     <string name="qq">QQ</string>
     <string name="wechat">微信</string>
     <string name="alipay">支付宝</string>
