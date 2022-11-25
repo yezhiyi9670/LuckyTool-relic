@@ -7,8 +7,8 @@ import android.widget.GridLayout.LayoutParams
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
-import com.luckyzyx.luckytool.utils.tools.dp
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.dp
 import java.text.DecimalFormat
 
 class NetworkSpeed : YukiBaseHooker() {

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class RemoveMobileDataIcon : YukiBaseHooker() {
     override fun onHook() {

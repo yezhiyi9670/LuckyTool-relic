@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils.data
 
 const val SettingsPrefs: String = "SettingsPrefs"
 const val XposedPrefs: String = "XposedPrefs"

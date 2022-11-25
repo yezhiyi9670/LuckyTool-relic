@@ -62,7 +62,7 @@
                 android:resource="@array/xposed_scope" />
         
         <service
-                android:name=".utils.tiles.ChargingTest"
+                android:name=".ui.service.ChargingTest"
                 android:exported="true"
                 android:icon="@drawable/ic_baseline_charging_station_24"
                 android:label="@string/charging_test"
@@ -72,7 +72,7 @@
             </intent-filter>
         </service>
         <service
-                android:name=".utils.tiles.ProcessManager"
+                android:name=".ui.service.ProcessManager"
                 android:exported="true"
                 android:icon="@drawable/ic_baseline_settings_24"
                 android:label="@string/process_manager"
@@ -82,7 +82,7 @@
             </intent-filter>
         </service>
         <service
-                android:name=".utils.tiles.ShowFPS"
+                android:name=".ui.service.ShowFPS"
                 android:exported="true"
                 android:icon="@drawable/ic_baseline_settings_24"
                 android:label="@string/display_refresh_rate"
@@ -103,7 +103,7 @@
         </provider>
         
         <receiver
-                android:name=".utils.receiver.MyReceiver"
+                android:name="com.luckyzyx.luckytool.ui.receiver.MyReceiver"
                 android:enabled="true"
                 android:exported="true"
                 android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

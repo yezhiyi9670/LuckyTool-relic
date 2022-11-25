@@ -6,7 +6,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.dp
+import com.luckyzyx.luckytool.utils.data.dp
 
 class LockScreenCentered : YukiBaseHooker() {
     override fun onHook() {

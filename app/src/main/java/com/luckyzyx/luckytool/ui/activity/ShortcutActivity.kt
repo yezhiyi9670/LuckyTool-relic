@@ -3,9 +3,9 @@ package com.luckyzyx.luckytool.ui.activity
 import android.app.Activity
 import android.os.Bundle
 import com.joom.paranoid.Obfuscate
+import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.data.jumpRunningApp
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.jumpBatteryInfo
-import com.luckyzyx.luckytool.utils.tools.jumpRunningApp
 import kotlin.system.exitProcess
 
 @Obfuscate

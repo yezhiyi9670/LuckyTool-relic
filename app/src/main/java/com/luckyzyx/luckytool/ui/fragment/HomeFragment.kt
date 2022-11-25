@@ -23,8 +23,9 @@ import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.*
-import com.luckyzyx.luckytool.utils.tools.UpdateTool.coolmarketUrl
+import com.luckyzyx.luckytool.utils.tools.UpdateUtils.coolmarketUrl
 import rikka.core.util.ResourceUtils
 
 @Obfuscate
@@ -70,7 +71,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        UpdateTool.checkUpdate(requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
+        UpdateUtils.checkUpdate(requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
             if (!requireActivity().getBoolean(SettingsPrefs,"auto_check_update",true)) return@checkUpdate
             binding.updateView.apply {
                 isVisible = true
@@ -164,7 +165,7 @@ class HomeFragment : Fragment() {
                         )
                         setNeutralButton(android.R.string.cancel, null)
                         setPositiveButton(android.R.string.ok) { _, _ ->
-                            UpdateTool.downloadFile(context, "coolmarket.apk", coolmarketUrl)
+                            UpdateUtils.downloadFile(context, "coolmarket.apk", coolmarketUrl)
                         }
                         show()
                     }

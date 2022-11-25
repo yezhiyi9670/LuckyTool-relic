@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.apps.camera
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceType
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import java.util.*
 
 class RemoveWatermarkWordLimit : YukiBaseHooker() {

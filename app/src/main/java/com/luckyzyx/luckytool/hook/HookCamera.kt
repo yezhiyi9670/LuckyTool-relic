@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.camera.Enable10BitImageSupport
 import com.luckyzyx.luckytool.hook.apps.camera.RemoveWatermarkWordLimit
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class HookCamera : YukiBaseHooker() {
     override fun onHook() {

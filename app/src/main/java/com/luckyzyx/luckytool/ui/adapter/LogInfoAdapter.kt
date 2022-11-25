@@ -11,10 +11,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
-import com.luckyzyx.luckytool.utils.tools.dialogCentered
-import com.luckyzyx.luckytool.utils.tools.dp
-import com.luckyzyx.luckytool.utils.tools.getAppIcon
-import com.luckyzyx.luckytool.utils.tools.getAppLabel
+import com.luckyzyx.luckytool.utils.data.dialogCentered
+import com.luckyzyx.luckytool.utils.data.dp
+import com.luckyzyx.luckytool.utils.data.getAppIcon
+import com.luckyzyx.luckytool.utils.data.getAppLabel
 
 class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiLoggerData>) :
     RecyclerView.Adapter<LogInfoViewAdapter.ViewHolder>() {

@@ -10,9 +10,9 @@ import com.luckyzyx.luckytool.hook.apps.packageinstaller.ReplaseAospInstaller
 import com.luckyzyx.luckytool.hook.apps.packageinstaller.SkipApkScan
 import com.luckyzyx.luckytool.hook.apps.safecenter.UnlockStartupLimit
 import com.luckyzyx.luckytool.hook.apps.safecenter.UnlockStartupLimitV11
-import com.luckyzyx.luckytool.utils.tools.A13
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class Application : YukiBaseHooker() {
     override fun onHook() {

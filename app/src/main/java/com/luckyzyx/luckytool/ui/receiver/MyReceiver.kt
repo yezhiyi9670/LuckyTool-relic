@@ -1,11 +1,11 @@
-package com.luckyzyx.luckytool.utils.receiver
+package com.luckyzyx.luckytool.ui.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.highcapable.yukihookapi.hook.factory.modulePrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.getInt
 
 class MyReceiver : BroadcastReceiver() {

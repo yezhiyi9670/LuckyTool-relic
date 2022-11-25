@@ -4,8 +4,9 @@ package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
 import com.google.android.material.color.DynamicColors
+import com.luckyzyx.luckytool.utils.data.SettingsPrefs
 
-class ThemeUtil(context: Context) {
+class ThemeUtils(context: Context) {
 
     private val supportDynamicColor = DynamicColors.isDynamicColorAvailable()
     private val useDynamicColor = context.getBoolean(SettingsPrefs,"use_dynamic_color",false)

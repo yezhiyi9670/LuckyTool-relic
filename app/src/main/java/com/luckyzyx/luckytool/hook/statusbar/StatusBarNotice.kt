@@ -7,7 +7,7 @@ import com.luckyzyx.luckytool.hook.apps.systemui.RemoveChargingCompleted
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveFlashlightOpenNotification
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveStatusBarDevMode
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class StatusBarNotice : YukiBaseHooker() {
     override fun onHook() {

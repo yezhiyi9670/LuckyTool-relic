@@ -11,10 +11,10 @@ import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceType
-import com.luckyzyx.luckytool.utils.tools.A11
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
-import com.luckyzyx.luckytool.utils.tools.getColorOSVersion
+import com.luckyzyx.luckytool.utils.data.A11
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.getColorOSVersion
 import java.lang.reflect.Method
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils.data
 
 import java.io.Serializable
 

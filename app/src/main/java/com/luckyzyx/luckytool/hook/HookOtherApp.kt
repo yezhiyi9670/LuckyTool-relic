@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.otherapp.HookAlphaBackupPro
 import com.luckyzyx.luckytool.hook.apps.otherapp.HookMoreAnime
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class HookOtherApp : YukiBaseHooker() {
     override fun onHook() {

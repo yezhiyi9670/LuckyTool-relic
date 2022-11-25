@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils.data
 
 import android.content.*
 import android.content.pm.PackageManager
@@ -16,6 +16,7 @@ import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig.*
+import com.luckyzyx.luckytool.utils.tools.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random

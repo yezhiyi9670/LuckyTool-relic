@@ -2,9 +2,9 @@ package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.systemui.*
-import com.luckyzyx.luckytool.utils.tools.A13
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class StatusBarControlCenter : YukiBaseHooker() {
     override fun onHook() {

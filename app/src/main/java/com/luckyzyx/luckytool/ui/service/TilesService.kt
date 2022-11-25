@@ -1,10 +1,10 @@
-package com.luckyzyx.luckytool.utils.tiles
+package com.luckyzyx.luckytool.ui.service
 
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.data.jumpRunningApp
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.jumpBatteryInfo
-import com.luckyzyx.luckytool.utils.tools.jumpRunningApp
 
 class ChargingTest : TileService() {
     override fun onClick() {

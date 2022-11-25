@@ -17,11 +17,13 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.data.dp
+import com.luckyzyx.luckytool.utils.data.toast
 import org.json.JSONObject
 import java.io.File
 import java.text.DecimalFormat
 
-object UpdateTool {
+object UpdateUtils {
     @Suppress("UNUSED_PARAMETER")
     fun checkUpdate(context: Context, versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
         scopeNet {

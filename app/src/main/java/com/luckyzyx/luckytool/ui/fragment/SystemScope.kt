@@ -11,9 +11,9 @@ import androidx.preference.SwitchPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.tools.A13
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {

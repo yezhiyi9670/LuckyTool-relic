@@ -1,6 +1,6 @@
 package com.luckyzyx.luckytool.hook.apps.CorePatch;
 
-import static com.luckyzyx.luckytool.utils.tools.PrefsKt.XposedPrefs;
+import static com.luckyzyx.luckytool.utils.data.PrefsKt.XposedPrefs;
 
 import android.app.AndroidAppHelper;
 import android.content.pm.ApplicationInfo;

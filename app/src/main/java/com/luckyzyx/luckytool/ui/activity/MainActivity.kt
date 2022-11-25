@@ -27,6 +27,7 @@ import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
+import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.*
 import kotlin.system.exitProcess
 
@@ -148,7 +149,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun checkTheme() {
-        if (ThemeUtil(this).isDynamicColor()){
+        if (ThemeUtils(this).isDynamicColor()){
             DynamicColors.applyToActivityIfAvailable(this)
         }
         when(getString(SettingsPrefs,"dark_theme","MODE_NIGHT_FOLLOW_SYSTEM")){

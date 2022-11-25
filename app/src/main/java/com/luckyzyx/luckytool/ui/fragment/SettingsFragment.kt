@@ -17,7 +17,8 @@ import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.ui.adapter.DonateListAdapter
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.data.*
+import com.luckyzyx.luckytool.utils.tools.clearAll
 import kotlin.system.exitProcess
 
 @Obfuscate
@@ -170,7 +171,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                     }
                                     1 -> {
                                         val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
-                                            setTitle(getString(R.string.qq))
+                                            setTitle(getString(R.string.wechat))
                                             setView(R.layout.layout_donate_dialog)
                                         }.show()
                                         dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
@@ -180,7 +181,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                     }
                                     2 -> {
                                         val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
-                                            setTitle(getString(R.string.qq))
+                                            setTitle(getString(R.string.alipay))
                                             setView(R.layout.layout_donate_dialog)
                                         }.show()
                                         dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =

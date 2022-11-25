@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
-import com.luckyzyx.luckytool.utils.tools.DonateInfo
+import com.luckyzyx.luckytool.utils.data.DonateInfo
 
 class DonateListAdapter(val context: Context, val data: ArrayList<DonateInfo>) : RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

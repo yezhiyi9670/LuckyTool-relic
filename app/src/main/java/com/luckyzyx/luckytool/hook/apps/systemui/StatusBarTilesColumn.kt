@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.apps.systemui
 import android.content.res.Configuration
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class StatusBarTilesColumn : YukiBaseHooker() {
     override fun onHook() {

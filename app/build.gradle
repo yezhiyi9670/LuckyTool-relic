@@ -52,8 +52,6 @@ android {
     viewBinding {
         enabled = true
     }
-    buildToolsVersion '33.0.0'
-    ndkVersion '25.0.8775105'
     applicationVariants.all { variant ->
         variant.outputs.all {
             if ('release' == variant.buildType.name) {

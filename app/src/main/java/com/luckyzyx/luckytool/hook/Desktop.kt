@@ -3,9 +3,9 @@ package com.luckyzyx.luckytool.hook
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.alarmclock.RemoveAlarmClockWidgetRedOne
 import com.luckyzyx.luckytool.hook.apps.launcher.*
-import com.luckyzyx.luckytool.utils.tools.A13
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class Desktop : YukiBaseHooker() {
     override fun onHook() {

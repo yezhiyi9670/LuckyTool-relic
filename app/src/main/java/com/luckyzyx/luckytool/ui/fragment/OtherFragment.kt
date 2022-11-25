@@ -20,7 +20,11 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.data.*
+import com.luckyzyx.luckytool.utils.tools.ShellUtils
+import com.luckyzyx.luckytool.utils.tools.getBoolean
+import com.luckyzyx.luckytool.utils.tools.getString
+import com.luckyzyx.luckytool.utils.tools.putString
 
 @Obfuscate
 class OtherFragment : Fragment() {
@@ -259,7 +263,8 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             addPreference(Preference(context).apply {
                 title = getString(R.string.game_assistant_develop_page)
                 isIconSpaceReserved = false
-                isVisible = context.checkPackName("com.oplus.games") && context.getBoolean(XposedPrefs,"enable_developer_page",false)
+                isVisible = context.checkPackName("com.oplus.games") && context.getBoolean(
+                    XposedPrefs,"enable_developer_page",false)
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.oplus.games/business.compact.activity.GameDevelopOptionsActivity", true)
                     true

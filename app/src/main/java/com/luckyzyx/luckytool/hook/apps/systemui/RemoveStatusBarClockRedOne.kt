@@ -3,10 +3,10 @@ package com.luckyzyx.luckytool.hook.apps.systemui
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.luckyzyx.luckytool.utils.tools.A11
-import com.luckyzyx.luckytool.utils.tools.A12
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.getColorOSVersion
+import com.luckyzyx.luckytool.utils.data.A11
+import com.luckyzyx.luckytool.utils.data.A12
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.getColorOSVersion
 
 class RemoveStatusBarClockRedOne : YukiBaseHooker() {
     override fun onHook() {

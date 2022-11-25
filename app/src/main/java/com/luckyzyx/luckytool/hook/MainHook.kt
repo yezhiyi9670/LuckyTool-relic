@@ -12,8 +12,8 @@ import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.statusbar.*
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -85,7 +85,7 @@ class MainHook : IYukiHookXposedInit {
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
-                        else -> loggerE(msg = "Unsupported Version of Android -> $SDK")
+                        else -> loggerE(msg = "[CorePatch] Unsupported Version of Android -> $SDK")
                     }
                 }
             }
@@ -97,7 +97,7 @@ class MainHook : IYukiHookXposedInit {
                     S_V2 -> CorePatchForSv2().initZygote(startupParam)
                     S -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
-                    else -> loggerE(msg = "Unsupported Version of Android -> $SDK")
+                    else -> loggerE(msg = "[CorePatch] Unsupported Version of Android -> $SDK")
                 }
             }
         }

@@ -5,9 +5,9 @@ import com.luckyzyx.luckytool.hook.apps.systemui.LockScreenCentered
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenBottomButton
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenBottomSOSButton
 import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenRedOne
-import com.luckyzyx.luckytool.utils.tools.A13
-import com.luckyzyx.luckytool.utils.tools.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 
 class LockScreen : YukiBaseHooker() {

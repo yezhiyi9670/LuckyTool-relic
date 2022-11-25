@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.heytapcloud.RemoveNetworkRestriction
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class HookCloudService : YukiBaseHooker() {
     override fun onHook() {

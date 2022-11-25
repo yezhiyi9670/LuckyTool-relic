@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.apps.android
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class RemoveVPNActiveNotification : YukiBaseHooker() {
     override fun onHook() {
