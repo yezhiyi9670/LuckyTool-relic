@@ -163,3 +163,4 @@
 ## AlphaBackupPro com.ruet_cse_1503050.ragib.appbackup.pro
 
 - v33.0.5 -> 335
+- v34.0.8 -> 348

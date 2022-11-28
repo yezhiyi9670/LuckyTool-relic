@@ -35,6 +35,8 @@ class LockScreen : YukiBaseHooker() {
                 if (SDK >= A13) loadHooker(RemoveLockScreenBottomSOSButton())
             }
 
+            //充电小数点常驻
+            //com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView
         }
     }
 }

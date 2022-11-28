@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.apps.otherapp
 
+import android.app.Activity
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
 class HookAlphaBackupPro : YukiBaseHooker() {
@@ -8,13 +9,10 @@ class HookAlphaBackupPro : YukiBaseHooker() {
         findClass("com.ruet_cse_1503050.ragib.appbackup.pro.activities.HomeActivity").hook {
             injectMember {
                 method {
-                    name = "initializeData"
-                    emptyParam()
+                    name = "onCreate"
                 }
-                afterHook {
-                    field {
-                        name = "licenseStateData"
-                    }.get(instance).set("valid_licence")
+                beforeHook {
+                    instance<Activity>().intent.putExtra("licenseState", "valid_licence")
                 }
             }
         }

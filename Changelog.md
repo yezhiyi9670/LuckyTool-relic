@@ -15,6 +15,7 @@ group for feedback
 [适配] C12应用包安装程序  
 [优化] 捐赠对话框布局  
 [优化] 项目逻辑  
+[适配] AlphaBackupPro  
 
 ### 3.5
 
