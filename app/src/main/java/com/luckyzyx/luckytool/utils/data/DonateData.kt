@@ -43,6 +43,7 @@ object DonateData {
             add(DonateInfo("你会振刀么", 18.88))
             add(DonateInfo("大挪移", 20.0))
             add(DonateInfo("小林", 10.0))
+            add(DonateInfo("*林", 10.0))
         }
     }
 }

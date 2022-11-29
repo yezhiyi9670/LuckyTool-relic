@@ -10,12 +10,20 @@ group for feedback
 [适配] C13高性能通知  
 [修复] 部分英语翻译问题@Nyrest  
 [优化] 快捷入口页面逻辑  
-[适配] 游戏助手v7.15.2  
+[适配] 游戏助手v7.15.3  
 [优化] 桌面时钟组件红一方案  
 [适配] C12应用包安装程序  
 [优化] 捐赠对话框布局  
-[优化] 项目逻辑  
 [适配] AlphaBackupPro  
+[Update] Donation list  
+[Fix] C13 High Performance Notification  
+[Fix] Some English translation issues @Nyrest  
+[Optimize] Quick entry page logic  
+[Fix] Game Assistant v7.15.3  
+[Optimize] Desktop clock component red one scheme  
+[Fix] C12 application package installer  
+[Optimize] Donate dialog layout  
+[Fix] AlphaBackupPro  
 
 ### 3.5
 
