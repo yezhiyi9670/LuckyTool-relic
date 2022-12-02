@@ -44,9 +44,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+        
         <activity
                 android:name=".ui.activity.ShortcutActivity"
+                android:excludeFromRecents="true"
                 android:exported="false" />
+        <activity
+                android:name=".ui.activity.AliveActivity"
+                android:excludeFromRecents="true"
+                android:exported="false"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         
         <meta-data
                 android:name="xposedmodule"
@@ -101,16 +108,7 @@
                     android:name="android.support.FILE_PROVIDER_PATHS"
                     android:resource="@xml/file_paths" />
         </provider>
-        
-        <receiver
-                android:name="com.luckyzyx.luckytool.ui.receiver.MyReceiver"
-                android:enabled="true"
-                android:exported="true"
-                android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
-            <intent-filter android:priority="999999999">
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
+    
     </application>
 
 </manifest>

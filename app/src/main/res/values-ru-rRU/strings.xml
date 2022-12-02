@@ -33,8 +33,8 @@
     <string name="about_title">Информация</string>
     <string name="about_author">Авторы</string>
     <string name="donate">Донат</string>
-    <string name="donate_message">Be sure to note your nickname or ID when donating</string>
-    <string name="donate_summary">Your donation will be the driving force for the module update</string>
+    <string name="donate_message">Обязательно укажите свой никнейм или ID при донате</string>
+    <string name="donate_summary">Ваш донат станет движущей силой обновления модуля</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
@@ -125,6 +125,7 @@
     <string name="StatusBarTopSmallIcon">Маленькая иконка в верхней части строки состояния</string>
     <string name="StatusBarSmallIconStatus">Статус маленькой иконки в строке состояния</string>
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
+    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
     <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
     <string name="remove_statusbar_user_switcher">Удалить иконку многопользовательского режима в раскрывающемся списке</string>
@@ -228,6 +229,8 @@
     <string name="open_battery_health_summary">Настройки - Аккумулятор - Состояние аккумулятора</string>
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
+    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, and then it will be triggered automatically after booting is complete</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

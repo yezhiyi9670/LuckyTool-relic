@@ -6,7 +6,6 @@ import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.data.jumpRunningApp
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import kotlin.system.exitProcess
 
 @Obfuscate
 class ShortcutActivity : Activity(){
@@ -19,7 +18,6 @@ class ShortcutActivity : Activity(){
             "processManager" -> jumpRunningApp(this)
             "chargingTest" -> jumpBatteryInfo(this)
         }
-        finishAffinity()
-        exitProcess(0)
+        finishAndRemoveTask()
     }
 }

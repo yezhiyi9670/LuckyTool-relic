@@ -124,6 +124,7 @@
     <string name="StatusBarTopSmallIcon">状态栏顶部小图标</string>
     <string name="StatusBarSmallIconStatus">状态栏小图标状态</string>
     <string name="remove_mobile_data_icon">移除移动数据图标</string>
+    <string name="remove_high_performance_mode_icon">移除高性能模式图标</string>
     <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
     <string name="remove_statusbar_battery_percent">移除状态栏电量百分号</string>
     <string name="remove_statusbar_user_switcher">移除下拉状态栏多用户图标</string>
@@ -227,6 +228,8 @@
     <string name="open_battery_health_summary">设置-电池-电池健康</string>
     <string name="performance_mode_and_standby_optimization">性能模式和待机优化</string>
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
+    <string name="increase_touch_sampling_rate">增加触摸采样率</string>
+    <string name="increase_touch_sampling_rate_summary">在功能开启后自动执行一次，此后将在系统启动完成后自动触发</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>

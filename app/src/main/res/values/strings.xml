@@ -125,6 +125,7 @@
     <string name="StatusBarTopSmallIcon">StatusBar Top Small Icon</string>
     <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
     <string name="remove_mobile_data_icon">Remove mobile data icon</string>
+    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
     <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
     <string name="remove_statusbar_battery_percent">Remove battery percentage number in statusbar</string>
     <string name="remove_statusbar_user_switcher">Remove drop-down status bar multi-user icon</string>
@@ -228,6 +229,8 @@
     <string name="open_battery_health_summary">Settings - Battery - Battery Health</string>
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
+    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, and then it will be triggered automatically after booting is complete</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
     <string name="enable_10_bit_image_support">Enable 10 bit Images Support</string>

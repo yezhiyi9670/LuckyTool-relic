@@ -11,6 +11,7 @@ import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForT
+import com.luckyzyx.luckytool.hook.apps.systemui.SystemUIAppLifecycle
 import com.luckyzyx.luckytool.hook.statusbar.*
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
@@ -38,6 +39,8 @@ class MainHook : IYukiHookXposedInit {
         loadSystem(HookAndroid())
         loadZygote(HookZygote())
 
+        //监听系统界面生命周期
+        loadApp(hooker =  SystemUIAppLifecycle())
         //状态栏时钟
         loadApp(hooker = StatusBarClock())
         //状态栏网速

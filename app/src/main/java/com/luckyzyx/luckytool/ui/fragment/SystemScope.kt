@@ -14,6 +14,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ShellUtils
 
 class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -96,21 +97,25 @@ class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreference
     }
 }
 
-class StatusBar : ModulePreferenceFragment(){
+class StatusBar : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarClock)
-                    summary = getString(R.string.statusbar_clock_show_second)+","+getString(R.string.statusbar_clock_show_doublerow)+","+getString(
-                        R.string.statusbar_clock_doublerow_fontsize)
+                    summary =
+                        getString(R.string.statusbar_clock_show_second) + "," + getString(R.string.statusbar_clock_show_doublerow) + "," + getString(
+                            R.string.statusbar_clock_doublerow_fontsize
+                        )
                     key = "StatusBarClock"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_statusBar_to_statusBarClock,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarClock,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -118,13 +123,14 @@ class StatusBar : ModulePreferenceFragment(){
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarNetWorkSpeed)
-                    summary = getString(R.string.enable_double_row_network_speed)+","+getString(R.string.set_network_speed)
+                    summary =
+                        getString(R.string.enable_double_row_network_speed) + "," + getString(R.string.set_network_speed)
                     key = "StatusBarNetWorkSpeed"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarNetWorkSpeed,Bundle().apply {
-                                putCharSequence("title_label",title)
+                            R.id.action_statusBar_to_statusBarNetWorkSpeed, Bundle().apply {
+                                putCharSequence("title_label", title)
                             })
                         true
                     }
@@ -133,13 +139,14 @@ class StatusBar : ModulePreferenceFragment(){
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarNotice)
-                    summary = getString(R.string.remove_statusbar_top_notification)+","+getString(R.string.remove_charging_completed)
+                    summary =
+                        getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_charging_completed)
                     key = "StatusBarNotice"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarNotice,Bundle().apply {
-                                putCharSequence("title_label",title)
+                            R.id.action_statusBar_to_statusBarNotice, Bundle().apply {
+                                putCharSequence("title_label", title)
                             })
                         true
                     }
@@ -148,13 +155,14 @@ class StatusBar : ModulePreferenceFragment(){
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarIcon)
-                    summary = getString(R.string.remove_statusbar_battery_percent)+","+getString(R.string.remove_statusbar_user_switcher)
+                    summary =
+                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.remove_statusbar_user_switcher)
                     key = "StatusBarIcon"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarIcon,Bundle().apply {
-                                putCharSequence("title_label",title)
+                            R.id.action_statusBar_to_statusBarIcon, Bundle().apply {
+                                putCharSequence("title_label", title)
                             })
                         true
                     }
@@ -163,13 +171,14 @@ class StatusBar : ModulePreferenceFragment(){
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarControlCenter)
-                    summary = getString(R.string.remove_drop_down_statusbar_mydevice)+","+getString(R.string.tile_unexpanded_columns_vertical)
+                    summary =
+                        getString(R.string.remove_drop_down_statusbar_mydevice) + "," + getString(R.string.tile_unexpanded_columns_vertical)
                     key = "StatusBarControlCenter"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarControlCenter,Bundle().apply {
-                                putCharSequence("title_label",title)
+                            R.id.action_statusBar_to_statusBarControlCenter, Bundle().apply {
+                                putCharSequence("title_label", title)
                             })
                         true
                     }
@@ -179,7 +188,7 @@ class StatusBar : ModulePreferenceFragment(){
     }
 }
 
-class StatusBarClock : ModulePreferenceFragment(){
+class StatusBarClock : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -292,21 +301,32 @@ class StatusBarClock : ModulePreferenceFragment(){
                 }
             )
         }
-        findPreference<SwitchPreference>("statusbar_clock_show_year")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_month")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_day")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_week")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_period")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_double_hour")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_second")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_hide_spaces")?.dependency = "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_doublerow")?.dependency = "statusbar_clock_enable"
-        findPreference<SeekBarPreference>("statusbar_clock_singlerow_fontsize")?.dependency = "statusbar_clock_enable"
-        findPreference<SeekBarPreference>("statusbar_clock_doublerow_fontsize")?.dependency = "statusbar_clock_show_doublerow"
+        findPreference<SwitchPreference>("statusbar_clock_show_year")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_month")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_day")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_week")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_period")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_double_hour")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_second")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_hide_spaces")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SwitchPreference>("statusbar_clock_show_doublerow")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SeekBarPreference>("statusbar_clock_singlerow_fontsize")?.dependency =
+            "statusbar_clock_enable"
+        findPreference<SeekBarPreference>("statusbar_clock_doublerow_fontsize")?.dependency =
+            "statusbar_clock_show_doublerow"
     }
 }
 
-class StatusBarNetWorkSpeed : ModulePreferenceFragment(){
+class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -353,8 +373,10 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment(){
                 }
             )
         }
-        findPreference<SeekBarPreference>("set_network_speed_font_size")?.dependency = "enable_double_row_network_speed"
-        findPreference<SeekBarPreference>("set_network_speed_padding_bottom")?.dependency = "enable_double_row_network_speed"
+        findPreference<SeekBarPreference>("set_network_speed_font_size")?.dependency =
+            "enable_double_row_network_speed"
+        findPreference<SeekBarPreference>("set_network_speed_padding_bottom")?.dependency =
+            "enable_double_row_network_speed"
     }
 }
 
@@ -416,7 +438,8 @@ class StatusBarNotice : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_app_high_battery_consumption_warning)
-                    summary = getString(R.string.remove_app_high_battery_consumption_warning_summary)
+                    summary =
+                        getString(R.string.remove_app_high_battery_consumption_warning_summary)
                     key = "remove_app_high_battery_consumption_warning"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -434,7 +457,7 @@ class StatusBarNotice : ModulePreferenceFragment() {
     }
 }
 
-class StatusBarIcon : ModulePreferenceFragment(){
+class StatusBarIcon : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -465,6 +488,14 @@ class StatusBarIcon : ModulePreferenceFragment(){
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_mobile_data_icon)
                     key = "remove_mobile_data_icon"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_high_performance_mode_icon)
+                    key = "remove_high_performance_mode_icon"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -504,7 +535,7 @@ class StatusBarIcon : ModulePreferenceFragment(){
     }
 }
 
-class StatusBarControlCenter : ModulePreferenceFragment(){
+class StatusBarControlCenter : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -688,14 +719,22 @@ class StatusBarControlCenter : ModulePreferenceFragment(){
                 }
             )
         }
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_horizontal")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_vertical")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_horizontal")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical_c13")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_rows_vertical_c13")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_vertical_c13")?.dependency = "statusbar_tile_enable"
-        findPreference<SeekBarPreference>("tile_columns_horizontal_c13")?.dependency = "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_unexpanded_columns_horizontal")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_expanded_columns_vertical")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_expanded_columns_horizontal")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical_c13")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_expanded_rows_vertical_c13")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_expanded_columns_vertical_c13")?.dependency =
+            "statusbar_tile_enable"
+        findPreference<SeekBarPreference>("tile_columns_horizontal_c13")?.dependency =
+            "statusbar_tile_enable"
     }
 }
 
@@ -777,12 +816,14 @@ class Desktop : ModulePreferenceFragment() {
                 }
             )
         }
-        findPreference<SeekBarPreference>("launcher_layout_max_rows")?.dependency = "launcher_layout_enable"
-        findPreference<SeekBarPreference>("launcher_layout_max_columns")?.dependency = "launcher_layout_enable"
+        findPreference<SeekBarPreference>("launcher_layout_max_rows")?.dependency =
+            "launcher_layout_enable"
+        findPreference<SeekBarPreference>("launcher_layout_max_columns")?.dependency =
+            "launcher_layout_enable"
     }
 }
 
-class LockScreen : ModulePreferenceFragment(){
+class LockScreen : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -877,7 +918,7 @@ class Screenshot : ModulePreferenceFragment() {
     }
 }
 
-class Application : ModulePreferenceFragment(){
+class Application : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -921,9 +962,11 @@ class Application : ModulePreferenceFragment(){
                     key = "multi_app_custom_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_application_to_multiFragment,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_application_to_multiFragment,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -1009,7 +1052,7 @@ class Application : ModulePreferenceFragment(){
     }
 }
 
-class Miscellaneous : ModulePreferenceFragment(){
+class Miscellaneous : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -1072,7 +1115,8 @@ class Miscellaneous : ModulePreferenceFragment(){
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop)
-                    summary = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
+                    summary =
+                        getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
                     key = "remove_warning_dialog_that_app_runs_on_desktop"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -1128,6 +1172,23 @@ class Miscellaneous : ModulePreferenceFragment(){
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.increase_touch_sampling_rate)
+                    summary = getString(R.string.increase_touch_sampling_rate_summary)
+                    key = "increase_touch_sampling_rate"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        newValue as Boolean
+                        ShellUtils.execCommand(
+                            "echo > /proc/touchpanel/game_switch_enable ${if (newValue) 1 else 0}",
+                            true
+                        )
+                        true
+                    }
                 }
             )
         }

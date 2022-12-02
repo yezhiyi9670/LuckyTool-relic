@@ -4,6 +4,12 @@
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG
 group for feedback
 
+### 3.7
+[更新] 捐赠名单  
+[添加] 移除高性能模式图标  
+[修复] 强制刷新率自启  
+[添加] 提升触控采样率  
+
 ### 3.6
 
 [更新] 捐赠名单  
@@ -23,7 +29,7 @@ group for feedback
 [Optimize] Desktop clock component red one scheme  
 [Fix] C12 application package installer  
 [Optimize] Donate dialog layout  
-[Fix] AlphaBackupPro  
+[Fix] AlphaBackupPro
 
 ### 3.5
 
@@ -46,7 +52,7 @@ group for feedback
 [Change] Text description of some functions  
 [Fix] AOSP installer calling problem  
 [Add] Game assistant event support mode  
-[Fix] Try to fix 72 hours password authentication (Beta)  
+[Fix] Try to fix 72 hours password authentication (Beta)
 
 ### 3.4
 

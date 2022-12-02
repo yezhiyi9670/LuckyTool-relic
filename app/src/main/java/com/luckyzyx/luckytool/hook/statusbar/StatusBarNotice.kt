@@ -30,13 +30,13 @@ class StatusBarNotice : YukiBaseHooker() {
             )
         }
         loadApp("com.oplus.battery") {
-            //移除应用耗电异常优化警告
-            if (prefs(XposedPrefs).getBoolean("remove_app_high_battery_consumption_warning",false)) loadHooker(
-                RemoveAppHighBatteryConsumptionWarning()
-            )
             //移除高性能模式通知
             if (prefs(XposedPrefs).getBoolean("remove_high_performance_mode_notifications", false)) loadHooker(
                 RemoveHighPerformanceModeNotifications()
+            )
+            //移除应用耗电异常优化警告
+            if (prefs(XposedPrefs).getBoolean("remove_app_high_battery_consumption_warning",false)) loadHooker(
+                RemoveAppHighBatteryConsumptionWarning()
             )
         }
     }
