@@ -46,10 +46,6 @@
         </activity-alias>
         
         <activity
-                android:name=".ui.activity.ShortcutActivity"
-                android:excludeFromRecents="true"
-                android:exported="false" />
-        <activity
                 android:name=".ui.activity.AliveActivity"
                 android:excludeFromRecents="true"
                 android:exported="false"

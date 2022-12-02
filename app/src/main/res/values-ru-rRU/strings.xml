@@ -119,13 +119,14 @@
     <string name="remove_app_high_battery_consumption_warning">Удалить предупреждение приложения о высоком расходе заряда батареи</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Удалено предупреждение о том, что приложение расходует заряд батареи ненормально и требует немедленной оптимизации</string>
     <string name="remove_high_performance_mode_notifications">Удалить уведомления режима высокой производительности</string>
+    <string name="remove_do_not_disturb_mode_notification">Удалить уведомление режима \"Не беспокоить\"</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
     <string name="StatusBarTopSmallIcon">Маленькая иконка в верхней части строки состояния</string>
     <string name="StatusBarSmallIconStatus">Статус маленькой иконки в строке состояния</string>
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
-    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
+    <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
     <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
     <string name="remove_statusbar_user_switcher">Удалить иконку многопользовательского режима в раскрывающемся списке</string>
@@ -229,8 +230,8 @@
     <string name="open_battery_health_summary">Настройки - Аккумулятор - Состояние аккумулятора</string>
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, and then it will be triggered automatically after booting is complete</string>
+    <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

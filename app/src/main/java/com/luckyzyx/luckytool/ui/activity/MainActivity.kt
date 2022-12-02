@@ -98,7 +98,7 @@ open class MainActivity : AppCompatActivity() {
             setIcon(Icon.createWithResource(packageName,R.mipmap.android_icon))
             val intent = Intent(Intent.ACTION_VIEW)
             intent.putExtra("Shortcut","lsposed")
-            intent.setClassName(packageName,"$packageName.ui.activity.ShortcutActivity")
+            intent.setClassName(packageName,AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
         val oplusGames = ShortcutInfo.Builder(this, "oplusGames").apply {
@@ -114,7 +114,7 @@ open class MainActivity : AppCompatActivity() {
             setIcon(Icon.createWithResource(packageName,R.drawable.ic_baseline_charging_station_24))
             val intent = Intent(Intent.ACTION_VIEW)
             intent.putExtra("Shortcut","chargingTest")
-            intent.setClassName(packageName,"$packageName.ui.activity.ShortcutActivity")
+            intent.setClassName(packageName,AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
         val processManager = ShortcutInfo.Builder(this, "processManager").apply {
@@ -122,7 +122,7 @@ open class MainActivity : AppCompatActivity() {
             setIcon(Icon.createWithResource(packageName,R.mipmap.android_icon))
             val intent = Intent(Intent.ACTION_VIEW)
             intent.putExtra("Shortcut","processManager")
-            intent.setClassName(packageName,"$packageName.ui.activity.ShortcutActivity")
+            intent.setClassName(packageName,AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
         shortcutManager.dynamicShortcuts = listOf(lsposed,oplusGames,chargingTest,processManager)

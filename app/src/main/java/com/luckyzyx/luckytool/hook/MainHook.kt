@@ -41,6 +41,7 @@ class MainHook : IYukiHookXposedInit {
 
         //监听系统界面生命周期
         loadApp(hooker =  SystemUIAppLifecycle())
+
         //状态栏时钟
         loadApp(hooker = StatusBarClock())
         //状态栏网速

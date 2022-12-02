@@ -41,7 +41,7 @@
     <string name="donation_list">Danh sách ủng hộ</string>
     <string name="feedback_download">Phản hồi và tải</string>
     <string name="feedback_download_summary">Kênh TG, Nhóm, Repositories, v. v.</string>
-    <string name="coolmarket">Trang chủ Cool</string>
+    <string name="coolmarket">Trang CoolMarket</string>
     <string name="telegram_channel">Kênh Telegram</string>
     <string name="telegram_group">Nhóm Telegram</string>
     <string name="lsposed_repo">LSPosed Repository</string>
@@ -118,13 +118,14 @@
     <string name="remove_app_high_battery_consumption_warning">Xóa cảnh báo ứng dụng tiêu thụ pin cao</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
+    <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
     <string name="StatusBarTopSmallIcon">Biểu tượng nhỏ trên cùng thanh trạng thái</string>
     <string name="StatusBarSmallIconStatus">Biểu tượng thanh trạng thái nhỏ</string>
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
-    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
+    <string name="remove_high_performance_mode_icon">Xóa biểu tượng chế độ hiệu suất cao</string>
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>
     <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
     <string name="remove_statusbar_user_switcher">Xóa biểu tượng nhiều người dùng trên thanh trạng thái thả xuống</string>
@@ -228,8 +229,8 @@
     <string name="open_battery_health_summary">Cài đặt - Pin - Tình trạng pin</string>
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, and then it will be triggered automatically after booting is complete</string>
+    <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>

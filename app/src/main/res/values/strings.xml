@@ -119,6 +119,7 @@
     <string name="remove_app_high_battery_consumption_warning">Remove app high battery consumption warning</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Removed the warning that the application\'s battery consumption is abnormal and needs to be optimized immediately</string>
     <string name="remove_high_performance_mode_notifications">Remove high performance mode notifications</string>
+    <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
@@ -230,7 +231,7 @@
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, and then it will be triggered automatically after booting is complete</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
     <string name="enable_10_bit_image_support">Enable 10 bit Images Support</string>

@@ -453,6 +453,14 @@ class StatusBarNotice : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_do_not_disturb_mode_notification)
+                    key = "remove_do_not_disturb_mode_notification"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

@@ -118,6 +118,7 @@
     <string name="remove_app_high_battery_consumption_warning">移除应用后台耗电异常优化警告</string>
     <string name="remove_app_high_battery_consumption_warning_summary">移除应用后台电池快速耗电，建议立即优化的警告</string>
     <string name="remove_high_performance_mode_notifications">移除高性能模式通知</string>
+    <string name="remove_do_not_disturb_mode_notification">移除免打扰模式通知</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>
@@ -229,7 +230,7 @@
     <string name="performance_mode_and_standby_optimization">性能模式和待机优化</string>
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="increase_touch_sampling_rate">增加触摸采样率</string>
-    <string name="increase_touch_sampling_rate_summary">在功能开启后自动执行一次，此后将在系统启动完成后自动触发</string>
+    <string name="increase_touch_sampling_rate_summary">开启功能后自动执行一次，此后将在解锁屏幕后自动触发</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
