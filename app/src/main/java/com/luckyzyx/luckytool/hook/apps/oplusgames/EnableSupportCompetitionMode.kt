@@ -12,8 +12,8 @@ class EnableSupportCompetitionMode : YukiBaseHooker() {
         //Source CompetitionModeManager
         //Search isSupportCompetitionMode
         searchClass {
-            //714,715
-            from("od", "rd").absolute()
+            //714,715,716
+            from("od", "rd", "pd").absolute()
             field { type = ListClass }.count(1)
             method {
                 emptyParam()
