@@ -231,7 +231,7 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
+    <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
@@ -274,7 +274,9 @@
     <string name="build_version">Сборка</string>
     <string name="device">Устройство</string>
     <string name="system">Система</string>
-    <string name="Restore_default_refresh_rate">Восстановить частоту обновления по умолчанию</string>
+    <string name="fps_mode_title">Option</string>
+    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
+    <string name="restore_default_refresh_rate">Восстановить частоту обновления по умолчанию</string>
     <string name="module_isactivated">Модуль активен</string>
     <string name="module_notactive">Модуль не активен</string>
     <string name="module_version">Версия модуля:</string>
@@ -305,7 +307,7 @@
     <!-- Other -->
     <string name="quick_entry">Быстрый вход в систему</string>
     <string name="quick_entry_summary">Например, инструменты настройки системного интерфейса, управление процессами, режим проекта и т.д.</string>
-    <string name="display_refresh_rate">Частота обновления экрана</string>
+    <string name="display_refresh_rate">Показать/скрыть Частоту обновления</string>
     <string name="SystemDebuggingRelated">Отладка системы</string>
     <string name="engineering_mode">Инженерный режим</string>
     <string name="charging_test">Тест зарядки</string>

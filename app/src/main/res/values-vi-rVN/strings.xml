@@ -118,7 +118,7 @@
     <string name="remove_app_high_battery_consumption_warning">Xóa cảnh báo ứng dụng tiêu thụ pin cao</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
-    <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
+    <string name="remove_do_not_disturb_mode_notification">Xóa thông báo chế độ không làm phiền</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -151,7 +151,7 @@
     <string name="tile_columns_horizontal_c13">Cột ô (ngang)</string>
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
-    <string name="remove_lock_screen_redone">Xóa màn hình khóa đã làm lại</string>
+    <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
     <string name="remove_lock_screen_bottom_left_button">Xóa nút dưới cùng bên trái của màn hình khóa</string>
     <string name="remove_lock_screen_bottom_right_camera">Xóa camera dưới cùng bên phải màn hình khóa</string>
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
@@ -162,8 +162,8 @@
     <string name="remove_72hour_password_verification_summary">Đã xóa hạn chế bảo mật về việc không sử dụng mật khẩu để mở khóa trong vòng 72 giờ sau khi khởi động \n Có hiệu lực sau khi khởi động lại hệ thống</string>
     <!--Desktop-->
     <string name="Desktop">Màn hình chính</string>
-    <string name="remove_alarmclock_widget_redone">Xóa thành phần đồng hồ máy tính để bàn được làm lại</string>
-    <string name="remove_alarmclock_widget_redone_pro">Xóa thành phần đồng hồ trên màn hình được làm lại phiên bản nâng cao</string>
+    <string name="remove_alarmclock_widget_redone">Xóa số một màu đỏ của đồng hồ máy tính để bàn</string>
+    <string name="remove_alarmclock_widget_redone_pro">Xóa số một đỏ nâng cao của đồng hồ trên màn hình chính</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Chỉ khả dụng khi phiên bản thông thường không có hiệu lực, nếu không nó sẽ gây ra lỗi không thể tránh khỏi</string>
     <string name="remove_appicon_dot">Xóa dấu API chấm biểu tượng</string>
     <string name="show_charging_ripple">Sạc màn hình sóng</string>
@@ -230,7 +230,7 @@
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
+    <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
@@ -273,7 +273,9 @@
     <string name="build_version">Phiên bản</string>
     <string name="device">Thiết bị</string>
     <string name="system">Android</string>
-    <string name="Restore_default_refresh_rate">Khôi phục tốc độ làm mới mặc định</string>
+    <string name="fps_mode_title">Tùy chỉnh</string>
+    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
+    <string name="restore_default_refresh_rate">Restore default refresh rate</string>
     <string name="module_isactivated">Mô-đun đã kích hoạt</string>
     <string name="module_notactive">Mô-đun chưa kích hoạt</string>
     <string name="module_version">Phiên bản mô-đun:</string>
@@ -304,7 +306,7 @@
     <!-- Other -->
     <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>
-    <string name="display_refresh_rate">Hiển thị tốc độ làm mới</string>
+    <string name="display_refresh_rate">Show/Hide Refresh Rate</string>
     <string name="SystemDebuggingRelated">Gỡ lỗi hệ thống</string>
     <string name="engineering_mode">Chế độ kỹ thuật</string>
     <string name="charging_test">Kiểm tra sạc</string>

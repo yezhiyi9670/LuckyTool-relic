@@ -274,7 +274,9 @@
     <string name="build_version">Build</string>
     <string name="device">Devices</string>
     <string name="system">System</string>
-    <string name="Restore_default_refresh_rate">Restore default refresh rate</string>
+    <string name="fps_mode_title">Option</string>
+    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
+    <string name="restore_default_refresh_rate">Restore default refresh rate</string>
     <string name="module_isactivated">Module activated</string>
     <string name="module_notactive">Module not activated</string>
     <string name="module_version">Module version:</string>
@@ -305,7 +307,7 @@
     <!-- Other -->
     <string name="quick_entry">System Quick Entry</string>
     <string name="quick_entry_summary">e.g. System UI reconciliation tools, process management, engineering mode, etc.</string>
-    <string name="display_refresh_rate">Show Refresh Rate</string>
+    <string name="display_refresh_rate">Show/Hide Refresh Rate</string>
     <string name="SystemDebuggingRelated">System Debugging Related</string>
     <string name="engineering_mode">Engineering Mode</string>
     <string name="charging_test">Charging Test</string>

@@ -273,7 +273,9 @@
     <string name="build_version">构建</string>
     <string name="device">设备</string>
     <string name="system">系统</string>
-    <string name="Restore_default_refresh_rate">恢复默认刷新率</string>
+    <string name="fps_mode_title">方案</string>
+    <string name="fps_tips">自启功能将会在屏幕解锁1s后触发\n方案一只能重启恢复, 恢复时请关闭自启功能</string>
+    <string name="restore_default_refresh_rate">恢复默认刷新率</string>
     <string name="module_isactivated">模块已激活</string>
     <string name="module_notactive">模块未激活</string>
     <string name="module_version">模块版本:</string>
@@ -304,7 +306,7 @@
     <!-- Other -->
     <string name="quick_entry">系统快捷入口</string>
     <string name="quick_entry_summary">例如系统界面调节工具,进程管理,工程模式等</string>
-    <string name="display_refresh_rate">显示刷新率</string>
+    <string name="display_refresh_rate">显示/隐藏刷新率</string>
     <string name="SystemDebuggingRelated">系统调试相关</string>
     <string name="engineering_mode">工程模式</string>
     <string name="charging_test">充电测试</string>

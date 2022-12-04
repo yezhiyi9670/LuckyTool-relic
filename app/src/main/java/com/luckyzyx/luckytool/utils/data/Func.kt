@@ -8,6 +8,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import android.util.ArraySet
 import android.util.Base64
@@ -147,11 +148,16 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
     Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
 }
 
+
+
 /**
  * 获取支持的刷新率
  * @return [List]
  */
-fun Context.getFpsMode(): Array<String> {
+fun Context.getFpsMode1(): Array<String> {
+    return arrayOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz")
+}
+fun Context.getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +
                 "  if [[ -n \$row ]]; then\n" +
@@ -173,8 +179,36 @@ fun Context.getFpsMode(): Array<String> {
                 "done"
     return ShellUtils.execCommand(command, true, true).successMsg.let {
         it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")
-            ?.toMutableList()
-            ?.toTypedArray() ?: arrayOf("Error, don't click")
+            ?.toTypedArray() ?: arrayOf()
+    }
+}
+
+/**
+ * 设置刷新率
+ * @param context Context
+ * @param refresh String?
+ * @param name String
+ */
+fun setRefresh(context: Context, name: String, refresh: String?) {
+    setParameter(context, name, "min_refresh_rate", refresh)
+    setParameter(context, name, "peak_refresh_rate", refresh)
+}
+
+fun setRefresh(context: Context, name: String, min_refresh: String?, peak_refresh: String?) {
+    setParameter(context, name, "min_refresh_rate", min_refresh)
+    setParameter(context, name, "peak_refresh_rate", peak_refresh)
+}
+
+fun setParameter(context: Context, name: String, key: String?, value: String?) {
+    val contentResolver = context.contentResolver
+    try {
+        val contentValues = ContentValues(2)
+        contentValues.put("name", key)
+        contentValues.put("value", value)
+        contentResolver.insert(Uri.parse("content://settings/system"), contentValues)
+//        context.toast("apply $name Hz success!")
+    } catch (e: Exception) {
+        context.toast("apply $name Hz failed!")
     }
 }
 

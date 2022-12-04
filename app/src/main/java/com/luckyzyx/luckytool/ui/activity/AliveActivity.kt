@@ -4,10 +4,10 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
+import com.luckyzyx.luckytool.utils.tools.getBoolean
 import com.luckyzyx.luckytool.utils.tools.getInt
 
 @Obfuscate
@@ -24,14 +24,13 @@ class AliveActivity : Activity() {
             if (this == null) return@apply
             //自启功能相关
             if(this.getBoolean("SelfStart")){
-                if (modulePrefs(SettingsPrefs).getBoolean("fps_autostart", false)){
-                    val fps = getInt(SettingsPrefs, "current_fps", -1)
-                    if (fps == -1) return
-                    ShellUtils.execCommand("su -c service call SurfaceFlinger 1035 i32 $fps", true,true).result.apply {
-                        if (this == 1) toast("force fps error!")
-                    }
+                if (getBoolean(SettingsPrefs,"fps_autostart", false) && (getInt(SettingsPrefs,"fps_mode",1) == 2)){
+                val fps = getInt(SettingsPrefs, "current_fps", -1)
+                if (fps != -1) ShellUtils.execCommand("su -c service call SurfaceFlinger 1035 i32 $fps", true,true).result.apply {
+                    if (this == 1) toast("force fps error!")
                 }
-                if (modulePrefs(XposedPrefs).getBoolean("increase_touch_sampling_rate", false)){
+                }
+                if (getBoolean(XposedPrefs,"increase_touch_sampling_rate", false)){
                     ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true,true).result.apply {
                         if (this == 1) toast("touch sampling rate error!")
                     }
