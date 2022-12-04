@@ -46,6 +46,8 @@ object DonateData {
             add(DonateInfo("*林", 10.0))
             add(DonateInfo("221130", 6.0))
             add(DonateInfo("无", 5.0))
+            add(DonateInfo("Mr.x", 20.0))
+            add(DonateInfo("*方", 5.0))
         }
     }
 }

@@ -4,7 +4,12 @@
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG
 group for feedback
 
+### 3.8
+
+
+
 ### 3.7
+
 [更新] 捐赠名单  
 [添加] 移除高性能模式图标  
 [修复] 强制刷新率自启  
@@ -13,6 +18,14 @@ group for feedback
 [优化] 长按快捷方式逻辑  
 [适配] 游戏助手v7.16.0  
 [添加] Peak刷新率方案  
+[Update] Donation list  
+[Add] Remove high performance mode icon  
+[Fix] Forced refresh rate to start automatically  
+[Add] Increase touch sampling rate  
+[Add] Remove Do Not Disturb notification  
+[Optimize] Long press shortcut logic  
+[Fix] Game Assistant v7.16.0  
+[Add] Peak refresh rate scheme  
 
 ### 3.6
 

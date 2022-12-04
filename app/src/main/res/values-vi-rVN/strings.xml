@@ -274,8 +274,8 @@
     <string name="device">Thiết bị</string>
     <string name="system">Android</string>
     <string name="fps_mode_title">Tùy chỉnh</string>
-    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
-    <string name="restore_default_refresh_rate">Restore default refresh rate</string>
+    <string name="fps_tips">Chức năng tự khởi động sẽ được kích hoạt 1 giây sau khi màn hình được mở khóa\nChỉ có thể khởi động lại tùy chọn 1 để khôi phục, vui lòng tắt chức năng tự khởi động khi khôi phục</string>
+    <string name="restore_default_refresh_rate">Khôi phục tốc độ làm mới mặc định</string>
     <string name="module_isactivated">Mô-đun đã kích hoạt</string>
     <string name="module_notactive">Mô-đun chưa kích hoạt</string>
     <string name="module_version">Phiên bản mô-đun:</string>
@@ -306,7 +306,7 @@
     <!-- Other -->
     <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>
-    <string name="display_refresh_rate">Show/Hide Refresh Rate</string>
+    <string name="display_refresh_rate">Hiện/Ẩn tốc độ làm mới</string>
     <string name="SystemDebuggingRelated">Gỡ lỗi hệ thống</string>
     <string name="engineering_mode">Chế độ kỹ thuật</string>
     <string name="charging_test">Kiểm tra sạc</string>

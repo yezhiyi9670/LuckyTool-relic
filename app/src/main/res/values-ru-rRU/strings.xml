@@ -274,8 +274,8 @@
     <string name="build_version">Сборка</string>
     <string name="device">Устройство</string>
     <string name="system">Система</string>
-    <string name="fps_mode_title">Option</string>
-    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
+    <string name="fps_mode_title">Параметры</string>
+    <string name="fps_tips">Функция автозапуска будет срабатывать через 1 секунду после разблокировки экрана\nПараметр 1 можно только перезапустить и восстановить, отключите функцию автозапуска при восстановлении</string>
     <string name="restore_default_refresh_rate">Восстановить частоту обновления по умолчанию</string>
     <string name="module_isactivated">Модуль активен</string>
     <string name="module_notactive">Модуль не активен</string>
