@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.apps.systemui
+package com.luckyzyx.luckytool.hook
 
 import android.content.Intent
 import com.drake.net.utils.scope
@@ -9,7 +9,7 @@ import com.luckyzyx.luckytool.utils.data.SettingsPrefs
 import com.luckyzyx.luckytool.utils.data.setRefresh
 import kotlinx.coroutines.delay
 
-class SystemUIAppLifecycle : YukiBaseHooker() {
+class HookAppLifecycle : YukiBaseHooker() {
     override fun onHook() {
         val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0")
         var fpsAutoStart = prefs(SettingsPrefs).getBoolean("fps_autostart", false)

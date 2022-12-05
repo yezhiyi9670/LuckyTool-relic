@@ -5,8 +5,9 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 group for feedback
 
 ### 3.8
-
-
+[更新] 捐赠名单  
+[适配] 云服务v6.5.1  
+[修复] 修复功能不生效问题  
 
 ### 3.7
 
