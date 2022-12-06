@@ -70,11 +70,11 @@ class HomeFragment : Fragment() {
             }
         }
 
-        UpdateUtils.checkUpdate(requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
-            if (!requireActivity().getBoolean(SettingsPrefs,"auto_check_update",true)) return@checkUpdate
+        if (requireActivity().getBoolean(SettingsPrefs, "auto_check_update", true)) UpdateUtils.checkUpdate(
+            requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
             binding.updateView.apply {
                 isVisible = true
-                text = getString(R.string.check_update_hint)+"  -->  $versionName($versionCode)"
+                text = getString(R.string.check_update_hint) + "  -->  $versionName($versionCode)"
                 binding.statusCard.setOnClickListener { function() }
             }
         }
@@ -249,7 +249,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun refreshmode(context: Context) {
-        val list = arrayOf(getString(R.string.restart_scope),getString(R.string.reboot),getString(R.string.fast_reboot))
+//        val list = arrayOf(getString(R.string.restart_scope),getString(R.string.reboot),getString(R.string.fast_reboot))
+        val list = arrayOf(getString(R.string.restart_scope),getString(R.string.reboot))
         MaterialAlertDialogBuilder(context)
             .setCancelable(true)
             .setItems(list) { _: DialogInterface?, i: Int ->

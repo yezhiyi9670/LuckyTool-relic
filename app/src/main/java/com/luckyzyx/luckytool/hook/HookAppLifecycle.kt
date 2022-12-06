@@ -11,14 +11,14 @@ import kotlinx.coroutines.delay
 
 class HookAppLifecycle : YukiBaseHooker() {
     override fun onHook() {
-        val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0")
-        var fpsAutoStart = prefs(SettingsPrefs).getBoolean("fps_autostart", false)
-        var fpsMode = prefs(SettingsPrefs).getInt("fps_mode", 1)
-        var currentFps = prefs(SettingsPrefs).getInt("current_fps", -1)
-        dataChannel.wait<Boolean>(key = "fps_autostart") { fpsAutoStart = it }
-        dataChannel.wait<Int>(key = "fps_mode") { fpsMode = it }
-        dataChannel.wait<Int>(key = "current_fps") { currentFps = it }
         loadApp("com.android.systemui") {
+            val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0")
+            var fpsAutoStart = prefs(SettingsPrefs).getBoolean("fps_autostart", false)
+            var fpsMode = prefs(SettingsPrefs).getInt("fps_mode", 1)
+            var currentFps = prefs(SettingsPrefs).getInt("current_fps", -1)
+            dataChannel.wait<Boolean>(key = "fps_autostart") { fpsAutoStart = it }
+            dataChannel.wait<Int>(key = "fps_mode") { fpsMode = it }
+            dataChannel.wait<Int>(key = "current_fps") { currentFps = it }
             onAppLifecycle {
                 //监听锁屏解锁
                 registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
@@ -31,7 +31,8 @@ class HookAppLifecycle : YukiBaseHooker() {
 
                         Intent(Intent.ACTION_VIEW).apply {
                             setClassName(BuildConfig.APPLICATION_ID, AliveActivity::class.java.name)
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             putExtra("SelfStart", true)
                             context.startActivity(this)
                         }
