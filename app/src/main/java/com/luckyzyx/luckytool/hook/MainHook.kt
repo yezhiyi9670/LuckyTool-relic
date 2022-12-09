@@ -72,7 +72,7 @@ class MainHook : IYukiHookXposedInit {
         //其他APP
         loadApp(hooker = HookOtherApp())
 
-        //监听系统界面生命周期
+        //监听生命周期
         loadApp(hooker = HookAppLifecycle())
 
         //OTA

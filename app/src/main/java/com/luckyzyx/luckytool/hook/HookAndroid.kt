@@ -2,9 +2,6 @@ package com.luckyzyx.luckytool.hook
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.android.*
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class HookAndroid : YukiBaseHooker() {
 
@@ -28,14 +25,13 @@ class HookAndroid : YukiBaseHooker() {
         loadHooker(ADBInstallConfirm())
 
         //移除遮罩Splash Screen
-        if (SDK >= A13) loadHooker(AppSplashScreen())
+        loadHooker(AppSplashScreen())
 
         //移除72小时密码验证
         loadHooker(Remove72HourPasswordVerification())
 
         //媒体音量阶数
-        if (prefs(XposedPrefs).getInt("media_volume_level", 0) != 0) {
-            loadHooker(MediaVolumeLevel())
-        }
+        loadHooker(MediaVolumeLevel())
+
     }
 }

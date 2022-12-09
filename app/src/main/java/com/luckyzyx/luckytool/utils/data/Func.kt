@@ -148,8 +148,6 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
     Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
 }
 
-
-
 /**
  * 获取支持的刷新率
  * @return [List]
@@ -157,6 +155,7 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
 fun Context.getFpsMode1(): Array<String> {
     return arrayOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz")
 }
+
 fun Context.getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +

@@ -9,6 +9,7 @@ import androidx.preference.PreferenceCategory
 import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.A13
@@ -391,6 +392,10 @@ class StatusBarNotice : ModulePreferenceFragment() {
                     key = "remove_statusbar_top_notification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "remove_statusbar_top_notification", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -400,6 +405,10 @@ class StatusBarNotice : ModulePreferenceFragment() {
                     key = "remove_vpn_active_notification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "remove_vpn_active_notification", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -885,6 +894,10 @@ class LockScreen : ModulePreferenceFragment() {
                     key = "remove_72hour_password_verification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "remove_72hour_password_verification", value = newValue)
+                        true
+                    }
                 }
             )
         }
@@ -902,6 +915,10 @@ class Screenshot : ModulePreferenceFragment() {
                     key = "remove_system_screenshot_delay"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "remove_system_screenshot_delay", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -920,6 +937,10 @@ class Screenshot : ModulePreferenceFragment() {
                     key = "disable_flag_secure"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "disable_flag_secure", value = newValue)
+                        true
+                    }
                 }
             )
         }
@@ -945,6 +966,10 @@ class Application : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "disable_splash_screen", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -961,6 +986,10 @@ class Application : ModulePreferenceFragment() {
                     key = "multi_app_enable"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "multi_app_enable", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1029,6 +1058,10 @@ class Application : ModulePreferenceFragment() {
                     key = "remove_adb_install_confirm"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "remove_adb_install_confirm", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1151,6 +1184,10 @@ class Miscellaneous : ModulePreferenceFragment() {
                     showSeekBarValue = true
                     updatesContinuously = false
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "android").put(key = "media_volume_level", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(

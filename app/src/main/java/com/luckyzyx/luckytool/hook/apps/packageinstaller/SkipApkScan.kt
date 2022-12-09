@@ -32,7 +32,7 @@ class SkipApkScan : YukiBaseHooker() {
                 "a222497" -> {
                     arrayOf(OPIA, "M", "E", "j")
                 }
-                "d1fd8fc", "890f77b", "40d7750" -> {
+                "d1fd8fc", "890f77b", "40d7750", "215dfe4" -> {
                     arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
                 }
                 //d132ce2,faec6ba,860700c,3d2dbd1
@@ -43,7 +43,7 @@ class SkipApkScan : YukiBaseHooker() {
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         findClass(member[0]).hook {
             //skip appdetail,search isStartAppDetail
-            //search Method count_canceled_by_app_detail -4 ? -5
+            //search Method count_canceled_by_app_detail -4 OPIA ? -5 ADRU
             injectMember {
                 method {
                     name = member[1]
