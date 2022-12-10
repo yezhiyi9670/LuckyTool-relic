@@ -4,7 +4,13 @@
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG
 group for feedback
 
+### 3.8.1
+
+[适配] 游戏助手v7.16.2  
+[Fix] Game Assistant v7.16.2  
+
 ### 3.8
+
 [更新] 捐赠名单  
 [适配] 云服务v6.5.1  
 [修复] 功能概率不生效问题  
@@ -18,7 +24,7 @@ group for feedback
 [Remove] Quick Reboot  
 [Fix] Game Assistant v7.16.1  
 [Fix] C12 application package installer  
-[Optimize] The problem that the system scope function takes effect in real time  
+[Optimize] The problem that the system scope function takes effect in real time
 
 ### 3.7
 
@@ -37,7 +43,7 @@ group for feedback
 [Add] Remove Do Not Disturb notification  
 [Optimize] Long press shortcut logic  
 [Fix] Game Assistant v7.16.0  
-[Add] Peak refresh rate scheme  
+[Add] Peak refresh rate scheme
 
 ### 3.6
 
