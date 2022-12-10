@@ -12,6 +12,13 @@ group for feedback
 [适配] 游戏助手v7.16.1  
 [适配] C12应用包安装程序  
 [优化] 系统作用域功能实时生效问题  
+[Update] Donation list  
+[Fix] Cloud Service v6.5.1  
+[Fix] The function probability does not take effect  
+[Remove] Quick Reboot  
+[Fix] Game Assistant v7.16.1  
+[Fix] C12 application package installer  
+[Optimize] The problem that the system scope function takes effect in real time  
 
 ### 3.7
 
