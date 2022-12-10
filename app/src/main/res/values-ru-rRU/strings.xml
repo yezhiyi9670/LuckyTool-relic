@@ -181,7 +181,7 @@
     <string name="ApplyOtherRestrictions">Прочие ограничения</string>
     <string name="remove_adb_install_confirm">Удалить подтверждение установки ADB</string>
     <string name="remove_adb_install_confirm_summary">Установите приложение напрямую с помощью ADB</string>
-    <string name="unlock_startup_limit">Разблокировать ограничение на автозапусков приложения</string>
+    <string name="unlock_startup_limit">Разблокировать ограничение на автозапуск приложения</string>
     <string name="unlock_startup_limit_summary">Разблокировать ограничение на количество автозапусков приложения</string>
     <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
     <string name="AppStartupRelated">Запуск приложения</string>
@@ -205,21 +205,25 @@
     <string name="remove_install_ads_summary">Рекомендации приложений безопасности/реклама магазина ПО</string>
     <string name="replase_aosp_installer">Заменить установщик AOSP</string>
     <string name="replase_aosp_installer_summary">Заменить собственным установщиком</string>
-    <!--Miscellaneous-->
-    <string name="Miscellaneous">Разное</string>
-    <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
+    <!--FloatingWindowDialogRelated-->
+    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>
     <string name="disable_duplicate_floating_window_summary">Плавающее окно больше не появляется при копировании текста</string>
     <string name="disable_headphone_high_volume_warning">Отключить предупреждение о высокой громкости в наушниках</string>
     <string name="disable_headphone_high_volume_warning_summary">Отключить диалоговое окно предупреждения при увеличении громкости при подключенных наушниках</string>
-    <string name="disable_otg_auto_off">Отключить автоотключение OTG</string>
-    <string name="disable_otg_auto_off_summary">Отключение автоматического отключения OTG через 10 минут</string>
-    <string name="disable_dpi_reboot_recovery">Отключить восстановление DPI после перезагрузки</string>
-    <string name="disable_dpi_reboot_recovery_summary">Этот модуль не несет ответственности за любые сбои загрузки из-за установки слишком большого значения DPI\nЧтобы восстановить значение DPI по умолчанию, вам необходимо включить эту функцию и сбросить значение DPI по умолчанию после перезагрузки</string>
     <string name="remove_low_battery_dialog_warning">Удалить диалоговое предупреждение о низком заряде батареи</string>
     <string name="remove_low_battery_dialog_warning_summary">Удалите предупреждающие диалоговые окна для режима энергосбережения и суперэнергосбережения</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Удалить диалоговое окно с предупреждением, которое приложение отображает на рабочем столе</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Диалоговое окно с предупреждением обнаружило, что приложение отображается на рабочем столе системы</string>
+    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
+    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <!--Miscellaneous-->
+    <string name="Miscellaneous">Разное</string>
+    <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
+    <string name="disable_otg_auto_off">Отключить автоотключение OTG</string>
+    <string name="disable_otg_auto_off_summary">Отключение автоматического отключения OTG через 10 минут</string>
+    <string name="disable_dpi_reboot_recovery">Отключить восстановление DPI после перезагрузки</string>
+    <string name="disable_dpi_reboot_recovery_summary">Этот модуль не несет ответственности за любые сбои загрузки из-за установки слишком большого значения DPI\nЧтобы восстановить значение DPI по умолчанию, вам необходимо включить эту функцию и сбросить значение DPI по умолчанию после перезагрузки</string>
     <string name="remove_storage_limit">Удалить ограничение хранилища</string>
     <string name="remove_storage_limit_summary">Снять ограничение, на использование хранилища</string>
     <string name="media_volume_level">Уровень громкости мультимедиа</string>

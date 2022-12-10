@@ -12,7 +12,6 @@ import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.*
 
-
 class Miscellaneous : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.android.systemui"){
@@ -39,6 +38,11 @@ class Miscellaneous : YukiBaseHooker() {
             //移除低电量对话框警告
             if (prefs(XposedPrefs).getBoolean("remove_low_battery_dialog_warning",false)){
                 loadHooker(RemoveLowBatteryDialogWarning())
+            }
+
+            //移除USB连接对话框
+            if (prefs(XposedPrefs).getBoolean("remove_usb_connect_dialog", false)) {
+                loadHooker(RemoveUSBConnectDialog())
             }
 
         }

@@ -204,21 +204,25 @@
     <string name="remove_install_ads_summary">Đóng Cài đặt - Đề xuất ứng dụng bảo mật</string>
     <string name="replase_aosp_installer">Thay thế trình cài đặt AOSP</string>
     <string name="replase_aosp_installer_summary">Thay thế bằng trình cài đặt Google</string>
-    <!--Miscellaneous-->
-    <string name="Miscellaneous">Khác</string>
-    <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>
+    <!--FloatingWindowDialogRelated-->
+    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
     <string name="disable_duplicate_floating_window">Vô hiệu hóa cửa sổ trùng lặp</string>
     <string name="disable_duplicate_floating_window_summary">Không hiện thông báo nổi khi sao chép văn bản</string>
     <string name="disable_headphone_high_volume_warning">Tắt cảnh báo âm lượng cao của tai nghe</string>
     <string name="disable_headphone_high_volume_warning_summary">Tắt hộp thoại cảnh báo xuất hiện khi tăng âm lượng sau khi kết nối tai nghe</string>
-    <string name="disable_otg_auto_off">Vô hiệu hóa tự động tắt OTG</string>
-    <string name="disable_otg_auto_off_summary">Vô hiệu hóa tự động tắt OTG khi hơn mười phút</string>
-    <string name="disable_dpi_reboot_recovery">Vô hiệu hóa phục hồi khởi động lại DPI</string>
-    <string name="disable_dpi_reboot_recovery_summary">Mô-đun này không chịu trách nhiệm cho bất kỳ lỗi khởi động nào do cài đặt giá trị DPI quá lớn\nĐể khôi phục DPI mặc định, bạn cần bật tính năng này và đặt lại giá trị DPI mặc định sau khi khởi động lại phạm vi</string>
     <string name="remove_low_battery_dialog_warning">Xóa hộp thoại cảnh báo pin yếu</string>
     <string name="remove_low_battery_dialog_warning_summary">Xóa hộp thoại cảnh báo chế độ tiết kiệm điện và siêu tiết kiệm điện</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Xóa hộp thoại cảnh báo ứng dụng hiển thị trên màn hình</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Hộp thoại cảnh báo thấy rằng một ứng dụng đang hiển thị trên màn hình hệ thống</string>
+    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
+    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <!--Miscellaneous-->
+    <string name="Miscellaneous">Khác</string>
+    <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>
+    <string name="disable_otg_auto_off">Vô hiệu hóa tự động tắt OTG</string>
+    <string name="disable_otg_auto_off_summary">Vô hiệu hóa tự động tắt OTG khi hơn mười phút</string>
+    <string name="disable_dpi_reboot_recovery">Vô hiệu hóa phục hồi khởi động lại DPI</string>
+    <string name="disable_dpi_reboot_recovery_summary">Mô-đun này không chịu trách nhiệm cho bất kỳ lỗi khởi động nào do cài đặt giá trị DPI quá lớn\nĐể khôi phục DPI mặc định, bạn cần bật tính năng này và đặt lại giá trị DPI mặc định sau khi khởi động lại phạm vi</string>
     <string name="remove_storage_limit">Xóa giới hạn lưu trữ</string>
     <string name="remove_storage_limit_summary">Xóa giới hạn không thể sử dụng thư mục này</string>
     <string name="media_volume_level">Mức âm lượng</string>

@@ -256,7 +256,15 @@
     <fragment
             android:id="@+id/miscellaneous"
             android:name="com.luckyzyx.luckytool.ui.fragment.Miscellaneous"
-            android:label="{title_label}" />
+            android:label="{title_label}">
+        <action
+                android:id="@+id/action_miscellaneous_to_dialogRelated"
+                app:destination="@id/dialogRelated"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
     <fragment
             android:id="@+id/alphaBackupPro"
             android:name="com.luckyzyx.luckytool.ui.fragment.AlphaBackupPro"
@@ -268,6 +276,10 @@
     <fragment
             android:id="@+id/statusBarNetWorkSpeed"
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNetWorkSpeed"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/dialogRelated"
+            android:name="com.luckyzyx.luckytool.ui.fragment.DialogRelated"
             android:label="{title_label}" />
 
 </navigation>

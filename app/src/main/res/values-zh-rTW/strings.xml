@@ -204,21 +204,25 @@
     <string name="remove_install_ads_summary">切记关闭设置-安全应用推荐</string>
     <string name="replase_aosp_installer">替换AOSP安装器</string>
     <string name="replase_aosp_installer_summary">替换为AOSP原生安装器</string>
-    <!--Miscellaneous-->
-    <string name="Miscellaneous">杂项</string>
-    <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>
+    <!--FloatingWindowDialogRelated-->
+    <string name="FloatingWindowDialogRelated">悬浮窗/对话框相关</string>
     <string name="disable_duplicate_floating_window">禁用复制悬浮窗</string>
     <string name="disable_duplicate_floating_window_summary">复制文本时不再显示悬浮窗</string>
     <string name="disable_headphone_high_volume_warning">禁用耳机高音量警告</string>
     <string name="disable_headphone_high_volume_warning_summary">禁用连接耳机后调高音量时出现的警告对话框</string>
-    <string name="disable_otg_auto_off">禁用OTG自动关闭</string>
-    <string name="disable_otg_auto_off_summary">禁用OTG超过十分钟自动关闭</string>
-    <string name="disable_dpi_reboot_recovery">禁用DPI重启恢复</string>
-    <string name="disable_dpi_reboot_recovery_summary">一切因设置DPI数值过大导致无法开机, 本模块概不负责\n若要恢复默认DPI, 需要开启此功能并且重启作用域后重新设置默认DPI数值</string>
     <string name="remove_low_battery_dialog_warning">移除低电量警告对话框</string>
     <string name="remove_low_battery_dialog_warning_summary">移除省电模式和超级省电模式的警告对话框</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">移除应用显示在桌面上的警告对话框</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">发现有应用运行在系统桌面上的警告对话框</string>
+    <string name="remove_usb_connect_dialog">移除 USB 连接对话框</string>
+    <string name="remove_usb_connect_dialog_summary">连接USB后默认选择文件传输模式</string>
+    <!--Miscellaneous-->
+    <string name="Miscellaneous">杂项</string>
+    <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>
+    <string name="disable_otg_auto_off">禁用OTG自动关闭</string>
+    <string name="disable_otg_auto_off_summary">禁用OTG超过十分钟自动关闭</string>
+    <string name="disable_dpi_reboot_recovery">禁用DPI重启恢复</string>
+    <string name="disable_dpi_reboot_recovery_summary">一切因设置DPI数值过大导致无法开机, 本模块概不负责\n若要恢复默认DPI, 需要开启此功能并且重启作用域后重新设置默认DPI数值</string>
     <string name="remove_storage_limit">移除存储限制</string>
     <string name="remove_storage_limit_summary">移除无法使用此文件夹的限制</string>
     <string name="media_volume_level">媒体音量阶数</string>

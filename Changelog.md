@@ -1,13 +1,17 @@
 # 更新日志 Changelog
 
 出现问题请带上作用域 APK 和模块 LOG 页面截图 前往 TG 群组反馈  
-If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG
-group for feedback
+If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG group for feedback
+
+### 3.8.2
+
+[添加] 移除USB连接对话框  
+[Add] Remove USB connection dialog
 
 ### 3.8.1
 
 [适配] 游戏助手v7.16.2  
-[Fix] Game Assistant v7.16.2  
+[Fix] Game Assistant v7.16.2
 
 ### 3.8
 

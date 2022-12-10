@@ -205,21 +205,25 @@
     <string name="remove_install_ads_summary">Close Settings - Security App Recommendations</string>
     <string name="replase_aosp_installer">Replace AOSP Installer</string>
     <string name="replase_aosp_installer_summary">Replace with Google Native Installer</string>
-    <!--Miscellaneous-->
-    <string name="Miscellaneous">Miscellaneous</string>
-    <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
+    <!--FloatingWindowDialogRelated-->
+    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
     <string name="disable_duplicate_floating_window">Disable Duplicate Window</string>
     <string name="disable_duplicate_floating_window_summary">Do not show heads up again when copying text</string>
     <string name="disable_headphone_high_volume_warning">Disable headset high volume warning</string>
     <string name="disable_headphone_high_volume_warning_summary">Disable the warning dialog that appears when turning up the volume after connecting the headset</string>
-    <string name="disable_otg_auto_off">Disable OTG Auto-off</string>
-    <string name="disable_otg_auto_off_summary">Disable OTG for more than ten minutes to automatically turn off</string>
-    <string name="disable_dpi_reboot_recovery">Disable DPI Reboot Recovery</string>
-    <string name="disable_dpi_reboot_recovery_summary">This module is not responsible for any failure to boot due to the setting of too large DPI value\nTo restore the default DPI, you need to enable this feature and reset the default DPI value after restarting the scope</string>
     <string name="remove_low_battery_dialog_warning">Remove low battery dialog warning</string>
     <string name="remove_low_battery_dialog_warning_summary">Remove warning dialogs for power save mode and super power save</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Remove warning dialog that app displaying over the desktop</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Warning dialog box found that an application displaying over the system desktop</string>
+    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
+    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <!--Miscellaneous-->
+    <string name="Miscellaneous">Miscellaneous</string>
+    <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
+    <string name="disable_otg_auto_off">Disable OTG Auto-off</string>
+    <string name="disable_otg_auto_off_summary">Disable OTG for more than ten minutes to automatically turn off</string>
+    <string name="disable_dpi_reboot_recovery">Disable DPI Reboot Recovery</string>
+    <string name="disable_dpi_reboot_recovery_summary">This module is not responsible for any failure to boot due to the setting of too large DPI value\nTo restore the default DPI, you need to enable this feature and reset the default DPI value after restarting the scope</string>
     <string name="remove_storage_limit">Remove storage limit</string>
     <string name="remove_storage_limit_summary">Remove the restriction that this folder cannot be used</string>
     <string name="media_volume_level">Media volume level</string>
@@ -330,4 +334,5 @@
     <string name="adb_port">ADB Port</string>
     <string name="enable_remote_adb_debugging">Enable remote ADB debugging</string>
     <string name="adb_debug_port_cannot_null">ADB debug port cannot be null</string>
+
 </resources>

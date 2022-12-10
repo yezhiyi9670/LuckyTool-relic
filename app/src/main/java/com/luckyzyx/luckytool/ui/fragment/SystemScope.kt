@@ -1093,20 +1093,10 @@ class Application : ModulePreferenceFragment() {
     }
 }
 
-class Miscellaneous : ModulePreferenceFragment() {
+class DialogRelated : ModulePreferenceFragment(){
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.show_charging_ripple)
-                    summary = getString(R.string.show_charging_ripple_summary)
-                    key = "show_charging_ripple"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = Build.VERSION.SDK_INT >= 31
-                }
-            )
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.disable_duplicate_floating_window)
@@ -1128,24 +1118,6 @@ class Miscellaneous : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.disable_otg_auto_off)
-                    summary = getString(R.string.disable_otg_auto_off_summary)
-                    key = "disable_otg_auto_off"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_dpi_reboot_recovery)
-                    summary = getString(R.string.disable_dpi_reboot_recovery_summary)
-                    key = "disable_dpi_reboot_recovery"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_low_battery_dialog_warning)
                     summary = getString(R.string.remove_low_battery_dialog_warning_summary)
                     key = "remove_low_battery_dialog_warning"
@@ -1159,6 +1131,67 @@ class Miscellaneous : ModulePreferenceFragment() {
                     summary =
                         getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
                     key = "remove_warning_dialog_that_app_runs_on_desktop"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_usb_connect_dialog)
+                    summary = getString(R.string.remove_usb_connect_dialog_summary)
+                    key = "remove_usb_connect_dialog"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
+class Miscellaneous : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.FloatingWindowDialogRelated)
+                    summary = getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(R.string.remove_usb_connect_dialog)
+                    key = "FloatingWindowDialogRelated"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_miscellaneous_to_dialogRelated,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.show_charging_ripple)
+                    summary = getString(R.string.show_charging_ripple_summary)
+                    key = "show_charging_ripple"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = Build.VERSION.SDK_INT >= 31
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_otg_auto_off)
+                    summary = getString(R.string.disable_otg_auto_off_summary)
+                    key = "disable_otg_auto_off"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_dpi_reboot_recovery)
+                    summary = getString(R.string.disable_dpi_reboot_recovery_summary)
+                    key = "disable_dpi_reboot_recovery"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
