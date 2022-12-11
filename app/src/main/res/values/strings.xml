@@ -121,6 +121,8 @@
     <string name="remove_app_high_battery_consumption_warning_summary">Removed the warning that the application\'s battery consumption is abnormal and needs to be optimized immediately</string>
     <string name="remove_high_performance_mode_notifications">Remove high performance mode notifications</string>
     <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
+    <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Notice: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>

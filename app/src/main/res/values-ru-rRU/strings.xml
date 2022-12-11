@@ -68,7 +68,7 @@
     <string name="package_name">Имя пакета</string>
     <string name="version">Версия</string>
     <!-- CorePatch -->
-    <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
+    <string name="ColorOSCorePatchTip">Официальному установщику Color OS необходимо включить другие функции для использования\nСписок функций-Приложения-Установка приложений</string>
     <string name="corepatch">Патчи ядра</string>
     <string name="corepatch_summary">Снять ограничения на установку, поддерживается Android 11–13</string>
     <string name="downgr">Разрешить понижение версии</string>
@@ -121,6 +121,8 @@
     <string name="remove_app_high_battery_consumption_warning_summary">Удалено предупреждение о том, что приложение расходует заряд батареи ненормально и требует немедленной оптимизации</string>
     <string name="remove_high_performance_mode_notifications">Удалить уведомления режима высокой производительности</string>
     <string name="remove_do_not_disturb_mode_notification">Удалить уведомление режима \"Не беспокоить\"</string>
+    <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Notice: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -196,7 +198,7 @@
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Установка приложения</string>
-    <string name="PackageInstaller_summary">Need to be used with the core patch</string>
+    <string name="PackageInstaller_summary">Необходимо использовать с патчем ядра</string>
     <string name="skip_apk_scan">Пропустить сканирование APK</string>
     <string name="skip_apk_scan_summary">Сканирование APK на наличие вирусов</string>
     <string name="allow_downgrade_install">Разрешить установку более ранней версии</string>
