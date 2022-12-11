@@ -457,6 +457,15 @@ class StatusBarNotice : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_hotspot_power_consumption_notification)
+                    summary = getString(R.string.remove_hotspot_power_consumption_notification_summary)
+                    key = "remove_hotspot_power_consumption_notification"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

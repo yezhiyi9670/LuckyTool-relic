@@ -162,6 +162,10 @@
 
 - v1.1.3 -> 10017
 
+## 无线设置 WirelessSettings
+
+- v13.1.17 -> 13001017 -> dd47ead
+
 ## 好多动漫 com.east2d.everyimage
 
 - v5.1.1 -> 164

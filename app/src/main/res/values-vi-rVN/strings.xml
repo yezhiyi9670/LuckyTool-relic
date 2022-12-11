@@ -67,7 +67,7 @@
     <string name="package_name">Tên gói</string>
     <string name="version">Phiên bản</string>
     <!-- CorePatch -->
-    <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
+    <string name="ColorOSCorePatchTip">Bộ cài đặt ColorOS chính thức cần kích hoạt các chức năng khác để sử dụng\nDanh sách chức năng-Ứng dụng-Cài đặt ứng dụng</string>
     <string name="corepatch">Vá lõi hệ thống</string>
     <string name="corepatch_summary">Xóa giới hạn cài đặt, hỗ trợ Android 11–13</string>
     <string name="downgr">Cho phép hạ cấp ứng dụng</string>
@@ -120,6 +120,8 @@
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
     <string name="remove_do_not_disturb_mode_notification">Xóa thông báo chế độ không làm phiền</string>
+    <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Notice: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -195,7 +197,7 @@
     <string name="multi_app_custom_list_summary">Sau khi chức năng được bật, danh sách ứng dụng clone ban đầu sẽ được thay thế bằng danh sách này, quá nhiều sẽ gây lag</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Cài đặt ứng dụng</string>
-    <string name="PackageInstaller_summary">Need to be used with the core patch</string>
+    <string name="PackageInstaller_summary">Cần được sử dụng với bản vá lõi</string>
     <string name="skip_apk_scan">Bỏ qua Apkscan</string>
     <string name="skip_apk_scan_summary">Quét vi-rút Apk</string>
     <string name="allow_downgrade_install">Cho phép hạ cấp cài đặt</string>
