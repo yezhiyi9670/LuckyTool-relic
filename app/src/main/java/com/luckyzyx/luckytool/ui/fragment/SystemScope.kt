@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.ui.fragment
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import androidx.navigation.fragment.findNavController
@@ -17,10 +16,17 @@ import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 
-class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.ColorOSCorePatchTip)
+                    key = "ColorOSCorePatchTip"
+                    isIconSpaceReserved = false
+                }
+            )
             addPreference(
                 PreferenceCategory(context).apply {
                     setTitle(R.string.corepatch)
@@ -63,6 +69,15 @@ class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreference
                     key = "UsePreSig"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        if (newValue == true) {
+                            MaterialAlertDialogBuilder(context)
+                                .setMessage(R.string.usepresig_warn)
+                                .setPositiveButton("OK", null)
+                                .show()
+                        }
+                        true
+                    }
                 }
             )
             addPreference(
@@ -75,26 +90,6 @@ class Android : ModulePreferenceFragment(), SharedPreferences.OnSharedPreference
                 }
             )
         }
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        super.onSharedPreferenceChanged(sharedPreferences, key)
-        if (key == "UsePreSig" && sharedPreferences!!.getBoolean(key, false)) {
-            MaterialAlertDialogBuilder(requireActivity())
-                .setMessage(R.string.usepresig_warn)
-                .setPositiveButton("OK", null)
-                .show()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 }
 
@@ -987,6 +982,7 @@ class Application : ModulePreferenceFragment() {
             addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.AppInstallationRelated)
+                    summary = getString(R.string.PackageInstaller_summary)
                     key = "PackageInstaller"
                     isIconSpaceReserved = false
                 }

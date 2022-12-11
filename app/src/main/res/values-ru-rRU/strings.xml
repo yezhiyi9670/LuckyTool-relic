@@ -68,6 +68,7 @@
     <string name="package_name">Имя пакета</string>
     <string name="version">Версия</string>
     <!-- CorePatch -->
+    <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
     <string name="corepatch">Патчи ядра</string>
     <string name="corepatch_summary">Снять ограничения на установку, поддерживается Android 11–13</string>
     <string name="downgr">Разрешить понижение версии</string>
@@ -195,6 +196,7 @@
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Установка приложения</string>
+    <string name="PackageInstaller_summary">Need to be used with the core patch</string>
     <string name="skip_apk_scan">Пропустить сканирование APK</string>
     <string name="skip_apk_scan_summary">Сканирование APK на наличие вирусов</string>
     <string name="allow_downgrade_install">Разрешить установку более ранней версии</string>

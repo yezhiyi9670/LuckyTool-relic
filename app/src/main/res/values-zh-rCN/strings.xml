@@ -67,6 +67,7 @@
     <string name="package_name">包名</string>
     <string name="version">版本</string>
     <!-- CorePatch -->
+    <string name="ColorOSCorePatchTip">ColorOS官方安装器需要另外开启其他功能使用\n功能列表-应用相关-应用安装相关</string>
     <string name="corepatch">核心破解</string>
     <string name="corepatch_summary">解除安装限制, 支持 Android 11–13</string>
     <string name="downgr">允许降级安装应用</string>
@@ -194,6 +195,7 @@
     <string name="multi_app_custom_list_summary">开启功能后，原有的应用分身列表将被此列表替换，数量过多会造成卡顿</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">应用安装相关</string>
+    <string name="PackageInstaller_summary">需搭配核心破解使用</string>
     <string name="skip_apk_scan">跳过Apk扫描</string>
     <string name="skip_apk_scan_summary">Apk病毒扫描相关</string>
     <string name="allow_downgrade_install">允许降级安装</string>

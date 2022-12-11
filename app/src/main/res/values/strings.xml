@@ -68,6 +68,7 @@
     <string name="package_name">Package Name</string>
     <string name="version">Version</string>
     <!-- CorePatch -->
+    <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
     <string name="corepatch">Core Patch</string>
     <string name="corepatch_summary">Remove install limits, supports Android 11–13</string>
     <string name="downgr">Allow downgrade apps</string>
@@ -195,6 +196,7 @@
     <string name="multi_app_custom_list_summary">After the function is turned on, the original list of app clones will be replaced by this list, too many will cause lag</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">App Installation Related</string>
+    <string name="PackageInstaller_summary">Need to be used with the core patch</string>
     <string name="skip_apk_scan">Skip Apkscan</string>
     <string name="skip_apk_scan_summary">Apk virus scanning related</string>
     <string name="allow_downgrade_install">Allow downgrade installation</string>

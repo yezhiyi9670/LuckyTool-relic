@@ -67,6 +67,7 @@
     <string name="package_name">Tên gói</string>
     <string name="version">Phiên bản</string>
     <!-- CorePatch -->
+    <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
     <string name="corepatch">Vá lõi hệ thống</string>
     <string name="corepatch_summary">Xóa giới hạn cài đặt, hỗ trợ Android 11–13</string>
     <string name="downgr">Cho phép hạ cấp ứng dụng</string>
@@ -194,6 +195,7 @@
     <string name="multi_app_custom_list_summary">Sau khi chức năng được bật, danh sách ứng dụng clone ban đầu sẽ được thay thế bằng danh sách này, quá nhiều sẽ gây lag</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Cài đặt ứng dụng</string>
+    <string name="PackageInstaller_summary">Need to be used with the core patch</string>
     <string name="skip_apk_scan">Bỏ qua Apkscan</string>
     <string name="skip_apk_scan_summary">Quét vi-rút Apk</string>
     <string name="allow_downgrade_install">Cho phép hạ cấp cài đặt</string>
