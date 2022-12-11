@@ -206,7 +206,7 @@
     <string name="replase_aosp_installer">Заменить установщик AOSP</string>
     <string name="replase_aosp_installer_summary">Заменить собственным установщиком</string>
     <!--FloatingWindowDialogRelated-->
-    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
+    <string name="FloatingWindowDialogRelated">Плавающее окно/Диалоговое окно</string>
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>
     <string name="disable_duplicate_floating_window_summary">Плавающее окно больше не появляется при копировании текста</string>
     <string name="disable_headphone_high_volume_warning">Отключить предупреждение о высокой громкости в наушниках</string>
@@ -215,8 +215,8 @@
     <string name="remove_low_battery_dialog_warning_summary">Удалите предупреждающие диалоговые окна для режима энергосбережения и суперэнергосбережения</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Удалить диалоговое окно с предупреждением, которое приложение отображает на рабочем столе</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Диалоговое окно с предупреждением обнаружило, что приложение отображается на рабочем столе системы</string>
-    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
-    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <string name="remove_usb_connect_dialog">Диалоговое окно удаления USB-подключения</string>
+    <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>

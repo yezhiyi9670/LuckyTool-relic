@@ -11,9 +11,7 @@ class Remove72HourPasswordVerification : YukiBaseHooker() {
                 method {
                     name = "onAlarm"
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("remove_72hour_password_verification", false)
-                dataChannel.wait<Boolean>(key = "remove_72hour_password_verification") { isEnable = it }
-                if (isEnable) intercept()
+                if (prefs(XposedPrefs).getBoolean("remove_72hour_password_verification", false)) intercept()
             }
         }
     }

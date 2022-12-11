@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
-import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.databinding.LayoutMultiinfoItemBinding
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.getStringSet
@@ -82,7 +81,6 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
                 enabledMulti.remove(filterDatas[position].packName)
             }
             context.putStringSet(XposedPrefs,"enabledMulti",enabledMulti.toSet())
-            context.dataChannel(packageName = "android").put(key = "enabledMulti", value = enabledMulti.toList())
         }
     }
 

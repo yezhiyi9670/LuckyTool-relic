@@ -11,9 +11,7 @@ class RemoveStatusBarTopNotification : YukiBaseHooker() {
                 method {
                     name = "onPostNotification"
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("remove_statusbar_top_notification", false)
-                dataChannel.wait<Boolean>(key = "remove_statusbar_top_notification") { isEnable = it }
-                if (isEnable) intercept()
+                if (prefs(XposedPrefs).getBoolean("remove_statusbar_top_notification", false)) intercept()
             }
         }
     }

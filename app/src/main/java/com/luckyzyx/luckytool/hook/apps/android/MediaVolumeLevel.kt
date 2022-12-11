@@ -11,8 +11,7 @@ class MediaVolumeLevel : YukiBaseHooker() {
             injectMember {
                 allMembers(MembersType.CONSTRUCTOR)
                 afterHook {
-                    var mediaVolumeLevel = prefs(XposedPrefs).getInt("media_volume_level", 0)
-                    dataChannel.wait<Int>(key = "media_volume_level") { mediaVolumeLevel = it }
+                    val mediaVolumeLevel = prefs(XposedPrefs).getInt("media_volume_level", 0)
                     if (mediaVolumeLevel == 0) return@afterHook
                     field {
                         name = "MAX_STREAM_VOLUME"

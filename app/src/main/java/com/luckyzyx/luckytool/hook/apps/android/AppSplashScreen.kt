@@ -15,9 +15,7 @@ class AppSplashScreen : YukiBaseHooker() {
                     name = "showStartingWindow"
                     paramCount = 5
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("disable_splash_screen", false)
-                dataChannel.wait<Boolean>(key = "disable_splash_screen") { isEnable = it }
-                if (isEnable) intercept()
+                if (prefs(XposedPrefs).getBoolean("disable_splash_screen", false)) intercept()
             }
         }
     }

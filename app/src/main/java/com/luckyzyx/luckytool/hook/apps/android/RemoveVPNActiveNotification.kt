@@ -15,9 +15,7 @@ class RemoveVPNActiveNotification : YukiBaseHooker() {
                 method {
                     name = "showNotification"
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("remove_vpn_active_notification", false)
-                dataChannel.wait<Boolean>(key = "remove_vpn_active_notification") { isEnable = it }
-                if (isEnable) intercept()
+                if (prefs(XposedPrefs).getBoolean("remove_vpn_active_notification", false)) intercept()
             }
         }
     }

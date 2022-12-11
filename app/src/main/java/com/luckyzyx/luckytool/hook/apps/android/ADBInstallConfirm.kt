@@ -12,9 +12,7 @@ class ADBInstallConfirm : YukiBaseHooker() {
                     name = "allowInterceptAdbInstallInInstallStage"
                     paramCount = 5
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("remove_adb_install_confirm", false)
-                dataChannel.wait<Boolean>(key = "remove_adb_install_confirm") { isEnable = it }
-                if (isEnable) replaceToFalse()
+                if (prefs(XposedPrefs).getBoolean("remove_adb_install_confirm", false)) replaceToFalse()
             }
         }
     }

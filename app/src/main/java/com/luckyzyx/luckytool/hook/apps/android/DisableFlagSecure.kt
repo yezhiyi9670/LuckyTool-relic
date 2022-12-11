@@ -11,9 +11,7 @@ class DisableFlagSecure : YukiBaseHooker() {
                 method {
                     name = "isSecureLocked"
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("disable_flag_secure", false)
-                dataChannel.wait<Boolean>(key = "disable_flag_secure") { isEnable = it }
-                if (isEnable) replaceToFalse()
+                if (prefs(XposedPrefs).getBoolean("disable_flag_secure", false)) replaceToFalse()
             }
         }
     }

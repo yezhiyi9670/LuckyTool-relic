@@ -205,7 +205,7 @@
     <string name="replase_aosp_installer">Thay thế trình cài đặt AOSP</string>
     <string name="replase_aosp_installer_summary">Thay thế bằng trình cài đặt Google</string>
     <!--FloatingWindowDialogRelated-->
-    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
+    <string name="FloatingWindowDialogRelated">Cửa sổ nổi/Hộp thoại</string>
     <string name="disable_duplicate_floating_window">Vô hiệu hóa cửa sổ trùng lặp</string>
     <string name="disable_duplicate_floating_window_summary">Không hiện thông báo nổi khi sao chép văn bản</string>
     <string name="disable_headphone_high_volume_warning">Tắt cảnh báo âm lượng cao của tai nghe</string>
@@ -214,8 +214,8 @@
     <string name="remove_low_battery_dialog_warning_summary">Xóa hộp thoại cảnh báo chế độ tiết kiệm điện và siêu tiết kiệm điện</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Xóa hộp thoại cảnh báo ứng dụng hiển thị trên màn hình</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Hộp thoại cảnh báo thấy rằng một ứng dụng đang hiển thị trên màn hình hệ thống</string>
-    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
-    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <string name="remove_usb_connect_dialog">Gỡ bỏ thông báo kết nối USB</string>
+    <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>

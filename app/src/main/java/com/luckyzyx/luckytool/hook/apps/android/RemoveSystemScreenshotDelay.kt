@@ -13,9 +13,7 @@ class RemoveSystemScreenshotDelay : YukiBaseHooker() {
                     name = "getScreenshotChordLongPressDelay"
                     returnType = LongType
                 }
-                var isEnable = prefs(XposedPrefs).getBoolean("remove_system_screenshot_delay", false)
-                dataChannel.wait<Boolean>(key = "remove_system_screenshot_delay") { isEnable = it }
-                if (isEnable) replaceTo(0L)
+                if (prefs(XposedPrefs).getBoolean("remove_system_screenshot_delay", false)) replaceTo(0L)
             }
         }
     }
