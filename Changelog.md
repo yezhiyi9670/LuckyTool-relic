@@ -1,7 +1,13 @@
 # 更新日志 Changelog
 
 出现问题请带上作用域 APK 和模块 LOG 页面截图 前往 TG 群组反馈  
-If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG group for feedback
+If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG
+group for feedback
+
+### 3.8.3
+
+[修复] 应用分身重启失效问题  
+[Fix] Application clone restart failure problem
 
 ### 3.8.2
 

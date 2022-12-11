@@ -9,14 +9,14 @@ class AppSplashScreen : YukiBaseHooker() {
     override fun onHook() {
         //Source StartingSurfaceController
         if (SDK < A13) return
-        var isEnable = prefs(XposedPrefs).getBoolean("disable_splash_screen", false)
-        dataChannel.wait<Boolean>(key = "disable_splash_screen") { isEnable = it }
         findClass("com.android.server.wm.StartingSurfaceController").hook {
             injectMember {
                 method {
                     name = "showStartingWindow"
                     paramCount = 5
                 }
+                var isEnable = prefs(XposedPrefs).getBoolean("disable_splash_screen", false)
+                dataChannel.wait<Boolean>(key = "disable_splash_screen") { isEnable = it }
                 if (isEnable) intercept()
             }
         }
