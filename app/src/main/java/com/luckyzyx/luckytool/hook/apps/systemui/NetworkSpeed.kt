@@ -25,11 +25,9 @@ class NetworkSpeed : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
-                    if (prefs(XposedPrefs).getBoolean(
-                            "set_network_speed",
-                            false
-                        )
-                    ) args(0).set(1000L)
+                    if (prefs(XposedPrefs).getBoolean("set_network_speed", false) && (args(0).cast<Long>() == 4000L)) {
+                        args(0).set(1000L)
+                    }
                 }
             }
         }
@@ -45,6 +43,7 @@ class NetworkSpeed : YukiBaseHooker() {
             injectMember {
                 method { name = "onFinishInflate" }
                 afterHook {
+                    val mView = instance<FrameLayout>()
                     field { name = "mSpeedNumber" }.get(instance).cast<TextView>()?.apply {
                         setTextSize(TypedValue.COMPLEX_UNIT_DIP, getDoubleSize.toFloat())
                         layoutParams.width = LayoutParams.WRAP_CONTENT
@@ -53,7 +52,7 @@ class NetworkSpeed : YukiBaseHooker() {
                         setTextSize(TypedValue.COMPLEX_UNIT_DIP, getDoubleSize.toFloat())
                         layoutParams.width = LayoutParams.WRAP_CONTENT
                     }
-                    instance<FrameLayout>().setPadding(0, 0, 0, getDoublePadding.dp)
+                    mView.setPadding(0, 0, 0, getDoublePadding.dp)
                 }
             }
             injectMember {
@@ -61,33 +60,29 @@ class NetworkSpeed : YukiBaseHooker() {
                     name = "updateNetworkSpeed"
                     paramCount = 2
                 }
-                beforeHook {
-                    instance<FrameLayout>().layoutParams.takeIf { it != null }?.width =
-                        LayoutParams.WRAP_CONTENT
-                    val mSpeedNumber =
-                        field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
+                replaceUnit {
+                    instance<FrameLayout>().layoutParams.takeIf { it != null }?.width = LayoutParams.WRAP_CONTENT
+                    val mSpeedNumber = field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
                     val mSpeedUnit = field { name = "mSpeedUnit" }.get(instance).cast<TextView>()
-                    args(1).cast<Array<*>>().takeIf { it != null && it.size >= 2 }.run {
-                        mSpeedNumber?.text = getTotalUpSpeed()
-                        mSpeedUnit?.text = getTotalDownloadSpeed()
-                    }
-                    resultNull()
+                    mSpeedNumber?.text = getTotalUpSpeed()
+                    mSpeedUnit?.text = getTotalDownloadSpeed()
+                    instance<FrameLayout>().requestLayout()
                 }
             }
         }
     }
 
     /** 上次总的上行流量 */
-    private var mLastTotalUp: Long = 0
+    private var mLastTotalUp: Long = 0L
 
     /** 上次总的下行流量 */
-    private var mLastTotalDown: Long = 0
+    private var mLastTotalDown: Long = 0L
 
     /** 上次总的上行时间戳 */
-    private var lastTimeStampTotalUp: Long = 0
+    private var lastTimeStampTotalUp: Long = 0L
 
     /** 上次总的下行时间戳 */
-    private var lastTimeStampTotalDown: Long = 0
+    private var lastTimeStampTotalDown: Long = 0L
 
     //获取总的上行速度
     private fun getTotalUpSpeed(): String {
@@ -105,9 +100,8 @@ class NetworkSpeed : YukiBaseHooker() {
         val mCurrentIntervals = nowTimeStampTotalUp - lastTimeStampTotalUp
 
         //计算上传速度
-        val bytes = ((mCurrentTotalUp * 1000) / (mCurrentIntervals * 1.0)).toFloat()
+        val bytes = ((mCurrentTotalUp * 1000.0) / (mCurrentIntervals * 1.0)).toFloat()
         if (bytes.isInfinite() || bytes.isNaN()) return "0B/s"
-
         val unit: String
         if (bytes >= (1024 * 1024)) {
             totalUpSpeed = DecimalFormat("0.0").format(bytes / (1024 * 1024)).toFloat()
@@ -141,7 +135,7 @@ class NetworkSpeed : YukiBaseHooker() {
         val mCurrentIntervals = nowTimeStampTotalDown - lastTimeStampTotalDown
 
         //计算下行速度
-        val bytes = ((mCurrentTotalDown * 1000) / (mCurrentIntervals * 1.0)).toFloat()
+        val bytes = ((mCurrentTotalDown * 1000.0) / (mCurrentIntervals * 1.0)).toFloat()
         if (bytes.isInfinite() || bytes.isNaN()) return "0B/s"
         val unit: String
         if (bytes >= (1024 * 1024)) {

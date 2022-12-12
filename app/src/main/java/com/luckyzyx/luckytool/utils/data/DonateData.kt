@@ -52,6 +52,7 @@ object DonateData {
             add(DonateInfo("渐渐简单", 5.0))
             add(DonateInfo("Steven", 20.0))
             add(DonateInfo("翳鮦峃", 6.66))
+            add(DonateInfo("缺德导航", 15.0))
         }
     }
 }

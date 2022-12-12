@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.apps.screenshot.RemoveScreenshotPrivacyLimit
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
-class Screenshot : YukiBaseHooker() {
+class HookScreenshot : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.oplus.screenshot"){
             //移除截屏隐私限制

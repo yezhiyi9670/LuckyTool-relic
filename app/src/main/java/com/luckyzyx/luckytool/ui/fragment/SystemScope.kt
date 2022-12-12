@@ -859,6 +859,22 @@ class LockScreen : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.remove_top_lock_screen_icon)
+                    key = "remove_top_lock_screen_icon"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_lock_screen_fingerprint_icon)
+                    key = "remove_lock_screen_fingerprint_icon"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_lock_screen_bottom_left_button)
                     key = "remove_lock_screen_bottom_left_button"
                     setDefaultValue(false)

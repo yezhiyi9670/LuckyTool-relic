@@ -7,7 +7,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
-class Desktop : YukiBaseHooker() {
+class HookDesktop : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.coloros.alarmclock"){
             //移除桌面时钟组件红一

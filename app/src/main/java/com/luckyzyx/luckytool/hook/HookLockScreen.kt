@@ -1,16 +1,12 @@
 package com.luckyzyx.luckytool.hook
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.apps.systemui.LockScreenCentered
-import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenBottomButton
-import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenBottomSOSButton
-import com.luckyzyx.luckytool.hook.apps.systemui.RemoveLockScreenRedOne
+import com.luckyzyx.luckytool.hook.apps.systemui.*
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
-
-class LockScreen : YukiBaseHooker() {
+class HookLockScreen : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.android.systemui") {
             //移除锁屏时钟红1
@@ -33,6 +29,16 @@ class LockScreen : YukiBaseHooker() {
             //移除SOS紧急联络按钮
             if (prefs(XposedPrefs).getBoolean("remove_lock_screen_bottom_sos_button", false)) {
                 if (SDK >= A13) loadHooker(RemoveLockScreenBottomSOSButton())
+            }
+
+            //移除锁屏顶部图标
+            if (prefs(XposedPrefs).getBoolean("remove_top_lock_screen_icon", false)) {
+                loadHooker(RemoveTopLockScreenIcon())
+            }
+
+            //移除锁屏指纹图标
+            if (prefs(XposedPrefs).getBoolean("remove_lock_screen_fingerprint_icon", false)) {
+                loadHooker(RemoveLockScreenFingerPrintIcon())
             }
 
             //充电小数点常驻

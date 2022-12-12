@@ -12,6 +12,13 @@ class RemoveFullScreenGestureSideSlideBar : YukiBaseHooker() {
                 }
                 intercept()
             }
+            injectMember {
+                method {
+                    name = "onConfigChanged"
+                    paramCount = 1
+                }
+                intercept()
+            }
         }
     }
 }

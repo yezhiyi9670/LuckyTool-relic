@@ -13,6 +13,10 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [添加] 移除个人热点耗电通知  
 [添加] 移除全面屏手势侧滑条  
 [添加] 移除全面屏手势侧滑条背景  
+[修复] 媒体音量阶数失效问题  
+[添加] 移除锁屏顶部图标  
+[添加] 移除锁屏指纹图标  
+[修复] 修复移除侧滑条横屏崩溃问题  
 [Update] Donation list  
 [Fix] Game Assistant v7.16.2  
 [Add] Remove USB connection dialog  
@@ -21,6 +25,10 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Add] Remove personal hotspot power consumption notification  
 [Add] Remove full screen gesture side slide bar  
 [Add] Remove the full screen gesture side slider background  
+[Fix] Media volume order failure problem  
+[Add] Remove the top icon on the lock screen  
+[Add] Remove the lock screen fingerprint icon  
+[Fix] Fix the problem of horizontal screen crash after removing the side slidebar
 
 ### 3.8
 

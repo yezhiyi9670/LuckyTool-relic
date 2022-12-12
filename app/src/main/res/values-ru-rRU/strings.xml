@@ -156,6 +156,8 @@
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
+    <string name="remove_top_lock_screen_icon">Удалить значок верхнего экрана замка</string>
+    <string name="remove_lock_screen_fingerprint_icon">Удалите значок отпечатка пальца с экрана блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
@@ -163,7 +165,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки была удалена</string>
     <string name="remove_72hour_password_verification">Удаление 72-часовой аутентификации по паролю</string>
-    <string name="remove_72hour_password_verification_summary">Удалено ограничение безопасности, запрещающее использовать пароль для разблокировки в течение 72 часов после загрузки. \n Вступит в силу после перезагрузки системы</string>
+    <string name="remove_72hour_password_verification_summary">Удалено ограничение безопасности, запрещающее использовать пароль для разблокировки в течение 72 часов после загрузки. Вступит в силу после перезагрузки системы</string>
     <!--Desktop-->
     <string name="Desktop">Рабочий стол</string>
     <string name="remove_alarmclock_widget_redone">Удалить красные часы в виджете часов на рабочем столе</string>
@@ -222,11 +224,11 @@
     <string name="remove_usb_connect_dialog">Диалоговое окно удаления USB-подключения</string>
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <!--FullScreenGestureRelated-->
-    <string name="FullScreenGestureRelated">Full screen gesture related</string>
-    <string name="remove_full_screen_gesture_side_slidebar">Remove full screen gesture side slide bar</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">Remove the entire side slider</string>
-    <string name="remove_full_screen_gesture_side_slider_background">Remove the full screen gesture side slider background</string>
-    <string name="remove_full_screen_gesture_side_slider_background_summary">Set transparent on black background, keep back icon</string>
+    <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
+    <string name="remove_full_screen_gesture_side_slidebar">Удалить боковой ползунок полноэкранного жеста</string>
+    <string name="remove_full_screen_gesture_side_slidebar_summary">Удалите всю боковую панель слайдеров, Некоторые системы могут привести к сбою SystemUI, обратите внимание на меры защиты</string>
+    <string name="remove_full_screen_gesture_side_slider_background">Удалить фон бокового ползунка на весь экран</string>
+    <string name="remove_full_screen_gesture_side_slider_background_summary">Установить прозрачность на черном фоне, сохранить иконку назад</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>

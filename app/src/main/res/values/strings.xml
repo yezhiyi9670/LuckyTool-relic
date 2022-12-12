@@ -156,6 +156,8 @@
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
+    <string name="remove_top_lock_screen_icon">Remove top lock screen icons</string>
+    <string name="remove_lock_screen_fingerprint_icon">Remove lock screen fingerprint icon</string>
     <string name="remove_lock_screen_bottom_left_button">Remove lockscreen bottom left button</string>
     <string name="remove_lock_screen_bottom_right_camera">Remove lockscreen bottom right camera</string>
     <string name="set_lock_screen_centered">Center the lockscreen component</string>
@@ -163,7 +165,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Remove SOS emergency contact button</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Removed the SOS emergency button at the bottom of the unlock page</string>
     <string name="remove_72hour_password_verification">Remove 72-hour password authentication</string>
-    <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting \n Effective after system restart</string>
+    <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting,Effective after system restart</string>
     <!--Desktop-->
     <string name="Desktop">Desktop Related</string>
     <string name="remove_alarmclock_widget_redone">Remove desktop clock component red one</string>
@@ -224,7 +226,7 @@
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Full screen gesture related</string>
     <string name="remove_full_screen_gesture_side_slidebar">Remove full screen gesture side slide bar</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">Remove the entire side slider</string>
+    <string name="remove_full_screen_gesture_side_slidebar_summary">Remove the entire side slider\nSome systems may cause SystemUI to crash, pay attention to protective measures</string>
     <string name="remove_full_screen_gesture_side_slider_background">Remove the full screen gesture side slider background</string>
     <string name="remove_full_screen_gesture_side_slider_background_summary">Set transparent on black background, keep back icon</string>
     <!--Miscellaneous-->

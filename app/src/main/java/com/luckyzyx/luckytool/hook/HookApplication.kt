@@ -14,7 +14,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
-class Application : YukiBaseHooker() {
+class HookApplication : YukiBaseHooker() {
     override fun onHook() {
 
         //移除自启数量限制

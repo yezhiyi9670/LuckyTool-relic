@@ -50,15 +50,19 @@ class MainHook : IYukiHookXposedInit {
         loadApp(hooker = StatusBarControlCenter())
 
         //桌面
-        loadApp(hooker = Desktop())
+        loadApp(hooker = HookDesktop())
         //锁屏
-        loadApp(hooker = LockScreen())
+        loadApp(hooker = HookLockScreen())
         //截屏
-        loadApp(hooker = Screenshot())
+        loadApp(hooker = HookScreenshot())
         //应用
-        loadApp(hooker = Application())
+        loadApp(hooker = HookApplication())
+        //对话框相关
+        loadApp(hooker = HookDialogRelated())
+        //全面屏手势相关
+        loadApp(hooker = HookGestureRelated())
         //杂项
-        loadApp(hooker = Miscellaneous())
+        loadApp(hooker = HookMiscellaneous())
 
         //相机
         loadApp("com.oplus.camera", HookCamera())
