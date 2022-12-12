@@ -120,8 +120,8 @@
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
     <string name="remove_do_not_disturb_mode_notification">Xóa thông báo chế độ không làm phiền</string>
-    <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Notice: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
+    <string name="remove_hotspot_power_consumption_notification">Xóa cảnh báo tiêu thụ năng lượng của điểm truy cập cá nhân</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Lưu ý: Bật điểm truy cập cá nhân trong thời gian dài sẽ làm tăng mức tiêu thụ điện năng gây nóng máy</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -220,6 +220,12 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Hộp thoại cảnh báo thấy rằng một ứng dụng đang hiển thị trên màn hình hệ thống</string>
     <string name="remove_usb_connect_dialog">Gỡ bỏ thông báo kết nối USB</string>
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
+    <!--FullScreenGestureRelated-->
+    <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
+    <string name="remove_full_screen_gesture_side_slidebar">Xóa thanh trượt cử chỉ toàn màn hình</string>
+    <string name="remove_full_screen_gesture_side_slidebar_summary">Remove the entire side slider</string>
+    <string name="remove_full_screen_gesture_side_slider_background">Xóa nền thanh trượt cử chỉ toàn màn hình</string>
+    <string name="remove_full_screen_gesture_side_slider_background_summary">Set transparent on black background, keep back icon</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>

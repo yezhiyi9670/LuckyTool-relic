@@ -11,12 +11,16 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [修复] 应用分身重启失效问题  
 [添加] 核心破解页面提示  
 [添加] 移除个人热点耗电通知  
+[添加] 移除全面屏手势侧滑条  
+[添加] 移除全面屏手势侧滑条背景  
 [Update] Donation list  
 [Fix] Game Assistant v7.16.2  
 [Add] Remove USB connection dialog  
 [Fix] Application clone restart failure problem  
 [Add] Core Patch Page Tips  
 [Add] Remove personal hotspot power consumption notification  
+[Add] Remove full screen gesture side slide bar  
+[Add] Remove the full screen gesture side slider background  
 
 ### 3.8
 

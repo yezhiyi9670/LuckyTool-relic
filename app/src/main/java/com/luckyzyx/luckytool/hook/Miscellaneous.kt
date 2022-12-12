@@ -45,12 +45,22 @@ class Miscellaneous : YukiBaseHooker() {
                 loadHooker(RemoveUSBConnectDialog())
             }
 
+            //移除全面屏手势侧滑条
+            if (prefs(XposedPrefs).getBoolean("remove_full_screen_gesture_side_slidebar", false)) {
+                loadHooker(RemoveFullScreenGestureSideSlideBar())
+            }
+
+            //移除全面屏手势侧滑条背景
+            if (prefs(XposedPrefs).getBoolean("remove_full_screen_gesture_side_slider_background", false)) {
+                loadHooker(RemoveFullScreenGestureSideSliderBackground())
+            }
         }
         loadApp("com.android.settings"){
             //禁用DPI重启恢复
             if (prefs(XposedPrefs).getBoolean("disable_dpi_reboot_recovery",false)) {
                 loadHooker(DisableDPIRebootRecovery())
             }
+
             @Suppress("ConstantConditionIf")
             if (false){
                 findClass("com.oplus.settings.feature.deviceinfo.DeviceRamInfoItemPreference").hook {

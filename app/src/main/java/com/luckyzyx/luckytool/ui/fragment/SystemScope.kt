@@ -1070,7 +1070,7 @@ class Application : ModulePreferenceFragment() {
     }
 }
 
-class DialogRelated : ModulePreferenceFragment(){
+class DialogRelated : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -1125,6 +1125,32 @@ class DialogRelated : ModulePreferenceFragment(){
     }
 }
 
+class FullScreenGestureRelated : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_full_screen_gesture_side_slidebar)
+                    summary = getString(R.string.remove_full_screen_gesture_side_slidebar_summary)
+                    key = "remove_full_screen_gesture_side_slidebar"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_full_screen_gesture_side_slider_background)
+                    summary = getString(R.string.remove_full_screen_gesture_side_slider_background_summary)
+                    key = "remove_full_screen_gesture_side_slider_background"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
 class Miscellaneous : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
@@ -1143,6 +1169,23 @@ class Miscellaneous : ModulePreferenceFragment() {
                             })
                         true
                     }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.FullScreenGestureRelated)
+                    summary = getString(R.string.remove_full_screen_gesture_side_slidebar)+","+getString(R.string.remove_full_screen_gesture_side_slider_background)
+                    key = "FullScreenGestureRelated"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_miscellaneous_to_fullScreenGestureRelated,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+
                 }
             )
             addPreference(

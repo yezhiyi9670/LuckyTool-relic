@@ -208,11 +208,7 @@
             android:id="@+id/multiFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.MultiFragment"
             android:label="{title_label}"
-            tools:layout="@layout/fragment_multi">
-        <action
-                android:id="@+id/action_multiFragment_self"
-                app:destination="@id/multiFragment" />
-    </fragment>
+            tools:layout="@layout/fragment_multi" />
     <fragment
             android:id="@+id/statusBar"
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBar"
@@ -264,6 +260,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_miscellaneous_to_fullScreenGestureRelated"
+                app:destination="@id/fullScreenGestureRelated"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/alphaBackupPro"
@@ -280,6 +283,10 @@
     <fragment
             android:id="@+id/dialogRelated"
             android:name="com.luckyzyx.luckytool.ui.fragment.DialogRelated"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/fullScreenGestureRelated"
+            android:name="com.luckyzyx.luckytool.ui.fragment.FullScreenGestureRelated"
             android:label="{title_label}" />
 
 </navigation>

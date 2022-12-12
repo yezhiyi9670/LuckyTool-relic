@@ -58,7 +58,6 @@ open class MainActivity : AppCompatActivity() {
 //        initAgreement(true)
 
         checkPrefsRW()
-
     }
 
     open fun initAgreement(status: Boolean) {
