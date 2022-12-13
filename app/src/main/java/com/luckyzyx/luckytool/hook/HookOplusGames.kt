@@ -26,9 +26,6 @@ class HookOplusGames : YukiBaseHooker() {
             loadHooker(EnableEVATheme())
         }
 
-        //启用原神定制UI
-//        if (prefs(XposedPrefs).getBoolean("enable_genshin_impact_theme",false)) loadHooker(EnableGenshinImpactTheme())
-
         //启用GPU控制器
         if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) {
             loadHooker(EnableAdrenoGpuController())

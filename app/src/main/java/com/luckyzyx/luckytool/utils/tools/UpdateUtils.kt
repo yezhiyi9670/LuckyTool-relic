@@ -16,6 +16,7 @@ import com.drake.net.utils.scopeNet
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
+import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.dp
 import com.luckyzyx.luckytool.utils.data.toast
@@ -23,6 +24,7 @@ import org.json.JSONObject
 import java.io.File
 import java.text.DecimalFormat
 
+@Obfuscate
 object UpdateUtils {
     @Suppress("UNUSED_PARAMETER")
     fun checkUpdate(context: Context, versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
@@ -62,7 +64,7 @@ object UpdateUtils {
                             }
                         )
                         .setPositiveButton(context.getString(R.string.direct_update)) { _, _ ->
-                            downloadFile(context, fileName, downloadUrl)
+                            readyDownload(context, fileName, downloadUrl)
                         }
                         .setNeutralButton(context.getString(R.string.go_download_page)) { _, _ ->
                             context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(downloadPage)))
@@ -71,6 +73,22 @@ object UpdateUtils {
                 }
             }
         }
+    }
+
+    private fun readyDownload(context: Context, fileName: String, downloadUrl: String) {
+        val list = arrayOf("Github", "ddlc", "zyun", "ghproxy")
+        val cdn = arrayOf(
+            "",
+            "https://gh.ddlc.top/",
+            "https://proxy.zyun.vip/",
+            "https://ghproxy.com/"
+        )
+        MaterialAlertDialogBuilder(context).apply {
+            setTitle("选择下载源")
+            setItems(list) { _, which ->
+                downloadFile(context, fileName, cdn[which] + downloadUrl)
+            }
+        }.show()
     }
 
     const val coolmarketUrl = "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"

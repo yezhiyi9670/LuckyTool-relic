@@ -224,10 +224,8 @@
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
-    <string name="remove_full_screen_gesture_side_slidebar">Xóa thanh trượt cử chỉ toàn màn hình</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">Xóa toàn bộ thanh trượt bên\nMột số ứng dụng có thể khiến SystemUI gặp sự cố, hãy chú ý đến các biện pháp bảo vệ</string>
-    <string name="remove_full_screen_gesture_side_slider_background">Xóa nền thanh trượt cử chỉ toàn màn hình</string>
-    <string name="remove_full_screen_gesture_side_slider_background_summary">Đặt trong suốt trên nền đen, giữ lại biểu tượng</string>
+    <string name="remove_side_sliderbar_icon">Remove side sliderbar icon</string>
+    <string name="remove_side_sliderbar_black_background">Remove the black background of the side slider</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>

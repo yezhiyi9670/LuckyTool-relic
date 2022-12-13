@@ -7,6 +7,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 class RemoveHotspotPowerConsumptionNotification : YukiBaseHooker() {
     override fun onHook() {
         //Source WifiApOverworkNotificationReceiver
+//        tethering_wifi_ap_overwork_tips_content
         findClass("com.oplus.wirelesssettings.wifi.tether.WifiApOverworkNotificationReceiver").hook {
             injectMember {
                 method {

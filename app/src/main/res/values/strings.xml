@@ -225,10 +225,8 @@
     <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Full screen gesture related</string>
-    <string name="remove_full_screen_gesture_side_slidebar">Remove full screen gesture side slide bar</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">Remove the entire side slider\nSome systems may cause SystemUI to crash, pay attention to protective measures</string>
-    <string name="remove_full_screen_gesture_side_slider_background">Remove the full screen gesture side slider background</string>
-    <string name="remove_full_screen_gesture_side_slider_background_summary">Set transparent on black background, keep back icon</string>
+    <string name="remove_side_sliderbar_icon">Remove side sliderbar icon</string>
+    <string name="remove_side_sliderbar_black_background">Remove the black background of the side slider</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Miscellaneous</string>
     <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>

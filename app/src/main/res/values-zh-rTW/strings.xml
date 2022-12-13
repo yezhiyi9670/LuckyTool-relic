@@ -224,10 +224,8 @@
     <string name="remove_usb_connect_dialog_summary">连接USB后默认选择文件传输模式</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">全面屏手势相关</string>
-    <string name="remove_full_screen_gesture_side_slidebar">移除全面屏手势侧滑条</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">移除整个侧滑条\n部分系统可能会导致系统崩溃，注意防护措施</string>
-    <string name="remove_full_screen_gesture_side_slider_background">移除全面屏手势侧滑条背景</string>
-    <string name="remove_full_screen_gesture_side_slider_background_summary">黑色背景设置透明，保留返回图标</string>
+    <string name="remove_side_sliderbar_icon">移除侧滑条图标</string>
+    <string name="remove_side_sliderbar_black_background">移除侧滑条黑色背景</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>

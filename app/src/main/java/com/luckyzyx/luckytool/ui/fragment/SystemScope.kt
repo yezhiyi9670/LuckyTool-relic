@@ -1147,18 +1147,16 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_full_screen_gesture_side_slidebar)
-                    summary = getString(R.string.remove_full_screen_gesture_side_slidebar_summary)
-                    key = "remove_full_screen_gesture_side_slidebar"
+                    title = getString(R.string.remove_side_sliderbar_icon)
+                    key = "remove_side_sliderbar_icon"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_full_screen_gesture_side_slider_background)
-                    summary = getString(R.string.remove_full_screen_gesture_side_slider_background_summary)
-                    key = "remove_full_screen_gesture_side_slider_background"
+                    title = getString(R.string.remove_side_sliderbar_black_background)
+                    key = "remove_side_sliderbar_black_background"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1190,7 +1188,7 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.FullScreenGestureRelated)
-                    summary = getString(R.string.remove_full_screen_gesture_side_slidebar)+","+getString(R.string.remove_full_screen_gesture_side_slider_background)
+                    summary = getString(R.string.remove_side_sliderbar_icon)+","+getString(R.string.remove_side_sliderbar_black_background)
                     key = "FullScreenGestureRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {

@@ -3,6 +3,15 @@
 出现问题请带上作用域 APK 和模块 LOG 页面截图 前往 TG 群组反馈  
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG group for feedback
 
+### 4.0
+
+[添加] CDN下载更新源  
+[适配] 游戏助手v7.16.3  
+[移除] 游戏助手EVA主题取消支持v7.14.0之前的版本  
+[适配] 高性能模式通知  
+[适配] A11移除侧滑条  
+[修复] C12移除侧滑条崩溃问题  
+
 ### 3.9
 
 [更新] 捐赠名单  

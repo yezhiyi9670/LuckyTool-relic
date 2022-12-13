@@ -156,8 +156,8 @@
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
-    <string name="remove_top_lock_screen_icon">Удалить значок верхнего экрана замка</string>
-    <string name="remove_lock_screen_fingerprint_icon">Удалите значок отпечатка пальца с экрана блокировки</string>
+    <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
+    <string name="remove_lock_screen_fingerprint_icon">Удалить иконку отпечатка пальца на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
@@ -225,10 +225,8 @@
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
-    <string name="remove_full_screen_gesture_side_slidebar">Удалить боковой ползунок полноэкранного жеста</string>
-    <string name="remove_full_screen_gesture_side_slidebar_summary">Удалите всю боковую панель слайдеров, Некоторые системы могут привести к сбою SystemUI, обратите внимание на меры защиты</string>
-    <string name="remove_full_screen_gesture_side_slider_background">Удалить фон бокового ползунка на весь экран</string>
-    <string name="remove_full_screen_gesture_side_slider_background_summary">Установить прозрачность на черном фоне, сохранить иконку назад</string>
+    <string name="remove_side_sliderbar_icon">Удалить значок боковой панели слайдеров</string>
+    <string name="remove_side_sliderbar_black_background">Уберите черный фон бокового слайдера</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
