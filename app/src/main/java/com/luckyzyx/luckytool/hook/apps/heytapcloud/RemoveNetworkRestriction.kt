@@ -4,9 +4,7 @@ import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
-import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.highcapable.yukihookapi.hook.type.java.StringType
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 import java.util.*
 
@@ -19,43 +17,19 @@ class RemoveNetworkRestriction : YukiBaseHooker() {
             }
         }
         val code = appSet[1].toInt()
-        if (code >= 70500) {
-            searchClass {
-                from("com.oplus.nearx.track.internal.utils").absolute()
-                constructor().count(1)
-                field().count(3)
+        findClass("com.oplus.nearx.track.internal.utils.NetworkUtil").hook {
+            injectMember {
                 method {
                     param(ContextClass)
-                }.count(4)
-                method {
-                    param(IntType)
+                    paramCount = 1
                     returnType = IntType
-                }.count(1)
-                method {
-                    param(ContextClass)
-                    returnType = IntType
-                }.count(1)
-                method {
-                    param(ContextClass)
-                    returnType = StringType
-                }.count(1)
-                method {
-                    param(ContextClass)
-                    returnType = BooleanType
-                }.count(2)
-            }.get()?.hook {
-                injectMember {
-                    method {
-                        param(ContextClass)
-                        returnType = IntType
-                    }
-                    afterHook {
-                        if (result<Int>() == 1) result = 2
-                    }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> RemoveNetworkRestriction")
-            return
+                afterHook {
+                    if (result<Int>() == 1) result = 2
+                }
+            }
         }
+        if (code >= 60500) return
         //Source NetworkUtil
         //Search -> equalsIgnoreCase Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
@@ -70,14 +44,12 @@ class RemoveNetworkRestriction : YukiBaseHooker() {
                 param(IntType)
             }.count(4..5)
             method {
-                modifiers { isPublic && isStatic }
                 emptyParam()
                 returnType = IntType
             }.count(1)
         }.get()?.hook {
             injectMember {
                 method {
-                    modifiers { isPublic && isStatic }
                     emptyParam()
                     returnType = IntType
                 }

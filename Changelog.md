@@ -11,6 +11,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [适配] 高性能模式通知  
 [适配] A11移除侧滑条  
 [修复] C12移除侧滑条崩溃问题  
+[适配] 云服务移动数据网络限制  
 
 ### 3.9
 
