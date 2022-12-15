@@ -3,7 +3,11 @@
 出现问题请带上作用域 APK 和模块 LOG 页面截图 前往 TG 群组反馈  
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG group for feedback
 
-### 4.0
+### v4.1
+
+[优化] 仅对ColorOS官方安装器生效  
+
+### v4.0
 
 [添加] CDN下载更新源  
 [适配] 游戏助手v7.16.3  
@@ -18,9 +22,9 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Fix] High performance mode notification  
 [Fix] A11 remove side slide bar  
 [Fix] C12 removes the side slide crash problem  
-[Fix] Cloud service mobile data network limitation  
+[Fix] Cloud service mobile data network limitation
 
-### 3.9
+### v3.9
 
 [更新] 捐赠名单  
 [适配] 游戏助手v7.16.2  
@@ -47,7 +51,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Add] Remove the lock screen fingerprint icon  
 [Fix] Fix the problem of horizontal screen crash after removing the side slidebar
 
-### 3.8
+### v3.8
 
 [更新] 捐赠名单  
 [适配] 云服务v6.5.1  
@@ -64,7 +68,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Fix] C12 application package installer  
 [Optimize] The problem that the system scope function takes effect in real time
 
-### 3.7
+### v3.7
 
 [更新] 捐赠名单  
 [添加] 移除高性能模式图标  
@@ -83,7 +87,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Fix] Game Assistant v7.16.0  
 [Add] Peak refresh rate scheme
 
-### 3.6
+### v3.6
 
 [更新] 捐赠名单  
 [适配] C13高性能通知  
@@ -104,7 +108,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Optimize] Donate dialog layout  
 [Fix] AlphaBackupPro
 
-### 3.5
+### v3.5
 
 [更新] 核心破解同步上游v4.2  
 [适配] C13应用高耗电通知  
@@ -127,7 +131,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Add] Game assistant event support mode  
 [Fix] Try to fix 72 hours password authentication (Beta)
 
-### 3.4
+### v3.4
 
 [更新] 捐赠名单  
 [添加] LSPosed快捷方式  
@@ -152,7 +156,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Add] Battery performance mode and standby optimization  
 [Modify] Some functions belong to the location
 
-### 3.3
+### v3.3
 
 [更新] 捐赠名单  
 [添加] 移除状态栏移动数据图标  
@@ -189,7 +193,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Fix] C12 battery screen power saving entrance  
 [Remove] Check update time
 
-### 3.2
+### v3.2
 
 [更新] 捐赠名单  
 [适配] C13高性能通知  
@@ -218,7 +222,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Add] Status Bar Icon Vertical Centering  
 [Fix] Status bar clock switch issue
 
-### 3.1
+### v3.1
 
 [更新] 捐赠名单  
 [添加] 自动检查更新开关  
@@ -243,7 +247,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [Fix] Status bar clock layout  
 [Remove] LightSpeed VM related features
 
-### 3.0
+### v3.0
 
 [更新] 捐赠名单列表  
 [添加] 移除游戏助手启动动画  

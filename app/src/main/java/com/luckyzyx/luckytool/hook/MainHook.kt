@@ -57,6 +57,8 @@ class MainHook : IYukiHookXposedInit {
         loadApp(hooker = HookScreenshot())
         //应用
         loadApp(hooker = HookApplication())
+        //应用安装器
+        loadApp(hooker = HookPackageInstaller())
         //对话框相关
         loadApp(hooker = HookDialogRelated())
         //全面屏手势相关

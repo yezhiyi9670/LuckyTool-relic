@@ -55,11 +55,11 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     arrayList.add(versionName)
     arraySet.add("0.$versionName")
     val versionCode = safeOf(default = "null") { packageInfo.longVersionCode }
-    arrayList.add(versionCode.toString())
+    arrayList.add("$versionCode")
     arraySet.add("1.$versionCode")
     @Suppress("DEPRECATION") //修复获取null
     val versionCommit = safeOf(default = "null") { commitInfo.metaData.get("versionCommit") }
-    arrayList.add(versionCommit.toString())
+    arrayList.add("$versionCommit")
     arraySet.add("2.$versionCommit")
     putStringSet(XposedPrefs, packName, arraySet)
     return arrayList
