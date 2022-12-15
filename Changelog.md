@@ -12,6 +12,13 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [适配] A11移除侧滑条  
 [修复] C12移除侧滑条崩溃问题  
 [适配] 云服务移动数据网络限制  
+[Add] CDN download update source  
+[Fix] Game Assistant v7.16.3  
+[Remove] Game Assistant EVA theme cancels support for versions prior to v7.14.0  
+[Fix] High performance mode notification  
+[Fix] A11 remove side slide bar  
+[Fix] C12 removes the side slide crash problem  
+[Fix] Cloud service mobile data network limitation  
 
 ### 3.9
 
