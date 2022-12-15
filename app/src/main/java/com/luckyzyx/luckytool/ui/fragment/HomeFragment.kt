@@ -171,10 +171,13 @@ class HomeFragment : Fragment() {
             text = """
                 ${getString(R.string.brand)}: ${Build.BRAND}
                 ${getString(R.string.model)}: ${Build.MODEL}
+                ${getString(R.string.product)}: ${Build.PRODUCT}
                 ${getString(R.string.system)}: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]
                 ${getString(R.string.device)}: ${Build.DEVICE}
+                ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
                 ${getString(R.string.build_version)}: ${Build.DISPLAY}
                 ${getString(R.string.flash)}: ${getFlashInfo()}
+                ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
             """.trimIndent()
             setOnLongClickListener {
                 if (!context.getBoolean(SettingsPrefs, "hidden_function", false)) {

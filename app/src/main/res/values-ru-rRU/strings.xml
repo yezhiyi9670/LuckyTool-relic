@@ -284,9 +284,11 @@
     <string name="fps_summary">Конфликты с другими процессами динамической частоты обновления, такими как dfps</string>
     <string name="brand">Бренд</string>
     <string name="model">Модель</string>
+    <string name="product">Продукт</string>
+    <string name="market_name">Market Name</string>
     <string name="flash">Память</string>
     <string name="build_version">Сборка</string>
-    <string name="device">Устройство</string>
+    <string name="device">Device</string>
     <string name="system">Система</string>
     <string name="fps_mode_title">Параметры</string>
     <string name="fps_tips">Функция автозапуска будет срабатывать через 1 секунду после разблокировки экрана\nПараметр 1 можно только перезапустить и восстановить, отключите функцию автозапуска при восстановлении</string>

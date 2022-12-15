@@ -32,8 +32,7 @@ val A13 get() = Build.VERSION_CODES.TIRAMISU
  * 获取ColorOS版本
  * @return [String]
  */
-val getColorOSVersion
-    get() = safeOf(default = "null") {
+val getColorOSVersion get() = safeOf(default = "null") {
         "com.oplus.os.OplusBuild".toClass().let {
             it.field { name = "VERSIONS" }.ignored().get().array<String>()
                 .takeIf { e -> e.isNotEmpty() }
@@ -225,6 +224,16 @@ val getGuid
     }
 
 /**
+ * 获取prop数据
+ * @param key String
+ */
+fun getProp(key: String) = safeOf(default = "null") {
+    ShellUtils.execCommand("getprop $key", true, true).successMsg.let {
+        formatSpace(it)
+    }
+}
+
+/**
  * 跳转工程模式
  * @param context Context
  */
@@ -294,15 +303,23 @@ fun Context.setDesktopIcon(value: Boolean) {
 }
 
 /**
- * 获取闪存信息(移除字符前空格)
+ * 获取闪存信息
  */
 fun getFlashInfo(): String = safeOf(default = "null") {
-    val info =
-        ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).successMsg
+    ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).successMsg.let {
+        formatSpace(it)
+    }
+}
+
+/**
+ * 移除字符串前空格
+ * @param string String
+ */
+fun formatSpace(string: String): String {
     val pattern = Pattern.compile("\\p{L}")
-    val matcher = pattern.matcher(info)
-    if (!matcher.find()) return@safeOf "null"
-    return info.substring(matcher.start())
+    val matcher = pattern.matcher(string)
+    if (!matcher.find()) return "null"
+    return string.substring(matcher.start())
 }
 
 /**

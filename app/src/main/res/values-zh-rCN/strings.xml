@@ -283,6 +283,8 @@
     <string name="fps_summary">与其他动态刷新率进程冲突, 例如dfps</string>
     <string name="brand">品牌</string>
     <string name="model">型号</string>
+    <string name="product">产品</string>
+    <string name="market_name">市场名</string>
     <string name="flash">闪存</string>
     <string name="build_version">构建</string>
     <string name="device">设备</string>

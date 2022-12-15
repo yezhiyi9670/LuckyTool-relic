@@ -283,6 +283,8 @@
     <string name="fps_summary">Xung đột với các quy trình tốc độ làm mới động khác, chẳng hạn như “dpfs”</string>
     <string name="brand">Nhãn hiệu</string>
     <string name="model">Tên đời máy</string>
+    <string name="product">Sản phẩm</string>
+    <string name="market_name">Market Name</string>
     <string name="flash">Bộ nhớ</string>
     <string name="build_version">Phiên bản</string>
     <string name="device">Thiết bị</string>

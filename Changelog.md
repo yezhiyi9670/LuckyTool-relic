@@ -7,6 +7,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 
 [优化] 仅对ColorOS官方安装器生效  
 [适配] C11,C12媒体音量阶数  
+[添加] 主页系统参数  
 
 ### v4.0
 
