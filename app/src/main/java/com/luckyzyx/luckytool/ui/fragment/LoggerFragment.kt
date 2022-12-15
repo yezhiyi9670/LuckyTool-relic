@@ -30,13 +30,13 @@ class LoggerFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.loglistView.apply {
-            adapter = LogInfoViewAdapter(context,listData)
+            adapter = LogInfoViewAdapter(context, listData)
             layoutManager = LinearLayoutManager(context)
         }
         if (listData.isEmpty()) loadLogger()
     }
 
-    private fun loadLogger(){
+    private fun loadLogger() {
         listData.clear()
         requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
             requireActivity().dataChannel(scope).obtainLoggerInMemoryData { its ->
@@ -60,7 +60,7 @@ class LoggerFragment : Fragment() {
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ResourceUtils.isNightMode(resources.configuration)){
+            if (ResourceUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
