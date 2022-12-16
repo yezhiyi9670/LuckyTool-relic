@@ -6,6 +6,9 @@ import com.luckyzyx.luckytool.hook.apps.android.*
 class HookAndroid : YukiBaseHooker() {
 
     override fun onHook() {
+        //SystemProperties
+        loadHooker(HookSystemProperties())
+
         //移除状态栏上层警告
         loadHooker(RemoveStatusBarTopNotification())
 

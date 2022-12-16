@@ -1,8 +1,6 @@
 package com.luckyzyx.luckytool.hook.apps.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class MediaVolumeLevel : YukiBaseHooker() {
@@ -13,7 +11,7 @@ class MediaVolumeLevel : YukiBaseHooker() {
         findClass("com.android.server.audio.AudioService").hook {
             injectMember {
                 constructor {
-                    paramCount = if (SDK >= A13) 5 else 3
+                    paramCount(3..5)
                 }
                 afterHook {
                     field {

@@ -12,6 +12,7 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [优化] VPN激活通知生效问题  
 [适配] C11移除满电通知  
 [适配] C11USB连接对话框  
+[优化] 媒体音量阶数生效问题  
 
 ### v4.0
 
