@@ -5,9 +5,13 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 
 ### v4.1
 
-[优化] 仅对ColorOS官方安装器生效  
+[优化] 应用安装器功能生效问题  
 [适配] C11,C12媒体音量阶数  
 [添加] 主页系统参数  
+[适配] C11移除ADB安装确认  
+[优化] VPN激活通知生效问题  
+[适配] C11移除满电通知  
+[适配] C11USB连接对话框  
 
 ### v4.0
 

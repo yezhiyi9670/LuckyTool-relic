@@ -1,12 +1,16 @@
 package com.luckyzyx.luckytool.hook.apps.android
 
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.XposedPrefs
 
 class ADBInstallConfirm : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusPackageInstallInterceptManager
-        findClass("com.android.server.pm.OplusPackageInstallInterceptManager").hook {
+        VariousClass(
+            "com.android.server.pm.ColorPackageInstallInterceptManager", //A11
+            "com.android.server.pm.OplusPackageInstallInterceptManager"
+        ).hook {
             injectMember {
                 method {
                     name = "allowInterceptAdbInstallInInstallStage"

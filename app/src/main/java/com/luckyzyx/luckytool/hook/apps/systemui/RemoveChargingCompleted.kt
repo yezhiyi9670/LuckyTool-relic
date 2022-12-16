@@ -7,6 +7,7 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 class RemoveChargingCompleted : YukiBaseHooker() {
     override fun onHook() {
         VariousClass(
+            "com.coloros.systemui.notification.power.ColorosPowerNotificationWarnings", //A11
             "com.oplusos.systemui.notification.power.OplusPowerNotificationWarnings",
             "com.coloros.systemui.notification.power.ColorosPowerNotificationWarnings"
         ).hook {
@@ -14,6 +15,7 @@ class RemoveChargingCompleted : YukiBaseHooker() {
                 method {
                     name = "showChargeErrorDialog"
                     param(IntType)
+                    paramCount = 1
                 }
                 beforeHook {
                     if (args(0).int() == 7) resultNull()
