@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Целью является расширение и оптимизация системы ColorOS</string>
+    <string name="xposeddescription">Xposed модуль, оптимизированный для расширений в ColorOS</string>
     <!-- Nav Menu -->
     <string name="nav_function">Функции</string>
-    <string name="nav_home">Главная</string>
+    <string name="nav_home">Главная страница</string>
     <string name="nav_other">Прочее</string>
     <string name="nav_log">Логи</string>
     <string name="nav_setting">Настройки</string>
     <string name="fragment_source">Исходный код</string>
     <!-- Settings -->
     <string name="theme_title">Тема</string>
-    <string name="theme_title_summary">Автоматически обновит страницу</string>
+    <string name="theme_title_summary">Страница будет обновлена автоматически</string>
     <string name="use_dynamic_color">Динамический цвет</string>
-    <string name="use_dynamic_color_summary">Использовать динамический цвет</string>
+    <string name="use_dynamic_color_summary">Использовать динамические цвета</string>
     <string name="dark_theme">Темная тема</string>
     <string name="follow_system">Выбор системы</string>
     <string name="language">Язык</string>
@@ -285,10 +285,10 @@
     <string name="brand">Бренд</string>
     <string name="model">Модель</string>
     <string name="product">Продукт</string>
-    <string name="market_name">Market Name</string>
+    <string name="market_name">Название магазина</string>
     <string name="flash">Память</string>
     <string name="build_version">Сборка</string>
-    <string name="device">Device</string>
+    <string name="device">Устройство</string>
     <string name="system">Система</string>
     <string name="fps_mode_title">Параметры</string>
     <string name="fps_tips">Функция автозапуска будет срабатывать через 1 секунду после разблокировки экрана\nПараметр 1 можно только перезапустить и восстановить, отключите функцию автозапуска при восстановлении</string>

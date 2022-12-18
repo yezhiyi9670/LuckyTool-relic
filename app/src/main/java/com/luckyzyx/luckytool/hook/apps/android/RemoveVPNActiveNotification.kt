@@ -9,7 +9,7 @@ class RemoveVPNActiveNotification : YukiBaseHooker() {
         // Source OplusVpnHelper
         if (!prefs(XposedPrefs).getBoolean("remove_vpn_active_notification", false)) return
         VariousClass(
-            "com.android.server.connectivity.VpnExtImpl",
+            "com.android.server.connectivity.VpnExtImpl", //C12
             "com.android.server.connectivity.OplusVpnHelper"
         ).hook {
             injectMember {

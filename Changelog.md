@@ -13,6 +13,14 @@ If there is a problem, please bring a screenshot of the scope APK and module LOG
 [适配] C11移除满电通知  
 [适配] C11USB连接对话框  
 [优化] 媒体音量阶数生效问题  
+[Fix] App installer function takes effect  
+[Fix] C11, C12 media volume order  
+[Add] home page system parameters  
+[Fix] C11 remove ADB installation confirmation  
+[Fix] VPN activation notification takes effect  
+[Fix] Remove full battery notification from C11  
+[Fix] C11USB connection dialog  
+[Optimize] Media volume order takes effect  
 
 ### v4.0
 
