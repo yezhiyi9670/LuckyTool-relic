@@ -8,6 +8,7 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
 import android.os.Bundle
+import android.os.Environment
 import android.os.Process
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -34,6 +35,7 @@ import kotlin.system.exitProcess
 @Obfuscate
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
+    private var isStart = false
     private val KEY_PREFIX = MainActivity::class.java.name + '.'
     private val EXTRA_SAVED_INSTANCE_STATE = KEY_PREFIX + "SAVED_INSTANCE_STATE"
 
@@ -58,19 +60,39 @@ open class MainActivity : AppCompatActivity() {
 //        initAgreement(true)
 
         checkPrefsRW()
+        if (!isStart) return
+
+        checkPermissions()
+
+    }
+
+    private fun checkPermissions() {
+        //所有文件访问权限
+        val status = Environment.isExternalStorageManager()
+        if (!status) {
+            Intent("android.settings.MANAGE_ALL_FILES_ACCESS_PERMISSION").apply {
+                startActivity(this)
+            }
+            toast("务必给予模块所有文件访问权限!")
+        }
     }
 
     open fun initAgreement(status: Boolean) {
-        if (status && getBoolean(SettingsPrefs,"read_agreement",false)) return
+        if (status && getBoolean(SettingsPrefs, "read_agreement", false)) return
         MaterialAlertDialogBuilder(this).apply {
             setView(
                 NestedScrollView(context).apply {
                     addView(
                         MaterialTextView(context).apply {
                             setPadding(20.dp, 20.dp, 20.dp, 0)
-                            val userAgreement = "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/UserAgreement.md'>《用户协议》</a>"
-                            val privacyPolicy = "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/PrivacyAgreement.md'>《隐私政策》</a>"
-                            text = Html.fromHtml("${getString(R.string.read_agreement)} $userAgreement $privacyPolicy",0)
+                            val userAgreement =
+                                "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/UserAgreement.md'>《用户协议》</a>"
+                            val privacyPolicy =
+                                "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/PrivacyAgreement.md'>《隐私政策》</a>"
+                            text = Html.fromHtml(
+                                "${getString(R.string.read_agreement)} $userAgreement $privacyPolicy",
+                                0
+                            )
                             movementMethod = LinkMovementMethod.getInstance()
                         }
                     )
@@ -78,67 +100,78 @@ open class MainActivity : AppCompatActivity() {
             )
             setCancelable(false)
             setPositiveButton(android.R.string.ok) { _, _ ->
-                putBoolean(SettingsPrefs,"read_agreement",true)
+                putBoolean(SettingsPrefs, "read_agreement", true)
             }
             setNeutralButton(android.R.string.cancel) { _, _ ->
-                putBoolean(SettingsPrefs,"read_agreement",false)
+                putBoolean(SettingsPrefs, "read_agreement", false)
                 exitProcess(0)
             }
             show()
         }
     }
 
-    private fun initDynamicShortcuts(){
-        val status = packageManager.getComponentEnabledSetting(ComponentName(packageName, "${packageName}.Hide"))
-        if(status == 2) return
+    private fun initDynamicShortcuts() {
+        val status = packageManager.getComponentEnabledSetting(
+            ComponentName(
+                packageName,
+                "${packageName}.Hide"
+            )
+        )
+        if (status == 2) return
         val shortcutManager = getSystemService(ShortcutManager::class.java)
         val lsposed = ShortcutInfo.Builder(this, "lsposed").apply {
             setShortLabel("LSPosed")
-            setIcon(Icon.createWithResource(packageName,R.mipmap.android_icon))
+            setIcon(Icon.createWithResource(packageName, R.mipmap.android_icon))
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut","lsposed")
-            intent.setClassName(packageName,AliveActivity::class.java.name)
+            intent.putExtra("Shortcut", "lsposed")
+            intent.setClassName(packageName, AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
         val oplusGames = ShortcutInfo.Builder(this, "oplusGames").apply {
             setShortLabel(getAppLabel("com.oplus.games").toString())
-            setIcon(Icon.createWithResource(packageName,R.mipmap.oplusgames_icon))
+            setIcon(Icon.createWithResource(packageName, R.mipmap.oplusgames_icon))
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut","oplusGames")
-            intent.setClassName("com.oplus.games","business.compact.activity.GameBoxCoverActivity")
+            intent.putExtra("Shortcut", "oplusGames")
+            intent.setClassName("com.oplus.games", "business.compact.activity.GameBoxCoverActivity")
             setIntent(intent)
         }.build()
         val chargingTest = ShortcutInfo.Builder(this, "chargingTest").apply {
             setShortLabel(getString(R.string.charging_test))
-            setIcon(Icon.createWithResource(packageName,R.drawable.ic_baseline_charging_station_24))
+            setIcon(
+                Icon.createWithResource(
+                    packageName,
+                    R.drawable.ic_baseline_charging_station_24
+                )
+            )
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut","chargingTest")
-            intent.setClassName(packageName,AliveActivity::class.java.name)
+            intent.putExtra("Shortcut", "chargingTest")
+            intent.setClassName(packageName, AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
         val processManager = ShortcutInfo.Builder(this, "processManager").apply {
             setShortLabel(getString(R.string.process_manager))
-            setIcon(Icon.createWithResource(packageName,R.mipmap.android_icon))
+            setIcon(Icon.createWithResource(packageName, R.mipmap.android_icon))
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut","processManager")
-            intent.setClassName(packageName,AliveActivity::class.java.name)
+            intent.putExtra("Shortcut", "processManager")
+            intent.setClassName(packageName, AliveActivity::class.java.name)
             setIntent(intent)
         }.build()
-        shortcutManager.dynamicShortcuts = listOf(lsposed,oplusGames,chargingTest,processManager)
+        shortcutManager.dynamicShortcuts = listOf(lsposed, oplusGames, chargingTest, processManager)
     }
 
-    private fun initNavigationFragment(){
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+    private fun initNavigationFragment() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.nav_other,
             R.id.nav_function,
             R.id.nav_home,
-            R.id.nav_log    ,
+            R.id.nav_log,
             R.id.nav_setting,
         ).build()
         setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController,appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.toolbar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
@@ -148,10 +181,10 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun checkTheme() {
-        if (ThemeUtils(this).isDynamicColor()){
+        if (ThemeUtils(this).isDynamicColor()) {
             DynamicColors.applyToActivityIfAvailable(this)
         }
-        when(getString(SettingsPrefs,"dark_theme","MODE_NIGHT_FOLLOW_SYSTEM")){
+        when (getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")) {
             "MODE_NIGHT_FOLLOW_SYSTEM" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
             "MODE_NIGHT_NO" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             "MODE_NIGHT_YES" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -166,11 +199,17 @@ open class MainActivity : AppCompatActivity() {
             getSharedPreferences(XposedPrefs, MODE_WORLD_READABLE)
             getSharedPreferences(MagiskPrefs, MODE_WORLD_READABLE)
             getSharedPreferences(OtherPrefs, MODE_WORLD_READABLE)
+            isStart = true
         } catch (ignored: SecurityException) {
+            isStart = false
             MaterialAlertDialogBuilder(this)
                 .setCancelable(false)
                 .setMessage(getString(R.string.unsupported_xposed))
-                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int -> exitProcess(0) }
+                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                    exitProcess(
+                        0
+                    )
+                }
                 //.setNegativeButton(R.string.ignore, null)
                 .show()
         }
@@ -209,7 +248,12 @@ open class MainActivity : AppCompatActivity() {
             context.getAppVersion(scope)
         }
         safeOfNull {
-            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(XposedPrefs, "statusbar_clock_show_second", false)) {
+            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(
+                    XposedPrefs,
+                    "statusbar_clock_show_second",
+                    false
+                )
+            ) {
                 commands.add("settings put secure clock_seconds 0")
             } else {
                 commands.add("settings put secure clock_seconds 0")

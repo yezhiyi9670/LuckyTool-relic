@@ -284,7 +284,7 @@
     <string name="brand">Nhãn hiệu</string>
     <string name="model">Tên đời máy</string>
     <string name="product">Sản phẩm</string>
-    <string name="market_name">Tên chợ</string>
+    <string name="market_name">Tên thương mại</string>
     <string name="flash">Bộ nhớ</string>
     <string name="build_version">Phiên bản</string>
     <string name="device">Thiết bị</string>
@@ -345,4 +345,8 @@
     <string name="adb_port">Cổng ADB</string>
     <string name="enable_remote_adb_debugging">Bật gỡ lỗi ADB từ xa</string>
     <string name="adb_debug_port_cannot_null">Cổng gỡ lỗi ADB không được để trống</string>
+    <!--LOG Fragment-->
+    <string name="log_save_success">LOG Saved Success!</string>
+    <string name="log_save_failed">LOG Saved Failed!</string>
+    <string name="log_data_is_empty">LOG Data is empty!</string>
 </resources>

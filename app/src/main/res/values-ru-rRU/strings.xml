@@ -4,7 +4,7 @@
     <string name="xposeddescription">Xposed модуль, оптимизированный для расширений в ColorOS</string>
     <!-- Nav Menu -->
     <string name="nav_function">Функции</string>
-    <string name="nav_home">Главная страница</string>
+    <string name="nav_home">Главная</string>
     <string name="nav_other">Прочее</string>
     <string name="nav_log">Логи</string>
     <string name="nav_setting">Настройки</string>
@@ -285,7 +285,7 @@
     <string name="brand">Бренд</string>
     <string name="model">Модель</string>
     <string name="product">Продукт</string>
-    <string name="market_name">Название магазина</string>
+    <string name="market_name">Имя устройства</string>
     <string name="flash">Память</string>
     <string name="build_version">Сборка</string>
     <string name="device">Устройство</string>
@@ -346,4 +346,8 @@
     <string name="adb_port">Порт ADB</string>
     <string name="enable_remote_adb_debugging">Включить удаленную отладку ADB</string>
     <string name="adb_debug_port_cannot_null">Порт отладки ADB не может быть пустым</string>
+    <!--LOG Fragment-->
+    <string name="log_save_success">LOG Saved Success!</string>
+    <string name="log_save_failed">LOG Saved Failed!</string>
+    <string name="log_data_is_empty">LOG Data is empty!</string>
 </resources>
