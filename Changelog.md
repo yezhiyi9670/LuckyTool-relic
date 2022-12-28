@@ -3,18 +3,18 @@
 出现问题请带上作用域 APK 和模块 LOG 页面截图 前往 TG 群组反馈  
 If there is a problem, please bring a screenshot of the scope APK and module LOG page to the TG group for feedback
 
-### v4.2
+### v4.2.0
 
 [更新] 捐赠名单  
 [适配] C13.1应用耗电异常通知  
 [适配] C13.1应用自启数量限制  
 [适配] C13.1电池部分入口  
-[添加] LOG日志复制与导出  
-[Updated] Donation list  
-[Adaptation] C13.1 Application Power Consumption Abnormal Notification  
-[Adaptation] C13.1 application self-start quantity limit  
-[Adaptation] C13.1 battery part entrance  
-[Add] LOG log copy and export  
+[添加] 异常日志复制与导出  
+[Update] Donation list  
+[Fix] C13.1 Application Power Consumption Abnormal Notification  
+[Fix] C13.1 application self-start quantity limit  
+[Fix] C13.1 battery part entrance  
+[Add] Exception log copy and export  
 
 ### v4.1
 

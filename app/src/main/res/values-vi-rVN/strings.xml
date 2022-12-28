@@ -346,7 +346,7 @@
     <string name="enable_remote_adb_debugging">Bật gỡ lỗi ADB từ xa</string>
     <string name="adb_debug_port_cannot_null">Cổng gỡ lỗi ADB không được để trống</string>
     <!--LOG Fragment-->
-    <string name="log_save_success">LOG Saved Success!</string>
-    <string name="log_save_failed">LOG Saved Failed!</string>
-    <string name="log_data_is_empty">LOG Data is empty!</string>
+    <string name="log_save_success">Nhật ký lưu thành công!</string>
+    <string name="log_save_failed">Nhật ký lưu thất bại!</string>
+    <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
 </resources>
