@@ -21,11 +21,6 @@ class HookOplusGames : YukiBaseHooker() {
             loadHooker(EnableDeveloperPage())
         }
 
-        //启用EVA主题
-        if (prefs(XposedPrefs).getBoolean("enable_eva_theme", false)) {
-            loadHooker(EnableEVATheme())
-        }
-
         //启用GPU控制器
         if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) {
             loadHooker(EnableAdrenoGpuController())

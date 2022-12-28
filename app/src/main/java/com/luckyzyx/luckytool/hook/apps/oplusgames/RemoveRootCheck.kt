@@ -11,10 +11,20 @@ import com.highcapable.yukihookapi.hook.type.java.StringType
 class RemoveRootCheck : YukiBaseHooker() {
     override fun onHook() {
         //Source COSASDKManager
-        //Search -> dynamic_feature_cool_ex / getSupportCoolEx bundle -> Method
+        //Search getSupportCoolEx new Bundle -> Class
+        //Search getFeature -> dynamic_feature_cool_ex
         //isSafe:null; -> isSafe:0
         searchClass {
-            from("com.oplus.x", "com.oplus.f", "com.oplus.a0", "yp", "hr", "br", "ir").absolute()
+            from(
+                "com.oplus.x",
+                "com.oplus.f",
+                "com.oplus.a0",
+                "yp",
+                "hr",
+                "br",
+                "ir",
+                "com.oplus.cosa"
+            ).absolute()
             field { type = StringType }.count(5..6)
             field { type = BooleanType }.count(2..4)
             field { type = IntType }.count(1..2)

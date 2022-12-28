@@ -1359,14 +1359,6 @@ class OplusGames : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.enable_eva_theme)
-                    key = "enable_eva_theme"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.enable_genshin_impact_theme)
                     summary = getString(R.string.enable_genshin_impact_theme_summary)
                     key = "enable_genshin_impact_theme"

@@ -73,9 +73,15 @@ class HomeFragment : Fragment() {
         if (requireActivity().getBoolean(SettingsPrefs, "auto_check_update", true)) UpdateUtils.checkUpdate(
             requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
             binding.updateView.apply {
-                isVisible = true
-                text = getString(R.string.check_update_hint) + "  -->  $versionName($versionCode)"
-                binding.statusCard.setOnClickListener { function() }
+                if (getVersionCode < versionCode) {
+                    isVisible = true
+                    text = getString(R.string.check_update_hint) + "  -->  $versionName($versionCode)"
+                    binding.statusCard.setOnClickListener { function() }
+                }
+                binding.statusCard.setOnLongClickListener {
+                    if (context.getBoolean(SettingsPrefs, "hidden_function", false)) function()
+                    true
+                }
             }
         }
 
@@ -236,12 +242,13 @@ class HomeFragment : Fragment() {
                 setTitle(getString(R.string.about_author))
                 setView(
                     MaterialTextView(context).apply {
+                        var hideFunc = context.getBoolean(SettingsPrefs,"hidden_function",false)
                         setPadding(20.dp)
-                        text = "忆清鸣、luckyzyx"
+                        text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                         setOnLongClickListener{
-                            val hideFunc = context.getBoolean(SettingsPrefs,"hidden_function",false)
                             context.putBoolean(SettingsPrefs,"hidden_function",!hideFunc)
-                            context.toast("${!hideFunc}")
+                            hideFunc = context.getBoolean(SettingsPrefs,"hidden_function",false)
+                            text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                             true
                         }
                     }

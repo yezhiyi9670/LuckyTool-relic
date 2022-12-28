@@ -41,11 +41,6 @@ object UpdateUtils {
                 val downloadCount = getJSONArray("assets").getJSONObject(0).optString("download_count")
                 val fileSize = getJSONArray("assets").getJSONObject(0).optString("size").toFloat()
 //                val updateTime = optString("published_at").replace("T", " ").replace("Z", "")
-                //版本号大于等于云端,提示最新版本
-                if (versionCode >= code.toInt()) {
-//                    context.toast("已是最新版本v${versionName}!")
-                    return@scopeNet
-                }
                 result(name, code.toInt()) {
                     MaterialAlertDialogBuilder(context)
                         .setTitle(context.getString(R.string.check_update_hint))

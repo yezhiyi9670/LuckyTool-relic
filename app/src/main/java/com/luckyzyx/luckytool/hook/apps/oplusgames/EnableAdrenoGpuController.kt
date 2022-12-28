@@ -13,7 +13,7 @@ class EnableAdrenoGpuController : YukiBaseHooker() {
         //Search isSupportGpuControlPanel
         searchClass {
             //714,715,716
-            from("fc", "gc", "ec").absolute()
+            from("fc", "gc", "ec", "x7").absolute()
             field {
                 type = ListClass
             }.count(5)

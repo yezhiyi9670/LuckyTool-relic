@@ -13,12 +13,12 @@ class EnableSupportCompetitionMode : YukiBaseHooker() {
         //Search isSupportCompetitionMode
         searchClass {
             //714,715,716
-            from("od", "rd", "pd").absolute()
+            from("od", "rd", "pd", "com.coloros.gamespaceui.module.gamefocus").absolute()
             field { type = ListClass }.count(1)
             method {
                 emptyParam()
                 returnType = ListClass
-            }.count(2)
+            }.count(1..2)
             method {
                 param(StringType, ArrayListClass)
             }.count(1)
