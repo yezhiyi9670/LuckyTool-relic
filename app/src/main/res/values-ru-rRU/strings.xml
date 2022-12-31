@@ -29,6 +29,13 @@
     <string name="hide_xp_page_icon">Скрыть иконки пунктов</string>
     <string name="hide_desktop_appicon">Скрыть иконку приложения</string>
     <string name="hide_desktop_appicon_summary">LSPosed должен быть отключен, чтобы иконка на рабочем столе отображалась</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">Backup/Restore/Clear</string>
+    <string name="backup_data">Резервное копирование данных</string>
+    <string name="restore_data">Восстановление данных</string>
+    <string name="data_backup_complete">Data backup completed!</string>
+    <string name="data_backup_error">Data backup error!</string>
+    <string name="data_restore_complete">Импорт данных завершен!</string>
     <!-- About -->
     <string name="about_title">Информация</string>
     <string name="about_author">Авторы</string>

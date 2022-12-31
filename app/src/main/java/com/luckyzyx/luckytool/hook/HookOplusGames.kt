@@ -10,17 +10,14 @@ class HookOplusGames : YukiBaseHooker() {
         if (prefs(XposedPrefs).getBoolean("remove_root_check", false)) {
             loadHooker(RemoveRootCheck())
         }
-
         //简洁页面
         if (prefs(XposedPrefs).getBoolean("remove_startup_animation", false)) {
             loadHooker(RemoveStartupAnimation())
         }
-
         //启用开发者选项
         if (prefs(XposedPrefs).getBoolean("enable_developer_page", false)) {
             loadHooker(EnableDeveloperPage())
         }
-
         //启用GPU控制器
         if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) {
             loadHooker(EnableAdrenoGpuController())

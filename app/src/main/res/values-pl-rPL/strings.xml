@@ -29,6 +29,13 @@
     <string name="hide_xp_page_icon">Ukryj ikony aplikacji z karty „Funkcje”</string>
     <string name="hide_desktop_appicon">Ukryj ikonę aplikacji</string>
     <string name="hide_desktop_appicon_summary">Wymaga wyłączenia „Wymuś aplikacjom pokazywanie ikon launchera” w ustawieniach LSPosed</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">Backup/Restore/Clear</string>
+    <string name="backup_data">Backup Data</string>
+    <string name="restore_data">Restore Data</string>
+    <string name="data_backup_complete">Data backup completed!</string>
+    <string name="data_backup_error">Data backup error!</string>
+    <string name="data_restore_complete">Data restore complete!</string>
     <!-- About -->
     <string name="about_title">O aplikacji</string>
     <string name="about_author">Twórca</string>
@@ -67,7 +74,7 @@
     <string name="package_name">Nazwa pakietu</string>
     <string name="version">Wersja</string>
     <!-- CorePatch -->
-    <string name="ColorOSCorePatchTip">Dla oficjalnego instalatora ColorOS należy włączyć dodatkowe funkcje, aby móc z tych korzystać:\nFunkcje - Aplikacje > Instalowanie aplikacji</string>
+    <string name="ColorOSCorePatchTip">Dla oficjalnego instalatora ColorOS należy włączyć dodatkowe funkcje, aby móc z tych korzystać:\nFunkcje - Aplikacje &gt; Instalowanie aplikacji</string>
     <string name="corepatch">Główna łatka</string>
     <string name="corepatch_summary">Usuń limity instalowania aplikacji (Android 11–13)</string>
     <string name="downgr">Obniżanie wersji aplikacji</string>
@@ -171,8 +178,8 @@
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie z zegara czerwoną cyfrę \"1\"</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
     <string name="remove_appicon_dot">Usuń oznaczenie zainstalowanej nowej aplikacji</string>
-    <string name="show_charging_ripple">Charging display charging texture waves</string>
-    <string name="show_charging_ripple_summary">Valid only when connecting to charger</string>
+    <string name="show_charging_ripple">Pokaż animację fali podczas ładowania</string>
+    <string name="show_charging_ripple_summary">Widoczne przy podłączaniu do ładowarki</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
     <string name="launcher_layout_row_colume">Umożliwia zwiększenie liczby wierszy i kolumn układu pulpitu</string>
@@ -211,73 +218,73 @@
     <string name="replase_aosp_installer">Zastąp menedżer pakietów</string>
     <string name="replase_aosp_installer_summary">Podmienia instalator aplikacji na ten z AOSP</string>
     <!--FloatingWindowDialogRelated-->
-    <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
-    <string name="disable_duplicate_floating_window">Disable Duplicate Window</string>
-    <string name="disable_duplicate_floating_window_summary">Do not show heads up again when copying text</string>
-    <string name="disable_headphone_high_volume_warning">Disable headset high volume warning</string>
-    <string name="disable_headphone_high_volume_warning_summary">Disable the warning dialog that appears when turning up the volume after connecting the headset</string>
-    <string name="remove_low_battery_dialog_warning">Remove low battery dialog warning</string>
-    <string name="remove_low_battery_dialog_warning_summary">Remove warning dialogs for power save mode and super power save</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop">Remove warning dialog that app displaying over the desktop</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Warning dialog box found that an application displaying over the system desktop</string>
-    <string name="remove_usb_connect_dialog">Remove USB connection dialog</string>
-    <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
+    <string name="FloatingWindowDialogRelated">Dostosuj pływające i dialogowe okno</string>
+    <string name="disable_duplicate_floating_window">Wyłącz zduplikowane okno</string>
+    <string name="disable_duplicate_floating_window_summary">Nie pokazuj pływającego okna podczas kopiowania tekstu</string>
+    <string name="disable_headphone_high_volume_warning">Wyłącz ostrzeżenie o bezpiecznej głośności</string>
+    <string name="disable_headphone_high_volume_warning_summary">Wyłącz okno dialogowe z ostrzeżeniem, które pojawia się podczas zwiększania głośności, gdy podłączono słuchawki</string>
+    <string name="remove_low_battery_dialog_warning">Usuń ostrzeżenie o niskim poziomie baterii</string>
+    <string name="remove_low_battery_dialog_warning_summary">Usuwa okno dialogowe z ostrzeżeniem o niskim poziomie baterii</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">Usuń ostrzeżenie \"Aplikacja wyświetla się nad innymi aplikacjami\"</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Usuwa okno dialogowe z ostrzeżeniem, że aplikacja wyświetla się nad innymi aplikacjami</string>
+    <string name="remove_usb_connect_dialog">Usuń okno połączenia USB</string>
+    <string name="remove_usb_connect_dialog_summary">Tryb przesyłania plików jest wybierany domyślnie po podłączeniu USB</string>
     <!--FullScreenGestureRelated-->
-    <string name="FullScreenGestureRelated">Full screen gesture related</string>
-    <string name="remove_side_sliderbar_icon">Remove side sliderbar icon</string>
-    <string name="remove_side_sliderbar_black_background">Remove the black background of the side slider</string>
+    <string name="FullScreenGestureRelated">Gesty pełnoekranowe</string>
+    <string name="remove_side_sliderbar_icon">Usuń ikonę bocznego suwaka</string>
+    <string name="remove_side_sliderbar_black_background">Usuń czarne tło bocznego suwaka</string>
     <!--Miscellaneous-->
-    <string name="Miscellaneous">Miscellaneous</string>
-    <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
-    <string name="disable_otg_auto_off">Disable OTG Auto-off</string>
-    <string name="disable_otg_auto_off_summary">Disable OTG for more than ten minutes to automatically turn off</string>
-    <string name="disable_dpi_reboot_recovery">Disable DPI Reboot Recovery</string>
-    <string name="disable_dpi_reboot_recovery_summary">This module is not responsible for any failure to boot due to the setting of too large DPI value\nTo restore the default DPI, you need to enable this feature and reset the default DPI value after restarting the scope</string>
-    <string name="remove_storage_limit">Remove storage limit</string>
-    <string name="remove_storage_limit_summary">Remove the restriction that this folder cannot be used</string>
-    <string name="media_volume_level">Media volume level</string>
-    <string name="media_volume_level_summary">Set to 0 to disable this function, restart the system to take effect</string>
-    <string name="open_screen_power_save">Open battery screen power saving entrance</string>
-    <string name="open_screen_power_save_summary">Settings - Battery - More settings - Screen Power Saving</string>
-    <string name="open_battery_health">Open battery health entrance</string>
-    <string name="open_battery_health_summary">Settings - Battery - Battery Health</string>
-    <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
-    <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
+    <string name="Miscellaneous">Pozostałe funkcje</string>
+    <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>
+    <string name="disable_otg_auto_off">Wyłącz auto. wyłączanie OTG</string>
+    <string name="disable_otg_auto_off_summary">Połączenie OTG nie zostanie wyłączone po 10 minutach bezczynności</string>
+    <string name="disable_dpi_reboot_recovery">Wyłącz restart do recovery DPI</string>
+    <string name="disable_dpi_reboot_recovery_summary">Moduł nie ponosi odpowiedzialności za brak możliwości uruchomienia systemu z powodu ustawienia zbyt dużej wartości DPI. Aby przywrócić domyślne DPI, należy włączyć tę funkcję, zrestartować uruchomione procesy i przywrócić domyślną wartość DPI</string>
+    <string name="remove_storage_limit">Usuń ograniczenie dostępu do pamięci</string>
+    <string name="remove_storage_limit_summary">Usuwa ograniczenie \"Ten folder nie może być używany\", podczas próby przypisania folderu dla danej aplikacji</string>
+    <string name="media_volume_level">Kroki głośności multimediów</string>
+    <string name="media_volume_level_summary">0 = funkcja wyłączona. Zrestartuj urządzenie, aby zastosować zmiany</string>
+    <string name="open_screen_power_save">Dodaj wejście do oszczędzania energii ekranu</string>
+    <string name="open_screen_power_save_summary">Ustawienia > Bateria > Więcej ustawień > Oszczędzanie energii ekranu</string>
+    <string name="open_battery_health">Dodaj wejście do \"Stan baterii\"</string>
+    <string name="open_battery_health_summary">Ustawienia > Bateria > Stan baterii</string>
+    <string name="performance_mode_and_standby_optimization">Tryb wydajności i optymalizacja trybu czuwania</string>
+    <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
+    <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
+    <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
     <!--Camera-->
-    <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
-    <string name="enable_10_bit_image_support">Enable 10 bit Images Support</string>
+    <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
+    <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
     <!--OplusGames-->
-    <string name="remove_root_check">Remove Game Filter Limit</string>
-    <string name="remove_root_check_summary">Remove Root Detection Limit for Game Filter</string>
-    <string name="remove_startup_animation">Remove startup animation</string>
-    <string name="enable_developer_page">Enable developer page</string>
-    <string name="enable_eva_theme">Enable EVA theme</string>
-    <string name="enable_developer_page_summary">After enabling this feature and restarting the scope, \n can jump to it via the shortcut portal</string>
-    <string name="enable_genshin_impact_theme">Enable Genshin Impact Limited Edition UI</string>
-    <string name="enable_genshin_impact_theme_summary">No need to set up in Game Assistant</string>
-    <string name="enable_adreno_gpu_controller">Enable Adreno GPU Controller</string>
-    <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
+    <string name="remove_root_check">Usuń limit filtrów gier</string>
+    <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>
+    <string name="remove_startup_animation">Wyłącz animację startową</string>
+    <string name="enable_developer_page">Włącz tryb programisty</string>
+    <string name="enable_eva_theme">Włącz motyw EVA</string>
+    <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>
+    <string name="enable_genshin_impact_theme">Włącz motyw Genshin Impact</string>
+    <string name="enable_genshin_impact_theme_summary">Nie ma potrzeby ustawiania w Asystencie Gier</string>
+    <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
+    <string name="enable_support_competition_mode">Włącz obsługę trybu współpracy</string>
     <!--CloudService-->
-    <string name="remove_network_limit">Remove Data Network Limit</string>
-    <string name="remove_network_limit_summary">Remove backup/restore limitations that cannot use mobile data</string>
+    <string name="remove_network_limit">Usuń limit danych sieciowych</string>
+    <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>
     <!--ThemeStore-->
-    <string name="unlock_themestore_vip">Unlock some features VIP</string>
-    <string name="unlock_themestore_vip_summary">Unlock part of the feature and try it on your own</string>
+    <string name="unlock_themestore_vip">Odblokuj niektóre funkcje VIP</string>
+    <string name="unlock_themestore_vip_summary">Odblokuj część funkcji i wypróbuj je na własnej skórze</string>
     <!--Screenshot-->
     <string name="Screenshot">Zrzut ekranu</string>
-    <string name="remove_system_screenshot_delay">Remove system screenshot delay</string>
-    <string name="remove_system_screenshot_delay_summary">First screenshot may not take effect</string>
-    <string name="remove_screenshot_privacy_limit">Remove screenshot privacy limit</string>
-    <string name="remove_screenshot_privacy_limit_summary">Remove restrictions on privacy which cannot be intercepted. Disable FLAG_SECURE if this does not take effect</string>
-    <string name="disable_flag_secure">Disable FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits, add corresponding APP fields</string>
+    <string name="remove_system_screenshot_delay">Usuń opóźnienie</string>
+    <string name="remove_system_screenshot_delay_summary">Być może nie zadziała na pierwszym zrzucie ekranu</string>
+    <string name="remove_screenshot_privacy_limit">Usuń ograniczenie prywatności</string>
+    <string name="remove_screenshot_privacy_limit_summary">Zezwól na wykonywanie zrzutów ekranu w aplikacjach, które na to nie pozwalają. Wyłącz FLAG_SECURE, jeśli to nie zadziała</string>
+    <string name="disable_flag_secure">Wyłącz FLAG_SECURE</string>
+    <string name="disable_flag_secure_summary">Odblokowuje możliwość wykonywania zrzutów i nagrywania ekranu aplikacji, które na to nie zezwalają</string>
     <!--Everyimage-->
-    <string name="skip_startup_page">Skip startup page</string>
-    <string name="vip_download">Download original</string>
+    <string name="skip_startup_page">Pomiń stronę początkową</string>
+    <string name="vip_download">Pobierz oryginał</string>
     <!--AlphaBackupPro-->
-    <string name="remove_pro_license">Remove license detection</string>
+    <string name="remove_pro_license">Usuń detekcję licencji</string>
     <!--Home-->
     <string name="fps_title">Odświeżanie ekranu</string>
     <string name="fps_summary">Koliduje z innymi procesami dynamicznego odświeżania, np. \"dpfs\"</string>
@@ -296,27 +303,27 @@
     <string name="module_notactive">Nieaktywny</string>
     <string name="module_version">Wersja modułu: </string>
     <string name="enable_module">Aktywuj moduł</string>
-    <string name="version_name">Version Name</string>
-    <string name="download_count">Download Count</string>
-    <string name="file_size">File Size</string>
-    <string name="update_time">Update Time</string>
-    <string name="update_logs">Update logs</string>
-    <string name="check_update_hint">New version detected!</string>
-    <string name="go_download_page">Go to the download page</string>
-    <string name="copy_download_link">Copy the download link</string>
-    <string name="direct_update">Direct update</string>
-    <string name="install_apk_toast">Please enable unknown app installation permission!</string>
-    <string name="downloading">Downloading</string>
-    <string name="download_progress">Download Progress</string>
-    <string name="download_speed">Download Speed</string>
-    <string name="remain_size">Remain Size</string>
-    <string name="downloaded">Downloaded</string>
-    <string name="used_time">Used Time</string>
-    <string name="remain_time">Remain Time</string>
-    <string name="install_button">Install now</string>
-    <string name="cancel_button">Cancel download</string>
-    <string name="fps_autostart">Auto-start</string>
-    <string name="device_guid">Device GUID</string>
+    <string name="version_name">Nazwa wersji</string>
+    <string name="download_count">Licznik pobrań</string>
+    <string name="file_size">Rozmiar</string>
+    <string name="update_time">Czas aktualizacji</string>
+    <string name="update_logs">Aktualizuj logi</string>
+    <string name="check_update_hint">Wykryto nową wersję!</string>
+    <string name="go_download_page">Przejdź do strony pobierania</string>
+    <string name="copy_download_link">Skopiuj link pobierania</string>
+    <string name="direct_update">Aktualizuj</string>
+    <string name="install_apk_toast">Proszę zezwolić na instalowanie aplikacji z nieznanych źródeł!</string>
+    <string name="downloading">Pobieranie</string>
+    <string name="download_progress">Postęp pobierania</string>
+    <string name="download_speed">Prędkość pobierania</string>
+    <string name="remain_size">Pozostały rozmiar</string>
+    <string name="downloaded">Pobrano</string>
+    <string name="used_time">Czas użycia</string>
+    <string name="remain_time">Pozostały czas</string>
+    <string name="install_button">Instaluj teraz</string>
+    <string name="cancel_button">Anuluj pobieranie</string>
+    <string name="fps_autostart">Automatyczny start</string>
+    <string name="device_guid">GUID urządzenia</string>
     <!-- Logs -->
     <string name="log_no_data">Brak problemów</string>
     <!-- Other -->
@@ -333,11 +340,11 @@
     <string name="camera_algo_page">Algorytmy kamery</string>
     <string name="browser_concise_mode">Tryb zwięzły przeglądarki</string>
     <string name="battery_health">Stan baterii</string>
-    <string name="system_not_support">The current system does not support!</string>
+    <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
-    <string name="GameAssistantRelated">Game Assistant Related</string>
-    <string name="game_assistant_page">Game Assistant Page</string>
-    <string name="game_assistant_develop_page">Game Assistant Developer Page</string>
+    <string name="GameAssistantRelated">Asystent gier</string>
+    <string name="game_assistant_page">Strona asystenta gier</string>
+    <string name="game_assistant_develop_page">Strona programisty Asystenta Gier</string>
     <string name="AOSPSettingsPage">Ustawienia AOSP</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Zdalne debugowanie ADB</string>

@@ -77,3 +77,12 @@ setOnBackPressed(false) {
     })
 }
 ```
+
+TextView链接点击跳转
+```kotlin
+MaterialTextView(context).apply {
+    val url = "<a href='https://www.baidu.com'>百度</a>"
+    text = Html.fromHtml("这是百度 $url", 0)
+    movementMethod = LinkMovementMethod.getInstance()
+}
+```

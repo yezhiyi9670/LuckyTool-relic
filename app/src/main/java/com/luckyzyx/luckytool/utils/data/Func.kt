@@ -18,6 +18,8 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig.*
 import com.luckyzyx.luckytool.utils.tools.*
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
@@ -32,7 +34,8 @@ val A13 get() = Build.VERSION_CODES.TIRAMISU
  * 获取ColorOS版本
  * @return [String]
  */
-val getColorOSVersion get() = safeOf(default = "null") {
+val getColorOSVersion
+    get() = safeOf(default = "null") {
         "com.oplus.os.OplusBuild".toClass().let {
             it.field { name = "VERSIONS" }.ignored().get().array<String>()
                 .takeIf { e -> e.isNotEmpty() }
@@ -391,7 +394,6 @@ fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
     }
 }
 
-
 /**
  * 获取指定长度随机字符串
  */
@@ -422,3 +424,49 @@ fun getRandomString(length: Int): String {
 fun hexToByte(inHex: String): Byte {
     return inHex.toInt(16).toByte()
 }
+
+/**
+ * Base64加密
+ * @param string String
+ * @return String
+ */
+fun base64Encode(string: String): String {
+    return Base64.encodeToString(string.toByteArray(), Base64.DEFAULT)
+}
+
+/**
+ * Base64解密
+ * @param string String
+ * @return String
+ */
+fun base64Decode(string: String): String {
+    return String(Base64.decode(string, Base64.DEFAULT))
+}
+
+/**
+ * 从URI文件读取字符串
+ * @param context Context
+ * @param uri Uri
+ * @return String
+ */
+fun readFromUri(context: Context, uri: Uri): String {
+    val stringBuilder = StringBuilder()
+    context.contentResolver.openInputStream(uri)?.use { inputStream ->
+        BufferedReader(InputStreamReader(inputStream)).use { reader ->
+            var line: String? = reader.readLine()
+            while (line != null) {
+                stringBuilder.append(line)
+                line = reader.readLine()
+            }
+        }
+    }
+    return stringBuilder.toString()
+}
+
+
+
+
+
+
+
+

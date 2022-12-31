@@ -10,12 +10,8 @@ import android.graphics.drawable.Icon
 import android.os.Bundle
 import android.os.Environment
 import android.os.Process
-import android.text.Html
-import android.text.method.LinkMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.BuildCompat
-import androidx.core.widget.NestedScrollView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -23,7 +19,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
@@ -35,6 +30,7 @@ import kotlin.system.exitProcess
 @Obfuscate
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
+    //检测Prefs状态
     private var isStart = false
     private val KEY_PREFIX = MainActivity::class.java.name + '.'
     private val EXTRA_SAVED_INSTANCE_STATE = KEY_PREFIX + "SAVED_INSTANCE_STATE"
@@ -57,7 +53,6 @@ open class MainActivity : AppCompatActivity() {
 
         initNavigationFragment()
         initDynamicShortcuts()
-//        initAgreement(true)
 
         checkPrefsRW()
         if (!isStart) return
@@ -68,55 +63,14 @@ open class MainActivity : AppCompatActivity() {
 
     private fun checkPermissions() {
         //所有文件访问权限
-        val status = Environment.isExternalStorageManager()
-        if (!status) {
-            Intent("android.settings.MANAGE_ALL_FILES_ACCESS_PERMISSION").apply {
-                startActivity(this)
-            }
+        if (!Environment.isExternalStorageManager()) {
+            startActivity(Intent("android.settings.MANAGE_ALL_FILES_ACCESS_PERMISSION"))
             toast("务必给予模块所有文件访问权限!")
         }
     }
 
-    open fun initAgreement(status: Boolean) {
-        if (status && getBoolean(SettingsPrefs, "read_agreement", false)) return
-        MaterialAlertDialogBuilder(this).apply {
-            setView(
-                NestedScrollView(context).apply {
-                    addView(
-                        MaterialTextView(context).apply {
-                            setPadding(20.dp, 20.dp, 20.dp, 0)
-                            val userAgreement =
-                                "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/UserAgreement.md'>《用户协议》</a>"
-                            val privacyPolicy =
-                                "<a href='https://gitee.com/luckyzyx/luckyzyx/raw/master/PrivacyAgreement.md'>《隐私政策》</a>"
-                            text = Html.fromHtml(
-                                "${getString(R.string.read_agreement)} $userAgreement $privacyPolicy",
-                                0
-                            )
-                            movementMethod = LinkMovementMethod.getInstance()
-                        }
-                    )
-                }
-            )
-            setCancelable(false)
-            setPositiveButton(android.R.string.ok) { _, _ ->
-                putBoolean(SettingsPrefs, "read_agreement", true)
-            }
-            setNeutralButton(android.R.string.cancel) { _, _ ->
-                putBoolean(SettingsPrefs, "read_agreement", false)
-                exitProcess(0)
-            }
-            show()
-        }
-    }
-
     private fun initDynamicShortcuts() {
-        val status = packageManager.getComponentEnabledSetting(
-            ComponentName(
-                packageName,
-                "${packageName}.Hide"
-            )
-        )
+        val status = packageManager.getComponentEnabledSetting(ComponentName(packageName, "${packageName}.Hide"))
         if (status == 2) return
         val shortcutManager = getSystemService(ShortcutManager::class.java)
         val lsposed = ShortcutInfo.Builder(this, "lsposed").apply {
@@ -215,11 +169,8 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-    private val isParasitic get() = !Process.isApplicationUid(Process.myUid())
-
-    @Suppress("DEPRECATION")
     fun restart() {
-        if (BuildCompat.isAtLeastS() || isParasitic) {
+        if (SDK >= A12 || !Process.isApplicationUid(Process.myUid())) {
             recreate()
         } else {
             try {
@@ -248,12 +199,7 @@ open class MainActivity : AppCompatActivity() {
             context.getAppVersion(scope)
         }
         safeOfNull {
-            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(
-                    XposedPrefs,
-                    "statusbar_clock_show_second",
-                    false
-                )
-            ) {
+            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(XposedPrefs, "statusbar_clock_show_second", false)) {
                 commands.add("settings put secure clock_seconds 0")
             } else {
                 commands.add("settings put secure clock_seconds 0")

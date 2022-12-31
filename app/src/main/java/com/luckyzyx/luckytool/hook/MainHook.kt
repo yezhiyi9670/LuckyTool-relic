@@ -19,17 +19,14 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage
 
 @InjectYukiHookWithXposed
 class MainHook : IYukiHookXposedInit {
-
-    override fun onInit() {
-        configs {
-            debugLog {
-                tag = "LuckyTool"
-                isEnable = true
-                isRecord = true
-                elements(TAG, PRIORITY, PACKAGE_NAME, USER_ID)
-            }
-            isDebug = false
+    override fun onInit() = configs {
+        debugLog {
+            tag = "LuckyTool"
+            isEnable = true
+            isRecord = true
+            elements(TAG, PRIORITY, PACKAGE_NAME, USER_ID)
         }
+        isDebug = false
     }
 
     override fun onHook() = encase {

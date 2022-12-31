@@ -29,6 +29,13 @@
     <string name="hide_xp_page_icon">Ẩn biểu tượng trang XP</string>
     <string name="hide_desktop_appicon">Ẩn biểu tượng ứng dụng trên màn hình chính</string>
     <string name="hide_desktop_appicon_summary">LSPosed phải được tắt để buộc hiển thị các biểu tượng trên màn hình</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">Sao lưu/Khôi phục/Xoá</string>
+    <string name="backup_data">Sao lưu dữ liệu</string>
+    <string name="restore_data">Khôi phục dữ liệu</string>
+    <string name="data_backup_complete">Sao lưu dữ liệu hoàn tất!</string>
+    <string name="data_backup_error">Lỗi sao lưu dữ liệu!</string>
+    <string name="data_restore_complete">Khôi phục dữ liệu hoàn tất!</string>
     <!-- About -->
     <string name="about_title">Thông tin</string>
     <string name="about_author">Tác giả</string>

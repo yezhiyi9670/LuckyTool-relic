@@ -1,7 +1,16 @@
 # 更新日志 Changelog
 
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
-If there is a problem, please bring the scope APK and module LOG to the TG group for feedback  
+If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
+
+### v4.2.2
+
+[更新] 捐赠名单  
+[添加] 功能数据备份恢复  
+[适配] 游戏助手v8.0.3  
+[Update] Donation list  
+[Add] function data backup and restore  
+[Fix] Game Assistant v8.0.3  
 
 ### v4.2.1
 
@@ -10,7 +19,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 检测更新逻辑  
 [Fix] Game Assistant v8.0.1  
 [Remove] Game Assistant EVA theme function  
-[Fix] Check update logic  
+[Fix] Check update logic
 
 ### v4.2.0
 
@@ -23,7 +32,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Fix] C13.1 Application Power Consumption Abnormal Notification  
 [Fix] C13.1 application self-start quantity limit  
 [Fix] C13.1 battery part entrance  
-[Add] Exception log copy and export  
+[Add] Exception log copy and export
 
 ### v4.1
 
