@@ -30,6 +30,13 @@
     <string name="hide_xp_page_icon">Hide XP Page Icon</string>
     <string name="hide_desktop_appicon">Hide desktop app icon</string>
     <string name="hide_desktop_appicon_summary">LSPosed must be turned off to force desktop icons</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">Backup/Restore/Clear</string>
+    <string name="backup_data">Backup Data</string>
+    <string name="restore_data">Restore Data</string>
+    <string name="data_backup_complete">Data backup completed!</string>
+    <string name="data_backup_error">Data backup error!</string>
+    <string name="data_restore_complete">Data restore complete!</string>
     <!-- About -->
     <string name="about_title">About</string>
     <string name="about_author">Author</string>

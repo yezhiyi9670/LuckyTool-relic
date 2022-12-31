@@ -29,6 +29,13 @@
     <string name="hide_xp_page_icon">隐藏XP页面图标</string>
     <string name="hide_desktop_appicon">隐藏桌面APP图标</string>
     <string name="hide_desktop_appicon_summary">必须关闭LSPosed强制显示桌面图标</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">备份/恢复/清除</string>
+    <string name="backup_data">备份数据</string>
+    <string name="restore_data">恢复数据</string>
+    <string name="data_backup_complete">数据备份完成!</string>
+    <string name="data_backup_error">数据备份错误!</string>
+    <string name="data_restore_complete">数据恢复完成!</string>
     <!-- About -->
     <string name="about_title">关于</string>
     <string name="about_author">作者</string>

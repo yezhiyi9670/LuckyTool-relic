@@ -3,9 +3,7 @@
 package com.luckyzyx.luckytool.utils.tools
 
 import android.os.Environment
-import java.io.File
-import java.io.FileWriter
-import java.io.RandomAccessFile
+import java.io.*
 
 class FileUtils {
     /**

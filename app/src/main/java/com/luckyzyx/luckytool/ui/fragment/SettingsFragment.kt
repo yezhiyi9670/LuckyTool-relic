@@ -1,11 +1,14 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Bundle
+import android.util.ArraySet
 import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.preference.*
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +21,99 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.ui.adapter.DonateListAdapter
 import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.clearAll
+import com.luckyzyx.luckytool.utils.tools.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.system.exitProcess
 
 @Obfuscate
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
+    private val backupData =
+        registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
+            if (it != null) {
+                writeBackupData(requireActivity(), it)
+            }
+        }
+    private val restoreData =
+        registerForActivityResult(ActivityResultContracts.GetContent()) {
+            if (it != null) {
+                writeRestoreData(requireActivity(), readFromUri(requireActivity(), it))
+            }
+        }
+
+    private fun writeBackupData(context: Context, uri: Uri) {
+        val json = JSONObject()
+        val dataMapList =
+            context.backupAllPrefs(XposedPrefs, MagiskPrefs, SettingsPrefs, OtherPrefs)
+        dataMapList.keys.forEach { prefs ->
+            val jsons = JSONObject()
+            val data = dataMapList[prefs]
+            data?.keys?.forEach { key ->
+                data[key].apply {
+                    if (this?.javaClass?.simpleName == "HashSet") {
+                        val arr = JSONArray()
+                        val value = (this as HashSet<*>).toTypedArray()
+                        for (i in value.indices) {
+                            arr.put(value[i])
+                        }
+                        jsons.put(key, arr)
+                    } else {
+                        jsons.put(key, this)
+                    }
+                }
+            }
+            json.put(prefs, jsons)
+        }
+        val str = base64Encode(json.toString())
+        try {
+            context.contentResolver.openFileDescriptor(uri, "w")?.use { its ->
+                FileOutputStream(its.fileDescriptor).use {
+                    it.write(str.toByteArray())
+                }
+            }
+            context.toast(getString(R.string.data_backup_complete))
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+            context.toast(getString(R.string.data_backup_error))
+        } catch (e: IOException) {
+            e.printStackTrace()
+            context.toast(getString(R.string.data_backup_error))
+        }
+    }
+
+    private fun writeRestoreData(context: Context, data: String) {
+        val json = JSONObject(base64Decode(data))
+        if (json.length() <= 0) return
+        json.keys().forEach { prefs ->
+            val prefsDatas = json.getJSONObject(prefs)
+            if (prefsDatas.length() > 0) {
+                prefsDatas.keys().forEach { key ->
+                    val value = prefsDatas.get(key)
+                    when (value.javaClass.simpleName) {
+                        "Boolean" -> context.putBoolean(prefs, key, value as Boolean)
+                        "Integer" -> context.putInt(prefs, key, value as Int)
+                        "JSONArray" -> {
+                            val set = ArraySet<String>()
+                            val list = value as JSONArray
+                            for (i in 0 until list.length()) {
+                                set.add(list[i] as String)
+                            }
+                            context.putStringSet(prefs, key, set)
+                        }
+                        "String" -> context.putString(prefs, key, value as String)
+                        else -> context.toast("Error: $key")
+                    }
+                }
+            }
+        }
+        context.toast(getString(R.string.data_restore_complete))
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = SettingsPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -114,6 +205,35 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 }
             )
             addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.backup_restore_clear)
+                    key = "backup_restore_clear"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.backup_data)
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        val fileName =
+                            "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + ".json"
+                        backupData.launch(fileName)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.restore_data)
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        restoreData.launch("application/json")
+                        true
+                    }
+                }
+            )
+            addPreference(
                 Preference(context).apply {
                     title = getString(R.string.clear_all_data)
                     summary = getString(R.string.clear_all_data_summary)
@@ -122,7 +242,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                         MaterialAlertDialogBuilder(context).apply {
                             setMessage(getString(R.string.clear_all_data_message))
                             setPositiveButton(android.R.string.ok) { _, _ ->
-                                context.clearAll(
+                                context.clearAllPrefs(
                                     SettingsPrefs,
                                     XposedPrefs,
                                     OtherPrefs,
@@ -160,7 +280,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                             setItems(donateList) { _, which ->
                                 when (which) {
                                     0 -> {
-                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                        val dialog = MaterialAlertDialogBuilder(
+                                            context,
+                                            dialogCentered
+                                        ).apply {
                                             setTitle(getString(R.string.qq))
                                             setView(R.layout.layout_donate_dialog)
                                         }.show()
@@ -170,7 +293,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                             ?.setImageBitmap(baseDecode(Base64Code.qqCode))
                                     }
                                     1 -> {
-                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                        val dialog = MaterialAlertDialogBuilder(
+                                            context,
+                                            dialogCentered
+                                        ).apply {
                                             setTitle(getString(R.string.wechat))
                                             setView(R.layout.layout_donate_dialog)
                                         }.show()
@@ -180,7 +306,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                             ?.setImageBitmap(baseDecode(Base64Code.wechatCode))
                                     }
                                     2 -> {
-                                        val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                                        val dialog = MaterialAlertDialogBuilder(
+                                            context,
+                                            dialogCentered
+                                        ).apply {
                                             setTitle(getString(R.string.alipay))
                                             setView(R.layout.layout_donate_dialog)
                                         }.show()
@@ -279,17 +408,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(R.id.action_nav_setting_to_sourceFragment)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.privacy_agreement)
-                    summary = getString(R.string.read_agreement)
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        (activity as MainActivity).initAgreement(false)
                         true
                     }
                 }

@@ -31,7 +31,8 @@ class RemoveNetworkRestriction : YukiBaseHooker() {
         }
         if (code >= 60500) return
         //Source NetworkUtil
-        //Search -> equalsIgnoreCase Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
+        //Search getSystemService -> connectivity
+        //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
             from("com.cloud.base.commonsdk.baseutils", "t2").absolute()
             constructor().none()
