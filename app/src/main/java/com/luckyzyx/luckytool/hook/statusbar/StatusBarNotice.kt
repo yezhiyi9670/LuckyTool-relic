@@ -1,11 +1,11 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.apps.battery.RemoveAppHighBatteryConsumptionWarning
-import com.luckyzyx.luckytool.hook.apps.battery.RemoveHighPerformanceModeNotifications
-import com.luckyzyx.luckytool.hook.apps.systemui.*
-import com.luckyzyx.luckytool.hook.apps.wirelesssetting.RemoveHotspotPowerConsumptionNotification
-import com.luckyzyx.luckytool.utils.data.XposedPrefs
+import com.luckyzyx.luckytool.hook.scope.battery.RemoveAppHighBatteryConsumptionWarning
+import com.luckyzyx.luckytool.hook.scope.battery.RemoveHighPerformanceModeNotifications
+import com.luckyzyx.luckytool.hook.scope.systemui.*
+import com.luckyzyx.luckytool.hook.scope.wirelesssetting.RemoveHotspotPowerConsumptionNotification
+import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 class StatusBarNotice : YukiBaseHooker() {
     override fun onHook() {

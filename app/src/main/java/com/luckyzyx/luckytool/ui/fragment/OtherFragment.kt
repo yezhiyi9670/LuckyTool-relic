@@ -21,10 +21,7 @@ import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
 import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getBoolean
-import com.luckyzyx.luckytool.utils.tools.getString
-import com.luckyzyx.luckytool.utils.tools.putString
+import com.luckyzyx.luckytool.utils.tools.*
 
 @Obfuscate
 class OtherFragment : Fragment() {

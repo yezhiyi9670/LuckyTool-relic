@@ -1,9 +1,14 @@
-@file:Suppress("KDocUnresolvedReference", "unused", "MemberVisibilityCanBePrivate")
+@file:Suppress("unused")
 
 package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
 import android.util.ArrayMap
+
+const val SettingsPrefs: String = "SettingsPrefs"
+const val XposedPrefs: String = "XposedPrefs"
+const val OtherPrefs: String = "OtherPrefs"
+const val MagiskPrefs: String = "MagiskPrefs"
 
 fun Context.putString(PrefsName: String?, key: String?, value: String?): Boolean {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_PRIVATE)
@@ -123,20 +128,10 @@ fun Context.backupPrefs(PrefsName: String?): MutableMap<String, *>? {
 }
 
 fun Context.backupAllPrefs(vararg PrefList: String?): ArrayMap<String, MutableMap<String, *>> {
-    val data = ArrayMap<String, MutableMap<String, *>>()
-    PrefList.forEach {
-        val prefs = getSharedPreferences(it, Context.MODE_PRIVATE)
-        data[it] = prefs.all
+    return ArrayMap<String,MutableMap<String,*>>().apply {
+        PrefList.forEach {
+            val prefs = getSharedPreferences(it, Context.MODE_PRIVATE)
+            this[it] = prefs.all
+        }
     }
-    return data
 }
-
-
-
-
-
-
-
-
-
-

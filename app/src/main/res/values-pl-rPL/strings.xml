@@ -30,12 +30,12 @@
     <string name="hide_desktop_appicon">Ukryj ikonę aplikacji</string>
     <string name="hide_desktop_appicon_summary">Wymaga wyłączenia „Wymuś aplikacjom pokazywanie ikon launchera” w ustawieniach LSPosed</string>
     <!--BackupRestoreClear-->
-    <string name="backup_restore_clear">Backup/Restore/Clear</string>
-    <string name="backup_data">Backup Data</string>
-    <string name="restore_data">Restore Data</string>
-    <string name="data_backup_complete">Data backup completed!</string>
-    <string name="data_backup_error">Data backup error!</string>
-    <string name="data_restore_complete">Data restore complete!</string>
+    <string name="backup_restore_clear">Kopia zapasowa i przywracanie</string>
+    <string name="backup_data">Wykonaj kopię</string>
+    <string name="restore_data">Przywróć kopię</string>
+    <string name="data_backup_complete">Wykonano kopię zapasową!</string>
+    <string name="data_backup_error">Błąd kopii zapasowej!</string>
+    <string name="data_restore_complete">Kopia została przywrócona!</string>
     <!-- About -->
     <string name="about_title">O aplikacji</string>
     <string name="about_author">Twórca</string>
@@ -307,7 +307,7 @@
     <string name="download_count">Licznik pobrań</string>
     <string name="file_size">Rozmiar</string>
     <string name="update_time">Czas aktualizacji</string>
-    <string name="update_logs">Aktualizuj logi</string>
+    <string name="update_logs">Dziennik zmian</string>
     <string name="check_update_hint">Wykryto nową wersję!</string>
     <string name="go_download_page">Przejdź do strony pobierania</string>
     <string name="copy_download_link">Skopiuj link pobierania</string>

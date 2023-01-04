@@ -217,7 +217,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         val fileName =
-                            "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + ".json"
+                            "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + "_backup.json"
                         backupData.launch(fileName)
                         true
                     }
@@ -325,8 +325,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                                 RecyclerView(context).apply {
                                                     setPadding(0, 10.dp, 0, 10.dp)
                                                     adapter = DonateListAdapter(
-                                                        context,
-                                                        DonateData.getDonateList()
+                                                        context, DonateData.getData()
                                                     )
                                                     layoutManager = LinearLayoutManager(context)
                                                 }

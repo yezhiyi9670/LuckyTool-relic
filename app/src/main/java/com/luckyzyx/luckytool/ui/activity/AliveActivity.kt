@@ -7,9 +7,7 @@ import android.view.WindowManager
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getBoolean
-import com.luckyzyx.luckytool.utils.tools.getInt
+import com.luckyzyx.luckytool.utils.tools.*
 
 @Suppress("DEPRECATION")
 @Obfuscate

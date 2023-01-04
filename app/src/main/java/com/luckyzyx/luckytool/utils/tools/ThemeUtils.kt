@@ -4,7 +4,6 @@ package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
 import com.google.android.material.color.DynamicColors
-import com.luckyzyx.luckytool.utils.data.SettingsPrefs
 
 class ThemeUtils(context: Context) {
 

@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.apps.systemui.NetworkSpeed
+import com.luckyzyx.luckytool.hook.scope.systemui.NetworkSpeed
 
 class StatusBarNetWorkSpeed : YukiBaseHooker() {
     override fun onHook() {

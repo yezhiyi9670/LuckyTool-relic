@@ -2,13 +2,8 @@ package com.luckyzyx.luckytool.utils.data
 
 import java.io.Serializable
 
-data class DonateInfo(
-    val name: String,
-    val money: Double
-) : Serializable
-
 object DonateData {
-    fun getDonateList(): ArrayList<DonateInfo> {
+    fun getData(): ArrayList<DonateInfo> {
         return ArrayList<DonateInfo>().apply {
             add(DonateInfo("是小奶糖啊", 21.0))
             add(DonateInfo("Kimjaejiang", 5.0))
@@ -60,3 +55,8 @@ object DonateData {
         }
     }
 }
+
+data class DonateInfo(
+    val name: String,
+    val money: Double
+) : Serializable

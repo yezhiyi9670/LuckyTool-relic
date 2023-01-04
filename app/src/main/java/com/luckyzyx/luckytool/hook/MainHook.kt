@@ -7,13 +7,14 @@ import com.highcapable.yukihookapi.hook.factory.encase
 import com.highcapable.yukihookapi.hook.log.loggerE
 import com.highcapable.yukihookapi.hook.xposed.bridge.event.YukiXposedEvent
 import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
-import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForR
-import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForS
-import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForSv2
-import com.luckyzyx.luckytool.hook.apps.CorePatch.CorePatchForT
+import com.luckyzyx.luckytool.hook.hooker.*
+import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
+import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
+import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
+import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.statusbar.*
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
