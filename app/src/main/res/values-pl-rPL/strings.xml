@@ -280,6 +280,9 @@
     <string name="remove_screenshot_privacy_limit_summary">Zezwól na wykonywanie zrzutów ekranu w aplikacjach, które na to nie pozwalają. Wyłącz FLAG_SECURE, jeśli to nie zadziała</string>
     <string name="disable_flag_secure">Wyłącz FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Odblokowuje możliwość wykonywania zrzutów i nagrywania ekranu aplikacji, które na to nie zezwalają</string>
+    <!--OplusOta-->
+    <string name="unlock_local_upgrade">Unlock local upgrade</string>
+    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Pomiń stronę początkową</string>
     <string name="vip_download">Pobierz oryginał</string>

@@ -281,6 +281,9 @@
     <string name="remove_screenshot_privacy_limit_summary">Должен использоваться с \"Отключить FLAG_SECURE\", нет необходимости проверять другое приложение</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Включение скриншотов, демонстрация экрана и запись в приложениях, которые обычно этого не позволяют</string>
+    <!--OplusOta-->
+    <string name="unlock_local_upgrade">Unlock local upgrade</string>
+    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

@@ -460,7 +460,8 @@ class StatusBarNotice : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_hotspot_power_consumption_notification)
-                    summary = getString(R.string.remove_hotspot_power_consumption_notification_summary)
+                    summary =
+                        getString(R.string.remove_hotspot_power_consumption_notification_summary)
                     key = "remove_hotspot_power_consumption_notification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -983,7 +984,8 @@ class Application : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "android").put(key = "multi_app_enable", value = newValue)
+                        requireActivity().dataChannel(packageName = "android")
+                            .put(key = "multi_app_enable", value = newValue)
                         true
                     }
                 }
@@ -1172,7 +1174,10 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.FloatingWindowDialogRelated)
-                    summary = getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(R.string.remove_usb_connect_dialog)
+                    summary =
+                        getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(
+                            R.string.remove_usb_connect_dialog
+                        )
                     key = "FloatingWindowDialogRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -1188,7 +1193,8 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.FullScreenGestureRelated)
-                    summary = getString(R.string.remove_side_sliderbar_icon)+","+getString(R.string.remove_side_sliderbar_black_background)
+                    summary =
+                        getString(R.string.remove_side_sliderbar_icon) + "," + getString(R.string.remove_side_sliderbar_black_background)
                     key = "FullScreenGestureRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -1387,6 +1393,23 @@ class OplusGames : ModulePreferenceFragment() {
     }
 }
 
+class ThemeStore : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.unlock_themestore_vip)
+                    summary = getString(R.string.unlock_themestore_vip_summary)
+                    key = "unlock_themestore_vip"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
 class CloudService : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
@@ -1404,15 +1427,15 @@ class CloudService : ModulePreferenceFragment() {
     }
 }
 
-class ThemeStore : ModulePreferenceFragment() {
+class OplusOta : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.unlock_themestore_vip)
-                    summary = getString(R.string.unlock_themestore_vip_summary)
-                    key = "unlock_themestore_vip"
+                    title = getString(R.string.unlock_local_upgrade)
+                    summary = getString(R.string.unlock_local_upgrade_summary)
+                    key = "unlock_local_upgrade"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

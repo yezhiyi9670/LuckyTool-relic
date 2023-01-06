@@ -280,6 +280,9 @@
     <string name="remove_screenshot_privacy_limit_summary">Xóa các hạn chế về quyền riêng tư không thể bị chặn. Vô hiệu hóa FLAG_SECURE nếu điều này không có hiệu lực</string>
     <string name="disable_flag_secure">Vô hiệu hóa FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Giải quyết hầu hết các ứng dụng không thể chụp, chia sẻ màn hình hoặc giới hạn ghi, thêm các trường ứng dụng tương ứng</string>
+    <!--OplusOta-->
+    <string name="unlock_local_upgrade">Unlock local upgrade</string>
+    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Bỏ qua trang khởi động</string>
     <string name="vip_download">Tải xuống bản gốc</string>

@@ -35,9 +35,11 @@ class XposedFragment : ModulePreferenceFragment() {
                     title = context.getAppLabel(key)
                     summary = getString(R.string.corepatch)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_android,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_android,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -50,11 +52,16 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.StatusBar)
-                    summary = getString(R.string.StatusBarNotice)+","+getString(R.string.StatusBarIcon)+","+getString(R.string.StatusBarClock)
+                    summary =
+                        getString(R.string.StatusBarNotice) + "," + getString(R.string.StatusBarIcon) + "," + getString(
+                            R.string.StatusBarClock
+                        )
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_statusBar,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_statusBar,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -69,9 +76,11 @@ class XposedFragment : ModulePreferenceFragment() {
                     title = getString(R.string.Desktop)
                     summary = getString(R.string.launcher_layout_row_colume)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_desktop,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_desktop,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -84,11 +93,14 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.LockScreen)
-                    summary = getString(R.string.remove_lock_screen_redone)+","+getString(R.string.remove_lock_screen_bottom_right_camera)
+                    summary =
+                        getString(R.string.remove_lock_screen_redone) + "," + getString(R.string.remove_lock_screen_bottom_right_camera)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_lockScreen,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_lockScreen,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -101,11 +113,14 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Screenshot)
-                    summary = getString(R.string.remove_system_screenshot_delay)+","+getString(R.string.remove_screenshot_privacy_limit)
+                    summary =
+                        getString(R.string.remove_system_screenshot_delay) + "," + getString(R.string.remove_screenshot_privacy_limit)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_screenshot,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_screenshot,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -118,11 +133,14 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Application)
-                    summary = getString(R.string.skip_apk_scan)+","+getString(R.string.unlock_startup_limit)
+                    summary =
+                        getString(R.string.skip_apk_scan) + "," + getString(R.string.unlock_startup_limit)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_application,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_application,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -137,28 +155,33 @@ class XposedFragment : ModulePreferenceFragment() {
                     title = getString(R.string.Miscellaneous)
                     summary = getString(R.string.Miscellaneous_summary)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_miscellaneous,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_miscellaneous,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
             )
             addPreference(
                 Preference(context).apply {
-                    val keys = arrayOf("com.oplus.camera","com.oneplus.camera")
-                    key = context.checkKey(key,keys)
+                    val keys = arrayOf("com.oplus.camera", "com.oneplus.camera")
+                    key = context.checkKey(key, keys)
                     context.getXPIcon(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = getString(R.string.remove_watermark_word_limit)+","+getString(R.string.enable_10_bit_image_support)
+                    summary =
+                        getString(R.string.remove_watermark_word_limit) + "," + getString(R.string.enable_10_bit_image_support)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_camera,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_camera,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -171,12 +194,15 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = getString(R.string.remove_root_check)+","+getString(R.string.enable_developer_page)
+                    summary =
+                        getString(R.string.remove_root_check) + "," + getString(R.string.enable_developer_page)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_oplusGames,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_oplusGames,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -192,9 +218,11 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.unlock_themestore_vip)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_themeStore,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_themeStore,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -210,9 +238,31 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_network_limit)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_cloudService,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_cloudService,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    key = "com.oplus.ota"
+                    context.getXPIcon(key) { resource, show ->
+                        icon = resource
+                        isIconSpaceReserved = show
+                    }
+                    title = context.getAppLabel(key)
+                    summary = getString(R.string.unlock_local_upgrade)
+                    isVisible = context.checkPackName(key)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_nav_function_to_oplusOta,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -225,12 +275,15 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = getString(R.string.skip_startup_page)+","+getString(R.string.vip_download)
+                    summary =
+                        getString(R.string.skip_startup_page) + "," + getString(R.string.vip_download)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_everyimage,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_everyimage,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -246,9 +299,11 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_pro_license)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_xposed_to_alphaBackupPro,Bundle().apply {
-                            putCharSequence("title_label",title)
-                        })
+                        findNavController().navigate(
+                            R.id.action_nav_xposed_to_alphaBackupPro,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -260,14 +315,14 @@ class XposedFragment : ModulePreferenceFragment() {
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ResourceUtils.isNightMode(resources.configuration)){
+            if (ResourceUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
         menu.add(0, 2, 0, getString(R.string.menu_versioninfo)).apply {
             setIcon(R.drawable.ic_baseline_extension_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ResourceUtils.isNightMode(resources.configuration)){
+            if (ResourceUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
@@ -280,17 +335,21 @@ class XposedFragment : ModulePreferenceFragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun Context.bottomSheet(){
+    fun Context.bottomSheet() {
         val xposedScope = resources.getStringArray(R.array.xposed_scope)
         Arrays.sort(xposedScope)
         var str = getString(R.string.scope_version_info)
         for (scope in xposedScope) {
             val arrayList = getAppVersion(scope)
             if (arrayList.isEmpty()) continue
-            str += "\n\n${getString(R.string.app_label)}: ${getAppLabel(scope)}\n${getString(R.string.package_name)}: $scope\n${getString(R.string.version)}: ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
+            str += "\n\n${getString(R.string.app_label)}: ${getAppLabel(scope)}\n${getString(R.string.package_name)}: $scope\n${
+                getString(
+                    R.string.version
+                )
+            }: ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
         }
         val nestedScrollView = NestedScrollView(this).apply {
-            setPadding(10.dp,20.dp,10.dp,20.dp)
+            setPadding(10.dp, 20.dp, 10.dp, 20.dp)
             addView(
                 TextView(context).apply {
                     textSize = 16F

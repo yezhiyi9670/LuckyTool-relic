@@ -18,6 +18,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
+
 @InjectYukiHookWithXposed
 class MainHook : IYukiHookXposedInit {
     override fun onInit() = configs {
@@ -72,6 +73,8 @@ class MainHook : IYukiHookXposedInit {
         loadApp("com.heytap.cloud", HookCloudService())
         //游戏助手
         loadApp("com.oplus.games", HookOplusGames())
+        //软件更新
+        loadApp("com.oplus.ota", HookOplusOta())
 
         //其他APP
         loadApp(hooker = HookOtherApp())
@@ -79,8 +82,6 @@ class MainHook : IYukiHookXposedInit {
         //监听生命周期
         loadApp(hooker = HookAppLifecycle())
 
-        //OTA
-        //AppointmentActivity
     }
 
     override fun onXposedEvent() {

@@ -3,6 +3,13 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.3
+
+[添加] 软件更新解锁本地安装
+[优化] 优化部分代码
+[Add] System update unlock for local upgrade  
+[Optimize] Optimize some codes
+
 ### v4.2.2
 
 [更新] 捐赠名单  
@@ -10,7 +17,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] 游戏助手v8.0.3  
 [Update] Donation list  
 [Add] function data backup and restore  
-[Fix] Game Assistant v8.0.3  
+[Fix] Game Assistant v8.0.3
 
 ### v4.2.1
 

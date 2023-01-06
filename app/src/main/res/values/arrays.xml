@@ -15,6 +15,7 @@
         <item>com.oplus.screenshot</item>
         <item>com.oplus.battery</item>
         <item>com.android.settings</item>
+        <item>com.oplus.ota</item>
         <item>com.oplus.exsystemservice</item>
         <item>com.oplus.wirelesssettings</item>
         <item>com.android.externalstorage</item>

@@ -27,6 +27,8 @@ class HookOplusGames : YukiBaseHooker() {
             loadHooker(EnableSupportCompetitionMode())
         }
 
+        //network_speed_vip -> oppo_acc
+
         //游戏变声VIP (作废)
 //        findClass("com.oplus.games.account.bean.VipInfoBean.VipInfosDTO").hook {
 //            injectMember {
