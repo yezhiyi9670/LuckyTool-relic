@@ -141,6 +141,7 @@
     <string name="remove_statusbar_user_switcher">Xóa biểu tượng nhiều người dùng trên thanh trạng thái thả xuống</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
+    <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
@@ -281,8 +282,8 @@
     <string name="disable_flag_secure">Vô hiệu hóa FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Giải quyết hầu hết các ứng dụng không thể chụp, chia sẻ màn hình hoặc giới hạn ghi, thêm các trường ứng dụng tương ứng</string>
     <!--OplusOta-->
-    <string name="unlock_local_upgrade">Unlock local upgrade</string>
-    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="unlock_local_upgrade">Mở khóa nâng cấp cục bộ</string>
+    <string name="unlock_local_upgrade_summary">Bản nâng cấp cục bộ sẽ không chuyển sang màu xám, bạn cần bật tùy chọn nhà phát triển trước</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Bỏ qua trang khởi động</string>
     <string name="vip_download">Tải xuống bản gốc</string>

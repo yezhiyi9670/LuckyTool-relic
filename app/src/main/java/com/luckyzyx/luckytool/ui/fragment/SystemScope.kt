@@ -531,6 +531,14 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_green_dot_privacy_prompt)
+                    key = "remove_green_dot_privacy_prompt"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.StatusBarSmallIconStatus)
                     key = "StatusBarSmallIconStatus"

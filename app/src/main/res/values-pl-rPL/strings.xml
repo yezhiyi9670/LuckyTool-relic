@@ -141,6 +141,7 @@
     <string name="remove_statusbar_user_switcher">Ukryj przełącznik użytkowników</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
+    <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Panel szybkich ustawień</string>
@@ -281,8 +282,8 @@
     <string name="disable_flag_secure">Wyłącz FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Odblokowuje możliwość wykonywania zrzutów i nagrywania ekranu aplikacji, które na to nie zezwalają</string>
     <!--OplusOta-->
-    <string name="unlock_local_upgrade">Unlock local upgrade</string>
-    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="unlock_local_upgrade">Odblokuj lokalne uaktualnienie</string>
+    <string name="unlock_local_upgrade_summary">Opcja \"Instalacja lokalna\" nie będzie wyszarzona, musisz wcześniej włączyć opcje programistyczne</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Pomiń stronę początkową</string>
     <string name="vip_download">Pobierz oryginał</string>

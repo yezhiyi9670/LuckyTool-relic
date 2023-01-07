@@ -21,12 +21,16 @@ class StatusBarIcon : YukiBaseHooker() {
                 loadHooker(RemoveWiFiDataInout())
             }
             //移动数据图标相关
-            if (prefs(XposedPrefs).getBoolean("remove_mobile_data_icon", false) || prefs(XposedPrefs).getBoolean("remove_mobile_data_inout", false)) {
-                loadHooker(RemoveMobileDataIcon())
-            }
+            val mobileDataIcon = prefs(XposedPrefs).getBoolean("remove_mobile_data_icon", false)
+            val mobileDataInout = prefs(XposedPrefs).getBoolean("remove_mobile_data_inout", false)
+            if (mobileDataIcon || mobileDataInout) loadHooker(RemoveMobileDataIcon())
             //移除高性能模式图标
-            if (prefs(XposedPrefs).getBoolean("remove_high_performance_mode_icon",false)){
+            if (prefs(XposedPrefs).getBoolean("remove_high_performance_mode_icon", false)) {
                 loadHooker(RemoveHighPerformanceModeIcon())
+            }
+            //移除绿点隐私提示
+            if (prefs(XposedPrefs).getBoolean("remove_green_dot_privacy_prompt", false)) {
+                loadHooker(RemoveGreenDotPrivacyPrompt())
             }
             //状态栏图标垂直居中
             if (prefs(XposedPrefs).getBoolean("status_bar_icon_vertical_center", false)) {
