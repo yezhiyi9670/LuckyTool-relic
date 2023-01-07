@@ -5,10 +5,10 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.3
 
-[添加] 软件更新解锁本地安装
-[优化] 优化部分代码
+[添加] 软件更新解锁本地安装  
+[添加] 移除绿点隐私提示  
 [Add] System update unlock for local upgrade  
-[Optimize] Optimize some codes
+[Add] Remove the green dot privacy prompt
 
 ### v4.2.2
 
