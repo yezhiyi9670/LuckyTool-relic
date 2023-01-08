@@ -161,26 +161,43 @@ fun Context.getFpsMode1(): Array<String> {
 fun Context.getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +
-                "  if [[ -n \$row ]]; then\n" +
-                "    echo \$row | tr ',' '\\n' | while read col; do\n" +
-                "      case \$col in\n" +
-                "      'width='*)\n" +
-                "        echo -n \$(echo \${col:6})\n" +
-                "        ;;\n" +
-                "      'height='*)\n" +
-                "        echo -n x\$(echo \${col:7})\n" +
-                "        ;;\n" +
-                "      'fps='*)\n" +
-                "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" +
-                "        ;;\n" +
-                "      esac\n" +
-                "    done\n" +
-                "    echo -e '@'\n" +
-                "  fi\n" +
-                "done"
+        "  if [[ -n \$row ]]; then\n" +
+        "    echo \$row | tr ',' '\\n' | while read col; do\n" +
+        "      case \$col in\n" +
+        "      'width='*)\n" +
+        "        echo -n \$(echo \${col:6})\n" +
+        "        ;;\n" +
+        "      'height='*)\n" +
+        "        echo -n x\$(echo \${col:7})\n" +
+        "        ;;\n" +
+        "      'fps='*)\n" +
+        "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" +
+        "        ;;\n" +
+        "      esac\n" +
+        "    done\n" +
+        "    echo -e '@'\n" +
+        "  fi\n" +
+        "done"
     return ShellUtils.execCommand(command, true, true).successMsg.let {
         it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")
             ?.toTypedArray() ?: arrayOf()
+    }
+}
+
+/**
+ * 获取电池信息(dumpsys)
+ * @return Array<String>
+ */
+fun getBatteryInfo(): Array<String> {
+    val command =
+        "dumpsys battery | while read row; do\n" +
+        "  if [[ -n \$row ]]; then\n" +
+        "    echo \$row\n" +
+        "    echo -e '@'\n" +
+        "  fi\n" +
+        "done"
+    return ShellUtils.execCommand(command,true,true).successMsg.let {
+        it.takeIf { e -> e.isNotEmpty() }?.substring(0,it.length - 1)?.split("@")?.toTypedArray() ?: arrayOf()
     }
 }
 

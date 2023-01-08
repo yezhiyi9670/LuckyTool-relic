@@ -5,10 +5,12 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.3
 
-[添加] 软件更新解锁本地安装  
+[添加] 解锁本地安装灰色  
 [添加] 移除绿点隐私提示  
-[Add] System update unlock for local upgrade  
-[Add] Remove the green dot privacy prompt
+[添加] 强制显示媒体播放器  
+[Add] Unlock gray local install  
+[Add] Remove the green dot privacy prompt  
+[Add] Force the display of the media player
 
 ### v4.2.2
 

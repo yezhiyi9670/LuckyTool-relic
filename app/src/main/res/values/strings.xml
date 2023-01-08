@@ -153,6 +153,7 @@
     <string name="remove_statusbar_date_comma">Remove dropdown status bar date comma</string>
     <string name="remove_statusbar_date_comma_summary">Guessing is limited to ZH users</string>
     <string name="remove_drop_down_statusbar_mydevice">remove drop down statusbar my device</string>
+    <string name="force_display_media_player">Force the display of the media player</string>
     <string name="StatusBar_Tile_Related">StatusBar Tile Related</string>
     <string name="statusbar_tile_enable">Total statusbar tiles switch</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>

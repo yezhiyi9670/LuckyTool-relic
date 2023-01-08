@@ -614,6 +614,15 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.force_display_media_player)
+                    key = "force_display_media_player"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.StatusBar_Tile_Related)
                     key = "StatusBar_Tile_Related"

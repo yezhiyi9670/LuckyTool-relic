@@ -31,7 +31,7 @@
     <string name="hide_desktop_appicon_summary">LSPosed phải được tắt để buộc hiển thị các biểu tượng trên màn hình</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Sao lưu/Khôi phục/Xoá</string>
-    <string name="backup_data">Sao lưu dữ liệu</string>
+    <string name="backup_data">Backup Data</string>
     <string name="restore_data">Khôi phục dữ liệu</string>
     <string name="data_backup_complete">Sao lưu dữ liệu hoàn tất!</string>
     <string name="data_backup_error">Lỗi sao lưu dữ liệu!</string>
@@ -141,7 +141,7 @@
     <string name="remove_statusbar_user_switcher">Xóa biểu tượng nhiều người dùng trên thanh trạng thái thả xuống</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
-    <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
+    <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
@@ -152,6 +152,7 @@
     <string name="remove_statusbar_date_comma">Xóa dấu phẩy ngày trên thanh trạng thái thả xuống</string>
     <string name="remove_statusbar_date_comma_summary">Giới hạn đối với người TQ</string>
     <string name="remove_drop_down_statusbar_mydevice">xóa thanh trạng thái thả xuống thiết bị của tôi</string>
+    <string name="force_display_media_player">Force the display of the media player</string>
     <string name="StatusBar_Tile_Related">Thanh trạng thái</string>
     <string name="statusbar_tile_enable">Số ô thanh trạng thái</string>
     <string name="tile_unexpanded_columns_vertical">Các cột không được mở rộng của ô xếp (dọc)</string>

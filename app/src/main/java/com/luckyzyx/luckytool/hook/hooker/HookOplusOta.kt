@@ -10,8 +10,5 @@ class HookOplusOta : YukiBaseHooker() {
         if (prefs(XposedPrefs).getBoolean("unlock_local_upgrade", false)) {
             loadHooker(UnlockLocalUpgrade())
         }
-
-        //OTA
-        //AppointmentActivity
     }
 }

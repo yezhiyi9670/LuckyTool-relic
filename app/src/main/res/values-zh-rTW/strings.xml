@@ -152,6 +152,7 @@
     <string name="remove_statusbar_date_comma">移除下拉状态栏日期逗号</string>
     <string name="remove_statusbar_date_comma_summary">猜测仅限于ZH</string>
     <string name="remove_drop_down_statusbar_mydevice">移除下拉状态栏我的设备</string>
+    <string name="force_display_media_player">强制显示媒体播放器</string>
     <string name="StatusBar_Tile_Related">状态栏磁贴相关</string>
     <string name="statusbar_tile_enable">状态栏磁贴总开关</string>
     <string name="tile_unexpanded_columns_vertical">磁贴未展开列数(竖屏)</string>

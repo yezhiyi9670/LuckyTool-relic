@@ -30,11 +30,11 @@
     <string name="hide_desktop_appicon">Скрыть иконку приложения</string>
     <string name="hide_desktop_appicon_summary">LSPosed должен быть отключен, чтобы иконка на рабочем столе отображалась</string>
     <!--BackupRestoreClear-->
-    <string name="backup_restore_clear">Backup/Restore/Clear</string>
+    <string name="backup_restore_clear">Бэкап/Восстановление/Очистка</string>
     <string name="backup_data">Резервное копирование данных</string>
     <string name="restore_data">Восстановление данных</string>
-    <string name="data_backup_complete">Data backup completed!</string>
-    <string name="data_backup_error">Data backup error!</string>
+    <string name="data_backup_complete">Бэкап создан!</string>
+    <string name="data_backup_error">Бэкап не создан!</string>
     <string name="data_restore_complete">Импорт данных завершен!</string>
     <!-- About -->
     <string name="about_title">Информация</string>
@@ -142,7 +142,7 @@
     <string name="remove_statusbar_user_switcher">Удалить иконку многопользовательского режима в раскрывающемся списке</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
-    <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
+    <string name="remove_green_dot_privacy_prompt">Удалить запрос на конфиденциальность</string>
     <string name="status_bar_icon_vertical_center">Иконка строки состояния по вертикали в центре</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Центр управления строки состояния</string>
@@ -153,6 +153,7 @@
     <string name="remove_statusbar_date_comma">Удалить запятую в строке состояния в раскрывающемся списке</string>
     <string name="remove_statusbar_date_comma_summary">Удалить сводку даты и даты в строке состояния</string>
     <string name="remove_drop_down_statusbar_mydevice">Удалить выпадающую строку состояния моего устройства</string>
+    <string name="force_display_media_player">Force the display of the media player</string>
     <string name="StatusBar_Tile_Related">Плитки строки состояния</string>
     <string name="statusbar_tile_enable">Включить/отключить плитки в строке состояния</string>
     <string name="tile_unexpanded_columns_vertical">Неразвернутые столбцы плиток (вертикально)</string>
@@ -283,8 +284,8 @@
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Включение скриншотов, демонстрация экрана и запись в приложениях, которые обычно этого не позволяют</string>
     <!--OplusOta-->
-    <string name="unlock_local_upgrade">Unlock local upgrade</string>
-    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
+    <string name="unlock_local_upgrade_summary">Локальное обновление не будет выделено серым цветом, вам необходимо заранее включить опцию разработчика</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

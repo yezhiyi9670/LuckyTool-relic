@@ -152,6 +152,7 @@
     <string name="remove_statusbar_date_comma">Usuń przecinek z daty</string>
     <string name="remove_statusbar_date_comma_summary">Przydatne wyłącznie dla chińskich użytkowników</string>
     <string name="remove_drop_down_statusbar_mydevice">Ukryj \"Wyjście mediów\"</string>
+    <string name="force_display_media_player">Force the display of the media player</string>
     <string name="StatusBar_Tile_Related">Dostosuj przełączniki</string>
     <string name="statusbar_tile_enable">Główny przełącznik</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
