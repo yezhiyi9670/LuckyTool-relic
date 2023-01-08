@@ -152,7 +152,7 @@
     <string name="remove_statusbar_date_comma">Xóa dấu phẩy ngày trên thanh trạng thái thả xuống</string>
     <string name="remove_statusbar_date_comma_summary">Giới hạn đối với người TQ</string>
     <string name="remove_drop_down_statusbar_mydevice">xóa thanh trạng thái thả xuống thiết bị của tôi</string>
-    <string name="force_display_media_player">Force the display of the media player</string>
+    <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
     <string name="StatusBar_Tile_Related">Thanh trạng thái</string>
     <string name="statusbar_tile_enable">Số ô thanh trạng thái</string>
     <string name="tile_unexpanded_columns_vertical">Các cột không được mở rộng của ô xếp (dọc)</string>

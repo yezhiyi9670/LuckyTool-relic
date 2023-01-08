@@ -153,7 +153,7 @@
     <string name="remove_statusbar_date_comma">Удалить запятую в строке состояния в раскрывающемся списке</string>
     <string name="remove_statusbar_date_comma_summary">Удалить сводку даты и даты в строке состояния</string>
     <string name="remove_drop_down_statusbar_mydevice">Удалить выпадающую строку состояния моего устройства</string>
-    <string name="force_display_media_player">Force the display of the media player</string>
+    <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="StatusBar_Tile_Related">Плитки строки состояния</string>
     <string name="statusbar_tile_enable">Включить/отключить плитки в строке состояния</string>
     <string name="tile_unexpanded_columns_vertical">Неразвернутые столбцы плиток (вертикально)</string>
