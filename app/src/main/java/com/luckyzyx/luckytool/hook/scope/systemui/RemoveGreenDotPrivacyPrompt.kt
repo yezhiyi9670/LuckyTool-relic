@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveGreenDotPrivacyPrompt : YukiBaseHooker() {
+object RemoveGreenDotPrivacyPrompt : YukiBaseHooker() {
     override fun onHook() {
         //Source PrivacyDotViewController
         findClass("com.android.systemui.statusbar.events.PrivacyDotViewController").hook {

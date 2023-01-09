@@ -180,6 +180,26 @@ class StatusBar : ModulePreferenceFragment() {
                     }
                 }
             )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarOtherFunction)
+                    key = "StatusBarOtherFunction"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show)
+                    summary = getString(R.string.battery_information_show_summary)
+                    key = "battery_information_show"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show", value = newValue)
+                        true
+                    }
+                }
+            )
         }
     }
 }

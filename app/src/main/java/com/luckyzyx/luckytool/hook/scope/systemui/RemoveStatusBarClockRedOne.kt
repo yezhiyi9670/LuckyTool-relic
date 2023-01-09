@@ -8,7 +8,7 @@ import com.luckyzyx.luckytool.utils.data.A12
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.getColorOSVersion
 
-class RemoveStatusBarClockRedOne : YukiBaseHooker() {
+object RemoveStatusBarClockRedOne : YukiBaseHooker() {
     override fun onHook() {
         if (SDK == A11 && getColorOSVersion == "V12"){
             findClass("com.android.systemui.statusbar.policy.Clock").hook {

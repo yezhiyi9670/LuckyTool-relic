@@ -5,9 +5,9 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
-import com.highcapable.yukihookapi.hook.type.java.StringType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
 
-class EnableSupportCompetitionMode : YukiBaseHooker() {
+object EnableSupportCompetitionMode : YukiBaseHooker() {
     override fun onHook() {
         //Source CompetitionModeManager
         //Search isSupportCompetitionMode
@@ -20,7 +20,7 @@ class EnableSupportCompetitionMode : YukiBaseHooker() {
                 returnType = ListClass
             }.count(1..2)
             method {
-                param(StringType, ArrayListClass)
+                param(StringClass, ArrayListClass)
             }.count(1)
             method {
                 emptyParam()

@@ -4,37 +4,36 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.*
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class StatusBarIcon : YukiBaseHooker() {
+object StatusBarIcon : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.android.systemui") {
             //移除状态栏电量百分号
-            if (prefs(XposedPrefs).getBoolean("remove_statusbar_battery_percent", false)
-            ) loadHooker(
-                RemoveStatusBarBatteryPercent()
-            )
+            if (prefs(XposedPrefs).getBoolean("remove_statusbar_battery_percent", false)) {
+                loadHooker(RemoveStatusBarBatteryPercent)
+            }
             //移除状态栏支付保护图标
             if (prefs(XposedPrefs).getBoolean("remove_statusbar_securepayment_icon", false)) {
-                loadHooker(RemoveStatusBarSecurePayment())
+                loadHooker(RemoveStatusBarSecurePayment)
             }
             //移除WiFi数据箭头
             if (prefs(XposedPrefs).getBoolean("remove_wifi_data_inout", false)) {
-                loadHooker(RemoveWiFiDataInout())
+                loadHooker(RemoveWiFiDataInout)
             }
             //移动数据图标相关
             val mobileDataIcon = prefs(XposedPrefs).getBoolean("remove_mobile_data_icon", false)
             val mobileDataInout = prefs(XposedPrefs).getBoolean("remove_mobile_data_inout", false)
-            if (mobileDataIcon || mobileDataInout) loadHooker(RemoveMobileDataIcon())
+            if (mobileDataIcon || mobileDataInout) loadHooker(RemoveMobileDataIcon)
             //移除高性能模式图标
             if (prefs(XposedPrefs).getBoolean("remove_high_performance_mode_icon", false)) {
-                loadHooker(RemoveHighPerformanceModeIcon())
+                loadHooker(RemoveHighPerformanceModeIcon)
             }
             //移除绿点隐私提示
             if (prefs(XposedPrefs).getBoolean("remove_green_dot_privacy_prompt", false)) {
-                loadHooker(RemoveGreenDotPrivacyPrompt())
+                loadHooker(RemoveGreenDotPrivacyPrompt)
             }
             //状态栏图标垂直居中
             if (prefs(XposedPrefs).getBoolean("status_bar_icon_vertical_center", false)) {
-                loadHooker(StatusBarIconVerticalCenter())
+                loadHooker(StatusBarIconVerticalCenter)
             }
         }
     }

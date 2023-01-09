@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class UnlockLocalUpgrade : YukiBaseHooker() {
+object UnlockLocalUpgrade : YukiBaseHooker() {
     override fun onHook() {
         //Source EntryActivity
         findClass("com.oplus.otaui.activity.EntryActivity").hook {

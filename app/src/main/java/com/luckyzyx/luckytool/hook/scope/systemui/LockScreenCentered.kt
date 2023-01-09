@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.dp
 
-class LockScreenCentered : YukiBaseHooker() {
+object LockScreenCentered : YukiBaseHooker() {
     override fun onHook() {
         //Source RedHorizontalSingleClockView
         findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView").hook {

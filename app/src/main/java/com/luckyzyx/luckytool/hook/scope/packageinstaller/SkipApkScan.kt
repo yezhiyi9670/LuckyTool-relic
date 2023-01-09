@@ -8,7 +8,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 
 @Suppress("LocalVariableName")
-class SkipApkScan : YukiBaseHooker() {
+object SkipApkScan : YukiBaseHooker() {
     override fun onHook() {
         val appSet = prefs(XposedPrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
             Arrays.sort(this)

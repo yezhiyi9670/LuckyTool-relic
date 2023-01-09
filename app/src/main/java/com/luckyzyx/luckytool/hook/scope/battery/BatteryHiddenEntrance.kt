@@ -6,10 +6,10 @@ import com.highcapable.yukihookapi.hook.type.android.ContentResolverClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
-import com.highcapable.yukihookapi.hook.type.java.StringType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class BatteryHiddenEntrance : YukiBaseHooker() {
+object BatteryHiddenEntrance : YukiBaseHooker() {
     override fun onHook() {
         val openScreenPowerSave = prefs(XposedPrefs).getBoolean("open_screen_power_save", false)
         val openBatteryHealth = prefs(XposedPrefs).getBoolean("open_battery_health", false)
@@ -20,26 +20,26 @@ class BatteryHiddenEntrance : YukiBaseHooker() {
         searchClass {
             from("com.oplus.b.a", "k4", "i4", "r5").absolute()
             method {
-                param(ContentResolverClass, StringType)
+                param(ContentResolverClass, StringClass)
                 returnType = BooleanType
             }.count(1)
             method {
-                param(ContentResolverClass, StringType, IntType)
+                param(ContentResolverClass, StringClass, IntType)
                 returnType = IntType
             }.count(1)
             method {
-                param(ContentResolverClass, StringType, BooleanType)
+                param(ContentResolverClass, StringClass, BooleanType)
                 returnType = BooleanType
             }.count(1)
             method {
-                param(ContentResolverClass, StringType)
+                param(ContentResolverClass, StringClass)
                 returnType = ListClass
             }.count(1..2)
         }.get()?.hook {
             //输入String返回Boolean
             injectMember {
                 method {
-                    param(ContentResolverClass, StringType)
+                    param(ContentResolverClass, StringClass)
                     returnType = BooleanType
                 }
                 beforeHook {
@@ -58,7 +58,7 @@ class BatteryHiddenEntrance : YukiBaseHooker() {
             //输入Int返回Int
             injectMember {
                 method {
-                    param(ContentResolverClass, StringType, IntType)
+                    param(ContentResolverClass, StringClass, IntType)
                     returnType = IntType
                 }
                 beforeHook {

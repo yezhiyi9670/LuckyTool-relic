@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 import android.app.Activity
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class EnableDeveloperPage : YukiBaseHooker() {
+object EnableDeveloperPage : YukiBaseHooker() {
     override fun onHook() {
         //Source GameDevelopOptionsActivity
         findClass("business.compact.activity.GameDevelopOptionsActivity").hook {

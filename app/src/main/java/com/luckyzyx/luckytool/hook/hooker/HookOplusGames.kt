@@ -4,27 +4,27 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.oplusgames.*
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class HookOplusGames : YukiBaseHooker() {
+object HookOplusGames : YukiBaseHooker() {
     override fun onHook() {
         //游戏滤镜-->Root检测
         if (prefs(XposedPrefs).getBoolean("remove_root_check", false)) {
-            loadHooker(RemoveRootCheck())
+            loadHooker(RemoveRootCheck)
         }
         //简洁页面
         if (prefs(XposedPrefs).getBoolean("remove_startup_animation", false)) {
-            loadHooker(RemoveStartupAnimation())
+            loadHooker(RemoveStartupAnimation)
         }
         //启用开发者选项
         if (prefs(XposedPrefs).getBoolean("enable_developer_page", false)) {
-            loadHooker(EnableDeveloperPage())
+            loadHooker(EnableDeveloperPage)
         }
         //启用GPU控制器
         if (prefs(XposedPrefs).getBoolean("enable_adreno_gpu_controller", false)) {
-            loadHooker(EnableAdrenoGpuController())
+            loadHooker(EnableAdrenoGpuController)
         }
         //启用赛事支持模式
         if (prefs(XposedPrefs).getBoolean("enable_support_competition_mode", false)) {
-            loadHooker(EnableSupportCompetitionMode())
+            loadHooker(EnableSupportCompetitionMode)
         }
 
         //network_speed_vip -> oppo_acc

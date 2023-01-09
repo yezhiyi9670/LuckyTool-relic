@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 
-class RemoveUSBConnectDialog : YukiBaseHooker() {
+object RemoveUSBConnectDialog : YukiBaseHooker() {
     override fun onHook() {
         //Source UsbService
         VariousClass(

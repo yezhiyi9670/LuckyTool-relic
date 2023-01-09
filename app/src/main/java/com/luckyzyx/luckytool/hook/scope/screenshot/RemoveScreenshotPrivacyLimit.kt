@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveScreenshotPrivacyLimit : YukiBaseHooker() {
+object RemoveScreenshotPrivacyLimit : YukiBaseHooker() {
     override fun onHook() {
         //Source ScreenshotContext
         findClass("com.oplus.screenshot.screenshot.core.ScreenshotContext").hook {

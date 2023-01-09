@@ -11,7 +11,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 @Suppress("LocalVariableName")
-class DisableDPIRebootRecovery : YukiBaseHooker() {
+object DisableDPIRebootRecovery : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusDensityPreference
         findClass("com.oplus.settings.widget.preference.OplusDensityPreference").hook {

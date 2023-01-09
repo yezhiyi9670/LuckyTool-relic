@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class RemoveSystemScreenshotDelay : YukiBaseHooker() {
+object RemoveSystemScreenshotDelay : YukiBaseHooker() {
     override fun onHook() {
         //Source PhoneWindowManager
         findClass("com.android.server.policy.PhoneWindowManager").hook {

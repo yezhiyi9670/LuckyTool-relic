@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.themestore
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class UnlockThemeStoreVip : YukiBaseHooker() {
+object UnlockThemeStoreVip : YukiBaseHooker() {
     override fun onHook() {
         //Source VipUserDto
         findClass("com.oppo.cdo.card.theme.dto.vip.VipUserDto").hook {

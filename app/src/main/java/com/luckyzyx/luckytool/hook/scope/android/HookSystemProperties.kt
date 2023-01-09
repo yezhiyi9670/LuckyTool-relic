@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class HookSystemProperties : YukiBaseHooker() {
+object HookSystemProperties : YukiBaseHooker() {
     override fun onHook() {
         //Source SystemProperties
         val mediaVolumeLevel = prefs(XposedPrefs).getInt("media_volume_level", 0)

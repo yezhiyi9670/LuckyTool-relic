@@ -91,6 +91,10 @@
     <string name="usepresig_warn">!!! All packages can override installed App!!\nto install unknown packages</string>
     <!--Status Bar-->
     <string name="StatusBar">StatusBar Related</string>
+    <!--StatusBarOtherFunction-->
+    <string name="StatusBarOtherFunction">Other functions of the statusbar</string>
+    <string name="battery_information_show">Battery information display</string>
+    <string name="battery_information_show_summary">Display battery voltage and other information in the statusbar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_enable">Status bar clock total toggle</string>

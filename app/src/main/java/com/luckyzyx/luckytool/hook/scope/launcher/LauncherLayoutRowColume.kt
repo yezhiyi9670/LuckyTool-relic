@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.IntArrayClass
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class LauncherLayoutRowColume : YukiBaseHooker() {
+object LauncherLayoutRowColume : YukiBaseHooker() {
     override fun onHook() {
         //Source UiConfig
         findClass("com.android.launcher.UiConfig").hook {

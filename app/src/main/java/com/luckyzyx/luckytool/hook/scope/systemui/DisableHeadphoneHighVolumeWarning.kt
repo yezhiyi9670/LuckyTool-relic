@@ -4,7 +4,7 @@ import android.media.AudioManager
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 
-class DisableHeadphoneHighVolumeWarning : YukiBaseHooker() {
+object DisableHeadphoneHighVolumeWarning : YukiBaseHooker() {
     override fun onHook() {
         //Sourcce VolumeDialogImplEx
         findClass("com.oplusos.systemui.volume.VolumeDialogImplEx").hook {

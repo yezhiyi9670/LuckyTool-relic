@@ -5,9 +5,9 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.highcapable.yukihookapi.hook.type.java.StringType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
 
-class RemoveAppHighBatteryConsumptionWarning : YukiBaseHooker() {
+object RemoveAppHighBatteryConsumptionWarning : YukiBaseHooker() {
     override fun onHook() {
         // Source NotifyUtil
         // Search power_consumption_optimization_title / pco_notification_text / String \n String
@@ -23,31 +23,31 @@ class RemoveAppHighBatteryConsumptionWarning : YukiBaseHooker() {
                 type = HandlerClass
             }.count(1)
             method {
-                param(StringType, BooleanType)
+                param(StringClass, BooleanType)
                 paramCount = 2
             }.count(4)
         }.get()?.hook {
             injectMember {
                 method {
-                    param(StringType, BooleanType).index(0)
+                    param(StringClass, BooleanType).index(0)
                 }
                 intercept()
             }
             injectMember {
                 method {
-                    param(StringType, BooleanType).index(1)
+                    param(StringClass, BooleanType).index(1)
                 }
                 intercept()
             }
             injectMember {
                 method {
-                    param(StringType, BooleanType).index(2)
+                    param(StringClass, BooleanType).index(2)
                 }
                 intercept()
             }
             injectMember {
                 method {
-                    param(StringType, BooleanType).index(3)
+                    param(StringClass, BooleanType).index(3)
                 }
                 intercept()
             }

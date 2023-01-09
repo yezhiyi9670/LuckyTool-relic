@@ -7,7 +7,7 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class RemoveMobileDataIcon : YukiBaseHooker() {
+object RemoveMobileDataIcon : YukiBaseHooker() {
     override fun onHook() {
         val removeIcon = prefs(XposedPrefs).getBoolean("remove_mobile_data_icon",false)
         val removeInout = prefs(XposedPrefs).getBoolean("remove_mobile_data_inout",false)

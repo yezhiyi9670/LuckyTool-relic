@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.IntType
 
-class RemoveChargingCompleted : YukiBaseHooker() {
+object RemoveChargingCompleted : YukiBaseHooker() {
     override fun onHook() {
         VariousClass(
             "com.coloros.systemui.notification.power.ColorosPowerNotificationWarnings", //A11

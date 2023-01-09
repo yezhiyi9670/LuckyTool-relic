@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class ShowChargingRipple : YukiBaseHooker() {
+object ShowChargingRipple : YukiBaseHooker() {
     override fun onHook() {
         //flag_charging_ripple
         resources().hook {

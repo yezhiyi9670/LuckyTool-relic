@@ -8,9 +8,13 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 解锁本地安装灰色  
 [添加] 移除绿点隐私提示  
 [添加] 强制显示媒体播放器  
+[添加] 状态栏电池状态通知  
+[调整] 状态栏时钟字符位置  
 [Add] Unlock gray local install  
 [Add] Remove the green dot privacy prompt  
-[Add] Force the display of the media player
+[Add] Force the display of the media player  
+[Add] battery status notification in statusbar  
+[Adjustment] Status bar clock character position
 
 ### v4.2.2
 

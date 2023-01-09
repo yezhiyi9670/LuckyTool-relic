@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class UnlockTaskLocks : YukiBaseHooker() {
+object UnlockTaskLocks : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusLockManager
         findClass("com.oplus.quickstep.applock.OplusLockManager").hook {
@@ -19,7 +19,7 @@ class UnlockTaskLocks : YukiBaseHooker() {
         }
     }
 }
-class UnlockTaskLocksV11 : YukiBaseHooker() {
+object UnlockTaskLocksV11 : YukiBaseHooker() {
     override fun onHook() {
         //Source ColorLockManager
         findClass("com.coloros.quickstep.applock.ColorLockManager").hook {

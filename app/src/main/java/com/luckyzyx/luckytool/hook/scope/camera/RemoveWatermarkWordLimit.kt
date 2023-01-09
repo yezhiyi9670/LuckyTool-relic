@@ -2,11 +2,11 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.type.java.CharSequenceType
+import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 
-class RemoveWatermarkWordLimit : YukiBaseHooker() {
+object RemoveWatermarkWordLimit : YukiBaseHooker() {
     override fun onHook() {
         // Source CameraSubSettingFragment
         // Log camera_namelength_outofrange
@@ -25,7 +25,7 @@ class RemoveWatermarkWordLimit : YukiBaseHooker() {
             injectMember {
                 method {
                     paramCount = 6
-                    returnType = CharSequenceType
+                    returnType = CharSequenceClass
                 }
                 intercept()
             }

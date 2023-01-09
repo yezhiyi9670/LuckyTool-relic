@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 
-class RemoveHighPerformanceModeNotifications : YukiBaseHooker() {
+object RemoveHighPerformanceModeNotifications : YukiBaseHooker() {
     override fun onHook() {
         //Source GTModeBroadcastReceiver
         //Search getIntForUser gt_mode_block_message_setting

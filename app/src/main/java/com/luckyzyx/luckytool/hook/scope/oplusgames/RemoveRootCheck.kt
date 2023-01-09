@@ -6,9 +6,9 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.highcapable.yukihookapi.hook.type.java.StringType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
 
-class RemoveRootCheck : YukiBaseHooker() {
+object RemoveRootCheck : YukiBaseHooker() {
     override fun onHook() {
         //Source COSASDKManager
         //Search getSupportCoolEx new Bundle -> Class
@@ -25,7 +25,7 @@ class RemoveRootCheck : YukiBaseHooker() {
                 "ir",
                 "com.oplus.cosa"
             ).absolute()
-            field { type = StringType }.count(5..6)
+            field { type = StringClass }.count(5..6)
             field { type = BooleanType }.count(2..4)
             field { type = IntType }.count(1..2)
             method {

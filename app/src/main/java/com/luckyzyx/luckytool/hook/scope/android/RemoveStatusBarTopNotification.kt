@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class RemoveStatusBarTopNotification : YukiBaseHooker() {
+object RemoveStatusBarTopNotification : YukiBaseHooker() {
     override fun onHook() {
         //Source AlertWindowNotification
         findClass("com.android.server.wm.AlertWindowNotification").hook {

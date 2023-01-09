@@ -10,7 +10,7 @@ import android.view.Gravity
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
-import com.highcapable.yukihookapi.hook.type.java.CharSequenceType
+import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.utils.data.A11
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.getColorOSVersion
@@ -19,7 +19,7 @@ import java.lang.reflect.Method
 import java.text.SimpleDateFormat
 import java.util.*
 
-class StatusBarClock : YukiBaseHooker() {
+object StatusBarClock : YukiBaseHooker() {
 
     private val isYear = prefs(XposedPrefs).getBoolean("statusbar_clock_show_year", false)
     private val isMonth = prefs(XposedPrefs).getBoolean("statusbar_clock_show_month", false)
@@ -87,7 +87,7 @@ class StatusBarClock : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "getSmallTime"
-                    returnType = CharSequenceType
+                    returnType = CharSequenceClass
                 }
                 afterHook {
                     instance<TextView>().apply {
@@ -149,17 +149,17 @@ class StatusBarClock : YukiBaseHooker() {
             if (isWeek) dateFormat += "E"
             if (!isHideSpace && !isDoubleRow) dateFormat += " "
         } else {
-            if (isYear) {
-                dateFormat += "YY"
-                if (isMonth || isDay) dateFormat += "/"
-            }
+            if (isWeek) dateFormat += "E"
+            if (!isHideSpace && !isDoubleRow) dateFormat += " "
             if (isMonth) {
                 dateFormat += "M"
-                if (isDay) dateFormat += "/"
+                if (isDay || isYear) dateFormat += "/"
             }
-            if (isDay) dateFormat += "d"
-            if (!isHideSpace && !isDoubleRow) dateFormat += " "
-            if (isWeek) dateFormat += "E"
+            if (isDay) {
+                dateFormat += "d"
+                if (isYear) dateFormat += "/"
+            }
+            if (isYear) { dateFormat += "YY" }
             if (!isHideSpace && !isDoubleRow) dateFormat += " "
         }
         return SimpleDateFormat(dateFormat).format(nowTime!!)

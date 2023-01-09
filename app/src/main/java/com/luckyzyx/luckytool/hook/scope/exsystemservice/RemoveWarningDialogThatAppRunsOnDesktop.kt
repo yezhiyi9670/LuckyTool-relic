@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.exsystemservice
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveWarningDialogThatAppRunsOnDesktop : YukiBaseHooker() {
+object RemoveWarningDialogThatAppRunsOnDesktop : YukiBaseHooker() {
     override fun onHook() {
         //Source UnTrustedTouchOcclusionService
         findClass("com.oplus.exsystemservice.untrustedtouch.UnTrustedTouchOcclusionService").hook {

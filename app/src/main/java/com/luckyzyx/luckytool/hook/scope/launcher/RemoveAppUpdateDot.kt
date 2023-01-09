@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveAppUpdateDot : YukiBaseHooker() {
+object RemoveAppUpdateDot : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusBubbleTextView
         findClass(name =  "com.android.launcher3.OplusBubbleTextView").hook {
@@ -23,7 +23,7 @@ class RemoveAppUpdateDot : YukiBaseHooker() {
         }
     }
 }
-class RemoveAppUpdateDotV13 : YukiBaseHooker() {
+object RemoveAppUpdateDotV13 : YukiBaseHooker() {
     override fun onHook() {
         //Source BubbleTextView
         findClass(name =  "com.android.launcher3.BubbleTextView").hook {

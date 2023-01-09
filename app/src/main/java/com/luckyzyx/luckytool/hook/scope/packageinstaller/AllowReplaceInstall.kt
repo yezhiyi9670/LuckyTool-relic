@@ -6,7 +6,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 
-class AllowReplaceInstall : YukiBaseHooker() {
+object AllowReplaceInstall : YukiBaseHooker() {
     override fun onHook() {
         val appSet = prefs(XposedPrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
             Arrays.sort(this)

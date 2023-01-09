@@ -18,9 +18,8 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
-
 @InjectYukiHookWithXposed
-class MainHook : IYukiHookXposedInit {
+object MainHook : IYukiHookXposedInit {
     override fun onInit() = configs {
         debugLog {
             tag = "LuckyTool"
@@ -34,53 +33,56 @@ class MainHook : IYukiHookXposedInit {
     override fun onHook() = encase {
         if (prefs(XposedPrefs).getBoolean("enable_module").not()) return@encase
         //系统框架
-        loadSystem(HookAndroid())
-        loadZygote(HookZygote())
+        loadSystem(HookAndroid)
+        loadZygote(HookZygote)
 
         //状态栏时钟
-        loadApp(hooker = StatusBarClock())
+        loadApp(hooker = StatusBarClock)
         //状态栏网速
-        loadApp(hooker = StatusBarNetWorkSpeed())
+        loadApp(hooker = StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp(hooker = StatusBarNotice())
+        loadApp(hooker = StatusBarNotice)
         //状态栏图标
-        loadApp(hooker = StatusBarIcon())
+        loadApp(hooker = StatusBarIcon)
         //状态栏控制中心
-        loadApp(hooker = StatusBarControlCenter())
+        loadApp(hooker = StatusBarControlCenter)
+
+        //状态栏电池通知
+        loadApp(hooker = BatteryInfoNotify)
 
         //桌面
-        loadApp(hooker = HookDesktop())
+        loadApp(hooker = HookDesktop)
         //锁屏
-        loadApp(hooker = HookLockScreen())
+        loadApp(hooker = HookLockScreen)
         //截屏
-        loadApp(hooker = HookScreenshot())
+        loadApp(hooker = HookScreenshot)
         //应用
-        loadApp(hooker = HookApplication())
+        loadApp(hooker = HookApplication)
         //应用安装器
-        loadApp(hooker = HookPackageInstaller())
+        loadApp(hooker = HookPackageInstaller)
         //对话框相关
-        loadApp(hooker = HookDialogRelated())
+        loadApp(hooker = HookDialogRelated)
         //全面屏手势相关
-        loadApp(hooker = HookGestureRelated())
+        loadApp(hooker = HookGestureRelated)
         //杂项
-        loadApp(hooker = HookMiscellaneous())
+        loadApp(hooker = HookMiscellaneous)
 
         //相机
-        loadApp("com.oplus.camera", HookCamera())
+        loadApp("com.oplus.camera", HookCamera)
         //主题商店
-        loadApp("com.heytap.themestore", HookThemeStore())
+        loadApp("com.heytap.themestore", HookThemeStore)
         //云服务
-        loadApp("com.heytap.cloud", HookCloudService())
+        loadApp("com.heytap.cloud", HookCloudService)
         //游戏助手
-        loadApp("com.oplus.games", HookOplusGames())
+        loadApp("com.oplus.games", HookOplusGames)
         //软件更新
-        loadApp("com.oplus.ota", HookOplusOta())
+        loadApp("com.oplus.ota", HookOplusOta)
 
         //其他APP
-        loadApp(hooker = HookOtherApp())
+        loadApp(hooker = HookOtherApp)
 
-        //监听生命周期
-        loadApp(hooker = HookAppLifecycle())
+        //自动强制FPS
+        loadApp(hooker = HookAutoFps)
 
     }
 

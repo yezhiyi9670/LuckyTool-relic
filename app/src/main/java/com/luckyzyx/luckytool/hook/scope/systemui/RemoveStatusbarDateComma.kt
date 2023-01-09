@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveStatusbarDateComma : YukiBaseHooker() {
+object RemoveStatusbarDateComma : YukiBaseHooker() {
     override fun onHook() {
         //cn_comma
         resources().hook {

@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class DropDownStatusBarClock : YukiBaseHooker() {
+object DropDownStatusBarClock : YukiBaseHooker() {
     override fun onHook() {
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {

@@ -20,6 +20,7 @@ import com.luckyzyx.luckytool.R
 object NotifyUtils {
     /**通知权限*/
     private const val POST_NOTIFICATIONS = "android.permission.POST_NOTIFICATIONS"
+
     /**默认通知渠道*/
     const val DEFAULT_NOTICE_ID = "default"
     const val DEFAULT_NOTICE_NAME = "默认通知"
@@ -46,7 +47,10 @@ object NotifyUtils {
      * @return Boolean
      */
     fun checkPermission(context: Context): Boolean {
-        return ActivityCompat.checkSelfPermission(context, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+        return ActivityCompat.checkSelfPermission(
+            context,
+            POST_NOTIFICATIONS
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     /**
@@ -56,8 +60,9 @@ object NotifyUtils {
      * @param notification Notification 通知
      */
     fun sendNotification(context: Context, notifyId: Int, notification: Notification) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(notifyId,notification)
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify(notifyId, notification)
     }
 
     /**
@@ -65,21 +70,20 @@ object NotifyUtils {
      * @param context Context
      * @param notifyId Int 通知ID
      */
-    fun removeNotification(context: Context,notifyId: Int) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    fun clearNotification(context: Context, notifyId: Int) {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancel(notifyId)
     }
 
     /**
      * 创建通知渠道
      * @param context Context
-     * @param channelId String 渠道ID
-     * @param name String 渠道名
-     * @param importance Int 重要性
+     * @param channel NotificationChannel Channel
      */
-    fun createChannel(context: Context,channelId: String,name: String,importance: Int) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val channel = NotificationChannel(channelId, name, importance)
+    fun createChannel(context: Context, channel: NotificationChannel) {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
 
@@ -101,7 +105,11 @@ object NotifyUtils {
     fun requestPermission(activity: Activity) {
         if (Build.VERSION.SDK_INT >= 33) {
             if (checkPermission(activity)) {
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(activity, POST_NOTIFICATIONS)) {
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(
+                        activity,
+                        POST_NOTIFICATIONS
+                    )
+                ) {
                     enableNotification(activity)
                 } else {
                     ActivityCompat.requestPermissions(activity, arrayOf(POST_NOTIFICATIONS), 100)

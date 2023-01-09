@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class StatusBarTilesColumn : YukiBaseHooker() {
+object StatusBarTilesColumn : YukiBaseHooker() {
     override fun onHook() {
 
         var isVertical = true
@@ -50,7 +50,7 @@ class StatusBarTilesColumn : YukiBaseHooker() {
     }
 }
 
-class StatusBarTilesColumnV13 : YukiBaseHooker() {
+object StatusBarTilesColumnV13 : YukiBaseHooker() {
     override fun onHook() {
 
         val columnUnexpandedVerticalC13 = prefs(XposedPrefs).getInt("tile_unexpanded_columns_vertical_c13",5)

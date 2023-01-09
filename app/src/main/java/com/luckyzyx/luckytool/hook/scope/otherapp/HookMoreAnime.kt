@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class HookMoreAnime : YukiBaseHooker() {
+object HookMoreAnime : YukiBaseHooker() {
     override fun onHook() {
         //跳过启动广告页
         if (prefs(XposedPrefs).getBoolean("skip_startup_page", false)) {

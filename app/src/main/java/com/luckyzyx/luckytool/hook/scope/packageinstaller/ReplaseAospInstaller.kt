@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class ReplaseAospInstaller : YukiBaseHooker() {
+object ReplaseAospInstaller : YukiBaseHooker() {
     override fun onHook() {
         //search class -> DeleteStagedFileOnResult
         //search class.method -> onCreate +4 -> class.method

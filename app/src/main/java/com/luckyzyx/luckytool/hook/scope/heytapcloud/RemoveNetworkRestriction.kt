@@ -8,7 +8,7 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 
-class RemoveNetworkRestriction : YukiBaseHooker() {
+object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
         val appSet = prefs(XposedPrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
             Arrays.sort(this)

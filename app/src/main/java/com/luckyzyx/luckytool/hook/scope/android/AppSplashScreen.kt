@@ -5,7 +5,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class AppSplashScreen : YukiBaseHooker() {
+object AppSplashScreen : YukiBaseHooker() {
     override fun onHook() {
         //Source StartingSurfaceController
         if (SDK < A13) return

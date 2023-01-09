@@ -3,37 +3,37 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.android.*
 
-class HookAndroid : YukiBaseHooker() {
+object HookAndroid : YukiBaseHooker() {
 
     override fun onHook() {
         //SystemProperties
-        loadHooker(HookSystemProperties())
+        loadHooker(HookSystemProperties)
 
         //移除状态栏上层警告
-        loadHooker(RemoveStatusBarTopNotification())
+        loadHooker(RemoveStatusBarTopNotification)
 
         //移除VPN已激活通知
-        loadHooker(RemoveVPNActiveNotification())
+        loadHooker(RemoveVPNActiveNotification)
 
         //媒体音量阶数
-        loadHooker(MediaVolumeLevel())
+        loadHooker(MediaVolumeLevel)
 
         //应用分身限制
-        loadHooker(MultiApp())
+        loadHooker(MultiApp)
 
         //USB安装确认
-        loadHooker(ADBInstallConfirm())
+        loadHooker(ADBInstallConfirm)
 
         //移除72小时密码验证
-        loadHooker(Remove72HourPasswordVerification())
+        loadHooker(Remove72HourPasswordVerification)
 
         //移除系统截屏延迟
-        loadHooker(RemoveSystemScreenshotDelay())
+        loadHooker(RemoveSystemScreenshotDelay)
 
         //移除遮罩Splash Screen
-        loadHooker(AppSplashScreen())
+        loadHooker(AppSplashScreen)
 
         //禁用FLAG_SECURE
-        loadHooker(DisableFlagSecure())
+        loadHooker(DisableFlagSecure)
     }
 }

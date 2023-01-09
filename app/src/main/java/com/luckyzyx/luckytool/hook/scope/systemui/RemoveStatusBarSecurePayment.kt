@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveStatusBarSecurePayment : YukiBaseHooker() {
+object RemoveStatusBarSecurePayment : YukiBaseHooker() {
     override fun onHook() {
         //安全支付图标
         VariousClass(

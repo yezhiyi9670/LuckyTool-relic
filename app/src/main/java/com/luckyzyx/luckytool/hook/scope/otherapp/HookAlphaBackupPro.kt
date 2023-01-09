@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.otherapp
 import android.app.Activity
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class HookAlphaBackupPro : YukiBaseHooker() {
+object HookAlphaBackupPro : YukiBaseHooker() {
     override fun onHook() {
         //移除许可证检测
         findClass("com.ruet_cse_1503050.ragib.appbackup.pro.activities.HomeActivity").hook {

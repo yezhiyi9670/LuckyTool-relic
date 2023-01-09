@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 
-class UnlockStartupLimit : YukiBaseHooker() {
+object UnlockStartupLimit : YukiBaseHooker() {
     override fun onHook() {
         //Source StratupManager
         //Search -> update max allow count -5 -> method,-1 -> field
@@ -29,7 +29,7 @@ class UnlockStartupLimit : YukiBaseHooker() {
     }
 }
 
-class UnlockStartupLimitV11 : YukiBaseHooker() {
+object UnlockStartupLimitV11 : YukiBaseHooker() {
     override fun onHook() {
         //Source StratupManager
         //Search -> auto_start_max_allow_count -2 -> method,+2 -> field

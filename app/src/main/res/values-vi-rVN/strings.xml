@@ -90,6 +90,10 @@
     <string name="usepresig_warn">!!! Tất cả các gói có thể ghi đè ứng dụng đã cài đặt!!\nđể cài đặt các gói không xác định</string>
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
+    <!--StatusBarOtherFunction-->
+    <string name="StatusBarOtherFunction">Các chức năng khác của thanh trạng thái</string>
+    <string name="battery_information_show">Hiển thị thông tin pin</string>
+    <string name="battery_information_show_summary">Hiển thị điện áp pin và các thông tin khác trên thanh trạng thái</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_enable">Chuyển đổi đồng hồ trên thanh trạng thái</string>

@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class MultiApp : YukiBaseHooker() {
+object MultiApp : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusMultiAppConfig
         findClass("com.oplus.multiapp.OplusMultiAppConfig").hook {

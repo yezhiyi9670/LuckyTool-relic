@@ -25,7 +25,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.2.3_beta"
+        versionName "4.2.3"
     }
     buildTypes {
         release {
@@ -68,11 +68,11 @@ dependencies {
     //Xposed基础
     compileOnly "de.robv.android.xposed:api:82"
     //YukiHookAPI ksp
-    implementation "com.highcapable.yukihookapi:api:1.1.4"
-    ksp "com.highcapable.yukihookapi:ksp-xposed:1.1.4"
+//    implementation "com.highcapable.yukihookapi:api:1.1.4"
+//    ksp "com.highcapable.yukihookapi:ksp-xposed:1.1.4"
 
-//    implementation files("libs/yukihookapi-1.1.0-preview.jar")
-//    ksp files("libs/yukihookapi-ksp-xposed-1.1.0-preview.jar")
+    implementation files("libs/yukihookapi-1.1.5-beta.jar")
+    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta.jar")
 
     //Material主题
     implementation 'com.google.android.material:material:1.7.0'

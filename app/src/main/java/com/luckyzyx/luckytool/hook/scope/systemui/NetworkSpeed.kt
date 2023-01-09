@@ -11,7 +11,7 @@ import com.luckyzyx.luckytool.utils.data.dp
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.text.DecimalFormat
 
-class NetworkSpeed : YukiBaseHooker() {
+object NetworkSpeed : YukiBaseHooker() {
 
     override fun onHook() {
         //Search postUpdateNetworkSpeedDelay

@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class RemoveVPNActiveNotification : YukiBaseHooker() {
+object RemoveVPNActiveNotification : YukiBaseHooker() {
     override fun onHook() {
         // Source OplusVpnHelper
         if (!prefs(XposedPrefs).getBoolean("remove_vpn_active_notification", false)) return

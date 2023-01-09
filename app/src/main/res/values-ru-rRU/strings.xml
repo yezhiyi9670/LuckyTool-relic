@@ -91,6 +91,10 @@
     <string name="usepresig_warn">!!!Все установщики могут перезаписывать установленные приложения!!! Будьте осторожны при установке приложений из неизвестных установщиков.</string>
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
+    <!--StatusBarOtherFunction-->
+    <string name="StatusBarOtherFunction">Other functions of the statusbar</string>
+    <string name="battery_information_show">Battery information display</string>
+    <string name="battery_information_show_summary">Display battery voltage and other information in the statusbar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_enable">Включить/отключить часы строки состояния</string>

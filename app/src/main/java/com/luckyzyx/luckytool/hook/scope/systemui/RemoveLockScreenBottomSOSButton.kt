@@ -4,7 +4,7 @@ import android.widget.Button
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveLockScreenBottomSOSButton : YukiBaseHooker() {
+object RemoveLockScreenBottomSOSButton : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusEmergencyButtonControllExImpl
         findClass("com.oplus.systemui.keyguard.OplusEmergencyButtonControllExImpl").hook {

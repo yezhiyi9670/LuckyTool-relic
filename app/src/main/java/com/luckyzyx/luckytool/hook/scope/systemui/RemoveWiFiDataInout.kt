@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class RemoveWiFiDataInout : YukiBaseHooker() {
+object RemoveWiFiDataInout : YukiBaseHooker() {
     override fun onHook() {
         VariousClass(
             "com.oplusos.systemui.statusbar.OplusStatusBarWifiView",

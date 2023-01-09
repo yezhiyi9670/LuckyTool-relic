@@ -5,7 +5,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class DisableFlagSecureZygote : YukiBaseHooker() {
+object DisableFlagSecureZygote : YukiBaseHooker() {
     override fun onHook() {
         findClass("android.view.WindowManagerGlobal").hook {
             injectMember {

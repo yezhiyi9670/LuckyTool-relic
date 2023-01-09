@@ -7,7 +7,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class RemoveFullScreenGestureSideSlideBar : YukiBaseHooker() {
+object RemoveFullScreenGestureSideSlideBar : YukiBaseHooker() {
     override fun onHook() {
         //Source SideGestureViewManager
         //Source SideGestureNavView

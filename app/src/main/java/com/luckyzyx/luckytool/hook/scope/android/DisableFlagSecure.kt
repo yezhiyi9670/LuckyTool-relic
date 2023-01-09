@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class DisableFlagSecure : YukiBaseHooker() {
+object DisableFlagSecure : YukiBaseHooker() {
     override fun onHook() {
         //SOurce WindowState
         findClass("com.android.server.wm.WindowState").hook {

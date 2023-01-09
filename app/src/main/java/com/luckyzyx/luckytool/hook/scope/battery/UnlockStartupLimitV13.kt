@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 
-class UnlockStartupLimitV13 : YukiBaseHooker() {
+object UnlockStartupLimitV13 : YukiBaseHooker() {
     override fun onHook() {
         //Source StartupManager
         //Search -> ? 5 : 20; -1 -> Method

@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.MessageClass
 
-class RemoveInstallAds : YukiBaseHooker() {
+object RemoveInstallAds : YukiBaseHooker() {
     private val suggestLayout = arrayOfNulls<LinearLayout>(3)
     private val suggestLayoutARelativeLayout = arrayOfNulls<RelativeLayout>(1)
     override fun onHook() {

@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class ForceDisplayMediaPlayer : YukiBaseHooker() {
+object ForceDisplayMediaPlayer : YukiBaseHooker() {
     override fun onHook() {
         //Controller OplusQSContainerImplController -> onViewAttached -> onChanged
         //Source OplusQSContainerImpl

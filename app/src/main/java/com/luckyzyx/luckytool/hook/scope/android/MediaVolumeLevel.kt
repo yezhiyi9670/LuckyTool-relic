@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-class MediaVolumeLevel : YukiBaseHooker() {
+object MediaVolumeLevel : YukiBaseHooker() {
     override fun onHook() {
         //Source AudioService
         val mediaVolumeLevel = prefs(XposedPrefs).getInt("media_volume_level", 0)

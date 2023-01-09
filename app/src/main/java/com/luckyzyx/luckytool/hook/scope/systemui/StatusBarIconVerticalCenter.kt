@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class StatusBarIconVerticalCenter : YukiBaseHooker() {
+object StatusBarIconVerticalCenter : YukiBaseHooker() {
     override fun onHook() {
         //Source PhoneStatusBarViewExImpl updateContentsPadding
         VariousClass(

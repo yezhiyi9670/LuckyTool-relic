@@ -36,7 +36,11 @@ class HomeFragment : Fragment() {
 
     private var enableModule: Boolean = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater)
         setHasOptionsMenu(true)
         return binding.root
@@ -71,7 +75,16 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if (requireActivity().getBoolean(SettingsPrefs, "auto_check_update", true)) UpdateUtils.checkUpdate(requireActivity(), getVersionName, getVersionCode) { versionName, versionCode, function ->
+        if (requireActivity().getBoolean(
+                SettingsPrefs,
+                "auto_check_update",
+                true
+            )
+        ) UpdateUtils.checkUpdate(
+            requireActivity(),
+            getVersionName,
+            getVersionCode
+        ) { versionName, versionCode, function ->
             binding.updateView.apply {
                 if (getVersionCode < versionCode) {
                     isVisible = true

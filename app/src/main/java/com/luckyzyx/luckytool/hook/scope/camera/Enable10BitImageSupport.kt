@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-class Enable10BitImageSupport : YukiBaseHooker() {
+object Enable10BitImageSupport : YukiBaseHooker() {
     override fun onHook() {
         //Source CameraUnitUtils PRE_KEY_10BIT_HEIC_ENCODE
         findClass("com.oplus.ocs.camera.appinterface.adapter.CameraUnitUtils").hook {
