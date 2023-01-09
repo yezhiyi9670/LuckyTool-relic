@@ -3,6 +3,11 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.4
+
+[适配] 游戏助手v8.1.1  
+[Fix] Game Assistant v8.1.1
+
 ### v4.2.3
 
 [添加] 解锁本地安装灰色  

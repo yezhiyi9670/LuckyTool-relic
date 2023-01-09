@@ -83,7 +83,7 @@ object MainHook : IYukiHookXposedInit {
 
         //自动强制FPS
         loadApp(hooker = HookAutoFps)
-
+        
     }
 
     override fun onXposedEvent() {
