@@ -134,7 +134,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
             val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
             if (isZh(context)) {
                 "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
-            } else "$plugged ${chargerVoltageFinal}v ${power}W\n$technology${wattage}" + if (isUpdateTime) "\n" else ""
+            } else "$plugged ${chargerVoltageFinal}v ${power}W $technology${wattage}" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
             if (isZh(context)) {

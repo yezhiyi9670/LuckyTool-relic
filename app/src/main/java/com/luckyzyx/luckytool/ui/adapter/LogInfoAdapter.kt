@@ -49,7 +49,9 @@ class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiL
                     }
                 )
                 setPositiveButton(android.R.string.copy) { _, _ ->
-                    context.copyStr("[${time}]\n[${tag}][${priority}][${packageName}][${userId}]\nMessage -> \n${msg}\nThrowable -> \n${throwable}\n\n")
+                    val messageFinal = if (msg != "null") "\nMessage -> \n${msg}" else ""
+                    val throwableFinal = if (throwable != "null") "\nThrowable -> \n${throwable}\n\n" else "\n\n"
+                    context.copyStr("[${time}]\n[${tag}][${priority}][${packageName}][${userId}]$messageFinal$throwableFinal")
                 }
             }.show()
         }

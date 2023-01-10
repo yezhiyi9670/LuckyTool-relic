@@ -129,7 +129,9 @@ class LoggerFragment : Fragment() {
         var str = ""
         listData.forEach {
             val time = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(it.timestamp)
-            str += "[${time}]\n[${it.tag}][${it.priority}][${it.packageName}][${it.userId}]\nMessage -> \n${it.msg}\nThrowable -> \n${it.throwable}\n\n"
+            val messageFinal = if (it.msg != "null") "\nMessage -> \n${it.msg}" else ""
+            val throwableFinal = if (it.throwable.toString() != "null") "\nThrowable -> \n${it.throwable}\n\n" else "\n\n"
+            str += "[${time}]\n[${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
         }
         try {
             context.contentResolver.openFileDescriptor(uri, "w")?.use { its ->

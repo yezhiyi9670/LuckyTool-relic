@@ -25,7 +25,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.2.4_beta"
+        versionName "4.2.4"
     }
     buildTypes {
         release {
@@ -71,8 +71,8 @@ dependencies {
 //    implementation "com.highcapable.yukihookapi:api:1.1.4"
 //    ksp "com.highcapable.yukihookapi:ksp-xposed:1.1.4"
 
-    implementation files("libs/yukihookapi-1.1.5-beta.jar")
-    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta.jar")
+    implementation files("libs/yukihookapi-1.1.5-fix-pkgname-equals.jar")
+    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 
     //Material主题
     implementation 'com.google.android.material:material:1.7.0'

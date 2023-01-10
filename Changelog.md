@@ -6,13 +6,17 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 ### v4.2.4
 
 [更新] 捐赠名单  
-[适配] 游戏助手v8.1.1  
+[适配] 游戏助手v8.1.1/v8.1.2  
 [添加] 电池信息显示充电技术  
 [修复] 电池充电电压显示异常  
+[修复] 部分功能异常报错问题  
+[修复] LOG文件导出换行问题  
 [Update] Donation list  
-[Fix] Game Assistant v8.1.1  
+[Fix] Game Assistant v8.1.1/v8.1.2  
 [Add] Battery information display charging technology  
-[Fix] The display of battery charging voltage is abnormal
+[Fix] The display of battery charging voltage is abnormal  
+[Fix] Some abnormal functions report errors  
+[Fix] LOG file export line break problem  
 
 ### v4.2.3
 

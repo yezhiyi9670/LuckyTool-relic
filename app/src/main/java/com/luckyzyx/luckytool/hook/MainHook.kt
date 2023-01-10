@@ -18,7 +18,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
-@InjectYukiHookWithXposed
+@InjectYukiHookWithXposed(isUsingResourcesHook = false)
 object MainHook : IYukiHookXposedInit {
     override fun onInit() = configs {
         debugLog {
@@ -83,7 +83,7 @@ object MainHook : IYukiHookXposedInit {
 
         //自动强制FPS
         loadApp(hooker = HookAutoFps)
-        
+
     }
 
     override fun onXposedEvent() {
