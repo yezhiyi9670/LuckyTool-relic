@@ -91,13 +91,13 @@
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
     <!--StatusBarOtherFunction-->
-    <string name="StatusBarBatteryInformation">StatusBar Battery Information</string>
+    <string name="StatusBarBatteryInformation">Thông tin pin ở thanh trạng thái</string>
     <string name="battery_information_show">Hiển thị thông tin pin</string>
     <string name="battery_information_show_summary">Hiển thị điện áp pin và các thông tin khác trên thanh trạng thái</string>
-    <string name="battery_information_show_charge">Show charging information</string>
-    <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
-    <string name="battery_information_show_update_time">Show update time</string>
-    <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
+    <string name="battery_information_show_charge">Hiện thông tin sạc</string>
+    <string name="battery_information_show_charge_summary">Khi sạc, điện áp và năng lượng sạc lý thuyết của bộ sạc sẽ được hiển thị trên thanh trạng thái</string>
+    <string name="battery_information_show_update_time">Hiển thị thời gian cập nhật</string>
+    <string name="battery_information_show_update_time_summary">Hiển thị thời gian cập nhật dữ liệu hiện tại trên thanh trạng thái</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_enable">Chuyển đổi đồng hồ trên thanh trạng thái</string>

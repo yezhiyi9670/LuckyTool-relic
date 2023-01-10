@@ -52,6 +52,8 @@ object DonateData {
             add(DonateInfo("琉星", 6.66))
             add(DonateInfo("鸿鹄1207", 3.0))
             add(DonateInfo("ddddk", 5.0))
+            add(DonateInfo("ddddk", 5.0))
+            add(DonateInfo("He_zhCN", 5.0))
         }
     }
 }
