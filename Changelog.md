@@ -7,6 +7,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 [适配] 游戏助手v8.1.1  
 [Fix] Game Assistant v8.1.1
+[添加] 电池信息显示充电技术  
+[Add] Battery information display charging technology
 
 ### v4.2.3
 

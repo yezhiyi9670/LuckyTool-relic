@@ -19,21 +19,32 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var voltage: Double = 0.0
     private var electricCurrent: Int = 0
     private var chargerVoltage: Double = 0.0
+    private var chargerTechnology: Int = 0
     override fun onHook() {
         loadApp("com.android.systemui") {
             var batteryInfoShow = prefs(XposedPrefs).getBoolean("battery_information_show", false)
             dataChannel.wait<Boolean>(key = "battery_information_show") { batteryInfoShow = it }
+            var batteryInfoShowCharge =
+                prefs(XposedPrefs).getBoolean("battery_information_show_charge", false)
+            dataChannel.wait<Boolean>(key = "battery_information_show_charge") {
+                batteryInfoShowCharge = it
+            }
+            var batteryInfoShowUpdateTime =
+                prefs(XposedPrefs).getBoolean("battery_information_show_update_time", false)
+            dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
+                batteryInfoShowUpdateTime = it
+            }
             var isChargeStatus = false
             onAppLifecycle {
                 //监听电池信息
                 registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
                     initInfo(context, intent)
-                    sendNotification(context, batteryInfoShow, isChargeStatus)
+                    sendNotification(context, batteryInfoShow, batteryInfoShowCharge && isChargeStatus, batteryInfoShowUpdateTime)
                 }
                 //监听OPLUS电池信息
                 registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
                     initOplusInfo(intent)
-                    sendNotification(context, batteryInfoShow, isChargeStatus)
+                    sendNotification(context, batteryInfoShow, batteryInfoShowCharge && isChargeStatus, batteryInfoShowUpdateTime)
                 }
                 //监听连接充电器
                 registerReceiver(Intent.ACTION_POWER_CONNECTED) { _: Context, _: Intent ->
@@ -63,7 +74,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun initOplusInfo(intent: Intent) {
         chargerVoltage = (intent.getIntExtra("chargervoltage", 0) / 1000.0)
-        //chargertechnology
+        chargerTechnology = (intent.getIntExtra("chargertechnology",0))
         //chargefastcharger
     }
 
@@ -78,40 +89,51 @@ object BatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.createChannel(context, channel)
     }
 
-    private fun sendNotification(context: Context, isShow: Boolean, isCharge: Boolean) {
+    private fun sendNotification(context: Context, isShow: Boolean, isCharge: Boolean, isUpdateTime: Boolean) {
         if (!isShow) {
             clearNotofication(context)
             return
         }
         createChannel(context)
-        val power = if (isCharge) {
-            Formatter().format("%.2f", (chargerVoltage * abs(electricCurrent)) / 1000.0).toString()
-        } else "0"
-
-        val chargeInfo = if (isCharge) {
-            if (isZh(context)) {
-                "充电中:$plugged 充电电压:${chargerVoltage}v 功率:${power}W\n"
-            } else "$plugged ${chargerVoltage}v ${power}W\n"
-        } else ""
 
         val defaultInfo = if (isZh(context)) {
             "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
         } else "${temperature}℃ ${voltage}v ${electricCurrent}mA"
 
-        val updateTime = if (isZh(context)) {
-            "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Date())}"
-        } else SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(Date())
+        val technology = when(chargerTechnology){
+            0 -> "Normal"
+            1 -> "Vooc"
+            2 -> "SuperVooc 5A"
+            20 -> "SuperVooc2 6.5A"
+            30 -> "SuperVooc Athena Foregin Pro"
+            25 -> "Vooc Beta Pro"
+            3 -> "PD"
+            4 -> "QC"
+            else -> "Error"
+        }
+        val chargeInfo = if (isCharge) {
+            val power = Formatter().format("%.2f", (chargerVoltage * abs(electricCurrent)) / 1000.0).toString()
+            if (isZh(context)) {
+                "充电中:$plugged 充电电压:${chargerVoltage}v 理论功率:${power}W\n充电技术:${technology}" + if (isUpdateTime) "\n" else ""
+            } else "$plugged ${chargerVoltage}v ${power}W $technology" + if (isUpdateTime) "\n" else ""
+        } else ""
 
-        val notify = NotificationCompat.Builder(context, "luckytool_notify")
-            .setAutoCancel(false)
-            .setOngoing(true)
-            .setSmallIcon(android.R.mipmap.sym_def_app_icon)
-            .setContentTitle(defaultInfo)
-            .setStyle(
-                NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime")
-            )
-            .setPriority(NotificationCompat.PRIORITY_MAX)
-            .build()
+        val updateTime = if (isUpdateTime) {
+            if (isZh(context)) {
+                "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Date())}"
+            } else SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(Date())
+        } else ""
+
+        val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
+            setAutoCancel(false)
+            setOngoing(true)
+            setSmallIcon(android.R.mipmap.sym_def_app_icon)
+            setContentTitle(defaultInfo)
+            if (isCharge || isUpdateTime) {
+                setStyle(NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime"))
+            }
+            priority = NotificationCompat.PRIORITY_MAX
+        }.build()
         NotifyUtils.sendNotification(context, 112233, notify)
     }
 

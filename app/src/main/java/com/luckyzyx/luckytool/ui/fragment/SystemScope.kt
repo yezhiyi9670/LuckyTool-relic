@@ -181,21 +181,16 @@ class StatusBar : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarOtherFunction)
-                    key = "StatusBarOtherFunction"
+                Preference(context).apply {
+                    title = getString(R.string.StatusBarBatteryInformation)
+                    summary = getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
+                    key = "StatusBarBatteryInfo"
                     isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show)
-                    summary = getString(R.string.battery_information_show_summary)
-                    key = "battery_information_show"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show", value = newValue)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarBatteryInfo, Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -786,6 +781,53 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             "statusbar_tile_enable"
         findPreference<SeekBarPreference>("tile_columns_horizontal_c13")?.dependency =
             "statusbar_tile_enable"
+    }
+}
+
+class StatusBarBatteryInfo : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show)
+                    summary = getString(R.string.battery_information_show_summary)
+                    key = "battery_information_show"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show", value = newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_charge)
+                    summary = getString(R.string.battery_information_show_charge_summary)
+                    key = "battery_information_show_charge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show_charge", value = newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_update_time)
+                    summary = getString(R.string.battery_information_show_update_time_summary)
+                    key = "battery_information_show_update_time"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show_update_time", value = newValue)
+                        true
+                    }
+                }
+            )
+        }
     }
 }
 

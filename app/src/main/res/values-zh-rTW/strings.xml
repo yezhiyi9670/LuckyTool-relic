@@ -91,9 +91,13 @@
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
     <!--StatusBarOtherFunction-->
-    <string name="StatusBarOtherFunction">状态栏其他功能</string>
+    <string name="StatusBarBatteryInformation">状态栏电池信息</string>
     <string name="battery_information_show">电池信息显示</string>
     <string name="battery_information_show_summary">在状态栏显示电池电压等信息</string>
+    <string name="battery_information_show_charge">显示充电信息</string>
+    <string name="battery_information_show_charge_summary">充电时，在状态栏显示充电器的电压和理论充电功率</string>
+    <string name="battery_information_show_update_time">显示更新时间</string>
+    <string name="battery_information_show_update_time_summary">在状态栏显示当前数据的更新时间</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_enable">状态栏时钟总开关</string>

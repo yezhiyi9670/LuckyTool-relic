@@ -255,6 +255,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_statusBar_to_statusBarBatteryInfo"
+                app:destination="@id/statusBarBatteryInfo"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/miscellaneous"
@@ -298,6 +305,10 @@
     <fragment
             android:id="@+id/oplusOta"
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusOta"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/statusBarBatteryInfo"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarBatteryInfo"
             android:label="{title_label}" />
 
 </navigation>

@@ -91,9 +91,13 @@
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
     <!--StatusBarOtherFunction-->
-    <string name="StatusBarOtherFunction">Other functions of the statusbar</string>
+    <string name="StatusBarBatteryInformation">StatusBar Battery Information</string>
     <string name="battery_information_show">Battery information display</string>
     <string name="battery_information_show_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Show charging information</string>
+    <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
+    <string name="battery_information_show_update_time">Show update time</string>
+    <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_enable">Główny przełącznik zegara</string>
