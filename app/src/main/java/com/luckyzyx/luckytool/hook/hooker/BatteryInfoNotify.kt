@@ -24,6 +24,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
     //oplus battery
     private var chargerVoltage: Double = 0.0
     private var chargerTechnology: Int = 0
+    private var chargeWattage: Int = 0
+    private var ppsMode: Int = 0
     override fun onHook() {
         loadApp("com.android.systemui") {
             var batteryInfoShow = prefs(XposedPrefs).getBoolean("battery_information_show", false)
@@ -82,6 +84,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private fun initOplusInfo(intent: Intent) {
         chargerVoltage = (intent.getIntExtra("chargervoltage", 0) / 1000.0)
         chargerTechnology = (intent.getIntExtra("chargertechnology",0))
+        chargeWattage = (intent.getIntExtra("chargewattage",0))
+        ppsMode = (intent.getIntExtra("pps_chg_mode",0))
     }
 
     private fun createChannel(context: Context) {
@@ -105,17 +109,19 @@ object BatteryInfoNotify : YukiBaseHooker() {
             "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
         } else "${temperature}℃ ${voltage}v ${electricCurrent}mA"
         val technology = when(chargerTechnology){
-            0 -> "Normal"
+            0 -> if (ppsMode == 1) "PPS" else "Normal"
             1 -> "Vooc"
-            2 -> "SuperVooc 5A"
-            20 -> "SuperVooc2 6.5A"
+            2 -> "SuperVooc"
+            20 -> "SuperVooc2"
             30 -> "SuperVooc Athena Foreign Pro"
             25 -> "Vooc Beta Pro"
             3 -> "PD"
             4 -> "QC"
+            6 -> "PPS"
             else -> "Error"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
+            //normal,pps
             0 -> if (max_charging_current == 0 && max_charging_voltage == 0) chargerVoltage else 5.0
             //vooc,pd,qc
             1, 3, 4 -> chargerVoltage
@@ -125,9 +131,10 @@ object BatteryInfoNotify : YukiBaseHooker() {
         }
         val chargeInfo = if (isCharge) {
             val power = Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0).toString()
+            val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
             if (isZh(context)) {
-                "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}" + if (isUpdateTime) "\n" else ""
-            } else "$plugged ${chargerVoltage}v ${power}W $technology" + if (isUpdateTime) "\n" else ""
+                "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
+            } else "$plugged ${chargerVoltageFinal}v ${power}W\n$technology${wattage}" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
             if (isZh(context)) {
