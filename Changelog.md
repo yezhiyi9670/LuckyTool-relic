@@ -3,6 +3,11 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.5
+
+[更新] 捐赠名单
+[适配] C13应用包安装程序
+
 ### v4.2.4
 
 [更新] 捐赠名单  
@@ -16,7 +21,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Add] Battery information display charging technology  
 [Fix] The display of battery charging voltage is abnormal  
 [Fix] Some abnormal functions report errors  
-[Fix] LOG file export line break problem  
+[Fix] LOG file export line break problem
 
 ### v4.2.3
 

@@ -32,7 +32,7 @@ object SkipApkScan : YukiBaseHooker() {
                 "a222497" -> {
                     arrayOf(OPIA, "M", "E", "j")
                 }
-                "d1fd8fc", "890f77b", "40d7750", "215dfe4" -> {
+                "d1fd8fc", "890f77b", "40d7750", "215dfe4", "d37ed05" -> {
                     arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
                 }
                 //d132ce2,faec6ba,860700c,3d2dbd1
