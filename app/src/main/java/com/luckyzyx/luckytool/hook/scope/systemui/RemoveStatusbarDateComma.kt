@@ -13,7 +13,7 @@ object RemoveStatusbarDateComma : YukiBaseHooker() {
                     paramCount = 2
                 }
                 afterHook {
-                    result<String>()?.replace("，"," ")
+                    result = result.toString().replace("，"," ")
                 }
             }
         }

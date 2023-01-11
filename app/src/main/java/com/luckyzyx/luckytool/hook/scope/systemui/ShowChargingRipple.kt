@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.type.java.BooleanType
 
 object ShowChargingRipple : YukiBaseHooker() {
     override fun onHook() {
@@ -11,9 +10,21 @@ object ShowChargingRipple : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "isChargingRippleEnabled"
-                    returnType = BooleanType
                 }
                 replaceToTrue()
+            }
+        }
+        //Source WiredChargingRippleController
+        findClass("com.android.systemui.statusbar.charging.WiredChargingRippleController").hook {
+            injectMember {
+                constructor {
+                    paramCount = 8
+                }
+                afterHook {
+                    field {
+                        name = "rippleEnabled"
+                    }.get(instance).setTrue()
+                }
             }
         }
     }
