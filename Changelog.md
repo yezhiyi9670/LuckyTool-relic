@@ -5,8 +5,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.5
 
-[更新] 捐赠名单
-[适配] C13应用包安装程序
+[更新] 捐赠名单  
+[适配] C13应用包安装程序  
 
 ### v4.2.4
 

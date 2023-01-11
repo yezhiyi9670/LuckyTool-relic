@@ -24,7 +24,7 @@ class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiL
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val time = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(data[position].timestamp)
+        val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(data[position].timestamp)
         val tag = data[position].tag
         val priority = data[position].priority
         val packageName = data[position].packageName
@@ -49,9 +49,9 @@ class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiL
                     }
                 )
                 setPositiveButton(android.R.string.copy) { _, _ ->
-                    val messageFinal = if (msg != "null") "\nMessage -> \n${msg}" else ""
-                    val throwableFinal = if (throwable != "null") "\nThrowable -> \n${throwable}\n\n" else "\n\n"
-                    context.copyStr("[${time}]\n[${tag}][${priority}][${packageName}][${userId}]$messageFinal$throwableFinal")
+                    val messageFinal = if (msg != "null") "\nMessage -> $msg" else ""
+                    val throwableFinal = if (throwable != "null") "\nThrowable -> ${throwable}\n\n" else "\n\n"
+                    context.copyStr("[${time}][${tag}][${priority}][${packageName}][${userId}]$messageFinal$throwableFinal")
                 }
             }.show()
         }

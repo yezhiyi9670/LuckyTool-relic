@@ -25,12 +25,13 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class LoggerFragment : Fragment() {
 
     private lateinit var binding: FragmentLogsBinding
 
     private var listData = ArrayList<YukiLoggerData>()
+
+    private var fileName: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,7 +61,7 @@ class LoggerFragment : Fragment() {
                 binding.loglistView.adapter?.notifyDataSetChanged()
                 binding.loglistView.isVisible = listData.isNotEmpty()
                 binding.logNodataView.apply {
-                    text = context.getString(R.string.log_no_data)
+                    text = getString(R.string.log_no_data)
                     isVisible = listData.isEmpty()
                 }
             }
@@ -92,8 +93,7 @@ class LoggerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) loadLogger()
         if (item.itemId == 2) {
-            val fileName =
-                "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + ".log"
+            fileName = "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + ".log"
             saveFile(fileName)
         }
         return super.onOptionsItemSelected(item)
@@ -102,6 +102,9 @@ class LoggerFragment : Fragment() {
     private val createDocument =
         registerForActivityResult(ActivityResultContracts.CreateDocument("text/log")) {
             if (it != null) {
+//                val dir = it.path?.split(":")?.get(1) ?: "/sdcard/Download/$fileName"
+//                val data = YukiHookLogger.contents(listData)
+//                YukiHookLogger.saveToFile(dir,data)
                 alterDocument(requireActivity(), it)
             }
         }
@@ -113,7 +116,6 @@ class LoggerFragment : Fragment() {
         } else {
             createDocument.launch(fileName)
         }
-
     }
 
     private fun checkDirs(): String {
@@ -128,10 +130,10 @@ class LoggerFragment : Fragment() {
     private fun alterDocument(context: Context, uri: Uri) {
         var str = ""
         listData.forEach {
-            val time = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(it.timestamp)
-            val messageFinal = if (it.msg != "null") "\nMessage -> \n${it.msg}" else ""
-            val throwableFinal = if (it.throwable.toString() != "null") "\nThrowable -> \n${it.throwable}\n\n" else "\n\n"
-            str += "[${time}]\n[${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
+            val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(it.timestamp)
+            val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
+            val throwableFinal = if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"
+            str += "[${time}][${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
         }
         try {
             context.contentResolver.openFileDescriptor(uri, "w")?.use { its ->
