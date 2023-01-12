@@ -90,7 +90,7 @@
     <string name="usepresig_warn">所有安装包可以覆盖已安装的App!\n安装未知的安装包时请务必小心</string>
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
-    <!--StatusBarOtherFunction-->
+    <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">状态栏电池信息</string>
     <string name="battery_information_show">电池信息显示</string>
     <string name="battery_information_show_summary">在状态栏显示电池电压等信息</string>
@@ -243,6 +243,7 @@
     <string name="FullScreenGestureRelated">全面屏手势相关</string>
     <string name="remove_side_sliderbar_icon">移除侧滑条图标</string>
     <string name="remove_side_sliderbar_black_background">移除侧滑条黑色背景</string>
+    <string name="remove_rotate_screen_button">移除旋转屏幕按钮</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>

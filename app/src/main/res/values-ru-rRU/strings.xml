@@ -91,7 +91,7 @@
     <string name="usepresig_warn">!!!Все установщики могут перезаписывать установленные приложения!!! Будьте осторожны при установке приложений из неизвестных установщиков.</string>
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
-    <!--StatusBarOtherFunction-->
+    <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">Информация о батарее в строке состояния</string>
     <string name="battery_information_show">Отображение информации о батарее</string>
     <string name="battery_information_show_summary">Отображение напряжения батареи и другой информации в строке состояния</string>
@@ -244,6 +244,7 @@
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
     <string name="remove_side_sliderbar_icon">Удалить значок боковой панели слайдеров</string>
     <string name="remove_side_sliderbar_black_background">Уберите черный фон бокового слайдера</string>
+    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>

@@ -90,7 +90,7 @@
     <string name="usepresig_warn">Uwaga!\nWszystkie pakiety mogą zastąpić zainstalowaną aplikację, co może prowadzić do niebezpiecznych sytuacji.</string>
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
-    <!--StatusBarOtherFunction-->
+    <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">StatusBar Battery Information</string>
     <string name="battery_information_show">Battery information display</string>
     <string name="battery_information_show_summary">Display battery voltage and other information in the statusbar</string>
@@ -243,6 +243,7 @@
     <string name="FullScreenGestureRelated">Gesty pełnoekranowe</string>
     <string name="remove_side_sliderbar_icon">Usuń ikonę bocznego suwaka</string>
     <string name="remove_side_sliderbar_black_background">Usuń czarne tło bocznego suwaka</string>
+    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>

@@ -1242,6 +1242,14 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_rotate_screen_button)
+                    key = "remove_rotate_screen_button"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

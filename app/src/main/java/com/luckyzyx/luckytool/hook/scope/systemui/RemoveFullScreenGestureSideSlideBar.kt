@@ -13,6 +13,7 @@ object RemoveFullScreenGestureSideSlideBar : YukiBaseHooker() {
         //Source SideGestureNavView
         val removeIcon = prefs(XposedPrefs).getBoolean("remove_side_sliderbar_icon", false)
         val removeBackground = prefs(XposedPrefs).getBoolean("remove_side_sliderbar_black_background", false)
+        if (!(removeIcon || removeBackground)) return
         VariousClass(
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
             "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView"

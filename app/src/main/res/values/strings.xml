@@ -244,6 +244,7 @@
     <string name="FullScreenGestureRelated">Full screen gesture related</string>
     <string name="remove_side_sliderbar_icon">Remove side sliderbar icon</string>
     <string name="remove_side_sliderbar_black_background">Remove the black background of the side slider</string>
+    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Miscellaneous</string>
     <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>

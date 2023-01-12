@@ -7,6 +7,10 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 [更新] 捐赠名单  
 [适配] C13应用包安装程序  
+[添加] 移除全面屏手势旋转按钮  
+[Update] Donation list  
+[Fix] C13 application package installer  
+[Add] Remove the full screen gesture rotation button
 
 ### v4.2.4
 
