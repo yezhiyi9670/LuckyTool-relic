@@ -152,7 +152,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarIcon)
                     summary =
-                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.remove_statusbar_user_switcher)
+                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.remove_green_dot_privacy_prompt)
                     key = "StatusBarIcon"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -168,7 +168,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarControlCenter)
                     summary =
-                        getString(R.string.remove_drop_down_statusbar_mydevice) + "," + getString(R.string.tile_unexpanded_columns_vertical)
+                        getString(R.string.control_center_clock_show_second) + "," + getString(R.string.remove_control_center_clock_red_one)
                     key = "StatusBarControlCenter"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -183,7 +183,8 @@ class StatusBar : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.StatusBarBatteryInformation)
-                    summary = getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
+                    summary =
+                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
                     key = "StatusBarBatteryInfo"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -586,42 +587,55 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBar_UI_Related)
-                    key = "StatusBar_UI_Related"
+                    title = getString(R.string.ControlCenter_Clock_Related)
+                    key = "ControlCenter_Clock_Related"
                     isIconSpaceReserved = false
-                    isVisible = SDK >= 33
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.dropdown_statusbar_clock_show_second)
-                    key = "dropdown_statusbar_clock_show_second"
+                    title = getString(R.string.control_center_clock_show_second)
+                    key = "control_center_clock_show_second"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_dropdown_statusbar_clock_style)
-                    summary = getString(R.string.remove_dropdown_statusbar_clock_style_summary)
-                    key = "remove_dropdown_statusbar_clock_style"
+                    title = getString(R.string.fix_clock_colon_style)
+                    summary = getString(R.string.fix_clock_colon_style_summary)
+                    key = "fix_clock_colon_style"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_date_comma)
-                    summary = getString(R.string.remove_statusbar_date_comma_summary)
-                    key = "remove_statusbar_date_comma"
+                    title = getString(R.string.remove_control_center_clock_red_one)
+                    key = "remove_control_center_clock_red_one"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_user_switcher)
-                    key = "remove_statusbar_user_switcher"
+                    title = getString(R.string.remove_control_center_date_comma)
+                    key = "remove_control_center_date_comma"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.ControlCenter_UI_Related)
+                    key = "ControlCenter_UI_Related"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_control_center_user_switcher)
+                    key = "remove_control_center_user_switcher"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK < A13
@@ -629,8 +643,8 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_drop_down_statusbar_mydevice)
-                    key = "remove_drop_down_statusbar_mydevice"
+                    title = getString(R.string.remove_control_center_mydevice)
+                    key = "remove_control_center_mydevice"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
@@ -647,15 +661,15 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBar_Tile_Related)
-                    key = "StatusBar_Tile_Related"
+                    title = getString(R.string.ControlCenter_Tile_Related)
+                    key = "ControlCenter_Tile_Related"
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_tile_enable)
-                    key = "statusbar_tile_enable"
+                    title = getString(R.string.control_center_tile_enable)
+                    key = "control_center_tile_enable"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -774,21 +788,21 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
         }
         findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_unexpanded_columns_horizontal")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_expanded_columns_vertical")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_expanded_columns_horizontal")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical_c13")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_expanded_rows_vertical_c13")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_expanded_columns_vertical_c13")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
         findPreference<SeekBarPreference>("tile_columns_horizontal_c13")?.dependency =
-            "statusbar_tile_enable"
+            "control_center_tile_enable"
     }
 }
 
@@ -804,7 +818,8 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show", value = newValue)
+                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                            .put(key = "battery_information_show", value = newValue)
                         true
                     }
                 }
@@ -817,7 +832,8 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show_charge", value = newValue)
+                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                            .put(key = "battery_information_show_charge", value = newValue)
                         true
                     }
                 }
@@ -830,7 +846,8 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui").put(key = "battery_information_show_update_time", value = newValue)
+                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                            .put(key = "battery_information_show_update_time", value = newValue)
                         true
                     }
                 }

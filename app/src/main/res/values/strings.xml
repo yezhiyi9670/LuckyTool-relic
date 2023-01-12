@@ -147,7 +147,6 @@
     <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
     <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
     <string name="remove_statusbar_battery_percent">Remove battery percentage number in statusbar</string>
-    <string name="remove_statusbar_user_switcher">Remove drop-down status bar multi-user icon</string>
     <string name="remove_wifi_data_inout">Remove WiFi data inout</string>
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
@@ -155,16 +154,21 @@
     <string name="status_bar_icon_vertical_center">Statusbar icon vertical center</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">StatusBar ControlCenter</string>
-    <string name="StatusBar_UI_Related">StatusBar UI Related</string>
-    <string name="dropdown_statusbar_clock_show_second">DropDown Statusbar Clock show second</string>
-    <string name="remove_dropdown_statusbar_clock_style_summary">Colon alignment, red number 1</string>
-    <string name="remove_dropdown_statusbar_clock_style">Remove dropdown statusbar clock style</string>
-    <string name="remove_statusbar_date_comma">Remove dropdown status bar date comma</string>
-    <string name="remove_statusbar_date_comma_summary">Guessing is limited to ZH users</string>
-    <string name="remove_drop_down_statusbar_mydevice">remove drop down statusbar my device</string>
+    
+    <string name="ControlCenter_Clock_Related">Control Center Clock Related</string>
+    <string name="control_center_clock_show_second">Control center clock show second</string>
+    <string name="fix_clock_colon_style">Fix clock colon style</string>
+    <string name="fix_clock_colon_style_summary">Return to the normal colon when it is turned on, and use the official custom colon when it is turned off</string>
+    <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
+    <string name="remove_control_center_date_comma">Remove control center date comma</string>
+    
+    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
+    <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
+    <string name="remove_control_center_mydevice">Remove control center my device</string>
     <string name="force_display_media_player">Force the display of the media player</string>
-    <string name="StatusBar_Tile_Related">StatusBar Tile Related</string>
-    <string name="statusbar_tile_enable">Total statusbar tiles switch</string>
+    
+    <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
+    <string name="control_center_tile_enable">Control center tile function main switch</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
     <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
     <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>

@@ -4,7 +4,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-object RemoveDropdownStatusbarMydevice : YukiBaseHooker() {
+object RemoveControlCenterMydevice : YukiBaseHooker() {
     override fun onHook() {
         // Source MyDevicePanel
         findClass("com.oplus.systemui.qs.mydevice.MyDevicePanel").hook {

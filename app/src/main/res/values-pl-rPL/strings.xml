@@ -146,7 +146,6 @@
     <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
     <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
     <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
-    <string name="remove_statusbar_user_switcher">Ukryj przełącznik użytkowników</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
     <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
@@ -154,16 +153,18 @@
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Panel szybkich ustawień</string>
-    <string name="StatusBar_UI_Related">Wygląd panelu</string>
-    <string name="dropdown_statusbar_clock_show_second">Pokaż sekundy zegara</string>
-    <string name="remove_dropdown_statusbar_clock_style_summary">Obniża dwukropek\nUsuwa czerwony kolor z cyfry \"1\"</string>
-    <string name="remove_dropdown_statusbar_clock_style">Popraw zegar</string>
-    <string name="remove_statusbar_date_comma">Usuń przecinek z daty</string>
-    <string name="remove_statusbar_date_comma_summary">Przydatne wyłącznie dla chińskich użytkowników</string>
-    <string name="remove_drop_down_statusbar_mydevice">Ukryj \"Wyjście mediów\"</string>
+    <string name="ControlCenter_Clock_Related">Control Center Clock Related</string>
+    <string name="control_center_clock_show_second">Control center clock show second</string>
+    <string name="fix_clock_colon_style">Fix clock colon style</string>
+    <string name="fix_clock_colon_style_summary">Return to the normal colon when it is turned on, and use the official custom colon when it is turned off</string>
+    <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
+    <string name="remove_control_center_date_comma">Remove control center date comma</string>
+    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
+    <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
+    <string name="remove_control_center_mydevice">Remove control center my device</string>
     <string name="force_display_media_player">Force the display of the media player</string>
-    <string name="StatusBar_Tile_Related">Dostosuj przełączniki</string>
-    <string name="statusbar_tile_enable">Główny przełącznik</string>
+    <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
+    <string name="control_center_tile_enable">Control center tile function main switch</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
     <string name="tile_unexpanded_columns_horizontal">Kolumny (w poziomie)</string>
     <string name="tile_expanded_columns_vertical">Rozszerzone - Kolumny (w pionie)</string>

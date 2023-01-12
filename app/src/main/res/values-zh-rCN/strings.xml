@@ -146,7 +146,6 @@
     <string name="remove_high_performance_mode_icon">移除高性能模式图标</string>
     <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
     <string name="remove_statusbar_battery_percent">移除状态栏电量百分号</string>
-    <string name="remove_statusbar_user_switcher">移除下拉状态栏多用户图标</string>
     <string name="remove_wifi_data_inout">移除WiFi数据箭头</string>
     <string name="remove_mobile_data_inout">移除移动数据箭头</string>
     <string name="remove_green_dot_privacy_prompt">移除绿点隐私提示</string>
@@ -154,16 +153,18 @@
     <string name="status_bar_icon_vertical_center">状态栏图标垂直居中</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">状态栏控制中心</string>
-    <string name="StatusBar_UI_Related">状态栏UI相关</string>
-    <string name="dropdown_statusbar_clock_show_second">下拉状态栏时钟显秒</string>
-    <string name="remove_dropdown_statusbar_clock_style_summary">冒号对齐，红一</string>
-    <string name="remove_dropdown_statusbar_clock_style">移除下拉状态栏时钟样式</string>
-    <string name="remove_statusbar_date_comma">移除下拉状态栏日期逗号</string>
-    <string name="remove_statusbar_date_comma_summary">猜测仅限于ZH</string>
-    <string name="remove_drop_down_statusbar_mydevice">移除下拉状态栏我的设备</string>
+    <string name="ControlCenter_Clock_Related">控制中心时钟相关</string>
+    <string name="control_center_clock_show_second">控制中心时钟显秒</string>
+    <string name="fix_clock_colon_style">修复时钟冒号样式</string>
+    <string name="fix_clock_colon_style_summary">开启时恢复系统默认冒号，关闭时使用官方定制冒号</string>
+    <string name="remove_control_center_clock_red_one">移除控制中心时钟红一</string>
+    <string name="remove_control_center_date_comma">移除控制中心日期逗号</string>
+    <string name="ControlCenter_UI_Related">控制中心UI相关</string>
+    <string name="remove_control_center_user_switcher">移除控制中心多用户</string>
+    <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
     <string name="force_display_media_player">强制显示媒体播放器</string>
-    <string name="StatusBar_Tile_Related">状态栏磁贴相关</string>
-    <string name="statusbar_tile_enable">状态栏磁贴总开关</string>
+    <string name="ControlCenter_Tile_Related">控制中心磁贴相关</string>
+    <string name="control_center_tile_enable">控制中心磁贴功能总开关</string>
     <string name="tile_unexpanded_columns_vertical">磁贴未展开列数(竖屏)</string>
     <string name="tile_unexpanded_columns_horizontal">磁贴未展开列数(横屏)</string>
     <string name="tile_expanded_columns_vertical">展开磁贴列数(竖屏)</string>

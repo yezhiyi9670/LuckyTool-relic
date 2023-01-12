@@ -146,7 +146,6 @@
     <string name="remove_high_performance_mode_icon">Xóa biểu tượng chế độ hiệu suất cao</string>
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>
     <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
-    <string name="remove_statusbar_user_switcher">Xóa biểu tượng nhiều người dùng trên thanh trạng thái thả xuống</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
@@ -154,16 +153,18 @@
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
-    <string name="StatusBar_UI_Related">Giao diện thanh trạng thái</string>
-    <string name="dropdown_statusbar_clock_show_second">Đồng hồ thanh trạng thái thả xuống hiện giây</string>
-    <string name="remove_dropdown_statusbar_clock_style_summary">Xóa tóm tắt kiểu đồng hồ trên thanh trạng thái thả xuống</string>
-    <string name="remove_dropdown_statusbar_clock_style">Xóa kiểu đồng hồ trên thanh trạng thái thả xuống</string>
-    <string name="remove_statusbar_date_comma">Xóa dấu phẩy ngày trên thanh trạng thái thả xuống</string>
-    <string name="remove_statusbar_date_comma_summary">Giới hạn đối với người TQ</string>
-    <string name="remove_drop_down_statusbar_mydevice">xóa thanh trạng thái thả xuống thiết bị của tôi</string>
+    <string name="ControlCenter_Clock_Related">Control Center Clock Related</string>
+    <string name="control_center_clock_show_second">Control center clock show second</string>
+    <string name="fix_clock_colon_style">Fix clock colon style</string>
+    <string name="fix_clock_colon_style_summary">Return to the normal colon when it is turned on, and use the official custom colon when it is turned off</string>
+    <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
+    <string name="remove_control_center_date_comma">Remove control center date comma</string>
+    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
+    <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
+    <string name="remove_control_center_mydevice">Remove control center my device</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
-    <string name="StatusBar_Tile_Related">Thanh trạng thái</string>
-    <string name="statusbar_tile_enable">Số ô thanh trạng thái</string>
+    <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
+    <string name="control_center_tile_enable">Control center tile function main switch</string>
     <string name="tile_unexpanded_columns_vertical">Các cột không được mở rộng của ô xếp (dọc)</string>
     <string name="tile_unexpanded_columns_horizontal">Các cột chưa được mở rộng của ô xếp (ngang)</string>
     <string name="tile_expanded_columns_vertical">Mở rộng ô(dọc)</string>

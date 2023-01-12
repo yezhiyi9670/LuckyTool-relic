@@ -9,10 +9,12 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] C13应用包安装程序  
 [添加] 移除全面屏手势旋转按钮  
 [添加] 移除绿色胶囊提示  
+[优化] 控制中心时钟样式  
 [Update] Donation list  
 [Fix] C13 application package installer  
 [Add] Remove the full screen gesture rotation button  
-[Add] Remove the green capsule prompt
+[Add] Remove the green capsule prompt  
+[Optimize] Control Center clock style
 
 ### v4.2.4
 

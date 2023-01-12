@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-object RemoveStatusbarDateComma : YukiBaseHooker() {
+object RemoveControlCenterDateComma : YukiBaseHooker() {
     override fun onHook() {
         //Source WeatherInfoParseHelper
         //cn_comma
