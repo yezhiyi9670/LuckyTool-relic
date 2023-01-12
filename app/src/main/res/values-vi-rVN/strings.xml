@@ -150,6 +150,7 @@
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
+    <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
@@ -243,7 +244,7 @@
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
     <string name="remove_side_sliderbar_icon">Xóa biểu tượng thanh trượt bên</string>
     <string name="remove_side_sliderbar_black_background">Xóa nền đen của thanh trượt bên</string>
-    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
+    <string name="remove_rotate_screen_button">Tắt nút xoay màn hình</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>

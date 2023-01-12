@@ -151,6 +151,7 @@
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_green_dot_privacy_prompt">Удалить запрос на конфиденциальность</string>
+    <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
     <string name="status_bar_icon_vertical_center">Иконка строки состояния по вертикали в центре</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Центр управления строки состояния</string>
@@ -244,7 +245,7 @@
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
     <string name="remove_side_sliderbar_icon">Удалить значок боковой панели слайдеров</string>
     <string name="remove_side_sliderbar_black_background">Уберите черный фон бокового слайдера</string>
-    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
+    <string name="remove_rotate_screen_button">Удалить кнопку поворота экрана</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
