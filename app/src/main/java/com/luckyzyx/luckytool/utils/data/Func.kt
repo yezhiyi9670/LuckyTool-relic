@@ -53,6 +53,7 @@ val getColorOSVersion
  * 写入SP xml文件内
  * @return [ArraySet]
  */
+@Suppress("DEPRECATION") //修复获取null
 fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default = ArrayList()) {
     val arrayList = ArrayList<String>()
     val arraySet = ArraySet<String>()
@@ -64,10 +65,15 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     val versionCode = safeOf(default = "null") { packageInfo.longVersionCode }
     arrayList.add("$versionCode")
     arraySet.add("1.$versionCode")
-    @Suppress("DEPRECATION") //修复获取null
     val versionCommit = safeOf(default = "null") { commitInfo.metaData.get("versionCommit") }
-    arrayList.add("$versionCommit")
-    arraySet.add("2.$versionCommit")
+    if ( versionCommit == "" && packName == "com.oplus.camera") {
+        val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate") }
+        arrayList.add("$versionDate")
+        arraySet.add("2.$versionDate")
+    } else {
+        arrayList.add("$versionCommit")
+        arraySet.add("2.$versionCommit")
+    }
     putStringSet(XposedPrefs, packName, arraySet)
     return arrayList
 }

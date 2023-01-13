@@ -3,13 +3,12 @@ package com.luckyzyx.luckytool.hook.scope.camera
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
+import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 
 object RemoveWatermarkWordLimit : YukiBaseHooker() {
     override fun onHook() {
-        // Source CameraSubSettingFragment
-        // Log camera_namelength_outofrange
         val appSet = prefs(XposedPrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
             Arrays.sort(this)
             forEach {
@@ -17,18 +16,57 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
             }
         }
         val clazz = when (appSet[2]) {
-            "8d5b992", "38e5b1a" -> "com.oplus.camera.ui.menu.setting.p\$7"
-            "c7732c4" -> "com.oplus.camera.ui.menu.setting.p\$5"
-            else -> "com.oplus.camera.setting.j\$5"
+            "8d5b992", "38e5b1a" -> "$7"
+            "c7732c4" -> "$5"
+            "22-10-20 15:45", "23-01-05 16:32", "22-06-02 23:45", "22-12-13 11:33" -> "$5"
+            else -> ""
         }
-        findClass(clazz).hook {
-            injectMember {
-                method {
-                    name = "filter"
-                    returnType = CharSequenceClass
+        // Source CameraSubSettingFragment
+        // Log camera_namelength_outofrange
+        searchClass {
+            from("com.oplus.camera.setting", "com.oplus.camera.ui.menu.setting").absolute()
+            method {
+                name = "onCreate"
+            }.count(1)
+            method {
+                name = "onDestroy"
+            }.count(1)
+            method {
+                name = "onDestroyView"
+            }.count(1)
+            method {
+                name = "onPause"
+            }.count(1)
+            method {
+                name = "onPreferenceChange"
+            }.count(1)
+            method {
+                name = "onPreferenceClick"
+            }.count(1)
+            method {
+                name = "onResume"
+            }.count(1)
+            method {
+                name = "onViewCreated"
+            }.count(1)
+            method {
+                param { it[0] == CharSequenceClass && it[1] == IntType && it[2] == IntType }
+                paramCount = 6
+                returnType = CharSequenceClass
+            }.count(0..1)
+        }.get()?.apply {
+            findClass(canonicalName!! + clazz).hook {
+                injectMember {
+                    method {
+                        name = "filter"
+                        returnType = CharSequenceClass
+                    }
+                    intercept()
                 }
-                intercept()
             }
         }
     }
 }
+
+
+

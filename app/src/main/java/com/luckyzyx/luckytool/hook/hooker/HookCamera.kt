@@ -1,14 +1,12 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.luckyzyx.luckytool.hook.scope.camera.Enable10BitImageSupport
 import com.luckyzyx.luckytool.hook.scope.camera.RemoveWatermarkWordLimit
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object HookCamera : YukiBaseHooker() {
     override fun onHook() {
-        loggerD(msg = "开始Hook")
         //移除水印字数限制
         if (prefs(XposedPrefs).getBoolean("remove_watermark_word_limit", false)) {
             loadHooker(RemoveWatermarkWordLimit)
@@ -18,7 +16,5 @@ object HookCamera : YukiBaseHooker() {
         if (prefs(XposedPrefs).getBoolean("enable_10_bit_image_support", false)) {
             loadHooker(Enable10BitImageSupport)
         }
-        loggerD(msg = "结束Hook")
-
     }
 }
