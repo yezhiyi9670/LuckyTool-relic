@@ -10,13 +10,12 @@ import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object ControlCenterClockStyle : YukiBaseHooker() {
-    private val showSecond =
-        prefs(XposedPrefs).getBoolean("control_center_clock_show_second", false)
-    private val fixColon = prefs(XposedPrefs).getBoolean("fix_clock_colon_style", false)
-    private val removeRedOne =
-        prefs(XposedPrefs).getBoolean("remove_control_center_clock_red_one", false)
-
     override fun onHook() {
+        val showSecond =
+            prefs(XposedPrefs).getBoolean("control_center_clock_show_second", false)
+        val fixColon = prefs(XposedPrefs).getBoolean("fix_clock_colon_style", false)
+        val removeRedOne =
+            prefs(XposedPrefs).getBoolean("remove_control_center_clock_red_one", false)
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
@@ -36,7 +35,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 replaceUnit {
                     val view = instance<TextView>()
                     val char = args(0).cast<CharSequence>()!!
-                    setRedOneStyle(view, char)
+                    setRedOneStyle(view, char, removeRedOne)
                 }
             }
         }
@@ -51,14 +50,14 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 replaceUnit {
                     val view = args(0).cast<TextView>()
                     val char = args(1).cast<CharSequence>()!!
-                    setColonStyle(view, char)
-                    setRedOneStyle(view, char)
+                    setColonStyle(view, char, fixColon)
+                    setRedOneStyle(view, char, removeRedOne)
                 }
             }
         }
     }
 
-    private fun setColonStyle(view: TextView?, char: CharSequence) {
+    private fun setColonStyle(view: TextView?, char: CharSequence, fixColon: Boolean) {
         view?.text = if (fixColon) {
             char.toString().replace("\u200e\u2236", ":")
         } else {
@@ -66,7 +65,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         }
     }
 
-    private fun setRedOneStyle(view: TextView?, char: CharSequence) {
+    private fun setRedOneStyle(view: TextView?, char: CharSequence, removeRedOne: Boolean) {
         if (!removeRedOne) {
             val sp = SpannableString(view?.text)
             for (i in 0 until 2) {

@@ -117,7 +117,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
             25 -> "Vooc Beta Pro"
             3 -> "PD"
             4 -> "QC"
-            6 -> "PPS"
+            5 -> "PPS"
+            6 -> "UFCS"
             else -> "Error"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
