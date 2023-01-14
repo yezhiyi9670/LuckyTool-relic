@@ -11,12 +11,14 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 移除绿色胶囊提示  
 [优化] 控制中心时钟样式  
 [适配] 相机水印字数限制  
+[添加] 自定义侧滑图标  
 [Update] Donation list  
 [Fix] C13 application package installer  
 [Add] Remove the full screen gesture rotation button  
 [Add] Remove the green capsule prompt  
 [Optimize] Control Center clock style  
-[Fix] Camera watermark character limit
+[Fix] Camera watermark character limit  
+[Add] Custom side slider icon
 
 ### v4.2.4
 

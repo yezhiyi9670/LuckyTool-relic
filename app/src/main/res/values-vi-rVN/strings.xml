@@ -149,22 +149,22 @@
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
-    <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
+    <string name="remove_green_capsule_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
-    <string name="ControlCenter_Clock_Related">Control Center Clock Related</string>
-    <string name="control_center_clock_show_second">Control center clock show second</string>
-    <string name="fix_clock_colon_style">Fix clock colon style</string>
-    <string name="fix_clock_colon_style_summary">Return to the normal colon when it is turned on, and use the official custom colon when it is turned off</string>
-    <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
-    <string name="remove_control_center_date_comma">Remove control center date comma</string>
-    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
-    <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
-    <string name="remove_control_center_mydevice">Remove control center my device</string>
+    <string name="ControlCenter_Clock_Related">Đồng hồ trung tâm điều khiển</string>
+    <string name="control_center_clock_show_second">Đồng hồ trung tâm điều khiển hiển thị giây</string>
+    <string name="fix_clock_colon_style">Sửa đồng hồ kiểu dấu hai chấm</string>
+    <string name="fix_clock_colon_style_summary">Quay lại dấu hai chấm bình thường khi nó được bật và sử dụng dấu hai chấm tùy chỉnh chính thức khi nó bị tắt</string>
+    <string name="remove_control_center_clock_red_one">Xóa số một đỏ ở đồng hồ trung tâm điều khiển</string>
+    <string name="remove_control_center_date_comma">Xóa dấu phẩy ngày của trung tâm điều khiển</string>
+    <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
+    <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
+    <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
-    <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
-    <string name="control_center_tile_enable">Control center tile function main switch</string>
+    <string name="ControlCenter_Tile_Related">Ô trung tâm điều khiển</string>
+    <string name="control_center_tile_enable">Công tắc chính chức năng ô trung tâm điều khiển</string>
     <string name="tile_unexpanded_columns_vertical">Các cột không được mở rộng của ô xếp (dọc)</string>
     <string name="tile_unexpanded_columns_horizontal">Các cột chưa được mở rộng của ô xếp (ngang)</string>
     <string name="tile_expanded_columns_vertical">Mở rộng ô(dọc)</string>
@@ -243,9 +243,13 @@
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
-    <string name="remove_side_sliderbar_icon">Xóa biểu tượng thanh trượt bên</string>
-    <string name="remove_side_sliderbar_black_background">Xóa nền đen của thanh trượt bên</string>
+    <string name="remove_side_slider">Xóa thanh trượt bên</string>
+    <string name="remove_side_slider_black_background">Xóa nền đen của thanh trượt bên</string>
     <string name="remove_rotate_screen_button">Tắt nút xoay màn hình</string>
+    <string name="CustomSideSliderIcon">Tùy chỉnh biểu tượng thanh trượt bên</string>
+    <string name="replace_side_slider_icon_switch">Thay thế công tắc biểu tượng thanh trượt bên</string>
+    <string name="replace_side_slider_icon_on_left">Thay thế biểu tượng trượt bên trái</string>
+    <string name="replace_side_slider_icon_on_right">Thay thế biểu tượng trượt bên phải</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>

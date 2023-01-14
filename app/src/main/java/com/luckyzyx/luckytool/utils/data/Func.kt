@@ -5,11 +5,17 @@ package com.luckyzyx.luckytool.utils.data
 import android.content.*
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
+import android.os.Environment
+import android.os.SystemClock
+import android.provider.DocumentsContract
+import android.provider.MediaStore
+import android.text.TextUtils
 import android.util.ArraySet
 import android.util.Base64
 import android.widget.Toast
@@ -18,20 +24,24 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig.*
 import com.luckyzyx.luckytool.utils.tools.*
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import java.io.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
 
+
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
+
 /**A11 R*/
 val A11 get() = Build.VERSION_CODES.R
+
 /**A12 S*/
 val A12 get() = Build.VERSION_CODES.S
+
 /**A12.1 S_V2*/
 val A121 get() = Build.VERSION_CODES.S_V2
+
 /**A13 TIRAMISU*/
 val A13 get() = Build.VERSION_CODES.TIRAMISU
 
@@ -66,7 +76,7 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     arrayList.add("$versionCode")
     arraySet.add("1.$versionCode")
     val versionCommit = safeOf(default = "null") { commitInfo.metaData.get("versionCommit") }
-    if ( versionCommit == "" && packName == "com.oplus.camera") {
+    if (versionCommit == "" && packName == "com.oplus.camera") {
         val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate") }
         arrayList.add("$versionDate")
         arraySet.add("2.$versionDate")
@@ -172,23 +182,23 @@ fun Context.getFpsMode1(): Array<String> {
 fun Context.getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +
-        "  if [[ -n \$row ]]; then\n" +
-        "    echo \$row | tr ',' '\\n' | while read col; do\n" +
-        "      case \$col in\n" +
-        "      'width='*)\n" +
-        "        echo -n \$(echo \${col:6})\n" +
-        "        ;;\n" +
-        "      'height='*)\n" +
-        "        echo -n x\$(echo \${col:7})\n" +
-        "        ;;\n" +
-        "      'fps='*)\n" +
-        "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" +
-        "        ;;\n" +
-        "      esac\n" +
-        "    done\n" +
-        "    echo -e '@'\n" +
-        "  fi\n" +
-        "done"
+                "  if [[ -n \$row ]]; then\n" +
+                "    echo \$row | tr ',' '\\n' | while read col; do\n" +
+                "      case \$col in\n" +
+                "      'width='*)\n" +
+                "        echo -n \$(echo \${col:6})\n" +
+                "        ;;\n" +
+                "      'height='*)\n" +
+                "        echo -n x\$(echo \${col:7})\n" +
+                "        ;;\n" +
+                "      'fps='*)\n" +
+                "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" +
+                "        ;;\n" +
+                "      esac\n" +
+                "    done\n" +
+                "    echo -e '@'\n" +
+                "  fi\n" +
+                "done"
     return ShellUtils.execCommand(command, true, true).successMsg.let {
         it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")
             ?.toTypedArray() ?: arrayOf()
@@ -202,13 +212,14 @@ fun Context.getFpsMode2(): Array<String> {
 fun getBatteryInfo(): Array<String> {
     val command =
         "dumpsys battery | while read row; do\n" +
-        "  if [[ -n \$row ]]; then\n" +
-        "    echo \$row\n" +
-        "    echo -e '@'\n" +
-        "  fi\n" +
-        "done"
-    return ShellUtils.execCommand(command,true,true).successMsg.let {
-        it.takeIf { e -> e.isNotEmpty() }?.substring(0,it.length - 1)?.split("@")?.toTypedArray() ?: arrayOf()
+                "  if [[ -n \$row ]]; then\n" +
+                "    echo \$row\n" +
+                "    echo -e '@'\n" +
+                "  fi\n" +
+                "done"
+    return ShellUtils.execCommand(command, true, true).successMsg.let {
+        it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")?.toTypedArray()
+            ?: arrayOf()
     }
 }
 
@@ -491,10 +502,128 @@ fun readFromUri(context: Context, uri: Uri): String {
     return stringBuilder.toString()
 }
 
+/**
+ * 获取文件路径
+ * @param uri Uri 文件URI
+ * @return String 文件Path
+ */
+fun getDocumentPath(context: Context, uri: Uri): String? {
+    if (ContentResolver.SCHEME_CONTENT != uri.scheme) return "null"
+    if (!DocumentsContract.isDocumentUri(context, uri)) return "null"
+    val authority = when (uri.authority) {
+        "com.android.externalstorage.documents" -> "ExternalStorageDocument"
+        "com.android.providers.downloads.documents" -> "DownloadsDocument"
+        "com.android.providers.media.documents" -> "MediaDocument"
+        else -> "null"
+    }
+    when (authority) {
+        "ExternalStorageDocument" -> {
+            // ExternalStorageProvider
+            val docId = DocumentsContract.getDocumentId(uri)
+            val docArray = docId.split(":")
+            val type = docArray[0]
+            val dir = docArray[1]
+            if ("primary" != type) return "null"
+            return Environment.getExternalStorageDirectory().path + "/" + dir
+        }
+        "DownloadsDocument" -> {
+            // DownloadsProvider
+            val docId = DocumentsContract.getDocumentId(uri)
+            if (TextUtils.isEmpty(docId)) return "null"
+            return if (docId.startsWith("raw:")) {
+                docId.replaceFirst("raw:", "")
+            } else if (docId.contains("msf:")) {
+                getMSFFile(context, uri)
+            } else {
+                val contentUri = ContentUris.withAppendedId(
+                    Uri.parse("content://downloads/public_downloads"),
+                    ContentUris.parseId(uri)
+                )
+                getDataColumn(context, contentUri, null, null)
+            }
+        }
+        "MediaDocument" -> {
+            // MediaProvider
+            val docId = DocumentsContract.getDocumentId(uri)
+            val docArray = docId.split(":")
+            val contentUri: Uri? = when (docArray[0]) {
+                "image" -> MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                "video" -> MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                "audio" -> MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                else -> null
+            }
+            val selection = "_id=?"
+            val selectionArgs = arrayOf(docArray[1])
+            return getDataColumn(context, contentUri!!, selection, selectionArgs)
+        }
+    }
+    return "null"
+}
 
+/**
+ * 获取文件数据列
+ * @param context Context
+ * @param uri Uri
+ * @param selection String?
+ * @param selectionArgs Array<String>?
+ * @return String?
+ */
+fun getDataColumn(
+    context: Context,
+    uri: Uri,
+    selection: String?,
+    selectionArgs: Array<String>?
+): String? {
+    var cursor: Cursor? = null
+    val column = "_data"
+    val projection = arrayOf(column)
+    try {
+        cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
+        if (cursor != null && cursor.moveToFirst()) {
+            val columnIndex: Int = cursor.getColumnIndexOrThrow(column)
+            return cursor.getString(columnIndex)
+        }
+    } finally {
+        cursor?.close()
+    }
+    return null
+}
 
+/**
+ * 处理MSF类型
+ * @param context Context
+ * @param uri Uri
+ * @return String?
+ */
+fun getMSFFile(context: Context, uri: Uri): String? {
+    val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool/cache")
+    if (!dir.exists()) dir.mkdirs()
+    val fileType = context.contentResolver.getType(uri)?.split("/")?.get(1)
+    val fileName = SystemClock.uptimeMillis().toString() + "." + fileType
+    val file = File(dir, fileName)
+    val inputStream = context.contentResolver.openInputStream(uri)
+    if (inputStream != null) return copyStreamToFile(inputStream, file)
+    return null
+}
 
-
-
-
-
+/**
+ * 复制文件
+ * @param inputStream InputStream
+ * @param outputFile File
+ * @return String
+ */
+fun copyStreamToFile(inputStream: InputStream, outputFile: File): String {
+    inputStream.use { input ->
+        val outputStream = FileOutputStream(outputFile)
+        outputStream.use { output ->
+            val buffer = ByteArray(4 * 1024) // buffer size
+            while (true) {
+                val byteCount = input.read(buffer)
+                if (byteCount < 0) break
+                output.write(buffer, 0, byteCount)
+            }
+            output.flush()
+        }
+    }
+    return outputFile.path
+}

@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.ui.fragment
 
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
@@ -13,8 +14,11 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.getDocumentPath
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.getString
+import com.luckyzyx.luckytool.utils.tools.putString
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -1249,20 +1253,34 @@ class DialogRelated : ModulePreferenceFragment() {
 
 class FullScreenGestureRelated : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            if (it != null) {
+                val path = getDocumentPath(requireActivity(), it)
+                requireActivity().putString(XposedPrefs, "replace_side_slider_icon_on_left", path)
+                findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
+            }
+        }
+        val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            if (it != null) {
+                val path = getDocumentPath(requireActivity(), it)
+                requireActivity().putString(XposedPrefs, "replace_side_slider_icon_on_right", path)
+                findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
+            }
+        }
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_side_sliderbar_icon)
-                    key = "remove_side_sliderbar_icon"
+                    title = getString(R.string.remove_side_slider)
+                    key = "remove_side_slider"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_side_sliderbar_black_background)
-                    key = "remove_side_sliderbar_black_background"
+                    title = getString(R.string.remove_side_slider_black_background)
+                    key = "remove_side_slider_black_background"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1275,7 +1293,53 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.CustomSideSliderIcon)
+                    key = "CustomSideSliderIcon"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_switch)
+                    key = "replace_side_slider_icon_switch"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_left)
+                    key = "replace_side_slider_icon_on_left"
+                    summary =
+                        context.getString(XposedPrefs, "replace_side_slider_icon_on_left", "null")
+                    isIconSpaceReserved = false
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadLeftImage.launch("image/*")
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_right)
+                    key = "replace_side_slider_icon_on_right"
+                    summary =
+                        context.getString(XposedPrefs, "replace_side_slider_icon_on_right", "null")
+                    isIconSpaceReserved = false
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadRightImage.launch("image/*")
+                        true
+                    }
+                }
+            )
         }
+        findPreference<Preference>("replace_side_slider_icon_on_left")?.dependency =
+            "replace_side_slider_icon_switch"
+        findPreference<Preference>("replace_side_slider_icon_on_right")?.dependency =
+            "replace_side_slider_icon_switch"
     }
 }
 
@@ -1306,7 +1370,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.FullScreenGestureRelated)
                     summary =
-                        getString(R.string.remove_side_sliderbar_icon) + "," + getString(R.string.remove_side_sliderbar_black_background)
+                        getString(R.string.remove_side_slider) + "," + getString(R.string.remove_side_slider_black_background)
                     key = "FullScreenGestureRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {

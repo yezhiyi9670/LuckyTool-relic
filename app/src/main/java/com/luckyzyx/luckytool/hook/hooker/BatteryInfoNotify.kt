@@ -117,18 +117,18 @@ object BatteryInfoNotify : YukiBaseHooker() {
             25 -> "Vooc Beta Pro"
             3 -> "PD"
             4 -> "QC"
-            5 -> "PPS"
-            6 -> "UFCS"
+            5 -> "PPS" //
+            6 -> "UFCS" //
             else -> "Error"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
             //normal,pps
-            0 -> if (max_charging_current == 0 && max_charging_voltage == 0) chargerVoltage else 5.0
+            0 -> if (max_charging_current == 0 && max_charging_voltage == 0) chargerVoltage else max_charging_current * 1.0
             //vooc,pd,qc
-            1, 3, 4 -> chargerVoltage
+//            1, 3, 4 -> chargerVoltage
             //svooc
-            2, 20, 25, 30 -> voltage * 2
-            else -> 0.0
+//            2, 20, 25, 30 -> voltage * 2
+            else -> max_charging_current * 1.0
         }
         val chargeInfo = if (isCharge) {
             val power = Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0).toString()

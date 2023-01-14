@@ -25,7 +25,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.2.5_beta"
+        versionName "4.2.5"
     }
     buildTypes {
         release {
@@ -62,6 +62,7 @@ android {
             }
         }
     }
+    androidResources.additionalParameters("--allow-reserved-package-id", "--package-id", "0x64")
 }
 
 dependencies {
