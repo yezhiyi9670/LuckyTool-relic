@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -34,9 +35,7 @@ class LoggerFragment : Fragment() {
     private var fileName: String = ""
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentLogsBinding.inflate(inflater)
         return binding.root
@@ -53,6 +52,7 @@ class LoggerFragment : Fragment() {
         if (listData.isEmpty()) loadLogger()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadLogger() {
         listData.clear()
         requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
@@ -93,7 +93,9 @@ class LoggerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) loadLogger()
         if (item.itemId == 2) {
-            fileName = "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + ".log"
+            fileName = "LuckyTool_" + SimpleDateFormat(
+                "yyyyMMdd_HHmmss", Locale.CHINA
+            ).format(Date()) + ".log"
             saveFile(fileName)
         }
         return super.onOptionsItemSelected(item)
@@ -129,9 +131,10 @@ class LoggerFragment : Fragment() {
     private fun alterDocument(context: Context, uri: Uri) {
         var str = ""
         listData.forEach {
-            val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(it.timestamp)
+            val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss", Locale.CHINA).format(it.timestamp)
             val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
-            val throwableFinal = if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"
+            val throwableFinal =
+                if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"
             str += "[${time}][${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
         }
         try {

@@ -60,13 +60,14 @@ object NetworkSpeed : YukiBaseHooker() {
                     name = "updateNetworkSpeed"
                     paramCount = 2
                 }
-                replaceUnit {
+                beforeHook {
                     instance<FrameLayout>().layoutParams.takeIf { it != null }?.width = LayoutParams.WRAP_CONTENT
                     val mSpeedNumber = field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
                     val mSpeedUnit = field { name = "mSpeedUnit" }.get(instance).cast<TextView>()
                     mSpeedNumber?.text = getTotalUpSpeed()
                     mSpeedUnit?.text = getTotalDownloadSpeed()
                     instance<FrameLayout>().requestLayout()
+                    resultNull()
                 }
             }
         }

@@ -21,6 +21,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var electricCurrent: Int = 0
     private var max_charging_current: Int = 0
     private var max_charging_voltage: Int = 0
+
     //oplus battery
     private var chargerVoltage: Double = 0.0
     private var chargerTechnology: Int = 0
@@ -45,12 +46,22 @@ object BatteryInfoNotify : YukiBaseHooker() {
                 //监听电池信息
                 registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
                     initInfo(context, intent)
-                    sendNotification(context, batteryInfoShow, batteryInfoShowCharge && isChargeStatus, batteryInfoShowUpdateTime)
+                    sendNotification(
+                        context,
+                        batteryInfoShow,
+                        batteryInfoShowCharge && isChargeStatus,
+                        batteryInfoShowUpdateTime
+                    )
                 }
                 //监听OPLUS电池信息
                 registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
                     initOplusInfo(intent)
-                    sendNotification(context, batteryInfoShow, batteryInfoShowCharge && isChargeStatus, batteryInfoShowUpdateTime)
+                    sendNotification(
+                        context,
+                        batteryInfoShow,
+                        batteryInfoShowCharge && isChargeStatus,
+                        batteryInfoShowUpdateTime
+                    )
                 }
                 //监听连接充电器
                 registerReceiver(Intent.ACTION_POWER_CONNECTED) { _: Context, _: Intent ->
@@ -75,7 +86,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
         }
         temperature = (intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0)
         val originalVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0)
-        voltage = if (originalVoltage.toString().length == 1) originalVoltage * 1.0 else originalVoltage / 1000.0
+        voltage =
+            if (originalVoltage.toString().length == 1) originalVoltage * 1.0 else originalVoltage / 1000.0
         electricCurrent = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
         max_charging_current = intent.getIntExtra("max_charging_current", 0)
         max_charging_voltage = intent.getIntExtra("max_charging_voltage", 0)
@@ -83,9 +95,9 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun initOplusInfo(intent: Intent) {
         chargerVoltage = (intent.getIntExtra("chargervoltage", 0) / 1000.0)
-        chargerTechnology = (intent.getIntExtra("chargertechnology",0))
-        chargeWattage = (intent.getIntExtra("chargewattage",0))
-        ppsMode = (intent.getIntExtra("pps_chg_mode",0))
+        chargerTechnology = (intent.getIntExtra("chargertechnology", 0))
+        chargeWattage = (intent.getIntExtra("chargewattage", 0))
+        ppsMode = (intent.getIntExtra("pps_chg_mode", 0))
     }
 
     private fun createChannel(context: Context) {
@@ -99,7 +111,12 @@ object BatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.createChannel(context, channel)
     }
 
-    private fun sendNotification(context: Context, isShow: Boolean, isCharge: Boolean, isUpdateTime: Boolean) {
+    private fun sendNotification(
+        context: Context,
+        isShow: Boolean,
+        isCharge: Boolean,
+        isUpdateTime: Boolean
+    ) {
         if (!isShow) {
             clearNotofication(context)
             return
@@ -108,7 +125,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
         val defaultInfo = if (isZh(context)) {
             "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
         } else "${temperature}℃ ${voltage}v ${electricCurrent}mA"
-        val technology = when(chargerTechnology){
+        val technology = when (chargerTechnology) {
             0 -> if (ppsMode == 1) "PPS" else "Normal"
             1 -> "Vooc"
             2 -> "SuperVooc"
@@ -117,21 +134,23 @@ object BatteryInfoNotify : YukiBaseHooker() {
             25 -> "Vooc Beta Pro"
             3 -> "PD"
             4 -> "QC"
-            5 -> "PPS" //
-            6 -> "UFCS" //
+            5 -> "PPS" //null
+            6 -> "UFCS" //null
             else -> "Error"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
             //normal,pps
-            0 -> if (max_charging_current == 0 && max_charging_voltage == 0) chargerVoltage else max_charging_current * 1.0
+            0 -> if (ppsMode == 1) chargerVoltage else 5.0
             //vooc,pd,qc
-//            1, 3, 4 -> chargerVoltage
+            1, 3, 4 -> chargerVoltage
             //svooc
-//            2, 20, 25, 30 -> voltage * 2
-            else -> max_charging_current * 1.0
+            2, 20, 25, 30 -> voltage * 2
+            else -> 0.0
         }
         val chargeInfo = if (isCharge) {
-            val power = Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0).toString()
+            val power =
+                Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0)
+                    .toString()
             val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
             if (isZh(context)) {
                 "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
@@ -139,8 +158,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
         } else ""
         val updateTime = if (isUpdateTime) {
             if (isZh(context)) {
-                "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Date())}"
-            } else SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(Date())
+                "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.CHINA).format(Date())}"
+            } else SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale.US).format(Date())
         } else ""
         val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
             setAutoCancel(false)
