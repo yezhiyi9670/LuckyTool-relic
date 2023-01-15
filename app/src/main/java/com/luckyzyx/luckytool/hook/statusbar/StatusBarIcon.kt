@@ -4,7 +4,6 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.*
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-
 object StatusBarIcon : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.android.systemui") {

@@ -248,6 +248,7 @@
     <string name="remove_rotate_screen_button">Tắt nút xoay màn hình</string>
     <string name="CustomSideSliderIcon">Tùy chỉnh biểu tượng thanh trượt bên</string>
     <string name="replace_side_slider_icon_switch">Thay thế công tắc biểu tượng thanh trượt bên</string>
+    <string name="replace_side_slider_icon_switch_summary">The icon width is recommended to be around 100px</string>
     <string name="replace_side_slider_icon_on_left">Thay thế biểu tượng trượt bên trái</string>
     <string name="replace_side_slider_icon_on_right">Thay thế biểu tượng trượt bên phải</string>
     <!--Miscellaneous-->

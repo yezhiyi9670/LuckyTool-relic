@@ -1303,6 +1303,7 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.replace_side_slider_icon_switch)
+                    summary = getString(R.string.replace_side_slider_icon_switch_summary)
                     key = "replace_side_slider_icon_switch"
                     isIconSpaceReserved = false
                 }

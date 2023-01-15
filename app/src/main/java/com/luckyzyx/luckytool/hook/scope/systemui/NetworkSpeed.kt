@@ -58,7 +58,6 @@ object NetworkSpeed : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "updateNetworkSpeed"
-                    paramCount = 2
                 }
                 beforeHook {
                     instance<FrameLayout>().layoutParams.takeIf { it != null }?.width = LayoutParams.WRAP_CONTENT
