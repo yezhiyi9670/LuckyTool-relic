@@ -5,6 +5,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.6
 
+[优化] 电池信息文字翻译
+
 ### v4.2.5
 
 [更新] 捐赠名单  
