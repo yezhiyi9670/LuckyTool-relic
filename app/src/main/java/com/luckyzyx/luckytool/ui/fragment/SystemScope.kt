@@ -396,7 +396,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
     }
 }
 
-class StatusBarNotice : ModulePreferenceFragment() {
+class StatusBarNotify : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = XposedPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -483,6 +483,14 @@ class StatusBarNotice : ModulePreferenceFragment() {
                     summary =
                         getString(R.string.remove_hotspot_power_consumption_notification_summary)
                     key = "remove_hotspot_power_consumption_notification"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_smart_rapid_charging_notification)
+                    key = "remove_smart_rapid_charging_notification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

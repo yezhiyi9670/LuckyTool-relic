@@ -5,7 +5,12 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.6
 
-[优化] 电池信息文字翻译
+[优化] 电池信息文字翻译  
+[添加] 移除了解智能极速充电通知  
+[修复] 修复热点长时间开启警告  
+[Optimize] Battery information text translation  
+[Add] Remove the “Try on Smart Rapid Charging” notification  
+[Fix] Fix hotspot open warning for a long time  
 
 ### v4.2.5
 

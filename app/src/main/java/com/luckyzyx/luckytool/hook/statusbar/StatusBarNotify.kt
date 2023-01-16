@@ -1,13 +1,12 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.battery.RemoveAppHighBatteryConsumptionWarning
-import com.luckyzyx.luckytool.hook.scope.battery.RemoveHighPerformanceModeNotifications
+import com.luckyzyx.luckytool.hook.scope.battery.RemoveBatteryNotify
 import com.luckyzyx.luckytool.hook.scope.systemui.*
 import com.luckyzyx.luckytool.hook.scope.wirelesssetting.RemoveHotspotPowerConsumptionNotification
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
-object StatusBarNotice : YukiBaseHooker() {
+object StatusBarNotify : YukiBaseHooker() {
     override fun onHook() {
         loadApp("com.android.systemui") {
             //移除充电完成通知
@@ -34,31 +33,13 @@ object StatusBarNotice : YukiBaseHooker() {
         }
         loadApp("com.oplus.wirelesssettings") {
             //移除个人热点耗电通知
-            if (prefs(XposedPrefs).getBoolean(
-                    "remove_hotspot_power_consumption_notification",
-                    false
-                )
-            ) {
+            if (prefs(XposedPrefs).getBoolean("remove_hotspot_power_consumption_notification", false)) {
                 loadHooker(RemoveHotspotPowerConsumptionNotification)
             }
         }
         loadApp("com.oplus.battery") {
-            //移除高性能模式通知
-            if (prefs(XposedPrefs).getBoolean(
-                    "remove_high_performance_mode_notifications",
-                    false
-                )
-            ) {
-                loadHooker(RemoveHighPerformanceModeNotifications)
-            }
-            //移除应用耗电异常优化警告
-            if (prefs(XposedPrefs).getBoolean(
-                    "remove_app_high_battery_consumption_warning",
-                    false
-                )
-            ) {
-                loadHooker(RemoveAppHighBatteryConsumptionWarning)
-            }
+            //移除电池通知
+            loadHooker(RemoveBatteryNotify)
         }
     }
 }

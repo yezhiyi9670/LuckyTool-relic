@@ -153,7 +153,7 @@
             android:label="{title_label}" />
     <fragment
             android:id="@+id/statusBarNotice"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotice"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotify"
             android:label="{title_label}" />
     <fragment
             android:id="@+id/statusBarIcon"

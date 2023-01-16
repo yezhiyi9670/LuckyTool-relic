@@ -137,7 +137,8 @@
     <string name="remove_high_performance_mode_notifications">Удалить уведомления режима высокой производительности</string>
     <string name="remove_do_not_disturb_mode_notification">Удалить уведомление режима \"Не беспокоить\"</string>
     <string name="remove_hotspot_power_consumption_notification">Удалить уведомление об энергопотреблении персональной точки доступа</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
+    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -249,7 +250,7 @@
     <string name="remove_rotate_screen_button">Удалить кнопку поворота экрана</string>
     <string name="CustomSideSliderIcon">Пользовательская иконка боковой панели</string>
     <string name="replace_side_slider_icon_switch">Заменить иконку боковой панели</string>
-    <string name="replace_side_slider_icon_switch_summary">The icon width is recommended to be around 100px</string>
+    <string name="replace_side_slider_icon_switch_summary">Ширина иконки рекомендуется около 100px</string>
     <string name="replace_side_slider_icon_on_left">Заменить иконку боковой панели слева</string>
     <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
     <!--Miscellaneous-->

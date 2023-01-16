@@ -137,7 +137,8 @@
     <string name="remove_high_performance_mode_notifications">Remove high performance mode notifications</string>
     <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
     <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Notice: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
+    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>

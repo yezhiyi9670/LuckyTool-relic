@@ -41,7 +41,7 @@ object MainHook : IYukiHookXposedInit {
         //状态栏网速
         loadApp(hooker = StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp(hooker = StatusBarNotice)
+        loadApp(hooker = StatusBarNotify)
         //状态栏图标
         loadApp(hooker = StatusBarIcon)
         //状态栏控制中心
