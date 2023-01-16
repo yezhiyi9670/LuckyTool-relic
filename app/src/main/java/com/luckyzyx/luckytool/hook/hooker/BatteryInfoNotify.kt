@@ -7,6 +7,8 @@ import android.content.Intent
 import android.os.BatteryManager
 import androidx.core.app.NotificationCompat
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
+import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.text.SimpleDateFormat
@@ -43,6 +45,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
             }
             var isChargeStatus = false
             onAppLifecycle {
+                onCreate { injectModuleAppResources() }
                 //监听电池信息
                 registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
                     initInfo(context, intent)
@@ -164,7 +167,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
         val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
             setAutoCancel(false)
             setOngoing(true)
-            setSmallIcon(android.R.mipmap.sym_def_app_icon)
+            setSmallIcon(if (isCharge) R.drawable.ic_round_battery_charging_full_24 else R.drawable.ic_round_battery_std_24)
             setContentTitle(defaultInfo)
             if (isCharge || isUpdateTime) {
                 setStyle(NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime"))
