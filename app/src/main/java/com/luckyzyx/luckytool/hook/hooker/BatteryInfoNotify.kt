@@ -24,7 +24,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var electricCurrent: Int = 0
     private var max_charging_current: Int = 0
     private var max_charging_voltage: Int = 0
-    private var isCharging = false
+    private var isCharging: Boolean = false
 
     //oplus battery
     private var chargerVoltage: Double = 0.0
@@ -33,39 +33,30 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var ppsMode: Int = 0
     override fun onHook() {
         loadApp("com.android.systemui") {
-            var batteryInfoShow = prefs(XposedPrefs).getBoolean("battery_information_show", false)
-            dataChannel.wait<Boolean>(key = "battery_information_show") { batteryInfoShow = it }
-            var batteryInfoShowCharge =
+            var showInfo = prefs(XposedPrefs).getBoolean("battery_information_show", false)
+            dataChannel.wait<Boolean>(key = "battery_information_show") { showInfo = it }
+            if (!showInfo) return
+            var showCharger =
                 prefs(XposedPrefs).getBoolean("battery_information_show_charge", false)
             dataChannel.wait<Boolean>(key = "battery_information_show_charge") {
-                batteryInfoShowCharge = it
+                showCharger = it
             }
-            var batteryInfoShowUpdateTime =
+            var showUpdateTime =
                 prefs(XposedPrefs).getBoolean("battery_information_show_update_time", false)
             dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
-                batteryInfoShowUpdateTime = it
+                showUpdateTime = it
             }
             onAppLifecycle {
                 onCreate { injectModuleAppResources() }
                 //监听电池信息
                 registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
                     initInfo(context, intent)
-                    sendNotification(
-                        context,
-                        batteryInfoShow,
-                        batteryInfoShowCharge && isCharging,
-                        batteryInfoShowUpdateTime
-                    )
+                    sendNotification(context, showCharger && isCharging, showUpdateTime)
                 }
                 //监听OPLUS电池信息
                 registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
                     initOplusInfo(intent)
-                    sendNotification(
-                        context,
-                        batteryInfoShow,
-                        batteryInfoShowCharge && isCharging,
-                        batteryInfoShowUpdateTime
-                    )
+                    sendNotification(context, showCharger && isCharging, showUpdateTime)
                 }
             }
         }
@@ -73,17 +64,18 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun initInfo(context: Context, intent: Intent) {
         val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
-        isCharging = batteryManager.isCharging
-        status = when (intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)) {
-            1 -> "UNKNOWN"
-            2 -> "CHARGING"
-            3 -> "DISCHARGING"
-            4 -> "NOT_CHARGING"
-            5 -> "FULL"
+        val statusValue = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
+        status = when (statusValue) {
+            1 -> if (isZh(context)) "未知" else "Unknown"
+            2 -> if (isZh(context)) "充电中" else "Charging"
+            3 -> if (isZh(context)) "放电中" else "Discharging"
+            4 -> if (isZh(context)) "未充电" else "Not Charging"
+            5 -> if (isZh(context)) "已充满" else "Full"
             else -> "null"
         }
+        isCharging = statusValue == 2 || statusValue == 5
         plugged = when (intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0)) {
-            0 -> "BATTERY"
+            0 -> "Battery"
             BatteryManager.BATTERY_PLUGGED_AC -> "AC"
             BatteryManager.BATTERY_PLUGGED_USB -> "USB"
             BatteryManager.BATTERY_PLUGGED_DOCK -> "DOCK"
@@ -115,13 +107,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.createChannel(context, channel)
     }
 
-    private fun sendNotification(
-        context: Context, isShow: Boolean, isCharging: Boolean, isUpdateTime: Boolean
-    ) {
-        if (!isShow) {
-            clearNotofication(context)
-            return
-        }
+    private fun sendNotification(context: Context, isCharging: Boolean, isUpdateTime: Boolean) {
         createChannel(context)
         val batteryInfo = if (isZh(context)) {
             "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
@@ -154,8 +140,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
                     .toString()
             val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
             if (isZh(context)) {
-                "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
-            } else "Charger Type: $plugged Vol: ${chargerVoltageFinal}v Pwr: ${power}W Tech: $technology${wattage}" + if (isUpdateTime) "\n" else ""
+                "$status:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
+            } else "$status: $plugged Vol: ${chargerVoltageFinal}v Pwr: ${power}W Tech: $technology${wattage}" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
             if (isZh(context)) {
@@ -179,6 +165,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.sendNotification(context, 112233, notify)
     }
 
+    @Suppress("unused")
     private fun clearNotofication(context: Context) {
         NotifyUtils.clearNotification(context, 112233)
     }

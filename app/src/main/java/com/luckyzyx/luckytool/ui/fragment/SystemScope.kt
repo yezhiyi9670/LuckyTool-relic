@@ -865,6 +865,8 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                 }
             )
         }
+        findPreference<SwitchPreference>("battery_information_show_charge")?.dependency = "battery_information_show"
+        findPreference<SwitchPreference>("battery_information_show_update_time")?.dependency = "battery_information_show"
     }
 }
 

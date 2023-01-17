@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
@@ -81,8 +82,9 @@ class OtherFragment : Fragment() {
                         true
                     }
                 }
-                adbDialog.findViewById<MaterialTextView>(R.id.adb_tv_tip)?.apply {
+                val adbTvTip = adbDialog?.findViewById<MaterialTextView>(R.id.adb_tv_tip)?.apply {
                     gravity = Gravity.CENTER
+                    isVisible = adbTv?.text != ""
                     text = getString(R.string.adb_tv_tip)
                     setOnLongClickListener {
                         context.copyStr(adbTv?.text.toString())
@@ -112,6 +114,7 @@ class OtherFragment : Fragment() {
                             context.putString(OtherPrefs,"adb_port",port)
                             adbPortLayout?.isEnabled = false
                             adbTv?.text = "adb connect $getIP:$port"
+                            adbTvTip?.isVisible = true
                         }else{
                             val commands = arrayOf(
                                 "setprop service.adb.tcp.port -1",
@@ -122,7 +125,8 @@ class OtherFragment : Fragment() {
                             )
                             ShellUtils.execCommand(commands,true)
                             adbPortLayout?.isEnabled = true
-                            adbTv?.text = null
+                            adbTv?.text = ""
+                            adbTvTip?.isVisible = false
                         }
                     }
                 }

@@ -374,7 +374,7 @@
     <string name="adb_port">Cổng ADB</string>
     <string name="enable_remote_adb_debugging">Bật gỡ lỗi ADB từ xa</string>
     <string name="adb_debug_port_cannot_null">Cổng gỡ lỗi ADB không được để trống</string>
-    <string name="adb_tv_tip">Long press to copy</string>
+    <string name="adb_tv_tip">Nhấn và giữ để sao chép</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Nhật ký lưu thành công!</string>
     <string name="log_save_failed">Nhật ký lưu thất bại!</string>

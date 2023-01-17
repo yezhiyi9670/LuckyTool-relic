@@ -14,7 +14,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Add] Remove the “Try on Smart Rapid Charging” notification  
 [Fix] Fix hotspot open warning for a long time  
 [Add] Wireless ADB debugging IP copy  
-[Optimize] Battery information notification icon
+[Optimize] Battery information notification icon  
 
 ### v4.2.5
 
