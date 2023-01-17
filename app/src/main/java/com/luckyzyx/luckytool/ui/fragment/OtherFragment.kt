@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
@@ -33,6 +34,7 @@ class OtherFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -73,6 +75,18 @@ class OtherFragment : Fragment() {
                     gravity = Gravity.CENTER
                     if (!(getPort == "" || getPort.toInt() == -1)){
                         text = "adb connect $getIP:$getPort"
+                    }
+                    setOnLongClickListener {
+                        context.copyStr(text.toString())
+                        true
+                    }
+                }
+                adbDialog.findViewById<MaterialTextView>(R.id.adb_tv_tip)?.apply {
+                    gravity = Gravity.CENTER
+                    text = getString(R.string.adb_tv_tip)
+                    setOnLongClickListener {
+                        context.copyStr(adbTv?.text.toString())
+                        true
                     }
                 }
 

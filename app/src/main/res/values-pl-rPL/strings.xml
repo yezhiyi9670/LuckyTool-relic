@@ -374,6 +374,7 @@
     <string name="adb_port">Port ADB</string>
     <string name="enable_remote_adb_debugging">Zdalne debugowanie ADB</string>
     <string name="adb_debug_port_cannot_null">Port ADB nie może być pusty</string>
+    <string name="adb_tv_tip">Long press to copy</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Logi zapisano pomyślnie!</string>
     <string name="log_save_failed">Zapis logów się nie powiódł!</string>

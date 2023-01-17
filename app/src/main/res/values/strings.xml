@@ -378,6 +378,7 @@
     <string name="adb_port">ADB Port</string>
     <string name="enable_remote_adb_debugging">Enable remote ADB debugging</string>
     <string name="adb_debug_port_cannot_null">ADB debug port cannot be null</string>
+    <string name="adb_tv_tip">Long press to copy</string>
     <!--LOG Fragment-->
     <string name="log_save_success">LOG Saved Success!</string>
     <string name="log_save_failed">LOG Saved Failed!</string>

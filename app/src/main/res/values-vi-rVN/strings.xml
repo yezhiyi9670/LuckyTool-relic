@@ -136,8 +136,8 @@
     <string name="remove_high_performance_mode_notifications">Xóa thông báo chế độ hiệu suất cao</string>
     <string name="remove_do_not_disturb_mode_notification">Xóa thông báo chế độ không làm phiền</string>
     <string name="remove_hotspot_power_consumption_notification">Xóa cảnh báo tiêu thụ năng lượng của điểm truy cập cá nhân</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
-    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Lưu ý: Bật điểm truy cập cá nhân trong thời gian dài sẽ làm tăng mức tiêu thụ điện năng gây nóng máy</string>
+    <string name="remove_smart_rapid_charging_notification">Xóa thông báo “Sạc nhanh thông minh”</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -374,6 +374,7 @@
     <string name="adb_port">Cổng ADB</string>
     <string name="enable_remote_adb_debugging">Bật gỡ lỗi ADB từ xa</string>
     <string name="adb_debug_port_cannot_null">Cổng gỡ lỗi ADB không được để trống</string>
+    <string name="adb_tv_tip">Long press to copy</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Nhật ký lưu thành công!</string>
     <string name="log_save_failed">Nhật ký lưu thất bại!</string>

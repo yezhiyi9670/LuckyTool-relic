@@ -374,6 +374,7 @@
     <string name="adb_port">端口</string>
     <string name="enable_remote_adb_debugging">开启远程ADB调试</string>
     <string name="adb_debug_port_cannot_null">ADB调试端口不可为空</string>
+    <string name="adb_tv_tip">长按复制</string>
     <!--LOG Fragment-->
     <string name="log_save_success">LOG 保存成功！</string>
     <string name="log_save_failed">LOG 保存失败！</string>

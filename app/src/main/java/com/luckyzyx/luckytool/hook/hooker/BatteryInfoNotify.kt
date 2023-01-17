@@ -17,12 +17,14 @@ import kotlin.math.abs
 
 object BatteryInfoNotify : YukiBaseHooker() {
     //battery
+    private var status: String = ""
     private var plugged: String = ""
     private var temperature: Double = 0.0
     private var voltage: Double = 0.0
     private var electricCurrent: Int = 0
     private var max_charging_current: Int = 0
     private var max_charging_voltage: Int = 0
+    private var isCharging = false
 
     //oplus battery
     private var chargerVoltage: Double = 0.0
@@ -43,7 +45,6 @@ object BatteryInfoNotify : YukiBaseHooker() {
             dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
                 batteryInfoShowUpdateTime = it
             }
-            var isChargeStatus = false
             onAppLifecycle {
                 onCreate { injectModuleAppResources() }
                 //监听电池信息
@@ -52,7 +53,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
                     sendNotification(
                         context,
                         batteryInfoShow,
-                        batteryInfoShowCharge && isChargeStatus,
+                        batteryInfoShowCharge && isCharging,
                         batteryInfoShowUpdateTime
                     )
                 }
@@ -62,17 +63,9 @@ object BatteryInfoNotify : YukiBaseHooker() {
                     sendNotification(
                         context,
                         batteryInfoShow,
-                        batteryInfoShowCharge && isChargeStatus,
+                        batteryInfoShowCharge && isCharging,
                         batteryInfoShowUpdateTime
                     )
-                }
-                //监听连接充电器
-                registerReceiver(Intent.ACTION_POWER_CONNECTED) { _: Context, _: Intent ->
-                    isChargeStatus = true
-                }
-                //监听断开充电器
-                registerReceiver(Intent.ACTION_POWER_DISCONNECTED) { _: Context, _: Intent ->
-                    isChargeStatus = false
                 }
             }
         }
@@ -80,7 +73,17 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun initInfo(context: Context, intent: Intent) {
         val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+        isCharging = batteryManager.isCharging
+        status = when (intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)) {
+            1 -> "UNKNOWN"
+            2 -> "CHARGING"
+            3 -> "DISCHARGING"
+            4 -> "NOT_CHARGING"
+            5 -> "FULL"
+            else -> "null"
+        }
         plugged = when (intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0)) {
+            0 -> "BATTERY"
             BatteryManager.BATTERY_PLUGGED_AC -> "AC"
             BatteryManager.BATTERY_PLUGGED_USB -> "USB"
             BatteryManager.BATTERY_PLUGGED_DOCK -> "DOCK"
@@ -105,9 +108,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun createChannel(context: Context) {
         val channel = NotificationChannel(
-            "luckytool_notify",
-            "LuckyTool",
-            NotificationManager.IMPORTANCE_LOW
+            "luckytool_notify", "LuckyTool", NotificationManager.IMPORTANCE_LOW
         ).apply {
             setSound(null, null)
         }
@@ -115,26 +116,23 @@ object BatteryInfoNotify : YukiBaseHooker() {
     }
 
     private fun sendNotification(
-        context: Context,
-        isShow: Boolean,
-        isCharge: Boolean,
-        isUpdateTime: Boolean
+        context: Context, isShow: Boolean, isCharging: Boolean, isUpdateTime: Boolean
     ) {
         if (!isShow) {
             clearNotofication(context)
             return
         }
         createChannel(context)
-        val defaultInfo = if (isZh(context)) {
+        val batteryInfo = if (isZh(context)) {
             "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
-        } else "${temperature}℃ ${voltage}v ${electricCurrent}mA"
+        } else "Battery Tamp: ${temperature}℃ Vol: ${voltage}v Cur: ${electricCurrent}mA"
         val technology = when (chargerTechnology) {
             0 -> if (ppsMode == 1) "PPS" else "Normal"
-            1 -> "Vooc"
-            2 -> "SuperVooc"
-            20 -> "SuperVooc2"
-            30 -> "SuperVooc Athena Foreign Pro"
-            25 -> "Vooc Beta Pro"
+            1 -> "VOOC"
+            2 -> "SUPERVOOC"
+            20 -> "SUPERVOOC2.0"
+            30 -> "SUPERVOOC Athena Foreign Pro"
+            25 -> "VOOC Beta Pro"
             3 -> "PD"
             4 -> "QC"
             5 -> "PPS" //null
@@ -150,26 +148,30 @@ object BatteryInfoNotify : YukiBaseHooker() {
             2, 20, 25, 30 -> voltage * 2
             else -> 0.0
         }
-        val chargeInfo = if (isCharge) {
+        val chargeInfo = if (isCharging) {
             val power =
                 Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0)
                     .toString()
             val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
             if (isZh(context)) {
                 "充电中:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
-            } else "$plugged ${chargerVoltageFinal}v ${power}W $technology${wattage}" + if (isUpdateTime) "\n" else ""
+            } else "Charger Type: $plugged Vol: ${chargerVoltageFinal}v Pwr: ${power}W Tech: $technology${wattage}" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
             if (isZh(context)) {
                 "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.CHINA).format(Date())}"
-            } else SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale.US).format(Date())
+            } else "UpdateTime: ${
+                SimpleDateFormat(
+                    "MM/dd/yyyy HH:mm:ss", Locale.US
+                ).format(Date())
+            }"
         } else ""
         val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
             setAutoCancel(false)
             setOngoing(true)
-            setSmallIcon(if (isCharge) R.drawable.ic_round_battery_charging_full_24 else R.drawable.ic_round_battery_std_24)
-            setContentTitle(defaultInfo)
-            if (isCharge || isUpdateTime) {
+            setSmallIcon(if (isCharging) R.drawable.ic_round_battery_charging_full_24 else R.drawable.ic_round_battery_std_24)
+            setContentTitle(batteryInfo)
+            if (isCharging || isUpdateTime) {
                 setStyle(NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime"))
             }
             priority = NotificationCompat.PRIORITY_MAX

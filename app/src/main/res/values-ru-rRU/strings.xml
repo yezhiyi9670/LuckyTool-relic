@@ -77,7 +77,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Официальному установщику Color OS необходимо включить другие функции для использования\nСписок функций-Приложения-Установка приложений</string>
     <string name="corepatch">Патчи ядра</string>
-    <string name="corepatch_summary">Снять ограничения на установку, поддерживается Android 11–13</string>
+    <string name="corepatch_summary">Снять ограничения на установку, Android 11–13</string>
     <string name="downgr">Разрешить понижение версии</string>
     <string name="downgr_summary">Разрешить приложению перезаписывать установку старой версии непосредственно в случае установки новой версии</string>
     <string name="authcreak">Отключить проверку подписи диспетчера пакетов</string>
@@ -137,8 +137,8 @@
     <string name="remove_high_performance_mode_notifications">Удалить уведомления режима высокой производительности</string>
     <string name="remove_do_not_disturb_mode_notification">Удалить уведомление режима \"Не беспокоить\"</string>
     <string name="remove_hotspot_power_consumption_notification">Удалить уведомление об энергопотреблении персональной точки доступа</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
-    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
+    <string name="remove_smart_rapid_charging_notification">Убрать уведомление \"Умная быстрая зарядка\"</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -375,6 +375,7 @@
     <string name="adb_port">Порт ADB</string>
     <string name="enable_remote_adb_debugging">Включить удаленную отладку ADB</string>
     <string name="adb_debug_port_cannot_null">Порт отладки ADB не может быть пустым</string>
+    <string name="adb_tv_tip">Long press to copy</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Лог сохранен!</string>
     <string name="log_save_failed">Лог не сохранён!</string>
