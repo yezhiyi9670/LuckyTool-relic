@@ -55,6 +55,7 @@ object DonateData {
             add(DonateInfo("ddddk", 5.0))
             add(DonateInfo("He_zhCN", 5.0))
             add(DonateInfo("panfung", 18.0))
+            add(DonateInfo("G.Sheng", 25.0))
         }
     }
 }

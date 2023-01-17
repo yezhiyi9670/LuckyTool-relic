@@ -43,7 +43,7 @@ object SkipApkScan : YukiBaseHooker() {
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         findClass(member[0]).hook {
             //skip appdetail,search isStartAppDetail
-            //search Method count_canceled_by_app_detail -4 OPIA ? -5 ADRU
+            //search Method SP_KEY_COUNT_CANCELED_BY_APP_DETAIL / count_canceled_by_app_detail -4 OPIA ? -5 ADRU
             injectMember {
                 method {
                     name = member[1]
