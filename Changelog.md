@@ -3,6 +3,8 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.7
+
 ### v4.2.6
 
 [更新] 捐赠名单  
