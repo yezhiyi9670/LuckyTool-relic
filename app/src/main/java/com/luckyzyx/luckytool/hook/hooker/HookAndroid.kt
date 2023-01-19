@@ -15,6 +15,9 @@ object HookAndroid : YukiBaseHooker() {
         //移除VPN已激活通知
         loadHooker(RemoveVPNActiveNotification)
 
+        //Hook NotificationManager
+        loadHooker(HookNotificationManager)
+
         //媒体音量阶数
         loadHooker(MediaVolumeLevel)
 

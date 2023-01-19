@@ -34,7 +34,6 @@ object MainHook : IYukiHookXposedInit {
         if (prefs(XposedPrefs).getBoolean("enable_module").not()) return@encase
         //系统框架
         loadSystem(HookAndroid)
-        loadApp("oplus", HookOplus)
         loadZygote(HookZygote)
 
         //状态栏时钟

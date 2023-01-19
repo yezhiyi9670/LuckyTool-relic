@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.DialogInterface
@@ -147,6 +148,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     @Suppress("DEPRECATION")
+    @SuppressLint("WorldReadableFiles")
     private fun checkPrefsRW() {
         try {
             getSharedPreferences(SettingsPrefs, MODE_WORLD_READABLE)
