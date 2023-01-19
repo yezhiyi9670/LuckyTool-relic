@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.scope.android
+package com.luckyzyx.luckytool.hook.scope.oplus
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
