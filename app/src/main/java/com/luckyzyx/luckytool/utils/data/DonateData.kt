@@ -56,6 +56,8 @@ object DonateData {
             add(DonateInfo("He_zhCN", 5.0))
             add(DonateInfo("panfung", 18.0))
             add(DonateInfo("G.Sheng", 25.0))
+            add(DonateInfo("故里", 5.0))
+            add(DonateInfo("散乱的钟", 6.80))
         }
     }
 }

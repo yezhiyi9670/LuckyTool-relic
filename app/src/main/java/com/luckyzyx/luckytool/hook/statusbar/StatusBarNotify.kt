@@ -3,7 +3,6 @@ package com.luckyzyx.luckytool.hook.statusbar
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.RemoveBatteryNotify
 import com.luckyzyx.luckytool.hook.scope.systemui.*
-import com.luckyzyx.luckytool.hook.scope.wirelesssetting.RemoveHotspotPowerConsumptionNotification
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object StatusBarNotify : YukiBaseHooker() {
@@ -30,12 +29,6 @@ object StatusBarNotify : YukiBaseHooker() {
                 loadHooker(RemoveDoNotDisturbModeNotification)
             }
 
-        }
-        loadApp("com.oplus.wirelesssettings") {
-            //移除个人热点耗电通知
-            if (prefs(XposedPrefs).getBoolean("remove_hotspot_power_consumption_notification", false)) {
-                loadHooker(RemoveHotspotPowerConsumptionNotification)
-            }
         }
         loadApp("com.oplus.battery") {
             //移除电池通知

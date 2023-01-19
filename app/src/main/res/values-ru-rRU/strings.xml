@@ -375,7 +375,7 @@
     <string name="adb_port">Порт ADB</string>
     <string name="enable_remote_adb_debugging">Включить удаленную отладку ADB</string>
     <string name="adb_debug_port_cannot_null">Порт отладки ADB не может быть пустым</string>
-    <string name="adb_tv_tip">Long press to copy</string>
+    <string name="adb_tv_tip">Удерживайте для копирования</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Лог сохранен!</string>
     <string name="log_save_failed">Лог не сохранён!</string>

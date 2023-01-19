@@ -15,6 +15,9 @@ object HookAndroid : YukiBaseHooker() {
         //移除VPN已激活通知
         loadHooker(RemoveVPNActiveNotification)
 
+        //移除个人热点耗电通知
+        loadHooker(RemoveHotspotPowerConsumptionNotification)
+
         //媒体音量阶数
         loadHooker(MediaVolumeLevel)
 
@@ -25,7 +28,7 @@ object HookAndroid : YukiBaseHooker() {
         loadHooker(ADBInstallConfirm)
 
         //移除72小时密码验证
-        loadHooker(Remove72HourPasswordVerification)
+        loadHooker(RemovePasswordTimeoutVerification)
 
         //移除系统截屏延迟
         loadHooker(RemoveSystemScreenshotDelay)
