@@ -99,6 +99,18 @@
     <string name="battery_information_show_charge_summary">При зарядке напряжение и теоретическая сила зарядки будут отображаться в строке состояния</string>
     <string name="battery_information_show_update_time">Показать время обновления</string>
     <string name="battery_information_show_update_time_summary">Отображать время обновления данных в строке состояния</string>
+    <string name="battery_status_unknown">Неизвестно</string>
+    <string name="battery_status_charging">Зарядка</string>
+    <string name="battery_status_discharging">Разрядка</string>
+    <string name="battery_status_not_charging">Не заряжается</string>
+    <string name="battery_status_full">Полный</string>
+    <string name="battery_temperature">Температура</string>
+    <string name="battery_voltage">Напряжение</string>
+    <string name="battery_electric_current">Ток</string>
+    <string name="battery_charger_voltage">Напряжение</string>
+    <string name="battery_power">Мощность</string>
+    <string name="battery_technology">Технология</string>
+    <string name="battery_update_time">Время обновления</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_enable">Включить/отключить часы строки состояния</string>
@@ -347,8 +359,8 @@
     <string name="cancel_button">Отменить загрузку</string>
     <string name="fps_autostart">Автозапуск</string>
     <string name="device_guid">GUID устройства</string>
-    <!-- Logs -->
-    <string name="log_no_data">Нет аномальных данных</string>
+    <string name="oplusota_copy_tip">Нажмите и удерживайте поле ввода, чтобы скопировать его по отдельности</string>
+    <string name="oplusota_copyall">Копировать все</string>
     <!-- Other -->
     <string name="quick_entry">Быстрый вход в систему</string>
     <string name="quick_entry_summary">Например, инструменты настройки системного интерфейса, управление процессами, режим проекта и т.д.</string>
@@ -380,4 +392,5 @@
     <string name="log_save_success">Лог сохранен!</string>
     <string name="log_save_failed">Лог не сохранён!</string>
     <string name="log_data_is_empty">Пустой лог!</string>
+    <string name="log_no_data">Нет аномальных данных</string>
 </resources>

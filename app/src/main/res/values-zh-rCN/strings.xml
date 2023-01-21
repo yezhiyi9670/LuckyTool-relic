@@ -98,6 +98,18 @@
     <string name="battery_information_show_charge_summary">充电时，在状态栏显示充电器的电压和理论充电功率</string>
     <string name="battery_information_show_update_time">显示更新时间</string>
     <string name="battery_information_show_update_time_summary">在状态栏显示当前数据的更新时间</string>
+    <string name="battery_status_unknown">未知</string>
+    <string name="battery_status_charging">充电中</string>
+    <string name="battery_status_discharging">放电中</string>
+    <string name="battery_status_not_charging">未充电</string>
+    <string name="battery_status_full">已满</string>
+    <string name="battery_temperature">温度</string>
+    <string name="battery_voltage">电压</string>
+    <string name="battery_electric_current">电流</string>
+    <string name="battery_charger_voltage">充电电压</string>
+    <string name="battery_power">理论功率</string>
+    <string name="battery_technology">充电技术</string>
+    <string name="battery_update_time">更新时间</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_enable">状态栏时钟总开关</string>
@@ -346,8 +358,8 @@
     <string name="cancel_button">取消下载</string>
     <string name="fps_autostart">自动启动</string>
     <string name="device_guid">设备 GUID</string>
-    <!-- Logs -->
-    <string name="log_no_data">无异常数据</string>
+    <string name="oplusota_copy_tip">长按输入框单独复制</string>
+    <string name="oplusota_copyall">复制全部</string>
     <!-- Other -->
     <string name="quick_entry">系统快捷入口</string>
     <string name="quick_entry_summary">例如系统界面调节工具,进程管理,工程模式等</string>
@@ -379,4 +391,5 @@
     <string name="log_save_success">LOG 保存成功！</string>
     <string name="log_save_failed">LOG 保存失败！</string>
     <string name="log_data_is_empty">LOG数据为空!</string>
+    <string name="log_no_data">无异常数据</string>
 </resources>

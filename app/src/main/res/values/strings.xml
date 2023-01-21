@@ -99,6 +99,20 @@
     <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
     <string name="battery_information_show_update_time">Show update time</string>
     <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
+   
+    <string name="battery_status_unknown">Unknown</string>
+    <string name="battery_status_charging">Charging</string>
+    <string name="battery_status_discharging">Discharging</string>
+    <string name="battery_status_not_charging">Not Charging</string>
+    <string name="battery_status_full">Full</string>
+    <string name="battery_temperature">Temp</string>
+    <string name="battery_voltage">Vol</string>
+    <string name="battery_electric_current">Cur</string>
+    <string name="battery_charger_voltage">Vol</string>
+    <string name="battery_power">Pwr</string>
+    <string name="battery_technology">Tech</string>
+    <string name="battery_update_time">UpdateTime</string>
+    
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_enable">Status bar clock total toggle</string>
@@ -350,8 +364,9 @@
     <string name="cancel_button">Cancel download</string>
     <string name="fps_autostart">Auto-start</string>
     <string name="device_guid">Device GUID</string>
-    <!-- Logs -->
-    <string name="log_no_data">No abnormal data</string>
+    <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
+    <string name="oplusota_copyall">Copy All</string>
+    
     <!-- Other -->
     <string name="quick_entry">System Quick Entry</string>
     <string name="quick_entry_summary">e.g. System UI reconciliation tools, process management, engineering mode, etc.</string>
@@ -383,5 +398,6 @@
     <string name="log_save_success">LOG Saved Success!</string>
     <string name="log_save_failed">LOG Saved Failed!</string>
     <string name="log_data_is_empty">LOG Data is empty!</string>
+    <string name="log_no_data">No abnormal data</string>
 
 </resources>

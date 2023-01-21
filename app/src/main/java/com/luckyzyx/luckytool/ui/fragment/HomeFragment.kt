@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.res.ColorStateList
@@ -17,6 +18,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.dataChannel
@@ -26,7 +29,6 @@ import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.*
-import com.luckyzyx.luckytool.utils.tools.UpdateUtils.coolmarketUrl
 import rikka.core.util.ResourceUtils
 
 @Obfuscate
@@ -46,6 +48,8 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @Suppress("LocalVariableName")
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -228,29 +232,54 @@ class HomeFragment : Fragment() {
                 ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
             """.trimIndent()
             setOnLongClickListener {
-                if (!context.getBoolean(SettingsPrefs, "hidden_function", false)) {
-                    val guid = getGuid
-                    MaterialAlertDialogBuilder(context, dialogCentered).apply {
-                        setTitle(context.getString(R.string.device_guid))
-                        setMessage(guid)
-                        setNeutralButton(android.R.string.cancel, null)
-                        setPositiveButton(android.R.string.copy) { _, _ ->
-                            context.copyStr(guid)
-                        }
-                        show()
+                val isRealmeUI: Boolean
+                val oplusOtaDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                    setTitle("OPLUS OTA")
+                    setView(R.layout.layout_oplusota_dialog)
+                }.show()
+                val product_model = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_product_model)?.apply {
+                    setText(ShellUtils.execCommand("getprop ro.product.name", false, true).successMsg)
+                    setOnLongClickListener {
+                        context.copyStr("ro.product.name -> ${text.toString()}")
+                        true
                     }
-                } else {
-                    MaterialAlertDialogBuilder(context, dialogCentered).apply {
-                        setTitle("下载功能")
-                        setView(MaterialTextView(context).apply {
-                            setPadding(20.dp)
-                            text = coolmarketUrl
-                        })
-                        setNeutralButton(android.R.string.cancel, null)
-                        setPositiveButton(android.R.string.ok) { _, _ ->
-                            UpdateUtils.downloadFile(context, "coolmarket.apk", coolmarketUrl)
-                        }
-                        show()
+                }
+                val ota_version = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_ota_version)?.apply {
+                    setText(ShellUtils.execCommand("getprop ro.build.version.ota",false,true).successMsg)
+                    setOnLongClickListener {
+                        context.copyStr("ro.build.version.ota -> ${text.toString()}")
+                        true
+                    }
+                }
+                val realmeui_version_layout = oplusOtaDialog.findViewById<TextInputLayout>(R.id.oplusota_realmeui_version_layout)
+                val realmeui_version = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_realmeui_version)?.apply {
+                    setText(ShellUtils.execCommand("getprop ro.build.version.realmeui",false,true).successMsg)
+                    setOnLongClickListener {
+                        context.copyStr("ro.build.version.realmeui -> ${text.toString()}")
+                        true
+                    }
+                }
+                if (realmeui_version?.text.toString() == "") {
+                    isRealmeUI = false
+                    realmeui_version_layout?.isVisible = false
+                } else isRealmeUI = true
+                val nv_identifier = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_nv_identifier)?.apply {
+                    setText(ShellUtils.execCommand("getprop ro.build.oplus_nv_id",false,true).successMsg)
+                    setOnLongClickListener {
+                        context.copyStr("ro.build.oplus_nv_id -> ${text.toString()}")
+                        true
+                    }
+                }
+                val guid = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_guid)?.apply {
+                    setText(getGuid)
+                    setOnLongClickListener {
+                        context.copyStr("guid -> ${text.toString()}")
+                        true
+                    }
+                }
+                oplusOtaDialog.findViewById<MaterialButton>(R.id.oplusota_copyall)?.apply {
+                    setOnClickListener {
+                        context.copyStr("ro.product.name -> ${product_model?.text}\nro.build.version.ota -> ${ota_version?.text}\n${if (isRealmeUI) "ro.build.version.realmeui -> ${realmeui_version?.text}\n" else ""}ro.build.oplus_nv_id -> ${nv_identifier?.text}\nguid -> ${guid?.text}\n")
                     }
                 }
                 true

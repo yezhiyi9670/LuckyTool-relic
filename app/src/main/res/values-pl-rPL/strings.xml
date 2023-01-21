@@ -98,6 +98,18 @@
     <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
     <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
     <string name="battery_information_show_update_time_summary">Wyświetl czas aktualizacji aktualnych danych na pasku stanu</string>
+    <string name="battery_status_unknown">Unknown</string>
+    <string name="battery_status_charging">Charging</string>
+    <string name="battery_status_discharging">Discharging</string>
+    <string name="battery_status_not_charging">Not Charging</string>
+    <string name="battery_status_full">Full</string>
+    <string name="battery_temperature">Temp</string>
+    <string name="battery_voltage">Vol</string>
+    <string name="battery_electric_current">Cur</string>
+    <string name="battery_charger_voltage">Vol</string>
+    <string name="battery_power">Pwr</string>
+    <string name="battery_technology">Tech</string>
+    <string name="battery_update_time">UpdateTime</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_enable">Główny przełącznik zegara</string>
@@ -136,8 +148,8 @@
     <string name="remove_high_performance_mode_notifications">Ukryj \"Tryb wysokiej wydajności jest włączony\"</string>
     <string name="remove_do_not_disturb_mode_notification">Ukryj \"Tryb Nie przeszkadzać jest włączony\"</string>
     <string name="remove_hotspot_power_consumption_notification">Ukryj \"Włączono udostępnianie Wi-Fi\"</string>
-    <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
-    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
+    <string name="remove_smart_rapid_charging_notification">Usuń powiadomienie \"Inteligentne szybkie ładowanie\"</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Ukryj ikony na pasku stanu</string>
@@ -153,12 +165,12 @@
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->
-    <string name="StatusBarControlCenter">Panel szybkich ustawień</string>
-    <string name="ControlCenter_Clock_Related">Zegar szybkich ustawień</string>
+    <string name="StatusBarControlCenter">Szybkie ustawienia</string>
+    <string name="ControlCenter_Clock_Related">Zegar</string>
     <string name="control_center_clock_show_second">Pokaż sekundy</string>
     <string name="fix_clock_colon_style">Obniż dwukropek w zegarze</string>
     <string name="fix_clock_colon_style_summary">Przywróć normalny dwukropek</string>
-    <string name="remove_control_center_clock_red_one">Usuń czerwoną cyfrę \"1\"</string>
+    <string name="remove_control_center_clock_red_one">Usuń czerwony kolor z cyfry 1</string>
     <string name="remove_control_center_date_comma">Usuń przecinek daty</string>
     <string name="ControlCenter_UI_Related">Dostosuj szybkie ustawienia</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
@@ -174,7 +186,7 @@
     <string name="tile_columns_horizontal_c13">Kolumny (w poziomie)</string>
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
-    <string name="remove_lock_screen_redone">Usuń z zegara czerwoną cyfrę \"1\"</string>
+    <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
     <string name="remove_lock_screen_fingerprint_icon">Ukryj ikonę odcisku palca</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
@@ -187,7 +199,7 @@
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--Desktop-->
     <string name="Desktop">Ekran główny (Pulpit)</string>
-    <string name="remove_alarmclock_widget_redone">Usuń z widżetu zegara czerwoną cyfrę \"1\"</string>
+    <string name="remove_alarmclock_widget_redone">Usuń czerwony kolor z cyfry 1 (z widżetu zegara)</string>
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie z zegara czerwoną cyfrę \"1\"</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
     <string name="remove_appicon_dot">Usuń oznaczenie zainstalowanej nowej aplikacji</string>
@@ -249,7 +261,7 @@
     <string name="remove_rotate_screen_button">Usuń przycisk obracania ekranu</string>
     <string name="CustomSideSliderIcon">Własna ikona bocznego suwaka</string>
     <string name="replace_side_slider_icon_switch">Zastąp ikonę bocznego suwaka</string>
-    <string name="replace_side_slider_icon_switch_summary">The icon width is recommended to be around 100px</string>
+    <string name="replace_side_slider_icon_switch_summary">Szerokość ikony jest zalecana do około 100 pikseli</string>
     <string name="replace_side_slider_icon_on_left">Zastąp ikonę bocznego suwaka po lewej stronie</string>
     <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
     <!--Miscellaneous-->
@@ -346,8 +358,8 @@
     <string name="cancel_button">Anuluj pobieranie</string>
     <string name="fps_autostart">Automatyczny start</string>
     <string name="device_guid">GUID urządzenia</string>
-    <!-- Logs -->
-    <string name="log_no_data">Brak problemów</string>
+    <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
+    <string name="oplusota_copyall">Copy All</string>
     <!-- Other -->
     <string name="quick_entry">Ukryte funkcje systemowe</string>
     <string name="quick_entry_summary">Ustawienia AOSP, Kalibrator System UI, Dodatkowe przyciemnianie ekranu</string>
@@ -374,9 +386,10 @@
     <string name="adb_port">Port ADB</string>
     <string name="enable_remote_adb_debugging">Zdalne debugowanie ADB</string>
     <string name="adb_debug_port_cannot_null">Port ADB nie może być pusty</string>
-    <string name="adb_tv_tip">Long press to copy</string>
+    <string name="adb_tv_tip">Przytrzymaj, aby skopiować</string>
     <!--LOG Fragment-->
     <string name="log_save_success">Logi zapisano pomyślnie!</string>
     <string name="log_save_failed">Zapis logów się nie powiódł!</string>
     <string name="log_data_is_empty">Logi są puste!</string>
+    <string name="log_no_data">Brak problemów</string>
 </resources>

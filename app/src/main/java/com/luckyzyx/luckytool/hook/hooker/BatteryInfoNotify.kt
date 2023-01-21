@@ -66,11 +66,11 @@ object BatteryInfoNotify : YukiBaseHooker() {
         val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
         val statusValue = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
         status = when (statusValue) {
-            1 -> if (isZh(context)) "未知" else "Unknown"
-            2 -> if (isZh(context)) "充电中" else "Charging"
-            3 -> if (isZh(context)) "放电中" else "Discharging"
-            4 -> if (isZh(context)) "未充电" else "Not Charging"
-            5 -> if (isZh(context)) "已充满" else "Full"
+            1 -> context.getString(R.string.battery_status_unknown)
+            2 -> context.getString(R.string.battery_status_charging)
+            3 -> context.getString(R.string.battery_status_discharging)
+            4 -> context.getString(R.string.battery_status_not_charging)
+            5 -> context.getString(R.string.battery_status_full)
             else -> "null"
         }
         isCharging = statusValue == 2 || statusValue == 5
@@ -100,7 +100,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun createChannel(context: Context) {
         val channel = NotificationChannel(
-            "luckytool_notify", "LuckyTool", NotificationManager.IMPORTANCE_LOW
+            "luckytool_notify", "LuckyTool", NotificationManager.IMPORTANCE_UNSPECIFIED
         ).apply {
             setSound(null, null)
         }
@@ -109,9 +109,10 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun sendNotification(context: Context, isCharging: Boolean, isUpdateTime: Boolean) {
         createChannel(context)
-        val batteryInfo = if (isZh(context)) {
-            "温度:${temperature}℃ 电压:${voltage}v 电流:${electricCurrent}mA"
-        } else "Battery Tamp: ${temperature}℃ Vol: ${voltage}v Cur: ${electricCurrent}mA"
+        val batteryInfo =
+            "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
+                    "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
+                    "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val technology = when (chargerTechnology) {
             0 -> if (ppsMode == 1) "PPS" else "Normal"
             1 -> "VOOC"
@@ -123,7 +124,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
             4 -> "QC"
             5 -> "PPS" //null
             6 -> "UFCS" //null
-            else -> "Error"
+            else -> "Error: $chargerTechnology"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
             //normal,pps
@@ -139,16 +140,17 @@ object BatteryInfoNotify : YukiBaseHooker() {
                 Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0)
                     .toString()
             val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
-            if (isZh(context)) {
-                "$status:$plugged 充电电压:${chargerVoltageFinal}v 理论功率:${power}W\n充电技术:${technology}${wattage}" + if (isUpdateTime) "\n" else ""
-            } else "$status: $plugged Vol: ${chargerVoltageFinal}v Pwr: ${power}W Tech: $technology${wattage}" + if (isUpdateTime) "\n" else ""
+            "$status: $plugged ${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}v ${
+                context.getString(R.string.battery_power)
+            }: ${power}W\n${
+                context.getString(R.string.battery_technology)
+            }: ${technology}${wattage}" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
-            if (isZh(context)) {
-                "更新时间:${SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.CHINA).format(Date())}"
-            } else "UpdateTime: ${
+            "${context.getString(R.string.battery_update_time)}: ${
                 SimpleDateFormat(
-                    "MM/dd/yyyy HH:mm:ss", Locale.US
+                    "HH:mm:ss",
+                    Locale.CHINA
                 ).format(Date())
             }"
         } else ""
@@ -168,11 +170,5 @@ object BatteryInfoNotify : YukiBaseHooker() {
     @Suppress("unused")
     private fun clearNotofication(context: Context) {
         NotifyUtils.clearNotification(context, 112233)
-    }
-
-    private fun isZh(context: Context): Boolean {
-        val locale = context.resources.configuration.locales[0]
-        val language = locale.language
-        return language.endsWith("zh")
     }
 }

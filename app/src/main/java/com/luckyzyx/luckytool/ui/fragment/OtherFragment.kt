@@ -60,14 +60,13 @@ class OtherFragment : Fragment() {
                     setView(R.layout.layout_adb_dialog)
                 }.show()
 
-                adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)?.apply {
+                val adbPortLayout = adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)?.apply {
                     hint = context.getString(R.string.adb_port)
                     isHintEnabled = true
                     isHintAnimationEnabled = true
                     isCounterEnabled = true
                     counterMaxLength = 6
                 }
-                val adbPortLayout = adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)
                 val adbPort = adbDialog.findViewById<TextInputEditText>(R.id.adb_port)?.apply {
                     inputType = EditorInfo.TYPE_CLASS_NUMBER
                     setText(context.getString(OtherPrefs,"adb_port","6666"))
