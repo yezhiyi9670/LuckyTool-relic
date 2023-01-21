@@ -38,5 +38,8 @@ object HookAndroid : YukiBaseHooker() {
 
         //禁用FLAG_SECURE
         loadHooker(DisableFlagSecure)
+
+        //允许不受信任的触摸
+        loadHooker(AllowUntrustedTouch)
     }
 }

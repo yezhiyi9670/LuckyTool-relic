@@ -37,35 +37,45 @@ object MainHook : IYukiHookXposedInit {
         loadZygote(HookZygote)
 
         //状态栏时钟
-        loadApp(hooker = StatusBarClock)
+        loadApp("com.android.systemui", StatusBarClock)
         //状态栏网速
-        loadApp(hooker = StatusBarNetWorkSpeed)
+        loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp(hooker = StatusBarNotify)
+        loadApp("com.android.systemui", StatusBarNotify)
+        loadApp("com.oplus.battery", StatusBarNotify)
         //状态栏图标
-        loadApp(hooker = StatusBarIcon)
+        loadApp("com.android.systemui", StatusBarIcon)
         //状态栏控制中心
-        loadApp(hooker = StatusBarControlCenter)
+        loadApp("com.android.systemui", StatusBarControlCenter)
 
         //状态栏电池通知
-        loadApp(hooker = BatteryInfoNotify)
+        loadApp("com.android.systemui", BatteryInfoNotify)
 
         //桌面
-        loadApp(hooker = HookDesktop)
+        loadApp("com.coloros.alarmclock", HookDesktop)
+        loadApp("com.android.launcher", HookDesktop)
         //锁屏
-        loadApp(hooker = HookLockScreen)
+        loadApp("com.android.systemui", HookLockScreen)
         //截屏
-        loadApp(hooker = HookScreenshot)
+        loadApp("com.oplus.screenshot", HookScreenshot)
         //应用
-        loadApp(hooker = HookApplication)
+        loadApp("com.oplus.battery", HookApplication)
+        loadApp("com.oplus.safecenter", HookApplication)
+        loadApp("com.coloros.safecenter", HookApplication)
+        loadApp("com.android.launcher", HookApplication)
+        loadApp("com.oppo.launcher", HookApplication)
         //应用安装器
-        loadApp(hooker = HookPackageInstaller)
+        loadApp("com.android.packageinstaller", HookPackageInstaller)
         //对话框相关
-        loadApp(hooker = HookDialogRelated)
+        loadApp("com.android.systemui", HookDialogRelated)
+        loadApp("com.oplus.exsystemservice", HookDialogRelated)
         //全面屏手势相关
-        loadApp(hooker = HookGestureRelated)
+        loadApp("com.android.systemui", HookGestureRelated)
         //杂项
-        loadApp(hooker = HookMiscellaneous)
+        loadApp("com.android.systemui", HookMiscellaneous)
+        loadApp("com.android.settings", HookMiscellaneous)
+        loadApp("com.android.externalstorage", HookMiscellaneous)
+        loadApp("com.oplus.battery", HookMiscellaneous)
 
         //相机
         loadApp("com.oplus.camera", HookCamera)
@@ -79,10 +89,11 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.ota", HookOplusOta)
 
         //其他APP
-        loadApp(hooker = HookOtherApp)
+        loadApp("com.east2d.everyimage", HookOtherApp)
+        loadApp("com.ruet_cse_1503050.ragib.appbackup.pro", HookOtherApp)
 
         //自动强制FPS
-        loadApp(hooker = HookAutoFps)
+        loadApp("com.android.systemui", HookAutoFps)
 
     }
 

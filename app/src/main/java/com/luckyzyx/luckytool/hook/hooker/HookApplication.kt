@@ -12,7 +12,6 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object HookApplication : YukiBaseHooker() {
     override fun onHook() {
-
         //移除自启数量限制
         if (prefs(XposedPrefs).getBoolean("unlock_startup_limit",false)) {
             if (SDK >= A13){

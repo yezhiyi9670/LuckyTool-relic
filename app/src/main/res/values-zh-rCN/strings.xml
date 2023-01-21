@@ -283,6 +283,7 @@
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="increase_touch_sampling_rate">增加触摸采样率</string>
     <string name="increase_touch_sampling_rate_summary">开启功能后自动执行一次，此后将在解锁屏幕后自动触发</string>
+    <string name="allow_untrusted_touch">允许不受信任的触摸</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>

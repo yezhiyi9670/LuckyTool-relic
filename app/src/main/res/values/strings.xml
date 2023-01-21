@@ -289,6 +289,8 @@
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
     <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
+    <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    
     <!--Camera-->
     <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
     <string name="enable_10_bit_image_support">Enable 10 bit Images Support</string>

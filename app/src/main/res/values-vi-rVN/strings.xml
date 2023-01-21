@@ -283,6 +283,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
+    <string name="allow_untrusted_touch">Allow untrusted touch</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
@@ -358,8 +359,8 @@
     <string name="cancel_button">Hủy tải xuống</string>
     <string name="fps_autostart">Tự khởi động</string>
     <string name="device_guid">GUID thiết bị</string>
-    <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
-    <string name="oplusota_copyall">Copy All</string>
+    <string name="oplusota_copy_tip">Nhấn và giữ ô nhập để sao chép riêng lẻ</string>
+    <string name="oplusota_copyall">Sao chép tất cả</string>
     <!-- Other -->
     <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>

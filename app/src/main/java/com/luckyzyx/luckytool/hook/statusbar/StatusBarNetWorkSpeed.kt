@@ -5,9 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.NetworkSpeed
 
 object StatusBarNetWorkSpeed : YukiBaseHooker() {
     override fun onHook() {
-        loadApp("com.android.systemui"){
-            //设置状态栏网速刷新率
-            loadHooker(NetworkSpeed)
-        }
+        //状态栏网速
+        loadHooker(NetworkSpeed)
     }
 }

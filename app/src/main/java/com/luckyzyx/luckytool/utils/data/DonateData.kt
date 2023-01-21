@@ -58,6 +58,8 @@ object DonateData {
             add(DonateInfo("G.Sheng", 25.0))
             add(DonateInfo("故里", 5.0))
             add(DonateInfo("散乱的钟", 6.80))
+            add(DonateInfo("项欣", 1.0))
+            add(DonateInfo("佘小鱼", 10.0))
         }
     }
 }

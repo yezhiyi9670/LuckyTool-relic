@@ -28,7 +28,6 @@ object StatusBarNotify : YukiBaseHooker() {
             if (prefs(XposedPrefs).getBoolean("remove_do_not_disturb_mode_notification", false)) {
                 loadHooker(RemoveDoNotDisturbModeNotification)
             }
-
         }
         loadApp("com.oplus.battery") {
             //移除电池通知
