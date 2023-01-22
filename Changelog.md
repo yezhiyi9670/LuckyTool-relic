@@ -6,10 +6,10 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 ### v4.2.7
 
 [更新] 捐赠名单  
-[添加] 电池状态通知翻译  
+[优化] 电池状态通知翻译  
 [添加] 长按设备信息获取OTA参数  
 [添加] 允许不受信任的触摸  
-[修复] 进程多包名异常报错问题  
+[修复] 进程多包名异常报错问题
 
 ### v4.2.6
 

@@ -9,9 +9,9 @@ import androidx.core.app.NotificationCompat
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 
@@ -109,10 +109,6 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun sendNotification(context: Context, isCharging: Boolean, isUpdateTime: Boolean) {
         createChannel(context)
-        val batteryInfo =
-            "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
-                    "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
-                    "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val technology = when (chargerTechnology) {
             0 -> if (ppsMode == 1) "PPS" else "Normal"
             1 -> "VOOC"
@@ -135,24 +131,22 @@ object BatteryInfoNotify : YukiBaseHooker() {
             2, 20, 25, 30 -> voltage * 2
             else -> 0.0
         }
+        val batteryInfo = "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
+                "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
+                "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val chargeInfo = if (isCharging) {
             val power =
                 Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0)
                     .toString()
-            val wattage = if (chargeWattage != 0) " ${chargeWattage}W" else ""
+            val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
             "$status: $plugged ${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}v ${
-                context.getString(R.string.battery_power)
-            }: ${power}W\n${
-                context.getString(R.string.battery_technology)
-            }: ${technology}${wattage}" + if (isUpdateTime) "\n" else ""
+                context.getString(
+                    R.string.battery_power
+                )
+            }: ${power}W\n${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
-            "${context.getString(R.string.battery_update_time)}: ${
-                SimpleDateFormat(
-                    "HH:mm:ss",
-                    Locale.CHINA
-                ).format(Date())
-            }"
+            "${context.getString(R.string.battery_update_time)}: ${formatDate("HH:mm:ss")}"
         } else ""
         val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
             setAutoCancel(false)

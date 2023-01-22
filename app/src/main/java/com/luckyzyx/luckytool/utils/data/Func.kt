@@ -19,12 +19,15 @@ import android.text.TextUtils
 import android.util.ArraySet
 import android.util.Base64
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig.*
 import com.luckyzyx.luckytool.utils.tools.*
 import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
@@ -427,7 +430,7 @@ fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
         return
     }
     when (resource) {
-        is Int -> result(getDrawable(resource), true)
+        is Int -> result(ResourcesCompat.getDrawable(resources, resource, null), true)
         is Drawable -> result(resource, true)
         is String -> result(getAppIcon(resource), true)
     }
@@ -596,7 +599,8 @@ fun getDataColumn(
  * @return String?
  */
 fun getMSFFile(context: Context, uri: Uri): String? {
-    val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool/cache")
+    val dir =
+        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool/cache")
     if (!dir.exists()) dir.mkdirs()
     val fileType = context.contentResolver.getType(uri)?.split("/")?.get(1)
     val fileName = SystemClock.uptimeMillis().toString() + "." + fileType
@@ -627,3 +631,17 @@ fun copyStreamToFile(inputStream: InputStream, outputFile: File): String {
     }
     return outputFile.path
 }
+
+/**
+ * 格式化Date
+ * @param format String
+ * @return String
+ */
+fun formatDate(format: String): String {
+    return formatDate(format, null)
+}
+
+fun formatDate(format: String, locale: Locale?): String {
+    return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(Date())
+}
+
