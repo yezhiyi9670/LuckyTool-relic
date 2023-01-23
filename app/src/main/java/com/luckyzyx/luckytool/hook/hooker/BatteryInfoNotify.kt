@@ -19,6 +19,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
     //battery
     private var status: String = ""
     private var plugged: String = ""
+    private var level: Int = 0
     private var temperature: Double = 0.0
     private var voltage: Double = 0.0
     private var electricCurrent: Int = 0
@@ -82,6 +83,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
             BatteryManager.BATTERY_PLUGGED_WIRELESS -> "WIRELESS"
             else -> "null"
         }
+        level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
         temperature = (intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0)
         val originalVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0)
         voltage =
@@ -131,6 +133,17 @@ object BatteryInfoNotify : YukiBaseHooker() {
             2, 20, 25, 30 -> voltage * 2
             else -> 0.0
         }
+        val batteryIcon = when (level) {
+            100 -> R.drawable.round_battery_full_24
+            in 80..99 -> R.drawable.round_battery_6_bar_24
+            in 65..79 -> R.drawable.round_battery_5_bar_24
+            in 50..64 -> R.drawable.round_battery_4_bar_24
+            in 35..49 -> R.drawable.round_battery_3_bar_24
+            in 25..34 -> R.drawable.round_battery_2_bar_24
+            in 10..24 -> R.drawable.round_battery_1_bar_24
+            in 0..9 -> R.drawable.round_battery_0_bar_24
+            else -> R.drawable.round_battery_unknown_24
+        }
         val batteryInfo = "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
                 "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
                 "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
@@ -151,10 +164,12 @@ object BatteryInfoNotify : YukiBaseHooker() {
         val notify = NotificationCompat.Builder(context, "luckytool_notify").apply {
             setAutoCancel(false)
             setOngoing(true)
-            setSmallIcon(if (isCharging) R.drawable.ic_round_battery_charging_full_24 else R.drawable.ic_round_battery_std_24)
+            setSmallIcon(if (isCharging) R.drawable.ic_round_battery_charging_full_24 else batteryIcon)
             setContentTitle(batteryInfo)
             if (isCharging || isUpdateTime) {
-                setStyle(NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime"))
+                setStyle(
+                    NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime")
+                )
             }
             priority = NotificationCompat.PRIORITY_MAX
         }.build()
