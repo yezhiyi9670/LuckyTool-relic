@@ -12,7 +12,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object HookDialogRelated : YukiBaseHooker() {
     override fun onHook() {
-        loadApp("com.android.systemui") {
+        if (packageName == "com.android.systemui") {
             //禁用复制悬浮窗
             if (prefs(XposedPrefs).getBoolean("disable_duplicate_floating_window", false)) {
                 if (SDK >= A13) loadHooker(DisableDuplicateFloatingWindow)
@@ -31,7 +31,7 @@ object HookDialogRelated : YukiBaseHooker() {
             }
         }
 
-        loadApp("com.oplus.exsystemservice") {
+        if (packageName == "com.oplus.exsystemservice") {
             //移除应用运行在桌面上警告对话框
             if (prefs(XposedPrefs).getBoolean("remove_warning_dialog_that_app_runs_on_desktop", false)) {
                 loadHooker(RemoveWarningDialogThatAppRunsOnDesktop)

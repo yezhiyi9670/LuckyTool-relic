@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Mô-đun Xposed được tối ưu hóa cho các tiện ích mở rộng của ColorOS</string>
+    <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Chức năng</string>
     <string name="nav_home">Trang chủ</string>
@@ -105,8 +105,8 @@
     <string name="battery_status_full">Đầy</string>
     <string name="battery_temperature">Nhiệt độ</string>
     <string name="battery_voltage">Điện áp</string>
-    <string name="battery_electric_current">Hiện tại</string>
-    <string name="battery_charger_voltage">Điện áp</string>
+    <string name="battery_electric_current">H.Tại</string>
+    <string name="battery_charger_voltage">Đ.Áp</string>
     <string name="battery_power">Năng lượng</string>
     <string name="battery_technology">Công nghệ</string>
     <string name="battery_update_time">Thời gian cập nhật</string>
@@ -283,7 +283,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
-    <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>

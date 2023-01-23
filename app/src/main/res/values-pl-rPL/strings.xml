@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Dodaje wiele udogodnień dla ColorOS</string>
+    <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Funkcje</string>
     <string name="nav_home">Przegląd</string>

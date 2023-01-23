@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Xposed модуль, оптимизированный для расширений в ColorOS</string>
+    <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Функции</string>
     <string name="nav_home">Главная</string>
@@ -284,7 +284,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
-    <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

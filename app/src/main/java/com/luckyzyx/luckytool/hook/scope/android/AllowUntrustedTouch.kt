@@ -5,6 +5,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object AllowUntrustedTouch : YukiBaseHooker() {
     override fun onHook() {
+        //Source InputManager
         findClass("android.hardware.input.InputManager").hook {
             injectMember {
                 method {

@@ -7,7 +7,7 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 
 object StatusBarNotify : YukiBaseHooker() {
     override fun onHook() {
-        loadApp("com.android.systemui") {
+        if (packageName == "com.android.systemui") {
             //移除充电完成通知
             if (prefs(XposedPrefs).getBoolean("remove_charging_completed", false)) {
                 loadHooker(RemoveChargingCompleted)
@@ -29,7 +29,7 @@ object StatusBarNotify : YukiBaseHooker() {
                 loadHooker(RemoveDoNotDisturbModeNotification)
             }
         }
-        loadApp("com.oplus.battery") {
+        if (packageName == "com.oplus.battery") {
             //移除电池通知
             loadHooker(RemoveBatteryNotify)
         }

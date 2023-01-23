@@ -13,24 +13,24 @@ import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 object HookApplication : YukiBaseHooker() {
     override fun onHook() {
         //移除自启数量限制
-        if (prefs(XposedPrefs).getBoolean("unlock_startup_limit",false)) {
-            if (SDK >= A13){
+        if (prefs(XposedPrefs).getBoolean("unlock_startup_limit", false)) {
+            if (SDK >= A13) {
                 //电池
-                loadApp("com.oplus.battery",UnlockStartupLimitV13)
-            }else{
+                if (packageName == "com.oplus.battery") loadHooker(UnlockStartupLimitV13)
+            } else {
                 //安全中心
-                loadApp("com.oplus.safecenter",UnlockStartupLimit)
+                if (packageName == "com.oplus.safecenter") loadHooker(UnlockStartupLimit)
                 //Android11
-                loadApp("com.coloros.safecenter", UnlockStartupLimitV11)
+                if (packageName == "com.coloros.safecenter") loadHooker(UnlockStartupLimitV11)
             }
         }
 
         //解锁后台任务限制
-        if (prefs(XposedPrefs).getBoolean("unlock_task_locks",false)) {
+        if (prefs(XposedPrefs).getBoolean("unlock_task_locks", false)) {
             //系统桌面
-            loadApp("com.android.launcher",UnlockTaskLocks)
+            if (packageName == "com.android.launcher") loadHooker(UnlockTaskLocks)
             //Android11
-            loadApp("com.oppo.launcher", UnlockTaskLocksV11)
+            if (packageName == "com.oppo.launcher") loadHooker(UnlockTaskLocksV11)
         }
     }
 }

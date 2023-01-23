@@ -10,7 +10,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 长按设备信息获取OTA参数  
 [添加] 允许不受信任的触摸  
 [修复] 进程多包名异常报错问题  
-[添加] 根据电量调整电池通知图标
+[添加] 根据电量调整电池通知图标  
+[添加] 模块描述添加作者
 
 ### v4.2.6
 
