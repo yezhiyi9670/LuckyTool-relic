@@ -20,7 +20,6 @@ class AliveActivity : Activity() {
         window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window?.statusBarColor = getColor(R.color.transparent)
         window?.navigationBarColor = getColor(R.color.transparent)
-        val context = this
         intent.extras.apply {
             if (this == null) return@apply
             //自启功能相关
@@ -41,8 +40,8 @@ class AliveActivity : Activity() {
             when(getString("Shortcut")){
                 "lsposed" -> ShellUtils.execCommand("am start 'intent:#Intent;action=android.intent.action.MAIN;category=org.lsposed.manager.LAUNCH_MANAGER;launchFlags=0x80000;component=com.android.shell/.BugreportWarningActivity;end'",true)
                 "oplusGames" -> ShellUtils.execCommand("am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true)
-                "processManager" -> jumpRunningApp(context)
-                "chargingTest" -> jumpBatteryInfo(context)
+                "processManager" -> jumpRunningApp(this@AliveActivity)
+                "chargingTest" -> jumpBatteryInfo(this@AliveActivity)
             }
         }
         finishAndRemoveTask()

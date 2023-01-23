@@ -31,8 +31,8 @@ object HookAutoFps : YukiBaseHooker() {
 
                         Intent(Intent.ACTION_VIEW).apply {
                             setClassName(BuildConfig.APPLICATION_ID, AliveActivity::class.java.name)
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
                             putExtra("SelfStart", true)
                             context.startActivity(this)
                         }
