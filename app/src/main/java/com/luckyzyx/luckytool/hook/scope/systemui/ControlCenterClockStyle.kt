@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
@@ -32,10 +31,12 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     name = "setTextWithOpStyle"
                     paramCount = 1
                 }
-                replaceUnit {
+                afterHook {
                     val view = instance<TextView>()
-                    val char = args(0).cast<CharSequence>()!!
-                    setRedOneStyle(view, char, removeRedOne)
+                    val char = args(0).cast<CharSequence>() ?: return@afterHook
+                    getCharColor(view) {
+                        setRedOneStyle(view, char, it, removeRedOne)
+                    }
                 }
             }
         }
@@ -47,34 +48,43 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     name = "setTextWithRedOneStyleInternal"
                     paramCount = 2
                 }
-                replaceUnit {
-                    val view = args(0).cast<TextView>()
-                    val char = args(1).cast<CharSequence>()!!
-                    setColonStyle(view, char, fixColon)
-                    setRedOneStyle(view, char, removeRedOne)
+                afterHook {
+                    val view = args(0).cast<TextView>() ?: return@afterHook
+                    val char = args(1).cast<CharSequence>() ?: return@afterHook
+                    getCharColor(view) {
+                        fixColonStyle(view, char, fixColon)
+                        setRedOneStyle(view, char, it, removeRedOne)
+                    }
                 }
             }
         }
     }
 
-    private fun setColonStyle(view: TextView?, char: CharSequence, fixColon: Boolean) {
-        view?.text = if (fixColon) {
+    private fun getCharColor(view: TextView, result: (color: Int?) -> Unit) {
+        val sp = SpannableString(view.text)
+        val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
+        if (colorSpan.isNotEmpty()) {
+            result(colorSpan[0].foregroundColor)
+        } else result(null)
+    }
+
+    private fun fixColonStyle(view: TextView, char: CharSequence, fixColon: Boolean) {
+        view.text = if (fixColon) {
             char.toString().replace("\u200e\u2236", ":")
         } else {
             char.toString().replace(":", "\u200e\u2236")
         }
     }
 
-    private fun setRedOneStyle(view: TextView?, char: CharSequence, removeRedOne: Boolean) {
-        if (!removeRedOne) {
-            val sp = SpannableString(view?.text)
+    private fun setRedOneStyle(view: TextView, char: CharSequence, color: Int?, remove: Boolean) {
+        if (color == null) {
+            view.text = char.toString()
+        } else if (!remove) {
+            val sp = SpannableString(view.text)
             for (i in 0 until 2) {
-                if (char[i].toString() == "1") {
-                    val red = ForegroundColorSpan(Color.parseColor("#c41442"))
-                    sp.setSpan(red, i, i + 1, 0)
-                }
+                if (char[i].toString() == "1") sp.setSpan(ForegroundColorSpan(color), i, i + 1, 0)
             }
-            view?.setText(sp, TextView.BufferType.SPANNABLE)
+            view.setText(sp, TextView.BufferType.SPANNABLE)
         }
     }
 }

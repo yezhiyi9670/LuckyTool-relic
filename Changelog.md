@@ -13,6 +13,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 根据电量调整电池通知图标  
 [添加] 模块描述添加作者  
 [修复] 模块前后台调用问题  
+[修复] 控制中心红一异常问题
 
 ### v4.2.6
 
