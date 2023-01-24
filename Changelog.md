@@ -13,7 +13,18 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 根据电量调整电池通知图标  
 [添加] 模块描述添加作者  
 [修复] 模块前后台调用问题  
-[修复] 控制中心红一异常问题
+[修复] 控制中心红一异常问题  
+[优化] 提升桌面布局行列数限制8x10  
+[Update] Donation list  
+[Optimize] Battery status notification translation  
+[Add] Long press device information to get OTA parameters  
+[Add] Allow untrusted touch  
+[Fix] Process multi-package name exception error problem  
+[Add] Adjust the battery notification icon according to the battery level  
+[Add] module description add author  
+[Fix] The problem of calling the front and back of the module  
+[Fix] The problem of red one abnormality in the control center  
+[Optimize] Increase the number of rows and columns of the desktop layout to 8x10
 
 ### v4.2.6
 

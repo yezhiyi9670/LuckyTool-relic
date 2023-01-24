@@ -20,7 +20,7 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(XposedPrefs).getBoolean("remove_appicon_dot", false)) {
                 if (SDK >= A13) loadHooker(RemoveAppUpdateDotV13) else loadHooker(RemoveAppUpdateDot)
             }
-            //设置桌面布局行和列
+            //设置桌面布局行列数
             if (prefs(XposedPrefs).getBoolean("launcher_layout_enable", false)) {
                 loadHooker(LauncherLayoutRowColume)
             }

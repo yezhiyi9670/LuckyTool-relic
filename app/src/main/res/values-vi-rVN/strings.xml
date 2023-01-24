@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
+    <string name="xposeddescription">Mô-đun Xposed được tối ưu hóa cho các phần mở rộng của ColorOS\nNhà phát triển: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Chức năng</string>
     <string name="nav_home">Trang chủ</string>

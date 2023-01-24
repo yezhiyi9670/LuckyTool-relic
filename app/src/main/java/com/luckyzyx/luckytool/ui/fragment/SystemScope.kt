@@ -928,7 +928,7 @@ class Desktop : ModulePreferenceFragment() {
                     title = getString(R.string.launcher_layout_max_rows)
                     key = "launcher_layout_max_rows"
                     setDefaultValue(6)
-                    max = 8
+                    max = 10
                     min = 1
                     seekBarIncrement = 1
                     showSeekBarValue = true
@@ -941,7 +941,7 @@ class Desktop : ModulePreferenceFragment() {
                     title = getString(R.string.launcher_layout_max_columns)
                     key = "launcher_layout_max_columns"
                     setDefaultValue(4)
-                    max = 6
+                    max = 8
                     min = 1
                     seekBarIncrement = 1
                     showSeekBarValue = true
