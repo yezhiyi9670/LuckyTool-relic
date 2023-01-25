@@ -7,22 +7,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
 import com.luckyzyx.luckytool.utils.data.DonateInfo
 
-class DonateListAdapter(val context: Context, val data: ArrayList<DonateInfo>) : RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
+class DonateListAdapter(val context: Context, val data: ArrayList<DonateInfo>) :
+    RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = LayoutDonateItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            LayoutDonateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = data[position].name
-        holder.money.text = data[position].money.toString()
+        data[position].details.apply {
+            var count = 0.0
+            forEach { count += it.money }
+            holder.money.text = count.toString()
+        }
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    class ViewHolder(binding: LayoutDonateItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: LayoutDonateItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val name = binding.donateName
         val money = binding.donateMoney
     }

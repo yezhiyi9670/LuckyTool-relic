@@ -27,8 +27,6 @@ import org.json.JSONObject
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.system.exitProcess
 
 @Obfuscate
@@ -217,7 +215,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         val fileName =
-                            "LuckyTool_" + SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()) + "_backup.json"
+                            "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + "_backup.json"
                         backupData.launch(fileName)
                         true
                     }
@@ -325,7 +323,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                                 RecyclerView(context).apply {
                                                     setPadding(0, 10.dp, 0, 10.dp)
                                                     adapter = DonateListAdapter(
-                                                        context, DonateData.getData()
+                                                        context, DonateData().getData()
                                                     )
                                                     layoutManager = LinearLayoutManager(context)
                                                 }
