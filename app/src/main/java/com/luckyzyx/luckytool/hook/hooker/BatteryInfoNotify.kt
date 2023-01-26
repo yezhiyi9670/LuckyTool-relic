@@ -102,7 +102,7 @@ object BatteryInfoNotify : YukiBaseHooker() {
 
     private fun createChannel(context: Context) {
         val channel = NotificationChannel(
-            "luckytool_notify", "LuckyTool", NotificationManager.IMPORTANCE_UNSPECIFIED
+            "luckytool_notify", "LuckyTool", NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
             setSound(null, null)
         }
@@ -171,13 +171,13 @@ object BatteryInfoNotify : YukiBaseHooker() {
                     NotificationCompat.BigTextStyle().bigText("$chargeInfo$updateTime")
                 )
             }
-            priority = NotificationCompat.PRIORITY_MAX
+            priority = NotificationCompat.PRIORITY_DEFAULT
         }.build()
         NotifyUtils.sendNotification(context, 112233, notify)
     }
 
     @Suppress("unused")
-    private fun clearNotofication(context: Context) {
+    private fun clearNotification(context: Context) {
         NotifyUtils.clearNotification(context, 112233)
     }
 }

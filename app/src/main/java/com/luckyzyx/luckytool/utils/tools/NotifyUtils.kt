@@ -36,7 +36,7 @@ object NotifyUtils {
             .setSmallIcon(R.drawable.ic_baseline_info_24)
             .setContentTitle("标题")
             .setContentText("内容")
-//            .setStyle(NotificationCompat.BigTextStyle().bigText(data))
+//            .setStyle(NotificationCompat.BigTextStyle().bigText(""))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
     }

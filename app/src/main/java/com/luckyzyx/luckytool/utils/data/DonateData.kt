@@ -117,7 +117,7 @@ class DonateData {
             add(DonateInfo("*鱼", 5.0, arrayOf(
                 DonateChannelInfo("20221115-123753",CWC,5.0,"10001071012022111501267896555529")
             )))
-            add(DonateInfo("余小鱼", 21.1, arrayOf(
+            add(DonateInfo("佘小鱼", 21.1, arrayOf(
                 DonateChannelInfo("20221115-124129",CAP,21.1,"2022111522001494811407014490"),
                 DonateChannelInfo("20230121-100513",CAP,10.0,"2023012122001494811424220936")
             )))
@@ -201,6 +201,15 @@ class DonateData {
             )))
             add(DonateInfo("鱼知乐",20.0, arrayOf(
                 DonateChannelInfo("20230125-094400",CAP,20.0,"2023012522001424271419420653")
+            )))
+            add(DonateInfo("高木同学咩",8.8, arrayOf(
+                DonateChannelInfo("20230126-000631",CWC,8.8,"10001071012023012600559933304093")
+            )))
+            add(DonateInfo("是麦芽糖呀",13.14, arrayOf(
+                DonateChannelInfo("20230126-005542",CWC,13.14,"10001071012023012600871793553057")
+            )))
+            add(DonateInfo("贱贱",8.88, arrayOf(
+                DonateChannelInfo("20230126-124451",CWC,8.88,"10000499012023012600637975717166")
             )))
         }
     }

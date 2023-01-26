@@ -5,6 +5,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.8
 
+[更新] 捐赠名单  
+[修复] 修复C12电池通知崩溃
+
 ### v4.2.7
 
 [更新] 捐赠名单  
