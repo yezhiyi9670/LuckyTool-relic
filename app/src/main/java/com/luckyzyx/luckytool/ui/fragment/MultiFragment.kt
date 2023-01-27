@@ -22,7 +22,11 @@ class MultiFragment : Fragment() {
     private var appListAllDatas = ArrayList<AppInfo>()
     private var multiInfoAdapter: MultiInfoAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMultiBinding.inflate(inflater)
         return binding.root
     }
@@ -36,11 +40,19 @@ class MultiFragment : Fragment() {
             isHintAnimationEnabled = true
         }
         binding.searchView.apply {
-            addTextChangedListener(object : TextWatcher{
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int){}
+            addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     multiInfoAdapter?.getFilter?.filter(s.toString())
                 }
+
                 override fun afterTextChanged(s: Editable?) {}
             })
         }
@@ -58,7 +70,7 @@ class MultiFragment : Fragment() {
     /**
      * 加载数据
      */
-    private fun loadData(){
+    private fun loadData() {
         binding.swipeRefreshLayout.isRefreshing = true
         binding.searchViewLayout.isEnabled = false
         appListAllDatas.clear()

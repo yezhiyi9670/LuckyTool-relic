@@ -23,9 +23,10 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var temperature: Double = 0.0
     private var voltage: Double = 0.0
     private var electricCurrent: Int = 0
-    private var max_charging_current: Int = 0
-    private var max_charging_voltage: Int = 0
+    private var max_charging_current: Double = 0.0
+    private var max_charging_voltage: Double = 0.0
     private var isCharging: Boolean = false
+    private var isWireless: Boolean = false
 
     //oplus battery
     private var chargerVoltage: Double = 0.0
@@ -83,14 +84,15 @@ object BatteryInfoNotify : YukiBaseHooker() {
             BatteryManager.BATTERY_PLUGGED_WIRELESS -> "WIRELESS"
             else -> "null"
         }
+        isWireless = plugged == "WIRELESS"
         level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
         temperature = (intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0)
         val originalVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0)
         voltage =
             if (originalVoltage.toString().length == 1) originalVoltage * 1.0 else originalVoltage / 1000.0
         electricCurrent = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
-        max_charging_current = intent.getIntExtra("max_charging_current", 0)
-        max_charging_voltage = intent.getIntExtra("max_charging_voltage", 0)
+        max_charging_current = intent.getIntExtra("max_charging_current", 0) / 1000000.0
+        max_charging_voltage = intent.getIntExtra("max_charging_voltage", 0) / 1000000.0
     }
 
     private fun initOplusInfo(intent: Intent) {
@@ -125,12 +127,19 @@ object BatteryInfoNotify : YukiBaseHooker() {
             else -> "Error: $chargerTechnology"
         }
         val chargerVoltageFinal = when (chargerTechnology) {
-            //normal,pps
-            0 -> if (ppsMode == 1) chargerVoltage else 5.0
-            //vooc,pd,qc
-            1, 3, 4 -> chargerVoltage
+            //normal (pps),vooc
+            0, 1 -> if (isWireless) Formatter().format("%.2f", max_charging_current)
+                .toString() else chargerVoltage.toString()
             //svooc
-            2, 20, 25, 30 -> voltage * 2
+            2, 20, 25, 30 -> Formatter().format("%.2f", max_charging_current).toString()
+            //pd,qc
+            3, 4 -> chargerVoltage.toString()
+            else -> 0.0.toString()
+        }
+        val powerCalc = when (chargerTechnology) {
+            0, 1, 2 -> if (isWireless) max_charging_current * max_charging_voltage else if (ppsMode == 1) chargerVoltage * electricCurrent else max_charging_current * electricCurrent
+            20, 25 -> max_charging_current * electricCurrent
+            3, 4 -> chargerVoltage * electricCurrent
             else -> 0.0
         }
         val batteryIcon = when (level) {
@@ -148,14 +157,10 @@ object BatteryInfoNotify : YukiBaseHooker() {
                 "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
                 "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val chargeInfo = if (isCharging) {
-            val power =
-                Formatter().format("%.2f", (chargerVoltageFinal * abs(electricCurrent)) / 1000.0)
-                    .toString()
+            val power = Formatter().format("%.2f", abs(powerCalc) / 1000.0).toString()
             val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
             "$status: $plugged ${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}v ${
-                context.getString(
-                    R.string.battery_power
-                )
+                context.getString(R.string.battery_power)
             }: ${power}W\n${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
         } else ""
         val updateTime = if (isUpdateTime) {
