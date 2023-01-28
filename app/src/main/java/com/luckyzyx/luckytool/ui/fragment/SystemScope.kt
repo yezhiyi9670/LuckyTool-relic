@@ -1490,6 +1490,8 @@ class Miscellaneous : ModulePreferenceFragment() {
                             "echo > /proc/touchpanel/game_switch_enable ${if (newValue) 1 else 0}",
                             true
                         )
+                        context.dataChannel("com.android.systemui")
+                            .put("increase_touch_sampling_rate", newValue)
                         true
                     }
                 }
