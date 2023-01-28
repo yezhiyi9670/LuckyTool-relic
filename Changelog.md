@@ -3,12 +3,16 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.8
+
+[适配] C13相机水印字数限制
+
 ### v4.2.7_fix
 
 [更新] 捐赠名单  
 [修复] 修复C12电池通知崩溃  
 [优化] 电池充电电压和功率显示
-[添加] 无线充电电流显示  
+[添加] 无线充电电流显示
 
 ### v4.2.7
 
