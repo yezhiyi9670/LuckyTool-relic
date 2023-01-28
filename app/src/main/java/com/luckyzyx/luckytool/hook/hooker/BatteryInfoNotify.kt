@@ -132,7 +132,8 @@ object BatteryInfoNotify : YukiBaseHooker() {
             else if (ppsMode == 1) chargerVoltage.toString()
             else Formatter().format("%.2f", max_charging_current).toString()
             //svooc
-            2, 20, 25, 30 -> Formatter().format("%.2f", max_charging_current).toString()
+            2 -> if (isWireless) Formatter().format("%.2f", max_charging_voltage).toString() else Formatter().format("%.2f", max_charging_current).toString()
+            20, 25, 30 -> Formatter().format("%.2f", max_charging_current).toString()
             //pd,qc
             3, 4 -> Formatter().format("%.2f", max_charging_current).toString()
             else -> 0.0.toString()
