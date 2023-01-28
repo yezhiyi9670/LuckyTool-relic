@@ -285,6 +285,13 @@ class HomeFragment : Fragment() {
                 true
             }
         }
+
+        binding.authorized.apply {
+            if (isZh(context)) {
+                isVisible = true
+                text = "未经授权禁止私自搬运转载"
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

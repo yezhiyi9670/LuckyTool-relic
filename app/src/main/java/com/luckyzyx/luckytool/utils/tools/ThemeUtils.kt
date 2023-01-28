@@ -3,6 +3,7 @@
 package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
+import android.content.res.Configuration
 import com.google.android.material.color.DynamicColors
 
 class ThemeUtils(context: Context) {
@@ -17,5 +18,9 @@ class ThemeUtils(context: Context) {
 
     fun isFollowSystem() : Boolean{
         return supportDynamicColor && followSystem
+    }
+
+    fun isNightMode(configuration: Configuration): Boolean {
+        return (configuration.uiMode and 32) > 0
     }
 }

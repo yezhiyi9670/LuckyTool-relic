@@ -128,18 +128,24 @@ object BatteryInfoNotify : YukiBaseHooker() {
         }
         val chargerVoltageFinal = when (chargerTechnology) {
             //normal (pps),vooc
-            0, 1 -> if (isWireless) Formatter().format("%.2f", max_charging_current)
-                .toString() else chargerVoltage.toString()
+            0, 1 -> if (isWireless) Formatter().format("%.2f", max_charging_voltage).toString()
+            else if (ppsMode == 1) chargerVoltage.toString()
+            else Formatter().format("%.2f", max_charging_current).toString()
             //svooc
             2, 20, 25, 30 -> Formatter().format("%.2f", max_charging_current).toString()
             //pd,qc
-            3, 4 -> chargerVoltage.toString()
+            3, 4 -> Formatter().format("%.2f", max_charging_current).toString()
             else -> 0.0.toString()
         }
         val powerCalc = when (chargerTechnology) {
-            0, 1, 2 -> if (isWireless) max_charging_current * max_charging_voltage else if (ppsMode == 1) chargerVoltage * electricCurrent else max_charging_current * electricCurrent
+            //normal,vooc,svooc
+            0, 1, 2 -> if (isWireless) max_charging_current * max_charging_voltage
+            else if (ppsMode == 1) chargerVoltage * electricCurrent
+            else max_charging_current * electricCurrent
+            //svooc
             20, 25 -> max_charging_current * electricCurrent
-            3, 4 -> chargerVoltage * electricCurrent
+            //pd,qc
+            3, 4 -> max_charging_current * electricCurrent
             else -> 0.0
         }
         val batteryIcon = when (level) {

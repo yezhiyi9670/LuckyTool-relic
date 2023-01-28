@@ -645,3 +645,8 @@ fun formatDate(format: String, locale: Locale?): String {
     return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(Date())
 }
 
+fun isZh(context: Context): Boolean {
+    val locale = context.resources.configuration.locales
+    val language = locale[0].language
+    return language.endsWith("zh")
+}

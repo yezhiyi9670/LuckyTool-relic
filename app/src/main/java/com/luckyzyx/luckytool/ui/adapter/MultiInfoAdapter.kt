@@ -1,7 +1,9 @@
 package com.luckyzyx.luckytool.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.ArraySet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -36,7 +38,7 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
     }
 
     private fun sortDatas(){
-        val getEnabledMulti = context.getStringSet(XposedPrefs,"enabledMulti", HashSet<String>())
+        val getEnabledMulti = context.getStringSet(XposedPrefs,"enabledMulti", ArraySet())
         if (getEnabledMulti != null && getEnabledMulti.isNotEmpty()){
             for (i in getEnabledMulti){
                 enabledMulti.add(i)
@@ -108,6 +110,7 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
             return filterResults
         }
 
+        @SuppressLint("NotifyDataSetChanged")
         override fun publishResults(constraint: CharSequence, results: FilterResults?) {
             @Suppress("UNCHECKED_CAST")
             filterDatas = results?.values as ArrayList<AppInfo>

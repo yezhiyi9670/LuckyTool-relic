@@ -73,6 +73,7 @@ class MultiFragment : Fragment() {
     private fun loadData() {
         binding.swipeRefreshLayout.isRefreshing = true
         binding.searchViewLayout.isEnabled = false
+        binding.searchView.text = null
         appListAllDatas.clear()
         scopeLife {
             withIO {

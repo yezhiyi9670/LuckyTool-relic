@@ -145,9 +145,10 @@
             
             
             <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/battery_info"
+                    android:id="@+id/authorized"
                     android:visibility="gone"
-                    android:padding="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             

@@ -7,7 +7,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 [更新] 捐赠名单  
 [修复] 修复C12电池通知崩溃  
-[优化] 电池充电功率计算
+[优化] 电池充电电压和功率显示
 
 ### v4.2.7
 
