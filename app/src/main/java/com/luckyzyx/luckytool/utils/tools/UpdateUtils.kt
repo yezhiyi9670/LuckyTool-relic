@@ -1,8 +1,10 @@
 package com.luckyzyx.luckytool.utils.tools
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import android.provider.Settings
 import android.widget.SeekBar
 import androidx.core.content.FileProvider
@@ -26,6 +28,7 @@ import java.text.DecimalFormat
 
 @Obfuscate
 object UpdateUtils {
+    @SuppressLint("SetTextI18n")
     @Suppress("UNUSED_PARAMETER")
     fun checkUpdate(context: Context, versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
         scopeNet {
@@ -86,7 +89,10 @@ object UpdateUtils {
         }.show()
     }
 
+    @Suppress("unused")
     const val coolmarketUrl = "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"
+    @SuppressLint("ClickableViewAccessibility")
+    @Suppress("MemberVisibilityCanBePrivate")
     fun downloadFile(context: Context, apkName: String, url: String) {
         var downloadScope: NetCoroutineScope = scopeNet { }
         val downloadDialog = MaterialAlertDialogBuilder(context).apply {
@@ -95,7 +101,7 @@ object UpdateUtils {
             setView(R.layout.layout_download_dialog)
         }.show()
         downloadScope = scopeNet {
-            File("/sdcard/Download/$apkName").apply {
+            File(Environment.getExternalStorageDirectory().path + "/Download/$apkName").apply {
                 if (this.exists()) {
                     installApk(context, this)
                     downloadDialog.dismiss()
@@ -109,15 +115,18 @@ object UpdateUtils {
                     downloadDialog.dismiss()
                 }
             }
+            val downSeek = downloadDialog.findViewById<SeekBar>(R.id.down_seek)?.apply {
+                setOnTouchListener { _, _ -> true }
+            }
+            val downTv = downloadDialog.findViewById<MaterialTextView>(R.id.down_tv)
             val apkFile = Get<File>(url) {
                 setDownloadFileName(apkName)
-                setDownloadDir("/sdcard/Download/")
+                setDownloadDir(Environment.getExternalStorageDirectory().path + "/Download/")
                 setDownloadMd5Verify()
                 setDownloadTempFile()
                 addDownloadListener(object : ProgressListener(100){
+                    @SuppressLint("SetTextI18n")
                     override fun onProgress(p: Progress) {
-                        val downSeek = downloadDialog.findViewById<SeekBar>(R.id.down_seek)
-                        val downTv = downloadDialog.findViewById<MaterialTextView>(R.id.down_tv)
                         downSeek?.post {
                             val progress = p.progress()
                             downSeek.progress = progress

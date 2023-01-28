@@ -5,7 +5,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.8
 
-[适配] C13相机水印字数限制
+[适配] C13相机水印字数限制  
+[修复] 下载进度条可拖动问题
 
 ### v4.2.7_fix
 
