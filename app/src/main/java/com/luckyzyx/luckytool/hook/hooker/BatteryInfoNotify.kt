@@ -132,21 +132,23 @@ object BatteryInfoNotify : YukiBaseHooker() {
             else if (ppsMode == 1) chargerVoltage.toString()
             else Formatter().format("%.2f", max_charging_current).toString()
             //svooc
-            2 -> if (isWireless) Formatter().format("%.2f", max_charging_voltage).toString() else Formatter().format("%.2f", max_charging_current).toString()
+            2 -> if (isWireless) Formatter().format("%.2f", max_charging_voltage)
+                .toString() else Formatter().format("%.2f", max_charging_current).toString()
             20, 25, 30 -> Formatter().format("%.2f", max_charging_current).toString()
             //pd,qc
             3, 4 -> Formatter().format("%.2f", max_charging_current).toString()
             else -> 0.0.toString()
         }
         val powerCalc = when (chargerTechnology) {
+            //V x mA / 1000
             //normal,vooc,svooc
             0, 1, 2 -> if (isWireless) max_charging_current * max_charging_voltage
-            else if (ppsMode == 1) chargerVoltage * electricCurrent
-            else max_charging_current * electricCurrent
+            else if (ppsMode == 1) chargerVoltage * electricCurrent / 1000.0
+            else max_charging_current * electricCurrent / 1000.0
             //svooc
-            20, 25 -> max_charging_current * electricCurrent
+            20, 25 -> max_charging_current * electricCurrent / 1000.0
             //pd,qc
-            3, 4 -> max_charging_current * electricCurrent
+            3, 4 -> max_charging_current * electricCurrent / 1000.0
             else -> 0.0
         }
         val batteryIcon = when (level) {
@@ -164,11 +166,18 @@ object BatteryInfoNotify : YukiBaseHooker() {
                 "${context.getString(R.string.battery_voltage)}: ${voltage}v " +
                 "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val chargeInfo = if (isCharging) {
-            val power = Formatter().format("%.2f", abs(powerCalc) / 1000.0).toString()
+            val power = Formatter().format("%.2f", abs(powerCalc) * 1.0).toString()
             val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
-            "$status: $plugged ${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}v ${
-                context.getString(R.string.battery_power)
-            }: ${power}W\n${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
+            val sp = "$status: $plugged"
+            val vol =
+                "${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}v"
+            val formatCur = Formatter().format("%.0f", max_charging_current * 1000.0).toString()
+            val cur =
+                if (isWireless) "${context.getString(R.string.battery_electric_current)}: ${formatCur}mA" else ""
+            val pwr = "${context.getString(R.string.battery_power)}: ${power}W"
+            val tech =
+                "${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
+            "$sp $vol $cur $pwr\n$tech"
         } else ""
         val updateTime = if (isUpdateTime) {
             "${context.getString(R.string.battery_update_time)}: ${formatDate("HH:mm:ss")}"
