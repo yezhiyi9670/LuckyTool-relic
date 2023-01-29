@@ -5,6 +5,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.2.8
 
+[更新] 捐赠名单  
 [适配] C13相机水印字数限制  
 [修复] 下载进度条可拖动问题  
 [优化] 自启功能调用逻辑
@@ -14,7 +15,11 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [更新] 捐赠名单  
 [修复] 修复C12电池通知崩溃  
 [优化] 电池充电电压和功率显示
-[添加] 无线充电电流显示
+[添加] 无线充电电流显示  
+[Update] Donation list  
+[Fix] Fix C12 battery notification crash  
+[Optimize] Battery charging voltage and power display  
+[Add] Wireless charging current display
 
 ### v4.2.7
 
