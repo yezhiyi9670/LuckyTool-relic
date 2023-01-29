@@ -393,4 +393,6 @@
     <string name="log_save_failed">LOG 保存失败！</string>
     <string name="log_data_is_empty">LOG数据为空!</string>
     <string name="log_no_data">无异常数据</string>
+    <!--Tile-->
+    <string name="high_brightness_mode">高亮度模式</string>
 </resources>

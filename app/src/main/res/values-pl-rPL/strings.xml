@@ -109,7 +109,7 @@
     <string name="battery_charger_voltage">Vol</string>
     <string name="battery_power">Pwr</string>
     <string name="battery_technology">Tech</string>
-    <string name="battery_update_time">UpdateTime</string>
+    <string name="battery_update_time">Czas aktualizacji</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_enable">Główny przełącznik zegara</string>
@@ -283,7 +283,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
     <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
-    <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -359,8 +359,8 @@
     <string name="cancel_button">Anuluj pobieranie</string>
     <string name="fps_autostart">Automatyczny start</string>
     <string name="device_guid">GUID urządzenia</string>
-    <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
-    <string name="oplusota_copyall">Copy All</string>
+    <string name="oplusota_copy_tip">Długie naciśnij pole wprowadzania, aby skopiować go indywidualnie</string>
+    <string name="oplusota_copyall">Skopiuj wszystko</string>
     <!-- Other -->
     <string name="quick_entry">Ukryte funkcje systemowe</string>
     <string name="quick_entry_summary">Ustawienia AOSP, Kalibrator System UI, Dodatkowe przyciemnianie ekranu</string>
@@ -393,4 +393,6 @@
     <string name="log_save_failed">Zapis logów się nie powiódł!</string>
     <string name="log_data_is_empty">Logi są puste!</string>
     <string name="log_no_data">Brak problemów</string>
+    <!--Tile-->
+    <string name="high_brightness_mode">Tryb wysokiej jasności</string>
 </resources>

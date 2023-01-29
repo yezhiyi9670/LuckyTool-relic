@@ -96,6 +96,16 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+        <service
+                android:name=".ui.service.HighBrightness"
+                android:exported="true"
+                android:icon="@drawable/baseline_brightness_high_24"
+                android:label="@string/high_brightness_mode"
+                android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
         
         <provider
                 android:name="androidx.core.content.FileProvider"

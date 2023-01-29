@@ -401,5 +401,7 @@
     <string name="log_save_failed">LOG Saved Failed!</string>
     <string name="log_data_is_empty">LOG Data is empty!</string>
     <string name="log_no_data">No abnormal data</string>
+    <!--Tile-->
+    <string name="high_brightness_mode">High Brightness Mode</string>
 
 </resources>

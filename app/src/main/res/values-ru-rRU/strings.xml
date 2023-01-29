@@ -394,4 +394,6 @@
     <string name="log_save_failed">Лог не сохранён!</string>
     <string name="log_data_is_empty">Пустой лог!</string>
     <string name="log_no_data">Нет аномальных данных</string>
+    <!--Tile-->
+    <string name="high_brightness_mode">Режим высокой яркости</string>
 </resources>

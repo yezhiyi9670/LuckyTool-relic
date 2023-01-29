@@ -393,4 +393,6 @@
     <string name="log_save_failed">Nhật ký lưu thất bại!</string>
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
+    <!--Tile-->
+    <string name="high_brightness_mode">Chế Độ Sáng Cao</string>
 </resources>
