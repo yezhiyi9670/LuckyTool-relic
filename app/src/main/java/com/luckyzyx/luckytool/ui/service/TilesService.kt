@@ -68,3 +68,13 @@ class HighBrightness : TileService() {
         tile.updateTile()
     }
 }
+
+class FiveG : TileService() {
+    override fun onStartListening() {
+
+    }
+
+    override fun onClick() {
+
+    }
+}

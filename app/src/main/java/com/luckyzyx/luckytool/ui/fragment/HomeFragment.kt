@@ -142,7 +142,7 @@ class HomeFragment : Fragment() {
                         if (fpsModeValue == 1) requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = position)
                         if (fpsModeValue == 2) ShellUtils.execCommand(
-                            "su -c service call SurfaceFlinger 1035 i32 $position", true
+                            "service call SurfaceFlinger 1035 i32 $position", true
                         )
                     }
                 }
@@ -161,7 +161,7 @@ class HomeFragment : Fragment() {
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
-                            "su -c service call SurfaceFlinger 1035 i32 -1", true
+                            "service call SurfaceFlinger 1035 i32 -1", true
                         )
                         fpsDialog.dismiss()
                     }
@@ -179,7 +179,7 @@ class HomeFragment : Fragment() {
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
-                            "su -c service call SurfaceFlinger 1035 i32 -1", true
+                            "service call SurfaceFlinger 1035 i32 -1", true
                         )
                         fpsDialog.dismiss()
                     }
@@ -190,7 +190,7 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         status = !status
                         ShellUtils.execCommand(
-                            "su -c service call SurfaceFlinger 1034 i32 ${if (status) 1 else 0}",
+                            "service call SurfaceFlinger 1034 i32 ${if (status) 1 else 0}",
                             true
                         )
                     }
@@ -208,7 +208,7 @@ class HomeFragment : Fragment() {
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
-                            "su -c service call SurfaceFlinger 1035 i32 -1", true
+                            "service call SurfaceFlinger 1035 i32 -1", true
                         )
                     }
                 }
@@ -289,7 +289,7 @@ class HomeFragment : Fragment() {
         binding.authorized.apply {
             if (isZh(context)) {
                 isVisible = true
-                text = "未经授权禁止私自搬运转载"
+                text = "未经开发者授权禁止私自搬运转载"
             }
         }
     }

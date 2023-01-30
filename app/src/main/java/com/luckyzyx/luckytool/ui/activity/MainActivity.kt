@@ -8,11 +8,12 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.Process
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -65,13 +66,19 @@ open class MainActivity : AppCompatActivity() {
     private fun checkPermissions() {
         //所有文件访问权限
         if (!Environment.isExternalStorageManager()) {
-            startActivity(Intent("android.settings.MANAGE_ALL_FILES_ACCESS_PERMISSION"))
-            toast("务必给予模块所有文件访问权限!")
+            val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+            startActivity(intent.setData(Uri.parse("package:$packageName")))
+            toast(getString(R.string.all_files_access_permission))
         }
     }
 
     private fun initDynamicShortcuts() {
-        val status = packageManager.getComponentEnabledSetting(ComponentName(packageName, "${packageName}.Hide"))
+        val status = packageManager.getComponentEnabledSetting(
+            ComponentName(
+                packageName,
+                "${packageName}.Hide"
+            )
+        )
         if (status == 2) return
         val shortcutManager = getSystemService(ShortcutManager::class.java)
         val lsposed = ShortcutInfo.Builder(this, "lsposed").apply {
@@ -139,12 +146,8 @@ open class MainActivity : AppCompatActivity() {
         if (ThemeUtils(this).isDynamicColor()) {
             DynamicColors.applyToActivityIfAvailable(this)
         }
-        when (getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")) {
-            "MODE_NIGHT_FOLLOW_SYSTEM" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            "MODE_NIGHT_NO" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "MODE_NIGHT_YES" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        }
+        val themeMode = getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
+        ThemeUtils(this).initTheme(themeMode)
     }
 
     @Suppress("DEPRECATION")
@@ -162,9 +165,7 @@ open class MainActivity : AppCompatActivity() {
                 .setCancelable(false)
                 .setMessage(getString(R.string.unsupported_xposed))
                 .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                    exitProcess(
-                        0
-                    )
+                    exitProcess(0)
                 }
                 //.setNegativeButton(R.string.ignore, null)
                 .show()
@@ -201,8 +202,11 @@ open class MainActivity : AppCompatActivity() {
             context.getAppVersion(scope)
         }
         safeOfNull {
-            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(XposedPrefs, "statusbar_clock_show_second", false)) {
-                commands.add("settings put secure clock_seconds 0")
+            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(
+                    XposedPrefs, "statusbar_clock_show_second", false
+                )
+            ) {
+                commands.add("settings put secure clock_seconds 1")
             } else {
                 commands.add("settings put secure clock_seconds 0")
             }

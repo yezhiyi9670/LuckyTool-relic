@@ -403,5 +403,7 @@
     <string name="log_no_data">No abnormal data</string>
     <!--Tile-->
     <string name="high_brightness_mode">High Brightness Mode</string>
+    <!--Permission-->
+    <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
 
 </resources>

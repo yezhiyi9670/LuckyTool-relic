@@ -279,9 +279,9 @@
     <string name="open_screen_power_save">Открыть режим энергосбережения</string>
     <string name="open_screen_power_save_summary">Настройки - Батарея - Дополнительные настройки - Энергосбережение экрана</string>
     <string name="open_battery_health">Открыть вход состояния батареи</string>
-    <string name="open_battery_health_summary">Настройки - Аккумулятор - Состояние аккумулятора</string>
+    <string name="open_battery_health_summary">Настройки - Батарея - Состояние батареи</string>
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
-    <string name="performance_mode_and_standby_optimization_summary">Настройки - Аккумулятор - Дополнительные настройки</string>
+    <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
@@ -396,4 +396,6 @@
     <string name="log_no_data">Нет аномальных данных</string>
     <!--Tile-->
     <string name="high_brightness_mode">Режим высокой яркости</string>
+    <!--Permission-->
+    <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
 </resources>

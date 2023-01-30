@@ -638,11 +638,25 @@ fun copyStreamToFile(inputStream: InputStream, outputFile: File): String {
  * @return String
  */
 fun formatDate(format: String): String {
-    return formatDate(format, null)
+    return formatDate(format, null, null)
 }
 
-fun formatDate(format: String, locale: Locale?): String {
-    return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(Date())
+fun formatDate(format: String, param: Any): String {
+    return formatDate(format, param, null)
+}
+
+fun formatDate(format: String, param: Any?, locale: Locale?): String {
+    return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(param ?: Date())
+}
+
+/**
+ * 格式化Double
+ * @param format String 格式
+ * @param param Any 要格式化的对象
+ * @return Double
+ */
+fun formatDouble(format: String, param: Any): Double {
+    return Formatter().format(format, param).toString().toDoubleOrNull() ?: 0.0
 }
 
 fun isZh(context: Context): Boolean {

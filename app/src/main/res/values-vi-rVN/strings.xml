@@ -394,5 +394,7 @@
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <!--Tile-->
-    <string name="high_brightness_mode">Chế Độ Sáng Cao</string>
+    <string name="high_brightness_mode">Chế độ độ sáng cao</string>
+    <!--Permission-->
+    <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
 </resources>

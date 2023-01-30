@@ -11,15 +11,13 @@ import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
-import com.luckyzyx.luckytool.utils.data.A11
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.getColorOSVersion
+import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.lang.reflect.Method
 import java.text.SimpleDateFormat
 import java.util.*
 
-object StatusBarClock : YukiBaseHooker() {
+object CustomClock : YukiBaseHooker() {
 
     private val isYear = prefs(XposedPrefs).getBoolean("statusbar_clock_show_year", false)
     private val isMonth = prefs(XposedPrefs).getBoolean("statusbar_clock_show_month", false)
@@ -103,7 +101,7 @@ object StatusBarClock : YukiBaseHooker() {
                         name = "updateShowSeconds"
                     }
                     beforeHook {
-                        field {
+                        if (isSecond) field {
                             name = "mShowSeconds"
                         }.get(instance).setTrue()
                     }
@@ -159,17 +157,20 @@ object StatusBarClock : YukiBaseHooker() {
                 dateFormat += "d"
                 if (isYear) dateFormat += "/"
             }
-            if (isYear) { dateFormat += "YY" }
+            if (isYear) {
+                dateFormat += "YY"
+            }
             if (!isHideSpace && !isDoubleRow) dateFormat += " "
         }
-        return SimpleDateFormat(dateFormat).format(nowTime!!)
+//        return SimpleDateFormat(dateFormat).format(nowTime!!)
+        return formatDate(dateFormat, nowTime!!)
     }
 
     private fun getTime(context: Context): String {
         var timeFormat = ""
         timeFormat += if (is24(context)) "HH:mm" else "hh:mm"
         if (isSecond) timeFormat += ":ss"
-        timeFormat = SimpleDateFormat(timeFormat).format(nowTime!!)
+        timeFormat = formatDate(timeFormat, nowTime!!)
         if (isZh(context)) timeFormat =
             getPeriod(context) + timeFormat else timeFormat += getPeriod(context)
         timeFormat = getDoubleHour() + timeFormat
@@ -180,7 +181,7 @@ object StatusBarClock : YukiBaseHooker() {
         var period = ""
         if (isPeriod) {
             if (isZh(context)) {
-                when (SimpleDateFormat("HH").format(nowTime!!)) {
+                when (formatDate("HH", nowTime!!)) {
                     "00", "01", "02", "03", "04", "05" -> {
                         period = "凌晨"
                     }
@@ -202,7 +203,7 @@ object StatusBarClock : YukiBaseHooker() {
                 }
                 if (!isHideSpace) period += " "
             } else {
-                period = " " + SimpleDateFormat("a").format(nowTime!!)
+                period = " " + formatDate("a", nowTime!!)
             }
         }
         return period
