@@ -12,6 +12,13 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 高亮度模式磁贴  
 [修复] 电池电压异常处理  
 [添加] 全局DC模式磁贴  
+[Update] Donation list  
+[Fix] C13 camera watermark character limit  
+[Fix] The download progress bar can be dragged  
+[Optimize] Autostart function call logic  
+[Add] High brightness mode tile  
+[Fix] Handling of abnormal battery voltage  
+[Add] Global DC mode tile
 
 ### v4.2.7_fix
 
