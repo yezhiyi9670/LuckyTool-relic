@@ -396,6 +396,7 @@
     <string name="log_no_data">Нет аномальных данных</string>
     <!--Tile-->
     <string name="high_brightness_mode">Режим высокой яркости</string>
+    <string name="global_dc">Глобальный DC</string>
     <!--Permission-->
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
 </resources>

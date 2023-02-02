@@ -36,15 +36,18 @@ class ShowFPS : TileService() {
     }
 
     private fun showFPS(showFPS: Boolean) {
-        ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 ${if (showFPS) 1 else 0}", true)
+        ShellUtils.execCommand(
+            "service call SurfaceFlinger 1034 i32 ${if (showFPS) 1 else 0}",
+            true
+        )
     }
 }
 
 class HighBrightness : TileService() {
     override fun onStartListening() {
         val tile = qsTile
-        ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).successMsg.apply {
-            when (this) {
+        ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
+            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
                 "1" -> tile.state = Tile.STATE_ACTIVE
             }
@@ -61,6 +64,35 @@ class HighBrightness : TileService() {
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo 0 > /sys/kernel/oplus_display/hbm", true)
+                tile.state = Tile.STATE_INACTIVE
+            }
+            Tile.STATE_UNAVAILABLE -> {}
+        }
+        tile.updateTile()
+    }
+}
+
+class GlobalDC : TileService() {
+    override fun onStartListening() {
+        val tile = qsTile
+        ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
+            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
+                "0" -> tile.state = Tile.STATE_INACTIVE
+                "1" -> tile.state = Tile.STATE_ACTIVE
+            }
+            tile.updateTile()
+        }
+    }
+
+    override fun onClick() {
+        val tile = qsTile
+        when (tile.state) {
+            Tile.STATE_INACTIVE -> {
+                ShellUtils.execCommand("echo 1 > /sys/kernel/oplus_display/dimlayer_hbm", true)
+                tile.state = Tile.STATE_ACTIVE
+            }
+            Tile.STATE_ACTIVE -> {
+                ShellUtils.execCommand("echo 0 > /sys/kernel/oplus_display/dimlayer_hbm", true)
                 tile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}

@@ -176,20 +176,19 @@ public class ShellUtils {
      * 表示命令结果的错误信息
      * </ul>
      *
-     * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-16
      */
     public static class CommandResult {
         
         /**
-         * result of command
+         * 命令结果 0 正常 1错误
          **/
         public int result;
         /**
-         * success message of command result
+         * 命令结果的成功信息
          **/
         public String successMsg;
         /**
-         * error message of command result
+         * 命令结果错误信息
          **/
         public String errorMsg;
         

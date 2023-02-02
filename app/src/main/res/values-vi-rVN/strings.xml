@@ -395,6 +395,7 @@
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <!--Tile-->
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
+    <string name="global_dc">Global DC</string>
     <!--Permission-->
-    <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
+    <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
 </resources>

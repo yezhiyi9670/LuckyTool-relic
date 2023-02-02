@@ -17,12 +17,11 @@ class AliveActivity : Activity() {
 //        window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
 //        window?.statusBarColor = getColor(R.color.transparent)
 //        window?.navigationBarColor = getColor(R.color.transparent)
-        intent.extras.apply {
-            if (this == null) return@apply
+        intent.extras?.apply {
             //自启功能相关
             if(getBoolean("fps")) {
-                val fps = getInt(SettingsPrefs, "current_fps", -1)
-                if (fps != -1) ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 $fps", true,true).result.apply {
+                val fpsCur = getInt(SettingsPrefs, "current_fps", -1)
+                if (fpsCur != -1) ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 $fpsCur", true,true).result.apply {
                     if (this == 1) toast("force fps error!")
                 }
             }

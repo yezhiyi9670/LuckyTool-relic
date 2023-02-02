@@ -11,6 +11,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 自启功能调用逻辑  
 [添加] 高亮度模式磁贴  
 [修复] 电池电压异常处理  
+[添加] 全局DC模式磁贴  
 
 ### v4.2.7_fix
 

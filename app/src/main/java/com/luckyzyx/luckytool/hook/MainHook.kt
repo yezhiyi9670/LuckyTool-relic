@@ -105,7 +105,7 @@ object MainHook : IYukiHookXposedInit {
             loadHooker(HookOtherApp)
         }
 
-        //自动强制FPS
+        //自动FPS
         loadApp("com.android.systemui", HookAutoFps)
 
     }

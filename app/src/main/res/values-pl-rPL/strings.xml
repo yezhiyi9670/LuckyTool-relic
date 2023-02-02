@@ -395,6 +395,7 @@
     <string name="log_no_data">Brak problemów</string>
     <!--Tile-->
     <string name="high_brightness_mode">Tryb wysokiej jasności</string>
+    <string name="global_dc">Global DC</string>
     <!--Permission-->
     <string name="all_files_access_permission">Aby zapewnić normalne korzystanie z modułu, upewnij się, że masz uprawnienia do modułu!</string>
 </resources>

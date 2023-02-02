@@ -28,12 +28,11 @@ object HookAutoFps : YukiBaseHooker() {
                 registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
                     scope {
                         delay(500)
-                        if (fpsAutoStart || touchRate) {
-                            if ((fpsMode == 1) && (currentFps != -1)) {
-                                setRefresh(context, fpsList[currentFps], fpsList[currentFps])
-                            }
-                            callModule(context, fpsAutoStart, touchRate)
+                        if (!fpsAutoStart && !touchRate) return@scope
+                        if (fpsAutoStart && (fpsMode == 1) && (currentFps != -1)) {
+                            setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                         }
+                        callModule(context, fpsAutoStart && (fpsMode == 2), touchRate)
                     }
                 }
             }
