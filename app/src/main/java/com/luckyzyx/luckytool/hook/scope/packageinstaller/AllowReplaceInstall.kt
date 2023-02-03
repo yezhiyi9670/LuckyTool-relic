@@ -3,12 +3,12 @@ package com.luckyzyx.luckytool.hook.scope.packageinstaller
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import java.util.*
 
 object AllowReplaceInstall : YukiBaseHooker() {
     override fun onHook() {
-        val appSet = prefs(XposedPrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
+        val appSet = prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
             Arrays.sort(this)
             forEach {
                 this[this.indexOf(it)] = it.substring(2)

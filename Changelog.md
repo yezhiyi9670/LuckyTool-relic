@@ -3,6 +3,19 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.2.9
+
+[适配] 游戏助手v8.2.1  
+[添加] 游戏插帧、提升帧率、优化功耗、GT模式  
+[修复] 强制刷新率自启调用问题  
+[添加] 高亮度和DC自启调用  
+[修复] 模块数据读取问题(需重新设置模块功能数据)
+[Fix] Game Assistant v8.2.1  
+[Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
+[Fix] Forced refresh rate self-starting problem  
+[Add] High brightness and DC auto-start function  
+[Fix] Module data reading problem (module function data needs to be reset)  
+
 ### v4.2.8
 
 [更新] 捐赠名单  

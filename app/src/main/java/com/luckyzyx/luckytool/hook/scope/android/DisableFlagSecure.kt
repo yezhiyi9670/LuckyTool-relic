@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object DisableFlagSecure : YukiBaseHooker() {
     override fun onHook() {
@@ -11,7 +11,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                 method {
                     name = "isSecureLocked"
                 }
-                if (prefs(XposedPrefs).getBoolean("disable_flag_secure", false)) replaceToFalse()
+                if (prefs(ModulePrefs).getBoolean("disable_flag_secure", false)) replaceToFalse()
             }
         }
     }

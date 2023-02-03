@@ -8,12 +8,12 @@ import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimit
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimitV11
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookApplication : YukiBaseHooker() {
     override fun onHook() {
         //移除自启数量限制
-        if (prefs(XposedPrefs).getBoolean("unlock_startup_limit", false)) {
+        if (prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
             if (SDK >= A13) {
                 //电池
                 if (packageName == "com.oplus.battery") loadHooker(UnlockStartupLimitV13)
@@ -26,7 +26,7 @@ object HookApplication : YukiBaseHooker() {
         }
 
         //解锁后台任务限制
-        if (prefs(XposedPrefs).getBoolean("unlock_task_locks", false)) {
+        if (prefs(ModulePrefs).getBoolean("unlock_task_locks", false)) {
             //系统桌面
             if (packageName == "com.android.launcher") loadHooker(UnlockTaskLocks)
             //Android11

@@ -299,6 +299,10 @@
     <string name="enable_genshin_impact_theme_summary">Нет необходимости настраивать в игровом помощнике</string>
     <string name="enable_adreno_gpu_controller">Включить контроллер графического процессора Adreno</string>
     <string name="enable_support_competition_mode">Включить поддержку режима соревнования</string>
+    <string name="enable_increase_fps_limit_feature">Включить увеличение лимита FPS</string>
+    <string name="enable_increase_fps_feature">Включить увеличение FPS</string>
+    <string name="enable_optimise_power_feature">Включить оптимизацию питания</string>
+    <string name="enable_gt_mode_feature">Enable GT Mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>

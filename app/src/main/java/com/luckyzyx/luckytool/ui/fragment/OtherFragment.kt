@@ -69,7 +69,7 @@ class OtherFragment : Fragment() {
                 }
                 val adbPort = adbDialog.findViewById<TextInputEditText>(R.id.adb_port)?.apply {
                     inputType = EditorInfo.TYPE_CLASS_NUMBER
-                    setText(context.getString(OtherPrefs,"adb_port","6666"))
+                    setText(context.getString(ModulePrefs,"adb_port","6666"))
                 }
                 val adbTv = adbDialog.findViewById<MaterialTextView>(R.id.adb_tv)?.apply {
                     gravity = Gravity.CENTER
@@ -110,7 +110,7 @@ class OtherFragment : Fragment() {
                                 "start adbd"
                             )
                             ShellUtils.execCommand(commands,true)
-                            context.putString(OtherPrefs,"adb_port",port)
+                            context.putString(ModulePrefs,"adb_port",port)
                             adbPortLayout?.isEnabled = false
                             adbTv?.text = "adb connect $getIP:$port"
                             adbTvTip?.isVisible = true
@@ -278,7 +278,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 title = getString(R.string.game_assistant_develop_page)
                 isIconSpaceReserved = false
                 isVisible = context.checkPackName("com.oplus.games") && context.getBoolean(
-                    XposedPrefs,"enable_developer_page",false)
+                    ModulePrefs,"enable_developer_page",false)
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand("am start -n com.oplus.games/business.compact.activity.GameDevelopOptionsActivity", true)
                     true

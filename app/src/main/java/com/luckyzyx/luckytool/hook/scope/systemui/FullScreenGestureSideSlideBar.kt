@@ -7,16 +7,16 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object FullScreenGestureSideSlideBar : YukiBaseHooker() {
     override fun onHook() {
         //Source SideGestureViewManager
         //Source SideGestureNavView
-        val removeView = prefs(XposedPrefs).getBoolean("remove_side_slider", false)
+        val removeView = prefs(ModulePrefs).getBoolean("remove_side_slider", false)
         val removeBackground =
-            prefs(XposedPrefs).getBoolean("remove_side_slider_black_background", false)
-        val isReplaceWith = prefs(XposedPrefs).getBoolean("replace_side_slider_icon_switch", false)
+            prefs(ModulePrefs).getBoolean("remove_side_slider_black_background", false)
+        val isReplaceWith = prefs(ModulePrefs).getBoolean("replace_side_slider_icon_switch", false)
         VariousClass(
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
             "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView"
@@ -49,9 +49,9 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
                 beforeHook {
                     if (!isReplaceWith) return@beforeHook
                     val leftPath =
-                        prefs(XposedPrefs).getString("replace_side_slider_icon_on_left", "null")
+                        prefs(ModulePrefs).getString("replace_side_slider_icon_on_left", "null")
                     val rightPath =
-                        prefs(XposedPrefs).getString("replace_side_slider_icon_on_right", "null")
+                        prefs(ModulePrefs).getString("replace_side_slider_icon_on_right", "null")
                     if (leftPath == "null" || rightPath == "null") return@beforeHook
                     val res = when (field { name = "mPosition" }.get(instance).int()) {
                         0 -> BitmapFactory.decodeFile(leftPath)

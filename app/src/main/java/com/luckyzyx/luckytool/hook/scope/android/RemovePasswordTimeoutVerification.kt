@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemovePasswordTimeoutVerification : YukiBaseHooker() {
     override fun onHook() {
@@ -11,7 +11,7 @@ object RemovePasswordTimeoutVerification : YukiBaseHooker() {
                 method {
                     name = "onAlarm"
                 }
-                if (prefs(XposedPrefs).getBoolean("remove_72hour_password_verification", false)) intercept()
+                if (prefs(ModulePrefs).getBoolean("remove_72hour_password_verification", false)) intercept()
             }
         }
     }

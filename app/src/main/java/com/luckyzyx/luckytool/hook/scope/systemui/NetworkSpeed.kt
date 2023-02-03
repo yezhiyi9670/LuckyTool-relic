@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.dp
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import java.text.DecimalFormat
 
 object NetworkSpeed : YukiBaseHooker() {
@@ -25,15 +25,15 @@ object NetworkSpeed : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
-                    if (prefs(XposedPrefs).getBoolean("set_network_speed", false) && (args(0).cast<Long>() == 4000L)) {
+                    if (prefs(ModulePrefs).getBoolean("set_network_speed", false) && (args(0).cast<Long>() == 4000L)) {
                         args(0).set(1000L)
                     }
                 }
             }
         }
-        val isDoubleRow = prefs(XposedPrefs).getBoolean("enable_double_row_network_speed", false)
-        val getDoubleSize = prefs(XposedPrefs).getInt("set_network_speed_font_size", 7)
-        val getDoublePadding = prefs(XposedPrefs).getInt("set_network_speed_padding_bottom", 2)
+        val isDoubleRow = prefs(ModulePrefs).getBoolean("enable_double_row_network_speed", false)
+        val getDoubleSize = prefs(ModulePrefs).getInt("set_network_speed_font_size", 7)
+        val getDoublePadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 2)
         if (!isDoubleRow) return
         //Source NetworkSpeedView
         VariousClass(

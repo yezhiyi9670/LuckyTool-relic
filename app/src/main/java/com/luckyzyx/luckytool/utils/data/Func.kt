@@ -87,7 +87,7 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
         arrayList.add("$versionCommit")
         arraySet.add("2.$versionCommit")
     }
-    putStringSet(XposedPrefs, packName, arraySet)
+    putStringSet(ModulePrefs, packName, arraySet)
     return arrayList
 }
 
@@ -425,7 +425,7 @@ val dialogCentered get() = com.google.android.material.R.style.ThemeOverlay_Mate
  * 判断是否显示Preference图标
  */
 fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
-    if (getBoolean(SettingsPrefs, "hide_xp_page_icon", false)) {
+    if (getBoolean(ModulePrefs, "hide_xp_page_icon", false)) {
         result(null, false)
         return
     }

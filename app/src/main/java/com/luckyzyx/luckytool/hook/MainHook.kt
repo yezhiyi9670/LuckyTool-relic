@@ -14,7 +14,7 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.statusbar.*
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -31,7 +31,7 @@ object MainHook : IYukiHookXposedInit {
     }
 
     override fun onHook() = encase {
-        if (prefs(XposedPrefs).getBoolean("enable_module").not()) return@encase
+        if (prefs(ModulePrefs).getBoolean("enable_module").not()) return@encase
         //系统框架
         loadSystem(HookAndroid)
         loadZygote(HookZygote)
@@ -105,9 +105,8 @@ object MainHook : IYukiHookXposedInit {
             loadHooker(HookOtherApp)
         }
 
-        //自动FPS
-        loadApp("com.android.systemui", HookAutoFps)
-
+        //自启
+        loadApp("com.android.systemui", HookAutoStart)
     }
 
     override fun onXposedEvent() {

@@ -2,12 +2,12 @@ package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookSystemProperties : YukiBaseHooker() {
     override fun onHook() {
         //Source SystemProperties
-        val mediaVolumeLevel = prefs(XposedPrefs).getInt("media_volume_level", 0)
+        val mediaVolumeLevel = prefs(ModulePrefs).getInt("media_volume_level", 0)
         findClass("android.os.SystemProperties").hook {
             injectMember {
                 method {

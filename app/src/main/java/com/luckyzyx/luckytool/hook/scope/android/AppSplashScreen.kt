@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object AppSplashScreen : YukiBaseHooker() {
     override fun onHook() {
@@ -15,7 +15,7 @@ object AppSplashScreen : YukiBaseHooker() {
                     name = "showStartingWindow"
                     paramCount = 5
                 }
-                if (prefs(XposedPrefs).getBoolean("disable_splash_screen", false)) intercept()
+                if (prefs(ModulePrefs).getBoolean("disable_splash_screen", false)) intercept()
             }
         }
     }

@@ -3,12 +3,8 @@
 package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
-import android.util.ArrayMap
 
-const val SettingsPrefs: String = "SettingsPrefs"
-const val XposedPrefs: String = "XposedPrefs"
-const val OtherPrefs: String = "OtherPrefs"
-const val MagiskPrefs: String = "MagiskPrefs"
+const val ModulePrefs: String = "ModulePrefs"
 
 fun Context.putString(PrefsName: String?, key: String?, value: String?): Boolean {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_PRIVATE)
@@ -110,28 +106,12 @@ fun Context.getBoolean(PrefsName: String?, key: String?, defaultValue: Boolean):
     return prefs.getBoolean(key, defaultValue)
 }
 
-fun Context.clearPrefs(PrefsName: String?) {
+fun Context.clearPrefs(PrefsName: String?): Boolean {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_PRIVATE)
-    prefs.edit().clear().commit()
+    return prefs.edit().clear().commit()
 }
 
-fun Context.clearAllPrefs(vararg PrefList: String?) {
-    PrefList.forEach {
-        val prefs = getSharedPreferences(it, Context.MODE_PRIVATE)
-        prefs.edit().clear().commit()
-    }
-}
-
-fun Context.backupPrefs(PrefsName: String?): MutableMap<String, *>? {
+fun Context.backupPrefs(PrefsName: String?): MutableMap<String, *> {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_PRIVATE)
     return prefs.all
-}
-
-fun Context.backupAllPrefs(vararg PrefList: String?): ArrayMap<String, MutableMap<String, *>> {
-    return ArrayMap<String,MutableMap<String,*>>().apply {
-        PrefList.forEach {
-            val prefs = getSharedPreferences(it, Context.MODE_PRIVATE)
-            this[it] = prefs.all
-        }
-    }
 }

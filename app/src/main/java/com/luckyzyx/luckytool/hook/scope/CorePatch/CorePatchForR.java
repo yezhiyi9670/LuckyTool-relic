@@ -1,6 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.CorePatch;
 
-import static com.luckyzyx.luckytool.utils.tools.SPUtilsKt.XposedPrefs;
+import static com.luckyzyx.luckytool.utils.tools.SPUtilsKt.ModulePrefs;
 
 import android.app.AndroidAppHelper;
 import android.content.pm.ApplicationInfo;
@@ -35,7 +35,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackage, IXposedHookZygoteInit {
     
     private static final String TAG = "CorePatch";
-    XSharedPreferences prefs = new XSharedPreferences(BuildConfig.APPLICATION_ID, XposedPrefs);
+    XSharedPreferences prefs = new XSharedPreferences(BuildConfig.APPLICATION_ID, ModulePrefs);
     
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws IllegalAccessException, InvocationTargetException, InstantiationException {

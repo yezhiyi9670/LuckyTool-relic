@@ -53,9 +53,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        enableModule = requireActivity().getBoolean(XposedPrefs, "enable_module", false)
+        enableModule = requireActivity().getBoolean(ModulePrefs, "enable_module", false)
 
-        if (enableModule && YukiHookAPI.Status.isXposedModuleActive) {
+        if (enableModule && YukiHookAPI.Status.isModuleActive) {
             binding.statusIcon.setImageResource(R.drawable.ic_round_check_24)
             binding.statusTitle.text = getString(R.string.module_isactivated)
         } else {
@@ -73,14 +73,14 @@ class HomeFragment : Fragment() {
             isChecked = enableModule
             setOnCheckedChangeListener { buttonView, isChecked ->
                 if (buttonView.isPressed) {
-                    context.putBoolean(XposedPrefs, "enable_module", isChecked)
+                    context.putBoolean(ModulePrefs, "enable_module", isChecked)
                     (activity as MainActivity).restart()
                 }
             }
         }
 
         if (requireActivity().getBoolean(
-                SettingsPrefs,
+                ModulePrefs,
                 "auto_check_update",
                 true
             )
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
                     binding.statusCard.setOnClickListener { function() }
                 }
                 binding.statusCard.setOnLongClickListener {
-                    if (context.getBoolean(SettingsPrefs, "hidden_function", false)) function()
+                    if (context.getBoolean(ModulePrefs, "hidden_function", false)) function()
                     true
                 }
             }
@@ -110,21 +110,21 @@ class HomeFragment : Fragment() {
                 val fpsDialog = MaterialAlertDialogBuilder(context).apply {
                     setView(R.layout.layout_fps_dialog)
                 }.show()
-                val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
+                val fpsModeValue = context.getInt(ModulePrefs, "fps_mode", 1)
                 val fpsData = if (fpsModeValue == 1) {
                     context.getFpsMode1()
                 } else {
                     context.getFpsMode2()
                 }
-                val currentFps = context.getInt(SettingsPrefs, "current_fps", -1)
-                val fpsAutostart = context.getBoolean(SettingsPrefs, "fps_autostart", false)
+                val currentFps = context.getInt(ModulePrefs, "current_fps", -1)
+                val fpsAutostart = context.getBoolean(ModulePrefs, "fps_autostart", false)
                 val fpsSelfStart =
                     fpsDialog.findViewById<MaterialSwitch>(R.id.fps_self_start)?.apply {
                         text = getString(R.string.fps_autostart)
                         isChecked = fpsAutostart
                         isEnabled = currentFps != -1
                         setOnCheckedChangeListener { _, isChecked ->
-                            context.putBoolean(SettingsPrefs, "fps_autostart", isChecked)
+                            context.putBoolean(ModulePrefs, "fps_autostart", isChecked)
                             requireActivity().dataChannel(packageName = "com.android.systemui")
                                 .put(key = "fps_autostart", value = isChecked)
                         }
@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
                     setItemChecked(currentFps, currentFps != -1)
                     onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                         fpsSelfStart?.isEnabled = true
-                        context.putInt(SettingsPrefs, "current_fps", position)
+                        context.putInt(ModulePrefs, "current_fps", position)
                         if (fpsModeValue == 1) requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = position)
                         if (fpsModeValue == 2) ShellUtils.execCommand(
@@ -154,10 +154,10 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
-                        context.putInt(SettingsPrefs, "fps_mode", 1)
+                        context.putInt(ModulePrefs, "fps_mode", 1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "fps_mode", value = 1)
-                        context.putInt(SettingsPrefs, "current_fps", -1)
+                        context.putInt(ModulePrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -172,10 +172,10 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
-                        context.putInt(SettingsPrefs, "fps_mode", 2)
+                        context.putInt(ModulePrefs, "fps_mode", 2)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "fps_mode", value = 2)
-                        context.putInt(SettingsPrefs, "current_fps", -1)
+                        context.putInt(ModulePrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -202,9 +202,9 @@ class HomeFragment : Fragment() {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
                         fpsList?.setItemChecked(
-                            context.getInt(SettingsPrefs, "current_fps", -1), false
+                            context.getInt(ModulePrefs, "current_fps", -1), false
                         )
-                        context.putInt(SettingsPrefs, "current_fps", -1)
+                        context.putInt(ModulePrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -317,12 +317,12 @@ class HomeFragment : Fragment() {
             MaterialAlertDialogBuilder(requireActivity()).apply {
                 setTitle(getString(R.string.about_author))
                 setView(MaterialTextView(context).apply {
-                    var hideFunc = context.getBoolean(SettingsPrefs, "hidden_function", false)
+                    var hideFunc = context.getBoolean(ModulePrefs, "hidden_function", false)
                     setPadding(20.dp)
                     text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                     setOnLongClickListener {
-                        context.putBoolean(SettingsPrefs, "hidden_function", !hideFunc)
-                        hideFunc = context.getBoolean(SettingsPrefs, "hidden_function", false)
+                        context.putBoolean(ModulePrefs, "hidden_function", !hideFunc)
+                        hideFunc = context.getBoolean(ModulePrefs, "hidden_function", false)
                         text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                         true
                     }

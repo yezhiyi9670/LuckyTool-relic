@@ -3,10 +3,14 @@ package com.luckyzyx.luckytool.ui.activity
 import android.app.Activity
 import android.os.Bundle
 import com.joom.paranoid.Obfuscate
-import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.data.jumpRunningApp
+import com.luckyzyx.luckytool.utils.data.toast
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.ShellUtils
+import com.luckyzyx.luckytool.utils.tools.getBoolean
+import com.luckyzyx.luckytool.utils.tools.getInt
 
-@Suppress("DEPRECATION")
 @Obfuscate
 class AliveActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,15 +24,27 @@ class AliveActivity : Activity() {
         intent.extras?.apply {
             //自启功能相关
             if(getBoolean("fps")) {
-                val fpsCur = getInt(SettingsPrefs, "current_fps", -1)
-                if (fpsCur != -1) ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 $fpsCur", true,true).result.apply {
-                    if (this == 1) toast("force fps error!")
+                val fpsCur = getInt(ModulePrefs, "current_fps", -1)
+                if (fpsCur != -1) ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 $fpsCur", true,true).apply {
+                    if (result == 1) toast("force fps error!")
                 }
             }
             //触控采样率相关
-            if (getBoolean("touch")) {
-                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true,true).result.apply {
-                    if (this == 1) toast("touch sampling rate error!")
+            if (getBoolean(ModulePrefs, "increase_touch_sampling_rate", false)) {
+                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true,true).apply {
+                    if (result == 1) toast("touch sampling rate error!")
+                }
+            }
+            //高亮度模式
+            if (getBoolean(ModulePrefs, "high_brightness_mode", false)) {
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true, true).apply {
+                    if (result == 1) toast("high brightness mode error!")
+                }
+            }
+            //全局DC模式
+            if (getBoolean(ModulePrefs, "global_dc_mode", false)) {
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true, true).apply {
+                    if (result == 1) toast("global dc mode error!")
                 }
             }
             //快捷方式相关

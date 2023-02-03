@@ -4,7 +4,9 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.data.jumpRunningApp
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
+import com.luckyzyx.luckytool.utils.tools.putBoolean
 
 class ChargingTest : TileService() {
     override fun onClick() {
@@ -49,7 +51,10 @@ class HighBrightness : TileService() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
             if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> tile.state = Tile.STATE_ACTIVE
+                "1" -> {
+                    tile.state = Tile.STATE_ACTIVE
+                    putBoolean(ModulePrefs, "high_brightness_mode", true)
+                }
             }
             tile.updateTile()
         }
@@ -59,11 +64,13 @@ class HighBrightness : TileService() {
         val tile = qsTile
         when (tile.state) {
             Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("echo 1 > /sys/kernel/oplus_display/hbm", true)
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true)
+                putBoolean(ModulePrefs, "high_brightness_mode", true)
                 tile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("echo 0 > /sys/kernel/oplus_display/hbm", true)
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
+                putBoolean(ModulePrefs, "high_brightness_mode", false)
                 tile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}
@@ -78,7 +85,10 @@ class GlobalDC : TileService() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
             if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> tile.state = Tile.STATE_ACTIVE
+                "1" -> {
+                    tile.state = Tile.STATE_ACTIVE
+                    putBoolean(ModulePrefs, "global_dc_mode", true)
+                }
             }
             tile.updateTile()
         }
@@ -88,11 +98,13 @@ class GlobalDC : TileService() {
         val tile = qsTile
         when (tile.state) {
             Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("echo 1 > /sys/kernel/oplus_display/dimlayer_hbm", true)
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
+                putBoolean(ModulePrefs, "global_dc_mode", true)
                 tile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("echo 0 > /sys/kernel/oplus_display/dimlayer_hbm", true)
+                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
+                putBoolean(ModulePrefs, "global_dc_mode", false)
                 tile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}

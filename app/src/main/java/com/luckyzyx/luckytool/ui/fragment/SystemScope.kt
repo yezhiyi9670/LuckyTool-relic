@@ -15,14 +15,14 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.getDocumentPath
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import com.luckyzyx.luckytool.utils.tools.getString
 import com.luckyzyx.luckytool.utils.tools.putString
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -99,7 +99,7 @@ class Android : ModulePreferenceFragment() {
 
 class StatusBar : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 Preference(context).apply {
@@ -206,7 +206,7 @@ class StatusBar : ModulePreferenceFragment() {
 
 class StatusBarClock : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -344,7 +344,7 @@ class StatusBarClock : ModulePreferenceFragment() {
 
 class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -398,7 +398,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
 
 class StatusBarNotify : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -501,7 +501,7 @@ class StatusBarNotify : ModulePreferenceFragment() {
 
 class StatusBarIcon : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -595,7 +595,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
 
 class StatusBarControlCenter : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -820,7 +820,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
 
 class StatusBarBatteryInfo : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -829,11 +829,6 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                     key = "battery_information_show"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "battery_information_show", value = newValue)
-                        true
-                    }
                 }
             )
             addPreference(
@@ -874,7 +869,7 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
 
 class Desktop : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -959,7 +954,7 @@ class Desktop : ModulePreferenceFragment() {
 
 class LockScreen : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1035,7 +1030,7 @@ class LockScreen : ModulePreferenceFragment() {
 
 class Screenshot : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1070,7 +1065,7 @@ class Screenshot : ModulePreferenceFragment() {
 
 class Application : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -1210,7 +1205,7 @@ class Application : ModulePreferenceFragment() {
 
 class DialogRelated : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1268,18 +1263,18 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
         val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
                 val path = getDocumentPath(requireActivity(), it)
-                requireActivity().putString(XposedPrefs, "replace_side_slider_icon_on_left", path)
+                requireActivity().putString(ModulePrefs, "replace_side_slider_icon_on_left", path)
                 findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
             }
         }
         val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
                 val path = getDocumentPath(requireActivity(), it)
-                requireActivity().putString(XposedPrefs, "replace_side_slider_icon_on_right", path)
+                requireActivity().putString(ModulePrefs, "replace_side_slider_icon_on_right", path)
                 findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
             }
         }
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1325,7 +1320,7 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     title = getString(R.string.replace_side_slider_icon_on_left)
                     key = "replace_side_slider_icon_on_left"
                     summary =
-                        context.getString(XposedPrefs, "replace_side_slider_icon_on_left", "null")
+                        context.getString(ModulePrefs, "replace_side_slider_icon_on_left", "null")
                     isIconSpaceReserved = false
                     isCopyingEnabled = true
                     setOnPreferenceClickListener {
@@ -1339,7 +1334,7 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     title = getString(R.string.replace_side_slider_icon_on_right)
                     key = "replace_side_slider_icon_on_right"
                     summary =
-                        context.getString(XposedPrefs, "replace_side_slider_icon_on_right", "null")
+                        context.getString(ModulePrefs, "replace_side_slider_icon_on_right", "null")
                     isIconSpaceReserved = false
                     isCopyingEnabled = true
                     setOnPreferenceClickListener {
@@ -1358,7 +1353,7 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
 
 class Miscellaneous : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 Preference(context).apply {
@@ -1510,7 +1505,7 @@ class Miscellaneous : ModulePreferenceFragment() {
 
 class Camera : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1534,7 +1529,7 @@ class Camera : ModulePreferenceFragment() {
 
 class OplusGames : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1588,13 +1583,45 @@ class OplusGames : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_increase_fps_limit_feature)
+                    key = "enable_increase_fps_limit_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_increase_fps_feature)
+                    key = "enable_increase_fps_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_optimise_power_feature)
+                    key = "enable_optimise_power_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_gt_mode_feature)
+                    key = "enable_gt_mode_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }
 
 class ThemeStore : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1611,7 +1638,7 @@ class ThemeStore : ModulePreferenceFragment() {
 
 class CloudService : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {
@@ -1628,7 +1655,7 @@ class CloudService : ModulePreferenceFragment() {
 
 class OplusOta : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = XposedPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 SwitchPreference(context).apply {

@@ -99,7 +99,7 @@
     <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
     <string name="battery_information_show_update_time">Show update time</string>
     <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
-   
+    
     <string name="battery_status_unknown">Unknown</string>
     <string name="battery_status_charging">Charging</string>
     <string name="battery_status_discharging">Discharging</string>
@@ -305,6 +305,10 @@
     <string name="enable_genshin_impact_theme_summary">No need to set up in Game Assistant</string>
     <string name="enable_adreno_gpu_controller">Enable Adreno GPU Controller</string>
     <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
+    <string name="enable_increase_fps_limit_feature">Enable increase fps limit</string>
+    <string name="enable_increase_fps_feature">Enable increase fps</string>
+    <string name="enable_optimise_power_feature">Enable optimized power</string>
+    <string name="enable_gt_mode_feature">Enable GT Mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Remove Data Network Limit</string>
     <string name="remove_network_limit_summary">Remove backup/restore limitations that cannot use mobile data</string>

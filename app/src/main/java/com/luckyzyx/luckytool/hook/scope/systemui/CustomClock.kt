@@ -12,28 +12,28 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import java.lang.reflect.Method
 import java.text.SimpleDateFormat
 import java.util.*
 
 object CustomClock : YukiBaseHooker() {
 
-    private val isYear = prefs(XposedPrefs).getBoolean("statusbar_clock_show_year", false)
-    private val isMonth = prefs(XposedPrefs).getBoolean("statusbar_clock_show_month", false)
-    private val isDay = prefs(XposedPrefs).getBoolean("statusbar_clock_show_day", false)
-    private val isWeek = prefs(XposedPrefs).getBoolean("statusbar_clock_show_week", false)
-    private val isPeriod = prefs(XposedPrefs).getBoolean("statusbar_clock_show_period", false)
+    private val isYear = prefs(ModulePrefs).getBoolean("statusbar_clock_show_year", false)
+    private val isMonth = prefs(ModulePrefs).getBoolean("statusbar_clock_show_month", false)
+    private val isDay = prefs(ModulePrefs).getBoolean("statusbar_clock_show_day", false)
+    private val isWeek = prefs(ModulePrefs).getBoolean("statusbar_clock_show_week", false)
+    private val isPeriod = prefs(ModulePrefs).getBoolean("statusbar_clock_show_period", false)
     private val isDoubleHour =
-        prefs(XposedPrefs).getBoolean("statusbar_clock_show_double_hour", false)
-    private val isSecond = prefs(XposedPrefs).getBoolean("statusbar_clock_show_second", false)
-    private val isHideSpace = prefs(XposedPrefs).getBoolean("statusbar_clock_hide_spaces", false)
-    private val isDoubleRow = prefs(XposedPrefs).getBoolean("statusbar_clock_show_doublerow", false)
+        prefs(ModulePrefs).getBoolean("statusbar_clock_show_double_hour", false)
+    private val isSecond = prefs(ModulePrefs).getBoolean("statusbar_clock_show_second", false)
+    private val isHideSpace = prefs(ModulePrefs).getBoolean("statusbar_clock_hide_spaces", false)
+    private val isDoubleRow = prefs(ModulePrefs).getBoolean("statusbar_clock_show_doublerow", false)
 
     private val singleRowFontSize =
-        prefs(XposedPrefs).getInt("statusbar_clock_singlerow_fontsize", 0)
+        prefs(ModulePrefs).getInt("statusbar_clock_singlerow_fontsize", 0)
     private val doubleRowFontSize =
-        prefs(XposedPrefs).getInt("statusbar_clock_doublerow_fontsize", 0)
+        prefs(ModulePrefs).getInt("statusbar_clock_doublerow_fontsize", 0)
 
     private var nowTime: Date? = null
     private var newline = ""

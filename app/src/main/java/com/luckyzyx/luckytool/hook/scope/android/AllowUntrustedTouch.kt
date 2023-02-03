@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object AllowUntrustedTouch : YukiBaseHooker() {
     override fun onHook() {
@@ -12,7 +12,7 @@ object AllowUntrustedTouch : YukiBaseHooker() {
                     name = "getBlockUntrustedTouchesMode"
                     paramCount = 1
                 }
-                if (prefs(XposedPrefs).getBoolean("allow_untrusted_touch", false)) replaceTo(0)
+                if (prefs(ModulePrefs).getBoolean("allow_untrusted_touch", false)) replaceTo(0)
             }
         }
     }

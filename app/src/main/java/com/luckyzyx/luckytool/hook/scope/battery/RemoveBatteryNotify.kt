@@ -8,19 +8,19 @@ import com.highcapable.yukihookapi.hook.type.android.NotificationClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveBatteryNotify : YukiBaseHooker() {
     override fun onHook() {
         //Channel high_performance_channel_id 5
         val highPerformance =
-            prefs(XposedPrefs).getBoolean("remove_high_performance_mode_notifications", false)
+            prefs(ModulePrefs).getBoolean("remove_high_performance_mode_notifications", false)
         //Channel PowerConsumptionOptimizationChannel / PowerConsumptionOptimizationChannelLow 17
         val highBatteryConsumption =
-            prefs(XposedPrefs).getBoolean("remove_app_high_battery_consumption_warning", false)
+            prefs(ModulePrefs).getBoolean("remove_app_high_battery_consumption_warning", false)
         //Channel smart_charge_channel_id 20
         val smartRapidCharge =
-            prefs(XposedPrefs).getBoolean("remove_smart_rapid_charging_notification", false)
+            prefs(ModulePrefs).getBoolean("remove_smart_rapid_charging_notification", false)
 
         // Source NotifyUtil
         searchClass {

@@ -7,14 +7,14 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object BatteryHiddenEntrance : YukiBaseHooker() {
     override fun onHook() {
-        val openScreenPowerSave = prefs(XposedPrefs).getBoolean("open_screen_power_save", false)
-        val openBatteryHealth = prefs(XposedPrefs).getBoolean("open_battery_health", false)
+        val openScreenPowerSave = prefs(ModulePrefs).getBoolean("open_screen_power_save", false)
+        val openBatteryHealth = prefs(ModulePrefs).getBoolean("open_battery_health", false)
         val performanceModeStandbyOptimization =
-            prefs(XposedPrefs).getBoolean("performance_mode_and_standby_optimization", false)
+            prefs(ModulePrefs).getBoolean("performance_mode_and_standby_optimization", false)
         val openBatteryOptimize = false
         //Source AppFeatureProviderUtils
         searchClass {

@@ -11,8 +11,8 @@ import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.formatDouble
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
 import java.util.*
 import kotlin.math.abs
 
@@ -37,32 +37,29 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var chargeWattage: Int = 0
     private var ppsMode: Int = 0
     override fun onHook() {
-        loadApp("com.android.systemui") {
-            var showInfo = prefs(XposedPrefs).getBoolean("battery_information_show", false)
-            dataChannel.wait<Boolean>(key = "battery_information_show") { showInfo = it }
-            if (!showInfo) return
-            var showCharger =
-                prefs(XposedPrefs).getBoolean("battery_information_show_charge", false)
-            dataChannel.wait<Boolean>(key = "battery_information_show_charge") {
-                showCharger = it
+        val showInfo = prefs(ModulePrefs).getBoolean("battery_information_show", false)
+        if (!showInfo) return
+        var showCharger =
+            prefs(ModulePrefs).getBoolean("battery_information_show_charge", false)
+        dataChannel.wait<Boolean>(key = "battery_information_show_charge") {
+            showCharger = it
+        }
+        var showUpdateTime =
+            prefs(ModulePrefs).getBoolean("battery_information_show_update_time", false)
+        dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
+            showUpdateTime = it
+        }
+        onAppLifecycle {
+            onCreate { injectModuleAppResources() }
+            //监听电池信息
+            registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
+                initInfo(context, intent)
+                sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
-            var showUpdateTime =
-                prefs(XposedPrefs).getBoolean("battery_information_show_update_time", false)
-            dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
-                showUpdateTime = it
-            }
-            onAppLifecycle {
-                onCreate { injectModuleAppResources() }
-                //监听电池信息
-                registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
-                    initInfo(context, intent)
-                    sendNotification(context, showCharger && isCharging, showUpdateTime)
-                }
-                //监听OPLUS电池信息
-                registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
-                    initOplusInfo(intent)
-                    sendNotification(context, showCharger && isCharging, showUpdateTime)
-                }
+            //监听OPLUS电池信息
+            registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
+                initOplusInfo(intent)
+                sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
         }
     }

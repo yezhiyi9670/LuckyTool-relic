@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.view.View
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveLockScreenBottomButton : YukiBaseHooker() {
     override fun onHook() {
@@ -14,7 +14,7 @@ object RemoveLockScreenBottomButton : YukiBaseHooker() {
                     name = "updateLeftAffordanceVisibility"
                 }
                 beforeHook {
-                    if (prefs(XposedPrefs).getBoolean("remove_lock_screen_bottom_left_button",false)){
+                    if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_left_button",false)){
                         field {
                             name = "mLeftAffordanceView"
                             superClass(isOnlySuperClass = true)
@@ -28,7 +28,7 @@ object RemoveLockScreenBottomButton : YukiBaseHooker() {
                     name = "updateCameraVisibility"
                 }
                 beforeHook {
-                    if (prefs(XposedPrefs).getBoolean("remove_lock_screen_bottom_right_camera",false)){
+                    if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera",false)){
                         field {
                             name = "mRightAffordanceView"
                             superClass(isOnlySuperClass = true)

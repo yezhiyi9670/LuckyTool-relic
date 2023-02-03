@@ -2,12 +2,12 @@ package com.luckyzyx.luckytool.hook.scope.otherapp
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookMoreAnime : YukiBaseHooker() {
     override fun onHook() {
         //跳过启动广告页
-        if (prefs(XposedPrefs).getBoolean("skip_startup_page", false)) {
+        if (prefs(ModulePrefs).getBoolean("skip_startup_page", false)) {
             findClass("com.east2d.haoduo.ui.activity.SplashActivity").hook {
                 injectMember {
                     method {
@@ -19,7 +19,7 @@ object HookMoreAnime : YukiBaseHooker() {
             }
         }
         //VIP 下载原图
-        if(prefs(XposedPrefs).getBoolean("vip_download", false)) {
+        if(prefs(ModulePrefs).getBoolean("vip_download", false)) {
             findClass("com.east2d.haoduo.mvp.browerimages.FunctionImageMainActivity").hook {
                 injectMember {
                     method {

@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveStatusBarTopNotification : YukiBaseHooker() {
     override fun onHook() {
@@ -11,7 +11,7 @@ object RemoveStatusBarTopNotification : YukiBaseHooker() {
                 method {
                     name = "onPostNotification"
                 }
-                if (prefs(XposedPrefs).getBoolean("remove_statusbar_top_notification", false)) intercept()
+                if (prefs(ModulePrefs).getBoolean("remove_statusbar_top_notification", false)) intercept()
             }
         }
     }

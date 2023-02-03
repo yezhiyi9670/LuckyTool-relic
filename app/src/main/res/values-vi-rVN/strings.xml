@@ -298,6 +298,10 @@
     <string name="enable_genshin_impact_theme_summary">Không cần thiết lập trong Game Assistant</string>
     <string name="enable_adreno_gpu_controller">Kích hoạt bộ điều khiển GPU Adreno</string>
     <string name="enable_support_competition_mode">Kích hoạt chế độ hỗ trợ sự kiện</string>
+    <string name="enable_increase_fps_limit_feature">Bật tăng giới hạn fps</string>
+    <string name="enable_increase_fps_feature">Bật tăng fps</string>
+    <string name="enable_optimise_power_feature">Bật tối ưu hóa sức mạnh</string>
+    <string name="enable_gt_mode_feature">Bật chế độ GT</string>
     <!--CloudService-->
     <string name="remove_network_limit">Xóa giới hạn mạng dữ liệu</string>
     <string name="remove_network_limit_summary">Xóa giới hạn sao lưu/khôi phục không thể sử dụng dữ liệu di động</string>
@@ -395,7 +399,7 @@
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <!--Tile-->
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
-    <string name="global_dc">Global DC</string>
+    <string name="global_dc">DC toàn cầu</string>
     <!--Permission-->
     <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
 </resources>

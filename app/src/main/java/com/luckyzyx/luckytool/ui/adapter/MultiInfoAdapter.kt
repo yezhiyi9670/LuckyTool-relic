@@ -13,7 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.luckyzyx.luckytool.databinding.LayoutMultiinfoItemBinding
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.getStringSet
 import com.luckyzyx.luckytool.utils.tools.putStringSet
 import java.io.Serializable
@@ -38,7 +38,7 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
     }
 
     private fun sortDatas(){
-        val getEnabledMulti = context.getStringSet(XposedPrefs,"enabledMulti", ArraySet())
+        val getEnabledMulti = context.getStringSet(ModulePrefs,"enabledMulti", ArraySet())
         if (getEnabledMulti != null && getEnabledMulti.isNotEmpty()){
             for (i in getEnabledMulti){
                 enabledMulti.add(i)
@@ -51,7 +51,7 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
         sortData.forEach {
             enabledMulti.add(it.packName)
         }
-        context.putStringSet(XposedPrefs,"enabledMulti",enabledMulti.toSet())
+        context.putStringSet(ModulePrefs,"enabledMulti",enabledMulti.toSet())
         allDatas.apply {
             sortData.forEach {
                 this.remove(it)
@@ -82,7 +82,7 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
             }else{
                 enabledMulti.remove(filterDatas[position].packName)
             }
-            context.putStringSet(XposedPrefs,"enabledMulti",enabledMulti.toSet())
+            context.putStringSet(ModulePrefs,"enabledMulti",enabledMulti.toSet())
         }
     }
 

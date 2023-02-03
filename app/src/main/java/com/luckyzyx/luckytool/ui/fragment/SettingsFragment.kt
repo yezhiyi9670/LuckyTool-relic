@@ -46,26 +46,20 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
     private fun writeBackupData(context: Context, uri: Uri) {
         val json = JSONObject()
-        val dataMapList =
-            context.backupAllPrefs(XposedPrefs, MagiskPrefs, SettingsPrefs, OtherPrefs)
-        dataMapList.keys.forEach { prefs ->
-            val jsons = JSONObject()
-            val data = dataMapList[prefs]
-            data?.keys?.forEach { key ->
-                data[key].apply {
-                    if (this?.javaClass?.simpleName == "HashSet") {
-                        val arr = JSONArray()
-                        val value = (this as HashSet<*>).toTypedArray()
-                        for (i in value.indices) {
-                            arr.put(value[i])
-                        }
-                        jsons.put(key, arr)
-                    } else {
-                        jsons.put(key, this)
-                    }
+        val dataMapList = context.backupPrefs(ModulePrefs)
+        if (dataMapList.isEmpty()) return
+        dataMapList.keys.forEach { key ->
+            val value = dataMapList[key]
+            if (value?.javaClass?.simpleName == "HashSet") {
+                val arr = JSONArray()
+                val setArray = (value as HashSet<*>).toTypedArray()
+                for (i in setArray.indices) {
+                    arr.put(setArray[i])
                 }
+                json.put(key, arr)
+            } else {
+                json.put(key, value)
             }
-            json.put(prefs, jsons)
         }
         val str = base64Encode(json.toString())
         try {
@@ -87,33 +81,28 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     private fun writeRestoreData(context: Context, data: String) {
         val json = JSONObject(base64Decode(data))
         if (json.length() <= 0) return
-        json.keys().forEach { prefs ->
-            val prefsDatas = json.getJSONObject(prefs)
-            if (prefsDatas.length() > 0) {
-                prefsDatas.keys().forEach { key ->
-                    val value = prefsDatas.get(key)
-                    when (value.javaClass.simpleName) {
-                        "Boolean" -> context.putBoolean(prefs, key, value as Boolean)
-                        "Integer" -> context.putInt(prefs, key, value as Int)
-                        "JSONArray" -> {
-                            val set = ArraySet<String>()
-                            val list = value as JSONArray
-                            for (i in 0 until list.length()) {
-                                set.add(list[i] as String)
-                            }
-                            context.putStringSet(prefs, key, set)
-                        }
-                        "String" -> context.putString(prefs, key, value as String)
-                        else -> context.toast("Error: $key")
+        json.keys().forEach { key ->
+            val value = json.get(key)
+            when (value.javaClass.simpleName) {
+                "Boolean" -> context.putBoolean(ModulePrefs, key, value as Boolean)
+                "Integer" -> context.putInt(ModulePrefs, key, value as Int)
+                "JSONArray" -> {
+                    val set = ArraySet<String>()
+                    val list = value as JSONArray
+                    for (i in 0 until list.length()) {
+                        set.add(list[i] as String)
                     }
+                    context.putStringSet(ModulePrefs, key, set)
                 }
+                "String" -> context.putString(ModulePrefs, key, value as String)
+                else -> context.toast("Error: $key")
             }
         }
         context.toast(getString(R.string.data_restore_complete))
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = SettingsPrefs
+        preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -240,12 +229,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                         MaterialAlertDialogBuilder(context).apply {
                             setMessage(getString(R.string.clear_all_data_message))
                             setPositiveButton(android.R.string.ok) { _, _ ->
-                                context.clearAllPrefs(
-                                    SettingsPrefs,
-                                    XposedPrefs,
-                                    OtherPrefs,
-                                    MagiskPrefs
-                                )
+                                context.clearPrefs(ModulePrefs)
                                 exitProcess(0)
                             }
                             setNeutralButton(android.R.string.cancel, null)

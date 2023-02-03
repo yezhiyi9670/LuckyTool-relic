@@ -8,24 +8,24 @@ import com.luckyzyx.luckytool.hook.scope.systemui.DisableOTGAutoOff
 import com.luckyzyx.luckytool.hook.scope.systemui.ShowChargingRipple
 import com.luckyzyx.luckytool.utils.data.A12
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 
 object HookMiscellaneous : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.android.systemui") {
             //充电纹波
-            if (prefs(XposedPrefs).getBoolean("show_charging_ripple", false)) {
+            if (prefs(ModulePrefs).getBoolean("show_charging_ripple", false)) {
                 if (SDK >= A12) loadHooker(ShowChargingRipple)
             }
             //禁用OTG自动关闭
-            if (prefs(XposedPrefs).getBoolean("disable_otg_auto_off", false)) {
+            if (prefs(ModulePrefs).getBoolean("disable_otg_auto_off", false)) {
                 loadHooker(DisableOTGAutoOff)
             }
         }
         if (packageName == "com.android.settings") {
             //禁用DPI重启恢复
-            if (prefs(XposedPrefs).getBoolean("disable_dpi_reboot_recovery", false)) {
+            if (prefs(ModulePrefs).getBoolean("disable_dpi_reboot_recovery", false)) {
                 loadHooker(DisableDPIRebootRecovery)
             }
 
@@ -67,7 +67,7 @@ object HookMiscellaneous : YukiBaseHooker() {
 
         if (packageName == "com.android.externalstorage") {
             //移除存储限制
-            if (prefs(XposedPrefs).getBoolean("remove_storage_limit", false)) {
+            if (prefs(ModulePrefs).getBoolean("remove_storage_limit", false)) {
                 loadHooker(RemoveStorageLimit)
             }
         }

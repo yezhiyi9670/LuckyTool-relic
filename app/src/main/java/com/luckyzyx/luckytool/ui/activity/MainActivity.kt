@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.DialogInterface
@@ -21,6 +20,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
@@ -33,7 +33,7 @@ import kotlin.system.exitProcess
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
     //检测Prefs状态
-    private var isStart = false
+    private var isStart = YukiHookAPI.Status.isModuleActive
     private val KEY_PREFIX = MainActivity::class.java.name + '.'
     private val EXTRA_SAVED_INSTANCE_STATE = KEY_PREFIX + "SAVED_INSTANCE_STATE"
 
@@ -56,7 +56,7 @@ open class MainActivity : AppCompatActivity() {
         initNavigationFragment()
         initDynamicShortcuts()
 
-        checkPrefsRW()
+        checkActive(isStart)
         if (!isStart) return
 
         checkPermissions()
@@ -146,30 +146,20 @@ open class MainActivity : AppCompatActivity() {
         if (ThemeUtils(this).isDynamicColor()) {
             DynamicColors.applyToActivityIfAvailable(this)
         }
-        val themeMode = getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
+        val themeMode = getString(ModulePrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
         ThemeUtils(this).initTheme(themeMode)
     }
 
-    @Suppress("DEPRECATION")
-    @SuppressLint("WorldReadableFiles")
-    private fun checkPrefsRW() {
-        try {
-            getSharedPreferences(SettingsPrefs, MODE_WORLD_READABLE)
-            getSharedPreferences(XposedPrefs, MODE_WORLD_READABLE)
-            getSharedPreferences(MagiskPrefs, MODE_WORLD_READABLE)
-            getSharedPreferences(OtherPrefs, MODE_WORLD_READABLE)
-            isStart = true
-        } catch (ignored: SecurityException) {
-            isStart = false
-            MaterialAlertDialogBuilder(this)
-                .setCancelable(false)
-                .setMessage(getString(R.string.unsupported_xposed))
-                .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                    exitProcess(0)
-                }
-                //.setNegativeButton(R.string.ignore, null)
-                .show()
-        }
+    private fun checkActive(status: Boolean) {
+        if (status) return
+        MaterialAlertDialogBuilder(this).apply {
+            setCancelable(false)
+            setMessage(getString(R.string.unsupported_xposed))
+            setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                exitProcess(0)
+            }
+            //setNegativeButton(R.string.ignore, null)
+        }.show()
     }
 
     fun restart() {
@@ -202,8 +192,8 @@ open class MainActivity : AppCompatActivity() {
             context.getAppVersion(scope)
         }
         safeOfNull {
-            if (getBoolean(XposedPrefs, "statusbar_clock_enable", false) && getBoolean(
-                    XposedPrefs, "statusbar_clock_show_second", false
+            if (getBoolean(ModulePrefs, "statusbar_clock_enable", false) && getBoolean(
+                    ModulePrefs, "statusbar_clock_show_second", false
                 )
             ) {
                 commands.add("settings put secure clock_seconds 1")

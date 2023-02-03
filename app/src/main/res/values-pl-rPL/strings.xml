@@ -298,6 +298,10 @@
     <string name="enable_genshin_impact_theme_summary">Nie ma potrzeby ustawiania w Asystencie Gier</string>
     <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
     <string name="enable_support_competition_mode">Włącz obsługę trybu współpracy</string>
+    <string name="enable_increase_fps_limit_feature">Enable increase fps limit</string>
+    <string name="enable_increase_fps_feature">Enable increase fps</string>
+    <string name="enable_optimise_power_feature">Enable optimized power</string>
+    <string name="enable_gt_mode_feature">Enable GT Mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>

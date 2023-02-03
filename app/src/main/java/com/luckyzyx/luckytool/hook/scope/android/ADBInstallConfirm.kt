@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object ADBInstallConfirm : YukiBaseHooker() {
     override fun onHook() {
@@ -16,7 +16,7 @@ object ADBInstallConfirm : YukiBaseHooker() {
                     name = "allowInterceptAdbInstallInInstallStage"
                     paramCount = 5
                 }
-                if (prefs(XposedPrefs).getBoolean("remove_adb_install_confirm", false)) replaceToFalse()
+                if (prefs(ModulePrefs).getBoolean("remove_adb_install_confirm", false)) replaceToFalse()
             }
         }
     }

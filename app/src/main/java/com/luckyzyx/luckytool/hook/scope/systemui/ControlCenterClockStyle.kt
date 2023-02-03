@@ -6,15 +6,15 @@ import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.A12
 import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.XposedPrefs
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object ControlCenterClockStyle : YukiBaseHooker() {
     override fun onHook() {
         val showSecond =
-            prefs(XposedPrefs).getBoolean("control_center_clock_show_second", false)
-        val fixColon = prefs(XposedPrefs).getBoolean("fix_clock_colon_style", false)
+            prefs(ModulePrefs).getBoolean("control_center_clock_show_second", false)
+        val fixColon = prefs(ModulePrefs).getBoolean("fix_clock_colon_style", false)
         val removeRedOne =
-            prefs(XposedPrefs).getBoolean("remove_control_center_clock_red_one", false)
+            prefs(ModulePrefs).getBoolean("remove_control_center_clock_red_one", false)
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
