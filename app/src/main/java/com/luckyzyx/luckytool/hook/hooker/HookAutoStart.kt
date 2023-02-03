@@ -22,12 +22,10 @@ object HookAutoStart : YukiBaseHooker() {
             //监听锁屏解锁
             registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
                 scope {
-                    delay(100)
-
+                    delay(150)
                     if (fpsAutoStart && (fpsMode == 1) && (currentFps != -1)) {
                         setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                     }
-
                     Intent(Intent.ACTION_VIEW).apply {
                         setClassName(BuildConfig.APPLICATION_ID, AliveActivity::class.java.name)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
