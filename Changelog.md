@@ -14,6 +14,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] C13相机水印字数限制  
 [移除] 软件更新作用域  
 [优化] 触控采样率移动至磁贴  
+[添加] 游戏助手磁贴入口  
 [Fix] Game Assistant v8.2.1  
 [Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
 [Fix] Forced refresh rate self-starting problem  
@@ -21,7 +22,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Fix] Module data reading problem  
 [Optimize] Delay of self-starting calls  
 [Remove] System ota update scope  
-[Optimize] Touch sampling rate moved to tiles
+[Optimize] Touch sampling rate moved to tiles  
+[Add] Game assistant tile entry
 
 ### v4.2.8
 

@@ -281,8 +281,6 @@
     <string name="open_battery_health_summary">Settings - Battery - Battery Health</string>
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定</string>
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Remove Watermark Word Length Limit</string>
@@ -398,8 +396,11 @@
     <string name="log_data_is_empty">ログデータは空です!</string>
     <string name="log_no_data">No abnormal data</string>
     <!--Tile-->
+    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="high_brightness_mode">高輝度モード</string>
     <string name="global_dc">グローバルDC</string>
+    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
     <!--Permission-->
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
 </resources>

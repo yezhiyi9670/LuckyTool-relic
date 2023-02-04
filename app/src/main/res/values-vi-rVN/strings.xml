@@ -281,8 +281,6 @@
     <string name="open_battery_health_summary">Cài đặt - Pin - Tình trạng pin</string>
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
-    <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
-    <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
@@ -398,8 +396,11 @@
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <!--Tile-->
+    <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
+    <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
     <string name="global_dc">DC toàn cầu</string>
+    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
     <!--Permission-->
     <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
 </resources>

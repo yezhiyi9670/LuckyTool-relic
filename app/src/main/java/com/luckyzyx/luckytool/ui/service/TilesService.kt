@@ -2,8 +2,11 @@ package com.luckyzyx.luckytool.ui.service
 
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.data.checkPackName
 import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.data.jumpRunningApp
+import com.luckyzyx.luckytool.utils.data.toast
 import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
@@ -17,6 +20,26 @@ class ChargingTest : TileService() {
 class ProcessManager : TileService() {
     override fun onClick() {
         jumpRunningApp(applicationContext)
+    }
+}
+
+class GameAssistant : TileService() {
+    override fun onStartListening() {
+        val tile = qsTile
+        if (!applicationContext.checkPackName("com.oplus.games")) tile.state =
+            Tile.STATE_UNAVAILABLE else tile.state = Tile.STATE_INACTIVE
+        tile.updateTile()
+    }
+
+    override fun onClick() {
+        val tile = qsTile
+        when (tile.state) {
+            Tile.STATE_INACTIVE -> ShellUtils.execCommand(
+                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
+                true
+            )
+            Tile.STATE_UNAVAILABLE -> toast(getString(R.string.game_assistant_tile_tips))
+        }
     }
 }
 
@@ -117,7 +140,10 @@ class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         val tile = qsTile
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
-            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(0,1)) {
+            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(
+                0,
+                1
+            )) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
                 "1" -> {
                     tile.state = Tile.STATE_ACTIVE
@@ -146,6 +172,7 @@ class TouchSamplingRate : TileService() {
         tile.updateTile()
     }
 }
+
 class FiveG : TileService() {
     override fun onStartListening() {
 

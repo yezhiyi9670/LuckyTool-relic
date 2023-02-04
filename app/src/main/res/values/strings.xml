@@ -287,8 +287,6 @@
     <string name="open_battery_health_summary">Settings - Battery - Battery Health</string>
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     
     <!--Camera-->
@@ -406,8 +404,11 @@
     <string name="log_data_is_empty">LOG Data is empty!</string>
     <string name="log_no_data">No abnormal data</string>
     <!--Tile-->
+    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
+    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="high_brightness_mode">High Brightness Mode</string>
     <string name="global_dc">Global DC</string>
+    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
     <!--Permission-->
     <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
 
