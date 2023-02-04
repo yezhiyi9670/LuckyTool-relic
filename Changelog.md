@@ -11,12 +11,15 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 高亮度和DC自启调用  
 [修复] 模块数据读取问题(需重新设置模块功能数据)  
 [优化] 自启调用延迟情况  
+[适配] C13相机水印字数限制  
+[移除] 软件更新作用域  
 [Fix] Game Assistant v8.2.1  
 [Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
 [Fix] Forced refresh rate self-starting problem  
 [Add] High brightness and DC auto-start function  
 [Fix] Module data reading problem (module function data needs to be reset)  
-[Optimize] Delay of self-starting calls
+[Optimize] Delay of self-starting calls  
+[Remove] System ota update scope
 
 ### v4.2.8
 

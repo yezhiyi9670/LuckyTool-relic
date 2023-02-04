@@ -21,7 +21,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
-import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
@@ -204,7 +203,6 @@ open class MainActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(context)
             .setMessage(getString(R.string.restart_scope_message))
             .setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
-                modulePrefs.clearCache()
                 ShellUtils.execCommand(commands, true)
             }
             .setNeutralButton(getString(android.R.string.cancel), null)

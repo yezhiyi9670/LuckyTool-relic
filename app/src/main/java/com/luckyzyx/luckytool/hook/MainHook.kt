@@ -31,7 +31,7 @@ object MainHook : IYukiHookXposedInit {
     }
 
     override fun onHook() = encase {
-        if (prefs(ModulePrefs).getBoolean("enable_module").not()) return@encase
+        if (!prefs(ModulePrefs).getBoolean("enable_module")) return@encase
         //系统框架
         loadSystem(HookAndroid)
         loadZygote(HookZygote)
