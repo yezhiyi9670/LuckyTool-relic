@@ -24,7 +24,8 @@ data class AppInfo(
     var packName: String,
 ) : Serializable
 
-class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) : RecyclerView.Adapter<MultiInfoAdapter.ViewHolder>() {
+class MultiInfoAdapter(val context: Context, datas: ArrayList<AppInfo>) :
+    RecyclerView.Adapter<MultiInfoAdapter.ViewHolder>() {
 
     private var allDatas = ArrayList<AppInfo>()
     private var filterDatas = ArrayList<AppInfo>()
@@ -37,31 +38,32 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
         filterDatas = datas
     }
 
-    private fun sortDatas(){
-        val getEnabledMulti = context.getStringSet(ModulePrefs,"enabledMulti", ArraySet())
-        if (getEnabledMulti != null && getEnabledMulti.isNotEmpty()){
-            for (i in getEnabledMulti){
-                enabledMulti.add(i)
+    private fun sortDatas() {
+        val getEnabledMulti = context.getStringSet(ModulePrefs, "enabledMulti", ArraySet())
+        if (getEnabledMulti != null && getEnabledMulti.isNotEmpty()) {
+            getEnabledMulti.forEach {
+                enabledMulti.add(it)
             }
         }
         allDatas.forEach { its ->
-            if (enabledMulti.contains(its.packName)) sortData.add(0,its)
+            if (enabledMulti.contains(its.packName)) sortData.add(0, its)
         }
         enabledMulti.clear()
         sortData.forEach {
             enabledMulti.add(it.packName)
         }
-        context.putStringSet(ModulePrefs,"enabledMulti",enabledMulti.toSet())
+        context.putStringSet(ModulePrefs, "enabledMulti", enabledMulti.toSet())
         allDatas.apply {
             sortData.forEach {
                 this.remove(it)
-                this.add(0,it)
+                this.add(0, it)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = LayoutMultiinfoItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            LayoutMultiinfoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -77,12 +79,12 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
             holder.switchview.isChecked = !holder.switchview.isChecked
         }
         holder.switchview.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
+            if (isChecked) {
                 enabledMulti.add(filterDatas[position].packName)
-            }else{
+            } else {
                 enabledMulti.remove(filterDatas[position].packName)
             }
-            context.putStringSet(ModulePrefs,"enabledMulti",enabledMulti.toSet())
+            context.putStringSet(ModulePrefs, "enabledMulti", enabledMulti.toSet())
         }
     }
 
@@ -90,35 +92,42 @@ class MultiInfoAdapter(private val context: Context, datas: ArrayList<AppInfo>) 
         return filterDatas.size
     }
 
-    val getFilter get() = object : Filter(){
-        override fun performFiltering(constraint: CharSequence): FilterResults {
-            filterDatas = if (constraint.isBlank()) {
-                allDatas
-            }else{
-                val filterlist = ArrayList<AppInfo>()
-                for (data in allDatas) {
-                    if (
-                        data.appName.toString().lowercase().contains(constraint.toString().lowercase()) ||
-                        data.packName.lowercase().contains(constraint.toString().lowercase())) {
-                        filterlist.add(data)
+    val getFilter
+        get() = object : Filter() {
+            override fun performFiltering(constraint: CharSequence): FilterResults {
+                filterDatas = if (constraint.isBlank()) {
+                    allDatas
+                } else {
+                    val filterlist = ArrayList<AppInfo>()
+                    allDatas.forEach {
+                        if (
+                            it.appName.toString().lowercase()
+                                .contains(constraint.toString().lowercase()) ||
+                            it.packName.lowercase().contains(constraint.toString().lowercase())
+                        ) {
+                            filterlist.add(it)
+                        }
                     }
+                    filterlist
                 }
-                filterlist
+                val filterResults = FilterResults()
+                filterResults.values = filterDatas
+                return filterResults
             }
-            val filterResults = FilterResults()
-            filterResults.values = filterDatas
-            return filterResults
+
+            override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+                @Suppress("UNCHECKED_CAST")
+                filterDatas = results?.values as ArrayList<AppInfo>
+                refreshDatas()
+            }
         }
 
-        @SuppressLint("NotifyDataSetChanged")
-        override fun publishResults(constraint: CharSequence, results: FilterResults?) {
-            @Suppress("UNCHECKED_CAST")
-            filterDatas = results?.values as ArrayList<AppInfo>
-            notifyDataSetChanged()
-        }
+    @SuppressLint("NotifyDataSetChanged")
+    fun refreshDatas() {
+        notifyDataSetChanged()
     }
 
-    class ViewHolder(binding: LayoutMultiinfoItemBinding) : RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(binding: LayoutMultiinfoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val appInfoView: ConstraintLayout = binding.root
         val appIcon: ImageView = binding.appIcon
         val appName: TextView = binding.appName

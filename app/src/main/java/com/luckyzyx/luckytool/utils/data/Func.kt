@@ -32,7 +32,6 @@ import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
 
-
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
 
@@ -79,6 +78,7 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     arrayList.add("$versionCode")
     arraySet.add("1.$versionCode")
     val versionCommit = safeOf(default = "null") { commitInfo.metaData.get("versionCommit") }
+    //Fix the camera's commit is empty
     if (versionCommit == "" && packName == "com.oplus.camera") {
         val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate") }
         arrayList.add("$versionDate")
@@ -98,15 +98,6 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
 val getVersionName get() = VERSION_NAME
 val getVersionCode get() = VERSION_CODE
 
-fun Context.checkKey(key: String?, keyList: Array<String>): String = safeOfNothing {
-    keyList.forEach {
-        if (checkPackName(it)) {
-            if (key == null) return it
-        }
-    }
-    return "null"
-}
-
 /**
  * 检测包名是否存在
  * @receiver Context
@@ -120,6 +111,9 @@ fun Context.checkPackName(packName: String) = safeOfFalse {
 
 /**
  * 获取APP图标
+ * @receiver Context
+ * @param packName String
+ * @return Drawable?
  */
 fun Context.getAppIcon(packName: String): Drawable? = safeOf(default = null) {
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadIcon(packageManager)
@@ -147,6 +141,9 @@ fun Context.getAppVersionCode(packName: String): Long? = safeOf(default = null) 
 
 /**
  * 获取APP名称
+ * @receiver Context
+ * @param packName String
+ * @return CharSequence?
  */
 fun Context.getAppLabel(packName: String): CharSequence? = safeOf(default = null) {
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadLabel(packageManager)
@@ -175,13 +172,18 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
 }
 
 /**
- * 获取支持的刷新率
+ * 获取自定义刷新率
  * @return [List]
  */
 fun Context.getFpsMode1(): Array<String> {
     return arrayOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz")
 }
 
+/**
+ * 获取设备刷新率
+ * @receiver Context
+ * @return Array<String>
+ */
 fun Context.getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +
@@ -212,7 +214,7 @@ fun Context.getFpsMode2(): Array<String> {
  * 获取电池信息(dumpsys)
  * @return Array<String>
  */
-fun getBatteryInfo(): Array<String> {
+private fun getBatteryInfo(): Array<String> {
     val command =
         "dumpsys battery | while read row; do\n" +
                 "  if [[ -n \$row ]]; then\n" +
@@ -272,9 +274,13 @@ val getGuid
  * 获取prop数据
  * @param key String
  */
-fun getProp(key: String) = safeOf(default = "null") {
-    ShellUtils.execCommand("getprop $key", true, true).successMsg.let {
-        formatSpace(it)
+fun getProp(key: String): String {
+    return getProp(key, false)
+}
+
+fun getProp(key: String, root: Boolean): String = safeOf(default = "null") {
+    ShellUtils.execCommand("getprop $key", root, true).let {
+        if (it.result == 1) "null" else formatSpace(it.successMsg)
     }
 }
 
@@ -351,19 +357,19 @@ fun Context.setDesktopIcon(value: Boolean) {
  * 获取闪存信息
  */
 fun getFlashInfo(): String = safeOf(default = "null") {
-    ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).successMsg.let {
-        formatSpace(it)
+    ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
+        if (it.result == 1) return@safeOf "null" else return@safeOf formatSpace(it.successMsg)
     }
 }
 
 /**
- * 移除字符串前空格
+ * 利用正则移除字符串前空格
  * @param string String
  */
 fun formatSpace(string: String): String {
     val pattern = Pattern.compile("\\p{L}")
     val matcher = pattern.matcher(string)
-    if (!matcher.find()) return "null"
+    if (!matcher.find()) return string
     return string.substring(matcher.start())
 }
 
@@ -411,7 +417,7 @@ fun Context.copyStr(string: String) {
  * @param code String
  * @return Bitmap?
  */
-fun baseDecode(code: String): Bitmap? {
+fun base64ToBitmap(code: String): Bitmap? {
     val decode: ByteArray = Base64.decode(code.split(",")[1], Base64.DEFAULT)
     return BitmapFactory.decodeByteArray(decode, 0, decode.size)
 }
@@ -425,7 +431,7 @@ val dialogCentered get() = com.google.android.material.R.style.ThemeOverlay_Mate
  * 判断是否显示Preference图标
  */
 fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
-    if (getBoolean(ModulePrefs, "hide_xp_page_icon", false)) {
+    if (getBoolean(SettingsPrefs, "hide_xp_page_icon", false)) {
         result(null, false)
         return
     }

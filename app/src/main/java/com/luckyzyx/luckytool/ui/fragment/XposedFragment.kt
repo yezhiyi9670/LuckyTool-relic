@@ -166,8 +166,7 @@ class XposedFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    val keys = arrayOf("com.oplus.camera", "com.oneplus.camera")
-                    key = context.checkKey(key, keys)
+                    key = "com.oplus.camera"
                     context.getXPIcon(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
@@ -256,7 +255,8 @@ class XposedFragment : ModulePreferenceFragment() {
                     }
                     title = context.getAppLabel(key)
                     summary = getString(R.string.unlock_local_upgrade)
-                    isVisible = context.checkPackName(key)
+//                    isVisible = context.checkPackName(key)
+                    isVisible = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
                             R.id.action_nav_function_to_oplusOta,

@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +13,6 @@ import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
 import com.luckyzyx.luckytool.utils.data.*
-import java.text.SimpleDateFormat
 
 class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiLoggerData>) :
     RecyclerView.Adapter<LogInfoViewAdapter.ViewHolder>() {
@@ -23,8 +23,9 @@ class LogInfoViewAdapter(val context: Context, private val data: ArrayList<YukiL
         return ViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(data[position].timestamp)
+        val time = formatDate("yyyy/MM/dd-HH:mm:ss",data[position].timestamp)
         val tag = data[position].tag
         val priority = data[position].priority
         val packageName = data[position].packageName

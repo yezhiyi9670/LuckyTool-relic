@@ -16,7 +16,6 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.getDocumentPath
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.getString
 import com.luckyzyx.luckytool.utils.tools.putString
 
@@ -1470,25 +1469,6 @@ class Miscellaneous : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.increase_touch_sampling_rate)
-                    summary = getString(R.string.increase_touch_sampling_rate_summary)
-                    key = "increase_touch_sampling_rate"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        newValue as Boolean
-                        ShellUtils.execCommand(
-                            "echo > /proc/touchpanel/game_switch_enable ${if (newValue) 1 else 0}",
-                            true
-                        )
-                        context.dataChannel("com.android.systemui")
-                            .put("increase_touch_sampling_rate", newValue)
-                        true
-                    }
                 }
             )
             addPreference(

@@ -17,13 +17,13 @@ import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
 import com.luckyzyx.luckytool.ui.adapter.LogInfoViewAdapter
+import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.toast
 import rikka.core.util.ResourceUtils
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.SimpleDateFormat
 import java.util.*
 
 class LoggerFragment : Fragment() {
@@ -93,9 +93,7 @@ class LoggerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) loadLogger()
         if (item.itemId == 2) {
-            fileName = "LuckyTool_" + SimpleDateFormat(
-                "yyyyMMdd_HHmmss", Locale.CHINA
-            ).format(Date()) + ".log"
+            fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + ".log"
             saveFile(fileName)
         }
         return super.onOptionsItemSelected(item)
@@ -131,7 +129,7 @@ class LoggerFragment : Fragment() {
     private fun alterDocument(context: Context, uri: Uri) {
         var str = ""
         listData.forEach {
-            val time = SimpleDateFormat("yyyy/MM/dd-HH:mm:ss", Locale.CHINA).format(it.timestamp)
+            val time = formatDate("yyyy/MM/dd-HH:mm:ss",it.timestamp)
             val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
             val throwableFinal =
                 if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"

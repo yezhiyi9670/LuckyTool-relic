@@ -6,23 +6,23 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.ui.activity.AliveActivity
 import com.luckyzyx.luckytool.utils.data.setRefresh
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import kotlinx.coroutines.delay
 
 object HookAutoStart : YukiBaseHooker() {
     override fun onHook() {
         val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0")
-        var fpsAutoStart = prefs(ModulePrefs).getBoolean("fps_autostart", false)
+        var fpsAutoStart = prefs(SettingsPrefs).getBoolean("fps_autostart", false)
         dataChannel.wait<Boolean>(key = "fps_autostart") { fpsAutoStart = it }
-        var fpsMode = prefs(ModulePrefs).getInt("fps_mode", 1)
+        var fpsMode = prefs(SettingsPrefs).getInt("fps_mode", 1)
         dataChannel.wait<Int>(key = "fps_mode") { fpsMode = it }
-        var currentFps = prefs(ModulePrefs).getInt("current_fps", -1)
+        var currentFps = prefs(SettingsPrefs).getInt("current_fps", -1)
         dataChannel.wait<Int>(key = "current_fps") { currentFps = it }
         onAppLifecycle {
             //监听锁屏解锁
             registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
                 scope {
-                    delay(150)
+                    delay(100)
                     if (fpsAutoStart && (fpsMode == 1) && (currentFps != -1)) {
                         setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                     }

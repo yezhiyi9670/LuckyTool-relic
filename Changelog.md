@@ -9,17 +9,19 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 游戏插帧、提升帧率、优化功耗、GT模式  
 [修复] 强制刷新率自启调用问题  
 [添加] 高亮度和DC自启调用  
-[修复] 模块数据读取问题(需重新设置模块功能数据)  
+[修复] 模块数据读取问题  
 [优化] 自启调用延迟情况  
 [适配] C13相机水印字数限制  
 [移除] 软件更新作用域  
+[优化] 触控采样率移动至磁贴  
 [Fix] Game Assistant v8.2.1  
 [Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
 [Fix] Forced refresh rate self-starting problem  
 [Add] High brightness and DC auto-start function  
-[Fix] Module data reading problem (module function data needs to be reset)  
+[Fix] Module data reading problem  
 [Optimize] Delay of self-starting calls  
-[Remove] System ota update scope
+[Remove] System ota update scope  
+[Optimize] Touch sampling rate moved to tiles
 
 ### v4.2.8
 

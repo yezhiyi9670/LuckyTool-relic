@@ -2,15 +2,16 @@ package com.luckyzyx.luckytool.ui.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Bundle
 import android.util.ArraySet
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
-import androidx.preference.*
+import androidx.preference.DropDownPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
+import androidx.preference.SwitchPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -30,7 +31,7 @@ import java.io.IOException
 import kotlin.system.exitProcess
 
 @Obfuscate
-class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
+class SettingsFragment : ModulePreferenceFragment() {
     private val backupData =
         registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
             if (it != null) {
@@ -46,20 +47,26 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
 
     private fun writeBackupData(context: Context, uri: Uri) {
         val json = JSONObject()
-        val dataMapList = context.backupPrefs(ModulePrefs)
-        if (dataMapList.isEmpty()) return
-        dataMapList.keys.forEach { key ->
-            val value = dataMapList[key]
-            if (value?.javaClass?.simpleName == "HashSet") {
-                val arr = JSONArray()
-                val setArray = (value as HashSet<*>).toTypedArray()
-                for (i in setArray.indices) {
-                    arr.put(setArray[i])
+        val dataMapList =
+            context.backupAllPrefs(ModulePrefs, SettingsPrefs, OtherPrefs)
+        dataMapList.keys.forEach { prefs ->
+            val jsons = JSONObject()
+            val data = dataMapList[prefs]
+            data?.keys?.forEach { key ->
+                data[key].apply {
+                    if (this?.javaClass?.simpleName == "HashSet") {
+                        val arr = JSONArray()
+                        val value = (this as HashSet<*>).toTypedArray()
+                        for (i in value.indices) {
+                            arr.put(value[i])
+                        }
+                        jsons.put(key, arr)
+                    } else {
+                        jsons.put(key, this)
+                    }
                 }
-                json.put(key, arr)
-            } else {
-                json.put(key, value)
             }
+            json.put(prefs, jsons)
         }
         val str = base64Encode(json.toString())
         try {
@@ -81,28 +88,33 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
     private fun writeRestoreData(context: Context, data: String) {
         val json = JSONObject(base64Decode(data))
         if (json.length() <= 0) return
-        json.keys().forEach { key ->
-            val value = json.get(key)
-            when (value.javaClass.simpleName) {
-                "Boolean" -> context.putBoolean(ModulePrefs, key, value as Boolean)
-                "Integer" -> context.putInt(ModulePrefs, key, value as Int)
-                "JSONArray" -> {
-                    val set = ArraySet<String>()
-                    val list = value as JSONArray
-                    for (i in 0 until list.length()) {
-                        set.add(list[i] as String)
+        json.keys().forEach { prefs ->
+            val prefsDatas = json.getJSONObject(prefs)
+            if (prefsDatas.length() > 0) {
+                prefsDatas.keys().forEach { key ->
+                    val value = prefsDatas.get(key)
+                    when (value.javaClass.simpleName) {
+                        "Boolean" -> context.putBoolean(prefs, key, value as Boolean)
+                        "Integer" -> context.putInt(prefs, key, value as Int)
+                        "JSONArray" -> {
+                            val set = ArraySet<String>()
+                            val list = value as JSONArray
+                            for (i in 0 until list.length()) {
+                                set.add(list[i] as String)
+                            }
+                            context.putStringSet(prefs, key, set)
+                        }
+                        "String" -> context.putString(prefs, key, value as String)
+                        else -> context.toast("Error: $key")
                     }
-                    context.putStringSet(ModulePrefs, key, set)
                 }
-                "String" -> context.putString(ModulePrefs, key, value as String)
-                else -> context.toast("Error: $key")
             }
         }
         context.toast(getString(R.string.data_restore_complete))
     }
 
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = ModulePrefs
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = SettingsPrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
@@ -189,6 +201,10 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                     title = getString(R.string.hide_desktop_appicon)
                     summary = getString(R.string.hide_desktop_appicon_summary)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.setDesktopIcon(newValue as Boolean)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -229,7 +245,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                         MaterialAlertDialogBuilder(context).apply {
                             setMessage(getString(R.string.clear_all_data_message))
                             setPositiveButton(android.R.string.ok) { _, _ ->
-                                context.clearPrefs(ModulePrefs)
+                                context.clearAllPrefs(ModulePrefs, SettingsPrefs, OtherPrefs)
                                 exitProcess(0)
                             }
                             setNeutralButton(android.R.string.cancel, null)
@@ -258,7 +274,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                             getString(R.string.donation_list)
                         )
                         MaterialAlertDialogBuilder(context).apply {
-
                             setItems(donateList) { _, which ->
                                 when (which) {
                                     0 -> {
@@ -272,7 +287,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                         dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
                                             getString(R.string.donate_message)
                                         dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(baseDecode(Base64Code.qqCode))
+                                            ?.setImageBitmap(base64ToBitmap(Base64Code.qqCode))
                                     }
                                     1 -> {
                                         val dialog = MaterialAlertDialogBuilder(
@@ -285,7 +300,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                         dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
                                             getString(R.string.donate_message)
                                         dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(baseDecode(Base64Code.wechatCode))
+                                            ?.setImageBitmap(base64ToBitmap(Base64Code.wechatCode))
                                     }
                                     2 -> {
                                         val dialog = MaterialAlertDialogBuilder(
@@ -298,7 +313,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                                         dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
                                             getString(R.string.donate_message)
                                         dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(baseDecode(Base64Code.alipayCode))
+                                            ?.setImageBitmap(base64ToBitmap(Base64Code.alipayCode))
                                     }
                                     3 -> {
                                         MaterialAlertDialogBuilder(context, dialogCentered).apply {
@@ -394,24 +409,6 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
                 }
             )
         }
-    }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "hide_desktop_appicon") sharedPreferences?.let {
-            requireActivity().setDesktopIcon(
-                it.getBoolean("hide_desktop_appicon", false)
-            )
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 }
 

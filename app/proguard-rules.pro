@@ -67,7 +67,7 @@
     public static final android.os.Parcelable$Creator *;
 }
 # support
--keep public class * extends android.support.annotation.** { *; }
+#-keep public class * extends android.support.annotation.** { *; }
 #-keep public class * extends android.support.v4.content.FileProvider
 # androidx
 -keep public class * extends androidx.annotation.** { *; }

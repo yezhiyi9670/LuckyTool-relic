@@ -55,14 +55,12 @@ open class MainActivity : AppCompatActivity() {
         initNavigationFragment()
         initDynamicShortcuts()
 
-        checkActive(isStart)
-        if (!isStart) return
-
-        checkPermissions()
-
+        checkModuleActive(isStart)
+        checkPermissions(isStart)
     }
 
-    private fun checkPermissions() {
+    private fun checkPermissions(isStart: Boolean) {
+        if (!isStart) return
         //所有文件访问权限
         if (!Environment.isExternalStorageManager()) {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
@@ -145,11 +143,11 @@ open class MainActivity : AppCompatActivity() {
         if (ThemeUtils(this).isDynamicColor()) {
             DynamicColors.applyToActivityIfAvailable(this)
         }
-        val themeMode = getString(ModulePrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
+        val themeMode = getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
         ThemeUtils(this).initTheme(themeMode)
     }
 
-    private fun checkActive(status: Boolean) {
+    private fun checkModuleActive(status: Boolean) {
         if (status) return
         MaterialAlertDialogBuilder(this).apply {
             setCancelable(false)
@@ -182,7 +180,7 @@ open class MainActivity : AppCompatActivity() {
         val commands = ArrayList<String>()
         for (scope in xposedScope) {
             if (scope == "android") continue
-            if (scope == "com.android.systemui") {
+            if (scope.contains("systemui")) {
                 commands.add("kill -9 `pgrep systemui`")
                 continue
             }
@@ -200,12 +198,12 @@ open class MainActivity : AppCompatActivity() {
                 commands.add("settings put secure clock_seconds 0")
             }
         }
-        MaterialAlertDialogBuilder(context)
-            .setMessage(getString(R.string.restart_scope_message))
-            .setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
+        MaterialAlertDialogBuilder(context).apply {
+            setMessage(getString(R.string.restart_scope_message))
+            setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
                 ShellUtils.execCommand(commands, true)
             }
-            .setNeutralButton(getString(android.R.string.cancel), null)
-            .show()
+            setNeutralButton(getString(android.R.string.cancel), null)
+        }.show()
     }
 }

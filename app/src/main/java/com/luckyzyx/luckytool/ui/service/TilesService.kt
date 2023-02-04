@@ -4,7 +4,7 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.data.jumpRunningApp
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
 
@@ -53,7 +53,7 @@ class HighBrightness : TileService() {
                 "0" -> tile.state = Tile.STATE_INACTIVE
                 "1" -> {
                     tile.state = Tile.STATE_ACTIVE
-                    putBoolean(ModulePrefs, "high_brightness_mode", true)
+                    putBoolean(SettingsPrefs, "high_brightness_mode", true)
                 }
             }
             tile.updateTile()
@@ -65,12 +65,12 @@ class HighBrightness : TileService() {
         when (tile.state) {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true)
-                putBoolean(ModulePrefs, "high_brightness_mode", true)
+                putBoolean(SettingsPrefs, "high_brightness_mode", true)
                 tile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
-                putBoolean(ModulePrefs, "high_brightness_mode", false)
+                putBoolean(SettingsPrefs, "high_brightness_mode", false)
                 tile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}
@@ -87,7 +87,7 @@ class GlobalDC : TileService() {
                 "0" -> tile.state = Tile.STATE_INACTIVE
                 "1" -> {
                     tile.state = Tile.STATE_ACTIVE
-                    putBoolean(ModulePrefs, "global_dc_mode", true)
+                    putBoolean(SettingsPrefs, "global_dc_mode", true)
                 }
             }
             tile.updateTile()
@@ -99,12 +99,12 @@ class GlobalDC : TileService() {
         when (tile.state) {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
-                putBoolean(ModulePrefs, "global_dc_mode", true)
+                putBoolean(SettingsPrefs, "global_dc_mode", true)
                 tile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
-                putBoolean(ModulePrefs, "global_dc_mode", false)
+                putBoolean(SettingsPrefs, "global_dc_mode", false)
                 tile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}
@@ -113,6 +113,39 @@ class GlobalDC : TileService() {
     }
 }
 
+class TouchSamplingRate : TileService() {
+    override fun onStartListening() {
+        val tile = qsTile
+        ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
+            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(0,1)) {
+                "0" -> tile.state = Tile.STATE_INACTIVE
+                "1" -> {
+                    tile.state = Tile.STATE_ACTIVE
+                    putBoolean(SettingsPrefs, "touch_sampling_rate", true)
+                }
+            }
+            tile.updateTile()
+        }
+    }
+
+    override fun onClick() {
+        val tile = qsTile
+        when (tile.state) {
+            Tile.STATE_INACTIVE -> {
+                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true)
+                putBoolean(SettingsPrefs, "touch_sampling_rate", true)
+                tile.state = Tile.STATE_ACTIVE
+            }
+            Tile.STATE_ACTIVE -> {
+                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 0", true)
+                putBoolean(SettingsPrefs, "touch_sampling_rate", false)
+                tile.state = Tile.STATE_INACTIVE
+            }
+            Tile.STATE_UNAVAILABLE -> {}
+        }
+        tile.updateTile()
+    }
+}
 class FiveG : TileService() {
     override fun onStartListening() {
 

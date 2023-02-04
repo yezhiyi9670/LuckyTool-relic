@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
         }
 
         if (requireActivity().getBoolean(
-                ModulePrefs,
+                SettingsPrefs,
                 "auto_check_update",
                 true
             )
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
                     binding.statusCard.setOnClickListener { function() }
                 }
                 binding.statusCard.setOnLongClickListener {
-                    if (context.getBoolean(ModulePrefs, "hidden_function", false)) function()
+                    if (context.getBoolean(SettingsPrefs, "hidden_function", false)) function()
                     true
                 }
             }
@@ -110,21 +110,21 @@ class HomeFragment : Fragment() {
                 val fpsDialog = MaterialAlertDialogBuilder(context).apply {
                     setView(R.layout.layout_fps_dialog)
                 }.show()
-                val fpsModeValue = context.getInt(ModulePrefs, "fps_mode", 1)
+                val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
                 val fpsData = if (fpsModeValue == 1) {
                     context.getFpsMode1()
                 } else {
                     context.getFpsMode2()
                 }
-                val currentFps = context.getInt(ModulePrefs, "current_fps", -1)
-                val fpsAutostart = context.getBoolean(ModulePrefs, "fps_autostart", false)
+                val currentFps = context.getInt(SettingsPrefs, "current_fps", -1)
+                val fpsAutostart = context.getBoolean(SettingsPrefs, "fps_autostart", false)
                 val fpsSelfStart =
                     fpsDialog.findViewById<MaterialSwitch>(R.id.fps_self_start)?.apply {
                         text = getString(R.string.fps_autostart)
                         isChecked = fpsAutostart
                         isEnabled = currentFps != -1
                         setOnCheckedChangeListener { _, isChecked ->
-                            context.putBoolean(ModulePrefs, "fps_autostart", isChecked)
+                            context.putBoolean(SettingsPrefs, "fps_autostart", isChecked)
                             requireActivity().dataChannel(packageName = "com.android.systemui")
                                 .put(key = "fps_autostart", value = isChecked)
                         }
@@ -138,7 +138,7 @@ class HomeFragment : Fragment() {
                     setItemChecked(currentFps, currentFps != -1)
                     onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                         fpsSelfStart?.isEnabled = true
-                        context.putInt(ModulePrefs, "current_fps", position)
+                        context.putInt(SettingsPrefs, "current_fps", position)
                         if (fpsModeValue == 1) requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = position)
                         if (fpsModeValue == 2) ShellUtils.execCommand(
@@ -154,10 +154,10 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
-                        context.putInt(ModulePrefs, "fps_mode", 1)
+                        context.putInt(SettingsPrefs, "fps_mode", 1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "fps_mode", value = 1)
-                        context.putInt(ModulePrefs, "current_fps", -1)
+                        context.putInt(SettingsPrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -172,10 +172,10 @@ class HomeFragment : Fragment() {
                     setOnClickListener {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
-                        context.putInt(ModulePrefs, "fps_mode", 2)
+                        context.putInt(SettingsPrefs, "fps_mode", 2)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "fps_mode", value = 2)
-                        context.putInt(ModulePrefs, "current_fps", -1)
+                        context.putInt(SettingsPrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -202,9 +202,9 @@ class HomeFragment : Fragment() {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
                         fpsList?.setItemChecked(
-                            context.getInt(ModulePrefs, "current_fps", -1), false
+                            context.getInt(SettingsPrefs, "current_fps", -1), false
                         )
-                        context.putInt(ModulePrefs, "current_fps", -1)
+                        context.putInt(SettingsPrefs, "current_fps", -1)
                         requireActivity().dataChannel(packageName = "com.android.systemui")
                             .put(key = "current_fps", value = -1)
                         ShellUtils.execCommand(
@@ -237,46 +237,56 @@ class HomeFragment : Fragment() {
                     setTitle("OPLUS OTA")
                     setView(R.layout.layout_oplusota_dialog)
                 }.show()
-                val product_model = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_product_model)?.apply {
-                    setText(ShellUtils.execCommand("getprop ro.product.name", false, true).successMsg)
-                    setOnLongClickListener {
-                        context.copyStr("ro.product.name -> ${text.toString()}")
-                        true
-                    }
-                }
-                val ota_version = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_ota_version)?.apply {
-                    setText(ShellUtils.execCommand("getprop ro.build.version.ota",false,true).successMsg)
-                    setOnLongClickListener {
-                        context.copyStr("ro.build.version.ota -> ${text.toString()}")
-                        true
-                    }
-                }
-                val realmeui_version_layout = oplusOtaDialog.findViewById<TextInputLayout>(R.id.oplusota_realmeui_version_layout)
-                val realmeui_version = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_realmeui_version)?.apply {
-                    setText(ShellUtils.execCommand("getprop ro.build.version.realmeui",false,true).successMsg)
-                    setOnLongClickListener {
-                        context.copyStr("ro.build.version.realmeui -> ${text.toString()}")
-                        true
-                    }
-                }
-                if (realmeui_version?.text.toString() == "") {
+                val product_model =
+                    oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_product_model)
+                        ?.apply {
+                            setText(getProp("ro.product.name"))
+                            setOnLongClickListener {
+                                context.copyStr("ro.product.name -> ${text.toString()}")
+                                true
+                            }
+                        }
+                val ota_version =
+                    oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_ota_version)
+                        ?.apply {
+                            setText(getProp("ro.build.version.ota"))
+                            setOnLongClickListener {
+                                context.copyStr("ro.build.version.ota -> ${text.toString()}")
+                                true
+                            }
+                        }
+                val realmeui_version_layout =
+                    oplusOtaDialog.findViewById<TextInputLayout>(R.id.oplusota_realmeui_version_layout)
+                val realmeui_version =
+                    oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_realmeui_version)
+                        ?.apply {
+                            setText(getProp("ro.build.version.realmeui"))
+                            setOnLongClickListener {
+                                context.copyStr("ro.build.version.realmeui -> ${text.toString()}")
+                                true
+                            }
+                        }
+                if (realmeui_version?.text.toString() == "null") {
                     isRealmeUI = false
                     realmeui_version_layout?.isVisible = false
                 } else isRealmeUI = true
-                val nv_identifier = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_nv_identifier)?.apply {
-                    setText(ShellUtils.execCommand("getprop ro.build.oplus_nv_id",false,true).successMsg)
-                    setOnLongClickListener {
-                        context.copyStr("ro.build.oplus_nv_id -> ${text.toString()}")
-                        true
+                val nv_identifier =
+                    oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_nv_identifier)
+                        ?.apply {
+                            setText(getProp("ro.build.oplus_nv_id"))
+                            setOnLongClickListener {
+                                context.copyStr("ro.build.oplus_nv_id -> ${text.toString()}")
+                                true
+                            }
+                        }
+                val guid =
+                    oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_guid)?.apply {
+                        setText(getGuid)
+                        setOnLongClickListener {
+                            context.copyStr("guid -> ${text.toString()}")
+                            true
+                        }
                     }
-                }
-                val guid = oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_guid)?.apply {
-                    setText(getGuid)
-                    setOnLongClickListener {
-                        context.copyStr("guid -> ${text.toString()}")
-                        true
-                    }
-                }
                 oplusOtaDialog.findViewById<MaterialButton>(R.id.oplusota_copyall)?.apply {
                     setOnClickListener {
                         context.copyStr("ro.product.name -> ${product_model?.text}\nro.build.version.ota -> ${ota_version?.text}\n${if (isRealmeUI) "ro.build.version.realmeui -> ${realmeui_version?.text}\n" else ""}ro.build.oplus_nv_id -> ${nv_identifier?.text}\nguid -> ${guid?.text}\n")
@@ -317,12 +327,12 @@ class HomeFragment : Fragment() {
             MaterialAlertDialogBuilder(requireActivity()).apply {
                 setTitle(getString(R.string.about_author))
                 setView(MaterialTextView(context).apply {
-                    var hideFunc = context.getBoolean(ModulePrefs, "hidden_function", false)
+                    var hideFunc = context.getBoolean(SettingsPrefs, "hidden_function", false)
                     setPadding(20.dp)
                     text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                     setOnLongClickListener {
-                        context.putBoolean(ModulePrefs, "hidden_function", !hideFunc)
-                        hideFunc = context.getBoolean(ModulePrefs, "hidden_function", false)
+                        context.putBoolean(SettingsPrefs, "hidden_function", !hideFunc)
+                        hideFunc = context.getBoolean(SettingsPrefs, "hidden_function", false)
                         text = if (hideFunc) "忆清鸣、luckyzyx T" else "忆清鸣、luckyzyx"
                         true
                     }
