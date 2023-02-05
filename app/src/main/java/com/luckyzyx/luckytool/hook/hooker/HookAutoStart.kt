@@ -22,7 +22,7 @@ object HookAutoStart : YukiBaseHooker() {
             //监听锁屏解锁
             registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
                 scope {
-                    delay(100)
+                    delay(200)
                     if (fpsAutoStart && (fpsMode == 1) && (currentFps != -1)) {
                         setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                     }

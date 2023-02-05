@@ -1,11 +1,16 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
+import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object MultiApp : YukiBaseHooker() {
     override fun onHook() {
+        var isEnable = prefs(ModulePrefs).getBoolean("multi_app_enable", false)
+        dataChannel.wait<Boolean>("multi_app_enable") { isEnable = it }
+        var enabledMulti = prefs(ModulePrefs).getStringSet("multi_app_custom_list", ArraySet())
+        dataChannel.wait<Set<String>>("multi_app_custom_list") { enabledMulti = it }
         //Source OplusMultiAppConfig
         findClass("com.oplus.multiapp.OplusMultiAppConfig").hook {
             injectMember {
@@ -13,13 +18,9 @@ object MultiApp : YukiBaseHooker() {
                     name = "getAllowedPkgList"
                     returnType = ListClass
                 }
-                beforeHook {
-                    val isEnable = prefs(ModulePrefs).getBoolean("multi_app_enable", false)
-                    val enabledMulti = prefs(ModulePrefs).getStringSet("enabledMulti", HashSet()).toList()
-                    if (isEnable) field {
-                        name = "mAllowedPkgList"
-                        type = ListClass
-                    }.get(instance).set(enabledMulti)
+                afterHook {
+                    if (!isEnable) return@afterHook
+                    result = enabledMulti.toList()
                 }
             }
         }

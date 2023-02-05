@@ -41,5 +41,8 @@ object HookAndroid : YukiBaseHooker() {
 
         //允许不受信任的触摸
         loadHooker(AllowUntrustedTouch)
+
+        //缩放窗口
+        loadHooker(ZoomWindow)
     }
 }

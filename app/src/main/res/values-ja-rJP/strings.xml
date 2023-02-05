@@ -222,11 +222,11 @@
     <string name="unlock_task_locks">Unlocks the number of background tasks</string>
     <string name="AppStartupRelated">アプリの自動起動関連</string>
     <string name="disable_splash_screen">スプラッシュ画面を無効化</string>
-    <!--MultiApp-->
-    <string name="MultiApp">アプリスタンド関連</string>
-    <string name="multi_app_enable">Total App Chart Switch</string>
-    <string name="multi_app_enable_summary">再起動後に有効になります</string>
-    <string name="loading">読み込み中</string>
+    <!--APPRelatedList-->
+    <string name="APPRelatedList">App Related List</string>
+    <string name="enable_zoom_window">Enable support list</string>
+    <string name="zoom_window_support_list">Custom Zoom Window Support List</string>
+    <string name="multi_app_enable">Enable replacement list</string>
     <string name="multi_app_custom_list">アプリクローン対応リストを置き換え</string>
     <string name="multi_app_custom_list_summary">After the function is turned on, the original list of app clones will be replaced by this list, too many will cause lag</string>
     <!--AppInstallationRelated-->

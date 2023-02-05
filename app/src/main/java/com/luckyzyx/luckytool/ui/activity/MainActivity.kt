@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.DialogInterface
@@ -147,16 +148,24 @@ open class MainActivity : AppCompatActivity() {
         ThemeUtils(this).initTheme(themeMode)
     }
 
+    @Suppress("DEPRECATION")
+    @SuppressLint("WorldReadableFiles")
     private fun checkModuleActive(status: Boolean) {
-        if (status) return
-        MaterialAlertDialogBuilder(this).apply {
-            setCancelable(false)
-            setMessage(getString(R.string.unsupported_xposed))
-            setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                exitProcess(0)
-            }
-            //setNegativeButton(R.string.ignore, null)
-        }.show()
+        try {
+            getSharedPreferences(SettingsPrefs, MODE_WORLD_READABLE)
+            getSharedPreferences(ModulePrefs, MODE_WORLD_READABLE)
+            getSharedPreferences(OtherPrefs, MODE_WORLD_READABLE)
+        } catch (ignored: SecurityException) {
+            isStart = false
+            MaterialAlertDialogBuilder(this).apply {
+                setCancelable(false)
+                setMessage(getString(R.string.unsupported_xposed))
+                setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                    exitProcess(0)
+                }
+                //setNegativeButton(R.string.ignore, null)
+            }.show()
+        }
     }
 
     fun restart() {

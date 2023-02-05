@@ -21,7 +21,7 @@
  */
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.ui.adapter
+package com.luckyzyx.luckytool.utils.tools
 
 import android.content.Context
 import android.view.LayoutInflater

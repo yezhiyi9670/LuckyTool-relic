@@ -223,11 +223,11 @@
     <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
     <string name="AppStartupRelated">Запуск приложения</string>
     <string name="disable_splash_screen">Отключить заставку</string>
-    <!--MultiApp-->
-    <string name="MultiApp">Клонирование приложений</string>
-    <string name="multi_app_enable">Включить/отключить клонирование</string>
-    <string name="multi_app_enable_summary">Перезапустите, чтобы изменения вступили в силу</string>
-    <string name="loading">Загрузка</string>
+    <!--APPRelatedList-->
+    <string name="APPRelatedList">Список приложений</string>
+    <string name="enable_zoom_window">Включить список поддержки</string>
+    <string name="zoom_window_support_list">Пользовательское окно поддержки масштаба</string>
+    <string name="multi_app_enable">Включить список замены</string>
     <string name="multi_app_custom_list">Заменить список поддержки клонирования приложений</string>
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
     <!--AppInstallationRelated-->
@@ -300,7 +300,7 @@
     <string name="enable_increase_fps_limit_feature">Включить увеличение лимита FPS</string>
     <string name="enable_increase_fps_feature">Включить увеличение FPS</string>
     <string name="enable_optimise_power_feature">Включить оптимизацию питания</string>
-    <string name="enable_gt_mode_feature">Enable GT Mode</string>
+    <string name="enable_gt_mode_feature">Включить производительный режим</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -401,7 +401,7 @@
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <string name="high_brightness_mode">Режим высокой яркости</string>
     <string name="global_dc">Глобальный DC</string>
-    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
+    <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
     <!--Permission-->
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
 </resources>

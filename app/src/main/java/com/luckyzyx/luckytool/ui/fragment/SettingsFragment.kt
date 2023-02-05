@@ -20,7 +20,6 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.ui.adapter.DonateListAdapter
 import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.*
 import org.json.JSONArray
@@ -47,9 +46,8 @@ class SettingsFragment : ModulePreferenceFragment() {
 
     private fun writeBackupData(context: Context, uri: Uri) {
         val json = JSONObject()
-        val dataMapList =
-            context.backupAllPrefs(ModulePrefs, SettingsPrefs, OtherPrefs)
-        dataMapList.keys.forEach { prefs ->
+        val dataMapList = context.backupAllPrefs(ModulePrefs, SettingsPrefs, OtherPrefs)
+        dataMapList?.keys?.forEach { prefs ->
             val jsons = JSONObject()
             val data = dataMapList[prefs]
             data?.keys?.forEach { key ->

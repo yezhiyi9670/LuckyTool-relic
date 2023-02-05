@@ -15,6 +15,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [移除] 软件更新作用域  
 [优化] 触控采样率移动至磁贴  
 [添加] 游戏助手磁贴入口  
+[添加] 自定义小窗支持列表  
+[更改] 应用分身数据键名(需重新勾选需要分身的应用后重启)  
+[优化] 应用分身,小窗支持动态加载  
 [Fix] Game Assistant v8.2.1  
 [Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
 [Fix] Forced refresh rate self-starting problem  
@@ -23,7 +26,11 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Optimize] Delay of self-starting calls  
 [Remove] System ota update scope  
 [Optimize] Touch sampling rate moved to tiles  
-[Add] Game assistant tile entry
+[Add] Game assistant tile entry  
+[Add] Custom zoom window support list  
+[Change] App clone data key name (You need to re-check the app that need to be cloned and then
+restart)  
+[Optimize] App clone, zoom windows support dynamic loading
 
 ### v4.2.8
 

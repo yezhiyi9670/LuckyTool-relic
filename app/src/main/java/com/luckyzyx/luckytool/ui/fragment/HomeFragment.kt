@@ -343,14 +343,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun refreshmode(context: Context) {
-//        val list = arrayOf(getString(R.string.restart_scope),getString(R.string.reboot),getString(R.string.fast_reboot))
-        val list = arrayOf(getString(R.string.restart_scope), getString(R.string.reboot))
+        val list = arrayOf(getString(R.string.restart_scope),getString(R.string.reboot),getString(R.string.fast_reboot))
+//        val list = arrayOf(getString(R.string.restart_scope), getString(R.string.reboot))
         MaterialAlertDialogBuilder(context).setCancelable(true)
             .setItems(list) { _: DialogInterface?, i: Int ->
                 when (i) {
                     0 -> (activity as MainActivity).restartScope(context)
                     1 -> ShellUtils.execCommand("reboot", true)
-//                    2 -> ShellUtils.execCommand("killall zygote",true)
+                    2 -> ShellUtils.execCommand("killall zygote",true)
                 }
             }.show()
     }

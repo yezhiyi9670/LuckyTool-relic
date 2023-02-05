@@ -1085,21 +1085,22 @@ class Application : ModulePreferenceFragment() {
             )
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.MultiApp)
-                    key = "MultiApp"
+                    title = getString(R.string.APPRelatedList)
+                    key = "APPRelatedList"
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.multi_app_enable)
-                    summary = getString(R.string.multi_app_enable_summary)
-                    key = "multi_app_enable"
-                    setDefaultValue(false)
+                Preference(context).apply {
+                    title = getString(R.string.zoom_window_support_list)
+                    key = "zoom_window_support_list"
                     isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "android")
-                            .put(key = "multi_app_enable", value = newValue)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_application_to_zoomWindowFragment,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
                         true
                     }
                 }
@@ -1198,7 +1199,6 @@ class Application : ModulePreferenceFragment() {
                 }
             )
         }
-        findPreference<Preference>("multi_app_custom_list")?.dependency = "multi_app_enable"
     }
 }
 
