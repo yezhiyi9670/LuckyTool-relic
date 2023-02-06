@@ -3,8 +3,9 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
-### v4.2.9
+### v4.2.9_fix
 
+[更新] 捐赠名单  
 [适配] 游戏助手v8.2.1  
 [添加] 游戏插帧、提升帧率、优化功耗、GT模式  
 [修复] 强制刷新率自启调用问题  
@@ -18,6 +19,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 自定义小窗支持列表  
 [更改] 应用分身数据键名(需重新勾选需要分身的应用后重启)  
 [优化] 应用分身,小窗支持动态加载  
+[添加] LOG日志内容过滤  
+[修复] 应用小窗和分身持续加载问题  
+[Update] Donation list  
 [Fix] Game Assistant v8.2.1  
 [Add] Game frame insertion, frame rate increase, power consumption optimization, GT mode  
 [Fix] Forced refresh rate self-starting problem  
@@ -30,7 +34,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [Add] Custom zoom window support list  
 [Change] App clone data key name (You need to re-check the app that need to be cloned and then
 restart)  
-[Optimize] App clone, zoom windows support dynamic loading
+[Optimize] App clone, zoom windows support dynamic loading  
+[Add] LOG content filtering  
+[Fix] App widgets and avatars continue to load
 
 ### v4.2.8
 

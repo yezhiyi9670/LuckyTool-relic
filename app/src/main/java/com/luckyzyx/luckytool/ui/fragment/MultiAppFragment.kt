@@ -34,9 +34,7 @@ class MultiAppFragment : Fragment() {
     private var multiAppAdapter: MultiAppAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
@@ -64,10 +62,7 @@ class MultiAppFragment : Fragment() {
         binding.searchView.apply {
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
+                    s: CharSequence?, start: Int, count: Int, after: Int
                 ) {
                 }
 
@@ -95,6 +90,8 @@ class MultiAppFragment : Fragment() {
         binding.searchViewLayout.isEnabled = false
         binding.searchView.text = null
         appListAllDatas.clear()
+        val enableData =
+            requireActivity().getStringSet(ModulePrefs, "multi_app_custom_list", ArraySet())
         scopeLife {
             withIO {
                 val packageManager = requireActivity().packageManager
@@ -110,13 +107,7 @@ class MultiAppFragment : Fragment() {
                     )
                 }
             }
-            val enableData =
-                requireActivity().getStringSet(ModulePrefs, "multi_app_custom_list", ArraySet())
-            multiAppAdapter = MultiAppAdapter(
-                requireActivity(),
-                appListAllDatas,
-                enableData?.toList() as ArrayList<String>
-            )
+            multiAppAdapter = MultiAppAdapter(requireActivity(), appListAllDatas, enableData)
             binding.recyclerView.apply {
                 adapter = multiAppAdapter
                 layoutManager = LinearLayoutManager(context)
@@ -128,9 +119,7 @@ class MultiAppFragment : Fragment() {
 }
 
 class MultiAppAdapter(
-    val context: Context,
-    datas: ArrayList<AppInfo>,
-    enableData: ArrayList<String>
+    val context: Context, datas: ArrayList<AppInfo>, enableData: Set<String>?
 ) : RecyclerView.Adapter<MultiAppAdapter.ViewHolder>() {
 
     private var allDatas = ArrayList<AppInfo>()
@@ -140,7 +129,7 @@ class MultiAppAdapter(
 
     init {
         allDatas = datas
-        enabledMulti = enableData
+        enableData?.forEach { enabledMulti.add(it) }
         sortDatas()
         filterDatas = datas
     }
@@ -154,21 +143,16 @@ class MultiAppAdapter(
             enabledMulti.add(it.packName)
         }
         saveEnableList()
-        allDatas.apply {
-            sortData.forEach {
-                this.remove(it)
-                this.add(0, it)
-            }
+        sortData.forEach {
+            allDatas.remove(it)
+            allDatas.add(0, it)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding =
-            LayoutAppinfoSwitchItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = LayoutAppinfoSwitchItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
         return ViewHolder(binding)
     }
 
@@ -205,10 +189,9 @@ class MultiAppAdapter(
                 } else {
                     val filterlist = ArrayList<AppInfo>()
                     allDatas.forEach {
-                        if (
-                            it.appName.toString().lowercase()
-                                .contains(constraint.toString().lowercase()) ||
-                            it.packName.lowercase().contains(constraint.toString().lowercase())
+                        if (it.appName.toString().lowercase().contains(
+                                constraint.toString().lowercase()
+                            ) || it.packName.lowercase().contains(constraint.toString().lowercase())
                         ) {
                             filterlist.add(it)
                         }

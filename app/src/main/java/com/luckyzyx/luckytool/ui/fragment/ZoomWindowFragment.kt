@@ -95,6 +95,8 @@ class ZoomWindowFragment : Fragment() {
         binding.searchViewLayout.isEnabled = false
         binding.searchView.text = null
         appListAllDatas.clear()
+        val enableData =
+            requireActivity().getStringSet(ModulePrefs, "zoom_window_support_list", ArraySet())
         scopeLife {
             withIO {
                 val packageManager = requireActivity().packageManager
@@ -110,13 +112,7 @@ class ZoomWindowFragment : Fragment() {
                     )
                 }
             }
-            val enableData =
-                requireActivity().getStringSet(ModulePrefs, "zoom_window_support_list", ArraySet())
-            zoomWindowAdapter = ZoomWindowAdapter(
-                requireActivity(),
-                appListAllDatas,
-                enableData?.toList() as ArrayList<String>
-            )
+            zoomWindowAdapter = ZoomWindowAdapter(requireActivity(), appListAllDatas, enableData)
             binding.recyclerView.apply {
                 adapter = zoomWindowAdapter
                 layoutManager = LinearLayoutManager(context)
@@ -130,7 +126,7 @@ class ZoomWindowFragment : Fragment() {
 class ZoomWindowAdapter(
     val context: Context,
     datas: ArrayList<AppInfo>,
-    enableData: ArrayList<String>
+    enableData: Set<String>?
 ) :
     RecyclerView.Adapter<ZoomWindowAdapter.ViewHolder>() {
 
@@ -141,7 +137,7 @@ class ZoomWindowAdapter(
 
     init {
         allDatas = datas
-        enabledMulti = enableData
+        enableData?.forEach { enabledMulti.add(it) }
         sortDatas()
         filterDatas = datas
     }
@@ -155,11 +151,9 @@ class ZoomWindowAdapter(
             enabledMulti.add(it.packName)
         }
         saveEnableList()
-        allDatas.apply {
-            sortData.forEach {
-                this.remove(it)
-                this.add(0, it)
-            }
+        sortData.forEach {
+            allDatas.remove(it)
+            allDatas.add(0, it)
         }
     }
 

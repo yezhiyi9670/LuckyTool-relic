@@ -11,9 +11,9 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 7010,
-      "versionName": "4.2.9",
-      "outputFile": "LuckyTool_v4.2.9(7010).apk"
+      "versionCode": 7023,
+      "versionName": "4.2.9_fix",
+      "outputFile": "LuckyTool_v4.2.9_fix(7023).apk"
     }
   ],
   "elementType": "File"

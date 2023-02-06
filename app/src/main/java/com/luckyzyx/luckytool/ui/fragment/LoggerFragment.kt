@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import android.widget.Filter
 import android.widget.ImageView
@@ -18,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.log.YukiLoggerData
@@ -35,12 +38,10 @@ import java.util.*
 class LoggerFragment : Fragment() {
 
     private lateinit var binding: FragmentLogsBinding
-
     private var listData = ArrayList<YukiLoggerData>()
-
     private var logInfoViewAdapter: LogInfoViewAdapter? = null
-
     private var fileName: String = ""
+    private var filterString = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -97,13 +98,13 @@ class LoggerFragment : Fragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
-//        menu.add(0, 3, 0, "filter").apply {
-//            setIcon(R.drawable.baseline_filter_list_24)
-//            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-//            if (isNightMode(resources.configuration)) {
-//                iconTintList = ColorStateList.valueOf(Color.WHITE)
-//            }
-//        }
+        menu.add(0, 3, 0, "filter").apply {
+            setIcon(R.drawable.baseline_filter_list_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -113,7 +114,37 @@ class LoggerFragment : Fragment() {
             saveFile(fileName)
         }
         if (item.itemId == 3) {
-            logInfoViewAdapter?.getFilter?.filter("")
+            val dialog = MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
+                setTitle("输入要过滤的内容")
+                setView(R.layout.layout_log_filter_dialog)
+                setPositiveButton(android.R.string.ok) { _, _ ->
+                    logInfoViewAdapter?.getFilter?.filter(filterString)
+                }
+                setNeutralButton(android.R.string.cancel, null)
+            }.show()
+            dialog.findViewById<TextInputEditText>(R.id.log_filter)?.apply {
+                setText(filterString)
+                addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        filterString = s.toString()
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {}
+                })
+            }
         }
         return super.onOptionsItemSelected(item)
     }
