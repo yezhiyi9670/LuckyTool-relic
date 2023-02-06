@@ -403,6 +403,7 @@
     <string name="log_save_failed">LOG Saved Failed!</string>
     <string name="log_data_is_empty">LOG Data is empty!</string>
     <string name="log_no_data">No abnormal data</string>
+    <string name="log_filter_title">Enter what to filter</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
     <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>

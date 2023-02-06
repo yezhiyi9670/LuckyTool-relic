@@ -395,6 +395,7 @@
     <string name="log_save_failed">Nhật ký lưu thất bại!</string>
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
+    <string name="log_filter_title">Nhập nội dung cần lọc</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>

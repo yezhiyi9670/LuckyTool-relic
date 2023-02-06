@@ -115,7 +115,7 @@ class LoggerFragment : Fragment() {
         }
         if (item.itemId == 3) {
             val dialog = MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
-                setTitle("输入要过滤的内容")
+                setTitle(getString(R.string.log_filter_title))
                 setView(R.layout.layout_log_filter_dialog)
                 setPositiveButton(android.R.string.ok) { _, _ ->
                     logInfoViewAdapter?.getFilter?.filter(filterString)

@@ -57,7 +57,13 @@ open class MainActivity : AppCompatActivity() {
         initDynamicShortcuts()
 
         checkModuleActive(isStart)
+        checkSu(isStart)
         checkPermissions(isStart)
+    }
+
+    private fun checkSu(isStart: Boolean) {
+        if (!isStart) return
+        ShellUtils.checkRootPermission()
     }
 
     private fun checkPermissions(isStart: Boolean) {

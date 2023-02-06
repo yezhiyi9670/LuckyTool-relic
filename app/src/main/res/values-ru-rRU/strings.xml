@@ -396,6 +396,7 @@
     <string name="log_save_failed">Лог не сохранён!</string>
     <string name="log_data_is_empty">Пустой лог!</string>
     <string name="log_no_data">Нет аномальных данных</string>
+    <string name="log_filter_title">Введите фильтр</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>

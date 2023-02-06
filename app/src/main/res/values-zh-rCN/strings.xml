@@ -395,6 +395,7 @@
     <string name="log_save_failed">LOG 保存失败！</string>
     <string name="log_data_is_empty">LOG数据为空!</string>
     <string name="log_no_data">无异常数据</string>
+    <string name="log_filter_title">输入要过滤的内容</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">增加触摸采样率</string>
     <string name="increase_touch_sampling_rate_summary">开启功能后自动执行一次，此后将在解锁屏幕后自动触发</string>

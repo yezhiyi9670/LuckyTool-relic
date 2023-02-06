@@ -222,6 +222,9 @@ class DonateData {
             add(DonateInfo("加两个卤蛋",5.0,donateDetails(
                 DonateChannelInfo("20230205-032712",CWC,5.0,"10000499012023020501552678244628")
             )))
+            add(DonateInfo("Zhang_ZL",10.0,donateDetails(
+                DonateChannelInfo("20230206-134646",CWC,10.0,"10000499012023020601408947796566")
+            )))
         }
     }
 

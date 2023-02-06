@@ -3,6 +3,11 @@
 出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
 If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
 
+### v4.3.0
+
+[更新] 捐赠名单  
+[优化] DC监听逻辑
+
 ### v4.2.9_fix
 
 [更新] 捐赠名单  

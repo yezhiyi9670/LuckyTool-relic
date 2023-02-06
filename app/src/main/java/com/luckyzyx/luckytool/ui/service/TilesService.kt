@@ -35,8 +35,7 @@ class GameAssistant : TileService() {
         val tile = qsTile
         when (tile.state) {
             Tile.STATE_INACTIVE -> ShellUtils.execCommand(
-                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
-                true
+                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
             Tile.STATE_UNAVAILABLE -> toast(getString(R.string.game_assistant_tile_tips))
         }
@@ -62,8 +61,7 @@ class ShowFPS : TileService() {
 
     private fun showFPS(showFPS: Boolean) {
         ShellUtils.execCommand(
-            "service call SurfaceFlinger 1034 i32 ${if (showFPS) 1 else 0}",
-            true
+            "service call SurfaceFlinger 1034 i32 ${if (showFPS) 1 else 0}", true
         )
     }
 }
@@ -74,10 +72,7 @@ class HighBrightness : TileService() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
             if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> {
-                    tile.state = Tile.STATE_ACTIVE
-                    putBoolean(SettingsPrefs, "high_brightness_mode", true)
-                }
+                "1" -> tile.state = Tile.STATE_ACTIVE
             }
             tile.updateTile()
         }
@@ -105,27 +100,34 @@ class HighBrightness : TileService() {
 class GlobalDC : TileService() {
     override fun onStartListening() {
         val tile = qsTile
-        ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
-            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
-                "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> {
-                    tile.state = Tile.STATE_ACTIVE
-                    putBoolean(SettingsPrefs, "global_dc_mode", true)
-                }
-            }
-            tile.updateTile()
+        var oppoExist = true
+        var oplusExist = true
+        var isOppo = false
+        var isOplus = false
+        ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true).apply {
+            if (result == 0 && successMsg == "1") isOppo = true else if (result == 1) oppoExist =
+                false
         }
+        ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
+            if (result == 0 && successMsg == "1") isOplus = true else if (result == 1) oplusExist =
+                false
+        }
+        tile.state =
+            if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        tile.updateTile()
     }
 
     override fun onClick() {
         val tile = qsTile
         when (tile.state) {
             Tile.STATE_INACTIVE -> {
+                ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
                 tile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
+                ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 0", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
                 tile.state = Tile.STATE_INACTIVE
@@ -141,14 +143,10 @@ class TouchSamplingRate : TileService() {
         val tile = qsTile
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
             if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(
-                0,
-                1
+                0, 1
             )) {
                 "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> {
-                    tile.state = Tile.STATE_ACTIVE
-                    putBoolean(SettingsPrefs, "touch_sampling_rate", true)
-                }
+                "1" -> tile.state = Tile.STATE_ACTIVE
             }
             tile.updateTile()
         }

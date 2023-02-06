@@ -395,6 +395,7 @@
     <string name="log_save_failed">Zapis logów się nie powiódł!</string>
     <string name="log_data_is_empty">Logi są puste!</string>
     <string name="log_no_data">Brak problemów</string>
+    <string name="log_filter_title">Enter what to filter</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
     <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
