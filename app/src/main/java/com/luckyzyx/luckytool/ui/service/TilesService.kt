@@ -143,11 +143,12 @@ class GlobalDC : TileService() {
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
-            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(
-                0, 1
-            )) {
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
+            else when (successMsg.substring(0, 1)) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
+                else -> qsTile.state = Tile.STATE_UNAVAILABLE
             }
             qsTile.updateTile()
         }
