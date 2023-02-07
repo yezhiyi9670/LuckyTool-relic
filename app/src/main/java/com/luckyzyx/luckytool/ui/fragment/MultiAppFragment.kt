@@ -213,6 +213,7 @@ class MultiAppAdapter(
     private fun saveEnableList() {
         context.putStringSet(ModulePrefs, "multi_app_custom_list", enabledMulti.toSet())
         context.dataChannel("android").put("multi_app_custom_list", enabledMulti.toSet())
+        refreshDatas()
     }
 
     @SuppressLint("NotifyDataSetChanged")

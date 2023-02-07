@@ -1,7 +1,13 @@
 package com.luckyzyx.luckytool.ui.service
 
+import android.content.ComponentName
+import android.content.Intent
+import android.content.ServiceConnection
+import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.telephony.SubscriptionManager
+import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.checkPackName
 import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
@@ -10,6 +16,7 @@ import com.luckyzyx.luckytool.utils.data.toast
 import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
+import com.topjohnwu.superuser.ipc.RootService
 
 class ChargingTest : TileService() {
     override fun onClick() {
@@ -25,15 +32,13 @@ class ProcessManager : TileService() {
 
 class GameAssistant : TileService() {
     override fun onStartListening() {
-        val tile = qsTile
-        if (!applicationContext.checkPackName("com.oplus.games")) tile.state =
-            Tile.STATE_UNAVAILABLE else tile.state = Tile.STATE_INACTIVE
-        tile.updateTile()
+        if (!checkPackName("com.oplus.games")) qsTile.state =
+            Tile.STATE_UNAVAILABLE else qsTile.state = Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 
     override fun onClick() {
-        val tile = qsTile
-        when (tile.state) {
+        when (qsTile.state) {
             Tile.STATE_INACTIVE -> ShellUtils.execCommand(
                 "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
@@ -44,19 +49,18 @@ class GameAssistant : TileService() {
 
 class ShowFPS : TileService() {
     override fun onClick() {
-        val tile = qsTile
-        when (tile.state) {
+        when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
                 showFPS(true)
-                tile.state = Tile.STATE_ACTIVE
+                qsTile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 showFPS(false)
-                tile.state = Tile.STATE_INACTIVE
+                qsTile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
-        tile.updateTile()
+        qsTile.updateTile()
     }
 
     private fun showFPS(showFPS: Boolean) {
@@ -68,38 +72,36 @@ class ShowFPS : TileService() {
 
 class HighBrightness : TileService() {
     override fun onStartListening() {
-        val tile = qsTile
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
-            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
-                "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> tile.state = Tile.STATE_ACTIVE
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
+                "0" -> qsTile.state = Tile.STATE_INACTIVE
+                "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
-            tile.updateTile()
+            qsTile.updateTile()
         }
     }
 
     override fun onClick() {
-        val tile = qsTile
-        when (tile.state) {
+        when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true)
                 putBoolean(SettingsPrefs, "high_brightness_mode", true)
-                tile.state = Tile.STATE_ACTIVE
+                qsTile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
                 putBoolean(SettingsPrefs, "high_brightness_mode", false)
-                tile.state = Tile.STATE_INACTIVE
+                qsTile.state = Tile.STATE_INACTIVE
+                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
-        tile.updateTile()
+        qsTile.updateTile()
     }
 }
 
 class GlobalDC : TileService() {
     override fun onStartListening() {
-        val tile = qsTile
         var oppoExist = true
         var oplusExist = true
         var isOppo = false
@@ -112,71 +114,115 @@ class GlobalDC : TileService() {
             if (result == 0 && successMsg == "1") isOplus = true else if (result == 1) oplusExist =
                 false
         }
-        tile.state =
+        qsTile.state =
             if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        tile.updateTile()
+        qsTile.updateTile()
     }
 
     override fun onClick() {
-        val tile = qsTile
-        when (tile.state) {
+        when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
-                tile.state = Tile.STATE_ACTIVE
+                qsTile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 0", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
-                tile.state = Tile.STATE_INACTIVE
+                qsTile.state = Tile.STATE_INACTIVE
+                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
-        tile.updateTile()
+        qsTile.updateTile()
     }
 }
 
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
-        val tile = qsTile
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
-            if (result == 1) tile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE else when (successMsg.substring(
                 0, 1
             )) {
-                "0" -> tile.state = Tile.STATE_INACTIVE
-                "1" -> tile.state = Tile.STATE_ACTIVE
+                "0" -> qsTile.state = Tile.STATE_INACTIVE
+                "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
-            tile.updateTile()
+            qsTile.updateTile()
         }
     }
 
     override fun onClick() {
-        val tile = qsTile
-        when (tile.state) {
+        when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true)
                 putBoolean(SettingsPrefs, "touch_sampling_rate", true)
-                tile.state = Tile.STATE_ACTIVE
+                qsTile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 0", true)
                 putBoolean(SettingsPrefs, "touch_sampling_rate", false)
-                tile.state = Tile.STATE_INACTIVE
+                qsTile.state = Tile.STATE_INACTIVE
+                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
-        tile.updateTile()
+        qsTile.updateTile()
     }
 }
 
 class FiveG : TileService() {
+    private var iFiveGController: IFiveGController? = null
     override fun onStartListening() {
-
+        refreshData()
     }
 
-    override fun onClick() {
+    override fun onClick() = startFiveGController {
+        val subId = SubscriptionManager.getDefaultDataSubscriptionId()
+        if (qsTile.state == Tile.STATE_INACTIVE) {
+            it?.setFiveGStatus(subId, true)
+        } else if (qsTile.state == Tile.STATE_ACTIVE) {
+            it?.setFiveGStatus(subId, false)
+        }
+        refreshData()
+    }
 
+    private fun startFiveGController(controller: (IFiveGController?) -> Unit) {
+        if (iFiveGController != null) {
+            controller(iFiveGController)
+        } else {
+            RootService.bind(
+                Intent(this, FiveGControllerService::class.java), object : ServiceConnection {
+                    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                        iFiveGController = IFiveGController.Stub.asInterface(service)
+                        controller(iFiveGController)
+                    }
+
+                    override fun onServiceDisconnected(name: ComponentName?) {
+
+                    }
+                }
+            )
+        }
+    }
+
+    private fun refreshData() = startFiveGController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            qsTile.updateTile()
+            return@startFiveGController
+        }
+        val subId = SubscriptionManager.getDefaultDataSubscriptionId()
+        qsTile.state = if (!it.checkCompatibility(subId)) {
+            Tile.STATE_UNAVAILABLE
+        } else {
+            if (it.getFiveGStatus(subId)) {
+                Tile.STATE_ACTIVE
+            } else {
+                Tile.STATE_INACTIVE
+            }
+        }
+        qsTile.updateTile()
     }
 }

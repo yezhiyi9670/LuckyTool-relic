@@ -232,6 +232,7 @@
     <string name="APPRelatedList">App Related List</string>
     <string name="enable_zoom_window">Enable support list</string>
     <string name="zoom_window_support_list">Custom Zoom Window Support List</string>
+    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
     <string name="multi_app_enable">Enable replacement list</string>
     <string name="multi_app_custom_list">Replace App Clone Support List</string>
     <string name="multi_app_custom_list_summary">After the function is turned on, the original list of app clones will be replaced by this list, too many will cause lag</string>
@@ -404,12 +405,14 @@
     <string name="log_data_is_empty">LOG Data is empty!</string>
     <string name="log_no_data">No abnormal data</string>
     <string name="log_filter_title">Enter what to filter</string>
+    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
     <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="high_brightness_mode">High Brightness Mode</string>
     <string name="global_dc">Global DC</string>
     <string name="game_assistant_tile_tips">Game assistant not detected!</string>
+    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
 

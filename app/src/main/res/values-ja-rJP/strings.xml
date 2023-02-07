@@ -226,6 +226,7 @@
     <string name="APPRelatedList">アプリ関連のリスト</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
     <string name="zoom_window_support_list">カスタムズームウインドウのサポートリスト</string>
+    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
     <string name="multi_app_enable">リストの置き換えを有効化</string>
     <string name="multi_app_custom_list">アプリクローン対応リストを置き換え</string>
     <string name="multi_app_custom_list_summary">機能を有効化後、アプリクローンの元のリストは新しいリストに置き換えられます。リストの項目が多すぎるとラグが発生します</string>
@@ -396,12 +397,14 @@
     <string name="log_data_is_empty">ログデータは空です!</string>
     <string name="log_no_data">No abnormal data</string>
     <string name="log_filter_title">Enter what to filter</string>
+    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
     <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="high_brightness_mode">高輝度モード</string>
     <string name="global_dc">グローバルDC</string>
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
+    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
 </resources>

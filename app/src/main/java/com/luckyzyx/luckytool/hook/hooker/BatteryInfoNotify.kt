@@ -13,7 +13,6 @@ import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.formatDouble
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
-import java.util.*
 import kotlin.math.abs
 
 object BatteryInfoNotify : YukiBaseHooker() {
@@ -37,13 +36,11 @@ object BatteryInfoNotify : YukiBaseHooker() {
     private var chargeWattage: Int = 0
     private var ppsMode: Int = 0
     override fun onHook() {
-        val showInfo = prefs(ModulePrefs).getBoolean("battery_information_show", false)
-        if (!showInfo) return
+        var showInfo = prefs(ModulePrefs).getBoolean("battery_information_show", false)
+        dataChannel.wait<Boolean>(key = "battery_information_show") { showInfo = it }
         var showCharger =
             prefs(ModulePrefs).getBoolean("battery_information_show_charge", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show_charge") {
-            showCharger = it
-        }
+        dataChannel.wait<Boolean>(key = "battery_information_show_charge") { showCharger = it }
         var showUpdateTime =
             prefs(ModulePrefs).getBoolean("battery_information_show_update_time", false)
         dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
@@ -53,11 +50,19 @@ object BatteryInfoNotify : YukiBaseHooker() {
             onCreate { injectModuleAppResources() }
             //监听电池信息
             registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
+                if (!showInfo) {
+                    clearNotification(context)
+                    return@registerReceiver
+                }
                 initInfo(context, intent)
                 sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
             //监听OPLUS电池信息
             registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
+                if (!showInfo) {
+                    clearNotification(context)
+                    return@registerReceiver
+                }
                 initOplusInfo(intent)
                 sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
@@ -225,7 +230,6 @@ object BatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.sendNotification(context, 112233, notify)
     }
 
-    @Suppress("unused")
     private fun clearNotification(context: Context) {
         NotifyUtils.clearNotification(context, 112233)
     }

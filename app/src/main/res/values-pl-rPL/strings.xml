@@ -226,6 +226,7 @@
     <string name="APPRelatedList">App Related List</string>
     <string name="enable_zoom_window">Enable support list</string>
     <string name="zoom_window_support_list">Custom Zoom Window Support List</string>
+    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
     <string name="multi_app_enable">Enable replacement list</string>
     <string name="multi_app_custom_list">Zastąp listę obsługi klonowania aplikacji</string>
     <string name="multi_app_custom_list_summary">Oryginalna lista klonowania aplikacji zostanie zastąpiona</string>
@@ -396,12 +397,14 @@
     <string name="log_data_is_empty">Logi są puste!</string>
     <string name="log_no_data">Brak problemów</string>
     <string name="log_filter_title">Enter what to filter</string>
+    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
     <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
     <string name="high_brightness_mode">Tryb wysokiej jasności</string>
     <string name="global_dc">Global DC</string>
     <string name="game_assistant_tile_tips">Game assistant not detected!</string>
+    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">Aby zapewnić normalne korzystanie z modułu, upewnij się, że masz uprawnienia do modułu!</string>
 </resources>

@@ -18,9 +18,9 @@ object MultiApp : YukiBaseHooker() {
                     name = "getAllowedPkgList"
                     returnType = ListClass
                 }
-                afterHook {
-                    if (!isEnable) return@afterHook
-                    result = enabledMulti.toList()
+                beforeHook {
+                    if (!isEnable) return@beforeHook
+                    result = enabledMulti.takeIf { e -> e.isNotEmpty() }?.toList() ?: return@beforeHook
                 }
             }
         }

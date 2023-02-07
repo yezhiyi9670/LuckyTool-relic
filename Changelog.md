@@ -6,7 +6,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 ### v4.3.0
 
 [更新] 捐赠名单  
-[优化] DC监听逻辑
+[添加] 5G磁贴开关  
+[添加] 5G磁贴开放源代码详情  
+[更改] 自启功能调用逻辑与提示
 
 ### v4.2.9_fix
 

@@ -11,7 +11,6 @@ import com.luckyzyx.luckytool.utils.data.jumpRunningApp
 import com.luckyzyx.luckytool.utils.data.toast
 import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getBoolean
 import com.luckyzyx.luckytool.utils.tools.getInt
 
 @Suppress("DEPRECATION")
@@ -28,7 +27,7 @@ class AliveActivity : Activity() {
         window?.navigationBarColor = getColor(R.color.transparent)
         intent.extras?.apply {
             //自启功能相关
-            if (getBoolean("fps")) {
+            if (getBoolean("fps", false)) {
                 val fpsCur = getInt(SettingsPrefs, "current_fps", -1)
                 if (fpsCur != -1) ShellUtils.execCommand(
                     "service call SurfaceFlinger 1035 i32 $fpsCur",
@@ -39,20 +38,20 @@ class AliveActivity : Activity() {
                 }
             }
             //触控采样率相关
-            if (getBoolean(SettingsPrefs, "touch_sampling_rate", false)) {
+            if (getBoolean("touchSamplingRate", false)) {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true, true)
                     .apply {
                         if (result == 1) toast("touch sampling rate error!")
                     }
             }
             //高亮度模式
-            if (getBoolean(SettingsPrefs, "high_brightness_mode", false)) {
+            if (getBoolean("highBrightness", false)) {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true, true).apply {
                     if (result == 1) toast("high brightness mode error!")
                 }
             }
             //全局DC模式
-            if (getBoolean(SettingsPrefs, "global_dc_mode", false)) {
+            if (getBoolean("globalDC", false)) {
                 var oppoError = false
                 var oplusError = false
                 ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
@@ -66,7 +65,7 @@ class AliveActivity : Activity() {
                 if (oppoError && oplusError) toast("global dc mode error!")
             }
             //快捷方式相关
-            when (getString("Shortcut")) {
+            when (getString("Shortcut","null")) {
                 "lsposed" -> ShellUtils.execCommand(
                     "am start 'intent:#Intent;action=android.intent.action.MAIN;category=org.lsposed.manager.LAUNCH_MANAGER;launchFlags=0x80000;component=com.android.shell/.BugreportWarningActivity;end'",
                     true

@@ -828,6 +828,11 @@ class StatusBarBatteryInfo : ModulePreferenceFragment() {
                     key = "battery_information_show"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                            .put(key = "battery_information_show", value = newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1093,6 +1098,7 @@ class Application : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.zoom_window_support_list)
+                    summary = getString(R.string.zoom_window_support_list_summary)
                     key = "zoom_window_support_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {

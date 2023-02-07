@@ -24,7 +24,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.2.9_fix"
+        versionName "4.3.0_beta"
     }
 
     buildTypes {
@@ -107,7 +107,9 @@ dependencies {
     implementation 'com.github.liangjingkanji:Net:3.5.2'
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
-
+    //libsu
+    implementation "com.github.topjohnwu.libsu:core:5.0.4"
+    implementation "com.github.topjohnwu.libsu:service:5.0.4"
 }
 
 def getVersionCode() {

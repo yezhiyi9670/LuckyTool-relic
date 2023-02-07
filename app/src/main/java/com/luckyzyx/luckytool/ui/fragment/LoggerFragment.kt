@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
+import com.highcapable.yukihookapi.annotation.CauseProblemsApi
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.R
@@ -59,16 +61,17 @@ class LoggerFragment : Fragment() {
             adapter = logInfoViewAdapter
             layoutManager = LinearLayoutManager(context)
         }
+
         if (listData.isEmpty()) loadLogger()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    @OptIn(CauseProblemsApi::class)
     private fun loadLogger() {
         listData.clear()
         requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
-            requireActivity().dataChannel(scope).obtainLoggerInMemoryData { its ->
-                its.takeIf { e -> e.isNotEmpty() }?.forEach { e -> listData.add(e) }
-                binding.loglistView.adapter?.notifyDataSetChanged()
+            requireActivity().dataChannel(scope).allowSendTooLargeData().obtainLoggerInMemoryData { its ->
+                its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
+                logInfoViewAdapter?.refreshDatas()
                 binding.loglistView.isVisible = listData.isNotEmpty()
                 binding.logNodataView.apply {
                     text = getString(R.string.log_no_data)
@@ -122,6 +125,10 @@ class LoggerFragment : Fragment() {
                 }
                 setNeutralButton(android.R.string.cancel, null)
             }.show()
+            dialog.findViewById<TextInputLayout>(R.id.log_filter_layout)?.apply {
+                hint = getString(R.string.log_filter_layout_hint)
+                isCounterEnabled = true
+            }
             dialog.findViewById<TextInputEditText>(R.id.log_filter)?.apply {
                 setText(filterString)
                 addTextChangedListener(object : TextWatcher {

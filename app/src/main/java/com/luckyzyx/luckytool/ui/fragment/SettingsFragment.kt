@@ -502,6 +502,17 @@ class SourceFragment : ModulePreferenceFragment() {
                     )
                 }
             )
+            addPreference(
+                Preference(context).apply {
+                    title = "FivegTile"
+                    summary = "libxzr , MIT license"
+                    isIconSpaceReserved = false
+                    intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://github.com/libxzr/FivegTile")
+                    )
+                }
+            )
         }
     }
 }

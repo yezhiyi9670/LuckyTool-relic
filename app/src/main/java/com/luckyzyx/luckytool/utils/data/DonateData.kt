@@ -225,6 +225,12 @@ class DonateData {
             add(DonateInfo("Zhang_ZL",10.0,donateDetails(
                 DonateChannelInfo("20230206-134646",CWC,10.0,"10000499012023020601408947796566")
             )))
+            add(DonateInfo("容声",11.11,donateDetails(
+                DonateChannelInfo("20230206-180607",CWC,11.11,"10000499012023020600302469760124")
+            )))
+            add(DonateInfo("奥利奥",88.88,donateDetails(
+                DonateChannelInfo("20230207-074804",CQQ,88.88,"101000026901302302071390154975")
+            )))
         }
     }
 

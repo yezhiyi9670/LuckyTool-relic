@@ -226,6 +226,7 @@
     <string name="APPRelatedList">Danh sách ứng dụng liên quan</string>
     <string name="enable_zoom_window">Bật danh sách hỗ trợ</string>
     <string name="zoom_window_support_list">Danh sách hỗ trợ cửa sổ thu phóng tùy chỉnh</string>
+    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
     <string name="multi_app_enable">Bật danh sách thay thế</string>
     <string name="multi_app_custom_list">Thay thế danh sách hỗ trợ bản sao ứng dụng</string>
     <string name="multi_app_custom_list_summary">Sau khi chức năng được bật, danh sách ứng dụng clone ban đầu sẽ được thay thế bằng danh sách này, quá nhiều sẽ gây lag</string>
@@ -396,12 +397,14 @@
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <string name="log_filter_title">Nhập nội dung cần lọc</string>
+    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
     <string name="global_dc">DC toàn cầu</string>
     <string name="game_assistant_tile_tips">Không phát hiện trợ lý trò chơi!</string>
+    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
 </resources>
