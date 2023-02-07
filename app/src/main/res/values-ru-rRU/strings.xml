@@ -302,6 +302,7 @@
     <string name="enable_increase_fps_feature">Включить увеличение FPS</string>
     <string name="enable_optimise_power_feature">Включить оптимизацию питания</string>
     <string name="enable_gt_mode_feature">Включить производительный режим</string>
+    <string name="enable_super_resolution_feature">Enable super resolution</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -405,7 +406,7 @@
     <string name="high_brightness_mode">Режим высокой яркости</string>
     <string name="global_dc">Глобальный DC</string>
     <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
-    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
+    <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
 </resources>

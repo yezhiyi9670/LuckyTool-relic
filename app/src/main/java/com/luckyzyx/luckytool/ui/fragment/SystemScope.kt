@@ -1601,6 +1601,14 @@ class OplusGames : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_super_resolution_feature)
+                    key = "enable_super_resolution_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

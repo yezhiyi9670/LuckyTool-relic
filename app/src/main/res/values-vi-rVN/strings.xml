@@ -301,6 +301,7 @@
     <string name="enable_increase_fps_feature">Bật tăng fps</string>
     <string name="enable_optimise_power_feature">Bật tối ưu hóa sức mạnh</string>
     <string name="enable_gt_mode_feature">Bật chế độ GT</string>
+    <string name="enable_super_resolution_feature">Enable super resolution</string>
     <!--CloudService-->
     <string name="remove_network_limit">Xóa giới hạn mạng dữ liệu</string>
     <string name="remove_network_limit_summary">Xóa giới hạn sao lưu/khôi phục không thể sử dụng dữ liệu di động</string>

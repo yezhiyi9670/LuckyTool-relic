@@ -301,6 +301,7 @@
     <string name="enable_increase_fps_feature">Enable increase fps</string>
     <string name="enable_optimise_power_feature">Enable optimized power</string>
     <string name="enable_gt_mode_feature">Enable GT Mode</string>
+    <string name="enable_super_resolution_feature">Enable super resolution</string>
     <!--CloudService-->
     <string name="remove_network_limit">Remove Data Network Limit</string>
     <string name="remove_network_limit_summary">Remove backup/restore limitations that cannot use mobile data</string>

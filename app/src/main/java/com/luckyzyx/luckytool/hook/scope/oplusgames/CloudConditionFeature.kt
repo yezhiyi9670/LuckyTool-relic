@@ -15,6 +15,9 @@ object CloudConditionFeature : YukiBaseHooker() {
         val powerFeature = prefs(ModulePrefs).getBoolean("enable_optimise_power_feature", false)
         //Source Feats
         val gtMode = prefs(ModulePrefs).getBoolean("enable_gt_mode_feature", false)
+        //Source SuperResolutionHelper
+        val superResolution =
+            prefs(ModulePrefs).getBoolean("enable_super_resolution_feature", false)
 
         //Source OplusFeatureHelper
         findClass("com.oplus.addon.OplusFeatureHelper\$Companion").hook {
@@ -37,6 +40,8 @@ object CloudConditionFeature : YukiBaseHooker() {
                         "oplus.gpu.controlpanel.support" -> if (gpuControl) resultTrue()
                         //GT模式 -> isSupportGtMode
                         "oplus.software.support.gt.mode" -> if (gtMode) resultTrue()
+                        //超级分辨率 -> issupportSupperResolution
+                        "oplus.software.display.game.sr_enable" -> if (superResolution) resultTrue()
                     }
                 }
             }
@@ -48,6 +53,7 @@ object CloudConditionFeature : YukiBaseHooker() {
                 method {
                     param(StringClass, MapClass, IntType, AnyClass)
                     paramCount = 4
+                    returnType = BooleanType
                 }
                 beforeHook {
                     when (args(0).string()) {
@@ -59,6 +65,19 @@ object CloudConditionFeature : YukiBaseHooker() {
                         "optimise_power" -> if (powerFeature) resultTrue()
                         //GPU控制器云控 -> isCloudSupportGpuControlPanel
                         "gpu_control_panel" -> if (gpuControl) resultTrue()
+                    }
+                }
+            }
+            injectMember {
+                method {
+                    param(StringClass, MapClass)
+                    paramCount = 2
+                    returnType = BooleanType
+                }
+                beforeHook {
+                    when (args(0).string()) {
+                        //超级分辨率云控 -> cloudSRSupport
+                        "super_resolution_config" -> if (superResolution) resultTrue()
                     }
                 }
             }

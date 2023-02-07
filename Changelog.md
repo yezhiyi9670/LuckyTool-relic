@@ -9,7 +9,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 5G磁贴开关  
 [添加] 5G磁贴开放源代码详情  
 [更改] 自启功能调用逻辑与提示  
-[优化] 触控刷新率异常处理
+[优化] 触控刷新率异常处理  
+[添加] 游戏助手超级分辨率
 
 ### v4.2.9_fix
 
