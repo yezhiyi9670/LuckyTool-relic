@@ -49,7 +49,7 @@ object CustomClock : YukiBaseHooker() {
                     context = args(0).cast<Context>()
                     val clockView = instance<TextView>()
                     clockView.apply {
-                        if (this.resources.getResourceEntryName(id) != "clock") return@afterHook
+                        if (resources.getResourceEntryName(id) != "clock") return@afterHook
                         isSingleLine = false
                         gravity = Gravity.CENTER
                         if (isDoubleRow) {
@@ -115,23 +115,12 @@ object CustomClock : YukiBaseHooker() {
                     if (SDK == A11) name = "onConfigChanged"
                     if (SDK > A11) name = "onConfigurationChanged"
                 }
-                if (isDoubleRow && doubleRowFontSize != 0) {
-                    replaceUnit {
-                        instance<TextView>().apply {
-                            typeface = field {
-                                name = "defaultFont"
-                                type = TypefaceClass
-                            }.get(instance).cast<Typeface>()
-                        }
-                    }
-                } else if (!isDoubleRow && singleRowFontSize != 0) {
-                    replaceUnit {
-                        instance<TextView>().apply {
-                            typeface = field {
-                                name = "defaultFont"
-                                type = TypefaceClass
-                            }.get(instance).cast<Typeface>()
-                        }
+                replaceUnit {
+                    instance<TextView>().apply {
+                        typeface = field {
+                            name = "defaultFont"
+                            type = TypefaceClass
+                        }.get(instance).cast<Typeface>()
                     }
                 }
             }

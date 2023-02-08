@@ -13,6 +13,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 游戏助手超级分辨率  
 [移除] 移除失效的DPI功能  
 [添加] 自定义暗色模式支持列表  
+[修复] 电池通知异常崩溃问题
 
 ### v4.2.9_fix
 

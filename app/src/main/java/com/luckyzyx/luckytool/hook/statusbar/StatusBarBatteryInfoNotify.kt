@@ -54,6 +54,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
                     clearNotification(context)
                     return@registerReceiver
                 }
+                context.injectModuleAppResources()
                 initInfo(context, intent)
                 sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
@@ -63,6 +64,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
                     clearNotification(context)
                     return@registerReceiver
                 }
+                context.injectModuleAppResources()
                 initOplusInfo(intent)
                 sendNotification(context, showCharger && isCharging, showUpdateTime)
             }
