@@ -197,6 +197,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_application_to_darkModeFragment"
+                app:destination="@id/darkModeFragment"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/camera"
@@ -320,6 +327,10 @@
     <fragment
             android:id="@+id/zoomWindowFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.ZoomWindowFragment"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/darkModeFragment"
+            android:name="com.luckyzyx.luckytool.ui.fragment.DarkModeFragment"
             android:label="{title_label}" />
 
 </navigation>

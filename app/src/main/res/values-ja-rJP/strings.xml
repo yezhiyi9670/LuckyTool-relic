@@ -230,6 +230,7 @@
     <string name="multi_app_enable">リストの置き換えを有効化</string>
     <string name="multi_app_custom_list">アプリクローン対応リストを置き換え</string>
     <string name="multi_app_custom_list_summary">機能を有効化後、アプリクローンの元のリストは新しいリストに置き換えられます。リストの項目が多すぎるとラグが発生します</string>
+    <string name="dark_mode_support_list">Custom dark mode support list</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">アプリインストール関連</string>
     <string name="PackageInstaller_summary">コアパッチとの併用が必要です</string>

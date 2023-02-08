@@ -226,10 +226,11 @@
     <string name="APPRelatedList">Danh sách ứng dụng liên quan</string>
     <string name="enable_zoom_window">Bật danh sách hỗ trợ</string>
     <string name="zoom_window_support_list">Danh sách hỗ trợ cửa sổ thu phóng tùy chỉnh</string>
-    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
+    <string name="zoom_window_support_list_summary">Kích hoạt theo nhu cầu của bạn, nếu không sẽ có những vấn đề không thể khắc phục được</string>
     <string name="multi_app_enable">Bật danh sách thay thế</string>
     <string name="multi_app_custom_list">Thay thế danh sách hỗ trợ bản sao ứng dụng</string>
     <string name="multi_app_custom_list_summary">Sau khi chức năng được bật, danh sách ứng dụng clone ban đầu sẽ được thay thế bằng danh sách này, quá nhiều sẽ gây lag</string>
+    <string name="dark_mode_support_list">Custom dark mode support list</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Cài đặt ứng dụng</string>
     <string name="PackageInstaller_summary">Cần được sử dụng với bản vá lõi</string>
@@ -398,7 +399,7 @@
     <string name="log_data_is_empty">Không có dữ liệu nhật ký!</string>
     <string name="log_no_data">Không có dữ liệu bất thường</string>
     <string name="log_filter_title">Nhập nội dung cần lọc</string>
-    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
+    <string name="log_filter_layout_hint">Chẳng hạn như tên gói, nội dung, v.v.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>

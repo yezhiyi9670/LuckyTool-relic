@@ -1113,6 +1113,22 @@ class Application : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
+                    title = getString(R.string.dark_mode_support_list)
+                    summary = getString(R.string.zoom_window_support_list_summary)
+                    key = "dark_mode_support_list"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_application_to_darkModeFragment,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
                     title = getString(R.string.multi_app_custom_list)
                     summary = getString(R.string.multi_app_custom_list_summary)
                     key = "multi_app_custom_list"
@@ -1423,6 +1439,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "disable_dpi_reboot_recovery"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = false
                 }
             )
             addPreference(

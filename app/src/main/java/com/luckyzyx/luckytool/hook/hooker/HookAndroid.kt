@@ -44,5 +44,8 @@ object HookAndroid : YukiBaseHooker() {
 
         //缩放窗口
         loadHooker(ZoomWindow)
+
+        //暗色模式服务
+        loadHooker(DarkModeService)
     }
 }

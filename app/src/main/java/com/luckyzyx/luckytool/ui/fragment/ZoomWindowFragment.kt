@@ -225,7 +225,6 @@ class ZoomWindowAdapter(
     private fun saveEnableList() {
         context.putStringSet(ModulePrefs, "zoom_window_support_list", enabledMulti.toSet())
         context.dataChannel("android").put("zoom_window_support_list", enabledMulti.toSet())
-        refreshDatas()
     }
 
     @SuppressLint("NotifyDataSetChanged")

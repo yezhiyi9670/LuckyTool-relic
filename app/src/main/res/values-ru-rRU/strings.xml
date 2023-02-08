@@ -231,6 +231,7 @@
     <string name="multi_app_enable">Включить список замены</string>
     <string name="multi_app_custom_list">Заменить список поддержки клонирования приложений</string>
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
+    <string name="dark_mode_support_list">Custom dark mode support list</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Установка приложения</string>
     <string name="PackageInstaller_summary">Необходимо использовать с патчем ядра</string>

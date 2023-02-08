@@ -50,7 +50,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", StatusBarControlCenter)
 
         //状态栏电池通知
-        loadApp("com.android.systemui", BatteryInfoNotify)
+        loadApp("com.android.systemui", StatusBarBatteryInfoNotify)
 
         //桌面
         loadApp("com.coloros.alarmclock", "com.android.launcher") {
@@ -67,7 +67,8 @@ object MainHook : IYukiHookXposedInit {
             "com.oplus.safecenter",
             "com.coloros.safecenter",
             "com.android.launcher",
-            "com.oppo.launcher"
+            "com.oppo.launcher",
+            "com.android.settings"
         ) {
             loadHooker(HookApplication)
         }
@@ -82,7 +83,6 @@ object MainHook : IYukiHookXposedInit {
         //杂项
         loadApp(
             "com.android.systemui",
-            "com.android.settings",
             "com.android.externalstorage",
             "com.oplus.battery"
         ) {

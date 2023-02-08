@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.hooker
+package com.luckyzyx.luckytool.hook.statusbar
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,7 +15,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
 import kotlin.math.abs
 
-object BatteryInfoNotify : YukiBaseHooker() {
+object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     //battery
     private var status: String = ""
     private var plugged: String = ""

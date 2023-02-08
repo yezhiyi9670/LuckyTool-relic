@@ -27,14 +27,16 @@ import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemBinding
 import com.luckyzyx.luckytool.utils.data.AppInfo
 import com.luckyzyx.luckytool.utils.tools.*
 
-class MultiAppFragment : Fragment() {
+class DarkModeFragment : Fragment() {
 
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
-    private var multiAppAdapter: MultiAppAdapter? = null
+    private var darkModeAdapter: DarkModeAdapter? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
@@ -44,12 +46,12 @@ class MultiAppFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.enableSwitch.apply {
-            text = getString(R.string.multi_app_enable)
-            isChecked = context.getBoolean(ModulePrefs, "multi_app_enable", false)
+            text = context.getString(R.string.enable_zoom_window)
+            isChecked = context.getBoolean(ModulePrefs, "dark_mode_list_enable", false)
             setOnCheckedChangeListener { buttonView, isChecked ->
                 if (buttonView.isPressed) {
-                    context.putBoolean(ModulePrefs, "multi_app_enable", isChecked)
-                    requireActivity().dataChannel("android").put("multi_app_enable", isChecked)
+                    context.putBoolean(ModulePrefs, "dark_mode_list_enable", isChecked)
+                    requireActivity().dataChannel("android").put("dark_mode_list_enable", isChecked)
                 }
             }
         }
@@ -62,12 +64,15 @@ class MultiAppFragment : Fragment() {
         binding.searchView.apply {
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
-                    s: CharSequence?, start: Int, count: Int, after: Int
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
                 ) {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    multiAppAdapter?.getFilter?.filter(s.toString())
+                    darkModeAdapter?.getFilter?.filter(s.toString())
                 }
 
                 override fun afterTextChanged(s: Editable?) {}
@@ -91,7 +96,7 @@ class MultiAppFragment : Fragment() {
         binding.searchView.text = null
         appListAllDatas.clear()
         val enableData =
-            requireActivity().getStringSet(ModulePrefs, "multi_app_custom_list", ArraySet())
+            requireActivity().getStringSet(ModulePrefs, "dark_mode_support_list", ArraySet())
         scopeLife {
             withIO {
                 val packageManager = requireActivity().packageManager
@@ -107,9 +112,9 @@ class MultiAppFragment : Fragment() {
                     )
                 }
             }
-            multiAppAdapter = MultiAppAdapter(requireActivity(), appListAllDatas, enableData)
+            darkModeAdapter = DarkModeAdapter(requireActivity(), appListAllDatas, enableData)
             binding.recyclerView.apply {
-                adapter = multiAppAdapter
+                adapter = darkModeAdapter
                 layoutManager = LinearLayoutManager(context)
             }
             binding.swipeRefreshLayout.isRefreshing = false
@@ -118,9 +123,12 @@ class MultiAppFragment : Fragment() {
     }
 }
 
-class MultiAppAdapter(
-    val context: Context, datas: ArrayList<AppInfo>, enableData: Set<String>?
-) : RecyclerView.Adapter<MultiAppAdapter.ViewHolder>() {
+class DarkModeAdapter(
+    val context: Context,
+    datas: ArrayList<AppInfo>,
+    enableData: Set<String>?
+) :
+    RecyclerView.Adapter<DarkModeAdapter.ViewHolder>() {
 
     private var allDatas = ArrayList<AppInfo>()
     private var filterDatas = ArrayList<AppInfo>()
@@ -150,9 +158,12 @@ class MultiAppAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = LayoutAppinfoSwitchItemBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
+        val binding =
+            LayoutAppinfoSwitchItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return ViewHolder(binding)
     }
 
@@ -189,9 +200,10 @@ class MultiAppAdapter(
                 } else {
                     val filterlist = ArrayList<AppInfo>()
                     allDatas.forEach {
-                        if (it.appName.toString().lowercase().contains(
-                                constraint.toString().lowercase()
-                            ) || it.packName.lowercase().contains(constraint.toString().lowercase())
+                        if (
+                            it.appName.toString().lowercase()
+                                .contains(constraint.toString().lowercase()) ||
+                            it.packName.lowercase().contains(constraint.toString().lowercase())
                         ) {
                             filterlist.add(it)
                         }
@@ -211,8 +223,10 @@ class MultiAppAdapter(
         }
 
     private fun saveEnableList() {
-        context.putStringSet(ModulePrefs, "multi_app_custom_list", enabledMulti.toSet())
-        context.dataChannel("android").put("multi_app_custom_list", enabledMulti.toSet())
+        context.putStringSet(ModulePrefs, "dark_mode_support_list", enabledMulti.toSet())
+        context.dataChannel("android").put("dark_mode_support_list", enabledMulti.toSet())
+        context.dataChannel("com.android.settings")
+            .put("dark_mode_support_list", enabledMulti.toSet())
     }
 
     @SuppressLint("NotifyDataSetChanged")

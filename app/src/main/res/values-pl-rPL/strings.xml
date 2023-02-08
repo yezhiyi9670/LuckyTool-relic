@@ -230,6 +230,7 @@
     <string name="multi_app_enable">Enable replacement list</string>
     <string name="multi_app_custom_list">Zastąp listę obsługi klonowania aplikacji</string>
     <string name="multi_app_custom_list_summary">Oryginalna lista klonowania aplikacji zostanie zastąpiona</string>
+    <string name="dark_mode_support_list">Custom dark mode support list</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Instalowanie aplikacji</string>
     <string name="PackageInstaller_summary">Wymagane stosowanie z główną łatką</string>

@@ -3,13 +3,11 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
 import com.luckyzyx.luckytool.hook.scope.externalstorage.RemoveStorageLimit
-import com.luckyzyx.luckytool.hook.scope.settings.DisableDPIRebootRecovery
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableOTGAutoOff
 import com.luckyzyx.luckytool.hook.scope.systemui.ShowChargingRipple
 import com.luckyzyx.luckytool.utils.data.A12
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-
 
 object HookMiscellaneous : YukiBaseHooker() {
     override fun onHook() {
@@ -23,23 +21,10 @@ object HookMiscellaneous : YukiBaseHooker() {
                 loadHooker(DisableOTGAutoOff)
             }
         }
-        if (packageName == "com.android.settings") {
+//        if (packageName == "com.android.settings") {
             //禁用DPI重启恢复
-            if (prefs(ModulePrefs).getBoolean("disable_dpi_reboot_recovery", false)) {
-                loadHooker(DisableDPIRebootRecovery)
-            }
-
-            //settings_dc_backlight_mode_title_new
-            //settings_dc_backlight_mode_title_new_DC
-            //Source SysFeatureUtils
-//            findClass("ji.i3").hook {
-//                injectMember {
-//                    method {
-//                        name = "g0"
-//                    }
-//                    //oplus.software.display.dcbacklight_support
-//                    replaceToTrue()
-//                }
+//            if (prefs(ModulePrefs).getBoolean("disable_dpi_reboot_recovery", false)) {
+//                loadHooker(DisableDPIRebootRecovery)
 //            }
 
 //            findClass("com.oplus.settings.feature.deviceinfo.DeviceRamInfoItemPreference").hook {
@@ -63,7 +48,7 @@ object HookMiscellaneous : YukiBaseHooker() {
 //                    }
 //                }
 //            }
-        }
+//        }
 
         if (packageName == "com.android.externalstorage") {
             //移除存储限制
