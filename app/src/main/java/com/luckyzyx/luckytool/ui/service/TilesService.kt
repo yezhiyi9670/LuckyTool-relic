@@ -73,7 +73,9 @@ class ShowFPS : TileService() {
 class HighBrightness : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
-            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE else when (successMsg) {
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (successMsg == null) qsTile.state = Tile.STATE_UNAVAILABLE
+            else when (successMsg) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
@@ -107,12 +109,12 @@ class GlobalDC : TileService() {
         var isOppo = false
         var isOplus = false
         ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg == "1") isOppo = true else if (result == 1) oppoExist =
-                false
+            if (result == 0 && successMsg != null && successMsg == "1") isOppo = true
+            else if (result == 1) oppoExist = false
         }
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg == "1") isOplus = true else if (result == 1) oplusExist =
-                false
+            if (result == 0 && successMsg != null && successMsg == "1") isOplus = true
+            else if (result == 1) oplusExist = false
         }
         qsTile.state =
             if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
@@ -144,7 +146,8 @@ class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
             if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
-            else if (successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (successMsg == null || successMsg.isBlank()) qsTile.state =
+                Tile.STATE_UNAVAILABLE
             else when (successMsg.substring(0, 1)) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
@@ -193,8 +196,8 @@ class FiveG : TileService() {
         if (iFiveGController != null) {
             controller(iFiveGController)
         } else {
-            RootService.bind(
-                Intent(this, FiveGControllerService::class.java), object : ServiceConnection {
+            RootService.bind(Intent(this, FiveGControllerService::class.java),
+                object : ServiceConnection {
                     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                         iFiveGController = IFiveGController.Stub.asInterface(service)
                         controller(iFiveGController)
@@ -203,8 +206,7 @@ class FiveG : TileService() {
                     override fun onServiceDisconnected(name: ComponentName?) {
 
                     }
-                }
-            )
+                })
         }
     }
 
