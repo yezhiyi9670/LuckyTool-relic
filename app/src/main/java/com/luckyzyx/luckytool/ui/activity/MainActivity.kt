@@ -78,10 +78,7 @@ open class MainActivity : AppCompatActivity() {
 
     private fun initDynamicShortcuts() {
         val status = packageManager.getComponentEnabledSetting(
-            ComponentName(
-                packageName,
-                "${packageName}.Hide"
-            )
+            ComponentName(packageName, "${packageName}.Hide")
         )
         if (status == 2) return
         val shortcutManager = getSystemService(ShortcutManager::class.java)

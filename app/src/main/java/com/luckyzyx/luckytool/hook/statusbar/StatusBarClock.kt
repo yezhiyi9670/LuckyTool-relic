@@ -6,11 +6,15 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 
 object StatusBarClock : YukiBaseHooker() {
+
     override fun onHook() {
         //状态栏时钟
         if (prefs(ModulePrefs).getBoolean("statusbar_clock_enable", false)) {
             loadHooker(CustomClock)
         }
+
+        //com.android.systemui.statusbar.phone.StatusBar
+        //com.android.systemui.statusbar.phone.PhoneStatusBarView
 
         //com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment
         //com.android.systemui.statusbar.phone.PhoneStatusBarViewController
