@@ -321,6 +321,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">Локальное обновление не будет выделено серым цветом, вам необходимо заранее включить опцию разработчика</string>
+    <string name="remove_dm_verity">Remove dm-verity detection</string>
+    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

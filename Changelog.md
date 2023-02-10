@@ -14,7 +14,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [移除] 移除失效的DPI功能  
 [添加] 自定义暗色模式支持列表  
 [修复] 电池通知异常崩溃问题  
-[优化] 清单文件部分代码
+[优化] 清单文件部分代码  
+[添加] dm-verity状态设置
 
 ### v4.2.9_fix
 

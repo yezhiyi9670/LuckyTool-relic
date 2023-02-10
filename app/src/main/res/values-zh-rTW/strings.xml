@@ -320,6 +320,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
     <string name="unlock_local_upgrade_summary">本地安装不变灰，需要提前打开开发者选项</string>
+    <string name="remove_dm_verity">移除 dm-verity 检测</string>
+    <string name="remove_dm_verity_summary">当前状态：%1$s\n仅用于此次系统更新</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>

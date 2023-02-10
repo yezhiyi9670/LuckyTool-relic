@@ -16,6 +16,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.getDocumentPath
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.getString
 import com.luckyzyx.luckytool.utils.tools.putString
 
@@ -1674,7 +1675,39 @@ class OplusOta : ModulePreferenceFragment() {
                     summary = getString(R.string.unlock_local_upgrade_summary)
                     key = "unlock_local_upgrade"
                     setDefaultValue(false)
+                    isVisible = false
                     isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    val status = ShellUtils.execCommand(
+                        "getprop ro.boot.veritymode",
+                        true,
+                        true
+                    ).successMsg.let { it.ifBlank { "null" } }
+                    title = getString(R.string.remove_dm_verity)
+                    summary = getString(R.string.remove_dm_verity_summary, status)
+                    key = "remove_dm_verity"
+                    isPersistent = false
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        val value = newValue as Boolean
+                        if (value && status == "enforcing") return@setOnPreferenceChangeListener true
+                        ShellUtils.execCommand(
+                            "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}",
+                            true
+                        )
+                        summary = getString(
+                            R.string.remove_dm_verity_summary, ShellUtils.execCommand(
+                                "getprop ro.boot.veritymode",
+                                true,
+                                true
+                            ).successMsg.let { it.ifBlank { "null" } }
+                        )
+                        true
+                    }
                 }
             )
         }

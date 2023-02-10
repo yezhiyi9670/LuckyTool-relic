@@ -320,6 +320,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Odblokuj lokalne uaktualnienie</string>
     <string name="unlock_local_upgrade_summary">Opcja \"Instalacja lokalna\" nie będzie wyszarzona, musisz wcześniej włączyć opcje programistyczne</string>
+    <string name="remove_dm_verity">Remove dm-verity detection</string>
+    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Pomiń stronę początkową</string>
     <string name="vip_download">Pobierz oryginał</string>

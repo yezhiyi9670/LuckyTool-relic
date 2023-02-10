@@ -327,6 +327,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Unlock local upgrade</string>
     <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="remove_dm_verity">Remove dm-verity detection</string>
+    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Skip startup page</string>
     <string name="vip_download">Download original</string>

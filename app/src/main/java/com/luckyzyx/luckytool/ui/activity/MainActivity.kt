@@ -47,6 +47,7 @@ open class MainActivity : AppCompatActivity() {
         return newIntent(context).putExtra(EXTRA_SAVED_INSTANCE_STATE, savedInstanceState)
     }
 
+    @SuppressLint("PrivateApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         checkTheme()

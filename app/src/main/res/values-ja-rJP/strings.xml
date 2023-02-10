@@ -226,11 +226,11 @@
     <string name="APPRelatedList">アプリ関連のリスト</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
     <string name="zoom_window_support_list">カスタムズームウインドウのサポートリスト</string>
-    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
+    <string name="zoom_window_support_list_summary">必要に応じて有効化をしてください。取り返しのつかない問題が発生するかもしれません。</string>
     <string name="multi_app_enable">リストの置き換えを有効化</string>
     <string name="multi_app_custom_list">アプリクローン対応リストを置き換え</string>
     <string name="multi_app_custom_list_summary">機能を有効化後、アプリクローンの元のリストは新しいリストに置き換えられます。リストの項目が多すぎるとラグが発生します</string>
-    <string name="dark_mode_support_list">Custom dark mode support list</string>
+    <string name="dark_mode_support_list">カスタムダークモードのサポートリスト</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">アプリインストール関連</string>
     <string name="PackageInstaller_summary">コアパッチとの併用が必要です</string>
@@ -258,32 +258,32 @@
     <string name="remove_usb_connect_dialog_summary">USB接続後、ファイル転送モードがデフォルトで選択されています</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">フルスクリーンジェスチャー関連</string>
-    <string name="remove_side_slider">Remove side slider</string>
-    <string name="remove_side_slider_black_background">Remove the black background of the side slider</string>
-    <string name="remove_rotate_screen_button">Remove the rotate screen button</string>
-    <string name="CustomSideSliderIcon">Custom side slider icon</string>
-    <string name="replace_side_slider_icon_switch">Replace side slider icon switch</string>
-    <string name="replace_side_slider_icon_switch_summary">The icon width is recommended to be around 100px</string>
-    <string name="replace_side_slider_icon_on_left">Replace the side slide icon on the left</string>
-    <string name="replace_side_slider_icon_on_right">Replace the side slide icon on the right</string>
+    <string name="remove_side_slider">サイドスライダーを削除</string>
+    <string name="remove_side_slider_black_background">サイドスライダーの黒い背景を削除</string>
+    <string name="remove_rotate_screen_button">画面回転のボタンを削除</string>
+    <string name="CustomSideSliderIcon">サイドスライダーのアイコンをカスタム</string>
+    <string name="replace_side_slider_icon_switch">サイドスライダーの切り替えを置き換え</string>
+    <string name="replace_side_slider_icon_switch_summary">アイコンの幅は約100px程を推奨します</string>
+    <string name="replace_side_slider_icon_on_left">左側のサイドスライドアイコンを置き換え</string>
+    <string name="replace_side_slider_icon_on_right">右側のサイドスライドアイコンを置き換え</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">その他</string>
-    <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
+    <string name="Miscellaneous_summary">難易度の高いカテゴリはこちらに配置されます</string>
     <string name="disable_otg_auto_off">OTGの自動オフを無効化</string>
-    <string name="disable_otg_auto_off_summary">Disable OTG for more than ten minutes to automatically turn off</string>
+    <string name="disable_otg_auto_off_summary">10分以上OTGを無効化をすると、自動的に電源がオフになります</string>
     <string name="disable_dpi_reboot_recovery">再起動後のDPIの復元を無効化</string>
-    <string name="disable_dpi_reboot_recovery_summary">This module is not responsible for any failure to boot due to the setting of too large DPI value\nTo restore the default DPI, you need to enable this feature and reset the default DPI value after restarting the scope</string>
+    <string name="disable_dpi_reboot_recovery_summary">このモジュールで大きすぎるDPI設定の影響で起動をしなくなった場合の責任は一切負いません\nデフォルトのDPIに戻す場合は、この機能を有効化しスコープの再起動後にデフォルトのDPIにリセットをする必要があります</string>
     <string name="remove_storage_limit">ストレージの制限を削除</string>
-    <string name="remove_storage_limit_summary">Remove the restriction that this folder cannot be used</string>
+    <string name="remove_storage_limit_summary">フォルダが使用できない制限を削除します</string>
     <string name="media_volume_level">メディアのボリュームレベル</string>
-    <string name="media_volume_level_summary">Set to 0 to disable this function, restart the system to take effect</string>
-    <string name="open_screen_power_save">Open battery screen power saving entrance</string>
-    <string name="open_screen_power_save_summary">Settings - Battery - More settings - Screen Power Saving</string>
-    <string name="open_battery_health">Open battery health entrance</string>
-    <string name="open_battery_health_summary">設定 - バッテリー - バッテリーの状態</string>
+    <string name="media_volume_level_summary">この機能を0に設定すると無効、システムの再起動後に有効化されます</string>
+    <string name="open_screen_power_save">バッテリーの画面で省エネモードを開けるようにする</string>
+    <string name="open_screen_power_save_summary">設定 - バッテリー - その他の設定 - 省エネモード の順で開けます</string>
+    <string name="open_battery_health">バッテリーの状態を開けるようにする</string>
+    <string name="open_battery_health_summary">設定 - バッテリー - バッテリーの状態 の順で開けます</string>
     <string name="performance_mode_and_standby_optimization">パフォーマンスモードとスタンバイの最適化</string>
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定</string>
-    <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
@@ -293,33 +293,35 @@
     <string name="remove_startup_animation">起動時のアニメーションを削除</string>
     <string name="enable_developer_page">開発者ページを有効化</string>
     <string name="enable_eva_theme">EVAテーマを有効化</string>
-    <string name="enable_developer_page_summary">After enabling this feature and restarting the scope, \n can jump to it via the shortcut portal</string>
+    <string name="enable_developer_page_summary">この機能を有効化後にスコープを再起動すると\nショートカットポータルからそのスコープへジャンプできるようになります</string>
     <string name="enable_genshin_impact_theme">原神リミテッドエディションのUIを有効化</string>
-    <string name="enable_genshin_impact_theme_summary">No need to set up in Game Assistant</string>
+    <string name="enable_genshin_impact_theme_summary">ゲームアシスタントで設定をする必要はありません</string>
     <string name="enable_adreno_gpu_controller">Adreno GPUコントローラーを有効化</string>
-    <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
-    <string name="enable_increase_fps_limit_feature">Enable increase fps limit</string>
-    <string name="enable_increase_fps_feature">Enable increase fps</string>
-    <string name="enable_optimise_power_feature">Enable optimized power</string>
-    <string name="enable_gt_mode_feature">Enable GT Mode</string>
-    <string name="enable_super_resolution_feature">Enable super resolution</string>
+    <string name="enable_support_competition_mode">サポートコンペティションモードを有効化</string>
+    <string name="enable_increase_fps_limit_feature">FPSの上限を上げる</string>
+    <string name="enable_increase_fps_feature">FPSの上限を上げます</string>
+    <string name="enable_optimise_power_feature">最適化された電力を有効化</string>
+    <string name="enable_gt_mode_feature">GTモードの有効化</string>
+    <string name="enable_super_resolution_feature">超解像機能を有効化</string>
     <!--CloudService-->
-    <string name="remove_network_limit">Remove Data Network Limit</string>
-    <string name="remove_network_limit_summary">Remove backup/restore limitations that cannot use mobile data</string>
+    <string name="remove_network_limit">データ通信の制限を削除</string>
+    <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>
     <!--ThemeStore-->
     <string name="unlock_themestore_vip">VIP機能を解放する</string>
-    <string name="unlock_themestore_vip_summary">Unlock part of the feature and try it on your own</string>
+    <string name="unlock_themestore_vip_summary">一部をアンロックして機能を試す事ができます</string>
     <!--Screenshot-->
     <string name="Screenshot">スクリーンショット</string>
     <string name="remove_system_screenshot_delay">システムからスクリーンショットの遅延を削除</string>
-    <string name="remove_system_screenshot_delay_summary">First screenshot may not take effect</string>
+    <string name="remove_system_screenshot_delay_summary">最初のスクリーンショットが反映されない場合があります</string>
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
-    <string name="remove_screenshot_privacy_limit_summary">Remove restrictions on privacy which cannot be intercepted. Disable FLAG_SECURE if this does not take effect</string>
+    <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。有効化されない場合はFLAG_SECUREを無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits, add corresponding APP fields</string>
+    <string name="disable_flag_secure_summary">殆どのアプリでキャプチャ、画面共有、スクリーンレコードができない問題を解決して対応をするアプリフィールドを追加します</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
-    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>
+    <string name="remove_dm_verity">Remove dm-verity detection</string>
+    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>
@@ -337,7 +339,7 @@
     <string name="device">デバイス</string>
     <string name="system">システム</string>
     <string name="fps_mode_title">オプション</string>
-    <string name="fps_tips">The self-start function will be triggered 1 s after the screen is unlocked\nOption 1 can only be restarted and restored, please turn off the self-start function when restoring</string>
+    <string name="fps_tips">自動起動機能は画面のロックを解除の1秒後に実行されます\nオプション1は再起動と復元のみが使用可能です。復元時は自動起動機能をオフにしてください</string>
     <string name="restore_default_refresh_rate">標準のリフレッシュレートを復元</string>
     <string name="module_isactivated">モジュールは有効です</string>
     <string name="module_notactive">モジュールは無効です</string>
@@ -406,7 +408,7 @@
     <string name="high_brightness_mode">高輝度モード</string>
     <string name="global_dc">グローバルDC</string>
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
-    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
+    <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
 </resources>
