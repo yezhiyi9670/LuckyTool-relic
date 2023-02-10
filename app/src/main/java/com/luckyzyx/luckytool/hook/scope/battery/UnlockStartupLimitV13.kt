@@ -10,7 +10,7 @@ object UnlockStartupLimitV13 : YukiBaseHooker() {
         //Source StartupManager
         //Search -> ? 5 : 20; -1 -> Method
         searchClass {
-            from("i7", "q7", "u7", "y7", "s7", "z8").absolute()
+            from("i7", "q7", "u7", "y7", "s7", "z8", "b9").absolute()
             field().count(4)
             field { type = ContextClass }.count(1)
             constructor { param(ContextClass) }.count(1)
