@@ -231,6 +231,12 @@ class DonateData {
             add(DonateInfo("奥利奥",88.88,donateDetails(
                 DonateChannelInfo("20230207-074804",CQQ,88.88,"101000026901302302071390154975")
             )))
+            add(DonateInfo("xunone",64.0,donateDetails(
+                DonateChannelInfo("20230209-220346",CQQ,64.0,"10001071012023020901162404474545")
+            )))
+            add(DonateInfo("XiaMi1244",1.88,donateDetails(
+                DonateChannelInfo("20230210-214507",CWC,1.88,"10001071012023021001895877477512")
+            )))
         }
     }
 

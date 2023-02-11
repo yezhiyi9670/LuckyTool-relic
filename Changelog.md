@@ -15,8 +15,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 自定义暗色模式支持列表  
 [修复] 电池通知异常崩溃问题  
 [优化] 清单文件部分代码  
-[添加] dm-verity状态设置  
-[适配] C13自启数量限制
+[添加] 快捷设置dm-verity状态  
+[适配] C13自启数量限制  
+[适配] C13相机水印字数限制
 
 ### v4.2.9_fix
 

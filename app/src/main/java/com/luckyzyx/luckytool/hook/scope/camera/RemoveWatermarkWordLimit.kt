@@ -18,11 +18,11 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
         val clazz = when (appSet[2]) {
             "8d5b992", "38e5b1a" -> "$7"
             "c7732c4" -> "$5"
-            "22-10-20 15:45", "23-01-05 16:32", "22-06-02 23:45", "22-12-13 11:33", "22-11-18 16:19", "22-11-17 20:43" -> "$5"
+            "22-10-20 15:45", "23-01-05 16:32", "22-06-02 23:45", "22-12-13 11:33", "22-11-18 16:19", "22-11-17 20:43", "23-01-15 13:56" -> "$5"
             else -> ""
         }
         // Source CameraSubSettingFragment
-        // Log camera_namelength_outofrange
+        // Log camera_namelength_outofrange -> Method
         searchClass {
             from("com.oplus.camera.setting", "com.oplus.camera.ui.menu.setting").absolute()
             method {

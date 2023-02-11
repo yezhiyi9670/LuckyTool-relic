@@ -32,9 +32,8 @@ object DarkModeList : YukiBaseHooker() {
                 paramCount = 1
             }.count(1)
         }.get()?.hook {
-            val objectName = instanceClass.classes[0].canonicalName?.split(".")?.last() ?: ""
-            val darkModeData =
-                (instanceClass.canonicalName!! + "\$$objectName").toClass().newInstance()
+            val objectName = instanceClass.classes[0]?.simpleName
+            val darkModeData = (instanceClass.canonicalName!! + "\$$objectName").toClass().newInstance()
             injectMember {
                 method {
                     param(Reader::class.java)
