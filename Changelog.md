@@ -18,7 +18,21 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [添加] 快捷设置dm-verity状态  
 [适配] C13自启数量限制  
 [适配] C13相机水印字数限制  
-[添加] 极暗模式磁贴  
+[添加] 极暗模式磁贴
+[Update] Donation list  
+[Add] 5G tile switch  
+[Add] 5G tile open source details  
+[Optimize] Autostart function call logic and prompt  
+[Optimize] Touch sampling rate exception handling  
+[Add] Game Assistant Super Resolution  
+[Del] Remove disabled DPI function  
+[Add] Custom dark mode support list  
+[Fix] The battery notification abnormal crash problem  
+[Optimize] Some codes in manifest file  
+[Add] Quickly set dm-verity state  
+[Fix] C13 self-start quantity limit  
+[Fix] C13 camera watermark character limit  
+[Add] Extreme Dark Mode tile
 
 ### v4.2.9_fix
 
