@@ -237,6 +237,9 @@ class DonateData {
             add(DonateInfo("XiaMi1244",1.88,donateDetails(
                 DonateChannelInfo("20230210-214507",CWC,1.88,"10001071012023021001895877477512")
             )))
+            add(DonateInfo("痕祭",10.0,donateDetails(
+                DonateChannelInfo("20230212-233213",CQQ,10.0,"101000026901302302121391049274")
+            )))
         }
     }
 
