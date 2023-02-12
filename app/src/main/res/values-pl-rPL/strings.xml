@@ -407,6 +407,7 @@
     <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
     <string name="high_brightness_mode">Tryb wysokiej jasności</string>
     <string name="global_dc">Global DC</string>
+    <string name="fiveg_mode">FiveG Switch</string>
     <string name="game_assistant_tile_tips">Game assistant not detected!</string>
     <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->

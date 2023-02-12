@@ -17,7 +17,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 清单文件部分代码  
 [添加] 快捷设置dm-verity状态  
 [适配] C13自启数量限制  
-[适配] C13相机水印字数限制
+[适配] C13相机水印字数限制  
+[添加] 极暗模式磁贴  
 
 ### v4.2.9_fix
 

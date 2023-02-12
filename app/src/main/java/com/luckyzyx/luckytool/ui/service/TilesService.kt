@@ -74,8 +74,9 @@ class HighBrightness : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
             if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
-            else if (successMsg == null) qsTile.state = Tile.STATE_UNAVAILABLE
-            else when (successMsg) {
+            else if (successMsg == null || successMsg.isBlank()) qsTile.state =
+                Tile.STATE_UNAVAILABLE
+            else when (successMsg.substring(0, 1)) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
@@ -109,11 +110,13 @@ class GlobalDC : TileService() {
         var isOppo = false
         var isOplus = false
         ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg != null && successMsg == "1") isOppo = true
+            if (result == 0 && successMsg != null && successMsg.substring(0, 1) == "1") isOppo =
+                true
             else if (result == 1) oppoExist = false
         }
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg != null && successMsg == "1") isOplus = true
+            if (result == 0 && successMsg != null && successMsg.substring(0, 1) == "1") isOplus =
+                true
             else if (result == 1) oplusExist = false
         }
         qsTile.state =
@@ -225,6 +228,38 @@ class FiveG : TileService() {
             } else {
                 Tile.STATE_INACTIVE
             }
+        }
+        qsTile.updateTile()
+    }
+}
+
+class VeryDarkMode : TileService() {
+    override fun onStartListening() {
+        ShellUtils.execCommand("settings get secure reduce_bright_colors_activated", true, true)
+            .apply {
+                if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+                else if (successMsg == null || successMsg.isBlank()) qsTile.state =
+                    Tile.STATE_UNAVAILABLE
+                else when (successMsg.substring(0, 1)) {
+                    "0" -> qsTile.state = Tile.STATE_INACTIVE
+                    "1" -> qsTile.state = Tile.STATE_ACTIVE
+                    else -> qsTile.state = Tile.STATE_UNAVAILABLE
+                }
+                qsTile.updateTile()
+            }
+    }
+
+    override fun onClick() {
+        when (qsTile.state) {
+            Tile.STATE_INACTIVE -> {
+                ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 1", true)
+                qsTile.state = Tile.STATE_ACTIVE
+            }
+            Tile.STATE_ACTIVE -> {
+                ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 0", true)
+                qsTile.state = Tile.STATE_INACTIVE
+            }
+            Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
     }

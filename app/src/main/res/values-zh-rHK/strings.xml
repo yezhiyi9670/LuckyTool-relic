@@ -407,6 +407,7 @@
     <string name="increase_touch_sampling_rate_summary">开启功能后自动执行一次，此后将在解锁屏幕后自动触发</string>
     <string name="high_brightness_mode">高亮度模式</string>
     <string name="global_dc">全局 DC</string>
+    <string name="fiveg_mode">5G开关</string>
     <string name="game_assistant_tile_tips">未检测到游戏助手！</string>
     <string name="tile_close_autoself_tip">重启作用域后，此功能将不再自动启动</string>
     <!--Permission-->

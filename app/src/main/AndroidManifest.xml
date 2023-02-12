@@ -138,7 +138,17 @@
                 android:name=".ui.service.FiveG"
                 android:exported="true"
                 android:icon="@drawable/baseline_5g_24"
-                android:label="5G开关"
+                android:label="@string/fiveg_mode"
+                android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+                android:name=".ui.service.VeryDarkMode"
+                android:exported="true"
+                android:icon="@drawable/baseline_brightness_low_24"
+                android:label="@string/very_dark_mode"
                 android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />

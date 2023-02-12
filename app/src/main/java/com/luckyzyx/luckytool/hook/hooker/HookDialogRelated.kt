@@ -33,9 +33,16 @@ object HookDialogRelated : YukiBaseHooker() {
 
         if (packageName == "com.oplus.exsystemservice") {
             //移除应用运行在桌面上警告对话框
-            if (prefs(ModulePrefs).getBoolean("remove_warning_dialog_that_app_runs_on_desktop", false)) {
+            if (prefs(ModulePrefs).getBoolean(
+                    "remove_warning_dialog_that_app_runs_on_desktop", false
+                )
+            ) {
                 loadHooker(RemoveWarningDialogThatAppRunsOnDesktop)
             }
         }
+
+        //分享
+        //com.android.internal.app.ChooserActivity
+
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">ColorOSの拡張と最適化を行うXposedモジュールです。\n開発者: luckyzyx</string>
+    <string name="xposeddescription">ColorOS の拡張と最適化を行う Xposed モジュールです。\n開発者: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">機能</string>
     <string name="nav_home">ホーム</string>
@@ -47,14 +47,14 @@
     <string name="alipay">AliPay</string>
     <string name="donation_list">寄付リスト</string>
     <string name="feedback_download">フィードバックとダウンロード</string>
-    <string name="feedback_download_summary">TG チャンネル、グループ、リポジトリなど。</string>
+    <string name="feedback_download_summary">Telegramチャンネル、グループ、リポジトリなど</string>
     <string name="coolmarket">クールなホームページ</string>
     <string name="telegram_channel">Telegramチャンネル</string>
     <string name="telegram_group">Telegramグループ</string>
     <string name="lsposed_repo">LSPosedのリポジトリ</string>
     <string name="github_repo">GitHubのリポジトリ</string>
     <string name="open_source">オープンソース</string>
-    <string name="open_source_summary">タップでオープンソースリストを表示します</string>
+    <string name="open_source_summary">タップでオープンソースのリストを表示します</string>
     <string name="participate_translation">モジュールの翻訳に参加する</string>
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
@@ -76,7 +76,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">ColorOSの公式インストーラーを使用するには他の機能を有効にする必要があります。\n機能一覧-アプリ関連-アプリインストール関連</string>
     <string name="corepatch">コアのパッチ</string>
-    <string name="corepatch_summary">Android 11–13のインストール制限を削除します</string>
+    <string name="corepatch_summary">インストール制限を削除します (Android 11～13対応)</string>
     <string name="downgr">アプリのダウングレードを許可</string>
     <string name="downgr_summary">新しいバージョンのアプリがインストールされている状態でも古いバージョンのアプリをインストール可能にします。</string>
     <string name="authcreak">パッケージマネージャの署名チェックを無効化</string>
@@ -84,7 +84,7 @@
     <string name="digestCreak">APKの署名チェックを無効化</string>
     <string name="digestCreak_summary">直接インストールされたアプリを署名が異なるアプリでも上書きインストールを可能にします</string>
     <string name="UsePreSig">インストール時に署名をされたアプリをインストールします</string>
-    <string name="UsePreSig_summary">これは正常ではありません!危険です!絶対に必要な場合のみに有効化してください</string>
+    <string name="UsePreSig_summary">これは正常ではありません！危険です！絶対に必要な場合のみに有効化してください</string>
     <string name="enhancedMode">拡張モード</string>
     <string name="enhancedMode_summary">一部のアプリの整合性チェックを解決できますが、これを有効化する必要はありません</string>
     <string name="usepresig_warn">!!! すべてのインストールされたアプリをすべてのパッケージで上書きする事ができます!!\n不明なパッケージをインストールします</string>
@@ -122,7 +122,7 @@
     <string name="statusbar_clock_show_second">秒を表示</string>
     <string name="statusbar_clock_hide_spaces">スペースを非表示</string>
     <string name="statusbar_clock_show_doublerow">多段表示</string>
-    <string name="statusbar_clock_singlerow_fontsize">一段表示のフォントの大きさ</string>
+    <string name="statusbar_clock_singlerow_fontsize">1段表示のフォントの大きさ</string>
     <string name="statusbar_clock_doublerow_fontsize">多段表示のフォントの大きさ</string>
     <string name="statusbar_clock_fontsize_summary">0の場合はフォントの大きさは変更されません</string>
     <!-- StatusBarNetWorkSpeed -->
@@ -139,7 +139,7 @@
     <string name="remove_statusbar_top_notification">ステータスバーから優先度が上位の通知を削除</string>
     <string name="remove_statusbar_top_notification_summary">「このアプリは他のアプリの上に表示されています」の通知を削除</string>
     <string name="remove_vpn_active_notification">VPNが有効時の通知を削除</string>
-    <string name="remove_vpn_active_notification_summary">ステータスバーがVPNが有効である表示を削除します</string>
+    <string name="remove_vpn_active_notification_summary">ステータスバーからVPNが有効である表示を削除します</string>
     <string name="remove_statusbar_bottom_networkwarn">ステータスバー下部のネットワーク警告を削除</string>
     <string name="remove_statusbar_bottom_networkwarn_summary">ステータスバーのプルダウン時に表示されるネットワーク情報を削除</string>
     <string name="remove_flashlight_open_notification">懐中電灯を開いている通知を削除</string>
@@ -192,11 +192,11 @@
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
-    <string name="set_lock_screen_centered_summary">設定でロック画面を中央に配置できないシステムのみが対象です</string>
+    <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
-    <string name="remove_72hour_password_verification">72時間、パスワード認証を解除する</string>
-    <string name="remove_72hour_password_verification_summary">起動後に72時間以内はパスワードによるロック解除ができなくなるセキュリティ制限を解除します、システム再起動後に有効化されます</string>
+    <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
+    <string name="remove_72hour_password_verification_summary">起動をしてから72時間以内のパスワード認証の要求を削除します、これはシステム再起動後に有効化されます</string>
     <!--Desktop-->
     <string name="Desktop">デスクトップ関連</string>
     <string name="remove_alarmclock_widget_redone">赤文字の1の時計のコンポーネントを削除</string>
@@ -217,8 +217,8 @@
     <string name="ApplyOtherRestrictions">その他の制限</string>
     <string name="remove_adb_install_confirm">ADBインストール確認の削除</string>
     <string name="remove_adb_install_confirm_summary">ADBを使用してタップをせずにアプリをインストールします</string>
-    <string name="unlock_startup_limit">自動起動制限を解除</string>
-    <string name="unlock_startup_limit_summary">アプリの自動起動制限を解除します</string>
+    <string name="unlock_startup_limit">自動起動の制限を解除</string>
+    <string name="unlock_startup_limit_summary">アプリの自動起動の制限を解除します</string>
     <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
     <string name="AppStartupRelated">アプリの自動起動関連</string>
     <string name="disable_splash_screen">スプラッシュ画面を無効化</string>
@@ -234,7 +234,7 @@
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">アプリインストール関連</string>
     <string name="PackageInstaller_summary">コアパッチとの併用が必要です</string>
-    <string name="skip_apk_scan">Apkのスキャンをスキップ</string>
+    <string name="skip_apk_scan">APKのスキャンをスキップ</string>
     <string name="skip_apk_scan_summary">APKウィルススキャン関連</string>
     <string name="allow_downgrade_install">ダウングレードのインストールを許可</string>
     <string name="allow_downgrade_install_summary">低い、同等のバージョンの警告などを削除します。</string>
@@ -288,7 +288,7 @@
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
     <!--OplusGames-->
-    <string name="remove_root_check">ゲームフィルタの制限を削除</string>
+    <string name="remove_root_check">ゲームフィルターの制限を削除</string>
     <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除</string>
     <string name="remove_startup_animation">起動時のアニメーションを削除</string>
     <string name="enable_developer_page">開発者ページを有効化</string>
@@ -320,8 +320,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>
-    <string name="remove_dm_verity">Remove dm-verity detection</string>
-    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
+    <string name="remove_dm_verity">dm-verityの検出を削除</string>
+    <string name="remove_dm_verity_summary">現在の状態: %1$s\nこのシステムアップデートにのみ有効です</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>
@@ -353,40 +353,40 @@
     <string name="check_update_hint">新しいバージョンがあります!</string>
     <string name="go_download_page">ダウンロードページを開く</string>
     <string name="copy_download_link">ダウンロードリンクをコピー</string>
-    <string name="direct_update">ダイレクトアップデート</string>
+    <string name="direct_update">直接でアップデート</string>
     <string name="install_apk_toast">不明なアプリのインストールを許可してください!</string>
     <string name="downloading">ダウンロード中</string>
     <string name="download_progress">ダウンロードの進捗</string>
     <string name="download_speed">ダウンロードの速度</string>
-    <string name="remain_size">Remain Size</string>
+    <string name="remain_size">残りのサイズ</string>
     <string name="downloaded">ダウンロード済み</string>
-    <string name="used_time">Used Time</string>
-    <string name="remain_time">Remain Time</string>
+    <string name="used_time">経過時間</string>
+    <string name="remain_time">残り時間</string>
     <string name="install_button">今すぐにインストール</string>
     <string name="cancel_button">ダウンロードをキャンセル</string>
     <string name="fps_autostart">自動で開始</string>
-    <string name="device_guid">デバイスGUID</string>
-    <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
+    <string name="device_guid">デバイスのGUID</string>
+    <string name="oplusota_copy_tip">入力ボックスを長押しすると個別にコピーします</string>
     <string name="oplusota_copyall">すべてコピー</string>
     <!-- Other -->
-    <string name="quick_entry">System Quick Entry</string>
-    <string name="quick_entry_summary">e.g. System UI reconciliation tools, process management, engineering mode, etc.</string>
+    <string name="quick_entry">システムクイックエントリー</string>
+    <string name="quick_entry_summary">例: システムUI調整ツール、プロセスマネージャー、エンジニアリングモードなど</string>
     <string name="display_refresh_rate">リフレッシュレートを表示/非表示</string>
     <string name="SystemDebuggingRelated">システムデバッグ関連</string>
     <string name="engineering_mode">エンジニアリングモード</string>
     <string name="charging_test">充電テスト</string>
-    <string name="process_manager">プロセスの管理</string>
+    <string name="process_manager">プロセスマネージャー</string>
     <string name="system_interface_adjustment">システムUI調整ツール</string>
     <string name="developer_option">開発者向けオプション</string>
     <string name="HidePageRelated">関連するページを隠す</string>
     <string name="camera_algo_page">カメラアルゴリズムのページ</string>
     <string name="browser_concise_mode">ブラウザコンサイスモード</string>
-    <string name="battery_health">バッテリーの正常性</string>
+    <string name="battery_health">バッテリーの状態</string>
     <string name="system_not_support">現在のシステムではサポートをしていません!</string>
-    <string name="very_dark_mode">ベリーダークモード</string>
+    <string name="very_dark_mode">画面の輝度をさらに下げる</string>
     <string name="GameAssistantRelated">ゲームアシスタント関連</string>
     <string name="game_assistant_page">ゲームアシスタントのページ</string>
-    <string name="game_assistant_develop_page">ゲームアシスタント開発者ページ</string>
+    <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
     <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">ADBデバッグを削除</string>
@@ -399,14 +399,15 @@
     <string name="log_save_success">ログの保存に成功しました!</string>
     <string name="log_save_failed">ログの保存に失敗しました!</string>
     <string name="log_data_is_empty">ログデータは空です!</string>
-    <string name="log_no_data">No abnormal data</string>
-    <string name="log_filter_title">Enter what to filter</string>
-    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
+    <string name="log_no_data">異常なデータはありません</string>
+    <string name="log_filter_title">絞り込む項目を入力</string>
+    <string name="log_filter_layout_hint">パッケージ名、コンテンツなど</string>
     <!--Tile-->
-    <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
+    <string name="increase_touch_sampling_rate">タッチサンプリングレートを上げる</string>
+    <string name="increase_touch_sampling_rate_summary">機能をオンにした後は自動的に一度だけ実行し、その後は画面のロックを解除した後に自動的にトリガーされます</string>
     <string name="high_brightness_mode">高輝度モード</string>
     <string name="global_dc">グローバルDC</string>
+    <string name="fiveg_mode">5Gスイッチ</string>
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->

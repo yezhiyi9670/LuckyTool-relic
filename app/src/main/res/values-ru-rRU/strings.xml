@@ -408,6 +408,7 @@
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <string name="high_brightness_mode">Режим высокой яркости</string>
     <string name="global_dc">Глобальный DC</string>
+    <string name="fiveg_mode">FiveG Switch</string>
     <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
     <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->

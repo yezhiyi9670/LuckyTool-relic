@@ -407,6 +407,7 @@
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
     <string name="global_dc">DC toàn cầu</string>
+    <string name="fiveg_mode">FiveG Switch</string>
     <string name="game_assistant_tile_tips">Không phát hiện trợ lý trò chơi!</string>
     <string name="tile_close_autoself_tip">Sau khi khởi động lại khu vực, tính năng này sẽ không tự khởi động nữa</string>
     <!--Permission-->
