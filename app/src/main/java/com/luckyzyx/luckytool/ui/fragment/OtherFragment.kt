@@ -335,3 +335,19 @@ class SystemQuickEntry : ModulePreferenceFragment() {
         }
     }
 }
+
+class ModuleTileFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    }
+}
