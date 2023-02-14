@@ -231,7 +231,7 @@
     <string name="multi_app_enable">Включить список замены</string>
     <string name="multi_app_custom_list">Заменить список поддержки клонирования приложений</string>
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
-    <string name="dark_mode_support_list">Custom dark mode support list</string>
+    <string name="dark_mode_support_list">Приложения поддерживающие темный режим</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Установка приложения</string>
     <string name="PackageInstaller_summary">Необходимо использовать с патчем ядра</string>
@@ -303,7 +303,7 @@
     <string name="enable_increase_fps_feature">Включить увеличение FPS</string>
     <string name="enable_optimise_power_feature">Включить оптимизацию питания</string>
     <string name="enable_gt_mode_feature">Включить производительный режим</string>
-    <string name="enable_super_resolution_feature">Enable super resolution</string>
+    <string name="enable_super_resolution_feature">Включить супер разрешение</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -317,12 +317,12 @@
     <string name="remove_screenshot_privacy_limit">Удалить ограничения конфиденциальности скриншотов</string>
     <string name="remove_screenshot_privacy_limit_summary">Должен использоваться с \"Отключить FLAG_SECURE\", нет необходимости проверять другое приложение</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">Включение скриншотов, демонстрация экрана и запись в приложениях, которые обычно этого не позволяют</string>
+    <string name="disable_flag_secure_summary">Решить, что большинство приложений не могут захватывать, делиться экраном или ограничивать запись</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">Локальное обновление не будет выделено серым цветом, вам необходимо заранее включить опцию разработчика</string>
-    <string name="remove_dm_verity">Remove dm-verity detection</string>
-    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
+    <string name="remove_dm_verity">Удалить обнаружение dm-verity</string>
+    <string name="remove_dm_verity_summary">Текущий статус: %1$s\nТолько для этого обновления системы</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>
@@ -408,7 +408,7 @@
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <string name="high_brightness_mode">Режим высокой яркости</string>
     <string name="global_dc">Глобальный DC</string>
-    <string name="fiveg_mode">FiveG Switch</string>
+    <string name="fiveg_mode">Переключатель 5G</string>
     <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
     <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->

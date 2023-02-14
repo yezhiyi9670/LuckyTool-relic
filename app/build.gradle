@@ -66,6 +66,8 @@ android {
 }
 
 dependencies {
+//    implementation fileTree(dir: "libs", include: ["*.jar"])
+
     //Xposed基础
     compileOnly "de.robv.android.xposed:api:82"
     //YukiHookAPI ksp

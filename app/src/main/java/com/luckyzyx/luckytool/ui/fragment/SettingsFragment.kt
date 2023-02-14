@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -200,7 +201,11 @@ class SettingsFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.hide_desktop_appicon_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.setDesktopIcon(newValue as Boolean)
+                        context.setComponentDisabled(
+                            ComponentName(
+                                context.packageName, "${context.packageName}.Hide"
+                            ), newValue as Boolean
+                        )
                         true
                     }
                 }
@@ -493,12 +498,12 @@ class SourceFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    title = "Disable-FLAG_SECURE"
-                    summary = "VarunS2002 , GPL-3.0 license"
+                    title = "DisableFlagSecure"
+                    summary = "LSPosed , GPL-3.0 license"
                     isIconSpaceReserved = false
                     intent = Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/VarunS2002/Xposed-Disable-FLAG_SECURE")
+                        Uri.parse("https://github.com/LSPosed/DisableFlagSecure")
                     )
                 }
             )

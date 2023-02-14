@@ -3,7 +3,7 @@
 package com.luckyzyx.luckytool.utils.data
 
 import android.content.*
-import android.content.pm.PackageManager
+import android.content.pm.PackageManager.*
 import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.Bitmap
@@ -341,16 +341,33 @@ fun jumpRunningApp(context: Context) {
 }
 
 /**
- * 设置桌面图标显示/隐藏
+ * 禁用组件
  * @receiver Context
  * @param value Boolean
  */
-fun Context.setDesktopIcon(value: Boolean) {
+fun Context.setComponentDisabled(component: ComponentName, value: Boolean) {
     packageManager.setComponentEnabledSetting(
-        ComponentName(packageName, "${packageName}.Hide"),
-        if (value) PackageManager.COMPONENT_ENABLED_STATE_DISABLED else PackageManager.COMPONENT_ENABLED_STATE_DEFAULT,
-        PackageManager.DONT_KILL_APP
+        component,
+        if (value) COMPONENT_ENABLED_STATE_DISABLED else COMPONENT_ENABLED_STATE_ENABLED,
+        DONT_KILL_APP
     )
+}
+
+/**
+ * 获取组件状态
+ * @receiver Context
+ * @param component ComponentName
+ * @return Int?
+ */
+fun Context.getComponentEnabled(component: ComponentName): Int? {
+    return when (packageManager.getComponentEnabledSetting(component)) {
+        COMPONENT_ENABLED_STATE_DEFAULT -> COMPONENT_ENABLED_STATE_DEFAULT
+        COMPONENT_ENABLED_STATE_ENABLED -> COMPONENT_ENABLED_STATE_ENABLED
+        COMPONENT_ENABLED_STATE_DISABLED -> COMPONENT_ENABLED_STATE_DISABLED
+        COMPONENT_ENABLED_STATE_DISABLED_USER -> COMPONENT_ENABLED_STATE_DISABLED_USER
+        COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED -> COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED
+        else -> null
+    }
 }
 
 /**

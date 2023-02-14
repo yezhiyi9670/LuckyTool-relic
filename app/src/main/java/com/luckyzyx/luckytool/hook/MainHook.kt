@@ -34,7 +34,6 @@ object MainHook : IYukiHookXposedInit {
         if (prefs(ModulePrefs).getBoolean("enable_module").not()) return@encase
         //系统框架
         loadSystem(HookAndroid)
-        loadZygote(HookZygote)
 
         //状态栏时钟
         loadApp("com.android.systemui", StatusBarClock)

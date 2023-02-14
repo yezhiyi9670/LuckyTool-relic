@@ -16,7 +16,7 @@ object DarkModeList : YukiBaseHooker() {
         dataChannel.wait<Set<String>>("dark_mode_support_list") { supportlist = it }
         //Source DarkModeFileUtils
         searchClass {
-            from("qc", "oe").absolute()
+            from("qc", "oe", "re", "qe", "be", "te").absolute()
             field {
                 type = AnyClass
             }.count(2)
@@ -33,7 +33,8 @@ object DarkModeList : YukiBaseHooker() {
             }.count(1)
         }.get()?.hook {
             val objectName = instanceClass.classes[0]?.simpleName
-            val darkModeData = (instanceClass.canonicalName!! + "\$$objectName").toClass().newInstance()
+            val darkModeData =
+                (instanceClass.canonicalName!! + "\$$objectName").toClass().newInstance()
             injectMember {
                 method {
                     param(Reader::class.java)

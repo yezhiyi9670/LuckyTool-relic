@@ -5,7 +5,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.3.1
 
-[更新] 捐赠名单
+[更新] 捐赠名单  
+[优化] 禁用FlagSecure  
+[适配] C13设置暗色模式
 
 ### v4.3.0
 

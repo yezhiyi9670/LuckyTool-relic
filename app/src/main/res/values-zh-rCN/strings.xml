@@ -316,7 +316,7 @@
     <string name="remove_screenshot_privacy_limit">移除截屏隐私限制</string>
     <string name="remove_screenshot_privacy_limit_summary">移除涉及隐私无法截屏的限制, 若此项不生效可开启“禁用FLAG_SECURE”</string>
     <string name="disable_flag_secure">禁用FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">解决大部分APP无法截图、屏幕共享或录制的限制, 添加对应APP作用域</string>
+    <string name="disable_flag_secure_summary">解决大部分APP无法截图、屏幕共享或录制的限制</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
     <string name="unlock_local_upgrade_summary">本地安装不变灰，需要提前打开开发者选项</string>

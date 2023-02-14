@@ -83,7 +83,7 @@
     <string name="authcreak_summary">アプリのインストール時に署名の認証を可能にします。</string>
     <string name="digestCreak">APKの署名チェックを無効化</string>
     <string name="digestCreak_summary">直接インストールされたアプリを署名が異なるアプリでも上書きインストールを可能にします</string>
-    <string name="UsePreSig">インストール時に署名をされたアプリをインストールします</string>
+    <string name="UsePreSig">インストール時に署名をされたアプリをインストール</string>
     <string name="UsePreSig_summary">これは正常ではありません！危険です！絶対に必要な場合のみに有効化してください</string>
     <string name="enhancedMode">拡張モード</string>
     <string name="enhancedMode_summary">一部のアプリの整合性チェックを解決できますが、これを有効化する必要はありません</string>
@@ -142,7 +142,7 @@
     <string name="remove_vpn_active_notification_summary">ステータスバーからVPNが有効である表示を削除します</string>
     <string name="remove_statusbar_bottom_networkwarn">ステータスバー下部のネットワーク警告を削除</string>
     <string name="remove_statusbar_bottom_networkwarn_summary">ステータスバーのプルダウン時に表示されるネットワーク情報を削除</string>
-    <string name="remove_flashlight_open_notification">懐中電灯を開いている通知を削除</string>
+    <string name="remove_flashlight_open_notification">フラッシュライトが開いている通知を削除</string>
     <string name="remove_app_high_battery_consumption_warning">アプリのバッテリー消費量警告を解除</string>
     <string name="remove_app_high_battery_consumption_warning_summary">アプリのバッテリーの異常消費で最適化を促す通知を削除します</string>
     <string name="remove_high_performance_mode_notifications">高パフォーマンスモードの通知を削除</string>
@@ -241,7 +241,7 @@
     <string name="disable_apk_signature_verification">APKの署名チェックを無効化</string>
     <string name="disable_apk_signature_verification_summary">様々な署名付きのアプリをインストール可能にします。コアパッチを使用してください</string>
     <string name="remove_install_ads">インストール完了後の広告を削除</string>
-    <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨</string>
+    <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨 の順で開けます</string>
     <string name="replase_aosp_installer">AOSPインストーラーに置き換え</string>
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
     <!--FloatingWindowDialogRelated-->
@@ -253,7 +253,7 @@
     <string name="remove_low_battery_dialog_warning">電池残量低下時の警告ダイアログを削除</string>
     <string name="remove_low_battery_dialog_warning_summary">省エネモード、超省エネモードの警告ダイアログを削除します</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">デスクトップ上に表示されるアプリの警告ダイアログを削除</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">システムデスクトップ上にアプリが表示されていることを警告するダイアログボックスしないようにします</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">システムデスクトップ上にアプリが表示されていることを警告するダイアログを表示しないようにします</string>
     <string name="remove_usb_connect_dialog">USB接続時のダイアログを削除</string>
     <string name="remove_usb_connect_dialog_summary">USB接続後、ファイル転送モードがデフォルトで選択されています</string>
     <!--FullScreenGestureRelated-->
@@ -282,7 +282,7 @@
     <string name="open_battery_health">バッテリーの状態を開けるようにする</string>
     <string name="open_battery_health_summary">設定 - バッテリー - バッテリーの状態 の順で開けます</string>
     <string name="performance_mode_and_standby_optimization">パフォーマンスモードとスタンバイの最適化</string>
-    <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定</string>
+    <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
@@ -298,8 +298,8 @@
     <string name="enable_genshin_impact_theme_summary">ゲームアシスタントで設定をする必要はありません</string>
     <string name="enable_adreno_gpu_controller">Adreno GPUコントローラーを有効化</string>
     <string name="enable_support_competition_mode">サポートコンペティションモードを有効化</string>
-    <string name="enable_increase_fps_limit_feature">FPSの上限を上げる</string>
-    <string name="enable_increase_fps_feature">FPSの上限を上げます</string>
+    <string name="enable_increase_fps_limit_feature">FPSの制限を増やす</string>
+    <string name="enable_increase_fps_feature">FPSの上限を上げる</string>
     <string name="enable_optimise_power_feature">最適化された電力を有効化</string>
     <string name="enable_gt_mode_feature">GTモードの有効化</string>
     <string name="enable_super_resolution_feature">超解像機能を有効化</string>
@@ -316,7 +316,7 @@
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。有効化されない場合はFLAG_SECUREを無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
-    <string name="disable_flag_secure_summary">殆どのアプリでキャプチャ、画面共有、スクリーンレコードができない問題を解決して対応をするアプリフィールドを追加します</string>
+    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>
