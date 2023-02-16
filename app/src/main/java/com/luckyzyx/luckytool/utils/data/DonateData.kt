@@ -240,6 +240,9 @@ class DonateData {
             add(DonateInfo("痕祭",10.0,donateDetails(
                 DonateChannelInfo("20230212-233213",CQQ,10.0,"101000026901302302121391049274")
             )))
+            add(DonateInfo("Sakura酱",15.0, donateDetails(
+                DonateChannelInfo("20230216-140538",CAP,15.0,"2023021622001490101430998193")
+            )))
         }
     }
 
