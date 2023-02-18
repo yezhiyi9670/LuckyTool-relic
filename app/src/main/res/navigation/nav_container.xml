@@ -295,6 +295,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_miscellaneous_to_fingerPrintRelated"
+                app:destination="@id/fingerPrintRelated"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/alphaBackupPro"
@@ -331,6 +338,10 @@
     <fragment
             android:id="@+id/darkModeFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.DarkModeFragment"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/fingerPrintRelated"
+            android:name="com.luckyzyx.luckytool.ui.fragment.FingerPrintRelated"
             android:label="{title_label}" />
 
 </navigation>

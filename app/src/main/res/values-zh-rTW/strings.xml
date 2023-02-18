@@ -188,7 +188,6 @@
     <string name="LockScreen">锁屏相关</string>
     <string name="remove_lock_screen_redone">移除锁屏时钟红1</string>
     <string name="remove_top_lock_screen_icon">移除锁屏顶部图标</string>
-    <string name="remove_lock_screen_fingerprint_icon">移除锁屏指纹图标</string>
     <string name="remove_lock_screen_bottom_left_button">移除锁屏左下角按钮</string>
     <string name="remove_lock_screen_bottom_right_camera">移除锁屏右下角相机</string>
     <string name="set_lock_screen_centered">锁屏组件居中显示</string>
@@ -266,6 +265,9 @@
     <string name="replace_side_slider_icon_switch_summary">建议图标宽度在100px左右</string>
     <string name="replace_side_slider_icon_on_left">替换左侧侧滑图标</string>
     <string name="replace_side_slider_icon_on_right">替换右侧侧滑图标</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">指纹相关</string>
+    <string name="remove_fingerprint_icon">移除指纹图标</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>

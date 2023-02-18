@@ -189,7 +189,6 @@
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
-    <string name="remove_lock_screen_fingerprint_icon">Удалить иконку отпечатка пальца на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
@@ -267,6 +266,9 @@
     <string name="replace_side_slider_icon_switch_summary">Ширина иконки рекомендуется около 100px</string>
     <string name="replace_side_slider_icon_on_left">Заменить иконку боковой панели слева</string>
     <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">FingerPrint Related</string>
+    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>

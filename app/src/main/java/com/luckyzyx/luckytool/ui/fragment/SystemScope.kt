@@ -988,14 +988,6 @@ class LockScreen : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_fingerprint_icon)
-                    key = "remove_lock_screen_fingerprint_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_lock_screen_bottom_left_button)
                     key = "remove_lock_screen_bottom_left_button"
                     setDefaultValue(false)
@@ -1373,6 +1365,22 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
     }
 }
 
+class FingerPrintRelated : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_fingerprint_icon)
+                    key = "remove_fingerprint_icon"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
 class Miscellaneous : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
@@ -1382,7 +1390,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     title = getString(R.string.FloatingWindowDialogRelated)
                     summary =
                         getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(
-                            R.string.remove_usb_connect_dialog
+                            R.string.disable_headphone_high_volume_warning
                         )
                     key = "FloatingWindowDialogRelated"
                     isIconSpaceReserved = false
@@ -1406,6 +1414,23 @@ class Miscellaneous : ModulePreferenceFragment() {
                     setOnPreferenceClickListener {
                         findNavController().navigate(
                             R.id.action_miscellaneous_to_fullScreenGestureRelated,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.FingerPrintRelated)
+                    summary = getString(R.string.remove_fingerprint_icon)
+                    key = "FingerPrintRelated"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_miscellaneous_to_fingerPrintRelated,
                             Bundle().apply {
                                 putCharSequence("title_label", title)
                             })

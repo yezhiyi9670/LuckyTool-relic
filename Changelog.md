@@ -8,7 +8,9 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [更新] 捐赠名单  
 [优化] 禁用FlagSecure  
 [适配] C13设置暗色模式  
-[适配] C13相机水印字数限制
+[适配] C13相机水印字数限制  
+[更改] 锁屏指纹功能位置  
+[同步] Crowdin翻译
 
 ### v4.3.0
 

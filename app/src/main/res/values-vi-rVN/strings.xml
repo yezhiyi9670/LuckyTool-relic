@@ -188,7 +188,6 @@
     <string name="LockScreen">Màn hình khóa</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
     <string name="remove_top_lock_screen_icon">Xóa biểu tượng màn hình khóa trên cùng</string>
-    <string name="remove_lock_screen_fingerprint_icon">Xóa biểu tượng dấu vân tay màn hình khóa</string>
     <string name="remove_lock_screen_bottom_left_button">Xóa nút dưới cùng bên trái của màn hình khóa</string>
     <string name="remove_lock_screen_bottom_right_camera">Xóa camera dưới cùng bên phải màn hình khóa</string>
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
@@ -266,6 +265,9 @@
     <string name="replace_side_slider_icon_switch_summary">Chiều rộng biểu tượng được khuyến nghị là khoảng 100px</string>
     <string name="replace_side_slider_icon_on_left">Thay thế biểu tượng trượt bên trái</string>
     <string name="replace_side_slider_icon_on_right">Thay thế biểu tượng trượt bên phải</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">FingerPrint Related</string>
+    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>
@@ -320,8 +322,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Mở khóa nâng cấp cục bộ</string>
     <string name="unlock_local_upgrade_summary">Bản nâng cấp cục bộ sẽ không chuyển sang màu xám, bạn cần bật tùy chọn nhà phát triển trước</string>
-    <string name="remove_dm_verity">Remove dm-verity detection</string>
-    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
+    <string name="remove_dm_verity">Xóa phát hiện dm-verity</string>
+    <string name="remove_dm_verity_summary">Trạng thái hiện tại: %1$s\nChỉ hợp lệ cho bản cập nhật hệ thống này</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Bỏ qua trang khởi động</string>
     <string name="vip_download">Tải xuống bản gốc</string>
@@ -407,7 +409,7 @@
     <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
     <string name="global_dc">DC toàn cầu</string>
-    <string name="fiveg_mode">FiveG Switch</string>
+    <string name="fiveg_mode">Chuyển đổi FiveG</string>
     <string name="game_assistant_tile_tips">Không phát hiện trợ lý trò chơi!</string>
     <string name="tile_close_autoself_tip">Sau khi khởi động lại khu vực, tính năng này sẽ không tự khởi động nữa</string>
     <!--Permission-->

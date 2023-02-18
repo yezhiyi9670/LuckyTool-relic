@@ -188,7 +188,6 @@
     <string name="LockScreen">Ekran blokady</string>
     <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
-    <string name="remove_lock_screen_fingerprint_icon">Ukryj ikonę odcisku palca</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
     <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
@@ -266,6 +265,9 @@
     <string name="replace_side_slider_icon_switch_summary">Szerokość ikony jest zalecana do około 100 pikseli</string>
     <string name="replace_side_slider_icon_on_left">Zastąp ikonę bocznego suwaka po lewej stronie</string>
     <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">FingerPrint Related</string>
+    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>

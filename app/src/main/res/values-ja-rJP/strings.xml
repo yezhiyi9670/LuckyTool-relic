@@ -188,7 +188,6 @@
     <string name="LockScreen">ロック画面関連</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
-    <string name="remove_lock_screen_fingerprint_icon">ロック画面の指紋認証アイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
@@ -266,6 +265,9 @@
     <string name="replace_side_slider_icon_switch_summary">アイコンの幅は約100px程を推奨します</string>
     <string name="replace_side_slider_icon_on_left">左側のサイドスライドアイコンを置き換え</string>
     <string name="replace_side_slider_icon_on_right">右側のサイドスライドアイコンを置き換え</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">FingerPrint Related</string>
+    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">その他</string>
     <string name="Miscellaneous_summary">難易度の高いカテゴリはこちらに配置されます</string>
@@ -316,7 +318,7 @@
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。有効化されない場合はFLAG_SECUREを無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits</string>
+    <string name="disable_flag_secure_summary">ほとんどのアプリのスクリーンショット・画面共有・画面録画制限を回避します</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>

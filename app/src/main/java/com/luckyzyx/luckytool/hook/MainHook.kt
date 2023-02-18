@@ -79,6 +79,8 @@ object MainHook : IYukiHookXposedInit {
         }
         //全面屏手势相关
         loadApp("com.android.systemui", HookGestureRelated)
+        //指纹相关
+        loadApp("com.android.systemui", HookFingerPrintRelated)
         //杂项
         loadApp(
             "com.android.systemui",

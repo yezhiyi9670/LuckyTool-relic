@@ -26,8 +26,8 @@ object DisableFlagSecure : YukiBaseHooker() {
             val m: Method? =
                 XposedBridge::class.java.getDeclaredMethod("deoptimizeMethod", Member::class.java)
             deoptimizeMethod = m
-        } catch (t: Throwable) {
-            loggerD(msg = t.toString())
+        } catch (e: Exception) {
+            loggerD(msg = e.toString())
         }
 
         try {
@@ -52,7 +52,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                     deoptimizeMethod(c, "test")
                 }
             }
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             loggerD(msg = e.toString())
         }
     }
@@ -64,7 +64,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                     deoptimizeMethod?.invoke(null, it)
                 }
             }
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             loggerD(msg = e.toString())
         }
     }

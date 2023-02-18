@@ -35,11 +35,6 @@ object HookLockScreen : YukiBaseHooker() {
             loadHooker(RemoveTopLockScreenIcon)
         }
 
-        //移除锁屏指纹图标
-        if (prefs(ModulePrefs).getBoolean("remove_lock_screen_fingerprint_icon", false)) {
-            loadHooker(RemoveLockScreenFingerPrintIcon)
-        }
-
         //充电小数点常驻
         //com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView
     }

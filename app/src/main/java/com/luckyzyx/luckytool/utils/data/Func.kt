@@ -625,6 +625,7 @@ fun getMSFFile(context: Context, uri: Uri): String? {
     val dir =
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool/cache")
     if (!dir.exists()) dir.mkdirs()
+    File(dir.path + "/.nomedia").createNewFile()
     val fileType = context.contentResolver.getType(uri)?.split("/")?.get(1)
     val fileName = SystemClock.uptimeMillis().toString() + "." + fileType
     val file = File(dir, fileName)
