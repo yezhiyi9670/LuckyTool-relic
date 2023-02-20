@@ -164,6 +164,7 @@ object StatusBarLayout : YukiBaseHooker() {
             }
         }
 
+        //Source PhoneStatusBarView
         findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
             injectMember {
                 method {
@@ -172,6 +173,26 @@ object StatusBarLayout : YukiBaseHooker() {
                 afterHook {
                     if (!isCompatibleMode) return@afterHook
                     updateLayout(instance<ViewGroup>().context)
+                }
+            }
+        }
+
+        //Source KeyguardStatusBarViewExImpl
+        findClass("com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl").hook {
+            injectMember {
+                method {
+                    name = "onFinishInflate"
+                    paramCount = 1
+                }
+                afterHook {
+                    val viewGroup = args(0).cast<ViewGroup>()!!
+                    val res = viewGroup.resources
+                    val keyguardStatusBarContentsId: Int =
+                        res.getIdentifier("keyguard_status_bar_contents", "id", packageName)
+                    val keyguardStatusBarContents: ViewGroup? = keyguardStatusBarContentsId.let {
+                        viewGroup.findViewById(keyguardStatusBarContentsId)
+                    }
+                    keyguardStatusBarContents?.setPadding(leftMargin, 0, rightMargin, 0)
                 }
             }
         }

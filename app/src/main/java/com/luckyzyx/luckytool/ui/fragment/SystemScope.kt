@@ -200,7 +200,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarLayout)
                     summary =
-                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
+                        getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
                     key = "StatusBarLayout"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {

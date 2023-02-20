@@ -18,6 +18,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 时钟样式动态修改  
 [优化] 时钟字体大小动态修改  
 [添加] 状态栏时钟居中布局
+[修复] 屏幕兼容导致运营商遮挡问题
 
 ### v4.3.0
 
