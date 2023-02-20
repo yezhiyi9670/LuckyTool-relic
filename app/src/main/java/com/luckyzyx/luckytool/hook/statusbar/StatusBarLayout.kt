@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -59,15 +60,17 @@ object StatusBarLayout : YukiBaseHooker() {
         }
 
         //Source CollapsedStatusBarFragment
-        findClass("com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment").hook {
+        VariousClass(
+            "com.android.systemui.statusbar.phone.CollapsedStatusBarFragment", //A12
+            "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment"
+        ).hook {
             injectMember {
                 method {
                     name = "onViewCreated"
                     paramCount = 2
                 }
                 afterHook {
-                    val phoneStatusBarView =
-                        field { name = "mStatusBar" }.get(instance).cast<ViewGroup>()!!
+                    val phoneStatusBarView = args(0).cast<ViewGroup>()!!
                     val context = phoneStatusBarView.context
                     val res = phoneStatusBarView.resources
                     val statusBarId = res?.getIdentifier("status_bar", "id", packageName)
@@ -178,21 +181,20 @@ object StatusBarLayout : YukiBaseHooker() {
         }
 
         //Source KeyguardStatusBarViewExImpl
-        findClass("com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl").hook {
+        VariousClass(
+            "com.oplusos.systemui.statusbar.phone.KeyguardStatusBarViewEx", //A12
+            "com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl"
+        ).hook {
             injectMember {
                 method {
                     name = "onFinishInflate"
-                    paramCount = 1
                 }
                 afterHook {
-                    val viewGroup = args(0).cast<ViewGroup>()!!
-                    val res = viewGroup.resources
-                    val keyguardStatusBarContentsId: Int =
-                        res.getIdentifier("keyguard_status_bar_contents", "id", packageName)
-                    val keyguardStatusBarContents: ViewGroup? = keyguardStatusBarContentsId.let {
-                        viewGroup.findViewById(keyguardStatusBarContentsId)
-                    }
-                    keyguardStatusBarContents?.setPadding(leftMargin, 0, rightMargin, 0)
+                    if (!isCompatibleMode) return@afterHook
+                    //ID -> keyguard_status_bar_contents
+                    field {
+                        name = "keyguardStatusbarLeftContView"
+                    }.get(instance).cast<ViewGroup>()?.setPadding(leftMargin, 0, rightMargin, 0)
                 }
             }
         }
