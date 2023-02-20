@@ -4,21 +4,17 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
-import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
-import androidx.preference.SeekBarPreference
-import androidx.preference.SwitchPreference
+import androidx.preference.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.getDocumentPath
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getString
-import com.luckyzyx.luckytool.utils.tools.putString
+import com.luckyzyx.luckytool.utils.tools.*
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -200,6 +196,22 @@ class StatusBar : ModulePreferenceFragment() {
                     }
                 }
             )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.StatusBarLayout)
+                    summary =
+                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
+                    key = "StatusBarLayout"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarLayout, Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
         }
     }
 }
@@ -209,136 +221,220 @@ class StatusBarClock : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(context).apply {
+                DropDownPreference(context).apply {
                     title = getString(R.string.statusbar_clock_enable)
-                    key = "statusbar_clock_enable"
-                    setDefaultValue(false)
+                    summary = "%s"
+                    key = "statusbar_clock_mode"
+                    entries = resources.getStringArray(R.array.statusbar_clock_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_year)
-                    key = "statusbar_clock_show_year"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_month)
-                    key = "statusbar_clock_show_month"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_day)
-                    key = "statusbar_clock_show_day"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_week)
-                    key = "statusbar_clock_show_week"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_period)
-                    key = "statusbar_clock_show_period"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_double_hour)
-                    key = "statusbar_clock_show_double_hour"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_second)
-                    key = "statusbar_clock_show_second"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_hide_spaces)
-                    key = "statusbar_clock_hide_spaces"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_show_doublerow)
-                    key = "statusbar_clock_show_doublerow"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_singlerow_fontsize)
-                    summary = getString(R.string.statusbar_clock_fontsize_summary)
-                    key = "statusbar_clock_singlerow_fontsize"
-                    setDefaultValue(0)
-                    max = 18
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_doublerow_fontsize)
-                    summary = getString(R.string.statusbar_clock_fontsize_summary)
-                    key = "statusbar_clock_doublerow_fontsize"
-                    setDefaultValue(0)
-                    max = 10
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
+            if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "1") {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_year)
+                        key = "statusbar_clock_show_year"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_month)
+                        key = "statusbar_clock_show_month"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_day)
+                        key = "statusbar_clock_show_day"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_week)
+                        key = "statusbar_clock_show_week"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_period)
+                        key = "statusbar_clock_show_period"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_double_hour)
+                        key = "statusbar_clock_show_double_hour"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_second)
+                        key = "statusbar_clock_show_second"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_hide_spaces)
+                        key = "statusbar_clock_hide_spaces"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_show_doublerow)
+                        key = "statusbar_clock_show_doublerow"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_center_alignment)
+                        key = "statusbar_clock_center_alignment"
+                        setDefaultValue(false)
+                        isVisible = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_center_alignment", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_singlerow_fontsize)
+                        summary = getString(R.string.statusbar_clock_fontsize_summary)
+                        key = "statusbar_clock_singlerow_fontsize"
+                        setDefaultValue(0)
+                        max = 18
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_singlerow_fontsize", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_doublerow_fontsize)
+                        summary = getString(R.string.statusbar_clock_fontsize_summary)
+                        key = "statusbar_clock_doublerow_fontsize"
+                        setDefaultValue(0)
+                        max = 10
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_doublerow_fontsize", newValue)
+                            true
+                        }
+                    }
+                )
+            }
+            if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "2") {
+                addPreference(
+                    EditTextPreference(context).apply {
+                        val value = context.getString(
+                            ModulePrefs,
+                            "statusbar_clock_custom_format",
+                            "HH:mm:ss"
+                        )
+                        title = getString(R.string.statusbar_clock_custom_format)
+                        dialogTitle = getString(R.string.statusbar_clock_custom_format)
+                        dialogMessage = """
+                            YYYY/MM/DD -> ${formatDate("YYYY/MM/DD")}
+                            Y/M/D/E/a -> ${formatDate("Y/M/D/E/a")}
+                            YY/YYYY ${formatDate("YY/YYYY")}
+                            M/MM/MMM/MMMM/MMMMM -> ${formatDate("M/MM/MMM/MMMM/MMMMM")}
+                            D/DD -> ${formatDate("D/DD")}
+                            E/EE/EEE/EEEE/EEEEE -> ${formatDate("E/EE/EEE/EEEE/EEEEE")}
+                            h/H/k/K -> ${formatDate("h/H/k/K")}
+                            HH:mm:ss -> ${formatDate("HH:mm:ss")}
+                            m/mm/mmm/mmmm -> ${formatDate("m/mm/mmm/mmmm")}
+                            s/ss/sss/ssss -> ${formatDate("s/ss/sss/ssss")}
+                            z -> ${formatDate("z")}
+                            N -> 初一
+                            NN -> 二月初一
+                            NNN -> 兔年二月初一
+                            NNNN -> 癸卯兔年二月初一
+                        """.trimIndent()
+                        summary = value
+                        key = "statusbar_clock_custom_format"
+                        setDefaultValue("HH:mm:ss")
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            summary = newValue as String
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_custom_format", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_center_alignment)
+                        key = "statusbar_clock_center_alignment"
+                        setDefaultValue(false)
+                        isVisible = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_center_alignment", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_custom_fontsize)
+                        summary = getString(R.string.statusbar_clock_fontsize_summary)
+                        key = "statusbar_clock_custom_fontsize"
+                        setDefaultValue(0)
+                        max = 20
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_clock_custom_fontsize", newValue)
+                            true
+                        }
+                    }
+                )
+            }
         }
-        findPreference<SwitchPreference>("statusbar_clock_show_year")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_month")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_day")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_week")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_period")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_double_hour")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_second")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_hide_spaces")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SwitchPreference>("statusbar_clock_show_doublerow")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SeekBarPreference>("statusbar_clock_singlerow_fontsize")?.dependency =
-            "statusbar_clock_enable"
-        findPreference<SeekBarPreference>("statusbar_clock_doublerow_fontsize")?.dependency =
-            "statusbar_clock_show_doublerow"
     }
 }
 
@@ -818,6 +914,78 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
     }
 }
 
+class StatusBarLayout : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_layout_mode)
+                    summary = "%s"
+                    key = "statusbar_layout_mode"
+                    entries = resources.getStringArray(R.array.statusbar_layout_mode_entries)
+                    entryValues = arrayOf("0", "1")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_layout_compatible_mode)
+                    key = "statusbar_layout_compatible_mode"
+                    setDefaultValue(false)
+                    isEnabled = context.getString(ModulePrefs, "statusbar_layout_mode", "0") == "1"
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            if (context.getString(
+                    ModulePrefs, "statusbar_layout_mode", "0"
+                ) == "1"
+                && context.getBoolean(
+                    ModulePrefs, "statusbar_layout_compatible_mode", false
+                )
+            ) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_layout_left_margin)
+                        summary = getString(R.string.statusbar_layout_margin_tip)
+                        key = "statusbar_layout_left_margin"
+                        setDefaultValue(0)
+                        max = 150
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_layout_right_margin)
+                        summary = getString(R.string.statusbar_layout_margin_tip)
+                        key = "statusbar_layout_right_margin"
+                        setDefaultValue(0)
+                        max = 150
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
+        }
+    }
+}
+
 class StatusBarBatteryInfo : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
@@ -1277,14 +1445,22 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
         val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
                 val path = getDocumentPath(requireActivity(), it)
-                requireActivity().putString(ModulePrefs, "replace_side_slider_icon_on_left", path)
+                requireActivity().putString(
+                    ModulePrefs,
+                    "replace_side_slider_icon_on_left",
+                    path
+                )
                 findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
             }
         }
         val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
                 val path = getDocumentPath(requireActivity(), it)
-                requireActivity().putString(ModulePrefs, "replace_side_slider_icon_on_right", path)
+                requireActivity().putString(
+                    ModulePrefs,
+                    "replace_side_slider_icon_on_right",
+                    path
+                )
                 findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
             }
         }
@@ -1334,7 +1510,11 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     title = getString(R.string.replace_side_slider_icon_on_left)
                     key = "replace_side_slider_icon_on_left"
                     summary =
-                        context.getString(ModulePrefs, "replace_side_slider_icon_on_left", "null")
+                        context.getString(
+                            ModulePrefs,
+                            "replace_side_slider_icon_on_left",
+                            "null"
+                        )
                     isIconSpaceReserved = false
                     isCopyingEnabled = true
                     setOnPreferenceClickListener {
@@ -1348,7 +1528,11 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     title = getString(R.string.replace_side_slider_icon_on_right)
                     key = "replace_side_slider_icon_on_right"
                     summary =
-                        context.getString(ModulePrefs, "replace_side_slider_icon_on_right", "null")
+                        context.getString(
+                            ModulePrefs,
+                            "replace_side_slider_icon_on_right",
+                            "null"
+                        )
                     isIconSpaceReserved = false
                     isCopyingEnabled = true
                     setOnPreferenceClickListener {
@@ -1513,7 +1697,8 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.performance_mode_and_standby_optimization)
-                    summary = getString(R.string.performance_mode_and_standby_optimization_summary)
+                    summary =
+                        getString(R.string.performance_mode_and_standby_optimization_summary)
                     key = "performance_mode_and_standby_optimization"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -1710,7 +1895,9 @@ class OplusOta : ModulePreferenceFragment() {
                         "getprop ro.boot.veritymode",
                         true,
                         true
-                    ).successMsg.let { it.ifBlank { "null" } }
+                    ).let {
+                        if (it.result == 1) isEnabled = false else it.successMsg.ifBlank { "null" }
+                    }
                     title = getString(R.string.remove_dm_verity)
                     summary = getString(R.string.remove_dm_verity_summary, status)
                     key = "remove_dm_verity"

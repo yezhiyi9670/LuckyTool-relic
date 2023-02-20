@@ -276,6 +276,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_statusBar_to_statusBarLayout"
+                app:destination="@id/statusBarLayout"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/miscellaneous"
@@ -342,6 +349,10 @@
     <fragment
             android:id="@+id/fingerPrintRelated"
             android:name="com.luckyzyx.luckytool.ui.fragment.FingerPrintRelated"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/statusBarLayout"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarLayout"
             android:label="{title_label}" />
 
 </navigation>

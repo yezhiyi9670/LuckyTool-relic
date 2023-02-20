@@ -112,6 +112,7 @@
     <string name="battery_update_time">更新日時</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">ステータスバーの時計</string>
+    <string name="statusbar_clock_mode">ステータスバーの時計モード</string>
     <string name="statusbar_clock_enable">ステータスバーの時計の合計を切り替え</string>
     <string name="statusbar_clock_show_year">年を表示</string>
     <string name="statusbar_clock_show_month">月を表示</string>
@@ -121,9 +122,12 @@
     <string name="statusbar_clock_show_double_hour">時間をダブルで表示</string>
     <string name="statusbar_clock_show_second">秒を表示</string>
     <string name="statusbar_clock_hide_spaces">スペースを非表示</string>
+    <string name="statusbar_clock_center_alignment">中央揃え</string>
     <string name="statusbar_clock_show_doublerow">多段表示</string>
     <string name="statusbar_clock_singlerow_fontsize">1段表示のフォントの大きさ</string>
     <string name="statusbar_clock_doublerow_fontsize">多段表示のフォントの大きさ</string>
+    <string name="statusbar_clock_custom_format">時計の書式設定</string>
+    <string name="statusbar_clock_custom_fontsize">時計のフォントサイズ</string>
     <string name="statusbar_clock_fontsize_summary">0の場合はフォントの大きさは変更されません</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">ステータスバーのネットワーク速度</string>
@@ -184,6 +188,14 @@
     <string name="tile_expanded_columns_horizontal">タイル展開時のカラム (水平方向)</string>
     <string name="tile_expanded_rows_vertical">タイルの列の拡張 (垂直方向)</string>
     <string name="tile_columns_horizontal_c13">タイルの列の拡張 (水平方向)</string>
+    <!--StatusBarLayout-->
+    <string name="StatusBarLayout">Status Bar Layout</string>
+    <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
+    <string name="statusbar_layout_clock_center_align">Clock Center Align</string>
+    <string name="statusbar_layout_compatible_mode">Screen compatible mode</string>
+    <string name="statusbar_layout_left_margin">Status bar left margin</string>
+    <string name="statusbar_layout_right_margin">Status bar right margin</string>
+    <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
@@ -266,8 +278,8 @@
     <string name="replace_side_slider_icon_on_left">左側のサイドスライドアイコンを置き換え</string>
     <string name="replace_side_slider_icon_on_right">右側のサイドスライドアイコンを置き換え</string>
     <!--FingerPrintRelated-->
-    <string name="FingerPrintRelated">FingerPrint Related</string>
-    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
+    <string name="FingerPrintRelated">指紋認証関連</string>
+    <string name="remove_fingerprint_icon">指紋アイコンを削除</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">その他</string>
     <string name="Miscellaneous_summary">難易度の高いカテゴリはこちらに配置されます</string>
@@ -414,4 +426,8 @@
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
+    <!--CommonWords-->
+    <string name="common_words_default">Default</string>
+    <string name="common_words_preset">Preset</string>
+    <string name="common_words_customize">Customize</string>
 </resources>

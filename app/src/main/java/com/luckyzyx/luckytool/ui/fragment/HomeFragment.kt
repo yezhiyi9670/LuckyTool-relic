@@ -116,6 +116,10 @@ class HomeFragment : Fragment() {
                 } else {
                     context.getFpsMode2()
                 }
+                if (fpsData.isEmpty()) {
+                    context.toast(context.getString(R.string.system_not_support))
+                    return@setOnClickListener
+                }
                 val currentFps = context.getInt(SettingsPrefs, "current_fps", -1)
                 val fpsAutostart = context.getBoolean(SettingsPrefs, "fps_autostart", false)
                 val fpsSelfStart =

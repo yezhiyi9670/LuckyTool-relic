@@ -53,5 +53,16 @@
         <item>zh-HK</item>
         <item>zh-TW</item>
     </string-array>
+    
+    <string-array name="statusbar_clock_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_preset</item>
+        <item>@string/common_words_customize</item>
+    </string-array>
+    
+    <string-array name="statusbar_layout_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/statusbar_layout_clock_center_align</item>
+    </string-array>
 
 </resources>

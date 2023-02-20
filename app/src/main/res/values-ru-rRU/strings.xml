@@ -113,6 +113,7 @@
     <string name="battery_update_time">Время обновления</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
+    <string name="statusbar_clock_mode">Часы в строке состояния</string>
     <string name="statusbar_clock_enable">Включить/отключить часы строки состояния</string>
     <string name="statusbar_clock_show_year">Показывать год</string>
     <string name="statusbar_clock_show_month">Показывать месяц</string>
@@ -122,9 +123,12 @@
     <string name="statusbar_clock_show_double_hour">Показывать двойные часы</string>
     <string name="statusbar_clock_show_second">Показывать секунды</string>
     <string name="statusbar_clock_hide_spaces">Скрыть пробелы</string>
+    <string name="statusbar_clock_center_alignment">Выравнивание по центру</string>
     <string name="statusbar_clock_show_doublerow">Двойной статусбар</string>
     <string name="statusbar_clock_singlerow_fontsize">Размер шрифта в одну строку</string>
     <string name="statusbar_clock_doublerow_fontsize">Размер шрифта в две строки</string>
+    <string name="statusbar_clock_custom_format">Формат часов</string>
+    <string name="statusbar_clock_custom_fontsize">Размер шрифта часов</string>
     <string name="statusbar_clock_fontsize_summary">Если он равен 0, размер шрифта не будет изменен</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">Скорость сети в строке состояния</string>
@@ -185,6 +189,14 @@
     <string name="tile_expanded_columns_horizontal">Развернутые столбцы плиток (горизонтально)</string>
     <string name="tile_expanded_rows_vertical">Развернуть ряды плитки (по вертикали)</string>
     <string name="tile_columns_horizontal_c13">Столбцы плиток (горизонтально)</string>
+    <!--StatusBarLayout-->
+    <string name="StatusBarLayout">Status Bar Layout</string>
+    <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
+    <string name="statusbar_layout_clock_center_align">Clock Center Align</string>
+    <string name="statusbar_layout_compatible_mode">Screen compatible mode</string>
+    <string name="statusbar_layout_left_margin">Status bar left margin</string>
+    <string name="statusbar_layout_right_margin">Status bar right margin</string>
+    <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
@@ -225,10 +237,10 @@
     <!--APPRelatedList-->
     <string name="APPRelatedList">Список приложений</string>
     <string name="enable_zoom_window">Включить список поддержки</string>
-    <string name="zoom_window_support_list">Пользовательское окно поддержки масштаба</string>
+    <string name="zoom_window_support_list">Пользовательское окно масштаба</string>
     <string name="zoom_window_support_list_summary">Включить в соответствии с вашими потребностями, в противном случае возникнут непоправимые проблемы</string>
     <string name="multi_app_enable">Включить список замены</string>
-    <string name="multi_app_custom_list">Заменить список поддержки клонирования приложений</string>
+    <string name="multi_app_custom_list">Заменить список клонирования приложений</string>
     <string name="multi_app_custom_list_summary">После включения функции исходный список клонов приложений будет заменен этим списком, слишком большое количество приведет к задержке</string>
     <string name="dark_mode_support_list">Приложения поддерживающие темный режим</string>
     <!--AppInstallationRelated-->
@@ -267,8 +279,8 @@
     <string name="replace_side_slider_icon_on_left">Заменить иконку боковой панели слева</string>
     <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
     <!--FingerPrintRelated-->
-    <string name="FingerPrintRelated">FingerPrint Related</string>
-    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
+    <string name="FingerPrintRelated">Отпечаток пальца</string>
+    <string name="remove_fingerprint_icon">Удалить иконку отпечатка</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
@@ -415,4 +427,8 @@
     <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
+    <!--CommonWords-->
+    <string name="common_words_default">Default</string>
+    <string name="common_words_preset">Preset</string>
+    <string name="common_words_customize">Customize</string>
 </resources>

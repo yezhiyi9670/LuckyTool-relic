@@ -112,6 +112,7 @@
     <string name="battery_update_time">Thời gian cập nhật</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
+    <string name="statusbar_clock_mode">Status bar clock mode</string>
     <string name="statusbar_clock_enable">Chuyển đổi đồng hồ trên thanh trạng thái</string>
     <string name="statusbar_clock_show_year">Hiện năm</string>
     <string name="statusbar_clock_show_month">Hiện tháng</string>
@@ -121,9 +122,12 @@
     <string name="statusbar_clock_show_double_hour">Hiện thị giờ kép</string>
     <string name="statusbar_clock_show_second">Hiện giây</string>
     <string name="statusbar_clock_hide_spaces">Ẩn khoảng cách</string>
+    <string name="statusbar_clock_center_alignment">Center Alignment</string>
     <string name="statusbar_clock_show_doublerow">Hiện hàng kép</string>
     <string name="statusbar_clock_singlerow_fontsize">Cỡ chữ hàng đơn</string>
     <string name="statusbar_clock_doublerow_fontsize">Cỡ chữ hàng kép</string>
+    <string name="statusbar_clock_custom_format">Clock format</string>
+    <string name="statusbar_clock_custom_fontsize">Clock font size</string>
     <string name="statusbar_clock_fontsize_summary">Nếu giá trị là 0, kích cỡ chữ sẽ không thay đổi</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">Tốc độ mạng</string>
@@ -184,6 +188,14 @@
     <string name="tile_expanded_columns_horizontal">Mở rộng ô (ngang)</string>
     <string name="tile_expanded_rows_vertical">Mở rộng hàng ô (dọc)</string>
     <string name="tile_columns_horizontal_c13">Cột ô (ngang)</string>
+    <!--StatusBarLayout-->
+    <string name="StatusBarLayout">Status Bar Layout</string>
+    <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
+    <string name="statusbar_layout_clock_center_align">Clock Center Align</string>
+    <string name="statusbar_layout_compatible_mode">Screen compatible mode</string>
+    <string name="statusbar_layout_left_margin">Status bar left margin</string>
+    <string name="statusbar_layout_right_margin">Status bar right margin</string>
+    <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
@@ -266,8 +278,8 @@
     <string name="replace_side_slider_icon_on_left">Thay thế biểu tượng trượt bên trái</string>
     <string name="replace_side_slider_icon_on_right">Thay thế biểu tượng trượt bên phải</string>
     <!--FingerPrintRelated-->
-    <string name="FingerPrintRelated">FingerPrint Related</string>
-    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
+    <string name="FingerPrintRelated">Vân tay</string>
+    <string name="remove_fingerprint_icon">Xóa biểu tượng dấu vân tay</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>
@@ -414,4 +426,8 @@
     <string name="tile_close_autoself_tip">Sau khi khởi động lại khu vực, tính năng này sẽ không tự khởi động nữa</string>
     <!--Permission-->
     <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
+    <!--CommonWords-->
+    <string name="common_words_default">Default</string>
+    <string name="common_words_preset">Preset</string>
+    <string name="common_words_customize">Customize</string>
 </resources>

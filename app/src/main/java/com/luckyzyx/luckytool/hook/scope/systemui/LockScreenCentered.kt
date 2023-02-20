@@ -20,6 +20,9 @@ object LockScreenCentered : YukiBaseHooker() {
                     field { name = "mTvWeek" }.get(instance).cast<TextView>()
                         ?.setCenterHorizontally()
 
+//                    field { name = "mTvHour" }.get(instance).cast<TextView>()
+//                    field { name = "mTvMinute" }.get(instance).cast<TextView>()
+
                     (field { name = "mTvColon" }.get(instance)
                         .cast<TextView>()?.parent as RelativeLayout).setCenterHorizontally()
 

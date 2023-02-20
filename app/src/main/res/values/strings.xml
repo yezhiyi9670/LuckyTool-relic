@@ -115,6 +115,7 @@
     
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
+    <string name="statusbar_clock_mode">Status bar clock mode</string>
     <string name="statusbar_clock_enable">Status bar clock total toggle</string>
     <string name="statusbar_clock_show_year">Show year</string>
     <string name="statusbar_clock_show_month">Show month</string>
@@ -124,9 +125,12 @@
     <string name="statusbar_clock_show_double_hour">Show Double Hour</string>
     <string name="statusbar_clock_show_second">Show seconds</string>
     <string name="statusbar_clock_hide_spaces">Hide spaces</string>
+    <string name="statusbar_clock_center_alignment">Center Alignment</string>
     <string name="statusbar_clock_show_doublerow">Double row display</string>
     <string name="statusbar_clock_singlerow_fontsize">Single row font size</string>
     <string name="statusbar_clock_doublerow_fontsize">Double row font size</string>
+    <string name="statusbar_clock_custom_format">Clock format</string>
+    <string name="statusbar_clock_custom_fontsize">Clock font size</string>
     <string name="statusbar_clock_fontsize_summary">If it is 0, the font size will not be modified</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">StatusBar NetWorkSpeed</string>
@@ -190,6 +194,14 @@
     <string name="tile_expanded_columns_horizontal">Expanded tile columns (horizontal)</string>
     <string name="tile_expanded_rows_vertical">Expand tile rows (vertical)</string>
     <string name="tile_columns_horizontal_c13">Tile Columns (horizontal)</string>
+    <!--StatusBarLayout-->
+    <string name="StatusBarLayout">Status Bar Layout</string>
+    <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
+    <string name="statusbar_layout_clock_center_align">Clock Center Align</string>
+    <string name="statusbar_layout_compatible_mode">Screen compatible mode</string>
+    <string name="statusbar_layout_left_margin">Status bar left margin</string>
+    <string name="statusbar_layout_right_margin">Status bar right margin</string>
+    <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
@@ -423,5 +435,10 @@
     <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
+    <!--CommonWords-->
+    <string name="common_words_default">Default</string>
+    <string name="common_words_preset">Preset</string>
+    <string name="common_words_customize">Customize</string>
+
 
 </resources>

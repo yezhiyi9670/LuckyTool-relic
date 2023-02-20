@@ -518,6 +518,17 @@ class SourceFragment : ModulePreferenceFragment() {
                     )
                 }
             )
+            addPreference(
+                Preference(context).apply {
+                    title = "WooBoxForMIUI"
+                    summary = "LittleTurtle2333 , GPL-3.0 license"
+                    isIconSpaceReserved = false
+                    intent = Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://github.com/Simplicity-Team/WooBoxForMIUI")
+                    )
+                }
+            )
         }
     }
 }

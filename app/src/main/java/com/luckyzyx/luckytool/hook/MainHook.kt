@@ -47,9 +47,10 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", StatusBarIcon)
         //状态栏控制中心
         loadApp("com.android.systemui", StatusBarControlCenter)
-
         //状态栏电池通知
         loadApp("com.android.systemui", StatusBarBatteryInfoNotify)
+        //状态栏布局
+        loadApp("com.android.systemui", StatusBarLayout)
 
         //桌面
         loadApp("com.coloros.alarmclock", "com.android.launcher") {

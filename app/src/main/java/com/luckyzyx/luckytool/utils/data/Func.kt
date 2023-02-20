@@ -204,8 +204,8 @@ fun Context.getFpsMode2(): Array<String> {
                 "    echo -e '@'\n" +
                 "  fi\n" +
                 "done"
-    return ShellUtils.execCommand(command, true, true).successMsg.let {
-        it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")
+    return ShellUtils.execCommand(command, true, true).let {
+        if (it.result == 1) arrayOf() else it.successMsg.takeIf { e -> e.isNotEmpty() }?.substring(0, it.successMsg.length - 1)?.split("@")
             ?.toTypedArray() ?: arrayOf()
     }
 }
@@ -665,6 +665,12 @@ fun formatDate(format: String): String {
     return formatDate(format, null, null)
 }
 
+/**
+ * 格式化Date
+ * @param format String 格式
+ * @param param Any 要格式的对象
+ * @return String
+ */
 fun formatDate(format: String, param: Any): String {
     return formatDate(format, param, null)
 }
