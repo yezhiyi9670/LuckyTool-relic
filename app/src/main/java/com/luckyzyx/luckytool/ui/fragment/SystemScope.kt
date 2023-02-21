@@ -203,6 +203,7 @@ class StatusBar : ModulePreferenceFragment() {
                         getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
                     key = "StatusBarLayout"
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                     setOnPreferenceClickListener {
                         findNavController().navigate(
                             R.id.action_statusBar_to_statusBarLayout, Bundle().apply {

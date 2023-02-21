@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
@@ -23,10 +24,12 @@ object StatusBarLayout : YukiBaseHooker() {
         var mLeftLayout: LinearLayout? = null
         var mRightLayout: LinearLayout? = null
         var mCenterLayout: LinearLayout?
-        var statusBar: ViewGroup? = null
+        var mStatusBar: ViewGroup? = null
 
         val layoutMode = prefs(ModulePrefs).getString("statusbar_layout_mode", "0")
         if (layoutMode.isNotBlank() && layoutMode == "0") return
+        if (SDK < A13) return
+
         val isCompatibleMode =
             prefs(ModulePrefs).getBoolean("statusbar_layout_compatible_mode", false)
         val leftMargin =
@@ -39,7 +42,7 @@ object StatusBarLayout : YukiBaseHooker() {
             if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 mLeftLayout?.setPadding(leftMargin, 0, 0, 0)
                 mRightLayout?.setPadding(0, 0, rightMargin, 0)
-                statusBar?.setPadding(0, statusBarTopMargin, 0, statusBarBottomMargin)
+                mStatusBar?.setPadding(0, statusBarTopMargin, 0, statusBarBottomMargin)
             } else {
                 mLeftLayout?.setPadding(0, 0, 0, 0)
                 mRightLayout?.setPadding(0, 0, 0, 0)
@@ -89,7 +92,7 @@ object StatusBarLayout : YukiBaseHooker() {
                     val statusIconsId = res?.getIdentifier("statusIcons", "id", packageName)
                     val batteryId = res?.getIdentifier("battery", "id", packageName)
 
-                    statusBar =
+                    mStatusBar =
                         statusBarId?.let { phoneStatusBarView.findViewById(it) } ?: return@afterHook
                     val statusBarContents: ViewGroup? =
                         statusBarContentsId?.let { phoneStatusBarView.findViewById(it) }
@@ -115,14 +118,6 @@ object StatusBarLayout : YukiBaseHooker() {
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
                     )
 
-                    val mConstraintLayout = ConstraintLayout(context).apply {
-                        layoutParams = ConstraintLayout.LayoutParams(
-                            ConstraintLayout.LayoutParams.MATCH_PARENT,
-                            ConstraintLayout.LayoutParams.MATCH_PARENT
-                        )
-                    }
-                    mConstraintLayout.addView(statusBarLeftSide)
-
                     mLeftLayout = LinearLayout(context).apply {
                         layoutParams = LinearLayout.LayoutParams(
                             0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f
@@ -145,7 +140,7 @@ object StatusBarLayout : YukiBaseHooker() {
                         gravity = Gravity.END or Gravity.CENTER_VERTICAL
                     }
 
-                    mLeftLayout?.addView(mConstraintLayout)
+                    mLeftLayout?.addView(statusBarLeftSide)
                     mCenterLayout?.addView(clock)
                     mRightLayout?.addView(systemIconArea)
 
@@ -153,10 +148,10 @@ object StatusBarLayout : YukiBaseHooker() {
                     statusBarContents?.addView(mCenterLayout)
                     statusBarContents?.addView(mRightLayout)
 
-                    statusBarLeftMargin = statusBar?.paddingLeft!!
-                    statusBarRightMargin = statusBar?.paddingRight!!
-                    statusBarTopMargin = statusBar?.paddingTop!!
-                    statusBarBottomMargin = statusBar?.paddingBottom!!
+                    statusBarLeftMargin = mStatusBar?.paddingLeft!!
+                    statusBarRightMargin = mStatusBar?.paddingRight!!
+                    statusBarTopMargin = mStatusBar?.paddingTop!!
+                    statusBarBottomMargin = mStatusBar?.paddingBottom!!
 
                     if (isCompatibleMode) {
                         if (leftMargin != 0) statusBarLeftMargin = leftMargin
@@ -191,10 +186,10 @@ object StatusBarLayout : YukiBaseHooker() {
                 }
                 afterHook {
                     if (!isCompatibleMode) return@afterHook
-                    //ID -> keyguard_status_bar_contents
+                    //keyguard_status_bar_contents
                     field {
                         name = "keyguardStatusbarLeftContView"
-                    }.get(instance).cast<ViewGroup>()?.setPadding(leftMargin, 0, rightMargin, 0)
+                    }.get(instance).cast<ViewGroup>()?.setPadding(leftMargin, 0, 0, 0)
                 }
             }
         }
