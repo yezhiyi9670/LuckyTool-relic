@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.net.utils.scopeLife
 import com.drake.net.utils.withIO
-import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.materialswitch.MaterialSwitch
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentApplistFunctionLayoutBinding
@@ -226,6 +226,6 @@ class MultiAppAdapter(
         val appIcon: ImageView = binding.appIcon
         val appName: TextView = binding.appName
         val packName: TextView = binding.packName
-        val switchview: SwitchMaterial = binding.switchview
+        val switchview: MaterialSwitch = binding.switchview
     }
 }

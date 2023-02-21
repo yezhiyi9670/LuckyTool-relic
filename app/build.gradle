@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android' version '1.8.0'
-    id 'com.google.devtools.ksp' version '1.8.0-1.0.9'
+    id 'org.jetbrains.kotlin.android' version '1.8.10'
+    id 'com.google.devtools.ksp' version '1.8.10-1.0.9'
     id 'com.joom.paranoid'
 }
 
@@ -24,7 +24,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.3.1_beta"
+        versionName "4.3.1"
     }
 
     buildTypes {

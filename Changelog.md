@@ -12,7 +12,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [更改] 锁屏指纹功能位置  
 [同步] Crowdin翻译  
 [优化] 处理部分异常崩溃  
-[优化] 页面UI样式  
+[优化] 部分页面UI样式  
 [添加] 时钟自定义样式  
 [添加] 时钟农历显示  
 [优化] 时钟样式动态修改  

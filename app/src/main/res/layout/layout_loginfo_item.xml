@@ -18,7 +18,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:shapeAppearanceOverlay="?attr/shapeAppearanceMediumComponent" />
     
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
             android:id="@+id/log_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toEndOf="@id/log_icon"
             app:layout_constraintTop_toTopOf="parent" />
     
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
             android:id="@+id/log_msg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

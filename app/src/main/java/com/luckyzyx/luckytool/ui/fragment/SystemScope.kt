@@ -365,17 +365,17 @@ class StatusBarClock : ModulePreferenceFragment() {
             if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "2") {
                 addPreference(
                     EditTextPreference(context).apply {
-                        val value = context.getString(
+                        title = getString(R.string.statusbar_clock_custom_format)
+                        dialogTitle = getString(R.string.statusbar_clock_custom_format)
+                        summary = context.getString(
                             ModulePrefs,
                             "statusbar_clock_custom_format",
                             "HH:mm:ss"
                         )
-                        title = getString(R.string.statusbar_clock_custom_format)
-                        dialogTitle = getString(R.string.statusbar_clock_custom_format)
                         dialogMessage = """
                             YYYY/MM/DD -> ${formatDate("YYYY/MM/DD")}
                             Y/M/D/E/a -> ${formatDate("Y/M/D/E/a")}
-                            YY/YYYY ${formatDate("YY/YYYY")}
+                            YY/YYYY -> ${formatDate("YY/YYYY")}
                             M/MM/MMM/MMMM/MMMMM -> ${formatDate("M/MM/MMM/MMMM/MMMMM")}
                             D/DD -> ${formatDate("D/DD")}
                             E/EE/EEE/EEEE/EEEEE -> ${formatDate("E/EE/EEE/EEEE/EEEEE")}
@@ -389,7 +389,6 @@ class StatusBarClock : ModulePreferenceFragment() {
                             NNN -> 兔年二月初一
                             NNNN -> 癸卯兔年二月初一
                         """.trimIndent()
-                        summary = value
                         key = "statusbar_clock_custom_format"
                         setDefaultValue("HH:mm:ss")
                         isIconSpaceReserved = false
