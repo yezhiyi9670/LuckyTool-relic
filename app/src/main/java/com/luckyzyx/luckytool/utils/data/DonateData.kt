@@ -243,6 +243,12 @@ class DonateData {
             add(DonateInfo("Sakura酱",15.0, donateDetails(
                 DonateChannelInfo("20230216-140538",CAP,15.0,"2023021622001490101430998193")
             )))
+            add(DonateInfo("kjhiorv",5.0,donateDetails(
+                DonateChannelInfo("20230220-215726",CWC,5.0,"10001071012023022000751417859195")
+            )))
+            add(DonateInfo("*宝",6.66,donateDetails(
+                DonateChannelInfo("20230222-001142",CWC,6.66,"10000499012023022200978312050171")
+            )))
         }
     }
 
