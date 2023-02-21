@@ -223,7 +223,7 @@ class StatusBarClock : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_enable)
+                    title = getString(R.string.statusbar_clock_mode)
                     summary = "%s"
                     key = "statusbar_clock_mode"
                     entries = resources.getStringArray(R.array.statusbar_clock_mode_entries)
@@ -310,15 +310,18 @@ class StatusBarClock : ModulePreferenceFragment() {
                     }
                 )
                 addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_center_alignment)
-                        key = "statusbar_clock_center_alignment"
-                        setDefaultValue(false)
-                        isVisible = false
+                    DropDownPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_alignment)
+                        summary = "%s"
+                        key = "statusbar_clock_alignment"
+                        entries =
+                            resources.getStringArray(R.array.statusbar_clock_alignment_entries)
+                        entryValues = arrayOf("left", "center", "right")
+                        setDefaultValue("center")
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             requireActivity().dataChannel("com.android.systemui")
-                                .put("statusbar_clock_center_alignment", newValue)
+                                .put("statusbar_clock_alignment", newValue)
                             true
                         }
                     }
@@ -401,15 +404,18 @@ class StatusBarClock : ModulePreferenceFragment() {
                     }
                 )
                 addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_center_alignment)
-                        key = "statusbar_clock_center_alignment"
-                        setDefaultValue(false)
-                        isVisible = false
+                    DropDownPreference(context).apply {
+                        title = getString(R.string.statusbar_clock_alignment)
+                        summary = "%s"
+                        key = "statusbar_clock_alignment"
+                        entries =
+                            resources.getStringArray(R.array.statusbar_clock_alignment_entries)
+                        entryValues = arrayOf("left", "center", "right")
+                        setDefaultValue("center")
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             requireActivity().dataChannel("com.android.systemui")
-                                .put("statusbar_clock_center_alignment", newValue)
+                                .put("statusbar_clock_alignment", newValue)
                             true
                         }
                     }

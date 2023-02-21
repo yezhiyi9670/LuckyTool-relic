@@ -5,11 +5,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.3.2
 
-[更新] 捐赠名单
-
-[//]: # (时钟文字对齐方式)
-
-[//]: # (仅在充电时显示电池信息)
+[更新] 捐赠名单  
+[添加] 时钟文字对齐方式
 
 ### v4.3.1
 

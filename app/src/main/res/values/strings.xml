@@ -116,7 +116,6 @@
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
-    <string name="statusbar_clock_enable">Status bar clock total toggle</string>
     <string name="statusbar_clock_show_year">Show year</string>
     <string name="statusbar_clock_show_month">Show month</string>
     <string name="statusbar_clock_show_day">Show date</string>
@@ -125,7 +124,10 @@
     <string name="statusbar_clock_show_double_hour">Show Double Hour</string>
     <string name="statusbar_clock_show_second">Show seconds</string>
     <string name="statusbar_clock_hide_spaces">Hide spaces</string>
-    <string name="statusbar_clock_center_alignment">Center Alignment</string>
+    <string name="statusbar_clock_alignment">Clock Alignment</string>
+    <string name="statusbar_clock_left_align">Left Align</string>
+    <string name="statusbar_clock_center_align">Center Align</string>
+    <string name="statusbar_clock_right_align">Right Align</string>
     <string name="statusbar_clock_show_doublerow">Double row display</string>
     <string name="statusbar_clock_singlerow_fontsize">Single row font size</string>
     <string name="statusbar_clock_doublerow_fontsize">Double row font size</string>
@@ -439,6 +441,5 @@
     <string name="common_words_default">Default</string>
     <string name="common_words_preset">Preset</string>
     <string name="common_words_customize">Customize</string>
-
 
 </resources>

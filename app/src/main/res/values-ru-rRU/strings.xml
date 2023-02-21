@@ -114,7 +114,6 @@
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
-    <string name="statusbar_clock_enable">Включить/отключить часы строки состояния</string>
     <string name="statusbar_clock_show_year">Показывать год</string>
     <string name="statusbar_clock_show_month">Показывать месяц</string>
     <string name="statusbar_clock_show_day">Показывать дату</string>
@@ -123,7 +122,10 @@
     <string name="statusbar_clock_show_double_hour">Показывать двойные часы</string>
     <string name="statusbar_clock_show_second">Показывать секунды</string>
     <string name="statusbar_clock_hide_spaces">Скрыть пробелы</string>
-    <string name="statusbar_clock_center_alignment">Выравнивание по центру</string>
+    <string name="statusbar_clock_alignment">Clock Alignment</string>
+    <string name="statusbar_clock_left_align">Left Align</string>
+    <string name="statusbar_clock_center_align">Center Align</string>
+    <string name="statusbar_clock_right_align">Right Align</string>
     <string name="statusbar_clock_show_doublerow">Двойной статусбар</string>
     <string name="statusbar_clock_singlerow_fontsize">Размер шрифта в одну строку</string>
     <string name="statusbar_clock_doublerow_fontsize">Размер шрифта в две строки</string>

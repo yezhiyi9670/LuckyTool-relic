@@ -113,7 +113,6 @@
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
-    <string name="statusbar_clock_enable">Chuyển đổi đồng hồ trên thanh trạng thái</string>
     <string name="statusbar_clock_show_year">Hiện năm</string>
     <string name="statusbar_clock_show_month">Hiện tháng</string>
     <string name="statusbar_clock_show_day">Hiện ngày</string>
@@ -122,7 +121,10 @@
     <string name="statusbar_clock_show_double_hour">Hiện thị giờ kép</string>
     <string name="statusbar_clock_show_second">Hiện giây</string>
     <string name="statusbar_clock_hide_spaces">Ẩn khoảng cách</string>
-    <string name="statusbar_clock_center_alignment">Center Alignment</string>
+    <string name="statusbar_clock_alignment">Clock Alignment</string>
+    <string name="statusbar_clock_left_align">Left Align</string>
+    <string name="statusbar_clock_center_align">Center Align</string>
+    <string name="statusbar_clock_right_align">Right Align</string>
     <string name="statusbar_clock_show_doublerow">Hiện hàng kép</string>
     <string name="statusbar_clock_singlerow_fontsize">Cỡ chữ hàng đơn</string>
     <string name="statusbar_clock_doublerow_fontsize">Cỡ chữ hàng kép</string>

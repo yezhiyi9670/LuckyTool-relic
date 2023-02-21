@@ -64,5 +64,11 @@
         <item>@string/common_words_default</item>
         <item>@string/statusbar_layout_clock_center_align</item>
     </string-array>
+    
+    <string-array name="statusbar_clock_alignment_entries">
+        <item>@string/statusbar_clock_left_align</item>
+        <item>@string/statusbar_clock_center_align</item>
+        <item>@string/statusbar_clock_right_align</item>
+    </string-array>
 
 </resources>

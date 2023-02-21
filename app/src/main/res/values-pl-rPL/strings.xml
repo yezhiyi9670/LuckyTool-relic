@@ -113,7 +113,6 @@
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
-    <string name="statusbar_clock_enable">Główny przełącznik zegara</string>
     <string name="statusbar_clock_show_year">Pokaż rok (yy/…/…)</string>
     <string name="statusbar_clock_show_month">Pokaż miesiąc (…/MM/…)</string>
     <string name="statusbar_clock_show_day">Pokaż dzień (…/…/dd)</string>
@@ -122,7 +121,10 @@
     <string name="statusbar_clock_show_double_hour">Pokaż chińską dwucyfrową godzinę</string>
     <string name="statusbar_clock_show_second">Pokaż sekundy</string>
     <string name="statusbar_clock_hide_spaces">Ukryj przerwy</string>
-    <string name="statusbar_clock_center_alignment">Center Alignment</string>
+    <string name="statusbar_clock_alignment">Clock Alignment</string>
+    <string name="statusbar_clock_left_align">Left Align</string>
+    <string name="statusbar_clock_center_align">Center Align</string>
+    <string name="statusbar_clock_right_align">Right Align</string>
     <string name="statusbar_clock_show_doublerow">Wyświetl w dwóch wierszach</string>
     <string name="statusbar_clock_singlerow_fontsize">Rozmiar czcionki (jeden wiersz)</string>
     <string name="statusbar_clock_doublerow_fontsize">Rozmiar czcionki (dwa wiersze)</string>

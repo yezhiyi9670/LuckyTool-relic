@@ -33,8 +33,8 @@ object StatusBarClock : YukiBaseHooker() {
     private val isHideSpace = prefs(ModulePrefs).getBoolean("statusbar_clock_hide_spaces", false)
     private val isDoubleRow = prefs(ModulePrefs).getBoolean("statusbar_clock_show_doublerow", false)
 
-    //    private var centerAlignment = prefs(ModulePrefs).getBoolean("statusbar_clock_center_alignment", false)
-    private var centerAlignment = true
+    private var clockAlignment =
+        prefs(ModulePrefs).getString("statusbar_clock_alignment", "center")
 
     private var singleRowFontSize =
         prefs(ModulePrefs).getInt("statusbar_clock_singlerow_fontsize", 0)
@@ -53,7 +53,7 @@ object StatusBarClock : YukiBaseHooker() {
     override fun onHook() {
         if (clockMode.isNotBlank() && clockMode == "0") return
 
-        dataChannel.wait<Boolean>("statusbar_clock_center_alignment") { centerAlignment = it }
+        dataChannel.wait<String>("statusbar_clock_alignment") { clockAlignment = it }
         dataChannel.wait<String>("statusbar_clock_custom_format") { customFormat = it }
         dataChannel.wait<Int>("statusbar_clock_custom_fontsize") { customFontsize = it }
         dataChannel.wait<Int>("statusbar_clock_singlerow_fontsize") { singleRowFontSize = it }
@@ -166,7 +166,12 @@ object StatusBarClock : YukiBaseHooker() {
 
     private fun TextView.initView() {
         isSingleLine = false
-        gravity = if (centerAlignment) Gravity.CENTER else Gravity.START
+        gravity = when (clockAlignment) {
+            "left" -> Gravity.START
+            "center" -> Gravity.CENTER
+            "right" -> Gravity.END
+            else -> Gravity.CENTER
+        }
         if (clockMode == "1" && isDoubleRow) {
             newline = "\n"
             var defaultSize = 8F

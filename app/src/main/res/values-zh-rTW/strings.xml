@@ -113,7 +113,6 @@
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_mode">状态栏时钟模式</string>
-    <string name="statusbar_clock_enable">状态栏时钟总开关</string>
     <string name="statusbar_clock_show_year">显示年份</string>
     <string name="statusbar_clock_show_month">显示月份</string>
     <string name="statusbar_clock_show_day">显示日期</string>
@@ -122,7 +121,10 @@
     <string name="statusbar_clock_show_double_hour">显示时辰</string>
     <string name="statusbar_clock_show_second">显示秒数</string>
     <string name="statusbar_clock_hide_spaces">隐藏空格</string>
-    <string name="statusbar_clock_center_alignment">居中对齐</string>
+    <string name="statusbar_clock_alignment">时钟对齐方式</string>
+    <string name="statusbar_clock_left_align">左对齐</string>
+    <string name="statusbar_clock_center_align">居中对齐</string>
+    <string name="statusbar_clock_right_align">右对齐</string>
     <string name="statusbar_clock_show_doublerow">双排显示</string>
     <string name="statusbar_clock_singlerow_fontsize">单排字体大小</string>
     <string name="statusbar_clock_doublerow_fontsize">双排字体大小</string>
