@@ -19,7 +19,22 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 时钟字体大小动态修改  
 [添加] C13状态栏时钟居中布局  
 [修复] 屏幕兼容导致运营商遮挡问题  
-[优化] 时钟居中布局逻辑
+[优化] 时钟居中布局逻辑  
+[Update] Donation list  
+[Optimize] Disable FlagSecure  
+[Fix] C13 set dark mode  
+[Fix] C13 camera watermark character limit  
+[Change] Lock screen fingerprint function location  
+[Sync] Crowdin translation  
+[Optimize] Handle some abnormal crashes  
+[Optimize] Some page UI styles  
+[Add] clock custom style  
+[Add] clock lunar calendar display  
+[Optimize] Clock style dynamic modification  
+[Optimize] Dynamic modification of clock font size  
+[Add] C13 status bar clock centered layout  
+[Fix] Screen compatibility causes operator occlusion problem  
+[Optimize] Clock centered layout logic
 
 ### v4.3.0
 
