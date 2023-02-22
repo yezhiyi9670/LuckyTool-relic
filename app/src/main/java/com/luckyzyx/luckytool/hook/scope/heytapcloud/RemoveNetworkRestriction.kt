@@ -1,42 +1,20 @@
 package com.luckyzyx.luckytool.hook.scope.heytapcloud
 
-import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import java.util.*
 
 object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
-        val appSet = prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-            Arrays.sort(this)
-            forEach {
-                this[this.indexOf(it)] = it.substring(2)
-            }
-        }
-        val code = appSet[1].toInt()
-        findClass("com.oplus.nearx.track.internal.utils.NetworkUtil").hook {
-            injectMember {
-                method {
-                    param(ContextClass)
-                    paramCount = 1
-                    returnType = IntType
-                }
-                afterHook {
-                    if (result<Int>() == 1) result = 2
-                }
-            }
-        }
-        if (code >= 60500) return
+        //Source BackupRestoreHelper -> String backup_currently_mobile
         //Source NetworkUtil
         //Search getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
             from("com.cloud.base.commonsdk.baseutils", "t2").absolute()
             constructor().none()
-            field().none()
+            field().count(0..1)
             method().count(13..14)
             method {
                 param(ContextClass)

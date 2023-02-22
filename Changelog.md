@@ -11,7 +11,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [更改] 电池部分功能位置  
 [优化] 时钟字体大小与行高  
 [优化] 状态栏兼容模式逻辑  
-[优化] 功能页面图标圆角
+[优化] 功能页面图标圆角  
+[优化] 云服务移动网络限制适配
 
 ### v4.3.1
 

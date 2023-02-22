@@ -99,36 +99,8 @@ object StatusBarClock : YukiBaseHooker() {
                     nowTime = mCalendar?.time
                     if (clockMode == "1") result = getDate(context!!) + newline + getTime(context!!)
                     else if (clockMode == "2") {
-                        val lunarInstance =
-                            "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass()
-                                .constructor {
-                                    param(ContextClass)
-                                }.get().call(context)
-                        lunarInstance?.current {
-                            val lunar = method {
-                                name = "getDateToString"
-                            }.invoke<String>(System.currentTimeMillis())
-                            nowLunar = lunar
-                        }
-                        val customFormatFinal = if (customFormat.contains("NNNN")) {
-                            customFormat.replace("NNNN", nowLunar!!)
-                        } else if (customFormat.contains("NNN")) {
-                            customFormat.replace(
-                                "NNN",
-                                nowLunar!!.substring(2, nowLunar!!.length)
-                            )
-                        } else if (customFormat.contains("NN")) {
-                            customFormat.replace(
-                                "NN",
-                                nowLunar!!.substring(4, nowLunar!!.length)
-                            )
-                        } else {
-                            customFormat.replace(
-                                "N",
-                                nowLunar!!.substring(6, nowLunar!!.length)
-                            )
-                        }
-                        result = formatDate(customFormatFinal, nowTime!!)
+                        initLunar(context!!)
+                        result = formatDate(getFormatLunar(customFormat, nowLunar), nowTime!!)
                     }
                 }
             }
@@ -161,6 +133,40 @@ object StatusBarClock : YukiBaseHooker() {
                     }
                 }
             }
+        }
+    }
+
+    private fun initLunar(context: Context) {
+        val lunarInstance =
+            "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass()
+                .constructor {
+                    param(ContextClass)
+                }.get().call(context)
+        lunarInstance?.current {
+            nowLunar = method {
+                name = "getDateToString"
+            }.invoke<String>(System.currentTimeMillis())
+        }
+    }
+
+    private fun getFormatLunar(format: String, nowLunar: String?): String {
+        return if (format.contains("NNNN")) {
+            format.replace("NNNN", nowLunar!!)
+        } else if (format.contains("NNN")) {
+            format.replace(
+                "NNN",
+                nowLunar!!.substring(2, nowLunar.length)
+            )
+        } else if (format.contains("NN")) {
+            format.replace(
+                "NN",
+                nowLunar!!.substring(4, nowLunar.length)
+            )
+        } else {
+            format.replace(
+                "N",
+                nowLunar!!.substring(6, nowLunar.length)
+            )
         }
     }
 

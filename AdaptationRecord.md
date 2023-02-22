@@ -1,6 +1,6 @@
-# 适配列表(待补充)
+# 适配记录(待补充)
 
-## AdaptationList (to be added)
+## AdaptationRecord (to be added)
 
 - VersionName -> VersionCode -> SubmittedVersion
 - 版本名 -> 版本号 -> 提交版本
