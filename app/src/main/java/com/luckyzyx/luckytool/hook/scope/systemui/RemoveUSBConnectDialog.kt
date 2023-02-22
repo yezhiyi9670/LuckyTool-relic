@@ -18,11 +18,15 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
                     paramCount = 1
                 }
                 replaceUnit {
-                    val context = args(0).cast<Context>()
+                    val context = args(0).cast<Context>()!!
                     field {
                         name = "sNeedShowUsbDialog"
                         type = BooleanType
                     }.get().setFalse()
+                    method {
+                        name = "onUsbSelect"
+                        paramCount = 1
+                    }.get(instance).call(1)
                     method {
                         name = "updateAdbNotification"
                         paramCount = 1
