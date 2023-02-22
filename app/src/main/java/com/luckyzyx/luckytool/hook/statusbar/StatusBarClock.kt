@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.hook.statusbar
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Handler
 import android.provider.Settings
 import android.util.TypedValue
@@ -12,7 +11,6 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.constructor
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
-import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
@@ -124,14 +122,15 @@ object StatusBarClock : YukiBaseHooker() {
                     if (SDK == A11) name = "onConfigChanged"
                     if (SDK > A11) name = "onConfigurationChanged"
                 }
-                replaceUnit {
-                    instance<TextView>().apply {
-                        typeface = field {
-                            name = "defaultFont"
-                            type = TypefaceClass
-                        }.get(instance).cast<Typeface>()
-                    }
-                }
+                intercept()
+//                replaceUnit {
+//                    instance<TextView>().apply {
+//                        typeface = field {
+//                            name = "defaultFont"
+//                            type = TypefaceClass
+//                        }.get(instance).cast<Typeface>()
+//                    }
+//                }
             }
         }
     }
@@ -177,28 +176,28 @@ object StatusBarClock : YukiBaseHooker() {
             "right" -> Gravity.END
             else -> Gravity.CENTER
         }
+        val defaultSize = 12F
         if (clockMode == "1") {
             isSingleLine = !isDoubleRow
             if (isDoubleRow) {
                 newline = "\n"
-                var defaultSize = 8F
-                if (doubleRowFontSize != 0) defaultSize = doubleRowFontSize.toFloat()
-                setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultSize)
+                setTextSize(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    if (doubleRowFontSize != 0) doubleRowFontSize.toFloat() else defaultSize
+                )
                 setLineSpacing(0F, 0.8F)
             } else {
-                if (singleRowFontSize != 0) {
-                    setTextSize(
-                        TypedValue.COMPLEX_UNIT_DIP,
-                        singleRowFontSize.toFloat()
-                    )
-                }
+                setTextSize(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    if (singleRowFontSize != 0) singleRowFontSize.toFloat() else defaultSize
+                )
             }
         } else if (clockMode == "2") {
             val rows = customFormat.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 1
             isSingleLine = rows == 1
-            if (customFontsize != 0) setTextSize(
+            setTextSize(
                 TypedValue.COMPLEX_UNIT_DIP,
-                customFontsize.toFloat()
+                if (customFontsize != 0) customFontsize.toFloat() else defaultSize
             )
             if (rows != 1) setLineSpacing(0F, 0.8F)
         }
