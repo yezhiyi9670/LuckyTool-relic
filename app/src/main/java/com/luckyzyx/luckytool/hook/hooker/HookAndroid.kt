@@ -44,5 +44,8 @@ object HookAndroid : YukiBaseHooker() {
 
         //暗色模式服务
         loadHooker(DarkModeService)
+
+        //OplusFeature
+        loadHooker(OplusFeature)
     }
 }

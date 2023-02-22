@@ -6,7 +6,11 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 ### v4.3.2
 
 [更新] 捐赠名单  
-[添加] 时钟文字对齐方式
+[添加] 时钟文字对齐方式  
+[修复] 时钟日期(D)格式示例  
+[更改] 电池部分功能位置  
+[优化] 时钟字体大小与行高  
+[优化] 状态栏兼容模式逻辑
 
 ### v4.3.1
 

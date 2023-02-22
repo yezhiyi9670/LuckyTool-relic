@@ -166,6 +166,27 @@ class XposedFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
+                    key = "com.oplus.battery"
+                    context.getXPIcon(key) { resource, show ->
+                        icon = resource
+                        isIconSpaceReserved = show
+                    }
+                    title = context.getAppLabel(key)
+                    summary =
+                        getString(R.string.open_battery_health) + "," + getString(R.string.open_screen_power_save)
+                    isVisible = context.checkPackName(key)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_nav_function_to_battery,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
                     key = "com.oplus.camera"
                     context.getXPIcon(key) { resource, show ->
                         icon = resource

@@ -34,7 +34,7 @@ object StatusBarClock : YukiBaseHooker() {
     private val isDoubleRow = prefs(ModulePrefs).getBoolean("statusbar_clock_show_doublerow", false)
 
     private var clockAlignment =
-        prefs(ModulePrefs).getString("statusbar_clock_alignment", "center")
+        prefs(ModulePrefs).getString("statusbar_clock_text_alignment", "center")
 
     private var singleRowFontSize =
         prefs(ModulePrefs).getInt("statusbar_clock_singlerow_fontsize", 0)
@@ -53,7 +53,7 @@ object StatusBarClock : YukiBaseHooker() {
     override fun onHook() {
         if (clockMode.isNotBlank() && clockMode == "0") return
 
-        dataChannel.wait<String>("statusbar_clock_alignment") { clockAlignment = it }
+        dataChannel.wait<String>("statusbar_clock_text_alignment") { clockAlignment = it }
         dataChannel.wait<String>("statusbar_clock_custom_format") { customFormat = it }
         dataChannel.wait<Int>("statusbar_clock_custom_fontsize") { customFontsize = it }
         dataChannel.wait<Int>("statusbar_clock_singlerow_fontsize") { singleRowFontSize = it }
@@ -165,31 +165,35 @@ object StatusBarClock : YukiBaseHooker() {
     }
 
     private fun TextView.initView() {
-        isSingleLine = false
         gravity = when (clockAlignment) {
             "left" -> Gravity.START
             "center" -> Gravity.CENTER
             "right" -> Gravity.END
             else -> Gravity.CENTER
         }
-        if (clockMode == "1" && isDoubleRow) {
-            newline = "\n"
-            var defaultSize = 8F
-            if (doubleRowFontSize != 0) defaultSize = doubleRowFontSize.toFloat()
-            setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultSize)
-            setLineSpacing(0F, 0.8F)
-        } else if (clockMode == "2") {
-            if (customFontsize != 0) {
-                setTextSize(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    customFontsize.toFloat()
-                )
+        if (clockMode == "1") {
+            isSingleLine = isDoubleRow
+            if (isDoubleRow) {
+                newline = "\n"
+                var defaultSize = 8F
+                if (doubleRowFontSize != 0) defaultSize = doubleRowFontSize.toFloat()
+                setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultSize)
+                setLineSpacing(0F, 0.8F)
+            } else {
+                if (singleRowFontSize != 0) {
+                    setTextSize(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        singleRowFontSize.toFloat()
+                    )
+                }
             }
-        } else if (singleRowFontSize != 0) {
-            setTextSize(
-                TypedValue.COMPLEX_UNIT_DIP,
-                singleRowFontSize.toFloat()
-            )
+        } else if (clockMode == "2") {
+            val rows = customFormat.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 1
+            isSingleLine = rows == 1
+            var defaultSize = 8F
+            if (customFontsize != 0) defaultSize = customFontsize.toFloat()
+            setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultSize)
+            if (rows != 1) setLineSpacing(0F, 0.8F)
         }
     }
 

@@ -121,10 +121,10 @@
     <string name="statusbar_clock_show_double_hour">時間をダブルで表示</string>
     <string name="statusbar_clock_show_second">秒を表示</string>
     <string name="statusbar_clock_hide_spaces">スペースを非表示</string>
-    <string name="statusbar_clock_alignment">Clock Alignment</string>
-    <string name="statusbar_clock_left_align">Left Align</string>
-    <string name="statusbar_clock_center_align">Center Align</string>
-    <string name="statusbar_clock_right_align">Right Align</string>
+    <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
+    <string name="statusbar_clock_left_align">左寄せ</string>
+    <string name="statusbar_clock_center_align">中央寄せ</string>
+    <string name="statusbar_clock_right_align">右寄せ</string>
     <string name="statusbar_clock_show_doublerow">多段表示</string>
     <string name="statusbar_clock_singlerow_fontsize">1段表示のフォントの大きさ</string>
     <string name="statusbar_clock_doublerow_fontsize">多段表示のフォントの大きさ</string>

@@ -124,7 +124,7 @@
     <string name="statusbar_clock_show_double_hour">Show Double Hour</string>
     <string name="statusbar_clock_show_second">Show seconds</string>
     <string name="statusbar_clock_hide_spaces">Hide spaces</string>
-    <string name="statusbar_clock_alignment">Clock Alignment</string>
+    <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
     <string name="statusbar_clock_left_align">Left Align</string>
     <string name="statusbar_clock_center_align">Center Align</string>
     <string name="statusbar_clock_right_align">Right Align</string>

@@ -311,11 +311,11 @@ class StatusBarClock : ModulePreferenceFragment() {
                 )
                 addPreference(
                     DropDownPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_alignment)
+                        title = getString(R.string.statusbar_clock_text_alignment)
                         summary = "%s"
-                        key = "statusbar_clock_alignment"
+                        key = "statusbar_clock_text_alignment"
                         entries =
-                            resources.getStringArray(R.array.statusbar_clock_alignment_entries)
+                            resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
                         entryValues = arrayOf("left", "center", "right")
                         setDefaultValue("center")
                         isIconSpaceReserved = false
@@ -376,11 +376,11 @@ class StatusBarClock : ModulePreferenceFragment() {
                             "HH:mm:ss"
                         )
                         dialogMessage = """
-                            YYYY/MM/DD -> ${formatDate("YYYY/MM/DD")}
-                            Y/M/D/E/a -> ${formatDate("Y/M/D/E/a")}
+                            YYYY/MM/dd -> ${formatDate("YYYY/MM/dd")}
+                            Y/M/d/E/a -> ${formatDate("Y/M/d/E/a")}
                             YY/YYYY -> ${formatDate("YY/YYYY")}
                             M/MM/MMM/MMMM/MMMMM -> ${formatDate("M/MM/MMM/MMMM/MMMMM")}
-                            D/DD -> ${formatDate("D/DD")}
+                            d/dd -> ${formatDate("d/dd")}
                             E/EE/EEE/EEEE/EEEEE -> ${formatDate("E/EE/EEE/EEEE/EEEEE")}
                             h/H/k/K -> ${formatDate("h/H/k/K")}
                             HH:mm:ss -> ${formatDate("HH:mm:ss")}
@@ -405,11 +405,11 @@ class StatusBarClock : ModulePreferenceFragment() {
                 )
                 addPreference(
                     DropDownPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_alignment)
+                        title = getString(R.string.statusbar_clock_text_alignment)
                         summary = "%s"
-                        key = "statusbar_clock_alignment"
+                        key = "statusbar_clock_text_alignment"
                         entries =
-                            resources.getStringArray(R.array.statusbar_clock_alignment_entries)
+                            resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
                         entryValues = arrayOf("left", "center", "right")
                         setDefaultValue("center")
                         isIconSpaceReserved = false
@@ -933,10 +933,6 @@ class StatusBarLayout : ModulePreferenceFragment() {
                     entryValues = arrayOf("0", "1")
                     setDefaultValue("0")
                     isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
                 }
             )
             addPreference(
@@ -944,7 +940,6 @@ class StatusBarLayout : ModulePreferenceFragment() {
                     title = getString(R.string.statusbar_layout_compatible_mode)
                     key = "statusbar_layout_compatible_mode"
                     setDefaultValue(false)
-                    isEnabled = context.getString(ModulePrefs, "statusbar_layout_mode", "0") == "1"
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, _ ->
                         (activity as MainActivity).restart()
@@ -952,10 +947,7 @@ class StatusBarLayout : ModulePreferenceFragment() {
                     }
                 }
             )
-            if (context.getString(
-                    ModulePrefs, "statusbar_layout_mode", "0"
-                ) == "1"
-                && context.getBoolean(
+            if (context.getBoolean(
                     ModulePrefs, "statusbar_layout_compatible_mode", false
                 )
             ) {
@@ -1683,6 +1675,22 @@ class Miscellaneous : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.allow_untrusted_touch)
+                    key = "allow_untrusted_touch"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
+class Battery : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.open_battery_health)
                     summary = getString(R.string.open_battery_health_summary)
                     key = "open_battery_health"
@@ -1709,14 +1717,6 @@ class Miscellaneous : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.allow_untrusted_touch)
-                    key = "allow_untrusted_touch"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
                 }
             )
         }

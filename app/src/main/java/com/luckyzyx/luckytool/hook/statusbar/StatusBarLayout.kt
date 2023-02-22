@@ -9,8 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
@@ -27,8 +25,6 @@ object StatusBarLayout : YukiBaseHooker() {
         var mStatusBar: ViewGroup? = null
 
         val layoutMode = prefs(ModulePrefs).getString("statusbar_layout_mode", "0")
-        if (layoutMode.isNotBlank() && layoutMode == "0") return
-        if (SDK < A13) return
 
         val isCompatibleMode =
             prefs(ModulePrefs).getBoolean("statusbar_layout_compatible_mode", false)
@@ -37,16 +33,32 @@ object StatusBarLayout : YukiBaseHooker() {
         val rightMargin =
             prefs(ModulePrefs).getInt("statusbar_layout_right_margin", 0)
 
-        fun updateLayout(context: Context) {
+        fun updateCustomLayout(context: Context) {
             val mConfiguration: Configuration = context.resources.configuration
             if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                mLeftLayout?.setPadding(leftMargin, 0, 0, 0)
-                mRightLayout?.setPadding(0, 0, rightMargin, 0)
+                mLeftLayout?.setPadding(statusBarLeftMargin, 0, 0, 0)
+                mRightLayout?.setPadding(0, 0, statusBarRightMargin, 0)
                 mStatusBar?.setPadding(0, statusBarTopMargin, 0, statusBarBottomMargin)
             } else {
                 mLeftLayout?.setPadding(0, 0, 0, 0)
                 mRightLayout?.setPadding(0, 0, 0, 0)
             }
+        }
+
+        fun updateDefaultLayout(context: Context, statusBarLeftSide: ViewGroup?) {
+            if (!isCompatibleMode) return
+            val mConfiguration: Configuration = context.resources.configuration
+            if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                statusBarLeftSide?.setPadding(leftMargin, 0, 0, 0)
+            } else {
+                statusBarLeftSide?.setPadding(0, 0, 0, 0)
+            }
+        }
+
+        fun setCustomMargin() {
+            if (!isCompatibleMode) return
+            if (leftMargin != 0) statusBarLeftMargin = leftMargin
+            if (rightMargin != 0) statusBarRightMargin = rightMargin
         }
 
         //Source ScreenDecorations
@@ -110,6 +122,12 @@ object StatusBarLayout : YukiBaseHooker() {
                     val battery: ViewGroup? =
                         batteryId?.let { phoneStatusBarView.findViewById(it) }
 
+                    if (layoutMode == "0" && isCompatibleMode) {
+                        setCustomMargin()
+                        updateDefaultLayout(context, statusBarLeftSide)
+                    }
+                    if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
+
                     (clock?.parent as ViewGroup).removeView(clock)
                     (statusBarLeftSide?.parent as ViewGroup).removeView(statusBarLeftSide)
                     (systemIconArea?.parent as ViewGroup).removeAllViews()
@@ -153,11 +171,8 @@ object StatusBarLayout : YukiBaseHooker() {
                     statusBarTopMargin = mStatusBar?.paddingTop!!
                     statusBarBottomMargin = mStatusBar?.paddingBottom!!
 
-                    if (isCompatibleMode) {
-                        if (leftMargin != 0) statusBarLeftMargin = leftMargin
-                        if (rightMargin != 0) statusBarRightMargin = rightMargin
-                        updateLayout(context)
-                    }
+                    setCustomMargin()
+                    updateCustomLayout(context)
                 }
             }
         }
@@ -170,7 +185,7 @@ object StatusBarLayout : YukiBaseHooker() {
                 }
                 afterHook {
                     if (!isCompatibleMode) return@afterHook
-                    updateLayout(instance<ViewGroup>().context)
+                    updateCustomLayout(instance<ViewGroup>().context)
                 }
             }
         }

@@ -121,7 +121,7 @@
     <string name="statusbar_clock_show_double_hour">显示时辰</string>
     <string name="statusbar_clock_show_second">显示秒数</string>
     <string name="statusbar_clock_hide_spaces">隐藏空格</string>
-    <string name="statusbar_clock_alignment">时钟对齐方式</string>
+    <string name="statusbar_clock_text_alignment">时钟文本对齐方式</string>
     <string name="statusbar_clock_left_align">左对齐</string>
     <string name="statusbar_clock_center_align">居中对齐</string>
     <string name="statusbar_clock_right_align">右对齐</string>
