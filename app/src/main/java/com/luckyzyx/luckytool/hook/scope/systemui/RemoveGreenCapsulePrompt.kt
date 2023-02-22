@@ -10,7 +10,11 @@ object RemoveGreenCapsulePrompt : YukiBaseHooker() {
                 method {
                     name = "updateViewVisible"
                 }
-                intercept()
+                beforeHook {
+                    field {
+                        name = "disable"
+                    }.get(instance).setTrue()
+                }
             }
             injectMember {
                 method {
