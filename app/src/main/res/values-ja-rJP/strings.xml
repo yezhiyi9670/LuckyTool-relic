@@ -121,7 +121,7 @@
     <string name="statusbar_clock_show_double_hour">時間をダブルで表示</string>
     <string name="statusbar_clock_show_second">秒を表示</string>
     <string name="statusbar_clock_hide_spaces">スペースを非表示</string>
-    <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
+    <string name="statusbar_clock_text_alignment">時計のテキストの配置</string>
     <string name="statusbar_clock_left_align">左寄せ</string>
     <string name="statusbar_clock_center_align">中央寄せ</string>
     <string name="statusbar_clock_right_align">右寄せ</string>
@@ -167,6 +167,7 @@
     <string name="remove_statusbar_battery_percent">バッテリーパーセンテージをステータスバーから削除</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
+    <string name="remove_mobile_data_type">Remove Mobile data type</string>
     <string name="remove_green_dot_privacy_prompt">緑のドットのプライバシープロンプトを削除</string>
     <string name="remove_green_capsule_prompt">緑色のカプセルのプロンプトを削除</string>
     <string name="status_bar_icon_vertical_center">ステータスバーアイコンを縦中央揃えにする</string>

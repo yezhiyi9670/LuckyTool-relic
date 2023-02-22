@@ -167,6 +167,7 @@
     <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
+    <string name="remove_mobile_data_type">Remove Mobile data type</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
     <string name="remove_green_capsule_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>

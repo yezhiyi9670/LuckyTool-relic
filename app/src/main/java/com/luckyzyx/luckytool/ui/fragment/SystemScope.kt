@@ -630,6 +630,14 @@ class StatusBarIcon : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.remove_mobile_data_type)
+                    key = "remove_mobile_data_type"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_mobile_data_icon)
                     key = "remove_mobile_data_icon"
                     setDefaultValue(false)

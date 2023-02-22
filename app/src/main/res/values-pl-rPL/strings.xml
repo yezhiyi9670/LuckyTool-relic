@@ -167,6 +167,7 @@
     <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
+    <string name="remove_mobile_data_type">Remove Mobile data type</string>
     <string name="remove_green_dot_privacy_prompt">Usuń zieloną kropkę prywatności</string>
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>

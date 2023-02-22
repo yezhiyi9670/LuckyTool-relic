@@ -19,9 +19,7 @@ object StatusBarIcon : YukiBaseHooker() {
             loadHooker(RemoveWiFiDataInout)
         }
         //移动数据图标相关
-        val mobileDataIcon = prefs(ModulePrefs).getBoolean("remove_mobile_data_icon", false)
-        val mobileDataInout = prefs(ModulePrefs).getBoolean("remove_mobile_data_inout", false)
-        if (mobileDataIcon || mobileDataInout) loadHooker(RemoveMobileDataIcon)
+        loadHooker(RemoveMobileDataIcon)
         //移除高性能模式图标
         if (prefs(ModulePrefs).getBoolean("remove_high_performance_mode_icon", false)) {
             loadHooker(RemoveHighPerformanceModeIcon)

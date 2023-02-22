@@ -122,7 +122,7 @@
     <string name="statusbar_clock_show_double_hour">Показывать двойные часы</string>
     <string name="statusbar_clock_show_second">Показывать секунды</string>
     <string name="statusbar_clock_hide_spaces">Скрыть пробелы</string>
-    <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
+    <string name="statusbar_clock_text_alignment">Выравнивание текста часов</string>
     <string name="statusbar_clock_left_align">По левому краю</string>
     <string name="statusbar_clock_center_align">Выровнять по центру</string>
     <string name="statusbar_clock_right_align">По правому краю</string>
@@ -168,6 +168,7 @@
     <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
+    <string name="remove_mobile_data_type">Remove Mobile data type</string>
     <string name="remove_green_dot_privacy_prompt">Удалить запрос на конфиденциальность</string>
     <string name="remove_green_capsule_prompt">Удалить запрос капсулы</string>
     <string name="status_bar_icon_vertical_center">Иконка строки состояния по вертикали в центре</string>
@@ -418,7 +419,7 @@
     <string name="log_data_is_empty">Пустой лог!</string>
     <string name="log_no_data">Нет аномальных данных</string>
     <string name="log_filter_title">Введите фильтр</string>
-    <string name="log_filter_layout_hint">Например, имя пакета, содержание, и т.д.</string>
+    <string name="log_filter_layout_hint">Например, имя пакета, и т.д.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
     <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
