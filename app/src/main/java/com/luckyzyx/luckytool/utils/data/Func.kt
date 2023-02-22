@@ -20,6 +20,8 @@ import android.util.ArraySet
 import android.util.Base64
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.core.graphics.drawable.toBitmap
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
@@ -205,7 +207,8 @@ fun Context.getFpsMode2(): Array<String> {
                 "  fi\n" +
                 "done"
     return ShellUtils.execCommand(command, true, true).let {
-        if (it.result == 1) arrayOf() else it.successMsg.takeIf { e -> e.isNotEmpty() }?.substring(0, it.successMsg.length - 1)?.split("@")
+        if (it.result == 1) arrayOf() else it.successMsg.takeIf { e -> e.isNotEmpty() }
+            ?.substring(0, it.successMsg.length - 1)?.split("@")
             ?.toTypedArray() ?: arrayOf()
     }
 }
@@ -452,11 +455,19 @@ fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
         result(null, false)
         return
     }
-    when (resource) {
-        is Int -> result(ResourcesCompat.getDrawable(resources, resource, null), true)
-        is Drawable -> result(resource, true)
-        is String -> result(getAppIcon(resource), true)
+    val image: Drawable? = when (resource) {
+        is Int -> ResourcesCompat.getDrawable(resources, resource, null)
+        is Drawable -> resource
+        is String -> getAppIcon(resource)
+        else -> null
     }
+    if (image == null) {
+        result(null, true)
+        return
+    }
+    val drawable = RoundedBitmapDrawableFactory.create(resources, image.toBitmap())
+    drawable.cornerRadius = 30F
+    result(drawable, true)
 }
 
 /**

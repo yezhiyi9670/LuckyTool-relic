@@ -10,7 +10,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [修复] 时钟日期(D)格式示例  
 [更改] 电池部分功能位置  
 [优化] 时钟字体大小与行高  
-[优化] 状态栏兼容模式逻辑
+[优化] 状态栏兼容模式逻辑  
+[优化] 功能页面图标圆角
 
 ### v4.3.1
 
