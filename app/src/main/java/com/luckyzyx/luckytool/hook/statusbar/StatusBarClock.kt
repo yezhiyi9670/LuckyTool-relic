@@ -172,7 +172,7 @@ object StatusBarClock : YukiBaseHooker() {
             else -> Gravity.CENTER
         }
         if (clockMode == "1") {
-            isSingleLine = isDoubleRow
+            isSingleLine = !isDoubleRow
             if (isDoubleRow) {
                 newline = "\n"
                 var defaultSize = 8F
@@ -190,9 +190,10 @@ object StatusBarClock : YukiBaseHooker() {
         } else if (clockMode == "2") {
             val rows = customFormat.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 1
             isSingleLine = rows == 1
-            var defaultSize = 8F
-            if (customFontsize != 0) defaultSize = customFontsize.toFloat()
-            setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultSize)
+            if (customFontsize != 0) setTextSize(
+                TypedValue.COMPLEX_UNIT_DIP,
+                customFontsize.toFloat()
+            )
             if (rows != 1) setLineSpacing(0F, 0.8F)
         }
     }
