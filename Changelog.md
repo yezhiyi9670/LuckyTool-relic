@@ -19,7 +19,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [优化] 时钟默认字体问题  
 [优化] 默认布局兼容模式边距  
 [修复] 磁贴状态保存问题  
-[修复] 状态栏布局异常显示问题
+[修复] 状态栏布局异常显示问题  
+[适配] C13设置暗色模式  
 
 ### v4.3.1
 

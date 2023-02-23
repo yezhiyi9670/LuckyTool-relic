@@ -16,7 +16,7 @@ object DarkModeList : YukiBaseHooker() {
         dataChannel.wait<Set<String>>("dark_mode_support_list") { supportlist = it }
         //Source DarkModeFileUtils
         searchClass {
-            from("qc", "oe", "re", "qe", "be", "te").absolute()
+            from("qc", "oe", "re", "qe", "be", "te", "ue").absolute()
             field {
                 type = AnyClass
             }.count(2)
