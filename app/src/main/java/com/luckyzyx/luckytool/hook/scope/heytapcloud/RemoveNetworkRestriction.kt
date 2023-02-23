@@ -3,35 +3,43 @@ package com.luckyzyx.luckytool.hook.scope.heytapcloud
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
+import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
 
 object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
-        //Source BackupRestoreHelper -> String backup_currently_mobile
+        //Source BackUpActivity / BackupRestoreHelper -> backup_currently_mobile
         //Source NetworkUtil
         //Search getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
-            from("com.cloud.base.commonsdk.baseutils", "t2").absolute()
+            from("com.cloud.base.commonsdk.baseutils", "qa", "t2", "ra").absolute()
             constructor().none()
             field().count(0..1)
-            method().count(13..14)
+            method().count(13)
             method {
                 param(ContextClass)
-            }.count(6..7)
+                returnType = BooleanType
+            }.count(2)
+            method {
+                param(ContextClass)
+                returnType = StringClass
+            }.count(1)
             method {
                 param(IntType)
-            }.count(4..5)
+                returnType = BooleanType
+            }.count(5)
             method {
                 emptyParam()
                 returnType = IntType
-            }.count(1)
+            }.count(2)
         }.get()?.hook {
             injectMember {
                 method {
                     emptyParam()
                     returnType = IntType
-                }
+                }.all()
                 afterHook {
                     if (result<Int>() == 1) result = 2
                 }

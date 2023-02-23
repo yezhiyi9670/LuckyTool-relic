@@ -80,6 +80,9 @@ class HighBrightness : TileService() {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
+            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+                SettingsPrefs, "high_brightness_mode", false
+            )
             qsTile.updateTile()
         }
     }
@@ -121,6 +124,9 @@ class GlobalDC : TileService() {
         }
         qsTile.state =
             if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+            SettingsPrefs, "global_dc_mode", false
+        )
         qsTile.updateTile()
     }
 
@@ -156,6 +162,9 @@ class TouchSamplingRate : TileService() {
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
                 else -> qsTile.state = Tile.STATE_UNAVAILABLE
             }
+            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+                SettingsPrefs, "touch_sampling_rate", false
+            )
             qsTile.updateTile()
         }
     }

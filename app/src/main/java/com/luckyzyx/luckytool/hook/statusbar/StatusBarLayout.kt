@@ -45,13 +45,15 @@ object StatusBarLayout : YukiBaseHooker() {
             }
         }
 
-        fun updateDefaultLayout(context: Context, statusBarLeftSide: ViewGroup?) {
+        fun updateDefaultLayout(context: Context, leftView: ViewGroup?, rightView: ViewGroup?) {
             if (!isCompatibleMode) return
             val mConfiguration: Configuration = context.resources.configuration
             if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                statusBarLeftSide?.setPadding(leftMargin, 0, 0, 0)
+                leftView?.setPadding(leftMargin, 0, 0, 0)
+                rightView?.setPadding(0, 0, rightMargin, 0)
             } else {
-                statusBarLeftSide?.setPadding(0, 0, 0, 0)
+                leftView?.setPadding(0, 0, 0, 0)
+                rightView?.setPadding(0, 0, 0, 0)
             }
         }
 
@@ -124,7 +126,7 @@ object StatusBarLayout : YukiBaseHooker() {
 
                     if (layoutMode == "0" && isCompatibleMode) {
                         setCustomMargin()
-                        updateDefaultLayout(context, statusBarLeftSide)
+                        updateDefaultLayout(context, statusBarLeftSide, systemIconArea)
                     }
                     if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
 
@@ -174,6 +176,12 @@ object StatusBarLayout : YukiBaseHooker() {
                     setCustomMargin()
                     updateCustomLayout(context)
                 }
+            }
+            injectMember {
+                method {
+                    name = "onDestroyView"
+                }
+                if (layoutMode != "0") intercept()
             }
         }
 
