@@ -2,30 +2,60 @@ import { navbar } from "vuepress-theme-hope";
 
 export const zhNavbar = navbar([
   "/",
-  { text: "指南", icon: "creative", link: "/help/demo/" },
-  // {
-  //   text: "指南",
-  //   icon: "creative",
-  //   prefix: "/guide/",
-  //   children: [
-  //     {
-  //       text: "Bar",
-  //       icon: "creative",
-  //       prefix: "bar/",
-  //       children: ["baz", { text: "...", icon: "more", link: "" }],
-  //     },
-  //     {
-  //       text: "Foo",
-  //       icon: "config",
-  //       prefix: "foo/",
-  //       children: ["ray", { text: "...", icon: "more", link: "" }],
-  //     },
-  //   ],
-  // },
   {
-    text: "支持",
-    icon: "info",
+    text: "介绍",
+    icon: "creative",
+    link: "/info",
+    activeMatch: "^/info",
+  },
+  {
+    text: "入门",
+    icon: "creative",
+    link: "/use",
+    activeMatch: "^/use",
+  },
+  {
+    text: "功能",
+    icon: "creative",
+    link: "/guide/",
+    activeMatch: "^/function",
+  },
+  {
+    text: "反馈",
+    icon: "creative",
+    link: "/feedback",
+    activeMatch: "^/feedback",
+  },
+  {
+    text: "捐赠",
+    icon: "creative",
+    link: "/donate",
+    activeMatch: "^/donate",
+  },
+  {
+    text: "链接",
+    icon: "creative",
     children: [
+      {
+        text: "Github Repo",
+        icon: "creative",
+        link: "https://github.com/luckyzyx/LuckyTool",
+      },
+      {
+        text: "LSPosed Repo",
+        icon: "creative",
+        link: "https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool",
+      },
+      {
+        text: "Telegram 频道",
+        icon: "creative",
+        link: "https://t.me/LuckyTool",
+      },
+      {
+        text: "Telegram 讨论群",
+        icon: "creative",
+        link: "https://t.me/+F42pfv-c0h4zNDc9",
+      },
       {
         text: "Vuepress v2",
         link: "https://v2.vuepress.vuejs.org/",

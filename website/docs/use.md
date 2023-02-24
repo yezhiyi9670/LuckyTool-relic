@@ -1,0 +1,78 @@
+---
+# 这是文章的标题
+title: 快速入门
+# 这是页面的图标
+icon: page
+# 这是侧边栏的顺序
+order: 1
+# 设置作者
+# author: 忆清鸣、luckyzyx
+# 设置写作时间
+# date: 2020-01-01
+# 一个页面可以有多个分类
+category:
+  - 快速入门
+# 一个页面可以有多个标签
+tag:
+  - 快速入门
+# 此页面会在文章列表置顶
+sticky: false
+# 此页面会出现在文章收藏中
+star: false
+# 你可以自定义页脚
+# footer: 页脚
+# 你可以自定义版权信息
+# copyright: 无版权
+---
+
+## 下载方式
+
+未经开发者授权，禁止私自搬运转载，提倡授之以渔，不是授之以鱼
+
+当前最新 Release 版本`v4.3.2`
+
+[GITHUB 下载](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7494-4.3.2/LuckyTool_v4.3.2.7494.apk)
+
+国内用户优先使用以下链接
+
+<!-- https://gh.ddlc.top/ -->
+
+[ddlc CDN](https://gh.ddlc.top/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7494-4.3.2/LuckyTool_v4.3.2.7494.apk)
+
+<!-- https://proxy.zyun.vip/ -->
+
+[zyun CDN](https://proxy.zyun.vip/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7494-4.3.2/LuckyTool_v4.3.2.7494.apk)
+
+<!-- https://ghproxy.com/ -->
+
+[ghproxy CDN](https://ghproxy.com/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7494-4.3.2/LuckyTool_v4.3.2.7494.apk)
+
+不要轻信其他平台以及用户的分享，出现问题不予处理，看到请点举报
+
+### 已授权
+
+[午夜神 软件模块分享频道](https://t.me/OJBK2333)
+
+`需注明作者以及频道`
+
+### 无授权
+
+`APKSSR`
+
+## 启用模块
+
+LuckyTool 模块，以下简称 LT
+
+- 1.确保设备拥有 **Root** 权限和 **LSPosed** 框架
+
+- 2.打开 LSP Manager 启用 LT 并且勾选相关的推荐应用
+
+- 3.打开 LT，如果弹出获取 Root 权限对话框，点击允许(若使用 KSU 则提前在超级用户里勾选 LT)
+
+- 4.给予 LT **所有文件访问权限**，此权限用于 LOG 的导出
+
+- 5.打开 LT 功能页，勾选需要的功能后返回 LT 主页
+
+- 6.点击主页右上角重启按钮，选择**重启作用域**，这会强制停止 (**除系统框架外**) 的所有推荐应用，并且**加载功能适配数据**
+
+- 7.由于部分功能的作用域为系统框架，所以此类功能还要**重启系统**

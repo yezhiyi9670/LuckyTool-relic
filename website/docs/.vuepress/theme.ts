@@ -29,6 +29,7 @@ export default hopeTheme({
   lastUpdated: true, // 是否显示页面最后更新时间
   contributors: true, // 是否显示页面贡献者
   editLink: true, // 是否展示编辑此页链接
+  print: false, // 禁止打印
 
   locales: {
     "/": {
@@ -38,10 +39,12 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer:
-        '使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2019-present Mr.Hope',
+      // footer:
+      // '使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2019-present Mr.Hope',
 
-      copyright: "Copyright © 2023 忆清鸣、luckyzyx",
+      footer: "Copyright © 2023 <a href=\"https://github.com/luckyzyx\" target=\"_blank\">忆清鸣、luckyzyx</a>",
+
+      copyright: false,
 
       displayFooter: true,
 
@@ -57,10 +60,12 @@ export default hopeTheme({
       // sidebar
       sidebar: enSidebar,
 
-      footer:
-        'Use <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> Theme | MIT Protocol, Copyright © 2019-present Mr.Hope',
+      // footer:
+      // 'Use <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> Theme | MIT Protocol, Copyright © 2019-present Mr.Hope',
 
-      copyright: "Copyright © 2023 忆清鸣、luckyzyx",
+      footer: "Copyright © 2023 <a href=\"https://github.com/luckyzyx\" target=\"_blank\">忆清鸣、luckyzyx</a>",
+
+      copyright: false,
 
       displayFooter: true,
 

@@ -7,64 +7,58 @@ heroText: LuckyTool
 tagline: Xposed module for extended optimization of ColorOS system
 actions:
   - text: How to Use
-    link: ""
+    link: /use
     type: primary
 
-  - text: Module Docs
-    link: ""
+  - text: Feedback
+    link: /feedback
+
+  - text: Donate
+    link: /donate
 
 features:
-  - title: Markdown Enhance
-    icon: markdown
-    details: Add align, sup/sub script, footnote, tasklist, tex, flowchart, diagram, mark and presentation support in markdown
-    # link: https://theme-hope.vuejs.press/guide/markdown/
+  - title: Core Crack
+    # icon: markdown
+    details: Allow app downgrade, disable app package manager signature verification, disable APK signature verification, sign with installed app
+    # link: https://theme-hope.vuejs.press/zh/guide/markdown/
 
-  - title: Slide page
-    icon: slides
-    details: Adding slide pages to display things you like
-    # link: https://theme-hope.vuejs.press/guide/layout/slides.html
+  - title: Custom Clock
+    # icon: slides
+    details: Status bar clock select preset or custom mode to add year, month, day and other formats
+    # link: https://theme-hope.vuejs.press/zh/guide/layout/slides.html
 
-  - title: Layout enhancement
-    icon: layout
-    details: Adding breadcrumb, footer, improved navbar, improved page nav and etc.
-    # link: https://theme-hope.vuejs.press/guide/layout/
+  - title: Status Bar Control Center
+    # icon: layout
+    details: Control Center clock displays seconds, remove my device, number of tile rows and columns
+    # link: https://theme-hope.vuejs.press/zh/guide/layout/
 
-  - title: Pageviews and comments
-    icon: comment
-    details: Start pageview statistics and comment support with Waline
-    # link: https://theme-hope.vuejs.press/guide/feature/comment.html
+  - title: Status Bar Layout
+    # icon: comment
+    details: Add clock center alignment layout for status bar, set screen compatibility mode
+    # link: https://theme-hope.vuejs.press/zh/guide/feature/comment.html
 
-  - title: Article information
-    icon: info
-    details: Add author, writing date, reading time, word count and other information to your article
-    # link: https://theme-hope.vuejs.press/guide/feature/page-info.html
+  - title: Launcher Display Related
+    # icon: info
+    details: Remove the APP icon dot, the number of rows and columns of the desktop layout
+    # link: https://theme-hope.vuejs.press/zh/guide/feature/page-info.html
 
-  - title: Blog support
-    icon: blog
-    details: Listing your articles with their dates, tags and categories with some awesome layouts
-    # link: https://theme-hope.vuejs.press/guide/blog/
+  - title: Lock Screen Related
+    # icon: blog
+    details: The lock screen component is displayed in the center, some buttons are removed, and the 72-hour password verification is removed
+    # link: https://theme-hope.vuejs.press/zh/guide/blog/intro.html
 
-  - title: Custom theme color
-    icon: palette
-    details: Supports custom theme colors and allows users to switch between preset theme colors
-    # link: https://theme-hope.vuejs.press/guide/interface/theme-color.html
+  - title: Application Related
+    # icon: palette
+    details: Customize small window, dark color, clone support list, skip APK scanning, allow downgrade installation, remove installation advertisement, remove ADB installation confirmation
+    # link: https://theme-hope.vuejs.press/zh/guide/interface/theme-color.html
 
-  - title: Dark Mode
-    icon: contrast
-    details: Switch between light and dark modes freely
-    # link: https://theme-hope.vuejs.press/guide/interface/darkmode.html
+  - title: Game Assistant
+    # icon: contrast
+    details: Remove game filter restrictions, enable developer page, Adreno GPU controller, race game mode, etc.
+    # link: https://theme-hope.vuejs.press/zh/guide/interface/darkmode.html
 
-  - title: More new features
-    icon: more
-    details: Including icon support, fullscreen button, etc.
-    # link: https://theme-hope.vuejs.press/guide/feature/
-    
-# copyright: false
-# footer: Theme by <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> | MIT Licensed, Copyright © 2019-present Mr.Hope
+  - title: Other APP functions
+    # icon: more
+    details: Camera, battery, theme store, cloud service, screenshot, software update, etc.
+    # link: https://theme-hope.vuejs.press/zh/guide/feature/
 ---
-
-<!-- This is an example of a project homepage. You can place your main content here. -->
-
-<!-- To use this layout, you need to set `home: true` in the page front matter. -->
-
-<!-- For related descriptions of configuration items, please see [Project HomePage Layout Config](https://theme-hope.vuejs.press/guide/layout/home/). -->
