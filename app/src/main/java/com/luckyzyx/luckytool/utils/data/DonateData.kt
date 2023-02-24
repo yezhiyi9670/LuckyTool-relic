@@ -252,6 +252,9 @@ class DonateData {
             add(DonateInfo("滑了一地稽",1.88,donateDetails(
                 DonateChannelInfo("20230224-114332",CAP,1.88,"2023022422001451621443701099")
             )))
+            add(DonateInfo("*淼",30.0,donateDetails(
+                DonateChannelInfo("20230224-211916",CAP,30.0,"2023022422001419001450383135")
+            )))
         }
     }
 

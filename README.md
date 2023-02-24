@@ -43,4 +43,4 @@ OnePlus 9RT A13 C13
 
 ## License
 
-[GNU General Public License v3.0](https://github.com/Simplicity-Team/WooBoxForColorOS/blob/main/LICENSE)
+[GNU General Public License v3.0](https://github.com/luckyzyx/LuckyTool/blob/main/LICENSE)
