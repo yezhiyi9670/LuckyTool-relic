@@ -22,6 +22,23 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [修复] 状态栏布局异常显示问题  
 [适配] C13设置暗色模式  
 [适配] C13相机水印字数限制  
+[Update] Donation list
+[Add] clock text alignment
+[Fix] Clock date (D) format example
+[Change] Partial function location of the battery
+[Optimize] Clock font size and line height
+[Optimize] Status bar compatibility mode logic
+[Optimize] Rounded corners of function page icons
+[Optimize] Cloud service mobile network restriction scheme
+[Fix] USB connection file transfer issue
+[Add] remove mobile data type
+[Fix] The green prompt in the status bar is invalid
+[Optimize] Clock default font problem
+[Optimize] Default layout compatibility mode margin
+[Fix] Tiles state saving problem
+[Fix] The status bar layout abnormal display problem
+[Fix] C13 set dark mode
+[Fix] C13 camera watermark character limit
 
 ### v4.3.1
 
