@@ -21,6 +21,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [修复] 磁贴状态保存问题  
 [修复] 状态栏布局异常显示问题  
 [适配] C13设置暗色模式  
+[适配] C13相机水印字数限制  
 
 ### v4.3.1
 
