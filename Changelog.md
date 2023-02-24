@@ -5,7 +5,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 
 ### v4.3.3
 
-[适配] C13相机水印字数限制
+[适配] C13相机水印字数限制  
+[适配] C13设置暗色模式列表
 
 ### v4.3.2
 
