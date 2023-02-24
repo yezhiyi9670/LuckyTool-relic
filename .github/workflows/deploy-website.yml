@@ -30,7 +30,7 @@ jobs:
           # 选择要使用的 node 版本
           node-version: 18
           # 缓存 pnpm 依赖
-          cache: pnpm
+#          cache: pnpm
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
