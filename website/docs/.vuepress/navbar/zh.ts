@@ -58,10 +58,12 @@ export const zhNavbar = navbar([
       },
       {
         text: "Vuepress v2",
+        icon: "creative",
         link: "https://v2.vuepress.vuejs.org/",
       },
       {
         text: "vuepress-theme-hope",
+        icon: "creative",
         link: "https://theme-hope.vuejs.press/",
       },
     ],
