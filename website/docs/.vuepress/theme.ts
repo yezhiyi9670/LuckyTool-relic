@@ -3,49 +3,45 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://luckyzyx.github.io/LuckyTool/",
 
   author: {
-    name: "Mr.Hope",
-    url: "https://mrhope.site",
+    name: "忆清鸣、luckyzyx",
+    url: "https://github.com/luckyzyx",
   },
 
   iconAssets: "iconfont",
 
-  logo: "/logo.svg",
+  logo: "/logo.png",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "https://github.com/luckyzyx/LuckyTool",
 
-  docsDir: "demo/theme-docs/src",
+  docsDir: "website/docs/", // 文档在仓库中的目录，默认为根目录
+
+  // 主题色
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    orange: "#fb9b5f",
+  },
+
+  fullscreen: true, // 全屏
+  lastUpdated: true, // 是否显示页面最后更新时间
+  contributors: true, // 是否显示页面贡献者
+  editLink: true, // 是否展示编辑此页链接
 
   locales: {
     "/": {
-      // navbar
-      navbar: enNavbar,
-
-      // sidebar
-      sidebar: enSidebar,
-
-      footer: "Default footer",
-
-      displayFooter: true,
-
-      metaLocales: {
-        editLink: "Edit this page on GitHub",
-      },
-    },
-
-    /**
-     * Chinese locale config
-     */
-    "/zh/": {
       // navbar
       navbar: zhNavbar,
 
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "默认页脚",
+      footer:
+        '使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2019-present Mr.Hope',
+
+      copyright: "Copyright © 2023 忆清鸣、luckyzyx",
 
       displayFooter: true,
 
@@ -54,20 +50,42 @@ export default hopeTheme({
         editLink: "在 GitHub 上编辑此页",
       },
     },
+    "/en/": {
+      // navbar
+      navbar: enNavbar,
+
+      // sidebar
+      sidebar: enSidebar,
+
+      footer:
+        'Use <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> Theme | MIT Protocol, Copyright © 2019-present Mr.Hope',
+
+      copyright: "Copyright © 2023 忆清鸣、luckyzyx",
+
+      displayFooter: true,
+
+      metaLocales: {
+        editLink: "Edit this page on GitHub",
+      },
+    },
   },
 
   encrypt: {
     config: {
       "/demo/encrypt.html": ["1234"],
-      "/zh/demo/encrypt.html": ["1234"],
+      "/en/demo/encrypt.html": ["1234"],
     },
   },
 
   plugins: {
-    comment: {
-      // @ts-expect-error: You should generate and use your own comment service
-      provider: "Waline",
-    },
+    copyright: true, // 启用复制添加版权
+    prismjs: false, // 禁用主题捆绑代码高亮
+
+    // comment: {
+    //   // @ts-expect-error: You should generate and use your own comment service
+    //   provider: "Waline",
+    // },
+    comment: false, // 关闭评论
 
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
