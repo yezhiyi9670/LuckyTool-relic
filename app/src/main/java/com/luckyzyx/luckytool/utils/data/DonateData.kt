@@ -258,6 +258,9 @@ class DonateData {
             add(DonateInfo("教父",6.66,donateDetails(
                 DonateChannelInfo("20230225-005415",CWC,6.66,"10000499012023022500189770135110")
             )))
+            add(DonateInfo("尘",10.0,donateDetails(
+                DonateChannelInfo("20230225-150953",CWC,10.0,"10000499012023022501911668467588")
+            )))
         }
     }
 

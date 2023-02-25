@@ -391,6 +391,8 @@ class StatusBarClock : ModulePreferenceFragment() {
                             NN -> 二月初一
                             NNN -> 兔年二月初一
                             NNNN -> 癸卯兔年二月初一
+                            FF -> 凌晨/上午/傍晚/晚上
+                            GG -> 子时/丑时/寅时/卯时
                         """.trimIndent()
                         key = "statusbar_clock_custom_format"
                         setDefaultValue("HH:mm:ss")

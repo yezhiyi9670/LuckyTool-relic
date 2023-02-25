@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Handler
 import android.provider.Settings
@@ -12,7 +11,10 @@ import com.highcapable.yukihookapi.hook.factory.constructor
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
-import com.luckyzyx.luckytool.utils.data.*
+import com.luckyzyx.luckytool.utils.data.A11
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.formatDate
+import com.luckyzyx.luckytool.utils.data.getColorOSVersion
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import java.lang.reflect.Method
 import java.util.*
@@ -98,7 +100,7 @@ object StatusBarClock : YukiBaseHooker() {
                     if (clockMode == "1") result = getDate(context!!) + newline + getTime(context!!)
                     else if (clockMode == "2") {
                         initLunar(context!!)
-                        result = formatDate(getFormatLunar(customFormat, nowLunar), nowTime!!)
+                        result = formatDate(getFormat(customFormat, nowTime!!, nowLunar), nowTime!!)
                     }
                 }
             }
@@ -148,27 +150,6 @@ object StatusBarClock : YukiBaseHooker() {
         }
     }
 
-    private fun getFormatLunar(format: String, nowLunar: String?): String {
-        return if (format.contains("NNNN")) {
-            format.replace("NNNN", nowLunar!!)
-        } else if (format.contains("NNN")) {
-            format.replace(
-                "NNN",
-                nowLunar!!.substring(2, nowLunar.length)
-            )
-        } else if (format.contains("NN")) {
-            format.replace(
-                "NN",
-                nowLunar!!.substring(4, nowLunar.length)
-            )
-        } else {
-            format.replace(
-                "N",
-                nowLunar!!.substring(6, nowLunar.length)
-            )
-        }
-    }
-
     private fun TextView.initView() {
         gravity = when (clockAlignment) {
             "left" -> Gravity.START
@@ -203,6 +184,97 @@ object StatusBarClock : YukiBaseHooker() {
         }
     }
 
+    private fun getFormat(format: String, nowTime: Date, nowLunar: String?): String {
+        var finalFormat: String
+        finalFormat = if (format.contains("NNNN")) {
+            format.replace("NNNN", nowLunar!!)
+        } else if (format.contains("NNN")) {
+            format.replace(
+                "NNN",
+                nowLunar!!.substring(2, nowLunar.length)
+            )
+        } else if (format.contains("NN")) {
+            format.replace(
+                "NN",
+                nowLunar!!.substring(4, nowLunar.length)
+            )
+        } else {
+            format.replace(
+                "N",
+                nowLunar!!.substring(6, nowLunar.length)
+            )
+        }
+        if (finalFormat.contains("FF")) finalFormat = finalFormat.replace("FF", getPeriod(nowTime))
+        if (finalFormat.contains("GG")) finalFormat = finalFormat.replace("GG", getDoubleHour(nowTime))
+        return finalFormat
+    }
+
+    private fun getPeriod(nowTime: Date): String {
+        return when (formatDate("HH", nowTime)) {
+            "00", "01", "02", "03", "04", "05" -> {
+                "凌晨"
+            }
+            "06", "07", "08", "09", "10", "11" -> {
+                "上午"
+            }
+            "12" -> {
+                "中午"
+            }
+            "13", "14", "15", "16", "17" -> {
+                "下午"
+            }
+            "18" -> {
+                "傍晚"
+            }
+            "19", "20", "21", "22", "23" -> {
+                "晚上"
+            }
+            else -> ""
+        }
+    }
+
+    private fun getDoubleHour(nowTime: Date): String {
+        return when (formatDate("HH", nowTime)) {
+            "23", "00" -> {
+                "子时"
+            }
+            "01", "02" -> {
+                "丑时"
+            }
+            "03", "04" -> {
+                "寅时"
+            }
+            "05", "06" -> {
+                "卯时"
+            }
+            "07", "08" -> {
+                "辰时"
+            }
+            "09", "10" -> {
+                "巳时"
+            }
+            "11", "12" -> {
+                "午时"
+            }
+            "13", "14" -> {
+                "未时"
+            }
+            "15", "16" -> {
+                "申时"
+            }
+            "17", "18" -> {
+                "酉时"
+            }
+            "19", "20" -> {
+                "戌时"
+            }
+            "21", "22" -> {
+                "亥时"
+            }
+            else -> ""
+        }
+    }
+
     private fun getDate(context: Context): String {
         var dateFormat = ""
         if (isZh(context)) {
@@ -231,93 +303,28 @@ object StatusBarClock : YukiBaseHooker() {
     }
 
     private fun getTime(context: Context): String {
+        var period = ""
+        var doubleHour = ""
         var timeFormat = ""
         timeFormat += if (is24(context)) "HH:mm" else "hh:mm"
         if (isSecond) timeFormat += ":ss"
         timeFormat = formatDate(timeFormat, nowTime!!)
-        if (isZh(context)) timeFormat =
-            getPeriod(context) + timeFormat else timeFormat += getPeriod(context)
-        timeFormat = getDoubleHour() + timeFormat
-        return timeFormat
-    }
-
-    private fun getPeriod(context: Context): String {
-        var period = ""
-        if (isPeriod) {
-            if (isZh(context)) {
-                when (formatDate("HH", nowTime!!)) {
-                    "00", "01", "02", "03", "04", "05" -> {
-                        period = "凌晨"
-                    }
-                    "06", "07", "08", "09", "10", "11" -> {
-                        period = "上午"
-                    }
-                    "12" -> {
-                        period = "中午"
-                    }
-                    "13", "14", "15", "16", "17" -> {
-                        period = "下午"
-                    }
-                    "18" -> {
-                        period = "傍晚"
-                    }
-                    "19", "20", "21", "22", "23" -> {
-                        period = "晚上"
-                    }
-                }
+        if (isZh(context)) {
+            if (isPeriod) {
+                period = getPeriod(nowTime!!)
                 if (!isHideSpace) period += " "
-            } else {
-                period = " " + formatDate("a", nowTime!!)
             }
+            timeFormat = period + timeFormat
+        } else {
+            period = " " + formatDate("a", nowTime!!)
+            timeFormat += period
         }
-        return period
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    fun getDoubleHour(): String {
-        var doubleHour = ""
         if (isDoubleHour) {
-            when (formatDate("HH", nowTime!!)) {
-                "23", "00" -> {
-                    doubleHour = "子时"
-                }
-                "01", "02" -> {
-                    doubleHour = "丑时"
-                }
-                "03", "04" -> {
-                    doubleHour = "寅时"
-                }
-                "05", "06" -> {
-                    doubleHour = "卯时"
-                }
-                "07", "08" -> {
-                    doubleHour = "辰时"
-                }
-                "09", "10" -> {
-                    doubleHour = "巳时"
-                }
-                "11", "12" -> {
-                    doubleHour = "午时"
-                }
-                "13", "14" -> {
-                    doubleHour = "未时"
-                }
-                "15", "16" -> {
-                    doubleHour = "申时"
-                }
-                "17", "18" -> {
-                    doubleHour = "酉时"
-                }
-                "19", "20" -> {
-                    doubleHour = "戌时"
-                }
-                "21", "22" -> {
-                    doubleHour = "亥时"
-                }
-            }
+            doubleHour = getDoubleHour(nowTime!!)
             if (!isHideSpace) doubleHour = "$doubleHour "
         }
-        return doubleHour
+        timeFormat = doubleHour + timeFormat
+        return timeFormat
     }
 
     private fun isZh(context: Context): Boolean {
