@@ -1909,31 +1909,25 @@ class OplusOta : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     val status = ShellUtils.execCommand(
                         "getprop ro.boot.veritymode",
-                        true,
+                        false,
                         true
                     ).let {
-                        if (it.result == 1) isEnabled = false else it.successMsg.ifBlank { "null" }
+                        if (it.result == 1) "null" else it.successMsg.toString().ifBlank { "null" }
                     }
                     title = getString(R.string.remove_dm_verity)
                     summary = getString(R.string.remove_dm_verity_summary, status)
                     key = "remove_dm_verity"
+                    isEnabled = status != "enforcing"
+                    isChecked = status == "enforcing"
                     isPersistent = false
-                    setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         val value = newValue as Boolean
-                        if (value && status == "enforcing") return@setOnPreferenceChangeListener true
                         ShellUtils.execCommand(
                             "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}",
                             true
                         )
-                        summary = getString(
-                            R.string.remove_dm_verity_summary, ShellUtils.execCommand(
-                                "getprop ro.boot.veritymode",
-                                true,
-                                true
-                            ).successMsg.let { it.ifBlank { "null" } }
-                        )
+                        (activity as MainActivity).restart()
                         true
                     }
                 }
