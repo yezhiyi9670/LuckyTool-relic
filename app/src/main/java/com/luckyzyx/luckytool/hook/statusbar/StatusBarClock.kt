@@ -205,7 +205,8 @@ object StatusBarClock : YukiBaseHooker() {
             )
         }
         if (finalFormat.contains("FF")) finalFormat = finalFormat.replace("FF", getPeriod(nowTime))
-        if (finalFormat.contains("GG")) finalFormat = finalFormat.replace("GG", getDoubleHour(nowTime))
+        if (finalFormat.contains("GG")) finalFormat =
+            finalFormat.replace("GG", getDoubleHour(nowTime))
         return finalFormat
     }
 
@@ -303,27 +304,27 @@ object StatusBarClock : YukiBaseHooker() {
     }
 
     private fun getTime(context: Context): String {
-        var period = ""
-        var doubleHour = ""
+        var period: String
+        var doubleHour: String
         var timeFormat = ""
         timeFormat += if (is24(context)) "HH:mm" else "hh:mm"
         if (isSecond) timeFormat += ":ss"
         timeFormat = formatDate(timeFormat, nowTime!!)
-        if (isZh(context)) {
-            if (isPeriod) {
+        if (isPeriod) {
+            if (isZh(context)) {
                 period = getPeriod(nowTime!!)
                 if (!isHideSpace) period += " "
+                timeFormat = period + timeFormat
+            } else {
+                period = " " + formatDate("a", nowTime!!)
+                timeFormat += period
             }
-            timeFormat = period + timeFormat
-        } else {
-            period = " " + formatDate("a", nowTime!!)
-            timeFormat += period
         }
         if (isDoubleHour) {
             doubleHour = getDoubleHour(nowTime!!)
             if (!isHideSpace) doubleHour = "$doubleHour "
+            timeFormat = doubleHour + timeFormat
         }
-        timeFormat = doubleHour + timeFormat
         return timeFormat
     }
 

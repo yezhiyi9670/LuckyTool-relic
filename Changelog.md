@@ -10,7 +10,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] C13设置暗色模式列表  
 [适配] C13跳过应用安装扫描  
 [添加] 时钟格式时辰与时段  
-[优化] dm-verity检测逻辑
+[优化] dm-verity检测逻辑  
+[修复] 预设时钟时段显示问题
 
 ### v4.3.2
 
