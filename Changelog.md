@@ -11,7 +11,8 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] C13跳过应用安装扫描  
 [添加] 时钟格式时辰与时段  
 [优化] dm-verity检测逻辑  
-[修复] 预设时钟时段显示问题
+[修复] 预设时钟时段显示问题  
+[优化] 部分磁贴检测逻辑
 
 ### v4.3.2
 
