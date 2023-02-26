@@ -91,6 +91,7 @@
     <string name="usepresig_warn">!!! All packages can override installed App!!\nto install unknown packages</string>
     <!--Status Bar-->
     <string name="StatusBar">StatusBar Related</string>
+    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">StatusBar Battery Information</string>
     <string name="battery_information_show">Battery information display</string>

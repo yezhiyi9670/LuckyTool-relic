@@ -213,6 +213,14 @@ class StatusBar : ModulePreferenceFragment() {
                     }
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_double_click_lock_screen)
+                    key = "statusbar_double_click_lock_screen"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

@@ -35,6 +35,8 @@ object MainHook : IYukiHookXposedInit {
         //系统框架
         loadSystem(HookAndroid)
 
+        //状态栏功能
+        loadApp("com.android.systemui", HookStatusBar)
         //状态栏时钟
         loadApp("com.android.systemui", StatusBarClock)
         //状态栏网速

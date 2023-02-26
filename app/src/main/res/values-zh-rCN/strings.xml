@@ -90,6 +90,7 @@
     <string name="usepresig_warn">所有安装包可以覆盖已安装的App!\n安装未知的安装包时请务必小心</string>
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
+    <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">状态栏电池信息</string>
     <string name="battery_information_show">电池信息显示</string>

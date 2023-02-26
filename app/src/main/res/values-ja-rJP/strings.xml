@@ -90,6 +90,7 @@
     <string name="usepresig_warn">!!! すべてのインストールされたアプリをすべてのパッケージで上書きする事ができます!!\n不明なパッケージをインストールします</string>
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
+    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">ステータスバーのバッテリー情報</string>
     <string name="battery_information_show">バッテリー情報の表示</string>
@@ -167,7 +168,7 @@
     <string name="remove_statusbar_battery_percent">バッテリーパーセンテージをステータスバーから削除</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
-    <string name="remove_mobile_data_type">Remove Mobile data type</string>
+    <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
     <string name="remove_green_dot_privacy_prompt">緑のドットのプライバシープロンプトを削除</string>
     <string name="remove_green_capsule_prompt">緑色のカプセルのプロンプトを削除</string>
     <string name="status_bar_icon_vertical_center">ステータスバーアイコンを縦中央揃えにする</string>
@@ -239,7 +240,7 @@
     <!--APPRelatedList-->
     <string name="APPRelatedList">アプリ関連のリスト</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
-    <string name="zoom_window_support_list">カスタムズームウインドウのサポートリスト</string>
+    <string name="zoom_window_support_list">カスタムズームウィンドウのサポートリスト</string>
     <string name="zoom_window_support_list_summary">必要に応じて有効化をしてください。取り返しのつかない問題が発生するかもしれません。</string>
     <string name="multi_app_enable">リストの置き換えを有効化</string>
     <string name="multi_app_custom_list">アプリクローン対応リストを置き換え</string>
@@ -260,7 +261,7 @@
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
-    <string name="disable_duplicate_floating_window">複製ウィンドウを無効化する</string>
+    <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>
     <string name="disable_duplicate_floating_window_summary">テキストのコピー時にヘッドアップを再表示しない</string>
     <string name="disable_headphone_high_volume_warning">ヘッドセットの音量警告を無効化</string>
     <string name="disable_headphone_high_volume_warning_summary">ヘッドセット接続後、音量を上げる際に表示される警告ダイアログを無効化します</string>
@@ -306,7 +307,7 @@
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
     <!--OplusGames-->
     <string name="remove_root_check">ゲームフィルターの制限を削除</string>
-    <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除</string>
+    <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除します</string>
     <string name="remove_startup_animation">起動時のアニメーションを削除</string>
     <string name="enable_developer_page">開発者ページを有効化</string>
     <string name="enable_eva_theme">EVAテーマを有効化</string>
@@ -395,7 +396,7 @@
     <string name="process_manager">プロセスマネージャー</string>
     <string name="system_interface_adjustment">システムUI調整ツール</string>
     <string name="developer_option">開発者向けオプション</string>
-    <string name="HidePageRelated">関連するページを隠す</string>
+    <string name="HidePageRelated">隠されたページ関連</string>
     <string name="camera_algo_page">カメラアルゴリズムのページ</string>
     <string name="browser_concise_mode">ブラウザコンサイスモード</string>
     <string name="battery_health">バッテリーの状態</string>

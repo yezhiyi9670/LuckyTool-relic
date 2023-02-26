@@ -90,6 +90,7 @@
     <string name="usepresig_warn">Uwaga!\nWszystkie pakiety mogą zastąpić zainstalowaną aplikację, co może prowadzić do niebezpiecznych sytuacji.</string>
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
+    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">Informacje o baterii</string>
     <string name="battery_information_show">Pokaż informacje o baterii</string>
