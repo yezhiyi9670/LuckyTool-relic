@@ -87,12 +87,13 @@ object MainHook : IYukiHookXposedInit {
         //杂项
         loadApp(
             "com.android.systemui",
-            "com.android.externalstorage",
-            "com.oplus.battery"
+            "com.android.externalstorage"
         ) {
             loadHooker(HookMiscellaneous)
         }
 
+        //电池
+        loadApp("com.oplus.battery", HookBattery)
         //相机
         loadApp("com.oplus.camera", HookCamera)
         //主题商店

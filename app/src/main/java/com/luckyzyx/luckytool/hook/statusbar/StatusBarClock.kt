@@ -7,7 +7,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.buildOf
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
@@ -139,10 +139,9 @@ object StatusBarClock : YukiBaseHooker() {
 
     private fun initLunar(context: Context) {
         val lunarInstance =
-            "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass()
-                .constructor {
-                    param(ContextClass)
-                }.get().call(context)
+            "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass().buildOf(context) {
+                param(ContextClass)
+            }
         lunarInstance?.current {
             nowLunar = method {
                 name = "getDateToString"

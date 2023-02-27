@@ -21,7 +21,7 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
             method {
                 param(ContextClass)
                 returnType = BooleanType
-            }.count(2)
+            }.count(2..4)
             method {
                 param(ContextClass)
                 returnType = StringClass
@@ -29,11 +29,11 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
             method {
                 param(IntType)
                 returnType = BooleanType
-            }.count(5)
+            }.count(4..5)
             method {
                 emptyParam()
                 returnType = IntType
-            }.count(2)
+            }.count(1..2)
         }.get()?.hook {
             injectMember {
                 method {

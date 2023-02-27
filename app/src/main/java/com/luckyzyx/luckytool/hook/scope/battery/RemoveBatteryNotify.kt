@@ -24,7 +24,7 @@ object RemoveBatteryNotify : YukiBaseHooker() {
 
         // Source NotifyUtil
         searchClass {
-            from("com.oplus.a.g", "c4", "a4", "i5").absolute()
+            from("com.oplus.a.g", "c4", "a4", "i5", "g4").absolute()
             constructor {
                 paramCount = 1
             }.count(1)

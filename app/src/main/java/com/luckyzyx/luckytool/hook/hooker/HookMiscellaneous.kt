@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
 import com.luckyzyx.luckytool.hook.scope.externalstorage.RemoveStorageLimit
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableOTGAutoOff
 import com.luckyzyx.luckytool.hook.scope.systemui.ShowChargingRipple
@@ -55,11 +54,6 @@ object HookMiscellaneous : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_storage_limit", false)) {
                 loadHooker(RemoveStorageLimit)
             }
-        }
-
-        if (packageName == "com.oplus.battery") {
-            //屏幕省电,电池健康
-            loadHooker(BatteryHiddenEntrance)
         }
     }
 }

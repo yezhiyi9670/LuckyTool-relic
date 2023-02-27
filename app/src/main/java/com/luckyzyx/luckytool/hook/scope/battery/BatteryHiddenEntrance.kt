@@ -18,7 +18,7 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
         val openBatteryOptimize = false
         //Source AppFeatureProviderUtils
         searchClass {
-            from("com.oplus.b.a", "k4", "i4", "r5").absolute()
+            from("com.oplus.b.a", "k4", "i4", "r5", "o4").absolute()
             method {
                 param(ContentResolverClass, StringClass)
                 returnType = BooleanType
