@@ -7,14 +7,14 @@ heroText: LuckyTool
 tagline: Xposed module for extended optimization of ColorOS system
 actions:
   - text: How to Use
-    link: /use
+    link: /en/use
     type: primary
 
   - text: Feedback
-    link: /feedback
+    link: /en/feedback
 
   - text: Donate
-    link: /donate
+    link: /en/donate
 
 features:
   - title: Core Crack
