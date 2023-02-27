@@ -17,7 +17,7 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] 云服务移动网络限制  
 [适配] C13自启数量限制  
 [适配] C13电池隐藏入口  
-[适配] C13电池耗电异常通知  
+[适配] C13电池耗电异常通知
 
 ### v4.3.2
 
