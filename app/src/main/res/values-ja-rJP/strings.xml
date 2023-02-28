@@ -90,7 +90,7 @@
     <string name="usepresig_warn">!!! すべてのインストールされたアプリをすべてのパッケージで上書きする事ができます!!\n不明なパッケージをインストールします</string>
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
-    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
+    <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">ステータスバーのバッテリー情報</string>
     <string name="battery_information_show">バッテリー情報の表示</string>
@@ -334,7 +334,7 @@
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。有効化されない場合はFLAG_SECUREを無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
-    <string name="disable_flag_secure_summary">ほとんどのアプリのスクリーンショット・画面共有・画面録画制限を回避します</string>
+    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>

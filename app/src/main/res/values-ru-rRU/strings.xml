@@ -91,7 +91,7 @@
     <string name="usepresig_warn">!!!Все установщики могут перезаписывать установленные приложения!!! Будьте осторожны при установке приложений из неизвестных установщиков.</string>
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
-    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
+    <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryInformation">Информация о батарее в строке состояния</string>
     <string name="battery_information_show">Отображение информации о батарее</string>
@@ -335,7 +335,7 @@
     <string name="remove_screenshot_privacy_limit">Удалить ограничения конфиденциальности скриншотов</string>
     <string name="remove_screenshot_privacy_limit_summary">Должен использоваться с \"Отключить FLAG_SECURE\", нет необходимости проверять другое приложение</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">Решить, что большинство приложений не могут захватывать, делиться экраном или ограничивать запись</string>
+    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">Локальное обновление не будет выделено серым цветом, вам необходимо заранее включить опцию разработчика</string>
