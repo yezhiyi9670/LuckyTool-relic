@@ -1,7 +1,7 @@
 # 更新日志 Changelog
 
-出现问题请带上作用域 APK 和模块 LOG 前往 TG 群组反馈  
-If there is a problem, please bring the scope APK and module LOG to the TG group for feedback
+[模块文档(Module Document)](https://luckyzyx.github.io/LuckyTool/)
+[反馈流程(Feedback Process)](https://luckyzyx.github.io/LuckyTool/feedback)
 
 ### v4.3.3
 
@@ -18,6 +18,19 @@ If there is a problem, please bring the scope APK and module LOG to the TG group
 [适配] C13自启数量限制  
 [适配] C13电池隐藏入口  
 [适配] C13电池耗电异常通知
+[Update] Donation list
+[Fix] C13 camera watermark character limit
+[Fix] C13 set dark mode list
+[Fix] C13 skip app installation scan
+[Add] clock format hour and period
+[Optimize] dm-verity detection logic
+[Fix] Display problem of preset clock period
+[Optimize] Some tile detection logic
+[Add] Double click status bar lock screen
+[Fix] Cloud service mobile network limitation
+[Fix] C13 self-start quantity limit
+[Fix] C13 battery hidden entrance
+[Fix] C13 abnormal battery power consumption notification
 
 ### v4.3.2
 

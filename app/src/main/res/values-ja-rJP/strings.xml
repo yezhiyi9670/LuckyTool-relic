@@ -334,7 +334,7 @@
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。有効化されない場合はFLAG_SECUREを無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
+    <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>
