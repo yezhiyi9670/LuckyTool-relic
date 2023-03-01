@@ -3,6 +3,10 @@
 [模块文档(Module Document)](https://luckyzyx.github.io/LuckyTool/)
 [反馈流程(Feedback Process)](https://luckyzyx.github.io/LuckyTool/feedback)
 
+### v4.3.4
+
+[适配] C13跳过应用安装扫描
+
 ### v4.3.3
 
 [更新] 捐赠名单  

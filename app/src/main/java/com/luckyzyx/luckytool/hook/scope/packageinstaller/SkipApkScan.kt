@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
@@ -18,27 +19,24 @@ object SkipApkScan : YukiBaseHooker() {
         }
         val OPIA = "com.android.packageinstaller.oplus.OPlusPackageInstallerActivity"
         val ADRU = "com.android.packageinstaller.oplus.utils.AppDetailRedirectionUtils"
+        val isNew = ADRU.toClass().hasMethod { name = "shouldStartAppDetail" }
         val member: Array<String> =
             when (appSet[2]) {
-                "7bc7db7", "e1a2c58" -> {
-                    arrayOf(OPIA, "L", "C", "K")
-                }
-                "75fe984", "532ffef" -> {
-                    arrayOf(OPIA, "L", "D", "i")
-                }
-                "38477f0" -> {
-                    arrayOf(OPIA, "M", "D", "k")
-                }
-                "a222497" -> {
-                    arrayOf(OPIA, "M", "E", "j")
-                }
-                "d1fd8fc", "890f77b", "40d7750", "215dfe4", "d37ed05", "a0ec813", "cade971" -> {
-                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
-                }
+                "7bc7db7", "e1a2c58" -> arrayOf(OPIA, "L", "C", "K")
+                "75fe984", "532ffef" -> arrayOf(OPIA, "L", "D", "i")
+                "38477f0" -> arrayOf(OPIA, "M", "D", "k")
+                "a222497" -> arrayOf(OPIA, "M", "E", "j")
+//                "d1fd8fc", "890f77b", "40d7750", "215dfe4", "d37ed05", "a0ec813", "cade971", "6bdefec" -> {
+//                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
+//                }
                 //d132ce2,faec6ba,860700c,3d2dbd1
-                else -> {
-                    arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
-                }
+                else -> if (isNew) arrayOf(
+                    ADRU,
+                    "shouldStartAppDetail",
+                    "checkToScanRisk",
+                    "initiateInstall"
+                )
+                else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         findClass(member[0]).hook {
