@@ -303,6 +303,8 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">Remove top account display</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
@@ -335,7 +337,7 @@
     <string name="remove_screenshot_privacy_limit">Удалить ограничения конфиденциальности скриншотов</string>
     <string name="remove_screenshot_privacy_limit_summary">Должен использоваться с \"Отключить FLAG_SECURE\", нет необходимости проверять другое приложение</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
+    <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">Локальное обновление не будет выделено серым цветом, вам необходимо заранее включить опцию разработчика</string>

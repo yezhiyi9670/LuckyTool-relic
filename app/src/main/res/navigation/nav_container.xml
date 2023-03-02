@@ -132,6 +132,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_settings"
+                app:destination="@id/settings"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -364,6 +371,10 @@
     <fragment
             android:id="@+id/battery"
             android:name="com.luckyzyx.luckytool.ui.fragment.Battery"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/settings"
+            android:name="com.luckyzyx.luckytool.ui.fragment.Settings"
             android:label="{title_label}" />
 
 </navigation>

@@ -302,6 +302,8 @@
     <string name="performance_mode_and_standby_optimization">Tryb wydajności i optymalizacja trybu czuwania</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">Remove top account display</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>

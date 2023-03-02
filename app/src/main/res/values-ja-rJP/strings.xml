@@ -302,6 +302,8 @@
     <string name="performance_mode_and_standby_optimization">パフォーマンスモードとスタンバイの最適化</string>
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">Remove top account display</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>

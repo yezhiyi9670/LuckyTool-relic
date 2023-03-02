@@ -302,6 +302,8 @@
     <string name="performance_mode_and_standby_optimization">性能模式和待机优化</string>
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="allow_untrusted_touch">允許不受信任的觸控</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">移除顶部账户显示</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>

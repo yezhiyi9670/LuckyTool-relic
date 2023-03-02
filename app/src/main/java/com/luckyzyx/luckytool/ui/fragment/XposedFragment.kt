@@ -187,6 +187,26 @@ class XposedFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
+                    key = "com.android.settings"
+                    context.getXPIcon(key) { resource, show ->
+                        icon = resource
+                        isIconSpaceReserved = show
+                    }
+                    title = context.getAppLabel(key)
+                    summary = getString(R.string.remove_top_account_display)
+                    isVisible = context.checkPackName(key)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_nav_function_to_settings,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
                     key = "com.oplus.camera"
                     context.getXPIcon(key) { resource, show ->
                         icon = resource

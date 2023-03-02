@@ -302,6 +302,8 @@
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">Remove top account display</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>

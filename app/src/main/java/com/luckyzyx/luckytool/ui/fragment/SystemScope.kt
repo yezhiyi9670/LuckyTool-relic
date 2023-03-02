@@ -1703,6 +1703,21 @@ class Miscellaneous : ModulePreferenceFragment() {
     }
 }
 
+class Settings : ModulePreferenceFragment(){
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_top_account_display)
+                    key = "remove_top_account_display"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
 class Battery : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
