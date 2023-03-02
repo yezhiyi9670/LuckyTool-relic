@@ -65,6 +65,8 @@ object CloudConditionFeature : YukiBaseHooker() {
                         "optimise_power" -> if (powerFeature) resultTrue()
                         //GPU控制器云控 -> isCloudSupportGpuControlPanel
                         "gpu_control_panel" -> if (gpuControl) resultTrue()
+                        //X模式 -> isSupportXMode
+//                        "cool_back_clip_blacklist" -> resultTrue()
                     }
                 }
             }
