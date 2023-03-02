@@ -15,6 +15,7 @@ import android.os.Environment
 import android.os.SystemClock
 import android.provider.DocumentsContract
 import android.provider.MediaStore
+import android.provider.Settings
 import android.text.TextUtils
 import android.util.ArraySet
 import android.util.Base64
@@ -33,6 +34,7 @@ import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
+
 
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
@@ -704,4 +706,17 @@ fun isZh(context: Context): Boolean {
     val locale = context.resources.configuration.locales
     val language = locale[0].language
     return language.endsWith("zh")
+}
+
+/**
+ * 跳转到应用详情界面
+ * @param context Context 上下文
+ * @param packName String 包名
+ */
+fun openAppDetailIntent(context: Context, packName: String) {
+    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+    intent.data = Uri.parse("package:$packName")
+    context.startActivity(intent)
 }

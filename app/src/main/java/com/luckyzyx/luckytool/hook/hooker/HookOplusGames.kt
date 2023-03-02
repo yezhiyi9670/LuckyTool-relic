@@ -4,6 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.oplusgames.*
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
+
 object HookOplusGames : YukiBaseHooker() {
     override fun onHook() {
 
@@ -26,26 +27,17 @@ object HookOplusGames : YukiBaseHooker() {
             loadHooker(EnableSupportCompetitionMode)
         }
 
-        //network_speed_vip -> oppo_acc
-
-        //游戏变声VIP (作废)
-//        findClass("com.oplus.games.account.bean.VipInfoBean.VipInfosDTO").hook {
+//        findClass("com.coloros.gamespaceui.module.performancemode.GamePerfModeModel").hook {
 //            injectMember {
-//                method { name = "getExpireTime" }
-//                replaceTo("9999-9999-9999")
-//            }
-//            injectMember {
-//                method { name = "getExpiredVip" }
-//                replaceToFalse()
-//            }
-//            injectMember {
-//                method { name = "getSign" }
-//                replaceToTrue()
-//            }
-//            injectMember {
-//                method { name = "getVip" }
+//                method {
+//                    name = "S"
+//                }
 //                replaceToTrue()
 //            }
 //        }
+
+        //network_speed_vip -> oppo_acc
+
+        //游戏变声VIP (作废) -> com.oplus.games.account.bean.VipInfoBean.VipInfosDTO
     }
 }

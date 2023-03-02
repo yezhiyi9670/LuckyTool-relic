@@ -227,6 +227,8 @@
     <string name="launcher_layout_enable">Включить/отключить сетку иконок на рабочем столе</string>
     <string name="launcher_layout_max_rows">Количество строк для сетки рабочего стола</string>
     <string name="launcher_layout_max_columns">Количество столбцов для сетки рабочего стола</string>
+    <string name="RecentTaskListRelated">Recent task list related</string>
+    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Удалить кнопку очистки списка последних задач</string>
     <!--Application-->
     <string name="Application">Приложения</string>

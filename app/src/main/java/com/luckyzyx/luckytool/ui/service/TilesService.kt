@@ -7,6 +7,7 @@ import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.telephony.SubscriptionManager
+import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.checkPackName
@@ -18,18 +19,19 @@ import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
 import com.topjohnwu.superuser.ipc.RootService
 
+@Obfuscate
 class ChargingTest : TileService() {
     override fun onClick() {
         jumpBatteryInfo(applicationContext)
     }
 }
-
+@Obfuscate
 class ProcessManager : TileService() {
     override fun onClick() {
         jumpRunningApp(applicationContext)
     }
 }
-
+@Obfuscate
 class GameAssistant : TileService() {
     override fun onStartListening() {
         if (!checkPackName("com.oplus.games")) qsTile.state =
@@ -46,7 +48,7 @@ class GameAssistant : TileService() {
         }
     }
 }
-
+@Obfuscate
 class ShowFPS : TileService() {
     override fun onClick() {
         when (qsTile.state) {
@@ -69,7 +71,7 @@ class ShowFPS : TileService() {
         )
     }
 }
-
+@Obfuscate
 class HighBrightness : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
@@ -103,7 +105,7 @@ class HighBrightness : TileService() {
         qsTile.updateTile()
     }
 }
-
+@Obfuscate
 class GlobalDC : TileService() {
     override fun onStartListening() {
         var oppoExist = true
@@ -146,7 +148,7 @@ class GlobalDC : TileService() {
         qsTile.updateTile()
     }
 }
-
+@Obfuscate
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
@@ -181,7 +183,7 @@ class TouchSamplingRate : TileService() {
         qsTile.updateTile()
     }
 }
-
+@Obfuscate
 class FiveG : TileService() {
     private var iFiveGController: IFiveGController? = null
     override fun onStartListening() {
@@ -235,7 +237,7 @@ class FiveG : TileService() {
         qsTile.updateTile()
     }
 }
-
+@Obfuscate
 class VeryDarkMode : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("settings get secure reduce_bright_colors_activated", true, true)

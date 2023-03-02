@@ -226,6 +226,8 @@
     <string name="launcher_layout_enable">デスクトップアイコンレイアウト全般の切り替え</string>
     <string name="launcher_layout_max_rows">デスクトップレイアウトの最大行数</string>
     <string name="launcher_layout_max_columns">デスクトップレイアウトの最大カラム数</string>
+    <string name="RecentTaskListRelated">Recent task list related</string>
+    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
@@ -303,7 +305,7 @@
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <!--Settings-->
-    <string name="remove_top_account_display">Remove top account display</string>
+    <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>

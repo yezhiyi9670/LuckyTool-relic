@@ -1070,14 +1070,6 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_recent_task_list_clear_button)
-                    key = "remove_recent_task_list_clear_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_appicon_dot)
                     key = "remove_appicon_dot"
                     setDefaultValue(false)
@@ -1088,6 +1080,29 @@ class Desktop : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.set_folder_layout_4x4)
                     key = "set_folder_layout_4x4"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.RecentTaskListRelated)
+                    key = "RecentTaskListRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_recent_task_list_clear_button)
+                    key = "remove_recent_task_list_clear_button"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_app_icon_open_app_details)
+                    key = "long_press_app_icon_open_app_details"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1105,39 +1120,42 @@ class Desktop : ModulePreferenceFragment() {
                     key = "launcher_layout_enable"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.launcher_layout_max_rows)
-                    key = "launcher_layout_max_rows"
-                    setDefaultValue(6)
-                    max = 10
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.launcher_layout_max_columns)
-                    key = "launcher_layout_max_columns"
-                    setDefaultValue(4)
-                    max = 8
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
+            if (context.getBoolean(ModulePrefs, "launcher_layout_enable", false)) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.launcher_layout_max_rows)
+                        key = "launcher_layout_max_rows"
+                        setDefaultValue(6)
+                        max = 10
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.launcher_layout_max_columns)
+                        key = "launcher_layout_max_columns"
+                        setDefaultValue(4)
+                        max = 8
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
+
         }
-        findPreference<SeekBarPreference>("launcher_layout_max_rows")?.dependency =
-            "launcher_layout_enable"
-        findPreference<SeekBarPreference>("launcher_layout_max_columns")?.dependency =
-            "launcher_layout_enable"
     }
 }
 
@@ -1703,7 +1721,7 @@ class Miscellaneous : ModulePreferenceFragment() {
     }
 }
 
-class Settings : ModulePreferenceFragment(){
+class Settings : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -1718,6 +1736,7 @@ class Settings : ModulePreferenceFragment(){
         }
     }
 }
+
 class Battery : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs

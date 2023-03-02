@@ -226,6 +226,8 @@
     <string name="launcher_layout_enable">Główny przełącznik</string>
     <string name="launcher_layout_max_rows">Ilość wierszy</string>
     <string name="launcher_layout_max_columns">Ilość kolumn</string>
+    <string name="RecentTaskListRelated">Recent task list related</string>
+    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk \"Zamknij wszystkie\"\nz listy ostatnich aplikacji</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>

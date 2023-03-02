@@ -32,6 +32,10 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_recent_task_list_clear_button", false)) {
                 loadHooker(RemoveRecentTaskListClearButton)
             }
+            //长按APP图标打开应用详情
+            if (prefs(ModulePrefs).getBoolean("long_press_app_icon_open_app_details", false)) {
+                loadHooker(LongPressAppIconOpenAppDetails)
+            }
         }
     }
 }
