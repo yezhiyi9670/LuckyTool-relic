@@ -303,7 +303,7 @@ class HomeFragment : Fragment() {
         binding.authorized.apply {
             if (isZh(context)) {
                 isVisible = true
-                text = "未经开发者授权禁止私自搬运转载"
+                text = "未经开发者授权,禁止私自搬运转载\n提倡授之以渔,切莫授之以鱼"
             }
         }
     }

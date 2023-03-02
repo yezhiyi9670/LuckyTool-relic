@@ -73,9 +73,8 @@ class ShowFPS : TileService() {
 class HighBrightness : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
-            if (result == 1 || successMsg == null || successMsg.isBlank()) qsTile.state =
-                Tile.STATE_UNAVAILABLE
-            else when (successMsg.substring(0, 1)) {
+            if (result == 1 || successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (result == 0) when (successMsg.substring(0, 1)) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
             }
@@ -112,14 +111,12 @@ class GlobalDC : TileService() {
         var isOppo = false
         var isOplus = false
         ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg != null && successMsg.substring(0, 1) == "1") isOppo =
-                true
-            else if (result == 1 || successMsg.isBlank()) oppoExist = false
+            if (result == 1 || successMsg.isBlank()) oppoExist = false
+            else if (result == 0 && successMsg.substring(0, 1) == "1") isOppo = true
         }
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
-            if (result == 0 && successMsg != null && successMsg.substring(0, 1) == "1") isOplus =
-                true
-            else if (result == 1 || successMsg.isBlank()) oplusExist = false
+            if (result == 1 || successMsg.isBlank()) oplusExist = false
+            else if (result == 0 && successMsg.substring(0, 1) == "1") isOplus = true
         }
         qsTile.state =
             if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
@@ -153,9 +150,8 @@ class GlobalDC : TileService() {
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
-            if (result == 1 || successMsg == null || successMsg.isBlank()) qsTile.state =
-                Tile.STATE_UNAVAILABLE
-            else when (successMsg.substring(0, 1)) {
+            if (result == 1 || successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (result == 0) when (successMsg.substring(0, 1)) {
                 "0" -> qsTile.state = Tile.STATE_INACTIVE
                 "1" -> qsTile.state = Tile.STATE_ACTIVE
                 else -> qsTile.state = Tile.STATE_UNAVAILABLE
@@ -244,9 +240,9 @@ class VeryDarkMode : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("settings get secure reduce_bright_colors_activated", true, true)
             .apply {
-                if (result == 1 || successMsg == null || successMsg.isBlank()) qsTile.state =
+                if (result == 1 || successMsg.isBlank()) qsTile.state =
                     Tile.STATE_UNAVAILABLE
-                else when (successMsg.substring(0, 1)) {
+                else if (result == 0) when (successMsg.substring(0, 1)) {
                     "0" -> qsTile.state = Tile.STATE_INACTIVE
                     "1" -> qsTile.state = Tile.STATE_ACTIVE
                     else -> qsTile.state = Tile.STATE_UNAVAILABLE
