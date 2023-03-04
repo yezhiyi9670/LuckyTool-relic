@@ -39,16 +39,16 @@ import kotlin.random.Random
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
 
-/**A11 -> R*/
+/**A11 R*/
 val A11 get() = Build.VERSION_CODES.R
 
-/**A12 -> S*/
+/**A12 S*/
 val A12 get() = Build.VERSION_CODES.S
 
-/**A12.1 -> S_V2*/
+/**A12.1 S_V2*/
 val A121 get() = Build.VERSION_CODES.S_V2
 
-/**A13 -> TIRAMISU*/
+/**A13 TIRAMISU*/
 val A13 get() = Build.VERSION_CODES.TIRAMISU
 
 /**

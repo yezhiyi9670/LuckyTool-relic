@@ -193,9 +193,9 @@ class FiveG : TileService() {
     override fun onClick() = startFiveGController {
         val subId = SubscriptionManager.getDefaultDataSubscriptionId()
         if (qsTile.state == Tile.STATE_INACTIVE) {
-            it?.setFivegEnabled(subId, true)
+            it?.setFiveGStatus(subId, true)
         } else if (qsTile.state == Tile.STATE_ACTIVE) {
-            it?.setFivegEnabled(subId, false)
+            it?.setFiveGStatus(subId, false)
         }
         refreshData()
     }
@@ -204,7 +204,7 @@ class FiveG : TileService() {
         if (iFiveGController != null) {
             controller(iFiveGController)
         } else {
-            RootService.bind(Intent(application, FiveGControllerService::class.java),
+            RootService.bind(Intent(this, FiveGControllerService::class.java),
                 object : ServiceConnection {
                     override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                         iFiveGController = IFiveGController.Stub.asInterface(service)
@@ -225,10 +225,10 @@ class FiveG : TileService() {
             return@startFiveGController
         }
         val subId = SubscriptionManager.getDefaultDataSubscriptionId()
-        qsTile.state = if (!it.compatibilityCheck(subId)) {
+        qsTile.state = if (!it.checkCompatibility(subId)) {
             Tile.STATE_UNAVAILABLE
         } else {
-            if (it.getFivegEnabled(subId)) {
+            if (it.getFiveGStatus(subId)) {
                 Tile.STATE_ACTIVE
             } else {
                 Tile.STATE_INACTIVE
