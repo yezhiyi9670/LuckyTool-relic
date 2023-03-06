@@ -158,6 +158,7 @@
     <string name="remove_hotspot_power_consumption_notification">Удалить уведомление об энергопотреблении персональной точки доступа</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
     <string name="remove_smart_rapid_charging_notification">Убрать уведомление \"Умная быстрая зарядка\"</string>
+    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -227,8 +228,8 @@
     <string name="launcher_layout_enable">Включить/отключить сетку иконок на рабочем столе</string>
     <string name="launcher_layout_max_rows">Количество строк для сетки рабочего стола</string>
     <string name="launcher_layout_max_columns">Количество столбцов для сетки рабочего стола</string>
-    <string name="RecentTaskListRelated">Recent task list related</string>
-    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
+    <string name="RecentTaskListRelated">Список недавних задач</string>
+    <string name="long_press_app_icon_open_app_details">Удерживайте иконку приложения, чтобы открыть детали приложения</string>
     <string name="remove_recent_task_list_clear_button">Удалить кнопку очистки списка последних задач</string>
     <!--Application-->
     <string name="Application">Приложения</string>
@@ -306,7 +307,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Settings-->
-    <string name="remove_top_account_display">Remove top account display</string>
+    <string name="remove_top_account_display">Удалить отображение поверх аккаунта</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

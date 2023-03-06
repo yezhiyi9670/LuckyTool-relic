@@ -157,6 +157,7 @@
     <string name="remove_hotspot_power_consumption_notification">移除个人热点耗电通知</string>
     <string name="remove_hotspot_power_consumption_notification_summary">通知: 长时间开启个人热点会增加耗电与发热</string>
     <string name="remove_smart_rapid_charging_notification">移除“了解智能快速充电”通知</string>
+    <string name="remove_notifications_for_mute_notifications">移除通知勿扰通知</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>

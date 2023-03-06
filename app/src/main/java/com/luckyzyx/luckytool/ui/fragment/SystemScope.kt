@@ -607,6 +607,14 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_notifications_for_mute_notifications)
+                    key = "remove_notifications_for_mute_notifications"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

@@ -157,6 +157,7 @@
     <string name="remove_hotspot_power_consumption_notification">パーソナルホットスポットの消費電力通知を削除</string>
     <string name="remove_hotspot_power_consumption_notification_summary">注意: パーソナルホットスポットを長時間使用すると大幅な電力の消費と発熱を起こす可能性が増加します</string>
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
+    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
@@ -226,8 +227,8 @@
     <string name="launcher_layout_enable">デスクトップアイコンレイアウト全般の切り替え</string>
     <string name="launcher_layout_max_rows">デスクトップレイアウトの最大行数</string>
     <string name="launcher_layout_max_columns">デスクトップレイアウトの最大カラム数</string>
-    <string name="RecentTaskListRelated">Recent task list related</string>
-    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
+    <string name="RecentTaskListRelated">アプリ履歴関連</string>
+    <string name="long_press_app_icon_open_app_details">アプリのアイコンを長押ししてアプリ詳細を開く</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>

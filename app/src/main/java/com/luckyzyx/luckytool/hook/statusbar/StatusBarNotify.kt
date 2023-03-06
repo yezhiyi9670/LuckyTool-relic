@@ -28,6 +28,13 @@ object StatusBarNotify : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_do_not_disturb_mode_notification", false)) {
                 loadHooker(RemoveDoNotDisturbModeNotification)
             }
+            //移除通知勿扰通知
+            if (prefs(ModulePrefs).getBoolean(
+                    "remove_notifications_for_mute_notifications", false
+                )
+            ) {
+                loadHooker(RemoveNotificationForMuteNotifications)
+            }
         }
         if (packageName == "com.oplus.battery") {
             //移除电池通知
