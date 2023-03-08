@@ -17,14 +17,14 @@ android {
         }
     }
     compileSdk 33
-    def currentVersionCode = getVersionCode()
     namespace 'com.luckyzyx.luckytool'
     defaultConfig {
         applicationId "com.luckyzyx.luckytool"
         minSdk 30
         targetSdk 33
-        versionCode currentVersionCode
+        versionCode getVersionCode()
         versionName "4.3.4_beta"
+        buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
     buildTypes {
@@ -112,9 +112,14 @@ dependencies {
     //libsu
     implementation "com.github.topjohnwu.libsu:core:5.0.4"
     implementation "com.github.topjohnwu.libsu:service:5.0.4"
+
+    //Microsoft AppCenter
+    def appCenterSdkVersion = '5.0.0'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
 
-def getVersionCode() {
+Object getVersionCode() {
     def propsFile = file('version.properties')
     def properties = new Properties()
     properties.load(new FileInputStream(propsFile))
@@ -122,4 +127,11 @@ def getVersionCode() {
     properties['versionCode'] = (++vCode).toString()
     properties.store(propsFile.newWriter(), null)
     return vCode
+}
+
+String getAppCenterSecret() {
+    def fileName = '../.secret/APP_CENTER_SECRET'
+    def content = ''
+    if (file(fileName).exists()) file(fileName).eachLine { content = it }
+    return content
 }

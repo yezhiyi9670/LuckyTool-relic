@@ -25,7 +25,10 @@
             android:description="@string/xposeddescription"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.Luckyzyx">
+            android:theme="@style/Theme.Luckyzyx"
+            android:fullBackupContent="@xml/appcenter_backup_rule_11"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            tools:targetApi="s">
         <activity
                 android:name=".ui.activity.MainActivity"
                 android:exported="true">

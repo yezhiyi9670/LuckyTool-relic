@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.ui.activity
 
-import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.DialogInterface
@@ -22,12 +21,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
+import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.*
 import kotlin.system.exitProcess
+
 
 @Obfuscate
 @Suppress("PrivatePropertyName")
@@ -56,7 +57,7 @@ open class MainActivity : AppCompatActivity() {
         initNavigationFragment()
         initDynamicShortcuts()
 
-        checkModuleActive(isStart)
+        checkPrefsStatus()
         checkSu(isStart)
         checkPermissions(isStart)
     }
@@ -149,14 +150,11 @@ open class MainActivity : AppCompatActivity() {
         ThemeUtils(this).initTheme(themeMode)
     }
 
-    @Suppress("DEPRECATION")
-    @SuppressLint("WorldReadableFiles")
-    private fun checkModuleActive(status: Boolean) {
-        try {
-            getSharedPreferences(SettingsPrefs, MODE_WORLD_READABLE)
-            getSharedPreferences(ModulePrefs, MODE_WORLD_READABLE)
-            getSharedPreferences(OtherPrefs, MODE_WORLD_READABLE)
-        } catch (ignored: SecurityException) {
+    private fun checkPrefsStatus() {
+        val modulePrefs = modulePrefs(ModulePrefs).isPreferencesAvailable
+        val settingPrefs = modulePrefs(SettingsPrefs).isPreferencesAvailable
+        val otherPrefs = modulePrefs(OtherPrefs).isPreferencesAvailable
+        if (!(modulePrefs && settingPrefs && otherPrefs)) {
             isStart = false
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
