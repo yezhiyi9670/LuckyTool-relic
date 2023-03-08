@@ -26,7 +26,7 @@ import androidx.core.graphics.drawable.toBitmap
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
-import com.luckyzyx.luckytool.BuildConfig.*
+import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.utils.tools.*
 import java.io.*
 import java.text.SimpleDateFormat
@@ -34,7 +34,6 @@ import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
-
 
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
@@ -99,8 +98,8 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
  * 获取构建版本名/版本号
  * @return [String]
  */
-val getVersionName get() = VERSION_NAME
-val getVersionCode get() = VERSION_CODE
+val getVersionName get() = BuildConfig.VERSION_NAME
+val getVersionCode get() = BuildConfig.VERSION_CODE
 
 /**
  * 检测包名是否存在

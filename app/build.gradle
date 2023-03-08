@@ -18,11 +18,12 @@ android {
     }
     compileSdk 33
     namespace 'com.luckyzyx.luckytool'
+    def currentVersionCode = getVersionCode()
     defaultConfig {
         applicationId "com.luckyzyx.luckytool"
         minSdk 30
         targetSdk 33
-        versionCode getVersionCode()
+        versionCode currentVersionCode
         versionName "4.3.4_beta"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
@@ -119,7 +120,7 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
 
-Object getVersionCode() {
+def getVersionCode() {
     def propsFile = file('version.properties')
     def properties = new Properties()
     properties.load(new FileInputStream(propsFile))
