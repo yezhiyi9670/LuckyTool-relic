@@ -238,6 +238,14 @@ class StatusBar : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_carriers_use_user_typeface)
+                    key = "statusbar_carriers_use_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

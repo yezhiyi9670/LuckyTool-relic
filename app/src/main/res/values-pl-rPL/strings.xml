@@ -91,6 +91,7 @@
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
+    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
     <string name="battery_information_show">Pokaż informacje o baterii</string>

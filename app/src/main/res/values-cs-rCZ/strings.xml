@@ -91,6 +91,7 @@
     <!--Status Bar-->
     <string name="StatusBar">Stavový řádek</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
+    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
     <string name="battery_information_show">Zobrazit informace o baterii</string>
@@ -205,7 +206,7 @@
     <!--StatusBarPower-->
     <string name="StatusBarPower">Napájení ve stavové liště</string>
     <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie na stavové liště</string>
-    <string name="statusbar_power_font_size">Statusbar power font size</string>
+    <string name="statusbar_power_font_size">Velikost písma napájení na stavové liště</string>
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>

@@ -92,6 +92,7 @@
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
+    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
     <string name="battery_information_show">Отображение информации о батарее</string>
@@ -206,7 +207,7 @@
     <!--StatusBarPower-->
     <string name="StatusBarPower">Настройки строки состояния</string>
     <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
-    <string name="statusbar_power_font_size">Statusbar power font size</string>
+    <string name="statusbar_power_font_size">Размер шрифта в строке состояния</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>

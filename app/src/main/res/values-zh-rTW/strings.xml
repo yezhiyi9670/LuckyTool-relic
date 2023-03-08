@@ -91,6 +91,7 @@
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
+    <string name="statusbar_carriers_use_user_typeface">状态栏运营商使用用户字体</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">状态栏电池通知</string>
     <string name="battery_information_show">电池信息显示</string>
