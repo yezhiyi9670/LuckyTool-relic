@@ -261,6 +261,25 @@ fun setParameter(context: Context, name: String, key: String?, value: String?) {
     }
 }
 
+fun getDeviceID(): String {
+    ShellUtils.execCommand(
+        "cat /sys/devices/soc0/serial_number",
+        false,
+        true
+    ).apply {
+        if (result == 0 && successMsg.isNotBlank()) return successMsg
+    }
+    ShellUtils.execCommand(
+        "cat /sys/firmware/devicetree/base/firmware/android/serialno",
+        false,
+        true
+    ).apply {
+        if (result == 0 && successMsg.isNotBlank()) return successMsg
+    }
+    return "null"
+}
+
+
 /**
  * 获取GUID
  * /data/system/openid_config.xml
@@ -271,7 +290,7 @@ val getGuid
         true,
         true
     ).successMsg.let {
-        it.takeIf { e -> e.isNotEmpty() }?.split("\"")?.get(3) ?: "null"
+        it.takeIf { e -> e.isNotBlank() }?.split("\"")?.get(3) ?: "null"
     }
 
 /**

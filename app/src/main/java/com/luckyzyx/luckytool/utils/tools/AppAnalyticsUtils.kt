@@ -11,12 +11,12 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 
-class AppAnalyticsUtils(val instance: Application) {
+object AppAnalyticsUtils {
 
     @Suppress("PrivatePropertyName")
     private val App_Center_Secret = BuildConfig.APP_CENTER_SECRET
 
-    fun init() {
+    fun init(instance: Application) {
         AppCenter.start(
             instance,
             App_Center_Secret,
@@ -30,7 +30,7 @@ class AppAnalyticsUtils(val instance: Application) {
         else Analytics.trackEvent(name)
     }
 
-    fun loadDevice() {
+    fun loadDeviceInfo() {
         val deviceInfo = ArrayMap<String, String>()
         deviceInfo["Brand"] = Build.BRAND
         deviceInfo["Model"] = Build.MODEL
@@ -39,12 +39,13 @@ class AppAnalyticsUtils(val instance: Application) {
             "${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]"
         deviceInfo["Device"] = Build.DEVICE
         deviceInfo["Market"] = getProp("ro.vendor.oplus.market.name")
-        deviceInfo["OTA"] = getProp("ro.build.version.ota")
-        deviceInfo["GUID"] = getGuid
-        deviceInfo["ALL"] =
-            "Brand:${Build.BRAND} Model:${Build.MODEL} Product:${Build.PRODUCT} Version:${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]} Device:${Build.DEVICE} Market:${
-                getProp("ro.vendor.oplus.market.name")
-            } OTA:${getProp("ro.build.version.ota")} GUID:${getGuid}"
+        deviceInfo["OTA_Version"] = getProp("ro.build.version.ota")
         trackEvent("DeviceInfo", deviceInfo.toMap())
+    }
+
+    fun loadDeviceOTA() {
+        val ota = ArrayMap<String,String>()
+        ota["OTA"] = "${Build.PRODUCT}_${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]_${getProp("ro.build.version.ota")}_${getProp("ro.build.oplus_nv_id")}_${getGuid}"
+        trackEvent("OTAInfo", ota.toMap())
     }
 }
