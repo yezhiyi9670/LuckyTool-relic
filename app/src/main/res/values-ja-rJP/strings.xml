@@ -92,7 +92,7 @@
     <string name="StatusBar">ステータスバー関連</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">ステータスバーのバッテリー情報</string>
+    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
     <string name="battery_information_show">バッテリー情報の表示</string>
     <string name="battery_information_show_summary">バッテリー電圧などをステータスバーに表示します</string>
     <string name="battery_information_show_charge">充電中の情報を表示</string>
@@ -138,6 +138,8 @@
     <string name="enable_double_row_network_speed">ネットワーク速度の多段表示を有効化</string>
     <string name="set_network_speed_font_size">ネットワーク速度のフォントの大きさを設定</string>
     <string name="set_network_speed_padding_bottom">ネットワーク速度の下部のパディングを設定</string>
+    <string name="statusbar_network_layout">Statusbar network speed layout</string>
+    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
@@ -157,7 +159,7 @@
     <string name="remove_hotspot_power_consumption_notification">パーソナルホットスポットの消費電力通知を削除</string>
     <string name="remove_hotspot_power_consumption_notification_summary">注意: パーソナルホットスポットを長時間使用すると大幅な電力の消費と発熱を起こす可能性が増加します</string>
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_notifications_for_mute_notifications">ミュートされた通知を通知しない</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
@@ -166,7 +168,6 @@
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_high_performance_mode_icon">高パフォーマンスモードアイコンを削除</string>
     <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>
-    <string name="remove_statusbar_battery_percent">バッテリーパーセンテージをステータスバーから削除</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
@@ -201,6 +202,10 @@
     <string name="statusbar_layout_left_margin">ステータスバー左側のマージン</string>
     <string name="statusbar_layout_right_margin">ステータスバー右側のマージン</string>
     <string name="statusbar_layout_margin_tip">0の場合はサイズを変更しません</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Status Bar Power</string>
+    <string name="remove_statusbar_battery_percent">バッテリーパーセンテージをステータスバーから削除</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
@@ -435,8 +440,12 @@
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
     <string name="common_words_default">デフォルト</string>
     <string name="common_words_preset">プリセット</string>
+    <string name="common_words_single_line">Single line</string>
+    <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">カスタマイズ</string>
 </resources>

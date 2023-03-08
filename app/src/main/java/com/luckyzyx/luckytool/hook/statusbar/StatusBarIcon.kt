@@ -6,10 +6,6 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object StatusBarIcon : YukiBaseHooker() {
     override fun onHook() {
-        //移除状态栏电量百分号
-        if (prefs(ModulePrefs).getBoolean("remove_statusbar_battery_percent", false)) {
-            loadHooker(RemoveStatusBarBatteryPercent)
-        }
         //移除状态栏支付保护图标
         if (prefs(ModulePrefs).getBoolean("remove_statusbar_securepayment_icon", false)) {
             loadHooker(RemoveStatusBarSecurePayment)

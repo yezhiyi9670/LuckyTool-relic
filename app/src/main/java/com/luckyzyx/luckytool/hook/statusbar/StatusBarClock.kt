@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import android.content.Context
+import android.graphics.Typeface
 import android.os.Handler
 import android.provider.Settings
 import android.util.TypedValue
@@ -43,8 +44,9 @@ object StatusBarClock : YukiBaseHooker() {
 
     private var customFormat =
         prefs(ModulePrefs).getString("statusbar_clock_custom_format", "HH:mm:ss")
-    private var customFontsize =
-        prefs(ModulePrefs).getInt("statusbar_clock_custom_fontsize", 0)
+    private var customFontsize = prefs(ModulePrefs).getInt("statusbar_clock_custom_fontsize", 0)
+
+    private val userTypeface = prefs(ModulePrefs).getBoolean("statusbar_clock_user_typeface", false)
 
     private var nowLunar: String? = null
     private var nowTime: Date? = null
@@ -68,9 +70,8 @@ object StatusBarClock : YukiBaseHooker() {
                 afterHook {
                     context = args(0).cast<Context>()
                     val clockView = instance<TextView>()
-                    clockView.apply {
-                        if (resources.getResourceEntryName(id) != "clock") return@afterHook
-                    }
+                    if (clockView.resources.getResourceEntryName(clockView.id) != "clock") return@afterHook
+
                     val d: Method = clockView.javaClass.superclass.getDeclaredMethod("updateClock")
                     val r = Runnable {
                         d.isAccessible = true
@@ -156,6 +157,7 @@ object StatusBarClock : YukiBaseHooker() {
             "right" -> Gravity.END
             else -> Gravity.CENTER
         }
+        if (userTypeface) typeface = Typeface.DEFAULT_BOLD
         val defaultSize = 12F
         if (clockMode == "1") {
             isSingleLine = !isDoubleRow
@@ -189,19 +191,21 @@ object StatusBarClock : YukiBaseHooker() {
             format.replace("NNNN", nowLunar!!)
         } else if (format.contains("NNN")) {
             format.replace(
-                "NNN",
-                nowLunar!!.substring(2, nowLunar.length)
+                "NNN", nowLunar!!.substring(2, nowLunar.length)
             )
         } else if (format.contains("NN")) {
             format.replace(
-                "NN",
-                nowLunar!!.substring(4, nowLunar.length)
+                "NN", nowLunar!!.substring(4, nowLunar.length)
             )
         } else {
             format.replace(
-                "N",
-                nowLunar!!.substring(6, nowLunar.length)
+                "N", nowLunar!!.substring(6, nowLunar.length)
             )
+        }
+        if (finalFormat.contains("dddd")) {
+            finalFormat = finalFormat.replace("dddd", "dd号")
+        } else if (finalFormat.contains("ddd")) {
+            finalFormat = finalFormat.replace("ddd", "d号")
         }
         if (finalFormat.contains("FF")) finalFormat = finalFormat.replace("FF", getPeriod(nowTime))
         if (finalFormat.contains("GG")) finalFormat =

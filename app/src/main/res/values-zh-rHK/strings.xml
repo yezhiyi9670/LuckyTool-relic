@@ -92,7 +92,7 @@
     <string name="StatusBar">状态栏相关</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">状态栏电池信息</string>
+    <string name="StatusBarBatteryNotify">状态栏电池通知</string>
     <string name="battery_information_show">电池信息显示</string>
     <string name="battery_information_show_summary">在状态栏显示电池电压等信息</string>
     <string name="battery_information_show_charge">显示充电信息</string>
@@ -138,6 +138,8 @@
     <string name="enable_double_row_network_speed">启用双行网速</string>
     <string name="set_network_speed_font_size">设置网速字体大小</string>
     <string name="set_network_speed_padding_bottom">设置网速底部对齐</string>
+    <string name="statusbar_network_layout">状态栏网速布局</string>
+    <string name="statusbar_network_no_second">移除每秒显示 (/s)</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">状态栏通知</string>
     <string name="StatusBarNotice_summary">状态栏通知相关</string>
@@ -166,7 +168,6 @@
     <string name="remove_mobile_data_icon">移除移动数据图标</string>
     <string name="remove_high_performance_mode_icon">移除高性能模式图标</string>
     <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
-    <string name="remove_statusbar_battery_percent">移除状态栏电量百分号</string>
     <string name="remove_wifi_data_inout">移除WiFi数据箭头</string>
     <string name="remove_mobile_data_inout">移除移动数据箭头</string>
     <string name="remove_mobile_data_type">移除移动数据类型</string>
@@ -201,6 +202,10 @@
     <string name="statusbar_layout_left_margin">状态栏左边距</string>
     <string name="statusbar_layout_right_margin">状态栏右边距</string>
     <string name="statusbar_layout_margin_tip">若为0, 则不修改边距大小</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">状态栏电量</string>
+    <string name="remove_statusbar_battery_percent">移除状态栏电量百分号</string>
+    <string name="statusbar_power_font_size">状态栏电量字体大小</string>
     <!--LockScreen-->
     <string name="LockScreen">锁屏相关</string>
     <string name="remove_lock_screen_redone">移除锁屏时钟红1</string>
@@ -435,8 +440,12 @@
     <string name="tile_close_autoself_tip">重启作用域后，此功能将不再自动启动</string>
     <!--Permission-->
     <string name="all_files_access_permission">为了确保模块的正常使用，请务必授予模块权限！</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">状态栏电量</string>
     <!--CommonWords-->
     <string name="common_words_default">默认</string>
     <string name="common_words_preset">預設</string>
+    <string name="common_words_single_line">单行</string>
+    <string name="common_words_double_line">双行</string>
     <string name="common_words_customize">自定义</string>
 </resources>

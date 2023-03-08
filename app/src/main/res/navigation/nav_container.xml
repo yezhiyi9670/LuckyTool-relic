@@ -284,8 +284,8 @@
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
         <action
-                android:id="@+id/action_statusBar_to_statusBarBatteryInfo"
-                app:destination="@id/statusBarBatteryInfo"
+                android:id="@+id/action_statusBar_to_statusBarBatteryNotify"
+                app:destination="@id/statusBarBatteryNotify"
                 app:enterAnim="@anim/fragment_enter"
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
@@ -293,6 +293,13 @@
         <action
                 android:id="@+id/action_statusBar_to_statusBarLayout"
                 app:destination="@id/statusBarLayout"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_statusBar_to_statusBarPower"
+                app:destination="@id/statusBarPower"
                 app:enterAnim="@anim/fragment_enter"
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
@@ -349,8 +356,8 @@
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusOta"
             android:label="{title_label}" />
     <fragment
-            android:id="@+id/statusBarBatteryInfo"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarBatteryInfo"
+            android:id="@+id/statusBarBatteryNotify"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarBatteryNotify"
             android:label="{title_label}" />
     <fragment
             android:id="@+id/zoomWindowFragment"
@@ -375,6 +382,10 @@
     <fragment
             android:id="@+id/settings"
             android:name="com.luckyzyx.luckytool.ui.fragment.Settings"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/statusBarPower"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarPower"
             android:label="{title_label}" />
 
 </navigation>

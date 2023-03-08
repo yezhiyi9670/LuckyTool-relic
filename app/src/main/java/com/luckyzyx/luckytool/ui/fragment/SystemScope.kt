@@ -152,7 +152,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarIcon)
                     summary =
-                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.remove_green_dot_privacy_prompt)
+                        getString(R.string.remove_mobile_data_inout) + "," + getString(R.string.remove_green_dot_privacy_prompt)
                     key = "StatusBarIcon"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -182,22 +182,6 @@ class StatusBar : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    title = getString(R.string.StatusBarBatteryInformation)
-                    summary =
-                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
-                    key = "StatusBarBatteryInfo"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarBatteryInfo, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
-                        true
-                    }
-                }
-            )
-            addPreference(
-                Preference(context).apply {
                     title = getString(R.string.StatusBarLayout)
                     summary =
                         getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
@@ -207,6 +191,39 @@ class StatusBar : ModulePreferenceFragment() {
                     setOnPreferenceClickListener {
                         findNavController().navigate(
                             R.id.action_statusBar_to_statusBarLayout, Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.StatusBarPower)
+                    summary =
+                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
+                    key = "StatusBarPower"
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarPower, Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.StatusBarBatteryNotify)
+                    summary =
+                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
+                    key = "StatusBarBatteryNotify"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarBatteryNotify, Bundle().apply {
                                 putCharSequence("title_label", title)
                             })
                         true
@@ -388,7 +405,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                             Y/M/d/E/a -> ${formatDate("Y/M/d/E/a")}
                             YY/YYYY -> ${formatDate("YY/YYYY")}
                             M/MM/MMM/MMMM/MMMMM -> ${formatDate("M/MM/MMM/MMMM/MMMMM")}
-                            d/dd -> ${formatDate("d/dd")}
+                            d/dd/ddd/dddd -> ${formatDate("d/dd/d号/dd号")}
                             E/EE/EEE/EEEE/EEEEE -> ${formatDate("E/EE/EEE/EEEE/EEEEE")}
                             h/H/k/K -> ${formatDate("h/H/k/K")}
                             HH:mm:ss -> ${formatDate("HH:mm:ss")}
@@ -450,6 +467,14 @@ class StatusBarClock : ModulePreferenceFragment() {
                     }
                 )
             }
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.use_user_typeface)
+                    key = "statusbar_clock_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }
@@ -464,47 +489,88 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     key = "set_network_speed"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel("com.android.systemui")
+                            .put("set_network_speed", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_network_layout)
+                    summary = "%s"
+                    key = "statusbar_network_layout"
+                    entries = resources.getStringArray(R.array.statusbar_network_layout_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.enable_double_row_network_speed)
-                    key = "enable_double_row_network_speed"
+                    title = getString(R.string.use_user_typeface)
+                    key = "statusbar_network_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.set_network_speed_font_size)
-                    key = "set_network_speed_font_size"
-                    setDefaultValue(7)
-                    max = 8
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.set_network_speed_padding_bottom)
-                    key = "set_network_speed_padding_bottom"
-                    setDefaultValue(2)
-                    max = 4
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
+            if (context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0") {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_network_no_second)
+                        key = "statusbar_network_no_second"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("statusbar_network_no_second", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.set_network_speed_font_size)
+                        key = "set_network_speed_font_size"
+                        setDefaultValue(7)
+                        max = 8
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("set_network_speed_font_size", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.set_network_speed_padding_bottom)
+                        key = "set_network_speed_padding_bottom"
+                        setDefaultValue(2)
+                        max = 4
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("set_network_speed_padding_bottom", newValue)
+                            true
+                        }
+                    }
+                )
+            }
         }
-        findPreference<SeekBarPreference>("set_network_speed_font_size")?.dependency =
-            "enable_double_row_network_speed"
-        findPreference<SeekBarPreference>("set_network_speed_padding_bottom")?.dependency =
-            "enable_double_row_network_speed"
     }
 }
 
@@ -674,14 +740,6 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_statusbar_securepayment_icon)
                     key = "remove_statusbar_securepayment_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_battery_percent)
-                    key = "remove_statusbar_battery_percent"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1010,7 +1068,44 @@ class StatusBarLayout : ModulePreferenceFragment() {
     }
 }
 
-class StatusBarBatteryInfo : ModulePreferenceFragment() {
+class StatusBarPower : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_statusbar_battery_percent)
+                    key = "remove_statusbar_battery_percent"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.use_user_typeface)
+                    key = "statusbar_power_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_power_font_size)
+                    key = "statusbar_power_font_size"
+                    setDefaultValue(7)
+                    max = 8
+                    min = 0
+                    seekBarIncrement = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
+
+class StatusBarBatteryNotify : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {

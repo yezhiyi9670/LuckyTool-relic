@@ -70,5 +70,11 @@
         <item>@string/statusbar_clock_center_align</item>
         <item>@string/statusbar_clock_right_align</item>
     </string-array>
-
+    
+    <string-array name="statusbar_network_layout_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_single_line</item>
+        <item>@string/common_words_double_line</item>
+    </string-array>
+    
 </resources>

@@ -92,7 +92,7 @@
     <string name="StatusBar">Thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">Thông tin pin ở thanh trạng thái</string>
+    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
     <string name="battery_information_show">Hiển thị thông tin pin</string>
     <string name="battery_information_show_summary">Hiển thị điện áp pin và các thông tin khác trên thanh trạng thái</string>
     <string name="battery_information_show_charge">Hiện thông tin sạc</string>
@@ -138,6 +138,8 @@
     <string name="enable_double_row_network_speed">Kích hoạt tốc độ mạng kép</string>
     <string name="set_network_speed_font_size">Đặt kích thước phông chữ tốc độ mạng</string>
     <string name="set_network_speed_padding_bottom">Đặt phần đệm tốc độ mạng dưới cùng</string>
+    <string name="statusbar_network_layout">Statusbar network speed layout</string>
+    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Thông báo thanh trạng thái</string>
     <string name="StatusBarNotice_summary">Thông báo thanh trạng thái</string>
@@ -166,7 +168,6 @@
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
     <string name="remove_high_performance_mode_icon">Xóa biểu tượng chế độ hiệu suất cao</string>
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>
-    <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_mobile_data_type">Xoá định dạng dữ liệu di động</string>
@@ -201,6 +202,10 @@
     <string name="statusbar_layout_left_margin">Căn trái thanh trạng thái</string>
     <string name="statusbar_layout_right_margin">Căn phải thanh trạng thái</string>
     <string name="statusbar_layout_margin_tip">Nếu giá trị là 0, kích cỡ sẽ không thay đổi</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Status Bar Power</string>
+    <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
@@ -435,8 +440,12 @@
     <string name="tile_close_autoself_tip">Sau khi khởi động lại khu vực, tính năng này sẽ không tự khởi động nữa</string>
     <!--Permission-->
     <string name="all_files_access_permission">Để đảm bảo việc sử dụng bình thường của mô-đun, vui lòng đảm bảo cấp quyền cho mô-đun!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
     <string name="common_words_default">Mặc định</string>
     <string name="common_words_preset">Thiết lập sẵn</string>
+    <string name="common_words_single_line">Single line</string>
+    <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Tùy chỉnh</string>
 </resources>

@@ -92,7 +92,7 @@
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">Informacje o baterii</string>
+    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
     <string name="battery_information_show">Pokaż informacje o baterii</string>
     <string name="battery_information_show_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
     <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
@@ -138,6 +138,8 @@
     <string name="enable_double_row_network_speed">Dwuwierszowa prędkość sieci</string>
     <string name="set_network_speed_font_size">Rozmiar czcionki</string>
     <string name="set_network_speed_padding_bottom">Przesunięcie ikony (dół/góra)</string>
+    <string name="statusbar_network_layout">Statusbar network speed layout</string>
+    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
@@ -166,7 +168,6 @@
     <string name="remove_mobile_data_icon">Ukryj ikonę mobilnej sieci</string>
     <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
     <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
-    <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
@@ -201,6 +202,10 @@
     <string name="statusbar_layout_left_margin">Status bar left margin</string>
     <string name="statusbar_layout_right_margin">Status bar right margin</string>
     <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Status Bar Power</string>
+    <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
     <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
@@ -435,8 +440,12 @@
     <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">Aby zapewnić normalne korzystanie z modułu, upewnij się, że masz uprawnienia do modułu!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
     <string name="common_words_default">Default</string>
     <string name="common_words_preset">Preset</string>
+    <string name="common_words_single_line">Single line</string>
+    <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Dostosuj</string>
 </resources>

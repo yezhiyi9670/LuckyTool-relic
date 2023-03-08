@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.utils.tools.AppAnalyticsUtils
 class MyApplication : ModuleApplication() {
     override fun onCreate() {
         super.onCreate()
+
         AppAnalyticsUtils.init(this)
         AppAnalyticsUtils.loadDeviceInfo()
         AppAnalyticsUtils.loadDeviceOTA()

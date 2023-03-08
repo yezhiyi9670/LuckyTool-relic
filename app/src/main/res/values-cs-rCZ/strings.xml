@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application -->
+    <string name="xposeddescription">Xposed modul optimalizovaný pro rozšíření na ColorOS\nVývojář: luckyzyx</string>
+    <!-- Nav Menu -->
+    <string name="nav_function">Funkce</string>
+    <string name="nav_home">Domovská stránka</string>
+    <string name="nav_other">Ostatní</string>
+    <string name="nav_log">Protokoly</string>
+    <string name="nav_setting">Nastavení</string>
+    <string name="fragment_source">Zdrojový kód</string>
+    <!-- Settings -->
+    <string name="theme_title">Vzhled</string>
+    <string name="theme_title_summary">Stránka bude automaticky aktualizována</string>
+    <string name="use_dynamic_color">Dynamický vzhled</string>
+    <string name="use_dynamic_color_summary">Použít dynamické barvy</string>
+    <string name="dark_theme">Tmavý vzhled</string>
+    <string name="follow_system">Podle systému</string>
+    <string name="language">Jazyk</string>
+    <string name="privacy_agreement">Zásady ochrany soukromí</string>
+    <string name="auto_check_update">Automaticky vyhledávat aktualizace</string>
+    <string name="auto_check_update_summary">Automaticky kontrolovat aktualizace při otevírání domovské stránky modulu</string>
+    <string name="read_agreement">Před použitím tohoto modulu musíte přečíst a souhlasit s následujícím obsahem</string>
+    <string name="clear_all_data">Vymazat všechna data</string>
+    <string name="clear_all_data_summary">Vymazat všechna data funkcí v modulu</string>
+    <string name="clear_all_data_message">Ujistěte se, že chcete vymazat všechna data funkcí modulu a že je potřeba resetovat funkci po vymazání?</string>
+    <!-- Other Settings -->
+    <string name="other_settings">Další nastavení</string>
+    <string name="hide_xp_page_icon">Skrýt ikonu XP stránky</string>
+    <string name="hide_desktop_appicon">Skrýt ikonu aplikace v seznamu aplikací</string>
+    <string name="hide_desktop_appicon_summary">LSPosed musí být vypnut pro vynucení ikon v seznamu aplikací</string>
+    <!--BackupRestoreClear-->
+    <string name="backup_restore_clear">Záloha/Obnovení/Vymazání</string>
+    <string name="backup_data">Zálohovat data</string>
+    <string name="restore_data">Obnovit data</string>
+    <string name="data_backup_complete">Zálohování dat bylo dokončeno!</string>
+    <string name="data_backup_error">Chyba při zálohování dat!</string>
+    <string name="data_restore_complete">Obnovení dat bylo dokončeno!</string>
+    <!-- About -->
+    <string name="about_title">O aplikaci</string>
+    <string name="about_author">Autor</string>
+    <string name="donate">Darovat odměnu</string>
+    <string name="donate_message">Ujistěte se, že jste při darování napsali vaši přezdívku nebo ID daru</string>
+    <string name="donate_summary">Váš příspěvek bude hnací silou pro další vývoj a aktualizace</string>
+    <string name="qq">QQ</string>
+    <string name="wechat">WeChat</string>
+    <string name="alipay">AliPay</string>
+    <string name="donation_list">Seznam darů</string>
+    <string name="feedback_download">Zpětná vazba a stahování</string>
+    <string name="feedback_download_summary">TG kanály, skupiny, repozitáře, atd.</string>
+    <string name="coolmarket">Úžasná domovská stránka</string>
+    <string name="telegram_channel">Telegram kanál</string>
+    <string name="telegram_group">Telegram skupina</string>
+    <string name="lsposed_repo">LSPosed repozitář</string>
+    <string name="github_repo">GitHub repozitář</string>
+    <string name="open_source">Otevřený zdrojový kód</string>
+    <string name="open_source_summary">Kliknutím zobrazíte seznam otevřených zdrojů</string>
+    <string name="participate_translation">Účast na překladu modulu</string>
+    <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
+    <!-- check lsposed -->
+    <string name="unsupported_xposed">Prosím použijte nejnovější verzi LSPosed ke kontrole rozsahu modulu.\n Pokud jste dokončili výše uvedené, můžete klepnout na tlačítko OK pro ukončení aplikace a otevření modulu</string>
+    <!-- Menu -->
+    <string name="menu_reboot">Nabídka restartu</string>
+    <string name="menu_settings">Nastavit menu</string>
+    <string name="restart_scope">Restartovat zahrnuté procesy</string>
+    <string name="restart_scope_message">Opravdu chcete restartovat všechny procesy kromě systémového frameworku?\nPoužijte tuto možnost, pokud modul nefunguje!\nUjistěte se, že jsou zvoleny všechny relevantní rozsahy!</string>
+    <string name="reboot">Restartovat systém</string>
+    <string name="fast_reboot">Rychlý reboot</string>
+    <string name="menu_versioninfo">Informace o verzi</string>
+    <string name="scope_version_info">Informace o verzi rozsahu</string>
+    <!--Xposed-->
+    <string name="Android">Související se systémem</string>
+    <string name="app_label">Název aplikace</string>
+    <string name="package_name">Název balíčku</string>
+    <string name="version">Verze</string>
+    <!-- CorePatch -->
+    <string name="ColorOSCorePatchTip">Oficiální instalátor pro Color OS musí umožnit ostatním funkcím používat\nSeznam funkcí-Vztahující se k aplikacím-Vztahující se k instalaci aplikací</string>
+    <string name="corepatch">Hlavní patch</string>
+    <string name="corepatch_summary">Odstranit limity instalace, podporuje Android 11–13</string>
+    <string name="downgr">Povolit downgrade aplikací</string>
+    <string name="downgr_summary">Umožňuje aplikaci přepsat starší verze, pokud jsou nainstalovány novější verze.</string>
+    <string name="authcreak">Zakázat ověření podpisu správce balíčků</string>
+    <string name="authcreak_summary">Ověřování podpisu při instalaci aplikací lze nainstalovat.</string>
+    <string name="digestCreak">Zakázat ověřování podpisu APK</string>
+    <string name="digestCreak_summary">Umožňuje přepsat přímo nainstalované aplikace různými podpisy k balíčku</string>
+    <string name="UsePreSig">Vždy používat při instalaci podepsanou instalovanou aplikaci</string>
+    <string name="UsePreSig_summary">Není to normální! Hrozí nebezpečí! Povolte pouze pokud je to nezbytně nutné</string>
+    <string name="enhancedMode">Režim vylepšení</string>
+    <string name="enhancedMode_summary">Můžete vyřešit interní kontrolu integrity v aplikaci, která nemusí být povolena</string>
+    <string name="usepresig_warn">!!! Všechny balíčky mohou přepsat nainstalovanou aplikaci!!\npro instalaci neznámých balíčků</string>
+    <!--Status Bar-->
+    <string name="StatusBar">Stavový řádek</string>
+    <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
+    <!--StatusBarBatteryInformation-->
+    <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
+    <string name="battery_information_show">Zobrazit informace o baterii</string>
+    <string name="battery_information_show_summary">Zobrazit napětí baterie a další informace ve stavovém řádku</string>
+    <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
+    <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
+    <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
+    <string name="battery_information_show_update_time_summary">Zobrazit čas aktualizace aktuálních dat ve stavové liště</string>
+    <string name="battery_status_unknown">Neznámý</string>
+    <string name="battery_status_charging">Nabíjení</string>
+    <string name="battery_status_discharging">Vybíjení</string>
+    <string name="battery_status_not_charging">Nenabíjí se</string>
+    <string name="battery_status_full">Nabito</string>
+    <string name="battery_temperature">Teplota</string>
+    <string name="battery_voltage">Napětí</string>
+    <string name="battery_electric_current">Cur</string>
+    <string name="battery_charger_voltage">Napětí</string>
+    <string name="battery_power">Spotřeba</string>
+    <string name="battery_technology">Technologie</string>
+    <string name="battery_update_time">Aktualizováno</string>
+    <!--StatusBarClock-->
+    <string name="StatusBarClock">Hodiny na stavové liště</string>
+    <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
+    <string name="statusbar_clock_show_year">Zobrazit rok</string>
+    <string name="statusbar_clock_show_month">Zobrazit měsíc</string>
+    <string name="statusbar_clock_show_day">Zobrazit datum</string>
+    <string name="statusbar_clock_show_week">Zobrazit týden</string>
+    <string name="statusbar_clock_show_period">Zobrazit období</string>
+    <string name="statusbar_clock_show_double_hour">Zobrazit dvojitou hodinu</string>
+    <string name="statusbar_clock_show_second">Zobrazovat sekundy</string>
+    <string name="statusbar_clock_hide_spaces">Skrýt mezery</string>
+    <string name="statusbar_clock_text_alignment">Zarovnání hodin</string>
+    <string name="statusbar_clock_left_align">Zarovnání vlevo</string>
+    <string name="statusbar_clock_center_align">Zarovnat na střed</string>
+    <string name="statusbar_clock_right_align">Zarovnání doprava</string>
+    <string name="statusbar_clock_show_doublerow">Zobrazení na dvou řádcích</string>
+    <string name="statusbar_clock_singlerow_fontsize">Velikost písma jednoho řádku</string>
+    <string name="statusbar_clock_doublerow_fontsize">Velikost písma dvou řádků</string>
+    <string name="statusbar_clock_custom_format">Formát hodin</string>
+    <string name="statusbar_clock_custom_fontsize">Velikost písma hodin</string>
+    <string name="statusbar_clock_fontsize_summary">Pokud je 0, velikost písma nebude změněna</string>
+    <!-- StatusBarNetWorkSpeed -->
+    <string name="StatusBarNetWorkSpeed">Rychlost sítě ve stavové liště</string>
+    <string name="set_network_speed">Nastavit frekvenci obnovení rychlosti stavové lišty na 1 s</string>
+    <string name="enable_double_row_network_speed">Povolit rychlost sítě na dvou řádcích</string>
+    <string name="set_network_speed_font_size">Nastavit velikost písma rychlosti sítě</string>
+    <string name="set_network_speed_padding_bottom">Nastavit dolní odsazení rychlosti sítě</string>
+    <string name="statusbar_network_layout">Rozvržení textu rychlosti sítě ve stavové liště</string>
+    <string name="statusbar_network_no_second">Odstranit displej za sekundu(/s)</string>
+    <!--StatusBarNotice-->
+    <string name="StatusBarNotice">Oznámení ve stavové liště</string>
+    <string name="StatusBarNotice_summary">Související s oznámeními ve stavovém řádku</string>
+    <string name="remove_statusbar_devmode">Odstranit oznámení o vývojářských možnostech</string>
+    <string name="remove_charging_completed">Odstranit oznámení o dokončení nabíjení</string>
+    <string name="remove_statusbar_top_notification">Skryj oznámení o zobrazování aplikací nad jinými</string>
+    <string name="remove_statusbar_top_notification_summary">Skryj oznámení \"Aplikace se zobrazuje nad ostatními\"</string>
+    <string name="remove_vpn_active_notification">Odebrat oznámení, že je VPN aktivní</string>
+    <string name="remove_vpn_active_notification_summary">Odebere oznámení o aktivní VPN síti</string>
+    <string name="remove_statusbar_bottom_networkwarn">Odstranit upozornění \"Síť může být minotorována\"</string>
+    <string name="remove_statusbar_bottom_networkwarn_summary">Odstraní oznámení o tom, že síť může být monitorována</string>
+    <string name="remove_flashlight_open_notification">Odebrat oznámení o otevření svítilně</string>
+    <string name="remove_app_high_battery_consumption_warning">Odstranit výstrahu aplikace o vysoké spotřebě baterie</string>
+    <string name="remove_app_high_battery_consumption_warning_summary">Odstranil varování, že spotřeba baterie aplikacie je neobvyklá a musí být okamžitě optimalizována</string>
+    <string name="remove_high_performance_mode_notifications">Odstranit oznámení o režimu vysokého výkonu</string>
+    <string name="remove_do_not_disturb_mode_notification">Odstranit oznámení o režimu Nerušit</string>
+    <string name="remove_hotspot_power_consumption_notification">Odebrat oznámení o spotřebě energie při zapnutém hotspotu</string>
+    <string name="remove_hotspot_power_consumption_notification_summary">Upozornění: Zapnutí osobního hotspotu na dlouhou dobu zvýší spotřebu energie a zvýší teplotu zařízení</string>
+    <string name="remove_smart_rapid_charging_notification">Odstranit oznámení \"Chytré rychlé nabíjení\"</string>
+    <string name="remove_notifications_for_mute_notifications">Odstranit oznámení pro ztlumená oznámení</string>
+    <!--StatusBarIcon-->
+    <string name="StatusBarIcon">Ikony ve stavové liště</string>
+    <string name="StatusBarIcon_summary">Související s ikonami ve stavovém řádku</string>
+    <string name="StatusBarTopSmallIcon">Malé ikony v horní části stavového řádku</string>
+    <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
+    <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
+    <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
+    <string name="remove_statusbar_securepayment_icon">Odstranit ikony ochrany platby ve stavové liště</string>
+    <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
+    <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
+    <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
+    <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku o využívání mikrofonu nebo kamery</string>
+    <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli o využívání mikrofonu nebo kamery</string>
+    <string name="status_bar_icon_vertical_center">Vycentrujte položky stavového řádku</string>
+    <!--StatusBarControlCenter-->
+    <string name="StatusBarControlCenter">Ovládací centrum stavového řádku</string>
+    <string name="ControlCenter_Clock_Related">Nastavení související s hodinami</string>
+    <string name="control_center_clock_show_second">Zobraz sekundy</string>
+    <string name="fix_clock_colon_style">Oprav u hodin styl dvojtečky</string>
+    <string name="fix_clock_colon_style_summary">Při zapnutí se vraťte k normální dvojtečce a při vypnutí použijte oficiální vlastní dvojtečku</string>
+    <string name="remove_control_center_clock_red_one">Odebrat červenou jedničku v hodinách</string>
+    <string name="remove_control_center_date_comma">Odstranit čárku v datu</string>
+    <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
+    <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
+    <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
+    <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
+    <string name="ControlCenter_Tile_Related">Přepínače v ovládacím centru</string>
+    <string name="control_center_tile_enable">Přepínač pro úpravu funkčích dlaždic v ovládacím centru</string>
+    <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozableném stavu (vertikálně)</string>
+    <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozableném stavu (horizontálně)</string>
+    <string name="tile_expanded_columns_vertical">Počet sloupců v rozableném stavu (vertikálně)</string>
+    <string name="tile_expanded_columns_horizontal">Počet sloupců v rozableném stavu (horizontálně)</string>
+    <string name="tile_expanded_rows_vertical">Rozbalené řádky dlaždic (vertikálně)</string>
+    <string name="tile_columns_horizontal_c13">Sloupce dlaždic (horizontálně)</string>
+    <!--StatusBarLayout-->
+    <string name="StatusBarLayout">Rozložení stavové lišty</string>
+    <string name="statusbar_layout_mode">Režim rozvržení stavové lišty</string>
+    <string name="statusbar_layout_clock_center_align">Zarovnání hodin na střed</string>
+    <string name="statusbar_layout_compatible_mode">Režim kompatibility obrazovky</string>
+    <string name="statusbar_layout_left_margin">Levý okraj stavového řádku</string>
+    <string name="statusbar_layout_right_margin">Pravý okraj stavového řádku</string>
+    <string name="statusbar_layout_margin_tip">Pokud je 0, velikost okraje nebude změněna</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Napájení ve stavové liště</string>
+    <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie na stavové liště</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
+    <!--LockScreen-->
+    <string name="LockScreen">Zámek obrazovky</string>
+    <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
+    <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
+    <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
+    <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
+    <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
+    <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
+    <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
+    <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
+    <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
+    <string name="remove_72hour_password_verification_summary">Odstraní bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
+    <!--Desktop-->
+    <string name="Desktop">Plocha</string>
+    <string name="remove_alarmclock_widget_redone">Odstraní červenou jedničku na hodinách na ploše</string>
+    <string name="remove_alarmclock_widget_redone_pro">Odstraní červenou jedničku na hodinách na ploše - vylepšená edice</string>
+    <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
+    <string name="remove_appicon_dot">Odstraní symbol tečky API</string>
+    <string name="show_charging_ripple">Zobrazit animaci vln během nabíjení</string>
+    <string name="show_charging_ripple_summary">Platné pouze při připojení k nabíječce</string>
+    <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
+    <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
+    <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>
+    <string name="launcher_layout_enable">Povolit/zakázat mřížku ikon na ploše</string>
+    <string name="launcher_layout_max_rows">Maximální počet řádků v rozvržení plochy</string>
+    <string name="launcher_layout_max_columns">Maximální počet sloupců v rozložení plochy</string>
+    <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
+    <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
+    <string name="remove_recent_task_list_clear_button">Odstraní tlačítko pro vymazání nedávných aplikací</string>
+    <!--Application-->
+    <string name="Application">Aplikace</string>
+    <string name="ApplyOtherRestrictions">Ostatní limity</string>
+    <string name="remove_adb_install_confirm">Odstranit ADB potvrzení instalace</string>
+    <string name="remove_adb_install_confirm_summary">Použít ADB k instalaci aplikace bez klepnutí</string>
+    <string name="unlock_startup_limit">Odemknout limit automatického spuštění</string>
+    <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
+    <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
+    <string name="AppStartupRelated">Nastavení související se spouštěním aplikací</string>
+    <string name="disable_splash_screen">Zakázat úvodní obrazovku</string>
+    <!--APPRelatedList-->
+    <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
+    <string name="enable_zoom_window">Povolit seznam podporovatelů</string>
+    <string name="zoom_window_support_list">Vlastní nastavení přiblížení</string>
+    <string name="zoom_window_support_list_summary">Povolte podle vašich potřeb, jinak dojde k nenapravitelným problémům</string>
+    <string name="multi_app_enable">Povolit seznam nahrazených aplikací</string>
+    <string name="multi_app_custom_list">Nahradit seznam aplikací, které lze klonovat</string>
+    <string name="multi_app_custom_list_summary">Po zapnutí funkce bude původní seznam klonovatelných aplikací nahrazen tímto seznamem, velké množství zvolených apilkací může způsobit lagy</string>
+    <string name="dark_mode_support_list">Vlastní seznam aplikací podporující tmavý režim</string>
+    <!--AppInstallationRelated-->
+    <string name="AppInstallationRelated">Nastavení týkající se instalace aplikací</string>
+    <string name="PackageInstaller_summary">Je potřeba použití s hlavním patchem</string>
+    <string name="skip_apk_scan">Přeskočit skenování souborů APK</string>
+    <string name="skip_apk_scan_summary">Nastavení související se skenováním virusů</string>
+    <string name="allow_downgrade_install">Povolit instalaci starších verzí aplikací</string>
+    <string name="allow_downgrade_install_summary">Odstranit varování o stejných/nižších verzích, atd.</string>
+    <string name="disable_apk_signature_verification">Zakázat ověřování podpisů APK</string>
+    <string name="disable_apk_signature_verification_summary">Mohou být nainstalovány aplikace s různými podpisy, což představuje bezpečnostní riziko a je třeba je používat opatrně</string>
+    <string name="remove_install_ads">Po instalaci aplikace odstraňte reklamy</string>
+    <string name="remove_install_ads_summary">Bezpečnostní doporučení aplikací/reklamy v Obchodě Play</string>
+    <string name="replase_aosp_installer">Nahradit AOSP instalátor</string>
+    <string name="replase_aosp_installer_summary">Nahradit nativním Google instalátorem</string>
+    <!--FloatingWindowDialogRelated-->
+    <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
+    <string name="disable_duplicate_floating_window">Zakázat duplicitní okno</string>
+    <string name="disable_duplicate_floating_window_summary">Při kopírování textu znovu nezobrazovat plovoucí oznámení</string>
+    <string name="disable_headphone_high_volume_warning">Zakázat upozornění na vysokou hlasitost sluchátek</string>
+    <string name="disable_headphone_high_volume_warning_summary">Vypněte varovný dialog, který se zobrazí při zvýšení hlasitosti, když jsou připojena sluchátka</string>
+    <string name="remove_low_battery_dialog_warning">Odebrat upozornění na nízký stav baterie</string>
+    <string name="remove_low_battery_dialog_warning_summary">Odstranit upozornění pro úsporný a super úsporný režim</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">Odstraňte varování „Aplikace se zobrazuje nad ostatními aplikacemi“</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Odstraní dialogové okno s upozorněním, že se aplikace zobrazuje nad ostatními aplikacemi</string>
+    <string name="remove_usb_connect_dialog">Odstranit dialog po připojení USB</string>
+    <string name="remove_usb_connect_dialog_summary">Režim přenosu souborů je vybrán ve výchozím nastavení po připojení USB</string>
+    <!--FullScreenGestureRelated-->
+    <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
+    <string name="remove_side_slider">Odstranit boční posuvník</string>
+    <string name="remove_side_slider_black_background">Odstranit černé pozadí bočního posuvníku</string>
+    <string name="remove_rotate_screen_button">Odebrat tlačítko otáčení obrazovky</string>
+    <string name="CustomSideSliderIcon">Vlastní ikona bočního posuvníku</string>
+    <string name="replace_side_slider_icon_switch">Nahradit přepínač bočních ikon posuvníku</string>
+    <string name="replace_side_slider_icon_switch_summary">Je doporučeno mít šířku ikony okolo 100px</string>
+    <string name="replace_side_slider_icon_on_left">Nahradit levou ikonu bočního posuvníku</string>
+    <string name="replace_side_slider_icon_on_right">Nahradit pravou ikonu bočního posuvníku</string>
+    <!--FingerPrintRelated-->
+    <string name="FingerPrintRelated">Nastavení související s otiskem prstu</string>
+    <string name="remove_fingerprint_icon">Odstranit ikonu otisku prstu</string>
+    <!--Miscellaneous-->
+    <string name="Miscellaneous">Různé</string>
+    <string name="Miscellaneous_summary">Zde jsou umístěna různá další specifická nastavení</string>
+    <string name="disable_otg_auto_off">Zakázat automatické vypnutí OTG</string>
+    <string name="disable_otg_auto_off_summary">Zakázat automatické vypnutí OTG po deseti minutách</string>
+    <string name="disable_dpi_reboot_recovery">Zakázat restartování DPI</string>
+    <string name="disable_dpi_reboot_recovery_summary">Tento modul není zodpovědný za žádné chyby kvůli nastavení příliš vysoké hodnoty DPI\nPro obnovení výchozího DPI musíte povolit tuto funkci a resetovat výchozí hodnotu DPI po restartování scopu (rozsahu)</string>
+    <string name="remove_storage_limit">Odstranit limit úložiště</string>
+    <string name="remove_storage_limit_summary">Odstranit omezení, že tuto složku nelze použít</string>
+    <string name="media_volume_level">Úroveň hlasitosti médií</string>
+    <string name="media_volume_level_summary">Nastavte na 0 pro vypnutí této funkce, restartujte systém, aby se změny projevily</string>
+    <string name="open_screen_power_save">Přidejte tlačítko pro zobrazení a ovládání úsporty energie obrazovky</string>
+    <string name="open_screen_power_save_summary">Nastavení - Baterie - Další nastavení - Úspora napájení obrazovky</string>
+    <string name="open_battery_health">Přidat tlačítko pro zjištění zdraví baterie</string>
+    <string name="open_battery_health_summary">Nastavení - Baterie - Zdraví baterie</string>
+    <string name="performance_mode_and_standby_optimization">Optimalizace výkonu a pohotovostního režimu</string>
+    <string name="performance_mode_and_standby_optimization_summary">Nastavení - Baterie - Další nastavení</string>
+    <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
+    <!--Settings-->
+    <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
+    <!--Camera-->
+    <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
+    <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
+    <!--OplusGames-->
+    <string name="remove_root_check">Odstranit limit herního filtru</string>
+    <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
+    <string name="remove_startup_animation">Odebrat úvodní animaci</string>
+    <string name="enable_developer_page">Povolit vývojářský režim</string>
+    <string name="enable_eva_theme">Povolit EVA motiv</string>
+    <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>
+    <string name="enable_genshin_impact_theme">Povolit Genshin Impacti limitovanou edici UI</string>
+    <string name="enable_genshin_impact_theme_summary">Není třeba nastavovat v herním asistentovi</string>
+    <string name="enable_adreno_gpu_controller">Povolit Adreno GPU Controller</string>
+    <string name="enable_support_competition_mode">Povolit podporu soutěžního režimu</string>
+    <string name="enable_increase_fps_limit_feature">Povolit vyšší fps limit</string>
+    <string name="enable_increase_fps_feature">Povolit zvýšení fps</string>
+    <string name="enable_optimise_power_feature">Povolit optimalizovanou spotřebu</string>
+    <string name="enable_gt_mode_feature">Povolit GT režim</string>
+    <string name="enable_super_resolution_feature">Povolit super rozlišení</string>
+    <!--CloudService-->
+    <string name="remove_network_limit">Odstranit limit datové sítě</string>
+    <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>
+    <!--ThemeStore-->
+    <string name="unlock_themestore_vip">Odemknout některé VIP funkce</string>
+    <string name="unlock_themestore_vip_summary">Odemkněte část funkce a vyzkoušejte ji sám</string>
+    <!--Screenshot-->
+    <string name="Screenshot">Snímky obrazovky</string>
+    <string name="remove_system_screenshot_delay">Odstranit zpoždění snímku systémové obrazovky</string>
+    <string name="remove_system_screenshot_delay_summary">První snímek obrazovky se nemusí zaznamenat</string>
+    <string name="remove_screenshot_privacy_limit">Odstranit limit ochrany osobních údajů na snímku obrazovky</string>
+    <string name="remove_screenshot_privacy_limit_summary">Odstranit omezení ochrany osobních údajů, která nelze zachytit. Pokud se toto neprojeví, zakažte FLAG_SECURE</string>
+    <string name="disable_flag_secure">Zakázat FLAG_SECURE</string>
+    <string name="disable_flag_secure_summary">Vyřešit většinu problémů aplikací s nahráváním, sdílením obrazovky nebo limity nahrávání\nVyžaduje LSPosed 1.8.6.+</string>
+    <!--OplusOta-->
+    <string name="unlock_local_upgrade">Povolit lokální upgrade</string>
+    <string name="unlock_local_upgrade_summary">Místní upgrade nebude zašedlý, musíte to ale předem povolit v menu pro vývojáře</string>
+    <string name="remove_dm_verity">Odstranit detekci dm-verity</string>
+    <string name="remove_dm_verity_summary">Aktuální stav: %1$s\nPlatné pouze pro tuto systémovou aktualizaci</string>
+    <!--Everyimage-->
+    <string name="skip_startup_page">Přeskočte úvodní obrazovku</string>
+    <string name="vip_download">Stáhnout originál</string>
+    <!--AlphaBackupPro-->
+    <string name="remove_pro_license">Odstranit detekci licence</string>
+    <!--Home-->
+    <string name="fps_title">Vynutit obnovovací frekvenci</string>
+    <string name="fps_summary">Konflikt s ostatními procesy dynamické obnovovací frekvence, například „dpfs“</string>
+    <string name="brand">Značka</string>
+    <string name="model">Model</string>
+    <string name="product">Produkt</string>
+    <string name="market_name">Tržní jméno</string>
+    <string name="flash">Fotoaparát</string>
+    <string name="build_version">Sestavení</string>
+    <string name="device">Zařízení</string>
+    <string name="system">Systém</string>
+    <string name="fps_mode_title">Nastavení</string>
+    <string name="fps_tips">Funkce automatického startu bude spuštěna 1 s po odemknutí obrazovky\nPrvní možnost může být restartována a obnovena, prosím vypněte funkci automatického startu při obnovení</string>
+    <string name="restore_default_refresh_rate">Obnovit výchozí obnovovací frekvenci</string>
+    <string name="module_isactivated">Modul je aktivní</string>
+    <string name="module_notactive">Modul není aktivní</string>
+    <string name="module_version">Verze modulu: </string>
+    <string name="enable_module">Povolit modul</string>
+    <string name="version_name">Název verze</string>
+    <string name="download_count">Počet stažení</string>
+    <string name="file_size">Velikost souboru</string>
+    <string name="update_time">Čas aktualizace</string>
+    <string name="update_logs">Aktualizovat protokoly</string>
+    <string name="check_update_hint">Byla nalezena nová verze!</string>
+    <string name="go_download_page">Přejít na stránku pro stažení</string>
+    <string name="copy_download_link">Kopírovat odkaz pro stažení</string>
+    <string name="direct_update">Přímá aktualizace</string>
+    <string name="install_apk_toast">Povolte prosím oprávnění k instalaci neznámých aplikací!</string>
+    <string name="downloading">Probíhá stahování</string>
+    <string name="download_progress">Průběh stahování</string>
+    <string name="download_speed">Rychlost stahování</string>
+    <string name="remain_size">Zbývající velikost</string>
+    <string name="downloaded">Staženo</string>
+    <string name="used_time">Uplynulý čas</string>
+    <string name="remain_time">Zbývající čas</string>
+    <string name="install_button">Instalovat teď</string>
+    <string name="cancel_button">Zrušit stahování</string>
+    <string name="fps_autostart">Automatické spuštění</string>
+    <string name="device_guid">GUID zařízení</string>
+    <string name="oplusota_copy_tip">Dlouhým stisknutím vstupního pole jej zkopírujte jednotlivě</string>
+    <string name="oplusota_copyall">Kopírovat vše</string>
+    <!-- Other -->
+    <string name="quick_entry">Skryté funkce systému</string>
+    <string name="quick_entry_summary">například nástroje pro přizpůsobení systémového rozhraní, řízení procesů, engineering mode, atd.</string>
+    <string name="display_refresh_rate">Zobrazit/skrýt obnovovací frekvenci</string>
+    <string name="SystemDebuggingRelated">Nastavení související s laděním systému</string>
+    <string name="engineering_mode">Engineering mode</string>
+    <string name="charging_test">Zkouška nabíjení</string>
+    <string name="process_manager">Správce procesů</string>
+    <string name="system_interface_adjustment">Nastavení SystemUI</string>
+    <string name="developer_option">Možnosti pro vývojáře</string>
+    <string name="HidePageRelated">Skrytá nastavení</string>
+    <string name="camera_algo_page">Stránka nastavení algoritmů kamery</string>
+    <string name="browser_concise_mode">Stručný režim prohlížeče</string>
+    <string name="battery_health">Zdraví baterie</string>
+    <string name="system_not_support">Aktuální systém není podporován!</string>
+    <string name="very_dark_mode">Velmi tmavý režim</string>
+    <string name="GameAssistantRelated">Nastavení související s Herním asistentem</string>
+    <string name="game_assistant_page">Stránka Herního asistenta</string>
+    <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
+    <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
+    <!-- ADB相关 -->
+    <string name="remote_adb_debug_title">Ladění vzdáleného ADB</string>
+    <string name="remote_adb_debug_summary">Prosím, zavřete to, pokus se nepoužívá</string>
+    <string name="adb_port">ADB port</string>
+    <string name="enable_remote_adb_debugging">Povolit vzdálené ladění ADB</string>
+    <string name="adb_debug_port_cannot_null">ADB debug port nemůže být prázdný a null</string>
+    <string name="adb_tv_tip">Dlouhým stisknutím zkopírujete</string>
+    <!--LOG Fragment-->
+    <string name="log_save_success">Protokol úspěšně uložen!</string>
+    <string name="log_save_failed">Uložení protokolu se nezdařilo!</string>
+    <string name="log_data_is_empty">Data protokolu jsou prázdná!</string>
+    <string name="log_no_data">Žádná abnormální data</string>
+    <string name="log_filter_title">Zadejte co filtrovat</string>
+    <string name="log_filter_layout_hint">Např. název balíčku, obsah, atd</string>
+    <!--Tile-->
+    <string name="increase_touch_sampling_rate">Zvyšit vzorkovací frekvenci dotyku</string>
+    <string name="increase_touch_sampling_rate_summary">Automaticky spustit, jakmile je funkce zapnuta, pak bude automaticky spuštěna po odemknutí obrazovky</string>
+    <string name="high_brightness_mode">Režim vysokého jasu</string>
+    <string name="global_dc">Globální DC</string>
+    <string name="fiveg_mode">Přepínač 5G</string>
+    <string name="game_assistant_tile_tips">Herní asistent nebyl detekován!</string>
+    <string name="tile_close_autoself_tip">Po restartování rozsahu již tato funkce nebude automaticky spuštěna</string>
+    <!--Permission-->
+    <string name="all_files_access_permission">Pro zajištění správného fungování modulu se prosím ujistěte, že má modul přidělena oprávnění!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Použít uživatelský typ písma</string>
+    <!--CommonWords-->
+    <string name="common_words_default">Výchozí</string>
+    <string name="common_words_preset">Přednastavené</string>
+    <string name="common_words_single_line">Jeden řádek</string>
+    <string name="common_words_double_line">Dva řádky</string>
+    <string name="common_words_customize">Vlastní nastavení</string>
+</resources>

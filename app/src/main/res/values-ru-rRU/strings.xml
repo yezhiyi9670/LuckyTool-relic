@@ -93,7 +93,7 @@
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">Информация о батарее в строке состояния</string>
+    <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
     <string name="battery_information_show">Отображение информации о батарее</string>
     <string name="battery_information_show_summary">Отображение напряжения батареи и другой информации в строке состояния</string>
     <string name="battery_information_show_charge">Показать информацию о зарядке</string>
@@ -139,6 +139,8 @@
     <string name="enable_double_row_network_speed">Скорость сети в два ряда</string>
     <string name="set_network_speed_font_size">Установить размер шрифта скорости сети</string>
     <string name="set_network_speed_padding_bottom">Установите скорость сети, заполняя нижнюю часть</string>
+    <string name="statusbar_network_layout">Скорость сети в строке состояния</string>
+    <string name="statusbar_network_no_second">Удалить отображение в секунду (/с)</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Уведомления в строке состояния</string>
     <string name="StatusBarNotice_summary">Верхняя строка состояния и раскрывающаяся строка состояния</string>
@@ -158,7 +160,7 @@
     <string name="remove_hotspot_power_consumption_notification">Удалить уведомление об энергопотреблении персональной точки доступа</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
     <string name="remove_smart_rapid_charging_notification">Убрать уведомление \"Умная быстрая зарядка\"</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -167,7 +169,6 @@
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
-    <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>
@@ -202,6 +203,10 @@
     <string name="statusbar_layout_left_margin">Отступ строки состояния слева</string>
     <string name="statusbar_layout_right_margin">Отступ строки состояния справа</string>
     <string name="statusbar_layout_margin_tip">Если он равен 0, размер отступа не будет изменен</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Настройки строки состояния</string>
+    <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
@@ -436,8 +441,12 @@
     <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Использовать пользовательский шрифт</string>
     <!--CommonWords-->
     <string name="common_words_default">По умолчанию</string>
     <string name="common_words_preset">Шаблон</string>
+    <string name="common_words_single_line">Одна строка</string>
+    <string name="common_words_double_line">Две строки</string>
     <string name="common_words_customize">Настроить</string>
 </resources>

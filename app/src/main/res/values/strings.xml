@@ -93,7 +93,7 @@
     <string name="StatusBar">StatusBar Related</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryInformation">StatusBar Battery Information</string>
+    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
     <string name="battery_information_show">Battery information display</string>
     <string name="battery_information_show_summary">Display battery voltage and other information in the statusbar</string>
     <string name="battery_information_show_charge">Show charging information</string>
@@ -141,6 +141,9 @@
     <string name="enable_double_row_network_speed">Enable Double Row Network Speed</string>
     <string name="set_network_speed_font_size">Set Network Speed Font Size</string>
     <string name="set_network_speed_padding_bottom">Set Network Speed Padding Bottom</string>
+    <string name="statusbar_network_layout">Statusbar network speed layout</string>
+    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
+    
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
@@ -169,7 +172,6 @@
     <string name="remove_mobile_data_icon">Remove mobile data icon</string>
     <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
     <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
-    <string name="remove_statusbar_battery_percent">Remove battery percentage number in statusbar</string>
     <string name="remove_wifi_data_inout">Remove WiFi data inout</string>
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
@@ -207,6 +209,10 @@
     <string name="statusbar_layout_left_margin">Status bar left margin</string>
     <string name="statusbar_layout_right_margin">Status bar right margin</string>
     <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
+    <!--StatusBarPower-->
+    <string name="StatusBarPower">Status Bar Power</string>
+    <string name="remove_statusbar_battery_percent">Remove battery percentage number in statusbar</string>
+    <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
@@ -444,9 +450,13 @@
     <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
     <!--Permission-->
     <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
+    <!--Typeface-->
+    <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
     <string name="common_words_default">Default</string>
     <string name="common_words_preset">Preset</string>
+    <string name="common_words_single_line">Single line</string>
+    <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Customize</string>
 
 </resources>
