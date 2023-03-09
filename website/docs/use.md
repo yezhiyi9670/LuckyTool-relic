@@ -29,7 +29,7 @@ star: false
 
 未经开发者授权，禁止私自搬运转载，提倡授之以渔，不是授之以鱼
 
-当前最新 Release 版本`v4.3.3`
+当前最新 Release 版本`v4.3.4`
 
 [GITHUB 下载](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7810-4.3.4/LuckyTool_v4.3.4.7810.apk)
 
