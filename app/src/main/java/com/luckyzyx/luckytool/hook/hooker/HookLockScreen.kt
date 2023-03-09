@@ -8,6 +8,9 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookLockScreen : YukiBaseHooker() {
     override fun onHook() {
+        //锁屏组件
+        loadHooker(LockScreenCentered)
+
         //移除锁屏时钟红1
         if (prefs(ModulePrefs).getBoolean("remove_lock_screen_redone", false)) {
             loadHooker(RemoveLockScreenRedOne)
@@ -18,11 +21,6 @@ object HookLockScreen : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera", false)
         ) {
             loadHooker(RemoveLockScreenBottomButton)
-        }
-
-        //锁屏组件居中
-        if (prefs(ModulePrefs).getBoolean("set_lock_screen_centered", false)) {
-            loadHooker(LockScreenCentered)
         }
 
         //移除SOS紧急联络按钮

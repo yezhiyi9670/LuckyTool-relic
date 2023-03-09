@@ -213,6 +213,7 @@
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
     <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
     <string name="remove_lock_screen_bottom_sos_button">Ukryj przycisk \"Alarmowe SOS\"</string>

@@ -7,14 +7,18 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.dp
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object LockScreenCentered : YukiBaseHooker() {
     override fun onHook() {
+        val isCenter = prefs(ModulePrefs).getBoolean("set_lock_screen_centered", false)
+        val userTypeface = prefs(ModulePrefs).getBoolean("lock_screen_use_user_typeface", false)
         //Source RedHorizontalSingleClockView
         findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView").hook {
             injectMember {
                 method { name = "onFinishInflate" }
                 afterHook {
+                    if (!isCenter) return@afterHook
                     instance<LinearLayout>().setPadding(0, 20.dp, 0, 0)
 
                     field { name = "mTvWeek" }.get(instance).cast<TextView>()
@@ -35,6 +39,12 @@ object LockScreenCentered : YukiBaseHooker() {
                     field { name = "mTvExtraContent" }.get(instance).cast<TextView>()
                         ?.setCenterHorizontally()
                 }
+            }
+            injectMember {
+                method {
+                    name = "setTextFont"
+                }
+                if (userTypeface) intercept()
             }
         }
     }

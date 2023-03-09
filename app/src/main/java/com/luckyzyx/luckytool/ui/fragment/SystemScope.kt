@@ -1293,6 +1293,14 @@ class LockScreen : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.lock_screen_use_user_typeface)
+                    key = "lock_screen_use_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_top_lock_screen_icon)
                     key = "remove_top_lock_screen_icon"
                     setDefaultValue(false)

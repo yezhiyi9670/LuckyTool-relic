@@ -213,6 +213,7 @@
     <string name="remove_top_lock_screen_icon">Xóa biểu tượng màn hình khóa trên cùng</string>
     <string name="remove_lock_screen_bottom_left_button">Xóa nút dưới cùng bên trái của màn hình khóa</string>
     <string name="remove_lock_screen_bottom_right_camera">Xóa camera dưới cùng bên phải màn hình khóa</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
     <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
     <string name="remove_lock_screen_bottom_sos_button">Xóa nút liên hệ khẩn cấp SOS</string>

@@ -91,7 +91,7 @@
     <!--Status Bar-->
     <string name="StatusBar">Stavový řádek</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
-    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
+    <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavovém řádku</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
     <string name="battery_information_show">Zobrazit informace o baterii</string>
@@ -213,6 +213,7 @@
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>

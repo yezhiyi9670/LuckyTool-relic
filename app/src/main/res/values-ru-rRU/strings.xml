@@ -92,7 +92,7 @@
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
-    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
+    <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
     <string name="battery_information_show">Отображение информации о батарее</string>
@@ -214,6 +214,7 @@
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>

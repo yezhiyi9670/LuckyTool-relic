@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">LuckyTool</string>
     <!-- Application -->
     <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
     <!-- Nav Menu -->
@@ -101,7 +100,6 @@
     <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
     <string name="battery_information_show_update_time">Show update time</string>
     <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
-    
     <string name="battery_status_unknown">Unknown</string>
     <string name="battery_status_charging">Charging</string>
     <string name="battery_status_discharging">Discharging</string>
@@ -114,7 +112,6 @@
     <string name="battery_power">Pwr</string>
     <string name="battery_technology">Tech</string>
     <string name="battery_update_time">UpdateTime</string>
-    
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
@@ -144,7 +141,6 @@
     <string name="set_network_speed_padding_bottom">Set Network Speed Padding Bottom</string>
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
-    
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
@@ -181,19 +177,16 @@
     <string name="status_bar_icon_vertical_center">Statusbar icon vertical center</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">StatusBar ControlCenter</string>
-    
     <string name="ControlCenter_Clock_Related">Control Center Clock Related</string>
     <string name="control_center_clock_show_second">Control center clock show second</string>
     <string name="fix_clock_colon_style">Fix clock colon style</string>
     <string name="fix_clock_colon_style_summary">Return to the normal colon when it is turned on, and use the official custom colon when it is turned off</string>
     <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
     <string name="remove_control_center_date_comma">Remove control center date comma</string>
-    
     <string name="ControlCenter_UI_Related">Control Center UI Related</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
     <string name="force_display_media_player">Force the display of the media player</string>
-    
     <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
     <string name="control_center_tile_enable">Control center tile function main switch</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
@@ -301,7 +294,6 @@
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">FingerPrint Related</string>
     <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
-    
     <!--Miscellaneous-->
     <string name="Miscellaneous">Miscellaneous</string>
     <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
@@ -320,7 +312,6 @@
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
-    
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
     <!--Camera-->
@@ -407,7 +398,6 @@
     <string name="device_guid">Device GUID</string>
     <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
     <string name="oplusota_copyall">Copy All</string>
-    
     <!-- Other -->
     <string name="quick_entry">System Quick Entry</string>
     <string name="quick_entry_summary">e.g. System UI reconciliation tools, process management, engineering mode, etc.</string>
@@ -460,5 +450,4 @@
     <string name="common_words_single_line">Single line</string>
     <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Customize</string>
-
 </resources>
