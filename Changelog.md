@@ -1,7 +1,7 @@
 # 更新日志 Changelog
 
-[模块文档(Module Document)](https://luckyzyx.github.io/LuckyTool/)
-[反馈流程(Feedback Process)](https://luckyzyx.github.io/LuckyTool/feedback)
+模块文档(Module Document) https://luckyzyx.github.io/LuckyTool/  
+反馈流程(Feedback Process) https://luckyzyx.github.io/LuckyTool/feedback
 
 ### v4.3.4
 
@@ -22,6 +22,23 @@
 [添加] 状态栏运营商使用用户字体  
 [添加] 锁屏组件使用用户字体  
 [添加] 移动数据隐藏未使用卡图标
+[Update] Donation list
+[Fix] C13 skip app installation scan
+[Optimize] Tile status monitoring logic
+[Add] Remove account display at the top of settings
+[Add] Long press the task list application icon to open the application details
+[Update] 5G tile synchronization upstream update
+[Add] Remove notification Do not disturb notification
+[Add] AppCenter crash analysis component
+[Add] Single-line display of network speed in the status bar
+[Optimize] Status bar clock date (d) format
+[Add] Use user font for status bar power
+[Add] Use user font for status bar network speed
+[Add] Status bar single-line network speed to remove spaces
+[Add] Status bar clock to use user font
+[Add] Status bar operator to use user font
+[Add] Lock screen components use user fonts
+[Add] Mobile data hide unused card icon
 
 ### v4.3.3
 
