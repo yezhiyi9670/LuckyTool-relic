@@ -141,7 +141,7 @@
     <string name="set_network_speed_padding_bottom">Nastavit dolní odsazení rychlosti sítě</string>
     <string name="statusbar_network_layout">Rozvržení textu rychlosti sítě ve stavové liště</string>
     <string name="statusbar_network_no_second">Odstranit displej za sekundu(/s)</string>
-    <string name="statusbar_network_no_space">Remove network speed space</string>
+    <string name="statusbar_network_no_space">Odstranit mezeru v textu rychlosti sítě</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
     <string name="StatusBarNotice_summary">Související s oznámeními ve stavovém řádku</string>
@@ -165,14 +165,14 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavovém řádku</string>
-    <string name="StatusBarWIFIIcon">WIFI Icon</string>
+    <string name="StatusBarWIFIIcon">Ikona WIFI</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
-    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="StatusBarMobileDataIcon">Ikona mobilních dat</string>
+    <string name="hide_unused_card_icons">Skrýt nepoužité ikony karet</string>
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
-    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="StatusBarOtherIcon">Další ikona</string>
     <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
     <string name="remove_statusbar_securepayment_icon">Odstranit ikony ochrany platby ve stavové liště</string>
     <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku o využívání mikrofonu nebo kamery</string>

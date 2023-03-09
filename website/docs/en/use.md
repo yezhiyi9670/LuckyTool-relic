@@ -56,7 +56,7 @@ is recommended to teach them how to fish, not to teach them how to fish
 
 current latest release version`v4.3.4`
 
-[GITHUB Download](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7810-4.3.4/LuckyTool_v4.3.4.7810.apk)
+[GITHUB Download](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
 
 Don't trust the sharing of other platforms and users. If there is a problem, it will not be dealt
 with. If you see it, please click Report

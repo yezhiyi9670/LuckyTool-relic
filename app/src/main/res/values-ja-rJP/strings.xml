@@ -141,7 +141,7 @@
     <string name="set_network_speed_padding_bottom">ネットワーク速度の下部のパディングを設定</string>
     <string name="statusbar_network_layout">ステータスバーのネットワーク速度レイアウト</string>
     <string name="statusbar_network_no_second">毎秒表示 (/s) を削除する</string>
-    <string name="statusbar_network_no_space">Remove network speed space</string>
+    <string name="statusbar_network_no_space">ネットワーク速度のスペースを削除</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
@@ -165,14 +165,14 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
-    <string name="StatusBarWIFIIcon">WIFI Icon</string>
+    <string name="StatusBarWIFIIcon">Wi-Fi アイコン</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
-    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="StatusBarMobileDataIcon">モバイルデータアイコン</string>
+    <string name="hide_unused_card_icons">未使用カードのアイコンを隠す</string>
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
-    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="StatusBarOtherIcon">その他のアイコン</string>
     <string name="remove_high_performance_mode_icon">高パフォーマンスモードアイコンを削除</string>
     <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>
     <string name="remove_green_dot_privacy_prompt">緑のドットのプライバシープロンプトを削除</string>
