@@ -141,6 +141,7 @@
     <string name="set_network_speed_padding_bottom">设置网速底部对齐</string>
     <string name="statusbar_network_layout">状态栏网速布局</string>
     <string name="statusbar_network_no_second">移除每秒显示 (/s)</string>
+    <string name="statusbar_network_no_space">移除网速空格</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">状态栏通知</string>
     <string name="StatusBarNotice_summary">状态栏通知相关</string>
@@ -164,16 +165,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>
-    <string name="StatusBarTopSmallIcon">状态栏顶部小图标</string>
-    <string name="StatusBarSmallIconStatus">状态栏小图标状态</string>
-    <string name="remove_mobile_data_icon">移除移动数据图标</string>
-    <string name="remove_high_performance_mode_icon">移除高性能模式图标</string>
-    <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
+    <string name="StatusBarWIFIIcon">WiFi 图标</string>
     <string name="remove_wifi_data_inout">移除WiFi数据箭头</string>
+    <string name="StatusBarMobileDataIcon">移动数据图标</string>
+    <string name="hide_unused_card_icons">隐藏未使用卡片图标</string>
+    <string name="remove_mobile_data_icon">移除移动数据图标</string>
     <string name="remove_mobile_data_inout">移除移动数据箭头</string>
     <string name="remove_mobile_data_type">移除移动数据类型</string>
+    <string name="StatusBarOtherIcon">其他图标</string>
+    <string name="remove_high_performance_mode_icon">移除高性能模式图标</string>
+    <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
     <string name="remove_green_dot_privacy_prompt">移除绿点隐私提示</string>
     <string name="remove_green_capsule_prompt">移除绿色胶囊提示</string>
+    <string name="StatusBarSmallIconStatus">状态栏小图标状态</string>
     <string name="status_bar_icon_vertical_center">状态栏图标垂直居中</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">状态栏控制中心</string>

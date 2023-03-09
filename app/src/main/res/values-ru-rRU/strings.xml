@@ -142,6 +142,7 @@
     <string name="set_network_speed_padding_bottom">Установите скорость сети, заполняя нижнюю часть</string>
     <string name="statusbar_network_layout">Скорость сети в строке состояния</string>
     <string name="statusbar_network_no_second">Удалить отображение в секунду (/с)</string>
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Уведомления в строке состояния</string>
     <string name="StatusBarNotice_summary">Верхняя строка состояния и раскрывающаяся строка состояния</string>
@@ -165,16 +166,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
-    <string name="StatusBarTopSmallIcon">Маленькая иконка в верхней части строки состояния</string>
-    <string name="StatusBarSmallIconStatus">Статус маленькой иконки в строке состояния</string>
-    <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
-    <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
-    <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
+    <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
     <string name="remove_green_dot_privacy_prompt">Удалить запрос на конфиденциальность</string>
     <string name="remove_green_capsule_prompt">Удалить запрос капсулы</string>
+    <string name="StatusBarSmallIconStatus">Статус маленькой иконки в строке состояния</string>
     <string name="status_bar_icon_vertical_center">Иконка строки состояния по вертикали в центре</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Центр управления строки состояния</string>
@@ -214,7 +218,7 @@
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="lock_screen_use_user_typeface">Компоненты на экране блокировки используют пользовательские шрифты</string>
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>

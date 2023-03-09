@@ -144,7 +144,7 @@
     <string name="set_network_speed_padding_bottom">Set Network Speed Padding Bottom</string>
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
-    
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
@@ -168,16 +168,22 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
-    <string name="StatusBarTopSmallIcon">StatusBar Top Small Icon</string>
-    <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
-    <string name="remove_mobile_data_icon">Remove mobile data icon</string>
-    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
-    <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Remove WiFi data inout</string>
+    
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">Remove mobile data icon</string>
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
+    
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
+    <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
     <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
     <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
+    
+    <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
     <string name="status_bar_icon_vertical_center">Statusbar icon vertical center</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">StatusBar ControlCenter</string>

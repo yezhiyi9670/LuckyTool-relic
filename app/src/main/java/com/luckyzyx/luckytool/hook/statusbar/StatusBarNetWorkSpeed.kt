@@ -42,6 +42,8 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         val layoutMode = prefs(ModulePrefs).getString("statusbar_network_layout", "0")
         val userTypeface =
             prefs(ModulePrefs).getBoolean("statusbar_network_user_typeface", false)
+        var noSpace = prefs(ModulePrefs).getBoolean("statusbar_network_no_space", false)
+        dataChannel.wait<Boolean>("statusbar_network_no_space") { noSpace = it }
         var noSecond = prefs(ModulePrefs).getBoolean("statusbar_network_no_second", false)
         dataChannel.wait<Boolean>("statusbar_network_no_second") { noSecond = it }
         var getDoubleSize = prefs(ModulePrefs).getInt("set_network_speed_font_size", 7)
@@ -110,9 +112,10 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                         layoutParams?.width = LayoutParams.WRAP_CONTENT
                         setPadding(0, 0, 0, getDoublePadding.dp)
                     }
-                    val speed = args().first().string().let {
-                        if (noSecond) it.replace("/s", "") else it
-                    }
+                    var speed = args().first().string()
+                    if (noSecond) speed = speed.replace("/s", "")
+                    if (noSpace) speed = speed.replace(" ", "")
+
                     val mSpeedNumber =
                         field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
                     val mSpeedUnit = field { name = "mSpeedUnit" }.get(instance).cast<TextView>()

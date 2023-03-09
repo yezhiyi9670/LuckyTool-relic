@@ -264,6 +264,9 @@ class DonateData {
             add(DonateInfo("Hoyice",6.66,donateDetails(
                 DonateChannelInfo("20230227-194215",CAP,6.66,"2023022722001429031439440847")
             )))
+            add(DonateInfo("*4168",10.0,donateDetails(
+                DonateChannelInfo("20230309-172855",CWC,10.0,"10000499012023030900093719416185")
+            )))
         }
     }
 

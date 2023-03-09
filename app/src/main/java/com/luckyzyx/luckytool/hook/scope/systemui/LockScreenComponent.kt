@@ -9,7 +9,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.data.dp
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
-object LockScreenCentered : YukiBaseHooker() {
+object LockScreenComponent : YukiBaseHooker() {
     override fun onHook() {
         val isCenter = prefs(ModulePrefs).getBoolean("set_lock_screen_centered", false)
         val userTypeface = prefs(ModulePrefs).getBoolean("lock_screen_use_user_typeface", false)

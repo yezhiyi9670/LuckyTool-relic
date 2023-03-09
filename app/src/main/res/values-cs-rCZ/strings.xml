@@ -141,6 +141,7 @@
     <string name="set_network_speed_padding_bottom">Nastavit dolní odsazení rychlosti sítě</string>
     <string name="statusbar_network_layout">Rozvržení textu rychlosti sítě ve stavové liště</string>
     <string name="statusbar_network_no_second">Odstranit displej za sekundu(/s)</string>
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
     <string name="StatusBarNotice_summary">Související s oznámeními ve stavovém řádku</string>
@@ -164,16 +165,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavovém řádku</string>
-    <string name="StatusBarTopSmallIcon">Malé ikony v horní části stavového řádku</string>
-    <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
-    <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
-    <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
-    <string name="remove_statusbar_securepayment_icon">Odstranit ikony ochrany platby ve stavové liště</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
+    <string name="remove_statusbar_securepayment_icon">Odstranit ikony ochrany platby ve stavové liště</string>
     <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku o využívání mikrofonu nebo kamery</string>
     <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli o využívání mikrofonu nebo kamery</string>
+    <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
     <string name="status_bar_icon_vertical_center">Vycentrujte položky stavového řádku</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Ovládací centrum stavového řádku</string>
@@ -213,7 +217,7 @@
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>

@@ -141,6 +141,7 @@
     <string name="set_network_speed_padding_bottom">ネットワーク速度の下部のパディングを設定</string>
     <string name="statusbar_network_layout">ステータスバーのネットワーク速度レイアウト</string>
     <string name="statusbar_network_no_second">毎秒表示 (/s) を削除する</string>
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
@@ -164,16 +165,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
-    <string name="StatusBarTopSmallIcon">ステータスバー上部の小さなアイコン</string>
-    <string name="StatusBarSmallIconStatus">ステータスバー上の小さいステータスアイコン</string>
-    <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
-    <string name="remove_high_performance_mode_icon">高パフォーマンスモードアイコンを削除</string>
-    <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">高パフォーマンスモードアイコンを削除</string>
+    <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>
     <string name="remove_green_dot_privacy_prompt">緑のドットのプライバシープロンプトを削除</string>
     <string name="remove_green_capsule_prompt">緑色のカプセルのプロンプトを削除</string>
+    <string name="StatusBarSmallIconStatus">ステータスバー上の小さいステータスアイコン</string>
     <string name="status_bar_icon_vertical_center">ステータスバーアイコンを縦中央揃えにする</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">ステータスバーコントロールセンター</string>
@@ -213,7 +217,7 @@
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>

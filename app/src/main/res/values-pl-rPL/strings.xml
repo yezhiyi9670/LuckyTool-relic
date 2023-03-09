@@ -141,6 +141,7 @@
     <string name="set_network_speed_padding_bottom">Przesunięcie ikony (dół/góra)</string>
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
@@ -164,16 +165,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Ukryj ikony na pasku stanu</string>
-    <string name="StatusBarTopSmallIcon">Dostosuj ikony stanu</string>
-    <string name="StatusBarSmallIconStatus">Dostosuj pozycję elementów</string>
-    <string name="remove_mobile_data_icon">Ukryj ikonę mobilnej sieci</string>
-    <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
-    <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">Ukryj ikonę mobilnej sieci</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
+    <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
     <string name="remove_green_dot_privacy_prompt">Usuń zieloną kropkę prywatności</string>
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
+    <string name="StatusBarSmallIconStatus">Dostosuj pozycję elementów</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Szybkie ustawienia</string>

@@ -541,6 +541,21 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         }
                     }
                 )
+                if (context.getString(ModulePrefs, "statusbar_network_layout", "0") == "1") {
+                    addPreference(
+                        SwitchPreference(context).apply {
+                            title = getString(R.string.statusbar_network_no_space)
+                            key = "statusbar_network_no_space"
+                            setDefaultValue(false)
+                            isIconSpaceReserved = false
+                            setOnPreferenceChangeListener { _, newValue ->
+                                requireActivity().dataChannel("com.android.systemui")
+                                    .put("statusbar_network_no_second", newValue)
+                                true
+                            }
+                        }
+                    )
+                }
                 addPreference(
                     SeekBarPreference(context).apply {
                         title = getString(R.string.set_network_speed_font_size)
@@ -699,8 +714,8 @@ class StatusBarIcon : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarTopSmallIcon)
-                    key = "StatusBarTopSmaliIcon"
+                    title = getString(R.string.StatusBarWIFIIcon)
+                    key = "StatusBarWIFIIcon"
                     isIconSpaceReserved = false
                 }
             )
@@ -709,6 +724,13 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     title = getString(R.string.remove_wifi_data_inout)
                     key = "remove_wifi_data_inout"
                     setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarMobileDataIcon)
+                    key = "StatusBarMobileDataIcon"
                     isIconSpaceReserved = false
                 }
             )
@@ -733,6 +755,21 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     title = getString(R.string.remove_mobile_data_icon)
                     key = "remove_mobile_data_icon"
                     setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.hide_unused_card_icons)
+                    key = "hide_unused_card_icons"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarOtherIcon)
+                    key = "StatusBarOtherIcon"
                     isIconSpaceReserved = false
                 }
             )

@@ -13,13 +13,10 @@ import com.microsoft.appcenter.crashes.Crashes
 
 object AppAnalyticsUtils {
 
-    private val isDebug = BuildConfig.DEBUG
-
     @Suppress("PrivatePropertyName")
     private val App_Center_Secret = BuildConfig.APP_CENTER_SECRET
 
     fun init(instance: Application) {
-        if (isDebug) return
         if (App_Center_Secret.isNotBlank()) AppCenter.start(
             instance,
             App_Center_Secret,
@@ -49,7 +46,7 @@ object AppAnalyticsUtils {
     fun loadDeviceOTA() {
         val ota = ArrayMap<String, String>()
         ota["OTA"] =
-            "${Build.PRODUCT}_${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]_${
+            "${Build.PRODUCT}_${getProp("ro.vendor.oplus.market.name")}_${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]_${
                 getProp("ro.build.version.ota")
             }_${getProp("ro.build.oplus_nv_id")}_${getGuid}"
         trackEvent("OTAInfo", ota.toMap())

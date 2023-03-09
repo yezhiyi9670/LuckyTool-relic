@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
+    <string name="xposeddescription">Модуль Xposed оптимізований для розширень у ColorOS\nDeveloper: luckyzyx</string>
     <!-- Nav Menu -->
-    <string name="nav_function">Function</string>
-    <string name="nav_home">Home page</string>
-    <string name="nav_other">Other</string>
-    <string name="nav_log">Logs</string>
-    <string name="nav_setting">Settings</string>
-    <string name="fragment_source">SourceCode</string>
+    <string name="nav_function">Функції</string>
+    <string name="nav_home">Головна сторінка</string>
+    <string name="nav_other">Інше</string>
+    <string name="nav_log">Логи</string>
+    <string name="nav_setting">Налаштування</string>
+    <string name="fragment_source">Джерело коду</string>
     <!-- Settings -->
-    <string name="theme_title">Theme</string>
-    <string name="theme_title_summary">Page will be automatically refreshed</string>
-    <string name="use_dynamic_color">Dynamic colors</string>
-    <string name="use_dynamic_color_summary">Use dynamic colors</string>
-    <string name="dark_theme">Dark theme</string>
-    <string name="follow_system">Follow system</string>
-    <string name="language">Language</string>
-    <string name="privacy_agreement">Privacy Agreement</string>
-    <string name="auto_check_update">Automatically check for updates</string>
-    <string name="auto_check_update_summary">Automatically check for updates when opening the module home page</string>
-    <string name="read_agreement">You need to read and agree to the following content before you can use this module</string>
-    <string name="clear_all_data">Clear all data</string>
-    <string name="clear_all_data_summary">Clear all function data in the module</string>
-    <string name="clear_all_data_message">Make sure you want to clear all the function data of the module, and you need to reset the function after clearing?</string>
+    <string name="theme_title">Тема</string>
+    <string name="theme_title_summary">Сторінка буде оновлена автоматично</string>
+    <string name="use_dynamic_color">Динамічні кольори</string>
+    <string name="use_dynamic_color_summary">Використовувати динамічні кольори</string>
+    <string name="dark_theme">Темна тема</string>
+    <string name="follow_system">Як в системі</string>
+    <string name="language">Мова</string>
+    <string name="privacy_agreement">Угода про конфіденційність</string>
+    <string name="auto_check_update">Автоматично перевіряти наявність оновлень</string>
+    <string name="auto_check_update_summary">Автоматично перевіряти наявність оновлень при відкритті головної сторінки модуля</string>
+    <string name="read_agreement">Вам потрібно прочитати і погодитися з наступним вмістом перед тим, як ви зможете використовувати цей модуль</string>
+    <string name="clear_all_data">Видалити всі дані</string>
+    <string name="clear_all_data_summary">Очистити всі дані функцій в модулі</string>
+    <string name="clear_all_data_message">Переконайтеся, що ви хочете очистити всі дані функцій модуля, і вам потрібно скинути цю функцію після очищення?</string>
     <!-- Other Settings -->
-    <string name="other_settings">Other settings</string>
-    <string name="hide_xp_page_icon">Hide XP Page Icon</string>
-    <string name="hide_desktop_appicon">Hide desktop app icon</string>
-    <string name="hide_desktop_appicon_summary">LSPosed must be turned off to force desktop icons</string>
+    <string name="other_settings">Інші налаштування</string>
+    <string name="hide_xp_page_icon">Приховати іконки пунктів</string>
+    <string name="hide_desktop_appicon">Приховати піктограму програми</string>
+    <string name="hide_desktop_appicon_summary">LSPosed має бути вимкнено, щоб іконка на робочому столі відображалася</string>
     <!--BackupRestoreClear-->
-    <string name="backup_restore_clear">Backup/Restore/Clear</string>
+    <string name="backup_restore_clear">Резервне копіювання/Відновлення/Видалення даних</string>
     <string name="backup_data">Backup Data</string>
     <string name="restore_data">Restore Data</string>
     <string name="data_backup_complete">Data backup completed!</string>
@@ -141,6 +141,7 @@
     <string name="set_network_speed_padding_bottom">Set Network Speed Padding Bottom</string>
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
+    <string name="statusbar_network_no_space">Remove network speed space</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
@@ -164,16 +165,19 @@
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
-    <string name="StatusBarTopSmallIcon">StatusBar Top Small Icon</string>
-    <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
-    <string name="remove_mobile_data_icon">Remove mobile data icon</string>
-    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
-    <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
+    <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Remove WiFi data inout</string>
+    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
+    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="remove_mobile_data_icon">Remove mobile data icon</string>
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
+    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
+    <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
     <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
     <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
+    <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
     <string name="status_bar_icon_vertical_center">Statusbar icon vertical center</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">StatusBar ControlCenter</string>
