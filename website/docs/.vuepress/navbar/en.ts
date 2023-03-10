@@ -47,6 +47,11 @@ export const enNavbar = navbar([
           link: "https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool",
         },
         {
+          text: "QQ Channel",
+          icon: "creative",
+          link: "https://pd.qq.com/s/ahjm4zyxb",
+        },
+        {
           text: "Telegram Channel",
           icon: "creative",
           link: "https://t.me/LuckyTool",

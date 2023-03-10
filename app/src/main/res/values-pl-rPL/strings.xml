@@ -49,6 +49,7 @@
     <string name="feedback_download">Opinia i pobieranie</string>
     <string name="feedback_download_summary">Kanał i grupa na telegramie, repozytorium itp.</string>
     <string name="coolmarket">Opinie w CoolAPK</string>
+    <string name="qq_channel">QQ Channel</string>
     <string name="telegram_channel">Kanał na Telegramie</string>
     <string name="telegram_group">Grupa na Telegramie</string>
     <string name="lsposed_repo">Repozytorium LSPosed</string>

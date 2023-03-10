@@ -49,6 +49,7 @@
     <string name="feedback_download">Зворотній зв\'язок та завантаження</string>
     <string name="feedback_download_summary">TГ-канали, групи, репозиторії та ін.</string>
     <string name="coolmarket">CoolMarket</string>
+    <string name="qq_channel">QQ Channel</string>
     <string name="telegram_channel">Канал Telegram</string>
     <string name="telegram_group">Група Telegram</string>
     <string name="lsposed_repo">LSPosed репозиторій</string>

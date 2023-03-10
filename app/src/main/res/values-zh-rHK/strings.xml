@@ -49,6 +49,7 @@
     <string name="feedback_download">反馈与下载</string>
     <string name="feedback_download_summary">TG频道, 群组, 仓库等</string>
     <string name="coolmarket">酷安主页</string>
+    <string name="qq_channel">QQ 頻道</string>
     <string name="telegram_channel">Telegram频道</string>
     <string name="telegram_group">Telegram群组</string>
     <string name="lsposed_repo">LSPosed仓库</string>

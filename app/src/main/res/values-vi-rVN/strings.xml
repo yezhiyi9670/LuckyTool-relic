@@ -49,6 +49,7 @@
     <string name="feedback_download">Phản hồi và tải</string>
     <string name="feedback_download_summary">Kênh TG, Nhóm, Repositories, v. v.</string>
     <string name="coolmarket">Trang CoolMarket</string>
+    <string name="qq_channel">QQ Channel</string>
     <string name="telegram_channel">Kênh Telegram</string>
     <string name="telegram_group">Nhóm Telegram</string>
     <string name="lsposed_repo">LSPosed Repository</string>

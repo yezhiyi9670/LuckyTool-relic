@@ -50,6 +50,7 @@
     <string name="feedback_download">Feedback and Download</string>
     <string name="feedback_download_summary">TG Channels, Groups, Repositories, etc.</string>
     <string name="coolmarket">Cool Home Page</string>
+    <string name="qq_channel">QQ Channel</string>
     <string name="telegram_channel">Telegram Channel</string>
     <string name="telegram_group">Telegram Group</string>
     <string name="lsposed_repo">LSPosed Repository</string>

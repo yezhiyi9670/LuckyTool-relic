@@ -347,6 +347,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                     setOnPreferenceClickListener {
                         val updatelist = arrayOf(
                             getString(R.string.coolmarket),
+                            getString(R.string.qq_channel),
                             getString(R.string.telegram_channel),
                             getString(R.string.telegram_group),
                             getString(R.string.lsposed_repo)
@@ -363,16 +364,22 @@ class SettingsFragment : ModulePreferenceFragment() {
                                     1 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://t.me/LuckyTool")
+                                            Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
                                         )
                                     )
                                     2 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
+                                            Uri.parse("https://t.me/LuckyTool")
                                         )
                                     )
                                     3 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
+                                        )
+                                    )
+                                    4 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")
