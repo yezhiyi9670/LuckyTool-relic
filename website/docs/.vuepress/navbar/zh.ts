@@ -47,6 +47,11 @@ export const zhNavbar = navbar([
         link: "https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool",
       },
       {
+        text: "QQ 频道",
+        icon: "creative",
+        link: "https://pd.qq.com/s/ahjm4zyxb",
+      },
+      {
         text: "Telegram 频道",
         icon: "creative",
         link: "https://t.me/LuckyTool",
