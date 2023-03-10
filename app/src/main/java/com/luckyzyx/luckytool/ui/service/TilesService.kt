@@ -25,12 +25,14 @@ class ChargingTest : TileService() {
         jumpBatteryInfo(applicationContext)
     }
 }
+
 @Obfuscate
 class ProcessManager : TileService() {
     override fun onClick() {
         jumpRunningApp(applicationContext)
     }
 }
+
 @Obfuscate
 class GameAssistant : TileService() {
     override fun onStartListening() {
@@ -48,6 +50,7 @@ class GameAssistant : TileService() {
         }
     }
 }
+
 @Obfuscate
 class ShowFPS : TileService() {
     override fun onClick() {
@@ -71,15 +74,18 @@ class ShowFPS : TileService() {
         )
     }
 }
+
 @Obfuscate
 class HighBrightness : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
-            if (result == 1 || successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
-            else if (result == 0) when (successMsg.substring(0, 1)) {
-                "0" -> qsTile.state = Tile.STATE_INACTIVE
-                "1" -> qsTile.state = Tile.STATE_ACTIVE
-            }
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+                when (successMsg.substring(0, 1)) {
+                    "0" -> qsTile.state = Tile.STATE_INACTIVE
+                    "1" -> qsTile.state = Tile.STATE_ACTIVE
+                }
+            } else qsTile.state = Tile.STATE_UNAVAILABLE
             if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
                 SettingsPrefs, "high_brightness_mode", false
             )
@@ -105,6 +111,7 @@ class HighBrightness : TileService() {
         qsTile.updateTile()
     }
 }
+
 @Obfuscate
 class GlobalDC : TileService() {
     override fun onStartListening() {
@@ -113,12 +120,16 @@ class GlobalDC : TileService() {
         var isOppo = false
         var isOplus = false
         ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true).apply {
-            if (result == 1 || successMsg.isBlank()) oppoExist = false
-            else if (result == 0 && successMsg.substring(0, 1) == "1") isOppo = true
+            if (result == 1) oppoExist = false
+            else if (result == 0 && successMsg != null && successMsg.isNotBlank()
+                && successMsg.substring(0, 1) == "1"
+            ) isOppo = true
         }
         ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true).apply {
-            if (result == 1 || successMsg.isBlank()) oplusExist = false
-            else if (result == 0 && successMsg.substring(0, 1) == "1") isOplus = true
+            if (result == 1) oplusExist = false
+            else if (result == 0 && successMsg != null && successMsg.isNotBlank()
+                && successMsg.substring(0, 1) == "1"
+            ) isOplus = true
         }
         qsTile.state =
             if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
@@ -148,16 +159,19 @@ class GlobalDC : TileService() {
         qsTile.updateTile()
     }
 }
+
 @Obfuscate
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true).apply {
-            if (result == 1 || successMsg.isBlank()) qsTile.state = Tile.STATE_UNAVAILABLE
-            else if (result == 0) when (successMsg.substring(0, 1)) {
-                "0" -> qsTile.state = Tile.STATE_INACTIVE
-                "1" -> qsTile.state = Tile.STATE_ACTIVE
-                else -> qsTile.state = Tile.STATE_UNAVAILABLE
-            }
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+                when (successMsg.substring(0, 1)) {
+                    "0" -> qsTile.state = Tile.STATE_INACTIVE
+                    "1" -> qsTile.state = Tile.STATE_ACTIVE
+                    else -> qsTile.state = Tile.STATE_UNAVAILABLE
+                }
+            } else qsTile.state = Tile.STATE_UNAVAILABLE
             if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
                 SettingsPrefs, "touch_sampling_rate", false
             )
@@ -183,6 +197,7 @@ class TouchSamplingRate : TileService() {
         qsTile.updateTile()
     }
 }
+
 @Obfuscate
 class FiveG : TileService() {
     private var iFiveGController: IFiveGController? = null
@@ -237,18 +252,21 @@ class FiveG : TileService() {
         qsTile.updateTile()
     }
 }
+
 @Obfuscate
 class VeryDarkMode : TileService() {
     override fun onStartListening() {
         ShellUtils.execCommand("settings get secure reduce_bright_colors_activated", true, true)
             .apply {
-                if (result == 1 || successMsg.isBlank()) qsTile.state =
+                if (result == 1) qsTile.state =
                     Tile.STATE_UNAVAILABLE
-                else if (result == 0) when (successMsg.substring(0, 1)) {
-                    "0" -> qsTile.state = Tile.STATE_INACTIVE
-                    "1" -> qsTile.state = Tile.STATE_ACTIVE
-                    else -> qsTile.state = Tile.STATE_UNAVAILABLE
-                }
+                else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+                    when (successMsg.substring(0, 1)) {
+                        "0" -> qsTile.state = Tile.STATE_INACTIVE
+                        "1" -> qsTile.state = Tile.STATE_ACTIVE
+                        else -> qsTile.state = Tile.STATE_UNAVAILABLE
+                    }
+                } else qsTile.state = Tile.STATE_UNAVAILABLE
                 qsTile.updateTile()
             }
     }
