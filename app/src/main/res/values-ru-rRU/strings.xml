@@ -222,16 +222,16 @@
     <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
-    <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки была удалена</string>
+    <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки будет удалена</string>
     <string name="remove_72hour_password_verification">Удаление 72-часовой аутентификации по паролю</string>
-    <string name="remove_72hour_password_verification_summary">Удалено ограничение безопасности, запрещающее использовать пароль для разблокировки в течение 72 часов после загрузки. Вступит в силу после перезагрузки системы</string>
+    <string name="remove_72hour_password_verification_summary">Удалить ограничение безопасности, запрещающее использовать отпечаток пальца или разблокировку по лицу, после 72 часов работы смартфона. Вступит в силу после перезагрузки системы</string>
     <!--Desktop-->
     <string name="Desktop">Рабочий стол</string>
     <string name="remove_alarmclock_widget_redone">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно только тогда, когда обычная версия не помогает, иначе это вызовет неизбежную ошибку</string>
     <string name="remove_appicon_dot">Удалить точку с иконки приложения</string>
-    <string name="show_charging_ripple">Пульсация зарядки</string>
+    <string name="show_charging_ripple">Анимация волны при подключении зарядки</string>
     <string name="show_charging_ripple_summary">Работает только при подключении к зарядному устройству</string>
     <string name="set_folder_layout_4x4">Установить сетку папки 4 x 4</string>
     <string name="launcher_layout_related">Сетка рабочего стола</string>
@@ -279,12 +279,12 @@
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>
     <string name="disable_duplicate_floating_window_summary">Плавающее окно больше не появляется при копировании текста</string>
     <string name="disable_headphone_high_volume_warning">Отключить предупреждение о высокой громкости в наушниках</string>
-    <string name="disable_headphone_high_volume_warning_summary">Отключить диалоговое окно предупреждения при увеличении громкости при подключенных наушниках</string>
+    <string name="disable_headphone_high_volume_warning_summary">Отключить диалоговое окно с предупреждением, которое появляется при увеличении громкости при подключённых наушниках</string>
     <string name="remove_low_battery_dialog_warning">Удалить диалоговое предупреждение о низком заряде батареи</string>
-    <string name="remove_low_battery_dialog_warning_summary">Удалите предупреждающие диалоговые окна для режима энергосбережения и суперэнергосбережения</string>
+    <string name="remove_low_battery_dialog_warning_summary">Удалить предупреждающие диалоговые окна для режима энергосбережения и суперэнергосбережения</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Удалить диалоговое окно с предупреждением, которое приложение отображает на рабочем столе</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Диалоговое окно с предупреждением обнаружило, что приложение отображается на рабочем столе системы</string>
-    <string name="remove_usb_connect_dialog">Диалоговое окно удаления USB-подключения</string>
+    <string name="remove_usb_connect_dialog">Удалить диалоговое окно USB-подключения</string>
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
@@ -303,7 +303,7 @@
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
     <string name="disable_otg_auto_off">Отключить автоотключение OTG</string>
-    <string name="disable_otg_auto_off_summary">Отключение автоматического отключения OTG через 10 минут</string>
+    <string name="disable_otg_auto_off_summary">Отключить автоматическое отключение OTG через 10 минут</string>
     <string name="disable_dpi_reboot_recovery">Отключить восстановление DPI после перезагрузки</string>
     <string name="disable_dpi_reboot_recovery_summary">Этот модуль не несет ответственности за любые сбои загрузки из-за установки слишком большого значения DPI\nЧтобы восстановить значение DPI по умолчанию, вам необходимо включить эту функцию и сбросить значение DPI по умолчанию после перезагрузки</string>
     <string name="remove_storage_limit">Удалить ограничение хранилища</string>
@@ -312,13 +312,13 @@
     <string name="media_volume_level_summary">Установите 0, чтобы отключить эту функцию, перезагрузите систему, чтобы изменения вступили в силу</string>
     <string name="open_screen_power_save">Открыть режим энергосбережения</string>
     <string name="open_screen_power_save_summary">Настройки - Батарея - Дополнительные настройки - Энергосбережение экрана</string>
-    <string name="open_battery_health">Открыть вход состояния батареи</string>
+    <string name="open_battery_health">Открыть состояние батареи</string>
     <string name="open_battery_health_summary">Настройки - Батарея - Состояние батареи</string>
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Settings-->
-    <string name="remove_top_account_display">Удалить отображение поверх аккаунта</string>
+    <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
@@ -349,7 +349,7 @@
     <string name="remove_system_screenshot_delay">Убрать задержку скриншота системы</string>
     <string name="remove_system_screenshot_delay_summary">Первый скриншот может не работать</string>
     <string name="remove_screenshot_privacy_limit">Удалить ограничения конфиденциальности скриншотов</string>
-    <string name="remove_screenshot_privacy_limit_summary">Должен использоваться с \"Отключить FLAG_SECURE\", нет необходимости проверять другое приложение</string>
+    <string name="remove_screenshot_privacy_limit_summary">Снимите ограничения на конфиденциальность, которые не могут быть перехвачены. Отключите FLAG_SECURE, если это никак не повлияет</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
     <!--OplusOta-->
@@ -389,15 +389,15 @@
     <string name="go_download_page">Перейти на страницу загрузки</string>
     <string name="copy_download_link">Скопируйте ссылку для загрузки</string>
     <string name="direct_update">Прямое обновление</string>
-    <string name="install_apk_toast">Пожалуйста, включите неизвестное разрешение на установку приложения!</string>
+    <string name="install_apk_toast">Пожалуйста, включите разрешение на установку неизвестного приложения!</string>
     <string name="downloading">Загрузка</string>
     <string name="download_progress">Прогресс загрузки</string>
     <string name="download_speed">Скорость загрузки</string>
     <string name="remain_size">Оставшийся размер</string>
     <string name="downloaded">Загружено</string>
-    <string name="used_time">Использованное время</string>
+    <string name="used_time">Потраченное время</string>
     <string name="remain_time">Оставшееся время</string>
-    <string name="install_button">Установите сейчас</string>
+    <string name="install_button">Установить сейчас</string>
     <string name="cancel_button">Отменить загрузку</string>
     <string name="fps_autostart">Автозапуск</string>
     <string name="device_guid">GUID устройства</string>
@@ -417,8 +417,8 @@
     <string name="camera_algo_page">Страница алгоритмов камеры</string>
     <string name="browser_concise_mode">Режим настройки браузера</string>
     <string name="battery_health">Состояние батареи</string>
-    <string name="system_not_support">Текущее состояние не поддерживается!</string>
-    <string name="very_dark_mode">Темный режим</string>
+    <string name="system_not_support">Текущая система не поддерживается!</string>
+    <string name="very_dark_mode">Очень тёмный режим</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
     <string name="game_assistant_page">Страница игрового помощника</string>
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>
@@ -435,7 +435,7 @@
     <string name="log_save_failed">Лог не сохранён!</string>
     <string name="log_data_is_empty">Пустой лог!</string>
     <string name="log_no_data">Нет аномальных данных</string>
-    <string name="log_filter_title">Введите фильтр</string>
+    <string name="log_filter_title">Введите что фильтровать</string>
     <string name="log_filter_layout_hint">Например, имя пакета, и т.д.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>

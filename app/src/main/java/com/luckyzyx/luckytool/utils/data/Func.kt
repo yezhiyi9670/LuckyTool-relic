@@ -284,14 +284,18 @@ fun getDeviceID(): String {
  * 获取GUID
  * /data/system/openid_config.xml
  */
-val getGuid
-    get() = ShellUtils.execCommand(
-        "cat /data/system/openid_config.xml | sed  -n '3p'",
-        true,
-        true
-    ).successMsg.let {
-        it.takeIf { e -> e.isNotBlank() }?.split("\"")?.get(3) ?: "null"
+val getGuid: String
+    get() {
+        ShellUtils.execCommand(
+            "cat /data/system/openid_config.xml | sed  -n '3p'",
+            true,
+            true
+        ).apply {
+            return if (result == 1) "null"
+            else successMsg.takeIf { e -> e.isNotBlank() }?.split("\"")?.get(3) ?: "null"
+        }
     }
+
 
 /**
  * 获取prop数据
@@ -429,12 +433,10 @@ val Int.dp: Int
         Resources.getSystem().displayMetrics
     ).toInt()
 
-
 val Float.sp: Float // [xxhdpi](360 -> 1080)
     get() = android.util.TypedValue.applyDimension(
         android.util.TypedValue.COMPLEX_UNIT_SP, this, Resources.getSystem().displayMetrics
     )
-
 
 val Int.sp: Int
     get() = android.util.TypedValue.applyDimension(

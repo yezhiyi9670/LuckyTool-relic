@@ -204,7 +204,6 @@ class StatusBar : ModulePreferenceFragment() {
                         getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
                     key = "StatusBarPower"
                     isIconSpaceReserved = false
-                    isVisible = SDK >= A13
                     setOnPreferenceClickListener {
                         findNavController().navigate(
                             R.id.action_statusBar_to_statusBarPower, Bundle().apply {
@@ -1131,21 +1130,29 @@ class StatusBarPower : ModulePreferenceFragment() {
                     key = "statusbar_power_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.statusbar_power_font_size)
-                    key = "statusbar_power_font_size"
-                    setDefaultValue(7)
-                    max = 8
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
+            if (context.getBoolean(ModulePrefs, "statusbar_power_user_typeface", false)) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.statusbar_power_font_size)
+                        summary = getString(R.string.statusbar_clock_fontsize_summary)
+                        key = "statusbar_power_font_size"
+                        setDefaultValue(7)
+                        max = 8
+                        min = 0
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
+
         }
     }
 }

@@ -89,13 +89,13 @@
     <string name="enhancedMode_summary">Můžete vyřešit interní kontrolu integrity v aplikaci, která nemusí být povolena</string>
     <string name="usepresig_warn">!!! Všechny balíčky mohou přepsat nainstalovanou aplikaci!!\npro instalaci neznámých balíčků</string>
     <!--Status Bar-->
-    <string name="StatusBar">Stavový řádek</string>
+    <string name="StatusBar">Stavová lišta</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
-    <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavovém řádku</string>
+    <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
     <!--StatusBarBatteryInformation-->
     <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
     <string name="battery_information_show">Zobrazit informace o baterii</string>
-    <string name="battery_information_show_summary">Zobrazit napětí baterie a další informace ve stavovém řádku</string>
+    <string name="battery_information_show_summary">Zobrazit napětí baterie a další informace ve stavové liště</string>
     <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
     <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
     <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
@@ -144,18 +144,18 @@
     <string name="statusbar_network_no_space">Odstranit mezeru v textu rychlosti sítě</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
-    <string name="StatusBarNotice_summary">Související s oznámeními ve stavovém řádku</string>
+    <string name="StatusBarNotice_summary">Související s oznámeními ve stavové liště</string>
     <string name="remove_statusbar_devmode">Odstranit oznámení o vývojářských možnostech</string>
     <string name="remove_charging_completed">Odstranit oznámení o dokončení nabíjení</string>
     <string name="remove_statusbar_top_notification">Skryj oznámení o zobrazování aplikací nad jinými</string>
     <string name="remove_statusbar_top_notification_summary">Skryj oznámení \"Aplikace se zobrazuje nad ostatními\"</string>
     <string name="remove_vpn_active_notification">Odebrat oznámení, že je VPN aktivní</string>
     <string name="remove_vpn_active_notification_summary">Odebere oznámení o aktivní VPN síti</string>
-    <string name="remove_statusbar_bottom_networkwarn">Odstranit upozornění \"Síť může být minotorována\"</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Odstraní oznámení o tom, že síť může být monitorována</string>
-    <string name="remove_flashlight_open_notification">Odebrat oznámení o otevření svítilně</string>
+    <string name="remove_statusbar_bottom_networkwarn">Odstranit upozornění \"Síť může být monitorována\"</string>
+    <string name="remove_statusbar_bottom_networkwarn_summary">Odstranit oznámení o tom, že síť může být monitorována</string>
+    <string name="remove_flashlight_open_notification">Odebrat oznámení o zapnuté svítilně</string>
     <string name="remove_app_high_battery_consumption_warning">Odstranit výstrahu aplikace o vysoké spotřebě baterie</string>
-    <string name="remove_app_high_battery_consumption_warning_summary">Odstranil varování, že spotřeba baterie aplikacie je neobvyklá a musí být okamžitě optimalizována</string>
+    <string name="remove_app_high_battery_consumption_warning_summary">Odstranit varování, že spotřeba baterie aplikacie je neobvyklá a musí být okamžitě optimalizována</string>
     <string name="remove_high_performance_mode_notifications">Odstranit oznámení o režimu vysokého výkonu</string>
     <string name="remove_do_not_disturb_mode_notification">Odstranit oznámení o režimu Nerušit</string>
     <string name="remove_hotspot_power_consumption_notification">Odebrat oznámení o spotřebě energie při zapnutém hotspotu</string>
@@ -164,7 +164,7 @@
     <string name="remove_notifications_for_mute_notifications">Odstranit oznámení pro ztlumená oznámení</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
-    <string name="StatusBarIcon_summary">Související s ikonami ve stavovém řádku</string>
+    <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>
     <string name="StatusBarWIFIIcon">Ikona WIFI</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
     <string name="StatusBarMobileDataIcon">Ikona mobilních dat</string>
@@ -172,15 +172,15 @@
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
-    <string name="StatusBarOtherIcon">Další ikona</string>
+    <string name="StatusBarOtherIcon">Další ikony</string>
     <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
-    <string name="remove_statusbar_securepayment_icon">Odstranit ikony ochrany platby ve stavové liště</string>
-    <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku o využívání mikrofonu nebo kamery</string>
-    <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli o využívání mikrofonu nebo kamery</string>
+    <string name="remove_statusbar_securepayment_icon">Skrýt ikonu ochrany plateb</string>
+    <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku využívání mikrofonu nebo kamery</string>
+    <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli využívání mikrofonu nebo kamery</string>
     <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
-    <string name="status_bar_icon_vertical_center">Vycentrujte položky stavového řádku</string>
+    <string name="status_bar_icon_vertical_center">Vycentrujte položky stavové liště</string>
     <!--StatusBarControlCenter-->
-    <string name="StatusBarControlCenter">Ovládací centrum stavového řádku</string>
+    <string name="StatusBarControlCenter">Ovládací centrum stavové lišty</string>
     <string name="ControlCenter_Clock_Related">Nastavení související s hodinami</string>
     <string name="control_center_clock_show_second">Zobraz sekundy</string>
     <string name="fix_clock_colon_style">Oprav u hodin styl dvojtečky</string>
@@ -193,24 +193,24 @@
     <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
     <string name="ControlCenter_Tile_Related">Přepínače v ovládacím centru</string>
     <string name="control_center_tile_enable">Přepínač pro úpravu funkčích dlaždic v ovládacím centru</string>
-    <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozableném stavu (vertikálně)</string>
-    <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozableném stavu (horizontálně)</string>
-    <string name="tile_expanded_columns_vertical">Počet sloupců v rozableném stavu (vertikálně)</string>
-    <string name="tile_expanded_columns_horizontal">Počet sloupců v rozableném stavu (horizontálně)</string>
+    <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozbaleném stavu (vertikálně)</string>
+    <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozbaleném stavu (horizontálně)</string>
+    <string name="tile_expanded_columns_vertical">Počet sloupců v rozbaleném stavu (vertikálně)</string>
+    <string name="tile_expanded_columns_horizontal">Počet sloupců v rozbaleném stavu (horizontálně)</string>
     <string name="tile_expanded_rows_vertical">Rozbalené řádky dlaždic (vertikálně)</string>
-    <string name="tile_columns_horizontal_c13">Sloupce dlaždic (horizontálně)</string>
+    <string name="tile_columns_horizontal_c13">Dlaždic ve sloupci (horizontálně)</string>
     <!--StatusBarLayout-->
     <string name="StatusBarLayout">Rozložení stavové lišty</string>
     <string name="statusbar_layout_mode">Režim rozvržení stavové lišty</string>
     <string name="statusbar_layout_clock_center_align">Zarovnání hodin na střed</string>
     <string name="statusbar_layout_compatible_mode">Režim kompatibility obrazovky</string>
-    <string name="statusbar_layout_left_margin">Levý okraj stavového řádku</string>
-    <string name="statusbar_layout_right_margin">Pravý okraj stavového řádku</string>
+    <string name="statusbar_layout_left_margin">Levý okraj stavové lišty</string>
+    <string name="statusbar_layout_right_margin">Pravý okraj stavové lišty</string>
     <string name="statusbar_layout_margin_tip">Pokud je 0, velikost okraje nebude změněna</string>
     <!--StatusBarPower-->
     <string name="StatusBarPower">Napájení ve stavové liště</string>
-    <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie na stavové liště</string>
-    <string name="statusbar_power_font_size">Velikost písma napájení na stavové liště</string>
+    <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie ve stavové liště</string>
+    <string name="statusbar_power_font_size">Velikost písma napájení ve stavové liště</string>
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
@@ -223,13 +223,13 @@
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
-    <string name="remove_72hour_password_verification_summary">Odstraní bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
+    <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
     <!--Desktop-->
     <string name="Desktop">Plocha</string>
-    <string name="remove_alarmclock_widget_redone">Odstraní červenou jedničku na hodinách na ploše</string>
-    <string name="remove_alarmclock_widget_redone_pro">Odstraní červenou jedničku na hodinách na ploše - vylepšená edice</string>
+    <string name="remove_alarmclock_widget_redone">Odstranit červenou jedničku na hodinách na ploše</string>
+    <string name="remove_alarmclock_widget_redone_pro">Odstranit červenou jedničku na hodinách na ploše - vylepšená edice</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
-    <string name="remove_appicon_dot">Odstraní symbol tečky API</string>
+    <string name="remove_appicon_dot">Odstranit symbol tečky API</string>
     <string name="show_charging_ripple">Zobrazit animaci vln během nabíjení</string>
     <string name="show_charging_ripple_summary">Platné pouze při připojení k nabíječce</string>
     <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
@@ -240,7 +240,7 @@
     <string name="launcher_layout_max_columns">Maximální počet sloupců v rozložení plochy</string>
     <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
-    <string name="remove_recent_task_list_clear_button">Odstraní tlačítko pro vymazání nedávných aplikací</string>
+    <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>
@@ -275,14 +275,14 @@
     <string name="replase_aosp_installer_summary">Nahradit nativním Google instalátorem</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
-    <string name="disable_duplicate_floating_window">Zakázat duplicitní okno</string>
+    <string name="disable_duplicate_floating_window">Zakázat plovoucí oznámení o zkopírovaném textu či položce</string>
     <string name="disable_duplicate_floating_window_summary">Při kopírování textu znovu nezobrazovat plovoucí oznámení</string>
     <string name="disable_headphone_high_volume_warning">Zakázat upozornění na vysokou hlasitost sluchátek</string>
     <string name="disable_headphone_high_volume_warning_summary">Vypněte varovný dialog, který se zobrazí při zvýšení hlasitosti, když jsou připojena sluchátka</string>
     <string name="remove_low_battery_dialog_warning">Odebrat upozornění na nízký stav baterie</string>
     <string name="remove_low_battery_dialog_warning_summary">Odstranit upozornění pro úsporný a super úsporný režim</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Odstraňte varování „Aplikace se zobrazuje nad ostatními aplikacemi“</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Odstraní dialogové okno s upozorněním, že se aplikace zobrazuje nad ostatními aplikacemi</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Odstranit dialogové okno s upozorněním, že se aplikace zobrazuje nad ostatními aplikacemi</string>
     <string name="remove_usb_connect_dialog">Odstranit dialog po připojení USB</string>
     <string name="remove_usb_connect_dialog_summary">Režim přenosu souborů je vybrán ve výchozím nastavení po připojení USB</string>
     <!--FullScreenGestureRelated-->
@@ -309,7 +309,7 @@
     <string name="remove_storage_limit_summary">Odstranit omezení, že tuto složku nelze použít</string>
     <string name="media_volume_level">Úroveň hlasitosti médií</string>
     <string name="media_volume_level_summary">Nastavte na 0 pro vypnutí této funkce, restartujte systém, aby se změny projevily</string>
-    <string name="open_screen_power_save">Přidejte tlačítko pro zobrazení a ovládání úsporty energie obrazovky</string>
+    <string name="open_screen_power_save">Přidejte tlačítko pro zobrazení a ovládání úspory energie obrazovky</string>
     <string name="open_screen_power_save_summary">Nastavení - Baterie - Další nastavení - Úspora napájení obrazovky</string>
     <string name="open_battery_health">Přidat tlačítko pro zjištění zdraví baterie</string>
     <string name="open_battery_health_summary">Nastavení - Baterie - Zdraví baterie</string>
@@ -434,8 +434,8 @@
     <string name="log_save_failed">Uložení protokolu se nezdařilo!</string>
     <string name="log_data_is_empty">Data protokolu jsou prázdná!</string>
     <string name="log_no_data">Žádná abnormální data</string>
-    <string name="log_filter_title">Zadejte co filtrovat</string>
-    <string name="log_filter_layout_hint">Např. název balíčku, obsah, atd</string>
+    <string name="log_filter_title">Zadejte, co filtrovat</string>
+    <string name="log_filter_layout_hint">Např. název balíčku, obsah, a tak dále</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zvyšit vzorkovací frekvenci dotyku</string>
     <string name="increase_touch_sampling_rate_summary">Automaticky spustit, jakmile je funkce zapnuta, pak bude automaticky spuštěna po odemknutí obrazovky</string>

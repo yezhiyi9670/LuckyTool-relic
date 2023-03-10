@@ -80,7 +80,7 @@ open class MainActivity : AppCompatActivity() {
     private fun initDynamicShortcuts() {
         val status = getComponentEnabled(ComponentName(packageName, "${packageName}.Hide"))
         if (status == 2) return
-        val shortcutManager = getSystemService(ShortcutManager::class.java)
+        val shortcutManager = getSystemService(ShortcutManager::class.java) as ShortcutManager
         val lsposed = ShortcutInfo.Builder(this, "lsposed").apply {
             setShortLabel("LSPosed")
             setIcon(Icon.createWithResource(packageName, R.mipmap.android_icon))

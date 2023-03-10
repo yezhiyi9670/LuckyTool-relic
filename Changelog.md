@@ -3,6 +3,13 @@
 模块文档(Module Document) https://luckyzyx.github.io/LuckyTool/  
 反馈流程(Feedback Process) https://luckyzyx.github.io/LuckyTool/feedback
 
+### v4.3.5
+
+[更新] 捐赠名单  
+[更新] C12状态栏电量入口  
+[适配] C13相机水印字数限制  
+[更新] 同步Crowdin翻译
+
 ### v4.3.4
 
 [更新] 捐赠名单  

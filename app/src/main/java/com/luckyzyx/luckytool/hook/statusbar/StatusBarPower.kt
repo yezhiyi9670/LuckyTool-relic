@@ -31,7 +31,7 @@ object StatusBarPower : YukiBaseHooker() {
                 afterHook {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
                         if (removePercent) text = text.toString().replace("%", "")
-                        if (customFontSize != 0) setTextSize(
+                        if (userTypeface && customFontSize != 0) setTextSize(
                             TypedValue.COMPLEX_UNIT_DIP,
                             customFontSize.toFloat() * 2
                         )
