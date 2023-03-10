@@ -1529,6 +1529,15 @@ class Application : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.show_packagename_and_versioncode)
+                    summary = getString(R.string.show_packagename_and_versioncode_summary)
+                    key = "show_packagename_and_versioncode"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_install_ads)
                     summary = getString(R.string.remove_install_ads_summary)
                     key = "remove_install_ads"

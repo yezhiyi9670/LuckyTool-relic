@@ -49,7 +49,7 @@
     <string name="feedback_download">Отзыв и загрузка</string>
     <string name="feedback_download_summary">ТГ-каналы, группы, склады и т.д.</string>
     <string name="coolmarket">CoolMarket</string>
-    <string name="qq_channel">QQ Channel</string>
+    <string name="qq_channel">QQ канал</string>
     <string name="telegram_channel">Канал Telegram</string>
     <string name="telegram_group">Группа Telegram</string>
     <string name="lsposed_repo">Репозиторий Github</string>
@@ -275,6 +275,8 @@
     <string name="remove_install_ads_summary">Рекомендации приложений безопасности/реклама магазина ПО</string>
     <string name="replase_aosp_installer">Заменить установщик AOSP</string>
     <string name="replase_aosp_installer_summary">Заменить собственным установщиком</string>
+    <string name="show_packagename_and_versioncode">Show package name and version code</string>
+    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плавающее окно/Диалоговое окно</string>
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>

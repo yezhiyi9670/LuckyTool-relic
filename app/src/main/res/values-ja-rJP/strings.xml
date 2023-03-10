@@ -274,6 +274,8 @@
     <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨 の順で開けます</string>
     <string name="replase_aosp_installer">AOSPインストーラーに置き換え</string>
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
+    <string name="show_packagename_and_versioncode">Show package name and version code</string>
+    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
     <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>

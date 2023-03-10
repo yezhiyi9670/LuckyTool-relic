@@ -274,6 +274,8 @@
     <string name="remove_install_ads_summary">切记关闭设置-安全应用推荐</string>
     <string name="replase_aosp_installer">替换AOSP安装器</string>
     <string name="replase_aosp_installer_summary">替换为AOSP原生安装器</string>
+    <string name="show_packagename_and_versioncode">显示包名和版本号</string>
+    <string name="show_packagename_and_versioncode_summary">在安装页面顶部显示包名和版本号</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">悬浮窗/对话框相关</string>
     <string name="disable_duplicate_floating_window">禁用复制悬浮窗</string>

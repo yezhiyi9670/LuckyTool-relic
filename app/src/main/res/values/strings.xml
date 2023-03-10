@@ -283,6 +283,8 @@
     <string name="remove_install_ads_summary">Close Settings - Security App Recommendations</string>
     <string name="replase_aosp_installer">Replace AOSP Installer</string>
     <string name="replase_aosp_installer_summary">Replace with Google Native Installer</string>
+    <string name="show_packagename_and_versioncode">Show package name and version code</string>
+    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
     <string name="disable_duplicate_floating_window">Disable Duplicate Window</string>

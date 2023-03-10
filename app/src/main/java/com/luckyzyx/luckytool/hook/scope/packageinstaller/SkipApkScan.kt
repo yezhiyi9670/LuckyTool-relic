@@ -35,8 +35,7 @@ object SkipApkScan : YukiBaseHooker() {
                     "shouldStartAppDetail",
                     "checkToScanRisk",
                     "initiateInstall"
-                )
-                else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
+                ) else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         findClass(member[0]).hook {

@@ -274,6 +274,8 @@
     <string name="remove_install_ads_summary">Đóng Cài đặt - Đề xuất ứng dụng bảo mật</string>
     <string name="replase_aosp_installer">Thay thế trình cài đặt AOSP</string>
     <string name="replase_aosp_installer_summary">Thay thế bằng trình cài đặt Google</string>
+    <string name="show_packagename_and_versioncode">Show package name and version code</string>
+    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Cửa sổ nổi/Hộp thoại</string>
     <string name="disable_duplicate_floating_window">Vô hiệu hóa cửa sổ trùng lặp</string>
