@@ -223,15 +223,20 @@
     <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Lockscreen Related</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
+    <string name="set_lock_screen_centered">Center the lockscreen component</string>
+    <string name="set_lock_screen_centered_summary">Only for systems where the lock screen cannot be centered in the settings</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Remove top lock screen icons</string>
     <string name="remove_lock_screen_bottom_left_button">Remove lockscreen bottom left button</string>
     <string name="remove_lock_screen_bottom_right_camera">Remove lockscreen bottom right camera</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
-    <string name="set_lock_screen_centered">Center the lockscreen component</string>
-    <string name="set_lock_screen_centered_summary">Only for systems where the lock screen cannot be centered in the settings</string>
     <string name="remove_lock_screen_bottom_sos_button">Remove SOS emergency contact button</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Removed the SOS emergency button at the bottom of the unlock page</string>
+    
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Remove 72-hour password authentication</string>
     <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting,Effective after system restart</string>
     <!--Desktop-->

@@ -8,20 +8,19 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookLockScreen : YukiBaseHooker() {
     override fun onHook() {
-        //锁屏组件
-        loadHooker(LockScreenComponent)
-
         //移除锁屏时钟红1
         if (prefs(ModulePrefs).getBoolean("remove_lock_screen_redone", false)) {
             loadHooker(RemoveLockScreenRedOne)
         }
 
+        //锁屏组件
+        loadHooker(LockScreenComponent)
+
+        //锁屏充电组件
+        loadHooker(LockScreenChargingComponent)
+
         //移除锁屏下方按钮
-        if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_left_button", false) ||
-            prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera", false)
-        ) {
-            loadHooker(RemoveLockScreenBottomButton)
-        }
+        loadHooker(RemoveLockScreenBottomButton)
 
         //移除SOS紧急联络按钮
         if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_sos_button", false)) {
@@ -32,8 +31,5 @@ object HookLockScreen : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_top_lock_screen_icon", false)) {
             loadHooker(RemoveTopLockScreenIcon)
         }
-
-        //充电小数点常驻
-        //com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView
     }
 }

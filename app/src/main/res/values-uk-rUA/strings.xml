@@ -214,15 +214,18 @@
     <string name="statusbar_power_font_size">Розмір шрифту у рядку стану</string>
     <!--LockScreen-->
     <string name="LockScreen">Екран блокування</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">Видалити червоний годинник з екрану блокування</string>
+    <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
+    <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
+    <string name="lock_screen_use_user_typeface">Компоненти на екрані блокування використовують шрифти користувача</string>
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Видалити іконку замка на екрані блокування</string>
     <string name="remove_lock_screen_bottom_left_button">Видалити ліву нижню кнопку на екрані блокування</string>
     <string name="remove_lock_screen_bottom_right_camera">Видалити камеру з правого нижнього кута екрана блокування</string>
-    <string name="lock_screen_use_user_typeface">Компоненти на екрані блокування використовують шрифти користувача</string>
-    <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
-    <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка екстреного контакту SOS внизу сторінки розблокування буде видалена</string>
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Видалення 72-годинної аутентифікації за паролем</string>
     <string name="remove_72hour_password_verification_summary">Видалити обмеження безпеки, що забороняє використовувати відбиток пальця або розблокування по обличчю після 72 годин роботи смартфона. Набуде чинності після перезавантаження системи</string>
     <!--Desktop-->
@@ -274,8 +277,8 @@
     <string name="remove_install_ads_summary">Рекомендації додатків безпеки/реклама магазину ПЗ</string>
     <string name="replase_aosp_installer">Замінити інсталятор AOSP</string>
     <string name="replase_aosp_installer_summary">Замінити на рідний інсталятор Google</string>
-    <string name="show_packagename_and_versioncode">Show package name and version code</string>
-    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
+    <string name="show_packagename_and_versioncode">Показати ім\'я пакета та код версії</string>
+    <string name="show_packagename_and_versioncode_summary">Відображати назву пакета та код версії у верхній частині сторінки установки</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плаваюче вікно / Діалогове вікно</string>
     <string name="disable_duplicate_floating_window">Вимкнути дублювання плаваючого вікна</string>

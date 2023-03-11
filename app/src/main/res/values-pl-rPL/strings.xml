@@ -214,15 +214,18 @@
     <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
+    <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
+    <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
-    <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
-    <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
     <string name="remove_lock_screen_bottom_sos_button">Ukryj przycisk \"Alarmowe SOS\"</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--Desktop-->

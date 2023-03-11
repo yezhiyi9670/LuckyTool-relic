@@ -1319,6 +1319,13 @@ class LockScreen : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.LockScreenComponent)
+                    key = "LockScreenComponent"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_lock_screen_redone)
                     key = "remove_lock_screen_redone"
@@ -1340,6 +1347,13 @@ class LockScreen : ModulePreferenceFragment() {
                     title = getString(R.string.lock_screen_use_user_typeface)
                     key = "lock_screen_use_user_typeface"
                     setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.LockScreenButton)
+                    key = "LockScreenButton"
                     isIconSpaceReserved = false
                 }
             )
@@ -1375,6 +1389,13 @@ class LockScreen : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= 33
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.LockScreenEvent)
+                    key = "LockScreenEvent"
+                    isIconSpaceReserved = false
                 }
             )
             addPreference(

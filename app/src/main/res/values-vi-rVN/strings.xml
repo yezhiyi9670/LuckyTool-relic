@@ -214,15 +214,18 @@
     <string name="statusbar_power_font_size">Statusbar power font size</string>
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
+    <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
+    <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
+    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Xóa biểu tượng màn hình khóa trên cùng</string>
     <string name="remove_lock_screen_bottom_left_button">Xóa nút dưới cùng bên trái của màn hình khóa</string>
     <string name="remove_lock_screen_bottom_right_camera">Xóa camera dưới cùng bên phải màn hình khóa</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
-    <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
-    <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
     <string name="remove_lock_screen_bottom_sos_button">Xóa nút liên hệ khẩn cấp SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Đã xóa nút khẩn cấp SOS ở cuối trang mở khóa</string>
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Xóa xác thực mật khẩu 72 giờ</string>
     <string name="remove_72hour_password_verification_summary">Đã xóa hạn chế bảo mật không sử dụng mật khẩu để mở khóa trong vòng 72 giờ sau khi khởi động, có hiệu lực sau khi khởi động lại hệ thống</string>
     <!--Desktop-->

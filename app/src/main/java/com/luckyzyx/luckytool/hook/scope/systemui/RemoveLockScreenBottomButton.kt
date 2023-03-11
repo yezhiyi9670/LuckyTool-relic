@@ -7,6 +7,10 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveLockScreenBottomButton : YukiBaseHooker() {
     override fun onHook() {
+        val leftButton =
+            prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_left_button", false)
+        val rightButton =
+            prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera", false)
         //Source KeyguardBottomAreaView
         findClass("com.android.systemui.statusbar.phone.KeyguardBottomAreaView").hook {
             injectMember {
@@ -14,13 +18,12 @@ object RemoveLockScreenBottomButton : YukiBaseHooker() {
                     name = "updateLeftAffordanceVisibility"
                 }
                 beforeHook {
-                    if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_left_button",false)){
-                        field {
-                            name = "mLeftAffordanceView"
-                            superClass(isOnlySuperClass = true)
-                        }.get(instance).cast<View>()?.isVisible = false
-                        resultNull()
-                    }
+                    if (!leftButton) return@beforeHook
+                    field {
+                        name = "mLeftAffordanceView"
+                        superClass(isOnlySuperClass = true)
+                    }.get(instance).cast<View>()?.isVisible = false
+                    resultNull()
                 }
             }
             injectMember {
@@ -28,13 +31,12 @@ object RemoveLockScreenBottomButton : YukiBaseHooker() {
                     name = "updateCameraVisibility"
                 }
                 beforeHook {
-                    if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera",false)){
-                        field {
-                            name = "mRightAffordanceView"
-                            superClass(isOnlySuperClass = true)
-                        }.get(instance).cast<View>()?.isVisible = false
-                        resultNull()
-                    }
+                    if (!rightButton) return@beforeHook
+                    field {
+                        name = "mRightAffordanceView"
+                        superClass(isOnlySuperClass = true)
+                    }.get(instance).cast<View>()?.isVisible = false
+                    resultNull()
                 }
             }
         }

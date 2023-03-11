@@ -214,15 +214,18 @@
     <string name="statusbar_power_font_size">ステータスバーの電源フォントサイズ</string>
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
+    <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
+    <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
+    <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
-    <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
-    <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
-    <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
     <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を削除します。システム再起動後に有効化されます</string>
     <!--Desktop-->
@@ -274,8 +277,8 @@
     <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨 の順で開けます</string>
     <string name="replase_aosp_installer">AOSPインストーラーに置き換え</string>
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
-    <string name="show_packagename_and_versioncode">Show package name and version code</string>
-    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
+    <string name="show_packagename_and_versioncode">パッケージ名とバージョンコードを表示</string>
+    <string name="show_packagename_and_versioncode_summary">インストール画面の上部にパッケージ名とバージョンコードを表示します</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
     <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>

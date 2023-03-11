@@ -214,15 +214,18 @@
     <string name="statusbar_power_font_size">Velikost písma napájení ve stavové liště</string>
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
+    <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
+    <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
+    <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
+    <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
+    <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
-    <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
-    <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
-    <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
+    <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
     <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
     <!--Desktop-->
@@ -274,8 +277,8 @@
     <string name="remove_install_ads_summary">Bezpečnostní doporučení aplikací/reklamy v Obchodě Play</string>
     <string name="replase_aosp_installer">Nahradit AOSP instalátor</string>
     <string name="replase_aosp_installer_summary">Nahradit nativním Google instalátorem</string>
-    <string name="show_packagename_and_versioncode">Show package name and version code</string>
-    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
+    <string name="show_packagename_and_versioncode">Zobrazit název balíčku a kód verze</string>
+    <string name="show_packagename_and_versioncode_summary">Zobrazit název balíčku a kód verze v horní části instalační stránky</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
     <string name="disable_duplicate_floating_window">Zakázat plovoucí oznámení o zkopírovaném textu či položce</string>
