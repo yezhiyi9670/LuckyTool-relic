@@ -59,7 +59,7 @@
     <string name="participate_translation">モジュールの翻訳に参加する</string>
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">最新のLSPosedを使用してモジュールのスコープを確認してください。\n上記の操作が完了後にOKをタップしてアプリを終了し、モジュールを開く事ができます</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">メニューを再起動</string>
     <string name="menu_settings">メニューを設定</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>
     <string name="remove_green_dot_privacy_prompt">緑のドットのプライバシープロンプトを削除</string>
     <string name="remove_green_capsule_prompt">緑色のカプセルのプロンプトを削除</string>
+    <string name="remove_green_capsule_prompt_summary"> Wi-Fi ホットスポットの緑のアイコンを削除します</string>
     <string name="StatusBarSmallIconStatus">ステータスバー上の小さいステータスアイコン</string>
     <string name="status_bar_icon_vertical_center">ステータスバーアイコンを縦中央揃えにする</string>
     <!--StatusBarControlCenter-->
@@ -214,18 +215,18 @@
     <string name="statusbar_power_font_size">ステータスバーの電源フォントサイズ</string>
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="LockScreenComponent">ロック画面コンポーネント</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
-    <string name="LockScreenButton">Lock Screen Button</string>
+    <string name="LockScreenButton">ロック画面ボタン</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
-    <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="LockScreenEvent">ロック画面イベント</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
     <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を削除します。システム再起動後に有効化されます</string>
     <!--Desktop-->

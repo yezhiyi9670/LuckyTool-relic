@@ -59,7 +59,7 @@
     <string name="participate_translation">Tham gia dịch module</string>
     <string name="participate_translation_summary">Truy cập Crowdin để đóng góp bản dịch của bạn</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Vui lòng sử dụng phiên bản mới nhất của LSPosed để kiểm tra phạm vi của mô-đun!\nNếu phần trên đã được hoàn thành, hãy nhấp vào OK để thoát khỏi ứng dụng, sau đó mở mô-đun</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu khởi động lại</string>
     <string name="menu_settings">Menu cài đặt</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
     <string name="remove_green_capsule_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
+    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
     <string name="StatusBarSmallIconStatus">Biểu tượng thanh trạng thái nhỏ</string>
     <string name="status_bar_icon_vertical_center">Biểu tượng thanh trạng thái trung tâm dọc</string>
     <!--StatusBarControlCenter-->

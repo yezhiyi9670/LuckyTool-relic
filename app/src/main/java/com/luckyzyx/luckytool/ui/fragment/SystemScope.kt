@@ -751,18 +751,15 @@ class StatusBarIcon : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_mobile_data_icon)
-                    key = "remove_mobile_data_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.hide_unused_card_icons)
                     key = "hide_unused_card_icons"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel("com.android.systemui")
+                            .put("hide_unused_card_icons", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -799,6 +796,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_green_capsule_prompt)
+                    summary = getString(R.string.remove_green_capsule_prompt_summary)
                     key = "remove_green_capsule_prompt"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -844,17 +842,17 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.fix_clock_colon_style)
-                    summary = getString(R.string.fix_clock_colon_style_summary)
-                    key = "fix_clock_colon_style"
+                    title = getString(R.string.remove_control_center_clock_red_one)
+                    key = "remove_control_center_clock_red_one"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_control_center_clock_red_one)
-                    key = "remove_control_center_clock_red_one"
+                    title = getString(R.string.fix_clock_colon_style)
+                    summary = getString(R.string.fix_clock_colon_style_summary)
+                    key = "fix_clock_colon_style"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -914,137 +912,127 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "control_center_tile_enable"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_unexpanded_columns_vertical)
-                    key = "tile_unexpanded_columns_vertical"
-                    setDefaultValue(6)
-                    max = 6
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK < 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_unexpanded_columns_horizontal)
-                    key = "tile_unexpanded_columns_horizontal"
-                    setDefaultValue(6)
-                    max = 8
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK < 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_expanded_columns_vertical)
-                    key = "tile_expanded_columns_vertical"
-                    setDefaultValue(4)
-                    max = 7
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK < 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_expanded_columns_horizontal)
-                    key = "tile_expanded_columns_horizontal"
-                    setDefaultValue(6)
-                    max = 9
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK < 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_unexpanded_columns_vertical)
-                    key = "tile_unexpanded_columns_vertical_c13"
-                    setDefaultValue(5)
-                    max = 6
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_expanded_rows_vertical)
-                    key = "tile_expanded_rows_vertical_c13"
-                    setDefaultValue(3)
-                    max = 6
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_expanded_columns_vertical)
-                    key = "tile_expanded_columns_vertical_c13"
-                    setDefaultValue(4)
-                    max = 7
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= 33
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.tile_columns_horizontal_c13)
-                    key = "tile_columns_horizontal_c13"
-                    setDefaultValue(5)
-                    max = 6
-                    min = 1
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= 33
-                }
-            )
+            if (context.getBoolean(ModulePrefs, "control_center_tile_enable", false)) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_unexpanded_columns_vertical)
+                        key = "tile_unexpanded_columns_vertical"
+                        setDefaultValue(6)
+                        max = 6
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK < 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_unexpanded_columns_horizontal)
+                        key = "tile_unexpanded_columns_horizontal"
+                        setDefaultValue(6)
+                        max = 8
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK < 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_expanded_columns_vertical)
+                        key = "tile_expanded_columns_vertical"
+                        setDefaultValue(4)
+                        max = 7
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK < 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_expanded_columns_horizontal)
+                        key = "tile_expanded_columns_horizontal"
+                        setDefaultValue(6)
+                        max = 9
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK < 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_unexpanded_columns_vertical)
+                        key = "tile_unexpanded_columns_vertical_c13"
+                        setDefaultValue(5)
+                        max = 6
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_expanded_rows_vertical)
+                        key = "tile_expanded_rows_vertical_c13"
+                        setDefaultValue(3)
+                        max = 6
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_expanded_columns_vertical)
+                        key = "tile_expanded_columns_vertical_c13"
+                        setDefaultValue(4)
+                        max = 7
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= 33
+                    }
+                )
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.tile_columns_horizontal_c13)
+                        key = "tile_columns_horizontal_c13"
+                        setDefaultValue(5)
+                        max = 6
+                        min = 1
+                        seekBarIncrement = 1
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= 33
+                    }
+                )
+            }
         }
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_horizontal")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_vertical")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_horizontal")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_unexpanded_columns_vertical_c13")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_rows_vertical_c13")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_expanded_columns_vertical_c13")?.dependency =
-            "control_center_tile_enable"
-        findPreference<SeekBarPreference>("tile_columns_horizontal_c13")?.dependency =
-            "control_center_tile_enable"
     }
 }
 

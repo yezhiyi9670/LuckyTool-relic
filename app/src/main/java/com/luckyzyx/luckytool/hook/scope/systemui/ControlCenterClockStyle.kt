@@ -12,9 +12,9 @@ object ControlCenterClockStyle : YukiBaseHooker() {
     override fun onHook() {
         val showSecond =
             prefs(ModulePrefs).getBoolean("control_center_clock_show_second", false)
-        val fixColon = prefs(ModulePrefs).getBoolean("fix_clock_colon_style", false)
         val removeRedOne =
             prefs(ModulePrefs).getBoolean("remove_control_center_clock_red_one", false)
+        val fixColon = prefs(ModulePrefs).getBoolean("fix_clock_colon_style", false)
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
@@ -48,9 +48,9 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     name = "setTextWithRedOneStyleInternal"
                     paramCount = 2
                 }
-                afterHook {
-                    val view = args(0).cast<TextView>() ?: return@afterHook
-                    val char = args(1).cast<CharSequence>() ?: return@afterHook
+                replaceUnit {
+                    val view = args(0).cast<TextView>() ?: return@replaceUnit
+                    val char = args(1).cast<CharSequence>() ?: return@replaceUnit
                     getCharColor(view) {
                         fixColonStyle(view, char, fixColon)
                         setRedOneStyle(view, char, it, removeRedOne)

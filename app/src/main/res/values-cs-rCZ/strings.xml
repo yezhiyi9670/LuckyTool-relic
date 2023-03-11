@@ -59,7 +59,7 @@
     <string name="participate_translation">Účast na překladu modulu</string>
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Prosím použijte nejnovější verzi LSPosed ke kontrole rozsahu modulu.\n Pokud jste dokončili výše uvedené, můžete klepnout na tlačítko OK pro ukončení aplikace a otevření modulu</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Nabídka restartu</string>
     <string name="menu_settings">Nastavit menu</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">Skrýt ikonu ochrany plateb</string>
     <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku využívání mikrofonu nebo kamery</string>
     <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli využívání mikrofonu nebo kamery</string>
+    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
     <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
     <string name="status_bar_icon_vertical_center">Vycentrujte položky stavové liště</string>
     <!--StatusBarControlCenter-->
@@ -214,18 +215,18 @@
     <string name="statusbar_power_font_size">Velikost písma napájení ve stavové liště</string>
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
     <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
-    <string name="LockScreenButton">Lock Screen Button</string>
+    <string name="LockScreenButton">Tlačítka na zamykací obrazovce</string>
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
-    <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="LockScreenEvent">Události na zamykací obrazovce</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
     <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
     <!--Desktop-->

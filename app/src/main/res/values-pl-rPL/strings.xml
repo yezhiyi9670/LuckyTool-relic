@@ -59,7 +59,7 @@
     <string name="participate_translation">Przetłumacz aplikację</string>
     <string name="participate_translation_summary">Przejdź do Crowdin, aby przetłumaczyć moduł</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Najpierw włącz moduł w LSPosed.\nNaciśnij OK, aby zamknąć aplikację.</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu restartowania</string>
     <string name="menu_settings">Informacje o autorze</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
     <string name="remove_green_dot_privacy_prompt">Usuń zieloną kropkę prywatności</string>
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
+    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
     <string name="StatusBarSmallIconStatus">Dostosuj pozycję elementów</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->

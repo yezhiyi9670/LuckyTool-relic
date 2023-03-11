@@ -60,7 +60,7 @@
     <string name="participate_translation">Participate in module translations</string>
     <string name="participate_translation_summary">Go to Crowdin to contribute your translation</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Please use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Restart menu</string>
     <string name="menu_settings">Set menu</string>
@@ -183,6 +183,7 @@
     <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>
     <string name="remove_green_dot_privacy_prompt">Remove the green dot privacy prompt</string>
     <string name="remove_green_capsule_prompt">Remove the green capsule prompt</string>
+    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
     
     <string name="StatusBarSmallIconStatus">StatusBar Small Icon Status</string>
     <string name="status_bar_icon_vertical_center">Statusbar icon vertical center</string>

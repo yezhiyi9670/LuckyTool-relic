@@ -59,7 +59,7 @@
     <string name="participate_translation">Взяти участь у перекладі модуля</string>
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Переконайтеся, що Xposed API = 93 і модуль має відповідну сферу дії. Якщо вищезазначене було виконано, спробуйте натиснути OK, щоб вийти з додатку, а потім спробуйте ще раз</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезавантаження</string>
     <string name="menu_settings">Налаштування</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">Видалити іконку захисту платежу у рядку стану</string>
     <string name="remove_green_dot_privacy_prompt">Видалити запит на конфіденційність</string>
     <string name="remove_green_capsule_prompt">Видалити запит капсули</string>
+    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
     <string name="StatusBarSmallIconStatus">Статус маленької іконки у рядку стану</string>
     <string name="status_bar_icon_vertical_center">Іконки рядку стану по вертикалі в центрі</string>
     <!--StatusBarControlCenter-->

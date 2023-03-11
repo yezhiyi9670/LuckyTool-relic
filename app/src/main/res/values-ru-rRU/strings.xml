@@ -11,7 +11,7 @@
     <string name="fragment_source">Исходный код</string>
     <!-- Settings -->
     <string name="theme_title">Тема</string>
-    <string name="theme_title_summary">Страница будет обновлена автоматически</string>
+    <string name="theme_title_summary">Страница будет автоматически обновлена</string>
     <string name="use_dynamic_color">Динамический цвет</string>
     <string name="use_dynamic_color_summary">Использовать динамические цвета</string>
     <string name="dark_theme">Темная тема</string>
@@ -59,8 +59,7 @@
     <string name="participate_translation">Участвовать в переводе модуля</string>
     <string name="participate_translation_summary">Перейдите на сайт Crowdin, чтобы добавить свой перевод</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Убедитесь, что Xposed API = 93 и модуль имеет соответствующую область действия. 
-Если вышеописанное было выполнено, попробуйте нажать OK, чтобы выйти из приложения, а затем повторите попытку</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезагрузки</string>
     <string name="menu_settings">Настройки</string>
@@ -179,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>
     <string name="remove_green_dot_privacy_prompt">Удалить запрос на конфиденциальность</string>
     <string name="remove_green_capsule_prompt">Удалить запрос капсулы</string>
+    <string name="remove_green_capsule_prompt_summary">Удалить иконку точки доступа Wi-Fi</string>
     <string name="StatusBarSmallIconStatus">Статус маленькой иконки в строке состояния</string>
     <string name="status_bar_icon_vertical_center">Иконка строки состояния по вертикали в центре</string>
     <!--StatusBarControlCenter-->
@@ -215,18 +215,18 @@
     <string name="statusbar_power_font_size">Размер шрифта в строке состояния</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="LockScreenComponent">Компоненты экрана блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
-    <string name="set_lock_screen_centered">Компонент экрана блокировки расположен по центру</string>
+    <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="lock_screen_use_user_typeface">Компоненты на экране блокировки используют пользовательские шрифты</string>
-    <string name="LockScreenButton">Lock Screen Button</string>
+    <string name="LockScreenButton">Кнопки экрана блокировки</string>
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки будет удалена</string>
-    <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="LockScreenEvent">Событие экрана блокировки</string>
     <string name="remove_72hour_password_verification">Удаление 72-часовой аутентификации по паролю</string>
     <string name="remove_72hour_password_verification_summary">Удалить ограничение безопасности, запрещающее использовать отпечаток пальца или разблокировку по лицу, после 72 часов работы смартфона. Вступит в силу после перезагрузки системы</string>
     <!--Desktop-->

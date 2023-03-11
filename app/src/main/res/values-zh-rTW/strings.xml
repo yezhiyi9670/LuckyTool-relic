@@ -59,7 +59,7 @@
     <string name="participate_translation">参与模块翻译</string>
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
+    <string name="unsupported_xposed">检测到模块未激活\n请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
     <!-- Menu -->
     <string name="menu_reboot">重启菜单</string>
     <string name="menu_settings">设置菜单</string>
@@ -178,6 +178,7 @@
     <string name="remove_statusbar_securepayment_icon">移除状态栏支付保护图标</string>
     <string name="remove_green_dot_privacy_prompt">移除绿点隐私提示</string>
     <string name="remove_green_capsule_prompt">移除绿色胶囊提示</string>
+    <string name="remove_green_capsule_prompt_summary">移除绿色的Wi-Fi热点图标</string>
     <string name="StatusBarSmallIconStatus">状态栏小图标状态</string>
     <string name="status_bar_icon_vertical_center">状态栏图标垂直居中</string>
     <!--StatusBarControlCenter-->

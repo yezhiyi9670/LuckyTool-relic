@@ -124,20 +124,6 @@ object StatusBarLayout : YukiBaseHooker() {
                     val battery: ViewGroup? =
                         batteryId?.let { phoneStatusBarView.findViewById(it) }
 
-                    if (layoutMode == "0" && isCompatibleMode) {
-                        setCustomMargin()
-                        updateDefaultLayout(context, statusBarLeftSide, systemIconArea)
-                    }
-                    if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
-
-                    (clock?.parent as ViewGroup).removeView(clock)
-                    (statusBarLeftSide?.parent as ViewGroup).removeView(statusBarLeftSide)
-                    (systemIconArea?.parent as ViewGroup).removeAllViews()
-
-                    statusBarLeftSide.layoutParams = ViewGroup.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
-                    )
-
                     mLeftLayout = LinearLayout(context).apply {
                         layoutParams = LinearLayout.LayoutParams(
                             0, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f
@@ -159,6 +145,20 @@ object StatusBarLayout : YukiBaseHooker() {
                         )
                         gravity = Gravity.END or Gravity.CENTER_VERTICAL
                     }
+
+                    if (layoutMode == "0" && isCompatibleMode) {
+                        setCustomMargin()
+                        updateDefaultLayout(context, statusBarLeftSide, systemIconArea)
+                    }
+                    if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
+
+                    (clock?.parent as ViewGroup).removeView(clock)
+                    (statusBarLeftSide?.parent as ViewGroup).removeView(statusBarLeftSide)
+                    (systemIconArea?.parent as ViewGroup).removeAllViews()
+
+                    statusBarLeftSide.layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+                    )
 
                     mLeftLayout?.addView(statusBarLeftSide)
                     mCenterLayout?.addView(clock)
