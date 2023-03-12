@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: Function Introduction
+title: Application Related
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 5
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,4 +25,18 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+## APP Mask
+
+Scope: System framework
+
+## App list related
+
+Scope: system framework, settings
+
+## App installation related
+
+Scope: App Package Installer
+
+## Autostart and background task locking
+
+Scope: Battery, Security Center

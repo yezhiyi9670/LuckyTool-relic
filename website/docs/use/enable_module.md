@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: 快速入门
+title: 启用模块
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 2
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -24,42 +24,6 @@ star: false
 # 你可以自定义版权信息
 # copyright: 无版权
 ---
-
-## 下载方式
-
-未经开发者授权，禁止私自搬运转载，提倡授之以渔，不是授之以鱼
-
-当前最新 Release 版本`v4.3.4`
-
-[GITHUB 下载](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
-
-国内用户优先使用以下链接
-
-<!-- https://gh.ddlc.top/ -->
-
-[ddlc CDN](https://gh.ddlc.top/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
-
-<!-- https://proxy.zyun.vip/ -->
-
-[zyun CDN](https://proxy.zyun.vip/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
-
-<!-- https://ghproxy.com/ -->
-
-[ghproxy CDN](https://ghproxy.com/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
-
-不要轻信其他平台以及用户的分享，出现问题不予处理，看到请点举报
-
-### 已授权
-
-[午夜神 软件模块分享频道](https://t.me/OJBK2333)
-
-`需注明作者以及频道`
-
-### 无授权
-
-`APKSSR`
-
-## 启用模块
 
 LuckyTool 模块，以下简称 LT
 

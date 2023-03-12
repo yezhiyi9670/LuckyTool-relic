@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: Function Introduction
+title: Core Patch
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 2
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,4 +25,16 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+## SCOPE
+
+SystemFramework
+
+## Note
+
+This function only handles the system
+
+If using the official ColorOS application package installer
+
+Some functions need to be turned on separately (application related -> application installation related)
+
+Because the official ColorOS application package installer will perform additional detection and restrictions

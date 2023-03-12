@@ -9,21 +9,21 @@ export const zhNavbar = navbar([
     activeMatch: "^/info",
   },
   {
-    text: "入门",
+    text: "下载",
     icon: "creative",
-    link: "/use",
+    link: "/use/download_link",
     activeMatch: "^/use",
   },
   {
     text: "功能",
     icon: "creative",
     link: "/guide/",
-    activeMatch: "^/function",
+    activeMatch: "^/guide",
   },
   {
     text: "反馈",
     icon: "creative",
-    link: "/feedback",
+    link: "/feedback/check_problem",
     activeMatch: "^/feedback",
   },
   {

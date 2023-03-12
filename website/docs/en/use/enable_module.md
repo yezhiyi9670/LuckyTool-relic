@@ -2,7 +2,7 @@
 
 # 这是文章的标题
 
-title: Quick Start
+title: ENABLE MODULE
 
 # 这是页面的图标
 
@@ -10,7 +10,7 @@ icon: page
 
 # 这是侧边栏的顺序
 
-order: 1
+order: 2
 
 # 设置作者
 
@@ -48,20 +48,6 @@ star: false
 
 # copyright: 无版权
 ---
-
-## DOWNLOAD METHOD
-
-Without the authorization of the developer, it is forbidden to repost without authorization, and it
-is recommended to teach them how to fish, not to teach them how to fish
-
-current latest release version`v4.3.4`
-
-[GITHUB Download](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
-
-Don't trust the sharing of other platforms and users. If there is a problem, it will not be dealt
-with. If you see it, please click Report
-
-## ENABLE MODULE
 
 LuckyTool Module，hereinafter referred to as LT
 

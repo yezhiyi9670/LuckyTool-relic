@@ -6,12 +6,12 @@ heroImage: /logo.png
 heroText: LuckyTool
 tagline: 对ColorOS系统进行的扩展优化的Xposed模块
 actions:
-  - text: 使用指南
-    link: /use
+  - text: 下载方式
+    link: /use/download_link
     type: primary
 
-  - text: 反馈流程
-    link: /feedback
+  - text: 问题反馈
+    link: /feedback/check_problem
   
   - text: 捐赠方式
     link: /donate

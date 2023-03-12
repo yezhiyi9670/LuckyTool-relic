@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: Function Introduction
+title: 应用相关
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 5
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,4 +25,18 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+## 应用遮罩
+
+作用域：系统框架
+
+## 应用列表相关
+
+作用域：系统框架，设置
+
+## 应用安装相关
+
+作用域：应用包安装程序
+
+## 自启动与后台任务锁定
+
+作用域：电池，安全中心

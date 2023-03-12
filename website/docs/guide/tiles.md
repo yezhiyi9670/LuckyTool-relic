@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: Function Introduction
+title: 磁贴相关
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 9
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,4 +25,23 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+### 跳转类
+
+- 充电测试
+- 进程管理
+- 游戏助手
+
+### 功能类
+
+- 显示刷新率
+- 全局 DC
+- 高亮度模式
+- 触控采样率
+- 极暗模式
+- 5G 开关
+
+## 自启
+
+**需添加系统界面作用域**  
+除显示刷新率以外，全局 DC 等功能支持锁屏解锁自启  
+需要打开磁贴后重启作用域，同理，关闭自启也是如此

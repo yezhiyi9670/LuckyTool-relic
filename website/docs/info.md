@@ -39,7 +39,8 @@ OnePlus 9RT A13 C13
 
 ## Xposed API
 
-[YukiHookAPI](https://github.com/fankes/YukiHookAPI)
+[Xposed](https://github.com/rovo89/Xposed) [rovo89](https://github.com/rovo89)  
+[YukiHookAPI](https://github.com/fankes/YukiHookAPI) [fankes](https://github.com/fankes)
 
 ## License
 

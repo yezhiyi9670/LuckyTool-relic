@@ -9,21 +9,21 @@ export const enNavbar = navbar([
       activeMatch: "^/en/info",
     },
     {
-      text: "Use",
+      text: "Download",
       icon: "creative",
-      link: "/en/use",
+      link: "/en/use/download_link",
       activeMatch: "^/en/use",
     },
     {
       text: "Function",
       icon: "creative",
       link: "/en/guide/",
-      activeMatch: "^/en/function",
+      activeMatch: "^/en/guide",
     },
     {
       text: "Feedback",
       icon: "creative",
-      link: "/en/feedback",
+      link: "/en/feedback/check_problem",
       activeMatch: "^/en/feedback",
     },
     {

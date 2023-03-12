@@ -42,7 +42,8 @@ export default hopeTheme({
       // footer:
       // '使用 <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> 主题 | MIT 协议, 版权所有 © 2019-present Mr.Hope',
 
-      footer: "Copyright © 2023 <a href=\"https://github.com/luckyzyx\" target=\"_blank\">忆清鸣、luckyzyx</a>",
+      footer:
+        'Copyright © 2023 <a href="https://github.com/luckyzyx" target="_blank">忆清鸣、luckyzyx</a>',
 
       copyright: false,
 
@@ -63,7 +64,8 @@ export default hopeTheme({
       // footer:
       // 'Use <a href="https://theme-hope.vuejs.press/" target="_blank">VuePress Theme Hope</a> Theme | MIT Protocol, Copyright © 2019-present Mr.Hope',
 
-      footer: "Copyright © 2023 <a href=\"https://github.com/luckyzyx\" target=\"_blank\">忆清鸣、luckyzyx</a>",
+      footer:
+        'Copyright © 2023 <a href="https://github.com/luckyzyx" target="_blank">忆清鸣、luckyzyx</a>',
 
       copyright: false,
 

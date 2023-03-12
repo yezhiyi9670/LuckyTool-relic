@@ -14,7 +14,7 @@ export const enSidebar = sidebar({
       icon: "creative",
       text: "How To Use",
       prefix: "use/",
-      link: "use/",
+      collapsible: true,
       children: "structure",
     },
     {
@@ -29,7 +29,7 @@ export const enSidebar = sidebar({
       icon: "creative",
       text: "Feedback Process",
       prefix: "feedback/",
-      link: "feedback/",
+      collapsible: true,
       children: "structure",
     },
     {

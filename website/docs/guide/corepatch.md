@@ -1,10 +1,10 @@
 ---
 # 这是文章的标题
-title: Function Introduction
+title: 核心破解
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 2
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,4 +25,16 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+## 作用域
+
+系统框架
+
+## 注意
+
+该功能仅对系统进行处理
+
+若使用 ColorOS 官方应用包安装程序
+
+需要另行开启一些功能 (应用相关->应用安装相关)
+
+因为 ColorOS 官方应用包安装程序会进行额外的检测与限制
