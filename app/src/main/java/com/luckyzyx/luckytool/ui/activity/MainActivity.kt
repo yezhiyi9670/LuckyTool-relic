@@ -196,16 +196,6 @@ open class MainActivity : AppCompatActivity() {
             commands.add("am force-stop $scope")
             context.getAppVersion(scope)
         }
-        safeOfNull {
-            if (getBoolean(ModulePrefs, "statusbar_clock_enable", false) && getBoolean(
-                    ModulePrefs, "statusbar_clock_show_second", false
-                )
-            ) {
-                commands.add("settings put secure clock_seconds 1")
-            } else {
-                commands.add("settings put secure clock_seconds 0")
-            }
-        }
         MaterialAlertDialogBuilder(context).apply {
             setMessage(getString(R.string.restart_scope_message))
             setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->

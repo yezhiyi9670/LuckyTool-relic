@@ -10,7 +10,7 @@ object StatusBarPower : YukiBaseHooker() {
     override fun onHook() {
         val removePercent = prefs(ModulePrefs).getBoolean("remove_statusbar_battery_percent", false)
         val userTypeface = prefs(ModulePrefs).getBoolean("statusbar_power_user_typeface", false)
-        val customFontSize = prefs(ModulePrefs).getInt("statusbar_power_font_size", 2)
+        val customFontSize = prefs(ModulePrefs).getInt("statusbar_power_font_size", 0)
 
         //Source StatBatteryMeterView
         findClass("com.oplusos.systemui.statusbar.widget.StatBatteryMeterView").hook {

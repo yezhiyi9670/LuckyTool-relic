@@ -1130,8 +1130,8 @@ class StatusBarPower : ModulePreferenceFragment() {
                         title = getString(R.string.statusbar_power_font_size)
                         summary = getString(R.string.statusbar_clock_fontsize_summary)
                         key = "statusbar_power_font_size"
-                        setDefaultValue(7)
-                        max = 8
+                        setDefaultValue(0)
+                        max = 10
                         min = 0
                         seekBarIncrement = 1
                         showSeekBarValue = true
