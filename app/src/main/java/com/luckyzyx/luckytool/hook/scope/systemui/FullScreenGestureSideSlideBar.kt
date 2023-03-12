@@ -16,7 +16,7 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
         val removeView = prefs(ModulePrefs).getBoolean("remove_side_slider", false)
         val removeBackground =
             prefs(ModulePrefs).getBoolean("remove_side_slider_black_background", false)
-        val isReplaceWith = prefs(ModulePrefs).getBoolean("replace_side_slider_icon_switch", false)
+        val isReplace = prefs(ModulePrefs).getBoolean("replace_side_slider_icon_switch", false)
         VariousClass(
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
             "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView"
@@ -47,7 +47,7 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
                     param(BitmapClass)
                 }
                 beforeHook {
-                    if (!isReplaceWith) return@beforeHook
+                    if (!isReplace) return@beforeHook
                     val leftPath =
                         prefs(ModulePrefs).getString("replace_side_slider_icon_on_left", "null")
                     val rightPath =
