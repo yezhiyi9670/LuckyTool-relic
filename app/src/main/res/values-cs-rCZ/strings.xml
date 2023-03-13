@@ -59,7 +59,7 @@
     <string name="participate_translation">Účast na překladu modulu</string>
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte nejnovější verzi LS Posed ke kontrole rozsahu modulu.\n Pokud jste dokončili výše uvedené, můžete kliknout na tlačítko OK pro ukončení aplikace a otevření modulu</string>
     <!-- Menu -->
     <string name="menu_reboot">Nabídka restartu</string>
     <string name="menu_settings">Nastavit menu</string>
@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">Ikona WIFI</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
     <string name="StatusBarMobileDataIcon">Ikona mobilních dat</string>
-    <string name="hide_unused_card_icons">Skrýt nepoužité ikony karet</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
@@ -178,7 +179,7 @@
     <string name="remove_statusbar_securepayment_icon">Skrýt ikonu ochrany plateb</string>
     <string name="remove_green_dot_privacy_prompt">Odstranit zelenou tečku využívání mikrofonu nebo kamery</string>
     <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli využívání mikrofonu nebo kamery</string>
-    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
+    <string name="remove_green_capsule_prompt_summary">Odstranit zelenou ikonu Wi-Fi hotspotu</string>
     <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
     <string name="status_bar_icon_vertical_center">Vycentrujte položky stavové liště</string>
     <!--StatusBarControlCenter-->

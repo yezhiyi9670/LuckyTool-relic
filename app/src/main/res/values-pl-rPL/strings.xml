@@ -49,7 +49,7 @@
     <string name="feedback_download">Opinia i pobieranie</string>
     <string name="feedback_download_summary">Kanał i grupa na telegramie, repozytorium itp.</string>
     <string name="coolmarket">Opinie w CoolAPK</string>
-    <string name="qq_channel">QQ Channel</string>
+    <string name="qq_channel">Kanał QQ</string>
     <string name="telegram_channel">Kanał na Telegramie</string>
     <string name="telegram_group">Grupa na Telegramie</string>
     <string name="lsposed_repo">Repozytorium LSPosed</string>
@@ -59,7 +59,7 @@
     <string name="participate_translation">Przetłumacz aplikację</string>
     <string name="participate_translation_summary">Przejdź do Crowdin, aby przetłumaczyć moduł</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Moduł w LSPosed nie został włączony.\nNaciśnij OK, aby zamknąć aplikację.</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu restartowania</string>
     <string name="menu_settings">Informacje o autorze</string>
@@ -91,10 +91,10 @@
     <string name="usepresig_warn">Uwaga!\nWszystkie pakiety mogą zastąpić zainstalowaną aplikację, co może prowadzić do niebezpiecznych sytuacji.</string>
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
-    <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
-    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
+    <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
+    <string name="statusbar_carriers_use_user_typeface">Użyj czcionki użytkownika w nazwie operatora sieci</string>
     <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
+    <string name="StatusBarBatteryNotify">Powiadomienie z informacjami o zasilaniu</string>
     <string name="battery_information_show">Pokaż informacje o baterii</string>
     <string name="battery_information_show_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
     <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
@@ -115,7 +115,7 @@
     <string name="battery_update_time">Czas aktualizacji</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
-    <string name="statusbar_clock_mode">Status bar clock mode</string>
+    <string name="statusbar_clock_mode">Dostosowanie zegara na pasku stanu</string>
     <string name="statusbar_clock_show_year">Pokaż rok (yy/…/…)</string>
     <string name="statusbar_clock_show_month">Pokaż miesiąc (…/MM/…)</string>
     <string name="statusbar_clock_show_day">Pokaż dzień (…/…/dd)</string>
@@ -124,15 +124,15 @@
     <string name="statusbar_clock_show_double_hour">Pokaż chińską dwucyfrową godzinę</string>
     <string name="statusbar_clock_show_second">Pokaż sekundy</string>
     <string name="statusbar_clock_hide_spaces">Ukryj przerwy</string>
-    <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
-    <string name="statusbar_clock_left_align">Left Align</string>
-    <string name="statusbar_clock_center_align">Center Align</string>
-    <string name="statusbar_clock_right_align">Right Align</string>
+    <string name="statusbar_clock_text_alignment">Wyrównanie tekstu</string>
+    <string name="statusbar_clock_left_align">Wyrównaj do lewej</string>
+    <string name="statusbar_clock_center_align">Na środku</string>
+    <string name="statusbar_clock_right_align">Wyrównaj do prawej</string>
     <string name="statusbar_clock_show_doublerow">Wyświetl w dwóch wierszach</string>
     <string name="statusbar_clock_singlerow_fontsize">Rozmiar czcionki (jeden wiersz)</string>
     <string name="statusbar_clock_doublerow_fontsize">Rozmiar czcionki (dwa wiersze)</string>
-    <string name="statusbar_clock_custom_format">Clock format</string>
-    <string name="statusbar_clock_custom_fontsize">Clock font size</string>
+    <string name="statusbar_clock_custom_format">Format czasu</string>
+    <string name="statusbar_clock_custom_fontsize">Wielkość czcionki</string>
     <string name="statusbar_clock_fontsize_summary">Rozmiar 0 = domyślny</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">Prędkościomierz sieci</string>
@@ -140,9 +140,9 @@
     <string name="enable_double_row_network_speed">Dwuwierszowa prędkość sieci</string>
     <string name="set_network_speed_font_size">Rozmiar czcionki</string>
     <string name="set_network_speed_padding_bottom">Przesunięcie ikony (dół/góra)</string>
-    <string name="statusbar_network_layout">Statusbar network speed layout</string>
-    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
-    <string name="statusbar_network_no_space">Remove network speed space</string>
+    <string name="statusbar_network_layout">Układ prędkości sieci</string>
+    <string name="statusbar_network_no_second">Usuń wyświetlanie \"na sekundę\" (../s)</string>
+    <string name="statusbar_network_no_space">Usuń przestrzeń dla prędkości sieci</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
@@ -162,23 +162,24 @@
     <string name="remove_hotspot_power_consumption_notification">Ukryj \"Włączono udostępnianie Wi-Fi\"</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
     <string name="remove_smart_rapid_charging_notification">Usuń powiadomienie \"Inteligentne szybkie ładowanie\"</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Ukryj ikony na pasku stanu</string>
-    <string name="StatusBarWIFIIcon">WIFI Icon</string>
+    <string name="StatusBarWIFIIcon">Ikona Wi-Fi</string>
     <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
-    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="StatusBarMobileDataIcon">Ikona danych mobilnych</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Ukryj ikonę mobilnej sieci</string>
     <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
-    <string name="remove_mobile_data_type">Remove Mobile data type</string>
-    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="remove_mobile_data_type">Usuń typ danych mobilnych</string>
+    <string name="StatusBarOtherIcon">Inne ikony</string>
     <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
     <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
     <string name="remove_green_dot_privacy_prompt">Usuń zieloną kropkę prywatności</string>
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
-    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
+    <string name="remove_green_capsule_prompt_summary">Usuń zieloną kapsułkę hotspotu Wi-Fi</string>
     <string name="StatusBarSmallIconStatus">Dostosuj pozycję elementów</string>
     <string name="status_bar_icon_vertical_center">Wyśrodkuj elementy paska stanu</string>
     <!--StatusBarControlCenter-->
@@ -191,7 +192,7 @@
     <string name="remove_control_center_date_comma">Usuń przecinek daty</string>
     <string name="ControlCenter_UI_Related">Dostosuj szybkie ustawienia</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
-    <string name="remove_control_center_mydevice">Usuń moje urządzenie</string>
+    <string name="remove_control_center_mydevice">Usuń przycisk \"Moje urządzenia\"</string>
     <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
     <string name="ControlCenter_Tile_Related">Przełączniki</string>
     <string name="control_center_tile_enable">Główny przełącznik</string>
@@ -202,31 +203,31 @@
     <string name="tile_expanded_rows_vertical">Rozszerzone - Wiersze (w pionie)</string>
     <string name="tile_columns_horizontal_c13">Kolumny (w poziomie)</string>
     <!--StatusBarLayout-->
-    <string name="StatusBarLayout">Status Bar Layout</string>
-    <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
-    <string name="statusbar_layout_clock_center_align">Clock Center Align</string>
-    <string name="statusbar_layout_compatible_mode">Screen compatible mode</string>
-    <string name="statusbar_layout_left_margin">Status bar left margin</string>
-    <string name="statusbar_layout_right_margin">Status bar right margin</string>
-    <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
+    <string name="StatusBarLayout">Układ paska stanu</string>
+    <string name="statusbar_layout_mode">Typ układu</string>
+    <string name="statusbar_layout_clock_center_align">Wyśrodkowany zegar</string>
+    <string name="statusbar_layout_compatible_mode">Tryb kompatybilny z ekranem</string>
+    <string name="statusbar_layout_left_margin">Lewy margines</string>
+    <string name="statusbar_layout_right_margin">Prawy margines</string>
+    <string name="statusbar_layout_margin_tip">Rozmiar 0 = domyślny</string>
     <!--StatusBarPower-->
-    <string name="StatusBarPower">Status Bar Power</string>
+    <string name="StatusBarPower">Dostosuj wskaźnik baterii</string>
     <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
-    <string name="statusbar_power_font_size">Statusbar power font size</string>
+    <string name="statusbar_power_font_size">Rozmiar czcionki</string>
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="LockScreenComponent">Komponenty ekranu blokady</string>
     <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
     <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
-    <string name="LockScreenButton">Lock Screen Button</string>
+    <string name="lock_screen_use_user_typeface">Używaj czcionek użytkownika</string>
+    <string name="LockScreenButton">Przyciski ekranu blokady</string>
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
     <string name="remove_lock_screen_bottom_sos_button">Ukryj przycisk \"Alarmowe SOS\"</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
-    <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="LockScreenEvent">Wydarzenia</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--Desktop-->
@@ -243,8 +244,8 @@
     <string name="launcher_layout_enable">Główny przełącznik</string>
     <string name="launcher_layout_max_rows">Ilość wierszy</string>
     <string name="launcher_layout_max_columns">Ilość kolumn</string>
-    <string name="RecentTaskListRelated">Recent task list related</string>
-    <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
+    <string name="RecentTaskListRelated">Lista ostatnich aplikacji</string>
+    <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk \"Zamknij wszystkie\"\nz listy ostatnich aplikacji</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
@@ -259,12 +260,12 @@
     <!--APPRelatedList-->
     <string name="APPRelatedList">Lista aplikacji</string>
     <string name="enable_zoom_window">Włącz obsługę listy</string>
-    <string name="zoom_window_support_list">Custom Zoom Window Support List</string>
-    <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
-    <string name="multi_app_enable">Enable replacement list</string>
+    <string name="zoom_window_support_list">Własna lista obsługi okna powiększenia</string>
+    <string name="zoom_window_support_list_summary">Włącz w zależności od Twoich potrzeb, w przeciwnym razie pojawią się nieodwracalne problemy.</string>
+    <string name="multi_app_enable">Włącz listę zastępowania</string>
     <string name="multi_app_custom_list">Zastąp listę obsługi klonowania aplikacji</string>
     <string name="multi_app_custom_list_summary">Oryginalna lista klonowania aplikacji zostanie zastąpiona</string>
-    <string name="dark_mode_support_list">Custom dark mode support list</string>
+    <string name="dark_mode_support_list">Własna lista obsługi trybu ciemnego</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">Instalowanie aplikacji</string>
     <string name="PackageInstaller_summary">Wymagane stosowanie z główną łatką</string>
@@ -278,8 +279,8 @@
     <string name="remove_install_ads_summary">Usuwa reklamy pojawiające się po zainstalowaniu aplikacji</string>
     <string name="replase_aosp_installer">Zastąp menedżer pakietów</string>
     <string name="replase_aosp_installer_summary">Podmienia instalator aplikacji na ten z AOSP</string>
-    <string name="show_packagename_and_versioncode">Show package name and version code</string>
-    <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
+    <string name="show_packagename_and_versioncode">Pokaż nazwę pakietu i kod wersji</string>
+    <string name="show_packagename_and_versioncode_summary">Wyświetlaj nazwę pakietu i kod wersji na górze strony instalacji</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Dostosuj pływające i dialogowe okno</string>
     <string name="disable_duplicate_floating_window">Wyłącz zduplikowane okno</string>
@@ -303,8 +304,8 @@
     <string name="replace_side_slider_icon_on_left">Zastąp ikonę bocznego suwaka po lewej stronie</string>
     <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
     <!--FingerPrintRelated-->
-    <string name="FingerPrintRelated">FingerPrint Related</string>
-    <string name="remove_fingerprint_icon">Remove fingerprint icon</string>
+    <string name="FingerPrintRelated">Ustawienia odcisku palca</string>
+    <string name="remove_fingerprint_icon">Usuń ikonę</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>
@@ -324,7 +325,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Settings-->
-    <string name="remove_top_account_display">Remove top account display</string>
+    <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -339,11 +340,11 @@
     <string name="enable_genshin_impact_theme_summary">Nie ma potrzeby ustawiania w Asystencie Gier</string>
     <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
     <string name="enable_support_competition_mode">Włącz obsługę trybu współpracy</string>
-    <string name="enable_increase_fps_limit_feature">Enable increase fps limit</string>
-    <string name="enable_increase_fps_feature">Enable increase fps</string>
-    <string name="enable_optimise_power_feature">Enable optimized power</string>
-    <string name="enable_gt_mode_feature">Enable GT Mode</string>
-    <string name="enable_super_resolution_feature">Enable super resolution</string>
+    <string name="enable_increase_fps_limit_feature">Włącz zwiększenie limitu fps</string>
+    <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>
+    <string name="enable_optimise_power_feature">Włącz zoptymalizowane zasilanie</string>
+    <string name="enable_gt_mode_feature">Włącz tryb GT</string>
+    <string name="enable_super_resolution_feature">Włącz super rozdzielczość</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>
@@ -357,12 +358,12 @@
     <string name="remove_screenshot_privacy_limit">Usuń ograniczenie prywatności</string>
     <string name="remove_screenshot_privacy_limit_summary">Zezwól na wykonywanie zrzutów ekranu w aplikacjach, które na to nie pozwalają. Wyłącz FLAG_SECURE, jeśli to nie zadziała</string>
     <string name="disable_flag_secure">Wyłącz FLAG_SECURE</string>
-    <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
+    <string name="disable_flag_secure_summary">Rozwiązuje problemy z niemożliwością wykonywania zrzutów i nagrywania ekranu w aplikacjach.\nWymagany LSPosed 1.8.6+.</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Odblokuj lokalne uaktualnienie</string>
     <string name="unlock_local_upgrade_summary">Opcja \"Instalacja lokalna\" nie będzie wyszarzona, musisz wcześniej włączyć opcje programistyczne</string>
     <string name="remove_dm_verity">Usuń wykrywanie dm-verity</string>
-    <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
+    <string name="remove_dm_verity_summary">Bieżący status: %1$s\nWażne tylko dla tej aktualizacji systemu</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Pomiń stronę początkową</string>
     <string name="vip_download">Pobierz oryginał</string>
@@ -441,24 +442,24 @@
     <string name="log_save_failed">Zapis logów się nie powiódł!</string>
     <string name="log_data_is_empty">Logi są puste!</string>
     <string name="log_no_data">Brak problemów</string>
-    <string name="log_filter_title">Enter what to filter</string>
-    <string name="log_filter_layout_hint">Such as package name, content, etc</string>
+    <string name="log_filter_title">Wprowadź filtr</string>
+    <string name="log_filter_layout_hint">Taki jak nazwa pakietu, zawartość itp.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
     <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
     <string name="high_brightness_mode">Tryb wysokiej jasności</string>
-    <string name="global_dc">Global DC</string>
-    <string name="fiveg_mode">FiveG Switch</string>
-    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
-    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
+    <string name="global_dc">Globalny DC</string>
+    <string name="fiveg_mode">Przełącznik trybu 5G</string>
+    <string name="game_assistant_tile_tips">Nie wykryto asystenta gier!</string>
+    <string name="tile_close_autoself_tip">Po restarcie ograniczonego zakresu, ta funkcja nie będzie już uruchamiana automatycznie</string>
     <!--Permission-->
     <string name="all_files_access_permission">Aby zapewnić normalne korzystanie z modułu, upewnij się, że masz uprawnienia do modułu!</string>
     <!--Typeface-->
-    <string name="use_user_typeface">Use user typeface</string>
+    <string name="use_user_typeface">Użyj czcionki użytkownika</string>
     <!--CommonWords-->
-    <string name="common_words_default">Default</string>
-    <string name="common_words_preset">Preset</string>
-    <string name="common_words_single_line">Single line</string>
-    <string name="common_words_double_line">Double line</string>
+    <string name="common_words_default">Domyślne</string>
+    <string name="common_words_preset">Gotowe ustawienia</string>
+    <string name="common_words_single_line">Pojedyncza linia</string>
+    <string name="common_words_double_line">Podwójna linia</string>
     <string name="common_words_customize">Dostosuj</string>
 </resources>

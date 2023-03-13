@@ -751,13 +751,26 @@ class StatusBarIcon : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.hide_unused_card_icons)
-                    key = "hide_unused_card_icons"
+                    title = getString(R.string.hide_non_network_card_icon)
+                    key = "hide_non_network_card_icon"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         requireActivity().dataChannel("com.android.systemui")
-                            .put("hide_unused_card_icons", newValue)
+                            .put("hide_non_network_card_icon", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.hide_nosim_noservice)
+                    key = "hide_nosim_noservice"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel("com.android.systemui")
+                            .put("hide_nosim_noservice", newValue)
                         true
                     }
                 }

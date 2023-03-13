@@ -59,7 +59,7 @@
     <string name="participate_translation">モジュールの翻訳に参加する</string>
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">モジュールが有効化されていません。\n最新版の LSPosed でモジュールのスコープを確認してください。\n確認が完了したら OK をタップしてアプリを終了し、モジュールを開いてください</string>
     <!-- Menu -->
     <string name="menu_reboot">メニューを再起動</string>
     <string name="menu_settings">メニューを設定</string>
@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">Wi-Fi アイコン</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="StatusBarMobileDataIcon">モバイルデータアイコン</string>
-    <string name="hide_unused_card_icons">未使用カードのアイコンを隠す</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>

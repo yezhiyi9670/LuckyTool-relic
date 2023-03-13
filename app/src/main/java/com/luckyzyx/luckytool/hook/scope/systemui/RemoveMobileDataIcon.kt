@@ -14,8 +14,10 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
 //        val removeIcon = prefs(ModulePrefs).getBoolean("remove_mobile_data_icon", false)
         val removeInout = prefs(ModulePrefs).getBoolean("remove_mobile_data_inout", false)
         val removeType = prefs(ModulePrefs).getBoolean("remove_mobile_data_type", false)
-        var hideUnused = prefs(ModulePrefs).getBoolean("hide_unused_card_icons", false)
-        dataChannel.wait<Boolean>("hide_unused_card_icons") { hideUnused = it }
+        var hideNonNetwork = prefs(ModulePrefs).getBoolean("hide_non_network_card_icon", false)
+        dataChannel.wait<Boolean>("hide_non_network_card_icon") { hideNonNetwork = it }
+        var hideNoSS = prefs(ModulePrefs).getBoolean("hide_nosim_noservice", false)
+        dataChannel.wait<Boolean>("hide_nosim_noservice") { hideNoSS = it }
         //Source OplusStatusBarMobileViewExImpl
         VariousClass(
             //mobile_type
@@ -27,7 +29,7 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
                     name = "initViewState"
                 }
                 afterHook {
-                    if (hideUnused) {
+                    if (hideNonNetwork) {
                         val state = args().first().any()
                         val subId = state?.current()?.field { name = "subId" }?.int()
                         val subId2 = SubscriptionManager.getDefaultDataSubscriptionId()
@@ -51,7 +53,7 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
                     }
                 }
                 afterHook {
-                    if (hideUnused) {
+                    if (hideNonNetwork) {
                         val state = args().first().any()
                         val subId = state?.current()?.field { name = "subId" }?.int()
                         val subId2 = SubscriptionManager.getDefaultDataSubscriptionId()
@@ -64,6 +66,25 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
                         .cast<View>()?.isVisible = false
                     if (removeType) field { name = "mMobileType" }.get(instance)
                         .cast<View>()?.isVisible = false
+                }
+            }
+        }
+
+        //Source OplusStatusBarSignalPolicyExImpl
+        findClass("com.oplus.systemui.statusbar.phone.signal.OplusStatusBarSignalPolicyExImpl").hook {
+            injectMember {
+                method {
+                    name = "setNoSims"
+                    paramCount = 3
+                }
+                afterHook {
+                    if (!hideNoSS) return@afterHook
+                    val iconController =
+                        method { name = "getIconController" }.get(instance).invoke<Any>()
+                    val slotNoSim = field { name = "slotNoSim" }.get(instance).cast<String>()
+                    iconController?.current()?.method {
+                        name = "setIconVisibility"
+                    }?.call(slotNoSim, false)
                 }
             }
         }

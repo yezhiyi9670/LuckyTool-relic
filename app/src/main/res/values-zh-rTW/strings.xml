@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">WiFi 图标</string>
     <string name="remove_wifi_data_inout">移除WiFi数据箭头</string>
     <string name="StatusBarMobileDataIcon">移动数据图标</string>
-    <string name="hide_unused_card_icons">隐藏未使用卡片图标</string>
+    <string name="hide_non_network_card_icon">隐藏非上网卡图标</string>
+    <string name="hide_nosim_noservice">隐藏 SIM 卡无服务图标</string>
     <string name="remove_mobile_data_icon">移除移动数据图标</string>
     <string name="remove_mobile_data_inout">移除移动数据箭头</string>
     <string name="remove_mobile_data_type">移除移动数据类型</string>

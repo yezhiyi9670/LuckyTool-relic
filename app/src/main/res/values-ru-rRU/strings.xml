@@ -59,7 +59,7 @@
     <string name="participate_translation">Участвовать в переводе модуля</string>
     <string name="participate_translation_summary">Перейдите на сайт Crowdin, чтобы добавить свой перевод</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Модуль не активирован.\nПожалуйста, используйте последнюю версию LS Posed.\n Если вы выполнили все вышеперечисленное, вы можете нажать OK, чтобы выйти из приложения и открыть модуль.</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезагрузки</string>
     <string name="menu_settings">Настройки</string>
@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">Иконка Wi-Fi</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="StatusBarMobileDataIcon">Иконка мобильных данных</string>
-    <string name="hide_unused_card_icons">Скрыть неиспользуемые иконки SIM-карт</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>

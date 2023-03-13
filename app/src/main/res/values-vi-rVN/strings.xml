@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">WIFI Icon</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_unused_card_icons">Hide unused card icons</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_mobile_data_type">Xoá định dạng dữ liệu di động</string>

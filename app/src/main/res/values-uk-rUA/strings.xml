@@ -59,7 +59,7 @@
     <string name="participate_translation">Взяти участь у перекладі модуля</string>
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Модуль не активовано.\nБудь ласка, використовуйте останню версію LS Posed.\n Якщо ви виконали все вищезазначене, ви можете натиснути OK, щоб вийти з програми та відкрити модуль</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезавантаження</string>
     <string name="menu_settings">Налаштування</string>
@@ -169,7 +169,8 @@
     <string name="StatusBarWIFIIcon">Іконка WI-FI</string>
     <string name="remove_wifi_data_inout">Видалити вхідні Wi-Fi дані</string>
     <string name="StatusBarMobileDataIcon">Іконка мобільних даних</string>
-    <string name="hide_unused_card_icons">Приховати іконки SIM-карт, що не використовуються</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Видалити іконку мобільних даних</string>
     <string name="remove_mobile_data_inout">Видалити вхідні мобільні дані</string>
     <string name="remove_mobile_data_type">Видалити іконку мобільних даних</string>
@@ -178,7 +179,7 @@
     <string name="remove_statusbar_securepayment_icon">Видалити іконку захисту платежу у рядку стану</string>
     <string name="remove_green_dot_privacy_prompt">Видалити запит на конфіденційність</string>
     <string name="remove_green_capsule_prompt">Видалити запит капсули</string>
-    <string name="remove_green_capsule_prompt_summary">Remove the green Wi-Fi hotspot icon</string>
+    <string name="remove_green_capsule_prompt_summary">Видалити зелену іконку точки доступу Wi-Fi</string>
     <string name="StatusBarSmallIconStatus">Статус маленької іконки у рядку стану</string>
     <string name="status_bar_icon_vertical_center">Іконки рядку стану по вертикалі в центрі</string>
     <!--StatusBarControlCenter-->
@@ -215,18 +216,18 @@
     <string name="statusbar_power_font_size">Розмір шрифту у рядку стану</string>
     <!--LockScreen-->
     <string name="LockScreen">Екран блокування</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="LockScreenComponent">Компоненти екрана блокування</string>
     <string name="remove_lock_screen_redone">Видалити червоний годинник з екрану блокування</string>
     <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
     <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
     <string name="lock_screen_use_user_typeface">Компоненти на екрані блокування використовують шрифти користувача</string>
-    <string name="LockScreenButton">Lock Screen Button</string>
+    <string name="LockScreenButton">Кнопки екрану блокування</string>
     <string name="remove_top_lock_screen_icon">Видалити іконку замка на екрані блокування</string>
     <string name="remove_lock_screen_bottom_left_button">Видалити ліву нижню кнопку на екрані блокування</string>
     <string name="remove_lock_screen_bottom_right_camera">Видалити камеру з правого нижнього кута екрана блокування</string>
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка екстреного контакту SOS внизу сторінки розблокування буде видалена</string>
-    <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="LockScreenEvent">Події на екрані блокування</string>
     <string name="remove_72hour_password_verification">Видалення 72-годинної аутентифікації за паролем</string>
     <string name="remove_72hour_password_verification_summary">Видалити обмеження безпеки, що забороняє використовувати відбиток пальця або розблокування по обличчю після 72 годин роботи смартфона. Набуде чинності після перезавантаження системи</string>
     <!--Desktop-->
