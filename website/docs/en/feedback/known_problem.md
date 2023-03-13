@@ -31,6 +31,8 @@ If this page cannot solve your problem, you can go to the documentation introduc
 
 - Unable to save module data(The switch fails after restarting the module) --> Don't use CI beta frameworks
 
+- yukihookapi.intent.action.HOST_DATA_CHANNEL --> No feedback required, upstream API communication issues
+
 - many functions**collective failure** --> Clear the module background first, and then restart the
   scope
 

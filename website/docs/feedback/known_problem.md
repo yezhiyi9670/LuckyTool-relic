@@ -31,6 +31,8 @@ star: false
 
 - 无法保存模块数据(重启模块后开关**失效**) --> 不要使用 CI 测试版框架
 
+- yukihookapi.intent.action.HOST_DATA_CHANNEL --> 无需反馈，上游API通讯问题
+
 - 很多功能**集体失效** --> 先把模块后台清掉，然后再重启作用域
 
 - **Finding Error isSetUpMember** --> 不是异常，尝试重启作用域

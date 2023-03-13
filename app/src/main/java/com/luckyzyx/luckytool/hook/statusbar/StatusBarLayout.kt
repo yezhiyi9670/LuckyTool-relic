@@ -9,6 +9,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
@@ -19,6 +21,7 @@ object StatusBarLayout : YukiBaseHooker() {
     private var statusBarBottomMargin: Int = 0
 
     override fun onHook() {
+        if (SDK < A13) return
         var mLeftLayout: LinearLayout? = null
         var mRightLayout: LinearLayout? = null
         var mCenterLayout: LinearLayout?
