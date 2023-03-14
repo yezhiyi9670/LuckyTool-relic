@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
+    <string name="show_package_name_in_app_details">Show package name in app details</string>
+    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>
     <string name="enable_optimise_power_feature">Włącz zoptymalizowane zasilanie</string>
     <string name="enable_gt_mode_feature">Włącz tryb GT</string>
+    <string name="enable_x_mode_feature">Enable X Mode</string>
     <string name="enable_super_resolution_feature">Włącz super rozdzielczość</string>
+    <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>

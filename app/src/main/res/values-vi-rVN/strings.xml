@@ -49,7 +49,7 @@
     <string name="feedback_download">Phản hồi và tải</string>
     <string name="feedback_download_summary">Kênh TG, Nhóm, Repositories, v. v.</string>
     <string name="coolmarket">Trang CoolMarket</string>
-    <string name="qq_channel">QQ Channel</string>
+    <string name="qq_channel">Kênh QQ</string>
     <string name="telegram_channel">Kênh Telegram</string>
     <string name="telegram_group">Nhóm Telegram</string>
     <string name="lsposed_repo">LSPosed Repository</string>
@@ -59,7 +59,7 @@
     <string name="participate_translation">Tham gia dịch module</string>
     <string name="participate_translation_summary">Truy cập Crowdin để đóng góp bản dịch của bạn</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_xposed">Phát hiện mô-đun chưa được kích hoạt\nVui lòng sử dụng phiên bản mới nhất của LSPosed để kiểm tra phạm vi của mô-đun!\nNếu quá trình trên đã được hoàn tất, hãy nhấp vào OK để thoát khỏi APP, sau đó mở mô-đun</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu khởi động lại</string>
     <string name="menu_settings">Menu cài đặt</string>
@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
+    <string name="show_package_name_in_app_details">Show package name in app details</string>
+    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">Bật tăng fps</string>
     <string name="enable_optimise_power_feature">Bật tối ưu hóa sức mạnh</string>
     <string name="enable_gt_mode_feature">Bật chế độ GT</string>
+    <string name="enable_x_mode_feature">Enable X Mode</string>
     <string name="enable_super_resolution_feature">Bật siêu phân giải</string>
+    <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
     <!--CloudService-->
     <string name="remove_network_limit">Xóa giới hạn mạng dữ liệu</string>
     <string name="remove_network_limit_summary">Xóa giới hạn sao lưu/khôi phục không thể sử dụng dữ liệu di động</string>

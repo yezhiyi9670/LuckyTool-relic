@@ -169,8 +169,8 @@
     <string name="StatusBarWIFIIcon">Wi-Fi アイコン</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="StatusBarMobileDataIcon">モバイルデータアイコン</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
+    <string name="hide_non_network_card_icon">ネットワークカード以外のアイコンを隠す</string>
+    <string name="hide_nosim_noservice">サービスなしの SIM カードアイコンを隠す</string>
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
+    <string name="show_package_name_in_app_details">Show package name in app details</string>
+    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">FPSの上限を上げる</string>
     <string name="enable_optimise_power_feature">最適化された電力を有効化</string>
     <string name="enable_gt_mode_feature">GTモードの有効化</string>
+    <string name="enable_x_mode_feature">X モードを有効にする</string>
     <string name="enable_super_resolution_feature">超解像機能を有効化</string>
+    <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>

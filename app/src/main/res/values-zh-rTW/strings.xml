@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">允許不受信任的觸控</string>
     <!--Settings-->
     <string name="remove_top_account_display">移除顶部账户显示</string>
+    <string name="show_package_name_in_app_details">应用详情显示包名</string>
+    <string name="show_package_name_in_app_details_summary">在应用详情中显示包名与长按复制</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">启用提升帧数</string>
     <string name="enable_optimise_power_feature">启用优化功耗</string>
     <string name="enable_gt_mode_feature">启用 GT 模式</string>
+    <string name="enable_x_mode_feature">启用 X 模式</string>
     <string name="enable_super_resolution_feature">启用超级分辨率</string>
+    <string name="enable_one_plus_characteristic">启用 One Plus 特征</string>
     <!--CloudService-->
     <string name="remove_network_limit">移除数据网络限制</string>
     <string name="remove_network_limit_summary">移除备份/恢复无法使用移动数据的限制</string>

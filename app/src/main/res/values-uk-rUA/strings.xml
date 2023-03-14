@@ -169,8 +169,8 @@
     <string name="StatusBarWIFIIcon">Іконка WI-FI</string>
     <string name="remove_wifi_data_inout">Видалити вхідні Wi-Fi дані</string>
     <string name="StatusBarMobileDataIcon">Іконка мобільних даних</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
+    <string name="hide_non_network_card_icon">Приховати іконки сім-карт без мережі</string>
+    <string name="hide_nosim_noservice">Приховати іконки SIM-карток без служби</string>
     <string name="remove_mobile_data_icon">Видалити іконку мобільних даних</string>
     <string name="remove_mobile_data_inout">Видалити вхідні мобільні дані</string>
     <string name="remove_mobile_data_type">Видалити іконку мобільних даних</string>
@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">Дозволити небажані торкання</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
+    <string name="show_package_name_in_app_details">Show package name in app details</string>
+    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
     <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">Увімкнути збільшення FPS</string>
     <string name="enable_optimise_power_feature">Включити оптимізацію живлення</string>
     <string name="enable_gt_mode_feature">Увімкнути ігровий режим</string>
+    <string name="enable_x_mode_feature">Увімкнути режим X</string>
     <string name="enable_super_resolution_feature">Увімкнути супер роздільну здатність</string>
+    <string name="enable_one_plus_characteristic">Увімкнути функції підпису OnePlus</string>
     <!--CloudService-->
     <string name="remove_network_limit">Видалити обмеження мережі передачі даних</string>
     <string name="remove_network_limit_summary">Видалити обмеження, згідно з яким резервне копіювання/відновлення не може використовувати мобільні дані</string>

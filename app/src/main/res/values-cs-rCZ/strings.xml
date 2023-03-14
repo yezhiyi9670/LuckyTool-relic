@@ -169,8 +169,8 @@
     <string name="StatusBarWIFIIcon">Ikona WIFI</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
     <string name="StatusBarMobileDataIcon">Ikona mobilních dat</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
+    <string name="hide_non_network_card_icon">Skrýt ikony SIM karet bez sítě</string>
+    <string name="hide_nosim_noservice">Skrýt ikonu SIM karty bez služby</string>
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
@@ -311,7 +311,7 @@
     <string name="Miscellaneous_summary">Zde jsou umístěna různá další specifická nastavení</string>
     <string name="disable_otg_auto_off">Zakázat automatické vypnutí OTG</string>
     <string name="disable_otg_auto_off_summary">Zakázat automatické vypnutí OTG po deseti minutách</string>
-    <string name="disable_dpi_reboot_recovery">Zakázat restartování DPI</string>
+    <string name="disable_dpi_reboot_recovery">Zakázat restartování DPI po restartu zařízení</string>
     <string name="disable_dpi_reboot_recovery_summary">Tento modul není zodpovědný za žádné chyby kvůli nastavení příliš vysoké hodnoty DPI\nPro obnovení výchozího DPI musíte povolit tuto funkci a resetovat výchozí hodnotu DPI po restartování scopu (rozsahu)</string>
     <string name="remove_storage_limit">Odstranit limit úložiště</string>
     <string name="remove_storage_limit_summary">Odstranit omezení, že tuto složku nelze použít</string>
@@ -326,6 +326,8 @@
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
+    <string name="show_package_name_in_app_details">Show package name in app details</string>
+    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
     <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
@@ -344,7 +346,9 @@
     <string name="enable_increase_fps_feature">Povolit zvýšení fps</string>
     <string name="enable_optimise_power_feature">Povolit optimalizovanou spotřebu</string>
     <string name="enable_gt_mode_feature">Povolit GT režim</string>
+    <string name="enable_x_mode_feature">Povolit režim X</string>
     <string name="enable_super_resolution_feature">Povolit super rozlišení</string>
+    <string name="enable_one_plus_characteristic">Povolit charakteristické prvky OnePlus</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>

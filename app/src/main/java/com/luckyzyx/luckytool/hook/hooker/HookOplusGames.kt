@@ -26,42 +26,10 @@ object HookOplusGames : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_support_competition_mode", false)) {
             loadHooker(EnableSupportCompetitionMode)
         }
-
-//        <string name="game_box_slide_panel_x_mode_title">X 模式</string>
-//        <string name="game_performance_mode_x_summary">连接欧加散热背夹后会自动开启 X 模式，X 模式将为手机提供更优异的散热能力，持续稳定系统温度，提升游戏表现。开启X模式可能带来功耗上升与电量消耗加速，低电量情况下可优先选择均衡或低功耗模式。开启方式：开启蓝牙并连接散热背夹。</string>
-//        id perf_mode_x_des_container
-//        rg_performance
-
-        //Source CoolingBackClipHelper
-//        findClass("business.module.perfmode.CoolingBackClipHelper").hook {
-//            injectMember {
-//                method {
-//                    name = "k"
-//                    emptyParam()
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
-//            injectMember {
-//                method {
-//                    name = "e"
-//                    param(BooleanType)
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
-//        }
-
-        //Source GamePerfModeModel
-//        findClass("com.coloros.gamespaceui.module.performancemode.GamePerfModeModel").hook {
-//            injectMember {
-//                method {
-//                    name = "S"
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
-//        }
+        //启用X模式
+        if (prefs(ModulePrefs).getBoolean("enable_x_mode_feature", false)) {
+            loadHooker(EnableXModeFeature)
+        }
 
         //network_speed_vip -> oppo_acc
 

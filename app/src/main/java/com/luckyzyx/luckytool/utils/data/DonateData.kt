@@ -210,8 +210,9 @@ class DonateData {
             add(DonateInfo("高木同学咩",8.8, donateDetails(
                 DonateChannelInfo("20230126-000631",CWC,8.8,"10001071012023012600559933304093")
             )))
-            add(DonateInfo("是麦芽糖呀",13.14, donateDetails(
-                DonateChannelInfo("20230126-005542",CWC,13.14,"10001071012023012600871793553057")
+            add(DonateInfo("是麦芽糖呀",18.14, donateDetails(
+                DonateChannelInfo("20230126-005542",CWC,13.14,"10001071012023012600871793553057"),
+                DonateChannelInfo("20230315-024015",CWC,5.0,"10001071012023031500985324142171")
             )))
             add(DonateInfo("贱贱",8.88, donateDetails(
                 DonateChannelInfo("20230126-124451",CWC,8.88,"10000499012023012600637975717166")

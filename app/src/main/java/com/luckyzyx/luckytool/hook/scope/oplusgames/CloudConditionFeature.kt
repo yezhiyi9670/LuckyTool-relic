@@ -15,16 +15,22 @@ object CloudConditionFeature : YukiBaseHooker() {
         val powerFeature = prefs(ModulePrefs).getBoolean("enable_optimise_power_feature", false)
         //Source Feats
         val gtMode = prefs(ModulePrefs).getBoolean("enable_gt_mode_feature", false)
+        //Source CoolingBackClipHelper
+        val xMode = prefs(ModulePrefs).getBoolean("enable_x_mode_feature", false)
         //Source SuperResolutionHelper
         val superResolution =
             prefs(ModulePrefs).getBoolean("enable_super_resolution_feature", false)
+        //Source CloudConditionUtil
+        val oneplusCharacteristic =
+            prefs(ModulePrefs).getBoolean("enable_one_plus_characteristic", false)
 
         //Source OplusFeatureHelper
         findClass("com.oplus.addon.OplusFeatureHelper\$Companion").hook {
             injectMember {
                 method {
-                    param { it[1] == StringClass && it[2] == BooleanType && it[3] == IntType }
+                    param { it[1] == StringClass && it[2] == BooleanType && it[3] == IntType && it[4] == AnyClass }
                     paramCount = 5
+                    returnType = BooleanType
                 }
                 beforeHook {
                     when (args(1).string()) {
@@ -66,7 +72,9 @@ object CloudConditionFeature : YukiBaseHooker() {
                         //GPU控制器云控 -> isCloudSupportGpuControlPanel
                         "gpu_control_panel" -> if (gpuControl) resultTrue()
                         //X模式 -> isSupportXMode
-//                        "cool_back_clip_blacklist" -> resultTrue()
+                        "cool_back_clip_blacklist" -> if (xMode) resultTrue()
+                        //OnePlus特性
+                        "one_plus_characteristic" -> if (oneplusCharacteristic) resultTrue()
                     }
                 }
             }

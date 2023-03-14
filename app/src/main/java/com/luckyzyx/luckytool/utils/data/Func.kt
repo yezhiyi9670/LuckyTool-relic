@@ -74,20 +74,26 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     val arraySet = ArraySet<String>()
     val packageInfo = PackageUtils(packageManager).getPackageInfo(packName, 0)
     val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
-    val versionName = safeOf(default = "null") { packageInfo.versionName }
+    val versionName = safeOf(default = "null") { packageInfo.versionName.toString() }
     arrayList.add(versionName)
     arraySet.add("0.$versionName")
-    val versionCode = safeOf(default = "null") { packageInfo.longVersionCode }
-    arrayList.add("$versionCode")
+    val versionCode = safeOf(default = "null") { packageInfo.longVersionCode.toString() }
+    arrayList.add(versionCode)
     arraySet.add("1.$versionCode")
-    val versionCommit = safeOf(default = "null") { commitInfo.metaData.get("versionCommit") }
+    val versionCommit =
+        safeOf(default = "null") { commitInfo.metaData.get("versionCommit").toString() }
+    val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate").toString() }
     //Fix the camera's commit is empty
-    if (versionCommit == "" && packName == "com.oplus.camera") {
-        val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate") }
-        arrayList.add("$versionDate")
-        arraySet.add("2.$versionDate")
+    if (versionCommit.isBlank()) {
+        if (versionDate.isBlank()) {
+            arrayList.add("null")
+            arraySet.add("2.null")
+        } else {
+            arrayList.add(versionDate)
+            arraySet.add("2.$versionDate")
+        }
     } else {
-        arrayList.add("$versionCommit")
+        arrayList.add(versionCommit)
         arraySet.add("2.$versionCommit")
     }
     putStringSet(ModulePrefs, packName, arraySet)

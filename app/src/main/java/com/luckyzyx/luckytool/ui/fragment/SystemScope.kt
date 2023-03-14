@@ -1927,6 +1927,15 @@ class Settings : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.show_package_name_in_app_details)
+                    summary = getString(R.string.show_package_name_in_app_details_summary)
+                    key = "show_package_name_in_app_details"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }
@@ -2025,6 +2034,30 @@ class OplusGames : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.enable_x_mode_feature)
+                    key = "enable_x_mode_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_gt_mode_feature)
+                    key = "enable_gt_mode_feature"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_one_plus_characteristic)
+                    key = "enable_one_plus_characteristic"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.enable_genshin_impact_theme)
                     summary = getString(R.string.enable_genshin_impact_theme_summary)
                     key = "enable_genshin_impact_theme"
@@ -2069,14 +2102,6 @@ class OplusGames : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.enable_optimise_power_feature)
                     key = "enable_optimise_power_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_gt_mode_feature)
-                    key = "enable_gt_mode_feature"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
