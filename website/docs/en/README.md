@@ -16,6 +16,9 @@ actions:
   - text: Donate
     link: /en/donate
 
+  - text: ChangeLog
+    link: /changelog
+
 features:
   - title: Core Crack
     # icon: markdown

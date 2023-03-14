@@ -34,6 +34,13 @@ export const enSidebar = sidebar({
     },
     {
       icon: "creative",
+      text: "Change Log",
+      prefix: "changelog/",
+      link: "changelog/",
+      children: "structure",
+    },
+    {
+      icon: "creative",
       text: "Donation Channel",
       prefix: "donate/",
       link: "donate/",

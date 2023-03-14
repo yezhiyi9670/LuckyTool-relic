@@ -16,6 +16,9 @@ actions:
   - text: 捐赠方式
     link: /donate
 
+  - text: 更新日志
+    link: /changelog
+
 features:
   - title: 核心破解
     # icon: markdown

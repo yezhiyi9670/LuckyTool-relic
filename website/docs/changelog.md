@@ -1,9 +1,30 @@
-# 更新日志 Changelog
+---
+title: 更新日志
+icon: page
+order: 1
+# 设置作者
+# author: 忆清鸣、luckyzyx
+# 设置写作时间
+# date: 2020-01-01
+# 一个页面可以有多个分类
+category:
+- 更新日志
+# 一个页面可以有多个标签
+tag:
+- 更新日志
+# 此页面会在文章列表置顶
+sticky: false
+# 此页面会出现在文章收藏中
+star: false
+# 你可以自定义页脚
+# footer: 页脚
+# 你可以自定义版权信息
+# copyright: 无版权
+---
 
-模块文档(Module Document) https://luckyzyx.github.io/LuckyTool/  
-反馈流程(Feedback Process) https://luckyzyx.github.io/LuckyTool/feedback
+**beta测试版本仅在[TG讨论群](https://t.me/+F42pfv-c0h4zNDc9)中发布测试**
 
-### v4.3.5
+### v4.3.5_beta
 
 [更新] 捐赠名单  
 [修复] C12状态栏电量入口  
@@ -16,7 +37,10 @@
 [优化] 电量默认字体大小  
 [适配] C12长按任务图标打开应用详情  
 [添加] 隐藏SIM卡无服务图标  
-[更改] 隐藏非上网卡键值
+[更改] 隐藏非上网卡键值与翻译  
+[添加] 游戏助手X模式  
+[添加] 游戏助手OnePlus特性  
+[添加] 应用详情添加包名显示与复制
 
 ### v4.3.4
 

@@ -33,6 +33,13 @@ export const zhSidebar = sidebar({
     },
     {
       icon: "creative",
+      text: "更新日志",
+      prefix: "changelog/",
+      link: "changelog/",
+      children: "structure",
+    },
+    {
+      icon: "creative",
       text: "捐赠渠道",
       prefix: "donate/",
       link: "donate/",
