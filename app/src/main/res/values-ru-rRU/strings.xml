@@ -326,8 +326,8 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
-    <string name="show_package_name_in_app_details">Show package name in app details</string>
-    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
+    <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
+    <string name="show_package_name_in_app_details_summary">Показывать имя пакета в подробностях приложения и долгое нажатие для его копирования</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

@@ -326,8 +326,8 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
-    <string name="show_package_name_in_app_details">Show package name in app details</string>
-    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
+    <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
+    <string name="show_package_name_in_app_details_summary">パッケージ名をアプリの詳細に表示します。長押しでコピーできます</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
@@ -348,7 +348,7 @@
     <string name="enable_gt_mode_feature">GTモードの有効化</string>
     <string name="enable_x_mode_feature">X モードを有効にする</string>
     <string name="enable_super_resolution_feature">超解像機能を有効化</string>
-    <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
+    <string name="enable_one_plus_characteristic">OnePlus の特性を有効にする</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>

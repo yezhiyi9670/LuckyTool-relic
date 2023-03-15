@@ -27,23 +27,23 @@ star: false
 
 未经开发者授权，禁止私自搬运转载，提倡授之以渔，不是授之以鱼
 
-当前最新 Release 版本`v4.3.4`
+当前最新 Release 版本`v4.3.5`
 
-[GITHUB 下载](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
+[GITHUB 下载](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7986-4.3.5/LuckyTool_v4.3.5.7986.apk)
 
 国内用户优先使用以下链接
 
 <!-- https://gh.ddlc.top/ -->
 
-[ddlc CDN](https://gh.ddlc.top/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
+[ddlc CDN](https://gh.ddlc.top/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7986-4.3.5/LuckyTool_v4.3.5.7986.apk)
 
 <!-- https://proxy.zyun.vip/ -->
 
-[zyun CDN](https://proxy.zyun.vip/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
+[zyun CDN](https://proxy.zyun.vip/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7986-4.3.5/LuckyTool_v4.3.5.7986.apk)
 
 <!-- https://ghproxy.com/ -->
 
-[ghproxy CDN](https://ghproxy.com/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7814-4.3.4/LuckyTool_v4.3.4.7814.apk)
+[ghproxy CDN](https://ghproxy.com/https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/7986-4.3.5/LuckyTool_v4.3.5.7986.apk)
 
 不要轻信其他平台以及用户的分享，出现问题不予处理，看到请点举报
 
