@@ -35,8 +35,8 @@ export const enSidebar = sidebar({
     {
       icon: "creative",
       text: "Change Log",
-      prefix: "changelog/",
-      link: "changelog/",
+      prefix: "/changelog/",
+      link: "/changelog/",
       children: "structure",
     },
     {
