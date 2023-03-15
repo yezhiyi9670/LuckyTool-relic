@@ -696,6 +696,31 @@ fun copyStreamToFile(inputStream: InputStream, outputFile: File): String {
 }
 
 /**
+ * 读取文件输出字符串
+ * @param file File
+ * @return String?
+ */
+fun loadFile(file: File): String? {
+    var fis: FileInputStream? = null
+    var output: String? = null
+    try {
+        fis = FileInputStream(file)
+        val buffer = ByteArray(4096)
+        var len: Int
+        val sb = StringBuilder()
+        while (fis.read(buffer).also { len = it } != -1) {
+            sb.append(String(buffer, 0, len))
+        }
+        output = sb.toString()
+    } catch (e: Exception) {
+        e.printStackTrace()
+    } finally {
+        fis?.close()
+    }
+    return output
+}
+
+/**
  * 格式化Date
  * @param format String
  * @return String

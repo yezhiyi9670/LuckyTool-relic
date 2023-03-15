@@ -913,6 +913,14 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_notification_align_both_sides)
+                    key = "enable_notification_align_both_sides"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.ControlCenter_Tile_Related)
                     key = "ControlCenter_Tile_Related"

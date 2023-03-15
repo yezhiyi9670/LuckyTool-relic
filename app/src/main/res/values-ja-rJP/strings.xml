@@ -194,6 +194,7 @@
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
     <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
+    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     <string name="ControlCenter_Tile_Related">コントロールセンターのタイル関連</string>
     <string name="control_center_tile_enable">コントロールセンターのタイル機能のメインスイッチ</string>
     <string name="tile_unexpanded_columns_vertical">タイル非展開時のカラム (垂直方向)</string>
@@ -348,7 +349,7 @@
     <string name="enable_gt_mode_feature">GTモードの有効化</string>
     <string name="enable_x_mode_feature">X モードを有効にする</string>
     <string name="enable_super_resolution_feature">超解像機能を有効化</string>
-    <string name="enable_one_plus_characteristic">OnePlus の特性を有効にする</string>
+    <string name="enable_one_plus_characteristic">OnePlus 向け機能を有効にする</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>
@@ -453,7 +454,7 @@
     <string name="increase_touch_sampling_rate_summary">機能をオンにした後は自動的に一度だけ実行し、その後は画面のロックを解除した後に自動的にトリガーされます</string>
     <string name="high_brightness_mode">高輝度モード</string>
     <string name="global_dc">グローバルDC</string>
-    <string name="fiveg_mode">5Gスイッチ</string>
+    <string name="fiveg_mode">5G スイッチ</string>
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->

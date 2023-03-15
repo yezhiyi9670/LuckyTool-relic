@@ -194,6 +194,7 @@
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
     <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
+    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     <string name="ControlCenter_Tile_Related">Ô trung tâm điều khiển</string>
     <string name="control_center_tile_enable">Công tắc chính chức năng ô trung tâm điều khiển</string>
     <string name="tile_unexpanded_columns_vertical">Các cột không được mở rộng của ô xếp (dọc)</string>
