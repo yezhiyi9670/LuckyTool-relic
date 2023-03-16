@@ -5,15 +5,11 @@ import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.utils.tools.AppAnalyticsUtils
 
 class MyApplication : ModuleApplication() {
-    private val isDebug = BuildConfig.DEBUG
-
     override fun onCreate() {
         super.onCreate()
 
-        if (isDebug) return
+        if (BuildConfig.DEBUG) return
         AppAnalyticsUtils.init(this)
-        AppAnalyticsUtils.loadDeviceInfo()
-        AppAnalyticsUtils.loadDeviceOTA()
     }
 }
 
