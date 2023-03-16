@@ -7,6 +7,8 @@ import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveMobileDataIcon : YukiBaseHooker() {
@@ -71,7 +73,10 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
         }
 
         //Source OplusStatusBarSignalPolicyExImpl
-        findClass("com.oplus.systemui.statusbar.phone.signal.OplusStatusBarSignalPolicyExImpl").hook {
+        VariousClass(
+            "com.oplusos.systemui.ext.StatusBarSignalPolicyExt", //C12
+            "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarSignalPolicyExImpl" //C13
+        ).hook {
             injectMember {
                 method {
                     name = "setNoSims"
@@ -80,7 +85,8 @@ object RemoveMobileDataIcon : YukiBaseHooker() {
                 afterHook {
                     if (!hideNoSS) return@afterHook
                     val iconController =
-                        method { name = "getIconController" }.get(instance).invoke<Any>()
+                        if (SDK >= A13) method { name = "getIconController" }.get(instance).call()
+                        else field { name = "iconController" }.get(instance).any()
                     val slotNoSim = field { name = "slotNoSim" }.get(instance).cast<String>()
                     iconController?.current()?.method {
                         name = "setIconVisibility"
