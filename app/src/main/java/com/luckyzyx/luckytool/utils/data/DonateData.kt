@@ -277,6 +277,12 @@ class DonateData {
             add(DonateInfo("徐悲鸿",5.2,donateDetails(
                 DonateChannelInfo("20230316-144330",CWC,5.2,"10000499012023031601034829603616")
             )))
+            add(DonateInfo("纯鹿人",3.17,donateDetails(
+                DonateChannelInfo("20230317-081532",CWC,3.17,"10001071012023031701213594856602")
+            )))
+            add(DonateInfo("ken995",10.0,donateDetails(
+                DonateChannelInfo("20230317-094837",CWC,10.0,"10001071012023031701981563932600")
+            )))
         }
     }
 

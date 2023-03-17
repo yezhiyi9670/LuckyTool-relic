@@ -274,6 +274,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                             getString(R.string.qq),
                             getString(R.string.wechat),
                             getString(R.string.alipay),
+                            getString(R.string.patreon),
                             getString(R.string.donation_list)
                         )
                         MaterialAlertDialogBuilder(context).apply {
@@ -318,7 +319,13 @@ class SettingsFragment : ModulePreferenceFragment() {
                                         dialog.findViewById<ImageView>(R.id.donate_image)
                                             ?.setImageBitmap(base64ToBitmap(Base64Code.alipayCode))
                                     }
-                                    3 -> {
+                                    3 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://www.patreon.com/LuckyTool")
+                                        )
+                                    )
+                                    4 -> {
                                         MaterialAlertDialogBuilder(context, dialogCentered).apply {
                                             setTitle(getString(R.string.donation_list))
                                             setView(

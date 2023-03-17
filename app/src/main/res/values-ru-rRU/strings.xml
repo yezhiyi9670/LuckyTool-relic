@@ -341,7 +341,7 @@
     <string name="enable_developer_page_summary">После включения этой функции и перезагрузки, \nможно перейти к ней через меню быстрого доступа</string>
     <string name="enable_adreno_gpu_controller">Включить контроллер графического процессора Adreno</string>
     <string name="enable_support_competition_mode">Включить поддержку режима соревнования</string>
-    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
+    <string name="remove_competition_mode_sound">Удалить звук режима соревнований</string>
     <string name="enable_increase_fps_limit_feature">Включить увеличение лимита FPS</string>
     <string name="enable_increase_fps_feature">Включить увеличение FPS</string>
     <string name="enable_optimise_power_feature">Включить оптимизацию питания</string>

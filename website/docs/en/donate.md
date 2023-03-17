@@ -66,4 +66,8 @@ it will be recorded according to the payer *XX
 
 ![AliPay QR Code](/assets/images/donate/alipay.png)
 
+@tab Patreon
+
+patreon.com/LuckyTool
+
 :::

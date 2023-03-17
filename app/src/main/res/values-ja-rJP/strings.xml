@@ -341,7 +341,7 @@
     <string name="enable_developer_page_summary">この機能を有効化後にスコープを再起動すると\nショートカットポータルからそのスコープへジャンプできるようになります</string>
     <string name="enable_adreno_gpu_controller">Adreno GPUコントローラーを有効化</string>
     <string name="enable_support_competition_mode">ゲームフォーカスモードを有効化</string>
-    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
+    <string name="remove_competition_mode_sound">ゲームフォーカスモードのサウンドを削除する</string>
     <string name="enable_increase_fps_limit_feature">FPSの制限を増やす</string>
     <string name="enable_increase_fps_feature">FPSの上限を上げる</string>
     <string name="enable_optimise_power_feature">最適化された電力を有効化</string>
