@@ -50,6 +50,18 @@ object RemoveBatteryNotify : YukiBaseHooker() {
                         injectMember {
                             method {
                                 name = "notify"
+                                param(IntType, NotificationClass)
+                                paramCount = 2
+                            }
+                            beforeHook {
+                                when (args(1).cast<Int>()) {
+                                    3 -> if (highBatteryConsumption) resultNull()
+                                }
+                            }
+                        }
+                        injectMember {
+                            method {
+                                name = "notify"
                                 param(StringClass, IntType, NotificationClass)
                                 paramCount = 3
                             }
