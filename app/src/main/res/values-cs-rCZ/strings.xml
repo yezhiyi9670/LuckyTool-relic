@@ -339,10 +339,9 @@
     <string name="enable_developer_page">Povolit vývojářský režim</string>
     <string name="enable_eva_theme">Povolit EVA motiv</string>
     <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>
-    <string name="enable_genshin_impact_theme">Povolit Genshin Impacti limitovanou edici UI</string>
-    <string name="enable_genshin_impact_theme_summary">Není třeba nastavovat v herním asistentovi</string>
     <string name="enable_adreno_gpu_controller">Povolit Adreno GPU Controller</string>
     <string name="enable_support_competition_mode">Povolit podporu soutěžního režimu</string>
+    <string name="remove_competition_mode_sound">Odstranit zvuk režimu soutěže</string>
     <string name="enable_increase_fps_limit_feature">Povolit vyšší fps limit</string>
     <string name="enable_increase_fps_feature">Povolit zvýšení fps</string>
     <string name="enable_optimise_power_feature">Povolit optimalizovanou spotřebu</string>

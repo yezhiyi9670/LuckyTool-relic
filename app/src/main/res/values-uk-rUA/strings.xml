@@ -339,10 +339,9 @@
     <string name="enable_developer_page">Увімкнути меню розробника</string>
     <string name="enable_eva_theme">Увімкнути тему EVA</string>
     <string name="enable_developer_page_summary">Після включення цієї функції та перезавантаження, \nможна перейти до неї через меню швидкого доступу</string>
-    <string name="enable_genshin_impact_theme">Увімкнути користувацький інтерфейс Genshin Impact Limited Edition</string>
-    <string name="enable_genshin_impact_theme_summary">Немає необхідності налаштовувати в ігровому помічнику</string>
     <string name="enable_adreno_gpu_controller">Увімкнути контролер графічного процесора Adreno</string>
     <string name="enable_support_competition_mode">Увімкнути підтримку режиму змагання</string>
+    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
     <string name="enable_increase_fps_limit_feature">Увімкнути збільшення ліміту FPS</string>
     <string name="enable_increase_fps_feature">Увімкнути збільшення FPS</string>
     <string name="enable_optimise_power_feature">Включити оптимізацію живлення</string>

@@ -339,10 +339,9 @@
     <string name="enable_developer_page">启用开发者页面</string>
     <string name="enable_eva_theme">启用 EVA 主题</string>
     <string name="enable_developer_page_summary">启用此功能并重启作用域后\n即可通过快捷入口跳转进入</string>
-    <string name="enable_genshin_impact_theme">启用原神定制UI</string>
-    <string name="enable_genshin_impact_theme_summary">无需在游戏助手中设置</string>
     <string name="enable_adreno_gpu_controller">启用Adreno GPU控制器</string>
     <string name="enable_support_competition_mode">启用赛事支持模式</string>
+    <string name="remove_competition_mode_sound">移除赛事模式音效</string>
     <string name="enable_increase_fps_limit_feature">启用游戏插帧</string>
     <string name="enable_increase_fps_feature">启用提升帧数</string>
     <string name="enable_optimise_power_feature">启用优化功耗</string>

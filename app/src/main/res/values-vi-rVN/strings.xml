@@ -339,10 +339,9 @@
     <string name="enable_developer_page">Bật chế độ nhà phát triển</string>
     <string name="enable_eva_theme">Bật chủ đề EVA</string>
     <string name="enable_developer_page_summary">Sau khi bật chức năng này và khởi động lại\nbạn có thể chuyển sang sử dụng chức năng này thông qua lối tắt</string>
-    <string name="enable_genshin_impact_theme">Kích hoạt giao diện người dùng phiên bản giới hạn Genshin Impact</string>
-    <string name="enable_genshin_impact_theme_summary">Không cần thiết lập trong Game Assistant</string>
     <string name="enable_adreno_gpu_controller">Kích hoạt bộ điều khiển GPU Adreno</string>
     <string name="enable_support_competition_mode">Kích hoạt chế độ hỗ trợ sự kiện</string>
+    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
     <string name="enable_increase_fps_limit_feature">Bật tăng giới hạn fps</string>
     <string name="enable_increase_fps_feature">Bật tăng fps</string>
     <string name="enable_optimise_power_feature">Bật tối ưu hóa sức mạnh</string>

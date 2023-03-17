@@ -339,10 +339,9 @@
     <string name="enable_developer_page">Włącz tryb programisty</string>
     <string name="enable_eva_theme">Włącz motyw EVA</string>
     <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>
-    <string name="enable_genshin_impact_theme">Włącz motyw Genshin Impact</string>
-    <string name="enable_genshin_impact_theme_summary">Nie ma potrzeby ustawiania w Asystencie Gier</string>
     <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
     <string name="enable_support_competition_mode">Włącz obsługę trybu współpracy</string>
+    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
     <string name="enable_increase_fps_limit_feature">Włącz zwiększenie limitu fps</string>
     <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>
     <string name="enable_optimise_power_feature">Włącz zoptymalizowane zasilanie</string>

@@ -352,10 +352,9 @@
     <string name="enable_developer_page">Enable developer page</string>
     <string name="enable_eva_theme">Enable EVA theme</string>
     <string name="enable_developer_page_summary">After enabling this feature and restarting the scope, \n can jump to it via the shortcut portal</string>
-    <string name="enable_genshin_impact_theme">Enable Genshin Impact Limited Edition UI</string>
-    <string name="enable_genshin_impact_theme_summary">No need to set up in Game Assistant</string>
     <string name="enable_adreno_gpu_controller">Enable Adreno GPU Controller</string>
     <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
+    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
     <string name="enable_increase_fps_limit_feature">Enable increase fps limit</string>
     <string name="enable_increase_fps_feature">Enable increase fps</string>
     <string name="enable_optimise_power_feature">Enable optimized power</string>

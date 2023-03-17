@@ -2066,16 +2066,6 @@ class OplusGames : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.enable_genshin_impact_theme)
-                    summary = getString(R.string.enable_genshin_impact_theme_summary)
-                    key = "enable_genshin_impact_theme"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.enable_adreno_gpu_controller)
                     key = "enable_adreno_gpu_controller"
                     setDefaultValue(false)
@@ -2086,6 +2076,14 @@ class OplusGames : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.enable_support_competition_mode)
                     key = "enable_support_competition_mode"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_competition_mode_sound)
+                    key = "remove_competition_mode_sound"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
