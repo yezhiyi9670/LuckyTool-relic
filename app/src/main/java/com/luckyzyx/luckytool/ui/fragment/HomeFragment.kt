@@ -84,8 +84,7 @@ class HomeFragment : Fragment() {
                 "auto_check_update",
                 true
             )
-        ) UpdateUtils.checkUpdate(
-            requireActivity(),
+        ) UpdateUtils(requireActivity()).checkUpdate(
             getVersionName,
             getVersionCode
         ) { versionName, versionCode, function ->
@@ -270,7 +269,9 @@ class HomeFragment : Fragment() {
                                 true
                             }
                         }
-                if (realmeui_version?.text.toString().isBlank() || realmeui_version?.text.toString() == "null") {
+                if (realmeui_version?.text.toString()
+                        .isBlank() || realmeui_version?.text.toString() == "null"
+                ) {
                     isRealmeUI = false
                     realmeui_version_layout?.isVisible = false
                 } else isRealmeUI = true

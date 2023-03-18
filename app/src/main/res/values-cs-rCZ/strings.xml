@@ -466,4 +466,20 @@
     <string name="common_words_single_line">Jeden řádek</string>
     <string name="common_words_double_line">Dva řádky</string>
     <string name="common_words_customize">Vlastní nastavení</string>
+    <!--Net 网络请求异常-->
+    <string name="net_connect_error">Failed to connect to the network</string>
+    <string name="net_networking_error">The current network is unavailable</string>
+    <string name="net_url_error">Request resource address error</string>
+    <string name="net_host_error">Unable to find the specified server host</string>
+    <string name="net_connect_timeout_error">Connection to server timed out, %s</string>
+    <string name="net_download_error">An error occurred during the download</string>
+    <string name="net_no_cache_error">Read cache failed</string>
+    <string name="net_parse_error">An exception occurred while parsing the data</string>
+    <string name="request_failure">Request failed</string>
+    <string name="net_request_error">Request parameter error</string>
+    <string name="net_server_error">Service response error</string>
+    <string name="net_null_error">Null exception occurred</string>
+    <string name="net_error">Unknown network error</string>
+    <string name="net_other_error">Unknown error</string>
+    <string name="no_error_message">No error message</string>
 </resources>

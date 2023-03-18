@@ -466,4 +466,20 @@
     <string name="common_words_single_line">Одна строка</string>
     <string name="common_words_double_line">Две строки</string>
     <string name="common_words_customize">Настроить</string>
+    <!--Net 网络请求异常-->
+    <string name="net_connect_error">Не удалось подключиться к сети</string>
+    <string name="net_networking_error">Текущая сеть недоступна</string>
+    <string name="net_url_error">Ошибка адреса запроса ресурса</string>
+    <string name="net_host_error">Не удалось найти указанный хост сервера</string>
+    <string name="net_connect_timeout_error">Истекло время ожидания соединения с сервером, %s</string>
+    <string name="net_download_error">Произошла ошибка во время загрузки</string>
+    <string name="net_no_cache_error">Ошибка при чтении кэша</string>
+    <string name="net_parse_error">Произошла ошибка при разборе данных</string>
+    <string name="request_failure">Запрос не выполнен</string>
+    <string name="net_request_error">Ошибка параметра запроса</string>
+    <string name="net_server_error">Ошибка ответа службы</string>
+    <string name="net_null_error">Произошло нулевое исключение</string>
+    <string name="net_error">Неизвестная сетевая ошибка</string>
+    <string name="net_other_error">Unknown error</string>
+    <string name="no_error_message">Нет сообщения об ошибке</string>
 </resources>

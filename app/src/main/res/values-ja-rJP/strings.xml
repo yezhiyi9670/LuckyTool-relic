@@ -466,4 +466,20 @@
     <string name="common_words_single_line">直線</string>
     <string name="common_words_double_line">二重線</string>
     <string name="common_words_customize">カスタマイズ</string>
+    <!--Net 网络请求异常-->
+    <string name="net_connect_error">ネットワークに接続できませんでした</string>
+    <string name="net_networking_error">現在のネットワークは利用できません</string>
+    <string name="net_url_error">リソースアドレスの要求エラー</string>
+    <string name="net_host_error">指定されたサーバーホストが見つかりません</string>
+    <string name="net_connect_timeout_error">サーバーへの接続がタイムアウトしました %s</string>
+    <string name="net_download_error">ダウンロード中にエラーが発生しました</string>
+    <string name="net_no_cache_error">キャッシュの読み込みに失敗しました</string>
+    <string name="net_parse_error">データの解析中に例外が発生しました</string>
+    <string name="request_failure">要求に失敗しました</string>
+    <string name="net_request_error">要求パラメータエラー</string>
+    <string name="net_server_error">サービス応答エラー</string>
+    <string name="net_null_error">Null 例外が発生しました</string>
+    <string name="net_error">不明なネットワークエラー</string>
+    <string name="net_other_error">Unknown error</string>
+    <string name="no_error_message">エラーメッセージなし</string>
 </resources>

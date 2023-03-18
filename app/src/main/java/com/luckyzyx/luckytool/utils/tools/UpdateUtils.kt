@@ -12,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import com.drake.net.Get
 import com.drake.net.component.Progress
+import com.drake.net.exception.ConvertException
 import com.drake.net.interfaces.ProgressListener
 import com.drake.net.scope.NetCoroutineScope
 import com.drake.net.utils.scopeNet
@@ -27,10 +28,14 @@ import java.io.File
 import java.text.DecimalFormat
 
 @Obfuscate
-object UpdateUtils {
+class UpdateUtils(val context: Context) {
+
+    @Suppress("unused")
+    val coolmarketUrl = "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"
+
     @SuppressLint("SetTextI18n")
     @Suppress("UNUSED_PARAMETER")
-    fun checkUpdate(context: Context, versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
+    fun checkUpdate(versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
         scopeNet {
             val latestUrl = "https://api.github.com/repos/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/latest"
             val getJson = Get<String>(latestUrl).await()
@@ -70,6 +75,11 @@ object UpdateUtils {
                         .show()
                 }
             }
+        }.catch {
+            when (it) {
+                is ConvertException -> return@catch
+                else -> handleError(it)
+            }
         }
     }
 
@@ -89,8 +99,6 @@ object UpdateUtils {
         }.show()
     }
 
-    @Suppress("unused")
-    const val coolmarketUrl = "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"
     @SuppressLint("ClickableViewAccessibility")
     @Suppress("MemberVisibilityCanBePrivate")
     fun downloadFile(context: Context, apkName: String, url: String) {

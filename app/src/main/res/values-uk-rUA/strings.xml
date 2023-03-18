@@ -341,7 +341,7 @@
     <string name="enable_developer_page_summary">Після включення цієї функції та перезавантаження, \nможна перейти до неї через меню швидкого доступу</string>
     <string name="enable_adreno_gpu_controller">Увімкнути контролер графічного процесора Adreno</string>
     <string name="enable_support_competition_mode">Увімкнути підтримку режиму змагання</string>
-    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
+    <string name="remove_competition_mode_sound">Видалити звук режиму змагань</string>
     <string name="enable_increase_fps_limit_feature">Увімкнути збільшення ліміту FPS</string>
     <string name="enable_increase_fps_feature">Увімкнути збільшення FPS</string>
     <string name="enable_optimise_power_feature">Включити оптимізацію живлення</string>
@@ -466,4 +466,20 @@
     <string name="common_words_single_line">Один рядок</string>
     <string name="common_words_double_line">Два рядки</string>
     <string name="common_words_customize">Налаштувати</string>
+    <!--Net 网络请求异常-->
+    <string name="net_connect_error">Не вдалося з’єднатися з мережею</string>
+    <string name="net_networking_error">Поточна мережа недоступна</string>
+    <string name="net_url_error">Помилка адреси ресурсу запиту</string>
+    <string name="net_host_error">Не вдалося знайти вказаний хост сервера</string>
+    <string name="net_connect_timeout_error">Час очікування з\'єднання з сервером минув, %s</string>
+    <string name="net_download_error">Під час завантаження сталася помилка</string>
+    <string name="net_no_cache_error">Помилка читання кешу</string>
+    <string name="net_parse_error">Відбулася помилка при розборі даних</string>
+    <string name="request_failure">Запит не виконано</string>
+    <string name="net_request_error">Помилка параметра запиту</string>
+    <string name="net_server_error">Помилка відповіді служби</string>
+    <string name="net_null_error">Стався нульовий виняток</string>
+    <string name="net_error">Невідома мережева помилка</string>
+    <string name="net_other_error">Unknown error</string>
+    <string name="no_error_message">Немає повідомлення про помилку</string>
 </resources>
