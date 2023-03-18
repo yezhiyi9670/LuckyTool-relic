@@ -18,6 +18,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
+
 @InjectYukiHookWithXposed(isUsingResourcesHook = false)
 object MainHook : IYukiHookXposedInit {
     override fun onInit() = configs {
@@ -112,7 +113,11 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.ota", HookOplusOta)
 
         //其他APP
-        loadApp("com.east2d.everyimage", "com.ruet_cse_1503050.ragib.appbackup.pro") {
+        loadApp(
+            "com.east2d.everyimage",
+            "com.ruet_cse_1503050.ragib.appbackup.pro",
+            "ru.kslabs.ksweb"
+        ) {
             loadHooker(HookOtherApp)
         }
 

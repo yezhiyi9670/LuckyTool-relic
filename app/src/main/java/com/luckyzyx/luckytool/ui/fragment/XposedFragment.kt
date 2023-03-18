@@ -348,6 +348,26 @@ class XposedFragment : ModulePreferenceFragment() {
                     }
                 }
             )
+            addPreference(
+                Preference(context).apply {
+                    key = "ru.kslabs.ksweb"
+                    context.getXPIcon(key) { resource, show ->
+                        icon = resource
+                        isIconSpaceReserved = show
+                    }
+                    title = context.getAppLabel(key)
+                    summary = getString(R.string.remove_pro_license)
+                    isVisible = context.checkPackName(key)
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_nav_function_to_ksWeb,
+                            Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
         }
     }
 

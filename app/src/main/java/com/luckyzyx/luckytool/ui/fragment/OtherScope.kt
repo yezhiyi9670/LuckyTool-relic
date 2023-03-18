@@ -45,3 +45,19 @@ class AlphaBackupPro : ModulePreferenceFragment() {
         }
     }
 }
+
+class KsWeb : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(requireActivity()).apply {
+                    title = getString(R.string.remove_pro_license)
+                    key = "ksweb_remove_check_license"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+}
