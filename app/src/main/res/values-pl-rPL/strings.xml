@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">Tryb wydajności i optymalizacja trybu czuwania</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">Algorytmy kamery</string>
     <string name="browser_concise_mode">Tryb zwięzły przeglądarki</string>
     <string name="battery_health">Stan baterii</string>
+    <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
     <string name="GameAssistantRelated">Asystent gier</string>

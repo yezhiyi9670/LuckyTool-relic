@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">性能模式和待机优化</string>
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="allow_untrusted_touch">允许不受信任的触摸</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">恢复默认电池优化白名单</string>
     <!--Settings-->
     <string name="remove_top_account_display">移除顶部账户显示</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">相机算法页面</string>
     <string name="browser_concise_mode">浏览器简洁模式</string>
     <string name="battery_health">电池健康度</string>
+    <string name="battery_optimization">电池优化</string>
     <string name="system_not_support">当前系统不支持!</string>
     <string name="very_dark_mode">极暗模式</string>
     <string name="GameAssistantRelated">游戏助手相关</string>

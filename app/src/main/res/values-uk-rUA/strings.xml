@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">Режим продуктивності та оптимізація режиму очікування</string>
     <string name="performance_mode_and_standby_optimization_summary">Налаштування - Батарея - Додаткові налаштування</string>
     <string name="allow_untrusted_touch">Дозволити небажані торкання</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">Сторінка алгоритмів камери</string>
     <string name="browser_concise_mode">Режим налаштування браузера</string>
     <string name="battery_health">Стан батареї</string>
+    <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">Поточна система не підтримується!</string>
     <string name="very_dark_mode">Надзвичайно темний режим</string>
     <string name="GameAssistantRelated">Ігровий помічник</string>
@@ -480,6 +483,6 @@
     <string name="net_server_error">Помилка відповіді служби</string>
     <string name="net_null_error">Стався нульовий виняток</string>
     <string name="net_error">Невідома мережева помилка</string>
-    <string name="net_other_error">Unknown error</string>
+    <string name="net_other_error">Невідома помилка</string>
     <string name="no_error_message">Немає повідомлення про помилку</string>
 </resources>

@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">Optimalizace výkonu a pohotovostního režimu</string>
     <string name="performance_mode_and_standby_optimization_summary">Nastavení - Baterie - Další nastavení</string>
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">Stránka nastavení algoritmů kamery</string>
     <string name="browser_concise_mode">Stručný režim prohlížeče</string>
     <string name="battery_health">Zdraví baterie</string>
+    <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">Aktuální systém není podporován!</string>
     <string name="very_dark_mode">Velmi tmavý režim</string>
     <string name="GameAssistantRelated">Nastavení související s Herním asistentem</string>
@@ -467,19 +470,19 @@
     <string name="common_words_double_line">Dva řádky</string>
     <string name="common_words_customize">Vlastní nastavení</string>
     <!--Net 网络请求异常-->
-    <string name="net_connect_error">Failed to connect to the network</string>
-    <string name="net_networking_error">The current network is unavailable</string>
-    <string name="net_url_error">Request resource address error</string>
-    <string name="net_host_error">Unable to find the specified server host</string>
-    <string name="net_connect_timeout_error">Connection to server timed out, %s</string>
-    <string name="net_download_error">An error occurred during the download</string>
-    <string name="net_no_cache_error">Read cache failed</string>
-    <string name="net_parse_error">An exception occurred while parsing the data</string>
-    <string name="request_failure">Request failed</string>
-    <string name="net_request_error">Request parameter error</string>
-    <string name="net_server_error">Service response error</string>
-    <string name="net_null_error">Null exception occurred</string>
-    <string name="net_error">Unknown network error</string>
-    <string name="net_other_error">Unknown error</string>
-    <string name="no_error_message">No error message</string>
+    <string name="net_connect_error">Připojení k síti se nezdařilo</string>
+    <string name="net_networking_error">Aktuální síť není k dispozici</string>
+    <string name="net_url_error">Chyba adresy požadavku na zdroj</string>
+    <string name="net_host_error">Nepodařilo se najít zadaného hostitele serveru</string>
+    <string name="net_connect_timeout_error">Vypršel časový limit připojení k serveru, %s</string>
+    <string name="net_download_error">Při stahování došlo k chybě</string>
+    <string name="net_no_cache_error">Čtení cache se nezdařilo</string>
+    <string name="net_parse_error">Při analýze dat došlo k výjimce</string>
+    <string name="request_failure">Požadavek se nezdařil</string>
+    <string name="net_request_error">Chyba požadavku parametru</string>
+    <string name="net_server_error">Chyba odezvy služby</string>
+    <string name="net_null_error">Došlo k nulové výjimce</string>
+    <string name="net_error">Neznámá chyba sítě</string>
+    <string name="net_other_error">Neznámá chyba</string>
+    <string name="no_error_message">Žádná chybová zpráva</string>
 </resources>

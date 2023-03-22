@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">Trang thuật toán máy ảnh</string>
     <string name="browser_concise_mode">Bố cục trang chủ</string>
     <string name="battery_health">Tình trạng pin</string>
+    <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">Hệ thống hiện tại không hỗ trợ!</string>
     <string name="very_dark_mode">Chế độ rất tối</string>
     <string name="GameAssistantRelated">Trợ lý trò chơi</string>

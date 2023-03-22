@@ -1982,6 +1982,14 @@ class Battery : ModulePreferenceFragment() {
                     isVisible = SDK >= A13
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.restore_default_battery_optimization_whitelist)
+                    key = "restore_default_battery_optimization_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }

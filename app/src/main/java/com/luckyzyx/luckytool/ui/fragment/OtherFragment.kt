@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.ui.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -258,6 +259,17 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                         "am start -n com.oplus.battery/com.oplus.powermanager.fuelgaue.BatteryHealthActivity",
                         true
                     )
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.battery_optimization)
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(this)
+                    }
                     true
                 }
             })

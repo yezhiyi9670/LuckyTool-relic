@@ -339,6 +339,8 @@
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
@@ -443,6 +445,7 @@
     <string name="camera_algo_page">Camera Algorithms Page</string>
     <string name="browser_concise_mode">Browser Concise Mode</string>
     <string name="battery_health">Battery Health</string>
+    <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">The current system does not support!</string>
     <string name="very_dark_mode">Very dark mode</string>
     <string name="GameAssistantRelated">Game Assistant Related</string>

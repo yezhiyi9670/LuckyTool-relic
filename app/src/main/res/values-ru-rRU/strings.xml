@@ -325,6 +325,8 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
+    <!--Battery-->
+    <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
@@ -428,6 +430,7 @@
     <string name="camera_algo_page">Страница алгоритмов камеры</string>
     <string name="browser_concise_mode">Режим настройки браузера</string>
     <string name="battery_health">Состояние батареи</string>
+    <string name="battery_optimization">Оптимизация батареи</string>
     <string name="system_not_support">Текущая система не поддерживается!</string>
     <string name="very_dark_mode">Очень тёмный режим</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
@@ -480,6 +483,6 @@
     <string name="net_server_error">Ошибка ответа службы</string>
     <string name="net_null_error">Произошло нулевое исключение</string>
     <string name="net_error">Неизвестная сетевая ошибка</string>
-    <string name="net_other_error">Unknown error</string>
+    <string name="net_other_error">Неизвестная ошибка</string>
     <string name="no_error_message">Нет сообщения об ошибке</string>
 </resources>
