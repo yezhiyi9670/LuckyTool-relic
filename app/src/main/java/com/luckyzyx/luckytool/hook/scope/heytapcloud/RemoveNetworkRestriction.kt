@@ -17,7 +17,6 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
             from("com.cloud.base.commonsdk.baseutils", "qa", "t2", "ra").absolute()
             constructor().none()
             field().count(0..1)
-            method().count(13)
             method {
                 param(ContextClass)
                 returnType = BooleanType

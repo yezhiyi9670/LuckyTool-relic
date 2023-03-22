@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
@@ -34,9 +35,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 afterHook {
                     val view = instance<TextView>()
                     val char = args(0).cast<CharSequence>() ?: return@afterHook
-                    getCharColor(view) {
-                        setRedOneStyle(view, char, it, removeRedOne)
-                    }
+                    setRedOneStyle(view, StringBuilder(char), removeRedOne)
                 }
             }
         }
@@ -51,40 +50,36 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 replaceUnit {
                     val view = args(0).cast<TextView>() ?: return@replaceUnit
                     val char = args(1).cast<CharSequence>() ?: return@replaceUnit
-                    getCharColor(view) {
-                        fixColonStyle(view, char, fixColon)
-                        setRedOneStyle(view, char, it, removeRedOne)
-                    }
+                    val sb = fixColonStyle(char, fixColon)
+                    setRedOneStyle(view, sb, removeRedOne)
                 }
             }
         }
     }
 
-    private fun getCharColor(view: TextView, result: (color: Int?) -> Unit) {
-        val sp = SpannableString(view.text)
-        val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
-        if (colorSpan.isNotEmpty()) {
-            result(colorSpan[0].foregroundColor)
-        } else result(null)
-    }
-
-    private fun fixColonStyle(view: TextView, char: CharSequence, fixColon: Boolean) {
-        view.text = if (fixColon) {
-            char.toString().replace("\u200e\u2236", ":")
-        } else {
-            char.toString().replace(":", "\u200e\u2236")
-        }
-    }
-
-    private fun setRedOneStyle(view: TextView, char: CharSequence, color: Int?, remove: Boolean) {
-        if (color == null) {
-            view.text = char.toString()
-        } else if (!remove) {
-            val sp = SpannableString(view.text)
-            for (i in 0 until 2) {
-                if (char[i].toString() == "1") sp.setSpan(ForegroundColorSpan(color), i, i + 1, 0)
+    private fun fixColonStyle(char: CharSequence, fixColon: Boolean): StringBuilder {
+        var sb = StringBuilder(char)
+        if (fixColon) return sb
+        for (i in char.indices) {
+            if (sb[i].toString() == ":") {
+                sb = sb.replace(i, i + 1, "\u200e\u2236")
+                break
             }
-            view.setText(sp, TextView.BufferType.SPANNABLE)
         }
+        return sb
+    }
+
+    private fun setRedOneStyle(view: TextView, sb: StringBuilder, remove: Boolean) {
+        if (remove) {
+            view.text = sb
+            return
+        }
+        val sp = SpannableString(sb)
+        for (i2 in 0 until 2) {
+            if (sb[i2].toString() == "1") {
+                sp.setSpan(ForegroundColorSpan(Color.parseColor("#c41442")), i2, i2 + 1, 0)
+            }
+        }
+        view.setText(sp, TextView.BufferType.SPANNABLE)
     }
 }
