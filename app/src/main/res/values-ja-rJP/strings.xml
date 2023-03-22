@@ -237,8 +237,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Red One Enhanced Editionの時計のコンポーネントを削除</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">通常版が有効でない場合のみ使用可能です、それ以外の場合は不可避のエラーが発生します</string>
     <string name="remove_appicon_dot">APIアイコンドットを削除</string>
-    <string name="show_charging_ripple">充電表示の充電テクスチャーの波</string>
-    <string name="show_charging_ripple_summary">充電器接続時のみ有効です</string>
     <string name="set_folder_layout_4x4">フォルダのレイアウトを4 x 4に設定</string>
     <string name="launcher_layout_related">ホーム画面レイアウト関連</string>
     <string name="launcher_layout_row_colume">ホーム画面レイアウトの行と列の最大数を設定します</string>
@@ -248,6 +246,10 @@
     <string name="RecentTaskListRelated">アプリ履歴関連</string>
     <string name="long_press_app_icon_open_app_details">アプリのアイコンを長押ししてアプリ詳細を開く</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
+    <string name="PaginationComponentRelated">Pagination Component Related</string>
+    <string name="remove_pagination_component">Remove pagination component</string>
+    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
+    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
     <string name="ApplyOtherRestrictions">その他の制限</string>
@@ -310,6 +312,8 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">その他</string>
     <string name="Miscellaneous_summary">難易度の高いカテゴリはこちらに配置されます</string>
+    <string name="show_charging_ripple">充電表示の充電テクスチャーの波</string>
+    <string name="show_charging_ripple_summary">充電器接続時のみ有効です</string>
     <string name="disable_otg_auto_off">OTGの自動オフを無効化</string>
     <string name="disable_otg_auto_off_summary">10分以上経つと OTG が自動的にオフになる制限を無効化します</string>
     <string name="disable_dpi_reboot_recovery">再起動後のDPIの復元を無効化</string>

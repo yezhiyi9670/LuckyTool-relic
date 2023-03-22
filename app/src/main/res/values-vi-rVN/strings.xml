@@ -237,8 +237,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Xóa số một đỏ nâng cao của đồng hồ trên màn hình chính</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Chỉ khả dụng khi phiên bản thông thường không có hiệu lực, nếu không nó sẽ gây ra lỗi không thể tránh khỏi</string>
     <string name="remove_appicon_dot">Xóa dấu API chấm biểu tượng</string>
-    <string name="show_charging_ripple">Sạc màn hình sóng</string>
-    <string name="show_charging_ripple_summary">Chỉ có hiệu lực khi kết nối với bộ sạc</string>
     <string name="set_folder_layout_4x4">Đặt bố cục thư mục 4 x 4</string>
     <string name="launcher_layout_related">Bố cục màn hình chính</string>
     <string name="launcher_layout_row_colume">Đặt số lượng hàng và cột tối đa được hỗ trợ bởi bố cục màn hình</string>
@@ -248,6 +246,10 @@
     <string name="RecentTaskListRelated">Recent task list related</string>
     <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Xóa nút xóa danh sách tác vụ gần đây</string>
+    <string name="PaginationComponentRelated">Pagination Component Related</string>
+    <string name="remove_pagination_component">Remove pagination component</string>
+    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
+    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     <!--Application-->
     <string name="Application">Ứng dụng</string>
     <string name="ApplyOtherRestrictions">Giới hạn khác</string>
@@ -310,6 +312,8 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">Khác</string>
     <string name="Miscellaneous_summary">Các danh mục có độ khó sẽ được đặt tại đây</string>
+    <string name="show_charging_ripple">Sạc màn hình sóng</string>
+    <string name="show_charging_ripple_summary">Chỉ có hiệu lực khi kết nối với bộ sạc</string>
     <string name="disable_otg_auto_off">Vô hiệu hóa tự động tắt OTG</string>
     <string name="disable_otg_auto_off_summary">Vô hiệu hóa tự động tắt OTG khi hơn mười phút</string>
     <string name="disable_dpi_reboot_recovery">Vô hiệu hóa phục hồi khởi động lại DPI</string>

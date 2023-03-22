@@ -237,8 +237,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie z zegara czerwoną cyfrę \"1\"</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
     <string name="remove_appicon_dot">Usuń oznaczenie zainstalowanej nowej aplikacji</string>
-    <string name="show_charging_ripple">Pokaż animację fali podczas ładowania</string>
-    <string name="show_charging_ripple_summary">Widoczne przy podłączaniu do ładowarki</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
     <string name="launcher_layout_row_colume">Umożliwia zwiększenie liczby wierszy i kolumn układu pulpitu</string>
@@ -248,6 +246,10 @@
     <string name="RecentTaskListRelated">Lista ostatnich aplikacji</string>
     <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk \"Zamknij wszystkie\"\nz listy ostatnich aplikacji</string>
+    <string name="PaginationComponentRelated">Pagination Component Related</string>
+    <string name="remove_pagination_component">Remove pagination component</string>
+    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
+    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
     <string name="ApplyOtherRestrictions">Inne ograniczenia</string>
@@ -310,6 +312,8 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>
+    <string name="show_charging_ripple">Pokaż animację fali podczas ładowania</string>
+    <string name="show_charging_ripple_summary">Widoczne przy podłączaniu do ładowarki</string>
     <string name="disable_otg_auto_off">Wyłącz auto. wyłączanie OTG</string>
     <string name="disable_otg_auto_off_summary">Połączenie OTG nie zostanie wyłączone po 10 minutach bezczynności</string>
     <string name="disable_dpi_reboot_recovery">Wyłącz restart do recovery DPI</string>

@@ -1250,6 +1250,37 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 PreferenceCategory(context).apply {
+                    title = getString(R.string.PaginationComponentRelated)
+                    key = "PaginationComponentRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_pagination_component)
+                    key = "remove_pagination_component"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_folder_pagination_component)
+                    key = "remove_folder_pagination_component"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_pagination_component_sliding)
+                    key = "disable_pagination_component_sliding"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
                     title = getString(R.string.RecentTaskListRelated)
                     key = "RecentTaskListRelated"
                     isIconSpaceReserved = false

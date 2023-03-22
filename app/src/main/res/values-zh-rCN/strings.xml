@@ -237,8 +237,6 @@
     <string name="remove_alarmclock_widget_redone_pro">移除桌面时钟组件红一·增强版</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">仅当常规版本未生效时可用，否则它将导致不可避免的错误</string>
     <string name="remove_appicon_dot">移除APP图标圆点</string>
-    <string name="show_charging_ripple">充电显示充电纹波</string>
-    <string name="show_charging_ripple_summary">仅在连接充电器时有效</string>
     <string name="set_folder_layout_4x4">设置文件夹布局 4x4</string>
     <string name="launcher_layout_related">桌面布局相关</string>
     <string name="launcher_layout_row_colume">设置桌面布局支持的最大行列数</string>
@@ -248,6 +246,10 @@
     <string name="RecentTaskListRelated">最近任务列表相关</string>
     <string name="long_press_app_icon_open_app_details">长按应用图标打开应用详情</string>
     <string name="remove_recent_task_list_clear_button">移除最近任务列表清除按钮</string>
+    <string name="PaginationComponentRelated">分页组件相关</string>
+    <string name="remove_pagination_component">移除分页组件</string>
+    <string name="remove_folder_pagination_component">移除文件夹分页组件</string>
+    <string name="disable_pagination_component_sliding">禁用分页组件滑动</string>
     <!--Application-->
     <string name="Application">应用相关</string>
     <string name="ApplyOtherRestrictions">其他限制</string>
@@ -310,6 +312,8 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>
+    <string name="show_charging_ripple">充电显示充电纹波</string>
+    <string name="show_charging_ripple_summary">仅在连接充电器时有效</string>
     <string name="disable_otg_auto_off">禁用OTG自动关闭</string>
     <string name="disable_otg_auto_off_summary">禁用OTG超过十分钟自动关闭</string>
     <string name="disable_dpi_reboot_recovery">禁用DPI重启恢复</string>

@@ -249,17 +249,21 @@
     <string name="remove_alarmclock_widget_redone_pro">Remove the desktop clock component Red One Enhanced Edition</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Only available when the regular version does not take effect, otherwise it will cause an inevitable error</string>
     <string name="remove_appicon_dot">Remove API icon dots</string>
-    <string name="show_charging_ripple">Charging display charging texture waves</string>
-    <string name="show_charging_ripple_summary">Valid only when connecting to charger</string>
     <string name="set_folder_layout_4x4">Set Folder Layout 4 x 4</string>
     <string name="launcher_layout_related">Desktop Layout Related</string>
     <string name="launcher_layout_row_colume">Sets the maximum number of rows and columns supported by the desktop layout</string>
     <string name="launcher_layout_enable">Desktop icon layout general switch</string>
     <string name="launcher_layout_max_rows">Maximum number of lines in desktop layout</string>
     <string name="launcher_layout_max_columns">Maximum Desktop Layout Columns</string>
+    
     <string name="RecentTaskListRelated">Recent task list related</string>
     <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Remove recent task list clear button</string>
+    
+    <string name="PaginationComponentRelated">Pagination Component Related</string>
+    <string name="remove_pagination_component">Remove pagination component</string>
+    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
+    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     <!--Application-->
     <string name="Application">Application related</string>
     <string name="ApplyOtherRestrictions">Other Limits</string>
@@ -323,6 +327,8 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">Miscellaneous</string>
     <string name="Miscellaneous_summary">Categories with difficulty will be placed here</string>
+    <string name="show_charging_ripple">Charging display charging texture waves</string>
+    <string name="show_charging_ripple_summary">Valid only when connecting to charger</string>
     <string name="disable_otg_auto_off">Disable OTG Auto-off</string>
     <string name="disable_otg_auto_off_summary">Disable OTG for more than ten minutes to automatically turn off</string>
     <string name="disable_dpi_reboot_recovery">Disable DPI Reboot Recovery</string>

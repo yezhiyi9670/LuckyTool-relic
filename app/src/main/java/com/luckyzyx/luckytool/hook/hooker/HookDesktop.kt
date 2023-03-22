@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
+
 object HookDesktop : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.coloros.alarmclock") {
@@ -36,6 +37,8 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("long_press_app_icon_open_app_details", false)) {
                 loadHooker(LongPressAppIconOpenAppDetails)
             }
+            //桌面分页组件
+            loadHooker(PageIndicator)
         }
     }
 }
