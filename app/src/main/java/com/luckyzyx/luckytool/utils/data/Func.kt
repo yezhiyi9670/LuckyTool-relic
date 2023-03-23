@@ -761,13 +761,16 @@ fun isZh(context: Context): Boolean {
 
 /**
  * 跳转到应用详情界面
- * @param context Context 上下文
- * @param packName String 包名
+ * @param context Context
+ * @param packName String
  */
-fun openAppDetailIntent(context: Context, packName: String) {
-    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+fun openAppDetailIntent(context: Context, packName: String, userId: Int?) {
+    val intent = Intent(
+        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+        Uri.fromParts("package", packName, null)
+    )
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-    intent.data = Uri.parse("package:$packName")
+    userId?.let { intent.putExtra("userId", it) }
     context.startActivity(intent)
 }

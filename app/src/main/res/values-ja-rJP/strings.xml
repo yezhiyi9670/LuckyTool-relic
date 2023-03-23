@@ -246,10 +246,10 @@
     <string name="RecentTaskListRelated">アプリ履歴関連</string>
     <string name="long_press_app_icon_open_app_details">アプリのアイコンを長押ししてアプリ詳細を開く</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
-    <string name="PaginationComponentRelated">Pagination Component Related</string>
-    <string name="remove_pagination_component">Remove pagination component</string>
-    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
-    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
+    <string name="PaginationComponentRelated">ページネーション関連</string>
+    <string name="remove_pagination_component">ページネーションを削除</string>
+    <string name="remove_folder_pagination_component">フォルダのページネーションを削除</string>
+    <string name="disable_pagination_component_sliding">ページネーションのスライドを無効化</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
     <string name="ApplyOtherRestrictions">その他の制限</string>

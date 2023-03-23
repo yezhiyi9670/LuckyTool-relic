@@ -35,7 +35,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 afterHook {
                     val view = instance<TextView>()
                     val char = args(0).cast<CharSequence>() ?: return@afterHook
-                    setRedOneStyle(view, StringBuilder(char), removeRedOne)
+                    setStyle(view, char, true, removeRedOne)
                 }
             }
         }
@@ -50,36 +50,29 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 replaceUnit {
                     val view = args(0).cast<TextView>() ?: return@replaceUnit
                     val char = args(1).cast<CharSequence>() ?: return@replaceUnit
-                    val sb = fixColonStyle(char, fixColon)
-                    setRedOneStyle(view, sb, removeRedOne)
+                    setStyle(view, char, fixColon, removeRedOne)
                 }
             }
         }
     }
 
-    private fun fixColonStyle(char: CharSequence, fixColon: Boolean): StringBuilder {
+    private fun setStyle(view: TextView, char: CharSequence, fixColon: Boolean, remove: Boolean) {
         var sb = StringBuilder(char)
-        if (fixColon) return sb
-        for (i in char.indices) {
-            if (sb[i].toString() == ":") {
-                sb = sb.replace(i, i + 1, "\u200e\u2236")
-                break
+        if (!fixColon) {
+            for (i in char.indices) {
+                if (sb[i].toString() == ":") {
+                    sb = sb.replace(i, i + 1, "\u200e\u2236")
+                }
             }
         }
-        return sb
-    }
-
-    private fun setRedOneStyle(view: TextView, sb: StringBuilder, remove: Boolean) {
-        if (remove) {
-            view.text = sb
-            return
-        }
-        val sp = SpannableString(sb)
-        for (i2 in 0 until 2) {
-            if (sb[i2].toString() == "1") {
-                sp.setSpan(ForegroundColorSpan(Color.parseColor("#c41442")), i2, i2 + 1, 0)
+        if (!remove) {
+            val sp = SpannableString(sb)
+            for (i2 in 0 until 2) {
+                if (sb[i2].toString() == "1") {
+                    sp.setSpan(ForegroundColorSpan(Color.parseColor("#c41442")), i2, i2 + 1, 0)
+                }
             }
-        }
-        view.setText(sp, TextView.BufferType.SPANNABLE)
+            view.setText(sp, TextView.BufferType.SPANNABLE)
+        } else view.text = sb
     }
 }

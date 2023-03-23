@@ -246,10 +246,10 @@
     <string name="RecentTaskListRelated">Список недавніх задач</string>
     <string name="long_press_app_icon_open_app_details">Утримуйте іконку додатку, щоб відкрити деталі додатку</string>
     <string name="remove_recent_task_list_clear_button">Видалити кнопку очищення списку останніх задач</string>
-    <string name="PaginationComponentRelated">Pagination Component Related</string>
-    <string name="remove_pagination_component">Remove pagination component</string>
-    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
-    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
+    <string name="PaginationComponentRelated">Компоненти сторінки</string>
+    <string name="remove_pagination_component">Видалити компонент розбиття на сторінки</string>
+    <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
+    <string name="disable_pagination_component_sliding">Вимкнути свайп компонентів розбивки</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>

@@ -246,10 +246,10 @@
     <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
     <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
-    <string name="PaginationComponentRelated">Pagination Component Related</string>
-    <string name="remove_pagination_component">Remove pagination component</string>
-    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
-    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
+    <string name="PaginationComponentRelated">Související složka stránkování</string>
+    <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
+    <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
+    <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>
