@@ -352,7 +352,7 @@
     <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>
     <string name="enable_optimise_power_feature">Włącz zoptymalizowane zasilanie</string>
     <string name="enable_gt_mode_feature">Włącz tryb GT</string>
-    <string name="enable_x_mode_feature">Enable X Mode</string>
+    <string name="enable_x_mode_feature">Włącz tryb X</string>
     <string name="enable_super_resolution_feature">Włącz super rozdzielczość</string>
     <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
     <!--CloudService-->
@@ -434,7 +434,7 @@
     <string name="camera_algo_page">Algorytmy kamery</string>
     <string name="browser_concise_mode">Tryb zwięzły przeglądarki</string>
     <string name="battery_health">Stan baterii</string>
-    <string name="battery_optimization">Battery Optimization</string>
+    <string name="battery_optimization">Optymalizacja baterii</string>
     <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
     <string name="GameAssistantRelated">Asystent gier</string>
@@ -482,11 +482,11 @@
     <string name="net_download_error">An error occurred during the download</string>
     <string name="net_no_cache_error">Read cache failed</string>
     <string name="net_parse_error">An exception occurred while parsing the data</string>
-    <string name="request_failure">Request failed</string>
+    <string name="request_failure">Żądanie nie powiodło się</string>
     <string name="net_request_error">Request parameter error</string>
     <string name="net_server_error">Service response error</string>
     <string name="net_null_error">Null exception occurred</string>
     <string name="net_error">Unknown network error</string>
-    <string name="net_other_error">Unknown error</string>
+    <string name="net_other_error">Nieznany błąd</string>
     <string name="no_error_message">No error message</string>
 </resources>

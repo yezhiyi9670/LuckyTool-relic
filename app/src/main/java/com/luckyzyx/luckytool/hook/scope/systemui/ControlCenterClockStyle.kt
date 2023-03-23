@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
@@ -47,13 +46,21 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     name = "setTextWithRedOneStyleInternal"
                     paramCount = 2
                 }
-                replaceUnit {
-                    val view = args(0).cast<TextView>() ?: return@replaceUnit
-                    val char = args(1).cast<CharSequence>() ?: return@replaceUnit
+                afterHook {
+                    val view = args(0).cast<TextView>() ?: return@afterHook
+                    val char = args(1).cast<CharSequence>() ?: return@afterHook
                     setStyle(view, char, fixColon, removeRedOne)
                 }
             }
         }
+    }
+
+    private fun getCharColor(view: TextView): Int? {
+        val sp = SpannableString(view.text)
+        val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
+        return if (colorSpan.isNotEmpty()) {
+            colorSpan[0].foregroundColor
+        } else null
     }
 
     private fun setStyle(view: TextView, char: CharSequence, fixColon: Boolean, remove: Boolean) {
@@ -65,11 +72,13 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 }
             }
         }
-        if (!remove) {
+        val color = getCharColor(view)
+        if (!remove && color != null) {
             val sp = SpannableString(sb)
             for (i2 in 0 until 2) {
                 if (sb[i2].toString() == "1") {
-                    sp.setSpan(ForegroundColorSpan(Color.parseColor("#c41442")), i2, i2 + 1, 0)
+//                    sp.setSpan(ForegroundColorSpan(Color.parseColor("#c41442")), i2, i2 + 1, 0)
+                    sp.setSpan(ForegroundColorSpan(color), i2, i2 + 1, 0)
                 }
             }
             view.setText(sp, TextView.BufferType.SPANNABLE)

@@ -39,6 +39,13 @@ object HookDesktop : YukiBaseHooker() {
             }
             //桌面分页组件
             loadHooker(PageIndicator)
+
+            //com.android.launcher3.popup.OplusBaseSystemShortcut
+            //OplusAppInfo etc. -> Click
+
+            //AppEdit
+            //com.oplus.uxicon.ui.ui.UxEditPanelFragment -> res/layout/edit_panel_layout.xml
+            //<string name="no_icon_pack_toast">没有支持替换图标的图标包</string>
         }
     }
 }

@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.3.6_beta
+### v4.3.6
 
 - [更新] 捐赠名单
 - [添加] 启用通知两侧对齐
@@ -44,6 +44,22 @@ star: false
 - [添加] 电池优化快捷入口
 - [添加] 移除桌面分页组件与滑动
 - [修复] 多用户长按任务图标跳转问题
+- [Update] Donation list
+- [Add] Enable notification side alignment
+- [Fix] Module startup card screen crash
+- [Fix] C12 hides SIM card without service icon
+- [Add] Removed race mode sound effects
+- [Fix] Optimized notification of abnormal battery power consumption
+- [Add] Patreon Subscription Donations
+- [Add] KSWEB remove Pro license
+- [Fix] Detecting update prompts that the parsing data is abnormal
+- [Fix] Cloud service mobile data network limitation
+- [Fix] Data type conversion exception of app clone
+- [Fix] The red one in the control center is abnormally displayed
+- [Add] restore default battery optimization whitelist
+- [Add] battery optimization quick entry
+- [Add] remove desktop paging component and slide
+- [Fix] Multi-user long press task icon jump problem
 
 ### v4.3.5
 

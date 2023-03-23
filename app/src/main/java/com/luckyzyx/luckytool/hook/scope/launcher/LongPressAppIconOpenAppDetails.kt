@@ -9,7 +9,6 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.openAppDetailIntent
 
-
 object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
     override fun onHook() {
 
