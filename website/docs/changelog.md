@@ -26,6 +26,11 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.3.7_beta
+
+- [优化] 优化检测更新对话框
+- [适配] FindX6P相机水印字数限制
+
 ### v4.3.6
 
 - [更新] 捐赠名单

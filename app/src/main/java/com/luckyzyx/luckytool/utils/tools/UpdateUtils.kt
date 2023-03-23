@@ -21,6 +21,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.data.dialogCentered
 import com.luckyzyx.luckytool.utils.data.dp
 import com.luckyzyx.luckytool.utils.data.toast
 import org.json.JSONObject
@@ -50,7 +51,7 @@ class UpdateUtils(val context: Context) {
                 val fileSize = getJSONArray("assets").getJSONObject(0).optString("size").toFloat()
 //                val updateTime = optString("published_at").replace("T", " ").replace("Z", "")
                 result(name, code.toInt()) {
-                    MaterialAlertDialogBuilder(context)
+                    MaterialAlertDialogBuilder(context, dialogCentered)
                         .setTitle(context.getString(R.string.check_update_hint))
                         .setView(
                             NestedScrollView(context).apply {
@@ -91,7 +92,7 @@ class UpdateUtils(val context: Context) {
             "https://proxy.zyun.vip/",
             "https://ghproxy.com/"
         )
-        MaterialAlertDialogBuilder(context).apply {
+        MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle("选择下载源")
             setItems(list) { _, which ->
                 downloadFile(context, fileName, cdn[which] + downloadUrl)
@@ -103,7 +104,7 @@ class UpdateUtils(val context: Context) {
     @Suppress("MemberVisibilityCanBePrivate")
     fun downloadFile(context: Context, apkName: String, url: String) {
         var downloadScope: NetCoroutineScope = scopeNet { }
-        val downloadDialog = MaterialAlertDialogBuilder(context).apply {
+        val downloadDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.downloading))
             setCancelable(false)
             setView(R.layout.layout_download_dialog)
