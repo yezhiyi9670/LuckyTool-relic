@@ -868,6 +868,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "fix_clock_colon_style"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                 }
             )
             addPreference(

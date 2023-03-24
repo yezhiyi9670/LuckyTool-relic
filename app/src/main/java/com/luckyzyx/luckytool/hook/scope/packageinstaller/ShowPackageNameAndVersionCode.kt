@@ -25,9 +25,12 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                                 width = LinearLayout.LayoutParams.MATCH_PARENT
                             }
                             isSingleLine = false
+                            setTextIsSelectable(true)
                         }
 //                    val mAppSize = field { name = "mAppSize" }.get(instance).cast<TextView>()
-                    (mAppVersion?.parent as LinearLayout).orientation = LinearLayout.VERTICAL
+                    (mAppVersion?.parent as LinearLayout).apply {
+                        orientation = LinearLayout.VERTICAL
+                    }
                     val versionStr = context.resources.getString(
                         context.resources.getIdentifier(
                             "app_info_version",
@@ -52,7 +55,7 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                     }.get().invoke<Boolean>(context, packName)!!.not()
                     mAppVersion.text =
                         if (isNewInstall) "$packName\n$versionStr$versionName($versionCode)"
-                        else "$packName\n$versionStr$curVersionName($curVersionCode) -> $versionName($versionCode)"
+                        else "$packName\n$versionStr$curVersionName($curVersionCode)\n↓↓↓\n$versionStr$versionName($versionCode)"
                 }
             }
         }

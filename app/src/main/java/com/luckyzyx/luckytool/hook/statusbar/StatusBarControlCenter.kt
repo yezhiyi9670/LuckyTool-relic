@@ -31,7 +31,6 @@ object StatusBarControlCenter : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
             loadHooker(EnableNotificationAlignBothSides)
         }
-
         //状态栏磁贴列数
         if (prefs(ModulePrefs).getBoolean("control_center_tile_enable", false)) {
             if (SDK >= A13) loadHooker(ControlCenterTilesColumnV13) else {

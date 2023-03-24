@@ -32,7 +32,7 @@ object ShowPackageNameInAppDetails : YukiBaseHooker() {
                         type = PackageInfoClass
                     }.cast<PackageInfo>() ?: return@afterHook
                     val context = mRootView.context
-                    val appSize: TextView = mRootView.findViewById(
+                    val appSize = mRootView.findViewById<TextView?>(
                         context.resources.getIdentifier(
                             "app_size", "id", packageName
                         )
