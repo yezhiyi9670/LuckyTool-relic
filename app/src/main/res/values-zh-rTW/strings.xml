@@ -226,6 +226,7 @@
     <string name="remove_top_lock_screen_icon">移除锁屏顶部图标</string>
     <string name="remove_lock_screen_bottom_left_button">移除锁屏左下角按钮</string>
     <string name="remove_lock_screen_bottom_right_camera">移除锁屏右下角相机</string>
+    <string name="remove_lock_screen_close_notification_button">移除锁屏关闭通知按钮</string>
     <string name="remove_lock_screen_bottom_sos_button">移除SOS紧急联系按钮</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">移除解锁页面底部的SOS紧急按钮</string>
     <string name="LockScreenEvent">锁屏事件</string>

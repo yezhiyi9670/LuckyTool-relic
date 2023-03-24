@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
+
 object HookLockScreen : YukiBaseHooker() {
     override fun onHook() {
         //移除锁屏时钟红1
@@ -30,6 +31,11 @@ object HookLockScreen : YukiBaseHooker() {
         //移除锁屏顶部图标
         if (prefs(ModulePrefs).getBoolean("remove_top_lock_screen_icon", false)) {
             loadHooker(RemoveTopLockScreenIcon)
+        }
+
+        //移除锁屏关闭通知按钮
+        if (prefs(ModulePrefs).getBoolean("remove_lock_screen_close_notification_button", false)) {
+            loadHooker(RemoveLockScreenCloseNotificationButton)
         }
     }
 }

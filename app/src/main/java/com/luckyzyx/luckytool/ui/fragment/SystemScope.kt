@@ -1424,6 +1424,14 @@ class LockScreen : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.remove_lock_screen_close_notification_button)
+                    key = "remove_lock_screen_close_notification_button"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_lock_screen_bottom_sos_button)
                     summary = getString(R.string.remove_lock_screen_bottom_sos_button_summary)
                     key = "remove_lock_screen_bottom_sos_button"

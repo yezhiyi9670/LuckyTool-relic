@@ -226,6 +226,7 @@
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
+    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки будет удалена</string>
     <string name="LockScreenEvent">Событие экрана блокировки</string>

@@ -226,6 +226,7 @@
     <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
     <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
+    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
     <string name="remove_lock_screen_bottom_sos_button">Ukryj przycisk \"Alarmowe SOS\"</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
