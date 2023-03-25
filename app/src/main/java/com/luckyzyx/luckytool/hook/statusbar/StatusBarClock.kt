@@ -143,11 +143,9 @@ object StatusBarClock : YukiBaseHooker() {
             "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass().buildOf(context) {
                 param(ContextClass)
             }
-        lunarInstance?.current {
-            nowLunar = method {
-                name = "getDateToString"
-            }.invoke<String>(System.currentTimeMillis())
-        }
+        nowLunar = lunarInstance?.current()?.method {
+            name = "getDateToString"
+        }?.invoke<String>(System.currentTimeMillis())
     }
 
     private fun TextView.initView() {
@@ -186,27 +184,20 @@ object StatusBarClock : YukiBaseHooker() {
     }
 
     private fun getFormat(format: String, nowTime: Date, nowLunar: String?): String {
-        var finalFormat: String
-        finalFormat = if (format.contains("NNNN")) {
-            format.replace("NNNN", nowLunar!!)
-        } else if (format.contains("NNN")) {
-            format.replace(
-                "NNN", nowLunar!!.substring(2, nowLunar.length)
-            )
-        } else if (format.contains("NN")) {
-            format.replace(
-                "NN", nowLunar!!.substring(4, nowLunar.length)
-            )
-        } else {
-            format.replace(
-                "N", nowLunar!!.substring(6, nowLunar.length)
-            )
+        var finalFormat: String = format
+        if (finalFormat.contains("NNNN")) finalFormat = finalFormat.replace("NNNN", nowLunar!!)
+        if (finalFormat.contains("NNN")) finalFormat = finalFormat.replace(
+            "NNN", nowLunar!!.substring(2, nowLunar.length)
+        )
+        if (finalFormat.contains("NN")) finalFormat = finalFormat.replace(
+            "NN", nowLunar!!.substring(4, nowLunar.length)
+        )
+        if (finalFormat.contains("N")) {
+            val startInt = if (nowLunar!!.length > 8) 7 else 6
+            finalFormat = finalFormat.replace("N", nowLunar.substring(startInt, nowLunar.length))
         }
-        if (finalFormat.contains("dddd")) {
-            finalFormat = finalFormat.replace("dddd", "dd号")
-        } else if (finalFormat.contains("ddd")) {
-            finalFormat = finalFormat.replace("ddd", "d号")
-        }
+        if (finalFormat.contains("dddd")) finalFormat = finalFormat.replace("dddd", "dd号")
+        if (finalFormat.contains("ddd")) finalFormat = finalFormat.replace("ddd", "d号")
         if (finalFormat.contains("FF")) finalFormat = finalFormat.replace("FF", getPeriod(nowTime))
         if (finalFormat.contains("GG")) finalFormat =
             finalFormat.replace("GG", getDoubleHour(nowTime))
