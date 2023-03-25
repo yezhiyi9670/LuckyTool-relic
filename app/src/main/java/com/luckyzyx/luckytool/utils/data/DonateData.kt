@@ -283,6 +283,9 @@ class DonateData {
             add(DonateInfo("ken995",10.0,donateDetails(
                 DonateChannelInfo("20230317-094837",CWC,10.0,"10001071012023031701981563932600")
             )))
+            add(DonateInfo("ANXIOUS",20.0,donateDetails(
+                DonateChannelInfo("20230325-181416",CWC,10.0,"10000499012023032501897349857593")
+            )))
         }
     }
 

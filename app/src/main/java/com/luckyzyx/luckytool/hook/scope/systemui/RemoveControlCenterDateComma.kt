@@ -13,7 +13,7 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                     paramCount = 2
                 }
                 afterHook {
-                    result = result.toString().replace("，"," ")
+                    result = result<String>()?.replace("，", " ")
                 }
             }
         }

@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.highcapable.yukihookapi.hook.log.loggerD
 
 object OplusFeature : YukiBaseHooker() {
     override fun onHook() {
@@ -10,13 +10,10 @@ object OplusFeature : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "hasFeature"
-                    param(StringClass)
                     paramCount = 1
                 }
                 beforeHook {
-//                    when (args(0).string()) {
-//                        "oplus.software.support.gt.mode" -> resultTrue()
-//                    }
+                    loggerD(msg = args().first().string())
                 }
             }
         }
