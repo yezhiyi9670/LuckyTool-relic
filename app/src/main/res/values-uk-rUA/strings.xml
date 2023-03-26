@@ -93,26 +93,6 @@
     <string name="StatusBar">Статус бар</string>
     <string name="statusbar_double_click_lock_screen">Двічі клацніть на рядок стану для блокування екрану</string>
     <string name="statusbar_carriers_use_user_typeface">Оператори використовують користувацькі шрифти в рядку стану</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">Повідомлення про батарею у рядку стану</string>
-    <string name="battery_information_show">Відображення інформації про батарею</string>
-    <string name="battery_information_show_summary">Відображення напруги батареї та іншої інформації у рядку стану</string>
-    <string name="battery_information_show_charge">Показати інформацію про зарядку</string>
-    <string name="battery_information_show_charge_summary">Під час заряджання напруга та теоретична сила заряджання відображатимуться у рядку стану</string>
-    <string name="battery_information_show_update_time">Показати час оновлення</string>
-    <string name="battery_information_show_update_time_summary">Відображати час оновлення поточних даних в рядку стану</string>
-    <string name="battery_status_unknown">Невідомо</string>
-    <string name="battery_status_charging">Зарядка</string>
-    <string name="battery_status_discharging">Розрядка</string>
-    <string name="battery_status_not_charging">Не заряджається</string>
-    <string name="battery_status_full">Повний</string>
-    <string name="battery_temperature">Температура</string>
-    <string name="battery_voltage">Напруга</string>
-    <string name="battery_electric_current">Струм</string>
-    <string name="battery_charger_voltage">Напруга</string>
-    <string name="battery_power">Потужність</string>
-    <string name="battery_technology">Технологія</string>
-    <string name="battery_update_time">Час оновлення</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Годинник у рядку стану</string>
     <string name="statusbar_clock_mode">Годинник у рядку стану</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">Відступ рядка стану зліва</string>
     <string name="statusbar_layout_right_margin">Відступ рядка стану праворуч</string>
     <string name="statusbar_layout_margin_tip">Якщо його значення 0, розмір відступу не буде змінений</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">Налаштування рядку стану</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">Status Bar Battery</string>
     <string name="remove_statusbar_battery_percent">Видалити іконку відсотка заряду батареї з рядка стану</string>
     <string name="statusbar_power_font_size">Розмір шрифту у рядку стану</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">Повідомлення про батарею у рядку стану</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Показати інформацію про зарядку</string>
+    <string name="battery_information_show_charge_summary">Під час заряджання напруга та теоретична сила заряджання відображатимуться у рядку стану</string>
+    <string name="battery_information_show_update_time">Показати час оновлення</string>
+    <string name="battery_information_show_update_time_summary">Відображати час оновлення поточних даних в рядку стану</string>
+    <string name="battery_status_unknown">Невідомо</string>
+    <string name="battery_status_charging">Зарядка</string>
+    <string name="battery_status_discharging">Розрядка</string>
+    <string name="battery_status_not_charging">Не заряджається</string>
+    <string name="battery_status_full">Повний</string>
+    <string name="battery_temperature">Температура</string>
+    <string name="battery_voltage">Напруга</string>
+    <string name="battery_electric_current">Струм</string>
+    <string name="battery_charger_voltage">Напруга</string>
+    <string name="battery_power">Потужність</string>
+    <string name="battery_technology">Технологія</string>
+    <string name="battery_update_time">Час оновлення</string>
     <!--LockScreen-->
     <string name="LockScreen">Екран блокування</string>
     <string name="LockScreenComponent">Компоненти екрана блокування</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Використовувати шрифт користувача</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">За замовчуванням</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Один рядок</string>

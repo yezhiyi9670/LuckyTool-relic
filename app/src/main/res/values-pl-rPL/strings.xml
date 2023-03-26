@@ -93,26 +93,6 @@
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
     <string name="statusbar_carriers_use_user_typeface">Użyj czcionki użytkownika w nazwie operatora sieci</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">Powiadomienie z informacjami o zasilaniu</string>
-    <string name="battery_information_show">Pokaż informacje o baterii</string>
-    <string name="battery_information_show_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
-    <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
-    <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
-    <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
-    <string name="battery_information_show_update_time_summary">Wyświetl czas aktualizacji aktualnych danych na pasku stanu</string>
-    <string name="battery_status_unknown">Unknown</string>
-    <string name="battery_status_charging">Ładowanie</string>
-    <string name="battery_status_discharging">Rozładowywanie</string>
-    <string name="battery_status_not_charging">Nie ładuje się</string>
-    <string name="battery_status_full">Pełna</string>
-    <string name="battery_temperature">Temp.</string>
-    <string name="battery_voltage">Napięcie</string>
-    <string name="battery_electric_current">Aktualna</string>
-    <string name="battery_charger_voltage">Napięcie</string>
-    <string name="battery_power">Zasilanie</string>
-    <string name="battery_technology">Rodzaj</string>
-    <string name="battery_update_time">Czas aktualizacji</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_mode">Dostosowanie zegara na pasku stanu</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">Lewy margines</string>
     <string name="statusbar_layout_right_margin">Prawy margines</string>
     <string name="statusbar_layout_margin_tip">Rozmiar 0 = domyślny</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">Dostosuj wskaźnik baterii</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">Status Bar Battery</string>
     <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
     <string name="statusbar_power_font_size">Rozmiar czcionki</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">Powiadomienie z informacjami o zasilaniu</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
+    <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
+    <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
+    <string name="battery_information_show_update_time_summary">Wyświetl czas aktualizacji aktualnych danych na pasku stanu</string>
+    <string name="battery_status_unknown">Unknown</string>
+    <string name="battery_status_charging">Ładowanie</string>
+    <string name="battery_status_discharging">Rozładowywanie</string>
+    <string name="battery_status_not_charging">Nie ładuje się</string>
+    <string name="battery_status_full">Pełna</string>
+    <string name="battery_temperature">Temp.</string>
+    <string name="battery_voltage">Napięcie</string>
+    <string name="battery_electric_current">Aktualna</string>
+    <string name="battery_charger_voltage">Napięcie</string>
+    <string name="battery_power">Zasilanie</string>
+    <string name="battery_technology">Rodzaj</string>
+    <string name="battery_update_time">Czas aktualizacji</string>
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
     <string name="LockScreenComponent">Komponenty ekranu blokady</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Użyj czcionki użytkownika</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">Domyślne</string>
     <string name="common_words_preset">Gotowe ustawienia</string>
     <string name="common_words_single_line">Pojedyncza linia</string>

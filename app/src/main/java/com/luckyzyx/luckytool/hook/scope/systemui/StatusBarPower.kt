@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.statusbar
+package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.graphics.Typeface
 import android.util.TypedValue

@@ -93,26 +93,6 @@
     <string name="StatusBar">Thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
     <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
-    <string name="battery_information_show">Hiển thị thông tin pin</string>
-    <string name="battery_information_show_summary">Hiển thị điện áp pin và các thông tin khác trên thanh trạng thái</string>
-    <string name="battery_information_show_charge">Hiện thông tin sạc</string>
-    <string name="battery_information_show_charge_summary">Khi sạc, điện áp và năng lượng sạc lý thuyết của bộ sạc sẽ được hiển thị trên thanh trạng thái</string>
-    <string name="battery_information_show_update_time">Hiển thị thời gian cập nhật</string>
-    <string name="battery_information_show_update_time_summary">Hiển thị thời gian cập nhật dữ liệu hiện tại trên thanh trạng thái</string>
-    <string name="battery_status_unknown">Không biết</string>
-    <string name="battery_status_charging">Đang sạc</string>
-    <string name="battery_status_discharging">Ngắt sạc</string>
-    <string name="battery_status_not_charging">Không sạc</string>
-    <string name="battery_status_full">Đầy</string>
-    <string name="battery_temperature">Nhiệt độ</string>
-    <string name="battery_voltage">Điện áp</string>
-    <string name="battery_electric_current">H.Tại</string>
-    <string name="battery_charger_voltage">Đ.Áp</string>
-    <string name="battery_power">Năng lượng</string>
-    <string name="battery_technology">Công nghệ</string>
-    <string name="battery_update_time">Thời gian cập nhật</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_mode">Đồng hồ thanh trạng thái</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">Căn trái thanh trạng thái</string>
     <string name="statusbar_layout_right_margin">Căn phải thanh trạng thái</string>
     <string name="statusbar_layout_margin_tip">Nếu giá trị là 0, kích cỡ sẽ không thay đổi</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">Status Bar Power</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">Status Bar Battery</string>
     <string name="remove_statusbar_battery_percent">Xóa phần trăm pin trên thanh trạng thái</string>
     <string name="statusbar_power_font_size">Statusbar power font size</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">StatusBar Battery Notifications</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Hiện thông tin sạc</string>
+    <string name="battery_information_show_charge_summary">Khi sạc, điện áp và năng lượng sạc lý thuyết của bộ sạc sẽ được hiển thị trên thanh trạng thái</string>
+    <string name="battery_information_show_update_time">Hiển thị thời gian cập nhật</string>
+    <string name="battery_information_show_update_time_summary">Hiển thị thời gian cập nhật dữ liệu hiện tại trên thanh trạng thái</string>
+    <string name="battery_status_unknown">Không biết</string>
+    <string name="battery_status_charging">Đang sạc</string>
+    <string name="battery_status_discharging">Ngắt sạc</string>
+    <string name="battery_status_not_charging">Không sạc</string>
+    <string name="battery_status_full">Đầy</string>
+    <string name="battery_temperature">Nhiệt độ</string>
+    <string name="battery_voltage">Điện áp</string>
+    <string name="battery_electric_current">H.Tại</string>
+    <string name="battery_charger_voltage">Đ.Áp</string>
+    <string name="battery_power">Năng lượng</string>
+    <string name="battery_technology">Công nghệ</string>
+    <string name="battery_update_time">Thời gian cập nhật</string>
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
     <string name="LockScreenComponent">Lock Screen Component</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">Mặc định</string>
     <string name="common_words_preset">Thiết lập sẵn</string>
     <string name="common_words_single_line">Single line</string>

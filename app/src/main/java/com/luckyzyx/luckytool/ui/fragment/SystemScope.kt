@@ -199,30 +199,14 @@ class StatusBar : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    title = getString(R.string.StatusBarPower)
+                    title = getString(R.string.StatusBarBattery)
                     summary =
                         getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
-                    key = "StatusBarPower"
+                    key = "StatusBarBattery"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
                         findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarPower, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
-                        true
-                    }
-                }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarBatteryNotify)
-                    summary =
-                        getString(R.string.battery_information_show) + "," + getString(R.string.battery_information_show_charge)
-                    key = "StatusBarBatteryNotify"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarBatteryNotify, Bundle().apply {
+                            R.id.action_statusBar_to_statusBarBattery, Bundle().apply {
                                 putCharSequence("title_label", title)
                             })
                         true
@@ -233,14 +217,6 @@ class StatusBar : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.statusbar_double_click_lock_screen)
                     key = "statusbar_double_click_lock_screen"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_carriers_use_user_typeface)
-                    key = "statusbar_carriers_use_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1122,7 +1098,7 @@ class StatusBarLayout : ModulePreferenceFragment() {
     }
 }
 
-class StatusBarPower : ModulePreferenceFragment() {
+class StatusBarBattery : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -1162,62 +1138,62 @@ class StatusBarPower : ModulePreferenceFragment() {
                     }
                 )
             }
-
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarBatteryNotify)
+                    key = "StatusBarBatteryNotify"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.battery_information_display_mode)
+                    summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
+                    key = "battery_information_display_mode"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                            .put(key = "battery_information_display_mode", value = newValue)
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            if (context.getString(ModulePrefs, "battery_information_display_mode", "0") != "0") {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_charge)
+                        summary = getString(R.string.battery_information_show_charge_summary)
+                        key = "battery_information_show_charge_info"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel(packageName = "com.android.systemui")
+                                .put(key = "battery_information_show_charge_info", value = newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_update_time)
+                        summary = getString(R.string.battery_information_show_update_time_summary)
+                        key = "battery_information_show_update_time"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            requireActivity().dataChannel(packageName = "com.android.systemui")
+                                .put(key = "battery_information_show_update_time", value = newValue)
+                            true
+                        }
+                    }
+                )
+            }
         }
-    }
-}
-
-class StatusBarBatteryNotify : ModulePreferenceFragment() {
-    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        preferenceManager.sharedPreferencesName = ModulePrefs
-        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show)
-                    summary = getString(R.string.battery_information_show_summary)
-                    key = "battery_information_show"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "battery_information_show", value = newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_charge)
-                    summary = getString(R.string.battery_information_show_charge_summary)
-                    key = "battery_information_show_charge"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "battery_information_show_charge", value = newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_update_time)
-                    summary = getString(R.string.battery_information_show_update_time_summary)
-                    key = "battery_information_show_update_time"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "battery_information_show_update_time", value = newValue)
-                        true
-                    }
-                }
-            )
-        }
-        findPreference<SwitchPreference>("battery_information_show_charge")?.dependency =
-            "battery_information_show"
-        findPreference<SwitchPreference>("battery_information_show_update_time")?.dependency =
-            "battery_information_show"
     }
 }
 
@@ -1387,6 +1363,14 @@ class LockScreen : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.lock_screen_use_user_typeface)
                     key = "lock_screen_use_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_carriers_use_user_typeface)
+                    key = "statusbar_carriers_use_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

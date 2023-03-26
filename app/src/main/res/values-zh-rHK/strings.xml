@@ -93,26 +93,6 @@
     <string name="StatusBar">状态栏相关</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
     <string name="statusbar_carriers_use_user_typeface">状态栏运营商使用用户字体</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">状态栏电池通知</string>
-    <string name="battery_information_show">电池信息显示</string>
-    <string name="battery_information_show_summary">在状态栏显示电池电压等信息</string>
-    <string name="battery_information_show_charge">显示充电信息</string>
-    <string name="battery_information_show_charge_summary">充电时，在状态栏显示充电器的电压和理论充电功率</string>
-    <string name="battery_information_show_update_time">显示更新时间</string>
-    <string name="battery_information_show_update_time_summary">在状态栏显示当前数据的更新时间</string>
-    <string name="battery_status_unknown">未知</string>
-    <string name="battery_status_charging">充電中</string>
-    <string name="battery_status_discharging">放電中</string>
-    <string name="battery_status_not_charging">未充電</string>
-    <string name="battery_status_full">已满</string>
-    <string name="battery_temperature">溫度</string>
-    <string name="battery_voltage">电压</string>
-    <string name="battery_electric_current">电流</string>
-    <string name="battery_charger_voltage">充电电压</string>
-    <string name="battery_power">理论功率</string>
-    <string name="battery_technology">充电技術</string>
-    <string name="battery_update_time">更新时间</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_mode">状态栏时钟模式</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">状态栏左边距</string>
     <string name="statusbar_layout_right_margin">状态栏右边距</string>
     <string name="statusbar_layout_margin_tip">若为0, 则不修改边距大小</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">状态栏电量</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">状态栏电池</string>
     <string name="remove_statusbar_battery_percent">移除状态栏电量百分号</string>
     <string name="statusbar_power_font_size">状态栏电量字体大小</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">状态栏电池通知</string>
+    <string name="battery_information_notify_permanent_display">常驻显示</string>
+    <string name="battery_information_notify_only_charging">仅充电时显示</string>
+    <string name="battery_information_display_mode">电池信息显示模式</string>
+    <string name="battery_information_display_mode_summary">在状态栏显示电池电压等信息</string>
+    <string name="battery_information_show_charge">显示充电信息</string>
+    <string name="battery_information_show_charge_summary">充电时，在状态栏显示充电器的电压和理论充电功率</string>
+    <string name="battery_information_show_update_time">显示更新时间</string>
+    <string name="battery_information_show_update_time_summary">在状态栏显示当前数据的更新时间</string>
+    <string name="battery_status_unknown">未知</string>
+    <string name="battery_status_charging">充電中</string>
+    <string name="battery_status_discharging">放電中</string>
+    <string name="battery_status_not_charging">未充電</string>
+    <string name="battery_status_full">已满</string>
+    <string name="battery_temperature">溫度</string>
+    <string name="battery_voltage">电压</string>
+    <string name="battery_electric_current">电流</string>
+    <string name="battery_charger_voltage">充电电压</string>
+    <string name="battery_power">理论功率</string>
+    <string name="battery_technology">充电技術</string>
+    <string name="battery_update_time">更新时间</string>
     <!--LockScreen-->
     <string name="LockScreen">锁屏相关</string>
     <string name="LockScreenComponent">锁屏组件</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">使用用户字体</string>
     <!--CommonWords-->
+    <string name="common_words_close">关闭</string>
+    <string name="common_words_open">打开</string>
     <string name="common_words_default">默认</string>
     <string name="common_words_preset">預設</string>
     <string name="common_words_single_line">单行</string>

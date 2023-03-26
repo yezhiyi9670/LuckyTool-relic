@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.statusbar
+package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -36,11 +36,13 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     private var chargeWattage: Int = 0
     private var ppsMode: Int = 0
     override fun onHook() {
-        var showInfo = prefs(ModulePrefs).getBoolean("battery_information_show", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show") { showInfo = it }
-        var showCharger =
-            prefs(ModulePrefs).getBoolean("battery_information_show_charge", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show_charge") { showCharger = it }
+        var displayMode = prefs(ModulePrefs).getString("battery_information_display_mode", "0")
+        dataChannel.wait<String>(key = "battery_information_display_mode") { displayMode = it }
+        var showChargerInfo =
+            prefs(ModulePrefs).getBoolean("battery_information_show_charge_info", false)
+        dataChannel.wait<Boolean>(key = "battery_information_show_charge_info") {
+            showChargerInfo = it
+        }
         var showUpdateTime =
             prefs(ModulePrefs).getBoolean("battery_information_show_update_time", false)
         dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
@@ -50,23 +52,27 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             onCreate { injectModuleAppResources() }
             //监听电池信息
             registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, intent: Intent ->
-                if (!showInfo) {
-                    clearNotification(context)
-                    return@registerReceiver
-                }
                 context.injectModuleAppResources()
                 initInfo(context, intent)
-                sendNotification(context, showCharger && isCharging, showUpdateTime)
+                when (displayMode) {
+                    "0" -> clearNotification(context)
+                    "1" -> sendNotification(context, showChargerInfo && isCharging, showUpdateTime)
+                    "2" -> if (isCharging) sendNotification(
+                        context, showChargerInfo, showUpdateTime
+                    ) else clearNotification(context)
+                }
             }
             //监听OPLUS电池信息
             registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
-                if (!showInfo) {
-                    clearNotification(context)
-                    return@registerReceiver
-                }
                 context.injectModuleAppResources()
                 initOplusInfo(intent)
-                sendNotification(context, showCharger && isCharging, showUpdateTime)
+                when (displayMode) {
+                    "0" -> clearNotification(context)
+                    "1" -> sendNotification(context, showChargerInfo && isCharging, showUpdateTime)
+                    "2" -> if (isCharging) sendNotification(
+                        context, showChargerInfo, showUpdateTime
+                    ) else clearNotification(context)
+                }
             }
         }
     }

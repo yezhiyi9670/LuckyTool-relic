@@ -39,9 +39,9 @@
     <!-- About -->
     <string name="about_title">Информация</string>
     <string name="about_author">Авторы</string>
-    <string name="donate">Донат</string>
-    <string name="donate_message">Обязательно укажите свой никнейм или ID при донате</string>
-    <string name="donate_summary">Ваш донат станет движущей силой обновления модуля</string>
+    <string name="donate">Пожертвовать</string>
+    <string name="donate_message">Обязательно укажите свой никнейм или ID при пожертвовании</string>
+    <string name="donate_summary">Ваше пожертвование станет движущей силой обновления модуля</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
@@ -93,26 +93,6 @@
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
     <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
-    <string name="battery_information_show">Отображение информации о батарее</string>
-    <string name="battery_information_show_summary">Отображение напряжения батареи и другой информации в строке состояния</string>
-    <string name="battery_information_show_charge">Показать информацию о зарядке</string>
-    <string name="battery_information_show_charge_summary">При зарядке напряжение и теоретическая сила зарядки будут отображаться в строке состояния</string>
-    <string name="battery_information_show_update_time">Показать время обновления</string>
-    <string name="battery_information_show_update_time_summary">Отображать время обновления данных в строке состояния</string>
-    <string name="battery_status_unknown">Неизвестно</string>
-    <string name="battery_status_charging">Зарядка</string>
-    <string name="battery_status_discharging">Разрядка</string>
-    <string name="battery_status_not_charging">Не заряжается</string>
-    <string name="battery_status_full">Полный</string>
-    <string name="battery_temperature">Температура</string>
-    <string name="battery_voltage">Напряжение</string>
-    <string name="battery_electric_current">Ток</string>
-    <string name="battery_charger_voltage">Напряжение</string>
-    <string name="battery_power">Мощность</string>
-    <string name="battery_technology">Технология</string>
-    <string name="battery_update_time">Время обновления</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">Отступ строки состояния слева</string>
     <string name="statusbar_layout_right_margin">Отступ строки состояния справа</string>
     <string name="statusbar_layout_margin_tip">Если он равен 0, размер отступа не будет изменен</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">Настройки строки состояния</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">Индикатор батареи</string>
     <string name="remove_statusbar_battery_percent">Удалить иконку процента заряда батареи из строки состояния</string>
     <string name="statusbar_power_font_size">Размер шрифта в строке состояния</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Показать информацию о зарядке</string>
+    <string name="battery_information_show_charge_summary">При зарядке напряжение и теоретическая сила зарядки будут отображаться в строке состояния</string>
+    <string name="battery_information_show_update_time">Показать время обновления</string>
+    <string name="battery_information_show_update_time_summary">Отображать время обновления данных в строке состояния</string>
+    <string name="battery_status_unknown">Неизвестно</string>
+    <string name="battery_status_charging">Зарядка</string>
+    <string name="battery_status_discharging">Разрядка</string>
+    <string name="battery_status_not_charging">Не заряжается</string>
+    <string name="battery_status_full">Полный</string>
+    <string name="battery_temperature">Температура</string>
+    <string name="battery_voltage">Напряжение</string>
+    <string name="battery_electric_current">Ток</string>
+    <string name="battery_charger_voltage">Напряжение</string>
+    <string name="battery_power">Мощность</string>
+    <string name="battery_technology">Технология</string>
+    <string name="battery_update_time">Время обновления</string>
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenComponent">Компоненты экрана блокировки</string>
@@ -226,7 +228,7 @@
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
-    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
+    <string name="remove_lock_screen_close_notification_button">Удалить кнопку уведомления закрытия экрана блокировки</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки будет удалена</string>
     <string name="LockScreenEvent">Событие экрана блокировки</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Использовать пользовательский шрифт</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">По умолчанию</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Одна строка</string>

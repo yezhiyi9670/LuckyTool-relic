@@ -93,26 +93,6 @@
     <string name="StatusBar">Stavová lišta</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
     <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
-    <string name="battery_information_show">Zobrazit informace o baterii</string>
-    <string name="battery_information_show_summary">Zobrazit napětí baterie a další informace ve stavové liště</string>
-    <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
-    <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
-    <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
-    <string name="battery_information_show_update_time_summary">Zobrazit čas aktualizace aktuálních dat ve stavové liště</string>
-    <string name="battery_status_unknown">Neznámý</string>
-    <string name="battery_status_charging">Nabíjení</string>
-    <string name="battery_status_discharging">Vybíjení</string>
-    <string name="battery_status_not_charging">Nenabíjí se</string>
-    <string name="battery_status_full">Nabito</string>
-    <string name="battery_temperature">Teplota</string>
-    <string name="battery_voltage">Napětí</string>
-    <string name="battery_electric_current">Cur</string>
-    <string name="battery_charger_voltage">Napětí</string>
-    <string name="battery_power">Spotřeba</string>
-    <string name="battery_technology">Technologie</string>
-    <string name="battery_update_time">Aktualizováno</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Hodiny na stavové liště</string>
     <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">Levý okraj stavové lišty</string>
     <string name="statusbar_layout_right_margin">Pravý okraj stavové lišty</string>
     <string name="statusbar_layout_margin_tip">Pokud je 0, velikost okraje nebude změněna</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">Napájení ve stavové liště</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">Status Bar Battery</string>
     <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie ve stavové liště</string>
     <string name="statusbar_power_font_size">Velikost písma napájení ve stavové liště</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
+    <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
+    <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
+    <string name="battery_information_show_update_time_summary">Zobrazit čas aktualizace aktuálních dat ve stavové liště</string>
+    <string name="battery_status_unknown">Neznámý</string>
+    <string name="battery_status_charging">Nabíjení</string>
+    <string name="battery_status_discharging">Vybíjení</string>
+    <string name="battery_status_not_charging">Nenabíjí se</string>
+    <string name="battery_status_full">Nabito</string>
+    <string name="battery_temperature">Teplota</string>
+    <string name="battery_voltage">Napětí</string>
+    <string name="battery_electric_current">Cur</string>
+    <string name="battery_charger_voltage">Napětí</string>
+    <string name="battery_power">Spotřeba</string>
+    <string name="battery_technology">Technologie</string>
+    <string name="battery_update_time">Aktualizováno</string>
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
@@ -226,7 +228,7 @@
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_right_camera">Odstranit tlačítko kamery na pravé dolní straně zamykací obrazovky</string>
-    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
+    <string name="remove_lock_screen_close_notification_button">Odstranit tlačítko \"zavřít oznámení\" na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
     <string name="LockScreenEvent">Události na zamykací obrazovce</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Použít uživatelský typ písma</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">Výchozí</string>
     <string name="common_words_preset">Přednastavené</string>
     <string name="common_words_single_line">Jeden řádek</string>

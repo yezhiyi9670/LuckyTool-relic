@@ -4,7 +4,7 @@ import android.graphics.Typeface
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-object StatusBarCarriersUseUserTypeface : YukiBaseHooker() {
+object CarriersUseUserTypeface : YukiBaseHooker() {
     override fun onHook() {
         //Source StatOperatorNameView
         findClass("com.oplusos.systemui.statusbar.widget.StatOperatorNameView").hook {

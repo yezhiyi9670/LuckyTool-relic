@@ -93,26 +93,6 @@
     <string name="StatusBar">ステータスバー関連</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
     <string name="statusbar_carriers_use_user_typeface">ステータスバーのキャリア表示にユーザーフォントを使用します</string>
-    <!--StatusBarBatteryInformation-->
-    <string name="StatusBarBatteryNotify">ステータスバーのバッテリー通知</string>
-    <string name="battery_information_show">バッテリー情報の表示</string>
-    <string name="battery_information_show_summary">バッテリー電圧などをステータスバーに表示します</string>
-    <string name="battery_information_show_charge">充電中の情報を表示</string>
-    <string name="battery_information_show_charge_summary">充電中に充電器の電圧と理論値の充電電力がステータスバーに表示されます</string>
-    <string name="battery_information_show_update_time">更新時刻を表示</string>
-    <string name="battery_information_show_update_time_summary">現在のデータの更新時間をステータスバーに表示します</string>
-    <string name="battery_status_unknown">不明</string>
-    <string name="battery_status_charging">充電中</string>
-    <string name="battery_status_discharging">放電中</string>
-    <string name="battery_status_not_charging">放電中</string>
-    <string name="battery_status_full">完全</string>
-    <string name="battery_temperature">温度</string>
-    <string name="battery_voltage">Vol</string>
-    <string name="battery_electric_current">Cur</string>
-    <string name="battery_charger_voltage">Vol</string>
-    <string name="battery_power">Pwr</string>
-    <string name="battery_technology">Tech</string>
-    <string name="battery_update_time">更新日時</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">ステータスバーの時計</string>
     <string name="statusbar_clock_mode">ステータスバーの時計モード</string>
@@ -211,10 +191,32 @@
     <string name="statusbar_layout_left_margin">ステータスバー左側のマージン</string>
     <string name="statusbar_layout_right_margin">ステータスバー右側のマージン</string>
     <string name="statusbar_layout_margin_tip">0の場合はサイズを変更しません</string>
-    <!--StatusBarPower-->
-    <string name="StatusBarPower">ステータスバーの電源</string>
+    <!--StatusBarBattery-->
+    <string name="StatusBarBattery">ステータスバーのバッテリー</string>
     <string name="remove_statusbar_battery_percent">バッテリーパーセンテージをステータスバーから削除</string>
     <string name="statusbar_power_font_size">ステータスバーの電源フォントサイズ</string>
+    <!--StatusBarBatteryNotify-->
+    <string name="StatusBarBatteryNotify">ステータスバーのバッテリー通知</string>
+    <string name="battery_information_notify_permanent_display">Permanent display</string>
+    <string name="battery_information_notify_only_charging">Shown only while charging</string>
+    <string name="battery_information_display_mode">Battery information display mode</string>
+    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_show_charge">充電中の情報を表示</string>
+    <string name="battery_information_show_charge_summary">充電中に充電器の電圧と理論値の充電電力がステータスバーに表示されます</string>
+    <string name="battery_information_show_update_time">更新時刻を表示</string>
+    <string name="battery_information_show_update_time_summary">現在のデータの更新時間をステータスバーに表示します</string>
+    <string name="battery_status_unknown">不明</string>
+    <string name="battery_status_charging">充電中</string>
+    <string name="battery_status_discharging">放電中</string>
+    <string name="battery_status_not_charging">放電中</string>
+    <string name="battery_status_full">完全</string>
+    <string name="battery_temperature">温度</string>
+    <string name="battery_voltage">Vol</string>
+    <string name="battery_electric_current">Cur</string>
+    <string name="battery_charger_voltage">Vol</string>
+    <string name="battery_power">Pwr</string>
+    <string name="battery_technology">Tech</string>
+    <string name="battery_update_time">更新日時</string>
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
     <string name="LockScreenComponent">ロック画面コンポーネント</string>
@@ -226,7 +228,7 @@
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
-    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
+    <string name="remove_lock_screen_close_notification_button">ロック画面の通知削除ボタンを削除する</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
     <string name="LockScreenEvent">ロック画面イベント</string>
@@ -469,6 +471,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">ユーザー書体を使用</string>
     <!--CommonWords-->
+    <string name="common_words_close">Close</string>
+    <string name="common_words_open">Open</string>
     <string name="common_words_default">デフォルト</string>
     <string name="common_words_preset">プリセット</string>
     <string name="common_words_single_line">直線</string>
