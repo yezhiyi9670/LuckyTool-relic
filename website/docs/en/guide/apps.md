@@ -4,7 +4,7 @@ title: Application Related
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 5
+order: 6
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
@@ -25,18 +25,26 @@ star: false
 # copyright: 无版权
 ---
 
-## APP Mask
+## ApplicationStart
 
-Scope: System framework
+- Disable boot mask animation
 
-## App list related
+## AppListRelated
 
-Scope: system framework, settings
+- Custom apps zoom support list
+- Custom dark mode support list
+- Custom apps clone support list
 
-## App installation related
+## AppInstallationRelated
 
-Scope: App Package Installer
+- Skip Apk Scanning
+- Allow downgrade installation
+- Install shows package name and version number
+- Remove install ads
+- Replace AOSP installer
+- Remove ADB installation confirmation
 
-## Autostart and background task locking
+## OtherRestrictions
 
-Scope: Battery, Security Center
+- Unlock app self-start quantity limit
+- Unlock App Background Lock Quantity

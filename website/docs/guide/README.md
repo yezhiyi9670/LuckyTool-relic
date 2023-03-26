@@ -4,7 +4,7 @@ title: 功能介绍
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 1
+order: 0
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间

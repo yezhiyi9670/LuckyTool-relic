@@ -1,20 +1,17 @@
 ---
-# 这是文章的标题
-title: Function Introduction
-# 这是页面的图标
+title: 锁屏
 icon: page
-# 这是侧边栏的顺序
-order: 0
+order: 4
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
 # date: 2020-01-01
 # 一个页面可以有多个分类
 category:
-  - 模块功能
+- 模块功能
 # 一个页面可以有多个标签
 tag:
-  - 模块功能
+- 模块功能
 # 此页面会在文章列表置顶
 sticky: false
 # 此页面会出现在文章收藏中
@@ -25,4 +22,20 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+## 锁屏组件
+
+- 移除时钟插件红一
+- 设置组件居中显示
+- 组件使用用户字体
+- 状态栏运营商使用用户字体
+
+## 锁屏按钮
+
+- 移除顶部图标
+- 移除左下角/右下角图标
+- 移除关闭通知按钮
+- 移除SOS紧急联系按钮
+
+## 锁屏事件
+
+- 移除72小时密码验证

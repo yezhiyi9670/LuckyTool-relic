@@ -1,6 +1,6 @@
 ---
 # 这是文章的标题
-title: Tile Related
+title: Settings
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
@@ -25,23 +25,5 @@ star: false
 # copyright: 无版权
 ---
 
-### JumpClass
-
-- ChargingTest
-- ProcessManagement
-- GameAssistant
-
-### FunctionClass
-
-- DisplayRefreshRate
-- GlobalDC
-- HighBrightnessMode
-- TouchSamplingRate
-- VeryDarkMode
-- 5G Switch
-
-## SelfStart
-
-**Need to add system interface scope**  
-In addition to the display refresh rate, global DC and other functions support the lock screen to unlock and start automatically  
-The scope needs to be restarted after opening the tile. Similarly, the same is true for disabling self-starting  
+- Remove top account display
+- Apps details display package name and long press to copy

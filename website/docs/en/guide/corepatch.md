@@ -4,7 +4,7 @@ title: Core Patch
 # 这是页面的图标
 icon: page
 # 这是侧边栏的顺序
-order: 2
+order: 1
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间

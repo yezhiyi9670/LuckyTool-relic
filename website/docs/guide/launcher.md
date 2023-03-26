@@ -1,20 +1,17 @@
 ---
-# 这是文章的标题
-title: Function Introduction
-# 这是页面的图标
+title: 启动器
 icon: page
-# 这是侧边栏的顺序
-order: 0
+order: 3
 # 设置作者
 # author: 忆清鸣、luckyzyx
 # 设置写作时间
 # date: 2020-01-01
 # 一个页面可以有多个分类
 category:
-  - 模块功能
+- 模块功能
 # 一个页面可以有多个标签
 tag:
-  - 模块功能
+- 模块功能
 # 此页面会在文章列表置顶
 sticky: false
 # 此页面会出现在文章收藏中
@@ -25,4 +22,21 @@ star: false
 # copyright: 无版权
 ---
 
-See feature scopes and considerations here
+- 移除时钟插件红一
+- 移除APP左下角圆点
+- 设置文件夹4x4布局
+
+## 分页组件
+
+- 移除分页组件
+- 移除文件夹分页组件
+- 禁用分页组件滑动
+
+## 最近任务列表
+
+- 移除清理按钮
+- 长按APP图标打开应用详情
+
+## 桌面布局
+
+- 提升行列数支持

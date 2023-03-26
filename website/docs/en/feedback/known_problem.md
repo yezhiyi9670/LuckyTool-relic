@@ -29,14 +29,14 @@ If this page cannot solve your problem, you can go to the documentation introduc
 
 ### List of Questions
 
-- Unable to save module data(The switch fails after restarting the module) --> Don't use CI beta frameworks
+- Unable to save module data(The switch fails after restarting the module) --> Don't use CI beta frameworks(ForExample: LSPosed CI)
 
 - yukihookapi.intent.action.HOST_DATA_CHANNEL --> No feedback required, upstream API communication issues
 
 - many functions**collective failure** --> Clear the module background first, and then restart the
   scope
 
-- **Finding Error isSetUpMember** --> Not an exception, try restarting the scope
+- When this exception occurs alone**Finding Error isSetUpMember** --> Not an exception, try restarting the scope
 
-- **解析数据异常** --> Automatically detect and update an error, try to close the VPN to open the module,
+- **解析数据异常 / Parsing data exception** --> Automatically detect and update an error, try to close the VPN to open the module,
   no feedback required
