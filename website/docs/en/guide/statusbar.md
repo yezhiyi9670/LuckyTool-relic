@@ -49,6 +49,10 @@ star: false
 - Text alignment within the clock
 - Use user fonts
 
+### Clock Known Issues
+
+- A single line of clock text may be skewed up or down -> Set text alignment to center
+
 ## StatusBarNetworkSpeed
 
 - Set the network speed to refresh every second
@@ -103,6 +107,7 @@ When using dual-line network speed, the network speed in the status bar control 
 
 - The number of rows and columns in the horizontal and vertical screen state
 - Expand the number of rows and columns in the unexpanded state
+- Fix tile alignment on both sides
 
 ### Module Built In Tiles
 

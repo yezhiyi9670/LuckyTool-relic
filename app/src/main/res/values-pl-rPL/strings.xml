@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     <string name="ControlCenter_Tile_Related">Przełączniki</string>
     <string name="control_center_tile_enable">Główny przełącznik</string>
+    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
+    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
     <string name="tile_unexpanded_columns_horizontal">Kolumny (w poziomie)</string>
     <string name="tile_expanded_columns_vertical">Rozszerzone - Kolumny (w pionie)</string>

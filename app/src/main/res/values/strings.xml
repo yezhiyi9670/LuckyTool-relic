@@ -186,6 +186,8 @@
     
     <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
     <string name="control_center_tile_enable">Control center tile function main switch</string>
+    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
+    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
     <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
     <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>

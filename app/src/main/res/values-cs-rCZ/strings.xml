@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
     <string name="ControlCenter_Tile_Related">Přepínače v ovládacím centru</string>
     <string name="control_center_tile_enable">Přepínač pro úpravu funkčích dlaždic v ovládacím centru</string>
+    <string name="fix_tile_align_both_sides">Opravit zarovnání dlaždic na obou stranách</string>
+    <string name="fix_tile_align_both_sides_summary">Opravit přetečení rozložení na obou stranách, pokud není dlaždice rozbalena</string>
     <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozbaleném stavu (vertikálně)</string>
     <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozbaleném stavu (horizontálně)</string>
     <string name="tile_expanded_columns_vertical">Počet sloupců v rozbaleném stavu (vertikálně)</string>
@@ -192,15 +194,15 @@
     <string name="statusbar_layout_right_margin">Pravý okraj stavové lišty</string>
     <string name="statusbar_layout_margin_tip">Pokud je 0, velikost okraje nebude změněna</string>
     <!--StatusBarBattery-->
-    <string name="StatusBarBattery">Status Bar Battery</string>
+    <string name="StatusBarBattery">Baterie ve stavové liště</string>
     <string name="remove_statusbar_battery_percent">Zobrazit procento nabití baterie ve stavové liště</string>
     <string name="statusbar_power_font_size">Velikost písma napájení ve stavové liště</string>
     <!--StatusBarBatteryNotify-->
     <string name="StatusBarBatteryNotify">Oznámení baterie ve stavové liště</string>
-    <string name="battery_information_notify_permanent_display">Permanent display</string>
-    <string name="battery_information_notify_only_charging">Shown only while charging</string>
-    <string name="battery_information_display_mode">Battery information display mode</string>
-    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_notify_permanent_display">Trvalé zobrazení</string>
+    <string name="battery_information_notify_only_charging">Zobrazit pouze při nabíjení</string>
+    <string name="battery_information_display_mode">Režim zobrazení informace o baterii</string>
+    <string name="battery_information_display_mode_summary">Zobrazit napětí baterie a další informace ve stavové liště</string>
     <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
     <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
     <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
@@ -471,8 +473,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Použít uživatelský typ písma</string>
     <!--CommonWords-->
-    <string name="common_words_close">Close</string>
-    <string name="common_words_open">Open</string>
+    <string name="common_words_close">Zavřít</string>
+    <string name="common_words_open">Otevřít</string>
     <string name="common_words_default">Výchozí</string>
     <string name="common_words_preset">Přednastavené</string>
     <string name="common_words_single_line">Jeden řádek</string>

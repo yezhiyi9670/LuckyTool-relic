@@ -918,6 +918,16 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             if (context.getBoolean(ModulePrefs, "control_center_tile_enable", false)) {
                 addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.fix_tile_align_both_sides)
+                        summary = getString(R.string.fix_tile_align_both_sides_summary)
+                        key = "fix_tile_align_both_sides"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= A13
+                    }
+                )
+                addPreference(
                     SeekBarPreference(context).apply {
                         title = getString(R.string.tile_unexpanded_columns_vertical)
                         key = "tile_unexpanded_columns_vertical"

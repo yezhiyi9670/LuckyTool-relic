@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
     <string name="ControlCenter_Tile_Related">Плитки центру управління</string>
     <string name="control_center_tile_enable">Перемикач функції плитки центру керування</string>
+    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
+    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
     <string name="tile_unexpanded_columns_vertical">Нерозгорнуті стовпці плиток (вертикально)</string>
     <string name="tile_unexpanded_columns_horizontal">Нерозгорнуті стовпці плиток (горизонтально)</string>
     <string name="tile_expanded_columns_vertical">Розгорнуті стовпці плиток (вертикально)</string>
@@ -192,15 +194,15 @@
     <string name="statusbar_layout_right_margin">Відступ рядка стану праворуч</string>
     <string name="statusbar_layout_margin_tip">Якщо його значення 0, розмір відступу не буде змінений</string>
     <!--StatusBarBattery-->
-    <string name="StatusBarBattery">Status Bar Battery</string>
+    <string name="StatusBarBattery">Індикатор батареї</string>
     <string name="remove_statusbar_battery_percent">Видалити іконку відсотка заряду батареї з рядка стану</string>
     <string name="statusbar_power_font_size">Розмір шрифту у рядку стану</string>
     <!--StatusBarBatteryNotify-->
     <string name="StatusBarBatteryNotify">Повідомлення про батарею у рядку стану</string>
-    <string name="battery_information_notify_permanent_display">Permanent display</string>
-    <string name="battery_information_notify_only_charging">Shown only while charging</string>
-    <string name="battery_information_display_mode">Battery information display mode</string>
-    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_notify_permanent_display">Постійне відображення</string>
+    <string name="battery_information_notify_only_charging">Тільки під час зарядки</string>
+    <string name="battery_information_display_mode">Відображення інформації про батарею</string>
+    <string name="battery_information_display_mode_summary">Відображати напругу батареї та іншу інформацію у рядку стану</string>
     <string name="battery_information_show_charge">Показати інформацію про зарядку</string>
     <string name="battery_information_show_charge_summary">Під час заряджання напруга та теоретична сила заряджання відображатимуться у рядку стану</string>
     <string name="battery_information_show_update_time">Показати час оновлення</string>
@@ -228,7 +230,7 @@
     <string name="remove_top_lock_screen_icon">Видалити іконку замка на екрані блокування</string>
     <string name="remove_lock_screen_bottom_left_button">Видалити ліву нижню кнопку на екрані блокування</string>
     <string name="remove_lock_screen_bottom_right_camera">Видалити камеру з правого нижнього кута екрана блокування</string>
-    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
+    <string name="remove_lock_screen_close_notification_button">Видалити кнопку сповіщення закриття екрана блокування</string>
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка екстреного контакту SOS внизу сторінки розблокування буде видалена</string>
     <string name="LockScreenEvent">Події на екрані блокування</string>
@@ -471,8 +473,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Використовувати шрифт користувача</string>
     <!--CommonWords-->
-    <string name="common_words_close">Close</string>
-    <string name="common_words_open">Open</string>
+    <string name="common_words_close">Закрити</string>
+    <string name="common_words_open">Відкрити</string>
     <string name="common_words_default">За замовчуванням</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Один рядок</string>

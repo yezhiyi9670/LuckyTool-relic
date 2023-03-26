@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">启用通知两侧对齐</string>
     <string name="ControlCenter_Tile_Related">控制中心磁贴相关</string>
     <string name="control_center_tile_enable">控制中心磁贴功能总开关</string>
+    <string name="fix_tile_align_both_sides">修复磁贴两侧对齐</string>
+    <string name="fix_tile_align_both_sides_summary">修复磁贴未扩展时两侧布局溢出</string>
     <string name="tile_unexpanded_columns_vertical">磁贴未展开列数(竖屏)</string>
     <string name="tile_unexpanded_columns_horizontal">磁贴未展开列数(横屏)</string>
     <string name="tile_expanded_columns_vertical">展开磁贴列数(竖屏)</string>

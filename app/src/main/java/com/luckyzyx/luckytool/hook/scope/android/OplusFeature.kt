@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 
 object OplusFeature : YukiBaseHooker() {
     override fun onHook() {
@@ -13,7 +12,7 @@ object OplusFeature : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
-                    loggerD(msg = args().first().string())
+//                    loggerD(msg = args().first().string())
                 }
             }
         }

@@ -41,7 +41,7 @@
     <string name="about_author">Авторы</string>
     <string name="donate">Пожертвовать</string>
     <string name="donate_message">Обязательно укажите свой никнейм или ID при пожертвовании</string>
-    <string name="donate_summary">Ваше пожертвование станет движущей силой обновления модуля</string>
+    <string name="donate_summary">Ваше пожертвование будет движущей силой для обновления модуля</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
     <string name="ControlCenter_Tile_Related">Плитки центра управления</string>
     <string name="control_center_tile_enable">Переключатель функции плитки центра управления</string>
+    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
+    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
     <string name="tile_unexpanded_columns_vertical">Неразвернутые столбцы плиток (вертикально)</string>
     <string name="tile_unexpanded_columns_horizontal">Неразвернутые столбцы плиток (горизонтально)</string>
     <string name="tile_expanded_columns_vertical">Развернутые столбцы плиток (вертикально)</string>
@@ -197,10 +199,10 @@
     <string name="statusbar_power_font_size">Размер шрифта в строке состояния</string>
     <!--StatusBarBatteryNotify-->
     <string name="StatusBarBatteryNotify">Уведомление о батарее в строке состояния</string>
-    <string name="battery_information_notify_permanent_display">Permanent display</string>
-    <string name="battery_information_notify_only_charging">Shown only while charging</string>
-    <string name="battery_information_display_mode">Battery information display mode</string>
-    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_notify_permanent_display">Постоянное отображение</string>
+    <string name="battery_information_notify_only_charging">Только во время зарядки</string>
+    <string name="battery_information_display_mode">Отображение информации о батарее</string>
+    <string name="battery_information_display_mode_summary">Отображать напряжение батареи и другую информацию в строке состояния</string>
     <string name="battery_information_show_charge">Показать информацию о зарядке</string>
     <string name="battery_information_show_charge_summary">При зарядке напряжение и теоретическая сила зарядки будут отображаться в строке состояния</string>
     <string name="battery_information_show_update_time">Показать время обновления</string>
@@ -471,8 +473,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Использовать пользовательский шрифт</string>
     <!--CommonWords-->
-    <string name="common_words_close">Close</string>
-    <string name="common_words_open">Open</string>
+    <string name="common_words_close">Закрыть</string>
+    <string name="common_words_open">Открыть</string>
     <string name="common_words_default">По умолчанию</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Одна строка</string>
