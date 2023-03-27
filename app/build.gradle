@@ -24,7 +24,7 @@ android {
         minSdk 30
         targetSdk 33
         versionCode currentVersionCode
-        versionName "4.3.7_beta"
+        versionName "4.3.7"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
@@ -80,7 +80,7 @@ dependencies {
 
     //Material主题
     implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     //约束布局
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //快速创建Settings

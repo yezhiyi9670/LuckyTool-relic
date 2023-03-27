@@ -254,9 +254,9 @@
     <string name="remove_pagination_component">Удалить компонент разбивки на страницы</string>
     <string name="remove_folder_pagination_component">Удалить компонент разбивки на папки</string>
     <string name="disable_pagination_component_sliding">Отключить свайп компонентов разбивки</string>
-    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="FolderLayoutRelated">Разметка папки</string>
     <string name="set_folder_layout_4x4">Установить сетку папки 4 x 4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="set_icon_width_in_folder">Установить ширину иконки в папке</string>
     <!--Application-->
     <string name="Application">Приложения</string>
     <string name="ApplyOtherRestrictions">Прочие ограничения</string>

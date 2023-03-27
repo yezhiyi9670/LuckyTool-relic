@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.3.7_beta
+### v4.3.7
 
 - [更新] 捐赠名单
 - [优化] 优化检测更新对话框
@@ -42,6 +42,20 @@ star: false
 - [添加] 修复磁贴两侧对齐
 - [优化] 系统桌面无分页触摸控制器报错
 - [添加] 设置文件夹内图标宽度
+- [Update] Donation list
+- [Optimize] Optimize the check update dialog box
+- [Fix] FindX6P camera watermark character limit
+- [Optimize] App installation version number display
+- [Fix] C12 notifications are aligned on both sides
+- [Add] Remove lock screen close notification button
+- [Fix] The display of the lunar calendar in the status clock is abnormal
+- [Fix] App self-start quantity limit
+- [Change] Status bar battery information notification function location
+- [Change] Carrier font function moved to lock screen related
+- [Add] Battery info notification only visible when charging
+- [Add] Fix tile alignment on both sides
+- [Optimize] The system desktop has no paging touch controller error
+- [Add] set icon width in folder
 
 ### v4.3.6
 

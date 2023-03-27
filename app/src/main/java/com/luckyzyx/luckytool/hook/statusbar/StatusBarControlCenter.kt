@@ -37,5 +37,9 @@ object StatusBarControlCenter : YukiBaseHooker() {
                 loadHooker(ControlCenterTilesColumn)
             }
         }
+        //磁贴两侧对齐
+        if (prefs(ModulePrefs).getBoolean("fix_tile_align_both_sides", false)) {
+            if (SDK >= A13) loadHooker(FixTileAlignBothSides)
+        }
     }
 }

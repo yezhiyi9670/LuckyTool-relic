@@ -102,12 +102,12 @@ When using dual-line network speed, the network speed in the status bar control 
 - Remove my device
 - Force the display of the media player
 - Notifications are aligned on both sides
+- Fix tile alignment on both sides
 
 ### Tile Layout
 
 - The number of rows and columns in the horizontal and vertical screen state
 - Expand the number of rows and columns in the unexpanded state
-- Fix tile alignment on both sides
 
 ### Module Built In Tiles
 

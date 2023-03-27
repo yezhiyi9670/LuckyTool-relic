@@ -254,9 +254,9 @@
     <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
     <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
-    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="FolderLayoutRelated">Rozvržení složky</string>
     <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="set_icon_width_in_folder">Nastavit šířku ikony ve složce</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>

@@ -254,9 +254,9 @@
     <string name="remove_pagination_component">ページネーションを削除</string>
     <string name="remove_folder_pagination_component">フォルダのページネーションを削除</string>
     <string name="disable_pagination_component_sliding">ページネーションのスライドを無効化</string>
-    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="FolderLayoutRelated">フォルダレイアウト関連</string>
     <string name="set_folder_layout_4x4">フォルダのレイアウトを4 x 4に設定</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="set_icon_width_in_folder">フォルダ内のアイコンの幅を設定</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
     <string name="ApplyOtherRestrictions">その他の制限</string>
