@@ -26,6 +26,10 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.3.8_beta
+
+- [修复] 横屏磁贴两侧对齐异常
+
 ### v4.3.7
 
 - [更新] 捐赠名单

@@ -6,10 +6,13 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object FixTileAlignBothSides : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi")
     override fun onHook() {
+        val isCustomTile = prefs(ModulePrefs).getBoolean("control_center_tile_enable", false)
+        val columnHorizontal = prefs(ModulePrefs).getInt("tile_columns_horizontal_c13", 4)
         //Sourcee QuickStatusBarHeader
         //Search quick_qs_panel -> qs_header_panel_side_padding 24dp
         findClass("com.android.systemui.qs.QuickStatusBarHeader").hook {
@@ -49,7 +52,9 @@ object FixTileAlignBothSides : YukiBaseHooker() {
                                     "qs_brightness_mirror_side_padding", "dimen", packageName
                                 )
                             )
-                            setViewPadding(qsBrightnessMirrorSidePadding)
+                            if (isCustomTile && columnHorizontal > 4) setViewPadding(
+                                qsBrightnessMirrorSidePadding
+                            )
                         } else setViewPadding(0)
                     }
                 }
