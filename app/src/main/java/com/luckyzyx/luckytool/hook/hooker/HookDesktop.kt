@@ -17,6 +17,8 @@ object HookDesktop : YukiBaseHooker() {
             }
         }
         if (packageName == "com.android.launcher") {
+            //分页组件
+            loadHooker(PageIndicator)
             //移除APP更新圆点
             if (prefs(ModulePrefs).getBoolean("remove_appicon_dot", false)) {
                 if (SDK >= A13) loadHooker(RemoveAppUpdateDotV13) else loadHooker(RemoveAppUpdateDot)
@@ -25,7 +27,7 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("launcher_layout_enable", false)) {
                 loadHooker(LauncherLayoutRowColume)
             }
-            //设置桌面文件夹行列数
+            //文件夹布局
             if (prefs(ModulePrefs).getBoolean("set_folder_layout_4x4", false)) {
                 loadHooker(FolderLayoutRowColume)
             }
@@ -37,9 +39,6 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("long_press_app_icon_open_app_details", false)) {
                 loadHooker(LongPressAppIconOpenAppDetails)
             }
-            //桌面分页组件
-            loadHooker(PageIndicator)
-
             //com.android.launcher3.popup.OplusBaseSystemShortcut
             //OplusAppInfo etc. -> Click
 

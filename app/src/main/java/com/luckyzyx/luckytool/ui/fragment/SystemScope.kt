@@ -1228,14 +1228,6 @@ class Desktop : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.set_folder_layout_4x4)
-                    key = "set_folder_layout_4x4"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.PaginationComponentRelated)
                     key = "PaginationComponentRelated"
@@ -1266,6 +1258,39 @@ class Desktop : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.FolderLayoutRelated)
+                    key = "FolderLayoutRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.set_folder_layout_4x4)
+                    key = "set_folder_layout_4x4"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            if (context.getBoolean(ModulePrefs, "set_folder_layout_4x4", false)) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.set_icon_width_in_folder)
+                        key = "set_icon_width_in_folder"
+                        setDefaultValue(80)
+                        max = 100
+                        min = 70
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
             addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.RecentTaskListRelated)
@@ -1336,7 +1361,6 @@ class Desktop : ModulePreferenceFragment() {
                     }
                 )
             }
-
         }
     }
 }

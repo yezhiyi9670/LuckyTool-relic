@@ -24,13 +24,17 @@ star: false
 
 - Remove the clock plugin Red One
 - Remove the dot in the lower left corner of the APP
-- Set folder 4 x 4 layout
 
 ## PagingComponent
 
 - Remove pagination component
 - Remove folder pagination component
 - Disable pagination component sliding
+
+## FolderLayout
+
+- Set folder 4 x 4 layout
+- Set the icon width in the folder
 
 ## RecentTaskList
 

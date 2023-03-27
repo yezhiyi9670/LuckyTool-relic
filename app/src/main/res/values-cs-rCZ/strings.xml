@@ -242,7 +242,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Odstranit červenou jedničku na hodinách na ploše - vylepšená edice</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
     <string name="remove_appicon_dot">Odstranit symbol tečky API</string>
-    <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
     <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
     <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>
     <string name="launcher_layout_enable">Povolit/zakázat mřížku ikon na ploše</string>
@@ -255,6 +254,9 @@
     <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
     <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
+    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
+    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>

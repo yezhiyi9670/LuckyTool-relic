@@ -242,7 +242,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie z zegara czerwoną cyfrę \"1\"</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
     <string name="remove_appicon_dot">Usuń oznaczenie zainstalowanej nowej aplikacji</string>
-    <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
     <string name="launcher_layout_row_colume">Umożliwia zwiększenie liczby wierszy i kolumn układu pulpitu</string>
     <string name="launcher_layout_enable">Główny przełącznik</string>
@@ -255,6 +254,9 @@
     <string name="remove_pagination_component">Remove pagination component</string>
     <string name="remove_folder_pagination_component">Remove folder pagination component</string>
     <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
+    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
+    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
     <string name="ApplyOtherRestrictions">Inne ograniczenia</string>
@@ -359,7 +361,7 @@
     <string name="enable_gt_mode_feature">Włącz tryb GT</string>
     <string name="enable_x_mode_feature">Włącz tryb X</string>
     <string name="enable_super_resolution_feature">Włącz super rozdzielczość</string>
-    <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
+    <string name="enable_one_plus_characteristic">Włącz funkcje OnePlus</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>
@@ -473,27 +475,27 @@
     <!--Typeface-->
     <string name="use_user_typeface">Użyj czcionki użytkownika</string>
     <!--CommonWords-->
-    <string name="common_words_close">Close</string>
-    <string name="common_words_open">Open</string>
+    <string name="common_words_close">Zamknij</string>
+    <string name="common_words_open">Otwórz</string>
     <string name="common_words_default">Domyślne</string>
     <string name="common_words_preset">Gotowe ustawienia</string>
     <string name="common_words_single_line">Pojedyncza linia</string>
     <string name="common_words_double_line">Podwójna linia</string>
     <string name="common_words_customize">Dostosuj</string>
     <!--Net 网络请求异常-->
-    <string name="net_connect_error">Failed to connect to the network</string>
-    <string name="net_networking_error">The current network is unavailable</string>
-    <string name="net_url_error">Request resource address error</string>
-    <string name="net_host_error">Unable to find the specified server host</string>
-    <string name="net_connect_timeout_error">Connection to server timed out, %s</string>
-    <string name="net_download_error">An error occurred during the download</string>
-    <string name="net_no_cache_error">Read cache failed</string>
-    <string name="net_parse_error">An exception occurred while parsing the data</string>
+    <string name="net_connect_error">Nie udało się połączyć z siecią</string>
+    <string name="net_networking_error">Aktualna sieć jest niedostępna</string>
+    <string name="net_url_error">Błąd adresu żądanego zasobu</string>
+    <string name="net_host_error">Nie można odnaleźć określonego serwera</string>
+    <string name="net_connect_timeout_error">Upłynął limit czasu połączenia z serwerem, %s</string>
+    <string name="net_download_error">Wystąpił błąd podczas pobierania</string>
+    <string name="net_no_cache_error">Nie udało się odczytać pamięci podręcznej</string>
+    <string name="net_parse_error">Podczas przetwarzania danych wystąpił wyjątek</string>
     <string name="request_failure">Żądanie nie powiodło się</string>
-    <string name="net_request_error">Request parameter error</string>
-    <string name="net_server_error">Service response error</string>
-    <string name="net_null_error">Null exception occurred</string>
-    <string name="net_error">Unknown network error</string>
+    <string name="net_request_error">Błąd żądanego parametru</string>
+    <string name="net_server_error">Błąd odpowiedzi usługi</string>
+    <string name="net_null_error">Wystąpił nieznany wyjątek</string>
+    <string name="net_error">Nieznany błąd sieci</string>
     <string name="net_other_error">Nieznany błąd</string>
-    <string name="no_error_message">No error message</string>
+    <string name="no_error_message">Brak wiadomości o błędzie</string>
 </resources>

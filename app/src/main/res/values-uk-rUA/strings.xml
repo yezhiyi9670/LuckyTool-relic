@@ -177,8 +177,8 @@
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
     <string name="ControlCenter_Tile_Related">Плитки центру управління</string>
     <string name="control_center_tile_enable">Перемикач функції плитки центру керування</string>
-    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
-    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
+    <string name="fix_tile_align_both_sides">Виправити вирівнювання плиток з обох боків</string>
+    <string name="fix_tile_align_both_sides_summary">Виправити переповнення макета з обох боків, коли плитка не розгорнута</string>
     <string name="tile_unexpanded_columns_vertical">Нерозгорнуті стовпці плиток (вертикально)</string>
     <string name="tile_unexpanded_columns_horizontal">Нерозгорнуті стовпці плиток (горизонтально)</string>
     <string name="tile_expanded_columns_vertical">Розгорнуті стовпці плиток (вертикально)</string>
@@ -242,7 +242,6 @@
     <string name="remove_alarmclock_widget_redone_pro">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно лише тоді, коли звичайна версія не допомагає, інакше це викликає неминучу помилку</string>
     <string name="remove_appicon_dot">Видалити крапку з іконки додатку</string>
-    <string name="set_folder_layout_4x4">Встановити сітку папки 4 x 4</string>
     <string name="launcher_layout_related">Сітка робочого столу</string>
     <string name="launcher_layout_row_colume">Встановіть кількість рядків сітки робочого столу</string>
     <string name="launcher_layout_enable">Увімкнути/вимкнути сітку іконок на робочому столі</string>
@@ -255,6 +254,9 @@
     <string name="remove_pagination_component">Видалити компонент розбиття на сторінки</string>
     <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
     <string name="disable_pagination_component_sliding">Вимкнути свайп компонентів розбивки</string>
+    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="set_folder_layout_4x4">Встановити сітку папки 4 x 4</string>
+    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>

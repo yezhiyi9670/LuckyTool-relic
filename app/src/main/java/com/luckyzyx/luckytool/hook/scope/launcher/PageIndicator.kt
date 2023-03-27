@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 import android.view.View
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.CanvasClass
 import com.highcapable.yukihookapi.hook.type.android.MotionEventClass
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
@@ -33,13 +34,15 @@ object PageIndicator : YukiBaseHooker() {
                             view.isVisible = false
                             resultNull()
                         }
-                        else -> return@beforeHook
+                        else -> loggerD(msg = "$packageName\nError -> PageIndicator")
                     }
                 }
             }
         }
 
-        //SOurce PageIndicatorTouchHelper
+        //Source PageIndicatorTouchHelper
+        val cls = "com.android.launcher.pageindicators.PageIndicatorTouchHelper".hasClass()
+        if (!cls) return
         findClass("com.android.launcher.pageindicators.PageIndicatorTouchHelper").hook {
             injectMember {
                 method {
