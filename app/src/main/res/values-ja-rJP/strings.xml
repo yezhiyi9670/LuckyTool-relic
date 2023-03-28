@@ -321,7 +321,13 @@
     <string name="replace_side_slider_icon_on_right">右側のサイドスライドアイコンを置き換え</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">指紋認証関連</string>
+    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
     <string name="remove_fingerprint_icon">指紋アイコンを削除</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
+    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
+    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
+    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
+    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">その他</string>
     <string name="Miscellaneous_summary">難易度の高いカテゴリはこちらに配置されます</string>

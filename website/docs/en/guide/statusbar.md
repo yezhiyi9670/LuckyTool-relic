@@ -102,12 +102,21 @@ When using dual-line network speed, the network speed in the status bar control 
 - Remove my device
 - Force the display of the media player
 - Notifications are aligned on both sides
-- Fix tile alignment on both sides
+
+## StatusBarTile
+
+### Tile Long Press Event
+
+- Long press WiFi to open the page
+- Long press mobile data to open the page
+- Long press the WiFi hotspot to open the page
+- Long press Bluetooth to open the page
 
 ### Tile Layout
 
 - The number of rows and columns in the horizontal and vertical screen state
 - Expand the number of rows and columns in the unexpanded state
+- Fix tile alignment on both sides
 
 ### Module Built In Tiles
 

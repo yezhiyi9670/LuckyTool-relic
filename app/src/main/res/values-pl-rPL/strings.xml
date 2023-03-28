@@ -126,37 +126,37 @@
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
-    <string name="remove_statusbar_devmode">Ukryj \"Opcje programistyczne\"</string>
-    <string name="remove_charging_completed">Ukryj \"Ładowanie ukończone\"</string>
-    <string name="remove_statusbar_top_notification">Ukryj \"Aplikacja wyświetla się nad inną\"</string>
+    <string name="remove_statusbar_devmode">Usuń \"Opcje programistyczne\"</string>
+    <string name="remove_charging_completed">Usuń \"Ładowanie ukończone\"</string>
+    <string name="remove_statusbar_top_notification">Usuń \"Aplikacja wyświetla się nad inną\"</string>
     <string name="remove_statusbar_top_notification_summary">Ukrywa powiadomienie \"Ta aplikacja jest wyświetlana nad innymi aplikacjami\"</string>
-    <string name="remove_vpn_active_notification">Ukryj \"VPN aktywny\"</string>
+    <string name="remove_vpn_active_notification">Usuń \"VPN aktywny\"</string>
     <string name="remove_vpn_active_notification_summary">Ukrywa powiadomienie o aktywnym połączeniu VPN</string>
-    <string name="remove_statusbar_bottom_networkwarn">Ukryj \"Sieć może być monitorowana\"</string>
+    <string name="remove_statusbar_bottom_networkwarn">Usuń \"Sieć może być monitorowana\"</string>
     <string name="remove_statusbar_bottom_networkwarn_summary">Ukrywa napis, który wyświetla się po rozwinięciu szybkich ustawień</string>
-    <string name="remove_flashlight_open_notification">Ukryj \"Latarka włączona\"</string>
-    <string name="remove_app_high_battery_consumption_warning">Ukryj \"Aplikacja zużywa baterię w tle\"</string>
+    <string name="remove_flashlight_open_notification">Usuń \"Latarka włączona\"</string>
+    <string name="remove_app_high_battery_consumption_warning">Usuń \"Aplikacja zużywa baterię w tle\"</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Ukrywa powiadomienie o wysokim użyciu baterii przez aplikację</string>
-    <string name="remove_high_performance_mode_notifications">Ukryj \"Tryb wysokiej wydajności jest włączony\"</string>
-    <string name="remove_do_not_disturb_mode_notification">Ukryj \"Tryb Nie przeszkadzać jest włączony\"</string>
-    <string name="remove_hotspot_power_consumption_notification">Ukryj \"Włączono udostępnianie Wi-Fi\"</string>
+    <string name="remove_high_performance_mode_notifications">Usuń \"Tryb wysokiej wydajności jest włączony\"</string>
+    <string name="remove_do_not_disturb_mode_notification">Usuń \"Tryb Nie przeszkadzać jest włączony\"</string>
+    <string name="remove_hotspot_power_consumption_notification">Usuń \"Włączono udostępnianie Wi-Fi\"</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
-    <string name="remove_smart_rapid_charging_notification">Usuń powiadomienie \"Inteligentne szybkie ładowanie\"</string>
-    <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
+    <string name="remove_smart_rapid_charging_notification">Usuń \"Inteligentne szybkie ładowanie\"</string>
+    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
-    <string name="StatusBarIcon_summary">Ukryj ikony na pasku stanu</string>
+    <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>
     <string name="StatusBarWIFIIcon">Ikona Wi-Fi</string>
-    <string name="remove_wifi_data_inout">Ukryj wskaźnik użycia Wi-Fi</string>
+    <string name="remove_wifi_data_inout">Usuń wskaźnik użycia Wi-Fi</string>
     <string name="StatusBarMobileDataIcon">Ikona danych mobilnych</string>
     <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
-    <string name="remove_mobile_data_icon">Ukryj ikonę mobilnej sieci</string>
-    <string name="remove_mobile_data_inout">Ukryj wskaźnik użycia danych mobilnych</string>
+    <string name="hide_nosim_noservice">Ukryj ikonę karty SIM bez usługi</string>
+    <string name="remove_mobile_data_icon">Usuń ikonę mobilnej sieci</string>
+    <string name="remove_mobile_data_inout">Usuń wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Usuń typ danych mobilnych</string>
     <string name="StatusBarOtherIcon">Inne ikony</string>
-    <string name="remove_high_performance_mode_icon">Ukryj ikonę wysokiej wydajności</string>
-    <string name="remove_statusbar_securepayment_icon">Ukryj ikonę ochrony płatności</string>
+    <string name="remove_high_performance_mode_icon">Usuń ikonę wysokiej wydajności</string>
+    <string name="remove_statusbar_securepayment_icon">Usuń ikonę ochrony płatności</string>
     <string name="remove_green_dot_privacy_prompt">Usuń zieloną kropkę prywatności</string>
     <string name="remove_green_capsule_prompt">Usuń zieloną kapsułkę</string>
     <string name="remove_green_capsule_prompt_summary">Usuń zieloną kapsułkę hotspotu Wi-Fi</string>
@@ -174,15 +174,15 @@
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
     <string name="remove_control_center_mydevice">Usuń przycisk \"Moje urządzenia\"</string>
     <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
-    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
-    <string name="StatusBarTiles">StatusBar Tiles</string>
-    <string name="TileLongClickEvent">Tile Long Click Event</string>
-    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
-    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
-    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
-    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
-    <string name="TileLayoutRelated">Tile Layout Related</string>
-    <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
+    <string name="enable_notification_align_both_sides">Wyrównywanie powiadomień po obu stronach</string>
+    <string name="StatusBarTiles">Przełączniki</string>
+    <string name="TileLongClickEvent">Długie naciśnięcie</string>
+    <string name="long_press_wifi_tile_open_the_page">Przytrzymaj płytkę \"Wi-Fi\", aby otworzyć stronę</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę \"Komórkowa transmisja danych\", aby otworzyć stronę</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę \"Osobisty hotspot\", aby otworzyć stronę</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Przytrzymaj płytkę \"Bluetooth\", aby otworzyć stronę</string>
+    <string name="TileLayoutRelated">Układ przełączników</string>
+    <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
     <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
     <string name="control_center_tile_enable">Główny przełącznik</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
@@ -200,15 +200,15 @@
     <string name="statusbar_layout_right_margin">Prawy margines</string>
     <string name="statusbar_layout_margin_tip">Rozmiar 0 = domyślny</string>
     <!--StatusBarBattery-->
-    <string name="StatusBarBattery">Status Bar Battery</string>
-    <string name="remove_statusbar_battery_percent">Ukryj znak \"%\" obok ikony baterii</string>
+    <string name="StatusBarBattery">Bateria</string>
+    <string name="remove_statusbar_battery_percent">Usuń znak % baterii z paska stanu</string>
     <string name="statusbar_power_font_size">Rozmiar czcionki</string>
     <!--StatusBarBatteryNotify-->
     <string name="StatusBarBatteryNotify">Powiadomienie z informacjami o zasilaniu</string>
-    <string name="battery_information_notify_permanent_display">Permanent display</string>
-    <string name="battery_information_notify_only_charging">Shown only while charging</string>
-    <string name="battery_information_display_mode">Battery information display mode</string>
-    <string name="battery_information_display_mode_summary">Display battery voltage and other information in the statusbar</string>
+    <string name="battery_information_notify_permanent_display">Wyświetlaj stale</string>
+    <string name="battery_information_notify_only_charging">Tylko podczas ładowania</string>
+    <string name="battery_information_display_mode">Tryb wyświetlania informacji o baterii</string>
+    <string name="battery_information_display_mode_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
     <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
     <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
     <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
@@ -233,11 +233,11 @@
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
     <string name="lock_screen_use_user_typeface">Używaj czcionek użytkownika</string>
     <string name="LockScreenButton">Przyciski ekranu blokady</string>
-    <string name="remove_top_lock_screen_icon">Ukryj górne ikony</string>
-    <string name="remove_lock_screen_bottom_left_button">Ukryj lewy dolny skrót</string>
-    <string name="remove_lock_screen_bottom_right_camera">Ukryj prawy dolny skrót</string>
+    <string name="remove_top_lock_screen_icon">Usuń ikonę kłódki</string>
+    <string name="remove_lock_screen_bottom_left_button">Usuń lewy dolny skrót</string>
+    <string name="remove_lock_screen_bottom_right_camera">Usuń prawy dolny skrót</string>
     <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
-    <string name="remove_lock_screen_bottom_sos_button">Ukryj przycisk \"Alarmowe SOS\"</string>
+    <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk \"Alarmowe SOS\"</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
@@ -260,9 +260,9 @@
     <string name="remove_pagination_component">Remove pagination component</string>
     <string name="remove_folder_pagination_component">Remove folder pagination component</string>
     <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
-    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="FolderLayoutRelated">Układ folderu</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="set_icon_width_in_folder">Ustaw szerokość ikony</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
     <string name="ApplyOtherRestrictions">Inne ograniczenia</string>
@@ -321,7 +321,13 @@
     <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Ustawienia odcisku palca</string>
+    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
     <string name="remove_fingerprint_icon">Usuń ikonę</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
+    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
+    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
+    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
+    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>
@@ -343,11 +349,11 @@
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Battery-->
-    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
+    <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
-    <string name="show_package_name_in_app_details">Show package name in app details</string>
-    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
+    <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
+    <string name="show_package_name_in_app_details_summary">Możesz długo przytrzymać, aby ją skopiować</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -481,7 +487,7 @@
     <!--Typeface-->
     <string name="use_user_typeface">Użyj czcionki użytkownika</string>
     <!--CommonWords-->
-    <string name="common_words_close">Zamknij</string>
+    <string name="common_words_close">Wyłączone</string>
     <string name="common_words_open">Otwórz</string>
     <string name="common_words_default">Domyślne</string>
     <string name="common_words_preset">Gotowe ustawienia</string>

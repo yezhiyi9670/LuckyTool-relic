@@ -1,11 +1,11 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.systemui.RemoveFingerPrintIcon
+import com.luckyzyx.luckytool.hook.scope.systemui.FingerPrintIcon
 
 object HookFingerPrintRelated : YukiBaseHooker() {
     override fun onHook() {
-        //移除锁屏指纹图标
-        loadHooker(RemoveFingerPrintIcon)
+        //指纹图标
+        loadHooker(FingerPrintIcon)
     }
 }

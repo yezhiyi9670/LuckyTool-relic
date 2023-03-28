@@ -1860,64 +1860,110 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
                     summary = getString(R.string.replace_side_slider_icon_switch_summary)
                     key = "replace_side_slider_icon_switch"
                     isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.replace_side_slider_icon_on_left)
-                    key = "replace_side_slider_icon_on_left"
-                    summary =
-                        context.getString(
-                            ModulePrefs,
-                            "replace_side_slider_icon_on_left",
-                            "null"
-                        )
-                    isIconSpaceReserved = false
-                    isCopyingEnabled = true
-                    setOnPreferenceClickListener {
-                        loadLeftImage.launch("image/*")
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
                         true
                     }
                 }
             )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.replace_side_slider_icon_on_right)
-                    key = "replace_side_slider_icon_on_right"
-                    summary =
-                        context.getString(
-                            ModulePrefs,
-                            "replace_side_slider_icon_on_right",
-                            "null"
-                        )
-                    isIconSpaceReserved = false
-                    isCopyingEnabled = true
-                    setOnPreferenceClickListener {
-                        loadRightImage.launch("image/*")
-                        true
+            if (context.getBoolean(ModulePrefs, "replace_side_slider_icon_switch", false)) {
+                addPreference(
+                    Preference(context).apply {
+                        title = getString(R.string.replace_side_slider_icon_on_left)
+                        key = "replace_side_slider_icon_on_left"
+                        summary =
+                            context.getString(
+                                ModulePrefs,
+                                "replace_side_slider_icon_on_left",
+                                "null"
+                            )
+                        isIconSpaceReserved = false
+                        isCopyingEnabled = true
+                        setOnPreferenceClickListener {
+                            loadLeftImage.launch("image/*")
+                            true
+                        }
                     }
-                }
-            )
+                )
+                addPreference(
+                    Preference(context).apply {
+                        title = getString(R.string.replace_side_slider_icon_on_right)
+                        key = "replace_side_slider_icon_on_right"
+                        summary =
+                            context.getString(
+                                ModulePrefs,
+                                "replace_side_slider_icon_on_right",
+                                "null"
+                            )
+                        isIconSpaceReserved = false
+                        isCopyingEnabled = true
+                        setOnPreferenceClickListener {
+                            loadRightImage.launch("image/*")
+                            true
+                        }
+                    }
+                )
+            }
         }
-        findPreference<Preference>("replace_side_slider_icon_on_left")?.dependency =
-            "replace_side_slider_icon_switch"
-        findPreference<Preference>("replace_side_slider_icon_on_right")?.dependency =
-            "replace_side_slider_icon_switch"
     }
 }
 
 class FingerPrintRelated : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        val loadFPIcon = registerForActivityResult(ActivityResultContracts.GetContent()) {
+            if (it != null) {
+                val path = getDocumentPath(requireActivity(), it)
+                requireActivity().putString(
+                    ModulePrefs, "replace_fingerprint_icon_path", path
+                )
+                findPreference<Preference>("replace_fingerprint_icon")?.summary = path
+            }
+        }
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_fingerprint_icon)
-                    key = "remove_fingerprint_icon"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.remove_fingerprint_icon_mode)
+                    summary = "%s"
+                    key = "remove_fingerprint_icon_mode"
+                    entries = resources.getStringArray(R.array.remove_fingerprint_icon_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.replace_fingerprint_icon_switch)
+                    summary = getString(R.string.replace_fingerprint_icon_switch_summary)
+                    key = "replace_fingerprint_icon_switch"
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            if (context.getBoolean(ModulePrefs, "replace_fingerprint_icon_switch", false)) {
+                addPreference(
+                    Preference(context).apply {
+                        title = getString(R.string.replace_fingerprint_icon_path)
+                        key = "replace_fingerprint_icon_path"
+                        summary =
+                            context.getString(
+                                ModulePrefs,
+                                "replace_fingerprint_icon_path",
+                                "null"
+                            )
+                        isIconSpaceReserved = false
+                        isCopyingEnabled = true
+                        setOnPreferenceClickListener {
+                            loadFPIcon.launch("image/*")
+                            true
+                        }
+                    }
+                )
+            }
         }
     }
 }
@@ -1966,7 +2012,8 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     title = getString(R.string.FingerPrintRelated)
-                    summary = getString(R.string.remove_fingerprint_icon)
+                    summary =
+                        getString(R.string.remove_fingerprint_icon) + "," + getString(R.string.replace_fingerprint_icon_switch)
                     key = "FingerPrintRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -1977,7 +2024,6 @@ class Miscellaneous : ModulePreferenceFragment() {
                             })
                         true
                     }
-
                 }
             )
             addPreference(

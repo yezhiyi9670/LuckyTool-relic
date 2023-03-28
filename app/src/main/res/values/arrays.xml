@@ -84,5 +84,11 @@
         <item>@string/battery_information_notify_permanent_display</item>
         <item>@string/battery_information_notify_only_charging</item>
     </string-array>
+    
+    <string-array name="remove_fingerprint_icon_mode_entries">
+        <item>@string/common_words_close</item>
+        <item>@string/remove_fingerprint_icon</item>
+        <item>@string/remove_fingerprint_icon_and_press_animation</item>
+    </string-array>
 
 </resources>

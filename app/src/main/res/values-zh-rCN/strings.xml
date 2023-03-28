@@ -321,7 +321,13 @@
     <string name="replace_side_slider_icon_on_right">替换右侧侧滑图标</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">指纹相关</string>
+    <string name="remove_fingerprint_icon_mode">移除指纹图标模式</string>
     <string name="remove_fingerprint_icon">移除指纹图标</string>
+    <string name="remove_fingerprint_icon_and_press_animation">移除指纹图标和按压动画</string>
+    <string name="remove_fingerprint_press_animation">移除指纹按压动画</string>
+    <string name="replace_fingerprint_icon_switch">替换指纹图标开关</string>
+    <string name="replace_fingerprint_icon_switch_summary">推荐图片分辨率为216x 216左右</string>
+    <string name="replace_fingerprint_icon_path">指纹图标路径</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>

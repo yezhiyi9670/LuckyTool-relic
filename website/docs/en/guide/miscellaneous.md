@@ -43,6 +43,8 @@ star: false
 ## Fingerprint
 
 - Remove fingerprint icon
+- Remove fingerprint icon and press animation
+- Custom replacement fingerprint icon
 
 ## OtherFunctions
 

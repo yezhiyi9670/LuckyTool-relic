@@ -175,13 +175,13 @@
     <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
     <string name="force_display_media_player">强制显示媒体播放器</string>
     <string name="enable_notification_align_both_sides">启用通知两侧对齐</string>
-    <string name="StatusBarTiles">StatusBar Tiles</string>
-    <string name="TileLongClickEvent">Tile Long Click Event</string>
-    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
-    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
-    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
-    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
-    <string name="TileLayoutRelated">Tile Layout Related</string>
+    <string name="StatusBarTiles">状态栏磁贴</string>
+    <string name="TileLongClickEvent">磁贴长按事件</string>
+    <string name="long_press_wifi_tile_open_the_page">长按WIFI磁贴打开页面</string>
+    <string name="long_press_mobile_data_tile_open_the_page">长按移动数据磁贴打开页面</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">长按WiFi热点磁贴打开页面</string>
+    <string name="long_press_bluetooth_tile_open_the_page">长按蓝牙磁贴打开页面</string>
+    <string name="TileLayoutRelated">磁贴布局相关</string>
     <string name="fix_tile_align_both_sides">修复磁贴两侧对齐</string>
     <string name="fix_tile_align_both_sides_summary">修复磁贴未扩展时两侧布局溢出</string>
     <string name="control_center_tile_enable">控制中心磁贴功能总开关</string>
@@ -321,7 +321,13 @@
     <string name="replace_side_slider_icon_on_right">替换右侧侧滑图标</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">指纹相关</string>
+    <string name="remove_fingerprint_icon_mode">移除指纹图标模式</string>
     <string name="remove_fingerprint_icon">移除指纹图标</string>
+    <string name="remove_fingerprint_icon_and_press_animation">移除指纹图标和按压动画</string>
+    <string name="remove_fingerprint_press_animation">移除指纹按压动画</string>
+    <string name="replace_fingerprint_icon_switch">替换指纹图标开关</string>
+    <string name="replace_fingerprint_icon_switch_summary">推荐图片分辨率为216x 216左右</string>
+    <string name="replace_fingerprint_icon_path">指纹图标路径</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">杂项</string>
     <string name="Miscellaneous_summary">分类困难的功能将被放置于此</string>

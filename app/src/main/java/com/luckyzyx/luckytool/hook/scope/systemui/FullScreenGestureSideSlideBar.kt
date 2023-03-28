@@ -17,6 +17,10 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
         val removeBackground =
             prefs(ModulePrefs).getBoolean("remove_side_slider_black_background", false)
         val isReplace = prefs(ModulePrefs).getBoolean("replace_side_slider_icon_switch", false)
+        val leftPath =
+            prefs(ModulePrefs).getString("replace_side_slider_icon_on_left", "null")
+        val rightPath =
+            prefs(ModulePrefs).getString("replace_side_slider_icon_on_right", "null")
         VariousClass(
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
             "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView"
@@ -48,17 +52,12 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
                 }
                 beforeHook {
                     if (!isReplace) return@beforeHook
-                    val leftPath =
-                        prefs(ModulePrefs).getString("replace_side_slider_icon_on_left", "null")
-                    val rightPath =
-                        prefs(ModulePrefs).getString("replace_side_slider_icon_on_right", "null")
-                    if (leftPath == "null" || rightPath == "null") return@beforeHook
                     val res = when (field { name = "mPosition" }.get(instance).int()) {
                         0 -> BitmapFactory.decodeFile(leftPath)
                         1 -> BitmapFactory.decodeFile(rightPath)
                         else -> return@beforeHook
                     }
-                    if (res != null) args(0).set(res)
+                    res?.let { args(0).set(it) }
                 }
             }
         }
