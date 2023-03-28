@@ -181,6 +181,8 @@
     <string name="long_press_mobile_data_tile_open_the_page">长按移动数据磁贴打开页面</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">长按WiFi热点磁贴打开页面</string>
     <string name="long_press_bluetooth_tile_open_the_page">长按蓝牙磁贴打开页面</string>
+    <string name="long_press_screenshot_tile_open_the_page">长按截屏磁贴打开页面</string>
+    <string name="long_press_dnd_tile_open_the_page">长按免打扰磁贴打开页面</string>
     <string name="TileLayoutRelated">磁贴布局相关</string>
     <string name="fix_tile_align_both_sides">修复磁贴两侧对齐</string>
     <string name="fix_tile_align_both_sides_summary">修复磁贴未扩展时两侧布局溢出</string>

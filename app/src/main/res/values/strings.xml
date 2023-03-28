@@ -191,6 +191,8 @@
     <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
     <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
+    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
+    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
     
     <string name="TileLayoutRelated">Tile Layout Related</string>
     <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>

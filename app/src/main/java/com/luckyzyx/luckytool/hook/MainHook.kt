@@ -49,6 +49,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", StatusBarIcon)
         //状态栏控制中心
         loadApp("com.android.systemui", StatusBarControlCenter)
+        //状态栏磁贴
+        loadApp("com.android.systemui", StatusBarTile)
         //状态栏布局
         loadApp("com.android.systemui", StatusBarLayout)
         //状态栏电池

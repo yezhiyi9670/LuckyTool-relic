@@ -17,6 +17,9 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("long_press_wifi_hotspot_tile_open_the_page", false)
         val isBluetooth =
             prefs(ModulePrefs).getBoolean("long_press_bluetooth_tile_open_the_page", false)
+        val isScreenshot =
+            prefs(ModulePrefs).getBoolean("long_press_screenshot_tile_open_the_page", false)
+        val isDnd = prefs(ModulePrefs).getBoolean("long_press_dnd_tile_open_the_page", false)
         //Source OplusWifiTile
         findClass("com.oplusos.systemui.qs.tiles.OplusWifiTile").hook {
             injectMember {
@@ -48,7 +51,8 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     name = "handleSecondaryClick"
                 }
                 if (isWifiAp) replaceUnit {
-                    instance.openIntent(Intent("android.settings.OPLUS_WIFI_AP_SETTINGS"), 0)
+                    method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
+                        ?.let { instance.openIntent(it, 0) }
                 }
             }
         }
@@ -60,6 +64,32 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
                 if (isBluetooth) replaceUnit {
                     instance.openIntent(Intent(Settings.ACTION_BLUETOOTH_SETTINGS), 0)
+                }
+            }
+        }
+        //Source ScreenshotTile
+        findClass("com.oplusos.systemui.qs.tiles.ScreenshotTile").hook {
+            injectMember {
+                method {
+                    name = "handleSecondaryClick"
+                }
+                if (isScreenshot) replaceUnit {
+                    method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
+                        ?.let { instance.openIntent(it, 0) }
+                }
+            }
+        }
+        //Source OplusDndTile
+        findClass("com.oplusos.systemui.qs.tiles.OplusDndTile").hook {
+            injectMember {
+                method {
+                    name = "handleSecondaryClick"
+                }
+                if (isDnd) replaceUnit {
+                    method {
+                        name = "getLongClickIntent"
+                        superClass(isOnlySuperClass = true)
+                    }.get(instance).invoke<Intent>()?.let { instance.openIntent(it, 0) }
                 }
             }
         }

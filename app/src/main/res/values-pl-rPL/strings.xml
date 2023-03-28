@@ -75,7 +75,7 @@
     <string name="package_name">Nazwa pakietu</string>
     <string name="version">Wersja</string>
     <!-- CorePatch -->
-    <string name="ColorOSCorePatchTip">Dla oficjalnego instalatora ColorOS należy włączyć dodatkowe funkcje, aby móc z tych korzystać:\nFunkcje - Aplikacje &gt; Instalowanie aplikacji</string>
+    <string name="ColorOSCorePatchTip">Dla oficjalnego instalatora ColorOS należy włączyć dodatkowe funkcje, aby móc z tych korzystać:\nFunkcje &gt; Aplikacje &gt; Instalowanie aplikacji</string>
     <string name="corepatch">Główna łatka</string>
     <string name="corepatch_summary">Usuń limity instalowania aplikacji (Android 11–13)</string>
     <string name="downgr">Obniżanie wersji aplikacji</string>
@@ -181,6 +181,8 @@
     <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę \"Komórkowa transmisja danych\", aby otworzyć stronę</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę \"Osobisty hotspot\", aby otworzyć stronę</string>
     <string name="long_press_bluetooth_tile_open_the_page">Przytrzymaj płytkę \"Bluetooth\", aby otworzyć stronę</string>
+    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
+    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
     <string name="TileLayoutRelated">Układ przełączników</string>
     <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
     <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
@@ -205,8 +207,8 @@
     <string name="statusbar_power_font_size">Rozmiar czcionki</string>
     <!--StatusBarBatteryNotify-->
     <string name="StatusBarBatteryNotify">Powiadomienie z informacjami o zasilaniu</string>
-    <string name="battery_information_notify_permanent_display">Wyświetlaj stale</string>
-    <string name="battery_information_notify_only_charging">Tylko podczas ładowania</string>
+    <string name="battery_information_notify_permanent_display">Zawsze pokazuj</string>
+    <string name="battery_information_notify_only_charging">Pokazuj tylko podczas ładowania</string>
     <string name="battery_information_display_mode">Tryb wyświetlania informacji o baterii</string>
     <string name="battery_information_display_mode_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
     <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
@@ -341,11 +343,11 @@
     <string name="remove_storage_limit_summary">Usuwa ograniczenie \"Ten folder nie może być używany\", podczas próby przypisania folderu dla danej aplikacji</string>
     <string name="media_volume_level">Kroki głośności multimediów</string>
     <string name="media_volume_level_summary">0 = funkcja wyłączona. Zrestartuj urządzenie, aby zastosować zmiany</string>
-    <string name="open_screen_power_save">Dodaj wejście do oszczędzania energii ekranu</string>
+    <string name="open_screen_power_save">Dodaj stronę \"Oszczędzanie energii ekranu\"</string>
     <string name="open_screen_power_save_summary">Ustawienia > Bateria > Więcej ustawień > Oszczędzanie energii ekranu</string>
-    <string name="open_battery_health">Dodaj wejście do \"Stan baterii\"</string>
+    <string name="open_battery_health">Dodaj stronę \"Stan baterii\"</string>
     <string name="open_battery_health_summary">Ustawienia > Bateria > Stan baterii</string>
-    <string name="performance_mode_and_standby_optimization">Tryb wydajności i optymalizacja trybu czuwania</string>
+    <string name="performance_mode_and_standby_optimization">Dodaj stronę \"Tryb wydajności\" i \"Optymalne czuwanie\"</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Battery-->

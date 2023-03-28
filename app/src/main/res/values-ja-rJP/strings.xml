@@ -181,6 +181,8 @@
     <string name="long_press_mobile_data_tile_open_the_page">モバイルデータタイルを長押しして設定ページを開く</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Wi-Fi ホットスポットタイルを長押しして設定ページを開く</string>
     <string name="long_press_bluetooth_tile_open_the_page">Bluetooth タイルを長押しして設定ページを開く</string>
+    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
+    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
     <string name="TileLayoutRelated">タイルのレイアウト関連</string>
     <string name="fix_tile_align_both_sides">両側のタイルの位置合わせを修正</string>
     <string name="fix_tile_align_both_sides_summary">タイルが展開されていないときに両端のレイアウトがオーバーフローする問題を修正します</string>

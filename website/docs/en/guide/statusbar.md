@@ -111,6 +111,8 @@ When using dual-line network speed, the network speed in the status bar control 
 - Long press mobile data to open the page
 - Long press the WiFi hotspot to open the page
 - Long press Bluetooth to open the page
+- Long press the screenshot to open the page
+- Long press Do Not Disturb to open the page
 
 ### Tile Layout
 

@@ -961,6 +961,22 @@ class StatusBarTiles : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_screenshot_tile_open_the_page)
+                    key = "long_press_screenshot_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_dnd_tile_open_the_page)
+                    key = "long_press_dnd_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.TileLayoutRelated)
                     key = "TileLayoutRelated"

@@ -181,6 +181,8 @@
     <string name="long_press_mobile_data_tile_open_the_page">Dlouze stiskněte dlaždici mobilních dat pro otevření nastavení</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Dlouze stiskněte dlaždici WiFi hotspotu pro otevření nastavení</string>
     <string name="long_press_bluetooth_tile_open_the_page">Dlouze stiskněte dlaždici Bluetooth pro otevření nastavení</string>
+    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
+    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
     <string name="TileLayoutRelated">Rozvržení dlaždic</string>
     <string name="fix_tile_align_both_sides">Opravit zarovnání dlaždic na obou stranách</string>
     <string name="fix_tile_align_both_sides_summary">Opravit přetečení rozložení na obou stranách, pokud není dlaždice rozbalena</string>
@@ -321,13 +323,13 @@
     <string name="replace_side_slider_icon_on_right">Nahradit pravou ikonu bočního posuvníku</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Nastavení související s otiskem prstu</string>
-    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
+    <string name="remove_fingerprint_icon_mode">Odstranit ikonu otisku prstu</string>
     <string name="remove_fingerprint_icon">Odstranit ikonu otisku prstu</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
-    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
-    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
-    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
-    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Odstranit ikonu otisku prstu a animovat jejího stisknutí</string>
+    <string name="remove_fingerprint_press_animation">Odstranit animaci stisknutí otisku prstu</string>
+    <string name="replace_fingerprint_icon_switch">Nahradit přepínač ikony otisku prstu</string>
+    <string name="replace_fingerprint_icon_switch_summary">Doporučené rozlišení obrázku je přibližně 216 x 216</string>
+    <string name="replace_fingerprint_icon_path">Cesta k ikoně otisku prstu</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Různé</string>
     <string name="Miscellaneous_summary">Zde jsou umístěna různá další specifická nastavení</string>
