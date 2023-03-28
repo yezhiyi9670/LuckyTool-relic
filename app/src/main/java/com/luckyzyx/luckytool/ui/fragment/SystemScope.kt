@@ -182,6 +182,22 @@ class StatusBar : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
+                    title = getString(R.string.StatusBarTiles)
+                    summary =
+                        getString(R.string.long_press_wifi_tile_open_the_page) + "," + getString(R.string.fix_tile_align_both_sides)
+                    key = "StatusBarTiles"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        findNavController().navigate(
+                            R.id.action_statusBar_to_statusBarTiles, Bundle().apply {
+                                putCharSequence("title_label", title)
+                            })
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
                     title = getString(R.string.StatusBarLayout)
                     summary =
                         getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
@@ -897,6 +913,60 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+        }
+    }
+}
+
+class StatusBarTiles : ModulePreferenceFragment() {
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.TileLongClickEvent)
+                    key = "TileLongClickEvent"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_wifi_tile_open_the_page)
+                    key = "long_press_wifi_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_mobile_data_tile_open_the_page)
+                    key = "long_press_mobile_data_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_wifi_hotspot_tile_open_the_page)
+                    key = "long_press_wifi_hotspot_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.long_press_bluetooth_tile_open_the_page)
+                    key = "long_press_bluetooth_tile_open_the_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.TileLayoutRelated)
+                    key = "TileLayoutRelated"
+                    isIconSpaceReserved = false
+                }
+            )
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.fix_tile_align_both_sides)
@@ -905,13 +975,6 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ControlCenter_Tile_Related)
-                    key = "ControlCenter_Tile_Related"
-                    isIconSpaceReserved = false
                 }
             )
             addPreference(

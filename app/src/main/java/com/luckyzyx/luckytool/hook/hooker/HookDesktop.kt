@@ -39,6 +39,7 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("long_press_app_icon_open_app_details", false)) {
                 loadHooker(LongPressAppIconOpenAppDetails)
             }
+
             //com.android.launcher3.popup.OplusBaseSystemShortcut
             //OplusAppInfo etc. -> Click
 

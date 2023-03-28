@@ -41,7 +41,7 @@
     <string name="about_author">Авторы</string>
     <string name="donate">Пожертвовать</string>
     <string name="donate_message">Обязательно укажите свой никнейм или ID при пожертвовании</string>
-    <string name="donate_summary">Ваше пожертвование будет движущей силой для обновления модуля</string>
+    <string name="donate_summary">Работа над обновлениями для модуля продолжается благодаря вашим пожертвованиям</string>
     <string name="qq">QQ</string>
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
@@ -175,10 +175,16 @@
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
-    <string name="ControlCenter_Tile_Related">Плитки центра управления</string>
-    <string name="control_center_tile_enable">Переключатель функции плитки центра управления</string>
+    <string name="StatusBarTiles">StatusBar Tiles</string>
+    <string name="TileLongClickEvent">Tile Long Click Event</string>
+    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
+    <string name="TileLayoutRelated">Tile Layout Related</string>
     <string name="fix_tile_align_both_sides">Исправить выравнивание плиток с обеих сторон</string>
     <string name="fix_tile_align_both_sides_summary">Исправить переполнение макета с обеих сторон, когда плитка не развернута</string>
+    <string name="control_center_tile_enable">Переключатель функции плитки центра управления</string>
     <string name="tile_unexpanded_columns_vertical">Неразвернутые столбцы плиток (вертикально)</string>
     <string name="tile_unexpanded_columns_horizontal">Неразвернутые столбцы плиток (горизонтально)</string>
     <string name="tile_expanded_columns_vertical">Развернутые столбцы плиток (вертикально)</string>

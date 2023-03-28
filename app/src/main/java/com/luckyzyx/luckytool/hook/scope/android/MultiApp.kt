@@ -20,10 +20,11 @@ object MultiApp : YukiBaseHooker() {
                 }
                 beforeHook {
                     if (!isEnable || enabledMulti.isEmpty()) return@beforeHook
-                    field {
-                        name = "mAllowedPkgList"
-                        type = ListClass
-                    }.get(instance).set(enabledMulti.toList())
+                    result = java.util.ArrayList(enabledMulti)
+//                    field {
+//                        name = "mAllowedPkgList"
+//                        type = ListClass
+//                    }.get(instance).set(java.util.ArrayList(enabledMulti))
                 }
             }
         }

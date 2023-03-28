@@ -6,10 +6,13 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
+
 object StatusBarControlCenter : YukiBaseHooker() {
     override fun onHook() {
         //控制中心时钟样式
         loadHooker(ControlCenterClockStyle)
+        //磁贴长按事件
+        loadHooker(LongPressTileOpenThePage)
 
         //移除控制中心日期逗号
         if (prefs(ModulePrefs).getBoolean("remove_control_center_date_comma", false)) {

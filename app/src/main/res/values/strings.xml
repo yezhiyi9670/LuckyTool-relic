@@ -95,7 +95,7 @@
     <string name="StatusBar">StatusBar Related</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
-
+    
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
@@ -184,10 +184,18 @@
     <string name="force_display_media_player">Force the display of the media player</string>
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     
-    <string name="ControlCenter_Tile_Related">Control Center Tile Related</string>
-    <string name="control_center_tile_enable">Control center tile function main switch</string>
+    <string name="StatusBarTiles">StatusBar Tiles</string>
+    
+    <string name="TileLongClickEvent">Tile Long Click Event</string>
+    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
+    
+    <string name="TileLayoutRelated">Tile Layout Related</string>
     <string name="fix_tile_align_both_sides">Fix tile alignment on both sides</string>
     <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
+    <string name="control_center_tile_enable">Control center tile function main switch</string>
     <string name="tile_unexpanded_columns_vertical">Tiles Unexpanded Columns (vertical)</string>
     <string name="tile_unexpanded_columns_horizontal">Tiles Unexpanded Columns (horizontal)</string>
     <string name="tile_expanded_columns_vertical">Expanded tile columns (vertical)</string>
