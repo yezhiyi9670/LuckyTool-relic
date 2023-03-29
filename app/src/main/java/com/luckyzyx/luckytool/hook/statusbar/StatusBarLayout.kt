@@ -152,6 +152,7 @@ object StatusBarLayout : YukiBaseHooker() {
                     if (layoutMode == "0" && isCompatibleMode) {
                         setCustomMargin()
                         updateDefaultLayout(context, statusBarLeftSide, systemIconArea)
+                        return@afterHook
                     }
                     if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
 
@@ -195,8 +196,7 @@ object StatusBarLayout : YukiBaseHooker() {
                     name = "updateLayoutForCutout"
                 }
                 afterHook {
-                    if (!isCompatibleMode) return@afterHook
-                    updateCustomLayout(instance<ViewGroup>().context)
+                    if (isCompatibleMode) updateCustomLayout(instance<ViewGroup>().context)
                 }
             }
         }
@@ -211,9 +211,8 @@ object StatusBarLayout : YukiBaseHooker() {
                     name = "onFinishInflate"
                 }
                 afterHook {
-                    if (!isCompatibleMode) return@afterHook
                     //keyguard_status_bar_contents
-                    field {
+                    if (isCompatibleMode) field {
                         name = "keyguardStatusbarLeftContView"
                     }.get(instance).cast<ViewGroup>()?.setPadding(leftMargin, 0, 0, 0)
                 }

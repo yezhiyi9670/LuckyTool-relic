@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 import android.media.AudioManager
 import android.media.SoundPool
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.SparseIntArrayClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -12,7 +13,7 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
     override fun onHook() {
         //Source SoundPoolPlayManager -> competition_mode_sound
         searchClass {
-            from("v9", "w9", "u9", "n9", "m9", "ve", "pe").absolute()
+            from("v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9").absolute()
             field {
                 type = ContextClass
             }.count(1)
@@ -42,6 +43,6 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
                     if (args().first().int() == 9) resultNull()
                 }
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> RemoveCompetitionModeSound")
     }
 }
