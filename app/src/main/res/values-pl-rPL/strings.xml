@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Wyrównywanie powiadomień po obu stronach</string>
     <string name="StatusBarTiles">Przełączniki</string>
     <string name="TileLongClickEvent">Długie naciśnięcie</string>
+    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
+    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
     <string name="long_press_wifi_tile_open_the_page">Przytrzymaj płytkę \"Wi-Fi\", aby otworzyć stronę</string>
     <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę \"Komórkowa transmisja danych\", aby otworzyć stronę</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę \"Osobisty hotspot\", aby otworzyć stronę</string>

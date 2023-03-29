@@ -187,6 +187,8 @@
     <string name="StatusBarTiles">StatusBar Tiles</string>
     
     <string name="TileLongClickEvent">Tile Long Click Event</string>
+    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
+    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
     <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
     <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>

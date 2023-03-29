@@ -120,9 +120,9 @@
     <string name="enable_double_row_network_speed">Kích hoạt tốc độ mạng kép</string>
     <string name="set_network_speed_font_size">Đặt kích thước phông chữ tốc độ mạng</string>
     <string name="set_network_speed_padding_bottom">Đặt phần đệm tốc độ mạng dưới cùng</string>
-    <string name="statusbar_network_layout">Statusbar network speed layout</string>
-    <string name="statusbar_network_no_second">Remove display per second(/s)</string>
-    <string name="statusbar_network_no_space">Remove network speed space</string>
+    <string name="statusbar_network_layout">Bố cục tốc độ mạng trên thanh trạng thái</string>
+    <string name="statusbar_network_no_second">Xóa hiển thị giây (/s)</string>
+    <string name="statusbar_network_no_space">Xóa không gian tốc độ internet</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Thông báo thanh trạng thái</string>
     <string name="StatusBarNotice_summary">Thông báo thanh trạng thái</string>
@@ -142,19 +142,19 @@
     <string name="remove_hotspot_power_consumption_notification">Xóa cảnh báo tiêu thụ năng lượng của điểm truy cập cá nhân</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Lưu ý: Bật điểm truy cập cá nhân trong thời gian dài sẽ làm tăng mức tiêu thụ điện năng gây nóng máy</string>
     <string name="remove_smart_rapid_charging_notification">Xóa thông báo “Sạc nhanh thông minh”</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_notifications_for_mute_notifications">Xóa thông báo không làm phiền</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
-    <string name="StatusBarWIFIIcon">WIFI Icon</string>
+    <string name="StatusBarWIFIIcon">Biểu tượng WIFI</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
-    <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
+    <string name="StatusBarMobileDataIcon">Biểu tượng dữ liệu di động</string>
+    <string name="hide_non_network_card_icon">Ẩn biểu tượng thẻ không mạng</string>
+    <string name="hide_nosim_noservice">Ẩn thẻ SIM không có biểu tượng dịch vụ</string>
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_mobile_data_type">Xoá định dạng dữ liệu di động</string>
-    <string name="StatusBarOtherIcon">Other Icon</string>
+    <string name="StatusBarOtherIcon">Biểu tượng khác</string>
     <string name="remove_high_performance_mode_icon">Xóa biểu tượng chế độ hiệu suất cao</string>
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>
     <string name="remove_green_dot_privacy_prompt">Xóa chấm xanh lời nhắc bảo mật</string>
@@ -177,6 +177,8 @@
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     <string name="StatusBarTiles">StatusBar Tiles</string>
     <string name="TileLongClickEvent">Tile Long Click Event</string>
+    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
+    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
     <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
     <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>

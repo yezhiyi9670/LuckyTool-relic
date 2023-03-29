@@ -177,12 +177,14 @@
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
+    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
+    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
     <string name="long_press_wifi_tile_open_the_page">Dlouze stiskněte dlaždici WIFI pro otevření nastavení</string>
     <string name="long_press_mobile_data_tile_open_the_page">Dlouze stiskněte dlaždici mobilních dat pro otevření nastavení</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Dlouze stiskněte dlaždici WiFi hotspotu pro otevření nastavení</string>
     <string name="long_press_bluetooth_tile_open_the_page">Dlouze stiskněte dlaždici Bluetooth pro otevření nastavení</string>
-    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
-    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
+    <string name="long_press_screenshot_tile_open_the_page">Dlouze stiskněte dlaždici screenshotu pro otevření příslušného nastavení</string>
+    <string name="long_press_dnd_tile_open_the_page">Dlouze stiskněte dlaždici režim Nerušit pro otevření nastavení</string>
     <string name="TileLayoutRelated">Rozvržení dlaždic</string>
     <string name="fix_tile_align_both_sides">Opravit zarovnání dlaždic na obou stranách</string>
     <string name="fix_tile_align_both_sides_summary">Opravit přetečení rozložení na obou stranách, pokud není dlaždice rozbalena</string>

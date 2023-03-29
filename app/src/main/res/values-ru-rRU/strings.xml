@@ -175,15 +175,17 @@
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
-    <string name="StatusBarTiles">StatusBar Tiles</string>
-    <string name="TileLongClickEvent">Tile Long Click Event</string>
-    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
-    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
-    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
-    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
-    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
-    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
-    <string name="TileLayoutRelated">Tile Layout Related</string>
+    <string name="StatusBarTiles">Плитки строки состояния</string>
+    <string name="TileLongClickEvent">Долгое нажатие плитки</string>
+    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
+    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
+    <string name="long_press_wifi_tile_open_the_page">Долгое нажатие на плитку WIFI, чтобы открыть меню</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Долгое нажатие на плитку мобильного интернета, чтобы открыть меню</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Долгое нажатие на плитку точки доступа WIFI, чтобы открыть меню</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Долгое нажатие на плитку Bluetooth, чтобы открыть меню</string>
+    <string name="long_press_screenshot_tile_open_the_page">Долгое нажатие на плитку скриншота, чтобы открыть меню</string>
+    <string name="long_press_dnd_tile_open_the_page">Долгое нажатие на плитку \"Не беспокоить\", чтобы открыть меню</string>
+    <string name="TileLayoutRelated">Разметка папки</string>
     <string name="fix_tile_align_both_sides">Исправить выравнивание плиток с обеих сторон</string>
     <string name="fix_tile_align_both_sides_summary">Исправить переполнение макета с обеих сторон, когда плитка не развернута</string>
     <string name="control_center_tile_enable">Переключатель функции плитки центра управления</string>
@@ -323,13 +325,13 @@
     <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Отпечаток пальца</string>
-    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
+    <string name="remove_fingerprint_icon_mode">Удалить иконку отпечатка</string>
     <string name="remove_fingerprint_icon">Удалить иконку отпечатка</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
-    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
-    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
-    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
-    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Удалить иконку отпечатка пальца и анимацию нажатия</string>
+    <string name="remove_fingerprint_press_animation">Удалить анимацию нажатия отпечатка пальца</string>
+    <string name="replace_fingerprint_icon_switch">Заменить переключатель иконки отпечатка пальца</string>
+    <string name="replace_fingerprint_icon_switch_summary">Рекомендуемое разрешение изображения около 216 x 216</string>
+    <string name="replace_fingerprint_icon_path">Путь к иконке отпечатка пальца</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Разное</string>
     <string name="Miscellaneous_summary">Функции, которые сложно классифицировать, будут размещены здесь</string>
@@ -489,7 +491,7 @@
     <!--Typeface-->
     <string name="use_user_typeface">Использовать пользовательский шрифт</string>
     <!--CommonWords-->
-    <string name="common_words_close">Закрыть</string>
+    <string name="common_words_close">Отключено</string>
     <string name="common_words_open">Открыть</string>
     <string name="common_words_default">По умолчанию</string>
     <string name="common_words_preset">Шаблон</string>

@@ -926,54 +926,17 @@ class StatusBarTiles : ModulePreferenceFragment() {
                     title = getString(R.string.TileLongClickEvent)
                     key = "TileLongClickEvent"
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                 }
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_wifi_tile_open_the_page)
-                    key = "long_press_wifi_tile_open_the_page"
+                    title = getString(R.string.restore_some_tile_long_press_event)
+                    summary = getString(R.string.restore_some_tile_long_press_event_summary)
+                    key = "restore_some_tile_long_press_event"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_mobile_data_tile_open_the_page)
-                    key = "long_press_mobile_data_tile_open_the_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_wifi_hotspot_tile_open_the_page)
-                    key = "long_press_wifi_hotspot_tile_open_the_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_bluetooth_tile_open_the_page)
-                    key = "long_press_bluetooth_tile_open_the_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_screenshot_tile_open_the_page)
-                    key = "long_press_screenshot_tile_open_the_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_dnd_tile_open_the_page)
-                    key = "long_press_dnd_tile_open_the_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                 }
             )
             addPreference(

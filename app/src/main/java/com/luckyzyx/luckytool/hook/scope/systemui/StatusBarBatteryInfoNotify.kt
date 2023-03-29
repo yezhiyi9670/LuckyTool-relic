@@ -18,6 +18,7 @@ import kotlin.math.abs
 object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     //battery
     private var status: String = ""
+    private var statusValue: Int = 0
     private var plugged: String = ""
     private var level: Int = 0
     private var temperature: Double = 0.0
@@ -79,7 +80,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
 
     private fun initInfo(context: Context, intent: Intent) {
         val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
-        val statusValue = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
+        statusValue = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
         status = when (statusValue) {
             1 -> context.getString(R.string.battery_status_unknown)
             2 -> context.getString(R.string.battery_status_charging)
@@ -218,7 +219,8 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             val pwr = "${context.getString(R.string.battery_power)}: ${power}W"
             val tech =
                 "${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
-            "$sp $vol $cur $pwr\n$tech"
+            if (statusValue == 5) "$sp $tech"
+            else "$sp $vol $cur $pwr\n$tech"
         } else ""
         val updateTime = if (isUpdateTime) {
             "${context.getString(R.string.battery_update_time)}: ${formatDate("HH:mm:ss")}"
