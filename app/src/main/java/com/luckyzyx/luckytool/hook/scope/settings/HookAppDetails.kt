@@ -1,17 +1,25 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageInfo
+import android.net.Uri
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.PackageInfoClass
 import com.luckyzyx.luckytool.utils.data.getAppVersion
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
-object ShowPackageNameInAppDetails : YukiBaseHooker() {
+object HookAppDetails : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi", "SetTextI18n")
     override fun onHook() {
+        val isShowPackName =
+            prefs(ModulePrefs).getBoolean("show_package_name_in_app_details", false)
+        val isIconMarket = prefs(ModulePrefs).getBoolean("click_icon_open_market_page", false)
+        if (!(isShowPackName || isIconMarket)) return
         //Source AppInfoFeature
         findClass("com.oplus.settings.feature.appmanager.AppInfoFeature").hook {
             injectMember {
@@ -32,12 +40,16 @@ object ShowPackageNameInAppDetails : YukiBaseHooker() {
                         type = PackageInfoClass
                     }.cast<PackageInfo>() ?: return@afterHook
                     val context = mRootView.context
-                    val appSize = mRootView.findViewById<TextView?>(
+                    val appIcon = mRootView.findViewById<ImageView>(
+                        context.resources.getIdentifier(
+                            "app_icon", "id", packageName
+                        )
+                    )
+                    val appSize = mRootView.findViewById<TextView>(
                         context.resources.getIdentifier(
                             "app_size", "id", packageName
                         )
                     )
-                    appSize.setTextIsSelectable(true)
                     val packName = packageInfo.packageName
                     val appVers = context.getAppVersion(packName)
                     if (appVers.size < 3) return@afterHook
@@ -48,7 +60,15 @@ object ShowPackageNameInAppDetails : YukiBaseHooker() {
                             "version_text", "string", packageName
                         ), version
                     )
-                    appSize.text = "$packName\n$versionText"
+                    if (isIconMarket) appIcon.setOnClickListener {
+                        it.context.startActivity(
+                            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packName"))
+                        )
+                    }
+                    if (isShowPackName) appSize.apply {
+                        setTextIsSelectable(true)
+                        text = "$packName\n$versionText"
+                    }
                 }
             }
         }

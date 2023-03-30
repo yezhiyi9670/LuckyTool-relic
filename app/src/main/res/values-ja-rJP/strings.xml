@@ -177,8 +177,8 @@
     <string name="enable_notification_align_both_sides">通知の両端揃えを有効化</string>
     <string name="StatusBarTiles">ステータスバーのタイル</string>
     <string name="TileLongClickEvent">タイルの長押しイベント</string>
-    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
-    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
+    <string name="restore_some_tile_long_press_event">タイルの長押しイベントを復活させる</string>
+    <string name="restore_some_tile_long_press_event_summary">Wi-Fi、Bluetooth、ホットスポットなどのタイルを長押ししたときに対応するページを開くようにします</string>
     <string name="long_press_wifi_tile_open_the_page">Wi-Fi タイルを長押しして設定ページを開く</string>
     <string name="long_press_mobile_data_tile_open_the_page">モバイルデータタイルを長押しして設定ページを開く</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Wi-Fi ホットスポットタイルを長押しして設定ページを開く</string>
@@ -356,8 +356,10 @@
     <string name="restore_default_battery_optimization_whitelist">デフォルトのバッテリー最適化ホワイトリストを復元します</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
+    <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_package_name_in_app_details_summary">パッケージ名をアプリの詳細に表示します。長押しでコピーできます</string>
+    <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>

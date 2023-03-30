@@ -2082,10 +2082,25 @@ class Settings : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.AppDetailsRelated)
+                    key = "AppDetailsRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.show_package_name_in_app_details)
                     summary = getString(R.string.show_package_name_in_app_details_summary)
                     key = "show_package_name_in_app_details"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.click_icon_open_market_page)
+                    key = "click_icon_open_market_page"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

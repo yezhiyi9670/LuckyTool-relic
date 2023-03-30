@@ -1,8 +1,8 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
-import com.luckyzyx.luckytool.hook.scope.settings.ShowPackageNameInAppDetails
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookSettings : YukiBaseHooker() {
@@ -11,9 +11,7 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_top_account_display", false)) {
             loadHooker(RemoveTopAccountDisplay)
         }
-        //应用详情添加包名显示与复制
-        if (prefs(ModulePrefs).getBoolean("show_package_name_in_app_details", false)) {
-            loadHooker(ShowPackageNameInAppDetails)
-        }
+        //应用详情页
+        loadHooker(HookAppDetails)
     }
 }

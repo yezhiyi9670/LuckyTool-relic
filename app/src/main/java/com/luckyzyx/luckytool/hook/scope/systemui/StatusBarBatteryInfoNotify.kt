@@ -150,7 +150,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         val chargerVoltageFinal = when (chargerTechnology) {
             //normal(pps)
             0 -> if (isWireless) max_charging_voltage
-            else if (ppsMode == 1) chargerVoltage
+            else if (ppsMode == 1) voltage * 2
             else if (isAbnormalCur) 5.0
             else max_charging_current
             //vooc
@@ -173,7 +173,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             //V x mA / 1000
             //normal(pps)
             0 -> if (isWireless) max_charging_current * max_charging_voltage
-            else if (ppsMode == 1) chargerVoltage * electricCurrent / 1000.0
+            else if (ppsMode == 1) voltage * 2 * electricCurrent / 1000.0
             else if (isAbnormalCur) 5.0 * electricCurrent / 1000.0
             else max_charging_current * electricCurrent / 1000.0
             //vooc
