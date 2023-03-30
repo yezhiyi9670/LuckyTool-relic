@@ -11,14 +11,6 @@ import com.luckyzyx.luckytool.utils.data.openAppDetailIntent
 
 object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
     override fun onHook() {
-
-        fun View.setLongClick(packName: String?, userId: Int?) {
-            setOnLongClickListener {
-                packName?.let { its -> openAppDetailIntent(it.context, its, userId) }
-                true
-            }
-        }
-
         //Source OplusTaskHeaderView
         findClass("com.android.quickstep.views.OplusTaskViewImpl").hook {
             injectMember {
@@ -106,6 +98,13 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                     instance<View>().setLongClick(packName, userId)
                 }
             }
+        }
+    }
+
+    private fun View.setLongClick(packName: String?, userId: Int?) {
+        setOnLongClickListener {
+            packName?.let { its -> it.context.openAppDetailIntent(its, userId) }
+            true
         }
     }
 }

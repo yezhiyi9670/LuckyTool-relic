@@ -761,10 +761,10 @@ fun isZh(context: Context): Boolean {
 
 /**
  * 跳转到应用详情界面
- * @param context Context
  * @param packName String
+ * @param userId Int?
  */
-fun openAppDetailIntent(context: Context, packName: String, userId: Int?) {
+fun Context.openAppDetailIntent(packName: String, userId: Int?) {
     val intent = Intent(
         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
         Uri.fromParts("package", packName, null)
@@ -772,5 +772,17 @@ fun openAppDetailIntent(context: Context, packName: String, userId: Int?) {
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
     userId?.let { intent.putExtra("userId", it) }
-    context.startActivity(intent)
+    startActivity(intent)
+}
+
+/**
+ * 跳转商店页面
+ * @receiver Context
+ * @param packName String
+ */
+fun Context.openMarketIntent(packName: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packName"))
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+    startActivity(intent)
 }

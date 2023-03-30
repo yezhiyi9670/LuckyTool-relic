@@ -1,9 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.pm.PackageInfo
-import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,6 +9,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.PackageInfoClass
 import com.luckyzyx.luckytool.utils.data.getAppVersion
+import com.luckyzyx.luckytool.utils.data.openMarketIntent
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookAppDetails : YukiBaseHooker() {
@@ -61,9 +60,7 @@ object HookAppDetails : YukiBaseHooker() {
                         ), version
                     )
                     if (isIconMarket) appIcon.setOnClickListener {
-                        it.context.startActivity(
-                            Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packName"))
-                        )
+                        it.context.openMarketIntent(packName)
                     }
                     if (isShowPackName) appSize.apply {
                         setTextIsSelectable(true)

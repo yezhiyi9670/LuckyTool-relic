@@ -176,7 +176,7 @@
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
     <string name="StatusBarTiles">Плитки строки состояния</string>
-    <string name="TileLongClickEvent">Долгое нажатие плитки</string>
+    <string name="TileLongClickEvent">Долгое нажатие на плитку</string>
     <string name="restore_some_tile_long_press_event">Восстановить некоторые события долгого нажатия на плитки</string>
     <string name="restore_some_tile_long_press_event_summary">Восстановите Wi-Fi, Bluetooth, личную точку доступа и другие события долгого нажатия на плитки, для открытия соответствующих меню</string>
     <string name="long_press_wifi_tile_open_the_page">Долгое нажатие на плитку WIFI, чтобы открыть меню</string>
@@ -193,7 +193,7 @@
     <string name="tile_unexpanded_columns_horizontal">Неразвернутые столбцы плиток (горизонтально)</string>
     <string name="tile_expanded_columns_vertical">Развернутые столбцы плиток (вертикально)</string>
     <string name="tile_expanded_columns_horizontal">Развернутые столбцы плиток (горизонтально)</string>
-    <string name="tile_expanded_rows_vertical">Развернуть ряды плитки (по вертикали)</string>
+    <string name="tile_expanded_rows_vertical">Развернуть ряды плиток (по вертикали)</string>
     <string name="tile_columns_horizontal_c13">Столбцы плиток (горизонтально)</string>
     <!--StatusBarLayout-->
     <string name="StatusBarLayout">Сетка строки состояния</string>
@@ -329,7 +329,7 @@
     <string name="remove_fingerprint_icon">Удалить иконку отпечатка</string>
     <string name="remove_fingerprint_icon_and_press_animation">Удалить иконку отпечатка пальца и анимацию нажатия</string>
     <string name="remove_fingerprint_press_animation">Удалить анимацию нажатия отпечатка пальца</string>
-    <string name="replace_fingerprint_icon_switch">Заменить переключатель иконки отпечатка пальца</string>
+    <string name="replace_fingerprint_icon_switch">Заменить иконку отпечатка пальца</string>
     <string name="replace_fingerprint_icon_switch_summary">Рекомендуемое разрешение изображения около 216 x 216</string>
     <string name="replace_fingerprint_icon_path">Путь к иконке отпечатка пальца</string>
     <!--Miscellaneous-->
@@ -356,10 +356,10 @@
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
-    <string name="AppDetailsRelated">App Details Related</string>
+    <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_package_name_in_app_details_summary">Показывать имя пакета в подробностях приложения и долгое нажатие для его копирования</string>
-    <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
+    <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>

@@ -16,37 +16,42 @@ object FolderLayoutRowColume : YukiBaseHooker() {
                     paramCount = 2
                 }
                 afterHook {
-                    val width = field {
+                    field {
                         name = "folderCellWidthPx"
                         superClass()
-                    }.get(instance)
-                    val height = field {
-                        name = "folderCellHeightPx"
-                        superClass()
-                    }.get(instance)
-                    width.set(iconWidth.dp)
+                    }.get(instance).set(iconWidth.dp)
+                }
+            }
+        }
+        //Source InvariantDeviceProfile
+        findClass("com.android.launcher3.InvariantDeviceProfile").hook {
+            injectMember {
+                method {
+                    name = "initGrid"
+                    paramCount = 4
+                }
+                afterHook {
+                    field {
+                        name = "numFolderColumns"
+                    }.get(instance).set(4)
                 }
             }
         }
         //Source FolderGridOrganizer
-        findClass("com.android.launcher3.folder.FolderGridOrganizer").hook {
+        findClass("com.android.launcher3.folder.big.BigFolderGridOrganizer").hook {
             injectMember {
-                constructor {
-                    paramCount = 1
+                method {
+                    name = "calculateGridSize"
                 }
                 afterHook {
-                    val x = field {
-                        name = "mMaxCountX"
-                    }.get(instance)
-                    val y = field {
-                        name = "mMaxCountY"
-                    }.get(instance)
-                    val items = field {
-                        name = "mMaxItemsPerPage"
-                    }.get(instance)
-                    x.set(4)
-                    y.set(4)
-                    items.set(x.int() * y.int())
+                    field {
+                        name = "mCountX"
+                        superClass()
+                    }.get(instance).set(3)
+                    field {
+                        name = "mCountY"
+                        superClass()
+                    }.get(instance).set(3)
                 }
             }
         }
