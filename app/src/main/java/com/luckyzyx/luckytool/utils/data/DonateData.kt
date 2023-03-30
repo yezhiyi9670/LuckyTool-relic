@@ -289,6 +289,12 @@ class DonateData {
             add(DonateInfo("sxwzxc",1.88,donateDetails(
                 DonateChannelInfo("20230327-160730",CAP,1.88,"2023032722001461361413019639")
             )))
+            add(DonateInfo("Ba7nice", 9.8, donateDetails(
+                DonateChannelInfo("20230329-184445", CQQ, 9.8, "101000026901302303291397612548")
+            )))
+            add(DonateInfo("剪贴板", 5.0, donateDetails(
+                DonateChannelInfo("20230330-174939", CAP, 5.0, "2023033022001467461412836642")
+            )))
         }
     }
 

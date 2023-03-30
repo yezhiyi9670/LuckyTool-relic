@@ -27,3 +27,4 @@ star: false
 
 - Remove top account display
 - Apps details display package name and long press to copy
+- Click the icon in the application details to open the store APP page
