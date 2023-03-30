@@ -8,20 +8,26 @@ object FolderLayoutRowColume : YukiBaseHooker() {
     @Suppress("UNUSED_VARIABLE")
     override fun onHook() {
         val iconWidth = prefs(ModulePrefs).getInt("set_icon_width_in_folder", 80)
-        //Source CellLayout
-        findClass("com.android.launcher3.CellLayout").hook {
+        //Source OplusDeviceProfile
+        findClass("com.android.launcher3.OplusDeviceProfile").hook {
             injectMember {
                 method {
-                    name = "setCellDimensions"
+                    name = "updateOplusFolderCellSize"
+                    paramCount = 2
                 }
-                beforeHook {
-                    val width = args().first()
-                    val height = args().last()
+                afterHook {
+                    val width = field {
+                        name = "folderCellWidthPx"
+                        superClass()
+                    }.get(instance)
+                    val height = field {
+                        name = "folderCellHeightPx"
+                        superClass()
+                    }.get(instance)
                     width.set(iconWidth.dp)
                 }
             }
         }
-
         //Source FolderGridOrganizer
         findClass("com.android.launcher3.folder.FolderGridOrganizer").hook {
             injectMember {
