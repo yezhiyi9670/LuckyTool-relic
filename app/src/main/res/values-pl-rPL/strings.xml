@@ -149,11 +149,13 @@
     <string name="StatusBarWIFIIcon">Ikona Wi-Fi</string>
     <string name="remove_wifi_data_inout">Usuń wskaźnik użycia Wi-Fi</string>
     <string name="StatusBarMobileDataIcon">Ikona danych mobilnych</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_non_network_card_icon">Ukryj ikony kart bez sieci</string>
     <string name="hide_nosim_noservice">Ukryj ikonę karty SIM bez usługi</string>
     <string name="remove_mobile_data_icon">Usuń ikonę mobilnej sieci</string>
     <string name="remove_mobile_data_inout">Usuń wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Usuń typ danych mobilnych</string>
+    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
     <string name="StatusBarOtherIcon">Inne ikony</string>
     <string name="remove_high_performance_mode_icon">Usuń ikonę wysokiej wydajności</string>
     <string name="remove_statusbar_securepayment_icon">Usuń ikonę ochrony płatności</string>
@@ -177,17 +179,17 @@
     <string name="enable_notification_align_both_sides">Wyrównywanie powiadomień po obu stronach</string>
     <string name="StatusBarTiles">Przełączniki</string>
     <string name="TileLongClickEvent">Długie naciśnięcie</string>
-    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
-    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
+    <string name="restore_some_tile_long_press_event">Przywróć niektórym przełącznikom długie naciśnięcie</string>
+    <string name="restore_some_tile_long_press_event_summary">Przywraca otwieranie stron dla Wi-Fi, Bluetooth, Osobistego hotspotu i innych</string>
     <string name="long_press_wifi_tile_open_the_page">Przytrzymaj płytkę \"Wi-Fi\", aby otworzyć stronę</string>
     <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę \"Komórkowa transmisja danych\", aby otworzyć stronę</string>
     <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę \"Osobisty hotspot\", aby otworzyć stronę</string>
     <string name="long_press_bluetooth_tile_open_the_page">Przytrzymaj płytkę \"Bluetooth\", aby otworzyć stronę</string>
-    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
-    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
+    <string name="long_press_screenshot_tile_open_the_page">Przytrzymaj płytkę \"Zrzut ekranu\", aby otworzyć stronę</string>
+    <string name="long_press_dnd_tile_open_the_page">Przytrzymaj płytkę \"Nie przeszkadzać\", aby otworzyć stronę</string>
     <string name="TileLayoutRelated">Układ przełączników</string>
     <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
-    <string name="fix_tile_align_both_sides_summary">Fix the overflow of the layout on both sides when the tile is not expanded</string>
+    <string name="fix_tile_align_both_sides_summary">Naprawia przepełnienie układu po obu stronach, gdy przełączniki nie są rozwinięte</string>
     <string name="control_center_tile_enable">Główny przełącznik</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
     <string name="tile_unexpanded_columns_horizontal">Kolumny (w poziomie)</string>
@@ -240,7 +242,7 @@
     <string name="remove_top_lock_screen_icon">Usuń ikonę kłódki</string>
     <string name="remove_lock_screen_bottom_left_button">Usuń lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Usuń prawy dolny skrót</string>
-    <string name="remove_lock_screen_close_notification_button">Remove lock screen close notification button</string>
+    <string name="remove_lock_screen_close_notification_button">Usuń przycisk usuwania powiadomień</string>
     <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk \"Alarmowe SOS\"</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
@@ -325,13 +327,13 @@
     <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Ustawienia odcisku palca</string>
-    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
+    <string name="remove_fingerprint_icon_mode">Tryb usuwania ikony</string>
     <string name="remove_fingerprint_icon">Usuń ikonę</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
-    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
-    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
-    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
-    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Usuń ikonę i animację</string>
+    <string name="remove_fingerprint_press_animation">Usuń animację</string>
+    <string name="replace_fingerprint_icon_switch">Zastąp ikonę odcisku palca</string>
+    <string name="replace_fingerprint_icon_switch_summary">Zalecana rozdzielczość obrazu = 216x216</string>
+    <string name="replace_fingerprint_icon_path">Ścieżka ikony odcisku</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Pozostałe funkcje</string>
     <string name="Miscellaneous_summary">Znajdziesz tutaj funkcje, które ciężko było dopasować do kategorii</string>
@@ -356,10 +358,10 @@
     <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
-    <string name="AppDetailsRelated">App Details Related</string>
+    <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
     <string name="show_package_name_in_app_details_summary">Możesz długo przytrzymać, aby ją skopiować</string>
-    <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
+    <string name="click_icon_open_market_page">Naciśnij ikonę, aby otworzyć stronę sklepu</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -371,7 +373,7 @@
     <string name="enable_eva_theme">Włącz motyw EVA</string>
     <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>
     <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
-    <string name="enable_support_competition_mode">Włącz obsługę trybu współpracy</string>
+    <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
     <string name="remove_competition_mode_sound">Remove competition mode sound</string>
     <string name="enable_increase_fps_limit_feature">Włącz zwiększenie limitu fps</string>
     <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>

@@ -159,6 +159,9 @@
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
     
+    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    
     <string name="StatusBarOtherIcon">Other Icon</string>
     <string name="remove_high_performance_mode_icon">Remove high performance mode icon</string>
     <string name="remove_statusbar_securepayment_icon">Remove status bar payment protection icons</string>

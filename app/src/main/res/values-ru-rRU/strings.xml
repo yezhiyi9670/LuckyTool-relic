@@ -154,6 +154,8 @@
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>
+    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
     <string name="StatusBarOtherIcon">Другие иконки</string>
     <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>

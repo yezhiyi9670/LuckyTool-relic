@@ -769,6 +769,21 @@ class StatusBarIcon : ModulePreferenceFragment() {
             )
             addPreference(
                 PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarBluetoothIcon)
+                    key = "StatusBarBluetoothIcon"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.hide_icon_when_bluetooth_not_connected)
+                    key = "hide_icon_when_bluetooth_not_connected"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
                     title = getString(R.string.StatusBarOtherIcon)
                     key = "StatusBarOtherIcon"
                     isIconSpaceReserved = false

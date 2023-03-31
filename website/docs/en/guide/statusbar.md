@@ -77,6 +77,10 @@ When using dual-line network speed, the network speed in the status bar control 
 - Hide non-network cards
 - Hide sim no service
 
+### BluetoothIcon
+
+- Hide icon when not connected
+
 ## OtherIcon
 
 - Remove high performance

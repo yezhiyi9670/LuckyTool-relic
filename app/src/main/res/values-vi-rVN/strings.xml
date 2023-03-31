@@ -154,6 +154,8 @@
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_mobile_data_type">Xoá định dạng dữ liệu di động</string>
+    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
     <string name="StatusBarOtherIcon">Biểu tượng khác</string>
     <string name="remove_high_performance_mode_icon">Xóa biểu tượng chế độ hiệu suất cao</string>
     <string name="remove_statusbar_securepayment_icon">Xóa các biểu tượng bảo vệ thanh toán trên thanh trạng thái</string>

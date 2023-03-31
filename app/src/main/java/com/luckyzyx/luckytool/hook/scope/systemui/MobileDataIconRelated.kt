@@ -11,7 +11,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
-object RemoveMobileDataIcon : YukiBaseHooker() {
+object MobileDataIconRelated : YukiBaseHooker() {
     override fun onHook() {
 //        val removeIcon = prefs(ModulePrefs).getBoolean("remove_mobile_data_icon", false)
         val removeInout = prefs(ModulePrefs).getBoolean("remove_mobile_data_inout", false)
