@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.launcher
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.dp
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -28,7 +30,7 @@ object FolderLayoutRowColume : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "initGrid"
-                    paramCount = 4
+                    paramCount(3..4)
                 }
                 afterHook {
                     field {
@@ -37,6 +39,7 @@ object FolderLayoutRowColume : YukiBaseHooker() {
                 }
             }
         }
+        if (SDK < A13) return
         //Source FolderGridOrganizer
         findClass("com.android.launcher3.folder.big.BigFolderGridOrganizer").hook {
             injectMember {
