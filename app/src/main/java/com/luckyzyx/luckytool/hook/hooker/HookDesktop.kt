@@ -3,8 +3,6 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.alarmclock.RemoveAlarmClockWidgetRedOne
 import com.luckyzyx.luckytool.hook.scope.launcher.*
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 
@@ -21,7 +19,7 @@ object HookDesktop : YukiBaseHooker() {
             loadHooker(PageIndicator)
             //移除APP更新圆点
             if (prefs(ModulePrefs).getBoolean("remove_appicon_dot", false)) {
-                if (SDK >= A13) loadHooker(RemoveAppUpdateDotV13) else loadHooker(RemoveAppUpdateDot)
+                loadHooker(RemoveAppUpdateDot)
             }
             //设置桌面布局行列数
             if (prefs(ModulePrefs).getBoolean("launcher_layout_enable", false)) {

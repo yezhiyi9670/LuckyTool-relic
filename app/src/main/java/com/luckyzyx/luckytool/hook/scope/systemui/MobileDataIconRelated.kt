@@ -22,9 +22,8 @@ object MobileDataIconRelated : YukiBaseHooker() {
         dataChannel.wait<Boolean>("hide_nosim_noservice") { hideNoSS = it }
         //Source OplusStatusBarMobileViewExImpl
         VariousClass(
-            //mobile_type
-            "com.oplusos.systemui.statusbar.OplusStatusBarMobileView",
-            "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarMobileViewExImpl"
+            "com.oplusos.systemui.statusbar.OplusStatusBarMobileView", //C12
+            "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarMobileViewExImpl" //C13
         ).hook {
             injectMember {
                 method {

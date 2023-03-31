@@ -76,7 +76,7 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                                     getDoubleSize.toFloat() * 2
                                 )
                                 layoutParams = LayoutParams(layoutParams).apply {
-                                    width = LayoutParams.WRAP_CONTENT
+//                                    width = LayoutParams.MATCH_PARENT
                                     height = LayoutParams.MATCH_PARENT
                                     gravity = Gravity.CENTER
                                 }

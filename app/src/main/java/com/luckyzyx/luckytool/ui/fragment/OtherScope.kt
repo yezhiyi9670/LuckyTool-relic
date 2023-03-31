@@ -11,7 +11,7 @@ class Everyimage : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(requireActivity()).apply {
+                SwitchPreference(context).apply {
                     title = getString(R.string.skip_startup_page)
                     key = "skip_startup_page"
                     setDefaultValue(false)
@@ -19,7 +19,7 @@ class Everyimage : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SwitchPreference(requireActivity()).apply {
+                SwitchPreference(context).apply {
                     title = getString(R.string.vip_download)
                     key = "vip_download"
                     setDefaultValue(false)
@@ -35,7 +35,7 @@ class AlphaBackupPro : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(requireActivity()).apply {
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_pro_license)
                     key = "remove_check_license"
                     setDefaultValue(false)
@@ -51,7 +51,7 @@ class KsWeb : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(requireActivity()).apply {
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_pro_license)
                     key = "ksweb_remove_check_license"
                     setDefaultValue(false)

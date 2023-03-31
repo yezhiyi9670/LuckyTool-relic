@@ -344,7 +344,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         setDefaultValue("center")
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_alignment", newValue)
                             true
                         }
@@ -363,7 +363,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_singlerow_fontsize", newValue)
                             true
                         }
@@ -382,7 +382,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_doublerow_fontsize", newValue)
                             true
                         }
@@ -423,7 +423,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             summary = newValue as String
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_custom_format", newValue)
                             true
                         }
@@ -440,7 +440,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         setDefaultValue("center")
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_alignment", newValue)
                             true
                         }
@@ -459,7 +459,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_custom_fontsize", newValue)
                             true
                         }
@@ -489,7 +489,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel("com.android.systemui")
+                        context.dataChannel("com.android.systemui")
                             .put("set_network_speed", newValue)
                         true
                     }
@@ -526,7 +526,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("statusbar_network_no_second", newValue)
                             true
                         }
@@ -540,7 +540,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                             setDefaultValue(false)
                             isIconSpaceReserved = false
                             setOnPreferenceChangeListener { _, newValue ->
-                                requireActivity().dataChannel("com.android.systemui")
+                                context.dataChannel("com.android.systemui")
                                     .put("statusbar_network_no_second", newValue)
                                 true
                             }
@@ -559,7 +559,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("set_network_speed_font_size", newValue)
                             true
                         }
@@ -577,7 +577,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel("com.android.systemui")
+                            context.dataChannel("com.android.systemui")
                                 .put("set_network_speed_padding_bottom", newValue)
                             true
                         }
@@ -748,7 +748,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel("com.android.systemui")
+                        context.dataChannel("com.android.systemui")
                             .put("hide_non_network_card_icon", newValue)
                         true
                     }
@@ -761,7 +761,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel("com.android.systemui")
+                        context.dataChannel("com.android.systemui")
                             .put("hide_nosim_noservice", newValue)
                         true
                     }
@@ -780,6 +780,11 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     key = "hide_icon_when_bluetooth_not_connected"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("hide_icon_when_bluetooth_not_connected", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1223,7 +1228,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                     setDefaultValue("0")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
+                        context.dataChannel(packageName = "com.android.systemui")
                             .put(key = "battery_information_display_mode", value = newValue)
                         (activity as MainActivity).restart()
                         true
@@ -1239,7 +1244,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel(packageName = "com.android.systemui")
+                            context.dataChannel(packageName = "com.android.systemui")
                                 .put(key = "battery_information_show_charge_info", value = newValue)
                             true
                         }
@@ -1253,7 +1258,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            requireActivity().dataChannel(packageName = "com.android.systemui")
+                            context.dataChannel(packageName = "com.android.systemui")
                                 .put(key = "battery_information_show_update_time", value = newValue)
                             true
                         }

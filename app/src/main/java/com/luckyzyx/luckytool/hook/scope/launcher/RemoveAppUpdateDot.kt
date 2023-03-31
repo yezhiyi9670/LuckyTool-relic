@@ -2,41 +2,37 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
+import com.luckyzyx.luckytool.utils.data.A12
+import com.luckyzyx.luckytool.utils.data.A121
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 
 object RemoveAppUpdateDot : YukiBaseHooker() {
     override fun onHook() {
-        //Source OplusBubbleTextView
-        findClass(name =  "com.android.launcher3.OplusBubbleTextView").hook {
-            injectMember {
-                method {
-                    name = "applyLabel"
-                    paramCount = 3
-                }
-                beforeHook {
-                    //Source ItemInfo
-                    val field = "com.android.launcher3.model.data.ItemInfo".toClass().getDeclaredField("title")
-                    field.isAccessible = true
-                    instance<TextView>().text = field[args[0]] as CharSequence
-                    resultNull()
-                }
-            }
+        val clazz = when (SDK) {
+            A13 -> "com.android.launcher3.BubbleTextView"
+            A12, A121 -> "com.android.launcher3.OplusBubbleTextView"
+            else -> "com.android.launcher3.BubbleTextView"
         }
-    }
-}
-object RemoveAppUpdateDotV13 : YukiBaseHooker() {
-    override fun onHook() {
-        //Source BubbleTextView
-        findClass(name =  "com.android.launcher3.BubbleTextView").hook {
+        //Source OplusBubbleTextView
+        findClass(clazz).hook {
             injectMember {
                 method {
                     name = "applyLabel"
-                    paramCount = 1
+                    paramCount = when (instanceClass.simpleName) {
+                        "BubbleTextView" -> 1
+                        "OplusBubbleTextView" -> 3
+                        else -> 1
+                    }
                 }
                 beforeHook {
-                    //Source ItemInfo
-                    val field = "com.android.launcher3.model.data.ItemInfo".toClass().getDeclaredField("title")
-                    field.isAccessible = true
-                    instance<TextView>().text = field[args[0]] as CharSequence
+                    val itemInfoWithIcon = args().first().any() ?: return@beforeHook
+                    val title = itemInfoWithIcon.current().field {
+                        name = "title"
+                        superClass()
+                    }.cast<CharSequence>()
+                    instance<TextView>().text = title
                     resultNull()
                 }
             }

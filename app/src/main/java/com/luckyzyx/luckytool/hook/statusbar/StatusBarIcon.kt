@@ -16,6 +16,8 @@ object StatusBarIcon : YukiBaseHooker() {
         }
         //移动数据图标相关
         loadHooker(MobileDataIconRelated)
+        //未连接蓝牙时隐藏图标
+        loadHooker(BluetoothIconRelated)
         //移除高性能模式图标
         if (prefs(ModulePrefs).getBoolean("remove_high_performance_mode_icon", false)) {
             loadHooker(RemoveHighPerformanceModeIcon)
@@ -31,10 +33,6 @@ object StatusBarIcon : YukiBaseHooker() {
         //状态栏图标垂直居中
         if (prefs(ModulePrefs).getBoolean("status_bar_icon_vertical_center", false)) {
             loadHooker(StatusBarIconVerticalCenter)
-        }
-        //未连接蓝牙时隐藏图标
-        if (prefs(ModulePrefs).getBoolean("hide_icon_when_bluetooth_not_connected", false)) {
-            loadHooker(BluetoothIconRelated)
         }
     }
 }
