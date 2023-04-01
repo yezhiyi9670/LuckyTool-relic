@@ -154,8 +154,8 @@
     <string name="remove_mobile_data_icon">Видалити іконку мобільних даних</string>
     <string name="remove_mobile_data_inout">Видалити вхідні мобільні дані</string>
     <string name="remove_mobile_data_type">Видалити іконку мобільних даних</string>
-    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    <string name="StatusBarBluetoothIcon">Іконка Bluetooth</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Приховати іконку за відсутності підключення до Bluetooth</string>
     <string name="StatusBarOtherIcon">Інші іконки</string>
     <string name="remove_high_performance_mode_icon">Видалити іконку режиму високої продуктивності</string>
     <string name="remove_statusbar_securepayment_icon">Видалити іконку захисту платежу у рядку стану</string>
@@ -177,17 +177,17 @@
     <string name="remove_control_center_mydevice">Видалити центр керування моїм пристроєм</string>
     <string name="force_display_media_player">Примусово відображати медіаплеєр</string>
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
-    <string name="StatusBarTiles">StatusBar Tiles</string>
-    <string name="TileLongClickEvent">Tile Long Click Event</string>
-    <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
-    <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
-    <string name="long_press_wifi_tile_open_the_page">Long press the WIFI tile to open the page</string>
-    <string name="long_press_mobile_data_tile_open_the_page">Long press the mobile data tile to open the page</string>
-    <string name="long_press_wifi_hotspot_tile_open_the_page">Long press the WiFi hotspot tile to open the page</string>
-    <string name="long_press_bluetooth_tile_open_the_page">Long press the Bluetooth tile to open the page</string>
-    <string name="long_press_screenshot_tile_open_the_page">Long press the screenshot tile to open the page</string>
-    <string name="long_press_dnd_tile_open_the_page">Long press the DND tile to open the page</string>
-    <string name="TileLayoutRelated">Tile Layout Related</string>
+    <string name="StatusBarTiles">Плитки рядка стану</string>
+    <string name="TileLongClickEvent">Довге натискання на плитку</string>
+    <string name="restore_some_tile_long_press_event">Відновити деякі події довгого натискання на плитки</string>
+    <string name="restore_some_tile_long_press_event_summary">Відновіть Wi-Fi, Bluetooth, особисту точку доступу та інші події довгого натискання на плитки, щоб відкрити відповідні меню</string>
+    <string name="long_press_wifi_tile_open_the_page">Довге натискання на плитку WIFI, щоб відкрити меню</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Довге натискання на плитку мобільного інтернету, щоб відкрити меню</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Довге натискання на плитку точки доступу WiFi, щоб відкрити меню</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Довге натискання на плитку Bluetooth, щоб відкрити меню</string>
+    <string name="long_press_screenshot_tile_open_the_page">Довге натискання на плитку скріншота, щоб відкрити меню</string>
+    <string name="long_press_dnd_tile_open_the_page">Довге натискання на плитку \"Не турбувати\", щоб відкрити меню</string>
+    <string name="TileLayoutRelated">Розмітка папки</string>
     <string name="fix_tile_align_both_sides">Виправити вирівнювання плиток з обох боків</string>
     <string name="fix_tile_align_both_sides_summary">Виправити переповнення макета з обох боків, коли плитка не розгорнута</string>
     <string name="control_center_tile_enable">Перемикач функції плитки центру керування</string>
@@ -266,9 +266,9 @@
     <string name="remove_pagination_component">Видалити компонент розбиття на сторінки</string>
     <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
     <string name="disable_pagination_component_sliding">Вимкнути свайп компонентів розбивки</string>
-    <string name="FolderLayoutRelated">Folder Layout Related</string>
+    <string name="FolderLayoutRelated">Розмітка папки</string>
     <string name="set_folder_layout_4x4">Встановити сітку папки 4 x 4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="set_icon_width_in_folder">Встановити ширину іконок у папці</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>
@@ -327,13 +327,13 @@
     <string name="replace_side_slider_icon_on_right">Замінити іконку бічної панелі праворуч</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Відбиток пальця</string>
-    <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
+    <string name="remove_fingerprint_icon_mode">Видалити іконку відбитка</string>
     <string name="remove_fingerprint_icon">Видалити іконку відбитка</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
-    <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
-    <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
-    <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
-    <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Видалити іконку відбитка пальця та анімацію натискання</string>
+    <string name="remove_fingerprint_press_animation">Видалити анімацію натискання відбитка пальця</string>
+    <string name="replace_fingerprint_icon_switch">Замінити іконку відбитка пальця</string>
+    <string name="replace_fingerprint_icon_switch_summary">Рекомендована роздільна здатність зображення близько 216 x 216</string>
+    <string name="replace_fingerprint_icon_path">Шлях до іконки відбитка пальця</string>
     <!--Miscellaneous-->
     <string name="Miscellaneous">Різне</string>
     <string name="Miscellaneous_summary">Функції, які складно класифікувати, будуть розміщені тут</string>
@@ -358,10 +358,10 @@
     <string name="restore_default_battery_optimization_whitelist">Відновити білий список оптимізації батареї за замовчуванням</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
-    <string name="AppDetailsRelated">App Details Related</string>
+    <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
     <string name="show_package_name_in_app_details_summary">Показувати назву пакета в деталях додатку, довгим натисканням її можна скопіювати</string>
-    <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
+    <string name="click_icon_open_market_page">Натисніть на іконку, щоб відкрити сторінку магазину</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
     <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>

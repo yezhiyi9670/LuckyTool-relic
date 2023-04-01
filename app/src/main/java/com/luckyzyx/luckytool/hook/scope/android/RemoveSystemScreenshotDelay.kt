@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveSystemScreenshotDelay : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("remove_system_screenshot_delay", false)
         //Source PhoneWindowManager
         findClass("com.android.server.policy.PhoneWindowManager").hook {
             injectMember {
@@ -13,7 +14,7 @@ object RemoveSystemScreenshotDelay : YukiBaseHooker() {
                     name = "getScreenshotChordLongPressDelay"
                     returnType = LongType
                 }
-                if (prefs(ModulePrefs).getBoolean("remove_system_screenshot_delay", false)) replaceTo(0L)
+                if (isEnable) replaceTo(0L)
             }
         }
     }

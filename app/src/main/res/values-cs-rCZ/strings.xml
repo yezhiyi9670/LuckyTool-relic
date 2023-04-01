@@ -154,8 +154,8 @@
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
-    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    <string name="StatusBarBluetoothIcon">Ikona Bluetooth</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Skrýt ikonu, když není připojen k Bluetooth</string>
     <string name="StatusBarOtherIcon">Další ikony</string>
     <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
     <string name="remove_statusbar_securepayment_icon">Skrýt ikonu ochrany plateb</string>

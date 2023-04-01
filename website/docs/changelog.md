@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.3.8_beta
+### v4.3.8
 
 - [更新] 捐赠名单
 - [修复] 横屏时磁贴两侧对齐异常
@@ -43,6 +43,21 @@ star: false
 - [优化] 状态栏单行网速宽度变化逻辑
 - [优化] APP图标移除左下角圆点逻辑
 - [优化] 应用安装时移除广告逻辑
+- [Update] Donation list
+- [Fix] The alignment on both sides of the tile is abnormal when the screen is horizontal
+- [Optimize] App clone data type
+- [Change] Location of status bar tile related functions
+- [Add] Restore WIFI and other tile long press jump events
+- [Add] Custom replacement fingerprint icon
+- [Fix] Game assistant game mode sound effect v8.6.1
+- [Change] Suppress display of voltage and power when fully charged
+- [Add] Click the icon in the application details to open the store APP page
+- [Fix] Folder 4x4 layout animation is abnormal, icons are missing and sinking crashes
+- [Fix] ColorOS12 folder 4x4 layout
+- [Add] Hide icon when not connected to bluetooth
+- [Optimize] The status bar single-line network speed width change logic
+- [Optimize] Remove the dot logic in the lower left corner of the APP icon
+- [Optimize] Remove ad logic when app is installed
 
 ### v4.3.7
 

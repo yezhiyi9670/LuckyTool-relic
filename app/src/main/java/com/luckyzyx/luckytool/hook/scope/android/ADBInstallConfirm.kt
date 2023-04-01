@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object ADBInstallConfirm : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("remove_adb_install_confirm", false)
         //Source OplusPackageInstallInterceptManager
         VariousClass(
             "com.android.server.pm.ColorPackageInstallInterceptManager", //A11
@@ -16,7 +17,7 @@ object ADBInstallConfirm : YukiBaseHooker() {
                     name = "allowInterceptAdbInstallInInstallStage"
                     paramCount = 5
                 }
-                if (prefs(ModulePrefs).getBoolean("remove_adb_install_confirm", false)) replaceToFalse()
+                if (isEnable) replaceToFalse()
             }
         }
     }

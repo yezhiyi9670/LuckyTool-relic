@@ -6,8 +6,8 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveVPNActiveNotification : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("remove_vpn_active_notification", false)
         // Source OplusVpnHelper
-        if (!prefs(ModulePrefs).getBoolean("remove_vpn_active_notification", false)) return
         VariousClass(
             "com.android.server.connectivity.VpnExtImpl", //C12
             "com.android.server.connectivity.OplusVpnHelper"
@@ -16,7 +16,7 @@ object RemoveVPNActiveNotification : YukiBaseHooker() {
                 method {
                     name = "showNotification"
                 }
-                intercept()
+                if (isEnable) intercept()
             }
         }
     }

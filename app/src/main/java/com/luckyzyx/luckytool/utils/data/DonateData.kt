@@ -133,7 +133,11 @@ class DonateData {
                 DonateChannelInfo("20221122-232621",CQQ,3.0,"101000026901302211221386081290")
             )))
             add(DonateInfo("你会振刀么", 18.88, donateDetails(
-                DonateChannelInfo("20221123-005251",CWC,18.88,"10001071012022112301342736297502")
+                DonateChannelInfo("20221123-005251",CWC,18.88,"10001071012022112301342736297502"),
+                DonateChannelInfo("20230401-122607",CWC,32.0,"10001071012023040101014984671581"),
+                DonateChannelInfo("20230401-123543",CWC,1.12,"10000499012023040101074692618527"),
+                DonateChannelInfo("20230401-123605",CWC,18.88,"10001071012023040101300514212581")
+
             )))
             add(DonateInfo("大挪移", 20.0, donateDetails(
                 DonateChannelInfo("20221123-203918",CWC,20.0,"10000499012022112300516761031117")
@@ -205,7 +209,8 @@ class DonateData {
                 DonateChannelInfo("20230125-061251",CQQ,20.0,"101000026901502301251436803564")
             )))
             add(DonateInfo("鱼知乐",20.0, donateDetails(
-                DonateChannelInfo("20230125-094400",CAP,20.0,"2023012522001424271419420653")
+                DonateChannelInfo("20230125-094400",CAP,20.0,"2023012522001424271419420653"),
+                DonateChannelInfo("20230401-165807",CAP,20.0,"2023040122001424271448335326")
             )))
             add(DonateInfo("高木同学咩",8.8, donateDetails(
                 DonateChannelInfo("20230126-000631",CWC,8.8,"10001071012023012600559933304093")

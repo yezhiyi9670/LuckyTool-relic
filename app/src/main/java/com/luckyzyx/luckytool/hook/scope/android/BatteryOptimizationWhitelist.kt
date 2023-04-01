@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
-object RestoreDefaultBatteryOptimizationWhitelist : YukiBaseHooker() {
+object BatteryOptimizationWhitelist : YukiBaseHooker() {
     override fun onHook() {
         val isEnable =
             prefs(ModulePrefs).getBoolean("restore_default_battery_optimization_whitelist", false)

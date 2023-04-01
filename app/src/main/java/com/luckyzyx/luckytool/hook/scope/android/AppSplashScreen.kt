@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object AppSplashScreen : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("disable_splash_screen", false)
         //Source StartingSurfaceController
         if (SDK < A13) return
         findClass("com.android.server.wm.StartingSurfaceController").hook {
@@ -15,7 +16,7 @@ object AppSplashScreen : YukiBaseHooker() {
                     name = "showStartingWindow"
                     paramCount = 5
                 }
-                if (prefs(ModulePrefs).getBoolean("disable_splash_screen", false)) intercept()
+                if (isEnable) intercept()
             }
         }
     }

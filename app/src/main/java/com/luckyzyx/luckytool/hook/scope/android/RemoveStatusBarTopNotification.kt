@@ -5,13 +5,14 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemoveStatusBarTopNotification : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("remove_statusbar_top_notification", false)
         //Source AlertWindowNotification
         findClass("com.android.server.wm.AlertWindowNotification").hook {
             injectMember {
                 method {
                     name = "onPostNotification"
                 }
-                if (prefs(ModulePrefs).getBoolean("remove_statusbar_top_notification", false)) intercept()
+                if (isEnable) intercept()
             }
         }
     }

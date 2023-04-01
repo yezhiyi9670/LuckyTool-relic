@@ -47,7 +47,21 @@ object HookAndroid : YukiBaseHooker() {
         loadHooker(DarkModeService)
 
         //电池优化白名单
-        loadHooker(RestoreDefaultBatteryOptimizationWhitelist)
+        loadHooker(BatteryOptimizationWhitelist)
+
+        //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
+        //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp
+        //201850912 0x0c080020 oplus_ic_corp_badge_no_background_multiapp
+//        findClass("android.app.ApplicationPackageManager").hook {
+//            injectMember {
+//                method {
+//                    name = "getUserBadgedIcon"
+//                }
+//                replaceAny {
+//                    args().first().cast<Drawable>()
+//                }
+//            }
+//        }
 
         //OplusFeature
 //        loadHooker(OplusFeature)

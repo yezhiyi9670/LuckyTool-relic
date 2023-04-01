@@ -12,7 +12,7 @@
     <!-- Settings -->
     <string name="theme_title">Тема</string>
     <string name="theme_title_summary">Страница будет автоматически обновлена</string>
-    <string name="use_dynamic_color">Динамический цвет</string>
+    <string name="use_dynamic_color">Динамические цвета</string>
     <string name="use_dynamic_color_summary">Использовать динамические цвета</string>
     <string name="dark_theme">Темная тема</string>
     <string name="follow_system">Выбор системы</string>
@@ -154,8 +154,8 @@
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>
-    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    <string name="StatusBarBluetoothIcon">Иконка Bluetooth</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Скрыть иконку при отсутствии подключения к Bluetooth</string>
     <string name="StatusBarOtherIcon">Другие иконки</string>
     <string name="remove_high_performance_mode_icon">Удалить иконку режима высокой производительности</string>
     <string name="remove_statusbar_securepayment_icon">Удалить иконку защиты платежа в строке состояния</string>

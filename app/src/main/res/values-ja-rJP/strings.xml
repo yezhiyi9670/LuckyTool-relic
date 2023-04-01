@@ -154,8 +154,8 @@
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
-    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    <string name="StatusBarBluetoothIcon">Bluetooth アイコン</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Bluetooth 接続していないときにアイコンを隠す</string>
     <string name="StatusBarOtherIcon">その他のアイコン</string>
     <string name="remove_high_performance_mode_icon">高パフォーマンスモードアイコンを削除</string>
     <string name="remove_statusbar_securepayment_icon">ステータスバーの支払い保護アイコンを削除</string>

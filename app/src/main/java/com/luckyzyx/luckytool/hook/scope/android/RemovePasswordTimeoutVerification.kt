@@ -5,13 +5,14 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object RemovePasswordTimeoutVerification : YukiBaseHooker() {
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean("remove_72hour_password_verification", false)
         //Source LockSettingsStrongAuth -> StrongAuthTimeoutAlarmListener
         findClass("com.android.server.locksettings.LockSettingsStrongAuth\$StrongAuthTimeoutAlarmListener").hook {
             injectMember {
                 method {
                     name = "onAlarm"
                 }
-                if (prefs(ModulePrefs).getBoolean("remove_72hour_password_verification", false)) intercept()
+                if (isEnable) intercept()
             }
         }
     }

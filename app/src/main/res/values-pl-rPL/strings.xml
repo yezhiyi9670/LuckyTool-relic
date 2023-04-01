@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application -->
-    <string name="xposeddescription">Dodaje wiele udogodnień dla ColorOS\nDeweloper: luckyzyx</string>
+    <string name="xposeddescription">Dodaje wiele udogodnień dla ColorOS\nTwórca: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Funkcje</string>
     <string name="nav_home">Przegląd</string>
@@ -121,28 +121,28 @@
     <string name="set_network_speed_font_size">Rozmiar czcionki</string>
     <string name="set_network_speed_padding_bottom">Przesunięcie ikony (dół/góra)</string>
     <string name="statusbar_network_layout">Układ prędkości sieci</string>
-    <string name="statusbar_network_no_second">Usuń wyświetlanie \"na sekundę\" (../s)</string>
+    <string name="statusbar_network_no_second">Usuń wyświetlanie „na sekundę” (../s)</string>
     <string name="statusbar_network_no_space">Usuń przestrzeń dla prędkości sieci</string>
     <!--StatusBarNotice-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
-    <string name="remove_statusbar_devmode">Usuń \"Opcje programistyczne\"</string>
-    <string name="remove_charging_completed">Usuń \"Ładowanie ukończone\"</string>
-    <string name="remove_statusbar_top_notification">Usuń \"Aplikacja wyświetla się nad inną\"</string>
-    <string name="remove_statusbar_top_notification_summary">Ukrywa powiadomienie \"Ta aplikacja jest wyświetlana nad innymi aplikacjami\"</string>
-    <string name="remove_vpn_active_notification">Usuń \"VPN aktywny\"</string>
+    <string name="remove_statusbar_devmode">Usuń „Opcje programistyczne”</string>
+    <string name="remove_charging_completed">Usuń „Ładowanie ukończone”</string>
+    <string name="remove_statusbar_top_notification">Usuń „Aplikacja wyświetla się nad inną”</string>
+    <string name="remove_statusbar_top_notification_summary">Usuwa powiadomienie „Ta aplikacja jest wyświetlana nad innymi aplikacjami”</string>
+    <string name="remove_vpn_active_notification">Usuń „VPN aktywny”</string>
     <string name="remove_vpn_active_notification_summary">Ukrywa powiadomienie o aktywnym połączeniu VPN</string>
-    <string name="remove_statusbar_bottom_networkwarn">Usuń \"Sieć może być monitorowana\"</string>
+    <string name="remove_statusbar_bottom_networkwarn">Usuń „Sieć może być monitorowana”</string>
     <string name="remove_statusbar_bottom_networkwarn_summary">Ukrywa napis, który wyświetla się po rozwinięciu szybkich ustawień</string>
-    <string name="remove_flashlight_open_notification">Usuń \"Latarka włączona\"</string>
-    <string name="remove_app_high_battery_consumption_warning">Usuń \"Aplikacja zużywa baterię w tle\"</string>
+    <string name="remove_flashlight_open_notification">Usuń „Latarka włączona”</string>
+    <string name="remove_app_high_battery_consumption_warning">Usuń „Aplikacja zużywa baterię w tle”</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Ukrywa powiadomienie o wysokim użyciu baterii przez aplikację</string>
-    <string name="remove_high_performance_mode_notifications">Usuń \"Tryb wysokiej wydajności jest włączony\"</string>
-    <string name="remove_do_not_disturb_mode_notification">Usuń \"Tryb Nie przeszkadzać jest włączony\"</string>
-    <string name="remove_hotspot_power_consumption_notification">Usuń \"Włączono udostępnianie Wi-Fi\"</string>
+    <string name="remove_high_performance_mode_notifications">Usuń „Tryb wysokiej wydajności jest włączony”</string>
+    <string name="remove_do_not_disturb_mode_notification">Usuń „Tryb Nie przeszkadzać jest włączony”</string>
+    <string name="remove_hotspot_power_consumption_notification">Usuń „Włączono udostępnianie Wi-Fi”</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
-    <string name="remove_smart_rapid_charging_notification">Usuń \"Inteligentne szybkie ładowanie\"</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_smart_rapid_charging_notification">Usuń „Inteligentne szybkie ładowanie”</string>
+    <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>
@@ -154,8 +154,8 @@
     <string name="remove_mobile_data_icon">Usuń ikonę mobilnej sieci</string>
     <string name="remove_mobile_data_inout">Usuń wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Usuń typ danych mobilnych</string>
-    <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
+    <string name="StatusBarBluetoothIcon">Ikona Bluetooth</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Ukryj ikonę, gdy nie ma połączenia</string>
     <string name="StatusBarOtherIcon">Inne ikony</string>
     <string name="remove_high_performance_mode_icon">Usuń ikonę wysokiej wydajności</string>
     <string name="remove_statusbar_securepayment_icon">Usuń ikonę ochrony płatności</string>
@@ -174,19 +174,19 @@
     <string name="remove_control_center_date_comma">Usuń przecinek daty</string>
     <string name="ControlCenter_UI_Related">Dostosuj szybkie ustawienia</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
-    <string name="remove_control_center_mydevice">Usuń przycisk \"Moje urządzenia\"</string>
+    <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
     <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
     <string name="enable_notification_align_both_sides">Wyrównywanie powiadomień po obu stronach</string>
     <string name="StatusBarTiles">Przełączniki</string>
-    <string name="TileLongClickEvent">Długie naciśnięcie</string>
+    <string name="TileLongClickEvent">Długie przytrzymanie</string>
     <string name="restore_some_tile_long_press_event">Przywróć niektórym przełącznikom długie naciśnięcie</string>
-    <string name="restore_some_tile_long_press_event_summary">Przywraca otwieranie stron dla Wi-Fi, Bluetooth, Osobistego hotspotu i innych</string>
-    <string name="long_press_wifi_tile_open_the_page">Przytrzymaj płytkę \"Wi-Fi\", aby otworzyć stronę</string>
-    <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę \"Komórkowa transmisja danych\", aby otworzyć stronę</string>
-    <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę \"Osobisty hotspot\", aby otworzyć stronę</string>
-    <string name="long_press_bluetooth_tile_open_the_page">Przytrzymaj płytkę \"Bluetooth\", aby otworzyć stronę</string>
-    <string name="long_press_screenshot_tile_open_the_page">Przytrzymaj płytkę \"Zrzut ekranu\", aby otworzyć stronę</string>
-    <string name="long_press_dnd_tile_open_the_page">Przytrzymaj płytkę \"Nie przeszkadzać\", aby otworzyć stronę</string>
+    <string name="restore_some_tile_long_press_event_summary">Przywraca otwieranie ustawień dla Wi-Fi, Bluetooth, Osobistego hotspotu i innych</string>
+    <string name="long_press_wifi_tile_open_the_page">Przytrzymaj płytkę „Wi-Fi\", aby otworzyć ustawienia</string>
+    <string name="long_press_mobile_data_tile_open_the_page">Przytrzymaj płytkę „Komórkowa transmisja danych”, aby otworzyć ustawienia</string>
+    <string name="long_press_wifi_hotspot_tile_open_the_page">Przytrzymaj płytkę „Osobisty hotspot”, aby otworzyć ustawienia</string>
+    <string name="long_press_bluetooth_tile_open_the_page">Przytrzymaj płytkę „Bluetooth”, aby otworzyć ustawienia</string>
+    <string name="long_press_screenshot_tile_open_the_page">Przytrzymaj płytkę „Zrzut ekranu”, aby otworzyć ustawienia</string>
+    <string name="long_press_dnd_tile_open_the_page">Przytrzymaj płytkę „Nie przeszkadzać”, aby otworzyć ustawienia</string>
     <string name="TileLayoutRelated">Układ przełączników</string>
     <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
     <string name="fix_tile_align_both_sides_summary">Naprawia przepełnienie układu po obu stronach, gdy przełączniki nie są rozwinięte</string>
@@ -219,7 +219,7 @@
     <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
     <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
     <string name="battery_information_show_update_time_summary">Wyświetl czas aktualizacji aktualnych danych na pasku stanu</string>
-    <string name="battery_status_unknown">Unknown</string>
+    <string name="battery_status_unknown">Nieznany</string>
     <string name="battery_status_charging">Ładowanie</string>
     <string name="battery_status_discharging">Rozładowywanie</string>
     <string name="battery_status_not_charging">Nie ładuje się</string>
@@ -243,15 +243,15 @@
     <string name="remove_lock_screen_bottom_left_button">Usuń lewy dolny skrót</string>
     <string name="remove_lock_screen_bottom_right_camera">Usuń prawy dolny skrót</string>
     <string name="remove_lock_screen_close_notification_button">Usuń przycisk usuwania powiadomień</string>
-    <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk \"Alarmowe SOS\"</string>
+    <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk „Alarmowe SOS”</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--Desktop-->
     <string name="Desktop">Ekran główny (Pulpit)</string>
-    <string name="remove_alarmclock_widget_redone">Usuń czerwony kolor z cyfry 1 (z widżetu zegara)</string>
-    <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie z zegara czerwoną cyfrę \"1\"</string>
+    <string name="remove_alarmclock_widget_redone">Usuń czerwony kolor z cyfry „1”</string>
+    <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie czerwonego koloru z cyfry „1”</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
     <string name="remove_appicon_dot">Usuń oznaczenie zainstalowanej nowej aplikacji</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
@@ -261,11 +261,11 @@
     <string name="launcher_layout_max_columns">Ilość kolumn</string>
     <string name="RecentTaskListRelated">Lista ostatnich aplikacji</string>
     <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
-    <string name="remove_recent_task_list_clear_button">Usuń przycisk \"Zamknij wszystkie\"\nz listy ostatnich aplikacji</string>
-    <string name="PaginationComponentRelated">Pagination Component Related</string>
-    <string name="remove_pagination_component">Remove pagination component</string>
-    <string name="remove_folder_pagination_component">Remove folder pagination component</string>
-    <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
+    <string name="remove_recent_task_list_clear_button">Usuń przycisk „Zamknij wszystkie” z listy ostatnich aplikacji</string>
+    <string name="PaginationComponentRelated">Kropkowy wskaźnik stronicowania</string>
+    <string name="remove_pagination_component">Usuń wskaźnik pulpitu</string>
+    <string name="remove_folder_pagination_component">Usuń komponent stronicowania folderu</string>
+    <string name="disable_pagination_component_sliding">Wyłącz przesuwanie wskaźnika</string>
     <string name="FolderLayoutRelated">Układ folderu</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
     <string name="set_icon_width_in_folder">Ustaw szerokość ikony</string>
@@ -294,7 +294,7 @@
     <string name="skip_apk_scan">Pomiń skanowanie aplikacji</string>
     <string name="skip_apk_scan_summary">Pomija skanowanie antywirusowe instalowanej aplikacji</string>
     <string name="allow_downgrade_install">Umożliwiaj obniżenie wersji</string>
-    <string name="allow_downgrade_install_summary">Umożliwia \"aktualizację\" aplikacji do starszej wersji</string>
+    <string name="allow_downgrade_install_summary">Umożliwia „aktualizację” aplikacji do starszej wersji</string>
     <string name="disable_apk_signature_verification">Wyłącz weryfikację podpisu</string>
     <string name="disable_apk_signature_verification_summary">Umożliwia instalację aplikacji z różnymi podpisami</string>
     <string name="remove_install_ads">Usuń reklamy po instalacji aplikacji</string>
@@ -311,20 +311,20 @@
     <string name="disable_headphone_high_volume_warning_summary">Wyłącz okno dialogowe z ostrzeżeniem, które pojawia się podczas zwiększania głośności, gdy podłączono słuchawki</string>
     <string name="remove_low_battery_dialog_warning">Usuń ostrzeżenie o niskim poziomie baterii</string>
     <string name="remove_low_battery_dialog_warning_summary">Usuwa okno dialogowe z ostrzeżeniem o niskim poziomie baterii</string>
-    <string name="remove_warning_dialog_that_app_runs_on_desktop">Usuń ostrzeżenie \"Aplikacja wyświetla się nad innymi aplikacjami\"</string>
+    <string name="remove_warning_dialog_that_app_runs_on_desktop">Usuń ostrzeżenie „Aplikacja wyświetla się nad innymi aplikacjami”</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Usuwa okno dialogowe z ostrzeżeniem, że aplikacja wyświetla się nad innymi aplikacjami</string>
     <string name="remove_usb_connect_dialog">Usuń okno połączenia USB</string>
     <string name="remove_usb_connect_dialog_summary">Tryb przesyłania plików jest wybierany domyślnie po podłączeniu USB</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesty pełnoekranowe</string>
     <string name="remove_side_slider">Usuń boczny suwak</string>
-    <string name="remove_side_slider_black_background">Usuń czarne tło bocznego suwaka</string>
+    <string name="remove_side_slider_black_background">Usuń czarne tło paska bocznego</string>
     <string name="remove_rotate_screen_button">Usuń przycisk obracania ekranu</string>
-    <string name="CustomSideSliderIcon">Własna ikona bocznego suwaka</string>
-    <string name="replace_side_slider_icon_switch">Zastąp ikonę bocznego suwaka</string>
+    <string name="CustomSideSliderIcon">Niestandardowa ikona paska bocznego</string>
+    <string name="replace_side_slider_icon_switch">Zastąp ikonę</string>
     <string name="replace_side_slider_icon_switch_summary">Szerokość ikony jest zalecana do około 100 pikseli</string>
-    <string name="replace_side_slider_icon_on_left">Zastąp ikonę bocznego suwaka po lewej stronie</string>
-    <string name="replace_side_slider_icon_on_right">Zastąp ikonę bocznego suwaka po prawej stronie</string>
+    <string name="replace_side_slider_icon_on_left">Zastąp lewą ikonę</string>
+    <string name="replace_side_slider_icon_on_right">Zastąp prawą ikonę</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Ustawienia odcisku palca</string>
     <string name="remove_fingerprint_icon_mode">Tryb usuwania ikony</string>
@@ -344,14 +344,14 @@
     <string name="disable_dpi_reboot_recovery">Wyłącz restart do recovery DPI</string>
     <string name="disable_dpi_reboot_recovery_summary">Moduł nie ponosi odpowiedzialności za brak możliwości uruchomienia systemu z powodu ustawienia zbyt dużej wartości DPI. Aby przywrócić domyślne DPI, należy włączyć tę funkcję, zrestartować uruchomione procesy i przywrócić domyślną wartość DPI</string>
     <string name="remove_storage_limit">Usuń ograniczenie dostępu do pamięci</string>
-    <string name="remove_storage_limit_summary">Usuwa ograniczenie \"Ten folder nie może być używany\", podczas próby przypisania folderu dla danej aplikacji</string>
+    <string name="remove_storage_limit_summary">Usuwa ograniczenie „Ten folder nie może być używany”, podczas próby przypisania folderu dla danej aplikacji</string>
     <string name="media_volume_level">Kroki głośności multimediów</string>
     <string name="media_volume_level_summary">0 = funkcja wyłączona. Zrestartuj urządzenie, aby zastosować zmiany</string>
-    <string name="open_screen_power_save">Dodaj stronę \"Oszczędzanie energii ekranu\"</string>
+    <string name="open_screen_power_save">Dodaj stronę „Oszczędzanie energii ekranu”</string>
     <string name="open_screen_power_save_summary">Ustawienia > Bateria > Więcej ustawień > Oszczędzanie energii ekranu</string>
-    <string name="open_battery_health">Dodaj stronę \"Stan baterii\"</string>
+    <string name="open_battery_health">Dodaj stronę „Stan baterii”</string>
     <string name="open_battery_health_summary">Ustawienia > Bateria > Stan baterii</string>
-    <string name="performance_mode_and_standby_optimization">Dodaj stronę \"Tryb wydajności\" i \"Optymalne czuwanie\"</string>
+    <string name="performance_mode_and_standby_optimization">Dodaj stronę „Tryb wydajności” i „Optymalne czuwanie”</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
     <!--Battery-->
@@ -373,8 +373,8 @@
     <string name="enable_eva_theme">Włącz motyw EVA</string>
     <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>
     <string name="enable_adreno_gpu_controller">Włącz kontroler Adreno GPU</string>
-    <string name="enable_support_competition_mode">Enable Support Competition Mode</string>
-    <string name="remove_competition_mode_sound">Remove competition mode sound</string>
+    <string name="enable_support_competition_mode">Włącz obsługę trybu rywalizacji</string>
+    <string name="remove_competition_mode_sound">Usuń dźwięk trybu rywalizacji</string>
     <string name="enable_increase_fps_limit_feature">Włącz zwiększenie limitu fps</string>
     <string name="enable_increase_fps_feature">Włącz zwiększenie fps</string>
     <string name="enable_optimise_power_feature">Włącz zoptymalizowane zasilanie</string>
@@ -384,7 +384,7 @@
     <string name="enable_one_plus_characteristic">Włącz funkcje OnePlus</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
-    <string name="remove_network_limit_summary">Usuwa ograniczenia dotyczące tworzenia kopii zapasowych/przywracania danych, które nie mogą korzystać z danych mobilnych</string>
+    <string name="remove_network_limit_summary">Usuwa ograniczenie, według którego kopia zapasowa/przywracanie nie może korzystać z danych mobilnych</string>
     <!--ThemeStore-->
     <string name="unlock_themestore_vip">Odblokuj niektóre funkcje VIP</string>
     <string name="unlock_themestore_vip_summary">Odblokuj część funkcji i wypróbuj je na własnej skórze</string>
@@ -398,7 +398,7 @@
     <string name="disable_flag_secure_summary">Rozwiązuje problemy z niemożliwością wykonywania zrzutów i nagrywania ekranu w aplikacjach.\nWymagany LSPosed 1.8.6+.</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Odblokuj lokalne uaktualnienie</string>
-    <string name="unlock_local_upgrade_summary">Opcja \"Instalacja lokalna\" nie będzie wyszarzona, musisz wcześniej włączyć opcje programistyczne</string>
+    <string name="unlock_local_upgrade_summary">Opcja „Instalacja lokalna” nie będzie wyszarzona, musisz wcześniej włączyć opcje programistyczne</string>
     <string name="remove_dm_verity">Usuń wykrywanie dm-verity</string>
     <string name="remove_dm_verity_summary">Bieżący status: %1$s\nWażne tylko dla tej aktualizacji systemu</string>
     <!--Everyimage-->
@@ -408,7 +408,7 @@
     <string name="remove_pro_license">Usuń detekcję licencji</string>
     <!--Home-->
     <string name="fps_title">Odświeżanie ekranu</string>
-    <string name="fps_summary">Koliduje z innymi procesami dynamicznego odświeżania, np. \"dpfs\"</string>
+    <string name="fps_summary">Koliduje z innymi procesami dynamicznego odświeżania, np. z „dpfs”</string>
     <string name="brand">Marka</string>
     <string name="model">Model</string>
     <string name="product">Produkt</string>
@@ -450,7 +450,7 @@
     <!-- Other -->
     <string name="quick_entry">Ukryte funkcje systemowe</string>
     <string name="quick_entry_summary">Ustawienia AOSP, Kalibrator System UI, Dodatkowe przyciemnianie ekranu</string>
-    <string name="display_refresh_rate">Pokaż/Ukryj odświeżanie</string>
+    <string name="display_refresh_rate">Wskaźnik odświeżania ekranu</string>
     <string name="SystemDebuggingRelated">Debugowanie systemu</string>
     <string name="engineering_mode">Tryb inżynieryjny</string>
     <string name="charging_test">Test ładowania</string>
