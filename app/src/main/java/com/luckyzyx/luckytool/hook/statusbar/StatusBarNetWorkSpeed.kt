@@ -16,6 +16,18 @@ import java.text.DecimalFormat
 
 object StatusBarNetWorkSpeed : YukiBaseHooker() {
 
+    /** 上次总的上行流量 */
+    private var mLastTotalUp: Long = 0L
+
+    /** 上次总的下行流量 */
+    private var mLastTotalDown: Long = 0L
+
+    /** 上次总的上行时间戳 */
+    private var lastTimeStampTotalUp: Long = 0L
+
+    /** 上次总的下行时间戳 */
+    private var lastTimeStampTotalDown: Long = 0L
+
     @SuppressLint("DiscouragedApi")
     override fun onHook() {
         var networkSpeed = prefs(ModulePrefs).getBoolean("set_network_speed", false)
@@ -48,8 +60,8 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         dataChannel.wait<Boolean>("statusbar_network_no_second") { noSecond = it }
         var getDoubleSize = prefs(ModulePrefs).getInt("set_network_speed_font_size", 7)
         dataChannel.wait<Int>("set_network_speed_font_size") { getDoubleSize = it }
-        var getDoublePadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 2)
-        dataChannel.wait<Int>("set_network_speed_padding_bottom") { getDoublePadding = it }
+        var getBottomPadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 0)
+        dataChannel.wait<Int>("set_network_speed_padding_bottom") { getBottomPadding = it }
 
         //Source NetworkSpeedView
         VariousClass(
@@ -70,34 +82,9 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                     }
                     when (layoutMode) {
                         "1" -> {
-                            mSpeedNumber?.apply {
-                                setTextSize(
-                                    TypedValue.COMPLEX_UNIT_DIP,
-                                    getDoubleSize.toFloat() * 2
-                                )
-                                layoutParams = LayoutParams(layoutParams).apply {
-//                                    width = LayoutParams.MATCH_PARENT
-                                    height = LayoutParams.MATCH_PARENT
-                                    gravity = Gravity.CENTER
-                                }
-                            }
                             val speedUnitId = res.getIdentifier("unit", "id", packageName)
                             val speedUnit: TextView = speedUnitId.let { mView.findViewById(it) }
                             mView.removeView(speedUnit)
-                        }
-                        "2" -> {
-                            mSpeedNumber?.apply {
-                                setTextSize(
-                                    TypedValue.COMPLEX_UNIT_DIP,
-                                    getDoubleSize.toFloat()
-                                )
-                            }
-                            mSpeedUnit?.apply {
-                                setTextSize(
-                                    TypedValue.COMPLEX_UNIT_DIP,
-                                    getDoubleSize.toFloat()
-                                )
-                            }
                         }
                     }
                 }
@@ -110,28 +97,50 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                     if (layoutMode == "0") return@beforeHook
                     instance<FrameLayout>().apply {
                         layoutParams?.width = LayoutParams.WRAP_CONTENT
-                        setPadding(0, 0, 0, getDoublePadding.dp)
+                        setPadding(0, 0, 0, getBottomPadding.dp)
                     }
-                    var speed = args().first().string()
-                    if (noSecond) speed = speed.replace("/s", "")
-                    if (noSpace) speed = speed.replace(" ", "")
-
                     val mSpeedNumber =
                         field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
                     val mSpeedUnit = field { name = "mSpeedUnit" }.get(instance).cast<TextView>()
-
                     when (layoutMode) {
-                        "1" -> mSpeedNumber?.text = speed
-                        "2" -> {
-                            mSpeedNumber?.text = getTotalUpSpeed().let {
-                                if (noSecond) it.replace(
-                                    "/s", ""
-                                ) else it
+                        "1" -> {
+                            var speed = args().first().string()
+                            if (noSecond) speed = speed.replace("/s", "")
+                            if (noSpace) speed = speed.replace(" ", "")
+                            mSpeedNumber?.apply {
+                                text = speed
+                                setTextSize(
+                                    TypedValue.COMPLEX_UNIT_DIP,
+                                    getDoubleSize.toFloat() * 2
+                                )
+                                gravity = Gravity.CENTER_VERTICAL or Gravity.END
+                                layoutParams = LayoutParams(layoutParams).apply {
+                                    height = LayoutParams.MATCH_PARENT
+                                }
                             }
-                            mSpeedUnit?.text = getTotalDownloadSpeed().let {
-                                if (noSecond) it.replace(
-                                    "/s", ""
-                                ) else it
+                        }
+                        "2" -> {
+                            mSpeedNumber?.apply {
+                                text = getTotalUpSpeed().let {
+                                    if (noSecond) it.replace(
+                                        "/s", ""
+                                    ) else it
+                                }
+                                setTextSize(
+                                    TypedValue.COMPLEX_UNIT_DIP,
+                                    getDoubleSize.toFloat()
+                                )
+                            }
+                            mSpeedUnit?.apply {
+                                text = getTotalDownloadSpeed().let {
+                                    if (noSecond) it.replace(
+                                        "/s", ""
+                                    ) else it
+                                }
+                                setTextSize(
+                                    TypedValue.COMPLEX_UNIT_DIP,
+                                    getDoubleSize.toFloat()
+                                )
                             }
                         }
                     }
@@ -141,18 +150,6 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
             }
         }
     }
-
-    /** 上次总的上行流量 */
-    private var mLastTotalUp: Long = 0L
-
-    /** 上次总的下行流量 */
-    private var mLastTotalDown: Long = 0L
-
-    /** 上次总的上行时间戳 */
-    private var lastTimeStampTotalUp: Long = 0L
-
-    /** 上次总的下行时间戳 */
-    private var lastTimeStampTotalDown: Long = 0L
 
     //获取总的上行速度
     private fun getTotalUpSpeed(): String {

@@ -569,7 +569,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     SeekBarPreference(context).apply {
                         title = getString(R.string.set_network_speed_padding_bottom)
                         key = "set_network_speed_padding_bottom"
-                        setDefaultValue(2)
+                        setDefaultValue(0)
                         max = 4
                         min = 0
                         seekBarIncrement = 1
