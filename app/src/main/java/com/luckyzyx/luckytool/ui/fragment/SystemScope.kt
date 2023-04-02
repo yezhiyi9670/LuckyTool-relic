@@ -695,6 +695,14 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_virus_risk_notification_in_phone_manager)
+                    key = "remove_virus_risk_notification_in_phone_manager"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 }
@@ -1788,6 +1796,14 @@ class DialogRelated : ModulePreferenceFragment() {
                     title = getString(R.string.remove_usb_connect_dialog)
                     summary = getString(R.string.remove_usb_connect_dialog_summary)
                     key = "remove_usb_connect_dialog"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_secure_pay_found_virus_dialog)
+                    key = "remove_secure_pay_found_virus_dialog"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

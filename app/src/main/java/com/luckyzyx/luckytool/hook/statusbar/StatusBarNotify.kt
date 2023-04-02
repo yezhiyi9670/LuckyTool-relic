@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.RemoveBatteryNotify
+import com.luckyzyx.luckytool.hook.scope.phonemanager.RemoveVirusRiskNotificationInPhoneManager
 import com.luckyzyx.luckytool.hook.scope.systemui.*
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -39,6 +40,15 @@ object StatusBarNotify : YukiBaseHooker() {
         if (packageName == "com.oplus.battery") {
             //移除电池通知
             loadHooker(RemoveBatteryNotify)
+        }
+        if (packageName == "com.coloros.phonemanager") {
+            //移除手机管家发现病毒风险通知
+            if (prefs(ModulePrefs).getBoolean(
+                    "remove_virus_risk_notification_in_phone_manager", false
+                )
+            ) {
+                loadHooker(RemoveVirusRiskNotificationInPhoneManager)
+            }
         }
     }
 }

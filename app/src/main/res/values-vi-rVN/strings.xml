@@ -143,6 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Lưu ý: Bật điểm truy cập cá nhân trong thời gian dài sẽ làm tăng mức tiêu thụ điện năng gây nóng máy</string>
     <string name="remove_smart_rapid_charging_notification">Xóa thông báo “Sạc nhanh thông minh”</string>
     <string name="remove_notifications_for_mute_notifications">Xóa thông báo không làm phiền</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -315,6 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Hộp thoại cảnh báo thấy rằng một ứng dụng đang hiển thị trên màn hình hệ thống</string>
     <string name="remove_usb_connect_dialog">Gỡ bỏ thông báo kết nối USB</string>
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
+    <string name="remove_secure_pay_found_virus_dialog">Removed secure pay found virus dialog</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
     <string name="remove_side_slider">Xóa thanh trượt bên</string>

@@ -26,6 +26,12 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.3.9_beta
+
+- [优化] 相机水印字数限制适配参数
+- [添加] 移除支付保护发现病毒对话框
+- [添加] 移除手机管家发现病毒风险通知
+
 ### v4.3.8
 
 - [更新] 捐赠名单

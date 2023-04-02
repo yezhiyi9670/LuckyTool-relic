@@ -143,6 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
     <string name="remove_smart_rapid_charging_notification">Удалить уведомление \"Умная быстрая зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Удалите уведомление о риске вирусов в диспетчере телефона</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -315,6 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Диалоговое окно с предупреждением обнаружило, что приложение отображается на рабочем столе системы</string>
     <string name="remove_usb_connect_dialog">Удалить диалоговое окно USB-подключения</string>
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
+    <string name="remove_secure_pay_found_virus_dialog">Удалено диалоговое окно с обнаруженным вирусом безопасной оплаты</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
     <string name="remove_side_slider">Удалить боковую панель</string>

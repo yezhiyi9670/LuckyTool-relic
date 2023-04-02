@@ -143,6 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">通知: 长时间开启个人热点会增加耗电与发热</string>
     <string name="remove_smart_rapid_charging_notification">移除“了解智能快速充电”通知</string>
     <string name="remove_notifications_for_mute_notifications">移除通知勿扰通知</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">移除手机管家发现病毒风险通知</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>
@@ -315,6 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">发现有应用运行在系统桌面上的警告对话框</string>
     <string name="remove_usb_connect_dialog">移除 USB 连接对话框</string>
     <string name="remove_usb_connect_dialog_summary">连接USB后默认选择文件传输模式</string>
+    <string name="remove_secure_pay_found_virus_dialog">移除支付保护发现病毒对话框</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">全面屏手势相关</string>
     <string name="remove_side_slider">移除侧滑条</string>

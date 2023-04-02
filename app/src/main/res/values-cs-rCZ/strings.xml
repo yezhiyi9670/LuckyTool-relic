@@ -143,6 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Upozornění: Zapnutí osobního hotspotu na dlouhou dobu zvýší spotřebu energie a zvýší teplotu zařízení</string>
     <string name="remove_smart_rapid_charging_notification">Odstranit oznámení \"Chytré rychlé nabíjení\"</string>
     <string name="remove_notifications_for_mute_notifications">Odstranit oznámení pro ztlumená oznámení</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Odstranit upozornění na riziko virů ve Správci telefonu</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>
@@ -155,7 +156,7 @@
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
     <string name="StatusBarBluetoothIcon">Ikona Bluetooth</string>
-    <string name="hide_icon_when_bluetooth_not_connected">Skrýt ikonu, když není připojen k Bluetooth</string>
+    <string name="hide_icon_when_bluetooth_not_connected">Skrýt ikonu, pokud k Bluetooth není nic připojeno</string>
     <string name="StatusBarOtherIcon">Další ikony</string>
     <string name="remove_high_performance_mode_icon">Odstranit ikonu režimu vysokého výkonu</string>
     <string name="remove_statusbar_securepayment_icon">Skrýt ikonu ochrany plateb</string>
@@ -163,12 +164,12 @@
     <string name="remove_green_capsule_prompt">Odstranit zelenou kapsli využívání mikrofonu nebo kamery</string>
     <string name="remove_green_capsule_prompt_summary">Odstranit zelenou ikonu Wi-Fi hotspotu</string>
     <string name="StatusBarSmallIconStatus">Stav malé ikony ve stavové liště</string>
-    <string name="status_bar_icon_vertical_center">Vycentrujte položky stavové liště</string>
+    <string name="status_bar_icon_vertical_center">Vycentrujte položky ve stavové liště</string>
     <!--StatusBarControlCenter-->
     <string name="StatusBarControlCenter">Ovládací centrum stavové lišty</string>
     <string name="ControlCenter_Clock_Related">Nastavení související s hodinami</string>
     <string name="control_center_clock_show_second">Zobraz sekundy</string>
-    <string name="fix_clock_colon_style">Oprav u hodin styl dvojtečky</string>
+    <string name="fix_clock_colon_style">Opravit styl dvojtečky u hodin</string>
     <string name="fix_clock_colon_style_summary">Při zapnutí se vraťte k normální dvojtečce a při vypnutí použijte oficiální vlastní dvojtečku</string>
     <string name="remove_control_center_clock_red_one">Odebrat červenou jedničku v hodinách</string>
     <string name="remove_control_center_date_comma">Odstranit čárku v datu</string>
@@ -236,7 +237,7 @@
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
-    <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze v nastavení vycentrovat uzamčenou obrazovku</string>
+    <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
     <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
     <string name="LockScreenButton">Tlačítka na zamykací obrazovce</string>
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
@@ -262,7 +263,7 @@
     <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
     <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
-    <string name="PaginationComponentRelated">Související složka stránkování</string>
+    <string name="PaginationComponentRelated">Související se stránkováním (plochy spouštěče)</string>
     <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
     <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
@@ -278,7 +279,7 @@
     <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
     <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
     <string name="AppStartupRelated">Nastavení související se spouštěním aplikací</string>
-    <string name="disable_splash_screen">Zakázat úvodní obrazovku</string>
+    <string name="disable_splash_screen">Zakázat animaci úvodní obrazovky</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
     <string name="enable_zoom_window">Povolit seznam podporovatelů</string>
@@ -315,6 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Odstranit dialogové okno s upozorněním, že se aplikace zobrazuje nad ostatními aplikacemi</string>
     <string name="remove_usb_connect_dialog">Odstranit dialog po připojení USB</string>
     <string name="remove_usb_connect_dialog_summary">Režim přenosu souborů je vybrán ve výchozím nastavení po připojení USB</string>
+    <string name="remove_secure_pay_found_virus_dialog">Odstranit dialog o kontrole virů u zabezpečených plateb</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
     <string name="remove_side_slider">Odstranit boční posuvník</string>
@@ -368,7 +370,7 @@
     <!--OplusGames-->
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
-    <string name="remove_startup_animation">Odebrat úvodní animaci</string>
+    <string name="remove_startup_animation">Odstranit úvodní animaci</string>
     <string name="enable_developer_page">Povolit vývojářský režim</string>
     <string name="enable_eva_theme">Povolit EVA motiv</string>
     <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>
@@ -495,7 +497,7 @@
     <!--Typeface-->
     <string name="use_user_typeface">Použít uživatelský typ písma</string>
     <!--CommonWords-->
-    <string name="common_words_close">Zavřít</string>
+    <string name="common_words_close">Nezobrazit</string>
     <string name="common_words_open">Otevřít</string>
     <string name="common_words_default">Výchozí</string>
     <string name="common_words_preset">Přednastavené</string>

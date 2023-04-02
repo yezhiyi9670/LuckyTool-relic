@@ -42,7 +42,7 @@ object MainHook : IYukiHookXposedInit {
         //状态栏网速
         loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp("com.android.systemui", "com.oplus.battery") {
+        loadApp("com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager") {
             loadHooker(StatusBarNotify)
         }
         //状态栏图标
@@ -79,7 +79,11 @@ object MainHook : IYukiHookXposedInit {
         //应用安装器
         loadApp("com.android.packageinstaller", HookPackageInstaller)
         //对话框相关
-        loadApp("com.android.systemui", "com.oplus.exsystemservice") {
+        loadApp(
+            "com.android.systemui",
+            "com.oplus.exsystemservice",
+            "com.coloros.securepay"
+        ) {
             loadHooker(HookDialogRelated)
         }
         //全面屏手势相关
@@ -122,6 +126,8 @@ object MainHook : IYukiHookXposedInit {
 
         //自启
         loadApp("com.android.systemui", HookAutoStart)
+
+
     }
 
     override fun onXposedEvent() {

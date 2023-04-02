@@ -143,6 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">注意: パーソナルホットスポットを長時間使用すると大幅な電力の消費と発熱を起こす可能性が増加します</string>
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
     <string name="remove_notifications_for_mute_notifications">ミュートされた通知を通知しない</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
@@ -315,6 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">ホーム画面の上にアプリがオーバーレイ表示されていることを警告するダイアログを表示しないようにします</string>
     <string name="remove_usb_connect_dialog">USB接続時のダイアログを削除</string>
     <string name="remove_usb_connect_dialog_summary">USB接続後、ファイル転送モードがデフォルトで選択されています</string>
+    <string name="remove_secure_pay_found_virus_dialog">Removed secure pay found virus dialog</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">フルスクリーンジェスチャー関連</string>
     <string name="remove_side_slider">サイドスライダーを削除</string>

@@ -17,6 +17,8 @@
         <item>com.oplus.battery</item>
         <item>com.android.settings</item>
         <item>com.oplus.ota</item>
+        <item>com.coloros.securepay</item>
+        <item>com.coloros.phonemanager</item>
         <item>com.oplus.exsystemservice</item>
         <item>com.android.externalstorage</item>
         <item>com.east2d.everyimage</item>
