@@ -14,11 +14,6 @@ object DoubleClickLockScreen : YukiBaseHooker() {
         var curTouchX = 0F
         var curTouchY = 0F
 
-        fun goToSleep(context: Context) {
-            val service = context.getSystemService(Context.POWER_SERVICE)
-            service.current { method { name = "goToSleep" }.call(SystemClock.uptimeMillis()) }
-        }
-
         //Source PhoneStatusBarView
         findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
             injectMember {
@@ -50,5 +45,10 @@ object DoubleClickLockScreen : YukiBaseHooker() {
                 }
             }
         }
+    }
+
+    private fun goToSleep(context: Context) {
+        val service = context.getSystemService(Context.POWER_SERVICE)
+        service.current { method { name = "goToSleep" }.call(SystemClock.uptimeMillis()) }
     }
 }

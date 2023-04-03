@@ -472,6 +472,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                     key = "statusbar_clock_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = context.getString(ModulePrefs, "statusbar_clock_mode", "0") != "0"
                 }
             )
         }
@@ -516,6 +517,8 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     key = "statusbar_network_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible =
+                        context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0"
                 }
             )
             if (context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0") {

@@ -62,6 +62,7 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         dataChannel.wait<Int>("set_network_speed_font_size") { getDoubleSize = it }
         var getBottomPadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 0)
         dataChannel.wait<Int>("set_network_speed_padding_bottom") { getBottomPadding = it }
+        if (layoutMode.isBlank() || layoutMode == "0") return
 
         //Source NetworkSpeedView
         VariousClass(
@@ -94,7 +95,6 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                     name = "updateNetworkSpeed"
                 }
                 beforeHook {
-                    if (layoutMode == "0") return@beforeHook
                     instance<FrameLayout>().apply {
                         layoutParams?.width = LayoutParams.WRAP_CONTENT
                         setPadding(0, 0, 0, getBottomPadding.dp)
@@ -183,7 +183,7 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         //保存当前的流量总和和上次的时间戳
         mLastTotalUp = currentTotalTxBytes
         lastTimeStampTotalUp = nowTimeStampTotalUp
-        return "" + totalUpSpeed.toString() + unit
+        return totalUpSpeed.toString() + unit
     }
 
     //获取总的下行速度
@@ -219,6 +219,6 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         mLastTotalDown = currentTotalRxBytes
         lastTimeStampTotalDown = nowTimeStampTotalDown
 
-        return "" + totalDownSpeed.toString() + unit
+        return totalDownSpeed.toString() + unit
     }
 }

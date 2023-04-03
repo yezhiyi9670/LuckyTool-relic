@@ -53,14 +53,12 @@ object StatusBarClock : YukiBaseHooker() {
     private var newline = ""
 
     override fun onHook() {
-        if (clockMode.isNotBlank() && clockMode == "0") return
-
+        if (clockMode.isBlank() || clockMode == "0") return
         dataChannel.wait<String>("statusbar_clock_text_alignment") { clockAlignment = it }
         dataChannel.wait<String>("statusbar_clock_custom_format") { customFormat = it }
         dataChannel.wait<Int>("statusbar_clock_custom_fontsize") { customFontsize = it }
         dataChannel.wait<Int>("statusbar_clock_singlerow_fontsize") { singleRowFontSize = it }
         dataChannel.wait<Int>("statusbar_clock_doublerow_fontsize") { doubleRowFontSize = it }
-
         var context: Context? = null
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
@@ -71,7 +69,6 @@ object StatusBarClock : YukiBaseHooker() {
                     context = args(0).cast<Context>()
                     val clockView = instance<TextView>()
                     if (clockView.resources.getResourceEntryName(clockView.id) != "clock") return@afterHook
-
                     val d: Method = clockView.javaClass.superclass.getDeclaredMethod("updateClock")
                     val r = Runnable {
                         d.isAccessible = true
