@@ -143,7 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Примітка: Робота персональної точки доступу протягом тривалого часу збільшує енергоспоживання та тепловиділення</string>
     <string name="remove_smart_rapid_charging_notification">Видалити повідомлення \"Розумна швидка зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Видалити повідомлення для вимкнених повідомлень</string>
-    <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Видалити сповіщення про ризик виникнення вірусу в менеджері телефону</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>
@@ -316,7 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Діалогове вікно з попередженням виявило, що програма відображається на робочому столі системи</string>
     <string name="remove_usb_connect_dialog">Видалити діалогове вікно USB-підключення</string>
     <string name="remove_usb_connect_dialog_summary">Режим передачі файлів вибирається за замовчуванням після підключення USB</string>
-    <string name="remove_secure_pay_found_virus_dialog">Removed secure pay found virus dialog</string>
+    <string name="remove_secure_pay_found_virus_dialog">Видалено діалогове вікно з виявленим вірусом безпечної оплати</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Повноекранні жести</string>
     <string name="remove_side_slider">Видалити бічну панель</string>
@@ -362,7 +362,8 @@
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
-    <string name="show_package_name_in_app_details_summary">Показувати назву пакета в деталях додатку, довгим натисканням її можна скопіювати</string>
+    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
+    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
     <string name="click_icon_open_market_page">Натисніть на іконку, щоб відкрити сторінку магазину</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
@@ -430,6 +431,7 @@
     <string name="download_count">Кількість завантажень</string>
     <string name="file_size">Розмір файлу</string>
     <string name="update_time">Час оновлення</string>
+    <string name="last_update_time">Last update Time</string>
     <string name="update_logs">Журнал оновлень</string>
     <string name="check_update_hint">Виявлена нова версія!</string>
     <string name="go_download_page">Перейти на сторінку завантаження</string>

@@ -2127,8 +2127,23 @@ class Settings : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.show_package_name_in_app_details)
-                    summary = getString(R.string.show_package_name_in_app_details_summary)
                     key = "show_package_name_in_app_details"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.show_last_update_time_in_app_details)
+                    key = "show_last_update_time_in_app_details"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_long_press_to_copy_in_app_details)
+                    key = "enable_long_press_to_copy_in_app_details"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

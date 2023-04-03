@@ -362,7 +362,8 @@
     <string name="remove_top_account_display">移除顶部账户显示</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
-    <string name="show_package_name_in_app_details_summary">在应用详情中显示包名与长按复制</string>
+    <string name="show_last_update_time_in_app_details">应用详情显示最后更新时间</string>
+    <string name="enable_long_press_to_copy_in_app_details">应用详情启用长按复制</string>
     <string name="click_icon_open_market_page">点击图标打开商店页面</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
@@ -430,6 +431,7 @@
     <string name="download_count">下载次数</string>
     <string name="file_size">文件大小</string>
     <string name="update_time">更新时间</string>
+    <string name="last_update_time">最后更新时间</string>
     <string name="update_logs">更新日志</string>
     <string name="check_update_hint">检测到新版本!</string>
     <string name="go_download_page">跳转下载页面</string>

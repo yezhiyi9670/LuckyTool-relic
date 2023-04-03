@@ -362,7 +362,8 @@
     <string name="remove_top_account_display">Remove top account display</string>
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
-    <string name="show_package_name_in_app_details_summary">Show the package name in the application details and you can long press to copy it</string>
+    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
+    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
     <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>
@@ -430,6 +431,7 @@
     <string name="download_count">Lượt tải về</string>
     <string name="file_size">Kích thước tập tin</string>
     <string name="update_time">Thời gian cập nhật</string>
+    <string name="last_update_time">Last update Time</string>
     <string name="update_logs">Nhật ký cập nhật</string>
     <string name="check_update_hint">Đã phát hiện phiên bản mới!</string>
     <string name="go_download_page">Đi đến trang tải xuống</string>

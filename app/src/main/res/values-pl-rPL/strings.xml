@@ -143,7 +143,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
     <string name="remove_smart_rapid_charging_notification">Usuń „Inteligentne szybkie ładowanie”</string>
     <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
-    <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Usuń ostrzeżenie o zagrożeniu wirusem w menedżerze telefonu</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>
@@ -191,7 +191,7 @@
     <string name="TileLayoutRelated">Układ przełączników</string>
     <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
     <string name="fix_tile_align_both_sides_summary">Naprawia przepełnienie układu po obu stronach, gdy przełączniki nie są rozwinięte</string>
-    <string name="control_center_tile_enable">Główny przełącznik</string>
+    <string name="control_center_tile_enable">Zmień układ przełączników</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
     <string name="tile_unexpanded_columns_horizontal">Kolumny (w poziomie)</string>
     <string name="tile_expanded_columns_vertical">Rozszerzone - Kolumny (w pionie)</string>
@@ -250,7 +250,7 @@
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--Desktop-->
-    <string name="Desktop">Ekran główny (Pulpit)</string>
+    <string name="Desktop">Pulpit</string>
     <string name="remove_alarmclock_widget_redone">Usuń czerwony kolor z cyfry „1”</string>
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie czerwonego koloru z cyfry „1”</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
@@ -316,7 +316,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Usuwa okno dialogowe z ostrzeżeniem, że aplikacja wyświetla się nad innymi aplikacjami</string>
     <string name="remove_usb_connect_dialog">Usuń okno połączenia USB</string>
     <string name="remove_usb_connect_dialog_summary">Tryb przesyłania plików jest wybierany domyślnie po podłączeniu USB</string>
-    <string name="remove_secure_pay_found_virus_dialog">Removed secure pay found virus dialog</string>
+    <string name="remove_secure_pay_found_virus_dialog">Usuń okno sprawdzania wirusów dla bezpiecznych płatności</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesty pełnoekranowe</string>
     <string name="remove_side_slider">Usuń boczny suwak</string>
@@ -362,7 +362,8 @@
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
-    <string name="show_package_name_in_app_details_summary">Możesz długo przytrzymać, aby ją skopiować</string>
+    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
+    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
     <string name="click_icon_open_market_page">Naciśnij ikonę, aby otworzyć stronę sklepu</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
@@ -430,6 +431,7 @@
     <string name="download_count">Licznik pobrań</string>
     <string name="file_size">Rozmiar</string>
     <string name="update_time">Czas aktualizacji</string>
+    <string name="last_update_time">Last update Time</string>
     <string name="update_logs">Dziennik zmian</string>
     <string name="check_update_hint">Wykryto nową wersję!</string>
     <string name="go_download_page">Przejdź do strony pobierania</string>

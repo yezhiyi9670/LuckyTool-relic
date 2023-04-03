@@ -362,7 +362,8 @@
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
-    <string name="show_package_name_in_app_details_summary">Показывать имя пакета в подробностях приложения и долгое нажатие для его копирования</string>
+    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
+    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
@@ -430,6 +431,7 @@
     <string name="download_count">Количество загрузок</string>
     <string name="file_size">Размер файла</string>
     <string name="update_time">Время обновления</string>
+    <string name="last_update_time">Last update Time</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>

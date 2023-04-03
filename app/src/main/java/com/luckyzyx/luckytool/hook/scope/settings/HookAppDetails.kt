@@ -7,7 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.highcapable.yukihookapi.hook.type.android.PackageInfoClass
+import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.getAppVersion
 import com.luckyzyx.luckytool.utils.data.openMarketIntent
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
@@ -15,10 +18,11 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 object HookAppDetails : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi", "SetTextI18n")
     override fun onHook() {
-        val isShowPackName =
-            prefs(ModulePrefs).getBoolean("show_package_name_in_app_details", false)
+        val isPackName = prefs(ModulePrefs).getBoolean("show_package_name_in_app_details", false)
+        val isLastUpdateTime = prefs(ModulePrefs).getBoolean("show_last_update_time_in_app_details", false)
+        val isEnableCopy =
+            prefs(ModulePrefs).getBoolean("enable_long_press_to_copy_in_app_details", false)
         val isIconMarket = prefs(ModulePrefs).getBoolean("click_icon_open_market_page", false)
-        if (!(isShowPackName || isIconMarket)) return
         //Source AppInfoFeature
         findClass("com.oplus.settings.feature.appmanager.AppInfoFeature").hook {
             injectMember {
@@ -59,12 +63,16 @@ object HookAppDetails : YukiBaseHooker() {
                             "version_text", "string", packageName
                         ), version
                     )
+                    context.injectModuleAppResources()
+                    val updateStr = formatDate("YYYY/MM/dd HH:mm:ss", packageInfo.lastUpdateTime)
+                    val updateTime =
+                        if (isLastUpdateTime) "\n${context.getString(R.string.last_update_time)} $updateStr" else ""
                     if (isIconMarket) appIcon.setOnClickListener {
                         it.context.openMarketIntent(packName)
                     }
-                    if (isShowPackName) appSize.apply {
-                        setTextIsSelectable(true)
-                        text = "$packName\n$versionText"
+                    appSize.apply {
+                        if (isEnableCopy) setTextIsSelectable(true)
+                        if (isPackName) text = "$packName\n$versionText$updateTime"
                     }
                 }
             }
