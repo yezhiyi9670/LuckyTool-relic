@@ -300,6 +300,9 @@ class DonateData {
             add(DonateInfo("剪贴板", 5.0, donateDetails(
                 DonateChannelInfo("20230330-174939", CAP, 5.0, "2023033022001467461412836642")
             )))
+            add(DonateInfo("Aixmos", 5.0, donateDetails(
+                DonateChannelInfo("20230404-135851", CWC, 5.0, "10000499012023040400997206766054")
+            )))
         }
     }
 
