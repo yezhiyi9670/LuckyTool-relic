@@ -126,8 +126,6 @@ object MainHook : IYukiHookXposedInit {
 
         //自启
         loadApp("com.android.systemui", HookAutoStart)
-
-
     }
 
     override fun onXposedEvent() {
