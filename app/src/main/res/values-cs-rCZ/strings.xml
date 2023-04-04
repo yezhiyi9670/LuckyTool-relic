@@ -373,7 +373,7 @@
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
     <string name="remove_startup_animation">Odstranit úvodní animaci</string>
-    <string name="remove_welfare_page">Remove welfare page</string>
+    <string name="remove_welfare_page">Odstranit stránku o blahobytu (welfare)</string>
     <string name="enable_developer_page">Povolit vývojářský režim</string>
     <string name="enable_eva_theme">Povolit EVA motiv</string>
     <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>

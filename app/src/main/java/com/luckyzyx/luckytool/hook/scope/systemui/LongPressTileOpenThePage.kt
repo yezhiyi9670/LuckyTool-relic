@@ -1,10 +1,13 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.app.PendingIntent
 import android.content.Intent
 import android.provider.Settings
+import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.IntentClass
+import com.highcapable.yukihookapi.hook.type.android.PendingIntentClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
@@ -25,6 +28,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         val isScreenshot =
             false//prefs(ModulePrefs).getBoolean("long_press_screenshot_tile_open_the_page", false)
         val isDnd = false//prefs(ModulePrefs).getBoolean("long_press_dnd_tile_open_the_page", false)
+
         //QSTileImpl
         findClass("com.android.systemui.qs.tileimpl.QSTileImpl").hook {
             injectMember {
@@ -32,7 +36,8 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     name = "longClick"
                     paramCount = 1
                 }
-                if (isRestore) beforeHook {
+                beforeHook {
+                    if (!isRestore) return@beforeHook
                     val mState = field {
                         name = "mState"
                     }.get(instance).any() ?: return@beforeHook
@@ -49,6 +54,32 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
             }
         }
+        //Source OplusQsMediaPanelViewController -> MediaDataUpdateListener
+        findClass("com.oplus.systemui.qs.media.OplusQsMediaPanelViewController\$mediaDataUpdateListener\$1").hook {
+            injectMember {
+                method {
+                    name = "onChange"
+                    paramCount = 1
+                }
+                afterHook {
+                    val controller = field {
+                        order().index().first()
+                    }.get(instance).cast<Any>()
+                    val mView = controller?.current()?.field {
+                        name = "mView"
+                        superClass(isOnlySuperClass = true)
+                    }?.cast<ViewGroup>()
+                    val mediaData = args().first().any()
+                    val clickIntent = mediaData?.current()?.method {
+                        name = "getClickIntent"
+                    }?.invoke<PendingIntent>()
+                    mView?.setOnLongClickListener {
+                        clickIntent?.let { its -> openIntent(its) }
+                        true
+                    }
+                }
+            }
+        }
         //Source OplusWifiTile
         findClass("com.oplusos.systemui.qs.tiles.OplusWifiTile").hook {
             injectMember {
@@ -56,7 +87,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     name = "handleSecondaryClick"
                 }
                 if (isWifi) replaceUnit {
-                    instance.openIntent(Intent(Settings.ACTION_WIFI_SETTINGS), 0)
+                    openIntent(Intent(Settings.ACTION_WIFI_SETTINGS), 0)
                 }
             }
         }
@@ -66,11 +97,13 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 method {
                     name = "getLongClickIntent"
                 }
-                if (isRestore) beforeHook {
-                    val state = method {
+                beforeHook {
+                    if (!isRestore) return@beforeHook
+                    val getState = method {
                         name = "getState"
                         superClass()
-                    }.get(instance).invoke<Any>()?.current()?.field {
+                    }.get(instance).invoke<Any>()
+                    val state = getState?.current()?.field {
                         name = "state"
                         superClass()
                     }?.int()
@@ -88,7 +121,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 if (isMobile) replaceUnit {
                     method {
                         name = "getCellularSettingIntent"
-                    }.get().invoke<Intent>()?.let { instance.openIntent(it, 0) }
+                    }.get().invoke<Intent>()?.let { openIntent(it, 0) }
                 }
             }
         }
@@ -100,7 +133,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
                 if (isWifiAp) replaceUnit {
                     method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
-                        ?.let { instance.openIntent(it, 0) }
+                        ?.let { openIntent(it, 0) }
                 }
             }
         }
@@ -111,7 +144,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     name = "handleSecondaryClick"
                 }
                 if (isBluetooth) replaceUnit {
-                    instance.openIntent(Intent(Settings.ACTION_BLUETOOTH_SETTINGS), 0)
+                    openIntent(Intent(Settings.ACTION_BLUETOOTH_SETTINGS), 0)
                 }
             }
         }
@@ -123,7 +156,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
                 if (isScreenshot) replaceUnit {
                     method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
-                        ?.let { instance.openIntent(it, 0) }
+                        ?.let { openIntent(it, 0) }
                 }
             }
         }
@@ -137,20 +170,36 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     method {
                         name = "getLongClickIntent"
                         superClass(isOnlySuperClass = true)
-                    }.get(instance).invoke<Intent>()?.let { instance.openIntent(it, 0) }
+                    }.get(instance).invoke<Intent>()?.let { openIntent(it, 0) }
                 }
             }
         }
     }
 
-    private fun Any.openIntent(intent: Intent, int: Int) {
-        current().field {
-            name = "mActivityStarter"
-            superClass()
-        }.any()?.current()?.method {
+    private fun openIntent(intent: PendingIntent) {
+        val dependencyCls = "com.android.systemui.Dependency".toClass()
+        val activityStarterCls = "com.android.systemui.plugins.ActivityStarter".toClass()
+        val activityStarter = dependencyCls.newInstance().current().method {
+            name = "get"
+            param(Class::class.java)
+        }.call(activityStarterCls)
+        activityStarter?.current()?.method {
+            name = "postStartActivityDismissingKeyguard"
+            param(PendingIntentClass)
+        }?.call(intent)
+    }
+
+    @Suppress("SameParameterValue")
+    private fun openIntent(intent: Intent, int: Int) {
+        val dependencyCls = "com.android.systemui.Dependency".toClass()
+        val activityStarterCls = "com.android.systemui.plugins.ActivityStarter".toClass()
+        val activityStarter = dependencyCls.newInstance().current().method {
+            name = "get"
+            param(Class::class.java)
+        }.call(activityStarterCls)
+        activityStarter?.current()?.method {
             name = "postStartActivityDismissingKeyguard"
             param(IntentClass, IntType)
-            paramCount = 2
         }?.call(intent, int)
     }
 }
