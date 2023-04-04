@@ -263,7 +263,7 @@
     <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
     <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
-    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Odstranit ikonu aplikace v dolní části seznamu nedávných úkolů</string>
     <string name="PaginationComponentRelated">Související se stránkováním (plochy spouštěče)</string>
     <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
@@ -373,6 +373,7 @@
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
     <string name="remove_startup_animation">Odstranit úvodní animaci</string>
+    <string name="remove_welfare_page">Remove welfare page</string>
     <string name="enable_developer_page">Povolit vývojářský režim</string>
     <string name="enable_eva_theme">Povolit EVA motiv</string>
     <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>

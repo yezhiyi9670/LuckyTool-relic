@@ -373,6 +373,7 @@
     <string name="remove_root_check">Usuń limit filtrów gier</string>
     <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>
     <string name="remove_startup_animation">Wyłącz animację startową</string>
+    <string name="remove_welfare_page">Remove welfare page</string>
     <string name="enable_developer_page">Włącz tryb programisty</string>
     <string name="enable_eva_theme">Włącz motyw EVA</string>
     <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>

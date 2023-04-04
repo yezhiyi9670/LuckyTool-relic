@@ -2264,6 +2264,14 @@ class OplusGames : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.remove_welfare_page)
+                    key = "remove_welfare_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.enable_developer_page)
                     summary = getString(R.string.enable_developer_page_summary)
                     key = "enable_developer_page"

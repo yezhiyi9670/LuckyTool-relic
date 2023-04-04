@@ -373,6 +373,7 @@
     <string name="remove_root_check">Видалити визначення ігрового фільтра</string>
     <string name="remove_root_check_summary">Видалити виявлення рута з ігрових фільтрів</string>
     <string name="remove_startup_animation">Видалити стартову анімацію</string>
+    <string name="remove_welfare_page">Remove welfare page</string>
     <string name="enable_developer_page">Увімкнути меню розробника</string>
     <string name="enable_eva_theme">Увімкнути тему EVA</string>
     <string name="enable_developer_page_summary">Після включення цієї функції та перезавантаження, \nможна перейти до неї через меню швидкого доступу</string>

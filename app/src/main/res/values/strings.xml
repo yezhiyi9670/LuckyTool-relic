@@ -395,6 +395,7 @@
     <string name="remove_root_check">Remove Game Filter Limit</string>
     <string name="remove_root_check_summary">Remove Root Detection Limit for Game Filter</string>
     <string name="remove_startup_animation">Remove startup animation</string>
+    <string name="remove_welfare_page">Remove welfare page</string>
     <string name="enable_developer_page">Enable developer page</string>
     <string name="enable_eva_theme">Enable EVA theme</string>
     <string name="enable_developer_page_summary">After enabling this feature and restarting the scope, \n can jump to it via the shortcut portal</string>

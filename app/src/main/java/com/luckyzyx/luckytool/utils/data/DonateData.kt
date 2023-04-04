@@ -17,8 +17,7 @@ class DonateData {
     private val CAP = "AliPay"
     fun getData(): ArrayList<DonateInfo> {
         return ArrayList<DonateInfo>().apply {
-            add(
-                DonateInfo("是小奶糖啊", 33.0, donateDetails(
+            add(DonateInfo("是小奶糖啊", 33.0, donateDetails(
                     DonateChannelInfo("20220912-003911", CWC, 1.0, "10000499012022091201251965341571"),
                     DonateChannelInfo("20220912-003928", CWC, 1.0, "10001071012022091201925356060626"),
                     DonateChannelInfo("20220912-003952", CWC, 1.0, "10000499012022091201394232947529"),
@@ -40,9 +39,8 @@ class DonateData {
                     DonateChannelInfo("20220915-005408", CAP, 0.4, "2022091522001418391438987850"),
                     DonateChannelInfo("20220915-005915", CAP, 5.0, "2022091522001418391438398792"),
                     DonateChannelInfo("20230125-145957", CQQ, 11.0, "101000026901302301251417959764"),
-                )
-                )
-            )
+                    DonateChannelInfo("20230404-182753", CQQ, 0.05, "101000026901302304041418596282")
+            )))
             add(DonateInfo("Kimjaejiang", 5.0, donateDetails(
                 DonateChannelInfo("20220912-205238",CWC,5.0,"10000499012022091200755856699085")
             )))
@@ -302,6 +300,9 @@ class DonateData {
             )))
             add(DonateInfo("Aixmos", 5.0, donateDetails(
                 DonateChannelInfo("20230404-135851", CWC, 5.0, "10000499012023040400997206766054")
+            )))
+            add(DonateInfo("不忘初心", 10.0, donateDetails(
+                DonateChannelInfo("20230404-182211", CQQ, 10.0, "101000026901302304041418595239")
             )))
         }
     }

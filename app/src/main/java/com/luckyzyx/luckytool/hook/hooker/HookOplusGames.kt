@@ -34,12 +34,16 @@ object HookOplusGames : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_competition_mode_sound", false)) {
                 loadHooker(RemoveCompetitionModeSound)
             }
+            //移除游戏助手福利页面
+            if (prefs(ModulePrefs).getBoolean("remove_welfare_page", false)) {
+                loadHooker(RemoveWelfarePage)
+            }
 
             //Search GamePerfModeModel -> perf_touch_response_extreme_rb
             //mPerfTouchResponseExtreme click -> setTouchResponse
 
             //闪电启动
-            //LightningStartPreloadConfig
+            //business.secondarypanel.view.GameFastStartFloatView
 
             //GPA极限稳帧
             //com.oplus.cosa.gpalibrary.core.GpaCore
