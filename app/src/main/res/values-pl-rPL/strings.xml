@@ -59,7 +59,7 @@
     <string name="participate_translation">Przetłumacz aplikację</string>
     <string name="participate_translation_summary">Przejdź do Crowdin, aby przetłumaczyć moduł</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Moduł w LSPosed nie został włączony.\nNaciśnij OK, aby zamknąć aplikację.</string>
+    <string name="unsupported_xposed">Moduł w LSPosed nie został włączony.\nDotknij OK, aby zamknąć aplikację.</string>
     <!-- Menu -->
     <string name="menu_reboot">Menu restartowania</string>
     <string name="menu_settings">Informacje o autorze</string>
@@ -178,7 +178,7 @@
     <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
     <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
     <string name="enable_notification_align_both_sides">Wyrównaj szerokość powiadomień</string>
-    <string name="StatusBarTiles">Przełączniki szybkich ustawień</string>
+    <string name="StatusBarTiles">Przełączniki centrum sterowania</string>
     <string name="TileLongClickEvent">Długie przytrzymanie</string>
     <string name="restore_some_tile_long_press_event">Przywróć niektórym przełącznikom długie naciśnięcie</string>
     <string name="restore_some_tile_long_press_event_summary">Przywraca otwieranie ustawień dla Wi-Fi, Bluetooth, Osobistego hotspotu i innych</string>
@@ -189,8 +189,8 @@
     <string name="long_press_screenshot_tile_open_the_page">Przytrzymaj płytkę „Zrzut ekranu”, aby otworzyć ustawienia</string>
     <string name="long_press_dnd_tile_open_the_page">Przytrzymaj płytkę „Nie przeszkadzać”, aby otworzyć ustawienia</string>
     <string name="TileLayoutRelated">Układ przełączników</string>
-    <string name="fix_tile_align_both_sides">Napraw wyrównanie przełączników po obu stronach</string>
-    <string name="fix_tile_align_both_sides_summary">Naprawia przepełnienie układu po obu stronach, gdy przełączniki nie są rozwinięte</string>
+    <string name="fix_tile_align_both_sides">Napraw wyrównanie okrągłych przełączników</string>
+    <string name="fix_tile_align_both_sides_summary">Naprawia błąd obustronnego przesunięcia układu okrągłych przełączników. Problem widoczny, gdy panel centrum sterowania nie jest rozszerzony</string>
     <string name="control_center_tile_enable">Zmień układ przełączników</string>
     <string name="tile_unexpanded_columns_vertical">Kolumny (w pionie)</string>
     <string name="tile_unexpanded_columns_horizontal">Kolumny (w poziomie)</string>
@@ -263,10 +263,11 @@
     <string name="RecentTaskListRelated">Lista ostatnich aplikacji</string>
     <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk „Zamknij wszystkie” z listy ostatnich aplikacji</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     <string name="PaginationComponentRelated">Kropkowy wskaźnik stronicowania</string>
-    <string name="remove_pagination_component">Usuń wskaźnik pulpitu</string>
+    <string name="remove_pagination_component">Usuń wskaźnik stronicowania pulpitu</string>
     <string name="remove_folder_pagination_component">Usuń komponent stronicowania folderu</string>
-    <string name="disable_pagination_component_sliding">Wyłącz przesuwanie wskaźnika</string>
+    <string name="disable_pagination_component_sliding">Wyłącz przesuwanie komponentu stronicowania</string>
     <string name="FolderLayoutRelated">Układ folderu</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
     <string name="set_icon_width_in_folder">Ustaw szerokość ikony</string>
@@ -362,9 +363,9 @@
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
-    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
-    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
-    <string name="click_icon_open_market_page">Naciśnij ikonę, aby otworzyć stronę sklepu</string>
+    <string name="show_last_update_time_in_app_details">Pokaż czas ostatniej aktualizacji</string>
+    <string name="enable_long_press_to_copy_in_app_details">Włącz zaznaczanie i kopiowanie</string>
+    <string name="click_icon_open_market_page">Dotknij ikonę aplikacji, aby otworzyć sklep</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
@@ -431,7 +432,7 @@
     <string name="download_count">Licznik pobrań</string>
     <string name="file_size">Rozmiar</string>
     <string name="update_time">Czas aktualizacji</string>
-    <string name="last_update_time">Last update Time</string>
+    <string name="last_update_time">Ostatnia aktualizacja</string>
     <string name="update_logs">Dziennik zmian</string>
     <string name="check_update_hint">Wykryto nową wersję!</string>
     <string name="go_download_page">Przejdź do strony pobierania</string>
@@ -449,7 +450,7 @@
     <string name="cancel_button">Anuluj pobieranie</string>
     <string name="fps_autostart">Automatyczny start</string>
     <string name="device_guid">GUID urządzenia</string>
-    <string name="oplusota_copy_tip">Długie naciśnij pole wprowadzania, aby skopiować go indywidualnie</string>
+    <string name="oplusota_copy_tip">Przytrzymaj pole wprowadzania, aby skopiować</string>
     <string name="oplusota_copyall">Skopiuj wszystko</string>
     <!-- Other -->
     <string name="quick_entry">Ukryte funkcje systemowe</string>

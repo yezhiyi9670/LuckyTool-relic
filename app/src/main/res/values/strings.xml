@@ -281,6 +281,7 @@
     <string name="RecentTaskListRelated">Recent task list related</string>
     <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Remove recent task list clear button</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     
     <string name="PaginationComponentRelated">Pagination Component Related</string>
     <string name="remove_pagination_component">Remove pagination component</string>

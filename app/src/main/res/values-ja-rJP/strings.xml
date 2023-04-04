@@ -263,6 +263,7 @@
     <string name="RecentTaskListRelated">アプリ履歴関連</string>
     <string name="long_press_app_icon_open_app_details">アプリのアイコンを長押ししてアプリ詳細を開く</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     <string name="PaginationComponentRelated">ページネーション関連</string>
     <string name="remove_pagination_component">ページネーションを削除</string>
     <string name="remove_folder_pagination_component">フォルダのページネーションを削除</string>
@@ -362,8 +363,8 @@
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
-    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
-    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
+    <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>
+    <string name="enable_long_press_to_copy_in_app_details">アプリ詳細で長押ししてコピーできるようにする</string>
     <string name="click_icon_open_market_page">アイコンをタップしてストアページを開く</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
@@ -431,7 +432,7 @@
     <string name="download_count">ダウンロード数</string>
     <string name="file_size">ファイルのサイズ</string>
     <string name="update_time">更新時間</string>
-    <string name="last_update_time">Last update Time</string>
+    <string name="last_update_time">最終更新日時</string>
     <string name="update_logs">アップデートログ</string>
     <string name="check_update_hint">新しいバージョンがあります!</string>
     <string name="go_download_page">ダウンロードページを開く</string>

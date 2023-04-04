@@ -263,6 +263,7 @@
     <string name="RecentTaskListRelated">Список недавних задач</string>
     <string name="long_press_app_icon_open_app_details">Удерживайте иконку приложения, чтобы открыть детали приложения</string>
     <string name="remove_recent_task_list_clear_button">Удалить кнопку очистки списка последних задач</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     <string name="PaginationComponentRelated">Компоненты страницы</string>
     <string name="remove_pagination_component">Удалить компонент разбивки на страницы</string>
     <string name="remove_folder_pagination_component">Удалить компонент разбивки на папки</string>
@@ -362,8 +363,8 @@
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
-    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
-    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
+    <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
+    <string name="enable_long_press_to_copy_in_app_details">Включить длительное нажатие для копирования сведений о приложении</string>
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
@@ -431,7 +432,7 @@
     <string name="download_count">Количество загрузок</string>
     <string name="file_size">Размер файла</string>
     <string name="update_time">Время обновления</string>
-    <string name="last_update_time">Last update Time</string>
+    <string name="last_update_time">Время последнего обновления</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>

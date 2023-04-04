@@ -263,6 +263,7 @@
     <string name="RecentTaskListRelated">Список недавніх задач</string>
     <string name="long_press_app_icon_open_app_details">Утримуйте іконку додатку, щоб відкрити деталі додатку</string>
     <string name="remove_recent_task_list_clear_button">Видалити кнопку очищення списку останніх задач</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     <string name="PaginationComponentRelated">Компоненти сторінки</string>
     <string name="remove_pagination_component">Видалити компонент розбиття на сторінки</string>
     <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
@@ -362,8 +363,8 @@
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
-    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
-    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
+    <string name="show_last_update_time_in_app_details">Показати час останнього оновлення в деталях програми</string>
+    <string name="enable_long_press_to_copy_in_app_details">Увімкнути довге натискання, щоб скопіювати деталі програми</string>
     <string name="click_icon_open_market_page">Натисніть на іконку, щоб відкрити сторінку магазину</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
@@ -431,7 +432,7 @@
     <string name="download_count">Кількість завантажень</string>
     <string name="file_size">Розмір файлу</string>
     <string name="update_time">Час оновлення</string>
-    <string name="last_update_time">Last update Time</string>
+    <string name="last_update_time">Час останнього оновлення</string>
     <string name="update_logs">Журнал оновлень</string>
     <string name="check_update_hint">Виявлена нова версія!</string>
     <string name="go_download_page">Перейти на сторінку завантаження</string>

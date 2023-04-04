@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.scope.launcher
 
-import android.os.UserHandle
 import android.view.View
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
@@ -23,44 +22,24 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                         name = "getTask"
                         superClass(isOnlySuperClass = true)
                     }.get(instance).call()
-                    val itemInfo = method {
-                        name = "getItemInfo"
-                    }.get(instance).call()
-                    val userHandle = itemInfo?.current()?.field {
-                        name = "user"
-                        superClass()
-                    }?.cast<UserHandle>()
-                    val userId = userHandle?.current()?.method {
-                        name = "getIdentifier"
+                    val key = task?.current()?.field {
+                        name = "key"
+                    }?.any()
+                    val packName = key?.current()?.method {
+                        name = "getPackageName"
+                    }?.invoke<String>()
+                    val userId = key?.current()?.field {
+                        name = "userId"
                     }?.int()
-                    val packName = if (SDK >= A13) {
-                        task?.current()?.method {
-                            name = "getPackageName"
-                        }?.invoke<String>()
-                    } else {
-                        task?.current()?.field {
-                            name = "key"
-                        }?.any()?.current()?.method {
-                            name = "getPackageName"
-                        }?.invoke<String>()
-                    }
                     val headerView = method {
                         name = "getHeaderView"
                     }.get(instance).call()
                     val iconView = headerView?.current()?.method {
                         name = "getTaskIcon"
                     }?.invoke<View>()
-                    val titleView = headerView?.current()?.let {
-                        if (SDK >= A13) {
-                            it.method {
-                                name = "getTitleTv"
-                            }.invoke<TextView>()
-                        } else {
-                            it.field {
-                                name = "mTitleView"
-                            }.cast<TextView>()
-                        }
-                    }
+                    val titleView = headerView?.current()?.field {
+                        name = if (SDK >= A13) "titleTv" else "mTitleView"
+                    }?.cast<TextView>()
                     iconView?.setLongClick(packName, userId)
                     titleView?.setLongClick(packName, userId)
                 }
@@ -81,27 +60,19 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                     val key = task?.current()?.field {
                         name = "key"
                     }?.any()
+                    val packName = key?.current()?.method {
+                        name = "getPackageName"
+                    }?.invoke<String>()
                     val userId = key?.current()?.field {
                         name = "userId"
                     }?.int()
-                    val packName = if (SDK >= A13) {
-                        task?.current()?.method {
-                            name = "getPackageName"
-                        }?.invoke<String>()
-                    } else {
-                        task?.current()?.field {
-                            name = "key"
-                        }?.any()?.current()?.method {
-                            name = "getPackageName"
-                        }?.invoke<String>()
-                    }
                     instance<View>().setLongClick(packName, userId)
                 }
             }
         }
     }
 
-    private fun View.setLongClick(packName: String?, userId: Int?) {
+    private fun View.setLongClick(packName: String?, userId: Int? = 0) {
         setOnLongClickListener {
             packName?.let { its -> it.context.openAppDetailIntent(its, userId) }
             true

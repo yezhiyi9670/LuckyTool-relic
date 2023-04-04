@@ -263,6 +263,7 @@
     <string name="RecentTaskListRelated">Nastavení související se seznamem nedávných aplikací</string>
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
     <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
     <string name="PaginationComponentRelated">Související se stránkováním (plochy spouštěče)</string>
     <string name="remove_pagination_component">Odstranit komponentu stránkování</string>
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
@@ -362,8 +363,8 @@
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
-    <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
-    <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
+    <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>
+    <string name="enable_long_press_to_copy_in_app_details">Povolit dlouhé stisknutí pro zkopírování podrobností aplikace</string>
     <string name="click_icon_open_market_page">Klikněte na ikonu pro otevření Google play obchodu</string>
     <!--Camera-->
     <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
@@ -431,7 +432,7 @@
     <string name="download_count">Počet stažení</string>
     <string name="file_size">Velikost souboru</string>
     <string name="update_time">Čas aktualizace</string>
-    <string name="last_update_time">Last update Time</string>
+    <string name="last_update_time">Čas poslední aktualizace</string>
     <string name="update_logs">Aktualizovat protokoly</string>
     <string name="check_update_hint">Byla nalezena nová verze!</string>
     <string name="go_download_page">Přejít na stránku pro stažení</string>

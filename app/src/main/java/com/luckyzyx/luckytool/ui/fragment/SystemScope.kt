@@ -1388,6 +1388,14 @@ class Desktop : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_bottom_app_icon_of_recent_task_list)
+                    key = "remove_bottom_app_icon_of_recent_task_list"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.launcher_layout_related)
                     isIconSpaceReserved = false

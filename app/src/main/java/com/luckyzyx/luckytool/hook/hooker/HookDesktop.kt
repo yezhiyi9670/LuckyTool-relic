@@ -33,9 +33,16 @@ object HookDesktop : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_recent_task_list_clear_button", false)) {
                 loadHooker(RemoveRecentTaskListClearButton)
             }
-            //长按APP图标打开应用详情
+            //最近任务列表长按APP图标打开应用详情
             if (prefs(ModulePrefs).getBoolean("long_press_app_icon_open_app_details", false)) {
                 loadHooker(LongPressAppIconOpenAppDetails)
+            }
+            //移除最近任务列表底部APP图标
+            if (prefs(ModulePrefs).getBoolean(
+                    "remove_bottom_app_icon_of_recent_task_list", false
+                )
+            ) {
+                loadHooker(RemoveBottomAppIconOfRecentTaskList)
             }
 
             //com.android.launcher3.popup.OplusBaseSystemShortcut

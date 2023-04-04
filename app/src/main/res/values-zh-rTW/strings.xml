@@ -263,6 +263,7 @@
     <string name="RecentTaskListRelated">最近任务列表相关</string>
     <string name="long_press_app_icon_open_app_details">长按应用图标打开应用详情</string>
     <string name="remove_recent_task_list_clear_button">移除最近任务列表清除按钮</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">移除最近任务列表底部 APP 图标</string>
     <string name="PaginationComponentRelated">分页组件相关</string>
     <string name="remove_pagination_component">移除分页组件</string>
     <string name="remove_folder_pagination_component">移除文件夹分页组件</string>
