@@ -60,7 +60,7 @@ it and the module is not adapted and can’t be used to distinguish
 - If **Android System Framework**reportError，then use MT
   Manager or other tools，open the root directory/system/framework/ Folder，Find the following four
   files and copy them
-  out[ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ]
+  out[ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ] [ oplus-service-jobscheduler.jar ]
   send to [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)
 
 ## NOTICE

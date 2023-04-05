@@ -311,6 +311,7 @@
     <string name="multi_app_custom_list">Replace App Clone Support List</string>
     <string name="multi_app_custom_list_summary">After the function is turned on, the original list of app clones will be replaced by this list, too many will cause lag</string>
     <string name="dark_mode_support_list">Custom dark mode support list</string>
+    <string name="cur_type_none" translatable="false">None</string>
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">App Installation Related</string>
     <string name="PackageInstaller_summary">Need to be used with the core patch</string>

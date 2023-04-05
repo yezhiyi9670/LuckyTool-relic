@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object BatteryOptimizationWhitelist : YukiBaseHooker() {
@@ -11,13 +12,18 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
         //Source OplusDeviceIdleHelper
         //Search sys_deviceidle_whitelist
         findClass("com.android.server.OplusDeviceIdleHelper").hook {
+            val getNewWhiteList = instanceClass.hasMethod { name = "getNewWhiteList" }
+            val getNewWhiteListLocked =
+                instanceClass.hasMethod { name = "getNewWhiteListLocked" }
+            if ((getNewWhiteList && getNewWhiteListLocked) || !(getNewWhiteList || getNewWhiteListLocked)) return@hook
             injectMember {
                 method {
-                    name = "getNewWhiteList"
+                    if (getNewWhiteList) name = "getNewWhiteList"
+                    if (getNewWhiteListLocked) name = "getNewWhiteListLocked"
                     paramCount = 1
                 }
                 replaceUnit {
-                    val whiteListAll = args().first().cast<ArrayList<String>>()
+                    val whiteListAll = args().first().cast<java.util.ArrayList<String>>()
                     whiteListAll?.clear()
                     val mDefaultWhitelist = field {
                         name = "mDefaultWhitelist"

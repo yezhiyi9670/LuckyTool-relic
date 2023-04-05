@@ -6,14 +6,14 @@ import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.ArrayMap
 import android.util.ArraySet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +23,7 @@ import com.google.android.material.materialswitch.MaterialSwitch
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentApplistFunctionLayoutBinding
-import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemBinding
+import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemDarkmodeBinding
 import com.luckyzyx.luckytool.utils.data.AppInfo
 import com.luckyzyx.luckytool.utils.tools.*
 
@@ -97,6 +97,14 @@ class DarkModeFragment : Fragment() {
         appListAllDatas.clear()
         val enableData =
             requireActivity().getStringSet(ModulePrefs, "dark_mode_support_list", ArraySet())
+        val formatEnableData = ArrayMap<String, Int>()
+        enableData?.forEach {
+            if (it.contains("|")) {
+                val arr = it.split("|").toMutableList()
+                if (arr.size < 2 || arr[1].isBlank()) arr[1] = (0).toString()
+                formatEnableData[arr[0]] = arr[1].toInt()
+            } else formatEnableData[it] = 0
+        }
         scopeLife {
             withIO {
                 val packageManager = requireActivity().packageManager
@@ -112,7 +120,7 @@ class DarkModeFragment : Fragment() {
                     )
                 }
             }
-            darkModeAdapter = DarkModeAdapter(requireActivity(), appListAllDatas, enableData)
+            darkModeAdapter = DarkModeAdapter(requireActivity(), appListAllDatas, formatEnableData)
             binding.recyclerView.apply {
                 adapter = darkModeAdapter
                 layoutManager = LinearLayoutManager(context)
@@ -126,32 +134,41 @@ class DarkModeFragment : Fragment() {
 class DarkModeAdapter(
     val context: Context,
     datas: ArrayList<AppInfo>,
-    enableData: Set<String>?
+    enableData: ArrayMap<String, Int>
 ) :
     RecyclerView.Adapter<DarkModeAdapter.ViewHolder>() {
 
     private var allDatas = ArrayList<AppInfo>()
     private var filterDatas = ArrayList<AppInfo>()
-    private var enabledMulti = ArrayList<String>()
-    private var sortData = ArrayList<AppInfo>()
+    private var enabledMulti = ArrayMap<String, Int>()
+    private var tempData = ArrayMap<String, Int>()
 
     init {
         allDatas = datas
-        enableData?.forEach { enabledMulti.add(it) }
+        enabledMulti = enableData
         sortDatas()
         filterDatas = datas
     }
 
     private fun sortDatas() {
+        //检查清理已卸载APP
         allDatas.forEach { its ->
-            if (enabledMulti.contains(its.packName)) sortData.add(0, its)
+            enabledMulti.forEach {
+                if (it.key == its.packName) tempData[it.key] = it.value
+            }
         }
         enabledMulti.clear()
-        sortData.forEach {
-            enabledMulti.add(it.packName)
-        }
+        enabledMulti = tempData
+        //保存数据
         saveEnableList()
-        sortData.forEach {
+        //过滤置顶
+        val tempInfo = ArrayList<AppInfo>()
+        tempData.forEach { map ->
+            allDatas.forEach {
+                if (it.packName == map.key) tempInfo.add(it)
+            }
+        }
+        tempInfo.forEach {
             allDatas.remove(it)
             allDatas.add(0, it)
         }
@@ -159,7 +176,7 @@ class DarkModeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            LayoutAppinfoSwitchItemBinding.inflate(
+            LayoutAppinfoSwitchItemDarkmodeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -173,17 +190,41 @@ class DarkModeAdapter(
         holder.packName.text = filterDatas[position].packName
         holder.appInfoView.setOnClickListener(null)
         holder.switchview.setOnCheckedChangeListener(null)
+        holder.radioList.setOnCheckedChangeListener(null)
+        holder.radioList.clearCheck()
 
         holder.switchview.isChecked = enabledMulti.contains(filterDatas[position].packName)
+        holder.radioList.isVisible = holder.switchview.isChecked
+        holder.radioList.check(holder.radioNone.id)
+        enabledMulti.forEach {
+            if (it.key == filterDatas[position].packName) {
+                val radioId = when (it.value) {
+                    1 -> holder.radio1.id
+                    2 -> holder.radio2.id
+                    3 -> holder.radio3.id
+                    4 -> holder.radio4.id
+                    else -> holder.radioNone.id
+                }
+                holder.radioList.check(radioId)
+            }
+        }
         holder.appInfoView.setOnClickListener {
             holder.switchview.isChecked = !holder.switchview.isChecked
         }
         holder.switchview.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                enabledMulti.add(filterDatas[position].packName)
+                holder.radioList.check(holder.radioNone.id)
+                enabledMulti[filterDatas[position].packName] = 0
+                holder.radioList.isVisible = true
             } else {
                 enabledMulti.remove(filterDatas[position].packName)
+                holder.radioList.isVisible = false
             }
+            saveEnableList()
+        }
+        holder.radioList.setOnCheckedChangeListener { group, checkedId ->
+            val value = group.indexOfChild(group.findViewById(checkedId))
+            enabledMulti[filterDatas[position].packName] = value
             saveEnableList()
         }
     }
@@ -223,10 +264,14 @@ class DarkModeAdapter(
         }
 
     private fun saveEnableList() {
-        context.putStringSet(ModulePrefs, "dark_mode_support_list", enabledMulti.toSet())
-        context.dataChannel("android").put("dark_mode_support_list", enabledMulti.toSet())
+        val data = ArraySet<String>()
+        enabledMulti.forEach {
+            data.add("${it.key}|${it.value}")
+        }
+        context.putStringSet(ModulePrefs, "dark_mode_support_list", data.toSet())
+        context.dataChannel("android").put("dark_mode_support_list", data.toSet())
         context.dataChannel("com.android.settings")
-            .put("dark_mode_support_list", enabledMulti.toSet())
+            .put("dark_mode_support_list", data.toSet())
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -234,12 +279,18 @@ class DarkModeAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(binding: LayoutAppinfoSwitchItemBinding) :
+    class ViewHolder(binding: LayoutAppinfoSwitchItemDarkmodeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val appInfoView: ConstraintLayout = binding.root
+        val appInfoView: ConstraintLayout = binding.appinfoView
         val appIcon: ImageView = binding.appIcon
         val appName: TextView = binding.appName
         val packName: TextView = binding.packName
         val switchview: MaterialSwitch = binding.switchview
+        val radioList: RadioGroup = binding.radioList
+        val radioNone: RadioButton = binding.curTypeNone
+        val radio1: RadioButton = binding.curType1
+        val radio2: RadioButton = binding.curType2
+        val radio3: RadioButton = binding.curType3
+        val radio4: RadioButton = binding.curType4
     }
 }

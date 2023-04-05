@@ -191,6 +191,7 @@
 
 ## 云服务 CloudService -> buildVersionCommit
 
+- v6.7.1 -> 60701 -> e3fd49d
 - v6.6.11 -> 60611 -> 2370c2f
 - v6.5.5 -> 60505 -> 4e1d268
 - v6.5.3 -> 60503 -> fc519ab

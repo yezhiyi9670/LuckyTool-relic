@@ -10,12 +10,11 @@ import com.highcapable.yukihookapi.hook.type.java.StringClass
 object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
         //Source BackUpActivity / BackupRestoreHelper -> backup_currently_mobile
-        //Source NetworkUtil
-        //Search getSystemService -> connectivity
+        //Source BackupRestoreCode -> BackupRestoreCode.NO_WIFI
+        //Source NetworkUtil getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
-            from("com.cloud.base.commonsdk.baseutils", "qa", "t2", "ra").absolute()
-            constructor().none()
+            from("com.cloud.base.commonsdk.baseutils", "qa", "t2", "ra", "ob").absolute()
             field().count(0..1)
             method {
                 param(ContextClass)
