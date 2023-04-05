@@ -67,6 +67,7 @@
     <string name="menu_settings">Set menu</string>
     <string name="restart_scope">Restart scoped processes</string>
     <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
+    <string name="restart_only_this_page_scope">Restart only this page scope</string>
     <string name="reboot">Restart System</string>
     <string name="fast_reboot">Fast reboot</string>
     <string name="menu_versioninfo">Version Information</string>

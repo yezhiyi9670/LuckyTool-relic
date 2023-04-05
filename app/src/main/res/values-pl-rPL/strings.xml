@@ -65,6 +65,7 @@
     <string name="menu_settings">Informacje o autorze</string>
     <string name="restart_scope">Zrestartuj uruchomione procesy</string>
     <string name="restart_scope_message">Zrestartować ograniczone procesy modułu poza systemowym framework\'iem?\nUżyj tego, jeśli moduł nie działa!\nUpewnij się, czy rekomendowane aplikacje są zaznaczone w LSPosed!</string>
+    <string name="restart_only_this_page_scope">Restart only this page scope</string>
     <string name="reboot">Zrestartuj urządzenie</string>
     <string name="fast_reboot">Szybki restart</string>
     <string name="menu_versioninfo">Informacje o wersji</string>
@@ -143,7 +144,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Pozostawienie włączonego osobistego hotspotu zwiększy użycie baterii i nagrzeje urządzenie</string>
     <string name="remove_smart_rapid_charging_notification">Usuń „Inteligentne szybkie ładowanie”</string>
     <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
-    <string name="remove_virus_risk_notification_in_phone_manager">Usuń ostrzeżenie o zagrożeniu wirusem w menedżerze telefonu</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Usuń alerty o zagrożeniu wirusami w menedżerze telefonu</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>
@@ -171,7 +172,7 @@
     <string name="control_center_clock_show_second">Pokaż sekundy</string>
     <string name="fix_clock_colon_style">Obniż dwukropek w zegarze</string>
     <string name="fix_clock_colon_style_summary">Przywróć normalny dwukropek</string>
-    <string name="remove_control_center_clock_red_one">Usuń czerwony kolor z cyfry 1</string>
+    <string name="remove_control_center_clock_red_one">Usuń czerwony kolor z cyfry „1”</string>
     <string name="remove_control_center_date_comma">Usuń przecinek daty</string>
     <string name="ControlCenter_UI_Related">Dostosuj centrum sterowania</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
@@ -235,7 +236,7 @@
     <!--LockScreen-->
     <string name="LockScreen">Ekran blokady</string>
     <string name="LockScreenComponent">Komponenty ekranu blokady</string>
-    <string name="remove_lock_screen_redone">Usuń czerwony kolor cyfry 1</string>
+    <string name="remove_lock_screen_redone">Usuń czerwony kolor z cyfry „1”</string>
     <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
     <string name="lock_screen_use_user_typeface">Używaj czcionek użytkownika</string>
@@ -263,10 +264,10 @@
     <string name="RecentTaskListRelated">Lista ostatnich aplikacji</string>
     <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk „Zamknij wszystkie” z listy ostatnich aplikacji</string>
-    <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
+    <string name="remove_bottom_app_icon_of_recent_task_list">Usuń dolne ikony z listy ostatnich aplikacji</string>
     <string name="PaginationComponentRelated">Kropkowy wskaźnik stronicowania</string>
     <string name="remove_pagination_component">Usuń wskaźnik stronicowania pulpitu</string>
-    <string name="remove_folder_pagination_component">Usuń komponent stronicowania folderu</string>
+    <string name="remove_folder_pagination_component">Usuń wskaźnik stronicowania folderu</string>
     <string name="disable_pagination_component_sliding">Wyłącz przesuwanie komponentu stronicowania</string>
     <string name="FolderLayoutRelated">Układ folderu</string>
     <string name="set_folder_layout_4x4">Ustaw układ folderu na 4x4</string>
@@ -287,7 +288,7 @@
     <string name="zoom_window_support_list">Własna lista obsługi okna powiększenia</string>
     <string name="zoom_window_support_list_summary">Włącz w zależności od Twoich potrzeb, w przeciwnym razie pojawią się nieodwracalne problemy.</string>
     <string name="multi_app_enable">Włącz listę zastępowania</string>
-    <string name="multi_app_custom_list">Zastąp listę obsługi klonowania aplikacji</string>
+    <string name="multi_app_custom_list">Zastąp listę aplikacji, które można sklonować</string>
     <string name="multi_app_custom_list_summary">Oryginalna lista klonowania aplikacji zostanie zastąpiona</string>
     <string name="dark_mode_support_list">Własna lista obsługi trybu ciemnego</string>
     <!--AppInstallationRelated-->
@@ -373,7 +374,7 @@
     <string name="remove_root_check">Usuń limit filtrów gier</string>
     <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>
     <string name="remove_startup_animation">Wyłącz animację startową</string>
-    <string name="remove_welfare_page">Remove welfare page</string>
+    <string name="remove_welfare_page">Usuń stronę „Cyfrowa równowaga”</string>
     <string name="enable_developer_page">Włącz tryb programisty</string>
     <string name="enable_eva_theme">Włącz motyw EVA</string>
     <string name="enable_developer_page_summary">Po włączeniu tej funkcji i po restarcie procesów, można przejść do niego za pomocą portalu skrótów</string>
@@ -433,7 +434,7 @@
     <string name="download_count">Licznik pobrań</string>
     <string name="file_size">Rozmiar</string>
     <string name="update_time">Czas aktualizacji</string>
-    <string name="last_update_time">Ostatnia aktualizacja</string>
+    <string name="last_update_time">Zaktualizowano:</string>
     <string name="update_logs">Dziennik zmian</string>
     <string name="check_update_hint">Wykryto nową wersję!</string>
     <string name="go_download_page">Przejdź do strony pobierania</string>

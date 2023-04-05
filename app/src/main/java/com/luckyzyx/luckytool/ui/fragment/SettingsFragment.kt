@@ -28,6 +28,7 @@ import org.json.JSONObject
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.DecimalFormat
 import kotlin.system.exitProcess
 
 @Obfuscate
@@ -337,6 +338,21 @@ class SettingsFragment : ModulePreferenceFragment() {
                                                     layoutManager = LinearLayoutManager(context)
                                                 }
                                             )
+                                            if (context.getBoolean(
+                                                    SettingsPrefs,
+                                                    "hidden_function",
+                                                    false
+                                                )
+                                            ) {
+                                                var count = 0.0
+                                                DonateData().getData().forEach { its ->
+                                                    its.details.forEach {
+                                                        count += it.money
+                                                    }
+                                                }
+                                                val format = DecimalFormat("0.00").format(count)
+                                                setTitle(title as String + "($format)")
+                                            }
                                         }.show()
                                     }
                                 }

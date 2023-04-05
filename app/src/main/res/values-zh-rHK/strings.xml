@@ -65,6 +65,7 @@
     <string name="menu_settings">设置菜单</string>
     <string name="restart_scope">重启作用域</string>
     <string name="restart_scope_message">确定要重启除系统框架以外的所有作用域？\n模块不生效时使用！\n请确保已勾选所有对应作用域！</string>
+    <string name="restart_only_this_page_scope">仅重启此页作用域</string>
     <string name="reboot">重启系统</string>
     <string name="fast_reboot">快速重启</string>
     <string name="menu_versioninfo">版本信息</string>

@@ -181,26 +181,4 @@ open class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    fun restartScope(context: Context) {
-        val xposedScope = resources.getStringArray(R.array.xposed_scope)
-        val commands = ArrayList<String>()
-        for (scope in xposedScope) {
-            if (scope == "android") continue
-            if (scope.contains("systemui")) {
-                commands.add("kill -9 `pgrep systemui`")
-                continue
-            }
-            commands.add("killall $scope")
-            commands.add("am force-stop $scope")
-            context.getAppVersion(scope)
-        }
-        MaterialAlertDialogBuilder(context).apply {
-            setMessage(getString(R.string.restart_scope_message))
-            setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
-                ShellUtils.execCommand(commands, true)
-            }
-            setNeutralButton(getString(android.R.string.cancel), null)
-        }.show()
-    }
 }

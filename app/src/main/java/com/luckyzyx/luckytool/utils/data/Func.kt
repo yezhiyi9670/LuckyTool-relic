@@ -23,10 +23,14 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.core.graphics.drawable.toBitmap
+import com.drake.net.utils.scope
+import com.drake.net.utils.withIO
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
+import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.tools.*
 import java.io.*
 import java.text.SimpleDateFormat
@@ -785,4 +789,103 @@ fun Context.openMarketIntent(packName: String) {
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
     startActivity(intent)
+}
+
+/**
+ * 重启作用域对话框
+ * @receiver Context
+ */
+fun Context.restartMain() {
+    val list = arrayOf(
+        getString(R.string.restart_scope),
+        getString(R.string.reboot),
+        getString(R.string.fast_reboot)
+    )
+    MaterialAlertDialogBuilder(this, dialogCentered).apply {
+        setCancelable(true)
+        setItems(list) { _: DialogInterface?, i: Int ->
+            when (i) {
+                0 -> restartAllScope()
+                1 -> ShellUtils.execCommand("reboot", true)
+                2 -> ShellUtils.execCommand("killall zygote", true)
+            }
+        }
+        show()
+    }
+}
+
+/**
+ * 重启部分作用域对话框
+ * @receiver Context
+ * @param scopes Array<String>
+ */
+fun Context.restartScopes(scopes: Array<String>) {
+    val list = arrayOf(
+        getString(R.string.restart_scope),
+        getString(R.string.restart_only_this_page_scope)
+    )
+    MaterialAlertDialogBuilder(this, dialogCentered).apply {
+        setItems(list) { _, which ->
+            when (which) {
+                0 -> restartAllScope()
+                1 -> restartAllScope(scopes)
+            }
+        }
+        show()
+    }
+}
+
+/**
+ * 重启全部作用域
+ * @receiver Context
+ */
+fun Context.restartAllScope() {
+    val xposedScope = resources.getStringArray(R.array.xposed_scope)
+    val commands = ArrayList<String>()
+    for (scope in xposedScope) {
+        if (scope == "android") continue
+        if (scope.contains("systemui")) {
+            commands.add("kill -9 `pgrep systemui`")
+            continue
+        }
+        commands.add("killall $scope")
+        commands.add("am force-stop $scope")
+        getAppVersion(scope)
+    }
+    MaterialAlertDialogBuilder(this).apply {
+        setMessage(getString(R.string.restart_scope_message))
+        setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
+            scope {
+                withIO {
+                    ShellUtils.execCommand(commands, true)
+                }
+            }
+        }
+        setNeutralButton(getString(android.R.string.cancel), null)
+        show()
+    }
+}
+
+/**
+ * 重启部分作用域
+ * @receiver Context
+ * @param scopes Array<String>
+ */
+fun Context.restartAllScope(scopes: Array<String>) {
+    scope {
+        withIO {
+            val commands = ArrayList<String>()
+            for (scope in scopes) {
+                if (scope == "android") continue
+                if (scope.contains("systemui")) {
+                    commands.add("kill -9 `pgrep systemui`")
+                    continue
+                }
+                commands.add("killall $scope")
+                commands.add("am force-stop $scope")
+                getAppVersion(scope)
+            }
+            ShellUtils.execCommand(commands, true)
+        }
+    }
 }

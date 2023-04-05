@@ -389,7 +389,7 @@ class XposedFragment : ModulePreferenceFragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) (activity as MainActivity).restartScope(requireActivity())
+        if (item.itemId == 1) (activity as MainActivity).restartMain()
         if (item.itemId == 2) requireActivity().bottomSheet()
         return super.onOptionsItemSelected(item)
     }

@@ -40,6 +40,7 @@ object HookOplusGames : YukiBaseHooker() {
             }
 
             //Search GamePerfModeModel -> perf_touch_response_extreme_rb
+            //<string name="perf_touch_response_extreme_response">极致触控</string>
             //mPerfTouchResponseExtreme click -> setTouchResponse
 
             //闪电启动

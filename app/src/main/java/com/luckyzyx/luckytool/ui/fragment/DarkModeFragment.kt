@@ -3,14 +3,14 @@ package com.luckyzyx.luckytool.ui.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.ArrayMap
 import android.util.ArraySet
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -25,19 +25,23 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentApplistFunctionLayoutBinding
 import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemDarkmodeBinding
 import com.luckyzyx.luckytool.utils.data.AppInfo
+import com.luckyzyx.luckytool.utils.data.restartScopes
 import com.luckyzyx.luckytool.utils.tools.*
+import rikka.core.util.ResourceUtils
 
 class DarkModeFragment : Fragment() {
 
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
     private var darkModeAdapter: DarkModeAdapter? = null
+    private val scopes = arrayOf("com.android.settings")
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
     }
@@ -128,6 +132,21 @@ class DarkModeFragment : Fragment() {
             binding.swipeRefreshLayout.isRefreshing = false
             binding.searchViewLayout.isEnabled = true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        return super.onOptionsItemSelected(item)
     }
 }
 
