@@ -27,6 +27,7 @@ star: false
 
 - Remove the root restriction of the game filter
 - remove boot animation
+- Remove welfare page
 - Enable developer page
 - Enable X-Mode
 - Enable GT mode

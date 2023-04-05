@@ -31,7 +31,6 @@ star: false
 ### Default
 
 - Do not modify the clock display
-- Use user fonts
 
 ### Preset
 

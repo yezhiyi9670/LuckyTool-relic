@@ -49,9 +49,10 @@ star: false
 
 - 反馈问题必须要有**日志**和 **APK** 文件
 
-- 按照报错日志上的**图标**或**标题**提取对应 apk 文件(例如: MT 管理器等)
+- 按照报错日志上的**图标**或**标题**提取对应 apk 文件(提取工具 例如: MT 管理器等)
 
-- 若 **Android 系统框架**报错，则使用 MT 管理器或其他工具，打开根目录/system/framework/文件夹，找到以下四个文件复制出来[ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ] [ oplus-service-jobscheduler.jar ] 发送到 [TG 讨论群](https://t.me/+F42pfv-c0h4zNDc9)
+- 若 **Android 系统框架**报错，则打开根目录/system/framework/文件夹，找到以下文件复制出来[ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ] [ oplus-service-jobscheduler.jar ]
+  发送到 [TG 讨论群](https://t.me/+F42pfv-c0h4zNDc9)
 
 ## 注意
 

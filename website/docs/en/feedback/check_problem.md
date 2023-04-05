@@ -54,14 +54,12 @@ it and the module is not adapted and can’t be used to distinguish
 
 - Feedback issues must have logs and APK files
 
-- Extract the corresponding apk file according to the icon or title on the error log(Example: MT
-  Manager etc)
+- Extract the corresponding apk file according to the icon or title on the error log(Extraction tools eg: MT Manager etc.)
 
-- If **Android System Framework**reportError，then use MT
-  Manager or other tools，open the root directory/system/framework/ Folder，Find the following four
-  files and copy them
-  out[ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ] [ oplus-service-jobscheduler.jar ]
-  send to [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)
+- If the Android system framework reports an error, open the systemframework folder in the root
+  directory, find and copy the following
+  files [ framework.jar ] [ oplus_framework.jar ] [ services.jar ] [ oplus_services.jar ] [ oplus-service-jobscheduler.jar ]
+  Send to [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)
 
 ## NOTICE
 

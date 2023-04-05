@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.3.9_beta
+### v4.3.9
 
 - [更新] 捐赠名单
 - [优化] 相机水印字数限制适配参数
@@ -44,6 +44,22 @@ star: false
 - [适配] 恢复系统默认电池优化白名单
 - [添加] 暗色模式设置黑暗等级
 - [添加] 部分页面添加仅重启此页作用域
+- [Update] Donation list
+- [Optimize] Camera watermark word limit adaptation parameters
+- [Add] remove payment protection found virus dialog
+- [Add] Remove the virus risk notification found in the phone manager
+- [Optimize] The width and height logic of the status bar network speed layout
+- [Add] Display the last update time in the application details
+- [Remove] clock default mode user font setting option
+- [Remove] Internet speed default mode user font setting option
+- [Fix] C13 set dark mode support list
+- [Add] Remove the APP icon at the bottom of the recent task list
+- [Add] Remove the game assistant welfare page
+- [Fix] Media player long press jump event
+- [Fix] Cloud service mobile network network limit v6.7.1
+- [Fix] Restore system default battery optimization whitelist
+- [Add] Dark Mode setting darkness level
+- [Add] Some pages added to only restart this page scope
 
 ### v4.3.8
 

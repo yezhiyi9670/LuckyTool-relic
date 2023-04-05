@@ -40,6 +40,7 @@ star: false
 
 - Remove cleanup button
 - Long press the APP icon to open the application details
+- Remove the APP icon at the bottom of the recent task list
 
 ## DesktopLayout
 

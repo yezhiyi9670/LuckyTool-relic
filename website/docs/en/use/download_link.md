@@ -32,7 +32,7 @@ is recommended to teach them how to fish, not to teach them how to fish
 
 current latest release version`v4.3.8`
 
-[GITHUB Download](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/8612-4.3.8/LuckyTool_v4.3.8.8612.apk)
+[GITHUB Download](https://github.com/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/download/8804-4.3.9/LuckyTool_v4.3.9.8804.apk)
 
 Don't trust the sharing of other platforms and users. If there is a problem, it will not be dealt
 with. If you see it, please click Report
