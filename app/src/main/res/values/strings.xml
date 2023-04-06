@@ -47,6 +47,7 @@
     <string name="wechat">WeChat</string>
     <string name="alipay">AliPay</string>
     <string name="patreon" translatable="false">Patreon</string>
+    <string name="paypal" translatable="false">PayPal</string>
     <string name="donation_list">Donation List</string>
     <string name="feedback_download">Feedback and Download</string>
     <string name="feedback_download_summary">TG Channels, Groups, Repositories, etc.</string>

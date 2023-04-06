@@ -6,17 +6,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.ArraySet
-import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.preference.DropDownPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.SwitchPreference
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
@@ -28,7 +24,6 @@ import org.json.JSONObject
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.DecimalFormat
 import kotlin.system.exitProcess
 
 @Obfuscate
@@ -271,90 +266,36 @@ class SettingsFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.donate_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        val donateList = arrayOf(
+                        val donateList = arrayListOf<CharSequence>(
                             getString(R.string.qq),
                             getString(R.string.wechat),
                             getString(R.string.alipay),
-                            getString(R.string.patreon),
                             getString(R.string.donation_list)
                         )
+                        if (!isZh(context)) {
+                            donateList.add(3, getString(R.string.patreon))
+                            donateList.add(4, getString(R.string.paypal))
+                        }
                         MaterialAlertDialogBuilder(context).apply {
-                            setItems(donateList) { _, which ->
+                            setItems(donateList.toTypedArray()) { _, which ->
                                 when (which) {
-                                    0 -> {
-                                        val dialog = MaterialAlertDialogBuilder(
-                                            context,
-                                            dialogCentered
-                                        ).apply {
-                                            setTitle(getString(R.string.qq))
-                                            setView(R.layout.layout_donate_dialog)
-                                        }.show()
-                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
-                                            getString(R.string.donate_message)
-                                        dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(base64ToBitmap(Base64Code.qqCode))
-                                    }
-                                    1 -> {
-                                        val dialog = MaterialAlertDialogBuilder(
-                                            context,
-                                            dialogCentered
-                                        ).apply {
-                                            setTitle(getString(R.string.wechat))
-                                            setView(R.layout.layout_donate_dialog)
-                                        }.show()
-                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
-                                            getString(R.string.donate_message)
-                                        dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(base64ToBitmap(Base64Code.wechatCode))
-                                    }
-                                    2 -> {
-                                        val dialog = MaterialAlertDialogBuilder(
-                                            context,
-                                            dialogCentered
-                                        ).apply {
-                                            setTitle(getString(R.string.alipay))
-                                            setView(R.layout.layout_donate_dialog)
-                                        }.show()
-                                        dialog.findViewById<MaterialTextView>(R.id.donate_message)?.text =
-                                            getString(R.string.donate_message)
-                                        dialog.findViewById<ImageView>(R.id.donate_image)
-                                            ?.setImageBitmap(base64ToBitmap(Base64Code.alipayCode))
-                                    }
-                                    3 -> startActivity(
+                                    0 -> DonateData(context).showQRCode(Base64Code.qqCode)
+                                    1 -> DonateData(context).showQRCode(Base64Code.wechatCode)
+                                    2 -> DonateData(context).showQRCode(Base64Code.alipayCode)
+                                    3 -> if (isZh(context)) DonateData(context).showDonateList()
+                                    else startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://www.patreon.com/LuckyTool")
                                         )
                                     )
-                                    4 -> {
-                                        MaterialAlertDialogBuilder(context, dialogCentered).apply {
-                                            setTitle(getString(R.string.donation_list))
-                                            setView(
-                                                RecyclerView(context).apply {
-                                                    setPadding(0, 10.dp, 0, 10.dp)
-                                                    adapter = DonateListAdapter(
-                                                        context, DonateData().getData()
-                                                    )
-                                                    layoutManager = LinearLayoutManager(context)
-                                                }
-                                            )
-                                            if (context.getBoolean(
-                                                    SettingsPrefs,
-                                                    "hidden_function",
-                                                    false
-                                                )
-                                            ) {
-                                                var count = 0.0
-                                                DonateData().getData().forEach { its ->
-                                                    its.details.forEach {
-                                                        count += it.money
-                                                    }
-                                                }
-                                                val format = DecimalFormat("0.00").format(count)
-                                                setTitle(title as String + "($format)")
-                                            }
-                                        }.show()
-                                    }
+                                    4 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://paypal.me/luckyzyx")
+                                        )
+                                    )
+                                    5 -> DonateData(context).showDonateList()
                                 }
                             }
                         }.show()
