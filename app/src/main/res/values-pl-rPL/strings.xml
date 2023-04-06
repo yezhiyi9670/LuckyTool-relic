@@ -63,9 +63,9 @@
     <!-- Menu -->
     <string name="menu_reboot">Menu restartowania</string>
     <string name="menu_settings">Informacje o autorze</string>
-    <string name="restart_scope">Zrestartuj uruchomione procesy</string>
-    <string name="restart_scope_message">Zrestartować ograniczone procesy modułu poza systemowym framework\'iem?\nUżyj tego, jeśli moduł nie działa!\nUpewnij się, czy rekomendowane aplikacje są zaznaczone w LSPosed!</string>
-    <string name="restart_only_this_page_scope">Restart only this page scope</string>
+    <string name="restart_scope">Zastosuj wszystkie zmiany</string>
+    <string name="restart_scope_message">Zmiany dla „Android System” mogą być zastosowane dopiero po restarcie urządzenia.\nUżyj tego, jeśli moduł nie działa!\nUpewnij się, czy rekomendowane aplikacje są zaznaczone w LSPosed!</string>
+    <string name="restart_only_this_page_scope">Zastosuj zmiany dokonane na tej stronie</string>
     <string name="reboot">Zrestartuj urządzenie</string>
     <string name="fast_reboot">Szybki restart</string>
     <string name="menu_versioninfo">Informacje o wersji</string>
@@ -317,7 +317,7 @@
     <string name="remove_warning_dialog_that_app_runs_on_desktop">Usuń ostrzeżenie „Aplikacja wyświetla się nad innymi aplikacjami”</string>
     <string name="remove_warning_dialog_that_app_runs_on_desktop_summary">Usuwa okno dialogowe z ostrzeżeniem, że aplikacja wyświetla się nad innymi aplikacjami</string>
     <string name="remove_usb_connect_dialog">Usuń okno połączenia USB</string>
-    <string name="remove_usb_connect_dialog_summary">Tryb przesyłania plików jest wybierany domyślnie po podłączeniu USB</string>
+    <string name="remove_usb_connect_dialog_summary">Tryb przesyłania plików będzie wybierany domyślnie po podłączeniu USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Usuń okno sprawdzania wirusów dla bezpiecznych płatności</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesty pełnoekranowe</string>
@@ -357,7 +357,7 @@
     <string name="open_battery_health_summary">Ustawienia > Bateria > Stan baterii</string>
     <string name="performance_mode_and_standby_optimization">Dodaj stronę „Tryb wydajności” i „Optymalne czuwanie”</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
-    <string name="allow_untrusted_touch">Zezwalaj na niezaufane dotknięcie</string>
+    <string name="allow_untrusted_touch">Zezwól na niezaufane działania dotykowe</string>
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
     <!--Settings-->
@@ -370,6 +370,8 @@
     <!--Camera-->
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
+    <string name="enable_hasselblad_watermark_style">Włącz styl znaku wodnego „Hasselblad”</string>
+    <string name="fix_hasselblad_custom_watermark_crash">Fix Hasselblad custom watermark crash</string>
     <!--OplusGames-->
     <string name="remove_root_check">Usuń limit filtrów gier</string>
     <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>

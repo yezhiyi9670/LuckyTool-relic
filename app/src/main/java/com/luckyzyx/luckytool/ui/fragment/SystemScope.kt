@@ -2587,6 +2587,22 @@ class Camera : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.enable_hasselblad_watermark_style)
+                    key = "enable_hasselblad_watermark_style"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.fix_hasselblad_custom_watermark_crash)
+                    key = "fix_hasselblad_custom_watermark_crash"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.enable_10_bit_image_support)
                     key = "enable_10_bit_image_support"
                     setDefaultValue(false)

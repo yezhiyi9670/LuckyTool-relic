@@ -370,6 +370,8 @@
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
     <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>
+    <string name="enable_hasselblad_watermark_style">Enable Hasselblad Watermark Style</string>
+    <string name="fix_hasselblad_custom_watermark_crash">Fix Hasselblad custom watermark crash</string>
     <!--OplusGames-->
     <string name="remove_root_check">Видалити визначення ігрового фільтра</string>
     <string name="remove_root_check_summary">Видалити виявлення рута з ігрових фільтрів</string>
