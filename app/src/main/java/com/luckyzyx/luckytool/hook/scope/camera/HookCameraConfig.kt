@@ -32,7 +32,7 @@ object HookCameraConfig : YukiBaseHooker() {
                         "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) resultTrue()
                         //<string name="camera_beauty_makeup_watermark_setting_title">美妆定制水印</string>
                         //OptionKey PRE_KEY_WATERMARK_MAKEUP pref_watermark_makeup_function_key
-                        "com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
+//                        "com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
                     }
                 }
             }

@@ -103,7 +103,9 @@ object MainHook : IYukiHookXposedInit {
         //电池
         loadApp("com.oplus.battery", HookBattery)
         //相机
-        loadApp("com.oplus.camera", HookCamera)
+        loadApp("com.oneplus.camera", "com.oplus.camera") {
+            loadHooker(HookCamera)
+        }
         //主题商店
         loadApp("com.heytap.themestore", HookThemeStore)
         //云服务

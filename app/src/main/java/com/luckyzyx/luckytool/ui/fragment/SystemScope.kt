@@ -2571,7 +2571,7 @@ class Battery : ModulePreferenceFragment() {
 }
 
 class Camera : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.camera")
+    private val scopes = arrayOf("com.oneplus.camera", "com.oplus.camera")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
@@ -2596,6 +2596,7 @@ class Camera : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.fix_hasselblad_custom_watermark_crash)
+                    summary = getString(R.string.fix_hasselblad_custom_watermark_crash_summary)
                     key = "fix_hasselblad_custom_watermark_crash"
                     setDefaultValue(false)
                     isIconSpaceReserved = false

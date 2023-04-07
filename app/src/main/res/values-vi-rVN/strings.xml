@@ -372,6 +372,7 @@
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
     <string name="enable_hasselblad_watermark_style">Enable Hasselblad Watermark Style</string>
     <string name="fix_hasselblad_custom_watermark_crash">Fix Hasselblad custom watermark crash</string>
+    <string name="fix_hasselblad_custom_watermark_crash_summary">If your camera does not support Hasselblad custom watermark (white strip shape), please do not open it</string>
     <!--OplusGames-->
     <string name="remove_root_check">Xóa giới hạn bộ lọc trò chơi</string>
     <string name="remove_root_check_summary">Xóa giới hạn phát hiện root cho bộ lọc trò chơi</string>

@@ -371,7 +371,8 @@
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
     <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
     <string name="enable_hasselblad_watermark_style">Włącz styl znaku wodnego „Hasselblad”</string>
-    <string name="fix_hasselblad_custom_watermark_crash">Fix Hasselblad custom watermark crash</string>
+    <string name="fix_hasselblad_custom_watermark_crash">Napraw awarię znaku wodnego „Hasselblad”</string>
+    <string name="fix_hasselblad_custom_watermark_crash_summary">If your camera does not support Hasselblad custom watermark (white strip shape), please do not open it</string>
     <!--OplusGames-->
     <string name="remove_root_check">Usuń limit filtrów gier</string>
     <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>

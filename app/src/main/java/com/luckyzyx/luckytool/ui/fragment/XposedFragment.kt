@@ -207,7 +207,8 @@ class XposedFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    key = "com.oplus.camera"
+                    val isOneplusCamera = context.checkPackName("com.oneplus.camera")
+                    key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
                     context.getXPIcon(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show

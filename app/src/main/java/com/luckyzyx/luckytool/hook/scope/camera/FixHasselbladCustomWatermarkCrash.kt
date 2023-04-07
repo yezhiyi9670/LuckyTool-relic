@@ -20,8 +20,9 @@ object FixHasselbladCustomWatermarkCrash : YukiBaseHooker() {
                 }
             }
         }
+        val cls = "com.oplus.ocs.camera.CameraPictureCallbackAdapterV2$1".toClassOrNull() ?: return
         //Source CameraPictureCallbackAdapter
-        findClass("com.oplus.ocs.camera.CameraPictureCallbackAdapterV2$1").hook {
+        cls.hook {
             injectMember {
                 method {
                     name = "updateWatermark"

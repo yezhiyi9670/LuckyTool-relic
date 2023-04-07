@@ -372,6 +372,7 @@
     <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
     <string name="enable_hasselblad_watermark_style">Povolit Hasselblad styl vodoznaku</string>
     <string name="fix_hasselblad_custom_watermark_crash">Oprava pád při použití vlastního Hasselblad vodoznaku</string>
+    <string name="fix_hasselblad_custom_watermark_crash_summary">If your camera does not support Hasselblad custom watermark (white strip shape), please do not open it</string>
     <!--OplusGames-->
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
