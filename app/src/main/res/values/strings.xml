@@ -284,6 +284,9 @@
     <string name="long_press_app_icon_open_app_details">Long press the app icon to open the app details</string>
     <string name="remove_recent_task_list_clear_button">Remove recent task list clear button</string>
     <string name="remove_bottom_app_icon_of_recent_task_list">Remove the APP icon at the bottom of the recent task list</string>
+    <string name="enable_stacked_task_layout">Enable stacked task layout</string>
+    <string name="set_task_stacking_level">Set task stacking level</string>
+    <string name="fix_current_task_to_the_top">Fix the current task to the top</string>
     
     <string name="PaginationComponentRelated">Pagination Component Related</string>
     <string name="remove_pagination_component">Remove pagination component</string>

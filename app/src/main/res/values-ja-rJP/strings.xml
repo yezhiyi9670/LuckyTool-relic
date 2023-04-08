@@ -265,6 +265,9 @@
     <string name="long_press_app_icon_open_app_details">アプリのアイコンを長押ししてアプリ詳細を開く</string>
     <string name="remove_recent_task_list_clear_button">最近のタスクリストのクリアボタンを削除</string>
     <string name="remove_bottom_app_icon_of_recent_task_list">アプリ履歴リストの下部にあるアプリアイコンを削除</string>
+    <string name="enable_stacked_task_layout">タスクを積み上げるレイアウトにする</string>
+    <string name="set_task_stacking_level">タスクの積み上げレベルを設定</string>
+    <string name="fix_current_task_to_the_top">現在のタスクを一番上に固定</string>
     <string name="PaginationComponentRelated">ページネーション関連</string>
     <string name="remove_pagination_component">ページネーションを削除</string>
     <string name="remove_folder_pagination_component">フォルダのページネーションを削除</string>

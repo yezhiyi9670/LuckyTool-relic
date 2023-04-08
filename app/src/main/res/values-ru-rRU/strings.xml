@@ -265,6 +265,9 @@
     <string name="long_press_app_icon_open_app_details">Удерживайте иконку приложения, чтобы открыть детали приложения</string>
     <string name="remove_recent_task_list_clear_button">Удалить кнопку очистки списка последних задач</string>
     <string name="remove_bottom_app_icon_of_recent_task_list">Удалить иконку приложения в нижней части списка недавних задач</string>
+    <string name="enable_stacked_task_layout">Включить раскладку задач</string>
+    <string name="set_task_stacking_level">Установить уровень стека задач</string>
+    <string name="fix_current_task_to_the_top">Закрепить текущую задачу наверху</string>
     <string name="PaginationComponentRelated">Компоненты страницы</string>
     <string name="remove_pagination_component">Удалить компонент разбивки на страницы</string>
     <string name="remove_folder_pagination_component">Удалить компонент разбивки на папки</string>
@@ -372,7 +375,7 @@
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
     <string name="enable_hasselblad_watermark_style">Включить стиль водяного знака Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash">Исправлена ошибка пользовательского водяного знака Hasselblad</string>
-    <string name="fix_hasselblad_custom_watermark_crash_summary">If your camera does not support Hasselblad custom watermark (white strip shape), please do not open it</string>
+    <string name="fix_hasselblad_custom_watermark_crash_summary">Если ваша камера не поддерживает пользовательский водяной знак Hasselblad, пожалуйста, не включайте его</string>
     <!--OplusGames-->
     <string name="remove_root_check">Удалить определение игрового фильтра</string>
     <string name="remove_root_check_summary">Удалить обнаружение рута из игровых фильтров</string>

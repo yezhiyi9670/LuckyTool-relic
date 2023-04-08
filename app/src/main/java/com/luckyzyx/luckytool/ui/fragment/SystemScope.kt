@@ -1536,6 +1536,40 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.enable_stacked_task_layout)
+                    key = "enable_stacked_task_layout"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            if (context.getBoolean(ModulePrefs, "enable_stacked_task_layout", false)) {
+                addPreference(
+                    SeekBarPreference(context).apply {
+                        title = getString(R.string.set_task_stacking_level)
+                        key = "set_task_stacking_level"
+                        setDefaultValue(7)
+                        max = 10
+                        min = 5
+                        showSeekBarValue = true
+                        updatesContinuously = false
+                        isIconSpaceReserved = false
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.fix_current_task_to_the_top)
+                        key = "fix_current_task_to_the_top"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_recent_task_list_clear_button)
                     key = "remove_recent_task_list_clear_button"
                     setDefaultValue(false)
@@ -1585,7 +1619,6 @@ class Desktop : ModulePreferenceFragment() {
                         setDefaultValue(6)
                         max = 10
                         min = 1
-                        seekBarIncrement = 1
                         showSeekBarValue = true
                         updatesContinuously = false
                         isIconSpaceReserved = false
@@ -1598,7 +1631,6 @@ class Desktop : ModulePreferenceFragment() {
                         setDefaultValue(4)
                         max = 8
                         min = 1
-                        seekBarIncrement = 1
                         showSeekBarValue = true
                         updatesContinuously = false
                         isIconSpaceReserved = false

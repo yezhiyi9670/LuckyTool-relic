@@ -5,7 +5,6 @@ import com.luckyzyx.luckytool.hook.scope.alarmclock.RemoveAlarmClockWidgetRedOne
 import com.luckyzyx.luckytool.hook.scope.launcher.*
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
-
 object HookDesktop : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.coloros.alarmclock") {
@@ -17,6 +16,8 @@ object HookDesktop : YukiBaseHooker() {
         if (packageName == "com.android.launcher") {
             //分页组件
             loadHooker(PageIndicator)
+            //堆叠布局
+            loadHooker(StackedTaskLayout)
             //移除APP更新圆点
             if (prefs(ModulePrefs).getBoolean("remove_appicon_dot", false)) {
                 loadHooker(RemoveAppUpdateDot)
