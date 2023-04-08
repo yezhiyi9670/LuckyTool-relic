@@ -50,6 +50,12 @@ class AliveActivity : Activity() {
                     if (result == 1) toast("high brightness mode error!")
                 }
             }
+            //高性能模式
+            if (getBoolean("highPerformance", false)) {
+                ShellUtils.execCommand("settings put system high_performance_mode_on 1", true, true).apply {
+                    if (result == 1) toast("high performance mode error!")
+                }
+            }
             //全局DC模式
             if (getBoolean("globalDC", false)) {
                 var oppoError = false

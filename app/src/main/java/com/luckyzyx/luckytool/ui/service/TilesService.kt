@@ -104,7 +104,6 @@ class HighBrightness : TileService() {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
                 putBoolean(SettingsPrefs, "high_brightness_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
-                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
@@ -152,7 +151,6 @@ class GlobalDC : TileService() {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
-                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
@@ -190,7 +188,6 @@ class TouchSamplingRate : TileService() {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 0", true)
                 putBoolean(SettingsPrefs, "touch_sampling_rate", false)
                 qsTile.state = Tile.STATE_INACTIVE
-                toast(getString(R.string.tile_close_autoself_tip))
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
@@ -279,6 +276,42 @@ class VeryDarkMode : TileService() {
             }
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 0", true)
+                qsTile.state = Tile.STATE_INACTIVE
+            }
+            Tile.STATE_UNAVAILABLE -> {}
+        }
+        qsTile.updateTile()
+    }
+}
+
+@Obfuscate
+class HighPerformanceMode : TileService() {
+    override fun onStartListening() {
+        ShellUtils.execCommand("settings get system high_performance_mode_on", true, true)
+            .apply {
+                if (result == 1) qsTile.state =
+                    Tile.STATE_UNAVAILABLE
+                else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+                    when (successMsg.substring(0, 1)) {
+                        "0" -> qsTile.state = Tile.STATE_INACTIVE
+                        "1" -> qsTile.state = Tile.STATE_ACTIVE
+                        else -> qsTile.state = Tile.STATE_UNAVAILABLE
+                    }
+                } else qsTile.state = Tile.STATE_UNAVAILABLE
+                qsTile.updateTile()
+            }
+    }
+
+    override fun onClick() {
+        when (qsTile.state) {
+            Tile.STATE_INACTIVE -> {
+                ShellUtils.execCommand("settings put system high_performance_mode_on 1", true)
+                putBoolean(SettingsPrefs, "high_performance_mode", true)
+                qsTile.state = Tile.STATE_ACTIVE
+            }
+            Tile.STATE_ACTIVE -> {
+                ShellUtils.execCommand("settings put system high_performance_mode_on 0", true)
+                putBoolean(SettingsPrefs, "high_performance_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}

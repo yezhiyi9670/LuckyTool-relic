@@ -477,6 +477,7 @@
     <string name="battery_optimization">Optymalizacja baterii</string>
     <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
+    <string name="high_performance_mode">High performance mode</string>
     <string name="GameAssistantRelated">Asystent gier</string>
     <string name="game_assistant_page">Strona asystenta gier</string>
     <string name="game_assistant_develop_page">Strona programisty Asystenta Gier</string>

@@ -158,6 +158,16 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+        <service
+                android:name=".ui.service.HighPerformanceMode"
+                android:exported="true"
+                android:icon="@drawable/baseline_device_thermostat_24"
+                android:label="@string/high_performance_mode"
+                android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
         
         <provider
                 android:name="androidx.core.content.FileProvider"

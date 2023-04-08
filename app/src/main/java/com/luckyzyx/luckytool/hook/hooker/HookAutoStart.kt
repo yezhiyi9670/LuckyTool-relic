@@ -21,6 +21,7 @@ object HookAutoStart : YukiBaseHooker() {
         val touchSamplingRate = prefs(SettingsPrefs).getBoolean("touch_sampling_rate", false)
         val highBrightness = prefs(SettingsPrefs).getBoolean("high_brightness_mode", false)
         val globalDC = prefs(SettingsPrefs).getBoolean("global_dc_mode", false)
+        val highPerformance = prefs(SettingsPrefs).getBoolean("high_performance_mode", false)
         onAppLifecycle {
             //监听锁屏解锁
             registerReceiver(Intent.ACTION_USER_PRESENT) { context, _ ->
@@ -29,7 +30,7 @@ object HookAutoStart : YukiBaseHooker() {
                     if (fpsAutoStart && (fpsMode == 1) && (currentFps != -1)) {
                         setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                     }
-                    if (!((fpsAutoStart && fpsMode == 2) || touchSamplingRate || highBrightness || globalDC)) return@scope
+                    if (!((fpsAutoStart && fpsMode == 2) || touchSamplingRate || highBrightness || globalDC || highPerformance)) return@scope
                     Intent(Intent.ACTION_VIEW).apply {
                         setClassName(BuildConfig.APPLICATION_ID, AliveActivity::class.java.name)
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -38,6 +39,7 @@ object HookAutoStart : YukiBaseHooker() {
                         putExtra("touchSamplingRate", touchSamplingRate)
                         putExtra("highBrightness", highBrightness)
                         putExtra("globalDC", globalDC)
+                        putExtra("highPerformance", highPerformance)
                         context.startActivity(this)
                     }
                 }

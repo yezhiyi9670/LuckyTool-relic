@@ -477,6 +477,7 @@
     <string name="battery_optimization">Battery Optimization</string>
     <string name="system_not_support">Hệ thống hiện tại không hỗ trợ!</string>
     <string name="very_dark_mode">Chế độ rất tối</string>
+    <string name="high_performance_mode">High performance mode</string>
     <string name="GameAssistantRelated">Trợ lý trò chơi</string>
     <string name="game_assistant_page">Trang trợ lý trò chơi</string>
     <string name="game_assistant_develop_page">Trang dành cho nhà phát triển trợ lý trò chơi</string>

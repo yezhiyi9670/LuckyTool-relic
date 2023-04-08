@@ -477,6 +477,7 @@
     <string name="battery_optimization">Оптимизация батареи</string>
     <string name="system_not_support">Текущая система не поддерживается!</string>
     <string name="very_dark_mode">Очень тёмный режим</string>
+    <string name="high_performance_mode">High performance mode</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
     <string name="game_assistant_page">Страница игрового помощника</string>
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>

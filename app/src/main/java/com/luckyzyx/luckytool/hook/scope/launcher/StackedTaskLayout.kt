@@ -29,6 +29,7 @@ object StackedTaskLayout : YukiBaseHooker() {
             }
         }
         var oldView: View? = null
+        //Source RecentsView
         findClass("com.android.quickstep.views.RecentsView").hook {
             if (SDK < A13) injectMember {
                 method {
