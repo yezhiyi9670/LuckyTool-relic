@@ -26,9 +26,13 @@
     <string name="clear_all_data_message">确定要清除模块所有功能数据，清除后需要重新设置功能？</string>
     <!-- Other Settings -->
     <string name="other_settings">其他设置</string>
-    <string name="hide_xp_page_icon">隐藏XP页面图标</string>
-    <string name="hide_desktop_appicon">隐藏桌面APP图标</string>
-    <string name="hide_desktop_appicon_summary">必须关闭LSPosed强制显示桌面图标</string>
+    <string name="switch_autostart_function_caller">切换自启功能调用者</string>
+    <string name="switch_autostart_function_caller_summary">1、模块调用方式将打开模块的新页面并触发自启功能， 当屏幕解锁时可能导致无法触摸几秒钟\n2、系统界面调用方式将使用系统界面进程调用自启功能， 需要给予系统界面Root权限，否则无法触发</string>
+    <string name="switch_autostart_function_caller_module">调用模块</string>
+    <string name="switch_autostart_function_caller_systemui">调用系统界面</string>
+    <string name="hide_function_page_icon">隐藏功能页面图标</string>
+    <string name="hide_desktop_module_icon">隐藏桌面模块图标</string>
+    <string name="hide_desktop_module_icon_summary">必须关闭LSPosed强制显示桌面图标</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">备份/恢复/清除</string>
     <string name="backup_data">备份数据</string>
@@ -49,6 +53,7 @@
     <string name="feedback_download">反馈与下载</string>
     <string name="feedback_download_summary">TG频道, 群组, 仓库等</string>
     <string name="coolmarket">酷安主页</string>
+    <string name="module_doc">模块文档</string>
     <string name="qq_channel">QQ 頻道</string>
     <string name="telegram_channel">Telegram频道</string>
     <string name="telegram_group">Telegram群组</string>
@@ -516,6 +521,7 @@
     <string name="common_words_single_line">单行</string>
     <string name="common_words_double_line">双行</string>
     <string name="common_words_customize">自定义</string>
+    <string name="common_words_current_mode">当前模式</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">连接网络失败</string>
     <string name="net_networking_error">当前网络不可用</string>

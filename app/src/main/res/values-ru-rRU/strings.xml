@@ -26,9 +26,13 @@
     <string name="clear_all_data_message">Убедитесь, что вы хотите очистить все функциональные данные модуля, и вам нужно сбросить функцию после очистки?</string>
     <!-- Other Settings -->
     <string name="other_settings">Другие настройки</string>
-    <string name="hide_xp_page_icon">Скрыть иконки пунктов</string>
-    <string name="hide_desktop_appicon">Скрыть иконку приложения</string>
-    <string name="hide_desktop_appicon_summary">LSPosed должен быть отключен, чтобы иконка на рабочем столе отображалась</string>
+    <string name="switch_autostart_function_caller">Переключить вызов функции автозапуска</string>
+    <string name="switch_autostart_function_caller_summary">1.Метод вызова модуля откроет новую страницу модуля и активирует функцию автозапуска. Этот метод может привести к тому, что экран станет недоступным в течение нескольких секунд, когда он разблокирован\n2.Метод вызова системного пользовательского интерфейса вызовет функцию автозапуска в процессе системного пользовательского интерфейса, необходимо предоставить root-права для системного пользовательского интерфейса, в противном случае автозапуск не может быть запущен</string>
+    <string name="switch_autostart_function_caller_module">Вызов модуля</string>
+    <string name="switch_autostart_function_caller_systemui">Вызов системного пользовательского интерфейса</string>
+    <string name="hide_function_page_icon">Скрыть иконку страницы функций</string>
+    <string name="hide_desktop_module_icon">Скрыть иконку модуля на рабочем столе</string>
+    <string name="hide_desktop_module_icon_summary">LSPosed должен быть отключен, чтобы принудительно отображались иконки на рабочем столе</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Бэкап/Восстановление/Очистка</string>
     <string name="backup_data">Резервное копирование данных</string>
@@ -49,6 +53,7 @@
     <string name="feedback_download">Отзыв и загрузка</string>
     <string name="feedback_download_summary">ТГ-каналы, группы, склады и т.д.</string>
     <string name="coolmarket">CoolMarket</string>
+    <string name="module_doc">Документация модуля</string>
     <string name="qq_channel">QQ канал</string>
     <string name="telegram_channel">Канал Telegram</string>
     <string name="telegram_group">Группа Telegram</string>
@@ -477,7 +482,7 @@
     <string name="battery_optimization">Оптимизация батареи</string>
     <string name="system_not_support">Текущая система не поддерживается!</string>
     <string name="very_dark_mode">Очень тёмный режим</string>
-    <string name="high_performance_mode">High performance mode</string>
+    <string name="high_performance_mode">Режим высокой производительности</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
     <string name="game_assistant_page">Страница игрового помощника</string>
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>
@@ -516,6 +521,7 @@
     <string name="common_words_single_line">Одна строка</string>
     <string name="common_words_double_line">Две строки</string>
     <string name="common_words_customize">Настроить</string>
+    <string name="common_words_current_mode">Текущий Режим</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не удалось подключиться к сети</string>
     <string name="net_networking_error">Текущая сеть недоступна</string>

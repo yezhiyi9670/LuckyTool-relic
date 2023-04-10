@@ -355,6 +355,10 @@ class StatusBarClock : ModulePreferenceFragment() {
                         key = "statusbar_clock_show_doublerow"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, _ ->
+                            (activity as MainActivity).restart()
+                            true
+                        }
                     }
                 )
                 addPreference(
@@ -367,9 +371,11 @@ class StatusBarClock : ModulePreferenceFragment() {
                         entryValues = arrayOf("left", "center", "right")
                         setDefaultValue("center")
                         isIconSpaceReserved = false
+                        isVisible =
+                            context.getBoolean(ModulePrefs, "statusbar_clock_show_doublerow", false)
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_alignment", newValue)
+                                .put("statusbar_clock_text_alignment", newValue)
                             true
                         }
                     }
@@ -446,9 +452,9 @@ class StatusBarClock : ModulePreferenceFragment() {
                         setDefaultValue("HH:mm:ss")
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            summary = newValue as String
                             context.dataChannel("com.android.systemui")
                                 .put("statusbar_clock_custom_format", newValue)
+                            (activity as MainActivity).restart()
                             true
                         }
                     }
@@ -463,9 +469,13 @@ class StatusBarClock : ModulePreferenceFragment() {
                         entryValues = arrayOf("left", "center", "right")
                         setDefaultValue("center")
                         isIconSpaceReserved = false
+                        val row = context.getString(
+                            ModulePrefs, "statusbar_clock_custom_format", "HH:mm:ss"
+                        )?.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 2
+                        isVisible = row >= 2
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_alignment", newValue)
+                                .put("statusbar_clock_text_alignment", newValue)
                             true
                         }
                     }

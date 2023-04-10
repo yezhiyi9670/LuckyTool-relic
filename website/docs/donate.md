@@ -34,8 +34,4 @@ star: false
 
 ![AliPay QR Code](/assets/images/donate/alipay.png)
 
-@tab Patreon
-
-patreon.com/LuckyTool
-
 :::

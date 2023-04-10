@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.os.Environment
 import android.os.SystemClock
 import android.provider.DocumentsContract
@@ -271,6 +272,10 @@ fun setParameter(context: Context, name: String, key: String?, value: String?) {
     }
 }
 
+/**
+ * 获取主板ID
+ * @return String
+ */
 fun getDeviceID(): String {
     ShellUtils.execCommand(
         "cat /sys/devices/soc0/serial_number",
@@ -409,6 +414,7 @@ fun Context.getComponentEnabled(component: ComponentName): Int? {
 
 /**
  * 获取闪存信息
+ * @return String
  */
 fun getFlashInfo(): String = safeOf(default = "null") {
     ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
@@ -438,9 +444,7 @@ val Float.dp: Float // [xxhdpi](360 -> 1080)
 
 val Int.dp: Int
     get() = android.util.TypedValue.applyDimension(
-        android.util.TypedValue.COMPLEX_UNIT_DIP,
-        this.toFloat(),
-        Resources.getSystem().displayMetrics
+        android.util.TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
     ).toInt()
 
 val Float.sp: Float // [xxhdpi](360 -> 1080)
@@ -450,13 +454,13 @@ val Float.sp: Float // [xxhdpi](360 -> 1080)
 
 val Int.sp: Int
     get() = android.util.TypedValue.applyDimension(
-        android.util.TypedValue.COMPLEX_UNIT_SP,
-        this.toFloat(),
-        Resources.getSystem().displayMetrics
+        android.util.TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics
     ).toInt()
 
 /**
  * 复制到剪贴板
+ * @receiver Context
+ * @param string String 要复制的字符串
  */
 fun Context.copyStr(string: String) {
     val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -480,10 +484,13 @@ fun base64ToBitmap(code: String): Bitmap? {
 val dialogCentered get() = com.google.android.material.R.style.ThemeOverlay_Material3_MaterialAlertDialog_Centered
 
 /**
- * 判断是否显示Preference图标
+ * 设置Preference图标显示
+ * @receiver Context 上下文
+ * @param resource Any? 传入对象
+ * @param result Function2<Drawable?, Boolean, Unit> 输出
  */
-fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
-    if (getBoolean(SettingsPrefs, "hide_xp_page_icon", false)) {
+fun Context.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
+    if (getBoolean(SettingsPrefs, "hide_function_page_icon", false)) {
         result(null, false)
         return
     }
@@ -504,6 +511,8 @@ fun Context.getXPIcon(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
 
 /**
  * 获取指定长度随机字符串
+ * @param length Int 长度
+ * @return String
  */
 fun getRandomString(length: Int): String {
     val random = Random
@@ -727,7 +736,7 @@ fun loadFile(file: File): String? {
 /**
  * 格式化Date
  * @param format String
- * @return String
+ * @return String 格式
  */
 fun formatDate(format: String): String {
     return formatDate(format, null, null)
@@ -743,6 +752,13 @@ fun formatDate(format: String, param: Any): String {
     return formatDate(format, param, null)
 }
 
+/**
+ * 格式化Date
+ * @param format String 格式
+ * @param param Any? 要格式的对象
+ * @param locale Locale? 区域
+ * @return String
+ */
 fun formatDate(format: String, param: Any?, locale: Locale?): String {
     return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(param ?: Date())
 }
@@ -886,6 +902,76 @@ fun Context.restartAllScope(scopes: Array<String>) {
                 getAppVersion(scope)
             }
             ShellUtils.execCommand(commands, true)
+        }
+    }
+}
+
+/**
+ * 调用自启功能
+ * @receiver Context
+ * @param bundle Bundle?
+ */
+fun Context.callFunc(bundle: Bundle?) {
+    bundle?.apply {
+        //自启功能相关
+        if (getBoolean("fps", false)) {
+            val fpsCur = getInt(SettingsPrefs, "current_fps", -1)
+            if (fpsCur != -1) ShellUtils.execCommand(
+                "service call SurfaceFlinger 1035 i32 $fpsCur",
+                true,
+                true
+            ).apply {
+                if (result == 1) toast("force fps error!")
+            }
+        }
+        //触控采样率相关
+        if (getBoolean("touchSamplingRate", false)) {
+            ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true, true)
+                .apply {
+                    if (result == 1) toast("touch sampling rate error!")
+                }
+        }
+        //高亮度模式
+        if (getBoolean("highBrightness", false)) {
+            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true, true).apply {
+                if (result == 1) toast("high brightness mode error!")
+            }
+        }
+        //高性能模式
+        if (getBoolean("highPerformance", false)) {
+            ShellUtils.execCommand("settings put system high_performance_mode_on 1", true, true)
+                .apply {
+                    if (result == 1) toast("high performance mode error!")
+                }
+        }
+        //全局DC模式
+        if (getBoolean("globalDC", false)) {
+            var oppoError = false
+            var oplusError = false
+            ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
+                .apply {
+                    if (result == 1) oppoError = true
+                }
+            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
+                .apply {
+                    if (result == 1) oplusError = true
+                }
+            if (oppoError && oplusError) toast("global dc mode error!")
+        }
+        //快捷方式相关
+        when (getString("Shortcut", "null")) {
+            "lsposed" -> {
+                ShellUtils.execCommand(
+                    "am start 'intent:#Intent;action=android.intent.action.MAIN;category=org.lsposed.manager.LAUNCH_MANAGER;launchFlags=0x80000;component=com.android.shell/.BugreportWarningActivity;end'",
+                    true
+                )
+            }
+            "oplusGames" -> ShellUtils.execCommand(
+                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
+                true
+            )
+            "processManager" -> jumpRunningApp(this@callFunc)
+            "chargingTest" -> jumpBatteryInfo(this@callFunc)
         }
     }
 }

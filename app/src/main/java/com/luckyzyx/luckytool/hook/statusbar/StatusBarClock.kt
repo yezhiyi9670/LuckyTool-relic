@@ -6,6 +6,7 @@ import android.os.Handler
 import android.provider.Settings
 import android.util.TypedValue
 import android.view.Gravity
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.buildOf
@@ -146,12 +147,6 @@ object StatusBarClock : YukiBaseHooker() {
     }
 
     private fun TextView.initView() {
-        gravity = when (clockAlignment) {
-            "left" -> Gravity.START
-            "center" -> Gravity.CENTER
-            "right" -> Gravity.END
-            else -> Gravity.CENTER
-        }
         if (userTypeface) typeface = Typeface.DEFAULT_BOLD
         val defaultSize = 12F
         if (clockMode == "1") {
@@ -169,6 +164,7 @@ object StatusBarClock : YukiBaseHooker() {
                     if (singleRowFontSize != 0) singleRowFontSize.toFloat() else defaultSize
                 )
             }
+            layoutParams?.height = LinearLayout.LayoutParams.MATCH_PARENT
         } else if (clockMode == "2") {
             val rows = customFormat.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 1
             isSingleLine = rows == 1
@@ -177,6 +173,14 @@ object StatusBarClock : YukiBaseHooker() {
                 if (customFontsize != 0) customFontsize.toFloat() else defaultSize
             )
             if (rows != 1) setLineSpacing(0F, 0.8F)
+            layoutParams?.height =
+                if (isSingleLine) LinearLayout.LayoutParams.MATCH_PARENT else LinearLayout.LayoutParams.WRAP_CONTENT
+        }
+        gravity = if (isSingleLine) Gravity.CENTER else when (clockAlignment) {
+            "left" -> Gravity.START or Gravity.CENTER
+            "center" -> Gravity.CENTER
+            "right" -> Gravity.END or Gravity.CENTER
+            else -> Gravity.CENTER
         }
     }
 

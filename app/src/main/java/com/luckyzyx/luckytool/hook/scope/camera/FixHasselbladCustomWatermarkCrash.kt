@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.log.loggerD
 
 object FixHasselbladCustomWatermarkCrash : YukiBaseHooker() {
     override fun onHook() {
@@ -20,7 +21,10 @@ object FixHasselbladCustomWatermarkCrash : YukiBaseHooker() {
                 }
             }
         }
-        val cls = "com.oplus.ocs.camera.CameraPictureCallbackAdapterV2$1".toClassOrNull() ?: return
+        val cls = "com.oplus.ocs.camera.CameraPictureCallbackAdapterV2$1".toClassOrNull() ?: run {
+            loggerD(msg = "This camera is not supported to fix the crash version !")
+            return
+        }
         //Source CameraPictureCallbackAdapter
         cls.hook {
             injectMember {

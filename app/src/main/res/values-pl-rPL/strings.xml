@@ -26,9 +26,13 @@
     <string name="clear_all_data_message">Czy chcesz przywrócić wszystkie zmiany w funckach modułu do stanu domyślnego?</string>
     <!-- Other Settings -->
     <string name="other_settings">Inne ustawienia</string>
-    <string name="hide_xp_page_icon">Ukryj ikony aplikacji z karty „Funkcje”</string>
-    <string name="hide_desktop_appicon">Ukryj ikonę aplikacji</string>
-    <string name="hide_desktop_appicon_summary">Wymaga wyłączenia „Wymuś aplikacjom pokazywanie ikon launchera” w ustawieniach LSPosed</string>
+    <string name="switch_autostart_function_caller">Switch autostart function caller</string>
+    <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
+    <string name="switch_autostart_function_caller_module">Module call</string>
+    <string name="switch_autostart_function_caller_systemui">SystemUI call</string>
+    <string name="hide_function_page_icon">Hide function page icon</string>
+    <string name="hide_desktop_module_icon">Hide desktop module icon</string>
+    <string name="hide_desktop_module_icon_summary">LSPosed must be turned off to force desktop icons</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Kopia zapasowa i przywracanie</string>
     <string name="backup_data">Wykonaj kopię</string>
@@ -49,6 +53,7 @@
     <string name="feedback_download">Opinia i pobieranie</string>
     <string name="feedback_download_summary">Kanał i grupa na telegramie, repozytorium itp.</string>
     <string name="coolmarket">Opinie w CoolAPK</string>
+    <string name="module_doc">Module Doc</string>
     <string name="qq_channel">Kanał QQ</string>
     <string name="telegram_channel">Kanał na Telegramie</string>
     <string name="telegram_group">Grupa na Telegramie</string>
@@ -265,9 +270,9 @@
     <string name="long_press_app_icon_open_app_details">Przytrzymaj ikonę aplikacji, aby otworzyć informacje o aplikacji</string>
     <string name="remove_recent_task_list_clear_button">Usuń przycisk „Zamknij wszystkie” z listy ostatnich aplikacji</string>
     <string name="remove_bottom_app_icon_of_recent_task_list">Usuń dolne ikony z listy ostatnich aplikacji</string>
-    <string name="enable_stacked_task_layout">Enable stacked task layout</string>
-    <string name="set_task_stacking_level">Set task stacking level</string>
-    <string name="fix_current_task_to_the_top">Fix the current task to the top</string>
+    <string name="enable_stacked_task_layout">Włącz układ stosu kart</string>
+    <string name="set_task_stacking_level">Ustaw poziom układania</string>
+    <string name="fix_current_task_to_the_top">Pokaż wybraną kartę podglądu na wierzchu</string>
     <string name="PaginationComponentRelated">Kropkowy wskaźnik stronicowania</string>
     <string name="remove_pagination_component">Usuń wskaźnik stronicowania pulpitu</string>
     <string name="remove_folder_pagination_component">Usuń wskaźnik stronicowania folderu</string>
@@ -477,7 +482,7 @@
     <string name="battery_optimization">Optymalizacja baterii</string>
     <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
-    <string name="high_performance_mode">High performance mode</string>
+    <string name="high_performance_mode">Tryb wysokiej wydajności</string>
     <string name="GameAssistantRelated">Asystent gier</string>
     <string name="game_assistant_page">Strona asystenta gier</string>
     <string name="game_assistant_develop_page">Strona programisty Asystenta Gier</string>
@@ -516,6 +521,7 @@
     <string name="common_words_single_line">Pojedyncza linia</string>
     <string name="common_words_double_line">Podwójna linia</string>
     <string name="common_words_customize">Dostosuj</string>
+    <string name="common_words_current_mode">Current Mode</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Nie udało się połączyć z siecią</string>
     <string name="net_networking_error">Aktualna sieć jest niedostępna</string>

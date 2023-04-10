@@ -26,9 +26,13 @@
     <string name="clear_all_data_message">Переконайтеся, що ви хочете очистити всі дані функцій модуля, і вам потрібно скинути цю функцію після очищення?</string>
     <!-- Other Settings -->
     <string name="other_settings">Інші налаштування</string>
-    <string name="hide_xp_page_icon">Приховати іконки пунктів</string>
-    <string name="hide_desktop_appicon">Приховати іконку додатку</string>
-    <string name="hide_desktop_appicon_summary">LSPosed має бути вимкнено, щоб іконка на робочому столі відображалася</string>
+    <string name="switch_autostart_function_caller">Switch autostart function caller</string>
+    <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
+    <string name="switch_autostart_function_caller_module">Module call</string>
+    <string name="switch_autostart_function_caller_systemui">SystemUI call</string>
+    <string name="hide_function_page_icon">Hide function page icon</string>
+    <string name="hide_desktop_module_icon">Hide desktop module icon</string>
+    <string name="hide_desktop_module_icon_summary">LSPosed must be turned off to force desktop icons</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Резервне копіювання/Відновлення/Видалення даних</string>
     <string name="backup_data">Резервне копіювання даних</string>
@@ -49,6 +53,7 @@
     <string name="feedback_download">Зворотній зв\'язок та завантаження</string>
     <string name="feedback_download_summary">TГ-канали, групи, репозиторії та ін.</string>
     <string name="coolmarket">CoolMarket</string>
+    <string name="module_doc">Module Doc</string>
     <string name="qq_channel">QQ канал</string>
     <string name="telegram_channel">Канал Telegram</string>
     <string name="telegram_group">Група Telegram</string>
@@ -516,6 +521,7 @@
     <string name="common_words_single_line">Один рядок</string>
     <string name="common_words_double_line">Два рядки</string>
     <string name="common_words_customize">Налаштувати</string>
+    <string name="common_words_current_mode">Current Mode</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не вдалося з’єднатися з мережею</string>
     <string name="net_networking_error">Поточна мережа недоступна</string>

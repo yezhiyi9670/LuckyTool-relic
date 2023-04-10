@@ -26,9 +26,13 @@
     <string name="clear_all_data_message">Đảm bảo rằng bạn muốn xóa tất cả dữ liệu chức năng của mô-đun và bạn cần đặt lại chức năng sau khi xóa?</string>
     <!-- Other Settings -->
     <string name="other_settings">Tùy chỉnh khác</string>
-    <string name="hide_xp_page_icon">Ẩn biểu tượng trang XP</string>
-    <string name="hide_desktop_appicon">Ẩn biểu tượng ứng dụng trên màn hình chính</string>
-    <string name="hide_desktop_appicon_summary">LSPosed phải được tắt để buộc hiển thị các biểu tượng trên màn hình</string>
+    <string name="switch_autostart_function_caller">Switch autostart function caller</string>
+    <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
+    <string name="switch_autostart_function_caller_module">Module call</string>
+    <string name="switch_autostart_function_caller_systemui">SystemUI call</string>
+    <string name="hide_function_page_icon">Hide function page icon</string>
+    <string name="hide_desktop_module_icon">Hide desktop module icon</string>
+    <string name="hide_desktop_module_icon_summary">LSPosed must be turned off to force desktop icons</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Sao lưu/Khôi phục/Xoá</string>
     <string name="backup_data">Backup Data</string>
@@ -49,6 +53,7 @@
     <string name="feedback_download">Phản hồi và tải</string>
     <string name="feedback_download_summary">Kênh TG, Nhóm, Repositories, v. v.</string>
     <string name="coolmarket">Trang CoolMarket</string>
+    <string name="module_doc">Module Doc</string>
     <string name="qq_channel">Kênh QQ</string>
     <string name="telegram_channel">Kênh Telegram</string>
     <string name="telegram_group">Nhóm Telegram</string>
@@ -516,6 +521,7 @@
     <string name="common_words_single_line">Single line</string>
     <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Tùy chỉnh</string>
+    <string name="common_words_current_mode">Current Mode</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>
