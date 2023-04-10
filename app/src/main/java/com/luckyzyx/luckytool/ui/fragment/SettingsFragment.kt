@@ -13,6 +13,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.SwitchPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
@@ -178,9 +179,27 @@ class SettingsFragment : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.switch_autostart_function_caller)
+                    summary =
+                        getString(R.string.common_words_current_mode) + ": %s\n\n" + getString(R.string.switch_autostart_function_caller_summary)
+                    key = "switch_autostart_function_caller"
+                    entries =
+                        resources.getStringArray(R.array.switch_autostart_function_caller_entries)
+                    entryValues = arrayOf("0", "1")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("switch_autostart_function_caller", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
                 SwitchPreference(context).apply {
-                    key = "hide_xp_page_icon"
-                    title = getString(R.string.hide_xp_page_icon)
+                    key = "hide_function_page_icon"
+                    title = getString(R.string.hide_function_page_icon)
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, _ ->
@@ -191,10 +210,10 @@ class SettingsFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    key = "hide_desktop_appicon"
+                    key = "hide_desktop_module_icon"
                     setDefaultValue(false)
-                    title = getString(R.string.hide_desktop_appicon)
-                    summary = getString(R.string.hide_desktop_appicon_summary)
+                    title = getString(R.string.hide_desktop_module_icon)
+                    summary = getString(R.string.hide_desktop_module_icon_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         context.setComponentDisabled(
@@ -311,6 +330,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                     setOnPreferenceClickListener {
                         val updatelist = arrayOf(
                             getString(R.string.coolmarket),
+                            getString(R.string.module_doc),
                             getString(R.string.qq_channel),
                             getString(R.string.telegram_channel),
                             getString(R.string.telegram_group),
@@ -328,22 +348,28 @@ class SettingsFragment : ModulePreferenceFragment() {
                                     1 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
+                                            Uri.parse("https://luckyzyx.github.io/LuckyTool/")
                                         )
                                     )
                                     2 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://t.me/LuckyTool")
+                                            Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
                                         )
                                     )
                                     3 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
+                                            Uri.parse("https://t.me/LuckyTool")
                                         )
                                     )
                                     4 -> startActivity(
+                                        Intent(
+                                            Intent.ACTION_VIEW,
+                                            Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
+                                        )
+                                    )
+                                    5 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")

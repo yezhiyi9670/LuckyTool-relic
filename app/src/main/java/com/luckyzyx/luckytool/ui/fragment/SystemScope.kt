@@ -369,7 +369,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_alignment", newValue)
+                                .put("statusbar_clock_text_alignment", newValue)
                             true
                         }
                     }
@@ -465,7 +465,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_alignment", newValue)
+                                .put("statusbar_clock_text_alignment", newValue)
                             true
                         }
                     }

@@ -28,7 +28,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "android"
-                    context.getXPIcon(android.R.mipmap.sym_def_app_icon) { resource, show ->
+                    context.setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -47,7 +47,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "StatusBar"
-                    context.getXPIcon("com.android.systemui") { resource, show ->
+                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -69,7 +69,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.launcher"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -88,7 +88,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "LockScreen"
-                    context.getXPIcon("com.android.systemui") { resource, show ->
+                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -108,7 +108,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.screenshot"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -128,7 +128,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.packageinstaller"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -148,7 +148,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "Miscellaneous"
-                    context.getXPIcon("com.android.systemui") { resource, show ->
+                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -167,7 +167,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.battery"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -188,7 +188,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.settings"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -209,7 +209,7 @@ class XposedFragment : ModulePreferenceFragment() {
                 Preference(context).apply {
                     val isOneplusCamera = context.checkPackName("com.oneplus.camera")
                     key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -230,7 +230,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.games"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -251,7 +251,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.heytap.themestore"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -271,7 +271,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.heytap.cloud"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -291,7 +291,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.ota"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -311,7 +311,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.east2d.everyimage"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -332,7 +332,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.ruet_cse_1503050.ragib.appbackup.pro"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -352,7 +352,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "ru.kslabs.ksweb"
-                    context.getXPIcon(key) { resource, show ->
+                    context.setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }

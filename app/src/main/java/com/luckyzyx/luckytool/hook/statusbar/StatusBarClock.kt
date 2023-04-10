@@ -6,6 +6,7 @@ import android.os.Handler
 import android.provider.Settings
 import android.util.TypedValue
 import android.view.Gravity
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.buildOf
@@ -177,6 +178,7 @@ object StatusBarClock : YukiBaseHooker() {
                 if (customFontsize != 0) customFontsize.toFloat() else defaultSize
             )
             if (rows != 1) setLineSpacing(0F, 0.8F)
+            layoutParams?.height = LinearLayout.LayoutParams.WRAP_CONTENT
         }
     }
 

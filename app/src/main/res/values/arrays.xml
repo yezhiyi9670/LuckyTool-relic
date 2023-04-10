@@ -92,5 +92,10 @@
         <item>@string/remove_fingerprint_icon</item>
         <item>@string/remove_fingerprint_icon_and_press_animation</item>
     </string-array>
+    
+    <string-array name="switch_autostart_function_caller_entries">
+        <item>@string/switch_autostart_function_caller_module</item>
+        <item>@string/switch_autostart_function_caller_systemui</item>
+    </string-array>
 
 </resources>

@@ -70,4 +70,8 @@ it will be recorded according to the payer *XX
 
 patreon.com/LuckyTool
 
+@tab PayPal
+
+paypal.me/luckyzyx
+
 :::
