@@ -49,8 +49,9 @@ star: false
 # copyright: 无版权
 ---
 
-If you find it useful, you can also donate to the developer, and note your nickname or ID, otherwise
-it will be recorded according to the payer *XX
+- If you think the module is useful, you can donate to the developer, and your donation will become
+  the motivation for the developer to update
+- But pay attention to note your nickname or ID, otherwise it will be recorded as the payer *XX
 
 ::: tabs
 

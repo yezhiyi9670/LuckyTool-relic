@@ -691,6 +691,20 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "某条咸鱼SS", details(
+                        DCInfo("20230411-210021", CWC, 10.0, "10000499012023041100484506704192")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "soulbring", details(
+                        DCInfo("20230411-210222", CWC, 10.0, "10001071012023041100165801723174")
+                    )
+                )
+            )
         }
     }
 

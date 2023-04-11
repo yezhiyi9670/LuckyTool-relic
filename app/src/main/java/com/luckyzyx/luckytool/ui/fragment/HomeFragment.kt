@@ -185,13 +185,12 @@ class HomeFragment : Fragment() {
                         fpsDialog.dismiss()
                     }
                 }
-                fpsDialog.findViewById<MaterialButton>(R.id.fps_show)?.apply {
+                fpsDialog.findViewById<MaterialSwitch>(R.id.fps_show)?.apply {
                     text = getString(R.string.display_refresh_rate)
-                    var status = false
-                    setOnClickListener {
-                        status = !status
-                        ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1034 i32 ${if (status) 1 else 0}",
+                    isChecked = getRefreshRateStatus()
+                    setOnCheckedChangeListener { buttonView, isChecked ->
+                        if (buttonView.isPressed) ShellUtils.execCommand(
+                            "service call SurfaceFlinger 1034 i32 ${if (isChecked) 1 else 0}",
                             true
                         )
                     }

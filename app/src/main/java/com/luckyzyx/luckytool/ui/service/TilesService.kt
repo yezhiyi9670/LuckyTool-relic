@@ -54,7 +54,7 @@ class ShowFPS : TileService() {
         ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).apply {
             if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
             else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                qsTile.state = if (getRefreshRateStatus(successMsg)) Tile.STATE_ACTIVE
+                qsTile.state = if (getRefreshRateStatus()) Tile.STATE_ACTIVE
                 else Tile.STATE_INACTIVE
             } else qsTile.state = Tile.STATE_UNAVAILABLE
             qsTile.updateTile()

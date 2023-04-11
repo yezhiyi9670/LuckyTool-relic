@@ -29,6 +29,7 @@ import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.factory.modulePrefs
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
@@ -118,8 +119,8 @@ val getVersionCode get() = BuildConfig.VERSION_CODE
  * @param packName String
  * @return Boolean
  */
+@Suppress("SENSELESS_COMPARISON")
 fun Context.checkPackName(packName: String) = safeOfFalse {
-    @Suppress("SENSELESS_COMPARISON")
     PackageUtils(packageManager).getPackageInfo(packName, 0) != null
 }
 
@@ -200,28 +201,10 @@ fun Context.getFpsMode1(): Array<String> {
  */
 fun Context.getFpsMode2(): Array<String> {
     val command =
-        "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" +
-                "  if [[ -n \$row ]]; then\n" +
-                "    echo \$row | tr ',' '\\n' | while read col; do\n" +
-                "      case \$col in\n" +
-                "      'width='*)\n" +
-                "        echo -n \$(echo \${col:6})\n" +
-                "        ;;\n" +
-                "      'height='*)\n" +
-                "        echo -n x\$(echo \${col:7})\n" +
-                "        ;;\n" +
-                "      'fps='*)\n" +
-                "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" +
-                "        ;;\n" +
-                "      esac\n" +
-                "    done\n" +
-                "    echo -e '@'\n" +
-                "  fi\n" +
-                "done"
+        "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row | tr ',' '\\n' | while read col; do\n" + "      case \$col in\n" + "      'width='*)\n" + "        echo -n \$(echo \${col:6})\n" + "        ;;\n" + "      'height='*)\n" + "        echo -n x\$(echo \${col:7})\n" + "        ;;\n" + "      'fps='*)\n" + "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" + "        ;;\n" + "      esac\n" + "    done\n" + "    echo -e '@'\n" + "  fi\n" + "done"
     return ShellUtils.execCommand(command, true, true).let {
         if (it.result == 1) arrayOf() else it.successMsg.takeIf { e -> e.isNotEmpty() }
-            ?.substring(0, it.successMsg.length - 1)?.split("@")
-            ?.toTypedArray() ?: arrayOf()
+            ?.substring(0, it.successMsg.length - 1)?.split("@")?.toTypedArray() ?: arrayOf()
     }
 }
 
@@ -231,12 +214,7 @@ fun Context.getFpsMode2(): Array<String> {
  */
 private fun getBatteryInfo(): Array<String> {
     val command =
-        "dumpsys battery | while read row; do\n" +
-                "  if [[ -n \$row ]]; then\n" +
-                "    echo \$row\n" +
-                "    echo -e '@'\n" +
-                "  fi\n" +
-                "done"
+        "dumpsys battery | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row\n" + "    echo -e '@'\n" + "  fi\n" + "done"
     return ShellUtils.execCommand(command, true, true).successMsg.let {
         it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")?.toTypedArray()
             ?: arrayOf()
@@ -278,16 +256,12 @@ fun setParameter(context: Context, name: String, key: String?, value: String?) {
  */
 fun getDeviceID(): String {
     ShellUtils.execCommand(
-        "cat /sys/devices/soc0/serial_number",
-        false,
-        true
+        "cat /sys/devices/soc0/serial_number", false, true
     ).apply {
         if (result == 0 && successMsg.isNotBlank()) return successMsg
     }
     ShellUtils.execCommand(
-        "cat /sys/firmware/devicetree/base/firmware/android/serialno",
-        false,
-        true
+        "cat /sys/firmware/devicetree/base/firmware/android/serialno", false, true
     ).apply {
         if (result == 0 && successMsg.isNotBlank()) return successMsg
     }
@@ -302,9 +276,7 @@ fun getDeviceID(): String {
 val getGuid: String
     get() {
         ShellUtils.execCommand(
-            "cat /data/system/openid_config.xml | sed  -n '3p'",
-            true,
-            true
+            "cat /data/system/openid_config.xml | sed  -n '3p'", true, true
         ).apply {
             return if (result == 1) "null"
             else successMsg.takeIf { e -> e.isNotBlank() }?.split("\"")?.get(3) ?: "null"
@@ -345,13 +317,11 @@ fun jumpEngineermode(context: Context) {
 fun jumpBatteryInfo(context: Context) {
     if (context.checkPackName("com.oppo.engineermode")) {
         ShellUtils.execCommand(
-            "am start -n com.oppo.engineermode/.charge.modeltest.BatteryInfoShow",
-            true
+            "am start -n com.oppo.engineermode/.charge.modeltest.BatteryInfoShow", true
         )
     } else if (context.checkPackName("com.oplus.engineermode")) {
         ShellUtils.execCommand(
-            "am start -n com.oplus.engineermode/.charge.modeltest.BatteryInfoShow",
-            true
+            "am start -n com.oplus.engineermode/.charge.modeltest.BatteryInfoShow", true
         )
     }
 }
@@ -362,12 +332,10 @@ fun jumpBatteryInfo(context: Context) {
  */
 fun jumpRunningApp(context: Context) {
     val isoppoRunning = Intent().setClassName(
-        "com.android.settings",
-        "com.coloros.settings.feature.process.RunningApplicationActivity"
+        "com.android.settings", "com.coloros.settings.feature.process.RunningApplicationActivity"
     )
     val isoplusRunning = Intent().setClassName(
-        "com.android.settings",
-        "com.oplus.settings.feature.process.RunningApplicationActivity"
+        "com.android.settings", "com.oplus.settings.feature.process.RunningApplicationActivity"
     )
     if (context.checkResolveActivity(isoppoRunning)) {
         ShellUtils.execCommand(
@@ -618,8 +586,7 @@ fun getDocumentPath(context: Context, uri: Uri): String? {
                 getMSFFile(context, uri)
             } else {
                 val contentUri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"),
-                    ContentUris.parseId(uri)
+                    Uri.parse("content://downloads/public_downloads"), ContentUris.parseId(uri)
                 )
                 getDataColumn(context, contentUri, null, null)
             }
@@ -651,10 +618,7 @@ fun getDocumentPath(context: Context, uri: Uri): String? {
  * @return String?
  */
 fun getDataColumn(
-    context: Context,
-    uri: Uri,
-    selection: String?,
-    selectionArgs: Array<String>?
+    context: Context, uri: Uri, selection: String?, selectionArgs: Array<String>?
 ): String? {
     var cursor: Cursor? = null
     val column = "_data"
@@ -790,8 +754,7 @@ fun isZh(context: Context): Boolean {
  */
 fun Context.openAppDetailIntent(packName: String, userId: Int?) {
     val intent = Intent(
-        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-        Uri.fromParts("package", packName, null)
+        Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packName, null)
     )
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     intent.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
@@ -841,8 +804,7 @@ fun Context.restartMain() {
  */
 fun Context.restartScopes(scopes: Array<String>) {
     val list = arrayOf(
-        getString(R.string.restart_scope),
-        getString(R.string.restart_only_this_page_scope)
+        getString(R.string.restart_scope), getString(R.string.restart_only_this_page_scope)
     )
     MaterialAlertDialogBuilder(this, dialogCentered).apply {
         setItems(list) { _, which ->
@@ -919,11 +881,9 @@ fun Context.callFunc(bundle: Bundle?) {
     bundle?.apply {
         //自启功能相关
         if (getBoolean("fps", false)) {
-            val fpsCur = getInt(SettingsPrefs, "current_fps", -1)
+            val fpsCur = modulePrefs(SettingsPrefs).getInt("current_fps", -1)
             if (fpsCur != -1) ShellUtils.execCommand(
-                "service call SurfaceFlinger 1035 i32 $fpsCur",
-                true,
-                true
+                "service call SurfaceFlinger 1035 i32 $fpsCur", true, true
             ).apply {
                 if (result == 1) toast("force fps error!")
             }
@@ -952,14 +912,12 @@ fun Context.callFunc(bundle: Bundle?) {
         if (getBoolean("globalDC", false)) {
             var oppoError = false
             var oplusError = false
-            ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
-                .apply {
-                    if (result == 1) oppoError = true
-                }
-            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
-                .apply {
-                    if (result == 1) oplusError = true
-                }
+            ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true).apply {
+                if (result == 1) oppoError = true
+            }
+            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true).apply {
+                if (result == 1) oplusError = true
+            }
             if (oppoError && oplusError) toast("global dc mode error!")
         }
         //快捷方式相关
@@ -971,8 +929,7 @@ fun Context.callFunc(bundle: Bundle?) {
                 )
             }
             "oplusGames" -> ShellUtils.execCommand(
-                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
-                true
+                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
             "processManager" -> jumpRunningApp(this@callFunc)
             "chargingTest" -> jumpBatteryInfo(this@callFunc)
@@ -982,17 +939,22 @@ fun Context.callFunc(bundle: Bundle?) {
 
 /**
  * 获取刷新率显示状态
- * @param inputStr String
  * @return Boolean
  */
-fun getRefreshRateStatus(inputStr: String): Boolean = safeOfFalse {
+fun getRefreshRateStatus(): Boolean = safeOfFalse {
 //    Result: Parcel(NULL)
 //    Result: Parcel(00000000    '....')
-    val status = inputStr.replace(" ", "").split("Parcel")[1].let {
+    val result =
+        ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
+            if (it.result == 1) return@safeOfFalse false
+            else if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg
+            else return@safeOfFalse false
+        }
+    val status = result.replace(" ", "").split("Parcel")[1].let {
         it.substring(1, it.length - 1)
     }.split("'")[0].let {
         it.substring(it.length - 1)
-    }
+    }.toString()
     return when (status) {
         "0" -> false
         "1" -> true
