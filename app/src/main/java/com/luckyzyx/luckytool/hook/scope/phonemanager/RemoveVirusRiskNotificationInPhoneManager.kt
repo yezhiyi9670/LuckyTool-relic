@@ -11,7 +11,7 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
     override fun onHook() {
         //Source VirusScanNotifyListener
         searchClass {
-            from("l6", "m6", "n6").absolute()
+            from("com.coloros.phonemanager.virusdetect.service", "l6", "m6", "n6").absolute()
             field {
                 type = ContextClass
             }.count(1)

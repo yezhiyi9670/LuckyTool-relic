@@ -14,11 +14,10 @@ object RemoveAlarmClockWidgetRedOne : YukiBaseHooker() {
     override fun onHook() {
         //Source OnePlusWidget
         //Search CharSequence Field
-        //Source update one plus clock +2 / +4 -> setTextViewText
+        //Source update one plus clock +2 & +4 -> setTextViewText
         val clazz = "com.coloros.widget.smallweather.OnePlusWidget".toClass()
         val isHas = clazz.hasMethod {
             param(StringClass, StringClass)
-            paramCount = 2
             returnType = CharSequenceClass
         }
         if (isHas) {
@@ -27,8 +26,9 @@ object RemoveAlarmClockWidgetRedOne : YukiBaseHooker() {
             }.get().set("")
             return
         }
+        //Source
         searchClass {
-            from("m0").absolute()
+            from("m0", "j0").absolute()
             field {
                 type = CharSequenceClass
             }.count(1)
