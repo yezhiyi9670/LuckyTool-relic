@@ -58,7 +58,7 @@ it will be recorded according to the payer *XX
 
 ![QQ QR Code](/assets/images/donate/qq.png)
 
-@tab:active WECHAT
+@tab WECHAT
 
 ![WeChat QR Code](/assets/images/donate/wechat.png)
 
@@ -70,7 +70,7 @@ it will be recorded according to the payer *XX
 
 patreon.com/LuckyTool
 
-@tab PayPal
+@tab:active PayPal
 
 paypal.me/luckyzyx
 

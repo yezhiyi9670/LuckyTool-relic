@@ -485,6 +485,7 @@
     <string name="high_performance_mode">Tryb wysokiej wydajności</string>
     <string name="GameAssistantRelated">Asystent gier</string>
     <string name="game_assistant_page">Strona asystenta gier</string>
+    <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Strona programisty Asystenta Gier</string>
     <string name="AOSPSettingsPage">Ustawienia AOSP</string>
     <!-- ADB相关 -->

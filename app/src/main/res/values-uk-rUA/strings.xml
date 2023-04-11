@@ -485,6 +485,7 @@
     <string name="high_performance_mode">High performance mode</string>
     <string name="GameAssistantRelated">Ігровий помічник</string>
     <string name="game_assistant_page">Сторінка ігрового помічника</string>
+    <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Меню розробника ігрового помічника</string>
     <string name="AOSPSettingsPage">Сторінка стандартних налаштувань AOSP</string>
     <!-- ADB相关 -->

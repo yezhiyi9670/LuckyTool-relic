@@ -331,6 +331,23 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 }
             })
             addPreference(Preference(context).apply {
+                title = getString(R.string.game_space_page)
+                isIconSpaceReserved = false
+                isVisible = context.checkResolveActivity(
+                    Intent().setClassName(
+                        "com.nearme.gamecenter",
+                        "com.nearme.gamespace.desktopspace.ui.DesktopSpaceMainActivity"
+                    )
+                )
+                setOnPreferenceClickListener {
+                    ShellUtils.execCommand(
+                        "am start -n com.nearme.gamecenter/com.nearme.gamespace.desktopspace.ui.DesktopSpaceMainActivity",
+                        true
+                    )
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
                 title = getString(R.string.game_assistant_develop_page)
                 isIconSpaceReserved = false
                 isVisible = context.checkPackName("com.oplus.games") && context.getBoolean(

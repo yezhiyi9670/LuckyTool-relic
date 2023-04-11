@@ -26,6 +26,11 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.4.1_beta
+
+- [更新] 捐赠名单
+- [添加] 游戏空间快捷跳转方式
+
 ### v4.4.0
 
 - [更新] 捐赠名单

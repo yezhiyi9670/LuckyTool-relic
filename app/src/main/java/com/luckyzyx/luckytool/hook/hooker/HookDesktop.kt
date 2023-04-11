@@ -45,7 +45,7 @@ object HookDesktop : YukiBaseHooker() {
             ) {
                 loadHooker(RemoveBottomAppIconOfRecentTaskList)
             }
-
+            
             //com.android.launcher3.popup.OplusBaseSystemShortcut
             //OplusAppInfo etc. -> Click
 

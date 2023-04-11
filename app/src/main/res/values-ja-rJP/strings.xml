@@ -485,6 +485,7 @@
     <string name="high_performance_mode">高パフォーマンスモード</string>
     <string name="GameAssistantRelated">ゲームアシスタント関連</string>
     <string name="game_assistant_page">ゲームアシスタントのページ</string>
+    <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
     <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <!-- ADB相关 -->

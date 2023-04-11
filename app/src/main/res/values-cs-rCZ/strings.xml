@@ -485,6 +485,7 @@
     <string name="high_performance_mode">Režim vysokého výkonu</string>
     <string name="GameAssistantRelated">Nastavení související s Herním asistentem</string>
     <string name="game_assistant_page">Stránka Herního asistenta</string>
+    <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
     <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
     <!-- ADB相关 -->

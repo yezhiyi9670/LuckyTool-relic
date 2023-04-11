@@ -510,6 +510,7 @@
     <string name="high_performance_mode">High performance mode</string>
     <string name="GameAssistantRelated">Game Assistant Related</string>
     <string name="game_assistant_page">Game Assistant Page</string>
+    <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Game Assistant Developer Page</string>
     <string name="AOSPSettingsPage">AOSP native settings page</string>
     <!-- ADB相关 -->

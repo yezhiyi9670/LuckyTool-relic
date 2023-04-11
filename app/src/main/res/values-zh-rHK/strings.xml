@@ -485,6 +485,7 @@
     <string name="high_performance_mode">高性能模式</string>
     <string name="GameAssistantRelated">游戏助手相关</string>
     <string name="game_assistant_page">游戏助手页面</string>
+    <string name="game_space_page">游戏空间页面</string>
     <string name="game_assistant_develop_page">游戏助手开发者页面</string>
     <string name="AOSPSettingsPage">AOSP 原生设置页面</string>
     <!-- ADB相关 -->
