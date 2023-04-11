@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.4.0_beta
+### v4.4.0
 
 - [更新] 捐赠名单
 - [添加] PayPal捐赠方式
@@ -43,6 +43,23 @@ star: false
 - [更改] 隐藏桌面模块图标键值
 - [适配] 手机管家发现病毒通知v13.7.0
 - [适配] 桌面时钟组件移除红一v13.7.2
+- [优化] 显示刷新率磁贴状态检测
+- [Update] Donation list
+- [Add] PayPal donation method
+- [Add] Camera Hasselblad watermark support
+- [Add] Fix Hasselblad custom watermark crash
+- [Fix] OnePlus package name camera function entry
+- [Added] Enable stacked task layout
+- [Optimize] Stack layout task top
+- [Add] High performance mode tile
+- [Fix] The clock alignment of the status bar is abnormal
+- [Fix] Hot loading of status bar clock alignment
+- [Add] Switch autostart function caller
+- [Change] Hide function page icon key value
+- [Change] Hide desktop module icon key value
+- [Fix] Mobile phone housekeeper found virus notification v13.7.0
+- [Fix] The desktop clock component is removed from red one v13.7.2
+- [Fix] Display refresh rate tile state detection
 
 ### v4.3.9
 

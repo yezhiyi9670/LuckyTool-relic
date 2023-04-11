@@ -10,10 +10,7 @@ import android.telephony.SubscriptionManager
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.checkPackName
-import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
-import com.luckyzyx.luckytool.utils.data.jumpRunningApp
-import com.luckyzyx.luckytool.utils.data.toast
+import com.luckyzyx.luckytool.utils.data.*
 import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
@@ -53,25 +50,30 @@ class GameAssistant : TileService() {
 
 @Obfuscate
 class ShowFPS : TileService() {
+    override fun onStartListening() {
+        ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).apply {
+            if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
+            else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+                qsTile.state = if (getRefreshRateStatus(successMsg)) Tile.STATE_ACTIVE
+                else Tile.STATE_INACTIVE
+            } else qsTile.state = Tile.STATE_UNAVAILABLE
+            qsTile.updateTile()
+        }
+    }
+
     override fun onClick() {
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
-                showFPS(true)
+                showRefreshRate(true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
             Tile.STATE_ACTIVE -> {
-                showFPS(false)
+                showRefreshRate(false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
-    }
-
-    private fun showFPS(showFPS: Boolean) {
-        ShellUtils.execCommand(
-            "service call SurfaceFlinger 1034 i32 ${if (showFPS) 1 else 0}", true
-        )
     }
 }
 

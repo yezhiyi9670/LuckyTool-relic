@@ -444,7 +444,9 @@ val Float.dp: Float // [xxhdpi](360 -> 1080)
 
 val Int.dp: Int
     get() = android.util.TypedValue.applyDimension(
-        android.util.TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics
+        android.util.TypedValue.COMPLEX_UNIT_DIP,
+        this.toFloat(),
+        Resources.getSystem().displayMetrics
     ).toInt()
 
 val Float.sp: Float // [xxhdpi](360 -> 1080)
@@ -454,7 +456,9 @@ val Float.sp: Float // [xxhdpi](360 -> 1080)
 
 val Int.sp: Int
     get() = android.util.TypedValue.applyDimension(
-        android.util.TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics
+        android.util.TypedValue.COMPLEX_UNIT_SP,
+        this.toFloat(),
+        Resources.getSystem().displayMetrics
     ).toInt()
 
 /**
@@ -974,4 +978,34 @@ fun Context.callFunc(bundle: Bundle?) {
             "chargingTest" -> jumpBatteryInfo(this@callFunc)
         }
     }
+}
+
+/**
+ * 获取刷新率显示状态
+ * @param inputStr String
+ * @return Boolean
+ */
+fun getRefreshRateStatus(inputStr: String): Boolean = safeOfFalse {
+//    Result: Parcel(NULL)
+//    Result: Parcel(00000000    '....')
+    val status = inputStr.replace(" ", "").split("Parcel")[1].let {
+        it.substring(1, it.length - 1)
+    }.split("'")[0].let {
+        it.substring(it.length - 1)
+    }
+    return when (status) {
+        "0" -> false
+        "1" -> true
+        else -> false
+    }
+}
+
+/**
+ * 设置刷新率显示状态
+ * @param status Boolean
+ */
+fun showRefreshRate(status: Boolean) {
+    ShellUtils.execCommand(
+        "service call SurfaceFlinger 1034 i32 ${if (status) 1 else 0}", true
+    )
 }
