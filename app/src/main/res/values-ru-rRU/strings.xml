@@ -370,6 +370,7 @@
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
@@ -485,7 +486,7 @@
     <string name="high_performance_mode">Режим высокой производительности</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
     <string name="game_assistant_page">Страница игрового помощника</string>
-    <string name="game_space_page">Game Space Page</string>
+    <string name="game_space_page">Игровой помощник</string>
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>
     <string name="AOSPSettingsPage">Вид настроек как в AOSP</string>
     <!-- ADB相关 -->

@@ -370,6 +370,7 @@
     <string name="restore_default_battery_optimization_whitelist">デフォルトのバッテリー最適化ホワイトリストを復元します</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>
@@ -485,7 +486,7 @@
     <string name="high_performance_mode">高パフォーマンスモード</string>
     <string name="GameAssistantRelated">ゲームアシスタント関連</string>
     <string name="game_assistant_page">ゲームアシスタントのページ</string>
-    <string name="game_space_page">Game Space Page</string>
+    <string name="game_space_page">ゲームスペースのページ</string>
     <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
     <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <!-- ADB相关 -->

@@ -370,6 +370,7 @@
     <string name="restore_default_battery_optimization_whitelist">Obnovit výchozí optimalizaci baterie v seznamu povolených</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>
@@ -485,7 +486,7 @@
     <string name="high_performance_mode">Režim vysokého výkonu</string>
     <string name="GameAssistantRelated">Nastavení související s Herním asistentem</string>
     <string name="game_assistant_page">Stránka Herního asistenta</string>
-    <string name="game_space_page">Game Space Page</string>
+    <string name="game_space_page">Herní prostor</string>
     <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
     <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
     <!-- ADB相关 -->

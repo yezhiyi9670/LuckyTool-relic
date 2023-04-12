@@ -31,8 +31,8 @@
     <string name="switch_autostart_function_caller_module">Module call</string>
     <string name="switch_autostart_function_caller_systemui">SystemUI call</string>
     <string name="hide_function_page_icon">Hide function page icon</string>
-    <string name="hide_desktop_module_icon">Hide desktop module icon</string>
-    <string name="hide_desktop_module_icon_summary">LSPosed must be turned off to force desktop icons</string>
+    <string name="hide_desktop_module_icon">Ukryj ikonę aplikacji</string>
+    <string name="hide_desktop_module_icon_summary">Wymaga wyłączenia „Wymuś aplikacjom pokazywanie ikon launchera” w ustawieniach LSPosed</string>
     <!--BackupRestoreClear-->
     <string name="backup_restore_clear">Kopia zapasowa i przywracanie</string>
     <string name="backup_data">Wykonaj kopię</string>
@@ -370,6 +370,7 @@
     <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
     <string name="show_last_update_time_in_app_details">Pokaż czas ostatniej aktualizacji</string>

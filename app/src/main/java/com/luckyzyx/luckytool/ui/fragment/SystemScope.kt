@@ -2492,6 +2492,14 @@ class Settings : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.video_frame_insertion_support_2K120)
+                    key = "video_frame_insertion_support_2K120"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.AppDetailsRelated)
                     key = "AppDetailsRelated"

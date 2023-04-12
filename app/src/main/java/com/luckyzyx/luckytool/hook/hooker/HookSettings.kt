@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
+import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -13,5 +14,7 @@ object HookSettings : YukiBaseHooker() {
         }
         //应用详情页
         loadHooker(HookAppDetails)
+        //HookIris5Controller
+        loadHooker(HookIris5Controller)
     }
 }
