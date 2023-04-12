@@ -18,7 +18,7 @@ object DarkModeList : YukiBaseHooker() {
 
         //Source DarkModeFileUtils
         searchClass {
-            from("qc", "oe", "re", "qe", "be", "te", "ue", "ae", "pe").absolute()
+            from("qc", "oe", "re", "qe", "be", "te", "ue", "ae", "pe", "je").absolute()
             field {
                 type = AnyClass
             }.count(2)

@@ -371,6 +371,8 @@
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
+    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
+    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
     <string name="show_last_update_time_in_app_details">Show last update time in app details</string>

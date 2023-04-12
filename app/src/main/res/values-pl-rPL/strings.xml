@@ -30,7 +30,7 @@
     <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
     <string name="switch_autostart_function_caller_module">Module call</string>
     <string name="switch_autostart_function_caller_systemui">SystemUI call</string>
-    <string name="hide_function_page_icon">Hide function page icon</string>
+    <string name="hide_function_page_icon">Ukryj ikony w karcie „Funkcje”</string>
     <string name="hide_desktop_module_icon">Ukryj ikonę aplikacji</string>
     <string name="hide_desktop_module_icon_summary">Wymaga wyłączenia „Wymuś aplikacjom pokazywanie ikon launchera” w ustawieniach LSPosed</string>
     <!--BackupRestoreClear-->
@@ -98,10 +98,10 @@
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
-    <string name="statusbar_carriers_use_user_typeface">Użyj czcionki użytkownika w nazwie operatora sieci</string>
+    <string name="statusbar_carriers_use_user_typeface">Użyj niestandardowej czcionki w nazwie operatora sieci</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
-    <string name="statusbar_clock_mode">Dostosowanie zegara na pasku stanu</string>
+    <string name="statusbar_clock_mode">Zegar paska stanu</string>
     <string name="statusbar_clock_show_year">Pokaż rok (yy/…/…)</string>
     <string name="statusbar_clock_show_month">Pokaż miesiąc (…/MM/…)</string>
     <string name="statusbar_clock_show_day">Pokaż dzień (…/…/dd)</string>
@@ -118,7 +118,7 @@
     <string name="statusbar_clock_singlerow_fontsize">Rozmiar czcionki (jeden wiersz)</string>
     <string name="statusbar_clock_doublerow_fontsize">Rozmiar czcionki (dwa wiersze)</string>
     <string name="statusbar_clock_custom_format">Format czasu</string>
-    <string name="statusbar_clock_custom_fontsize">Wielkość czcionki</string>
+    <string name="statusbar_clock_custom_fontsize">Rozmiar czcionki</string>
     <string name="statusbar_clock_fontsize_summary">Rozmiar 0 = domyślny</string>
     <!-- StatusBarNetWorkSpeed -->
     <string name="StatusBarNetWorkSpeed">Prędkościomierz sieci</string>
@@ -371,6 +371,8 @@
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
+    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
+    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
     <string name="show_last_update_time_in_app_details">Pokaż czas ostatniej aktualizacji</string>
@@ -514,16 +516,16 @@
     <!--Permission-->
     <string name="all_files_access_permission">Aby zapewnić normalne korzystanie z modułu, upewnij się, że masz uprawnienia do modułu!</string>
     <!--Typeface-->
-    <string name="use_user_typeface">Użyj czcionki użytkownika</string>
+    <string name="use_user_typeface">Użyj niestandardowej czcionki</string>
     <!--CommonWords-->
     <string name="common_words_close">Wyłączone</string>
     <string name="common_words_open">Otwórz</string>
-    <string name="common_words_default">Domyślne</string>
+    <string name="common_words_default">Domyślny</string>
     <string name="common_words_preset">Gotowe ustawienia</string>
-    <string name="common_words_single_line">Pojedyncza linia</string>
-    <string name="common_words_double_line">Podwójna linia</string>
+    <string name="common_words_single_line">Jednowierszowy</string>
+    <string name="common_words_double_line">Dwuwierszowy</string>
     <string name="common_words_customize">Dostosuj</string>
-    <string name="common_words_current_mode">Current Mode</string>
+    <string name="common_words_current_mode">Aktualny tryb</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Nie udało się połączyć z siecią</string>
     <string name="net_networking_error">Aktualna sieć jest niedostępna</string>

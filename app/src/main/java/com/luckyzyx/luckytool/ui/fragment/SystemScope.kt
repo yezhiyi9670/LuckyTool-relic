@@ -2500,6 +2500,15 @@ class Settings : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_dpi_restart_recovery)
+                    summary = getString(R.string.remove_dpi_restart_recovery_summary)
+                    key = "remove_dpi_restart_recovery"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.AppDetailsRelated)
                     key = "AppDetailsRelated"

@@ -16,6 +16,9 @@ object HookAndroid : YukiBaseHooker() {
         //Hook NotificationManager
         loadHooker(HookNotificationManager)
 
+        //Hook HookWindowManagerService
+        loadHooker(HookWindowManagerService)
+
         //媒体音量阶数
         loadHooker(MediaVolumeLevel)
 

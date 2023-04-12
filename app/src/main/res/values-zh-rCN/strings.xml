@@ -371,6 +371,8 @@
     <!--Settings-->
     <string name="remove_top_account_display">移除顶部账户显示</string>
     <string name="video_frame_insertion_support_2K120">视频插帧支持 2K120</string>
+    <string name="remove_dpi_restart_recovery">移除 DPI 重启恢复</string>
+    <string name="remove_dpi_restart_recovery_summary">启用功能并重启作用域后，打开开发者选项页面并设置最小宽度</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
     <string name="show_last_update_time_in_app_details">应用详情显示最后更新时间</string>
