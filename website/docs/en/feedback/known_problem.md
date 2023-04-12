@@ -33,6 +33,8 @@ If this page cannot solve your problem, you can go to the documentation introduc
 
 - yukihookapi.intent.action.HOST_DATA_CHANNEL --> No feedback required, upstream API communication issues
 
+- android.content.res.Resources$NotFoundException: String resource ID #0x64xxxxxx --> No feedback required，restart scope
+
 - many functions**collective failure** --> Clear the module background first, and then restart the
   scope
 

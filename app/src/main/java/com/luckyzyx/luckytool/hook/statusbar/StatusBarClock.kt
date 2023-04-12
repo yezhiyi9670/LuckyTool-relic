@@ -6,7 +6,6 @@ import android.os.Handler
 import android.provider.Settings
 import android.util.TypedValue
 import android.view.Gravity
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.buildOf
@@ -164,17 +163,18 @@ object StatusBarClock : YukiBaseHooker() {
                     if (singleRowFontSize != 0) singleRowFontSize.toFloat() else defaultSize
                 )
             }
-            layoutParams?.height = LinearLayout.LayoutParams.MATCH_PARENT
         } else if (clockMode == "2") {
-            val rows = customFormat.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 1
+            val formatList =
+                customFormat.takeIf { e -> e.isNotBlank() && e.contains("\n") }?.split("\n")
+                    ?.toMutableList() ?: mutableListOf("0")
+            formatList.removeIf { it.isBlank() }
+            val rows = formatList.size
             isSingleLine = rows == 1
             setTextSize(
                 TypedValue.COMPLEX_UNIT_DIP,
                 if (customFontsize != 0) customFontsize.toFloat() else defaultSize
             )
             if (rows != 1) setLineSpacing(0F, 0.8F)
-            layoutParams?.height =
-                if (isSingleLine) LinearLayout.LayoutParams.MATCH_PARENT else LinearLayout.LayoutParams.WRAP_CONTENT
         }
         gravity = if (isSingleLine) Gravity.CENTER else when (clockAlignment) {
             "left" -> Gravity.START or Gravity.CENTER

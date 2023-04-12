@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
 object ForceDisplayMediaPlayer : YukiBaseHooker() {
@@ -13,12 +14,15 @@ object ForceDisplayMediaPlayer : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
-                    args(0).setTrue()
+                    args().first().setTrue()
                 }
             }
         }
-        //Source QuickStatusBarHeaderController
-        findClass("com.android.systemui.qs.QuickStatusBarHeaderController").hook {
+        //Source QuickStatusBarHeader / OplusQSTileMediaContainerController
+        VariousClass(
+            "com.oplusos.systemui.qs.OplusQSTileMediaContainerController",
+            "com.android.systemui.qs.QuickStatusBarHeader"
+        ).hook {
             injectMember {
                 method {
                     name = "setQsMediaPanelShown"
@@ -29,11 +33,14 @@ object ForceDisplayMediaPlayer : YukiBaseHooker() {
                 }
             }
         }
-        //Source OplusQSFooterViewController
-        findClass("com.oplusos.systemui.qs.OplusQSFooterViewController").hook {
+        //Source OplusQSFooterImpl / OplusQSTileMediaContainer
+        VariousClass(
+            "com.oplusos.systemui.qs.OplusQSTileMediaContainer",
+            "com.oplusos.systemui.qs.OplusQSFooterImpl"
+        ).hook {
             injectMember {
                 method {
-                    name = "setQsMediaPanelShown"
+                    name = "setMediaMode"
                     paramCount = 1
                 }
                 beforeHook {
