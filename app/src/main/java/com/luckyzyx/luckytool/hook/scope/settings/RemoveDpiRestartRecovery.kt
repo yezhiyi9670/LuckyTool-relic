@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.hook.scope.settings
 
 import android.content.Context
 import android.provider.Settings
-import android.util.DisplayMetrics
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import kotlin.math.max
@@ -23,12 +22,9 @@ object RemoveDpiRestartRecovery : YukiBaseHooker() {
                         name = "getContext"
                         superClass()
                     }.invoke<Context>() ?: return@afterHook
-                    val displayMetrics: DisplayMetrics =
-                        context.applicationContext.resources.displayMetrics
-                    val min: Int = min(
-                        displayMetrics.widthPixels,
-                        displayMetrics.heightPixels
-                    ) * 160 / max(newValue.toInt(), 320)
+                    val displayMetrics = context.applicationContext.resources.displayMetrics
+                    val min = min(displayMetrics.widthPixels, displayMetrics.heightPixels) *
+                            160 / max(newValue.toInt(), 320)
                     val max = max(min, 120)
                     Settings.Secure.putString(
                         context.contentResolver,

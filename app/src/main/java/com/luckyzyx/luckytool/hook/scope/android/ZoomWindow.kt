@@ -19,7 +19,6 @@ object ZoomWindow : YukiBaseHooker() {
                 method {
                     name = "isSupportZoomMode"
                     param(StringClass, IntType, StringClass, BundleClass)
-                    paramCount = 4
                 }
                 beforeHook {
                     if (!isEnable) return@beforeHook

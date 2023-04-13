@@ -68,21 +68,5 @@ object HookAndroid : YukiBaseHooker() {
 //                }
 //            }
 //        }
-
-        //com.android.server.policy.PhoneWindowManager
-//        findClass("com.android.server.policy.PhoneWindowManager").hook {
-//            injectMember {
-//                method {
-//                    name = "init"
-//                    paramCount = 3
-//                }
-//                afterHook {
-//                    val time = field {
-//                        name = "mLongPressOnPowerAssistantTimeoutMs"
-//                    }.get(instance).long()
-//                    loggerD(msg = "mLongPressOnPowerAssistantTimeoutMs -> $time")
-//                }
-//            }
-//        }
     }
 }

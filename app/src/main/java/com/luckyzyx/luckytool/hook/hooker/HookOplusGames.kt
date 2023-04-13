@@ -8,6 +8,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 object HookOplusGames : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.oplus.games") {
+            //HookCloudConditionFeature
             loadHooker(CloudConditionFeature)
 
             //游戏滤镜-->Root检测
@@ -45,6 +46,11 @@ object HookOplusGames : YukiBaseHooker() {
 
             //闪电启动
             //business.secondarypanel.view.GameFastStartFloatView
+//            <string name="fast_start_title_tips">OSWAP 闪电启动中</string>
+//            <string name="fast_start_title_tips_no_oswap">闪电启动中</string>
+//            <string name="fast_start_title_success">闪电启动成功，游戏快人一步</string>
+//            <string name="fast_start_success_save_time_tip">闪电启动成功，本次节省 %d s</string>
+
 
             //GPA极限稳帧
             //com.oplus.cosa.gpalibrary.core.GpaCore

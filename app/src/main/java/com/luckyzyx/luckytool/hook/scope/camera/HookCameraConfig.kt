@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.camera
 
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -10,7 +11,10 @@ object HookCameraConfig : YukiBaseHooker() {
         val isHasselblad = prefs(ModulePrefs).getBoolean("enable_hasselblad_watermark_style", false)
 
         //Source CameraConfig
-        findClass("com.oplus.camera.configure.CameraConfig").hook {
+        VariousClass(
+            "com.oplus.camera.aps.config.CameraConfig", //C12
+            "com.oplus.camera.configure.CameraConfig" //C13
+        ).hook {
             injectMember {
                 method {
                     name = "getConfigBooleanValue"
