@@ -9,14 +9,27 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
-import androidx.preference.*
+import androidx.preference.DropDownPreference
+import androidx.preference.EditTextPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
+import androidx.preference.SeekBarPreference
+import androidx.preference.SwitchPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
+import com.luckyzyx.luckytool.utils.data.formatDate
+import com.luckyzyx.luckytool.utils.data.getDocumentPath
+import com.luckyzyx.luckytool.utils.data.restartScopes
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.ShellUtils
+import com.luckyzyx.luckytool.utils.tools.getBoolean
+import com.luckyzyx.luckytool.utils.tools.getString
+import com.luckyzyx.luckytool.utils.tools.putString
 import rikka.core.util.ResourceUtils
 
 class Android : ModulePreferenceFragment() {
@@ -1467,8 +1480,8 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_appicon_dot)
-                    key = "remove_appicon_dot"
+                    title = getString(R.string.remove_the_dot_after_app_update)
+                    key = "remove_the_dot_after_app_update"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -1513,8 +1526,8 @@ class Desktop : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.set_folder_layout_4x4)
-                    key = "set_folder_layout_4x4"
+                    title = getString(R.string.enable_folder_layout_adjustment)
+                    key = "enable_folder_layout_adjustment"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, _ ->
@@ -1523,14 +1536,14 @@ class Desktop : ModulePreferenceFragment() {
                     }
                 }
             )
-            if (context.getBoolean(ModulePrefs, "set_folder_layout_4x4", false)) {
+            if (context.getBoolean(ModulePrefs, "enable_folder_layout_adjustment", false)) {
                 addPreference(
                     SeekBarPreference(context).apply {
-                        title = getString(R.string.set_icon_width_in_folder)
-                        key = "set_icon_width_in_folder"
-                        setDefaultValue(80)
-                        max = 100
-                        min = 70
+                        title = getString(R.string.set_icon_columns_in_folder)
+                        key = "set_icon_columns_in_folder"
+                        setDefaultValue(3)
+                        max = 7
+                        min = 3
                         showSeekBarValue = true
                         updatesContinuously = false
                         isIconSpaceReserved = false

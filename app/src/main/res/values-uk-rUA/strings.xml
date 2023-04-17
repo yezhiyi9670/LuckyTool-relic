@@ -260,7 +260,7 @@
     <string name="remove_alarmclock_widget_redone">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно лише тоді, коли звичайна версія не допомагає, інакше це викликає неминучу помилку</string>
-    <string name="remove_appicon_dot">Видалити крапку з іконки додатку</string>
+    <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="launcher_layout_related">Сітка робочого столу</string>
     <string name="launcher_layout_row_colume">Встановіть кількість рядків сітки робочого столу</string>
     <string name="launcher_layout_enable">Увімкнути/вимкнути сітку іконок на робочому столі</string>
@@ -278,8 +278,8 @@
     <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
     <string name="disable_pagination_component_sliding">Вимкнути свайп компонентів розбивки</string>
     <string name="FolderLayoutRelated">Розмітка папки</string>
-    <string name="set_folder_layout_4x4">Встановити сітку папки 4 x 4</string>
-    <string name="set_icon_width_in_folder">Встановити ширину іконок у папці</string>
+    <string name="enable_folder_layout_adjustment">Enable folder layout adjustments</string>
+    <string name="set_icon_columns_in_folder">Set the number of icon columns in the folder</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>

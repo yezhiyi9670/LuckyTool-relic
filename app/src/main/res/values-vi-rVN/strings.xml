@@ -260,7 +260,7 @@
     <string name="remove_alarmclock_widget_redone">Xóa số một màu đỏ của đồng hồ máy tính để bàn</string>
     <string name="remove_alarmclock_widget_redone_pro">Xóa số một đỏ nâng cao của đồng hồ trên màn hình chính</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Chỉ khả dụng khi phiên bản thông thường không có hiệu lực, nếu không nó sẽ gây ra lỗi không thể tránh khỏi</string>
-    <string name="remove_appicon_dot">Xóa dấu API chấm biểu tượng</string>
+    <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="launcher_layout_related">Bố cục màn hình chính</string>
     <string name="launcher_layout_row_colume">Đặt số lượng hàng và cột tối đa được hỗ trợ bởi bố cục màn hình</string>
     <string name="launcher_layout_enable">Công tắc chung bố trí biểu tượng màn hình chính</string>
@@ -278,8 +278,8 @@
     <string name="remove_folder_pagination_component">Remove folder pagination component</string>
     <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     <string name="FolderLayoutRelated">Folder Layout Related</string>
-    <string name="set_folder_layout_4x4">Đặt bố cục thư mục 4 x 4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="enable_folder_layout_adjustment">Enable folder layout adjustments</string>
+    <string name="set_icon_columns_in_folder">Set the number of icon columns in the folder</string>
     <!--Application-->
     <string name="Application">Ứng dụng</string>
     <string name="ApplyOtherRestrictions">Giới hạn khác</string>

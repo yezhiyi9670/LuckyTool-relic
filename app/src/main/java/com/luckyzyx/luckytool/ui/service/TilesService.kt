@@ -7,10 +7,16 @@ import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.telephony.SubscriptionManager
+import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.*
+import com.luckyzyx.luckytool.utils.data.checkPackName
+import com.luckyzyx.luckytool.utils.data.getRefreshRateStatus
+import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.data.jumpRunningApp
+import com.luckyzyx.luckytool.utils.data.showRefreshRate
+import com.luckyzyx.luckytool.utils.data.toast
 import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
 import com.luckyzyx.luckytool.utils.tools.putBoolean
@@ -43,6 +49,7 @@ class GameAssistant : TileService() {
             Tile.STATE_INACTIVE -> ShellUtils.execCommand(
                 "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
+
             Tile.STATE_UNAVAILABLE -> toast(getString(R.string.game_assistant_tile_tips))
         }
     }
@@ -67,10 +74,12 @@ class ShowFPS : TileService() {
                 showRefreshRate(true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 showRefreshRate(false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
@@ -100,13 +109,17 @@ class HighBrightness : TileService() {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true)
                 putBoolean(SettingsPrefs, "high_brightness_mode", true)
+                dataChannel("com.android.systemui").put("high_brightness_mode", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
                 putBoolean(SettingsPrefs, "high_brightness_mode", false)
+                dataChannel("com.android.systemui").put("high_brightness_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
@@ -146,14 +159,18 @@ class GlobalDC : TileService() {
                 ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
+                dataChannel("com.android.systemui").put("global_dc_mode", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 0", true)
                 ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
+                dataChannel("com.android.systemui").put("global_dc_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
@@ -184,13 +201,17 @@ class TouchSamplingRate : TileService() {
             Tile.STATE_INACTIVE -> {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true)
                 putBoolean(SettingsPrefs, "touch_sampling_rate", true)
+                dataChannel("com.android.systemui").put("touch_sampling_rate", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 0", true)
                 putBoolean(SettingsPrefs, "touch_sampling_rate", false)
+                dataChannel("com.android.systemui").put("touch_sampling_rate", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
@@ -276,10 +297,12 @@ class VeryDarkMode : TileService() {
                 ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 1", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 0", true)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()
@@ -311,11 +334,13 @@ class HighPerformanceMode : TileService() {
                 putBoolean(SettingsPrefs, "high_performance_mode", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
+
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("settings put system high_performance_mode_on 0", true)
                 putBoolean(SettingsPrefs, "high_performance_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
+
             Tile.STATE_UNAVAILABLE -> {}
         }
         qsTile.updateTile()

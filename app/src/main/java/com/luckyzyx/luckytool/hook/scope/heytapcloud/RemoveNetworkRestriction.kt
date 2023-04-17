@@ -14,16 +14,22 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
         //Source NetworkUtil getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
         searchClass {
-            from("com.cloud.base.commonsdk.baseutils", "qa", "t2", "ra", "ob").absolute()
+            from(
+                "com.cloud.base.commonsdk.baseutils",
+                "qa",
+                "t2",
+                "ra",
+                "ob"
+            ).absolute()
             field().count(0..1)
             method {
                 param(ContextClass)
                 returnType = BooleanType
-            }.count(2..4)
+            }.count(2..5)
             method {
                 param(ContextClass)
                 returnType = StringClass
-            }.count(1)
+            }.count(0..1)
             method {
                 param(IntType)
                 returnType = BooleanType

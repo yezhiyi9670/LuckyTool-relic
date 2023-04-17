@@ -33,8 +33,7 @@ star: false
 
 ## FolderLayout
 
-- Set folder 4 x 4 layout
-- Set the icon width in the folder
+- Set the number of layout columns in the folder
 
 ## RecentTaskList
 

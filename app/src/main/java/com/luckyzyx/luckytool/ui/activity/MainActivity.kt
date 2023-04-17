@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
-import com.highcapable.yukihookapi.hook.factory.modulePrefs
+import com.highcapable.yukihookapi.hook.factory.prefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
@@ -150,9 +150,9 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPrefsStatus() {
-        val modulePrefs = modulePrefs(ModulePrefs).isPreferencesAvailable
-        val settingPrefs = modulePrefs(SettingsPrefs).isPreferencesAvailable
-        val otherPrefs = modulePrefs(OtherPrefs).isPreferencesAvailable
+        val modulePrefs = prefs(ModulePrefs).isPreferencesAvailable
+        val settingPrefs = prefs(SettingsPrefs).isPreferencesAvailable
+        val otherPrefs = prefs(OtherPrefs).isPreferencesAvailable
         if (!(modulePrefs && settingPrefs && otherPrefs)) {
             isStart = false
             MaterialAlertDialogBuilder(this).apply {

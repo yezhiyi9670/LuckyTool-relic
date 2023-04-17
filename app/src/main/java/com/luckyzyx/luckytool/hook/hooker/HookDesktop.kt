@@ -2,7 +2,14 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.alarmclock.RemoveAlarmClockWidgetRedOne
-import com.luckyzyx.luckytool.hook.scope.launcher.*
+import com.luckyzyx.luckytool.hook.scope.launcher.FolderLayoutRowColume
+import com.luckyzyx.luckytool.hook.scope.launcher.LauncherLayoutRowColume
+import com.luckyzyx.luckytool.hook.scope.launcher.LongPressAppIconOpenAppDetails
+import com.luckyzyx.luckytool.hook.scope.launcher.PageIndicator
+import com.luckyzyx.luckytool.hook.scope.launcher.RemoveAppUpdateDot
+import com.luckyzyx.luckytool.hook.scope.launcher.RemoveBottomAppIconOfRecentTaskList
+import com.luckyzyx.luckytool.hook.scope.launcher.RemoveRecentTaskListClearButton
+import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookDesktop : YukiBaseHooker() {
@@ -19,15 +26,15 @@ object HookDesktop : YukiBaseHooker() {
             //堆叠布局
             loadHooker(StackedTaskLayout)
             //移除APP更新圆点
-            if (prefs(ModulePrefs).getBoolean("remove_appicon_dot", false)) {
+            if (prefs(ModulePrefs).getBoolean("remove_the_dot_after_app_update", false)) {
                 loadHooker(RemoveAppUpdateDot)
             }
             //设置桌面布局行列数
             if (prefs(ModulePrefs).getBoolean("launcher_layout_enable", false)) {
                 loadHooker(LauncherLayoutRowColume)
             }
-            //文件夹布局
-            if (prefs(ModulePrefs).getBoolean("set_folder_layout_4x4", false)) {
+            //文件夹布局调节
+            if (prefs(ModulePrefs).getBoolean("enable_folder_layout_adjustment", false)) {
                 loadHooker(FolderLayoutRowColume)
             }
             //移除最近任务列表清除按钮

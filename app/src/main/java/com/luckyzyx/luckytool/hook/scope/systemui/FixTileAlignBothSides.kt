@@ -3,8 +3,8 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
@@ -44,7 +44,7 @@ object FixTileAlignBothSides : YukiBaseHooker() {
                 afterHook {
                     field {
                         name = "mQSPanelScrollView"
-                    }.get(instance).cast<ScrollView>()?.apply {
+                    }.get(instance).cast<ViewGroup>()?.apply {
                         val mConfiguration: Configuration = context.resources.configuration
                         if (mConfiguration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                             val qsBrightnessMirrorSidePadding = resources.getDimensionPixelSize(

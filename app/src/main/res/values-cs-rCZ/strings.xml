@@ -260,7 +260,7 @@
     <string name="remove_alarmclock_widget_redone">Odstranit červenou jedničku na hodinách na ploše</string>
     <string name="remove_alarmclock_widget_redone_pro">Odstranit červenou jedničku na hodinách na ploše - vylepšená edice</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
-    <string name="remove_appicon_dot">Odstranit symbol tečky API</string>
+    <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
     <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>
     <string name="launcher_layout_enable">Povolit/zakázat mřížku ikon na ploše</string>
@@ -278,8 +278,8 @@
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
     <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
     <string name="FolderLayoutRelated">Rozvržení složky</string>
-    <string name="set_folder_layout_4x4">Nastavit rozložení složky na 4 x 4</string>
-    <string name="set_icon_width_in_folder">Nastavit šířku ikony ve složce</string>
+    <string name="enable_folder_layout_adjustment">Povolit úpravu rozložení složek</string>
+    <string name="set_icon_columns_in_folder">Nastavte počet sloupců ikon ve složce</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>
@@ -371,8 +371,8 @@
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
-    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
-    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
+    <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
+    <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>

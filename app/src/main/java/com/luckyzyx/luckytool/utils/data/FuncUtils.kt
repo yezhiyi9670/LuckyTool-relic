@@ -29,7 +29,7 @@ import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.factory.modulePrefs
+import com.highcapable.yukihookapi.hook.factory.prefs
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
@@ -190,7 +190,7 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
  * 获取自定义刷新率
  * @return [List]
  */
-fun Context.getFpsMode1(): Array<String> {
+fun getFpsMode1(): Array<String> {
     return arrayOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz")
 }
 
@@ -199,7 +199,7 @@ fun Context.getFpsMode1(): Array<String> {
  * @receiver Context
  * @return Array<String>
  */
-fun Context.getFpsMode2(): Array<String> {
+fun getFpsMode2(): Array<String> {
     val command =
         "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row | tr ',' '\\n' | while read col; do\n" + "      case \$col in\n" + "      'width='*)\n" + "        echo -n \$(echo \${col:6})\n" + "        ;;\n" + "      'height='*)\n" + "        echo -n x\$(echo \${col:7})\n" + "        ;;\n" + "      'fps='*)\n" + "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" + "        ;;\n" + "      esac\n" + "    done\n" + "    echo -e '@'\n" + "  fi\n" + "done"
     return ShellUtils.execCommand(command, true, true).let {
@@ -497,10 +497,12 @@ fun getRandomString(length: Int): String {
                 result = (Math.random() * 25 + 65).roundToLong()
                 sb.append(Char(result.toUShort()).toString())
             }
+
             1 -> {
                 result = (Math.random() * 25 + 97).roundToLong()
                 sb.append(Char(result.toUShort()).toString())
             }
+
             2 -> sb.append(java.lang.String.valueOf(Random.nextInt(10)))
         }
     }
@@ -576,6 +578,7 @@ fun getDocumentPath(context: Context, uri: Uri): String? {
             if ("primary" != type) return "null"
             return Environment.getExternalStorageDirectory().path + "/" + dir
         }
+
         "DownloadsDocument" -> {
             // DownloadsProvider
             val docId = DocumentsContract.getDocumentId(uri)
@@ -591,6 +594,7 @@ fun getDocumentPath(context: Context, uri: Uri): String? {
                 getDataColumn(context, contentUri, null, null)
             }
         }
+
         "MediaDocument" -> {
             // MediaProvider
             val docId = DocumentsContract.getDocumentId(uri)
@@ -881,7 +885,7 @@ fun Context.callFunc(bundle: Bundle?) {
     bundle?.apply {
         //自启功能相关
         if (getBoolean("fps", false)) {
-            val fpsCur = modulePrefs(SettingsPrefs).getInt("current_fps", -1)
+            val fpsCur = prefs(SettingsPrefs).getInt("current_fps", -1)
             if (fpsCur != -1) ShellUtils.execCommand(
                 "service call SurfaceFlinger 1035 i32 $fpsCur", true, true
             ).apply {
@@ -928,9 +932,11 @@ fun Context.callFunc(bundle: Bundle?) {
                     true
                 )
             }
+
             "oplusGames" -> ShellUtils.execCommand(
                 "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
+
             "processManager" -> jumpRunningApp(this@callFunc)
             "chargingTest" -> jumpBatteryInfo(this@callFunc)
         }

@@ -260,7 +260,7 @@
     <string name="remove_alarmclock_widget_redone">移除桌面时钟组件红一</string>
     <string name="remove_alarmclock_widget_redone_pro">移除桌面时钟组件红一·增强版</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">仅当常规版本未生效时可用，否则它将导致不可避免的错误</string>
-    <string name="remove_appicon_dot">移除APP图标圆点</string>
+    <string name="remove_the_dot_after_app_update">移除 APP 更新后圆点</string>
     <string name="launcher_layout_related">桌面布局相关</string>
     <string name="launcher_layout_row_colume">设置桌面布局支持的最大行列数</string>
     <string name="launcher_layout_enable">桌面图标布局总开关</string>
@@ -278,8 +278,8 @@
     <string name="remove_folder_pagination_component">移除文件夹分页组件</string>
     <string name="disable_pagination_component_sliding">禁用分页组件滑动</string>
     <string name="FolderLayoutRelated">文件夹布局相关</string>
-    <string name="set_folder_layout_4x4">设置文件夹布局 4x4</string>
-    <string name="set_icon_width_in_folder">设置文件夹内图标宽度</string>
+    <string name="enable_folder_layout_adjustment">启用文件夹布局调整</string>
+    <string name="set_icon_columns_in_folder">设置文件夹内图标列数</string>
     <!--Application-->
     <string name="Application">应用相关</string>
     <string name="ApplyOtherRestrictions">其他限制</string>

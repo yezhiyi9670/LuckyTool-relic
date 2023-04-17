@@ -705,6 +705,13 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "Xeeling", details(
+                        DCInfo("20230417-101105", CAP, 18.0, "2023041722001431191456925759")
+                    )
+                )
+            )
         }
     }
 

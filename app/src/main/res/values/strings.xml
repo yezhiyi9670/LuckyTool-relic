@@ -278,7 +278,7 @@
     <string name="remove_alarmclock_widget_redone">Remove desktop clock component red one</string>
     <string name="remove_alarmclock_widget_redone_pro">Remove the desktop clock component Red One Enhanced Edition</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Only available when the regular version does not take effect, otherwise it will cause an inevitable error</string>
-    <string name="remove_appicon_dot">Remove API icon dots</string>
+    <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="launcher_layout_related">Desktop Layout Related</string>
     <string name="launcher_layout_row_colume">Sets the maximum number of rows and columns supported by the desktop layout</string>
     <string name="launcher_layout_enable">Desktop icon layout general switch</string>
@@ -299,8 +299,8 @@
     <string name="disable_pagination_component_sliding">Disable pagination component sliding</string>
     
     <string name="FolderLayoutRelated">Folder Layout Related</string>
-    <string name="set_folder_layout_4x4">Set Folder Layout 4 x 4</string>
-    <string name="set_icon_width_in_folder">Set the icon width in the folder</string>
+    <string name="enable_folder_layout_adjustment">Enable folder layout adjustments</string>
+    <string name="set_icon_columns_in_folder">Set the number of icon columns in the folder</string>
     
     <!--Application-->
     <string name="Application">Application related</string>

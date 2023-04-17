@@ -109,9 +109,9 @@ class HomeFragment : Fragment() {
                 }.show()
                 val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
                 val fpsData = if (fpsModeValue == 1) {
-                    context.getFpsMode1()
+                    getFpsMode1()
                 } else {
-                    context.getFpsMode2()
+                    getFpsMode2()
                 }
                 if (fpsData.isEmpty()) {
                     context.toast(context.getString(R.string.system_not_support))
