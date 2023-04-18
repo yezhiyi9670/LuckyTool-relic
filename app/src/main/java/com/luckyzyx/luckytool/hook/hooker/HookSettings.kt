@@ -16,7 +16,9 @@ object HookSettings : YukiBaseHooker() {
         //应用详情页
         loadHooker(HookAppDetails)
         //HookIris5Controller
-        loadHooker(HookIris5Controller)
+        if (prefs(ModulePrefs).getBoolean("video_frame_insertion_support_2K120", false)) {
+            loadHooker(HookIris5Controller)
+        }
         //移除DPI重启恢复
         if (prefs(ModulePrefs).getBoolean("remove_dpi_restart_recovery", false)) {
             loadHooker(RemoveDpiRestartRecovery)

@@ -1,12 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookIris5Controller : YukiBaseHooker() {
     override fun onHook() {
-        val isVideoFrameInsertion =
-            prefs(ModulePrefs).getBoolean("video_frame_insertion_support_2K120", false)
+        val isVideoFrameInsertion = true
         val isVideoDisplayEnhancement = false
         //prefs(ModulePrefs).getBoolean("video_display_enhancement_support_2K120", false)
         val isVideoSuperResolution = false

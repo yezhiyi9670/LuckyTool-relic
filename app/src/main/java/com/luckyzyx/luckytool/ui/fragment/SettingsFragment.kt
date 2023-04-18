@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.ArraySet
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
 import androidx.preference.DropDownPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
@@ -18,8 +17,25 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.data.Base64Code
+import com.luckyzyx.luckytool.utils.data.DonateData
+import com.luckyzyx.luckytool.utils.data.base64Decode
+import com.luckyzyx.luckytool.utils.data.base64Encode
+import com.luckyzyx.luckytool.utils.data.formatDate
+import com.luckyzyx.luckytool.utils.data.isZh
+import com.luckyzyx.luckytool.utils.data.navigate
+import com.luckyzyx.luckytool.utils.data.readFromUri
+import com.luckyzyx.luckytool.utils.data.setComponentDisabled
+import com.luckyzyx.luckytool.utils.data.toast
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.tools.OtherPrefs
+import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
+import com.luckyzyx.luckytool.utils.tools.backupAllPrefs
+import com.luckyzyx.luckytool.utils.tools.clearAllPrefs
+import com.luckyzyx.luckytool.utils.tools.putBoolean
+import com.luckyzyx.luckytool.utils.tools.putInt
+import com.luckyzyx.luckytool.utils.tools.putString
+import com.luckyzyx.luckytool.utils.tools.putStringSet
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.FileNotFoundException
@@ -100,6 +116,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                             }
                             context.putStringSet(prefs, key, set)
                         }
+
                         "String" -> context.putString(prefs, key, value as String)
                         else -> context.toast("Error: $key")
                     }
@@ -145,22 +162,6 @@ class SettingsFragment : ModulePreferenceFragment() {
                         (activity as MainActivity).restart()
                         true
                     }
-                }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    key = "language"
-                    title = getString(R.string.language)
-                    summary = "%s"
-                    entries = resources.getStringArray(R.array.language)
-                    entryValues = resources.getStringArray(R.array.language_value)
-                    setDefaultValue("SYSTEM")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                    isVisible = false
                 }
             )
             addPreference(
@@ -308,12 +309,14 @@ class SettingsFragment : ModulePreferenceFragment() {
                                             Uri.parse("https://www.patreon.com/LuckyTool")
                                         )
                                     )
+
                                     4 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://paypal.me/luckyzyx")
                                         )
                                     )
+
                                     5 -> DonateData(context).showDonateList()
                                 }
                             }
@@ -345,30 +348,35 @@ class SettingsFragment : ModulePreferenceFragment() {
                                             Uri.parse("coolmarket://u/1930284")
                                         )
                                     )
+
                                     1 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://luckyzyx.github.io/LuckyTool/")
                                         )
                                     )
+
                                     2 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
                                         )
                                     )
+
                                     3 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://t.me/LuckyTool")
                                         )
                                     )
+
                                     4 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
                                         )
                                     )
+
                                     5 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
@@ -403,7 +411,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                     setSummary(R.string.open_source_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(R.id.action_nav_setting_to_sourceFragment)
+                        navigate(R.id.action_nav_setting_to_sourceFragment, title)
                         true
                     }
                 }

@@ -44,11 +44,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     viewBinding {
         enabled = true
@@ -120,7 +120,7 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
 
-def getVersionCode() {
+Integer getVersionCode() {
     def propsFile = file('version.properties')
     def properties = new Properties()
     properties.load(new FileInputStream(propsFile))

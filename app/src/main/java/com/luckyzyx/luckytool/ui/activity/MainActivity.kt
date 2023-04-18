@@ -15,6 +15,7 @@ import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -133,12 +134,14 @@ open class MainActivity : AppCompatActivity() {
         ).build()
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressedDispatcher.onBackPressed()
-        }
+        binding.toolbar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
         val bottomNavigationView = binding.navView
         bottomNavigationView.labelVisibilityMode = BottomNavigationView.LABEL_VISIBILITY_SELECTED
         bottomNavigationView.setupWithNavController(navController)
+        bottomNavigationView.setOnItemSelectedListener {
+            NavigationUI.onNavDestinationSelected(it, navController)
+            true
+        }
     }
 
     private fun checkTheme() {

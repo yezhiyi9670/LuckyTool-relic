@@ -2,11 +2,17 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
+import com.luckyzyx.luckytool.hook.scope.battery.HookThermalController
+import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookBattery : YukiBaseHooker() {
     override fun onHook() {
         //屏幕省电,电池健康
         loadHooker(BatteryHiddenEntrance)
+
+        if (prefs(ModulePrefs).getBoolean("remove_high_temperature_limit", false)) {
+            loadHooker(HookThermalController)
+        }
 
         //BatteryHealthFragment
         //max_capacity_data

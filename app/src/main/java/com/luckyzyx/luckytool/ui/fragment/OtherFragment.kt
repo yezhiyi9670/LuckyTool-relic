@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -47,9 +46,7 @@ class OtherFragment : Fragment() {
         binding.quickEntryTitle.text = getString(R.string.quick_entry)
         binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
         binding.quickEntry.setOnClickListener {
-            findNavController().navigate(R.id.action_nav_other_to_systemQuickEntry, Bundle().apply {
-                putCharSequence("title_label", getString(R.string.quick_entry))
-            })
+            navigate(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
         }
 
         binding.remoteAdbDebugTitle.text = getString(R.string.remote_adb_debug_title)

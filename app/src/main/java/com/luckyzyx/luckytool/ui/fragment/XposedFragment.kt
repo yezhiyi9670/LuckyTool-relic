@@ -10,7 +10,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
-import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
@@ -28,18 +27,14 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "android"
-                    context.setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
+                    setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
                     summary = getString(R.string.corepatch)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_android,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_android, title)
                         true
                     }
                 }
@@ -47,7 +42,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "StatusBar"
-                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
+                    setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -57,11 +52,7 @@ class XposedFragment : ModulePreferenceFragment() {
                             R.string.StatusBarClock
                         )
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_statusBar,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_statusBar, title)
                         true
                     }
                 }
@@ -69,18 +60,14 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.launcher"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Desktop)
                     summary = getString(R.string.launcher_layout_row_colume)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_desktop,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_desktop, title)
                         true
                     }
                 }
@@ -88,7 +75,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "LockScreen"
-                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
+                    setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -96,11 +83,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary =
                         getString(R.string.remove_lock_screen_redone) + "," + getString(R.string.remove_lock_screen_bottom_right_camera)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_lockScreen,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_lockScreen, title)
                         true
                     }
                 }
@@ -108,7 +91,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.screenshot"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -116,11 +99,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary =
                         getString(R.string.remove_system_screenshot_delay) + "," + getString(R.string.remove_screenshot_privacy_limit)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_screenshot,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_screenshot, title)
                         true
                     }
                 }
@@ -128,7 +107,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.packageinstaller"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -136,11 +115,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary =
                         getString(R.string.skip_apk_scan) + "," + getString(R.string.unlock_startup_limit)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_application,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_application, title)
                         true
                     }
                 }
@@ -148,18 +123,14 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "Miscellaneous"
-                    context.setPrefsIconRes("com.android.systemui") { resource, show ->
+                    setPrefsIconRes("com.android.systemui") { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Miscellaneous)
                     summary = getString(R.string.Miscellaneous_summary)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_miscellaneous,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_miscellaneous, title)
                         true
                     }
                 }
@@ -167,20 +138,15 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.battery"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
                     summary =
                         getString(R.string.open_battery_health) + "," + getString(R.string.open_screen_power_save)
-                    isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_function_to_battery,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_function_to_battery, title)
                         true
                     }
                 }
@@ -188,19 +154,15 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.android.settings"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = getString(R.string.remove_top_account_display)
-                    isVisible = context.checkPackName(key)
+                    summary =
+                        getString(R.string.remove_top_account_display) + "," + getString(R.string.remove_dpi_restart_recovery)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_function_to_settings,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_function_to_settings, title)
                         true
                     }
                 }
@@ -209,20 +171,15 @@ class XposedFragment : ModulePreferenceFragment() {
                 Preference(context).apply {
                     val isOneplusCamera = context.checkPackName("com.oneplus.camera")
                     key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
                     summary =
                         getString(R.string.remove_watermark_word_limit) + "," + getString(R.string.enable_10_bit_image_support)
-                    isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_camera,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_camera, title)
                         true
                     }
                 }
@@ -230,7 +187,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.games"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -239,11 +196,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.remove_root_check) + "," + getString(R.string.enable_developer_page)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_oplusGames,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_oplusGames, title)
                         true
                     }
                 }
@@ -251,7 +204,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.heytap.themestore"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -259,11 +212,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.unlock_themestore_vip)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_themeStore,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_themeStore, title)
                         true
                     }
                 }
@@ -271,7 +220,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.heytap.cloud"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -279,11 +228,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_network_limit)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_cloudService,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_cloudService, title)
                         true
                     }
                 }
@@ -291,7 +236,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.oplus.ota"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -299,11 +244,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_dm_verity)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_function_to_oplusOta,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_function_to_oplusOta, title)
                         true
                     }
                 }
@@ -311,7 +252,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.east2d.everyimage"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -320,11 +261,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.skip_startup_page) + "," + getString(R.string.vip_download)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_everyimage,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_everyimage, title)
                         true
                     }
                 }
@@ -332,7 +269,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "com.ruet_cse_1503050.ragib.appbackup.pro"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -340,11 +277,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_pro_license)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_xposed_to_alphaBackupPro,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_xposed_to_alphaBackupPro, title)
                         true
                     }
                 }
@@ -352,7 +285,7 @@ class XposedFragment : ModulePreferenceFragment() {
             addPreference(
                 Preference(context).apply {
                     key = "ru.kslabs.ksweb"
-                    context.setPrefsIconRes(key) { resource, show ->
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -360,11 +293,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     summary = getString(R.string.remove_pro_license)
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_nav_function_to_ksWeb,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_nav_function_to_ksWeb, title)
                         true
                     }
                 }

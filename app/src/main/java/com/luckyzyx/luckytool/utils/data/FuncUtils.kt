@@ -24,6 +24,9 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import com.drake.net.utils.scope
 import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -461,22 +464,22 @@ val dialogCentered get() = com.google.android.material.R.style.ThemeOverlay_Mate
  * @param resource Any? 传入对象
  * @param result Function2<Drawable?, Boolean, Unit> 输出
  */
-fun Context.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
-    if (getBoolean(SettingsPrefs, "hide_function_page_icon", false)) {
+fun Preference.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> Unit) {
+    if (context.getBoolean(SettingsPrefs, "hide_function_page_icon", false)) {
         result(null, false)
         return
     }
     val image: Drawable? = when (resource) {
-        is Int -> ResourcesCompat.getDrawable(resources, resource, null)
+        is Int -> ResourcesCompat.getDrawable(context.resources, resource, null)
         is Drawable -> resource
-        is String -> getAppIcon(resource)
+        is String -> context.getAppIcon(resource)
         else -> null
     }
     if (image == null) {
         result(null, true)
         return
     }
-    val drawable = RoundedBitmapDrawableFactory.create(resources, image.toBitmap())
+    val drawable = RoundedBitmapDrawableFactory.create(context.resources, image.toBitmap())
     drawable.cornerRadius = 30F
     result(drawable, true)
 }
@@ -976,4 +979,28 @@ fun showRefreshRate(status: Boolean) {
     ShellUtils.execCommand(
         "service call SurfaceFlinger 1034 i32 ${if (status) 1 else 0}", true
     )
+}
+
+/**
+ * 跳转fragment设置标题
+ * @receiver Fragment
+ * @param action Int Action ID
+ * @param title String 页面标题
+ */
+fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
+    findNavController().navigate(
+        action,
+        Bundle().apply {
+            putCharSequence("title_label", title)
+        })
+}
+
+/**
+ * 跳转fragment传递参数
+ * @receiver Fragment
+ * @param action Int
+ * @param bundle Bundle?
+ */
+fun Fragment.navigate(action: Int, bundle: Bundle?) {
+    findNavController().navigate(action, bundle)
 }

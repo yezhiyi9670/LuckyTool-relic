@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.findNavController
 import androidx.preference.DropDownPreference
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
@@ -24,6 +23,7 @@ import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.getDocumentPath
+import com.luckyzyx.luckytool.utils.data.navigate
 import com.luckyzyx.luckytool.utils.data.restartScopes
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.ShellUtils
@@ -127,11 +127,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarClock"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarClock,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarClock, title)
                         true
                     }
                 }
@@ -144,10 +140,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarNetWorkSpeed"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarNetWorkSpeed, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarNetWorkSpeed, title)
                         true
                     }
                 }
@@ -160,10 +153,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarNotice"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarNotice, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarNotice, title)
                         true
                     }
                 }
@@ -176,10 +166,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarIcon"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarIcon, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarIcon, title)
                         true
                     }
                 }
@@ -192,10 +179,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarControlCenter"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarControlCenter, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarControlCenter, title)
                         true
                     }
                 }
@@ -208,10 +192,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarTiles"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarTiles, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarTiles, title)
                         true
                     }
                 }
@@ -225,10 +206,7 @@ class StatusBar : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarLayout, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarLayout, title)
                         true
                     }
                 }
@@ -241,10 +219,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarBattery"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_statusBar_to_statusBarBattery, Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_statusBar_to_statusBarBattery, title)
                         true
                     }
                 }
@@ -1908,11 +1883,7 @@ class Application : ModulePreferenceFragment() {
                     key = "zoom_window_support_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_application_to_zoomWindowFragment,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_application_to_zoomWindowFragment, title)
                         true
                     }
                 }
@@ -1924,11 +1895,7 @@ class Application : ModulePreferenceFragment() {
                     key = "dark_mode_support_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_application_to_darkModeFragment,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_application_to_darkModeFragment, title)
                         true
                     }
                 }
@@ -1940,11 +1907,7 @@ class Application : ModulePreferenceFragment() {
                     key = "multi_app_custom_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_application_to_multiFragment,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_application_to_multiFragment, title)
                         true
                     }
                 }
@@ -2367,11 +2330,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FloatingWindowDialogRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_miscellaneous_to_dialogRelated,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_miscellaneous_to_dialogRelated, title)
                         true
                     }
                 }
@@ -2384,11 +2343,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FullScreenGestureRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_miscellaneous_to_fullScreenGestureRelated,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
                         true
                     }
 
@@ -2402,11 +2357,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FingerPrintRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        findNavController().navigate(
-                            R.id.action_miscellaneous_to_fingerPrintRelated,
-                            Bundle().apply {
-                                putCharSequence("title_label", title)
-                            })
+                        navigate(R.id.action_miscellaneous_to_fingerPrintRelated, title)
                         true
                     }
                 }
@@ -2619,6 +2570,15 @@ class Battery : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.restore_default_battery_optimization_whitelist)
                     key = "restore_default_battery_optimization_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_high_temperature_limit)
+                    summary = getString(R.string.remove_high_temperature_limit_summary)
+                    key = "remove_high_temperature_limit"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

@@ -166,7 +166,7 @@
     <fragment
             android:id="@+id/sourceFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.SourceFragment"
-            android:label="@string/fragment_source" />
+            android:label="{title_label}" />
     
     <fragment
             android:id="@+id/android"
