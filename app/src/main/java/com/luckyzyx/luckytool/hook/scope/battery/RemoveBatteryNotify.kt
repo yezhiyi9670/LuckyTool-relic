@@ -24,7 +24,7 @@ object RemoveBatteryNotify : YukiBaseHooker() {
 
         // Source NotifyUtil
         searchClass {
-            from("com.oplus.a.g", "c4", "a4", "i5", "g4").absolute()
+            from("com.oplus.a.g", "c4", "a4", "i5", "g4", "z3").absolute()
             constructor {
                 paramCount = 1
             }.count(1)
@@ -36,7 +36,6 @@ object RemoveBatteryNotify : YukiBaseHooker() {
             }.count(1)
             method {
                 param(StringClass, BooleanType)
-                paramCount = 2
             }.count(4)
         }.get()?.hook {
             injectMember {

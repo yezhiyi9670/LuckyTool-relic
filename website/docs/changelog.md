@@ -26,6 +26,12 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.4.2_beta
+
+- [更新] 捐赠名单
+- [适配] 移除电池通知与隐藏入口
+- [修复] 强制刷新率空数据崩溃
+
 ### v4.4.1
 
 - [更新] 捐赠名单

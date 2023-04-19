@@ -71,7 +71,12 @@ class DonateData(val context: Context) {
                 DInfo(
                     "邹王", details(
                         DCInfo("20220916-233422", CQQ, 15.0, "101000026901502209161435139989"),
-                        DCInfo("20221110-103510", CQQHB, 51.66, "1000032001221110360010904620380000")
+                        DCInfo(
+                            "20221110-103510",
+                            CQQHB,
+                            51.66,
+                            "1000032001221110360010904620380000"
+                        )
                     )
                 )
             )
@@ -197,7 +202,8 @@ class DonateData(val context: Context) {
             add(
                 DInfo(
                     "小李.", details(
-                        DCInfo("20221103", CAP, 15.0, "2022110322001471241434100859"))
+                        DCInfo("20221103", CAP, 15.0, "2022110322001471241434100859")
+                    )
                 )
             )
             add(
@@ -709,6 +715,13 @@ class DonateData(val context: Context) {
                 DInfo(
                     "Xeeling", details(
                         DCInfo("20230417-101105", CAP, 18.0, "2023041722001431191456925759")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "花沫", details(
+                        DCInfo("20230419-130018", CQQ, 10.0, "101000026901302304191391141788")
                     )
                 )
             )

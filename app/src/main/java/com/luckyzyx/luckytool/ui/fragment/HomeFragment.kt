@@ -107,6 +107,7 @@ class HomeFragment : Fragment() {
                 val fpsDialog = MaterialAlertDialogBuilder(context).apply {
                     setView(R.layout.layout_fps_dialog)
                 }.show()
+                if (!fpsDialog.isShowing) return@setOnClickListener
                 val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
                 val fpsData = if (fpsModeValue == 1) {
                     getFpsMode1()
@@ -126,8 +127,8 @@ class HomeFragment : Fragment() {
                         isEnabled = currentFps != -1
                         setOnCheckedChangeListener { _, isChecked ->
                             context.putBoolean(SettingsPrefs, "fps_autostart", isChecked)
-                            requireActivity().dataChannel(packageName = "com.android.systemui")
-                                .put(key = "fps_autostart", value = isChecked)
+                            requireActivity().dataChannel("com.android.systemui")
+                                .put("fps_autostart", isChecked)
                         }
                     }
                 val fpsList = fpsDialog.findViewById<ListView>(R.id.fps_list)?.apply {
@@ -140,8 +141,8 @@ class HomeFragment : Fragment() {
                     onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                         fpsSelfStart?.isEnabled = true
                         context.putInt(SettingsPrefs, "current_fps", position)
-                        if (fpsModeValue == 1) requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "current_fps", value = position)
+                        if (fpsModeValue == 1) requireActivity().dataChannel("com.android.systemui")
+                            .put("current_fps", position)
                         if (fpsModeValue == 2) ShellUtils.execCommand(
                             "service call SurfaceFlinger 1035 i32 $position", true
                         )
@@ -156,15 +157,12 @@ class HomeFragment : Fragment() {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
                         context.putInt(SettingsPrefs, "fps_mode", 1)
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "fps_mode", value = 1)
+                        requireActivity().dataChannel("com.android.systemui").put("fps_mode", 1)
                         context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "current_fps", value = -1)
-                        ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1035 i32 -1", true
-                        )
-                        fpsDialog.dismiss()
+                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
+                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
+                        fpsDialog?.cancel()
+                        fpsDialog?.dismiss()
                     }
                 }
                 fpsDialog.findViewById<RadioButton>(R.id.fps_mode_2)?.apply {
@@ -174,15 +172,12 @@ class HomeFragment : Fragment() {
                         fpsSelfStart?.isChecked = false
                         fpsSelfStart?.isEnabled = false
                         context.putInt(SettingsPrefs, "fps_mode", 2)
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "fps_mode", value = 2)
+                        requireActivity().dataChannel("com.android.systemui").put("fps_mode", 2)
                         context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "current_fps", value = -1)
-                        ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1035 i32 -1", true
-                        )
-                        fpsDialog.dismiss()
+                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
+                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
+                        fpsDialog?.cancel()
+                        fpsDialog?.dismiss()
                     }
                 }
                 fpsDialog.findViewById<MaterialSwitch>(R.id.fps_show)?.apply {
@@ -205,11 +200,8 @@ class HomeFragment : Fragment() {
                             context.getInt(SettingsPrefs, "current_fps", -1), false
                         )
                         context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel(packageName = "com.android.systemui")
-                            .put(key = "current_fps", value = -1)
-                        ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1035 i32 -1", true
-                        )
+                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
+                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
                     }
                 }
                 fpsDialog.findViewById<MaterialTextView>(R.id.fps_tips)?.apply {

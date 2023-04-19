@@ -4,8 +4,6 @@ import androidx.collection.ArrayMap
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.log.loggerD
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
 
 object HookThermalController : YukiBaseHooker() {
     override fun onHook() {
@@ -27,12 +25,12 @@ object HookThermalController : YukiBaseHooker() {
 //                        list["brightness"] = field { name = "brightness" }.int()
                         list["charge"] = field { name = "charge" }.int()
                         field { name = "charge" }.set(3)
-                        if (SDK >= A13) {
-                            list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()
-//                            field { name = "speedChargeAdd" }.set(1)
-                        }
+//                        list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()
+//                        field { name = "speedChargeAdd" }.set(1)
 
-//                        list["modem"] = field { name = "modem" }.int()
+                        list["modem"] = field { name = "modem" }.int()
+                        field { name = "modem" }.set(0)
+
                         list["fps"] = field { name = "fps" }.int()
                         field { name = "fps" }.set(0)
                         list["refreshRate"] = field { name = "refreshRate" }.int()
@@ -83,10 +81,8 @@ object HookThermalController : YukiBaseHooker() {
 
                         list["charge"] = field { name = "charge" }.int()
                         field { name = "charge" }.set(3)
-                        if (SDK >= A13) {
-                            list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()
-//                            field { name = "speedChargeAdd" }.set(1)
-                        }
+//                        list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()
+//                        field { name = "speedChargeAdd" }.set(1)
 
                         list["fps"] = field { name = "fps" }.int()
                         field { name = "fps" }.set(0)
