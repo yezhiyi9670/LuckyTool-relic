@@ -46,6 +46,24 @@ star: false
 - [添加] 文件夹内布局列数调节
 - [修复] 模块页面底部选中状态异常
 - [添加] 移除电池高温限制
+- [Update] Donation list
+- [Add] game space shortcut jump method
+- [Fix] The refresh rate of the system interface mode is abnormal
+- [Add] Video frame insertion support 2K120
+- [Fix] The clock alignment of the status bar is abnormal
+- [Fix] ColorOS13.1 force display media player
+- [Fix] Dark mode support list
+- [Add] Remove DPI restart recovery
+- [Fix] ColorOS12 camera exception error
+- [Fix] The game assistant removed the benefit page v8.7.1
+- [Update] Update HookAPI framework
+- [Fix] Cloud service removes mobile network restriction v5.4.37
+- [Fix] Mobile Manager removes found virus risk notification v12.10.1
+- [Fix] An error was reported when both sides of the status bar tile were aligned abnormally
+- [Optimize] Some tiles support hot loading
+- [Add] Adjust the number of layout columns in the folder
+- [Fix] The selected state at the bottom of the module page is abnormal
+- [Add] Remove battery high temperature limit
 
 ### v4.4.0
 
