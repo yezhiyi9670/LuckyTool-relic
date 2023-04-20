@@ -1474,6 +1474,7 @@ class Desktop : ModulePreferenceFragment() {
                     key = "remove_app_shortcut_badge"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                 }
             )
             addPreference(
@@ -1482,6 +1483,7 @@ class Desktop : ModulePreferenceFragment() {
                     key = "remove_app_clone_badge"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A13
                 }
             )
             addPreference(

@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.launcher
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.data.A13
+import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookAppBadge : YukiBaseHooker() {
@@ -8,6 +10,7 @@ object HookAppBadge : YukiBaseHooker() {
         val isShortcut = prefs(ModulePrefs).getBoolean("remove_app_shortcut_badge", false)
         val isClone = prefs(ModulePrefs).getBoolean("remove_app_clone_badge", false)
         if (!(isShortcut || isClone)) return
+        if (SDK < A13) return
         //Source BitmapInfo
         findClass("com.android.launcher3.icons.BitmapInfo").hook {
             injectMember {

@@ -19,11 +19,13 @@ import java.text.DecimalFormat
 @Suppress("PrivatePropertyName")
 @Obfuscate
 class DonateData(val context: Context) {
+    private val CNU = "NULL"
     private val CQQ = "QQ"
     private val CQQHB = "QQHB"
     private val CWC = "WeChat"
     private val CAP = "AliPay"
-    private fun getData(): ArrayList<DInfo> {
+    private val CPP = "PayPal"
+    private fun getDonateData(): ArrayList<DInfo> {
         return ArrayList<DInfo>().apply {
             add(
                 DInfo(
@@ -713,6 +715,13 @@ class DonateData(val context: Context) {
             )
             add(
                 DInfo(
+                    "Raf", details(
+                        DCInfo("20230412", CPP, 11.0, "5DX56703VP7681735", "$")
+                    )
+                )
+            )
+            add(
+                DInfo(
                     "Xeeling", details(
                         DCInfo("20230417-101105", CAP, 18.0, "2023041722001431191456925759")
                     )
@@ -734,18 +743,36 @@ class DonateData(val context: Context) {
 
     fun showDonateList() {
         MaterialAlertDialogBuilder(context, dialogCentered).apply {
-            val format = if (context.getBoolean(SettingsPrefs, "hidden_function", false)) {
+            val data = ArrayList<DInfo>(getDonateData())
+            val develop = context.getBoolean(SettingsPrefs, "hidden_function", false)
+            if (develop) {
                 var count = 0.0
-                getData().forEach { its ->
-                    its.details.forEach { count += it.money }
+                var chsCount = 0.0
+                var otherCount = 0.0
+                data.forEach { its ->
+                    its.details.forEach {
+                        count++
+                        when (it.unit) {
+                            "RMB" -> chsCount += it.money
+                            "$" -> otherCount += it.money
+                        }
+                    }
                 }
-                "(${DecimalFormat("0.00").format(count)})"
-            } else ""
-            setTitle(context.getString(R.string.donation_list) + format)
+                data.add(
+                    0,
+                    DInfo(
+                        "${DecimalFormat("0.00").format(chsCount)}RMB\n${
+                            DecimalFormat("0.00").format(otherCount)
+                        }$",
+                        details(DCInfo("", CNU, count, "", ""))
+                    )
+                )
+            }
+            setTitle(context.getString(R.string.donation_list))
             setView(
                 RecyclerView(context).apply {
                     setPadding(0, 10.dp, 0, 10.dp)
-                    adapter = DonateListAdapter(context, getData())
+                    adapter = DonateListAdapter(context, data)
                     layoutManager = LinearLayoutManager(context)
                 }
             )
@@ -776,11 +803,13 @@ data class DCInfo(
     val time: String,
     val channel: String,
     val money: Double,
-    val order: String
+    val order: String,
+    val unit: String = "RMB"
 ) : Serializable
 
 class DonateListAdapter(val context: Context, val data: ArrayList<DInfo>) :
     RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             LayoutDonateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -790,9 +819,30 @@ class DonateListAdapter(val context: Context, val data: ArrayList<DInfo>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = data[position].name
         data[position].details.apply {
+            var isChs = false
+            var isOther = false
             var count = 0.0
-            forEach { count += it.money }
-            holder.money.text = count.toString()
+            var chsCount = 0.0
+            var otherCount = 0.0
+            forEach {
+                when (it.unit) {
+                    "RMB" -> {
+                        isChs = true
+                        chsCount += it.money
+                    }
+
+                    "$" -> {
+                        isOther = true
+                        otherCount += it.money
+                    }
+
+                    else -> count += it.money
+                }
+            }
+            val newline = if (isChs && isOther) "\n" else ""
+            val final =
+                if (isChs) "$chsCount RMB" else "" + newline + if (isOther) "$otherCount $" else "" + if (count != 0.0) "$count" else ""
+            holder.money.text = final
         }
     }
 

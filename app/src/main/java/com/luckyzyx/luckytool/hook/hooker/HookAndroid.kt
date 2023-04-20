@@ -1,7 +1,21 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.android.*
+import com.luckyzyx.luckytool.hook.scope.android.ADBInstallConfirm
+import com.luckyzyx.luckytool.hook.scope.android.AllowUntrustedTouch
+import com.luckyzyx.luckytool.hook.scope.android.AppSplashScreen
+import com.luckyzyx.luckytool.hook.scope.android.BatteryOptimizationWhitelist
+import com.luckyzyx.luckytool.hook.scope.android.DarkModeService
+import com.luckyzyx.luckytool.hook.scope.android.DisableFlagSecure
+import com.luckyzyx.luckytool.hook.scope.android.HookNotificationManager
+import com.luckyzyx.luckytool.hook.scope.android.HookWindowManagerService
+import com.luckyzyx.luckytool.hook.scope.android.MediaVolumeLevel
+import com.luckyzyx.luckytool.hook.scope.android.MultiApp
+import com.luckyzyx.luckytool.hook.scope.android.RemovePasswordTimeoutVerification
+import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
+import com.luckyzyx.luckytool.hook.scope.android.RemoveSystemScreenshotDelay
+import com.luckyzyx.luckytool.hook.scope.android.RemoveVPNActiveNotification
+import com.luckyzyx.luckytool.hook.scope.android.ZoomWindow
 
 
 object HookAndroid : YukiBaseHooker() {
