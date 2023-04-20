@@ -260,7 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Xóa số một màu đỏ của đồng hồ máy tính để bàn</string>
     <string name="remove_alarmclock_widget_redone_pro">Xóa số một đỏ nâng cao của đồng hồ trên màn hình chính</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Chỉ khả dụng khi phiên bản thông thường không có hiệu lực, nếu không nó sẽ gây ra lỗi không thể tránh khỏi</string>
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Bố cục màn hình chính</string>
     <string name="launcher_layout_row_colume">Đặt số lượng hàng và cột tối đa được hỗ trợ bởi bố cục màn hình</string>
     <string name="launcher_layout_enable">Công tắc chung bố trí biểu tượng màn hình chính</string>

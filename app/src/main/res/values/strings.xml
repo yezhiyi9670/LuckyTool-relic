@@ -278,7 +278,12 @@
     <string name="remove_alarmclock_widget_redone">Remove desktop clock component red one</string>
     <string name="remove_alarmclock_widget_redone_pro">Remove the desktop clock component Red One Enhanced Edition</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Only available when the regular version does not take effect, otherwise it will cause an inevitable error</string>
+    
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
+    
     <string name="launcher_layout_related">Desktop Layout Related</string>
     <string name="launcher_layout_row_colume">Sets the maximum number of rows and columns supported by the desktop layout</string>
     <string name="launcher_layout_enable">Desktop icon layout general switch</string>

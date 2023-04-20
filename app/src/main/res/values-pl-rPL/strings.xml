@@ -260,7 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Usuń czerwony kolor z cyfry „1”</string>
     <string name="remove_alarmclock_widget_redone_pro">Wymuś usunięcie czerwonego koloru z cyfry „1”</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostępne, gdy zwykły przełącznik nie jest skuteczny</string>
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Usuń oznaczenie (kropkę) uaktualnienia aplikacji</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
     <string name="launcher_layout_row_colume">Umożliwia zwiększenie liczby wierszy i kolumn układu pulpitu</string>
     <string name="launcher_layout_enable">Główny przełącznik</string>

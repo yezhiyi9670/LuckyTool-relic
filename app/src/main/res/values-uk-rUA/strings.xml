@@ -260,7 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно лише тоді, коли звичайна версія не допомагає, інакше це викликає неминучу помилку</string>
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Сітка робочого столу</string>
     <string name="launcher_layout_row_colume">Встановіть кількість рядків сітки робочого столу</string>
     <string name="launcher_layout_enable">Увімкнути/вимкнути сітку іконок на робочому столі</string>

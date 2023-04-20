@@ -260,7 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Odstranit červenou jedničku na hodinách na ploše</string>
     <string name="remove_alarmclock_widget_redone_pro">Odstranit červenou jedničku na hodinách na ploše - vylepšená edice</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Odstranit tečku po aktualizaci aplikace</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
     <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>
     <string name="launcher_layout_enable">Povolit/zakázat mřížku ikon na ploše</string>

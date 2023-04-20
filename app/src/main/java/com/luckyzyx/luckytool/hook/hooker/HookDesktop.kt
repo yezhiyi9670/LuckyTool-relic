@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.alarmclock.RemoveAlarmClockWidgetRedOne
 import com.luckyzyx.luckytool.hook.scope.launcher.FolderLayoutRowColume
+import com.luckyzyx.luckytool.hook.scope.launcher.HookAppBadge
 import com.luckyzyx.luckytool.hook.scope.launcher.LauncherLayoutRowColume
 import com.luckyzyx.luckytool.hook.scope.launcher.LongPressAppIconOpenAppDetails
 import com.luckyzyx.luckytool.hook.scope.launcher.PageIndicator
@@ -25,6 +26,8 @@ object HookDesktop : YukiBaseHooker() {
             loadHooker(PageIndicator)
             //堆叠布局
             loadHooker(StackedTaskLayout)
+            //应用徽章
+            loadHooker(HookAppBadge)
             //移除APP更新圆点
             if (prefs(ModulePrefs).getBoolean("remove_the_dot_after_app_update", false)) {
                 loadHooker(RemoveAppUpdateDot)
@@ -52,7 +55,7 @@ object HookDesktop : YukiBaseHooker() {
             ) {
                 loadHooker(RemoveBottomAppIconOfRecentTaskList)
             }
-            
+
             //com.android.launcher3.popup.OplusBaseSystemShortcut
             //OplusAppInfo etc. -> Click
 

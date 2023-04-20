@@ -18,7 +18,8 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                     name = "loadApkInfo"
                 }
                 afterHook {
-                    val context = field { name = "mContext" }.get(instance).cast<Context>()!!
+                    val context = field { name = "mContext" }.get(instance).cast<Context>()
+                        ?: return@afterHook
                     val mAppVersion =
                         field { name = "mAppVersion" }.get(instance).cast<TextView>()?.apply {
                             layoutParams = LinearLayout.LayoutParams(layoutParams).apply {
@@ -38,7 +39,9 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                             context.packageName
                         )
                     )
-                    val apkInfo = args().first().any()!!
+                    val apkInfo = args().first().any() ?: return@afterHook
+                    val sourceInfo = args().last().any() ?: return@afterHook
+                    val actionType = sourceInfo.current().field { name = "actionType" }.int()
                     val packName = apkInfo.current().field { name = "packageName" }.string()
                     val versionName = apkInfo.current().field { name = "versionName" }.string()
                     val versionCode = apkInfo.current().field { name = "versionCode" }.int()
@@ -52,9 +55,11 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                     }.get().invoke<Int>(context, packName)
                     val isNewInstall = oplusPackageUtil.method {
                         name = "isPackageInstalled"
-                    }.get().invoke<Boolean>(context, packName)!!.not()
+                    }.get().invoke<Boolean>(context, packName) == false
+//                    val isInstall = actionType == 0
+                    val isUninstall = actionType == 1
                     mAppVersion.text =
-                        if (isNewInstall) "$packName\n$versionStr$versionName($versionCode)"
+                        if (isNewInstall || isUninstall) "$packName\n$versionStr$versionName($versionCode)"
                         else "$packName\n$versionStr$curVersionName($curVersionCode)\n↓↓↓\n$versionStr$versionName($versionCode)"
                 }
             }

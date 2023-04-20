@@ -260,7 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно только тогда, когда обычная версия не помогает, иначе это вызовет неизбежную ошибку</string>
+    <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Удалить точку после обновления приложения</string>
+    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Сетка рабочего стола</string>
     <string name="launcher_layout_row_colume">Установите количество строк сетки рабочего стола</string>
     <string name="launcher_layout_enable">Включить/отключить сетку иконок на рабочем столе</string>

@@ -1454,9 +1454,32 @@ class Desktop : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.AppBadgeRelated)
+                    key = "AppBadgeRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_the_dot_after_app_update)
                     key = "remove_the_dot_after_app_update"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_shortcut_badge)
+                    key = "remove_app_shortcut_badge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_clone_badge)
+                    key = "remove_app_clone_badge"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
