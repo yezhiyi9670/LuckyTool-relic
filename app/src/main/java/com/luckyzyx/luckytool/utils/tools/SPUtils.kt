@@ -115,12 +115,22 @@ fun Context.getBoolean(PrefsName: String?, key: String?, defaultValue: Boolean):
         return prefs.getBoolean(key, defaultValue)
     }
 
-
+/**
+ * 删除配置键值数据
+ * @receiver Context
+ * @param PrefsName String?
+ * @return Boolean
+ */
 fun Context.clearPrefs(PrefsName: String?): Boolean = safeOfFalse {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_WORLD_READABLE)
     return prefs.edit().clear().commit()
 }
 
+/**
+ * 删除配置键值数据
+ * @receiver Context
+ * @param PrefList Array<out String?>
+ */
 fun Context.clearAllPrefs(vararg PrefList: String?) = runInSafe {
     PrefList.forEach {
         val prefs = getSharedPreferences(it, Context.MODE_WORLD_READABLE)
@@ -128,11 +138,23 @@ fun Context.clearAllPrefs(vararg PrefList: String?) = runInSafe {
     }
 }
 
+/**
+ * 获取配置键值数据
+ * @receiver Context
+ * @param PrefsName String?
+ * @return MutableMap<String, *>?
+ */
 fun Context.backupPrefs(PrefsName: String?): MutableMap<String, *>? = safeOfNull {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_WORLD_READABLE)
     return@safeOfNull prefs.all
 }
 
+/**
+ * 获取配置键值数据
+ * @receiver Context
+ * @param PrefList Array<out String?>
+ * @return ArrayMap<String, MutableMap<String, *>>?
+ */
 fun Context.backupAllPrefs(vararg PrefList: String?): ArrayMap<String, MutableMap<String, *>>? =
     safeOfNull {
         return@safeOfNull ArrayMap<String, MutableMap<String, *>>().apply {

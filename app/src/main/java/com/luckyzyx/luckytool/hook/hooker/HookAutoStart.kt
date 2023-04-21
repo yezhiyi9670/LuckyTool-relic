@@ -24,6 +24,7 @@ object HookAutoStart : YukiBaseHooker() {
         dataChannel.wait<Int>("fps_mode") { fpsMode = it }
         var currentFps = prefs(SettingsPrefs).getInt("current_fps", -1)
         dataChannel.wait<Int>("current_fps") { currentFps = it }
+
         var touchSamplingRate = prefs(SettingsPrefs).getBoolean("touch_sampling_rate", false)
         dataChannel.wait<Boolean>("touch_sampling_rate") { touchSamplingRate = it }
         var highBrightness = prefs(SettingsPrefs).getBoolean("high_brightness_mode", false)
@@ -42,7 +43,9 @@ object HookAutoStart : YukiBaseHooker() {
                         setRefresh(context, fpsList[currentFps], fpsList[currentFps])
                     }
                     val bundle = Bundle().apply {
-                        putBoolean("fps", fpsAutoStart && fpsMode == 2)
+                        putBoolean("fps_auto", fpsAutoStart)
+                        putInt("fps_mode", fpsMode)
+                        putInt("fps_cur", currentFps)
                         putBoolean("touchSamplingRate", touchSamplingRate)
                         putBoolean("highBrightness", highBrightness)
                         putBoolean("globalDC", globalDC)
@@ -57,6 +60,7 @@ object HookAutoStart : YukiBaseHooker() {
                                 }
                             }
                         }
+
                         "1" -> context.callFunc(bundle)
                     }
                 }

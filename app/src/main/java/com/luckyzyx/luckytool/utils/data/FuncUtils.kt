@@ -32,7 +32,6 @@ import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.factory.prefs
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
@@ -887,9 +886,10 @@ fun Context.restartAllScope(scopes: Array<String>) {
 fun Context.callFunc(bundle: Bundle?) {
     bundle?.apply {
         //自启功能相关
-        if (getBoolean("fps", false)) {
-            val fpsCur = prefs(SettingsPrefs).getInt("current_fps", -1)
-            if (fpsCur != -1) ShellUtils.execCommand(
+        if (getBoolean("fps_auto", false)) {
+            val fpsMode = getInt("fps_mode", 1)
+            val fpsCur = getInt("current_fps", -1)
+            if (fpsMode == 2 && fpsCur != -1) ShellUtils.execCommand(
                 "service call SurfaceFlinger 1035 i32 $fpsCur", true, true
             ).apply {
                 if (result == 1) toast("force fps error!")
