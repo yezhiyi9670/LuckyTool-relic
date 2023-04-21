@@ -313,6 +313,8 @@
     <string name="disable_apk_signature_verification_summary">可以安装不同签名的APP, 搭配核心破解使用</string>
     <string name="remove_install_ads">移除安装完成广告</string>
     <string name="remove_install_ads_summary">切记关闭设置-安全应用推荐</string>
+    <string name="auto_click_install_button">自动点击安装按钮</string>
+    <string name="auto_click_uninstall_button">自动点击卸载按钮</string>
     <string name="replase_aosp_installer">替换AOSP安装器</string>
     <string name="replase_aosp_installer_summary">替换为AOSP原生安装器</string>
     <string name="show_packagename_and_versioncode">显示包名和版本号</string>

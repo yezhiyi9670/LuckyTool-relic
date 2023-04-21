@@ -1,27 +1,20 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
-import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import java.util.*
 
-@Suppress("LocalVariableName")
-object SkipApkScan : YukiBaseHooker() {
+class SkipApkScan(private val commit: String) : YukiBaseHooker() {
+
+    @Suppress("LocalVariableName")
     override fun onHook() {
-        val appSet = prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-            Arrays.sort(this)
-            forEach {
-                this[this.indexOf(it)] = it.substring(2)
-            }
-        }
         val OPIA = "com.android.packageinstaller.oplus.OPlusPackageInstallerActivity"
         val ADRU = "com.android.packageinstaller.oplus.utils.AppDetailRedirectionUtils"
         val isNew = ADRU.toClass().hasMethod { name = "shouldStartAppDetail" }
         val member: Array<String> =
-            when (appSet[2]) {
+            when (commit) {
                 "7bc7db7", "e1a2c58" -> arrayOf(OPIA, "L", "C", "K")
                 "75fe984", "532ffef" -> arrayOf(OPIA, "L", "D", "i")
                 "38477f0" -> arrayOf(OPIA, "M", "D", "k")

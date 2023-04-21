@@ -313,6 +313,8 @@
     <string name="disable_apk_signature_verification_summary">様々な署名付きのアプリをインストール可能にします。コアパッチを使用してください</string>
     <string name="remove_install_ads">インストール完了後の広告を削除</string>
     <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨 の順で開けます</string>
+    <string name="auto_click_install_button">インストールボタンを自動的に押す</string>
+    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
     <string name="replase_aosp_installer">AOSPインストーラーに置き換え</string>
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
     <string name="show_packagename_and_versioncode">パッケージ名とバージョンコードを表示</string>

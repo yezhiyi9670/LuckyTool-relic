@@ -313,6 +313,8 @@
     <string name="disable_apk_signature_verification_summary">Можуть бути встановлені додатки з різними підписами, що загрожує безпеці та повинно використовуватися з обережністю</string>
     <string name="remove_install_ads">Видалити оголошення про завершення встановлення</string>
     <string name="remove_install_ads_summary">Рекомендації додатків безпеки/реклама магазину ПЗ</string>
+    <string name="auto_click_install_button">Automatically click the install button</string>
+    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
     <string name="replase_aosp_installer">Замінити інсталятор AOSP</string>
     <string name="replase_aosp_installer_summary">Замінити на рідний інсталятор Google</string>
     <string name="show_packagename_and_versioncode">Показати ім\'я пакета та код версії</string>

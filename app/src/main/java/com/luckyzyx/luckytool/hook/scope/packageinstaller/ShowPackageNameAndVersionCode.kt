@@ -53,14 +53,17 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                     val curVersionCode = oplusPackageUtil.method {
                         name = "getTargetAppVersionCode"
                     }.get().invoke<Int>(context, packName)
-                    val isNewInstall = oplusPackageUtil.method {
+                    val isInstalled = oplusPackageUtil.method {
                         name = "isPackageInstalled"
-                    }.get().invoke<Boolean>(context, packName) == false
-//                    val isInstall = actionType == 0
+                    }.get().invoke<Boolean>(context, packName)
+                    val isInstall = actionType == 0
                     val isUninstall = actionType == 1
-                    mAppVersion.text =
-                        if (isNewInstall || isUninstall) "$packName\n$versionStr$versionName($versionCode)"
-                        else "$packName\n$versionStr$curVersionName($curVersionCode)\n↓↓↓\n$versionStr$versionName($versionCode)"
+                    mAppVersion.text = if (isInstall) {
+                        if (isInstalled == true) "$packName\n$versionStr$curVersionName($curVersionCode)\n↓↓↓\n$versionStr$versionName($versionCode)"
+                        else "$packName\n$versionStr$versionName($versionCode)"
+                    } else if (isUninstall) {
+                        "$packName\n$versionStr$versionName($versionCode)"
+                    } else mAppVersion.text
                 }
             }
         }

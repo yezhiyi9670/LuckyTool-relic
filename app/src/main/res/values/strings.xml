@@ -338,6 +338,8 @@
     <string name="disable_apk_signature_verification_summary">Can install different signed APPs, use the core breakup</string>
     <string name="remove_install_ads">Remove installation completed ads</string>
     <string name="remove_install_ads_summary">Close Settings - Security App Recommendations</string>
+    <string name="auto_click_install_button">Automatically click the install button</string>
+    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
     <string name="replase_aosp_installer">Replace AOSP Installer</string>
     <string name="replase_aosp_installer_summary">Replace with Google Native Installer</string>
     <string name="show_packagename_and_versioncode">Show package name and version code</string>

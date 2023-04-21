@@ -5,7 +5,7 @@ import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookFeatureOption : YukiBaseHooker() {
     override fun onHook() {
-        val isAOSP = prefs(ModulePrefs).getBoolean("replase_aosp_installer", false)
+        val isAOSP = false//(ModulePrefs).getBoolean("replase_aosp_installer", false)
         val isAds = prefs(ModulePrefs).getBoolean("remove_install_ads", false)
         //Source FeatureOption
         findClass("com.android.packageinstaller.oplus.common.FeatureOption").hook {

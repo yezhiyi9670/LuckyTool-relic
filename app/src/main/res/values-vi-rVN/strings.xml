@@ -313,6 +313,8 @@
     <string name="disable_apk_signature_verification_summary">Cho phép cài đặt các ứng dụng với chữ kí khác nhau đè lên nhau</string>
     <string name="remove_install_ads">Xóa quảng cáo khi cài đặt khi hoàn tất</string>
     <string name="remove_install_ads_summary">Đóng Cài đặt - Đề xuất ứng dụng bảo mật</string>
+    <string name="auto_click_install_button">Automatically click the install button</string>
+    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
     <string name="replase_aosp_installer">Thay thế trình cài đặt AOSP</string>
     <string name="replase_aosp_installer_summary">Thay thế bằng trình cài đặt Google</string>
     <string name="show_packagename_and_versioncode">Show package name and version code</string>

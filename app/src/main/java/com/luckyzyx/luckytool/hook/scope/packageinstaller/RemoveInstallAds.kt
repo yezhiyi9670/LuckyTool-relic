@@ -1,24 +1,13 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
-import android.annotation.SuppressLint
 import android.view.View
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 
 object RemoveInstallAds : YukiBaseHooker() {
+    private var ins: Any? = null
     override fun onHook() {
-        var ins: Any? = null
-
-        @SuppressLint("DiscouragedApi")
-        fun removeViews() {
-            ins?.current()?.field {
-                name = "mSuggestLayoutAScrollView"
-            }?.cast<View>()?.isVisible = false
-            ins?.current()?.field {
-                name = "mSuggestLayoutB"
-            }?.cast<View>()?.isVisible = false
-        }
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.InstallAppProgress").hook {
             injectMember {
@@ -40,5 +29,14 @@ object RemoveInstallAds : YukiBaseHooker() {
                 afterHook { removeViews() }
             }
         }
+    }
+
+    private fun removeViews() {
+        ins?.current()?.field {
+            name = "mSuggestLayoutAScrollView"
+        }?.cast<View>()?.isVisible = false
+        ins?.current()?.field {
+            name = "mSuggestLayoutB"
+        }?.cast<View>()?.isVisible = false
     }
 }

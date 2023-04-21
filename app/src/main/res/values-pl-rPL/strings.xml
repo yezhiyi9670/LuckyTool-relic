@@ -313,6 +313,8 @@
     <string name="disable_apk_signature_verification_summary">Umożliwia instalację aplikacji z różnymi podpisami</string>
     <string name="remove_install_ads">Usuń reklamy po instalacji aplikacji</string>
     <string name="remove_install_ads_summary">Usuwa reklamy pojawiające się po zainstalowaniu aplikacji</string>
+    <string name="auto_click_install_button">Automatically click the install button</string>
+    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
     <string name="replase_aosp_installer">Zastąp menedżer pakietów</string>
     <string name="replase_aosp_installer_summary">Podmienia instalator aplikacji na ten z AOSP</string>
     <string name="show_packagename_and_versioncode">Pokaż nazwę pakietu i kod wersji</string>
