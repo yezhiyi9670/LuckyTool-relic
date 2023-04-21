@@ -72,14 +72,13 @@ object HookAndroid : YukiBaseHooker() {
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp
         //201850912 0x0c080020 oplus_ic_corp_badge_no_background_multiapp
-//        findClass("android.app.ApplicationPackageManager").hook {
+//        findClass("android.util.IconDrawableFactory").hook {
 //            injectMember {
 //                method {
-//                    name = "getUserBadgedIcon"
+//                    name = "getBadgedIcon"
+//                    paramCount = 3
 //                }
-//                replaceAny {
-//                    args().first().cast<Drawable>()
-//                }
+//                intercept()
 //            }
 //        }
     }

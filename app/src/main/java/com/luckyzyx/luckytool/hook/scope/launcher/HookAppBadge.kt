@@ -22,11 +22,11 @@ object HookAppBadge : YukiBaseHooker() {
                     val drawableCreationFlags = args().last().int()
                     val badgeInfo = field { name = "badgeInfo" }.get(instance).any()
                     val flag = field { name = "flags" }.get(instance).int()
-                    if ((drawableCreationFlags and 2 == 0)) {
+                    if ((drawableCreationFlags and 2) == 0) {
                         if (badgeInfo != null) {
-                            if (drawableCreationFlags == 1) if (isShortcut) resultNull()
+                            if (isShortcut) resultNull()
                         } else {
-                            if (flag and 4 != 0) if (isClone) resultNull()
+                            if ((flag and 4) != 0) if (isClone) resultNull()
                         }
                     }
                 }

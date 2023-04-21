@@ -100,8 +100,7 @@ object MainHook : IYukiHookXposedInit {
             "com.oplus.safecenter",
             "com.coloros.safecenter",
             "com.android.launcher",
-            "com.oppo.launcher",
-            "com.android.settings"
+            "com.oppo.launcher"
         ) {
             loadHooker(HookApplication)
         }

@@ -6,21 +6,12 @@ import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
 import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocksV11
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimit
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimitV11
-import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.utils.data.A13
 import com.luckyzyx.luckytool.utils.data.SDK
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 
 object HookApplication : YukiBaseHooker() {
     override fun onHook() {
-
-        if (packageName == "com.android.settings") {
-            //暗色模式列表
-            if (prefs(ModulePrefs).getBoolean("dark_mode_list_enable", false)) {
-                loadHooker(DarkModeList)
-            }
-        }
-
         //移除自启数量限制
         if (prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
             if (SDK >= A13) {

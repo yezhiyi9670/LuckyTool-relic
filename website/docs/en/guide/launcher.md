@@ -23,7 +23,12 @@ star: false
 ---
 
 - Remove the clock plugin Red One
-- Remove the dot in the lower left corner of the APP
+
+## AppBadge
+
+- Remove the dot after APP update
+- Remove app shortcut badge
+- Remove App clone badge
 
 ## PagingComponent
 

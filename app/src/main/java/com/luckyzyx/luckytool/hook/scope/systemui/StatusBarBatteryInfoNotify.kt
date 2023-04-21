@@ -167,6 +167,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             //pd,qc
             3, 4 -> if (isAbnormalCur) voltage * 2
             else formatDouble("%.2f", max_charging_current)
+
             else -> 0.0
         }
         val powerCalc = when (chargerTechnology) {
@@ -190,6 +191,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             //pd,qc
             3, 4 -> if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
             else max_charging_current * electricCurrent / 1000.0
+
             else -> 0.0
         }
         val batteryIcon = when (level) {
