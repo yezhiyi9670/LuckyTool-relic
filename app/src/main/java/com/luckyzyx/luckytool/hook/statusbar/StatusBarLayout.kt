@@ -82,7 +82,7 @@ object StatusBarLayout : YukiBaseHooker() {
         //Source CollapsedStatusBarFragment
         VariousClass(
             "com.android.systemui.statusbar.phone.CollapsedStatusBarFragment", //A12
-            "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment"
+            "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment" //C13
         ).hook {
             injectMember {
                 method {

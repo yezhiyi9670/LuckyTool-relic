@@ -1064,19 +1064,19 @@ fun getDevicesConfig(): JSONObject? {
  * 是否为串联电池
  */
 val isSeriesDualBattery
-    get() : JSONObject? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("series_dual_battery_support")
+    get() : Boolean? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("series_dual_battery_support")
     }
 
 /**
  * 是否为并联电池
  */
 val isParallelDualBattery
-    get() : JSONObject? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("parallel_dual_battery_support")
+    get() : Boolean? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("parallel_dual_battery_support")
     }
 
 val isVBatDeviation
-    get() : JSONObject? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("qg_vbat_deviation_support")
+    get() : Boolean? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("qg_vbat_deviation_support")
     }

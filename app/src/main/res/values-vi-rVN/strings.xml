@@ -235,6 +235,7 @@
     <string name="battery_voltage">Điện áp</string>
     <string name="battery_electric_current">H.Tại</string>
     <string name="battery_charger_voltage">Đ.Áp</string>
+    <string name="battery_charger_type">Type</string>
     <string name="battery_power">Năng lượng</string>
     <string name="battery_technology">Công nghệ</string>
     <string name="battery_update_time">Thời gian cập nhật</string>

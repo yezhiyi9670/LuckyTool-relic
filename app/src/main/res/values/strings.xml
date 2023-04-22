@@ -250,6 +250,7 @@
     <string name="battery_voltage">Vol</string>
     <string name="battery_electric_current">Cur</string>
     <string name="battery_charger_voltage">Vol</string>
+    <string name="battery_charger_type">Type</string>
     <string name="battery_power">Pwr</string>
     <string name="battery_technology">Tech</string>
     <string name="battery_update_time">UpdateTime</string>

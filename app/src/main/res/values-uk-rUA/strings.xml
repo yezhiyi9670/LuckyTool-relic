@@ -235,6 +235,7 @@
     <string name="battery_voltage">Напруга</string>
     <string name="battery_electric_current">Струм</string>
     <string name="battery_charger_voltage">Напруга</string>
+    <string name="battery_charger_type">Type</string>
     <string name="battery_power">Потужність</string>
     <string name="battery_technology">Технологія</string>
     <string name="battery_update_time">Час оновлення</string>

@@ -16,25 +16,18 @@ object StatusBarPower : YukiBaseHooker() {
         findClass("com.oplusos.systemui.statusbar.widget.StatBatteryMeterView").hook {
             injectMember {
                 method {
-                    name = "onFinishInflate"
-                }
-                afterHook {
-                    field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
-                        if (userTypeface) typeface = Typeface.DEFAULT_BOLD
-                    }
-                }
-            }
-            injectMember {
-                method {
                     name = "updatePercentText"
                 }
                 afterHook {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
                         if (removePercent) text = text.toString().replace("%", "")
-                        if (userTypeface) setTextSize(
-                            TypedValue.COMPLEX_UNIT_DIP,
-                            if (customFontSize == 0) 12F else customFontSize.toFloat() * 2
-                        )
+                        if (userTypeface) {
+                            typeface = Typeface.DEFAULT_BOLD
+                            setTextSize(
+                                TypedValue.COMPLEX_UNIT_DIP,
+                                if (customFontSize == 0) 12F else customFontSize.toFloat() * 2
+                            )
+                        }
                     }
                 }
             }

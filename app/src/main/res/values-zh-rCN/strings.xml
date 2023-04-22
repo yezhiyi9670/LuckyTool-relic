@@ -235,6 +235,7 @@
     <string name="battery_voltage">电压</string>
     <string name="battery_electric_current">电流</string>
     <string name="battery_charger_voltage">充电电压</string>
+    <string name="battery_charger_type">类型</string>
     <string name="battery_power">理论功率</string>
     <string name="battery_technology">充电技术</string>
     <string name="battery_update_time">更新时间</string>

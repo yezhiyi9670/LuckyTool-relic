@@ -6,19 +6,24 @@ import android.content.Context
 import android.content.Intent
 import android.os.BatteryManager
 import androidx.core.app.NotificationCompat
+import androidx.core.os.EnvironmentCompat
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
-import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.hook.utils.IChargerUtils
+import com.luckyzyx.luckytool.hook.utils.SystemPropertiesUtils
 import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.formatDouble
+import com.luckyzyx.luckytool.utils.data.isParallelDualBattery
+import com.luckyzyx.luckytool.utils.data.isSeriesDualBattery
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
-import com.luckyzyx.luckytool.utils.tools.safeOfNull
 import java.io.StringReader
+import java.util.Locale
 import java.util.Properties
 import kotlin.math.abs
 
+@Suppress("unused")
 object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     //battery
     private var status: String = ""
@@ -41,6 +46,10 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     private var chargerTechnology: Int = 0
     private var chargeWattage: Int = 0
     private var ppsMode: Int = 0
+
+    private var isSeriesDual = false
+    private var isParallelDual = false
+    private var chargerType = ""
     override fun onHook() {
         var displayMode = prefs(ModulePrefs).getString("battery_information_display_mode", "0")
         dataChannel.wait<String>(key = "battery_information_display_mode") { displayMode = it }
@@ -101,28 +110,42 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             BatteryManager.BATTERY_PLUGGED_USB -> "USB"
             BatteryManager.BATTERY_PLUGGED_DOCK -> "DOCK"
             BatteryManager.BATTERY_PLUGGED_WIRELESS -> "WIRELESS"
-            else -> "null"
+            else -> "Null"
         }
-        isWireless = plugged == "WIRELESS"
+//        isWireless = plugged == "WIRELESS"
         level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
         temperature = (intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0)
-        val originalVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0)
-        voltage =
-            if (originalVoltage.toString().length == 1) originalVoltage * 1.0 else originalVoltage / 1000.0
+//        val originalVoltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0)
+        isSeriesDual = isSeriesDualBattery == true
+        isParallelDual = isParallelDualBattery == true
+        chargerType = getChargeInfo().getProperty("charger_type", "Null")
+//        voltage = if (originalVoltage.toString().length == 1) originalVoltage * 1.0 else originalVoltage / 1000.0
+        voltage = getChargeInfo().getProperty("battery_voltage_now", "0").trim().toDouble() / 1000.0
+
+        voltage2 = if (isSeriesDual) getChargeInfo().getProperty("battery_voltage_min", "0").trim()
+            .toDouble() / 1000.0
+        else if (isParallelDual) getChargeInfo().getProperty("sub_voltage", "0").trim()
+            .toDouble() / 1000.0
+        else 0.0
+        if (isMTKPlatformBoard == false) {
+            voltage /= 1000.0
+            voltage2 /= 1000.0
+        }
+
         electricCurrent = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CURRENT_NOW)
 
-        max_charging_current =
-            formatDouble("%.2f", intent.getIntExtra("max_charging_current", 0) / 1000000.0)
-        max_charging_voltage =
-            formatDouble("%.2f", intent.getIntExtra("max_charging_voltage", 0) / 1000000.0)
-        if (!isWireless) {
-            if (max_charging_current == 0.0 || max_charging_current == 2.0) isAbnormalCur = true
-            if (max_charging_voltage == 0.0 || max_charging_voltage == 5.0) isAbnormalVol = true
-        }
+//        max_charging_current =
+//            formatDouble("%.2f", intent.getIntExtra("max_charging_current", 0) / 1000000.0)
+//        max_charging_voltage =
+//            formatDouble("%.2f", intent.getIntExtra("max_charging_voltage", 0) / 1000000.0)
+//        if (!isWireless) {
+//            if (max_charging_current == 0.0 || max_charging_current == 2.0) isAbnormalCur = true
+//            if (max_charging_voltage == 0.0 || max_charging_voltage == 5.0) isAbnormalVol = true
+//        }
     }
 
     private fun initOplusInfo(intent: Intent) {
-        chargerVoltage = (intent.getIntExtra("chargervoltage", 0) / 1000.0)
+//        chargerVoltage = (intent.getIntExtra("chargervoltage", 0) / 1000.0)
         chargerTechnology = (intent.getIntExtra("chargertechnology", 0))
         chargeWattage = (intent.getIntExtra("chargewattage", 0))
         ppsMode = (intent.getIntExtra("pps_chg_mode", 0))
@@ -152,53 +175,62 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             6 -> "UFCS" //null
             else -> "Error: $chargerTechnology"
         }
-        val chargerVoltageFinal = when (chargerTechnology) {
-            //normal(pps)
-            0 -> if (isWireless) max_charging_voltage
-            else if (ppsMode == 1) voltage * 2
-            else if (isAbnormalCur) 5.0
-            else max_charging_current
-            //vooc
-            1 -> if (isWireless) max_charging_voltage
-            else if (isAbnormalCur) voltage
-            else max_charging_current
-            //svooc
-            2 -> if (isWireless) formatDouble("%.2f", max_charging_voltage)
-            else if (isAbnormalCur) voltage * 2
-            else formatDouble("%.2f", max_charging_current)
-            //svooc
-            20, 25, 30 -> if (isAbnormalCur) voltage * 2
-            else formatDouble("%.2f", max_charging_current)
-            //pd,qc
-            3, 4 -> if (isAbnormalCur) voltage * 2
-            else formatDouble("%.2f", max_charging_current)
+//        val chargerVoltageFinal = when (chargerTechnology) {
+//            //normal(pps)
+//            0 -> if (isWireless) max_charging_voltage
+//            else if (ppsMode == 1) voltage * 2
+//            else if (isAbnormalCur) 5.0
+//            else max_charging_current
+//            //vooc
+//            1 -> if (isWireless) max_charging_voltage
+//            else if (isAbnormalCur) voltage
+//            else max_charging_current
+//            //svooc
+//            2 -> if (isWireless) formatDouble("%.2f", max_charging_voltage)
+//            else if (isAbnormalCur) voltage * 2
+//            else formatDouble("%.2f", max_charging_current)
+//            //svooc
+//            20, 25, 30 -> if (isAbnormalCur) voltage * 2
+//            else formatDouble("%.2f", max_charging_current)
+//            //pd,qc
+//            3, 4 -> if (isAbnormalCur) voltage * 2
+//            else formatDouble("%.2f", max_charging_current)
+//
+//            else -> 0.0
+//        }
 
-            else -> 0.0
-        }
-        val powerCalc = when (chargerTechnology) {
-            //V x mA / 1000
-            //normal(pps)
-            0 -> if (isWireless) max_charging_current * max_charging_voltage
-            else if (ppsMode == 1) voltage * 2 * electricCurrent / 1000.0
-            else if (isAbnormalCur) 5.0 * electricCurrent / 1000.0
-            else max_charging_current * electricCurrent / 1000.0
-            //vooc
-            1 -> if (isWireless) max_charging_current * max_charging_voltage
-            else if (isAbnormalCur) voltage * electricCurrent / 1000.0
-            else max_charging_current * electricCurrent / 1000.0
-            //svooc
-            2 -> if (isWireless) max_charging_current * max_charging_voltage
-            else if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
-            else max_charging_current * electricCurrent / 1000.0
-            //svooc
-            20, 25, 30 -> if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
-            else max_charging_current * electricCurrent / 1000.0
-            //pd,qc
-            3, 4 -> if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
-            else max_charging_current * electricCurrent / 1000.0
+//        val chargerVoltageFinal = if (isSeriesDual || isParallelDual)
+//            voltage + voltage2
+//        else voltage
 
-            else -> 0.0
-        }
+//        val powerCalc = when (chargerTechnology) {
+//            //V x mA / 1000
+//            //normal(pps)
+//            0 -> if (isWireless) max_charging_current * max_charging_voltage
+//            else if (ppsMode == 1) voltage * 2 * electricCurrent / 1000.0
+//            else if (isAbnormalCur) 5.0 * electricCurrent / 1000.0
+//            else max_charging_current * electricCurrent / 1000.0
+//            //vooc
+//            1 -> if (isWireless) max_charging_current * max_charging_voltage
+//            else if (isAbnormalCur) voltage * electricCurrent / 1000.0
+//            else max_charging_current * electricCurrent / 1000.0
+//            //svooc
+//            2 -> if (isWireless) max_charging_current * max_charging_voltage
+//            else if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
+//            else max_charging_current * electricCurrent / 1000.0
+//            //svooc
+//            20, 25, 30 -> if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
+//            else max_charging_current * electricCurrent / 1000.0
+//            //pd,qc
+//            3, 4 -> if (isAbnormalCur) voltage * 2 * electricCurrent / 1000.0
+//            else max_charging_current * electricCurrent / 1000.0
+//
+//            else -> 0.0
+//        }
+        val powerCalc = if (isSeriesDual || isParallelDual) {
+            (voltage + voltage2) * electricCurrent / 1000.0
+        } else voltage * electricCurrent / 1000.0
+
         val batteryIcon = when (level) {
             100 -> R.drawable.round_battery_full_24
             in 80..99 -> R.drawable.round_battery_6_bar_24
@@ -211,23 +243,23 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             else -> R.drawable.round_battery_unknown_24
         }
         val batteryInfo =
-            "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " + "${
-                context.getString(R.string.battery_voltage)
-            }: ${voltage}V " + "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
+            "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
+                    (if (isSeriesDual || isParallelDual) "${context.getString(R.string.battery_voltage)}: ${voltage}V ${voltage2}V "
+                    else "${context.getString(R.string.battery_voltage)}: ${voltage}V ") +
+                    "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
         val chargeInfo = if (isCharging) {
             val power = formatDouble("%.2f", abs(powerCalc) * 1.0)
             val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
             val sp = "$status: $plugged"
-            val vol =
-                "${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}V"
-            val formatCur = formatDouble("%.0f", max_charging_current * 1000.0)
-            val cur =
-                if (isWireless) "${context.getString(R.string.battery_electric_current)}: ${formatCur}mA" else ""
+//            val vol = "${context.getString(R.string.battery_charger_voltage)}: ${chargerVoltageFinal}V"
+            val ct = "${context.getString(R.string.battery_charger_type)}: $chargerType"
+//            val formatCur = formatDouble("%.0f", max_charging_current * 1000.0)
+//            val cur = if (isWireless) "${context.getString(R.string.battery_electric_current)}: ${formatCur}mA" else ""
             val pwr = "${context.getString(R.string.battery_power)}: ${power}W"
             val tech =
                 "${context.getString(R.string.battery_technology)}: $technology $wattage" + if (isUpdateTime) "\n" else ""
             if (statusValue == 5) "$sp $tech"
-            else "$sp $vol $cur $pwr\n$tech"
+            else "$sp $ct $pwr\n$tech"
         } else ""
         val updateTime = if (isUpdateTime) {
             "${context.getString(R.string.battery_update_time)}: ${formatDate("HH:mm:ss")}"
@@ -251,18 +283,20 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.clearNotification(context, 112233)
     }
 
-    fun getChargeInfo(): Properties? = safeOfNull {
-        val cls = "vendor.oplus.hardware.charger.V1_0.ICharger".toClass()
-        val ins = cls.method {
-            name = "getService"
-            emptyParam()
-        }.get().call()
-        val queryChargeInfo = cls.method {
-            name = "queryChargeInfo"
-            emptyParam()
-        }.get(ins).invoke<String>()
-        Properties().apply {
+    private fun getChargeInfo(): Properties {
+        val queryChargeInfo = IChargerUtils(appClassLoader).queryChargeInfo()
+        return Properties().apply {
             load(StringReader(queryChargeInfo))
         }
+    }
+
+    private val isMTKPlatformBoard
+        get() = getMTKSystemProp("ro.board.platform", EnvironmentCompat.MEDIA_UNKNOWN)
+            ?.lowercase(Locale.US)?.startsWith("mt")
+
+    @Suppress("SameParameterValue")
+    private fun getMTKSystemProp(key: String, def: String): String? {
+        val value = SystemPropertiesUtils(appClassLoader).get(key, def)
+        return if (value?.isBlank() == true) def else value
     }
 }

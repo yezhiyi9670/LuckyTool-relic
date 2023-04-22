@@ -41,7 +41,8 @@ star: false
 - Allow downgrade installation
 - Install shows package name and version number
 - Remove install ads
-- Replace AOSP installer
+- Automatically click the install button
+- Automatically click the uninstall button
 - Remove ADB installation confirmation
 
 ## OtherRestrictions

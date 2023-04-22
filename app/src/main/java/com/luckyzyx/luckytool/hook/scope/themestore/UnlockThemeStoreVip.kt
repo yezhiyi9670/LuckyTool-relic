@@ -23,6 +23,12 @@ object UnlockThemeStoreVip : YukiBaseHooker() {
         findClass("com.oppo.cdo.theme.domain.dto.response.PublishProductItemDto").hook {
             injectMember {
                 method {
+                    name = "getPrice"
+                }
+                replaceTo(0.0)
+            }
+            injectMember {
+                method {
                     name = "getIsVipAvailable"
                 }
                 replaceTo(1)
