@@ -472,6 +472,7 @@
     <string name="install_button">立即安裝</string>
     <string name="cancel_button">取消下載</string>
     <string name="fps_autostart">自動啟動</string>
+    <string name="fps_no_data">无 FPS 数据，请检查Root权限</string>
     <string name="device_guid">设备 GUID</string>
     <string name="oplusota_copy_tip">长按输入框单独复制</string>
     <string name="oplusota_copyall">複製全部</string>

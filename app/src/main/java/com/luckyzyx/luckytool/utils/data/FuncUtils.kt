@@ -36,6 +36,7 @@ import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.tools.*
+import org.json.JSONObject
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -192,8 +193,11 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
  * 获取自定义刷新率
  * @return [List]
  */
-fun getFpsMode1(): Array<String> {
-    return arrayOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz")
+fun getFpsMode1(): ArrayList<ArrayList<*>> {
+    return ArrayList<ArrayList<*>>().apply {
+        add(arrayListOf(0, 1, 2, 3))
+        add(arrayListOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz"))
+    }
 }
 
 /**
@@ -201,12 +205,48 @@ fun getFpsMode1(): Array<String> {
  * @receiver Context
  * @return Array<String>
  */
-fun getFpsMode2(): Array<String> = safeOf(arrayOf()) {
+fun getFpsMode2(): ArrayList<ArrayList<*>> = safeOf(ArrayList()) {
     val command =
-        "dumpsys display | grep -A 1 'mSupportedModesByDisplay' | tail -1 | tr '}' '\\n' | cut -f2 -d '{' | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row | tr ',' '\\n' | while read col; do\n" + "      case \$col in\n" + "      'width='*)\n" + "        echo -n \$(echo \${col:6})\n" + "        ;;\n" + "      'height='*)\n" + "        echo -n x\$(echo \${col:7})\n" + "        ;;\n" + "      'fps='*)\n" + "        echo ' '\$(echo \${col:4} | cut -f1 -d '.')Hz\n" + "        ;;\n" + "      esac\n" + "    done\n" + "    echo -e '@'\n" + "  fi\n" + "done"
-    return ShellUtils.execCommand(command, true, true).let {
-        if (it.result == 1) arrayOf() else it.successMsg.takeIf { e -> e.isNotEmpty() }
-            ?.substring(0, it.successMsg.length - 1)?.split("@")?.toTypedArray() ?: arrayOf()
+        "dumpsys display | grep -A 24 'mSfDisplayModes=' | grep ' DisplayMode{id=' | cut -f2 -d '{' | while read row; do\n" +
+                "  if [[ -n \$row ]]; then\n" +
+                "    echo \$row | tr ',' '\\n' | while read col; do\n" +
+                "      case \$col in\n" +
+                "        'id='*)\n" +
+                "          echo -n \$(echo \${col:3}'|')\n" +
+                "        ;;\n" +
+                "      'width='*)\n" +
+                "        echo -n \$(echo \${col:6})\n" +
+                "        ;;\n" +
+                "      'height='*)\n" +
+                "        echo -n x\$(echo \${col:7})\n" +
+                "        ;;\n" +
+                "      'refreshRate='*)\n" +
+                "        echo ' '\$(echo \${col:12} | cut -f1 -d '.')Hz\n" +
+                "        ;;\n" +
+                "      esac\n" +
+                "    done\n" +
+                "    echo -e '\\\\n'\n" +
+                "  fi\n" +
+                "done"
+    var dataArr: ArrayList<String>
+    val idArr = ArrayList<Int>()
+    val fpsArr = ArrayList<String>()
+    ShellUtils.execCommand(command, true, true).apply {
+        if (result == 1) return@safeOf ArrayList()
+        else dataArr =
+            successMsg.takeIf { e -> e.isNotBlank() }?.split("\\n")?.toMutableList()?.apply {
+                removeIf { e -> e.isBlank() }
+            } as ArrayList<String>
+    }
+    dataArr.forEach {
+        val id = it.split("|").takeIf { e -> e.size >= 2 }?.get(0) ?: return@forEach
+        val fps = it.split("|").takeIf { e -> e.size >= 2 }?.get(1) ?: return@forEach
+        idArr.add(id.toInt())
+        fpsArr.add(fps)
+    }
+    return ArrayList<ArrayList<*>>().apply {
+        idArr.takeIf { e -> e.isNotEmpty() }?.let { add(it) }
+        fpsArr.takeIf { e -> e.isNotEmpty() }?.let { add(it) }
     }
 }
 
@@ -888,8 +928,8 @@ fun Context.callFunc(bundle: Bundle?) {
         //自启功能相关
         if (getBoolean("fps_auto", false)) {
             val fpsMode = getInt("fps_mode", 1)
-            val fpsCur = getInt("current_fps", -1)
-            if (fpsMode == 2 && fpsCur != -1) ShellUtils.execCommand(
+            val fpsCur = getInt("fps_cur", -1)
+            if ((fpsMode == 2) && (fpsCur != -1)) ShellUtils.execCommand(
                 "service call SurfaceFlinger 1035 i32 $fpsCur", true, true
             ).apply {
                 if (result == 1) toast("force fps error!")
@@ -1004,3 +1044,39 @@ fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
 fun Fragment.navigate(action: Int, bundle: Bundle?) {
     findNavController().navigate(action, bundle)
 }
+
+/**
+ * 获取设备参数
+ * @return JSONObject?
+ */
+fun getDevicesConfig(): JSONObject? {
+    val json =
+        ShellUtils.execCommand("cat /odm/etc/devices_config/devices_config.json", false, true)
+            .let {
+                if (it.result == 1) null
+                else if (it.successMsg.isBlank()) null
+                else it.successMsg
+            }
+    return json?.let { JSONObject(it) }
+}
+
+/**
+ * 是否为串联电池
+ */
+val isSeriesDualBattery
+    get() : JSONObject? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("series_dual_battery_support")
+    }
+
+/**
+ * 是否为并联电池
+ */
+val isParallelDualBattery
+    get() : JSONObject? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("parallel_dual_battery_support")
+    }
+
+val isVBatDeviation
+    get() : JSONObject? = safeOfNull {
+        getDevicesConfig()?.getJSONObject("charge")?.getJSONObject("qg_vbat_deviation_support")
+    }

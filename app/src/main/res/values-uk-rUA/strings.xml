@@ -260,10 +260,10 @@
     <string name="remove_alarmclock_widget_redone">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно лише тоді, коли звичайна версія не допомагає, інакше це викликає неминучу помилку</string>
-    <string name="AppBadgeRelated">App badge related</string>
-    <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
-    <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
-    <string name="remove_app_clone_badge">Remove app clone badge</string>
+    <string name="AppBadgeRelated">Іконка додатку</string>
+    <string name="remove_the_dot_after_app_update">Видаляти крапку після оновлення додатка</string>
+    <string name="remove_app_shortcut_badge">Видалити іконку додатку</string>
+    <string name="remove_app_clone_badge">Видалити іконку клонованої програми</string>
     <string name="launcher_layout_related">Сітка робочого столу</string>
     <string name="launcher_layout_row_colume">Встановіть кількість рядків сітки робочого столу</string>
     <string name="launcher_layout_enable">Увімкнути/вимкнути сітку іконок на робочому столі</string>
@@ -281,8 +281,8 @@
     <string name="remove_folder_pagination_component">Видалити компонент розбивки на папки</string>
     <string name="disable_pagination_component_sliding">Вимкнути свайп компонентів розбивки</string>
     <string name="FolderLayoutRelated">Розмітка папки</string>
-    <string name="enable_folder_layout_adjustment">Enable folder layout adjustments</string>
-    <string name="set_icon_columns_in_folder">Set the number of icon columns in the folder</string>
+    <string name="enable_folder_layout_adjustment">Увімкнути зміну розташування папок</string>
+    <string name="set_icon_columns_in_folder">Задати кількість стовпців іконок у папці</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>
@@ -313,8 +313,8 @@
     <string name="disable_apk_signature_verification_summary">Можуть бути встановлені додатки з різними підписами, що загрожує безпеці та повинно використовуватися з обережністю</string>
     <string name="remove_install_ads">Видалити оголошення про завершення встановлення</string>
     <string name="remove_install_ads_summary">Рекомендації додатків безпеки/реклама магазину ПЗ</string>
-    <string name="auto_click_install_button">Automatically click the install button</string>
-    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
+    <string name="auto_click_install_button">Автоматично натиснути на кнопку встановлення</string>
+    <string name="auto_click_uninstall_button">Автоматично натиснути на кнопку видалення</string>
     <string name="replase_aosp_installer">Замінити інсталятор AOSP</string>
     <string name="replase_aosp_installer_summary">Замінити на рідний інсталятор Google</string>
     <string name="show_packagename_and_versioncode">Показати ім\'я пакета та код версії</string>
@@ -373,13 +373,13 @@
     <string name="allow_untrusted_touch">Дозволити небажані торкання</string>
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">Відновити білий список оптимізації батареї за замовчуванням</string>
-    <string name="remove_high_temperature_limit">Remove high temperature limit</string>
-    <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used and the FPS will be reduced due to high temperature</string>
+    <string name="remove_high_temperature_limit">Видалити обмеження високих температур</string>
+    <string name="remove_high_temperature_limit_summary">Видалити обмеження, що різні функції не можуть бути використані і FPS буде зменшено через високу температуру</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
-    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
-    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
-    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
+    <string name="video_frame_insertion_support_2K120">Динамічна вставка кадрів відео підтримує роздільну здатність 2К 120 Гц (MEMC)</string>
+    <string name="remove_dpi_restart_recovery">Видалити відновлення DPI</string>
+    <string name="remove_dpi_restart_recovery_summary">Після увімкнення функції та перезапуску області, відкрийте сторінку параметрів розробника та встановіть мінімальну ширину</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
     <string name="show_last_update_time_in_app_details">Показати час останнього оновлення в деталях програми</string>
@@ -472,6 +472,7 @@
     <string name="install_button">Встановити зараз</string>
     <string name="cancel_button">Скасувати завантаження</string>
     <string name="fps_autostart">Автозапуск</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">GUID пристрою</string>
     <string name="oplusota_copy_tip">Натисніть та утримуйте поле введення, щоб скопіювати його окремо</string>
     <string name="oplusota_copyall">Скопіювати все</string>

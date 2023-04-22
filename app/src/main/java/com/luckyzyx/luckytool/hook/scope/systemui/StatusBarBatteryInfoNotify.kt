@@ -8,11 +8,15 @@ import android.os.BatteryManager
 import androidx.core.app.NotificationCompat
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.data.formatDate
 import com.luckyzyx.luckytool.utils.data.formatDouble
 import com.luckyzyx.luckytool.utils.tools.ModulePrefs
 import com.luckyzyx.luckytool.utils.tools.NotifyUtils
+import com.luckyzyx.luckytool.utils.tools.safeOfNull
+import java.io.StringReader
+import java.util.Properties
 import kotlin.math.abs
 
 object StatusBarBatteryInfoNotify : YukiBaseHooker() {
@@ -23,6 +27,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     private var level: Int = 0
     private var temperature: Double = 0.0
     private var voltage: Double = 0.0
+    private var voltage2: Double = 0.0
     private var electricCurrent: Int = 0
     private var max_charging_current: Double = 0.0
     private var max_charging_voltage: Double = 0.0
@@ -244,5 +249,20 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
 
     private fun clearNotification(context: Context) {
         NotifyUtils.clearNotification(context, 112233)
+    }
+
+    fun getChargeInfo(): Properties? = safeOfNull {
+        val cls = "vendor.oplus.hardware.charger.V1_0.ICharger".toClass()
+        val ins = cls.method {
+            name = "getService"
+            emptyParam()
+        }.get().call()
+        val queryChargeInfo = cls.method {
+            name = "queryChargeInfo"
+            emptyParam()
+        }.get(ins).invoke<String>()
+        Properties().apply {
+            load(StringReader(queryChargeInfo))
+        }
     }
 }

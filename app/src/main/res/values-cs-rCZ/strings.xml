@@ -314,7 +314,7 @@
     <string name="remove_install_ads">Po instalaci aplikace odstraňte reklamy</string>
     <string name="remove_install_ads_summary">Bezpečnostní doporučení aplikací/reklamy v Obchodě Play</string>
     <string name="auto_click_install_button">Automaticky kliknout na tlačítko instalace</string>
-    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
+    <string name="auto_click_uninstall_button">Automaticky kliknout na tlačítko odinstalace</string>
     <string name="replase_aosp_installer">Nahradit AOSP instalátor</string>
     <string name="replase_aosp_installer_summary">Nahradit nativním Google instalátorem</string>
     <string name="show_packagename_and_versioncode">Zobrazit název balíčku a kód verze</string>
@@ -472,6 +472,7 @@
     <string name="install_button">Instalovat teď</string>
     <string name="cancel_button">Zrušit stahování</string>
     <string name="fps_autostart">Automatické spuštění</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">GUID zařízení</string>
     <string name="oplusota_copy_tip">Dlouhým stisknutím vstupního pole jej zkopírujte jednotlivě</string>
     <string name="oplusota_copyall">Kopírovat vše</string>

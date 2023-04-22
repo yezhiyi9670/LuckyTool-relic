@@ -498,6 +498,7 @@
     <string name="install_button">Install now</string>
     <string name="cancel_button">Cancel download</string>
     <string name="fps_autostart">Auto-start</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">Device GUID</string>
     <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
     <string name="oplusota_copyall">Copy All</string>

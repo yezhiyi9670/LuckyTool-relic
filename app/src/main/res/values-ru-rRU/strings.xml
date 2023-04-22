@@ -314,7 +314,7 @@
     <string name="remove_install_ads">Удалить объявления о завершении установки</string>
     <string name="remove_install_ads_summary">Рекомендации приложений безопасности/реклама магазина ПО</string>
     <string name="auto_click_install_button">Автоматически нажать на кнопку установки</string>
-    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
+    <string name="auto_click_uninstall_button">Автоматически нажать на кнопку удаления</string>
     <string name="replase_aosp_installer">Заменить установщик AOSP</string>
     <string name="replase_aosp_installer_summary">Заменить собственным установщиком</string>
     <string name="show_packagename_and_versioncode">Показать имя пакета и код версии</string>
@@ -472,6 +472,7 @@
     <string name="install_button">Установить сейчас</string>
     <string name="cancel_button">Отменить загрузку</string>
     <string name="fps_autostart">Автозапуск</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">GUID устройства</string>
     <string name="oplusota_copy_tip">Нажмите и удерживайте поле ввода, чтобы скопировать его по отдельности</string>
     <string name="oplusota_copyall">Копировать все</string>

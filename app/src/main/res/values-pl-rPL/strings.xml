@@ -472,6 +472,7 @@
     <string name="install_button">Instaluj teraz</string>
     <string name="cancel_button">Anuluj pobieranie</string>
     <string name="fps_autostart">Automatyczny start</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">GUID urządzenia</string>
     <string name="oplusota_copy_tip">Przytrzymaj pole wprowadzania, aby skopiować</string>
     <string name="oplusota_copyall">Skopiuj wszystko</string>

@@ -314,7 +314,7 @@
     <string name="remove_install_ads">インストール完了後の広告を削除</string>
     <string name="remove_install_ads_summary">設定を閉じる - セキュリティアプリの推奨 の順で開けます</string>
     <string name="auto_click_install_button">インストールボタンを自動的に押す</string>
-    <string name="auto_click_uninstall_button">Automatically click the uninstall button</string>
+    <string name="auto_click_uninstall_button">アンインストールボタンを自動的に押す</string>
     <string name="replase_aosp_installer">AOSPインストーラーに置き換え</string>
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
     <string name="show_packagename_and_versioncode">パッケージ名とバージョンコードを表示</string>
@@ -472,6 +472,7 @@
     <string name="install_button">今すぐにインストール</string>
     <string name="cancel_button">ダウンロードをキャンセル</string>
     <string name="fps_autostart">自動で開始</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">デバイスのGUID</string>
     <string name="oplusota_copy_tip">入力ボックスを長押しすると個別にコピーします</string>
     <string name="oplusota_copyall">すべてコピー</string>

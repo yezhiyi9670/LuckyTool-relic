@@ -472,6 +472,7 @@
     <string name="install_button">Cài đặt ngay</string>
     <string name="cancel_button">Hủy tải xuống</string>
     <string name="fps_autostart">Tự khởi động</string>
+    <string name="fps_no_data">No FPS data, please check Root permission</string>
     <string name="device_guid">GUID thiết bị</string>
     <string name="oplusota_copy_tip">Nhấn và giữ ô nhập để sao chép riêng lẻ</string>
     <string name="oplusota_copyall">Sao chép tất cả</string>

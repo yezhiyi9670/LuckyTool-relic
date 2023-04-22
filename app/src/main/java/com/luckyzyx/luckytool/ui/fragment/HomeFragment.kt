@@ -107,16 +107,12 @@ class HomeFragment : Fragment() {
                 val fpsDialog = MaterialAlertDialogBuilder(context).apply {
                     setView(R.layout.layout_fps_dialog)
                 }.show()
-                if (!fpsDialog.isShowing) return@setOnClickListener
                 val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
-                val fpsData = if (fpsModeValue == 1) {
-                    getFpsMode1()
-                } else {
-                    getFpsMode2()
-                }
-                if (fpsData.isEmpty()) {
-                    context.toast(context.getString(R.string.system_not_support))
-                    return@setOnClickListener
+                val fpsData = if (fpsModeValue == 1) getFpsMode1()
+                else getFpsMode2()
+                val isUnsupport = fpsData.isEmpty()
+                if (isUnsupport) {
+                    context.toast(getString(R.string.fps_no_data))
                 }
                 val currentFps = context.getInt(SettingsPrefs, "current_fps", -1)
                 val fpsAutostart = context.getBoolean(SettingsPrefs, "fps_autostart", false)
@@ -124,7 +120,7 @@ class HomeFragment : Fragment() {
                     fpsDialog.findViewById<MaterialSwitch>(R.id.fps_self_start)?.apply {
                         text = getString(R.string.fps_autostart)
                         isChecked = fpsAutostart
-                        isEnabled = currentFps != -1
+                        isEnabled = !isUnsupport && currentFps != -1
                         setOnCheckedChangeListener { _, isChecked ->
                             context.putBoolean(SettingsPrefs, "fps_autostart", isChecked)
                             requireActivity().dataChannel("com.android.systemui")
@@ -132,19 +128,24 @@ class HomeFragment : Fragment() {
                         }
                     }
                 val fpsList = fpsDialog.findViewById<ListView>(R.id.fps_list)?.apply {
-                    isVisible = fpsData.isNotEmpty()
+                    isVisible = !isUnsupport
                     choiceMode = ListView.CHOICE_MODE_SINGLE
-                    adapter = ArrayAdapter(
-                        context, android.R.layout.simple_list_item_single_choice, fpsData
-                    )
-                    setItemChecked(currentFps, currentFps != -1)
+                    if (!isUnsupport) {
+                        adapter = ArrayAdapter(
+                            context, android.R.layout.simple_list_item_single_choice, fpsData[1]
+                        )
+                        val position = fpsData[0].indexOf(currentFps)
+                        clearChoices()
+                        if (position != -1) setItemChecked(position, currentFps != -1)
+                    }
                     onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                         fpsSelfStart?.isEnabled = true
-                        context.putInt(SettingsPrefs, "current_fps", position)
-                        if (fpsModeValue == 1) requireActivity().dataChannel("com.android.systemui")
-                            .put("current_fps", position)
+                        val cur = fpsData[0][position] as Int
+                        context.putInt(SettingsPrefs, "current_fps", cur)
+                        requireActivity().dataChannel("com.android.systemui")
+                            .put("current_fps", cur)
                         if (fpsModeValue == 2) ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1035 i32 $position", true
+                            "service call SurfaceFlinger 1035 i32 $cur", true
                         )
                     }
                 }
