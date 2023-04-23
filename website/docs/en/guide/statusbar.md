@@ -174,6 +174,7 @@ The scope needs to be restarted after opening the tile. Similarly, the same is t
 
 - Battery information display mode (display only when charging)
 - Display charging technology and other information when charging
+- Simple display mode
 - Display data update time
 
 ### Battery Notification Known Issues

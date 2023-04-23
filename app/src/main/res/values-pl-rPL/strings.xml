@@ -20,6 +20,8 @@
     <string name="privacy_agreement">Polityka prywatności</string>
     <string name="auto_check_update">Sprawdzaj uaktualnienia aplikacji</string>
     <string name="auto_check_update_summary">Automatyczne sprawdź dostępność uaktualnień przy otwieraniu głównej karty modułu</string>
+    <string name="tile_auto_start">Allow built-in tiles to start automatically</string>
+    <string name="tile_auto_start_summary">When the host-side module version number is consistent with the local module version number,and enable this function,The function of opened tiles will be automatically triggered after the screen is unlocked.If the trigger fails,please restart the scope and check Root permissions</string>
     <string name="read_agreement">Przed rozpoczęciem korzystania z tego modułu należy przeczytać i zaakceptować politykę prywatności</string>
     <string name="clear_all_data">Wyczyść wszystkie dane</string>
     <string name="clear_all_data_summary">Usuń wszystkie zmiany w funkcjach modułu</string>
@@ -224,6 +226,7 @@
     <string name="battery_information_display_mode_summary">Wyświetlaj napięcie baterii i inne informacje na pasku stanu</string>
     <string name="battery_information_show_charge">Pokaż informacje o ładowaniu</string>
     <string name="battery_information_show_charge_summary">Podczas ładowania napięcie i teoretyczna moc ładowania będą wyświetlane na pasku stanu</string>
+    <string name="battery_information_show_simple_mode">Simple display mode</string>
     <string name="battery_information_show_update_time">Pokaż czas aktualizacji</string>
     <string name="battery_information_show_update_time_summary">Wyświetl czas aktualizacji aktualnych danych na pasku stanu</string>
     <string name="battery_status_unknown">Nieznany</string>
@@ -375,7 +378,7 @@
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
-    <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used and the FPS will be reduced due to high temperature</string>
+    <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
     <!--Settings-->
     <string name="remove_top_account_display">Usuń wyświetlanie informacji o koncie na górze</string>
     <string name="video_frame_insertion_support_2K120">Włącz obsługę interpolacji klatek wideo dla 2k-120fps</string>

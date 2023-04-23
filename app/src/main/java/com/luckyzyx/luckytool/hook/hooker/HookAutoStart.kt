@@ -25,6 +25,9 @@ object HookAutoStart : YukiBaseHooker() {
         var currentFps = prefs(SettingsPrefs).getInt("current_fps", -1)
         dataChannel.wait<Int>("current_fps") { currentFps = it }
 
+        var tileAutoStart = prefs(SettingsPrefs).getBoolean("tile_auto_start", false)
+        dataChannel.wait<Boolean>("tile_auto_start") { tileAutoStart = it }
+
         var touchSamplingRate = prefs(SettingsPrefs).getBoolean("touch_sampling_rate", false)
         dataChannel.wait<Boolean>("touch_sampling_rate") { touchSamplingRate = it }
         var highBrightness = prefs(SettingsPrefs).getBoolean("high_brightness_mode", false)
@@ -46,6 +49,7 @@ object HookAutoStart : YukiBaseHooker() {
                         putBoolean("fps_auto", fpsAutoStart)
                         putInt("fps_mode", fpsMode)
                         putInt("fps_cur", currentFps)
+                        putBoolean("tileAutoStart", tileAutoStart)
                         putBoolean("touchSamplingRate", touchSamplingRate)
                         putBoolean("highBrightness", highBrightness)
                         putBoolean("globalDC", globalDC)

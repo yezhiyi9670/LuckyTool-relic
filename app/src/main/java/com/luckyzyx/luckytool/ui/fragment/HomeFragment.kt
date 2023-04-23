@@ -6,21 +6,15 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.RadioButton
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.YukiHookAPI
-import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
@@ -102,114 +96,8 @@ class HomeFragment : Fragment() {
 
         binding.fpsTitle.text = getString(R.string.fps_title)
         binding.fpsSummary.text = getString(R.string.fps_summary)
-        binding.fps.apply {
-            setOnClickListener {
-                val fpsDialog = MaterialAlertDialogBuilder(context).apply {
-                    setView(R.layout.layout_fps_dialog)
-                }.show()
-                val fpsModeValue = context.getInt(SettingsPrefs, "fps_mode", 1)
-                val fpsData = if (fpsModeValue == 1) getFpsMode1()
-                else getFpsMode2()
-                val isUnsupport = fpsData.isEmpty()
-                if (isUnsupport) {
-                    context.toast(getString(R.string.fps_no_data))
-                }
-                val currentFps = context.getInt(SettingsPrefs, "current_fps", -1)
-                val fpsAutostart = context.getBoolean(SettingsPrefs, "fps_autostart", false)
-                val fpsSelfStart =
-                    fpsDialog.findViewById<MaterialSwitch>(R.id.fps_self_start)?.apply {
-                        text = getString(R.string.fps_autostart)
-                        isChecked = fpsAutostart
-                        isEnabled = !isUnsupport && currentFps != -1
-                        setOnCheckedChangeListener { _, isChecked ->
-                            context.putBoolean(SettingsPrefs, "fps_autostart", isChecked)
-                            requireActivity().dataChannel("com.android.systemui")
-                                .put("fps_autostart", isChecked)
-                        }
-                    }
-                val fpsList = fpsDialog.findViewById<ListView>(R.id.fps_list)?.apply {
-                    isVisible = !isUnsupport
-                    choiceMode = ListView.CHOICE_MODE_SINGLE
-                    if (!isUnsupport) {
-                        adapter = ArrayAdapter(
-                            context, android.R.layout.simple_list_item_single_choice, fpsData[1]
-                        )
-                        val position = fpsData[0].indexOf(currentFps)
-                        clearChoices()
-                        if (position != -1) setItemChecked(position, currentFps != -1)
-                    }
-                    onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-                        fpsSelfStart?.isEnabled = true
-                        val cur = fpsData[0][position] as Int
-                        context.putInt(SettingsPrefs, "current_fps", cur)
-                        requireActivity().dataChannel("com.android.systemui")
-                            .put("current_fps", cur)
-                        if (fpsModeValue == 2) ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1035 i32 $cur", true
-                        )
-                    }
-                }
-                fpsDialog.findViewById<MaterialTextView>(R.id.fps_mode_title)?.text =
-                    getString(R.string.fps_mode_title)
-                fpsDialog.findViewById<RadioButton>(R.id.fps_mode_1)?.apply {
-                    text = "Peak Refresh Rate"
-                    if (fpsModeValue == 1) toggle()
-                    setOnClickListener {
-                        fpsSelfStart?.isChecked = false
-                        fpsSelfStart?.isEnabled = false
-                        context.putInt(SettingsPrefs, "fps_mode", 1)
-                        requireActivity().dataChannel("com.android.systemui").put("fps_mode", 1)
-                        context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
-                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                        fpsDialog?.cancel()
-                        fpsDialog?.dismiss()
-                    }
-                }
-                fpsDialog.findViewById<RadioButton>(R.id.fps_mode_2)?.apply {
-                    text = "Surfaceflinger Backdoor"
-                    if (fpsModeValue == 2) toggle()
-                    setOnClickListener {
-                        fpsSelfStart?.isChecked = false
-                        fpsSelfStart?.isEnabled = false
-                        context.putInt(SettingsPrefs, "fps_mode", 2)
-                        requireActivity().dataChannel("com.android.systemui").put("fps_mode", 2)
-                        context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
-                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                        fpsDialog?.cancel()
-                        fpsDialog?.dismiss()
-                    }
-                }
-                fpsDialog.findViewById<MaterialSwitch>(R.id.fps_show)?.apply {
-                    text = getString(R.string.display_refresh_rate)
-                    isChecked = getRefreshRateStatus()
-                    setOnCheckedChangeListener { buttonView, isChecked ->
-                        if (buttonView.isPressed) ShellUtils.execCommand(
-                            "service call SurfaceFlinger 1034 i32 ${if (isChecked) 1 else 0}",
-                            true
-                        )
-                    }
-                }
-                fpsDialog.findViewById<MaterialButton>(R.id.fps_recover)?.apply {
-                    text = getString(R.string.restore_default_refresh_rate)
-                    isVisible = fpsModeValue == 2
-                    setOnClickListener {
-                        fpsSelfStart?.isChecked = false
-                        fpsSelfStart?.isEnabled = false
-                        fpsList?.setItemChecked(
-                            context.getInt(SettingsPrefs, "current_fps", -1), false
-                        )
-                        context.putInt(SettingsPrefs, "current_fps", -1)
-                        requireActivity().dataChannel("com.android.systemui").put("current_fps", -1)
-                        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                    }
-                }
-                fpsDialog.findViewById<MaterialTextView>(R.id.fps_tips)?.apply {
-                    text = getString(R.string.fps_tips)
-                    gravity = Gravity.CENTER
-                }
-            }
+        binding.fps.setOnClickListener {
+            navigate(R.id.action_nav_home_to_forceFpsFragment, getString(R.string.fps_title))
         }
 
         binding.systemInfo.apply {

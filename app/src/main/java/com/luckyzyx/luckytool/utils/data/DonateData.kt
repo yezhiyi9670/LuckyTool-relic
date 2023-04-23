@@ -735,6 +735,13 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "加油加油", details(
+                        DCInfo("20230424-130412", CWC, 20.0, "10000499012023042401004542917525")
+                    )
+                )
+            )
         }
     }
 

@@ -36,7 +36,6 @@ import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.tools.*
-import org.json.JSONObject
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -925,6 +924,7 @@ fun Context.restartAllScope(scopes: Array<String>) {
  */
 fun Context.callFunc(bundle: Bundle?) {
     bundle?.apply {
+        val tileAutoStart = getBoolean("tileAutoStart", false)
         //自启功能相关
         if (getBoolean("fps_auto", false)) {
             val fpsMode = getInt("fps_mode", 1)
@@ -936,27 +936,27 @@ fun Context.callFunc(bundle: Bundle?) {
             }
         }
         //触控采样率相关
-        if (getBoolean("touchSamplingRate", false)) {
+        if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
             ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true, true)
                 .apply {
                     if (result == 1) toast("touch sampling rate error!")
                 }
         }
         //高亮度模式
-        if (getBoolean("highBrightness", false)) {
+        if (tileAutoStart && getBoolean("highBrightness", false)) {
             ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true, true).apply {
                 if (result == 1) toast("high brightness mode error!")
             }
         }
         //高性能模式
-        if (getBoolean("highPerformance", false)) {
+        if (tileAutoStart && getBoolean("highPerformance", false)) {
             ShellUtils.execCommand("settings put system high_performance_mode_on 1", true, true)
                 .apply {
                     if (result == 1) toast("high performance mode error!")
                 }
         }
         //全局DC模式
-        if (getBoolean("globalDC", false)) {
+        if (tileAutoStart && getBoolean("globalDC", false)) {
             var oppoError = false
             var oplusError = false
             ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true).apply {
@@ -1044,39 +1044,3 @@ fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
 fun Fragment.navigate(action: Int, bundle: Bundle?) {
     findNavController().navigate(action, bundle)
 }
-
-/**
- * 获取设备参数
- * @return JSONObject?
- */
-fun getDevicesConfig(): JSONObject? {
-    val json =
-        ShellUtils.execCommand("cat /odm/etc/devices_config/devices_config.json", false, true)
-            .let {
-                if (it.result == 1) null
-                else if (it.successMsg.isBlank()) null
-                else it.successMsg
-            }
-    return json?.let { JSONObject(it) }
-}
-
-/**
- * 是否为串联电池
- */
-val isSeriesDualBattery
-    get() : Boolean? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("series_dual_battery_support")
-    }
-
-/**
- * 是否为并联电池
- */
-val isParallelDualBattery
-    get() : Boolean? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("parallel_dual_battery_support")
-    }
-
-val isVBatDeviation
-    get() : Boolean? = safeOfNull {
-        getDevicesConfig()?.getJSONObject("charge")?.getBoolean("qg_vbat_deviation_support")
-    }

@@ -1383,8 +1383,8 @@ class StatusBarBattery : ModulePreferenceFragment() {
                     setDefaultValue("0")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel(packageName = "com.android.systemui")
-                            .put(key = "battery_information_display_mode", value = newValue)
+                        context.dataChannel("com.android.systemui")
+                            .put("battery_information_display_mode", newValue)
                         (activity as MainActivity).restart()
                         true
                     }
@@ -1399,8 +1399,21 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel(packageName = "com.android.systemui")
-                                .put(key = "battery_information_show_charge_info", value = newValue)
+                            context.dataChannel("com.android.systemui")
+                                .put("battery_information_show_charge_info", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_simple_mode)
+                        key = "battery_information_show_simple_mode"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui")
+                                .put("battery_information_show_simple_mode", newValue)
                             true
                         }
                     }
@@ -1413,8 +1426,8 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel(packageName = "com.android.systemui")
-                                .put(key = "battery_information_show_update_time", value = newValue)
+                            context.dataChannel("com.android.systemui")
+                                .put("battery_information_show_update_time", newValue)
                             true
                         }
                     }

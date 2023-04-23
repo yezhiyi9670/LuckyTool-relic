@@ -33,6 +33,7 @@ star: false
 ## OtherSettings
 
 - Automatically check for updates
+- Allow built-in tile self-starting
 - Switch autostart function caller
 - Hide function page icons
 - Hide desktop module icons

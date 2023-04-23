@@ -180,6 +180,20 @@ class SettingsFragment : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    key = "tile_auto_start"
+                    title = getString(R.string.tile_auto_start)
+                    summary = getString(R.string.tile_auto_start_summary)
+                    setDefaultValue(true)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("tile_auto_start", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
                 DropDownPreference(context).apply {
                     title = getString(R.string.switch_autostart_function_caller)
                     summary =

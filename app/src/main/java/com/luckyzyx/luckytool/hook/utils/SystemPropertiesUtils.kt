@@ -7,10 +7,10 @@ import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarBatteryInfoNotify.toClass
 
-@Suppress("unused")
+@Suppress("unused", "MemberVisibilityCanBePrivate")
 class SystemPropertiesUtils(classLoader: ClassLoader) {
 
-    private val clazz = "android.os.SystemProperties".toClass(classLoader)
+    val clazz = "android.os.SystemProperties".toClass(classLoader)
 
     fun get(key: String): String? {
         return clazz.method {
