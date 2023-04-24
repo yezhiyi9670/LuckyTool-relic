@@ -503,6 +503,9 @@
     <string name="game_space_page">Herní prostor</string>
     <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
     <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
+    <!--Shortcut-->
+    <string name="set_module_shortcuts">Set module shortcuts</string>
+    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Ladění vzdáleného ADB</string>
     <string name="remote_adb_debug_summary">Prosím, zavřete to, pokus se nepoužívá</string>

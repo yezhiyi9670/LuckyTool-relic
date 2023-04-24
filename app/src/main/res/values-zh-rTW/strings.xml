@@ -503,6 +503,9 @@
     <string name="game_space_page">游戏空间页面</string>
     <string name="game_assistant_develop_page">游戏助手开发者页面</string>
     <string name="AOSPSettingsPage">AOSP 原生设置页面</string>
+    <!--Shortcut-->
+    <string name="set_module_shortcuts">设置模块快捷方式</string>
+    <string name="set_module_shortcuts_summary">长按模块图标即可显示已启用的快捷方式</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">远程ADB调试</string>
     <string name="remote_adb_debug_summary">不使用时请及时关闭</string>

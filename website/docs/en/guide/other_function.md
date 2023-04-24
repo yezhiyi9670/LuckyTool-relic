@@ -26,4 +26,5 @@ star: false
 ---
 
 - System shortcut entry
+- Set module built-in shortcuts
 - Remote ADB debugging

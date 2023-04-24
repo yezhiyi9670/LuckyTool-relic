@@ -531,6 +531,9 @@
     <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Game Assistant Developer Page</string>
     <string name="AOSPSettingsPage">AOSP native settings page</string>
+    <!--Shortcut-->
+    <string name="set_module_shortcuts">Set module shortcuts</string>
+    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Remote ADB debugging</string>
     <string name="remote_adb_debug_summary">Please close it when not in use</string>

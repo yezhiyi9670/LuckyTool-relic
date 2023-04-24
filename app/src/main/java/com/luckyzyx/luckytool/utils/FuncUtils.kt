@@ -969,19 +969,19 @@ fun Context.callFunc(bundle: Bundle?) {
         }
         //快捷方式相关
         when (getString("Shortcut", "null")) {
-            "lsposed" -> {
+            "module_shortcut_status_lsposed" -> {
                 ShellUtils.execCommand(
                     "am start 'intent:#Intent;action=android.intent.action.MAIN;category=org.lsposed.manager.LAUNCH_MANAGER;launchFlags=0x80000;component=com.android.shell/.BugreportWarningActivity;end'",
                     true
                 )
             }
 
-            "oplusGames" -> ShellUtils.execCommand(
+            "module_shortcut_status_oplusgames" -> ShellUtils.execCommand(
                 "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
             )
 
-            "processManager" -> jumpRunningApp(this@callFunc)
-            "chargingTest" -> jumpBatteryInfo(this@callFunc)
+            "module_shortcut_status_chargingtest" -> jumpBatteryInfo(this@callFunc)
+            "module_shortcut_status_processmanager" -> jumpRunningApp(this@callFunc)
         }
     }
 }

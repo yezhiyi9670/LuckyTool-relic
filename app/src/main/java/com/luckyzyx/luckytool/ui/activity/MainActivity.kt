@@ -1,12 +1,8 @@
 package com.luckyzyx.luckytool.ui.activity
 
-import android.content.ComponentName
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
-import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -77,47 +73,8 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun initDynamicShortcuts() {
-        val status = getComponentEnabled(ComponentName(packageName, "${packageName}.Hide"))
-        if (status == 2) return
-        val shortcutManager = getSystemService(ShortcutManager::class.java) as ShortcutManager
-        val lsposed = ShortcutInfo.Builder(this, "lsposed").apply {
-            setShortLabel("LSPosed")
-            setIcon(Icon.createWithResource(packageName, R.mipmap.android_icon))
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut", "lsposed")
-            intent.setClassName(packageName, AliveActivity::class.java.name)
-            setIntent(intent)
-        }.build()
-        val oplusGames = ShortcutInfo.Builder(this, "oplusGames").apply {
-            setShortLabel(getAppLabel("com.oplus.games").toString())
-            setIcon(Icon.createWithResource(packageName, R.mipmap.oplusgames_icon))
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut", "oplusGames")
-            intent.setClassName("com.oplus.games", "business.compact.activity.GameBoxCoverActivity")
-            setIntent(intent)
-        }.build()
-        val chargingTest = ShortcutInfo.Builder(this, "chargingTest").apply {
-            setShortLabel(getString(R.string.charging_test))
-            setIcon(
-                Icon.createWithResource(
-                    packageName,
-                    R.drawable.ic_baseline_charging_station_24
-                )
-            )
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut", "chargingTest")
-            intent.setClassName(packageName, AliveActivity::class.java.name)
-            setIntent(intent)
-        }.build()
-        val processManager = ShortcutInfo.Builder(this, "processManager").apply {
-            setShortLabel(getString(R.string.process_manager))
-            setIcon(Icon.createWithResource(packageName, R.mipmap.android_icon))
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.putExtra("Shortcut", "processManager")
-            intent.setClassName(packageName, AliveActivity::class.java.name)
-            setIntent(intent)
-        }.build()
-        shortcutManager.dynamicShortcuts = listOf(lsposed, oplusGames, chargingTest, processManager)
+        if (!ShortcutUtils(this).getIconStatus()) return
+        ShortcutUtils(this).setDynamicShortcuts()
     }
 
     private fun initNavigationFragment() {

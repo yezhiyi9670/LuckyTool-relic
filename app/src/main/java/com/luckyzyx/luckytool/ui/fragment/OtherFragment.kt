@@ -9,6 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import androidx.appcompat.widget.AppCompatCheckedTextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
@@ -24,10 +28,13 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.OtherPrefs
+import com.luckyzyx.luckytool.utils.SettingsPrefs
 import com.luckyzyx.luckytool.utils.ShellUtils
+import com.luckyzyx.luckytool.utils.ShortcutUtils
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.copyStr
+import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
@@ -43,9 +50,7 @@ class OtherFragment : Fragment() {
     private lateinit var binding: FragmentOtherBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentOtherBinding.inflate(inflater)
         return binding.root
@@ -59,6 +64,37 @@ class OtherFragment : Fragment() {
         binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
         binding.quickEntry.setOnClickListener {
             navigate(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
+        }
+
+        binding.shortcutTitle.text = getString(R.string.set_module_shortcuts)
+        binding.shortcutSummary.text = getString(R.string.set_module_shortcuts_summary)
+        binding.shortcut.setOnClickListener {
+            val shortcutDialog =
+                MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
+                    setView(R.layout.layout_shortcut_dialog)
+                }.show()
+            val keys =
+                ArrayList<String>().apply { addAll(ShortcutUtils(requireActivity()).getShortcutList().keys) }
+            val values =
+                ArrayList<String>().apply { addAll(ShortcutUtils(requireActivity()).getShortcutList().values) }
+            shortcutDialog.findViewById<ListView>(R.id.shortcut_list)?.apply {
+                choiceMode = ListView.CHOICE_MODE_MULTIPLE
+                adapter = ArrayAdapter(
+                    context, android.R.layout.simple_list_item_multiple_choice, values
+                )
+                keys.forEach {
+                    if (context.getBoolean(SettingsPrefs, it, false)) {
+                        val index = keys.indexOf(it)
+                        if (index != -1) setItemChecked(index, true)
+                    }
+                }
+                onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
+                    val curId = keys[position]
+                    val isChecked = (view as AppCompatCheckedTextView).isChecked
+                    ShortcutUtils(context).setShortcutStatus(curId, isChecked)
+                    ShortcutUtils(context).setDynamicShortcuts()
+                }
+            }
         }
 
         binding.remoteAdbDebugTitle.text = getString(R.string.remote_adb_debug_title)
@@ -184,8 +220,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand(
-                        "am start -a com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS",
-                        true
+                        "am start -a com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS", true
                     )
                     true
                 }
@@ -195,8 +230,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = context.checkResolveActivity(
                     Intent().setClassName(
-                        "com.android.systemui",
-                        "com.android.systemui.DemoMode"
+                        "com.android.systemui", "com.android.systemui.DemoMode"
                     )
                 )
                 setOnPreferenceClickListener {
@@ -259,8 +293,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = context.checkResolveActivity(
                     Intent().setClassName(
-                        "com.oplus.battery",
-                        "com.oplus.powermanager.fuelgaue.BatteryHealthActivity"
+                        "com.oplus.battery", "com.oplus.powermanager.fuelgaue.BatteryHealthActivity"
                     )
                 )
                 setOnPreferenceClickListener {
@@ -287,14 +320,12 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = context.checkResolveActivity(
                     Intent().setClassName(
-                        "com.oplus.camera",
-                        "com.oplus.camera.ui.menu.algoswitch.AlgoSwitchActivity"
+                        "com.oplus.camera", "com.oplus.camera.ui.menu.algoswitch.AlgoSwitchActivity"
                     )
                 )
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand(
-                        "am start -n com.oplus.camera/.ui.menu.algoswitch.AlgoSwitchActivity",
-                        true
+                        "am start -n com.oplus.camera/.ui.menu.algoswitch.AlgoSwitchActivity", true
                     )
                     true
                 }

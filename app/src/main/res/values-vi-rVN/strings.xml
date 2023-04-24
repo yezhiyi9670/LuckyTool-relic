@@ -503,6 +503,9 @@
     <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Trang dành cho nhà phát triển trợ lý trò chơi</string>
     <string name="AOSPSettingsPage">Trang cài đặt gốc AOSP</string>
+    <!--Shortcut-->
+    <string name="set_module_shortcuts">Set module shortcuts</string>
+    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Gỡ lỗi ADB từ xa</string>
     <string name="remote_adb_debug_summary">Vui lòng đóng lại khi không sử dụng</string>

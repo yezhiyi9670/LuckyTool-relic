@@ -503,6 +503,9 @@
     <string name="game_space_page">ゲームスペースのページ</string>
     <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
     <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
+    <!--Shortcut-->
+    <string name="set_module_shortcuts">Set module shortcuts</string>
+    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">ADBデバッグを削除</string>
     <string name="remote_adb_debug_summary">使用しないときは閉じる</string>
