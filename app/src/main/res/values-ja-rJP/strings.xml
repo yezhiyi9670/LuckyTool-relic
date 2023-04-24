@@ -20,8 +20,8 @@
     <string name="privacy_agreement">プライバシーポリシー</string>
     <string name="auto_check_update">自動でアップデートの確認をする</string>
     <string name="auto_check_update_summary">モジュールのホームページを開くと自動的にアップデートを確認します</string>
-    <string name="tile_auto_start">Allow built-in tiles to start automatically</string>
-    <string name="tile_auto_start_summary">When the host-side module version number is consistent with the local module version number,and enable this function,The function of opened tiles will be automatically triggered after the screen is unlocked.If the trigger fails,please restart the scope and check Root permissions</string>
+    <string name="tile_auto_start">内蔵タイルの自動起動を許可する</string>
+    <string name="tile_auto_start_summary">ホスト側のモジュールバージョン番号がローカルのモジュールバージョン番号と一致している場合、この機能を有効にすると開いたタイルの機能は、画面のロック解除後に自動的にトリガーされます。トリガーが失敗した場合は、スコープを再起動し、root 権限が許可されているか確認してください。</string>
     <string name="read_agreement">このモジュールを使用する前に以下の内容に同意をする必要があります</string>
     <string name="clear_all_data">すべてのデータをクリア</string>
     <string name="clear_all_data_summary">すべての機能のデータをモジュールからクリアします</string>

@@ -13,7 +13,7 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
     override fun onHook() {
         //Source SoundPoolPlayManager -> competition_mode_sound
         searchClass {
-            from("v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9").absolute()
+            from("v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9").absolute()
             field {
                 type = ContextClass
             }.count(1)
@@ -31,7 +31,6 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
             }.count(2)
             method {
                 param(IntType)
-                paramCount = 1
             }.count(2)
         }.get()?.hook {
             injectMember {
