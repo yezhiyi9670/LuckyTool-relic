@@ -227,6 +227,7 @@
     <string name="battery_information_show_charge">Hiện thông tin sạc</string>
     <string name="battery_information_show_charge_summary">Khi sạc, điện áp và năng lượng sạc lý thuyết của bộ sạc sẽ được hiển thị trên thanh trạng thái</string>
     <string name="battery_information_show_simple_mode">Simple display mode</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">Hiển thị thời gian cập nhật</string>
     <string name="battery_information_show_update_time_summary">Hiển thị thời gian cập nhật dữ liệu hiện tại trên thanh trạng thái</string>
     <string name="battery_status_unknown">Không biết</string>
@@ -541,6 +542,9 @@
     <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Tùy chỉnh</string>
     <string name="common_words_current_mode">Current Mode</string>
+    <string name="common_words_refresh">Refresh</string>
+    <string name="common_words_save">Save</string>
+    <string name="common_words_filter">Filter</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

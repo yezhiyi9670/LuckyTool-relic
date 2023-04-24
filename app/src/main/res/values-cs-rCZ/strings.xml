@@ -227,6 +227,7 @@
     <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
     <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
     <string name="battery_information_show_simple_mode">Jednoduchý režim zobrazení</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
     <string name="battery_information_show_update_time_summary">Zobrazit čas aktualizace aktuálních dat ve stavové liště</string>
     <string name="battery_status_unknown">Neznámý</string>
@@ -504,8 +505,8 @@
     <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
     <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
     <!--Shortcut-->
-    <string name="set_module_shortcuts">Set module shortcuts</string>
-    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
+    <string name="set_module_shortcuts">Nastavit zkratky modulu</string>
+    <string name="set_module_shortcuts_summary">Dlouhým stiskem na ikony modulu zobrazíte povolené zkratky</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Ladění vzdáleného ADB</string>
     <string name="remote_adb_debug_summary">Prosím, zavřete to, pokus se nepoužívá</string>
@@ -541,6 +542,9 @@
     <string name="common_words_double_line">Dva řádky</string>
     <string name="common_words_customize">Vlastní nastavení</string>
     <string name="common_words_current_mode">Aktuální režim</string>
+    <string name="common_words_refresh">Aktualizovat</string>
+    <string name="common_words_save">Uložit</string>
+    <string name="common_words_filter">Třídit</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Připojení k síti se nezdařilo</string>
     <string name="net_networking_error">Aktuální síť není k dispozici</string>

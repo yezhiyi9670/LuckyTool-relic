@@ -8,14 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
 import java.io.Serializable
 import java.text.DecimalFormat
 
 @Suppress("PrivatePropertyName")
-@Obfuscate
 class DonateData(val context: Context) {
     private val CNU = "NULL"
     private val CQQ = "QQ"

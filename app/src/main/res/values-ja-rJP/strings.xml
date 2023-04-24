@@ -227,6 +227,7 @@
     <string name="battery_information_show_charge">充電中の情報を表示</string>
     <string name="battery_information_show_charge_summary">充電中に充電器の電圧と理論値の充電電力がステータスバーに表示されます</string>
     <string name="battery_information_show_simple_mode">シンプル表示モード</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">更新時刻を表示</string>
     <string name="battery_information_show_update_time_summary">現在のデータの更新時間をステータスバーに表示します</string>
     <string name="battery_status_unknown">不明</string>
@@ -504,8 +505,8 @@
     <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
     <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <!--Shortcut-->
-    <string name="set_module_shortcuts">Set module shortcuts</string>
-    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
+    <string name="set_module_shortcuts">モジュールショートカットの設定</string>
+    <string name="set_module_shortcuts_summary">有効なショートカットを表示するには、モジュールアイコンを長押ししてください</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">ADBデバッグを削除</string>
     <string name="remote_adb_debug_summary">使用しないときは閉じる</string>
@@ -541,6 +542,9 @@
     <string name="common_words_double_line">二重線</string>
     <string name="common_words_customize">カスタマイズ</string>
     <string name="common_words_current_mode">現在のモード</string>
+    <string name="common_words_refresh">更新</string>
+    <string name="common_words_save">保存</string>
+    <string name="common_words_filter">フィルター</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">ネットワークに接続できませんでした</string>
     <string name="net_networking_error">現在のネットワークは利用できません</string>

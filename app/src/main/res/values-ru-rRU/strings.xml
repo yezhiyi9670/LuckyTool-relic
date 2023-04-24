@@ -227,6 +227,7 @@
     <string name="battery_information_show_charge">Показать информацию о зарядке</string>
     <string name="battery_information_show_charge_summary">При зарядке напряжение и теоретическая сила зарядки будут отображаться в строке состояния</string>
     <string name="battery_information_show_simple_mode">Статический режим экрана</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">Показать время обновления</string>
     <string name="battery_information_show_update_time_summary">Отображать время обновления данных в строке состояния</string>
     <string name="battery_status_unknown">Неизвестно</string>
@@ -504,8 +505,8 @@
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>
     <string name="AOSPSettingsPage">Вид настроек как в AOSP</string>
     <!--Shortcut-->
-    <string name="set_module_shortcuts">Set module shortcuts</string>
-    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
+    <string name="set_module_shortcuts">Установить ярлыки модуля</string>
+    <string name="set_module_shortcuts_summary">Нажмите и удерживайте иконку модуля, чтобы отобразить включенные ярлыки</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Удаленная отладка ADB</string>
     <string name="remote_adb_debug_summary">Пожалуйста, закройте его, когда он не используется</string>
@@ -541,6 +542,9 @@
     <string name="common_words_double_line">Две строки</string>
     <string name="common_words_customize">Настроить</string>
     <string name="common_words_current_mode">Текущий Режим</string>
+    <string name="common_words_refresh">Обновить</string>
+    <string name="common_words_save">Сохранить</string>
+    <string name="common_words_filter">Фильтр</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не удалось подключиться к сети</string>
     <string name="net_networking_error">Текущая сеть недоступна</string>

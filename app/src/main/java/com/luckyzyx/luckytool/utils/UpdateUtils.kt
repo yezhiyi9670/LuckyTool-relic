@@ -19,13 +19,11 @@ import com.drake.net.utils.scopeNet
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import org.json.JSONObject
 import java.io.File
 import java.text.DecimalFormat
 
-@Obfuscate
 class UpdateUtils(val context: Context) {
 
     @Suppress("unused")

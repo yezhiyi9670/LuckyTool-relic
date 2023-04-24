@@ -140,10 +140,18 @@ class DarkModeFragment : Fragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpDarkMode(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }

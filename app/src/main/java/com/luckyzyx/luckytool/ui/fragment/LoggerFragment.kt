@@ -54,13 +54,13 @@ class LoggerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         binding = FragmentLogsBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
 
         logInfoViewAdapter = LogInfoViewAdapter(requireActivity(), listData)
         binding.loglistView.apply {
@@ -75,15 +75,16 @@ class LoggerFragment : Fragment() {
     private fun loadLogger() {
         listData.clear()
         requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
-            requireActivity().dataChannel(scope).allowSendTooLargeData().obtainLoggerInMemoryData { its ->
-                its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
-                logInfoViewAdapter?.refreshDatas()
-                binding.loglistView.isVisible = listData.isNotEmpty()
-                binding.logNodataView.apply {
-                    text = getString(R.string.log_no_data)
-                    isVisible = listData.isEmpty()
+            requireActivity().dataChannel(scope).allowSendTooLargeData()
+                .obtainLoggerInMemoryData { its ->
+                    its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
+                    logInfoViewAdapter?.refreshDatas()
+                    binding.loglistView.isVisible = listData.isNotEmpty()
+                    binding.logNodataView.apply {
+                        text = getString(R.string.log_no_data)
+                        isVisible = listData.isEmpty()
+                    }
                 }
-            }
         }
     }
 
@@ -93,21 +94,21 @@ class LoggerFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, "refresh").apply {
+        menu.add(0, 1, 0, getString(R.string.common_words_refresh)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             if (isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
-        menu.add(0, 2, 0, "save").apply {
+        menu.add(0, 2, 0, getString(R.string.common_words_save)).apply {
             setIcon(R.drawable.ic_baseline_save_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             if (isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
-        menu.add(0, 3, 0, "filter").apply {
+        menu.add(0, 3, 0, getString(R.string.common_words_filter)).apply {
             setIcon(R.drawable.baseline_filter_list_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
             if (isNightMode(resources.configuration)) {

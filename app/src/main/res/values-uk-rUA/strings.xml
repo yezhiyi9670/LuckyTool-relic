@@ -227,6 +227,7 @@
     <string name="battery_information_show_charge">Показати інформацію про зарядку</string>
     <string name="battery_information_show_charge_summary">Під час заряджання напруга та теоретична сила заряджання відображатимуться у рядку стану</string>
     <string name="battery_information_show_simple_mode">Simple display mode</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">Показати час оновлення</string>
     <string name="battery_information_show_update_time_summary">Відображати час оновлення поточних даних в рядку стану</string>
     <string name="battery_status_unknown">Невідомо</string>
@@ -541,6 +542,9 @@
     <string name="common_words_double_line">Два рядки</string>
     <string name="common_words_customize">Налаштувати</string>
     <string name="common_words_current_mode">Поточний режим</string>
+    <string name="common_words_refresh">Refresh</string>
+    <string name="common_words_save">Save</string>
+    <string name="common_words_filter">Filter</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не вдалося з’єднатися з мережею</string>
     <string name="net_networking_error">Поточна мережа недоступна</string>

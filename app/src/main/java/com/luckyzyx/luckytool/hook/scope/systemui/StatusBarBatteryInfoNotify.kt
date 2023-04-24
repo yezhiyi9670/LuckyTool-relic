@@ -56,22 +56,19 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     private lateinit var chargeInfo: Properties
     override fun onHook() {
         var displayMode = prefs(ModulePrefs).getString("battery_information_display_mode", "0")
-        dataChannel.wait<String>(key = "battery_information_display_mode") { displayMode = it }
+        dataChannel.wait<String>("battery_information_display_mode") { displayMode = it }
         var showChargerInfo =
             prefs(ModulePrefs).getBoolean("battery_information_show_charge_info", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show_charge_info") {
-            showChargerInfo = it
-        }
+        dataChannel.wait<Boolean>("battery_information_show_charge_info") { showChargerInfo = it }
         var showUpdateTime =
             prefs(ModulePrefs).getBoolean("battery_information_show_update_time", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show_update_time") {
-            showUpdateTime = it
-        }
+        dataChannel.wait<Boolean>("battery_information_show_update_time") { showUpdateTime = it }
+        var isDualVol =
+            prefs(ModulePrefs).getBoolean("battery_information_show_dual_voltage", false)
+        dataChannel.wait<Boolean>("battery_information_show_dual_voltage") { isDualVol = it }
         var isSimple =
             prefs(ModulePrefs).getBoolean("battery_information_show_simple_mode", false)
-        dataChannel.wait<Boolean>(key = "battery_information_show_simple_mode") {
-            isSimple = it
-        }
+        dataChannel.wait<Boolean>("battery_information_show_simple_mode") { isSimple = it }
 
         onAppLifecycle {
             onCreate { injectModuleAppResources() }
@@ -83,11 +80,11 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
                     "0" -> clearNotification(context)
                     "1" -> sendNotification(
                         context, showChargerInfo && isCharging,
-                        showUpdateTime, isSimple
+                        showUpdateTime, isSimple, isDualVol
                     )
 
                     "2" -> if (isCharging) sendNotification(
-                        context, showChargerInfo, showUpdateTime, isSimple
+                        context, showChargerInfo, showUpdateTime, isSimple, isDualVol
                     ) else clearNotification(context)
                 }
             }
@@ -99,11 +96,11 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
                     "0" -> clearNotification(context)
                     "1" -> sendNotification(
                         context, showChargerInfo && isCharging,
-                        showUpdateTime, isSimple
+                        showUpdateTime, isSimple, isDualVol
                     )
 
                     "2" -> if (isCharging) sendNotification(
-                        context, showChargerInfo, showUpdateTime, isSimple
+                        context, showChargerInfo, showUpdateTime, isSimple, isDualVol
                     ) else clearNotification(context)
                 }
             }
@@ -181,7 +178,8 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         context: Context,
         isCharging: Boolean,
         isUpdateTime: Boolean,
-        isSimple: Boolean
+        isSimple: Boolean,
+        isDualVol: Boolean
     ) {
         createChannel(context)
         val technology = when (chargerTechnology) {
@@ -267,6 +265,18 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         val power = formatDouble("%.3f", abs(powerCalc) * 1.0)
         val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
 
+        val tem =
+            if (isSimple) "${temperature}℃" else "${context.getString(R.string.battery_temperature)}: ${temperature}℃"
+        val vol = if (isSimple) {
+            if (isDualVol && (isSeriesDual || isParallelDual)) "${voltage}V ${voltage2}V"
+            else "${voltage}V"
+        } else {
+            (if (isDualVol && (isSeriesDual || isParallelDual)) "${context.getString(R.string.battery_voltage)}: ${voltage}V ${voltage2}V"
+            else "${context.getString(R.string.battery_voltage)}: ${voltage}V")
+        }
+        val cur =
+            if (isSimple) "${electricCurrent}mA" else "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
+
         val sp = if (isSimple) plugged else "$status: $plugged"
         val ct =
             if (isSimple) chargerType else "${context.getString(R.string.battery_charger_type)}: $chargerType"
@@ -284,14 +294,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         val wirePwr =
             if (isSimple) "${wirePwrCalc}W" else "${context.getString(R.string.battery_power)}: ${wirePwrCalc}W"
 
-        val batteryInfo = if (isSimple) {
-            "${temperature}℃ " + (if (isSeriesDual || isParallelDual) "${voltage}V ${voltage2}V " else "${voltage}V ") + "${electricCurrent}mA ${power}W"
-        } else {
-            "${context.getString(R.string.battery_temperature)}: ${temperature}℃ " +
-                    (if (isSeriesDual || isParallelDual) "${context.getString(R.string.battery_voltage)}: ${voltage}V ${voltage2}V "
-                    else "${context.getString(R.string.battery_voltage)}: ${voltage}V ") +
-                    "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
-        }
+        val batteryInfo = if (isSimple) "$tem $vol $cur ${power}W" else "$tem $vol $cur"
         val chargeInfo = if (isCharging) {
             if (isSimple) {
                 if (isWireless) "$wireVol $wireCur $wirePwr\n$sp $tech" else "$sp $ct $tech"

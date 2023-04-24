@@ -368,6 +368,34 @@ fun jumpBatteryInfo(context: Context) {
 }
 
 /**
+ * 跳转应用分身
+ * @param context Context
+ */
+fun jumpMultiApp(context: Context) {
+    if (context.checkPackName("com.oplus.multiapp")) {
+        ShellUtils.execCommand(
+            "am start com.oplus.multiapp/.ui.entry.ActivityMainActivity", true
+        )
+    }
+}
+
+/**
+ * 跳转暗色模式
+ * @param context Context
+ */
+fun jumpDarkMode(context: Context) {
+    Intent("android.settings.DARK_THEME_SETTINGS").apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        putExtra(
+            "com.android.settings.FRAGMENT_CLASS",
+            "com.android.settings.display.darkmode.DarkModeSettingsFragment"
+        )
+        context.startActivity(this)
+    }
+}
+
+/**
  * 跳转进程管理
  * @param context Context
  */

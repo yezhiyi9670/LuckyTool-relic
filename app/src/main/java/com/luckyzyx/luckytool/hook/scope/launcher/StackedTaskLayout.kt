@@ -31,25 +31,27 @@ object StackedTaskLayout : YukiBaseHooker() {
         var oldView: View? = null
         //Source RecentsView
         findClass("com.android.quickstep.views.RecentsView").hook {
-            if (SDK < A13) injectMember {
-                method {
-                    name = "setPageSpacing"
-                    superClass()
-                }
-                beforeHook {
-                    args().first().set(-(level * 10).dp)
+            if (SDK < A13) {
+                injectMember {
+                    method {
+                        name = "setPageSpacing"
+                        superClass()
+                    }
+                    beforeHook {
+                        args().first().set(-(level * 10).dp)
+                    }
                 }
             }
-            injectMember {
-                method {
-                    name = "applyLoadPlan"
-                }
-                beforeHook {
+//            injectMember {
+//                method {
+//                    name = "applyLoadPlan"
+//                }
+//                beforeHook {
 //                    args().first().apply {
 //                        set(java.util.ArrayList(list<Any>().reversed()))
 //                    }
-                }
-            }
+//                }
+//            }
             injectMember {
                 method {
                     name = "notifyPageSwitchListener"

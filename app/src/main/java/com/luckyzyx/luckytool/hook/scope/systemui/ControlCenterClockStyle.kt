@@ -38,9 +38,8 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 }
             }
         }
-        if (SDK < A12) return
         //Source BaseClockExt
-        findClass("com.oplusos.systemui.ext.BaseClockExt").hook {
+        "com.oplusos.systemui.ext.BaseClockExt".toClassOrNull()?.hook {
             injectMember {
                 method {
                     name = "setTextWithRedOneStyleInternal"

@@ -3,13 +3,11 @@
 package com.luckyzyx.luckytool.utils
 
 import android.app.Application
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.BuildConfig
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 
-@Obfuscate
 object AppAnalyticsUtils {
 
     private const val App_Center_Secret = BuildConfig.APP_CENTER_SECRET

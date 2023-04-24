@@ -242,6 +242,7 @@
     <string name="battery_information_show_charge">Show charging information</string>
     <string name="battery_information_show_charge_summary">When charging, the voltage and theoretical charging power of the charger will be displayed on the statusbar</string>
     <string name="battery_information_show_simple_mode">Simple display mode</string>
+    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
     <string name="battery_information_show_update_time">Show update time</string>
     <string name="battery_information_show_update_time_summary">Display the update time of the current data in the statusbar</string>
     
@@ -569,6 +570,9 @@
     <string name="common_words_double_line">Double line</string>
     <string name="common_words_customize">Customize</string>
     <string name="common_words_current_mode">Current Mode</string>
+    <string name="common_words_refresh">Refresh</string>
+    <string name="common_words_save">Save</string>
+    <string name="common_words_filter">Filter</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

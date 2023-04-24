@@ -1407,6 +1407,19 @@ class StatusBarBattery : ModulePreferenceFragment() {
                 )
                 addPreference(
                     SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_dual_voltage)
+                        key = "battery_information_show_dual_voltage"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui")
+                                .put("battery_information_show_dual_voltage", newValue)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    SwitchPreference(context).apply {
                         title = getString(R.string.battery_information_show_simple_mode)
                         key = "battery_information_show_simple_mode"
                         setDefaultValue(false)

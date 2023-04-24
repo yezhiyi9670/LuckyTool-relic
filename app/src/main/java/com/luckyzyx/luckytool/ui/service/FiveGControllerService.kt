@@ -5,11 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.topjohnwu.superuser.ipc.RootService
 
-@Obfuscate
 @SuppressLint("DiscouragedPrivateApi", "PrivateApi")
 class FiveGControllerService : RootService() {
 
