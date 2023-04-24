@@ -1,6 +1,6 @@
 @file:Suppress("unused", "DEPRECATION", "WorldReadableFiles", "ApplySharedPref")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import android.content.Context
 import android.util.ArrayMap

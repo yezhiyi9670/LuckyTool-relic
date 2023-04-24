@@ -22,8 +22,20 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
-import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.OtherPrefs
+import com.luckyzyx.luckytool.utils.ShellUtils
+import com.luckyzyx.luckytool.utils.checkPackName
+import com.luckyzyx.luckytool.utils.checkResolveActivity
+import com.luckyzyx.luckytool.utils.copyStr
+import com.luckyzyx.luckytool.utils.getBoolean
+import com.luckyzyx.luckytool.utils.getString
+import com.luckyzyx.luckytool.utils.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.jumpEngineermode
+import com.luckyzyx.luckytool.utils.jumpRunningApp
+import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.putString
+import com.luckyzyx.luckytool.utils.toast
 
 @Obfuscate
 class OtherFragment : Fragment() {

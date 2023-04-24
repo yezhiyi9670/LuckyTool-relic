@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object BatteryOptimizationWhitelist : YukiBaseHooker() {
     override fun onHook() {

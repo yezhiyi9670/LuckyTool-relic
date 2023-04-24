@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookFeatureOption : YukiBaseHooker() {
     override fun onHook() {

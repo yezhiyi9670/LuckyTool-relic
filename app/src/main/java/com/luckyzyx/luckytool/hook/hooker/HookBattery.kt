@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
 import com.luckyzyx.luckytool.hook.scope.battery.HookThermalController
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookBattery : YukiBaseHooker() {
     override fun onHook() {

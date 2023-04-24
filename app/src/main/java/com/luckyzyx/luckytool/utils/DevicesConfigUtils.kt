@@ -1,7 +1,5 @@
-package com.luckyzyx.luckytool.utils.data
+package com.luckyzyx.luckytool.utils
 
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.safeOfNull
 import org.json.JSONObject
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")

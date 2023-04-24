@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookCameraConfig : YukiBaseHooker() {
     override fun onHook() {

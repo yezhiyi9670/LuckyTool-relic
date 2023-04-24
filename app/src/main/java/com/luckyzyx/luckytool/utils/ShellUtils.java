@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.utils.tools;
+package com.luckyzyx.luckytool.utils;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

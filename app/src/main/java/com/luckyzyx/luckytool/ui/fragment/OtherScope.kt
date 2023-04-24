@@ -9,8 +9,8 @@ import android.view.MenuItem
 import androidx.preference.SwitchPreference
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.restartScopes
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
 
 class Everyimage : ModulePreferenceFragment() {

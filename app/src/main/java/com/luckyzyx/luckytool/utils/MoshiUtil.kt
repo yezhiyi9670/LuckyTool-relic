@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import com.simple.spiderman.SpiderMan
 import com.squareup.moshi.Moshi

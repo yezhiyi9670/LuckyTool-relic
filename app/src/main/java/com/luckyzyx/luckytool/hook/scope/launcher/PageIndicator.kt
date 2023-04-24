@@ -6,7 +6,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.CanvasClass
 import com.highcapable.yukihookapi.hook.type.android.MotionEventClass
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object PageIndicator : YukiBaseHooker() {
     override fun onHook() {

@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate

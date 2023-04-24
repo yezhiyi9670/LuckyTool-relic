@@ -3,8 +3,13 @@ package com.luckyzyx.luckytool.hook.statusbar
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.RemoveBatteryNotify
 import com.luckyzyx.luckytool.hook.scope.phonemanager.RemoveVirusRiskNotificationInPhoneManager
-import com.luckyzyx.luckytool.hook.scope.systemui.*
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveChargingCompleted
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveDoNotDisturbModeNotification
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveFlashlightOpenNotification
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveNotificationForMuteNotifications
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarDevMode
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object StatusBarNotify : YukiBaseHooker() {
     override fun onHook() {

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.WindowManager
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.callFunc
+import com.luckyzyx.luckytool.utils.callFunc
 
 @Suppress("DEPRECATION")
 @Obfuscate

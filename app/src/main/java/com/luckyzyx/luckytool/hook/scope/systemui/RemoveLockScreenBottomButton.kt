@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.view.View
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object RemoveLockScreenBottomButton : YukiBaseHooker() {
     override fun onHook() {

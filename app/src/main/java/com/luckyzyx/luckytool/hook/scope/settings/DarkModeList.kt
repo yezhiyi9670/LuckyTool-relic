@@ -8,7 +8,7 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.InputStreamClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 import java.io.Reader
 
 object DarkModeList : YukiBaseHooker() {

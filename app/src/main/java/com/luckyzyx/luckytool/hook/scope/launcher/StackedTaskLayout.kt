@@ -2,10 +2,10 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 
 import android.view.View
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.dp
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.dp
 
 object StackedTaskLayout : YukiBaseHooker() {
 

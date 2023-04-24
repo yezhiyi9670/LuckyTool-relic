@@ -7,9 +7,9 @@ import com.drake.net.utils.scope
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.ui.activity.AliveActivity
-import com.luckyzyx.luckytool.utils.data.callFunc
-import com.luckyzyx.luckytool.utils.data.setRefresh
-import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
+import com.luckyzyx.luckytool.utils.SettingsPrefs
+import com.luckyzyx.luckytool.utils.callFunc
+import com.luckyzyx.luckytool.utils.setRefresh
 import kotlinx.coroutines.delay
 
 object HookAutoStart : YukiBaseHooker() {

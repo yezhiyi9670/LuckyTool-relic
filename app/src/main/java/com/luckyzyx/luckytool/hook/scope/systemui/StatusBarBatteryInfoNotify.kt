@@ -12,14 +12,14 @@ import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.utils.IChargerUtils
 import com.luckyzyx.luckytool.hook.utils.SystemPropertiesUtils
-import com.luckyzyx.luckytool.utils.data.DevicesConfigUtils
-import com.luckyzyx.luckytool.utils.data.formatDate
-import com.luckyzyx.luckytool.utils.data.formatDouble
-import com.luckyzyx.luckytool.utils.data.getBooleanProperty
-import com.luckyzyx.luckytool.utils.data.getIntProperty
-import com.luckyzyx.luckytool.utils.data.getStringProperty
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import com.luckyzyx.luckytool.utils.tools.NotifyUtils
+import com.luckyzyx.luckytool.utils.DevicesConfigUtils
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.NotifyUtils
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.formatDouble
+import com.luckyzyx.luckytool.utils.getBooleanProperty
+import com.luckyzyx.luckytool.utils.getIntProperty
+import com.luckyzyx.luckytool.utils.getStringProperty
 import java.io.StringReader
 import java.util.Locale
 import java.util.Properties
@@ -264,7 +264,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             in 0..9 -> R.drawable.round_battery_0_bar_24
             else -> R.drawable.round_battery_unknown_24
         }
-        val power = formatDouble("%.2f", abs(powerCalc) * 1.0)
+        val power = formatDouble("%.3f", abs(powerCalc) * 1.0)
         val wattage = if (chargeWattage != 0) "${chargeWattage}W" else ""
 
         val sp = if (isSimple) plugged else "$status: $plugged"
@@ -280,8 +280,9 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             if (isSimple) "${wirelessVol}V" else "${context.getString(R.string.battery_voltage)}: ${wirelessVol}V"
         val wireCur =
             if (isSimple) "${wirelessCur}mA" else "${context.getString(R.string.battery_electric_current)}: ${wirelessCur}mA"
+        val wirePwrCalc = formatDouble("%.3f", wirelessVol * wirelessCur / 1000.0)
         val wirePwr =
-            if (isSimple) "${wirelessVol * wirelessCur / 1000.0}W" else "${context.getString(R.string.battery_power)}: ${wirelessVol * wirelessCur / 1000.0}W"
+            if (isSimple) "${wirePwrCalc}W" else "${context.getString(R.string.battery_power)}: ${wirePwrCalc}W"
 
         val batteryInfo = if (isSimple) {
             "${temperature}℃ " + (if (isSeriesDual || isParallelDual) "${voltage}V ${voltage2}V " else "${voltage}V ") + "${electricCurrent}mA ${power}W"
@@ -293,12 +294,12 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         }
         val chargeInfo = if (isCharging) {
             if (isSimple) {
-                if (isWireless) "$wireVol $wireCur $wirePwr $tech" else "$sp $ct $tech"
+                if (isWireless) "$wireVol $wireCur $wirePwr\n$sp $tech" else "$sp $ct $tech"
             } else {
                 if (statusValue == 5) {
-                    if (isWireless) "$status $tech" else "$sp $tech"
+                    if (isWireless) "$sp $tech" else "$sp $tech"
                 } else {
-                    if (isWireless) "$wireVol $wireCur $wirePwr\n$tech" else "$sp $ct $pwr\n$tech"
+                    if (isWireless) "$wireVol $wireCur $wirePwr\n$sp $tech" else "$sp $ct $pwr\n$tech"
                 }
             }
         } else ""

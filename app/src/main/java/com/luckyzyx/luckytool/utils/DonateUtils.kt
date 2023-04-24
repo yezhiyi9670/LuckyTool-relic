@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.utils.data
+package com.luckyzyx.luckytool.utils
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,8 +11,6 @@ import com.google.android.material.textview.MaterialTextView
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
-import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
-import com.luckyzyx.luckytool.utils.tools.getBoolean
 import java.io.Serializable
 import java.text.DecimalFormat
 

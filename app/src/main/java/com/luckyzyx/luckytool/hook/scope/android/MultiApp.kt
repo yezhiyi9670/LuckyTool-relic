@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.ListClass
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object MultiApp : YukiBaseHooker() {
     override fun onHook() {

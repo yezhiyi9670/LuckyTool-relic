@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 import de.robv.android.xposed.XposedBridge
 import java.lang.reflect.Member
 import java.lang.reflect.Method

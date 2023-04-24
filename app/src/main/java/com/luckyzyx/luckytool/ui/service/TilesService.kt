@@ -11,15 +11,15 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.checkPackName
-import com.luckyzyx.luckytool.utils.data.getRefreshRateStatus
-import com.luckyzyx.luckytool.utils.data.jumpBatteryInfo
-import com.luckyzyx.luckytool.utils.data.jumpRunningApp
-import com.luckyzyx.luckytool.utils.data.showRefreshRate
-import com.luckyzyx.luckytool.utils.data.toast
-import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.putBoolean
+import com.luckyzyx.luckytool.utils.SettingsPrefs
+import com.luckyzyx.luckytool.utils.ShellUtils
+import com.luckyzyx.luckytool.utils.checkPackName
+import com.luckyzyx.luckytool.utils.getRefreshRateStatus
+import com.luckyzyx.luckytool.utils.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.jumpRunningApp
+import com.luckyzyx.luckytool.utils.putBoolean
+import com.luckyzyx.luckytool.utils.showRefreshRate
+import com.luckyzyx.luckytool.utils.toast
 import com.topjohnwu.superuser.ipc.RootService
 
 @Obfuscate

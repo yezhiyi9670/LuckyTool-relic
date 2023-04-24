@@ -9,7 +9,7 @@ import com.luckyzyx.luckytool.hook.scope.packageinstaller.HookFeatureOption
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.RemoveInstallAds
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.ShowPackageNameAndVersionCode
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.SkipApkScan
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 import java.util.Arrays
 
 object HookPackageInstaller : YukiBaseHooker() {

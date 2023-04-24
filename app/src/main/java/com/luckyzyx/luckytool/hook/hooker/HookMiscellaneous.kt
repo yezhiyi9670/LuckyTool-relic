@@ -4,9 +4,9 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.externalstorage.RemoveStorageLimit
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableOTGAutoOff
 import com.luckyzyx.luckytool.hook.scope.systemui.ShowChargingRipple
-import com.luckyzyx.luckytool.utils.data.A12
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.A12
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object HookMiscellaneous : YukiBaseHooker() {
     override fun onHook() {

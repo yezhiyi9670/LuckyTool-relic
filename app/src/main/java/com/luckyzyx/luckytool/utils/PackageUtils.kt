@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION", "unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.ResolveInfoFlags
 import android.content.pm.ResolveInfo
-import com.luckyzyx.luckytool.utils.data.SDK
 
 @SuppressLint("NewApi")
 class PackageUtils(private val packageManager: PackageManager) {

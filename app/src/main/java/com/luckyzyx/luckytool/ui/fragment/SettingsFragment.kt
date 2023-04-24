@@ -17,25 +17,25 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.data.Base64Code
-import com.luckyzyx.luckytool.utils.data.DonateData
-import com.luckyzyx.luckytool.utils.data.base64Decode
-import com.luckyzyx.luckytool.utils.data.base64Encode
-import com.luckyzyx.luckytool.utils.data.formatDate
-import com.luckyzyx.luckytool.utils.data.isZh
-import com.luckyzyx.luckytool.utils.data.navigate
-import com.luckyzyx.luckytool.utils.data.readFromUri
-import com.luckyzyx.luckytool.utils.data.setComponentDisabled
-import com.luckyzyx.luckytool.utils.data.toast
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import com.luckyzyx.luckytool.utils.tools.OtherPrefs
-import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
-import com.luckyzyx.luckytool.utils.tools.backupAllPrefs
-import com.luckyzyx.luckytool.utils.tools.clearAllPrefs
-import com.luckyzyx.luckytool.utils.tools.putBoolean
-import com.luckyzyx.luckytool.utils.tools.putInt
-import com.luckyzyx.luckytool.utils.tools.putString
-import com.luckyzyx.luckytool.utils.tools.putStringSet
+import com.luckyzyx.luckytool.utils.Base64CodeUtils
+import com.luckyzyx.luckytool.utils.DonateData
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.OtherPrefs
+import com.luckyzyx.luckytool.utils.SettingsPrefs
+import com.luckyzyx.luckytool.utils.backupAllPrefs
+import com.luckyzyx.luckytool.utils.base64Decode
+import com.luckyzyx.luckytool.utils.base64Encode
+import com.luckyzyx.luckytool.utils.clearAllPrefs
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.isZh
+import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.putBoolean
+import com.luckyzyx.luckytool.utils.putInt
+import com.luckyzyx.luckytool.utils.putString
+import com.luckyzyx.luckytool.utils.putStringSet
+import com.luckyzyx.luckytool.utils.readFromUri
+import com.luckyzyx.luckytool.utils.setComponentDisabled
+import com.luckyzyx.luckytool.utils.toast
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.FileNotFoundException
@@ -313,9 +313,9 @@ class SettingsFragment : ModulePreferenceFragment() {
                         MaterialAlertDialogBuilder(context).apply {
                             setItems(donateList.toTypedArray()) { _, which ->
                                 when (which) {
-                                    0 -> DonateData(context).showQRCode(Base64Code.qqCode)
-                                    1 -> DonateData(context).showQRCode(Base64Code.wechatCode)
-                                    2 -> DonateData(context).showQRCode(Base64Code.alipayCode)
+                                    0 -> DonateData(context).showQRCode(Base64CodeUtils.qqCode)
+                                    1 -> DonateData(context).showQRCode(Base64CodeUtils.wechatCode)
+                                    2 -> DonateData(context).showQRCode(Base64CodeUtils.alipayCode)
                                     3 -> if (isZh(context)) DonateData(context).showDonateList()
                                     else startActivity(
                                         Intent(

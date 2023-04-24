@@ -4,7 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.camera.FixHasselbladCustomWatermarkCrash
 import com.luckyzyx.luckytool.hook.scope.camera.HookCameraConfig
 import com.luckyzyx.luckytool.hook.scope.camera.RemoveWatermarkWordLimit
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookCamera : YukiBaseHooker() {
     override fun onHook() {

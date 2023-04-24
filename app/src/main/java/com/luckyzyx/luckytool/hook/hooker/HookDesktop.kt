@@ -11,7 +11,7 @@ import com.luckyzyx.luckytool.hook.scope.launcher.RemoveAppUpdateDot
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveBottomAppIconOfRecentTaskList
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveRecentTaskListClearButton
 import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookDesktop : YukiBaseHooker() {
     override fun onHook() {

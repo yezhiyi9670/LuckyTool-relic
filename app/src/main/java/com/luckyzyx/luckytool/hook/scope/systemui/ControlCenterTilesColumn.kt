@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.content.res.Configuration
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object ControlCenterTilesColumn : YukiBaseHooker() {
     override fun onHook() {

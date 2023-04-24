@@ -6,9 +6,9 @@ import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
 import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocksV11
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimit
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimitV11
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object HookApplication : YukiBaseHooker() {
     override fun onHook() {

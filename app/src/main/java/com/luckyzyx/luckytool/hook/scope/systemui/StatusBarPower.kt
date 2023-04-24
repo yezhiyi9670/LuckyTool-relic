@@ -4,7 +4,7 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object StatusBarPower : YukiBaseHooker() {
     override fun onHook() {

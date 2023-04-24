@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -21,9 +21,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.dialogCentered
-import com.luckyzyx.luckytool.utils.data.dp
-import com.luckyzyx.luckytool.utils.data.toast
 import org.json.JSONObject
 import java.io.File
 import java.text.DecimalFormat
@@ -32,22 +29,30 @@ import java.text.DecimalFormat
 class UpdateUtils(val context: Context) {
 
     @Suppress("unused")
-    val coolmarketUrl = "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"
+    val coolmarketUrl =
+        "https://dl.coolapk.com/down?pn=com.coolapk.market&id=NDU5OQ&h=46bb9d98&from=from-web"
 
     @SuppressLint("SetTextI18n")
     @Suppress("UNUSED_PARAMETER")
-    fun checkUpdate(versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit) {
+    fun checkUpdate(
+        versionName: String,
+        versionCode: Int,
+        result: (String, Int, () -> Unit) -> Unit
+    ) {
         scopeNet {
-            val latestUrl = "https://api.github.com/repos/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/latest"
+            val latestUrl =
+                "https://api.github.com/repos/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/latest"
             val getJson = Get<String>(latestUrl).await()
             JSONObject(getJson).apply {
                 val name = optString("name")
                 val code = optString("tag_name").split("-")[0]
                 val changeLog = optString("body")
                 val fileName = getJSONArray("assets").getJSONObject(0).optString("name")
-                val downloadUrl = getJSONArray("assets").getJSONObject(0).optString("browser_download_url")
+                val downloadUrl =
+                    getJSONArray("assets").getJSONObject(0).optString("browser_download_url")
                 val downloadPage = optString("html_url")
-                val downloadCount = getJSONArray("assets").getJSONObject(0).optString("download_count")
+                val downloadCount =
+                    getJSONArray("assets").getJSONObject(0).optString("download_count")
                 val fileSize = getJSONArray("assets").getJSONObject(0).optString("size").toFloat()
 //                val updateTime = optString("published_at").replace("T", " ").replace("Z", "")
                 result(name, code.toInt()) {
@@ -58,10 +63,16 @@ class UpdateUtils(val context: Context) {
                                 addView(
                                     MaterialTextView(context).apply {
                                         setPadding(20.dp, 0, 20.dp, 0)
-                                        val version = "${context.getString(R.string.version_name)}: $name($code)\n"
-                                        val count = "${context.getString(R.string.download_count)}: $downloadCount\n"
-                                        val size = "${context.getString(R.string.file_size)}: " + DecimalFormat("0.0").format(fileSize / (1024 * 1024)).toString() + "MB\n"
-                                        val changelog = "${context.getString(R.string.update_logs)}: \n$changeLog"
+                                        val version =
+                                            "${context.getString(R.string.version_name)}: $name($code)\n"
+                                        val count =
+                                            "${context.getString(R.string.download_count)}: $downloadCount\n"
+                                        val size =
+                                            "${context.getString(R.string.file_size)}: " + DecimalFormat(
+                                                "0.0"
+                                            ).format(fileSize / (1024 * 1024)).toString() + "MB\n"
+                                        val changelog =
+                                            "${context.getString(R.string.update_logs)}: \n$changeLog"
                                         text = "${version}${count}${size}${changelog}"
                                     }
                                 )
@@ -71,7 +82,12 @@ class UpdateUtils(val context: Context) {
                             readyDownload(context, fileName, downloadUrl)
                         }
                         .setNeutralButton(context.getString(R.string.go_download_page)) { _, _ ->
-                            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(downloadPage)))
+                            context.startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse(downloadPage)
+                                )
+                            )
                         }
                         .show()
                 }
@@ -101,7 +117,6 @@ class UpdateUtils(val context: Context) {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    @Suppress("MemberVisibilityCanBePrivate")
     fun downloadFile(context: Context, apkName: String, url: String) {
         var downloadScope: NetCoroutineScope = scopeNet { }
         val downloadDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
@@ -133,7 +148,7 @@ class UpdateUtils(val context: Context) {
                 setDownloadDir(Environment.getExternalStorageDirectory().path + "/Download/")
                 setDownloadMd5Verify()
                 setDownloadTempFile()
-                addDownloadListener(object : ProgressListener(100){
+                addDownloadListener(object : ProgressListener(100) {
                     @SuppressLint("SetTextI18n")
                     override fun onProgress(p: Progress) {
                         downSeek?.post {
@@ -144,7 +159,11 @@ class UpdateUtils(val context: Context) {
                                 ${context.getString(R.string.download_speed)}: ${p.speedSize()}
                                 ${context.getString(R.string.remain_size)}: ${p.remainSize()}
                                 ${context.getString(R.string.downloaded)}: ${p.currentSize()} / ${p.totalSize()}
-                                ${context.getString(R.string.used_time)}: ${p.useTime()}  ${context.getString(R.string.remain_time)}: ${p.remainTime()}
+                                ${context.getString(R.string.used_time)}: ${p.useTime()}  ${
+                                context.getString(
+                                    R.string.remain_time
+                                )
+                            }: ${p.remainTime()}
                             """.trimIndent()
                         }
                     }
@@ -153,7 +172,7 @@ class UpdateUtils(val context: Context) {
             downloadDialog.findViewById<MaterialButton>(R.id.install_button)?.apply {
                 isVisible = true
                 text = context.getString(R.string.install_button)
-                setOnClickListener{
+                setOnClickListener {
                     downloadDialog.setCancelable(true)
                     installApk(context, apkFile)
                 }
@@ -168,7 +187,8 @@ class UpdateUtils(val context: Context) {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            val uri = FileProvider.getUriForFile(context, "${context.packageName}.FileProvider", apkFile)
+            val uri =
+                FileProvider.getUriForFile(context, "${context.packageName}.FileProvider", apkFile)
             intent.setDataAndType(uri, "application/vnd.android.package-archive")
             context.startActivity(intent)
         } else {

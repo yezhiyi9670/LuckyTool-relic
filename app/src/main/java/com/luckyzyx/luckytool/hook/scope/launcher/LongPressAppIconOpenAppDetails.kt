@@ -4,9 +4,9 @@ import android.view.View
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.openAppDetailIntent
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.openAppDetailIntent
 
 object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
     override fun onHook() {

@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.utils.data
+package com.luckyzyx.luckytool.utils
 
 import android.graphics.drawable.Drawable
 import java.io.Serializable

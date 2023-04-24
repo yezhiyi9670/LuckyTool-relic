@@ -1,10 +1,17 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.systemui.*
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.hook.scope.systemui.CarriersUseUserTypeface
+import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenChargingComponent
+import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenComponent
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomButton
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomSOSButton
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenCloseNotificationButton
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenRedOne
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveTopLockScreenIcon
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object HookLockScreen : YukiBaseHooker() {
     override fun onHook() {

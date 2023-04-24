@@ -1,8 +1,12 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.type.java.*
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.highcapable.yukihookapi.hook.type.java.AnyClass
+import com.highcapable.yukihookapi.hook.type.java.BooleanType
+import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.highcapable.yukihookapi.hook.type.java.MapClass
+import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object CloudConditionFeature : YukiBaseHooker() {
     override fun onHook() {

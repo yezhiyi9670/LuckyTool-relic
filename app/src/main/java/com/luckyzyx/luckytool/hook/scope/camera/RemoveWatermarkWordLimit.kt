@@ -5,8 +5,8 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import java.util.*
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import java.util.Arrays
 
 object RemoveWatermarkWordLimit : YukiBaseHooker() {
     override fun onHook() {

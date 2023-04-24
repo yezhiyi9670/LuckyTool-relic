@@ -1,8 +1,15 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.oplusgames.*
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.hook.scope.oplusgames.CloudConditionFeature
+import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableDeveloperPage
+import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableSupportCompetitionMode
+import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableXModeFeature
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveCompetitionModeSound
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveStartupAnimation
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveWelfarePage
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 
 object HookOplusGames : YukiBaseHooker() {

@@ -5,9 +5,9 @@ import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterTilesColumn
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterTilesColumnV13
 import com.luckyzyx.luckytool.hook.scope.systemui.FixTileAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.LongPressTileOpenThePage
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object StatusBarTile : YukiBaseHooker() {
     override fun onHook() {

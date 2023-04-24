@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.tools
+package com.luckyzyx.luckytool.utils
 
 import android.app.Application
 import com.joom.paranoid.Obfuscate
@@ -12,8 +12,7 @@ import com.microsoft.appcenter.crashes.Crashes
 @Obfuscate
 object AppAnalyticsUtils {
 
-    @Suppress("PrivatePropertyName")
-    private val App_Center_Secret = BuildConfig.APP_CENTER_SECRET
+    private const val App_Center_Secret = BuildConfig.APP_CENTER_SECRET
 
     fun init(instance: Application) {
         if (App_Center_Secret.isNotBlank()) AppCenter.start(

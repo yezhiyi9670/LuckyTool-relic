@@ -12,13 +12,16 @@ import com.highcapable.yukihookapi.hook.factory.buildOf
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
-import com.luckyzyx.luckytool.utils.data.A11
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.formatDate
-import com.luckyzyx.luckytool.utils.data.getColorOSVersion
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.A11
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.getColorOSVersion
 import java.lang.reflect.Method
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Timer
+import java.util.TimerTask
 
 object StatusBarClock : YukiBaseHooker() {
 

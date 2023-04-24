@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object LockScreenChargingComponent : YukiBaseHooker() {
     override fun onHook() {

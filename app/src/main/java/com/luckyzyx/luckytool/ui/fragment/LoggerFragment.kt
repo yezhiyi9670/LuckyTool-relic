@@ -29,7 +29,13 @@ import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
-import com.luckyzyx.luckytool.utils.data.*
+import com.luckyzyx.luckytool.utils.copyStr
+import com.luckyzyx.luckytool.utils.dialogCentered
+import com.luckyzyx.luckytool.utils.dp
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.getAppIcon
+import com.luckyzyx.luckytool.utils.getAppLabel
+import com.luckyzyx.luckytool.utils.toast
 import rikka.core.util.ResourceUtils.isNightMode
 import java.io.File
 import java.io.FileNotFoundException

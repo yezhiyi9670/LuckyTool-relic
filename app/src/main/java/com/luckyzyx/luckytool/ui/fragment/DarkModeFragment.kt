@@ -24,9 +24,7 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentApplistFunctionLayoutBinding
 import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemDarkmodeBinding
-import com.luckyzyx.luckytool.utils.data.AppInfo
-import com.luckyzyx.luckytool.utils.data.restartScopes
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.*
 import rikka.core.util.ResourceUtils
 
 class DarkModeFragment : Fragment() {

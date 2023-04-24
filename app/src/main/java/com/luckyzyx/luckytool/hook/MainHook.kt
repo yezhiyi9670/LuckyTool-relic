@@ -42,8 +42,8 @@ import com.luckyzyx.luckytool.hook.statusbar.StatusBarLayout
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNetWorkSpeed
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNotify
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarTile
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 

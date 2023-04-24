@@ -8,7 +8,7 @@ import com.highcapable.yukihookapi.hook.type.android.NotificationClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object RemoveBatteryNotify : YukiBaseHooker() {
     override fun onHook() {

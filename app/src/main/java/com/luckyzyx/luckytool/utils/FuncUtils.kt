@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.luckyzyx.luckytool.utils.data
+package com.luckyzyx.luckytool.utils
 
 import android.content.*
 import android.content.pm.PackageManager.*
@@ -35,7 +35,7 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.*
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*

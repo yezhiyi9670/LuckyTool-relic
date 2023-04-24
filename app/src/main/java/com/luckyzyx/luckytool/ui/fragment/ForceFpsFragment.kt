@@ -17,16 +17,16 @@ import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentFpsBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.data.getFpsMode1
-import com.luckyzyx.luckytool.utils.data.getFpsMode2
-import com.luckyzyx.luckytool.utils.data.getRefreshRateStatus
-import com.luckyzyx.luckytool.utils.data.toast
-import com.luckyzyx.luckytool.utils.tools.SettingsPrefs
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getBoolean
-import com.luckyzyx.luckytool.utils.tools.getInt
-import com.luckyzyx.luckytool.utils.tools.putBoolean
-import com.luckyzyx.luckytool.utils.tools.putInt
+import com.luckyzyx.luckytool.utils.SettingsPrefs
+import com.luckyzyx.luckytool.utils.ShellUtils
+import com.luckyzyx.luckytool.utils.getBoolean
+import com.luckyzyx.luckytool.utils.getFpsMode1
+import com.luckyzyx.luckytool.utils.getFpsMode2
+import com.luckyzyx.luckytool.utils.getInt
+import com.luckyzyx.luckytool.utils.getRefreshRateStatus
+import com.luckyzyx.luckytool.utils.putBoolean
+import com.luckyzyx.luckytool.utils.putInt
+import com.luckyzyx.luckytool.utils.toast
 
 @Obfuscate
 class ForceFpsFragment : Fragment() {
@@ -87,7 +87,6 @@ class ForceFpsFragment : Fragment() {
             choiceMode = ListView.CHOICE_MODE_SINGLE
             if (!isUnsupport) adapter = fpsAdapter
             val curFpsId = idData.indexOf(currentFps)
-            clearChoices()
             if (curFpsId != -1) setItemChecked(curFpsId, currentFps != -1)
             onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                 fpsSelfStart.isEnabled = true
@@ -108,12 +107,7 @@ class ForceFpsFragment : Fragment() {
                 if (!buttonview.isPressed) return@setOnCheckedChangeListener
                 fpsSelfStart.isChecked = false
                 fpsSelfStart.isEnabled = false
-                context.putInt(SettingsPrefs, "fps_mode", 1)
-                context.dataChannel("com.android.systemui").put("fps_mode", 1)
-                context.putInt(SettingsPrefs, "current_fps", -1)
-                context.dataChannel("com.android.systemui").put("current_fps", -1)
-                ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                (activity as MainActivity).restart()
+                context.changeFpsMode(1)
             }
         }
         binding.fpsMode2.apply {
@@ -123,12 +117,7 @@ class ForceFpsFragment : Fragment() {
                 if (!buttonview.isPressed) return@setOnCheckedChangeListener
                 fpsSelfStart.isChecked = false
                 fpsSelfStart.isEnabled = false
-                context.putInt(SettingsPrefs, "fps_mode", 2)
-                context.dataChannel("com.android.systemui").put("fps_mode", 2)
-                context.putInt(SettingsPrefs, "current_fps", -1)
-                context.dataChannel("com.android.systemui").put("current_fps", -1)
-                ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                (activity as MainActivity).restart()
+                context.changeFpsMode(2)
             }
         }
         binding.fpsShow.apply {
@@ -147,15 +136,24 @@ class ForceFpsFragment : Fragment() {
             setOnClickListener {
                 fpsSelfStart.isChecked = false
                 fpsSelfStart.isEnabled = false
-                context.putInt(SettingsPrefs, "current_fps", -1)
-                context.dataChannel("com.android.systemui").put("current_fps", -1)
-                ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
-                binding.fpsList.clearChoices()
+                context.changeFpsMode(-1)
             }
         }
         binding.fpsTips.apply {
             text = getString(R.string.fps_tips)
             gravity = Gravity.CENTER
         }
+    }
+
+    private fun Context.changeFpsMode(mode: Int) {
+        if (mode != -1) {
+            putInt(SettingsPrefs, "fps_mode", mode)
+            dataChannel("com.android.systemui").put("fps_mode", mode)
+        }
+        binding.fpsList.setItemChecked(binding.fpsList.checkedItemPosition, false)
+        putInt(SettingsPrefs, "current_fps", -1)
+        dataChannel("com.android.systemui").put("current_fps", -1)
+        ShellUtils.execCommand("service call SurfaceFlinger 1035 i32 -1", true)
+        (activity as MainActivity).restart()
     }
 }

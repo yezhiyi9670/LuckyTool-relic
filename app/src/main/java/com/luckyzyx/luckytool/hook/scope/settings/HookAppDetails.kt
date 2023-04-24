@@ -10,10 +10,10 @@ import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.highcapable.yukihookapi.hook.type.android.PackageInfoClass
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.utils.data.formatDate
-import com.luckyzyx.luckytool.utils.data.getAppVersion
-import com.luckyzyx.luckytool.utils.data.openMarketIntent
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.getAppVersion
+import com.luckyzyx.luckytool.utils.openMarketIntent
 
 object HookAppDetails : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi", "SetTextI18n")

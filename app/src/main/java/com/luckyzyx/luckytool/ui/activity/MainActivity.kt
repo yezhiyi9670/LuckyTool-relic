@@ -26,8 +26,7 @@ import com.highcapable.yukihookapi.hook.factory.prefs
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
-import com.luckyzyx.luckytool.utils.data.*
-import com.luckyzyx.luckytool.utils.tools.*
+import com.luckyzyx.luckytool.utils.*
 import kotlin.system.exitProcess
 
 @Obfuscate

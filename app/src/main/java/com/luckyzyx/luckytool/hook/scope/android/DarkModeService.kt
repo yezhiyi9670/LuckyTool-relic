@@ -4,7 +4,7 @@ import android.util.ArrayMap
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object DarkModeService : YukiBaseHooker() {
     override fun onHook() {

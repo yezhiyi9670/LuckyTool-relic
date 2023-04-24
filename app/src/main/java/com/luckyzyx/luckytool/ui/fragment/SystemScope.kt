@@ -19,17 +19,17 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.data.A13
-import com.luckyzyx.luckytool.utils.data.SDK
-import com.luckyzyx.luckytool.utils.data.formatDate
-import com.luckyzyx.luckytool.utils.data.getDocumentPath
-import com.luckyzyx.luckytool.utils.data.navigate
-import com.luckyzyx.luckytool.utils.data.restartScopes
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
-import com.luckyzyx.luckytool.utils.tools.ShellUtils
-import com.luckyzyx.luckytool.utils.tools.getBoolean
-import com.luckyzyx.luckytool.utils.tools.getString
-import com.luckyzyx.luckytool.utils.tools.putString
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.ShellUtils
+import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.getBoolean
+import com.luckyzyx.luckytool.utils.getDocumentPath
+import com.luckyzyx.luckytool.utils.getString
+import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.putString
+import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
 
 class Android : ModulePreferenceFragment() {

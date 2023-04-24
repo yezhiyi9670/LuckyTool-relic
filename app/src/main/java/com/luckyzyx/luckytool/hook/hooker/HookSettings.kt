@@ -6,7 +6,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveDpiRestartRecovery
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookSettings : YukiBaseHooker() {
     override fun onHook() {

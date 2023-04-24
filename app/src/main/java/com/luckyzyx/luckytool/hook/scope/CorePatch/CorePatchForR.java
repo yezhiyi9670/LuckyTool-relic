@@ -1,6 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.CorePatch;
 
-import static com.luckyzyx.luckytool.utils.tools.SPUtilsKt.ModulePrefs;
+import static com.luckyzyx.luckytool.utils.SPUtilsKt.ModulePrefs;
 
 import android.app.AndroidAppHelper;
 import android.content.pm.ApplicationInfo;

@@ -1,6 +1,4 @@
-@file:Suppress("unused")
-
-package com.luckyzyx.luckytool.utils.data
+package com.luckyzyx.luckytool.utils
 
 import android.text.TextUtils
 import java.util.Properties

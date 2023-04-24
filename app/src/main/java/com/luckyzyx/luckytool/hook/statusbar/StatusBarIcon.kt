@@ -1,8 +1,15 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.systemui.*
-import com.luckyzyx.luckytool.utils.tools.ModulePrefs
+import com.luckyzyx.luckytool.hook.scope.systemui.BluetoothIconRelated
+import com.luckyzyx.luckytool.hook.scope.systemui.MobileDataIconRelated
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveGreenCapsulePrompt
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveGreenDotPrivacyPrompt
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveHighPerformanceModeIcon
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarSecurePayment
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveWiFiDataInout
+import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarIconVerticalCenter
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object StatusBarIcon : YukiBaseHooker() {
     override fun onHook() {
