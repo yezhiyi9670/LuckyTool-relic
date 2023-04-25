@@ -227,7 +227,7 @@
     <string name="battery_information_show_charge">Zobrazit informace o nabíjení</string>
     <string name="battery_information_show_charge_summary">Při nabíjení se na stavové liště zobrazuje napětí a teoretický nabíjecí výkon nabíječky</string>
     <string name="battery_information_show_simple_mode">Jednoduchý režim zobrazení</string>
-    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
+    <string name="battery_information_show_dual_voltage">Ukázat dvojí napětí</string>
     <string name="battery_information_show_update_time">Zobrazit čas aktualizace</string>
     <string name="battery_information_show_update_time_summary">Zobrazit čas aktualizace aktuálních dat ve stavové liště</string>
     <string name="battery_status_unknown">Neznámý</string>

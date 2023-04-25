@@ -32,7 +32,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
             loadHooker(ForceDisplayMediaPlayer)
         }
-        //通知左右对齐
+        //通知两侧对齐
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
             loadHooker(EnableNotificationAlignBothSides)
         }

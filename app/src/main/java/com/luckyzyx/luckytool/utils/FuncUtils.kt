@@ -384,13 +384,9 @@ fun jumpMultiApp(context: Context) {
  * @param context Context
  */
 fun jumpDarkMode(context: Context) {
-    Intent("android.settings.DARK_THEME_SETTINGS").apply {
+    Intent("com.android.settings.DISPLAY_SETTINGS").apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-        putExtra(
-            "com.android.settings.FRAGMENT_CLASS",
-            "com.android.settings.display.darkmode.DarkModeSettingsFragment"
-        )
         context.startActivity(this)
     }
 }

@@ -9,54 +9,36 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 object EnableNotificationAlignBothSides : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi")
     override fun onHook() {
-        //Source NotificationPanelViewController
-        findClass("com.android.systemui.statusbar.phone.NotificationPanelViewController").hook {
+        //Source ExpandableNotificationRow
+        findClass("com.android.systemui.statusbar.notification.row.ExpandableNotificationRow").hook {
             injectMember {
                 method {
                     name = "onFinishInflate"
                 }
-                afterHook {
-                    val view = field {
-                        name = "mNotificationStackScroller"
-                        superClass()
-                    }.get(instance).cast<ViewGroup>() ?: return@afterHook
-                    val qsPanelPadding = view.resources.getDimensionPixelSize(
-                        view.resources.getIdentifier(
-                            "qs_header_panel_side_padding", "dimen", packageName
-                        )
-                    )
-                    view.setViewPadding(qsPanelPadding)
-                }
+                afterHook { instance<ViewGroup>().setViewWidth() }
             }
             injectMember {
                 method {
-                    name = "updateResources"
+                    name = "onConfigurationChanged"
+                    paramCount = 1
                 }
-                afterHook {
-                    val view = field {
-                        name = "mNotificationStackScroller"
-                        superClass()
-                    }.get(instance).cast<ViewGroup>() ?: return@afterHook
-                    val qsPanelPadding = view.resources.getDimensionPixelSize(
-                        view.resources.getIdentifier(
-                            "qs_header_panel_side_padding", "dimen", packageName
-                        )
-                    )
-                    view.setViewPadding(qsPanelPadding)
-                }
+                afterHook { instance<ViewGroup>().setViewWidth() }
             }
         }
     }
 
-    private fun ViewGroup.setViewPadding(padding: Int) {
-        val mConfiguration: Configuration = context.resources.configuration
-        if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            setPadding(
-                padding - marginLeft,
-                paddingTop,
-                padding - marginRight,
-                paddingBottom
-            )
-        } else setPadding(0)
+    @SuppressLint("DiscouragedApi")
+    private fun ViewGroup.setViewWidth() {
+        val qsPanelPaddingPx = resources.getDimensionPixelSize(
+            resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
+        )
+        val mConfiguration: Configuration = resources.configuration
+        layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
+            val left = qsPanelPaddingPx - marginLeft
+            val right = qsPanelPaddingPx - marginRight
+            width = if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                resources.displayMetrics.widthPixels - left - right
+            } else -1
+        }
     }
 }
