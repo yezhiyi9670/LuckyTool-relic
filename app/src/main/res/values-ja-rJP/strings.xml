@@ -379,7 +379,7 @@
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">デフォルトのバッテリー最適化ホワイトリストを復元します</string>
     <string name="remove_high_temperature_limit">高温制限を無効化</string>
-    <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
+    <string name="remove_high_temperature_limit_summary">カメラ、トーチ、ホットスポット、画面表示エンジンなど、高温により各種機能が使用できなくなる制限を解除。</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>

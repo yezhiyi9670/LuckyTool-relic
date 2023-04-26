@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.4.2_beta
+### v4.4.2
 
 - [更新] 捐赠名单
 - [适配] 移除电池通知与隐藏入口
@@ -49,6 +49,27 @@ star: false
 - [添加] 应用分身与暗色模式跳转
 - [更改] 通知两侧对齐适配方案
 - [修复] 横幅通知阴影异常显示
+- [Update] Donation list
+- [Fix] Remove the battery notification and hide the entrance
+- [Add] Remove app shortcut badge
+- [Add] Remove app clone badge
+- [Fix] The version number display problem when uninstalling the application
+- [Optimize] Donation list displays currency unit
+- [Remove] Replace AOSP installer style
+- [Add] Install APP to automatically click the install button
+- [Add] Uninstall APP automatically click the uninstall button
+- [Fix] Forced refresh rate to get data exception
+- [Optimize] Battery information notification supports dual voltage
+- [Optimize] The battery font in the status bar is displayed abnormally
+- [Change] Force refresh rate page layout
+- [Add] Simple display mode for battery information notification
+- [Add] Allow built-in tile autostart switch
+- [Fix] The game assistant removes the sound effect of the game mode v8.8.1
+- [Change] Module tile status monitoring method
+- [Add] module built-in shortcut control
+- [Add] app clone and dark mode jump settings page
+- [Change] Notify side alignment adaptation scheme
+- [Fix] The banner notification shadow is abnormally displayed
 
 ### v4.4.1
 
