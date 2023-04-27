@@ -26,6 +26,11 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v4.4.3_beta
+
+- [更新] 捐赠名单
+- [优化] 通知两侧对齐异常
+
 ### v4.4.2
 
 - [更新] 捐赠名单

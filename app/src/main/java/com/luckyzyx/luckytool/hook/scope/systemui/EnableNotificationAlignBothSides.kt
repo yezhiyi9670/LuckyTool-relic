@@ -5,15 +5,26 @@ import android.content.res.Configuration
 import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import kotlin.math.abs
 
 object EnableNotificationAlignBothSides : YukiBaseHooker() {
-    @SuppressLint("DiscouragedApi")
+
+    private var qsPanelPaddingPx: Int = 0
+
     override fun onHook() {
         //Source ExpandableNotificationRow
-        findClass("com.android.systemui.statusbar.notification.row.ExpandableNotificationRow").hook {
+        findClass("com.oplusos.systemui.statusbar.notification.row.OplusExpandableNotificationRow").hook {
             injectMember {
                 method {
                     name = "onFinishInflate"
+                    superClass()
+                }
+                afterHook { instance<ViewGroup>().setViewWidth() }
+            }
+            injectMember {
+                method {
+                    name = "reInflateViews"
+                    superClass()
                 }
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
@@ -21,6 +32,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                 method {
                     name = "onConfigurationChanged"
                     paramCount = 1
+                    superClass()
                 }
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
@@ -29,13 +41,13 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
 
     @SuppressLint("DiscouragedApi")
     private fun ViewGroup.setViewWidth() {
-        val qsPanelPaddingPx = resources.getDimensionPixelSize(
+        if (qsPanelPaddingPx == 0) qsPanelPaddingPx = resources.getDimensionPixelSize(
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )
         val mConfiguration: Configuration = resources.configuration
         layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
-            val left = qsPanelPaddingPx - marginLeft
-            val right = qsPanelPaddingPx - marginRight
+            val left = abs(qsPanelPaddingPx - marginLeft)
+            val right = abs(qsPanelPaddingPx - marginRight)
             width = if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 resources.displayMetrics.widthPixels - left - right
             } else -1
