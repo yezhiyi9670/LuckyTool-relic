@@ -59,6 +59,7 @@ class OtherFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val isSu = ShellUtils.checkRootPermission()
 
         binding.quickEntryTitle.text = getString(R.string.quick_entry)
         binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
@@ -102,13 +103,15 @@ class OtherFragment : Fragment() {
         binding.remoteAdbDebug.apply {
             setOnClickListener {
                 val getPort =
-                    ShellUtils.execCommand("getprop service.adb.tcp.port", true, true).successMsg
+                    ShellUtils.execCommand("getprop service.adb.tcp.port", true, true).let {
+                        if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg else "6666"
+                    }
                 val getIP = ShellUtils.execCommand(
                     "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
                     true,
                     true
-                ).successMsg.let {
-                    it.ifEmpty { "IP" }
+                ).let {
+                    if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg else "IP"
                 }
                 val adbDialog = MaterialAlertDialogBuilder(context).apply {
                     setCancelable(true)
@@ -149,7 +152,8 @@ class OtherFragment : Fragment() {
 
                 adbDialog.findViewById<MaterialSwitch>(R.id.adb_switch)?.apply {
                     text = context.getString(R.string.enable_remote_adb_debugging)
-                    isChecked = !(getPort == "" || getPort.toInt() == -1)
+                    isEnabled = isSu
+                    isChecked = isSu && getPort.isNotBlank() && getPort.toInt() != -1
                     adbPortLayout?.isEnabled = isChecked.not()
                     setOnCheckedChangeListener { _, isChecked ->
                         if (isChecked) {

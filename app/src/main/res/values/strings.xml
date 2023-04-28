@@ -71,6 +71,10 @@
     <string name="participate_translation_summary">Go to Crowdin to contribute your translation</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">Module not activated detected.\nPlease use the latest version of LS Posed to check the scope of the module.\n If you have completed the above, you can click OK to exit the App and open the module</string>
+    <string name="unsupported_os">Unsupported system</string>
+    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system!</string>
+    <string name="no_root">No Root permission</string>
+    <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
     <!-- Menu -->
     <string name="menu_reboot">Restart menu</string>
     <string name="menu_settings">Set menu</string>
@@ -564,6 +568,7 @@
     <!--CommonWords-->
     <string name="common_words_close">Close</string>
     <string name="common_words_open">Open</string>
+    <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">Default</string>
     <string name="common_words_preset">Preset</string>
     <string name="common_words_single_line">Single line</string>

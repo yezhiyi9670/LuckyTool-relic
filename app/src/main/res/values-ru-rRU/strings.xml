@@ -67,6 +67,10 @@
     <string name="participate_translation_summary">Перейдите на сайт Crowdin, чтобы добавить свой перевод</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">Модуль не активирован.\nПожалуйста, используйте последнюю версию LS Posed.\n Если вы выполнили все вышеперечисленное, вы можете нажать OK, чтобы выйти из приложения и открыть модуль.</string>
+    <string name="unsupported_os">Unsupported system</string>
+    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system!</string>
+    <string name="no_root">No Root permission</string>
+    <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезагрузки</string>
     <string name="menu_settings">Настройки</string>
@@ -536,6 +540,7 @@
     <!--CommonWords-->
     <string name="common_words_close">Отключено</string>
     <string name="common_words_open">Открыть</string>
+    <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">По умолчанию</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Одна строка</string>

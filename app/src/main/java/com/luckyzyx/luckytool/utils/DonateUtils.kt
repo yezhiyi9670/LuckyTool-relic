@@ -766,6 +766,13 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "碳水化合猹", details(
+                        DCInfo("20230427-235525", CWC, 36.88, "10000499012023042701775191323550")
+                    )
+                )
+            )
         }
     }
 

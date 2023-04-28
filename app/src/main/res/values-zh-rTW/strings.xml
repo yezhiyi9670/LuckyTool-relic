@@ -67,6 +67,10 @@
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">检测到模块未激活\n请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
+    <string name="unsupported_os">不受支持的系统</string>
+    <string name="unsupported_os_summary">因为此模块仅适用于ColorOS 12+，所以在此系统上绝大多数功能将无法使用！</string>
+    <string name="no_root">无 Root 权限</string>
+    <string name="no_root_summary">未检测到Root权限，部分功能将无法使用！</string>
     <!-- Menu -->
     <string name="menu_reboot">重启菜单</string>
     <string name="menu_settings">设置菜单</string>
@@ -536,6 +540,7 @@
     <!--CommonWords-->
     <string name="common_words_close">关闭</string>
     <string name="common_words_open">打开</string>
+    <string name="common_words_ignore">忽略</string>
     <string name="common_words_default">默认</string>
     <string name="common_words_preset">預設</string>
     <string name="common_words_single_line">单行</string>

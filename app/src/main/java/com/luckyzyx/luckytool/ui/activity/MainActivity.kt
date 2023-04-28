@@ -53,13 +53,34 @@ open class MainActivity : AppCompatActivity() {
         initDynamicShortcuts()
 
         checkPrefsStatus()
-        checkSu(isStart)
+        checkSuAndOS(isStart)
         checkPermissions(isStart)
     }
 
-    private fun checkSu(isStart: Boolean) {
+    private fun checkSuAndOS(isStart: Boolean) {
         if (!isStart) return
-        ShellUtils.checkRootPermission()
+        val isSu = ShellUtils.checkRootPermission()
+        if (!isSu) {
+            MaterialAlertDialogBuilder(this, dialogCentered).apply {
+                setTitle(getString(R.string.no_root))
+                setMessage(getString(R.string.no_root_summary))
+                setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
+                show()
+            }
+            return
+        }
+        val os = getColorOSVersion!!
+        if (os.isNotBlank() && os.startsWith("V")) {
+            val version = os.substring(1, os.length).toDoubleOrNull()
+            if ((version != null) && (version >= 12.0)) return
+        }
+        MaterialAlertDialogBuilder(this, dialogCentered).apply {
+            setTitle(getString(R.string.unsupported_os))
+            setMessage(getString(R.string.unsupported_os_summary))
+            setNeutralButton(getString(R.string.common_words_ignore), null)
+            setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
+            show()
+        }
     }
 
     private fun checkPermissions(isStart: Boolean) {

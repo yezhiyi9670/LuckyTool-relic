@@ -23,15 +23,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             }
             injectMember {
                 method {
-                    name = "reInflateViews"
-                    superClass()
-                }
-                afterHook { instance<ViewGroup>().setViewWidth() }
-            }
-            injectMember {
-                method {
-                    name = "onConfigurationChanged"
-                    paramCount = 1
+                    name = "onLayout"
                     superClass()
                 }
                 afterHook { instance<ViewGroup>().setViewWidth() }
