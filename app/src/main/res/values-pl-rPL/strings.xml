@@ -68,7 +68,7 @@
     <!-- check lsposed -->
     <string name="unsupported_xposed">Moduł w LSPosed nie został włączony.\nDotknij OK, aby zamknąć aplikację.</string>
     <string name="unsupported_os">Unsupported system</string>
-    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system!</string>
+    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system! Please be sure to take safety measures!</string>
     <string name="no_root">No Root permission</string>
     <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
     <!-- Menu -->
@@ -183,8 +183,11 @@
     <string name="control_center_clock_show_second">Pokaż sekundy</string>
     <string name="fix_clock_colon_style">Obniż dwukropek w zegarze</string>
     <string name="fix_clock_colon_style_summary">Przywróć normalny dwukropek</string>
+    <string name="statusbar_control_center_clock_red_one_mode">Control center red one mode</string>
     <string name="remove_control_center_clock_red_one">Usuń czerwony kolor z cyfry „1”</string>
     <string name="remove_control_center_date_comma">Usuń przecinek daty</string>
+    <string name="fix_control_center_date_display">Fix control center date display</string>
+    <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     <string name="ControlCenter_UI_Related">Dostosuj centrum sterowania</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
     <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
@@ -540,6 +543,8 @@
     <!--CommonWords-->
     <string name="common_words_close">Wyłączone</string>
     <string name="common_words_open">Otwórz</string>
+    <string name="common_words_add">Add</string>
+    <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">Domyślny</string>
     <string name="common_words_preset">Gotowe ustawienia</string>

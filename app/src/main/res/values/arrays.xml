@@ -77,5 +77,11 @@
         <item>@string/switch_autostart_function_caller_module</item>
         <item>@string/switch_autostart_function_caller_systemui</item>
     </string-array>
+    
+    <string-array name="statusbar_control_center_clock_red_one_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_add</item>
+        <item>@string/common_words_remove</item>
+    </string-array>
 
 </resources>

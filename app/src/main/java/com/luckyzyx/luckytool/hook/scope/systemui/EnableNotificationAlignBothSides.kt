@@ -1,10 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.getScreenStatus
 import kotlin.math.abs
 
 object EnableNotificationAlignBothSides : YukiBaseHooker() {
@@ -36,13 +36,14 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
         if (qsPanelPaddingPx == 0) qsPanelPaddingPx = resources.getDimensionPixelSize(
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )
-        val mConfiguration: Configuration = resources.configuration
-        layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
-            val left = abs(qsPanelPaddingPx - marginLeft)
-            val right = abs(qsPanelPaddingPx - marginRight)
-            width = if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                resources.displayMetrics.widthPixels - left - right
-            } else -1
+        getScreenStatus(resources) {
+            layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
+                val left = abs(qsPanelPaddingPx - marginLeft)
+                val right = abs(qsPanelPaddingPx - marginRight)
+                width = if (it) {
+                    resources.displayMetrics.widthPixels - left - right
+                } else -1
+            }
         }
     }
 }

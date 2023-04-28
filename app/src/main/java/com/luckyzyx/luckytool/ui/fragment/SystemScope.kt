@@ -19,6 +19,7 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -27,6 +28,7 @@ import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getDocumentPath
 import com.luckyzyx.luckytool.utils.getString
+import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.navigate
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.restartScopes
@@ -967,14 +969,27 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "control_center_clock_show_second"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("control_center_clock_show_second", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_control_center_clock_red_one)
-                    key = "remove_control_center_clock_red_one"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_control_center_clock_red_one_mode)
+                    summary = "%s"
+                    key = "statusbar_control_center_clock_red_one_mode"
+                    entries = resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                    entryValues = arrayOf("0", "1","2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_control_center_clock_red_one_mode", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -985,6 +1000,11 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("fix_clock_colon_style", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -993,6 +1013,40 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "remove_control_center_date_comma"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("remove_control_center_date_comma", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.fix_control_center_date_display)
+                    summary = getString(R.string.fix_control_center_date_display_suammry)
+                    key = "fix_control_center_date_display"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("fix_control_center_date_display", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_control_center_date_show_lunar)
+                    key = "statusbar_control_center_date_show_lunar"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = isZh(context)
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_control_center_date_show_lunar", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1370,6 +1424,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                     title = getString(R.string.StatusBarBatteryNotify)
                     key = "StatusBarBatteryNotify"
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A12
                 }
             )
             addPreference(
@@ -1382,6 +1437,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                     entryValues = arrayOf("0", "1", "2")
                     setDefaultValue("0")
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A12
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
                             .put("battery_information_display_mode", newValue)
@@ -1398,6 +1454,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         key = "battery_information_show_charge_info"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
+                        isVisible = SDK >= A12
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
                                 .put("battery_information_show_charge_info", newValue)
@@ -1411,6 +1468,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         key = "battery_information_show_dual_voltage"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
+                        isVisible = SDK >= A12
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
                                 .put("battery_information_show_dual_voltage", newValue)
@@ -1424,6 +1482,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         key = "battery_information_show_simple_mode"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
+                        isVisible = SDK >= A12
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
                                 .put("battery_information_show_simple_mode", newValue)
@@ -1438,6 +1497,7 @@ class StatusBarBattery : ModulePreferenceFragment() {
                         key = "battery_information_show_update_time"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
+                        isVisible = SDK >= A12
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
                                 .put("battery_information_show_update_time", newValue)

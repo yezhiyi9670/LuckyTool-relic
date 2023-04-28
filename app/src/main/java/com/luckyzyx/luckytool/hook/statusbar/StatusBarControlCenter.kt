@@ -16,10 +16,9 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //控制中心时钟样式
         loadHooker(ControlCenterClockStyle)
 
-        //移除控制中心日期逗号
-        if (prefs(ModulePrefs).getBoolean("remove_control_center_date_comma", false)) {
-            loadHooker(RemoveControlCenterDateComma)
-        }
+        //移除控制中心日期
+        loadHooker(RemoveControlCenterDateComma)
+
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {
             if (SDK < A13) loadHooker(RemoveControlCenterUserSwitcher)

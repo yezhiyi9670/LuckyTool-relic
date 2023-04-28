@@ -4,6 +4,7 @@ package com.luckyzyx.luckytool.utils
 
 import android.content.*
 import android.content.pm.PackageManager.*
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.database.Cursor
 import android.graphics.Bitmap
@@ -834,6 +835,11 @@ fun formatDouble(format: String, param: Any): Double {
     return Formatter().format(format, param).toString().toDoubleOrNull() ?: 0.0
 }
 
+/**
+ * 判断语言首选项是否为中文
+ * @param context Context
+ * @return Boolean
+ */
 fun isZh(context: Context): Boolean {
     val locale = context.resources.configuration.locales
     val language = locale[0].language
@@ -1085,4 +1091,21 @@ fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
  */
 fun Fragment.navigate(action: Int, bundle: Bundle?) {
     findNavController().navigate(action, bundle)
+}
+
+/**
+ * 获取屏幕状态
+ * (true 竖屏 ORIENTATION_PORTRAIT)
+ * (false 横屏 ORIENTATION_LANDSCAPE)
+ * @param resource Resources
+ * @param result Function1<Boolean, Unit>
+ */
+fun getScreenStatus(resource: Resources, result: (Boolean) -> Unit) {
+    val mConfiguration: Configuration = resource.configuration
+    if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        result(true)
+    }
+    if (mConfiguration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        result(false)
+    }
 }

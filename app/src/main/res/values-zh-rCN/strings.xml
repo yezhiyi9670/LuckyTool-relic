@@ -68,7 +68,7 @@
     <!-- check lsposed -->
     <string name="unsupported_xposed">检测到模块未激活\n请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
     <string name="unsupported_os">不受支持的系统</string>
-    <string name="unsupported_os_summary">因为此模块仅适用于ColorOS 12+，所以在此系统上绝大多数功能将无法使用！</string>
+    <string name="unsupported_os_summary">因为此模块仅适用于ColorOS 12+，所以在此系统上绝大多数功能将无法使用！请务必做好救砖措施！</string>
     <string name="no_root">无 Root 权限</string>
     <string name="no_root_summary">未检测到Root权限，部分功能将无法使用！</string>
     <!-- Menu -->
@@ -183,8 +183,11 @@
     <string name="control_center_clock_show_second">控制中心时钟显秒</string>
     <string name="fix_clock_colon_style">修复时钟冒号样式</string>
     <string name="fix_clock_colon_style_summary">开启时恢复系统默认冒号，关闭时使用官方定制冒号</string>
+    <string name="statusbar_control_center_clock_red_one_mode">控制中心红一模式</string>
     <string name="remove_control_center_clock_red_one">移除控制中心时钟红一</string>
     <string name="remove_control_center_date_comma">移除控制中心日期逗号</string>
+    <string name="fix_control_center_date_display">修复控制中心日期显示</string>
+    <string name="fix_control_center_date_display_suammry">修复日期无法完整显示的问题</string>
     <string name="ControlCenter_UI_Related">控制中心UI相关</string>
     <string name="remove_control_center_user_switcher">移除控制中心多用户</string>
     <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
@@ -540,6 +543,8 @@
     <!--CommonWords-->
     <string name="common_words_close">关闭</string>
     <string name="common_words_open">打开</string>
+    <string name="common_words_add">添加</string>
+    <string name="common_words_remove">移除</string>
     <string name="common_words_ignore">忽略</string>
     <string name="common_words_default">默认</string>
     <string name="common_words_preset">预设</string>

@@ -8,10 +8,8 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.buildOf
-import com.highcapable.yukihookapi.hook.factory.current
-import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
+import com.luckyzyx.luckytool.hook.utils.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -119,6 +117,7 @@ object StatusBarClock : YukiBaseHooker() {
             }
         }
 
+        //Source StatClock
         findClass("com.oplusos.systemui.statusbar.widget.StatClock").hook {
             injectMember {
                 method {
@@ -126,26 +125,14 @@ object StatusBarClock : YukiBaseHooker() {
                     if (SDK > A11) name = "onConfigurationChanged"
                 }
                 intercept()
-//                replaceUnit {
-//                    instance<TextView>().apply {
-//                        typeface = field {
-//                            name = "defaultFont"
-//                            type = TypefaceClass
-//                        }.get(instance).cast<Typeface>()
-//                    }
-//                }
             }
         }
     }
 
     private fun initLunar(context: Context) {
-        val lunarInstance =
-            "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass().buildOf(context) {
-                param(ContextClass)
-            }
-        nowLunar = lunarInstance?.current()?.method {
-            name = "getDateToString"
-        }?.invoke<String>(System.currentTimeMillis())
+        val instance = LunarHelperUtils(appClassLoader).buildInstance(context)
+        nowLunar =
+            LunarHelperUtils(appClassLoader).getDateToString(instance, System.currentTimeMillis())
     }
 
     private fun TextView.initView() {
@@ -213,21 +200,27 @@ object StatusBarClock : YukiBaseHooker() {
             "00", "01", "02", "03", "04", "05" -> {
                 "凌晨"
             }
+
             "06", "07", "08", "09", "10", "11" -> {
                 "上午"
             }
+
             "12" -> {
                 "中午"
             }
+
             "13", "14", "15", "16", "17" -> {
                 "下午"
             }
+
             "18" -> {
                 "傍晚"
             }
+
             "19", "20", "21", "22", "23" -> {
                 "晚上"
             }
+
             else -> ""
         }
     }
@@ -237,39 +230,51 @@ object StatusBarClock : YukiBaseHooker() {
             "23", "00" -> {
                 "子时"
             }
+
             "01", "02" -> {
                 "丑时"
             }
+
             "03", "04" -> {
                 "寅时"
             }
+
             "05", "06" -> {
                 "卯时"
             }
+
             "07", "08" -> {
                 "辰时"
             }
+
             "09", "10" -> {
                 "巳时"
             }
+
             "11", "12" -> {
                 "午时"
             }
+
             "13", "14" -> {
                 "未时"
             }
+
             "15", "16" -> {
                 "申时"
             }
+
             "17", "18" -> {
                 "酉时"
             }
+
             "19", "20" -> {
                 "戌时"
             }
+
             "21", "22" -> {
                 "亥时"
             }
+
             else -> ""
         }
     }

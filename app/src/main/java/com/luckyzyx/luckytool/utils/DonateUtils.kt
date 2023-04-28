@@ -773,6 +773,13 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "13402125", details(
+                        DCInfo("20230428-181919", CAP, 5.0, "2023042822001492751433405690")
+                    )
+                )
+            )
         }
     }
 

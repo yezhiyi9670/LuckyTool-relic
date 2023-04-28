@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.statusbar
 
 import android.content.Context
-import android.content.res.Configuration
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,6 +11,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.getScreenStatus
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
 object StatusBarLayout : YukiBaseHooker() {
@@ -37,26 +37,28 @@ object StatusBarLayout : YukiBaseHooker() {
             prefs(ModulePrefs).getInt("statusbar_layout_right_margin", 0)
 
         fun updateCustomLayout(context: Context) {
-            val mConfiguration: Configuration = context.resources.configuration
-            if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                mLeftLayout?.setPadding(statusBarLeftMargin, 0, 0, 0)
-                mRightLayout?.setPadding(0, 0, statusBarRightMargin, 0)
-                mStatusBar?.setPadding(0, statusBarTopMargin, 0, statusBarBottomMargin)
-            } else {
-                mLeftLayout?.setPadding(0, 0, 0, 0)
-                mRightLayout?.setPadding(0, 0, 0, 0)
+            getScreenStatus(context.resources) {
+                if (it) {
+                    mLeftLayout?.setPadding(statusBarLeftMargin, 0, 0, 0)
+                    mRightLayout?.setPadding(0, 0, statusBarRightMargin, 0)
+                    mStatusBar?.setPadding(0, statusBarTopMargin, 0, statusBarBottomMargin)
+                } else {
+                    mLeftLayout?.setPadding(0, 0, 0, 0)
+                    mRightLayout?.setPadding(0, 0, 0, 0)
+                }
             }
         }
 
         fun updateDefaultLayout(context: Context, leftView: ViewGroup?, rightView: ViewGroup?) {
             if (!isCompatibleMode) return
-            val mConfiguration: Configuration = context.resources.configuration
-            if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                leftView?.setPadding(leftMargin, 0, 0, 0)
-                rightView?.setPadding(0, 0, rightMargin, 0)
-            } else {
-                leftView?.setPadding(0, 0, 0, 0)
-                rightView?.setPadding(0, 0, 0, 0)
+            getScreenStatus(context.resources) {
+                if (it) {
+                    leftView?.setPadding(leftMargin, 0, 0, 0)
+                    rightView?.setPadding(0, 0, rightMargin, 0)
+                } else {
+                    leftView?.setPadding(0, 0, 0, 0)
+                    rightView?.setPadding(0, 0, 0, 0)
+                }
             }
         }
 

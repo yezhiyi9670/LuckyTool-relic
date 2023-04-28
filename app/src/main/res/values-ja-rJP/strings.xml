@@ -67,8 +67,8 @@
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">モジュールが有効化されていません。\n最新版の LSPosed でモジュールのスコープを確認してください。\n確認が完了したら OK をタップしてアプリを終了し、モジュールを開いてください</string>
-    <string name="unsupported_os">Unsupported system</string>
-    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system!</string>
+    <string name="unsupported_os">非対応のシステム</string>
+    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system! Please be sure to take safety measures!</string>
     <string name="no_root">root 権限がありません</string>
     <string name="no_root_summary">root 権限を検出できませんでした。一部の機能は利用できません！</string>
     <!-- Menu -->
@@ -183,8 +183,11 @@
     <string name="control_center_clock_show_second">コントロールセンターの時計に秒を表示</string>
     <string name="fix_clock_colon_style">時計のコロンのスタイルを修正</string>
     <string name="fix_clock_colon_style_summary">有効にすると通常のコロンで表示、無効にすると公式のカスタムされたコロンで表示します</string>
+    <string name="statusbar_control_center_clock_red_one_mode">通知領域の時計で赤い「1」を表示</string>
     <string name="remove_control_center_clock_red_one">コントロールセンターから赤い数字の1を削除</string>
     <string name="remove_control_center_date_comma">コントロールセンターの日付のコンマを削除</string>
+    <string name="fix_control_center_date_display">Fix control center date display</string>
+    <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     <string name="ControlCenter_UI_Related">コントロールセンターのUI関連</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
@@ -540,7 +543,9 @@
     <!--CommonWords-->
     <string name="common_words_close">閉じる</string>
     <string name="common_words_open">開く</string>
-    <string name="common_words_ignore">Ignore</string>
+    <string name="common_words_add">追加</string>
+    <string name="common_words_remove">削除</string>
+    <string name="common_words_ignore">無視する</string>
     <string name="common_words_default">デフォルト</string>
     <string name="common_words_preset">プリセット</string>
     <string name="common_words_single_line">直線</string>

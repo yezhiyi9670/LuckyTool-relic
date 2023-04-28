@@ -1,9 +1,9 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.content.res.Configuration
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.getScreenStatus
 
 object ControlCenterTilesColumn : YukiBaseHooker() {
     override fun onHook() {
@@ -41,12 +41,16 @@ object ControlCenterTilesColumn : YukiBaseHooker() {
                 }
                 afterHook {
                     instance<ViewGroup>().apply {
-                        if (context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            isVertical = true
-                            field { name = "mColumns" }.get(instance).set(columnExpandedVertical)
-                        } else {
-                            isVertical = false
-                            field { name = "mColumns" }.get(instance).set(columnExpandedHorizontal)
+                        getScreenStatus(context.resources) {
+                            if (it) {
+                                isVertical = true
+                                field { name = "mColumns" }.get(instance)
+                                    .set(columnExpandedVertical)
+                            } else {
+                                isVertical = false
+                                field { name = "mColumns" }.get(instance)
+                                    .set(columnExpandedHorizontal)
+                            }
                         }
                         requestLayout()
                     }
@@ -92,10 +96,10 @@ object ControlCenterTilesColumnV13 : YukiBaseHooker() {
                 }
                 afterHook {
                     instance<ViewGroup>().apply {
-                        if (context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                            field { name = "mColumns" }.get(instance).set(columnExpandedVerticalC13)
-                        } else {
-                            field { name = "mColumns" }.get(instance).set(columnHorizontal)
+                        getScreenStatus(context.resources) {
+                            if (it) field { name = "mColumns" }.get(instance)
+                                .set(columnExpandedVerticalC13)
+                            else field { name = "mColumns" }.get(instance).set(columnHorizontal)
                         }
                         requestLayout()
                     }

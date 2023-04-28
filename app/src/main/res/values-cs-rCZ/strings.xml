@@ -67,10 +67,10 @@
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte nejnovější verzi LS Posed ke kontrole rozsahu modulu.\n Pokud jste dokončili výše uvedené, můžete kliknout na tlačítko OK pro ukončení aplikace a otevření modulu</string>
-    <string name="unsupported_os">Unsupported system</string>
-    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system!</string>
-    <string name="no_root">No Root permission</string>
-    <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
+    <string name="unsupported_os">Nepodporovaný systém</string>
+    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system! Please be sure to take safety measures!</string>
+    <string name="no_root">Nemáte oprávnění root</string>
+    <string name="no_root_summary">Nebylo zjištěno root oprávnění, některé funkce nebudou k dispozici!</string>
     <!-- Menu -->
     <string name="menu_reboot">Nabídka restartu</string>
     <string name="menu_settings">Nastavit menu</string>
@@ -183,8 +183,11 @@
     <string name="control_center_clock_show_second">Zobraz sekundy</string>
     <string name="fix_clock_colon_style">Opravit styl dvojtečky u hodin</string>
     <string name="fix_clock_colon_style_summary">Při zapnutí se vraťte k normální dvojtečce a při vypnutí použijte oficiální vlastní dvojtečku</string>
-    <string name="remove_control_center_clock_red_one">Odebrat červenou jedničku v hodinách</string>
+    <string name="statusbar_control_center_clock_red_one_mode">Ovládací centrum stavového řádku s červeným režimem zobrazení</string>
+    <string name="remove_control_center_clock_red_one">Ovládací centrum stavového řádku s červeným režimem zobrazení</string>
     <string name="remove_control_center_date_comma">Odstranit čárku v datu</string>
+    <string name="fix_control_center_date_display">Fix control center date display</string>
+    <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
@@ -540,7 +543,9 @@
     <!--CommonWords-->
     <string name="common_words_close">Nezobrazit</string>
     <string name="common_words_open">Otevřít</string>
-    <string name="common_words_ignore">Ignore</string>
+    <string name="common_words_add">Přidat</string>
+    <string name="common_words_remove">Odstranit</string>
+    <string name="common_words_ignore">Ignorovat</string>
     <string name="common_words_default">Výchozí</string>
     <string name="common_words_preset">Přednastavené</string>
     <string name="common_words_single_line">Jeden řádek</string>
