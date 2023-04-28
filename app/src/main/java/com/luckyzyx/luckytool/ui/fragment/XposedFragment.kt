@@ -208,7 +208,8 @@ class XposedFragment : ModulePreferenceFragment() {
             )
             addPreference(
                 Preference(context).apply {
-                    key = "com.heytap.themestore"
+                    val isHeytap = context.checkPackName("com.heytap.themestore")
+                    key = if (isHeytap) "com.heytap.themestore" else "com.oplus.themestore"
                     setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show

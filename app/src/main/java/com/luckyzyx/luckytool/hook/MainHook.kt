@@ -135,7 +135,9 @@ object MainHook : IYukiHookXposedInit {
             loadHooker(HookCamera)
         }
         //主题商店
-        loadApp("com.heytap.themestore", HookThemeStore)
+        loadApp("com.heytap.themestore", "com.oplus.themestore") {
+            loadHooker(HookThemeStore)
+        }
         //云服务
         loadApp("com.heytap.cloud", HookCloudService)
         //游戏助手

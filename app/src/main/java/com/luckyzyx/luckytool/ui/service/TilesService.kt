@@ -16,8 +16,10 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.SettingsPrefs
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.checkPackName
+import com.luckyzyx.luckytool.utils.closeCollapse
 import com.luckyzyx.luckytool.utils.getRefreshRateStatus
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
+import com.luckyzyx.luckytool.utils.jumpHighPerformance
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.showRefreshRate
@@ -27,6 +29,7 @@ import com.topjohnwu.superuser.ipc.RootService
 @Obfuscate
 class ChargingTest : TileService() {
     override fun onClick() {
+        closeCollapse()
         jumpBatteryInfo(applicationContext)
     }
 }
@@ -34,6 +37,7 @@ class ChargingTest : TileService() {
 @Obfuscate
 class ProcessManager : TileService() {
     override fun onClick() {
+        closeCollapse()
         jumpRunningApp(applicationContext)
     }
 }
@@ -43,8 +47,8 @@ class GameAssistant : TileService() {
     override fun onStartListening() {
         scope {
             withIO {
-                if (!checkPackName("com.oplus.games")) qsTile.state =
-                    Tile.STATE_UNAVAILABLE else qsTile.state = Tile.STATE_INACTIVE
+                qsTile.state =
+                    if (!checkPackName("com.oplus.games")) Tile.STATE_UNAVAILABLE else Tile.STATE_INACTIVE
             }
         }.finally {
             qsTile.updateTile()
@@ -53,6 +57,7 @@ class GameAssistant : TileService() {
     }
 
     override fun onClick() {
+        closeCollapse()
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> ShellUtils.execCommand(
                 "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
@@ -60,6 +65,15 @@ class GameAssistant : TileService() {
 
             Tile.STATE_UNAVAILABLE -> toast(getString(R.string.game_assistant_tile_tips))
         }
+    }
+}
+
+@Obfuscate
+class HighPerformanceMode : TileService() {
+
+    override fun onClick() {
+        closeCollapse()
+        jumpHighPerformance(this)
     }
 }
 
@@ -293,7 +307,6 @@ class FiveG : TileService() {
             withIO {
                 if (it == null) {
                     qsTile.state = Tile.STATE_UNAVAILABLE
-                    qsTile.updateTile()
                     return@withIO
                 }
                 val subId = SubscriptionManager.getDefaultDataSubscriptionId()
@@ -349,50 +362,6 @@ class VeryDarkMode : TileService() {
 
             Tile.STATE_ACTIVE -> {
                 ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 0", true)
-                qsTile.state = Tile.STATE_INACTIVE
-            }
-
-            Tile.STATE_UNAVAILABLE -> {}
-        }
-        qsTile.updateTile()
-    }
-}
-
-@Obfuscate
-class HighPerformanceMode : TileService() {
-    override fun onStartListening() {
-        scope {
-            withIO {
-                ShellUtils.execCommand("settings get system high_performance_mode_on", true, true)
-                    .apply {
-                        if (result == 1) qsTile.state =
-                            Tile.STATE_UNAVAILABLE
-                        else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                            when (successMsg.substring(0, 1)) {
-                                "0" -> qsTile.state = Tile.STATE_INACTIVE
-                                "1" -> qsTile.state = Tile.STATE_ACTIVE
-                                else -> qsTile.state = Tile.STATE_UNAVAILABLE
-                            }
-                        } else qsTile.state = Tile.STATE_UNAVAILABLE
-                    }
-            }
-        }.finally {
-            qsTile.updateTile()
-            close()
-        }
-    }
-
-    override fun onClick() {
-        when (qsTile.state) {
-            Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("settings put system high_performance_mode_on 1", true)
-                putBoolean(SettingsPrefs, "high_performance_mode", true)
-                qsTile.state = Tile.STATE_ACTIVE
-            }
-
-            Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("settings put system high_performance_mode_on 0", true)
-                putBoolean(SettingsPrefs, "high_performance_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
             }
 

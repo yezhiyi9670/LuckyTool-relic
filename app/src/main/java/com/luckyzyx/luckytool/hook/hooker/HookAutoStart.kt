@@ -34,8 +34,6 @@ object HookAutoStart : YukiBaseHooker() {
         dataChannel.wait<Boolean>("high_brightness_mode") { highBrightness = it }
         var globalDC = prefs(SettingsPrefs).getBoolean("global_dc_mode", false)
         dataChannel.wait<Boolean>("global_dc_mode") { globalDC = it }
-        var highPerformance = prefs(SettingsPrefs).getBoolean("high_performance_mode", false)
-        dataChannel.wait<Boolean>("high_performance_mode") { highPerformance = it }
 
         onAppLifecycle {
             //监听锁屏解锁
@@ -53,7 +51,6 @@ object HookAutoStart : YukiBaseHooker() {
                         putBoolean("touchSamplingRate", touchSamplingRate)
                         putBoolean("highBrightness", highBrightness)
                         putBoolean("globalDC", globalDC)
-                        putBoolean("highPerformance", highPerformance)
                     }
                     when (callMode) {
                         "0" -> {

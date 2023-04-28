@@ -46,4 +46,11 @@ class SystemPropertiesUtils(classLoader: ClassLoader) {
             param(StringClass, LongType)
         }.get().invoke<Long>(key, defValue)
     }
+
+    fun set(key: String, value: String) {
+        clazz.method {
+            name = "set"
+            param(StringClass, StringClass)
+        }.get().call(key, value)
+    }
 }

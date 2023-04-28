@@ -17,6 +17,7 @@ import android.os.SystemClock
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.provider.Settings
+import android.service.quicksettings.TileService
 import android.text.TextUtils
 import android.util.ArraySet
 import android.util.Base64
@@ -340,6 +341,17 @@ fun getProp(key: String, root: Boolean): String = safeOf(default = "null") {
 }
 
 /**
+ * 打开空活动以关闭折叠面板
+ * @receiver TileService
+ */
+fun TileService.closeCollapse() {
+    Intent(Intent.ACTION_VIEW).apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivityAndCollapse(this)
+    }
+}
+
+/**
  * 跳转工程模式
  * @param context Context
  */
@@ -388,6 +400,18 @@ fun jumpDarkMode(context: Context) {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
         context.startActivity(this)
+    }
+}
+
+/**
+ * 跳转电池性能模式
+ * @param context Context
+ */
+fun jumpHighPerformance(context: Context) {
+    if (context.checkPackName("com.oplus.battery")) {
+        ShellUtils.execCommand(
+            "am start com.oplus.battery/com.oplus.powermanager.fuelgaue.IntellPowerSaveScence", true
+        )
     }
 }
 
@@ -972,13 +996,6 @@ fun Context.callFunc(bundle: Bundle?) {
                 if (result == 1) toast("high brightness mode error!")
             }
         }
-        //高性能模式
-        if (tileAutoStart && getBoolean("highPerformance", false)) {
-            ShellUtils.execCommand("settings put system high_performance_mode_on 1", true, true)
-                .apply {
-                    if (result == 1) toast("high performance mode error!")
-                }
-        }
         //全局DC模式
         if (tileAutoStart && getBoolean("globalDC", false)) {
             var oppoError = false
@@ -1006,6 +1023,7 @@ fun Context.callFunc(bundle: Bundle?) {
 
             "module_shortcut_status_chargingtest" -> jumpBatteryInfo(this@callFunc)
             "module_shortcut_status_processmanager" -> jumpRunningApp(this@callFunc)
+            "module_shortcut_status_performance" -> jumpHighPerformance(this@callFunc)
         }
     }
 }

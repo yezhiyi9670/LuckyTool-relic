@@ -7,6 +7,7 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
 import android.util.ArrayMap
+import androidx.core.graphics.drawable.toBitmap
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.AliveActivity
 
@@ -28,7 +29,12 @@ class ShortcutUtils(val context: Context) {
             )
             put("module_shortcut_status_chargingtest", context.getString(R.string.charging_test))
             put(
-                "module_shortcut_status_processmanager", context.getString(R.string.process_manager)
+                "module_shortcut_status_processmanager",
+                context.getString(R.string.process_manager)
+            )
+            put(
+                "module_shortcut_status_performance",
+                context.getString(R.string.high_performance_mode)
             )
         }
     }
@@ -42,7 +48,10 @@ class ShortcutUtils(val context: Context) {
                 var intent: Intent? = null
                 when (it) {
                     "module_shortcut_status_lsposed" -> {
-                        icon = Icon.createWithResource(context.packageName, R.mipmap.android_icon)
+                        icon = Icon.createWithResource(
+                            context.packageName,
+                            android.R.mipmap.sym_def_app_icon
+                        )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
                             setClassName(context.packageName, AliveActivity::class.java.name)
@@ -50,8 +59,11 @@ class ShortcutUtils(val context: Context) {
                     }
 
                     "module_shortcut_status_oplusgames" -> {
-                        icon =
-                            Icon.createWithResource(context.packageName, R.mipmap.oplusgames_icon)
+                        icon = context.getAppIcon("com.oplus.games").let { drawable ->
+                            if (drawable == null) Icon.createWithResource(
+                                context.packageName, R.mipmap.oplusgames_icon
+                            ) else Icon.createWithBitmap(drawable.toBitmap())
+                        }
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
                             setClassName(
@@ -73,7 +85,21 @@ class ShortcutUtils(val context: Context) {
                     }
 
                     "module_shortcut_status_processmanager" -> {
-                        icon = Icon.createWithResource(context.packageName, R.mipmap.android_icon)
+                        icon = Icon.createWithResource(
+                            context.packageName,
+                            android.R.mipmap.sym_def_app_icon
+                        )
+                        intent = Intent(Intent.ACTION_VIEW).apply {
+                            putExtra("Shortcut", it)
+                            setClassName(context.packageName, AliveActivity::class.java.name)
+                        }
+                    }
+
+                    "module_shortcut_status_performance" -> {
+                        icon = Icon.createWithResource(
+                            context.packageName,
+                            R.drawable.baseline_device_thermostat_24
+                        )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
                             setClassName(context.packageName, AliveActivity::class.java.name)
