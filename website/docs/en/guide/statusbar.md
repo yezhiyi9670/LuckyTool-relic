@@ -96,9 +96,11 @@ When using dual-line network speed, the network speed in the status bar control 
 ### Clock
 
 - Show seconds
-- Remove red one
+- Red one display mode
 - Fix colon
 - Remove date comma
+- Show lunar calendar
+- Fix date display
 
 ### UI Components
 
@@ -130,6 +132,7 @@ When using dual-line network speed, the network speed in the status bar control 
 - Charging Test
 - Process Management
 - Game Assistant
+- High performance mode
 
 #### Function related
 

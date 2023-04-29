@@ -26,7 +26,7 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v4.4.3_beta
+### v4.4.3
 
 - [更新] 捐赠名单
 - [修复] 通知两侧对齐异常
@@ -39,6 +39,17 @@ star: false
 - [添加] 状态栏控制中心显示农历
 - [更改] 限制ColorOS11部分功能
 - [添加] 修复控制中心日期显示
+- [Update] Donation list
+- [Fix] Notification abnormal alignment on both sides
+- [Optimize] Root permission and system version judgment
+- [Change] High performance mode tile jump battery page
+- [Add] Shortcut to jump performance mode page
+- [Add] Close the accordion when the built-in tile jumps
+- [Add] Theme store Oplus package name judgment
+- [Add] Status bar control center red one display mode
+- [Add] The status bar control center displays the lunar calendar
+- [Change] Restrict some functions of ColorOS11
+- [Add] Fix date display in Control Center
 
 ### v4.4.2
 
