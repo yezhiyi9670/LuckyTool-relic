@@ -118,6 +118,25 @@ val getVersionName get() = BuildConfig.VERSION_NAME
 val getVersionCode get() = BuildConfig.VERSION_CODE
 
 /**
+ * 获取设备信息
+ * @receiver Context
+ * @return String
+ */
+fun Context.getDeviceInfo(): String {
+    return """
+        ${getString(R.string.brand)}: ${Build.BRAND}
+        ${getString(R.string.model)}: ${Build.MODEL}
+        ${getString(R.string.product)}: ${Build.PRODUCT}
+        ${getString(R.string.system)}: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]
+        ${getString(R.string.device)}: ${Build.DEVICE}
+        ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
+        ${getString(R.string.build_version)}: ${Build.DISPLAY}
+        ${getString(R.string.flash)}: ${getFlashInfo()}
+        ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
+    """.trimIndent()
+}
+
+/**
  * 检测包名是否存在
  * @receiver Context
  * @param packName String

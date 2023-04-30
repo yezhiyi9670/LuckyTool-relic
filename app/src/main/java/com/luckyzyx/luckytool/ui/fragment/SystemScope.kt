@@ -2544,6 +2544,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "allow_untrusted_touch"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = SDK >= A12
                 }
             )
         }

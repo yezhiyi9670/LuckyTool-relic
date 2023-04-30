@@ -18,27 +18,40 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
         val openBatteryOptimize = false
         //Source AppFeatureProviderUtils
         searchClass {
-            from("com.oplus.b.a", "k4", "i4", "r5", "o4", "h4").absolute()
+            from(
+                "com.oplus.coreapp.appfeature",
+                "com.oplus.b.a",
+                "k4",
+                "i4",
+                "r5",
+                "o4",
+                "h4"
+            ).absolute()
             method {
+//                name = "isFeatureSupport"
                 param(ContentResolverClass, StringClass)
                 returnType = BooleanType
             }.count(1)
             method {
+//                name = "getInt"
                 param(ContentResolverClass, StringClass, IntType)
                 returnType = IntType
             }.count(1)
             method {
+//                name = "getBoolean"
                 param(ContentResolverClass, StringClass, BooleanType)
                 returnType = BooleanType
             }.count(1)
             method {
+//                name = "getStringList"
+//                name = "getStringListForFeature"
                 param(ContentResolverClass, StringClass)
                 returnType = ListClass
             }.count(1..2)
         }.get()?.hook {
-            //输入String返回Boolean
             injectMember {
                 method {
+//                    name = "isFeatureSupport"
                     param(ContentResolverClass, StringClass)
                     returnType = BooleanType
                 }
@@ -55,9 +68,9 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
                     }
                 }
             }
-            //输入Int返回Int
             injectMember {
                 method {
+//                    name = "getInt"
                     param(ContentResolverClass, StringClass, IntType)
                     returnType = IntType
                 }
@@ -69,20 +82,20 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
                     }
                 }
             }
-            //输入Boolean返回Boolean
-//            injectMember {
-//                method {
-//                    param(ContentResolverClass, StringType, BooleanType)
-//                    returnType = BooleanType
-//                }
-//                beforeHook {
-//                    val array = arrayOf(args(1).cast<String>(), args(2).cast<Boolean>())
-//                    when (array[0]) {
-//                        //睡眠待机优化
-//                        "com.oplus.battery.disable_deep_sleep" -> resultFalse()
-//                    }
-//                }
-//            }
+            injectMember {
+                method {
+//                    name = "getBoolean"
+                    param(ContentResolverClass, StringClass, BooleanType)
+                    returnType = BooleanType
+                }
+                beforeHook {
+                    val array = arrayOf(args(1).cast<String>(), args(2).cast<Boolean>())
+                    when (array[0]) {
+                        //睡眠待机优化
+                        "com.oplus.battery.disable_deep_sleep" -> resultFalse()
+                    }
+                }
+            }
         } ?: loggerD(msg = "$packageName\nError -> BatteryHiddenEntrance")
 
         //res/xml/battery_health_preference.xml

@@ -16,15 +16,24 @@ object RemoveBatteryNotify : YukiBaseHooker() {
         val highPerformance =
             prefs(ModulePrefs).getBoolean("remove_high_performance_mode_notifications", false)
         //Channel PowerConsumptionOptimizationChannel / PowerConsumptionOptimizationChannelLow 17
+        //power_consumption_optimization_title
         val highBatteryConsumption =
             prefs(ModulePrefs).getBoolean("remove_app_high_battery_consumption_warning", false)
         //Channel smart_charge_channel_id 20
         val smartRapidCharge =
             prefs(ModulePrefs).getBoolean("remove_smart_rapid_charging_notification", false)
 
-        // Source NotifyUtil
+        //Source NotifyUtil
         searchClass {
-            from("com.oplus.a.g", "c4", "a4", "i5", "g4", "z3").absolute()
+            from(
+                "com.oplus.common.notification",
+                "com.oplus.a.g",
+                "c4",
+                "a4",
+                "i5",
+                "g4",
+                "z3"
+            ).absolute()
             constructor {
                 paramCount = 1
             }.count(1)

@@ -13,7 +13,7 @@ object RemoveAppUpdateDot : YukiBaseHooker() {
         val clazz = when (SDK) {
             A13 -> "com.android.launcher3.BubbleTextView"
             A12, A121 -> "com.android.launcher3.OplusBubbleTextView"
-            else -> "com.android.launcher3.BubbleTextView"
+            else -> "com.android.launcher3.OplusBubbleTextView" //A11 C12.0
         }
         //Source OplusBubbleTextView
         findClass(clazz).hook {

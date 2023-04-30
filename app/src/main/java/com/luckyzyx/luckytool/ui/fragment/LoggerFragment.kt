@@ -35,6 +35,7 @@ import com.luckyzyx.luckytool.utils.dp
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getAppIcon
 import com.luckyzyx.luckytool.utils.getAppLabel
+import com.luckyzyx.luckytool.utils.getDeviceInfo
 import com.luckyzyx.luckytool.utils.toast
 import rikka.core.util.ResourceUtils.isNightMode
 import java.io.File
@@ -192,6 +193,7 @@ class LoggerFragment : Fragment() {
 
     private fun alterDocument(context: Context, uri: Uri) {
         var str = ""
+        str += context.getDeviceInfo() + "\n\n"
         listData.forEach {
             val time = formatDate("yyyy/MM/dd-HH:mm:ss", it.timestamp)
             val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
