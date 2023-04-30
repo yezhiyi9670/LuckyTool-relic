@@ -14,7 +14,6 @@ import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.formatDate
-import com.luckyzyx.luckytool.utils.getColorOSVersion
 import java.lang.reflect.Method
 import java.util.Calendar
 import java.util.Date
@@ -100,18 +99,6 @@ object StatusBarClock : YukiBaseHooker() {
                     else if (clockMode == "2") {
                         initLunar(context!!)
                         result = formatDate(getFormat(customFormat, nowTime!!, nowLunar), nowTime!!)
-                    }
-                }
-            }
-            if (SDK == A11 && getColorOSVersion == "V12") {
-                injectMember {
-                    method {
-                        name = "updateShowSeconds"
-                    }
-                    beforeHook {
-                        if (isSecond) field {
-                            name = "mShowSeconds"
-                        }.get(instance).setTrue()
                     }
                 }
             }

@@ -26,6 +26,13 @@ star: false
 
 **The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.0_beta
+
+- [更新] 捐赠名单
+- [添加] 刷新率方案一添加144Hz
+- [修复] 媒体音量阶数不生效
+- [修复] 状态栏时钟冒号异常
+
 ### v4.4.3
 
 - [更新] 捐赠名单

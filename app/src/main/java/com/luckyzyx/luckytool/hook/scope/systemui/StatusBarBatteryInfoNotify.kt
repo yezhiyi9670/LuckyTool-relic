@@ -75,6 +75,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             onCreate { injectModuleAppResources() }
             //BatteryService
             registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, _: Intent ->
+                context.injectModuleAppResources()
                 safeOfNull { initInfo(context) }
                 when (displayMode) {
                     "1" -> sendNotification(
@@ -91,6 +92,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             }
             //OplusBatteryService
             registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
+                context.injectModuleAppResources()
                 chargerTechnology = (intent.getIntExtra("chargertechnology", 0))
                 chargeWattage = (intent.getIntExtra("chargewattage", 0))
                 ppsMode = (intent.getIntExtra("pps_chg_mode", 0))

@@ -969,11 +969,6 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "control_center_clock_show_second"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("control_center_clock_show_second", newValue)
-                        true
-                    }
                 }
             )
             addPreference(
@@ -981,8 +976,9 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     title = getString(R.string.statusbar_control_center_clock_red_one_mode)
                     summary = "%s"
                     key = "statusbar_control_center_clock_red_one_mode"
-                    entries = resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
-                    entryValues = arrayOf("0", "1","2")
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
                     setDefaultValue("0")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->

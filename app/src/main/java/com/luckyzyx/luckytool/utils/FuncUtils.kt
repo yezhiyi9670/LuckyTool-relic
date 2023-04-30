@@ -196,8 +196,8 @@ internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long
  */
 fun getFpsMode1(): ArrayList<ArrayList<*>> {
     return ArrayList<ArrayList<*>>().apply {
-        add(arrayListOf(0, 1, 2, 3))
-        add(arrayListOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz"))
+        add(arrayListOf(0, 1, 2, 3, 4))
+        add(arrayListOf("30.0 Hz", "60.0 Hz", "90.0 Hz", "120.0 Hz", "144.0 Hz"))
     }
 }
 

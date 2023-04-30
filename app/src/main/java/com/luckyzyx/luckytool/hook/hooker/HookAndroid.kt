@@ -33,6 +33,9 @@ object HookAndroid : YukiBaseHooker() {
         //Hook HookWindowManagerService
         loadHooker(HookWindowManagerService)
 
+        //HookSystemProperties
+//        loadHooker(HookSystemProperties)
+
         //媒体音量阶数
         loadHooker(MediaVolumeLevel)
 

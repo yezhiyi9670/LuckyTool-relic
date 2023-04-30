@@ -14,7 +14,7 @@ import kotlinx.coroutines.delay
 
 object HookAutoStart : YukiBaseHooker() {
     override fun onHook() {
-        val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0")
+        val fpsList = arrayOf("30.0", "60.0", "90.0", "120.0", "144.0")
         var callMode = prefs(SettingsPrefs).getString("switch_autostart_function_caller", "0")
         dataChannel.wait<String>("switch_autostart_function_caller") { callMode = it }
 

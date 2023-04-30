@@ -11,9 +11,8 @@ import com.luckyzyx.luckytool.utils.SDK
 
 object ControlCenterClockStyle : YukiBaseHooker() {
     override fun onHook() {
-        var showSecond =
+        val showSecond =
             prefs(ModulePrefs).getBoolean("control_center_clock_show_second", false)
-        dataChannel.wait<Boolean>("control_center_clock_show_second") { showSecond = it }
         var redOneMode =
             prefs(ModulePrefs).getString("statusbar_control_center_clock_red_one_mode", "0")
         dataChannel.wait<String>("statusbar_control_center_clock_red_one_mode") { redOneMode = it }
@@ -27,6 +26,8 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     name = "setShowSecondsAndUpdate"
                 }
                 beforeHook {
+                    val view = instance<TextView>()
+                    if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@beforeHook
                     if (showSecond) args(0).setTrue()
                 }
             }
@@ -38,6 +39,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 }
                 afterHook {
                     val view = instance<TextView>()
+                    if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
                     val char = args(0).cast<CharSequence>() ?: return@afterHook
                     setStyle(view, char, true, redOneMode)
                 }
@@ -47,11 +49,12 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         "com.oplusos.systemui.ext.BaseClockExt".toClassOrNull()?.hook {
             injectMember {
                 method {
-                    name = "setTextWithRedOneStyle"
+                    name = "setTextWithRedOneStyleInternal"
                     paramCount = 2
                 }
                 afterHook {
                     val view = args(0).cast<TextView>() ?: return@afterHook
+                    if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
                     val char = args(1).cast<CharSequence>() ?: return@afterHook
                     setStyle(view, char, fixColon, redOneMode)
                 }
@@ -62,9 +65,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
     private fun getCharColor(view: TextView): Int? {
         val sp = SpannableString(view.text)
         val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
-        return if (colorSpan.isNotEmpty()) {
-            colorSpan[0].foregroundColor
-        } else null
+        return if (colorSpan.isNotEmpty()) colorSpan[0].foregroundColor else null
     }
 
     private fun setStyle(view: TextView, char: CharSequence, fixColon: Boolean, redMode: String) {
