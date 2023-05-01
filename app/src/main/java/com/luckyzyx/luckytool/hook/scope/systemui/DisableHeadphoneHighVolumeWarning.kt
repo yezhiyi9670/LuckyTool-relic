@@ -14,13 +14,8 @@ object DisableHeadphoneHighVolumeWarning : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
-                    field {
-                        name = "mAudioManager"
-                    }.get(instance).cast<AudioManager>()?.current {
-                        method {
-                            name = "disableSafeMediaVolume"
-                        }.call()
-                    }
+                    field { name = "mAudioManager" }.get(instance).cast<AudioManager>()?.current()
+                        ?.method { name = "disableSafeMediaVolume" }?.call()
                     resultNull()
                 }
             }

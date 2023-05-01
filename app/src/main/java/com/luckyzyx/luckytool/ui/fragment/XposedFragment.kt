@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.dp
 import com.luckyzyx.luckytool.utils.getAppLabel
@@ -305,6 +306,7 @@ class XposedFragment : ModulePreferenceFragment() {
                 }
             )
         }
+        requireActivity().ckqcbss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

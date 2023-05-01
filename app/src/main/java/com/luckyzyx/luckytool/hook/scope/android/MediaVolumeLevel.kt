@@ -10,35 +10,8 @@ object MediaVolumeLevel : YukiBaseHooker() {
         val mediaVolumeLevel = prefs(ModulePrefs).getInt("media_volume_level", 0)
         //Source AudioServiceExtImpl
         findClass("com.android.server.audio.AudioServiceExtImpl").hook {
-            if (SDK >= A13) {
-                injectMember {
-                    method {
-                        name = "init"
-                        paramCount = 1
-                    }
-                    afterHook {
-                        if (mediaVolumeLevel == 0) return@afterHook
-                        val arr = field { name = "mMaxStreamVolume" }.get(instance).cast<IntArray>()
-                        arr?.set(3, mediaVolumeLevel)
-                    }
-                }
-            } else {
-                injectMember {
-                    constructor {
-                        paramCount = 2
-                    }
-                    afterHook {
-                        if (mediaVolumeLevel == 0) return@afterHook
-                        val arr =
-                            field { name = "MAX_STREAM_VOLUME" }.get(instance).cast<IntArray>()
-                        arr?.set(3, mediaVolumeLevel)
-                    }
-                }
-            }
             injectMember {
-                method {
-                    name = "resetSystemVolume"
-                }
+                method { name = "resetSystemVolume" }
                 afterHook {
                     if (mediaVolumeLevel == 0) return@afterHook
                     val fieldName = if (SDK >= A13) "mMaxStreamVolume" else "MAX_STREAM_VOLUME"

@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">Швидкість мережі у рядку стану</string>
     <string name="statusbar_network_no_second">Видалити відображення в секунду (/с)</string>
     <string name="statusbar_network_no_space">Видалити місце для швидкості мережі</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">Сповіщення у рядку стану</string>
     <string name="StatusBarNotice_summary">Статус бар та панель сповіщень</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Видалити сповіщення системи про параметри розробника в рядку стану</string>
     <string name="remove_charging_completed">Видалити повідомлення про завершення зарядки</string>
     <string name="remove_statusbar_top_notification">Видалити повідомлення про відображення поверх інших додатків з рядка стану</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">Видалити повідомлення \"Розумна швидка зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Видалити повідомлення для вимкнених повідомлень</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Видалити сповіщення про ризик виникнення вірусу в менеджері телефону</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>

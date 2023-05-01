@@ -9,6 +9,7 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 object HookKsWeb : YukiBaseHooker() {
     override fun onHook() {
         val isPro = prefs(ModulePrefs).getBoolean("ksweb_remove_check_license", false)
+        if (!isPro) return
         //Source EXTEND TO PRO VERSION / CHECK SERIAL KEY / KSWEB PRO / KSWEB STANDARD
         searchClass {
             from("b4").absolute()
@@ -37,7 +38,6 @@ object HookKsWeb : YukiBaseHooker() {
                     returnType = BooleanType
                 }.all()
                 beforeHook {
-                    if (!isPro) return@beforeHook
                     field {
                         type = BooleanType
                     }.get(instance).setTrue()

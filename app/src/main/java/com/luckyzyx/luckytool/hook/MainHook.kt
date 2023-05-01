@@ -22,6 +22,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
+import com.luckyzyx.luckytool.hook.hooker.HookNotificationManager
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
 import com.luckyzyx.luckytool.hook.hooker.HookOtherApp
@@ -44,6 +45,7 @@ import com.luckyzyx.luckytool.hook.statusbar.StatusBarNotify
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarTile
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.SettingsPrefs
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -61,6 +63,7 @@ object MainHook : IYukiHookXposedInit {
 
     override fun onHook() = encase {
         if (prefs(ModulePrefs).getBoolean("enable_module").not()) return@encase
+        if (prefs(SettingsPrefs).getBoolean("is_su").not()) return@encase
         //系统框架
         loadSystem(HookAndroid)
 
@@ -71,9 +74,16 @@ object MainHook : IYukiHookXposedInit {
         //状态栏网速
         loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp("com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager") {
+        loadApp(
+            "com.android.systemui",
+            "com.oplus.battery",
+            "com.coloros.phonemanager"
+        ) {
             loadHooker(StatusBarNotify)
         }
+        //状态栏通知限制
+        loadApp("com.oplus.notificationmanager", HookNotificationManager)
+
         //状态栏图标
         loadApp("com.android.systemui", StatusBarIcon)
         //状态栏控制中心

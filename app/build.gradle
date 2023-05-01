@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android' version '1.8.20'
-    id 'com.google.devtools.ksp' version '1.8.20-1.0.10'
-    id 'com.joom.paranoid'
+    id 'org.jetbrains.kotlin.android' version '1.8.21'
+    id 'com.google.devtools.ksp' version '1.8.21-1.0.11'
+//    id 'com.joom.paranoid'
 }
 
 android {
@@ -22,7 +22,8 @@ android {
     defaultConfig {
         applicationId "com.luckyzyx.luckytool"
         minSdk 30
-        targetSdk 33
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 28
         versionCode currentVersionCode
         versionName "1.0.0_beta"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
@@ -64,6 +65,9 @@ android {
         }
     }
     androidResources.additionalParameters("--allow-reserved-package-id", "--package-id", "0x64")
+    buildFeatures {
+        aidl true
+    }
 }
 
 dependencies {
@@ -111,8 +115,10 @@ dependencies {
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
     //libsu
-    implementation "com.github.topjohnwu.libsu:core:5.0.4"
-    implementation "com.github.topjohnwu.libsu:service:5.0.4"
+    def libsuVersion = '5.0.5'
+    implementation "com.github.topjohnwu.libsu:core:${libsuVersion}"
+    implementation "com.github.topjohnwu.libsu:service:${libsuVersion}"
+//    implementation "com.github.topjohnwu.libsu:nio:${libsuVersion}"
 
     //Microsoft AppCenter
     def appCenterSdkVersion = '5.0.0'

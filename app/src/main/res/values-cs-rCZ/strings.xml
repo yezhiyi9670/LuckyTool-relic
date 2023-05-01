@@ -4,7 +4,7 @@
     <string name="xposeddescription">Xposed modul optimalizovaný pro rozšíření na ColorOS\nVývojář: luckyzyx</string>
     <!-- Nav Menu -->
     <string name="nav_function">Funkce</string>
-    <string name="nav_home">Domovská stránka</string>
+    <string name="nav_home">Úvod</string>
     <string name="nav_other">Ostatní</string>
     <string name="nav_log">Protokoly</string>
     <string name="nav_setting">Nastavení</string>
@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">Rozvržení textu rychlosti sítě ve stavové liště</string>
     <string name="statusbar_network_no_second">Odstranit displej za sekundu(/s)</string>
     <string name="statusbar_network_no_space">Odstranit mezeru v textu rychlosti sítě</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
     <string name="StatusBarNotice_summary">Související s oznámeními ve stavové liště</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Odstranit oznámení o vývojářských možnostech</string>
     <string name="remove_charging_completed">Odstranit oznámení o dokončení nabíjení</string>
     <string name="remove_statusbar_top_notification">Skryj oznámení o zobrazování aplikací nad jinými</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">Odstranit oznámení \"Chytré rychlé nabíjení\"</string>
     <string name="remove_notifications_for_mute_notifications">Odstranit oznámení pro ztlumená oznámení</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Odstranit upozornění na riziko virů ve Správci telefonu</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>

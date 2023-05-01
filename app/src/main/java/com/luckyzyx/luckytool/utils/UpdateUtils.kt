@@ -54,9 +54,9 @@ class UpdateUtils(val context: Context) {
                 val fileSize = getJSONArray("assets").getJSONObject(0).optString("size").toFloat()
 //                val updateTime = optString("published_at").replace("T", " ").replace("Z", "")
                 result(name, code.toInt()) {
-                    MaterialAlertDialogBuilder(context, dialogCentered)
-                        .setTitle(context.getString(R.string.check_update_hint))
-                        .setView(
+                    MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                        setTitle(context.getString(R.string.check_update_hint))
+                        setView(
                             NestedScrollView(context).apply {
                                 addView(
                                     MaterialTextView(context).apply {
@@ -76,18 +76,20 @@ class UpdateUtils(val context: Context) {
                                 )
                             }
                         )
-                        .setPositiveButton(context.getString(R.string.direct_update)) { _, _ ->
-                            readyDownload(context, fileName, downloadUrl)
+                        setPositiveButton(context.getString(R.string.direct_update)) { _, _ ->
+                            readyDownload(
+                                context, fileName, downloadUrl
+                            )
                         }
-                        .setNeutralButton(context.getString(R.string.go_download_page)) { _, _ ->
+                        setNeutralButton(context.getString(R.string.go_download_page)) { _, _ ->
                             context.startActivity(
                                 Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse(downloadPage)
+                                    Intent.ACTION_VIEW, Uri.parse(downloadPage)
                                 )
                             )
                         }
-                        .show()
+                        show()
+                    }
                 }
             }
         }.catch {

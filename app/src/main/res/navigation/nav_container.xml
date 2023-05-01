@@ -183,7 +183,15 @@
     <fragment
             android:id="@+id/statusBarNotice"
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotify"
-            android:label="{title_label}" />
+            android:label="{title_label}">
+        <action
+                android:id="@+id/action_statusBarNotice_to_statusBarNotifyRemoval"
+                app:destination="@id/statusBarNotifyRemoval"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
     <fragment
             android:id="@+id/statusBarIcon"
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarIcon"
@@ -409,6 +417,10 @@
     <fragment
             android:id="@+id/forceFpsFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.ForceFpsFragment"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/statusBarNotifyRemoval"
+            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotifyRemoval"
             android:label="{title_label}" />
 
 </navigation>

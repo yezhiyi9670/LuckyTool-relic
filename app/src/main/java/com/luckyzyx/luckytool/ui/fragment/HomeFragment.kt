@@ -14,14 +14,12 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.YukiHookAPI
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import rikka.core.util.ResourceUtils
 
-@Obfuscate
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
@@ -173,6 +171,11 @@ class HomeFragment : Fragment() {
                 text = "未经开发者授权,禁止私自搬运转载\n提倡授之以渔,切莫授之以鱼"
             }
         }
+
+        binding.tv.apply {
+            isVisible = false
+//            text = getPackageDir("com.dragon.read").toString()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -208,7 +211,8 @@ class HomeFragment : Fragment() {
                         true
                     }
                 })
-            }.show()
+                show()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

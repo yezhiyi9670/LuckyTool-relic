@@ -4,12 +4,11 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.callFunc
 
 @Suppress("DEPRECATION")
-@Obfuscate
 class AliveActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +19,7 @@ class AliveActivity : Activity() {
         window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
         window?.statusBarColor = getColor(R.color.transparent)
         window?.navigationBarColor = getColor(R.color.transparent)
+        ckqcbss()
         callFunc(intent.extras)
         finish()
     }

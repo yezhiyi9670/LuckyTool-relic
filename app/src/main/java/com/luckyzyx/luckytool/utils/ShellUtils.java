@@ -175,7 +175,6 @@ public class ShellUtils {
      * <li>{@link CommandResult#errorMsg} means error message of command result</li>
      * 表示命令结果的错误信息
      * </ul>
-     *
      */
     public static class CommandResult {
         

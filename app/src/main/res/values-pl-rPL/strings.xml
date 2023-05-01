@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">Układ prędkości sieci</string>
     <string name="statusbar_network_no_second">Usuń wyświetlanie „na sekundę” (../s)</string>
     <string name="statusbar_network_no_space">Usuń przestrzeń dla prędkości sieci</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">Powiadomienia</string>
     <string name="StatusBarNotice_summary">Ukryj irytujące powiadomienia</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Usuń „Opcje programistyczne”</string>
     <string name="remove_charging_completed">Usuń „Ładowanie ukończone”</string>
     <string name="remove_statusbar_top_notification">Usuń „Aplikacja wyświetla się nad inną”</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">Usuń „Inteligentne szybkie ładowanie”</string>
     <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Usuń alerty o zagrożeniu wirusami w menedżerze telefonu</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>

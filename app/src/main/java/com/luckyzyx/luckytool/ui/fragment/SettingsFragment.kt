@@ -14,7 +14,6 @@ import androidx.preference.SwitchPreference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.Base64CodeUtils
@@ -43,7 +42,6 @@ import java.io.FileOutputStream
 import java.io.IOException
 import kotlin.system.exitProcess
 
-@Obfuscate
 class SettingsFragment : ModulePreferenceFragment() {
     private val backupData =
         registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
@@ -124,6 +122,7 @@ class SettingsFragment : ModulePreferenceFragment() {
             }
         }
         context.toast(getString(R.string.data_restore_complete))
+        (activity as MainActivity).restart()
     }
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -434,7 +433,6 @@ class SettingsFragment : ModulePreferenceFragment() {
     }
 }
 
-@Obfuscate
 class SourceFragment : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {

@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">ステータスバーのネットワーク速度レイアウト</string>
     <string name="statusbar_network_no_second">毎秒表示 (/s) を削除する</string>
     <string name="statusbar_network_no_space">ネットワーク速度のスペースを削除</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">ステータスバーから開発者向けオプションの通知を削除</string>
     <string name="remove_charging_completed">充電完了の通知を削除</string>
     <string name="remove_statusbar_top_notification">ステータスバーから優先度が上位の通知を削除</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
     <string name="remove_notifications_for_mute_notifications">ミュートされた通知を通知しない</string>
     <string name="remove_virus_risk_notification_in_phone_manager">フォンマネージャーのウイルスリスク通知を削除</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>

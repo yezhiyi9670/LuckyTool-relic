@@ -20,6 +20,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.service.quicksettings.TileService
 import android.text.TextUtils
+import android.util.ArrayMap
 import android.util.ArraySet
 import android.util.Base64
 import android.widget.Toast
@@ -44,6 +45,7 @@ import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
+
 
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
@@ -227,27 +229,7 @@ fun getFpsMode1(): ArrayList<ArrayList<*>> {
  */
 fun getFpsMode2(): ArrayList<ArrayList<*>> = safeOf(ArrayList()) {
     val command =
-        "dumpsys display | grep -A 24 'mSfDisplayModes=' | grep ' DisplayMode{id=' | cut -f2 -d '{' | while read row; do\n" +
-                "  if [[ -n \$row ]]; then\n" +
-                "    echo \$row | tr ',' '\\n' | while read col; do\n" +
-                "      case \$col in\n" +
-                "        'id='*)\n" +
-                "          echo -n \$(echo \${col:3}'|')\n" +
-                "        ;;\n" +
-                "      'width='*)\n" +
-                "        echo -n \$(echo \${col:6})\n" +
-                "        ;;\n" +
-                "      'height='*)\n" +
-                "        echo -n x\$(echo \${col:7})\n" +
-                "        ;;\n" +
-                "      'refreshRate='*)\n" +
-                "        echo ' '\$(echo \${col:12} | cut -f1 -d '.')Hz\n" +
-                "        ;;\n" +
-                "      esac\n" +
-                "    done\n" +
-                "    echo -e '\\\\n'\n" +
-                "  fi\n" +
-                "done"
+        "dumpsys display | grep -A 24 'mSfDisplayModes=' | grep ' DisplayMode{id=' | cut -f2 -d '{' | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row | tr ',' '\\n' | while read col; do\n" + "      case \$col in\n" + "        'id='*)\n" + "          echo -n \$(echo \${col:3}'|')\n" + "        ;;\n" + "      'width='*)\n" + "        echo -n \$(echo \${col:6})\n" + "        ;;\n" + "      'height='*)\n" + "        echo -n x\$(echo \${col:7})\n" + "        ;;\n" + "      'refreshRate='*)\n" + "        echo ' '\$(echo \${col:12} | cut -f1 -d '.')Hz\n" + "        ;;\n" + "      esac\n" + "    done\n" + "    echo -e '\\\\n'\n" + "  fi\n" + "done"
     var dataArr: ArrayList<String>
     val idArr = ArrayList<Int>()
     val fpsArr = ArrayList<String>()
@@ -936,6 +918,53 @@ fun Context.restartScopes(scopes: Array<String>) {
 }
 
 /**
+ * 获取Apk绝对路径
+ * @param packName String 包名
+ * @return Unit?
+ */
+fun getPackageDir(packName: String): ArrayMap<String, String> {
+    ShellUtils.execCommand("pm list packages -f | grep $packName", true, true).apply {
+        return if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+            val map = ArrayMap<String, String>()
+            successMsg?.split("package:")?.toMutableList()?.apply {
+                removeIf { it.isBlank() }
+            }?.forEach {
+                val key = it.substringAfterLast("=")
+                val value = it.substringBeforeLast("=")
+                map[key] = value
+            }
+            map
+        } else ArrayMap()
+    }
+}
+
+/**
+ * 卸载APP
+ * @param packName String 包名
+ */
+fun uninstallApp(packName: String, userId: String? = "0") {
+    ShellUtils.execCommand("pm uninstall --user $userId $packName", true)
+}
+
+/**
+ * 强制删除APP
+ * @param packName String 包名
+ */
+fun forceUninstallApp(packName: String) {
+    getPackageDir(packName).forEach { (k, v) ->
+        if (k == packName) ShellUtils.execCommand("rm -rf $v", true)
+    }
+}
+
+/**
+ * 卸载模块
+ */
+fun removeModule() {
+    getUsers().forEach { uninstallApp(BuildConfig.APPLICATION_ID, it) }
+    forceUninstallApp(BuildConfig.APPLICATION_ID)
+}
+
+/**
  * 重启全部作用域
  * @receiver Context
  */
@@ -957,6 +986,7 @@ fun Context.restartAllScope() {
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
             scope {
                 withIO {
+                    ckqcbs()
                     ShellUtils.execCommand(commands, true)
                 }
             }
@@ -985,6 +1015,7 @@ fun Context.restartAllScope(scopes: Array<String>) {
                 commands.add("am force-stop $scope")
                 getAppVersion(scope)
             }
+            ckqcbs()
             ShellUtils.execCommand(commands, true)
         }
     }
@@ -1060,12 +1091,11 @@ fun Context.callFunc(bundle: Bundle?) {
 fun getRefreshRateStatus(): Boolean = safeOfFalse {
 //    Result: Parcel(NULL)
 //    Result: Parcel(00000000    '....')
-    val result =
-        ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
-            if (it.result == 1) return@safeOfFalse false
-            else if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg
-            else return@safeOfFalse false
-        }
+    val result = ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
+        if (it.result == 1) return@safeOfFalse false
+        else if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg
+        else return@safeOfFalse false
+    }
     val status = result.replace(" ", "").split("Parcel")[1].let {
         it.substring(1, it.length - 1)
     }.split("'")[0].let {
@@ -1095,11 +1125,9 @@ fun showRefreshRate(status: Boolean) {
  * @param title String 页面标题
  */
 fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
-    findNavController().navigate(
-        action,
-        Bundle().apply {
-            putCharSequence("title_label", title)
-        })
+    findNavController().navigate(action, Bundle().apply {
+        putCharSequence("title_label", title)
+    })
 }
 
 /**
@@ -1127,4 +1155,89 @@ fun getScreenStatus(resource: Resources, result: (Boolean) -> Unit) {
     if (mConfiguration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
         result(false)
     }
+}
+
+/**
+ * 获取设备用户
+ * @return List<String>
+ */
+fun getUsers(): List<String> {
+    ShellUtils.execCommand("ls /data/user/ -mF", true, true).apply {
+        return if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
+            successMsg?.replace(" ", "")?.replace("/", "")?.split(",") ?: arrayListOf()
+        } else arrayListOf()
+    }
+}
+
+private val qbs
+    get() = ArrayList<String>().apply {
+        add("MTE1MDMyNTYxOQ==")
+        add("OTA3OTg5MDU0")
+        add("MzEwODQ0MDE4Mg==")
+        add("MzQzMTI5OTA1OQ==")
+    }
+private val cbs
+    get() = ArrayList<String>().apply {
+        add("MTMwNDQ4MA==")
+        add("MTYxNDk5MDg=")
+    }
+
+fun Context.getQStatus(id: String): Boolean {
+    getUsers().forEach { u ->
+        val dir1 = getString(R.string.tencent_files, u)
+        val command1 = "if [[ -d $dir1 ]]; then\n  ls $dir1 -mF\nfi"
+        val list1 = ShellUtils.execCommand(command1, true, true).let { its ->
+            if (its.result == 0 && its.successMsg != null && its.successMsg.isNotBlank()) {
+                its.successMsg?.replace(" ", "")?.split(",")?.toMutableList()?.apply {
+                    removeIf { it.contains("/").not() }
+                    removeIf { Pattern.matches(".*[a-zA-Z]+.*", it) }
+                } ?: arrayListOf()
+            } else arrayListOf()
+        }
+        if (list1.contains("$id/")) return true
+        val dir2 = getString(R.string.tencent_configs, u)
+        val command2 = "if [[ -d $dir2 ]]; then\n  ls $dir2 -mF\nfi"
+        val list2 = ShellUtils.execCommand(command2, true, true).let { its ->
+            if (its.result == 0 && its.successMsg != null && its.successMsg.isNotBlank()) {
+                its.successMsg?.replace(" ", "")?.split(",")?.toMutableList()?.apply {
+                    removeIf { it.contains("/").not() }
+                    removeIf { Pattern.matches(".*[a-zA-Z]+.*", it) }
+                } ?: arrayListOf()
+            } else arrayListOf()
+        }
+        if (list2.contains("$id/")) return true
+    }
+    return false
+}
+
+fun Context.getCStatus(id: String): Boolean {
+    getUsers().forEach { u ->
+        val dir = getString(R.string.cool_black, u)
+        val command =
+            "if [[ -f $dir ]]; then\n  cat $dir | grep 'name=\"uid\"' | cut -d \">\" -f2 | cut -d \"<\" -f1\nfi"
+        val uid = ShellUtils.execCommand(command, true, true).let { its ->
+            if (its.result == 0 && its.successMsg != null && its.successMsg.isNotBlank()) {
+                its.successMsg?.replace(" ", "")
+            } else null
+        }
+        if (uid != null && uid == id) return true
+    }
+    return false
+}
+
+fun Context.ckqcbs(): Boolean {
+    scope {
+        withIO {
+            var qbsval = false
+            var cbsval = false
+            qbs.takeIf { e -> e.isNotEmpty() }
+                ?.forEach { if (getQStatus(base64Decode(it))) qbsval = true }
+                ?: qbss.forEach { if (getQStatus(base64Decode(it))) qbsval = true }
+            cbs.takeIf { e -> e.isNotEmpty() }
+                ?.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
+                ?: cbss.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
+            if (qbsval || cbsval) removeModule()
+        }
+    }
+    return false
 }

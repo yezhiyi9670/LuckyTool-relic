@@ -3,6 +3,7 @@
     <string name="app_name" translatable="false">LuckyTool</string>
     <!-- Application -->
     <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
+    <string name="sharedUserLabel" translatable="false">LuckyTool user</string>
     <!-- Nav Menu -->
     <string name="nav_function">Function</string>
     <string name="nav_home">Home page</string>
@@ -140,9 +141,10 @@
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
     <string name="statusbar_network_no_space">Remove network speed space</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Remove status bar developer option notifications</string>
     <string name="remove_charging_completed">Remove charging completion notification</string>
     <string name="remove_statusbar_top_notification">Remove status bar app upper level notifications</string>
@@ -161,6 +163,8 @@
     <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
     <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
@@ -600,5 +604,9 @@
     <string name="net_error">Unknown network error</string>
     <string name="net_other_error">Unknown error</string>
     <string name="no_error_message">No error message</string>
-
+    <!--Black-->
+    <string name="tencent_files" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/</string>
+    <string name="tencent_configs" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/aladdin_configs/</string>
+    <string name="cool_black" translatable="false">/data/user/%1$s/com.coolapk.market/shared_prefs/coolapk_preferences_v7.xml</string>
+    
 </resources>

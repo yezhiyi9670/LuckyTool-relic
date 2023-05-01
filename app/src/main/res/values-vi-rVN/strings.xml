@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">Bố cục tốc độ mạng trên thanh trạng thái</string>
     <string name="statusbar_network_no_second">Xóa hiển thị giây (/s)</string>
     <string name="statusbar_network_no_space">Xóa không gian tốc độ internet</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">Thông báo thanh trạng thái</string>
     <string name="StatusBarNotice_summary">Thông báo thanh trạng thái</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Xóa thông báo tùy chọn nhà phát triển trên thanh trạng thái</string>
     <string name="remove_charging_completed">Xóa thông báo sạc đầy</string>
     <string name="remove_statusbar_top_notification">Xóa thông báo cấp trên của ứng dụng trên thanh trạng thái</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">Xóa thông báo “Sạc nhanh thông minh”</string>
     <string name="remove_notifications_for_mute_notifications">Xóa thông báo không làm phiền</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>

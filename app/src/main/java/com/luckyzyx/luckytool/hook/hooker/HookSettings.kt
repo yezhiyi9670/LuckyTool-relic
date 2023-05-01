@@ -28,5 +28,6 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_dpi_restart_recovery", false)) {
             loadHooker(RemoveDpiRestartRecovery)
         }
+        //settings put global stay_on_while_plugged_in 7
     }
 }

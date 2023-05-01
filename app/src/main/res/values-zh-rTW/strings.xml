@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">状态栏网速布局</string>
     <string name="statusbar_network_no_second">移除每秒显示 (/s)</string>
     <string name="statusbar_network_no_space">移除网速空格</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">状态栏通知</string>
     <string name="StatusBarNotice_summary">状态栏通知相关</string>
+    <string name="RemoveStatusBarNotifications">移除状态栏通知</string>
     <string name="remove_statusbar_devmode">移除状态栏开发者选项通知</string>
     <string name="remove_charging_completed">移除充电完成通知</string>
     <string name="remove_statusbar_top_notification">移除状态栏应用上层通知</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">移除“了解智能快速充电”通知</string>
     <string name="remove_notifications_for_mute_notifications">移除通知勿扰通知</string>
     <string name="remove_virus_risk_notification_in_phone_manager">移除手机管家发现病毒风险通知</string>
+    <string name="remove_notification_manager_limit">移除通知管理限制</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>

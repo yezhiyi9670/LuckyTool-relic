@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.util.LayoutDirection
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.hook.utils.LunarHelperUtils
@@ -13,6 +14,7 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.getScreenStatus
 import java.util.Locale
+import kotlin.math.abs
 
 @Suppress("LocalVariableName", "DiscouragedApi")
 object RemoveControlCenterDateComma : YukiBaseHooker() {
@@ -40,7 +42,7 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                             lunarInstance, System.currentTimeMillis()
                         ).let {
                             if ((it.isNullOrBlank()) || (it.length < 8)) ""
-                            else "\n" + it.substring(4, it.length)
+                            else " " + it.substring(4, it.length)
                         }
                         result = result<String>() + lunarDate
                     }
@@ -49,6 +51,8 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
         }
 
         if (SDK < A13) return
+        var translationX = 0
+        var translationY = 0
         //Source OplusQSFooterImpl
         findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
             injectMember {
@@ -57,8 +61,9 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                 }
                 afterHook {
                     if (!fixDate) return@afterHook
-                    val mTmpConstraintSet = field { name = "mTmpConstraintSet" }.get(instance).any()
-                        ?: return@afterHook
+                    val mTmpConstraintSet =
+                        field { name = "mTmpConstraintSet" }.get(instance).any()
+                            ?: return@afterHook
                     val mClockView = field { name = "mClockView" }.get(instance).cast<TextView>()
                         ?: return@afterHook
                     val mQsDateView = field { name = "mQsDateView" }.get(instance).cast<TextView>()
@@ -66,7 +71,7 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
 
                     mTmpConstraintSet.current().method {
                         name = "constrainWidth"
-                    }.call(mQsDateView.id, -2)
+                    }.call(mQsDateView.id, ConstraintLayout.LayoutParams.WRAP_CONTENT)
 
                     if (showLunar) {
                         val res = instance<ViewGroup>().resources
@@ -91,12 +96,14 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                         val isRtl =
                             TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) == LayoutDirection.RTL
                         val width = mClockView.width + qs_footer_date_margin_start
-                        val translationX =
+                        if (abs(translationX) < abs(width)) translationX =
                             if (!isRtl) (-width) + qs_footer_date_expand_translation_x else width
-                        val translationY = qs_footer_date_expand_translation_y / 2
+                        if (abs(translationY) < abs(width)) translationY =
+                            qs_footer_date_expand_translation_y / 2
 
                         getScreenStatus(res) {
                             if (it) return@getScreenStatus
+                            if (translationX == 0 || translationY == 0) return@getScreenStatus
                             mTmpConstraintSet.current().method {
                                 name = "setTranslationX"
                             }.call(mQsDateView.id, translationX.toFloat())

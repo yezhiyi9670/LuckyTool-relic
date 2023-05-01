@@ -13,7 +13,6 @@ import android.widget.ListView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.highcapable.yukihookapi.hook.factory.dataChannel
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentFpsBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
@@ -28,7 +27,6 @@ import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.putInt
 import com.luckyzyx.luckytool.utils.toast
 
-@Obfuscate
 class ForceFpsFragment : Fragment() {
 
     private lateinit var binding: FragmentFpsBinding

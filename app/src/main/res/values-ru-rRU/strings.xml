@@ -135,9 +135,10 @@
     <string name="statusbar_network_layout">Скорость сети в строке состояния</string>
     <string name="statusbar_network_no_second">Удалить отображение в секунду (/с)</string>
     <string name="statusbar_network_no_space">Удалить пространство скорости сети</string>
-    <!--StatusBarNotice-->
+    <!--StatusBarNotify-->
     <string name="StatusBarNotice">Уведомления в строке состояния</string>
     <string name="StatusBarNotice_summary">Верхняя строка состояния и раскрывающаяся строка состояния</string>
+    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
     <string name="remove_statusbar_devmode">Удалить уведомления о параметрах разработчика в строке состояния</string>
     <string name="remove_charging_completed">Удалить уведомление о завершении зарядки</string>
     <string name="remove_statusbar_top_notification">Удалить уведомление об отображении поверх других приложений из строки состояния</string>
@@ -156,6 +157,7 @@
     <string name="remove_smart_rapid_charging_notification">Удалить уведомление \"Умная быстрая зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Удалите уведомление о риске вирусов в диспетчере телефона</string>
+    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>

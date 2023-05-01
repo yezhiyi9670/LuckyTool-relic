@@ -21,6 +21,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
@@ -151,7 +152,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarNotice)
                     summary =
-                        getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_charging_completed)
+                        getString(R.string.remove_statusbar_devmode) + "," + getString(R.string.remove_charging_completed)
                     key = "StatusBarNotice"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -235,6 +236,7 @@ class StatusBar : ModulePreferenceFragment() {
                 }
             )
         }
+        requireActivity().ckqcbss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -648,7 +650,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
     }
 }
 
-class StatusBarNotify : ModulePreferenceFragment() {
+class StatusBarNotifyRemoval : ModulePreferenceFragment() {
     private val scopes =
         arrayOf("com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager")
 
@@ -763,6 +765,59 @@ class StatusBarNotify : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_virus_risk_notification_in_phone_manager)
                     key = "remove_virus_risk_notification_in_phone_manager"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+class StatusBarNotify : ModulePreferenceFragment() {
+    private val scopes =
+        arrayOf(
+            "com.android.systemui",
+            "com.oplus.battery",
+            "com.coloros.phonemanager",
+            "com.oplus.notificationmanager"
+        )
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.RemoveStatusBarNotifications)
+                    summary =
+                        getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_statusbar_devmode)
+                    key = "RemoveStatusBarNotifications"
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        navigate(R.id.action_statusBarNotice_to_statusBarNotifyRemoval, title)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_notification_manager_limit)
+                    key = "remove_notification_manager_limit"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -2365,7 +2420,7 @@ class FingerPrintRelated : ModulePreferenceFragment() {
                 requireActivity().putString(
                     ModulePrefs, "replace_fingerprint_icon_path", path
                 )
-                findPreference<Preference>("replace_fingerprint_icon")?.summary = path
+                findPreference<Preference>("replace_fingerprint_icon_path")?.summary = path
             }
         }
         preferenceManager.sharedPreferencesName = ModulePrefs

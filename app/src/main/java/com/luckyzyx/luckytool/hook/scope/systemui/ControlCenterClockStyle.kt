@@ -46,10 +46,12 @@ object ControlCenterClockStyle : YukiBaseHooker() {
             }
         }
         //Source BaseClockExt
-        "com.oplusos.systemui.ext.BaseClockExt".toClassOrNull()?.hook {
+        val clazz = "com.oplusos.systemui.ext.BaseClockExt"
+        if (clazz.toClassOrNull() == null) return
+        findClass(clazz).hook {
             injectMember {
                 method {
-                    name = "setTextWithRedOneStyleInternal"
+                    name = "setTextWithRedOneStyle"
                     paramCount = 2
                 }
                 afterHook {
@@ -70,11 +72,10 @@ object ControlCenterClockStyle : YukiBaseHooker() {
 
     private fun setStyle(view: TextView, char: CharSequence, fixColon: Boolean, redMode: String) {
         var sb = StringBuilder(char)
-        if (!fixColon) {
-            for (i in char.indices) {
-                if (sb[i].toString() == ":") {
-                    sb = sb.replace(i, i + 1, "\u200e\u2236")
-                }
+        val colon = arrayOf("\u200e\u2236", ":")
+        for (i in char.indices) {
+            if (sb[i].toString() == (if (fixColon) colon[0] else colon[1])) {
+                sb = sb.replace(i, i + 1, if (fixColon) colon[1] else colon[0])
             }
         }
         val mode = when (redMode) {

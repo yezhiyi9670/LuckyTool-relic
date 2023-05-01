@@ -23,7 +23,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -44,7 +43,6 @@ import com.luckyzyx.luckytool.utils.navigate
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.toast
 
-@Obfuscate
 class OtherFragment : Fragment() {
 
     private lateinit var binding: FragmentOtherBinding
@@ -194,7 +192,6 @@ class OtherFragment : Fragment() {
     }
 }
 
-@Obfuscate
 class SystemQuickEntry : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {

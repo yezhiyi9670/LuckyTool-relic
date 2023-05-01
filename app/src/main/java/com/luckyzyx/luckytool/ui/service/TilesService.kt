@@ -10,7 +10,6 @@ import android.telephony.SubscriptionManager
 import com.drake.net.utils.scope
 import com.drake.net.utils.withIO
 import com.highcapable.yukihookapi.hook.factory.dataChannel
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.SettingsPrefs
@@ -26,7 +25,6 @@ import com.luckyzyx.luckytool.utils.showRefreshRate
 import com.luckyzyx.luckytool.utils.toast
 import com.topjohnwu.superuser.ipc.RootService
 
-@Obfuscate
 class ChargingTest : TileService() {
     override fun onClick() {
         closeCollapse()
@@ -34,7 +32,6 @@ class ChargingTest : TileService() {
     }
 }
 
-@Obfuscate
 class ProcessManager : TileService() {
     override fun onClick() {
         closeCollapse()
@@ -42,7 +39,6 @@ class ProcessManager : TileService() {
     }
 }
 
-@Obfuscate
 class GameAssistant : TileService() {
     override fun onStartListening() {
         scope {
@@ -68,7 +64,6 @@ class GameAssistant : TileService() {
     }
 }
 
-@Obfuscate
 class HighPerformanceMode : TileService() {
 
     override fun onClick() {
@@ -77,7 +72,6 @@ class HighPerformanceMode : TileService() {
     }
 }
 
-@Obfuscate
 class ShowFPS : TileService() {
     override fun onStartListening() {
         scope {
@@ -114,7 +108,6 @@ class ShowFPS : TileService() {
     }
 }
 
-@Obfuscate
 class HighBrightness : TileService() {
     override fun onStartListening() {
         scope {
@@ -160,7 +153,6 @@ class HighBrightness : TileService() {
     }
 }
 
-@Obfuscate
 class GlobalDC : TileService() {
     override fun onStartListening() {
         scope {
@@ -219,7 +211,6 @@ class GlobalDC : TileService() {
     }
 }
 
-@Obfuscate
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
         scope {
@@ -267,7 +258,6 @@ class TouchSamplingRate : TileService() {
     }
 }
 
-@Obfuscate
 class FiveG : TileService() {
     private var iFiveGController: IFiveGController? = null
     override fun onStartListening() {
@@ -327,7 +317,6 @@ class FiveG : TileService() {
     }
 }
 
-@Obfuscate
 class VeryDarkMode : TileService() {
     override fun onStartListening() {
         scope {

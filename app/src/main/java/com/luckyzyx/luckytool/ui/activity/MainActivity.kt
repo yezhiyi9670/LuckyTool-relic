@@ -19,13 +19,11 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.prefs
-import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.utils.*
 import kotlin.system.exitProcess
 
-@Obfuscate
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
     //检测Prefs状态
@@ -51,15 +49,28 @@ open class MainActivity : AppCompatActivity() {
 
         initNavigationFragment()
         initDynamicShortcuts()
-
-        checkPrefsStatus()
-        checkSuAndOS(isStart)
-        checkPermissions(isStart)
+        checkSuAndOS()
     }
 
-    private fun checkSuAndOS(isStart: Boolean) {
-        if (!isStart) return
+    private fun checkSuAndOS() {
+        val modulePrefs = prefs(ModulePrefs).isPreferencesAvailable
+        val settingPrefs = prefs(SettingsPrefs).isPreferencesAvailable
+        val otherPrefs = prefs(OtherPrefs).isPreferencesAvailable
+        if (!(modulePrefs && settingPrefs && otherPrefs)) {
+            isStart = false
+            MaterialAlertDialogBuilder(this).apply {
+                setCancelable(false)
+                setMessage(getString(R.string.unsupported_xposed))
+                setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
+                    exitProcess(0)
+                }
+                //setNegativeButton(R.string.ignore, null)
+                show()
+            }
+            return
+        }
         val isSu = ShellUtils.checkRootPermission()
+        putBoolean(SettingsPrefs, "is_su", isSu)
         if (!isSu) {
             MaterialAlertDialogBuilder(this, dialogCentered).apply {
                 setTitle(getString(R.string.no_root))
@@ -72,19 +83,21 @@ open class MainActivity : AppCompatActivity() {
         val os = getColorOSVersion!!
         if (os.isNotBlank() && os.startsWith("V")) {
             val version = os.substring(1, os.length).toDoubleOrNull()
-            if ((version != null) && (version >= 12.0)) return
+            if ((version == null) || (version < 12.0)) {
+                MaterialAlertDialogBuilder(this, dialogCentered).apply {
+                    setTitle(getString(R.string.unsupported_os))
+                    setMessage(getString(R.string.unsupported_os_summary))
+                    setNeutralButton(getString(R.string.common_words_ignore), null)
+                    setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
+                    show()
+                }
+            }
         }
-        MaterialAlertDialogBuilder(this, dialogCentered).apply {
-            setTitle(getString(R.string.unsupported_os))
-            setMessage(getString(R.string.unsupported_os_summary))
-            setNeutralButton(getString(R.string.common_words_ignore), null)
-            setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
-            show()
-        }
+        putBoolean(SettingsPrefs, "boot_complete", ckqcbs())
+        checkPermissions()
     }
 
-    private fun checkPermissions(isStart: Boolean) {
-        if (!isStart) return
+    private fun checkPermissions() {
         //所有文件访问权限
         if (!Environment.isExternalStorageManager()) {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
@@ -127,23 +140,6 @@ open class MainActivity : AppCompatActivity() {
         }
         val themeMode = getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
         ThemeUtils(this).initTheme(themeMode)
-    }
-
-    private fun checkPrefsStatus() {
-        val modulePrefs = prefs(ModulePrefs).isPreferencesAvailable
-        val settingPrefs = prefs(SettingsPrefs).isPreferencesAvailable
-        val otherPrefs = prefs(OtherPrefs).isPreferencesAvailable
-        if (!(modulePrefs && settingPrefs && otherPrefs)) {
-            isStart = false
-            MaterialAlertDialogBuilder(this).apply {
-                setCancelable(false)
-                setMessage(getString(R.string.unsupported_xposed))
-                setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                    exitProcess(0)
-                }
-                //setNegativeButton(R.string.ignore, null)
-            }.show()
-        }
     }
 
     fun restart() {
