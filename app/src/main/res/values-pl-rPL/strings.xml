@@ -81,6 +81,7 @@
     <string name="fast_reboot">Szybki restart</string>
     <string name="menu_versioninfo">Informacje o wersji</string>
     <string name="scope_version_info">Informacje o aplikacjach objętych kontrolą</string>
+    <string name="show_system_app">Show system APP</string>
     <!--Xposed-->
     <string name="Android">Związane z systemem</string>
     <string name="app_label">Nazwa aplikacji</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">Centrum sterowania</string>
     <string name="ControlCenter_Clock_Related">Zegar centrum sterowania</string>
     <string name="control_center_clock_show_second">Pokaż sekundy</string>
+    <string name="statusbar_control_center_clock_colon_style">Control center clock colon style</string>
     <string name="fix_clock_colon_style">Obniż dwukropek w zegarze</string>
     <string name="fix_clock_colon_style_summary">Przywróć normalny dwukropek</string>
     <string name="statusbar_control_center_clock_red_one_mode">Control center red one mode</string>
@@ -379,11 +381,11 @@
     <string name="media_volume_level">Kroki głośności multimediów</string>
     <string name="media_volume_level_summary">0 = funkcja wyłączona. Zrestartuj urządzenie, aby zastosować zmiany</string>
     <string name="open_screen_power_save">Dodaj stronę „Oszczędzanie energii ekranu”</string>
-    <string name="open_screen_power_save_summary">Ustawienia > Bateria > Więcej ustawień > Oszczędzanie energii ekranu</string>
+    <string name="open_screen_power_save_summary">Ustawienia &gt; Bateria &gt; Więcej ustawień &gt; Oszczędzanie energii ekranu</string>
     <string name="open_battery_health">Dodaj stronę „Stan baterii”</string>
-    <string name="open_battery_health_summary">Ustawienia > Bateria > Stan baterii</string>
+    <string name="open_battery_health_summary">Ustawienia &gt; Bateria &gt; Stan baterii</string>
     <string name="performance_mode_and_standby_optimization">Dodaj stronę „Tryb wydajności” i „Optymalne czuwanie”</string>
-    <string name="performance_mode_and_standby_optimization_summary">Ustawienia > Bateria > Więcej ustawień</string>
+    <string name="performance_mode_and_standby_optimization_summary">Ustawienia &gt; Bateria &gt; Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwól na niezaufane działania dotykowe</string>
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">Przywróć domyślną białą listę optymalizacji baterii</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">Domyślny</string>
+    <string name="common_words_normal">Normal</string>
+    <string name="common_words_special">Special</string>
     <string name="common_words_preset">Gotowe ustawienia</string>
     <string name="common_words_single_line">Jednowierszowy</string>
     <string name="common_words_double_line">Dwuwierszowy</string>
@@ -573,4 +577,5 @@
     <string name="net_error">Nieznany błąd sieci</string>
     <string name="net_other_error">Nieznany błąd</string>
     <string name="no_error_message">Brak wiadomości o błędzie</string>
+    <!--Black-->
 </resources>

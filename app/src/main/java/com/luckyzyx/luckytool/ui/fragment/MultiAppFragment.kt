@@ -39,6 +39,7 @@ class MultiAppFragment : Fragment() {
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
     private var multiAppAdapter: MultiAppAdapter? = null
+    private var isShowSystemApp = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -91,6 +92,8 @@ class MultiAppFragment : Fragment() {
     }
 
     private fun loadData() {
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
         binding.swipeRefreshLayout.isRefreshing = true
         binding.searchViewLayout.isEnabled = false
         binding.searchView.text = null
@@ -102,7 +105,7 @@ class MultiAppFragment : Fragment() {
                 val packageManager = requireActivity().packageManager
                 val appinfos = PackageUtils(packageManager).getInstalledApplications(0)
                 for (i in appinfos) {
-                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
+                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1 && !isShowSystemApp) continue
                     appListAllDatas.add(
                         AppInfo(
                             i.loadIcon(packageManager),
@@ -123,6 +126,8 @@ class MultiAppFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.app_list_menu, menu)
+        menu.findItem(R.id.show_system_app).isChecked = isShowSystemApp
         menu.add(0, 1, 0, getString(R.string.common_words_open)).apply {
             setIcon(R.drawable.baseline_open_in_new_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -134,6 +139,14 @@ class MultiAppFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) jumpMultiApp(requireActivity())
+        if (item.itemId == R.id.show_system_app) {
+            item.isChecked = !item.isChecked
+            isShowSystemApp = item.isChecked
+            requireActivity().putBoolean(
+                ModulePrefs, "show_system_app_multi_app", isShowSystemApp
+            )
+            loadData()
+        }
         return super.onOptionsItemSelected(item)
     }
 }

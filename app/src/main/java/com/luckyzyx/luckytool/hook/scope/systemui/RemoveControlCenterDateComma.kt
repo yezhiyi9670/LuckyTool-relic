@@ -52,7 +52,6 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
 
         if (SDK < A13) return
         var translationX = 0
-        var translationY = 0
         //Source OplusQSFooterImpl
         findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
             injectMember {
@@ -75,18 +74,14 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
 
                     if (showLunar) {
                         val res = instance<ViewGroup>().resources
+                        //10dp
                         val qs_footer_date_margin_start = res.getDimensionPixelSize(
                             res.getIdentifier(
                                 "qs_footer_date_margin_start", "dimen",
                                 packageName
                             )
                         )
-                        val qs_footer_date_expand_translation_x = res.getDimensionPixelSize(
-                            res.getIdentifier(
-                                "qs_footer_date_expand_translation_x", "dimen",
-                                packageName
-                            )
-                        )
+                        //51dp
                         val qs_footer_date_expand_translation_y = res.getDimensionPixelSize(
                             res.getIdentifier(
                                 "qs_footer_date_expand_translation_y", "dimen",
@@ -97,9 +92,8 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                             TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) == LayoutDirection.RTL
                         val width = mClockView.width + qs_footer_date_margin_start
                         if (abs(translationX) < abs(width)) translationX =
-                            if (!isRtl) (-width) + qs_footer_date_expand_translation_x else width
-                        if (abs(translationY) < abs(width)) translationY =
-                            qs_footer_date_expand_translation_y / 2
+                            if (!isRtl) (-width) else width
+                        val translationY = qs_footer_date_expand_translation_y / 2
 
                         getScreenStatus(res) {
                             if (it) return@getScreenStatus

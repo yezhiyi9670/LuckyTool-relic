@@ -8,6 +8,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.ArraySet
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
@@ -37,12 +40,14 @@ class ZoomWindowFragment : Fragment() {
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
     private var zoomWindowAdapter: ZoomWindowAdapter? = null
+    private var isShowSystemApp = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setHasOptionsMenu(true)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
     }
@@ -96,6 +101,8 @@ class ZoomWindowFragment : Fragment() {
      * 加载数据
      */
     private fun loadData() {
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_zoom_window", false)
         binding.swipeRefreshLayout.isRefreshing = true
         binding.searchViewLayout.isEnabled = false
         binding.searchView.text = null
@@ -107,7 +114,7 @@ class ZoomWindowFragment : Fragment() {
                 val packageManager = requireActivity().packageManager
                 val appinfos = PackageUtils(packageManager).getInstalledApplications(0)
                 for (i in appinfos) {
-                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
+                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1 && !isShowSystemApp) continue
                     appListAllDatas.add(
                         AppInfo(
                             i.loadIcon(packageManager),
@@ -125,6 +132,23 @@ class ZoomWindowFragment : Fragment() {
             binding.swipeRefreshLayout.isRefreshing = false
             binding.searchViewLayout.isEnabled = true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.app_list_menu, menu)
+        menu.findItem(R.id.show_system_app).isChecked = isShowSystemApp
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.show_system_app) {
+            item.isChecked = !item.isChecked
+            isShowSystemApp = item.isChecked
+            requireActivity().putBoolean(
+                ModulePrefs, "show_system_app_zoom_window", isShowSystemApp
+            )
+            loadData()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 

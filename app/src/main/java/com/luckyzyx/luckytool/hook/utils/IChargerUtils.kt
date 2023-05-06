@@ -4,11 +4,11 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarBatteryInfoNotify.toClass
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
-class IChargerUtils(classLoader: ClassLoader) {
+class IChargerUtils(classLoader: ClassLoader?) {
 
     val clazz = "vendor.oplus.hardware.charger.V1_0.ICharger".toClass(classLoader)
 
-    fun getService(): Any? {
+    fun getDefaultInstance(): Any? {
         return clazz.method {
             name = "getService"
             emptyParam()
@@ -19,13 +19,13 @@ class IChargerUtils(classLoader: ClassLoader) {
         return clazz.method {
             name = "queryChargeInfo"
             emptyParam()
-        }.get(getService()).invoke<String>()
+        }.get(getDefaultInstance()).invoke<String>()
     }
 
     fun getUIsohValue(): Int? {
         return clazz.method {
             name = "getUIsohValue"
             emptyParam()
-        }.get(getService()).invoke<Int>()
+        }.get(getDefaultInstance()).invoke<Int>()
     }
 }

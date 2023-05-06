@@ -16,8 +16,9 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         var redOneMode =
             prefs(ModulePrefs).getString("statusbar_control_center_clock_red_one_mode", "0")
         dataChannel.wait<String>("statusbar_control_center_clock_red_one_mode") { redOneMode = it }
-        var fixColon = prefs(ModulePrefs).getBoolean("fix_clock_colon_style", false)
-        dataChannel.wait<Boolean>("fix_clock_colon_style") { fixColon = it }
+        var colonStyle =
+            prefs(ModulePrefs).getString("statusbar_control_center_clock_colon_style", "0")
+        dataChannel.wait<String>("statusbar_control_center_clock_colon_style") { colonStyle = it }
 
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
@@ -41,7 +42,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     val view = instance<TextView>()
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
                     val char = args(0).cast<CharSequence>() ?: return@afterHook
-                    setStyle(view, char, true, redOneMode)
+                    setStyle(view, char, "0", redOneMode)
                 }
             }
         }
@@ -58,7 +59,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     val view = args(0).cast<TextView>() ?: return@afterHook
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
                     val char = args(1).cast<CharSequence>() ?: return@afterHook
-                    setStyle(view, char, fixColon, redOneMode)
+                    setStyle(view, char, colonStyle, redOneMode)
                 }
             }
         }
@@ -70,24 +71,25 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         return if (colorSpan.isNotEmpty()) colorSpan[0].foregroundColor else null
     }
 
-    private fun setStyle(view: TextView, char: CharSequence, fixColon: Boolean, redMode: String) {
-        var sb = StringBuilder(char)
-        val colon = arrayOf("\u200e\u2236", ":")
-        for (i in char.indices) {
-            if (sb[i].toString() == (if (fixColon) colon[0] else colon[1])) {
-                sb = sb.replace(i, i + 1, if (fixColon) colon[1] else colon[0])
+    private fun setStyle(view: TextView, char: CharSequence, colonStyle: String, redStyle: String) {
+        val colonMode = if (colonStyle == "1") 1 else if (colonStyle == "2") 2 else 0
+        val redMode = if (redStyle == "1") 1 else if (redStyle == "2") 2 else 0
+        var sb = StringBuilder(view.text)
+        if (colonMode != 0) {
+            when (colonMode) {
+                1 -> sb = StringBuilder(char)
+                2 -> for (i in char.indices) {
+                    if (sb[i].toString() == ":") {
+                        sb = sb.replace(i, i + 1, "\u200e\u2236")
+                    }
+                }
             }
         }
-        val mode = when (redMode) {
-            "1" -> 1
-            "2" -> 2
-            else -> 0
-        }
-        if (mode != 2) {
+        if (redMode != 2) {
             val sp = SpannableString(sb)
             for (i2 in 0 until 2) {
                 if (sb[i2].toString() == "1") {
-                    when (mode) {
+                    when (redMode) {
                         0 -> {
                             val color = getCharColor(view)
                             if (color != null) sp.setSpan(

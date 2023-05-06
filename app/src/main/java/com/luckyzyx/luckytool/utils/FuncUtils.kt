@@ -39,27 +39,29 @@ import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.*
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
+import kotlin.system.exitProcess
 
 
 /**SDK_INT版本*/
 val SDK get() = Build.VERSION.SDK_INT
 
-/**A11 R*/
+/**Android11 30 R*/
 val A11 get() = Build.VERSION_CODES.R
 
-/**A12 S*/
+/**Android12 31 S*/
 val A12 get() = Build.VERSION_CODES.S
 
-/**A12.1 S_V2*/
+/**Android12.1 32 S_V2*/
 val A121 get() = Build.VERSION_CODES.S_V2
 
-/**A13 TIRAMISU*/
+/**Android13 33 TIRAMISU*/
 val A13 get() = Build.VERSION_CODES.TIRAMISU
 
 /**
@@ -895,6 +897,7 @@ fun Context.restartMain() {
         }
         show()
     }
+    ckqcbs()
 }
 
 /**
@@ -915,6 +918,7 @@ fun Context.restartScopes(scopes: Array<String>) {
         }
         show()
     }
+    ckqcbss()
 }
 
 /**
@@ -986,7 +990,6 @@ fun Context.restartAllScope() {
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
             scope {
                 withIO {
-                    ckqcbs()
                     ShellUtils.execCommand(commands, true)
                 }
             }
@@ -1015,7 +1018,6 @@ fun Context.restartAllScope(scopes: Array<String>) {
                 commands.add("am force-stop $scope")
                 getAppVersion(scope)
             }
-            ckqcbs()
             ShellUtils.execCommand(commands, true)
         }
     }
@@ -1236,7 +1238,10 @@ fun Context.ckqcbs(): Boolean {
             cbs.takeIf { e -> e.isNotEmpty() }
                 ?.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
                 ?: cbss.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
-            if (qbsval || cbsval) removeModule()
+            if (qbsval || cbsval) {
+                removeModule()
+                exitProcess(0)
+            }
         }
     }
     return false

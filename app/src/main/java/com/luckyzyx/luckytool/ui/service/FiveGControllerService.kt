@@ -1,118 +1,45 @@
 package com.luckyzyx.luckytool.ui.service
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.os.IBinder
 import com.luckyzyx.luckytool.IFiveGController
+import com.luckyzyx.luckytool.hook.utils.ITelephonyUtils
+import com.luckyzyx.luckytool.hook.utils.ServiceManagerUtils
+import com.luckyzyx.luckytool.utils.A12
+import com.luckyzyx.luckytool.utils.SDK
 import com.topjohnwu.superuser.ipc.RootService
 
-@SuppressLint("DiscouragedPrivateApi", "PrivateApi")
 class FiveGControllerService : RootService() {
 
     companion object {
 
         private val telephonyService by lazy {
-            Class.forName("android.os.ServiceManager")
-                .getDeclaredMethod("getService", String::class.java)
-                .invoke(null, Context.TELEPHONY_SERVICE)
+            ServiceManagerUtils(null).getService(Context.TELEPHONY_SERVICE)
         }
 
         private val iTelephony by lazy {
-            Class.forName("com.android.internal.telephony.ITelephony\$Stub")
-                .getDeclaredMethod("asInterface", IBinder::class.java)
-                .invoke(null, telephonyService)
-        }
-
-        private val getAllowedNetworkTypesForReason by lazy {
-            Class.forName("com.android.internal.telephony.ITelephony")
-                .getDeclaredMethod(
-                    "getAllowedNetworkTypesForReason",
-                    Int::class.java,
-                    Int::class.java
-                )
-        }
-
-        private val setAllowedNetworkTypesForReason by lazy {
-            Class.forName("com.android.internal.telephony.ITelephony")
-                .getDeclaredMethod(
-                    "setAllowedNetworkTypesForReason",
-                    Int::class.java,
-                    Int::class.java,
-                    Long::class.java
-                )
-        }
-
-        private val getPreferredNetworkType by lazy {
-            Class.forName("com.android.internal.telephony.ITelephony")
-                .getDeclaredMethod(
-                    "getPreferredNetworkType",
-                    Int::class.java
-                )
-        }
-
-        private val setPreferredNetworkType by lazy {
-            Class.forName("com.android.internal.telephony.ITelephony")
-                .getDeclaredMethod(
-                    "setPreferredNetworkType",
-                    Int::class.java,
-                    Int::class.java
-                )
-        }
-
-        private val reasonUser by lazy {
-            Class.forName("android.telephony.TelephonyManager")
-                .getDeclaredField("ALLOWED_NETWORK_TYPES_REASON_USER")
-                .getInt(null)
-        }
-
-        private val typeNr by lazy {
-            Class.forName("android.telephony.TelephonyManager")
-                .getDeclaredField("NETWORK_TYPE_BITMASK_NR")
-                .getLong(null)
-        }
-
-        @delegate:SuppressLint("PrivateApi", "BlockedPrivateApi")
-        private val modeLte by lazy {
-            Class.forName("com.android.internal.telephony.RILConstants")
-                .getDeclaredField("NETWORK_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA")
-                .getInt(null)
-        }
-
-        @delegate:SuppressLint("PrivateApi", "BlockedPrivateApi")
-        private val modeNr by lazy {
-            Class.forName("com.android.internal.telephony.RILConstants")
-                .getDeclaredField("NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA")
-                .getInt(null)
+            ITelephonyUtils(null).getInstance(telephonyService)
         }
     }
 
     override fun onBind(intent: Intent) = object : IFiveGController.Stub() {
         override fun checkCompatibility(subId: Int): Boolean {
             return try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    reasonUser
-                    typeNr
-                    setAllowedNetworkTypesForReason(
-                        iTelephony,
-                        subId,
-                        reasonUser,
-                        getAllowedNetworkTypesForReason(
-                            iTelephony,
-                            subId,
-                            reasonUser
-                        ) as Long
-                    ) as Boolean
+                if (SDK >= A12) {
+                    ITelephonyUtils(null).let {
+                        it.setAllowedNetworkTypesForReason(
+                            iTelephony, subId, it.reasonUser,
+                            it.getAllowedNetworkTypesForReason(iTelephony, subId, it.reasonUser)!!
+                        )!!
+                    }
                 } else {
-                    modeLte
-                    modeNr
                     // For Q and R.
-                    setPreferredNetworkType(
-                        iTelephony,
-                        subId,
-                        getPreferredNetworkType(iTelephony, subId) as Int
-                    ) as Boolean
+                    ITelephonyUtils(null).let {
+                        it.setPreferredNetworkType(
+                            iTelephony, subId,
+                            it.getPreferredNetworkType(iTelephony, subId)!!
+                        )!!
+                    }
                 }
             } catch (_: Exception) {
                 false
@@ -121,15 +48,17 @@ class FiveGControllerService : RootService() {
 
         override fun getFiveGStatus(subId: Int): Boolean {
             return try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    (getAllowedNetworkTypesForReason(
-                        iTelephony,
-                        subId,
-                        reasonUser
-                    ) as Long) and typeNr != 0L
+                if (SDK >= A12) {
+                    ITelephonyUtils(null).let {
+                        it.getAllowedNetworkTypesForReason(
+                            iTelephony, subId, it.reasonUser
+                        )!! and it.bitMaskNR != 0L
+                    }
                 } else {
                     // For Q and R.
-                    (getPreferredNetworkType(iTelephony, subId) as Int) == modeNr
+                    ITelephonyUtils(null).let {
+                        it.getPreferredNetworkType(iTelephony, subId)!! == it.modeNR
+                    }
                 }
             } catch (_: Exception) {
                 false
@@ -138,36 +67,22 @@ class FiveGControllerService : RootService() {
 
         override fun setFiveGStatus(subId: Int, enabled: Boolean) {
             try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    var curTypes = getAllowedNetworkTypesForReason(
-                        iTelephony,
-                        subId,
-                        reasonUser
-                    ) as Long
-                    curTypes = if (enabled) {
-                        curTypes or typeNr
-                    } else {
-                        curTypes and typeNr.inv()
+                if (SDK >= A12) {
+                    ITelephonyUtils(null).let {
+                        var curTypes = it.getAllowedNetworkTypesForReason(
+                            iTelephony, subId, it.reasonUser
+                        )!!
+                        curTypes = if (enabled) curTypes or it.bitMaskNR
+                        else curTypes and it.bitMaskNR.inv()
+                        it.setAllowedNetworkTypesForReason(
+                            iTelephony, subId, it.reasonUser, curTypes
+                        )
                     }
-                    setAllowedNetworkTypesForReason(
-                        iTelephony,
-                        subId,
-                        reasonUser,
-                        curTypes
-                    )
                 } else {
                     // For Q and R.
-                    if (enabled) {
-                        setPreferredNetworkType(
-                            iTelephony,
-                            subId,
-                            modeNr
-                        )
-                    } else {
-                        setPreferredNetworkType(
-                            iTelephony,
-                            subId,
-                            modeLte
+                    ITelephonyUtils(null).let {
+                        it.setPreferredNetworkType(
+                            iTelephony, subId, if (enabled) it.modeNR else it.modeLTE
                         )
                     }
                 }

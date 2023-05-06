@@ -81,6 +81,7 @@
     <string name="fast_reboot">快速重启</string>
     <string name="menu_versioninfo">版本信息</string>
     <string name="scope_version_info">作用域版本信息</string>
+    <string name="show_system_app">显示系统应用</string>
     <!--Xposed-->
     <string name="Android">系统相关</string>
     <string name="app_label">应用名</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">状态栏控制中心</string>
     <string name="ControlCenter_Clock_Related">控制中心时钟相关</string>
     <string name="control_center_clock_show_second">控制中心时钟显秒</string>
+    <string name="statusbar_control_center_clock_colon_style">控制中心时钟冒号样式</string>
     <string name="fix_clock_colon_style">修复时钟冒号样式</string>
     <string name="fix_clock_colon_style_summary">开启时恢复系统默认冒号，关闭时使用官方定制冒号</string>
     <string name="statusbar_control_center_clock_red_one_mode">控制中心红一模式</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">移除</string>
     <string name="common_words_ignore">忽略</string>
     <string name="common_words_default">默认</string>
+    <string name="common_words_normal">普通</string>
+    <string name="common_words_special">特殊</string>
     <string name="common_words_preset">预设</string>
     <string name="common_words_single_line">单行</string>
     <string name="common_words_double_line">双行</string>
@@ -573,4 +577,5 @@
     <string name="net_error">未知网络错误</string>
     <string name="net_other_error">未知错误</string>
     <string name="no_error_message">无错误信息</string>
+    <!--Black-->
 </resources>

@@ -7,7 +7,9 @@ import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock.toClass
 
-class LunarHelperUtils(val classLoader: ClassLoader) {
+class LunarHelperUtils(val classLoader: ClassLoader?) {
+
+    val clazz = "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass(classLoader)
 
     /**
      * 构建日历对象实例
@@ -15,10 +17,9 @@ class LunarHelperUtils(val classLoader: ClassLoader) {
      * @return Any?
      */
     fun buildInstance(context: Context): Any? {
-        return "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass(classLoader)
-            .buildOf(context) {
-                param(ContextClass)
-            }
+        return clazz.buildOf(context) {
+            param(ContextClass)
+        }
     }
 
     /**
@@ -28,7 +29,7 @@ class LunarHelperUtils(val classLoader: ClassLoader) {
      * @return String?
      */
     fun getDateToString(instance: Any?, time: Long): String? {
-        return "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass(classLoader).method {
+        return clazz.method {
             name = "getDateToString"
             param(LongType)
         }.get(instance).invoke<String>(time)

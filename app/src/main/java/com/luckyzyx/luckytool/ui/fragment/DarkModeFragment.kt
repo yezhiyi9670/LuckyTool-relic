@@ -33,6 +33,7 @@ class DarkModeFragment : Fragment() {
     private var appListAllDatas = ArrayList<AppInfo>()
     private var darkModeAdapter: DarkModeAdapter? = null
     private val scopes = arrayOf("com.android.settings")
+    private var isShowSystemApp = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,6 +94,8 @@ class DarkModeFragment : Fragment() {
      * 加载数据
      */
     private fun loadData() {
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
         binding.swipeRefreshLayout.isRefreshing = true
         binding.searchViewLayout.isEnabled = false
         binding.searchView.text = null
@@ -112,7 +115,7 @@ class DarkModeFragment : Fragment() {
                 val packageManager = requireActivity().packageManager
                 val appinfos = PackageUtils(packageManager).getInstalledApplications(0)
                 for (i in appinfos) {
-                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
+                    if (i.flags and ApplicationInfo.FLAG_SYSTEM == 1 && !isShowSystemApp) continue
                     appListAllDatas.add(
                         AppInfo(
                             i.loadIcon(packageManager),
@@ -133,6 +136,8 @@ class DarkModeFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.app_list_menu, menu)
+        menu.findItem(R.id.show_system_app).isChecked = isShowSystemApp
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -152,6 +157,14 @@ class DarkModeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
         if (item.itemId == 2) jumpDarkMode(requireActivity())
+        if (item.itemId == R.id.show_system_app) {
+            item.isChecked = !item.isChecked
+            isShowSystemApp = item.isChecked
+            requireActivity().putBoolean(
+                ModulePrefs, "show_system_app_dark_mode", isShowSystemApp
+            )
+            loadData()
+        }
         return super.onOptionsItemSelected(item)
     }
 }

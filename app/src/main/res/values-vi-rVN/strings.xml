@@ -81,6 +81,7 @@
     <string name="fast_reboot">Khởi động nhanh</string>
     <string name="menu_versioninfo">Thông tin phiên bản</string>
     <string name="scope_version_info">Thông tin phiên bản</string>
+    <string name="show_system_app">Show system APP</string>
     <!--Xposed-->
     <string name="Android">Hệ thống liên quan</string>
     <string name="app_label">Tên ứng dụng</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">Trung tâm điều khiển</string>
     <string name="ControlCenter_Clock_Related">Đồng hồ trung tâm điều khiển</string>
     <string name="control_center_clock_show_second">Đồng hồ trung tâm điều khiển hiển thị giây</string>
+    <string name="statusbar_control_center_clock_colon_style">Control center clock colon style</string>
     <string name="fix_clock_colon_style">Sửa đồng hồ kiểu dấu hai chấm</string>
     <string name="fix_clock_colon_style_summary">Quay lại dấu hai chấm bình thường khi nó được bật và sử dụng dấu hai chấm tùy chỉnh chính thức khi nó bị tắt</string>
     <string name="statusbar_control_center_clock_red_one_mode">Control center red one mode</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">Mặc định</string>
+    <string name="common_words_normal">Normal</string>
+    <string name="common_words_special">Special</string>
     <string name="common_words_preset">Thiết lập sẵn</string>
     <string name="common_words_single_line">Single line</string>
     <string name="common_words_double_line">Double line</string>
@@ -573,4 +577,5 @@
     <string name="net_error">Unknown network error</string>
     <string name="net_other_error">Unknown error</string>
     <string name="no_error_message">No error message</string>
+    <!--Black-->
 </resources>

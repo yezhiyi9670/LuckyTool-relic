@@ -1044,16 +1044,19 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.fix_clock_colon_style)
-                    summary = getString(R.string.fix_clock_colon_style_summary)
-                    key = "fix_clock_colon_style"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_control_center_clock_colon_style)
+                    summary = "%s"
+                    key = "statusbar_control_center_clock_colon_style"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_clock_colon_style_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("fix_clock_colon_style", newValue)
+                            .put("statusbar_control_center_clock_colon_style", newValue)
                         true
                     }
                 }

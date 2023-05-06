@@ -81,6 +81,7 @@
     <string name="fast_reboot">高速な再起動</string>
     <string name="menu_versioninfo">バージョンの情報</string>
     <string name="scope_version_info">スコープのバージョンの情報</string>
+    <string name="show_system_app">システムアプリを表示</string>
     <!--Xposed-->
     <string name="Android">システム関連</string>
     <string name="app_label">アプリ名</string>
@@ -138,7 +139,7 @@
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
-    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
+    <string name="RemoveStatusBarNotifications">ステータスバーの通知を削除</string>
     <string name="remove_statusbar_devmode">ステータスバーから開発者向けオプションの通知を削除</string>
     <string name="remove_charging_completed">充電完了の通知を削除</string>
     <string name="remove_statusbar_top_notification">ステータスバーから優先度が上位の通知を削除</string>
@@ -157,7 +158,7 @@
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
     <string name="remove_notifications_for_mute_notifications">ミュートされた通知を通知しない</string>
     <string name="remove_virus_risk_notification_in_phone_manager">フォンマネージャーのウイルスリスク通知を削除</string>
-    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="remove_notification_manager_limit">通知マネージャーの上限を削除</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">ステータスバーコントロールセンター</string>
     <string name="ControlCenter_Clock_Related">コントロールセンターの時計関連</string>
     <string name="control_center_clock_show_second">コントロールセンターの時計に秒を表示</string>
+    <string name="statusbar_control_center_clock_colon_style">コントロールセンターの時計のコロンスタイル</string>
     <string name="fix_clock_colon_style">時計のコロンのスタイルを修正</string>
     <string name="fix_clock_colon_style_summary">有効にすると通常のコロンで表示、無効にすると公式のカスタムされたコロンで表示します</string>
     <string name="statusbar_control_center_clock_red_one_mode">通知領域の時計で赤い「1」を表示</string>
@@ -388,7 +390,7 @@
     <!--Battery-->
     <string name="restore_default_battery_optimization_whitelist">デフォルトのバッテリー最適化ホワイトリストを復元します</string>
     <string name="remove_high_temperature_limit">高温制限を無効化</string>
-    <string name="remove_high_temperature_limit_summary">カメラ、トーチ、ホットスポット、画面表示エンジンなど、高温により各種機能が使用できなくなる制限を解除。</string>
+    <string name="remove_high_temperature_limit_summary">高温によりカメラ、ライト、ホットスポット、画面表示エンジンなど各種機能が使用できなくなる制限を無効化します</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">削除</string>
     <string name="common_words_ignore">無視する</string>
     <string name="common_words_default">デフォルト</string>
+    <string name="common_words_normal">通常</string>
+    <string name="common_words_special">特殊</string>
     <string name="common_words_preset">プリセット</string>
     <string name="common_words_single_line">直線</string>
     <string name="common_words_double_line">二重線</string>
@@ -573,4 +577,5 @@
     <string name="net_error">不明なネットワークエラー</string>
     <string name="net_other_error">不明なエラー</string>
     <string name="no_error_message">エラーメッセージなし</string>
+    <!--Black-->
 </resources>

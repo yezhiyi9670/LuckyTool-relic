@@ -81,6 +81,7 @@
     <string name="fast_reboot">Швидке перезавантаження</string>
     <string name="menu_versioninfo">Інформація про версію</string>
     <string name="scope_version_info">Показати інформацію про версію</string>
+    <string name="show_system_app">Show system APP</string>
     <!--Xposed-->
     <string name="Android">Android</string>
     <string name="app_label">Назва додатку</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">Центр керування рядка стану</string>
     <string name="ControlCenter_Clock_Related">Центр керування годинником</string>
     <string name="control_center_clock_show_second">Годинник центру керування показує секунду</string>
+    <string name="statusbar_control_center_clock_colon_style">Control center clock colon style</string>
     <string name="fix_clock_colon_style">Виправити стиль двокрапки годинника</string>
     <string name="fix_clock_colon_style_summary">Поверніться до звичайної двокрапки, коли воно увімкнено, і використовуйте офіційну користувальницьку двокрапку, коли воно вимкнено</string>
     <string name="statusbar_control_center_clock_red_one_mode">Control center red one mode</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>
     <string name="common_words_default">За замовчуванням</string>
+    <string name="common_words_normal">Normal</string>
+    <string name="common_words_special">Special</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Один рядок</string>
     <string name="common_words_double_line">Два рядки</string>
@@ -573,4 +577,5 @@
     <string name="net_error">Невідома мережева помилка</string>
     <string name="net_other_error">Невідома помилка</string>
     <string name="no_error_message">Немає повідомлення про помилку</string>
+    <!--Black-->
 </resources>

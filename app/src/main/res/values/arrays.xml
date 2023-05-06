@@ -85,5 +85,11 @@
         <item>@string/common_words_add</item>
         <item>@string/common_words_remove</item>
     </string-array>
+    
+    <string-array name="statusbar_control_center_clock_colon_style_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_normal</item>
+        <item>@string/common_words_special</item>
+    </string-array>
 
 </resources>

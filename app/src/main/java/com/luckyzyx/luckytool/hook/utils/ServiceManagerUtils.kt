@@ -6,7 +6,8 @@ import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimit.toClass
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class ServiceManagerUtils(classLoader: ClassLoader) {
+class ServiceManagerUtils(classLoader: ClassLoader?) {
+
     val clazz = "android.os.ServiceManager".toClass(classLoader)
 
     fun getService(serviceName: String): IBinder? {

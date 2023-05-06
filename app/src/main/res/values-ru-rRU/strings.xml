@@ -81,6 +81,7 @@
     <string name="fast_reboot">Быстрая перезагрузка</string>
     <string name="menu_versioninfo">Информация о версии</string>
     <string name="scope_version_info">Информация о версии</string>
+    <string name="show_system_app">Показать системные приложения</string>
     <!--Xposed-->
     <string name="Android">Android</string>
     <string name="app_label">Имя приложения</string>
@@ -138,7 +139,7 @@
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Уведомления в строке состояния</string>
     <string name="StatusBarNotice_summary">Верхняя строка состояния и раскрывающаяся строка состояния</string>
-    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
+    <string name="RemoveStatusBarNotifications">Удалить уведомления в строке состояния</string>
     <string name="remove_statusbar_devmode">Удалить уведомления о параметрах разработчика в строке состояния</string>
     <string name="remove_charging_completed">Удалить уведомление о завершении зарядки</string>
     <string name="remove_statusbar_top_notification">Удалить уведомление об отображении поверх других приложений из строки состояния</string>
@@ -157,7 +158,7 @@
     <string name="remove_smart_rapid_charging_notification">Удалить уведомление \"Умная быстрая зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Удалите уведомление о риске вирусов в диспетчере телефона</string>
-    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">Центр управления строки состояния</string>
     <string name="ControlCenter_Clock_Related">Центр управления часами</string>
     <string name="control_center_clock_show_second">Часы центра управления показывают секунду</string>
+    <string name="statusbar_control_center_clock_colon_style">Стиль двоеточия часов в центре управления</string>
     <string name="fix_clock_colon_style">Исправить стиль двоеточия часов</string>
     <string name="fix_clock_colon_style_summary">Вернитесь к обычному двоеточию, когда оно включено, и используйте официальное пользовательское двоеточие, когда оно выключено</string>
     <string name="statusbar_control_center_clock_red_one_mode">Центр управления красными часами</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">Удалить</string>
     <string name="common_words_ignore">Игнорировать</string>
     <string name="common_words_default">По умолчанию</string>
+    <string name="common_words_normal">Обычный</string>
+    <string name="common_words_special">Особый</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Одна строка</string>
     <string name="common_words_double_line">Две строки</string>
@@ -573,4 +577,5 @@
     <string name="net_error">Неизвестная сетевая ошибка</string>
     <string name="net_other_error">Неизвестная ошибка</string>
     <string name="no_error_message">Нет сообщения об ошибке</string>
+    <!--Black-->
 </resources>

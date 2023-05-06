@@ -8,7 +8,7 @@ import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarBatteryInfoNotify.toClass
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class SystemPropertiesUtils(classLoader: ClassLoader) {
+class SystemPropertiesUtils(classLoader: ClassLoader?) {
 
     val clazz = "android.os.SystemProperties".toClass(classLoader)
 

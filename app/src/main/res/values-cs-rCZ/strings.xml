@@ -81,6 +81,7 @@
     <string name="fast_reboot">Rychlý reboot</string>
     <string name="menu_versioninfo">Informace o verzi</string>
     <string name="scope_version_info">Informace o verzi rozsahu</string>
+    <string name="show_system_app">Zobrazit systémové aplikace</string>
     <!--Xposed-->
     <string name="Android">Související se systémem</string>
     <string name="app_label">Název aplikace</string>
@@ -138,7 +139,7 @@
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
     <string name="StatusBarNotice_summary">Související s oznámeními ve stavové liště</string>
-    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
+    <string name="RemoveStatusBarNotifications">Odstranit oznámení ze stavové lišty</string>
     <string name="remove_statusbar_devmode">Odstranit oznámení o vývojářských možnostech</string>
     <string name="remove_charging_completed">Odstranit oznámení o dokončení nabíjení</string>
     <string name="remove_statusbar_top_notification">Skryj oznámení o zobrazování aplikací nad jinými</string>
@@ -157,7 +158,7 @@
     <string name="remove_smart_rapid_charging_notification">Odstranit oznámení \"Chytré rychlé nabíjení\"</string>
     <string name="remove_notifications_for_mute_notifications">Odstranit oznámení pro ztlumená oznámení</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Odstranit upozornění na riziko virů ve Správci telefonu</string>
-    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="remove_notification_manager_limit">Odstranit limit správce oznámení</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>
@@ -183,6 +184,7 @@
     <string name="StatusBarControlCenter">Ovládací centrum stavové lišty</string>
     <string name="ControlCenter_Clock_Related">Nastavení související s hodinami</string>
     <string name="control_center_clock_show_second">Zobraz sekundy</string>
+    <string name="statusbar_control_center_clock_colon_style">Způsob zobrazení dvojtečky u hodin</string>
     <string name="fix_clock_colon_style">Opravit styl dvojtečky u hodin</string>
     <string name="fix_clock_colon_style_summary">Při zapnutí se vraťte k normální dvojtečce a při vypnutí použijte oficiální vlastní dvojtečku</string>
     <string name="statusbar_control_center_clock_red_one_mode">Ovládací centrum stavového řádku s červeným režimem zobrazení</string>
@@ -287,7 +289,7 @@
     <string name="long_press_app_icon_open_app_details">Dlouhým stiskem ikony aplikace otevřete detaily aplikace</string>
     <string name="remove_recent_task_list_clear_button">Odstranit tlačítko pro vymazání nedávných aplikací</string>
     <string name="remove_bottom_app_icon_of_recent_task_list">Odstranit ikonu aplikace v dolní části seznamu nedávných úkolů</string>
-    <string name="enable_stacked_task_layout">Povolit rozvržení úloh za sebou </string>
+    <string name="enable_stacked_task_layout">Povolit těsnější rozvržení v seznamu úloh</string>
     <string name="set_task_stacking_level">Nastavit úroveň stohování úloh</string>
     <string name="fix_current_task_to_the_top">Opravit aktuální úlohu na začátek/vrchol </string>
     <string name="PaginationComponentRelated">Související se stránkováním (plochy spouštěče)</string>
@@ -325,7 +327,7 @@
     <string name="allow_downgrade_install_summary">Odstranit varování o stejných/nižších verzích, atd.</string>
     <string name="disable_apk_signature_verification">Zakázat ověřování podpisů APK</string>
     <string name="disable_apk_signature_verification_summary">Mohou být nainstalovány aplikace s různými podpisy, což představuje bezpečnostní riziko a je třeba je používat opatrně</string>
-    <string name="remove_install_ads">Po instalaci aplikace odstraňte reklamy</string>
+    <string name="remove_install_ads">Odstranit okno o úspěšné instalaci aplikace</string>
     <string name="remove_install_ads_summary">Bezpečnostní doporučení aplikací/reklamy v Obchodě Play</string>
     <string name="auto_click_install_button">Automaticky kliknout na tlačítko instalace</string>
     <string name="auto_click_uninstall_button">Automaticky kliknout na tlačítko odinstalace</string>
@@ -549,6 +551,8 @@
     <string name="common_words_remove">Odstranit</string>
     <string name="common_words_ignore">Ignorovat</string>
     <string name="common_words_default">Výchozí</string>
+    <string name="common_words_normal">Normální</string>
+    <string name="common_words_special">Speciální</string>
     <string name="common_words_preset">Přednastavené</string>
     <string name="common_words_single_line">Jeden řádek</string>
     <string name="common_words_double_line">Dva řádky</string>
@@ -573,4 +577,5 @@
     <string name="net_error">Neznámá chyba sítě</string>
     <string name="net_other_error">Neznámá chyba</string>
     <string name="no_error_message">Žádná chybová zpráva</string>
+    <!--Black-->
 </resources>

@@ -787,6 +787,20 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "230505", details(
+                        DCInfo("20230505-191808", CWC, 6.66, "10000499012023050500897561476127")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "Wittoy", details(
+                        DCInfo("20230506-151404", CQQ, 6.66, "101000026901302305061393685253")
+                    )
+                )
+            )
         }
     }
 
