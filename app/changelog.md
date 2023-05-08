@@ -1,30 +1,7 @@
----
-title: 更新日志(ChangeLog)
-icon: page
-order: 1
-# 设置作者
-# author: 忆清鸣、luckyzyx
-# 设置写作时间
-# date: 2020-01-01
-# 一个页面可以有多个分类
-category:
-- 更新日志
-# 一个页面可以有多个标签
-tag:
-- 更新日志
-# 此页面会在文章列表置顶
-sticky: false
-# 此页面会出现在文章收藏中
-star: false
-# 你可以自定义页脚
-# footer: 页脚
-# 你可以自定义版权信息
-# copyright: 无版权
----
-
 **beta测试版本仅在[TG讨论群](https://t.me/+F42pfv-c0h4zNDc9)中发布测试**
 
-**The beta test version is only released for testing in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
+**The beta test version is only released for testing
+in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 ### v1.0.0_beta
 
@@ -553,7 +530,7 @@ star: false
 - [Add] Game assistant tile entry
 - [Add] Custom zoom window support list
 - [Change] App clone data key name (You need to re-check the app that need to be cloned and then
-restart)
+  restart)
 - [Optimize] App clone, zoom windows support dynamic loading
 - [Add] LOG content filtering
 - [Fix] App widgets and avatars continue to load
