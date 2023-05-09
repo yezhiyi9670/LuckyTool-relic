@@ -152,7 +152,7 @@ class StatusBar : ModulePreferenceFragment() {
                 Preference(context).apply {
                     title = getString(R.string.StatusBarNotice)
                     summary =
-                        getString(R.string.remove_statusbar_devmode) + "," + getString(R.string.remove_charging_completed)
+                        getString(R.string.RemoveStatusBarNotifications) + "," + getString(R.string.remove_notification_manager_limit)
                     key = "StatusBarNotice"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
@@ -816,6 +816,14 @@ class StatusBarNotify : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.allow_long_press_notification_modifiable)
+                    key = "allow_long_press_notification_modifiable"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_notification_manager_limit)
                     key = "remove_notification_manager_limit"
                     setDefaultValue(false)
@@ -1076,21 +1084,6 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.fix_control_center_date_display)
-                    summary = getString(R.string.fix_control_center_date_display_suammry)
-                    key = "fix_control_center_date_display"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("fix_control_center_date_display", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.statusbar_control_center_date_show_lunar)
                     key = "statusbar_control_center_date_show_lunar"
                     setDefaultValue(false)
@@ -1099,10 +1092,50 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
                             .put("statusbar_control_center_date_show_lunar", newValue)
+                        (activity as MainActivity).restart()
                         true
                     }
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_control_center_date_fix_width)
+                    key = "statusbar_control_center_date_fix_width"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13 && isZh(context)
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_control_center_date_fix_width", newValue)
+                        true
+                    }
+                }
+            )
+            if (context.getBoolean(
+                    ModulePrefs,
+                    "statusbar_control_center_date_show_lunar", false
+                )
+            ) {
+                addPreference(
+                    DropDownPreference(context).apply {
+                        title =
+                            getString(R.string.statusbar_control_center_date_fix_lunar_horizontal)
+                        summary = "%s"
+                        key = "statusbar_control_center_date_fix_lunar_horizontal"
+                        entries =
+                            resources.getStringArray(R.array.statusbar_control_center_date_fix_lunar_horizontal_entries)
+                        entryValues = arrayOf("0", "1", "2")
+                        setDefaultValue("0")
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= A13 && isZh(context)
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui")
+                                .put("statusbar_control_center_date_fix_lunar_horizontal", newValue)
+                            true
+                        }
+                    }
+                )
+            }
             addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.ControlCenter_UI_Related)
@@ -2749,14 +2782,7 @@ class Battery : ModulePreferenceFragment() {
                     isVisible = SDK >= A13
                 }
             )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.restore_default_battery_optimization_whitelist)
-                    key = "restore_default_battery_optimization_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_high_temperature_limit)
@@ -2766,6 +2792,37 @@ class Battery : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.BatteryOptimization)
+                    key = "BatteryOptimization"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.restore_default_battery_optimization_whitelist)
+                    key = "restore_default_battery_optimization_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            if (context.getBoolean(
+                    ModulePrefs, "restore_default_battery_optimization_whitelist", false
+                )
+            ) {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.disable_customize_battery_optimization_whiteList)
+                        summary =
+                            getString(R.string.disable_customize_battery_optimization_whiteList_summary)
+                        key = "disable_customize_battery_optimization_whiteList"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        isVisible = false
+                    }
+                )
+            }
         }
     }
 

@@ -102,14 +102,14 @@ class OtherFragment : Fragment() {
             setOnClickListener {
                 val getPort =
                     ShellUtils.execCommand("getprop service.adb.tcp.port", true, true).let {
-                        if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg else "6666"
+                        if (it.result == 0 && it.successMsg != null) it.successMsg else "6666"
                     }
                 val getIP = ShellUtils.execCommand(
                     "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
                     true,
                     true
                 ).let {
-                    if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg else "IP"
+                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) it.successMsg else "IP"
                 }
                 val adbDialog = MaterialAlertDialogBuilder(context).apply {
                     setCancelable(true)

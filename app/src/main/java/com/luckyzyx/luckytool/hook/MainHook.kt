@@ -82,7 +82,9 @@ object MainHook : IYukiHookXposedInit {
             loadHooker(StatusBarNotify)
         }
         //状态栏通知限制
-        loadApp("com.oplus.notificationmanager", HookNotificationManager)
+        loadApp("com.android.systemui", "com.oplus.notificationmanager") {
+            loadHooker(HookNotificationManager)
+        }
 
         //状态栏图标
         loadApp("com.android.systemui", StatusBarIcon)

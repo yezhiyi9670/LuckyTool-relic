@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.IntentClass
 import com.highcapable.yukihookapi.hook.type.android.PendingIntentClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.luckyzyx.luckytool.hook.utils.DependencyUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -38,17 +39,13 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
                 beforeHook {
                     if (!isRestore) return@beforeHook
-                    val mState = field {
-                        name = "mState"
-                    }.get(instance).any() ?: return@beforeHook
+                    val mState = field { name = "mState" }.get(instance).any() ?: return@beforeHook
                     val dualTarget = mState.current().field {
                         name = "dualTarget"
                         superClass()
                     }.boolean()
                     if (dualTarget) {
-                        field {
-                            name = "mClickHandler"
-                        }.get(instance).cast<android.os.Handler>()?.sendEmptyMessage(4)
+                        field { name = "mClickHandler" }.get(instance).cast<android.os.Handler>()?.sendEmptyMessage(4)
                         resultNull()
                     }
                 }
@@ -62,17 +59,13 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     paramCount = 1
                 }
                 afterHook {
-                    val controller = field {
-                        order().index().first()
-                    }.get(instance).cast<Any>()
+                    val controller = field { order().index().first() }.get(instance).cast<Any>()
                     val mView = controller?.current()?.field {
                         name = "mView"
                         superClass(isOnlySuperClass = true)
                     }?.cast<ViewGroup>()
                     val mediaData = args().first().any()
-                    val clickIntent = mediaData?.current()?.method {
-                        name = "getClickIntent"
-                    }?.invoke<PendingIntent>()
+                    val clickIntent = mediaData?.current()?.method { name = "getClickIntent" }?.invoke<PendingIntent>()
                     mView?.setOnLongClickListener {
                         clickIntent?.let { its -> openIntent(its) }
                         true
@@ -177,12 +170,8 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
     }
 
     private fun openIntent(intent: PendingIntent) {
-        val dependencyCls = "com.android.systemui.Dependency".toClass()
         val activityStarterCls = "com.android.systemui.plugins.ActivityStarter".toClass()
-        val activityStarter = dependencyCls.newInstance().current().method {
-            name = "get"
-            param(Class::class.java)
-        }.call(activityStarterCls)
+        val activityStarter = DependencyUtils(appClassLoader).get(activityStarterCls)
         activityStarter?.current()?.method {
             name = "postStartActivityDismissingKeyguard"
             param(PendingIntentClass)
@@ -191,12 +180,8 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
 
     @Suppress("SameParameterValue")
     private fun openIntent(intent: Intent, int: Int) {
-        val dependencyCls = "com.android.systemui.Dependency".toClass()
         val activityStarterCls = "com.android.systemui.plugins.ActivityStarter".toClass()
-        val activityStarter = dependencyCls.newInstance().current().method {
-            name = "get"
-            param(Class::class.java)
-        }.call(activityStarterCls)
+        val activityStarter = DependencyUtils(appClassLoader).get(activityStarterCls)
         activityStarter?.current()?.method {
             name = "postStartActivityDismissingKeyguard"
             param(IntentClass, IntType)

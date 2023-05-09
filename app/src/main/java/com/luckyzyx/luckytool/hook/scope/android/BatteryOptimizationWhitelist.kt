@@ -8,8 +8,10 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
     override fun onHook() {
         val isEnable =
             prefs(ModulePrefs).getBoolean("restore_default_battery_optimization_whitelist", false)
+        val disableCustom = false
+//            prefs(ModulePrefs).getBoolean("disable_customize_battery_optimization_whiteList", false)
         if (!isEnable) return
-        //Source OplusDeviceIdleHelper
+        //Source oplus-service-jobscheduler -> OplusDeviceIdleHelper
         //Search sys_deviceidle_whitelist
         findClass("com.android.server.OplusDeviceIdleHelper").hook {
             val getNewWhiteList = instanceClass.hasMethod { name = "getNewWhiteList" }
@@ -25,16 +27,13 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
                 replaceUnit {
                     val whiteListAll = args().first().cast<java.util.ArrayList<String>>()
                     whiteListAll?.clear()
-                    val mDefaultWhitelist = field {
-                        name = "mDefaultWhitelist"
-                    }.get().list<String>()
+                    val mDefaultWhitelist =
+                        field { name = "mDefaultWhitelist" }.get().list<String>()
                     whiteListAll?.addAll(mDefaultWhitelist)
-                    method {
-                        name = "getCustomizeWhiteList"
-                    }.get(instance).call(whiteListAll)
-                    method {
-                        name = "addNfcJapanFelica"
-                    }.get(instance).call(whiteListAll)
+
+                    if (!disableCustom) method { name = "getCustomizeWhiteList" }.get(instance)
+                        .call(whiteListAll)
+                    method { name = "addNfcJapanFelica" }.get(instance).call(whiteListAll)
 //                    whiteListAll?.add("com.oplus.upgradeguide")
                 }
             }

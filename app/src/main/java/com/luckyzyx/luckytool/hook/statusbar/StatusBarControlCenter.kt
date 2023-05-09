@@ -2,9 +2,9 @@ package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterClockStyle
+import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterDateStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
-import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterDateComma
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterMydevice
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
 import com.luckyzyx.luckytool.utils.A13
@@ -17,7 +17,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         loadHooker(ControlCenterClockStyle)
 
         //移除控制中心日期
-        loadHooker(RemoveControlCenterDateComma)
+        loadHooker(ControlCenterDateStyle)
 
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {

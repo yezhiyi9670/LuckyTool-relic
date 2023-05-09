@@ -23,9 +23,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         //Source Clock
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
-                method {
-                    name = "setShowSecondsAndUpdate"
-                }
+                method { name = "setShowSecondsAndUpdate" }
                 beforeHook {
                     val view = instance<TextView>()
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@beforeHook

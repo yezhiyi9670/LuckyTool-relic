@@ -25,7 +25,7 @@ AnimePictures,AlphaBackupPro
 
 <div align="left">
 <p>
-   <b><a href="https://github.com/luckyzyx/LuckyTool/blob/main/AdaptationRecord.md">AdaptationRecord</a> | <a href="https://luckyzyx.github.io/LuckyTool/changelog">Changelog</a> | <a href="https://crwd.in/luckytool">Participate translation</a></b>
+   <b><a href="https://luckyzyx.github.io/LuckyTool_Doc/changelog">Changelog</a> | <a href="https://crwd.in/luckytool">Participate translation</a></b>
 </p>
 </div>
 

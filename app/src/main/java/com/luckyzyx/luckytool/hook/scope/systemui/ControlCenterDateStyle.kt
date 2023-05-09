@@ -17,15 +17,23 @@ import java.util.Locale
 import kotlin.math.abs
 
 @Suppress("LocalVariableName", "DiscouragedApi")
-object RemoveControlCenterDateComma : YukiBaseHooker() {
+object ControlCenterDateStyle : YukiBaseHooker() {
     override fun onHook() {
         var removeComma = prefs(ModulePrefs).getBoolean("remove_control_center_date_comma", false)
         dataChannel.wait<Boolean>("remove_control_center_date_comma") { removeComma = it }
         var showLunar =
             prefs(ModulePrefs).getBoolean("statusbar_control_center_date_show_lunar", false)
         dataChannel.wait<Boolean>("statusbar_control_center_date_show_lunar") { showLunar = it }
-        var fixDate = prefs(ModulePrefs).getBoolean("fix_control_center_date_display", false)
-        dataChannel.wait<Boolean>("fix_control_center_date_display") { fixDate = it }
+        var fixWidth =
+            prefs(ModulePrefs).getBoolean("statusbar_control_center_date_fix_width", false)
+        dataChannel.wait<Boolean>("statusbar_control_center_date_fix_width") { fixWidth = it }
+
+        var fixLunar =
+            prefs(ModulePrefs).getString("statusbar_control_center_date_fix_lunar_horizontal", "0")
+        dataChannel.wait<String>("statusbar_control_center_date_fix_lunar_horizontal") {
+            fixLunar = it
+        }
+
         //Source WeatherInfoParseHelper -> cn_comma
         findClass("com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper").hook {
             injectMember {
@@ -55,11 +63,8 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
         //Source OplusQSFooterImpl
         findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
             injectMember {
-                method {
-                    name = "updateQsDateView"
-                }
+                method { name = "updateQsDateView" }
                 afterHook {
-                    if (!fixDate) return@afterHook
                     val mTmpConstraintSet =
                         field { name = "mTmpConstraintSet" }.get(instance).any()
                             ?: return@afterHook
@@ -68,12 +73,19 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                     val mQsDateView = field { name = "mQsDateView" }.get(instance).cast<TextView>()
                         ?: return@afterHook
 
-                    mTmpConstraintSet.current().method {
+                    if (fixWidth) mTmpConstraintSet.current().method {
                         name = "constrainWidth"
                     }.call(mQsDateView.id, ConstraintLayout.LayoutParams.WRAP_CONTENT)
 
-                    if (showLunar) {
+                    if (showLunar && (fixLunar != "0")) {
                         val res = instance<ViewGroup>().resources
+                        //162dp
+                        val qs_footer_date_width = res.getDimensionPixelSize(
+                            res.getIdentifier(
+                                "qs_footer_date_width", "dimen",
+                                packageName
+                            )
+                        )
                         //10dp
                         val qs_footer_date_margin_start = res.getDimensionPixelSize(
                             res.getIdentifier(
@@ -98,12 +110,21 @@ object RemoveControlCenterDateComma : YukiBaseHooker() {
                         getScreenStatus(res) {
                             if (it) return@getScreenStatus
                             if (translationX == 0 || translationY == 0) return@getScreenStatus
-                            mTmpConstraintSet.current().method {
-                                name = "setTranslationX"
-                            }.call(mQsDateView.id, translationX.toFloat())
-                            mTmpConstraintSet.current().method {
-                                name = "setTranslationY"
-                            }.call(mQsDateView.id, translationY.toFloat())
+
+                            when (fixLunar) {
+                                "1" -> mTmpConstraintSet.current().method {
+                                    name = "constrainWidth"
+                                }.call(mQsDateView.id, qs_footer_date_width * 2)
+
+                                "2" -> {
+                                    mTmpConstraintSet.current().method {
+                                        name = "setTranslationX"
+                                    }.call(mQsDateView.id, translationX.toFloat())
+                                    mTmpConstraintSet.current().method {
+                                        name = "setTranslationY"
+                                    }.call(mQsDateView.id, translationY.toFloat())
+                                }
+                            }
                         }
                     }
                 }

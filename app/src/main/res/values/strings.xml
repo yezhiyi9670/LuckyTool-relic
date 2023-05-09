@@ -165,6 +165,7 @@
     <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
     
+    <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
@@ -203,6 +204,8 @@
     <string name="remove_control_center_clock_red_one">Remove control center clock red one</string>
     <string name="remove_control_center_date_comma">Remove control center date comma</string>
     <string name="statusbar_control_center_date_show_lunar" translatable="false">控制中心显示农历</string>
+    <string name="statusbar_control_center_date_fix_width" translatable="false">修复日期显示宽度</string>
+    <string name="statusbar_control_center_date_fix_lunar_horizontal" translatable="false">修复横屏日期农历显示</string>
     <string name="fix_control_center_date_display">Fix control center date display</string>
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     
@@ -418,9 +421,13 @@
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     
     <!--Battery-->
-    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
     <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
+    <string name="BatteryOptimization">Battery Optimization</string>
+    <string name="restore_default_battery_optimization_whitelist">Restore default battery optimization whitelist</string>
+    <string name="disable_customize_battery_optimization_whiteList">Disable custom battery optimization whitelist</string>
+    <string name="disable_customize_battery_optimization_whiteList_summary">If the APP is manually granted the `ignore battery optimization` permission by the user, After enabling this function, the APP will not be automatically added to the battery optimization whitelist</string>
+    
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>

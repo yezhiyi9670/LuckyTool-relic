@@ -91,5 +91,11 @@
         <item>@string/common_words_normal</item>
         <item>@string/common_words_special</item>
     </string-array>
+    
+    <string-array name="statusbar_control_center_date_fix_lunar_horizontal_entries">
+        <item>@string/common_words_default</item>
+        <item>文字滚动模式</item>
+        <item>布局偏移模式</item>
+    </string-array>
 
 </resources>
