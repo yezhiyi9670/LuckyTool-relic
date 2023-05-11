@@ -7,27 +7,28 @@ object RemoveNotificationManagerLimit : YukiBaseHooker() {
         //Source ControllerChannelGroup$AppItemListener -> 通知渠道列表允许通知锁
         findClass("com.oplus.notificationmanager.property.uicontroller.ControllerChannelGroup\$AppItemListener").hook {
             injectMember {
-                method {
-                    name = "isSwitchEnabled"
-                }
+                method { name = "isSwitchEnabled" }
                 replaceToTrue()
             }
         }
         //Source ControllerAllowNotificationChannel -> 通知渠道内允许通知锁
         findClass("com.oplus.notificationmanager.property.uicontroller.ControllerAllowNotificationChannel").hook {
             injectMember {
-                method {
-                    name = "isNormAppEnabled"
-                }
+                method { name = "isNormAppEnabled" }
+                replaceToTrue()
+            }
+        }
+        //Source ControllerUnimportantChannel -> 通知渠道不重要通知锁
+        findClass("com.oplus.notificationmanager.property.uicontroller.ControllerUnimportantChannel").hook {
+            injectMember {
+                method { name = "isNormAppEnabled" }
                 replaceToTrue()
             }
         }
         //Source ControllerAllowNotificationPkg -> 应用内允许通知锁
         findClass("com.oplus.notificationmanager.property.uicontroller.ControllerAllowNotificationPkg").hook {
             injectMember {
-                method {
-                    name = "isNormAppEnabled"
-                }
+                method { name = "isNormAppEnabled" }
                 replaceToTrue()
             }
         }

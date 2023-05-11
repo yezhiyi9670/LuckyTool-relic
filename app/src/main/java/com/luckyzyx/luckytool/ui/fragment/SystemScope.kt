@@ -28,6 +28,7 @@ import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getDocumentPath
+import com.luckyzyx.luckytool.utils.getOSVersion
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.navigate
@@ -1075,6 +1076,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "remove_control_center_date_comma"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = getOSVersion() < 13.1
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
                             .put("remove_control_center_date_comma", newValue)
@@ -1871,6 +1873,11 @@ class LockScreen : ModulePreferenceFragment() {
                     key = "remove_lock_screen_redone"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("remove_lock_screen_redone", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -2684,6 +2691,15 @@ class Settings : ModulePreferenceFragment() {
                     title = getString(R.string.remove_dpi_restart_recovery)
                     summary = getString(R.string.remove_dpi_restart_recovery_summary)
                     key = "remove_dpi_restart_recovery"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.force_display_dc_backlight_mode)
+                    summary = getString(R.string.force_display_dc_backlight_mode_summary)
+                    key = "force_display_dc_backlight_mode"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

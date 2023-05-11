@@ -20,8 +20,8 @@
     <string name="privacy_agreement">Угода про конфіденційність</string>
     <string name="auto_check_update">Автоматично перевіряти наявність оновлень</string>
     <string name="auto_check_update_summary">Автоматично перевіряти наявність оновлень при відкритті головної сторінки модуля</string>
-    <string name="tile_auto_start">Allow built-in tiles to start automatically</string>
-    <string name="tile_auto_start_summary">When the host-side module version number is consistent with the local module version number,and enable this function,The function of opened tiles will be automatically triggered after the screen is unlocked.If the trigger fails,please restart the scope and check Root permissions</string>
+    <string name="tile_auto_start">Дозволити автоматичний запуск вбудованих плиток</string>
+    <string name="tile_auto_start_summary">Коли номер версії модуля на стороні хоста відповідає номеру версії локального модуля, увімкніть цю функцію, функцію відкритих плиток буде автоматично запущено після розблокування екрана. Якщо тригер не працює, перезапустіть область та перевірте права root</string>
     <string name="read_agreement">Вам потрібно прочитати і погодитися з наступним вмістом перед тим, як ви зможете використовувати цей модуль</string>
     <string name="clear_all_data">Видалити всі дані</string>
     <string name="clear_all_data_summary">Очистити всі дані функцій в модулі</string>
@@ -67,10 +67,10 @@
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
     <string name="unsupported_xposed">Модуль не активовано.\nБудь ласка, використовуйте останню версію LS Posed.\n Якщо ви виконали все вищезазначене, ви можете натиснути OK, щоб вийти з програми та відкрити модуль</string>
-    <string name="unsupported_os">Unsupported system</string>
-    <string name="unsupported_os_summary">Because this mod is only available for Color OS 12+, most features will not work on this system! Please be sure to take safety measures!</string>
-    <string name="no_root">No Root permission</string>
-    <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
+    <string name="unsupported_os">Непідтримувана система</string>
+    <string name="unsupported_os_summary">Оскільки цей мод доступний лише для Color OS 12+, більшість функцій не працюватимуть у цій системі! Будь ласка, обов\'язково дотримуйтесь заходів безпеки!</string>
+    <string name="no_root">Немає root-прав</string>
+    <string name="no_root_summary">Рут-доступ не виявлено, деякі функції будуть недоступні!</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезавантаження</string>
     <string name="menu_settings">Налаштування</string>
@@ -81,7 +81,7 @@
     <string name="fast_reboot">Швидке перезавантаження</string>
     <string name="menu_versioninfo">Інформація про версію</string>
     <string name="scope_version_info">Показати інформацію про версію</string>
-    <string name="show_system_app">Show system APP</string>
+    <string name="show_system_app">Показати системні додатки</string>
     <!--Xposed-->
     <string name="Android">Android</string>
     <string name="app_label">Назва додатку</string>
@@ -139,7 +139,7 @@
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Сповіщення у рядку стану</string>
     <string name="StatusBarNotice_summary">Статус бар та панель сповіщень</string>
-    <string name="RemoveStatusBarNotifications">Remove status bar notifications</string>
+    <string name="RemoveStatusBarNotifications">Видалити повідомлення у рядку стану</string>
     <string name="remove_statusbar_devmode">Видалити сповіщення системи про параметри розробника в рядку стану</string>
     <string name="remove_charging_completed">Видалити повідомлення про завершення зарядки</string>
     <string name="remove_statusbar_top_notification">Видалити повідомлення про відображення поверх інших додатків з рядка стану</string>
@@ -158,8 +158,8 @@
     <string name="remove_smart_rapid_charging_notification">Видалити повідомлення \"Розумна швидка зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Видалити повідомлення для вимкнених повідомлень</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Видалити сповіщення про ризик виникнення вірусу в менеджері телефону</string>
-    <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
-    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="allow_long_press_notification_modifiable">Дозволити змінювати повідомлення про тривале натискання</string>
+    <string name="remove_notification_manager_limit">Видалити ліміт диспетчера повідомлень</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>
@@ -185,14 +185,14 @@
     <string name="StatusBarControlCenter">Центр керування рядка стану</string>
     <string name="ControlCenter_Clock_Related">Центр керування годинником</string>
     <string name="control_center_clock_show_second">Годинник центру керування показує секунду</string>
-    <string name="statusbar_control_center_clock_colon_style">Control center clock colon style</string>
+    <string name="statusbar_control_center_clock_colon_style">Стиль двокрапки годинника в центрі управління</string>
     <string name="fix_clock_colon_style">Виправити стиль двокрапки годинника</string>
     <string name="fix_clock_colon_style_summary">Поверніться до звичайної двокрапки, коли воно увімкнено, і використовуйте офіційну користувальницьку двокрапку, коли воно вимкнено</string>
-    <string name="statusbar_control_center_clock_red_one_mode">Control center red one mode</string>
+    <string name="statusbar_control_center_clock_red_one_mode">Центр управління червоним годинником</string>
     <string name="remove_control_center_clock_red_one">Видаліть червоний годинник із центру управління</string>
     <string name="remove_control_center_date_comma">Видалити кому в даті центру управління</string>
-    <string name="fix_control_center_date_display">Fix control center date display</string>
-    <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
+    <string name="fix_control_center_date_display">Виправити відображення дати в центрі керування</string>
+    <string name="fix_control_center_date_display_suammry">Вирішити проблему, через яку дата не може відображатися повністю</string>
     <string name="ControlCenter_UI_Related">Інтерфейс користувача центру управління</string>
     <string name="remove_control_center_user_switcher">Видалити перемикач користувачів центру керування</string>
     <string name="remove_control_center_mydevice">Видалити центр керування моїм пристроєм</string>
@@ -238,8 +238,8 @@
     <string name="battery_information_display_mode_summary">Відображати напругу батареї та іншу інформацію у рядку стану</string>
     <string name="battery_information_show_charge">Показати інформацію про зарядку</string>
     <string name="battery_information_show_charge_summary">Під час заряджання напруга та теоретична сила заряджання відображатимуться у рядку стану</string>
-    <string name="battery_information_show_simple_mode">Simple display mode</string>
-    <string name="battery_information_show_dual_voltage">Show dual voltage</string>
+    <string name="battery_information_show_simple_mode">Статичний режим екрану</string>
+    <string name="battery_information_show_dual_voltage">Показувати дві напруги</string>
     <string name="battery_information_show_update_time">Показати час оновлення</string>
     <string name="battery_information_show_update_time_summary">Відображати час оновлення поточних даних в рядку стану</string>
     <string name="battery_status_unknown">Невідомо</string>
@@ -251,7 +251,7 @@
     <string name="battery_voltage">Напруга</string>
     <string name="battery_electric_current">Струм</string>
     <string name="battery_charger_voltage">Напруга</string>
-    <string name="battery_charger_type">Type</string>
+    <string name="battery_charger_type">Тип</string>
     <string name="battery_power">Потужність</string>
     <string name="battery_technology">Технологія</string>
     <string name="battery_update_time">Час оновлення</string>
@@ -390,16 +390,18 @@
     <string name="allow_untrusted_touch">Дозволити небажані торкання</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Видалити обмеження високих температур</string>
-    <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
-    <string name="BatteryOptimization">Battery Optimization</string>
+    <string name="remove_high_temperature_limit_summary">Видалити обмеження, що різні функції не можуть бути використані, наприклад: камера, ліхтарик, точка доступу, механізм відображення екрана і т.д.</string>
+    <string name="BatteryOptimization">Оптимізація батареї</string>
     <string name="restore_default_battery_optimization_whitelist">Відновити білий список оптимізації батареї за замовчуванням</string>
-    <string name="disable_customize_battery_optimization_whiteList">Disable custom battery optimization whitelist</string>
-    <string name="disable_customize_battery_optimization_whiteList_summary">If the APP is manually granted the `ignore battery optimization` permission by the user, After enabling this function, the APP will not be automatically added to the battery optimization whitelist</string>
+    <string name="disable_customize_battery_optimization_whiteList">Вимкнути білий список оптимізації батареї</string>
+    <string name="disable_customize_battery_optimization_whiteList_summary">Якщо додатку вручну надано дозвіл \"Ігнорувати оптимізацію батареї\", після включення цієї функції програма не буде автоматично додана до білого списку оптимізації батареї</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
     <string name="video_frame_insertion_support_2K120">Динамічна вставка кадрів відео підтримує роздільну здатність 2К 120 Гц (MEMC)</string>
     <string name="remove_dpi_restart_recovery">Видалити відновлення DPI</string>
     <string name="remove_dpi_restart_recovery_summary">Після увімкнення функції та перезапуску області, відкрийте сторінку параметрів розробника та встановіть мінімальну ширину</string>
+    <string name="force_display_dc_backlight_mode">Примусово відображати низьку яскравість та захист очей від мерехтіння</string>
+    <string name="force_display_dc_backlight_mode_summary">Немає гарантії, що він буде працювати, він використовується лише для відображення опцій функцій</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
     <string name="show_last_update_time_in_app_details">Показати час останнього оновлення в деталях програми</string>
@@ -492,7 +494,7 @@
     <string name="install_button">Встановити зараз</string>
     <string name="cancel_button">Скасувати завантаження</string>
     <string name="fps_autostart">Автозапуск</string>
-    <string name="fps_no_data">No FPS data, please check Root permission</string>
+    <string name="fps_no_data">Немає даних FPS, перевірте root права</string>
     <string name="device_guid">GUID пристрою</string>
     <string name="oplusota_copy_tip">Натисніть та утримуйте поле введення, щоб скопіювати його окремо</string>
     <string name="oplusota_copyall">Скопіювати все</string>
@@ -520,8 +522,8 @@
     <string name="game_assistant_develop_page">Меню розробника ігрового помічника</string>
     <string name="AOSPSettingsPage">Сторінка стандартних налаштувань AOSP</string>
     <!--Shortcut-->
-    <string name="set_module_shortcuts">Set module shortcuts</string>
-    <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
+    <string name="set_module_shortcuts">Встановити ярлики модуля</string>
+    <string name="set_module_shortcuts_summary">Натисніть та утримуйте іконку модуля, щоб відобразити увімкнені ярлики</string>
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Віддалене налагодження ADB</string>
     <string name="remote_adb_debug_summary">Будь ласка, закрийте його, коли не використовується</string>
@@ -551,20 +553,20 @@
     <!--CommonWords-->
     <string name="common_words_close">Закрити</string>
     <string name="common_words_open">Відкрити</string>
-    <string name="common_words_add">Add</string>
-    <string name="common_words_remove">Remove</string>
-    <string name="common_words_ignore">Ignore</string>
+    <string name="common_words_add">Додати</string>
+    <string name="common_words_remove">Видалити</string>
+    <string name="common_words_ignore">Ігнорувати</string>
     <string name="common_words_default">За замовчуванням</string>
-    <string name="common_words_normal">Normal</string>
-    <string name="common_words_special">Special</string>
+    <string name="common_words_normal">Звичайний</string>
+    <string name="common_words_special">Особливий</string>
     <string name="common_words_preset">Шаблон</string>
     <string name="common_words_single_line">Один рядок</string>
     <string name="common_words_double_line">Два рядки</string>
     <string name="common_words_customize">Налаштувати</string>
     <string name="common_words_current_mode">Поточний режим</string>
-    <string name="common_words_refresh">Refresh</string>
-    <string name="common_words_save">Save</string>
-    <string name="common_words_filter">Filter</string>
+    <string name="common_words_refresh">Оновити</string>
+    <string name="common_words_save">Зберегти</string>
+    <string name="common_words_filter">Фільтр</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не вдалося з’єднатися з мережею</string>
     <string name="net_networking_error">Поточна мережа недоступна</string>

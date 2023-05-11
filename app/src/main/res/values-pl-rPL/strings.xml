@@ -400,6 +400,8 @@
     <string name="video_frame_insertion_support_2K120">Włącz obsługę interpolacji klatek wideo dla 2k-120fps</string>
     <string name="remove_dpi_restart_recovery">Zapobiegaj przywróceniu DPI do oryginalnej wartości po ponownym uruchomieniu urządzenia</string>
     <string name="remove_dpi_restart_recovery_summary">Po zastosowaniu zmian, znajdź „Najmniejsza szerokość” w „Opcje programisty”, aby ustalić wartość „DP”</string>
+    <string name="force_display_dc_backlight_mode">Forced to display low brightness and no flicker eye protection</string>
+    <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
     <string name="show_last_update_time_in_app_details">Pokaż czas ostatniej aktualizacji</string>

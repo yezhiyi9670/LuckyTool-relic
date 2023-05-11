@@ -43,6 +43,10 @@ class FiveGControllerService : RootService() {
                 }
             } catch (_: Exception) {
                 false
+            } catch (_: java.lang.reflect.InvocationTargetException) {
+                false
+            } catch (_: android.os.DeadObjectException) {
+                false
             }
         }
 
@@ -61,6 +65,10 @@ class FiveGControllerService : RootService() {
                     }
                 }
             } catch (_: Exception) {
+                false
+            } catch (_: java.lang.reflect.InvocationTargetException) {
+                false
+            } catch (_: android.os.DeadObjectException) {
                 false
             }
         }
@@ -87,6 +95,10 @@ class FiveGControllerService : RootService() {
                     }
                 }
             } catch (_: Exception) {
+
+            } catch (_: java.lang.reflect.InvocationTargetException) {
+
+            } catch (_: android.os.DeadObjectException) {
 
             }
         }

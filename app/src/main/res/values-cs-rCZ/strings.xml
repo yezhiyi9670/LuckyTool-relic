@@ -400,6 +400,8 @@
     <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
     <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>
+    <string name="force_display_dc_backlight_mode">Vynucené zobrazení nízkého jasu a bez ochrany očí</string>
+    <string name="force_display_dc_backlight_mode_summary">Neexistuje žádná záruka, že to bude fungovat, je to použito pouze pro zobrazení možností</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>

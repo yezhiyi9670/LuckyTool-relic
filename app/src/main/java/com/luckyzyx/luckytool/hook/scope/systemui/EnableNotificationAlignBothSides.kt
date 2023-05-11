@@ -29,6 +29,21 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
         }
+
+        val ubiquitousExpandableRow =
+            "com.oplusos.systemui.statusbar.notification.row.UbiquitousExpandableRow"
+        if (ubiquitousExpandableRow.toClassOrNull() == null) return
+        //Source UbiquitousExpandableRow
+        findClass(ubiquitousExpandableRow).hook {
+            injectMember {
+                method { name = "onFinishInflate" }
+                afterHook { instance<ViewGroup>().setViewWidth() }
+            }
+            injectMember {
+                method { name = "onLayout" }
+                afterHook { instance<ViewGroup>().setViewWidth() }
+            }
+        }
     }
 
     @SuppressLint("DiscouragedApi")

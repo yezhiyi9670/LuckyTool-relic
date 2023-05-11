@@ -400,6 +400,8 @@
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
     <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
+    <string name="force_display_dc_backlight_mode">Forced to display low brightness and no flicker eye protection</string>
+    <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
     <string name="show_last_update_time_in_app_details">Show last update time in app details</string>

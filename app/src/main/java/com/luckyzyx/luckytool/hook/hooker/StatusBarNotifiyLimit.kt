@@ -5,7 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.notificationmanager.RemoveNotificationM
 import com.luckyzyx.luckytool.hook.scope.systemui.AllowLongPressNotificationModifiable
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object HookNotificationManager : YukiBaseHooker() {
+object StatusBarNotifiyLimit : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.android.systemui") {
             //允许长按通知可修改

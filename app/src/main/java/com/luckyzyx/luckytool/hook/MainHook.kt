@@ -22,7 +22,6 @@ import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
-import com.luckyzyx.luckytool.hook.hooker.HookNotificationManager
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
 import com.luckyzyx.luckytool.hook.hooker.HookOtherApp
@@ -31,6 +30,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookScreenshot
 import com.luckyzyx.luckytool.hook.hooker.HookSettings
 import com.luckyzyx.luckytool.hook.hooker.HookStatusBar
 import com.luckyzyx.luckytool.hook.hooker.HookThemeStore
+import com.luckyzyx.luckytool.hook.hooker.StatusBarNotifiyLimit
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
@@ -83,7 +83,7 @@ object MainHook : IYukiHookXposedInit {
         }
         //状态栏通知限制
         loadApp("com.android.systemui", "com.oplus.notificationmanager") {
-            loadHooker(HookNotificationManager)
+            loadHooker(StatusBarNotifiyLimit)
         }
 
         //状态栏图标

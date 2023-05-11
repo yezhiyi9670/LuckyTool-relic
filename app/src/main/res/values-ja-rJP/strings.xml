@@ -400,6 +400,8 @@
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>
     <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
     <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
+    <string name="force_display_dc_backlight_mode">低輝度とちらつき防止を強制する</string>
+    <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>

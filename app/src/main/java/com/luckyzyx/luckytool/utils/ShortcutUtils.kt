@@ -9,7 +9,7 @@ import android.graphics.drawable.Icon
 import android.util.ArrayMap
 import androidx.core.graphics.drawable.toBitmap
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.ui.activity.AliveActivity
+import com.luckyzyx.luckytool.ui.activity.ShortcutActivity
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ShortcutUtils(val context: Context) {
@@ -54,7 +54,7 @@ class ShortcutUtils(val context: Context) {
                         )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
-                            setClassName(context.packageName, AliveActivity::class.java.name)
+                            setClassName(context.packageName, ShortcutActivity::class.java.name)
                         }
                     }
 
@@ -80,7 +80,7 @@ class ShortcutUtils(val context: Context) {
                         )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
-                            setClassName(context.packageName, AliveActivity::class.java.name)
+                            setClassName(context.packageName, ShortcutActivity::class.java.name)
                         }
                     }
 
@@ -91,7 +91,7 @@ class ShortcutUtils(val context: Context) {
                         )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
-                            setClassName(context.packageName, AliveActivity::class.java.name)
+                            setClassName(context.packageName, ShortcutActivity::class.java.name)
                         }
                     }
 
@@ -102,7 +102,7 @@ class ShortcutUtils(val context: Context) {
                         )
                         intent = Intent(Intent.ACTION_VIEW).apply {
                             putExtra("Shortcut", it)
-                            setClassName(context.packageName, AliveActivity::class.java.name)
+                            setClassName(context.packageName, ShortcutActivity::class.java.name)
                         }
                     }
                 }

@@ -62,7 +62,7 @@ object HookAutoStart : YukiBaseHooker() {
                             }
                         }
 
-                        "1" -> context.callFunc(bundle)
+                        "1" -> callFunc(bundle)
                     }
                 }
             }

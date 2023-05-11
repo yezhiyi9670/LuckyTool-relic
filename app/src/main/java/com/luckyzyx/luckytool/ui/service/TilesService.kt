@@ -260,9 +260,7 @@ class TouchSamplingRate : TileService() {
 
 class FiveG : TileService() {
     private var iFiveGController: IFiveGController? = null
-    override fun onStartListening() {
-        refreshData()
-    }
+    override fun onStartListening() = refreshData()
 
     override fun onClick() = startFiveGController {
         val subId = SubscriptionManager.getDefaultDataSubscriptionId()

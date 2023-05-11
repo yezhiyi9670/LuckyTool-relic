@@ -41,9 +41,7 @@ object LockScreenComponent : YukiBaseHooker() {
                 }
             }
             injectMember {
-                method {
-                    name = "setTextFont"
-                }
+                method { name = "setTextFont" }
                 if (userTypeface) intercept()
             }
         }

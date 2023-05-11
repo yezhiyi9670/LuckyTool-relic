@@ -400,6 +400,8 @@
     <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>
     <string name="remove_dpi_restart_recovery_summary">После включения функции и перезапуска области откройте страницу параметров разработчика и установите минимальную ширину</string>
+    <string name="force_display_dc_backlight_mode">Принудительно отображать низкую яркость и защиту глаз от мерцания</string>
+    <string name="force_display_dc_backlight_mode_summary">Нет гарантии, что он будет работать, он используется только для отображения опций функций</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>

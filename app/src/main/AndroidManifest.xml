@@ -55,6 +55,11 @@
                 android:excludeFromRecents="true"
                 android:exported="false"
                 android:theme="@android:style/Theme.Translucent" />
+        <activity
+                android:name=".ui.activity.ShortcutActivity"
+                android:excludeFromRecents="true"
+                android:exported="false"
+                android:theme="@android:style/Theme.Translucent" />
         
         <meta-data
                 android:name="xposedmodule"

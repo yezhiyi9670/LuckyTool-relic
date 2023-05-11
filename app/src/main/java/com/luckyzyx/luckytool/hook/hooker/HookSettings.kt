@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
+import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveDpiRestartRecovery
@@ -28,6 +29,11 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_dpi_restart_recovery", false)) {
             loadHooker(RemoveDpiRestartRecovery)
         }
+        //强制显示低亮无频闪护眼
+        if (prefs(ModulePrefs).getBoolean("force_display_dc_backlight_mode", false)) {
+            loadHooker(ForceDisplayDCBackLightMode)
+        }
         //settings put global stay_on_while_plugged_in 7
+
     }
 }

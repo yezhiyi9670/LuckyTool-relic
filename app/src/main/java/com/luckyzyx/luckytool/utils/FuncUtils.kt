@@ -78,6 +78,16 @@ val getColorOSVersion
     }
 
 /**
+ * 获取OS版本
+ * @return Double?
+ */
+fun getOSVersion(): Double = safeOf(0.0) {
+    val os = getColorOSVersion
+    if (!os.isNullOrBlank()) return@safeOf os.replace("V", "").toDouble()
+    return@safeOf 0.0
+}
+
+/**
  * 获取APP版本/版本号/Commit
  * 写入SP xml文件内
  * @return [ArraySet]
@@ -135,8 +145,8 @@ fun Context.getDeviceInfo(): String {
         ${getString(R.string.device)}: ${Build.DEVICE}
         ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
         ${getString(R.string.build_version)}: ${Build.DISPLAY}
-        ${getString(R.string.flash)}: ${getFlashInfo()}
         ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
+        ${getString(R.string.flash)}: ${getFlashInfo()}
     """.trimIndent()
 }
 
@@ -1028,60 +1038,35 @@ fun Context.restartAllScope(scopes: Array<String>) {
  * @receiver Context
  * @param bundle Bundle?
  */
-fun Context.callFunc(bundle: Bundle?) {
-    bundle?.apply {
-        val tileAutoStart = getBoolean("tileAutoStart", false)
-        //自启功能相关
-        if (getBoolean("fps_auto", false)) {
-            val fpsMode = getInt("fps_mode", 1)
-            val fpsCur = getInt("fps_cur", -1)
-            if ((fpsMode == 2) && (fpsCur != -1)) ShellUtils.execCommand(
-                "service call SurfaceFlinger 1035 i32 $fpsCur", true, true
-            ).apply {
-                if (result == 1) toast("force fps error!")
-            }
-        }
-        //触控采样率相关
-        if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
-            ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true, true)
-                .apply {
-                    if (result == 1) toast("touch sampling rate error!")
+fun callFunc(bundle: Bundle?) {
+    scope {
+        withIO {
+            bundle?.apply {
+                val command = ArrayList<String>()
+                val tileAutoStart = getBoolean("tileAutoStart", false)
+                //自启功能相关
+                if (getBoolean("fps_auto", false)) {
+                    val fpsMode = getInt("fps_mode", 1)
+                    val fpsCur = getInt("fps_cur", -1)
+                    if ((fpsMode == 2) && (fpsCur != -1)) {
+                        command.add("service call SurfaceFlinger 1035 i32 $fpsCur")
+                    }
                 }
-        }
-        //高亮度模式
-        if (tileAutoStart && getBoolean("highBrightness", false)) {
-            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true, true).apply {
-                if (result == 1) toast("high brightness mode error!")
+                //触控采样率相关
+                if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
+                    command.add("echo > /proc/touchpanel/game_switch_enable 1")
+                }
+                //高亮度模式
+                if (tileAutoStart && getBoolean("highBrightness", false)) {
+                    command.add("echo > /sys/kernel/oplus_display/hbm 1")
+                }
+                //全局DC模式
+                if (tileAutoStart && getBoolean("globalDC", false)) {
+                    command.add("echo > /sys/kernel/oppo_display/dimlayer_hbm 1")
+                    command.add("echo > /sys/kernel/oplus_display/dimlayer_hbm 1")
+                }
+                if (command.isNotEmpty()) ShellUtils.execCommand(command, true)
             }
-        }
-        //全局DC模式
-        if (tileAutoStart && getBoolean("globalDC", false)) {
-            var oppoError = false
-            var oplusError = false
-            ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true).apply {
-                if (result == 1) oppoError = true
-            }
-            ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true).apply {
-                if (result == 1) oplusError = true
-            }
-            if (oppoError && oplusError) toast("global dc mode error!")
-        }
-        //快捷方式相关
-        when (getString("Shortcut", "null")) {
-            "module_shortcut_status_lsposed" -> {
-                ShellUtils.execCommand(
-                    "am start 'intent:#Intent;action=android.intent.action.MAIN;category=org.lsposed.manager.LAUNCH_MANAGER;launchFlags=0x80000;component=com.android.shell/.BugreportWarningActivity;end'",
-                    true
-                )
-            }
-
-            "module_shortcut_status_oplusgames" -> ShellUtils.execCommand(
-                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
-            )
-
-            "module_shortcut_status_chargingtest" -> jumpBatteryInfo(this@callFunc)
-            "module_shortcut_status_processmanager" -> jumpRunningApp(this@callFunc)
-            "module_shortcut_status_performance" -> jumpHighPerformance(this@callFunc)
         }
     }
 }
