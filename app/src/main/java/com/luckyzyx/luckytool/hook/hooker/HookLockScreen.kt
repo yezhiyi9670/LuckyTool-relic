@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.systemui.CarriersUseUserTypeface
+import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenCarriers
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenChargingComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomButton
@@ -24,8 +24,11 @@ object HookLockScreen : YukiBaseHooker() {
         //锁屏充电组件
         loadHooker(LockScreenChargingComponent)
 
-        //移除锁屏下方按钮
+        //锁屏下方按钮
         loadHooker(RemoveLockScreenBottomButton)
+
+        //锁屏状态栏运营商
+        loadHooker(LockScreenCarriers)
 
         //移除SOS紧急联络按钮
         if (prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_sos_button", false)) {
@@ -40,11 +43,6 @@ object HookLockScreen : YukiBaseHooker() {
         //移除锁屏关闭通知按钮
         if (prefs(ModulePrefs).getBoolean("remove_lock_screen_close_notification_button", false)) {
             loadHooker(RemoveLockScreenCloseNotificationButton)
-        }
-
-        //运营商使用用户字体
-        if (prefs(ModulePrefs).getBoolean("statusbar_carriers_use_user_typeface", false)) {
-            loadHooker(CarriersUseUserTypeface)
         }
     }
 }

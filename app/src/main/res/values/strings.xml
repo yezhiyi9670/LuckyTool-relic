@@ -110,7 +110,6 @@
     <!--Status Bar-->
     <string name="StatusBar">StatusBar Related</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
-    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
@@ -152,9 +151,7 @@
     <string name="remove_statusbar_top_notification_summary">Remove status bar \"This app is displayed on top of other apps\"</string>
     <string name="remove_vpn_active_notification">Remove VPN active</string>
     <string name="remove_vpn_active_notification_summary">Remove status bar VPN active</string>
-    <string name="remove_statusbar_bottom_networkwarn">Remove bottom network warning from statusbar</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Remove bottom network information when the pulldown status bar is expanded</string>
-    <string name="remove_flashlight_open_notification">Remove flashlight is open notification</string>
+        <string name="remove_flashlight_open_notification">Remove flashlight is open notification</string>
     <string name="remove_app_high_battery_consumption_warning">Remove app high battery consumption warning</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Removed the warning that the application\'s battery consumption is abnormal and needs to be optimized immediately</string>
     <string name="remove_high_performance_mode_notifications">Remove high performance mode notifications</string>
@@ -210,13 +207,16 @@
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     
     <string name="ControlCenter_UI_Related">Control Center UI Related</string>
+    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="force_display_media_player">Force the display of the media player</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
-    <string name="force_display_media_player">Force the display of the media player</string>
-    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
     
     <string name="StatusBarTiles">StatusBar Tiles</string>
-    
     <string name="TileLongClickEvent">Tile Long Click Event</string>
     <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
     <string name="restore_some_tile_long_press_event_summary">Restore WiFi, Bluetooth, personal hotspot and other tile long press events to open the corresponding page</string>
@@ -284,6 +284,10 @@
     <string name="set_lock_screen_centered">Center the lockscreen component</string>
     <string name="set_lock_screen_centered_summary">Only for systems where the lock screen cannot be centered in the settings</string>
     <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     
     <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Remove top lock screen icons</string>
@@ -602,6 +606,7 @@
     <string name="common_words_refresh">Refresh</string>
     <string name="common_words_save">Save</string>
     <string name="common_words_filter">Filter</string>
+    <string name="common_words_loading">Loading</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

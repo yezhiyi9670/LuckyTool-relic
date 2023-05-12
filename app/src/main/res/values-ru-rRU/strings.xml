@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
-    <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">Удалить уведомление \"Это приложение отображается поверх других приложений\" в строке состояния</string>
     <string name="remove_vpn_active_notification">Удалить уведомление об активации VPN</string>
     <string name="remove_vpn_active_notification_summary">Удалить уведомление об активации VPN в строке состояния</string>
-    <string name="remove_statusbar_bottom_networkwarn">Удалить предупреждение о сети в нижней части раскрывающейся строки состояния</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Удалить информацию о сети внизу, когда раскрывающаяся строка состояния развернута</string>
     <string name="remove_flashlight_open_notification">Удалить уведомление о фонарике</string>
     <string name="remove_app_high_battery_consumption_warning">Удалить предупреждение приложения о высоком расходе заряда батареи</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Удалить предупреждение о том, что приложение расходует заряд батареи ненормально и требует немедленной оптимизации</string>
@@ -157,7 +154,7 @@
     <string name="remove_hotspot_power_consumption_notification_summary">Примечание: Работа персональной точки доступа в течение длительного времени увеличивает энергопотребление и тепловыделение</string>
     <string name="remove_smart_rapid_charging_notification">Удалить уведомление \"Умная быстрая зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
-    <string name="remove_virus_risk_notification_in_phone_manager">Удалите уведомление о риске вирусов в диспетчере телефона</string>
+    <string name="remove_virus_risk_notification_in_phone_manager">Удалить уведомление о риске вирусов в диспетчере телефона</string>
     <string name="allow_long_press_notification_modifiable">Разрешить изменять уведомления о длительном нажатии</string>
     <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
     <!--StatusBarIcon-->
@@ -189,15 +186,19 @@
     <string name="fix_clock_colon_style">Исправить стиль двоеточия часов</string>
     <string name="fix_clock_colon_style_summary">Вернитесь к обычному двоеточию, когда оно включено, и используйте официальное пользовательское двоеточие, когда оно выключено</string>
     <string name="statusbar_control_center_clock_red_one_mode">Центр управления красными часами</string>
-    <string name="remove_control_center_clock_red_one">Удалите красные часы из центра управления</string>
+    <string name="remove_control_center_clock_red_one">Удалить красные часы из центра управления</string>
     <string name="remove_control_center_date_comma">Удалить запятую в дате центра управления</string>
     <string name="fix_control_center_date_display">Исправить отображение даты в центре управления</string>
     <string name="fix_control_center_date_display_suammry">Устранить проблему, из-за которой дата не может отображаться полностью</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
+    <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
+    <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
-    <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
-    <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
+    <string name="remove_control_center_networkwarn">Удалить информацию о VPN в нижней части центра управления</string>
+    <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Удалить информацию о подключении и диалоги</string>
+    <string name="remove_control_center_networkwarn_summary">После подключения к VPN появится сообщение в нижней части центра управления</string>
     <string name="StatusBarTiles">Плитки строки состояния</string>
     <string name="TileLongClickEvent">Долгое нажатие на плитку</string>
     <string name="restore_some_tile_long_press_event">Восстановить некоторые события долгого нажатия на плитки</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="lock_screen_use_user_typeface">Компоненты на экране блокировки используют пользовательские шрифты</string>
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
     <string name="LockScreenButton">Кнопки экрана блокировки</string>
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">Обновить</string>
     <string name="common_words_save">Сохранить</string>
     <string name="common_words_filter">Фильтр</string>
+    <string name="common_words_loading">Загрузка</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не удалось подключиться к сети</string>
     <string name="net_networking_error">Текущая сеть недоступна</string>

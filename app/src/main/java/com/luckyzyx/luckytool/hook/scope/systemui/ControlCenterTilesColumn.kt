@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.getScreenStatus
+import com.luckyzyx.luckytool.utils.getScreenOrientation
 
 object ControlCenterTilesColumn : YukiBaseHooker() {
     override fun onHook() {
@@ -41,7 +41,7 @@ object ControlCenterTilesColumn : YukiBaseHooker() {
                 }
                 afterHook {
                     instance<ViewGroup>().apply {
-                        getScreenStatus(context.resources) {
+                        getScreenOrientation(context.resources) {
                             if (it) {
                                 isVertical = true
                                 field { name = "mColumns" }.get(instance)
@@ -83,20 +83,21 @@ object ControlCenterTilesColumnV13 : YukiBaseHooker() {
         //Source TileLayout
         findClass("com.android.systemui.qs.TileLayout").hook {
             injectMember {
-                method {
-                    name = "updateMaxRows"
-                }
+                method { name = "updateMaxRows" }
                 beforeHook {
                     field { name = "mMaxAllowedRows" }.get(instance).set(rowExpandedVerticalC13)
                 }
+                afterHook {
+                    getScreenOrientation(instance<ViewGroup>()) {
+                        if (it) field { name = "mRows" }.get(instance).set(rowExpandedVerticalC13)
+                    }
+                }
             }
             injectMember {
-                method {
-                    name = "updateColumns"
-                }
+                method { name = "updateColumns" }
                 afterHook {
                     instance<ViewGroup>().apply {
-                        getScreenStatus(context.resources) {
+                        getScreenOrientation(this) {
                             if (it) field { name = "mColumns" }.get(instance)
                                 .set(columnExpandedVerticalC13)
                             else field { name = "mColumns" }.get(instance).set(columnHorizontal)

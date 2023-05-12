@@ -13,7 +13,7 @@ object StatusBarTile : YukiBaseHooker() {
     override fun onHook() {
         //磁贴长按事件
         loadHooker(LongPressTileOpenThePage)
-        //状态栏磁贴列数
+        //磁贴行列数
         if (prefs(ModulePrefs).getBoolean("control_center_tile_enable", false)) {
             if (SDK >= A13) loadHooker(ControlCenterTilesColumnV13) else {
                 loadHooker(ControlCenterTilesColumn)

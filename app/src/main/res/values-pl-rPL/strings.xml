@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
-    <string name="statusbar_carriers_use_user_typeface">Użyj niestandardowej czcionki w nazwie operatora sieci</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_mode">Zegar paska stanu</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">Usuwa powiadomienie „Ta aplikacja jest wyświetlana nad innymi aplikacjami”</string>
     <string name="remove_vpn_active_notification">Usuń „VPN aktywny”</string>
     <string name="remove_vpn_active_notification_summary">Ukrywa powiadomienie o aktywnym połączeniu VPN</string>
-    <string name="remove_statusbar_bottom_networkwarn">Usuń „Sieć może być monitorowana”</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Ukrywa napis, który wyświetla się po rozwinięciu szybkich ustawień</string>
     <string name="remove_flashlight_open_notification">Usuń „Latarka włączona”</string>
     <string name="remove_app_high_battery_consumption_warning">Usuń „Aplikacja zużywa baterię w tle”</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Ukrywa powiadomienie o wysokim użyciu baterii przez aplikację</string>
@@ -194,10 +191,14 @@
     <string name="fix_control_center_date_display">Fix control center date display</string>
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     <string name="ControlCenter_UI_Related">Dostosuj centrum sterowania</string>
+    <string name="enable_notification_align_both_sides">Wyrównaj szerokość powiadomień</string>
+    <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
     <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
-    <string name="force_display_media_player">Wymuś wyświetlanie odtwarzacza mediów</string>
-    <string name="enable_notification_align_both_sides">Wyrównaj szerokość powiadomień</string>
+    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
     <string name="StatusBarTiles">Przełączniki centrum sterowania</string>
     <string name="TileLongClickEvent">Długie przytrzymanie</string>
     <string name="restore_some_tile_long_press_event">Przywróć niektórym przełącznikom długie naciśnięcie</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
     <string name="lock_screen_use_user_typeface">Używaj czcionek użytkownika</string>
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">Użyj niestandardowej czcionki w nazwie operatora sieci</string>
     <string name="LockScreenButton">Przyciski ekranu blokady</string>
     <string name="remove_top_lock_screen_icon">Usuń ikonę kłódki</string>
     <string name="remove_lock_screen_bottom_left_button">Usuń lewy dolny skrót</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">Refresh</string>
     <string name="common_words_save">Save</string>
     <string name="common_words_filter">Filter</string>
+    <string name="common_words_loading">Loading</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Nie udało się połączyć z siecią</string>
     <string name="net_networking_error">Aktualna sieć jest niedostępna</string>

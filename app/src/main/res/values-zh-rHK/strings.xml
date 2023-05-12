@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
-    <string name="statusbar_carriers_use_user_typeface">状态栏运营商使用用户字体</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_mode">状态栏时钟模式</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">移除状态栏“此应用在其他应用上层显示”</string>
     <string name="remove_vpn_active_notification">移除VPN已激活通知</string>
     <string name="remove_vpn_active_notification_summary">移除状态栏VPN已激活通知</string>
-    <string name="remove_statusbar_bottom_networkwarn">移除状态栏底部网络警告</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">移除下拉状态栏展开时最底部的网络信息</string>
     <string name="remove_flashlight_open_notification">移除手电筒已开启通知</string>
     <string name="remove_app_high_battery_consumption_warning">移除应用后台耗电异常优化警告</string>
     <string name="remove_app_high_battery_consumption_warning_summary">移除应用后台电池快速耗电，建议立即优化的警告</string>
@@ -194,10 +191,14 @@
     <string name="fix_control_center_date_display">修复控制中心日期显示</string>
     <string name="fix_control_center_date_display_suammry">修复日期无法完整显示的问题</string>
     <string name="ControlCenter_UI_Related">控制中心UI相关</string>
+    <string name="enable_notification_align_both_sides">启用通知两侧对齐</string>
+    <string name="force_display_media_player">强制显示媒体播放器</string>
     <string name="remove_control_center_user_switcher">移除控制中心多用户</string>
     <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
-    <string name="force_display_media_player">强制显示媒体播放器</string>
-    <string name="enable_notification_align_both_sides">启用通知两侧对齐</string>
+    <string name="remove_control_center_networkwarn">移除控制中心底部 VPN 信息</string>
+    <string name="remove_control_center_networkwarn_dialog">移除对话框</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">移除连接信息和对话框</string>
+    <string name="remove_control_center_networkwarn_summary">连接到 VPN后，将在控制中心底部显示连接信息</string>
     <string name="StatusBarTiles">状态栏磁贴</string>
     <string name="TileLongClickEvent">磁贴长按事件</string>
     <string name="restore_some_tile_long_press_event">恢复部分磁贴长按事件</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">锁屏组件居中显示</string>
     <string name="set_lock_screen_centered_summary">仅限于设置里无法设置锁屏居中的系统使用</string>
     <string name="lock_screen_use_user_typeface">锁屏组件使用用户字体</string>
+    <string name="LockScreenCarrier">锁屏运营商</string>
+    <string name="remove_statusbar_carriers">移除状态栏运营商</string>
+    <string name="statusbar_carriers_use_user_typeface">状态栏运营商使用用户字体</string>
     <string name="LockScreenButton">锁屏按钮</string>
     <string name="remove_top_lock_screen_icon">移除锁屏顶部图标</string>
     <string name="remove_lock_screen_bottom_left_button">移除锁屏左下角按钮</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">刷新</string>
     <string name="common_words_save">保存</string>
     <string name="common_words_filter">过滤</string>
+    <string name="common_words_loading">加载中</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">连接网络失败</string>
     <string name="net_networking_error">当前网络不可用</string>

@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
-    <string name="statusbar_carriers_use_user_typeface">ステータスバーのキャリア表示にユーザーフォントを使用します</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">ステータスバーの時計</string>
     <string name="statusbar_clock_mode">ステータスバーの時計モード</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">「このアプリは他のアプリの上に表示されています」の通知を削除します</string>
     <string name="remove_vpn_active_notification">VPNが有効時の通知を削除</string>
     <string name="remove_vpn_active_notification_summary">ステータスバーからVPNが有効である表示を削除します</string>
-    <string name="remove_statusbar_bottom_networkwarn">ステータスバー下部のネットワーク警告を削除</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">ステータスバーのプルダウン時に表示されるネットワーク情報を削除します</string>
     <string name="remove_flashlight_open_notification">フラッシュライトが開いている通知を削除</string>
     <string name="remove_app_high_battery_consumption_warning">アプリのバッテリー消費量警告を解除</string>
     <string name="remove_app_high_battery_consumption_warning_summary">アプリのバッテリーの異常消費で最適化を促す通知を削除します</string>
@@ -194,10 +191,14 @@
     <string name="fix_control_center_date_display">コントロールセンターの日付表示を修正</string>
     <string name="fix_control_center_date_display_suammry">日付を完全に表示できない問題を修正します</string>
     <string name="ControlCenter_UI_Related">コントロールセンターのUI関連</string>
+    <string name="enable_notification_align_both_sides">通知の両端揃えを有効化</string>
+    <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
-    <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
-    <string name="enable_notification_align_both_sides">通知の両端揃えを有効化</string>
+    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
     <string name="StatusBarTiles">ステータスバーのタイル</string>
     <string name="TileLongClickEvent">タイルの長押しイベント</string>
     <string name="restore_some_tile_long_press_event">タイルの長押しイベントを復活させる</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">ステータスバーのキャリア表示にユーザーフォントを使用します</string>
     <string name="LockScreenButton">ロック画面ボタン</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">更新</string>
     <string name="common_words_save">保存</string>
     <string name="common_words_filter">フィルター</string>
+    <string name="common_words_loading">読み込み中</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">ネットワークに接続できませんでした</string>
     <string name="net_networking_error">現在のネットワークは利用できません</string>

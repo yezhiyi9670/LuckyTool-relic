@@ -11,7 +11,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
-import com.luckyzyx.luckytool.utils.getScreenStatus
+import com.luckyzyx.luckytool.utils.getScreenOrientation
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
 object StatusBarLayout : YukiBaseHooker() {
@@ -37,7 +37,7 @@ object StatusBarLayout : YukiBaseHooker() {
             prefs(ModulePrefs).getInt("statusbar_layout_right_margin", 0)
 
         fun updateCustomLayout(context: Context) {
-            getScreenStatus(context.resources) {
+            getScreenOrientation(context) {
                 if (it) {
                     mLeftLayout?.setPadding(statusBarLeftMargin, 0, 0, 0)
                     mRightLayout?.setPadding(0, 0, statusBarRightMargin, 0)
@@ -51,7 +51,7 @@ object StatusBarLayout : YukiBaseHooker() {
 
         fun updateDefaultLayout(context: Context, leftView: ViewGroup?, rightView: ViewGroup?) {
             if (!isCompatibleMode) return
-            getScreenStatus(context.resources) {
+            getScreenOrientation(context) {
                 if (it) {
                     leftView?.setPadding(leftMargin, 0, 0, 0)
                     rightView?.setPadding(0, 0, rightMargin, 0)

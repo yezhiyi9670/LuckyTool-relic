@@ -23,6 +23,7 @@ import android.text.TextUtils
 import android.util.ArrayMap
 import android.util.ArraySet
 import android.util.Base64
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
@@ -1129,12 +1130,36 @@ fun Fragment.navigate(action: Int, bundle: Bundle?) {
 
 /**
  * 获取屏幕状态
- * (true 竖屏 ORIENTATION_PORTRAIT)
- * (false 横屏 ORIENTATION_LANDSCAPE)
- * @param resource Resources
+ * (true -> 竖屏 ORIENTATION_PORTRAIT)
+ * (false -> 横屏 ORIENTATION_LANDSCAPE)
+ * @param view View/Context/Resources
  * @param result Function1<Boolean, Unit>
  */
-fun getScreenStatus(resource: Resources, result: (Boolean) -> Unit) {
+
+fun getScreenOrientation(view: View, result: (Boolean) -> Unit) {
+    getScreenOrientation(view.resources) { result(it) }
+
+}
+
+/**
+ * 获取屏幕状态
+ * (true -> 竖屏 ORIENTATION_PORTRAIT)
+ * (false -> 横屏 ORIENTATION_LANDSCAPE)
+ * @param context View/Context/Resources
+ * @param result Function1<Boolean, Unit>
+ */
+fun getScreenOrientation(context: Context, result: (Boolean) -> Unit) {
+    getScreenOrientation(context.resources) { result(it) }
+}
+
+/**
+ * 获取屏幕状态
+ * (true -> 竖屏 ORIENTATION_PORTRAIT)
+ * (false -> 横屏 ORIENTATION_LANDSCAPE)
+ * @param resource View/Context/Resources
+ * @param result Function1<Boolean, Unit>
+ */
+fun getScreenOrientation(resource: Resources, result: (Boolean) -> Unit) {
     val mConfiguration: Configuration = resource.configuration
     if (mConfiguration.orientation == Configuration.ORIENTATION_PORTRAIT) {
         result(true)

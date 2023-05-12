@@ -7,7 +7,6 @@ import com.luckyzyx.luckytool.hook.scope.systemui.RemoveChargingCompleted
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveDoNotDisturbModeNotification
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveFlashlightOpenNotification
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveNotificationForMuteNotifications
-import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarDevMode
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
@@ -21,10 +20,6 @@ object StatusBarNotify : YukiBaseHooker() {
             //移除状态栏开发者选项警告
             if (prefs(ModulePrefs).getBoolean("remove_statusbar_devmode", false)) {
                 loadHooker(RemoveStatusBarDevMode)
-            }
-            //移除磁贴底部网络警告
-            if (prefs(ModulePrefs).getBoolean("remove_statusbar_bottom_networkwarn", false)) {
-                loadHooker(RemoveStatusBarBottomNetworkWarn)
             }
             //移除手电筒已开启通知
             if (prefs(ModulePrefs).getBoolean("remove_flashlight_open_notification", false)) {

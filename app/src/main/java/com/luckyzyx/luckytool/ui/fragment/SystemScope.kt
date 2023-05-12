@@ -695,15 +695,6 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_bottom_networkwarn)
-                    summary = getString(R.string.remove_statusbar_bottom_networkwarn_summary)
-                    key = "remove_statusbar_bottom_networkwarn"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_flashlight_open_notification)
                     key = "remove_flashlight_open_notification"
                     setDefaultValue(false)
@@ -1147,6 +1138,23 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.enable_notification_align_both_sides)
+                    key = "enable_notification_align_both_sides"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.force_display_media_player)
+                    key = "force_display_media_player"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_control_center_user_switcher)
                     key = "remove_control_center_user_switcher"
                     setDefaultValue(false)
@@ -1164,20 +1172,20 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.force_display_media_player)
-                    key = "force_display_media_player"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.remove_control_center_networkwarn)
+                    summary = "%s\n" + getString(R.string.remove_control_center_networkwarn_summary)
+                    key = "remove_control_center_networkwarn"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_networkwarn_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_notification_align_both_sides)
-                    key = "enable_notification_align_both_sides"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("remove_control_center_networkwarn", newValue)
+                        true
+                    }
                 }
             )
         }
@@ -1893,6 +1901,21 @@ class LockScreen : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.lock_screen_use_user_typeface)
                     key = "lock_screen_use_user_typeface"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.LockScreenCarrier)
+                    key = "LockScreenCarrier"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_statusbar_carriers)
+                    key = "remove_statusbar_carriers"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

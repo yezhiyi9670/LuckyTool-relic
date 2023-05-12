@@ -276,9 +276,12 @@ class FiveG : TileService() {
         if (iFiveGController != null) {
             controller(iFiveGController)
         } else {
-            RootService.bind(Intent(this, FiveGControllerService::class.java),
+            RootService.bind(Intent(this@FiveG, FiveGControllerService::class.java),
                 object : ServiceConnection {
-                    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    override fun onServiceConnected(
+                        name: ComponentName?,
+                        service: IBinder?
+                    ) {
                         iFiveGController = IFiveGController.Stub.asInterface(service)
                         controller(iFiveGController)
                     }

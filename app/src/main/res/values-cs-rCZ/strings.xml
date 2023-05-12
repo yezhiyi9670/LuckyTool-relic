@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">Stavová lišta</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
-    <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Hodiny na stavové liště</string>
     <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">Skryj oznámení \"Aplikace se zobrazuje nad ostatními\"</string>
     <string name="remove_vpn_active_notification">Odebrat oznámení, že je VPN aktivní</string>
     <string name="remove_vpn_active_notification_summary">Odebere oznámení o aktivní VPN síti</string>
-    <string name="remove_statusbar_bottom_networkwarn">Odstranit upozornění \"Síť může být monitorována\"</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Odstranit oznámení o tom, že síť může být monitorována</string>
     <string name="remove_flashlight_open_notification">Odebrat oznámení o zapnuté svítilně</string>
     <string name="remove_app_high_battery_consumption_warning">Odstranit výstrahu aplikace o vysoké spotřebě baterie</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Odstranit varování, že spotřeba baterie aplikacie je neobvyklá a musí být okamžitě optimalizována</string>
@@ -194,10 +191,14 @@
     <string name="fix_control_center_date_display">Opravit zobrazení data v ovládacím panelu</string>
     <string name="fix_control_center_date_display_suammry">Opravit problém, kdy datum nemůže být zobrazeno celé</string>
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
+    <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
+    <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
-    <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
-    <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
+    <string name="remove_control_center_networkwarn">Odstranit informace o VPN v dolní části ovládacího centra</string>
+    <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Odebrat informace o připojení a dialogová okna</string>
+    <string name="remove_control_center_networkwarn_summary">Po připojení k VPN se ve spodní části ovládacího centra zobrazí zpráva</string>
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
     <string name="restore_some_tile_long_press_event">Obnovit některé události dlouhého stisku</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
     <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
     <string name="LockScreenButton">Tlačítka na zamykací obrazovce</string>
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>
     <string name="remove_lock_screen_bottom_left_button">Odstranit levé tlačítko na zamykací obrazovce</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">Aktualizovat</string>
     <string name="common_words_save">Uložit</string>
     <string name="common_words_filter">Třídit</string>
+    <string name="common_words_loading">Načítání…</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Připojení k síti se nezdařilo</string>
     <string name="net_networking_error">Aktuální síť není k dispozici</string>

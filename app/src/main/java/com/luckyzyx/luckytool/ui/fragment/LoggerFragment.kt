@@ -19,6 +19,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -70,24 +72,34 @@ class LoggerFragment : Fragment() {
             adapter = logInfoViewAdapter
             layoutManager = LinearLayoutManager(context)
         }
-
+        binding.swipeRefreshLayout.apply {
+            setOnRefreshListener {
+                loadLogger()
+            }
+        }
         if (listData.isEmpty()) loadLogger()
     }
 
     @OptIn(CauseProblemsApi::class)
     private fun loadLogger() {
+        binding.swipeRefreshLayout.isRefreshing = true
         listData.clear()
-        requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
-            requireActivity().dataChannel(scope).allowSendTooLargeData()
-                .obtainLoggerInMemoryData { its ->
-                    its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
-                    logInfoViewAdapter?.refreshDatas()
-                    binding.loglistView.isVisible = listData.isNotEmpty()
-                    binding.logNodataView.apply {
-                        text = getString(R.string.log_no_data)
-                        isVisible = listData.isEmpty()
-                    }
+        scopeLife {
+            withIO {
+                requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
+                    requireActivity().dataChannel(scope).allowSendTooLargeData()
+                        .obtainLoggerInMemoryData { its ->
+                            its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
+                            logInfoViewAdapter?.refreshDatas()
+                        }
                 }
+            }
+            binding.loglistView.isVisible = listData.isNotEmpty()
+            binding.logNodataView.apply {
+                text = getString(R.string.log_no_data)
+                isVisible = listData.isEmpty()
+            }
+            binding.swipeRefreshLayout.isRefreshing = false
         }
     }
 

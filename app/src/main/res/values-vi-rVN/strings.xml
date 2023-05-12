@@ -105,7 +105,6 @@
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
-    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_mode">Đồng hồ thanh trạng thái</string>
@@ -146,8 +145,6 @@
     <string name="remove_statusbar_top_notification_summary">Xóa thông báo \"Ứng dụng này được hiển thị trên các ứng dụng khác\"</string>
     <string name="remove_vpn_active_notification">Xóa thông báo VPN</string>
     <string name="remove_vpn_active_notification_summary">Xóa thông báo VPN</string>
-    <string name="remove_statusbar_bottom_networkwarn">Xóa cảnh báo mạng bên dưới thanh trạng thái</string>
-    <string name="remove_statusbar_bottom_networkwarn_summary">Xóa thông tin mạng bên dưới khi thanh trạng thái kéo xuống được mở rộng</string>
     <string name="remove_flashlight_open_notification">Xóa thông báo bật đèn pin</string>
     <string name="remove_app_high_battery_consumption_warning">Xóa cảnh báo ứng dụng tiêu thụ pin cao</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Đã xóa cảnh báo mức tiêu thụ pin bất thường của ứng dụng và cần được tối ưu hóa ngay lập tức</string>
@@ -194,10 +191,14 @@
     <string name="fix_control_center_date_display">Fix control center date display</string>
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
+    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
     <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
-    <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
-    <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
     <string name="StatusBarTiles">StatusBar Tiles</string>
     <string name="TileLongClickEvent">Tile Long Click Event</string>
     <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>
@@ -262,6 +263,9 @@
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
     <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
     <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="LockScreenCarrier">Lock Screen Carrier</string>
+    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="statusbar_carriers_use_user_typeface">StatusBar Carriers use user fonts</string>
     <string name="LockScreenButton">Lock Screen Button</string>
     <string name="remove_top_lock_screen_icon">Xóa biểu tượng màn hình khóa trên cùng</string>
     <string name="remove_lock_screen_bottom_left_button">Xóa nút dưới cùng bên trái của màn hình khóa</string>
@@ -567,6 +571,7 @@
     <string name="common_words_refresh">Refresh</string>
     <string name="common_words_save">Save</string>
     <string name="common_words_filter">Filter</string>
+    <string name="common_words_loading">Loading</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.utils.getScreenStatus
+import com.luckyzyx.luckytool.utils.getScreenOrientation
 import kotlin.math.abs
 
 object EnableNotificationAlignBothSides : YukiBaseHooker() {
@@ -51,7 +51,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
         if (qsPanelPaddingPx == 0) qsPanelPaddingPx = resources.getDimensionPixelSize(
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )
-        getScreenStatus(resources) {
+        getScreenOrientation(this) {
             layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
                 val left = abs(qsPanelPaddingPx - marginLeft)
                 val right = abs(qsPanelPaddingPx - marginRight)

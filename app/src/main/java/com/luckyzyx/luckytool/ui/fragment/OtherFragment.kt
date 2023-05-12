@@ -17,6 +17,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.TextInputEditText
@@ -167,7 +169,11 @@ class OtherFragment : Fragment() {
                                 "killall -9 adbd 2>/dev/null",
                                 "start adbd"
                             )
-                            ShellUtils.execCommand(commands, true)
+                            scopeLife {
+                                withIO {
+                                    ShellUtils.execCommand(commands, true)
+                                }
+                            }
                             context.putString(OtherPrefs, "adb_port", port)
                             adbPortLayout?.isEnabled = false
                             adbTv?.text = "adb connect $getIP:$port"
@@ -180,7 +186,11 @@ class OtherFragment : Fragment() {
                                 "start adbd",
                                 "setprop service.adb.tcp.port ''"
                             )
-                            ShellUtils.execCommand(commands, true)
+                            scopeLife {
+                                withIO {
+                                    ShellUtils.execCommand(commands, true)
+                                }
+                            }
                             adbPortLayout?.isEnabled = true
                             adbTv?.text = ""
                             adbTvTip?.isVisible = false

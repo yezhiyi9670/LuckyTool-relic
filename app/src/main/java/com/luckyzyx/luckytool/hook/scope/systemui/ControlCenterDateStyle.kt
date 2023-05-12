@@ -12,7 +12,7 @@ import com.luckyzyx.luckytool.hook.utils.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
-import com.luckyzyx.luckytool.utils.getScreenStatus
+import com.luckyzyx.luckytool.utils.getScreenOrientation
 import java.util.Locale
 import kotlin.math.abs
 
@@ -107,9 +107,9 @@ object ControlCenterDateStyle : YukiBaseHooker() {
                             if (!isRtl) (-width) else width
                         val translationY = qs_footer_date_expand_translation_y / 2
 
-                        getScreenStatus(res) {
-                            if (it) return@getScreenStatus
-                            if (translationX == 0 || translationY == 0) return@getScreenStatus
+                        getScreenOrientation(res) {
+                            if (it) return@getScreenOrientation
+                            if (translationX == 0 || translationY == 0) return@getScreenOrientation
 
                             when (fixLunar) {
                                 "1" -> mTmpConstraintSet.current().method {

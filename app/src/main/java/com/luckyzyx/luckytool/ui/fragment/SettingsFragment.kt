@@ -365,7 +365,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                                     1 -> startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
-                                            Uri.parse("https://luckyzyx.github.io/LuckyTool/")
+                                            Uri.parse("https://luckyzyx.github.io/LuckyTool_Doc/")
                                         )
                                     )
 

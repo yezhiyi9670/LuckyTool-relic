@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSid
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterMydevice
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -18,6 +19,9 @@ object StatusBarControlCenter : YukiBaseHooker() {
 
         //移除控制中心日期
         loadHooker(ControlCenterDateStyle)
+
+        //磁贴底部网络警告
+        loadHooker(RemoveStatusBarBottomNetworkWarn)
 
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {
