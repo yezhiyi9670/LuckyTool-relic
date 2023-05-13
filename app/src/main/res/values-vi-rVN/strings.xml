@@ -155,6 +155,7 @@
     <string name="remove_smart_rapid_charging_notification">Xóa thông báo “Sạc nhanh thông minh”</string>
     <string name="remove_notifications_for_mute_notifications">Xóa thông báo không làm phiền</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    <string name="remove_gt_mode_notification">Remove GT mode notification</string>
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
@@ -482,6 +483,7 @@
     <string name="file_size">Kích thước tập tin</string>
     <string name="update_time">Thời gian cập nhật</string>
     <string name="last_update_time">Last update Time</string>
+    <string name="select_download_source">Select download source</string>
     <string name="update_logs">Nhật ký cập nhật</string>
     <string name="check_update_hint">Đã phát hiện phiên bản mới!</string>
     <string name="go_download_page">Đi đến trang tải xuống</string>

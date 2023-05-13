@@ -155,6 +155,7 @@
     <string name="remove_smart_rapid_charging_notification">Удалить уведомление \"Умная быстрая зарядка\"</string>
     <string name="remove_notifications_for_mute_notifications">Удалить уведомления для отключенных уведомлений</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Удалить уведомление о риске вирусов в диспетчере телефона</string>
+    <string name="remove_gt_mode_notification">Удалить уведомление о режиме производительности</string>
     <string name="allow_long_press_notification_modifiable">Разрешить изменять уведомления о длительном нажатии</string>
     <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
     <!--StatusBarIcon-->
@@ -482,6 +483,7 @@
     <string name="file_size">Размер файла</string>
     <string name="update_time">Время обновления</string>
     <string name="last_update_time">Время последнего обновления</string>
+    <string name="select_download_source">Select download source</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>

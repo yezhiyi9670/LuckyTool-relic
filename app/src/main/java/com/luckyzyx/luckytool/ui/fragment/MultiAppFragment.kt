@@ -92,16 +92,16 @@ class MultiAppFragment : Fragment() {
     }
 
     private fun loadData() {
-        isShowSystemApp =
-            requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
-        binding.swipeRefreshLayout.isRefreshing = true
-        binding.searchViewLayout.isEnabled = false
-        binding.searchView.text = null
-        appListAllDatas.clear()
-        val enableData =
-            requireActivity().getStringSet(ModulePrefs, "multi_app_custom_list", ArraySet())
         scopeLife {
+            isShowSystemApp =
+                requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
+            binding.swipeRefreshLayout.isRefreshing = true
+            binding.searchViewLayout.isEnabled = false
+            binding.searchView.text = null
+            val enableData =
+                requireActivity().getStringSet(ModulePrefs, "multi_app_custom_list", ArraySet())
             withIO {
+                appListAllDatas.clear()
                 val packageManager = requireActivity().packageManager
                 val appinfos = PackageUtils(packageManager).getInstalledApplications(0)
                 for (i in appinfos) {
@@ -159,8 +159,10 @@ class MultiAppAdapter(
     private var filterDatas = ArrayList<AppInfo>()
     private var enabledMulti = ArrayList<String>()
     private var sortData = ArrayList<AppInfo>()
+    private var hasPermissions = true
 
     init {
+        if (datas.size <= 1) hasPermissions = false
         allDatas = datas
         enableData?.forEach { enabledMulti.add(it) }
         sortDatas()
@@ -244,6 +246,7 @@ class MultiAppAdapter(
         }
 
     private fun saveEnableList() {
+        if (!hasPermissions) return
         context.putStringSet(ModulePrefs, "multi_app_custom_list", enabledMulti.toSet())
         context.dataChannel("android").put("multi_app_custom_list", enabledMulti.toSet())
     }

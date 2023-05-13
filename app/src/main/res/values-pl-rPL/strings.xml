@@ -155,6 +155,7 @@
     <string name="remove_smart_rapid_charging_notification">Usuń „Inteligentne szybkie ładowanie”</string>
     <string name="remove_notifications_for_mute_notifications">Usuń powiadomienia dla wyciszonych powiadomień</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Usuń alerty o zagrożeniu wirusami w menedżerze telefonu</string>
+    <string name="remove_gt_mode_notification">Remove GT mode notification</string>
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <!--StatusBarIcon-->
@@ -482,6 +483,7 @@
     <string name="file_size">Rozmiar</string>
     <string name="update_time">Czas aktualizacji</string>
     <string name="last_update_time">Zaktualizowano:</string>
+    <string name="select_download_source">Select download source</string>
     <string name="update_logs">Dziennik zmian</string>
     <string name="check_update_hint">Wykryto nową wersję!</string>
     <string name="go_download_page">Przejdź do strony pobierania</string>

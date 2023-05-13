@@ -3,6 +3,12 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.2_beta
+
+- [添加] 移除GT模式通知
+- [优化] 优化模块部分页面卡顿
+- [添加] 模块读取应用列表权限显示
+
 ### v1.0.1
 
 - [更新] 捐赠名单

@@ -761,6 +761,14 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_gt_mode_notification)
+                    key = "remove_gt_mode_notification"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 

@@ -13,8 +13,6 @@ import com.highcapable.yukihookapi.hook.type.java.StringClass
 object RemoveAlarmClockWidgetRedOne : YukiBaseHooker() {
     override fun onHook() {
         //Source OnePlusWidget
-        //Search CharSequence Field
-        //Source update one plus clock +2 & +4 -> setTextViewText
         val clazz = "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull() ?: return
         val isHas = clazz.javaClass.hasMethod {
             param(StringClass, StringClass)
@@ -24,18 +22,12 @@ object RemoveAlarmClockWidgetRedOne : YukiBaseHooker() {
             clazz.field { type(CharSequenceClass).index().first() }.get().set("")
             return
         }
-        //Source
+        //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
         searchClass {
             from("m0", "j0").absolute()
-            field {
-                type = CharSequenceClass
-            }.count(1)
-            field {
-                type = HandlerClass
-            }.count(1)
-            field {
-                type = BooleanType
-            }.count(3)
+            field { type = CharSequenceClass }.count(1)
+            field { type = HandlerClass }.count(1)
+            field { type = BooleanType }.count(3)
             method {
                 param(ContextClass, StringClass, StringClass)
                 returnType = CharSequenceClass

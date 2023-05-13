@@ -151,7 +151,7 @@
     <string name="remove_statusbar_top_notification_summary">Remove status bar \"This app is displayed on top of other apps\"</string>
     <string name="remove_vpn_active_notification">Remove VPN active</string>
     <string name="remove_vpn_active_notification_summary">Remove status bar VPN active</string>
-        <string name="remove_flashlight_open_notification">Remove flashlight is open notification</string>
+    <string name="remove_flashlight_open_notification">Remove flashlight is open notification</string>
     <string name="remove_app_high_battery_consumption_warning">Remove app high battery consumption warning</string>
     <string name="remove_app_high_battery_consumption_warning_summary">Removed the warning that the application\'s battery consumption is abnormal and needs to be optimized immediately</string>
     <string name="remove_high_performance_mode_notifications">Remove high performance mode notifications</string>
@@ -161,6 +161,7 @@
     <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
     <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
+    <string name="remove_gt_mode_notification">Remove GT mode notification</string>
     
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
@@ -516,6 +517,7 @@
     <string name="file_size">File Size</string>
     <string name="update_time">Update Time</string>
     <string name="last_update_time">Last update Time</string>
+    <string name="select_download_source">Select download source</string>
     <string name="update_logs">Update logs</string>
     <string name="check_update_hint">New version detected!</string>
     <string name="go_download_page">Go to the download page</string>

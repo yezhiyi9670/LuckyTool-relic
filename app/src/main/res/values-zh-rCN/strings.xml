@@ -155,6 +155,7 @@
     <string name="remove_smart_rapid_charging_notification">移除“了解智能快速充电”通知</string>
     <string name="remove_notifications_for_mute_notifications">移除通知勿扰通知</string>
     <string name="remove_virus_risk_notification_in_phone_manager">移除手机管家发现病毒风险通知</string>
+    <string name="remove_gt_mode_notification">移除 GT 模式通知</string>
     <string name="allow_long_press_notification_modifiable">允许长按通知可修改</string>
     <string name="remove_notification_manager_limit">移除通知管理限制</string>
     <!--StatusBarIcon-->
@@ -482,6 +483,7 @@
     <string name="file_size">文件大小</string>
     <string name="update_time">更新时间</string>
     <string name="last_update_time">最后更新时间</string>
+    <string name="select_download_source">选择下载源</string>
     <string name="update_logs">更新日志</string>
     <string name="check_update_hint">检测到新版本!</string>
     <string name="go_download_page">跳转下载页面</string>

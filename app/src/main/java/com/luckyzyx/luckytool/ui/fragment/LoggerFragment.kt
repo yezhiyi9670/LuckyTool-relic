@@ -73,18 +73,16 @@ class LoggerFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
         binding.swipeRefreshLayout.apply {
-            setOnRefreshListener {
-                loadLogger()
-            }
+            setOnRefreshListener { loadLogger() }
         }
         if (listData.isEmpty()) loadLogger()
     }
 
     @OptIn(CauseProblemsApi::class)
     private fun loadLogger() {
-        binding.swipeRefreshLayout.isRefreshing = true
-        listData.clear()
         scopeLife {
+            binding.swipeRefreshLayout.isRefreshing = true
+            listData.clear()
             withIO {
                 requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
                     requireActivity().dataChannel(scope).allowSendTooLargeData()

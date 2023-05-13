@@ -155,6 +155,7 @@
     <string name="remove_smart_rapid_charging_notification">「急速充電中」の通知を削除する</string>
     <string name="remove_notifications_for_mute_notifications">ミュートされた通知を通知しない</string>
     <string name="remove_virus_risk_notification_in_phone_manager">フォンマネージャーのウイルスリスク通知を削除</string>
+    <string name="remove_gt_mode_notification">GT モードの通知を削除</string>
     <string name="allow_long_press_notification_modifiable">長押し通知を変更可能にする</string>
     <string name="remove_notification_manager_limit">通知マネージャーの上限を削除</string>
     <!--StatusBarIcon-->
@@ -482,6 +483,7 @@
     <string name="file_size">ファイルのサイズ</string>
     <string name="update_time">更新時間</string>
     <string name="last_update_time">最終更新日時</string>
+    <string name="select_download_source">Select download source</string>
     <string name="update_logs">アップデートログ</string>
     <string name="check_update_hint">新しいバージョンがあります!</string>
     <string name="go_download_page">ダウンロードページを開く</string>

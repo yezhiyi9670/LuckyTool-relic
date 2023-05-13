@@ -109,7 +109,7 @@ class UpdateUtils(val context: Context) {
             "https://ghproxy.com/"
         )
         MaterialAlertDialogBuilder(context, dialogCentered).apply {
-            setTitle("选择下载源")
+            setTitle(context.getString(R.string.select_download_source))
             setItems(list) { _, which ->
                 downloadFile(context, fileName, cdn[which] + downloadUrl)
             }

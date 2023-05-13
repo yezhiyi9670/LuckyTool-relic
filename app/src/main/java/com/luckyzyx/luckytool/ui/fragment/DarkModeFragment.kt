@@ -94,24 +94,24 @@ class DarkModeFragment : Fragment() {
      * 加载数据
      */
     private fun loadData() {
-        isShowSystemApp =
-            requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
-        binding.swipeRefreshLayout.isRefreshing = true
-        binding.searchViewLayout.isEnabled = false
-        binding.searchView.text = null
-        appListAllDatas.clear()
-        val enableData =
-            requireActivity().getStringSet(ModulePrefs, "dark_mode_support_list", ArraySet())
-        val formatEnableData = ArrayMap<String, Int>()
-        enableData?.forEach {
-            if (it.contains("|")) {
-                val arr = it.split("|").toMutableList()
-                if (arr.size < 2 || arr[1].isBlank()) arr[1] = (0).toString()
-                formatEnableData[arr[0]] = arr[1].toInt()
-            } else formatEnableData[it] = 0
-        }
         scopeLife {
+            isShowSystemApp =
+                requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
+            binding.swipeRefreshLayout.isRefreshing = true
+            binding.searchViewLayout.isEnabled = false
+            binding.searchView.text = null
+            val enableData =
+                requireActivity().getStringSet(ModulePrefs, "dark_mode_support_list", ArraySet())
+            val formatEnableData = ArrayMap<String, Int>()
             withIO {
+                enableData?.forEach {
+                    if (it.contains("|")) {
+                        val arr = it.split("|").toMutableList()
+                        if (arr.size < 2 || arr[1].isBlank()) arr[1] = (0).toString()
+                        formatEnableData[arr[0]] = arr[1].toInt()
+                    } else formatEnableData[it] = 0
+                }
+                appListAllDatas.clear()
                 val packageManager = requireActivity().packageManager
                 val appinfos = PackageUtils(packageManager).getInstalledApplications(0)
                 for (i in appinfos) {
@@ -180,8 +180,10 @@ class DarkModeAdapter(
     private var filterDatas = ArrayList<AppInfo>()
     private var enabledMulti = ArrayMap<String, Int>()
     private var tempData = ArrayMap<String, Int>()
+    private var hasPermissions = true
 
     init {
+        if (datas.size <= 1) hasPermissions = false
         allDatas = datas
         enabledMulti = enableData
         sortDatas()
@@ -302,6 +304,7 @@ class DarkModeAdapter(
         }
 
     private fun saveEnableList() {
+        if (!hasPermissions) return
         val data = ArraySet<String>()
         enabledMulti.forEach {
             data.add("${it.key}|${it.value}")
