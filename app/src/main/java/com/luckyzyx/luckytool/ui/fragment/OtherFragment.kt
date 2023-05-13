@@ -155,7 +155,8 @@ class OtherFragment : Fragment() {
                     isEnabled = isSu
                     isChecked = isSu && getPort.isNotBlank() && getPort.toInt() != -1
                     adbPortLayout?.isEnabled = isChecked.not()
-                    setOnCheckedChangeListener { _, isChecked ->
+                    setOnCheckedChangeListener { buttonView, isChecked ->
+                        if (!buttonView.isPressed) return@setOnCheckedChangeListener
                         if (isChecked) {
                             val port = adbPort?.text.toString()
                             if (port == "") {
@@ -163,37 +164,41 @@ class OtherFragment : Fragment() {
                                 adbTv?.text = context.getString(R.string.adb_debug_port_cannot_null)
                                 return@setOnCheckedChangeListener
                             }
-                            val commands = arrayOf(
-                                "setprop service.adb.tcp.port '$port'",
-                                "stop adbd",
-                                "killall -9 adbd 2>/dev/null",
-                                "start adbd"
-                            )
                             scopeLife {
+                                isEnabled = false
+                                val commands = arrayOf(
+                                    "setprop service.adb.tcp.port '$port'",
+                                    "stop adbd",
+                                    "killall -9 adbd 2>/dev/null",
+                                    "start adbd"
+                                )
                                 withIO {
                                     ShellUtils.execCommand(commands, true)
                                 }
+                                context.putString(OtherPrefs, "adb_port", port)
+                                adbPortLayout?.isEnabled = false
+                                adbTv?.text = "adb connect $getIP:$port"
+                                adbTvTip?.isVisible = true
+                                isEnabled = true
                             }
-                            context.putString(OtherPrefs, "adb_port", port)
-                            adbPortLayout?.isEnabled = false
-                            adbTv?.text = "adb connect $getIP:$port"
-                            adbTvTip?.isVisible = true
                         } else {
-                            val commands = arrayOf(
-                                "setprop service.adb.tcp.port -1",
-                                "stop adbd",
-                                "killall -9 adbd 2>/dev/null",
-                                "start adbd",
-                                "setprop service.adb.tcp.port ''"
-                            )
                             scopeLife {
+                                isEnabled = false
+                                val commands = arrayOf(
+                                    "setprop service.adb.tcp.port -1",
+                                    "stop adbd",
+                                    "killall -9 adbd 2>/dev/null",
+                                    "start adbd",
+                                    "setprop service.adb.tcp.port ''"
+                                )
                                 withIO {
                                     ShellUtils.execCommand(commands, true)
                                 }
+                                adbPortLayout?.isEnabled = true
+                                adbTv?.text = ""
+                                adbTvTip?.isVisible = false
+                                isEnabled = true
                             }
-                            adbPortLayout?.isEnabled = true
-                            adbTv?.text = ""
-                            adbTvTip?.isVisible = false
                         }
                     }
                 }

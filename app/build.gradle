@@ -25,7 +25,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk 28
         versionCode currentVersionCode
-        versionName "1.0.1_beta"
+        versionName "1.0.1"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
@@ -94,17 +94,19 @@ dependencies {
     //崩溃日志显示
     implementation "com.github.simplepeng.SpiderMan:spiderman:v1.1.9"
     // MoShi JSON ksp 注释处理
-    implementation 'com.squareup.moshi:moshi:1.14.0'
-    ksp 'com.squareup.moshi:moshi-kotlin-codegen:1.14.0'
+    def moshiVersion = '1.15.0'
+    implementation "com.squareup.moshi:moshi:${moshiVersion}"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}"
     //Rikka
     implementation "dev.rikka.rikkax.core:core:1.4.1"
     //kotlin协程
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-    //OkHttp相关
+    def kotlinxCoroutinesVersion = '1.7.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
+    //Net OkHttp相关
     //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
-    implementation 'com.github.liangjingkanji:Net:3.5.2'
+    implementation 'com.github.liangjingkanji:Net:3.5.8'
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
     //libsu
@@ -114,7 +116,7 @@ dependencies {
 //    implementation "com.github.topjohnwu.libsu:nio:${libsuVersion}"
 
     //Microsoft AppCenter
-    def appCenterSdkVersion = '5.0.0'
+    def appCenterSdkVersion = '5.0.1'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }

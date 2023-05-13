@@ -808,6 +808,13 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "staryang", details(
+                        DCInfo("20230512-183814", CQQ, 6.66, "101000026901502305121433682659")
+                    )
+                )
+            )
         }
     }
 

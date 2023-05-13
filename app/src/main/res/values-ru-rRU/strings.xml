@@ -263,8 +263,8 @@
     <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
     <string name="lock_screen_use_user_typeface">Компоненты на экране блокировки используют пользовательские шрифты</string>
-    <string name="LockScreenCarrier">Lock Screen Carrier</string>
-    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="LockScreenCarrier">Оператор на экране блокировки</string>
+    <string name="remove_statusbar_carriers">Удалить оператора в строке состояния</string>
     <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
     <string name="LockScreenButton">Кнопки экрана блокировки</string>
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>

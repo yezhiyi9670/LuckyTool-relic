@@ -263,8 +263,8 @@
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
     <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
-    <string name="LockScreenCarrier">Lock Screen Carrier</string>
-    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="LockScreenCarrier">Název operátora na zamykací obrazovce</string>
+    <string name="remove_statusbar_carriers">Odstranit název operátora ze stavové lišty</string>
     <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
     <string name="LockScreenButton">Tlačítka na zamykací obrazovce</string>
     <string name="remove_top_lock_screen_icon">Odstranit horní ikony na zamykací obrazovce</string>

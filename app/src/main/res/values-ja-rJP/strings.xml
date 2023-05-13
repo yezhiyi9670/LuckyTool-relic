@@ -195,10 +195,10 @@
     <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
-    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
-    <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
-    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn">コントロールセンターの下部にある VPN 情報を削除する</string>
+    <string name="remove_control_center_networkwarn_dialog">ダイアログを削除</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">接続情報とダイアログを削除</string>
+    <string name="remove_control_center_networkwarn_summary">VPN に接続すると、コントロールセンターの下部にメッセージが表示されます</string>
     <string name="StatusBarTiles">ステータスバーのタイル</string>
     <string name="TileLongClickEvent">タイルの長押しイベント</string>
     <string name="restore_some_tile_long_press_event">タイルの長押しイベントを復活させる</string>
@@ -263,8 +263,8 @@
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
     <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
-    <string name="LockScreenCarrier">Lock Screen Carrier</string>
-    <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
+    <string name="LockScreenCarrier">ロック画面のキャリア表示</string>
+    <string name="remove_statusbar_carriers">ステータスバーのキャリア表示を削除</string>
     <string name="statusbar_carriers_use_user_typeface">ステータスバーのキャリア表示にユーザーフォントを使用します</string>
     <string name="LockScreenButton">ロック画面ボタン</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
