@@ -72,6 +72,7 @@
     <string-array name="remove_fingerprint_icon_mode_entries">
         <item>@string/common_words_close</item>
         <item>@string/remove_fingerprint_icon</item>
+        <item>@string/remove_fingerprint_press_animation</item>
         <item>@string/remove_fingerprint_icon_and_press_animation</item>
     </string-array>
     
@@ -102,6 +103,12 @@
         <item>@string/common_words_default</item>
         <item>@string/remove_control_center_networkwarn_dialog</item>
         <item>@string/remove_control_center_networkwarn_dialog_and_text</item>
+    </string-array>
+    
+    <string-array name="statusbar_control_center_auto_brightness_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_add</item>
+        <item>@string/common_words_remove</item>
     </string-array>
 
 </resources>

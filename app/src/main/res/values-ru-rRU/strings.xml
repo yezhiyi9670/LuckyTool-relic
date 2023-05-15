@@ -194,6 +194,7 @@
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
+    <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
     <string name="remove_control_center_networkwarn">Удалить информацию о VPN в нижней части центра управления</string>
@@ -260,6 +261,7 @@
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenComponent">Компоненты экрана блокировки</string>
+    <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
     <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
@@ -368,8 +370,8 @@
     <string name="FingerPrintRelated">Отпечаток пальца</string>
     <string name="remove_fingerprint_icon_mode">Удалить иконку отпечатка</string>
     <string name="remove_fingerprint_icon">Удалить иконку отпечатка</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Удалить иконку отпечатка пальца и анимацию нажатия</string>
     <string name="remove_fingerprint_press_animation">Удалить анимацию нажатия отпечатка пальца</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Удалить иконку отпечатка пальца и анимацию нажатия</string>
     <string name="replace_fingerprint_icon_switch">Заменить иконку отпечатка пальца</string>
     <string name="replace_fingerprint_icon_switch_summary">Рекомендуемое разрешение изображения около 216 x 216</string>
     <string name="replace_fingerprint_icon_path">Путь к иконке отпечатка пальца</string>
@@ -483,7 +485,7 @@
     <string name="file_size">Размер файла</string>
     <string name="update_time">Время обновления</string>
     <string name="last_update_time">Время последнего обновления</string>
-    <string name="select_download_source">Select download source</string>
+    <string name="select_download_source">Выбрать источник загрузки</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>

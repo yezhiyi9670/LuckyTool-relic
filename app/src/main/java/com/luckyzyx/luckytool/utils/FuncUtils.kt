@@ -331,15 +331,13 @@ fun getDeviceID(): String {
  * /data/system/openid_config.xml
  */
 val getGuid: String
-    get() {
-        ShellUtils.execCommand(
-            "cat /data/system/openid_config.xml | sed  -n '3p'", true, true
-        ).apply {
-            return if (result == 1) "null"
-            else successMsg.takeIf { e -> e.isNotBlank() }?.split("\"")?.get(3) ?: "null"
-        }
+    get() = ShellUtils.execCommand(
+        "cat /data/system/openid_config.xml | sed  -n '3p'", true, true
+    ).let {
+        if (it.result == 1) "null"
+        else it.successMsg.takeIf { e -> e != null && e.isNotBlank() }?.split("\"")?.get(3)
+            ?: "null"
     }
-
 
 /**
  * 获取prop数据
@@ -577,6 +575,10 @@ fun Preference.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> U
         else -> null
     }
     if (image == null) {
+        result(null, true)
+        return
+    }
+    if (image.intrinsicWidth <= 0 || image.intrinsicHeight <= 0) {
         result(null, true)
         return
     }

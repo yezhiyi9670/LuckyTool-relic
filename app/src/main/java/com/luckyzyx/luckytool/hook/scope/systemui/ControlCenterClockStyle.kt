@@ -1,10 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.utils.ThemeColorUtils
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -96,10 +96,16 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                             )
                         }
 
-                        1 -> sp.setSpan(
-                            ForegroundColorSpan(Color.parseColor("#c41442")),
-                            i2, i2 + 1, 0
-                        )
+                        1 -> {
+                            val colorRes =
+                                ThemeColorUtils(appClassLoader).let {
+                                    it.getColor(17) ?: it.controlCenterRedOne
+                                }
+                            sp.setSpan(
+                                ForegroundColorSpan(colorRes),
+                                i2, i2 + 1, 0
+                            )
+                        }
                     }
                 }
             }

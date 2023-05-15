@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.packageinstaller
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object HookFeatureOption : YukiBaseHooker() {
+object HookPackageInstallerFeature : YukiBaseHooker() {
     override fun onHook() {
         val isAOSP = false//(ModulePrefs).getBoolean("replase_aosp_installer", false)
         val isAds = prefs(ModulePrefs).getBoolean("remove_install_ads", false)

@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.ui.service
 
 import android.content.Context
 import android.content.Intent
+import android.os.RemoteException
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.hook.utils.ITelephonyUtils
 import com.luckyzyx.luckytool.hook.utils.ServiceManagerUtils
@@ -27,25 +28,25 @@ class FiveGControllerService : RootService() {
             return try {
                 if (SDK >= A12) {
                     ITelephonyUtils(null).let {
-                        it.setAllowedNetworkTypesForReason(
-                            iTelephony, subId, it.reasonUser,
-                            it.getAllowedNetworkTypesForReason(iTelephony, subId, it.reasonUser)!!
-                        )!!
-                    }
+                        it.getAllowedNetworkTypesForReason(iTelephony, subId, it.reasonUser)
+                            ?.let { it1 ->
+                                it.setAllowedNetworkTypesForReason(
+                                    iTelephony, subId,
+                                    it.reasonUser, it1
+                                )
+                            }
+                    } == true
                 } else {
                     // For Q and R.
                     ITelephonyUtils(null).let {
-                        it.setPreferredNetworkType(
-                            iTelephony, subId,
-                            it.getPreferredNetworkType(iTelephony, subId)!!
-                        )!!
-                    }
+                        it.getPreferredNetworkType(iTelephony, subId)?.let { it1 ->
+                            it.setPreferredNetworkType(iTelephony, subId, it1)
+                        }
+                    } == true
                 }
-            } catch (_: Exception) {
+            } catch (_: Throwable) {
                 false
-            } catch (_: java.lang.reflect.InvocationTargetException) {
-                false
-            } catch (_: android.os.DeadObjectException) {
+            } catch (_: RemoteException) {
                 false
             }
         }
@@ -56,19 +57,21 @@ class FiveGControllerService : RootService() {
                     ITelephonyUtils(null).let {
                         it.getAllowedNetworkTypesForReason(
                             iTelephony, subId, it.reasonUser
-                        )!! and it.bitMaskNR != 0L
-                    }
+                        )?.let { it1 ->
+                            it1 and it.bitMaskNR != 0L
+                        }
+                    } == true
                 } else {
                     // For Q and R.
                     ITelephonyUtils(null).let {
-                        it.getPreferredNetworkType(iTelephony, subId)!! == it.modeNR
-                    }
+                        it.getPreferredNetworkType(iTelephony, subId)?.let { it1 ->
+                            it1 == it.modeNR
+                        }
+                    } == true
                 }
-            } catch (_: Exception) {
+            } catch (_: Throwable) {
                 false
-            } catch (_: java.lang.reflect.InvocationTargetException) {
-                false
-            } catch (_: android.os.DeadObjectException) {
+            } catch (_: RemoteException) {
                 false
             }
         }
@@ -79,12 +82,14 @@ class FiveGControllerService : RootService() {
                     ITelephonyUtils(null).let {
                         var curTypes = it.getAllowedNetworkTypesForReason(
                             iTelephony, subId, it.reasonUser
-                        )!!
-                        curTypes = if (enabled) curTypes or it.bitMaskNR
-                        else curTypes and it.bitMaskNR.inv()
-                        it.setAllowedNetworkTypesForReason(
-                            iTelephony, subId, it.reasonUser, curTypes
                         )
+                        curTypes = if (enabled) curTypes?.or(it.bitMaskNR)
+                        else curTypes?.and(it.bitMaskNR.inv())
+                        curTypes?.let { it1 ->
+                            it.setAllowedNetworkTypesForReason(
+                                iTelephony, subId, it.reasonUser, it1
+                            )
+                        }
                     }
                 } else {
                     // For Q and R.
@@ -94,11 +99,9 @@ class FiveGControllerService : RootService() {
                         )
                     }
                 }
-            } catch (_: Exception) {
+            } catch (_: Throwable) {
 
-            } catch (_: java.lang.reflect.InvocationTargetException) {
-
-            } catch (_: android.os.DeadObjectException) {
+            } catch (_: RemoteException) {
 
             }
         }

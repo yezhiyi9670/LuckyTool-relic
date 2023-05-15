@@ -17,9 +17,7 @@ object DoubleClickLockScreen : YukiBaseHooker() {
         //Source PhoneStatusBarView
         findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
             injectMember {
-                method {
-                    name = "onFinishInflate"
-                }
+                method { name = "onFinishInflate" }
                 beforeHook {
                     val statusbar = instance<ViewGroup>()
                     statusbar.setOnTouchListener { v, event ->
@@ -49,6 +47,6 @@ object DoubleClickLockScreen : YukiBaseHooker() {
 
     private fun goToSleep(context: Context) {
         val service = context.getSystemService(Context.POWER_SERVICE)
-        service.current { method { name = "goToSleep" }.call(SystemClock.uptimeMillis()) }
+        service.current().method { name = "goToSleep" }.call(SystemClock.uptimeMillis())
     }
 }

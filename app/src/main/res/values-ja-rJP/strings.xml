@@ -194,6 +194,7 @@
     <string name="ControlCenter_UI_Related">コントロールセンターのUI関連</string>
     <string name="enable_notification_align_both_sides">通知の両端揃えを有効化</string>
     <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
+    <string name="set_auto_brightness_button_mode">明るさ自動調整ボタンのモードを設定</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
     <string name="remove_control_center_networkwarn">コントロールセンターの下部にある VPN 情報を削除する</string>
@@ -260,6 +261,7 @@
     <!--LockScreen-->
     <string name="LockScreen">ロック画面関連</string>
     <string name="LockScreenComponent">ロック画面コンポーネント</string>
+    <string name="lock_screen_clock_redone_mode">ロック画面時計の赤い「1」表示</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
@@ -368,8 +370,8 @@
     <string name="FingerPrintRelated">指紋認証関連</string>
     <string name="remove_fingerprint_icon_mode">指紋アイコンを削除</string>
     <string name="remove_fingerprint_icon">指紋アイコンを削除</string>
-    <string name="remove_fingerprint_icon_and_press_animation">指紋アイコンと押した時のアニメを削除</string>
     <string name="remove_fingerprint_press_animation">指紋アイコンを押した時のアニメを削除</string>
+    <string name="remove_fingerprint_icon_and_press_animation">指紋アイコンと押した時のアニメを削除</string>
     <string name="replace_fingerprint_icon_switch">指紋アイコンを置き換え</string>
     <string name="replace_fingerprint_icon_switch_summary">解像度約216×216の画像がおすすめです</string>
     <string name="replace_fingerprint_icon_path">指紋アイコンのパス</string>
@@ -483,7 +485,7 @@
     <string name="file_size">ファイルのサイズ</string>
     <string name="update_time">更新時間</string>
     <string name="last_update_time">最終更新日時</string>
-    <string name="select_download_source">Select download source</string>
+    <string name="select_download_source">ダウンロード元を選択</string>
     <string name="update_logs">アップデートログ</string>
     <string name="check_update_hint">新しいバージョンがあります!</string>
     <string name="go_download_page">ダウンロードページを開く</string>

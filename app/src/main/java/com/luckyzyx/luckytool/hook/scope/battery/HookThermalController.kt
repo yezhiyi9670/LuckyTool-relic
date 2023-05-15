@@ -22,7 +22,9 @@ object HookThermalController : YukiBaseHooker() {
 //                        list["configItemName"] = field { name = "configItemName" }.string()
 //                        list["gearLevel"] = field { name = "gearLevel" }.int()
 
-//                        list["brightness"] = field { name = "brightness" }.int()
+                        list["brightness"] = field { name = "brightness" }.int()
+                        field { name = "brightness" }.set(-1)
+
                         list["charge"] = field { name = "charge" }.int()
                         field { name = "charge" }.set(3)
 //                        list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()

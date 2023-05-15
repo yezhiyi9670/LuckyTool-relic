@@ -45,6 +45,13 @@ object LockScreenComponent : YukiBaseHooker() {
                 if (userTypeface) intercept()
             }
         }
+        //Source RedHorizontalDualClockView
+        findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView").hook {
+            injectMember {
+                method { name = "setTextFont" }
+                if (userTypeface) intercept()
+            }
+        }
     }
 
     private fun View.setCenterHorizontally() {

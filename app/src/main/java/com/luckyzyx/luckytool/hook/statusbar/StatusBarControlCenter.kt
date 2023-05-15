@@ -20,9 +20,14 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //移除控制中心日期
         loadHooker(ControlCenterDateStyle)
 
-        //磁贴底部网络警告
-        loadHooker(RemoveStatusBarBottomNetworkWarn)
-
+        //通知两侧对齐
+        if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
+            loadHooker(EnableNotificationAlignBothSides)
+        }
+        //强制显示媒体播放器
+        if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
+            loadHooker(ForceDisplayMediaPlayer)
+        }
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {
             if (SDK < A13) loadHooker(RemoveControlCenterUserSwitcher)
@@ -31,13 +36,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_control_center_mydevice", false)) {
             if (SDK >= A13) loadHooker(RemoveControlCenterMydevice)
         }
-        //强制显示媒体播放器
-        if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
-            loadHooker(ForceDisplayMediaPlayer)
-        }
-        //通知两侧对齐
-        if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
-            loadHooker(EnableNotificationAlignBothSides)
-        }
+        //磁贴底部网络警告
+        loadHooker(RemoveStatusBarBottomNetworkWarn)
     }
 }

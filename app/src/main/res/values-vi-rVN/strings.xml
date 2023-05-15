@@ -194,6 +194,7 @@
     <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
+    <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
     <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
     <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
@@ -260,6 +261,7 @@
     <!--LockScreen-->
     <string name="LockScreen">Màn hình khóa</string>
     <string name="LockScreenComponent">Lock Screen Component</string>
+    <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
     <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
@@ -368,8 +370,8 @@
     <string name="FingerPrintRelated">Vân tay</string>
     <string name="remove_fingerprint_icon_mode">Remove fingerprint icon mode</string>
     <string name="remove_fingerprint_icon">Xóa biểu tượng dấu vân tay</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
     <string name="remove_fingerprint_press_animation">Remove fingerprint press animation</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Remove fingerprint icon and press animation</string>
     <string name="replace_fingerprint_icon_switch">Replace fingerprint icon switch</string>
     <string name="replace_fingerprint_icon_switch_summary">The recommended image resolution is around 216 x 216</string>
     <string name="replace_fingerprint_icon_path">Fingerprint icon path</string>

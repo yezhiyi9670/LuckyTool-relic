@@ -194,6 +194,7 @@
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
     <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
+    <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
     <string name="remove_control_center_networkwarn">Odstranit informace o VPN v dolní části ovládacího centra</string>
@@ -260,6 +261,7 @@
     <!--LockScreen-->
     <string name="LockScreen">Zámek obrazovky</string>
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
+    <string name="lock_screen_clock_redone_mode">Režim červené jedničky na zamykací obrazovce</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
@@ -368,8 +370,8 @@
     <string name="FingerPrintRelated">Nastavení související s otiskem prstu</string>
     <string name="remove_fingerprint_icon_mode">Odstranit ikonu otisku prstu</string>
     <string name="remove_fingerprint_icon">Odstranit ikonu otisku prstu</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Odstranit ikonu otisku prstu a animovat jejího stisknutí</string>
     <string name="remove_fingerprint_press_animation">Odstranit animaci stisknutí otisku prstu</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Odstranit ikonu otisku prstu a animovat jejího stisknutí</string>
     <string name="replace_fingerprint_icon_switch">Nahradit přepínač ikony otisku prstu</string>
     <string name="replace_fingerprint_icon_switch_summary">Doporučené rozlišení obrázku je přibližně 216 x 216</string>
     <string name="replace_fingerprint_icon_path">Cesta k ikoně otisku prstu</string>
@@ -483,7 +485,7 @@
     <string name="file_size">Velikost souboru</string>
     <string name="update_time">Čas aktualizace</string>
     <string name="last_update_time">Čas poslední aktualizace</string>
-    <string name="select_download_source">Select download source</string>
+    <string name="select_download_source">Vyberte zdroj stahování</string>
     <string name="update_logs">Aktualizovat protokoly</string>
     <string name="check_update_hint">Byla nalezena nová verze!</string>
     <string name="go_download_page">Přejít na stránku pro stažení</string>

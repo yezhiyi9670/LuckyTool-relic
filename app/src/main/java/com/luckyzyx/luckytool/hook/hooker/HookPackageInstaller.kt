@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.AllowReplaceInstall
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.AutoClickInstallButton
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.AutoClickUnInstallButton
-import com.luckyzyx.luckytool.hook.scope.packageinstaller.HookFeatureOption
+import com.luckyzyx.luckytool.hook.scope.packageinstaller.HookPackageInstallerFeature
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.RemoveInstallAds
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.ShowPackageNameAndVersionCode
 import com.luckyzyx.luckytool.hook.scope.packageinstaller.SkipApkScan
@@ -24,7 +24,7 @@ object HookPackageInstaller : YukiBaseHooker() {
         //非ColorOS官方安装器直接返回
         if (appSet[2] == "null") return
         //HookFeatureOption
-        loadHooker(HookFeatureOption)
+        loadHooker(HookPackageInstallerFeature)
         //跳过安装扫描
         if (prefs(ModulePrefs).getBoolean("skip_apk_scan", false)) {
             loadHooker(SkipApkScan(appSet[2]))

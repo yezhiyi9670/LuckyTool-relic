@@ -28,7 +28,6 @@ import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getDocumentPath
-import com.luckyzyx.luckytool.utils.getOSVersion
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.navigate
@@ -1075,7 +1074,6 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     key = "remove_control_center_date_comma"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
-                    isVisible = getOSVersion() < 13.1
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
                             .put("remove_control_center_date_comma", newValue)
@@ -1159,6 +1157,18 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                }
+            )
+            addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.set_auto_brightness_button_mode)
+                    summary = "%s"
+                    key = "set_auto_brightness_button_mode"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_auto_brightness_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
                 }
             )
             addPreference(
@@ -1884,14 +1894,18 @@ class LockScreen : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_redone)
-                    key = "remove_lock_screen_redone"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.lock_screen_clock_redone_mode)
+                    summary = "%s"
+                    key = "lock_screen_clock_redone_mode"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("remove_lock_screen_redone", newValue)
+                            .put("lock_screen_clock_redone_mode", newValue)
                         true
                     }
                 }
@@ -2505,7 +2519,7 @@ class FingerPrintRelated : ModulePreferenceFragment() {
                     summary = "%s"
                     key = "remove_fingerprint_icon_mode"
                     entries = resources.getStringArray(R.array.remove_fingerprint_icon_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
+                    entryValues = arrayOf("0", "1", "2", "3")
                     setDefaultValue("0")
                     isIconSpaceReserved = false
                 }

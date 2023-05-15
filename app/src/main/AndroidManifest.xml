@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!--读取应用列表-->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
-    <uses-permission android:name="com.oplus.ocs.permission.third"/>
+    <uses-permission android:name="com.oplus.ocs.permission.third" />
     <!--所有文件访问-->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <!--发送通知-->

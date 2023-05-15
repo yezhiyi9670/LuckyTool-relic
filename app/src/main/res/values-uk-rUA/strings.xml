@@ -194,6 +194,7 @@
     <string name="ControlCenter_UI_Related">Інтерфейс користувача центру управління</string>
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
     <string name="force_display_media_player">Примусово відображати медіаплеєр</string>
+    <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Видалити перемикач користувачів центру керування</string>
     <string name="remove_control_center_mydevice">Видалити центр керування моїм пристроєм</string>
     <string name="remove_control_center_networkwarn">Видалити інформацію про VPN в нижній частині центру керування</string>
@@ -260,6 +261,7 @@
     <!--LockScreen-->
     <string name="LockScreen">Екран блокування</string>
     <string name="LockScreenComponent">Компоненти екрана блокування</string>
+    <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="remove_lock_screen_redone">Видалити червоний годинник з екрану блокування</string>
     <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
     <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
@@ -368,8 +370,8 @@
     <string name="FingerPrintRelated">Відбиток пальця</string>
     <string name="remove_fingerprint_icon_mode">Видалити іконку відбитка</string>
     <string name="remove_fingerprint_icon">Видалити іконку відбитка</string>
-    <string name="remove_fingerprint_icon_and_press_animation">Видалити іконку відбитка пальця та анімацію натискання</string>
     <string name="remove_fingerprint_press_animation">Видалити анімацію натискання відбитка пальця</string>
+    <string name="remove_fingerprint_icon_and_press_animation">Видалити іконку відбитка пальця та анімацію натискання</string>
     <string name="replace_fingerprint_icon_switch">Замінити іконку відбитка пальця</string>
     <string name="replace_fingerprint_icon_switch_summary">Рекомендована роздільна здатність зображення близько 216 x 216</string>
     <string name="replace_fingerprint_icon_path">Шлях до іконки відбитка пальця</string>

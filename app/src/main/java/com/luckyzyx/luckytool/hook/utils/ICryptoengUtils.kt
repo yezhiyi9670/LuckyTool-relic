@@ -1,7 +1,7 @@
 package com.luckyzyx.luckytool.hook.utils
 
 import com.highcapable.yukihookapi.hook.factory.method
-import com.luckyzyx.luckytool.hook.scope.systemui.FingerPrintIcon.toClass
+import com.luckyzyx.luckytool.hook.scope.systemui.FingerPrintIconAnim.toClass
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class ICryptoengUtils(val classLoader: ClassLoader?) {

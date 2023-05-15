@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.annotation.SuppressLint
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
@@ -47,7 +48,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
     }
 
     @SuppressLint("DiscouragedApi")
-    private fun ViewGroup.setViewWidth() {
+    private fun View.setViewWidth() {
         if (qsPanelPaddingPx == 0) qsPanelPaddingPx = resources.getDimensionPixelSize(
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )

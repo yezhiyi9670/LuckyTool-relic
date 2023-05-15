@@ -37,8 +37,12 @@ import java.util.*
 class XposedFragment : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
-        init()
         requireActivity().ckqcbss()
+    }
+
+    override fun onResume() {
+        init()
+        super.onResume()
     }
 
     private fun init() {
