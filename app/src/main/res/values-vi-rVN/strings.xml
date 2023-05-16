@@ -191,8 +191,10 @@
     <string name="remove_control_center_date_comma">Xóa dấu phẩy ngày của trung tâm điều khiển</string>
     <string name="fix_control_center_date_display">Fix control center date display</string>
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
-    <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
+    <string name="ControlCenterNotificationCenter">Control Center Notification Center</string>
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="enable_notification_importance_classification">Enable notification importance classification</string>
+    <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
@@ -262,6 +264,7 @@
     <string name="LockScreen">Màn hình khóa</string>
     <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
+    <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
     <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
     <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
@@ -279,11 +282,13 @@
     <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Xóa xác thực mật khẩu 72 giờ</string>
     <string name="remove_72hour_password_verification_summary">Đã xóa hạn chế bảo mật không sử dụng mật khẩu để mở khóa trong vòng 72 giờ sau khi khởi động, có hiệu lực sau khi khởi động lại hệ thống</string>
-    <!--Desktop-->
-    <string name="Desktop">Màn hình chính</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">Clock widget red one mode</string>
     <string name="remove_alarmclock_widget_redone">Xóa số một màu đỏ của đồng hồ máy tính để bàn</string>
     <string name="remove_alarmclock_widget_redone_pro">Xóa số một đỏ nâng cao của đồng hồ trên màn hình chính</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Chỉ khả dụng khi phiên bản thông thường không có hiệu lực, nếu không nó sẽ gây ra lỗi không thể tránh khỏi</string>
+    <!--Desktop-->
+    <string name="Desktop">Màn hình chính</string>
     <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
@@ -404,11 +409,13 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">If the APP is manually granted the `ignore battery optimization` permission by the user, After enabling this function, the APP will not be automatically added to the battery optimization whitelist</string>
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
-    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
     <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="force_display_dc_backlight_mode">Forced to display low brightness and no flicker eye protection</string>
     <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
+    <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
+    <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
     <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
@@ -425,6 +432,8 @@
     <string name="remove_root_check_summary">Xóa giới hạn phát hiện root cho bộ lọc trò chơi</string>
     <string name="remove_startup_animation">Xóa hoạt ảnh khởi động</string>
     <string name="remove_welfare_page">Remove welfare page</string>
+    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">Bật chế độ nhà phát triển</string>
     <string name="enable_eva_theme">Bật chủ đề EVA</string>
     <string name="enable_developer_page_summary">Sau khi bật chức năng này và khởi động lại\nbạn có thể chuyển sang sử dụng chức năng này thông qua lối tắt</string>

@@ -8,6 +8,7 @@ import com.luckyzyx.luckytool.hook.utils.ThemeColorUtils
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.getCharColor
 
 object ControlCenterClockStyle : YukiBaseHooker() {
     override fun onHook() {
@@ -63,12 +64,6 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         }
     }
 
-    private fun getCharColor(view: TextView): Int? {
-        val sp = SpannableString(view.text)
-        val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
-        return if (colorSpan.isNotEmpty()) colorSpan[0].foregroundColor else null
-    }
-
     private fun setStyle(view: TextView, char: CharSequence, colonStyle: String, redStyle: String) {
         val colonMode = if (colonStyle == "1") 1 else if (colonStyle == "2") 2 else 0
         val redMode = if (redStyle == "1") 1 else if (redStyle == "2") 2 else 0
@@ -89,7 +84,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 if (sb[i2].toString() == "1") {
                     when (redMode) {
                         0 -> {
-                            val color = getCharColor(view)
+                            val color = getCharColor(view.text)
                             if (color != null) sp.setSpan(
                                 ForegroundColorSpan(color),
                                 i2, i2 + 1, 0

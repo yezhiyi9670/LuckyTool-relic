@@ -207,8 +207,11 @@
     <string name="fix_control_center_date_display">Fix control center date display</string>
     <string name="fix_control_center_date_display_suammry">Fix the problem that the date cannot be displayed completely</string>
     
-    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
+    <string name="ControlCenterNotificationCenter">Control Center Notification Center</string>
     <string name="enable_notification_align_both_sides">Enable notification align both sides</string>
+    <string name="enable_notification_importance_classification">Enable notification importance classification</string>
+    
+    <string name="ControlCenter_UI_Related">Control Center UI Related</string>
     <string name="force_display_media_player">Force the display of the media player</string>
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
@@ -283,6 +286,7 @@
     <string name="LockScreen">Lockscreen Related</string>
     <string name="LockScreenComponent">Lock Screen Component</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
+    <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
     <string name="set_lock_screen_centered">Center the lockscreen component</string>
     <string name="set_lock_screen_centered_summary">Only for systems where the lock screen cannot be centered in the settings</string>
@@ -303,12 +307,15 @@
     <string name="LockScreenEvent">Lock Screen Event</string>
     <string name="remove_72hour_password_verification">Remove 72-hour password authentication</string>
     <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting,Effective after system restart</string>
-    <!--Desktop-->
-    <string name="Desktop">Desktop Related</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">Clock widget red one mode</string>
     <string name="remove_alarmclock_widget_redone">Remove desktop clock component red one</string>
     <string name="remove_alarmclock_widget_redone_pro">Remove the desktop clock component Red One Enhanced Edition</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Only available when the regular version does not take effect, otherwise it will cause an inevitable error</string>
     
+    <!--Desktop-->
+    <string name="Desktop">Desktop Related</string>
+
     <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
@@ -437,11 +444,13 @@
     
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>
-    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
     <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="force_display_dc_backlight_mode">Forced to display low brightness and no flicker eye protection</string>
     <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
+    <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
+    <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
+    <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
@@ -459,6 +468,8 @@
     <string name="remove_root_check_summary">Remove Root Detection Limit for Game Filter</string>
     <string name="remove_startup_animation">Remove startup animation</string>
     <string name="remove_welfare_page">Remove welfare page</string>
+    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">Enable developer page</string>
     <string name="enable_eva_theme">Enable EVA theme</string>
     <string name="enable_developer_page_summary">After enabling this feature and restarting the scope, \n can jump to it via the shortcut portal</string>

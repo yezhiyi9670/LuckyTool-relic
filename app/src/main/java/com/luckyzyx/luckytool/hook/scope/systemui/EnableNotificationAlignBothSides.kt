@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.getScreenOrientation
-import kotlin.math.abs
 
 object EnableNotificationAlignBothSides : YukiBaseHooker() {
 
@@ -54,10 +53,8 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
         )
         getScreenOrientation(this) {
             layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
-                val left = abs(qsPanelPaddingPx - marginLeft)
-                val right = abs(qsPanelPaddingPx - marginRight)
                 width = if (it) {
-                    resources.displayMetrics.widthPixels - left - right
+                    resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
                 } else -1
             }
         }

@@ -1137,8 +1137,8 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
             }
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.ControlCenter_UI_Related)
-                    key = "ControlCenter_UI_Related"
+                    title = getString(R.string.ControlCenterNotificationCenter)
+                    key = "ControlCenterNotificationCenter"
                     isIconSpaceReserved = false
                 }
             )
@@ -1147,6 +1147,21 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     title = getString(R.string.enable_notification_align_both_sides)
                     key = "enable_notification_align_both_sides"
                     setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_notification_importance_classification)
+                    key = "enable_notification_importance_classification"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.ControlCenter_UI_Related)
+                    key = "ControlCenter_UI_Related"
                     isIconSpaceReserved = false
                 }
             )
@@ -1640,18 +1655,27 @@ class StatusBarBattery : ModulePreferenceFragment() {
     }
 }
 
-class Desktop : ModulePreferenceFragment() {
+class Launcher : ModulePreferenceFragment() {
     private val scopes = arrayOf("com.coloros.alarmclock", "com.android.launcher")
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_alarmclock_widget_redone)
-                    key = "remove_alarmclock_widget_redone"
-                    setDefaultValue(false)
+                DropDownPreference(context).apply {
+                    title = getString(R.string.alarmclock_widget_redone_mode)
+                    summary = "%s"
+                    key = "alarmclock_widget_redone_mode"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.coloros.alarmclock")
+                            .put("alarmclock_widget_redone_mode", newValue)
+                        true
+                    }
                 }
             )
             addPreference(
@@ -1906,6 +1930,19 @@ class LockScreen : ModulePreferenceFragment() {
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
                             .put("lock_screen_clock_redone_mode", newValue)
+                        true
+                    }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.apply_lock_screen_dual_clock_redone)
+                    key = "apply_lock_screen_dual_clock_redone"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("apply_lock_screen_dual_clock_redone", newValue)
                         true
                     }
                 }
@@ -2725,14 +2762,6 @@ class Settings : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
-                    title = getString(R.string.video_frame_insertion_support_2K120)
-                    key = "video_frame_insertion_support_2K120"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
                     title = getString(R.string.remove_dpi_restart_recovery)
                     summary = getString(R.string.remove_dpi_restart_recovery_summary)
                     key = "remove_dpi_restart_recovery"
@@ -2745,6 +2774,32 @@ class Settings : ModulePreferenceFragment() {
                     title = getString(R.string.force_display_dc_backlight_mode)
                     summary = getString(R.string.force_display_dc_backlight_mode_summary)
                     key = "force_display_dc_backlight_mode"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.force_display_video_memc_frame_insertion)
+                    summary = getString(R.string.force_display_dc_backlight_mode_summary)
+                    key = "force_display_video_memc_frame_insertion"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.video_frame_insertion_support_2K120)
+                    key = "video_frame_insertion_support_2K120"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.force_display_bottom_google_settings)
+                    key = "force_display_bottom_google_settings"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -2990,6 +3045,15 @@ class OplusGames : ModulePreferenceFragment() {
                 SwitchPreference(context).apply {
                     title = getString(R.string.remove_welfare_page)
                     key = "remove_welfare_page"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_some_vip_limit)
+                    summary = getString(R.string.remove_some_vip_limit_summary)
+                    key = "remove_some_vip_limit"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }

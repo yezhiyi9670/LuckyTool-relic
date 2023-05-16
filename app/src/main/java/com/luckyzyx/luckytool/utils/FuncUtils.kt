@@ -19,7 +19,9 @@ import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.provider.Settings
 import android.service.quicksettings.TileService
+import android.text.SpannableString
 import android.text.TextUtils
+import android.text.style.ForegroundColorSpan
 import android.util.ArrayMap
 import android.util.ArraySet
 import android.util.Base64
@@ -1257,4 +1259,25 @@ fun Context.ckqcbs(): Boolean {
         }
     }
     return false
+}
+
+/**
+ * 获取文本颜色(ColorSpan)
+ * @param char CharSequence
+ * @return Int? 返回Span数组中下标为0的前景色
+ */
+fun getCharColor(char: CharSequence): Int? {
+    val sp = SpannableString(char)
+    val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
+    return if (colorSpan != null && colorSpan.isNotEmpty()) colorSpan[0].foregroundColor else null
+}
+
+/**
+ * 获取文本Span数组
+ * @param char CharSequence
+ * @return Array<out ForegroundColorSpan>?
+ */
+fun getCharSpans(char: CharSequence): Array<out ForegroundColorSpan>? {
+    val colorSpans = SpannableString(char).getSpans(0, char.length, ForegroundColorSpan::class.java)
+    return if (colorSpans == null || colorSpans.isEmpty()) null else colorSpans
 }

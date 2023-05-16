@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableSupportCompetitionMode
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableXModeFeature
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveCompetitionModeSound
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveSomeVipLimit
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveStartupAnimation
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveWelfarePage
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -46,6 +47,10 @@ object HookOplusGames : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_welfare_page", false)) {
                 loadHooker(RemoveWelfarePage)
             }
+            //移除部分VIP限制
+            if (prefs(ModulePrefs).getBoolean("remove_some_vip_limit", false)) {
+                loadHooker(RemoveSomeVipLimit)
+            }
 
             //Search GamePerfModeModel -> perf_touch_response_extreme_rb
             //<string name="perf_touch_response_extreme_response">极致触控</string>
@@ -62,9 +67,6 @@ object HookOplusGames : YukiBaseHooker() {
             //GPA极限稳帧
             //com.oplus.cosa.gpalibrary.core.GpaCore
 
-            //network_speed_vip -> oppo_acc
-
-            //游戏变声VIP (作废) -> com.oplus.games.account.bean.VipInfoBean.VipInfosDTO
         }
 
 //        if (packageName == "com.oplus.cosa") { }

@@ -1,13 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.annotation.SuppressLint
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.luckyzyx.luckytool.hook.utils.ThemeColorUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import java.util.Calendar
@@ -16,6 +13,8 @@ object LockScreenClock : YukiBaseHooker() {
     override fun onHook() {
         var redMode = prefs(ModulePrefs).getString("lock_screen_clock_redone_mode", "0")
         dataChannel.wait<String>("lock_screen_clock_redone_mode") { redMode = it }
+        var dualClock = prefs(ModulePrefs).getBoolean("apply_lock_screen_dual_clock_redone", false)
+        dataChannel.wait<Boolean>("apply_lock_screen_dual_clock_redone") { dualClock = it }
 
         //OnePlus kgd_red_horizontal_single_clock / kgd_red_horizontal_dual_clock
         //Source RedTextClock
@@ -46,7 +45,7 @@ object LockScreenClock : YukiBaseHooker() {
                     paramCount = 3
                 }.all()
                 afterHook {
-                    loggerD(msg = method.name)
+                    if (!dualClock) return@afterHook
                     val type: String = method.name.let {
                         if (it.contains("updateLocateTime")) "LocateTime"
                         else if (it.contains("updateResidentTime")) "ResidentTime"
@@ -99,6 +98,7 @@ object LockScreenClock : YukiBaseHooker() {
             injectMember {
                 method { param(weatherInfoClazz) }.all()
                 afterHook {
+                    if (!dualClock) return@afterHook
                     val type: String = method.name.let {
                         if (it.contains("updateLocatedTime")) "LocatedTime"
                         else if (it.contains("updateResidentTime")) "ResidentTime"
@@ -134,36 +134,15 @@ object LockScreenClock : YukiBaseHooker() {
         }
     }
 
-    private fun getCharColor(view: TextView): Int? {
-        val sp = SpannableString(view.text)
-        val colorSpan = sp.getSpans(0, sp.length, ForegroundColorSpan::class.java)
-        return if (colorSpan.isNotEmpty()) colorSpan[0].foregroundColor else null
-    }
-
-    @SuppressLint("DiscouragedApi")
     private fun TextView.setClockRed(format: String, redMode: String) {
-        val mode = if (redMode == "1") 1 else if (redMode == "2") 2 else 0
         val sp = SpannableStringBuilder(format)
-        if (mode != 2) {
-            val charArray = format.toCharArray()
-            for (i in charArray.indices) {
-                if (charArray[i].toString() == "1") {
-                    when (mode) {
-                        0 -> {
-                            val color = getCharColor(this)
-                            if (color != null) sp.setSpan(
-                                ForegroundColorSpan(color), i, i + 1, 34
-                            )
-                        }
-
-                        1 -> {
-                            val colorRes =
-                                ThemeColorUtils(appClassLoader).let {
-                                    it.getColor(17) ?: it.controlCenterRedOne
-                                }
-                            sp.setSpan(ForegroundColorSpan(colorRes), i, i + 1, 34)
-                        }
+        if (redMode == "1") {
+            for (i in format.indices) {
+                if (format[i].toString() == "1") {
+                    val colorRes = ThemeColorUtils(appClassLoader).let {
+                        it.getColor(17) ?: it.controlCenterRedOne
                     }
+                    sp.setSpan(ForegroundColorSpan(colorRes), i, i + 1, 34)
                 }
             }
         }

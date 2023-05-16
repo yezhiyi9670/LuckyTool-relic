@@ -64,8 +64,8 @@
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
         <action
-                android:id="@+id/action_nav_xposed_to_desktop"
-                app:destination="@id/desktop"
+                android:id="@+id/action_nav_xposed_to_launcher"
+                app:destination="@id/launcher"
                 app:enterAnim="@anim/fragment_enter"
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
@@ -205,8 +205,8 @@
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarClock"
             android:label="{title_label}" />
     <fragment
-            android:id="@+id/desktop"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Desktop"
+            android:id="@+id/launcher"
+            android:name="com.luckyzyx.luckytool.ui.fragment.Launcher"
             android:label="{title_label}" />
     <fragment
             android:id="@+id/lockScreen"

@@ -191,8 +191,10 @@
     <string name="remove_control_center_date_comma">Odstranit čárku v datu</string>
     <string name="fix_control_center_date_display">Opravit zobrazení data v ovládacím panelu</string>
     <string name="fix_control_center_date_display_suammry">Opravit problém, kdy datum nemůže být zobrazeno celé</string>
-    <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
+    <string name="ControlCenterNotificationCenter">Oznamovací centrum Ovládacího centra</string>
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
+    <string name="enable_notification_importance_classification">Povolit klasifikaci důležitosti pro notifikace</string>
+    <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
     <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
@@ -262,6 +264,7 @@
     <string name="LockScreen">Zámek obrazovky</string>
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
     <string name="lock_screen_clock_redone_mode">Režim červené jedničky na zamykací obrazovce</string>
+    <string name="apply_lock_screen_dual_clock_redone">Použít na dolní hodiny na uzamčené obrazovce</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
     <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
@@ -279,11 +282,13 @@
     <string name="LockScreenEvent">Události na zamykací obrazovce</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
     <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
-    <!--Desktop-->
-    <string name="Desktop">Plocha</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">Režim červené jedničky hodin ve widgetu</string>
     <string name="remove_alarmclock_widget_redone">Odstranit červenou jedničku na hodinách na ploše</string>
     <string name="remove_alarmclock_widget_redone_pro">Odstranit červenou jedničku na hodinách na ploše - vylepšená edice</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Dostupné pouze v případě, že normální verze nezafunguje, jinak způsobí nevyhnutelnou chybu</string>
+    <!--Desktop-->
+    <string name="Desktop">Plocha</string>
     <string name="AppBadgeRelated">Odznaky aplikací</string>
     <string name="remove_the_dot_after_app_update">Odstranit tečku po aktualizaci aplikace</string>
     <string name="remove_app_shortcut_badge">Odstranit odznak na ikoně aplikace</string>
@@ -404,11 +409,13 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Pokud uživatel aplikaci ručně udělil oprávnění `ignorovat optimalizaci baterie`, nebude aplikace po zapnutí této funkce automaticky přidána na seznam povolených aplikací optimalizace baterie</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
-    <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
     <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>
     <string name="force_display_dc_backlight_mode">Vynucené zobrazení nízkého jasu a bez ochrany očí</string>
     <string name="force_display_dc_backlight_mode_summary">Neexistuje žádná záruka, že to bude fungovat, je to použito pouze pro zobrazení možností</string>
+    <string name="force_display_video_memc_frame_insertion">Vynuceně zobrazit interpolační rám MEMC</string>
+    <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
+    <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>
@@ -425,6 +432,8 @@
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
     <string name="remove_startup_animation">Odstranit úvodní animaci</string>
     <string name="remove_welfare_page">Odstranit stránku o blahobytu (welfare)</string>
+    <string name="remove_some_vip_limit">Odstranit některá VIP omezení</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">Povolit vývojářský režim</string>
     <string name="enable_eva_theme">Povolit EVA motiv</string>
     <string name="enable_developer_page_summary">Po povolení této funkce a restartu bude možné přistoupit k \n prostřednictvím místní nabídky</string>

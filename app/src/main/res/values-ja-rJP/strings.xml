@@ -191,8 +191,10 @@
     <string name="remove_control_center_date_comma">コントロールセンターの日付のコンマを削除</string>
     <string name="fix_control_center_date_display">コントロールセンターの日付表示を修正</string>
     <string name="fix_control_center_date_display_suammry">日付を完全に表示できない問題を修正します</string>
-    <string name="ControlCenter_UI_Related">コントロールセンターのUI関連</string>
+    <string name="ControlCenterNotificationCenter">コントロールセンターの通知センター</string>
     <string name="enable_notification_align_both_sides">通知の両端揃えを有効化</string>
+    <string name="enable_notification_importance_classification">通知の重要度分類を有効化</string>
+    <string name="ControlCenter_UI_Related">コントロールセンターのUI関連</string>
     <string name="force_display_media_player">メディアプレイヤーを強制的に表示</string>
     <string name="set_auto_brightness_button_mode">明るさ自動調整ボタンのモードを設定</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
@@ -262,6 +264,7 @@
     <string name="LockScreen">ロック画面関連</string>
     <string name="LockScreenComponent">ロック画面コンポーネント</string>
     <string name="lock_screen_clock_redone_mode">ロック画面時計の赤い「1」表示</string>
+    <string name="apply_lock_screen_dual_clock_redone">ロック画面のデュアル時計に適用</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
     <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
@@ -279,11 +282,13 @@
     <string name="LockScreenEvent">ロック画面イベント</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
     <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を削除します。システム再起動後に有効化されます</string>
-    <!--Desktop-->
-    <string name="Desktop">ホーム画面関連</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">時計ウィジェットの赤い「1」表示</string>
     <string name="remove_alarmclock_widget_redone">赤文字の1の時計のコンポーネントを削除</string>
     <string name="remove_alarmclock_widget_redone_pro">Red One Enhanced Editionの時計のコンポーネントを削除</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">通常版が有効でない場合のみ使用可能です、それ以外の場合は不可避のエラーが発生します</string>
+    <!--Desktop-->
+    <string name="Desktop">ホーム画面関連</string>
     <string name="AppBadgeRelated">アプリバッジ関連</string>
     <string name="remove_the_dot_after_app_update">アプリ更新のドットを削除</string>
     <string name="remove_app_shortcut_badge">アプリのショートカットバッジを削除</string>
@@ -404,11 +409,13 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">ユーザーによって「バッテリーの最適化を無視」権限がアプリに許可されている場合、 この機能を有効にすると自動的にアプリがバッテリー最適化ホワイトリストに追加されなくなります。</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
-    <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>
     <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
     <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
     <string name="force_display_dc_backlight_mode">低輝度とちらつき防止を強制する</string>
     <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
+    <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
+    <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>
+    <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>
@@ -425,6 +432,8 @@
     <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除します</string>
     <string name="remove_startup_animation">起動時のアニメーションを削除</string>
     <string name="remove_welfare_page">Digital Wellbeing のページを削除</string>
+    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">開発者ページを有効化</string>
     <string name="enable_eva_theme">EVAテーマを有効化</string>
     <string name="enable_developer_page_summary">この機能を有効化後にスコープを再起動すると\nショートカットポータルからそのスコープへジャンプできるようになります</string>

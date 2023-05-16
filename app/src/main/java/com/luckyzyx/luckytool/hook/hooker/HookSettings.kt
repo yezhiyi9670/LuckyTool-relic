@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
+import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
@@ -15,13 +16,15 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("dark_mode_list_enable", false)) {
             loadHooker(DarkModeList)
         }
+        //应用详情页
+        loadHooker(HookAppDetails)
+        //HookSettingsFeature
+//        loadHooker(HookSettingsFeature)
         //移除顶部账号显示
         if (prefs(ModulePrefs).getBoolean("remove_top_account_display", false)) {
             loadHooker(RemoveTopAccountDisplay)
         }
-        //应用详情页
-        loadHooker(HookAppDetails)
-        //HookIris5Controller
+        //视频动态插帧
         if (prefs(ModulePrefs).getBoolean("video_frame_insertion_support_2K120", false)) {
             loadHooker(HookIris5Controller)
         }
@@ -33,6 +36,11 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("force_display_dc_backlight_mode", false)) {
             loadHooker(ForceDisplayDCBackLightMode)
         }
+        //强制显示设置底部Google
+        if (prefs(ModulePrefs).getBoolean("force_display_bottom_google_settings", false)) {
+            loadHooker(ForceDisplayBottomGoogleSettings)
+        }
+
         //settings put global stay_on_while_plugged_in 7
 
     }

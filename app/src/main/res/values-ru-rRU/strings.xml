@@ -191,8 +191,10 @@
     <string name="remove_control_center_date_comma">Удалить запятую в дате центра управления</string>
     <string name="fix_control_center_date_display">Исправить отображение даты в центре управления</string>
     <string name="fix_control_center_date_display_suammry">Устранить проблему, из-за которой дата не может отображаться полностью</string>
-    <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
+    <string name="ControlCenterNotificationCenter">Центр уведомлений панели управления</string>
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
+    <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
+    <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
@@ -261,7 +263,8 @@
     <!--LockScreen-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenComponent">Компоненты экрана блокировки</string>
-    <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
+    <string name="lock_screen_clock_redone_mode">Красные часы на экране блокировки</string>
+    <string name="apply_lock_screen_dual_clock_redone">Применить к двойным часам на экране блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
     <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
@@ -279,11 +282,13 @@
     <string name="LockScreenEvent">Событие экрана блокировки</string>
     <string name="remove_72hour_password_verification">Удаление 72-часовой аутентификации по паролю</string>
     <string name="remove_72hour_password_verification_summary">Удалить ограничение безопасности, запрещающее использовать отпечаток пальца или разблокировку по лицу, после 72 часов работы смартфона. Вступит в силу после перезагрузки системы</string>
-    <!--Desktop-->
-    <string name="Desktop">Рабочий стол</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">Красные часы на виджете часов</string>
     <string name="remove_alarmclock_widget_redone">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro">Удалить красные часы в виджете часов на рабочем столе</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно только тогда, когда обычная версия не помогает, иначе это вызовет неизбежную ошибку</string>
+    <!--Desktop-->
+    <string name="Desktop">Рабочий стол</string>
     <string name="AppBadgeRelated">Иконка приложения</string>
     <string name="remove_the_dot_after_app_update">Удалить точку после обновления приложения</string>
     <string name="remove_app_shortcut_badge">Удалить иконку приложения</string>
@@ -404,11 +409,13 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Если приложению вручную предоставлено разрешение \"Игнорировать оптимизацию батареи\", после включения этой функции приложение не будет автоматически добавлено в белый список оптимизации батареи</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
-    <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>
     <string name="remove_dpi_restart_recovery_summary">После включения функции и перезапуска области откройте страницу параметров разработчика и установите минимальную ширину</string>
     <string name="force_display_dc_backlight_mode">Принудительно отображать низкую яркость и защиту глаз от мерцания</string>
     <string name="force_display_dc_backlight_mode_summary">Нет гарантии, что он будет работать, он используется только для отображения опций функций</string>
+    <string name="force_display_video_memc_frame_insertion">Принудительно отображать видео с динамической вставкой кадров MEMC</string>
+    <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
+    <string name="force_display_bottom_google_settings">Принудительно показывать Google внизу настроек</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
@@ -425,6 +432,8 @@
     <string name="remove_root_check_summary">Удалить обнаружение рута из игровых фильтров</string>
     <string name="remove_startup_animation">Удалить стартовую анимацию</string>
     <string name="remove_welfare_page">Удалить страницу социальных услуг</string>
+    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">Включить меню разработчика</string>
     <string name="enable_eva_theme">Включить тему EVA</string>
     <string name="enable_developer_page_summary">После включения этой функции и перезагрузки, \nможно перейти к ней через меню быстрого доступа</string>

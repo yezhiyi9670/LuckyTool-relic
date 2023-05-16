@@ -108,7 +108,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = getString(R.string.Desktop)
                         summary = getString(R.string.launcher_layout_row_colume)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_desktop, title)
+                            navigate(R.id.action_nav_xposed_to_launcher, title)
                             true
                         }
                     }

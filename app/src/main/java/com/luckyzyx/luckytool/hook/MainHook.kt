@@ -16,10 +16,10 @@ import com.luckyzyx.luckytool.hook.hooker.HookAutoStart
 import com.luckyzyx.luckytool.hook.hooker.HookBattery
 import com.luckyzyx.luckytool.hook.hooker.HookCamera
 import com.luckyzyx.luckytool.hook.hooker.HookCloudService
-import com.luckyzyx.luckytool.hook.hooker.HookDesktop
 import com.luckyzyx.luckytool.hook.hooker.HookDialogRelated
 import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
+import com.luckyzyx.luckytool.hook.hooker.HookLauncher
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
@@ -35,6 +35,7 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
+import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarBattery
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarControlCenter
@@ -75,9 +76,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
         loadApp(
-            "com.android.systemui",
-            "com.oplus.battery",
-            "com.coloros.phonemanager"
+            "com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager"
         ) {
             loadHooker(StatusBarNotify)
         }
@@ -97,10 +96,10 @@ object MainHook : IYukiHookXposedInit {
         //状态栏电池
         loadApp("com.android.systemui", StatusBarBattery)
 
+        //时钟
+        loadApp("com.coloros.alarmclock", AlarmClockWidget)
         //桌面
-        loadApp("com.coloros.alarmclock", "com.android.launcher") {
-            loadHooker(HookDesktop)
-        }
+        loadApp("com.android.launcher", HookLauncher)
 
         //锁屏
         loadApp("com.android.systemui", HookLockScreen)
@@ -120,9 +119,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.packageinstaller", HookPackageInstaller)
         //对话框相关
         loadApp(
-            "com.android.systemui",
-            "com.oplus.exsystemservice",
-            "com.coloros.securepay"
+            "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
         ) {
             loadHooker(HookDialogRelated)
         }
@@ -132,8 +129,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", HookFingerPrintRelated)
         //杂项
         loadApp(
-            "com.android.systemui",
-            "com.android.externalstorage"
+            "com.android.systemui", "com.android.externalstorage"
         ) {
             loadHooker(HookMiscellaneous)
         }
@@ -161,9 +157,7 @@ object MainHook : IYukiHookXposedInit {
 
         //其他APP
         loadApp(
-            "com.east2d.everyimage",
-            "com.ruet_cse_1503050.ragib.appbackup.pro",
-            "ru.kslabs.ksweb"
+            "com.east2d.everyimage", "com.ruet_cse_1503050.ragib.appbackup.pro", "ru.kslabs.ksweb"
         ) {
             loadHooker(HookOtherApp)
         }

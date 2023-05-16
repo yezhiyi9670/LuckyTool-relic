@@ -191,8 +191,10 @@
     <string name="remove_control_center_date_comma">Видалити кому в даті центру управління</string>
     <string name="fix_control_center_date_display">Виправити відображення дати в центрі керування</string>
     <string name="fix_control_center_date_display_suammry">Вирішити проблему, через яку дата не може відображатися повністю</string>
-    <string name="ControlCenter_UI_Related">Інтерфейс користувача центру управління</string>
+    <string name="ControlCenterNotificationCenter">Control Center Notification Center</string>
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
+    <string name="enable_notification_importance_classification">Enable notification importance classification</string>
+    <string name="ControlCenter_UI_Related">Інтерфейс користувача центру управління</string>
     <string name="force_display_media_player">Примусово відображати медіаплеєр</string>
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Видалити перемикач користувачів центру керування</string>
@@ -262,6 +264,7 @@
     <string name="LockScreen">Екран блокування</string>
     <string name="LockScreenComponent">Компоненти екрана блокування</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
+    <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
     <string name="remove_lock_screen_redone">Видалити червоний годинник з екрану блокування</string>
     <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
     <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
@@ -279,11 +282,13 @@
     <string name="LockScreenEvent">Події на екрані блокування</string>
     <string name="remove_72hour_password_verification">Видалення 72-годинної аутентифікації за паролем</string>
     <string name="remove_72hour_password_verification_summary">Видалити обмеження безпеки, що забороняє використовувати відбиток пальця або розблокування по обличчю після 72 годин роботи смартфона. Набуде чинності після перезавантаження системи</string>
-    <!--Desktop-->
-    <string name="Desktop">Робочий стіл</string>
+    <!--AlarmClock-->
+    <string name="alarmclock_widget_redone_mode">Clock widget red one mode</string>
     <string name="remove_alarmclock_widget_redone">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro">Видалити червоний годинник у віджеті годинника на робочому столі</string>
     <string name="remove_alarmclock_widget_redone_pro_summary">Доступно лише тоді, коли звичайна версія не допомагає, інакше це викликає неминучу помилку</string>
+    <!--Desktop-->
+    <string name="Desktop">Робочий стіл</string>
     <string name="AppBadgeRelated">Іконка додатку</string>
     <string name="remove_the_dot_after_app_update">Видаляти крапку після оновлення додатка</string>
     <string name="remove_app_shortcut_badge">Видалити іконку додатку</string>
@@ -404,11 +409,13 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Якщо додатку вручну надано дозвіл \"Ігнорувати оптимізацію батареї\", після включення цієї функції програма не буде автоматично додана до білого списку оптимізації батареї</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
-    <string name="video_frame_insertion_support_2K120">Динамічна вставка кадрів відео підтримує роздільну здатність 2К 120 Гц (MEMC)</string>
     <string name="remove_dpi_restart_recovery">Видалити відновлення DPI</string>
     <string name="remove_dpi_restart_recovery_summary">Після увімкнення функції та перезапуску області, відкрийте сторінку параметрів розробника та встановіть мінімальну ширину</string>
     <string name="force_display_dc_backlight_mode">Примусово відображати низьку яскравість та захист очей від мерехтіння</string>
     <string name="force_display_dc_backlight_mode_summary">Немає гарантії, що він буде працювати, він використовується лише для відображення опцій функцій</string>
+    <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
+    <string name="video_frame_insertion_support_2K120">Динамічна вставка кадрів відео підтримує роздільну здатність 2К 120 Гц (MEMC)</string>
+    <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>
     <string name="show_last_update_time_in_app_details">Показати час останнього оновлення в деталях програми</string>
@@ -425,6 +432,8 @@
     <string name="remove_root_check_summary">Видалити виявлення рута з ігрових фільтрів</string>
     <string name="remove_startup_animation">Видалити стартову анімацію</string>
     <string name="remove_welfare_page">Видалити сторінку соціальних послуг</string>
+    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
+    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
     <string name="enable_developer_page">Увімкнути меню розробника</string>
     <string name="enable_eva_theme">Увімкнути тему EVA</string>
     <string name="enable_developer_page_summary">Після включення цієї функції та перезавантаження, \nможна перейти до неї через меню швидкого доступу</string>
