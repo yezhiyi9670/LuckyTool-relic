@@ -281,7 +281,7 @@
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
     <string name="LockScreenEvent">ロック画面イベント</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
-    <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を削除します。システム再起動後に有効化されます</string>
+    <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を解除します。システム再起動後に有効化されます</string>
     <!--AlarmClock-->
     <string name="alarmclock_widget_redone_mode">時計ウィジェットの赤い「1」表示</string>
     <string name="remove_alarmclock_widget_redone">赤文字の1の時計のコンポーネントを削除</string>
@@ -390,7 +390,7 @@
     <string name="disable_dpi_reboot_recovery">再起動後のDPIの復元を無効化</string>
     <string name="disable_dpi_reboot_recovery_summary">このモジュールで大きすぎるDPI設定の影響で起動をしなくなった場合の責任は一切負いません\nデフォルトのDPIに戻す場合は、この機能を有効化しスコープの再起動後にデフォルトのDPIにリセットをする必要があります</string>
     <string name="remove_storage_limit">ストレージの制限を削除</string>
-    <string name="remove_storage_limit_summary">フォルダが使用できない制限を削除します</string>
+    <string name="remove_storage_limit_summary">フォルダが使用できない制限を解除します</string>
     <string name="media_volume_level">メディアのボリュームレベル</string>
     <string name="media_volume_level_summary">0に設定するとこの機能を無効にします。システムの再起動後に有効化されます</string>
     <string name="open_screen_power_save">バッテリーの画面で省エネモードを開けるようにする</string>
@@ -432,8 +432,8 @@
     <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除します</string>
     <string name="remove_startup_animation">起動時のアニメーションを削除</string>
     <string name="remove_welfare_page">Digital Wellbeing のページを削除</string>
-    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
-    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
+    <string name="remove_some_vip_limit">VIP 制限を解除する</string>
+    <string name="remove_some_vip_limit_summary">ネットワークアクセラレーション、ゲームフィルターなどのロックを解除します。\n機能するかは自分でテストしてください</string>
     <string name="enable_developer_page">開発者ページを有効化</string>
     <string name="enable_eva_theme">EVAテーマを有効化</string>
     <string name="enable_developer_page_summary">この機能を有効化後にスコープを再起動すると\nショートカットポータルからそのスコープへジャンプできるようになります</string>
@@ -458,7 +458,7 @@
     <string name="remove_system_screenshot_delay">システムからスクリーンショットの遅延を削除</string>
     <string name="remove_system_screenshot_delay_summary">最初のスクリーンショットが反映されない場合があります</string>
     <string name="remove_screenshot_privacy_limit">スクリーンショットのプライバシー制限を削除</string>
-    <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を削除します。効果がない場合は FLAG_SECURE を無効化してください</string>
+    <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を解除します。効果がない場合は FLAG_SECURE を無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
     <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
     <!--OplusOta-->

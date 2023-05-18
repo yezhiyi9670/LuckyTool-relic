@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v1.0.2_beta
+### v1.0.2
 
 - [添加] 移除GT模式通知
 - [优化] 优化模块部分页面卡顿
@@ -19,6 +19,20 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 启用通知重要性分类
 - [添加] 强制显示设置底部Google
 - [添加] 游戏助手移除部分VIP限制
+- [Add] Remove GT mode notification
+- [Optimize] Some pages of the optimization module are stuck
+- [Add] module read application list permission display
+- [Add] Remove fingerprint pressing animation
+- [Add] Set auto-brightness button mode
+- [Add] Lock screen clock red one display mode
+- [Fix] OPPO and Realme lock screen clock red one
+- [Fix] OnePlus lock screen dual clock user font
+- [Fix] Some systems cannot load the function page
+- [Add] Desktop clock component red one display mode
+- [Add] lock screen dual clock red one support
+- [Add] Enable notification importance classification
+- [Add] Force to show settings bottom Google
+- [Add] Game Assistant removes some VIP restrictions
 
 ### v1.0.1
 

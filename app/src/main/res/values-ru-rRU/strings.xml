@@ -432,8 +432,8 @@
     <string name="remove_root_check_summary">Удалить обнаружение рута из игровых фильтров</string>
     <string name="remove_startup_animation">Удалить стартовую анимацию</string>
     <string name="remove_welfare_page">Удалить страницу социальных услуг</string>
-    <string name="remove_some_vip_limit">Remove some VIP restrictions</string>
-    <string name="remove_some_vip_limit_summary">Unlock network acceleration, game filters, etc.\nPlease test the specific function by yourself</string>
+    <string name="remove_some_vip_limit">Снять некоторые VIP-ограничения</string>
+    <string name="remove_some_vip_limit_summary">Разблокируйте сетевое ускорение, игровые фильтры и т. д.\nПожалуйста, протестируйте конкретную функцию самостоятельно</string>
     <string name="enable_developer_page">Включить меню разработчика</string>
     <string name="enable_eva_theme">Включить тему EVA</string>
     <string name="enable_developer_page_summary">После включения этой функции и перезагрузки, \nможно перейти к ней через меню быстрого доступа</string>
