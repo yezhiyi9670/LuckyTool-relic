@@ -3,6 +3,15 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.3_beta
+
+- [更新] 捐赠名单
+- [优化] 移除电池高温限制
+- [适配] 桌面时钟组件红一
+- [修复] 移除指纹按压动画异常
+- [添加] 快捷解锁本地安装
+- [修复] 自定义应用小窗异常
+
 ### v1.0.2
 
 - [添加] 移除GT模式通知

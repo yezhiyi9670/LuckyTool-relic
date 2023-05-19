@@ -13,8 +13,8 @@ object ZoomWindow : YukiBaseHooker() {
         dataChannel.wait<Boolean>("enable_zoom_window") { isEnable = it }
         var supportList = prefs(ModulePrefs).getStringSet("zoom_window_support_list", ArraySet())
         dataChannel.wait<Set<String>>("zoom_window_support_list") { supportList = it }
-        //Source OplusZoomWindowManagerService
-        findClass("com.android.server.wm.OplusZoomWindowManagerService").hook {
+        //Source OplusZoomWindowConfig
+        findClass("com.android.server.wm.OplusZoomWindowConfig").hook {
             injectMember {
                 method {
                     name = "isSupportZoomMode"

@@ -815,6 +815,27 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "Canary", details(
+                        DCInfo("20230516-162805", CAP, 10.0, "20233051622001494791441974606")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "Hecky Kai", details(
+                        DCInfo("20230518-132708", CWC, 6.66, "10001071012023051801840752107639")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "E*e", details(
+                        DCInfo("20230518-213924", CWC, 10.0, "10001071012023051801183215729522")
+                    )
+                )
+            )
         }
     }
 

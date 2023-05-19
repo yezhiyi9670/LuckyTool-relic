@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">Більшість додатків не можуть знімати, ділитися скріншотом або обмежують запис\nПотрібен LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Розблокувати локальне оновлення</string>
-    <string name="unlock_local_upgrade_summary">Локальне оновлення не буде виділено сірим кольором, вам необхідно заздалегідь увімкнути опцію розробника</string>
+    <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
     <string name="remove_dm_verity">Видалити виявлення dm-verity</string>
     <string name="remove_dm_verity_summary">Поточний статус: %1$s\nТільки для цього оновлення системи</string>
     <!--Everyimage-->

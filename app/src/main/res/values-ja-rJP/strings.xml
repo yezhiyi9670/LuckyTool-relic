@@ -413,7 +413,7 @@
     <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
     <string name="force_display_dc_backlight_mode">低輝度とちらつき防止を強制する</string>
     <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
-    <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
+    <string name="force_display_video_memc_frame_insertion">強制的に MEMC ビデオフレーム補間を表示する</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間は 2K 120FPS 対応です</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
-    <string name="unlock_local_upgrade_summary">ローカルアップグレードはグレーアウトで表示されません。事前に開発者向けオプションの有効化をする必要があります</string>
+    <string name="unlock_local_upgrade_summary">タップした後に関連する操作が自動的に実行されます。しばらくお待ちください</string>
     <string name="remove_dm_verity">dm-verityの検出を削除</string>
     <string name="remove_dm_verity_summary">現在の状態: %1$s\nこのシステムアップデートにのみ有効です</string>
     <!--Everyimage-->

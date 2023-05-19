@@ -26,7 +26,7 @@ object HookThermalController : YukiBaseHooker() {
                         field { name = "brightness" }.set(-1)
 
                         list["charge"] = field { name = "charge" }.int()
-                        field { name = "charge" }.set(3)
+                        field { name = "charge" }.set(0)
 //                        list["speedChargeAdd"] = field { name = "speedChargeAdd" }.int()
 //                        field { name = "speedChargeAdd" }.set(1)
 
@@ -93,6 +93,53 @@ object HookThermalController : YukiBaseHooker() {
                     }
                     if (isDebug) loggerD(msg = "startCategoryChangeMethods\n$list")
                 }
+            }
+            injectMember {
+                method {
+                    name = "sendTempGearChangedMessage"
+                    paramCount = 2
+                }
+                afterHook {
+                    field { name = "mTempLevel" }.get(instance).set(0)
+                }
+            }
+        }
+        //Source ThermalControlUtils
+        findClass("com.oplus.thermalcontrol.ThermalControlUtils").hook {
+            injectMember {
+                method {
+                    name = "getCurrentTemperature"
+                    paramCount = 1
+                }
+                afterHook {
+                    val temp = result<Float>() ?: return@afterHook
+                    if (temp > 30.0F) result = 30.0F
+                }
+            }
+            injectMember {
+                method { name = "getTempFromBind" }
+                afterHook {
+                    val temp = result<Float>() ?: return@afterHook
+                    if (temp > 30.0F) result = 30.0F
+                }
+            }
+            injectMember {
+                method {
+                    name = "setChargingLevel"
+                    paramCount = 3
+                }
+                beforeHook {
+                    args(0).set(0)
+                    args(1).set(0)
+                    field { name = "mIsSpeedCharging" }.get(instance).setTrue()
+                }
+            }
+            injectMember {
+                method {
+                    name = "setFps"
+                    paramCount = 2
+                }
+                beforeHook { args(0).set(0) }
             }
         }
     }

@@ -285,7 +285,8 @@ class XposedFragment : ModulePreferenceFragment() {
                             isIconSpaceReserved = show
                         }
                         title = context.getAppLabel(key)
-                        summary = getString(R.string.remove_dm_verity)
+                        summary =
+                            getString(R.string.unlock_local_upgrade) + "," + getString(R.string.remove_dm_verity)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigate(R.id.action_nav_function_to_oplusOta, title)

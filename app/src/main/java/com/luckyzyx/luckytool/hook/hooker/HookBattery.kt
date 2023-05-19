@@ -15,47 +15,6 @@ object HookBattery : YukiBaseHooker() {
             loadHooker(HookThermalController)
         }
 
-        //high_temperature_dialog_title
-        //high_temperature_dialog_message
-        //Source ThermalHandler
-//        searchClass {
-//            from("s4").absolute()
-//            field { type = ContextClass }.count(2)
-//            field { type = IntType }.count(4)
-//            field { type = PowerManagerClass }.count(1)
-//            field { type = SharedPreferencesClass }.count(1)
-//            field { type = BroadcastReceiverClass }.count(1)
-//            field { type = HandlerClass }.count(1)
-//            constructor {
-//                paramCount = 3
-//            }.count(1)
-//            method {
-//                name = "handleMessage"
-//                param(MessageClass)
-//            }.count(1)
-//            method {
-//                param(IntType, IntType)
-//            }.count(1)
-//            method {
-//                param(ContextClass)
-//            }.count(2)
-//            method {
-//                param(ContextClass)
-//                returnType = ContextClass
-//            }.count(1)
-//        }.get()?.hook {
-//            injectMember {
-//                constructor {
-//                    paramCount = 3
-//                }
-//                afterHook {
-//                    field {
-//                        type = HandlerClass
-//                    }.get(instance).set(Handler(Looper.getMainLooper()))
-//                }
-//            }
-//        }
-
         //BatteryHealthFragment
         //max_capacity_data
         //battery_health_obtain_fail -> 获取失败

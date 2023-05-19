@@ -18,7 +18,7 @@ object AlarmClockWidget : YukiBaseHooker() {
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
         searchClass {
-            from("m0", "j0").absolute()
+            from("m0", "j0", "o0").absolute()
             field { type = CharSequenceClass }.count(1)
             field { type = HandlerClass }.count(1)
             field { type = BooleanType }.count(3)

@@ -14,6 +14,8 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.SeekBarPreference
 import androidx.preference.SwitchPreference
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
@@ -30,10 +32,12 @@ import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getDocumentPath
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
+import com.luckyzyx.luckytool.utils.jumpOTA
 import com.luckyzyx.luckytool.utils.navigate
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
+
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -3244,13 +3248,28 @@ class OplusOta : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(
-                SwitchPreference(context).apply {
+                Preference(context).apply {
                     title = getString(R.string.unlock_local_upgrade)
                     summary = getString(R.string.unlock_local_upgrade_summary)
                     key = "unlock_local_upgrade"
                     setDefaultValue(false)
-                    isVisible = false
                     isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        scopeLife {
+                            val command =
+                                arrayOf(
+                                    "settings put global development_settings_enabled 1",
+                                    "pm clear com.oplus.ota",
+                                    "settings put global airplane_mode_on 1",
+                                    "am broadcast --user all -a android.intent.action.AIRPLANE_MODE --ez 'state' 'true'",
+                                    "am start com.oplus.ota/com.oplus.otaui.activity.EntryActivity"
+                                )
+                            withDefault {
+                                ShellUtils.execCommand(command, true)
+                            }
+                        }
+                        true
+                    }
                 }
             )
             addPreference(
@@ -3291,10 +3310,18 @@ class OplusOta : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpOTA(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }

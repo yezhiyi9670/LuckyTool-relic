@@ -48,6 +48,14 @@ object HookLauncher : YukiBaseHooker() {
             loadHooker(RemoveBottomAppIconOfRecentTaskList)
         }
 
+        //<string name="oplus_shortcut_lock_app">锁定</string>
+        //<string name="oplus_shortcut_locked_app">解锁</string>
+        //<string name="oplus_rapid_reach_float_window">浮窗</string>
+        //<string name="recent_task_option_split_screen">分屏</string>
+        //<string name="oplus_privacy_not_show_preview">隐藏内容</string>
+        //<string name="oplus_privacy_show_preview">显示内容</string>
+        //<string name="oplus_shortcut_lock_setting">管理</string>
+
         //com.android.launcher3.popup.OplusBaseSystemShortcut
         //OplusAppInfo etc. -> Click
 

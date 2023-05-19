@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">Vyřešit většinu problémů aplikací s nahráváním, sdílením obrazovky nebo limity nahrávání\nVyžaduje LSPosed 1.8.6.+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Povolit lokální upgrade</string>
-    <string name="unlock_local_upgrade_summary">Místní upgrade nebude zašedlý, musíte to ale předem povolit v menu pro vývojáře</string>
+    <string name="unlock_local_upgrade_summary">Po kliknutí budou příslušné operace prováděny automaticky, prosím trpělivě počkejte několik sekund</string>
     <string name="remove_dm_verity">Odstranit detekci dm-verity</string>
     <string name="remove_dm_verity_summary">Aktuální stav: %1$s\nPlatné pouze pro tuto systémovou aktualizaci</string>
     <!--Everyimage-->

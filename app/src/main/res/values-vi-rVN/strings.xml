@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Mở khóa nâng cấp cục bộ</string>
-    <string name="unlock_local_upgrade_summary">Bản nâng cấp cục bộ sẽ không chuyển sang màu xám, bạn cần bật tùy chọn nhà phát triển trước</string>
+    <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
     <string name="remove_dm_verity">Xóa phát hiện dm-verity</string>
     <string name="remove_dm_verity_summary">Trạng thái hiện tại: %1$s\nChỉ hợp lệ cho bản cập nhật hệ thống này</string>
     <!--Everyimage-->

@@ -419,6 +419,18 @@ fun jumpDarkMode(context: Context) {
 }
 
 /**
+ * 跳转到软件更新
+ * @param context Context
+ */
+fun jumpOTA(context: Context) {
+    if (context.checkPackName("com.oplus.ota")) {
+        ShellUtils.execCommand(
+            "am start com.oplus.ota/com.oplus.otaui.activity.EntryActivity", true
+        )
+    }
+}
+
+/**
  * 跳转电池性能模式
  * @param context Context
  */

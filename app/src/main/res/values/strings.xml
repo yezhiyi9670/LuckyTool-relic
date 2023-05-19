@@ -499,7 +499,7 @@
     <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Unlock local upgrade</string>
-    <string name="unlock_local_upgrade_summary">The local upgrade will not be grayed out, you need to enable the developer option in advance</string>
+    <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
     <string name="remove_dm_verity">Remove dm-verity detection</string>
     <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
     <!--Everyimage-->

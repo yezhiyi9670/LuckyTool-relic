@@ -80,17 +80,13 @@ open class MainActivity : AppCompatActivity() {
             }
             return
         }
-        val os = getColorOSVersion!!
-        if (os.isNotBlank() && os.startsWith("V")) {
-            val version = os.substring(1, os.length).toDoubleOrNull()
-            if ((version == null) || (version < 12.0)) {
-                MaterialAlertDialogBuilder(this, dialogCentered).apply {
-                    setTitle(getString(R.string.unsupported_os))
-                    setMessage(getString(R.string.unsupported_os_summary))
-                    setNeutralButton(getString(R.string.common_words_ignore), null)
-                    setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
-                    show()
-                }
+        if (SDK < A12 && getOSVersion() < 12.0) {
+            MaterialAlertDialogBuilder(this, dialogCentered).apply {
+                setTitle(getString(R.string.unsupported_os))
+                setMessage(getString(R.string.unsupported_os_summary))
+                setNeutralButton(getString(R.string.common_words_ignore), null)
+                setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
+                show()
             }
         }
         putBoolean(SettingsPrefs, "boot_complete", ckqcbs())

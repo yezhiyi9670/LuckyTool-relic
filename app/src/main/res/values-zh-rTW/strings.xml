@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">解决大部分APP无法截图、屏幕共享或录制的限制\n需要 LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
-    <string name="unlock_local_upgrade_summary">本地安装不变灰，需要提前打开开发者选项</string>
+    <string name="unlock_local_upgrade_summary">点击后将自动执行相关操作，请耐心等待几秒</string>
     <string name="remove_dm_verity">移除 dm-verity 检测</string>
     <string name="remove_dm_verity_summary">当前状态：%1$s\n仅用于此次系统更新</string>
     <!--Everyimage-->

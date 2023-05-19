@@ -42,11 +42,12 @@ object FingerPrintIconAnim : YukiBaseHooker() {
                 method { name = "startFadeInAnimation" }
                 if (isReplaceIcon) replaceUnit {
                     instance.setCustomDrawable(iconPath, false)
-                } else if (removeMode != "0") intercept()
+                } else if (removeMode == "1" || removeMode == "3") intercept()
             }
             injectMember {
                 method { name = "startFadeOutAnimation" }
-                if (isReplaceIcon) intercept() else if (removeMode != "0") intercept()
+                if (isReplaceIcon) intercept()
+                else if (removeMode == "1" || removeMode == "3") intercept()
             }
         }
     }
@@ -71,5 +72,6 @@ object FingerPrintIconAnim : YukiBaseHooker() {
 
     private fun Any.removePressAnim() {
         this.current().field { name = "mPressedAnimDrawable" }.setNull()
+        this.current().field { name = "mPressedAnimDrawableTmp" }.setNull()
     }
 }
