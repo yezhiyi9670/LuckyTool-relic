@@ -402,7 +402,7 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
-    <string name="remove_high_temperature_limit_summary">Удалить ограничение, что различные функции не могут быть использованы, например: камера, фонарик, точка доступа, механизм отображения экрана и т.д.</string>
+    <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30 °C, и конкретный эффект не гарантируется.</string>
     <string name="BatteryOptimization">Оптимизация батареи</string>
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>
@@ -463,7 +463,7 @@
     <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
-    <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
+    <string name="unlock_local_upgrade_summary">После нажатия соответствующие операции будут выполняться автоматически, терпеливо подождите несколько секунд</string>
     <string name="remove_dm_verity">Удалить обнаружение dm-verity</string>
     <string name="remove_dm_verity_summary">Текущий статус: %1$s\nТолько для этого обновления системы</string>
     <!--Everyimage-->

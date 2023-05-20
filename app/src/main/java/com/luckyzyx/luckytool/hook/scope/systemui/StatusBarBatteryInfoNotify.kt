@@ -55,61 +55,65 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
     private var chargerType = ""
 
     private lateinit var chargeInfo: Properties
+
+    //params
+    private lateinit var displayMode: String
+    private var showChargerInfo: Boolean = false
+    private var showUpdateTime: Boolean = false
+    private var isDualVol: Boolean = false
+    private var isSimple: Boolean = false
+
     override fun onHook() {
-        var displayMode = prefs(ModulePrefs).getString("battery_information_display_mode", "0")
-        dataChannel.wait<String>("battery_information_display_mode") { displayMode = it }
-        var showChargerInfo =
+        var thisContext: Context? = null
+        displayMode = prefs(ModulePrefs).getString("battery_information_display_mode", "0")
+        dataChannel.wait<String>("battery_information_display_mode") {
+            displayMode = it
+            initSend(thisContext)
+        }
+        showChargerInfo =
             prefs(ModulePrefs).getBoolean("battery_information_show_charge_info", false)
-        dataChannel.wait<Boolean>("battery_information_show_charge_info") { showChargerInfo = it }
-        var showUpdateTime =
+        dataChannel.wait<Boolean>("battery_information_show_charge_info") {
+            showChargerInfo = it
+            initSend(thisContext)
+        }
+        showUpdateTime =
             prefs(ModulePrefs).getBoolean("battery_information_show_update_time", false)
-        dataChannel.wait<Boolean>("battery_information_show_update_time") { showUpdateTime = it }
-        var isDualVol =
+        dataChannel.wait<Boolean>("battery_information_show_update_time") {
+            showUpdateTime = it
+            initSend(thisContext)
+        }
+        isDualVol =
             prefs(ModulePrefs).getBoolean("battery_information_show_dual_voltage", false)
-        dataChannel.wait<Boolean>("battery_information_show_dual_voltage") { isDualVol = it }
-        var isSimple =
+        dataChannel.wait<Boolean>("battery_information_show_dual_voltage") {
+            isDualVol = it
+            initSend(thisContext)
+        }
+        isSimple =
             prefs(ModulePrefs).getBoolean("battery_information_show_simple_mode", false)
-        dataChannel.wait<Boolean>("battery_information_show_simple_mode") { isSimple = it }
+        dataChannel.wait<Boolean>("battery_information_show_simple_mode") {
+            isSimple = it
+            initSend(thisContext)
+        }
 
         onAppLifecycle {
             onCreate { injectModuleAppResources() }
             //BatteryService
             registerReceiver(Intent.ACTION_BATTERY_CHANGED) { context: Context, _: Intent ->
+                thisContext = context
                 context.injectModuleAppResources()
                 safeOfNull { initInfo(context) }
-                when (displayMode) {
-                    "1" -> sendNotification(
-                        context, showChargerInfo && isCharging,
-                        showUpdateTime, isSimple, isDualVol
-                    )
-
-                    "2" -> if (isCharging) sendNotification(
-                        context, showChargerInfo, showUpdateTime, isSimple, isDualVol
-                    ) else clearNotification(context)
-
-                    else -> clearNotification(context)
-                }
+                initSend(context)
             }
             //OplusBatteryService
             registerReceiver("android.intent.action.ADDITIONAL_BATTERY_CHANGED") { context: Context, intent: Intent ->
+                thisContext = context
                 context.injectModuleAppResources()
                 chargerTechnology = (intent.getIntExtra("chargertechnology", 0))
                 chargeWattage = (intent.getIntExtra("chargewattage", 0))
                 ppsMode = (intent.getIntExtra("pps_chg_mode", 0))
 
                 safeOfNull { initInfo(context) }
-                when (displayMode) {
-                    "1" -> sendNotification(
-                        context, showChargerInfo && isCharging,
-                        showUpdateTime, isSimple, isDualVol
-                    )
-
-                    "2" -> if (isCharging) sendNotification(
-                        context, showChargerInfo, showUpdateTime, isSimple, isDualVol
-                    ) else clearNotification(context)
-
-                    else -> clearNotification(context)
-                }
+                initSend(context)
             }
         }
     }
@@ -173,6 +177,22 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.createChannel(context, channel)
     }
 
+    private fun initSend(context: Context?) {
+        if (context == null) return
+        when (displayMode) {
+            "1" -> sendNotification(
+                context, showChargerInfo && isCharging,
+                showUpdateTime, isSimple, isDualVol
+            )
+
+            "2" -> if (isCharging) sendNotification(
+                context, showChargerInfo, showUpdateTime, isSimple, isDualVol
+            ) else clearNotification(context)
+
+            else -> clearNotification(context)
+        }
+    }
+
     private fun sendNotification(
         context: Context,
         isCharging: Boolean,
@@ -224,9 +244,9 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         val cur =
             if (isSimple) "${electricCurrent}mA" else "${context.getString(R.string.battery_electric_current)}: ${electricCurrent}mA"
 
-        val sp = if (isSimple) plugged else "$status: $plugged"
+        val sp = if (isSimple) "$level%" else "$status: $level%"
         val ct =
-            if (isSimple) chargerType else "${context.getString(R.string.battery_charger_type)}: $chargerType"
+            if (isSimple) "$plugged $chargerType" else "${context.getString(R.string.battery_charger_type)}: $plugged $chargerType"
         val pwr =
             if (isSimple) "${power}W" else "${context.getString(R.string.battery_power)}: ${power}W"
         val tech = if (isSimple) "$technology $wattage" else {

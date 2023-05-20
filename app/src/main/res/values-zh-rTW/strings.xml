@@ -402,7 +402,7 @@
     <string name="allow_untrusted_touch">允許不受信任的觸控</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">移除高温限制</string>
-    <string name="remove_high_temperature_limit_summary">移除各种功能无法使用的限制，例如：相机、手电筒、热点、画面显示引擎等</string>
+    <string name="remove_high_temperature_limit_summary">移除部分功能无法使用的限制，例如：摄像头、手电筒、热点、画面显示引擎等\n理论上伪装温度为30℃，无法保证具体效果</string>
     <string name="BatteryOptimization">电池优化</string>
     <string name="restore_default_battery_optimization_whitelist">恢复默认电池优化白名单</string>
     <string name="disable_customize_battery_optimization_whiteList">禁用自定义电池优化白名单</string>

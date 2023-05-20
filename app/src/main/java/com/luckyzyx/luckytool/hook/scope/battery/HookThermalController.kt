@@ -126,12 +126,14 @@ object HookThermalController : YukiBaseHooker() {
             injectMember {
                 method {
                     name = "setChargingLevel"
-                    paramCount = 3
+                    paramCount(1..3)
                 }
                 beforeHook {
                     args(0).set(0)
-                    args(1).set(0)
-                    field { name = "mIsSpeedCharging" }.get(instance).setTrue()
+                    if (args.size >= 3) {
+                        args(1).set(0)
+                        field { name = "mIsSpeedCharging" }.get(instance).setTrue()
+                    }
                 }
             }
             injectMember {

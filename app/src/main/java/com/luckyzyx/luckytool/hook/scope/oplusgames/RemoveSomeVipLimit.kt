@@ -18,7 +18,18 @@ object RemoveSomeVipLimit : YukiBaseHooker() {
                 replaceToFalse()
             }
             injectMember {
+                method { name = "getExpireTime" }
+                replaceTo("2999-12-31")
+            }
+            injectMember {
                 method { name = "getSign" }
+                replaceToTrue()
+            }
+        }
+        //Source TrialVipV2InfoBean
+        findClass("com.oplus.games.account.bean.TrialVipInfoBean").hook {
+            injectMember {
+                method { name = "isHit" }
                 replaceToTrue()
             }
         }
@@ -26,6 +37,10 @@ object RemoveSomeVipLimit : YukiBaseHooker() {
         findClass("com.oplus.games.account.bean.TrialVipV2InfoBean").hook {
             injectMember {
                 method { name = "isDeviceHasTrialQualification" }
+                replaceToTrue()
+            }
+            injectMember {
+                method { name = "isHit" }
                 replaceToTrue()
             }
         }
@@ -44,7 +59,26 @@ object RemoveSomeVipLimit : YukiBaseHooker() {
         findClass("com.oplus.games.account.bean.VIPStateBean").hook {
             injectMember {
                 method { name = "getVipState" }
-                replaceTo(4)
+                replaceTo(5)
+            }
+            injectMember {
+                method { name = "getExpireTime" }
+                replaceTo("2999-12-31")
+            }
+        }
+        //Source UserInfo
+        findClass("com.coloros.gamespaceui.module.magicvoice.oplus.data.UserInfo").hook {
+            injectMember {
+                method { name = "getExpireTime" }
+                replaceTo("2999-12-31")
+            }
+            injectMember {
+                method { name = "getHasTrialQualifications" }
+                replaceToTrue()
+            }
+            injectMember {
+                method { name = "getUserIdentity" }
+                replaceTo(3)
             }
         }
     }
