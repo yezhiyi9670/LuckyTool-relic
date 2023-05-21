@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.utils
+package com.luckyzyx.luckytool.hook.utils.sysui
 
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.scope.safecenter.UnlockStartupLimit.toClass

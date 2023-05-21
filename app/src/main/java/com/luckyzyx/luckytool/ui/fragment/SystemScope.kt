@@ -33,7 +33,7 @@ import com.luckyzyx.luckytool.utils.getDocumentPath
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpOTA
-import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
@@ -134,7 +134,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarClock"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarClock, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarClock, title)
                         true
                     }
                 }
@@ -147,7 +147,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarNetWorkSpeed"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarNetWorkSpeed, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarNetWorkSpeed, title)
                         true
                     }
                 }
@@ -160,7 +160,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarNotice"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarNotice, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarNotice, title)
                         true
                     }
                 }
@@ -173,7 +173,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarIcon"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarIcon, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarIcon, title)
                         true
                     }
                 }
@@ -186,7 +186,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarControlCenter"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarControlCenter, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarControlCenter, title)
                         true
                     }
                 }
@@ -199,7 +199,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarTiles"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarTiles, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarTiles, title)
                         true
                     }
                 }
@@ -213,7 +213,7 @@ class StatusBar : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarLayout, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarLayout, title)
                         true
                     }
                 }
@@ -226,7 +226,7 @@ class StatusBar : ModulePreferenceFragment() {
                     key = "StatusBarBattery"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBar_to_statusBarBattery, title)
+                        navigatePage(R.id.action_statusBar_to_statusBarBattery, title)
                         true
                     }
                 }
@@ -812,7 +812,7 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     key = "RemoveStatusBarNotifications"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_statusBarNotice_to_statusBarNotifyRemoval, title)
+                        navigatePage(R.id.action_statusBarNotice_to_statusBarNotifyRemoval, title)
                         true
                     }
                 }
@@ -2174,7 +2174,7 @@ class Application : ModulePreferenceFragment() {
                     key = "zoom_window_support_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_application_to_zoomWindowFragment, title)
+                        navigatePage(R.id.action_application_to_zoomWindowFragment, title)
                         true
                     }
                 }
@@ -2186,7 +2186,7 @@ class Application : ModulePreferenceFragment() {
                     key = "dark_mode_support_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_application_to_darkModeFragment, title)
+                        navigatePage(R.id.action_application_to_darkModeFragment, title)
                         true
                     }
                 }
@@ -2198,7 +2198,7 @@ class Application : ModulePreferenceFragment() {
                     key = "multi_app_custom_list"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_application_to_multiFragment, title)
+                        navigatePage(R.id.action_application_to_multiFragment, title)
                         true
                     }
                 }
@@ -2638,7 +2638,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FloatingWindowDialogRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_miscellaneous_to_dialogRelated, title)
+                        navigatePage(R.id.action_miscellaneous_to_dialogRelated, title)
                         true
                     }
                 }
@@ -2651,7 +2651,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FullScreenGestureRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
+                        navigatePage(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
                         true
                     }
 
@@ -2665,7 +2665,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                     key = "FingerPrintRelated"
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_miscellaneous_to_fingerPrintRelated, title)
+                        navigatePage(R.id.action_miscellaneous_to_fingerPrintRelated, title)
                         true
                     }
                 }

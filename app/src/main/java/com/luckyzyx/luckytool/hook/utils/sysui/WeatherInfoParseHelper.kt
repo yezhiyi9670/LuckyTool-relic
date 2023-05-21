@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.utils
+package com.luckyzyx.luckytool.hook.utils.sysui
 
 import android.content.Context
 import com.highcapable.yukihookapi.hook.factory.method
@@ -8,6 +8,10 @@ import com.luckyzyx.luckytool.hook.scope.android.HookSystemProperties.toClass
 class WeatherInfoParseHelper(val classLoader: ClassLoader?) {
 
     val clazz = "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper".toClass(classLoader)
+    val weatherInfoClazz =
+        "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo".toClass(
+            classLoader
+        )
 
     fun getInstance(): Any? {
         return clazz.method {
@@ -16,17 +20,17 @@ class WeatherInfoParseHelper(val classLoader: ClassLoader?) {
         }.get().call()
     }
 
-    fun getLocalTimeInfo(context:Context): Any? {
+    fun getLocalTimeInfo(context: Context): Any? {
         return clazz.method {
             name = "getLocalTimeInfo"
             paramCount = 1
         }.get(getInstance()).call(context)
     }
 
-    fun getResidentTimeInfo(context:Context): Any? {
+    fun getResidentTimeInfo(context: Context, residentTimeZone: String): Any? {
         return clazz.method {
             name = "getResidentTimeInfo"
             paramCount = 1
-        }.get(getInstance()).call(context)
+        }.get(getInstance()).call(context, residentTimeZone)
     }
 }

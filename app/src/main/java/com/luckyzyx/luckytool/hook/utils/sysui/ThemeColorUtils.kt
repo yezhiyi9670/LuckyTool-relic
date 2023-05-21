@@ -1,4 +1,4 @@
-package com.luckyzyx.luckytool.hook.utils
+package com.luckyzyx.luckytool.hook.utils.sysui
 
 import android.graphics.Color
 import com.highcapable.yukihookapi.hook.factory.method

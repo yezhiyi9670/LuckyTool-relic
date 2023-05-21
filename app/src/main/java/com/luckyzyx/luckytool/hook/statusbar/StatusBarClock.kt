@@ -9,7 +9,7 @@ import android.view.Gravity
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
-import com.luckyzyx.luckytool.hook.utils.LunarHelperUtils
+import com.luckyzyx.luckytool.hook.utils.sysui.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK

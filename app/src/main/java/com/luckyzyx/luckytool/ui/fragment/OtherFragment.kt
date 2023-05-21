@@ -41,7 +41,7 @@ import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.jumpEngineermode
 import com.luckyzyx.luckytool.utils.jumpRunningApp
-import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.toast
 
@@ -64,7 +64,7 @@ class OtherFragment : Fragment() {
         binding.quickEntryTitle.text = getString(R.string.quick_entry)
         binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
         binding.quickEntry.setOnClickListener {
-            navigate(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
+            navigatePage(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
         }
 
         binding.shortcutTitle.text = getString(R.string.set_module_shortcuts)

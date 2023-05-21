@@ -27,7 +27,7 @@ import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.dp
 import com.luckyzyx.luckytool.utils.getAppLabel
 import com.luckyzyx.luckytool.utils.getAppVersion
-import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
 import kotlinx.coroutines.Dispatchers
@@ -75,7 +75,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = context.getAppLabel(key)
                         summary = getString(R.string.corepatch)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_android, title)
+                            navigatePage(R.id.action_nav_xposed_to_android, title)
                             true
                         }
                     }
@@ -93,7 +93,7 @@ class XposedFragment : ModulePreferenceFragment() {
                                 R.string.StatusBarClock
                             )
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_statusBar, title)
+                            navigatePage(R.id.action_nav_xposed_to_statusBar, title)
                             true
                         }
                     }
@@ -108,7 +108,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = getString(R.string.Desktop)
                         summary = getString(R.string.launcher_layout_row_colume)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_launcher, title)
+                            navigatePage(R.id.action_nav_xposed_to_launcher, title)
                             true
                         }
                     }
@@ -124,7 +124,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary =
                             getString(R.string.remove_lock_screen_redone) + "," + getString(R.string.remove_lock_screen_bottom_right_camera)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_lockScreen, title)
+                            navigatePage(R.id.action_nav_xposed_to_lockScreen, title)
                             true
                         }
                     }
@@ -142,7 +142,7 @@ class XposedFragment : ModulePreferenceFragment() {
                                 R.string.remove_screenshot_privacy_limit
                             )
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_screenshot, title)
+                            navigatePage(R.id.action_nav_xposed_to_screenshot, title)
                             true
                         }
                     }
@@ -158,7 +158,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary =
                             getString(R.string.skip_apk_scan) + "," + getString(R.string.unlock_startup_limit)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_application, title)
+                            navigatePage(R.id.action_nav_xposed_to_application, title)
                             true
                         }
                     }
@@ -173,7 +173,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = getString(R.string.Miscellaneous)
                         summary = getString(R.string.Miscellaneous_summary)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_miscellaneous, title)
+                            navigatePage(R.id.action_nav_xposed_to_miscellaneous, title)
                             true
                         }
                     }
@@ -189,7 +189,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary =
                             getString(R.string.open_battery_health) + "," + getString(R.string.open_screen_power_save)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_function_to_battery, title)
+                            navigatePage(R.id.action_nav_function_to_battery, title)
                             true
                         }
                     }
@@ -205,7 +205,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary =
                             getString(R.string.remove_top_account_display) + "," + getString(R.string.remove_dpi_restart_recovery)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_function_to_settings, title)
+                            navigatePage(R.id.action_nav_function_to_settings, title)
                             true
                         }
                     }
@@ -222,7 +222,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary =
                             getString(R.string.remove_watermark_word_limit) + "," + getString(R.string.enable_10_bit_image_support)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_camera, title)
+                            navigatePage(R.id.action_nav_xposed_to_camera, title)
                             true
                         }
                     }
@@ -239,7 +239,7 @@ class XposedFragment : ModulePreferenceFragment() {
                             getString(R.string.remove_root_check) + "," + getString(R.string.enable_developer_page)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_oplusGames, title)
+                            navigatePage(R.id.action_nav_xposed_to_oplusGames, title)
                             true
                         }
                     }
@@ -256,7 +256,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary = getString(R.string.unlock_themestore_vip)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_themeStore, title)
+                            navigatePage(R.id.action_nav_xposed_to_themeStore, title)
                             true
                         }
                     }
@@ -272,7 +272,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary = getString(R.string.remove_network_limit)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_cloudService, title)
+                            navigatePage(R.id.action_nav_xposed_to_cloudService, title)
                             true
                         }
                     }
@@ -289,7 +289,7 @@ class XposedFragment : ModulePreferenceFragment() {
                             getString(R.string.unlock_local_upgrade) + "," + getString(R.string.remove_dm_verity)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_function_to_oplusOta, title)
+                            navigatePage(R.id.action_nav_function_to_oplusOta, title)
                             true
                         }
                     }
@@ -306,7 +306,7 @@ class XposedFragment : ModulePreferenceFragment() {
                             getString(R.string.skip_startup_page) + "," + getString(R.string.vip_download)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_everyimage, title)
+                            navigatePage(R.id.action_nav_xposed_to_everyimage, title)
                             true
                         }
                     }
@@ -322,7 +322,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary = getString(R.string.remove_pro_license)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_xposed_to_alphaBackupPro, title)
+                            navigatePage(R.id.action_nav_xposed_to_alphaBackupPro, title)
                             true
                         }
                     }
@@ -338,7 +338,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary = getString(R.string.remove_pro_license)
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
-                            navigate(R.id.action_nav_function_to_ksWeb, title)
+                            navigatePage(R.id.action_nav_function_to_ksWeb, title)
                             true
                         }
                     }

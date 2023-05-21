@@ -27,7 +27,7 @@ import com.luckyzyx.luckytool.utils.base64Encode
 import com.luckyzyx.luckytool.utils.clearAllPrefs
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.isZh
-import com.luckyzyx.luckytool.utils.navigate
+import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.putInt
 import com.luckyzyx.luckytool.utils.putString
@@ -424,7 +424,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                     setSummary(R.string.open_source_summary)
                     isIconSpaceReserved = false
                     setOnPreferenceClickListener {
-                        navigate(R.id.action_nav_setting_to_sourceFragment, title)
+                        navigatePage(R.id.action_nav_setting_to_sourceFragment, title)
                         true
                     }
                 }

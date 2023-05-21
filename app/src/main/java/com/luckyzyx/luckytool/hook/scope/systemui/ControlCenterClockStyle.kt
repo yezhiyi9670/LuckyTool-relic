@@ -4,7 +4,7 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.utils.ThemeColorUtils
+import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK

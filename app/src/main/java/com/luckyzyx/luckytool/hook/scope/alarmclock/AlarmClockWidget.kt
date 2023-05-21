@@ -9,12 +9,22 @@ import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object AlarmClockWidget : YukiBaseHooker() {
+
+    private lateinit var redMode: String
+
     override fun onHook() {
-        var redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
+        redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
+
+        if (SDK < A13) {
+            loadHooker(AlarmClock12)
+            return
+        }
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
         searchClass {
@@ -60,5 +70,27 @@ object AlarmClockWidget : YukiBaseHooker() {
             }
         }
         return sp
+    }
+
+    private object AlarmClock12 : YukiBaseHooker() {
+        override fun onHook() {
+            //Source OnePlusWidget
+            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook {
+                injectMember {
+                    method {
+                        param(StringClass, StringClass)
+                        returnType = CharSequenceClass
+                    }
+                    afterHook {
+                        if (redMode == "0") return@afterHook
+                        result = when (redMode) {
+                            "1" -> result<CharSequence>()?.let { setCharRedOne(it) }
+                            "2" -> result<CharSequence>().toString()
+                            else -> result
+                        }
+                    }
+                }
+            }
+        }
     }
 }

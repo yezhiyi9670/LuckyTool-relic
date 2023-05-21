@@ -34,7 +34,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scope
-import com.drake.net.utils.withIO
+import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
@@ -268,19 +268,6 @@ fun getFpsMode2(): ArrayList<ArrayList<*>> = safeOf(ArrayList()) {
 }
 
 /**
- * 获取电池信息(dumpsys)
- * @return Array<String>
- */
-private fun getBatteryInfo(): Array<String> {
-    val command =
-        "dumpsys battery | while read row; do\n" + "  if [[ -n \$row ]]; then\n" + "    echo \$row\n" + "    echo -e '@'\n" + "  fi\n" + "done"
-    return ShellUtils.execCommand(command, true, true).successMsg.let {
-        it.takeIf { e -> e.isNotEmpty() }?.substring(0, it.length - 1)?.split("@")?.toTypedArray()
-            ?: arrayOf()
-    }
-}
-
-/**
  * 设置刷新率
  * @param context Context
  * @param refresh String?
@@ -298,14 +285,14 @@ fun setRefresh(context: Context, name: String, min_refresh: String?, peak_refres
 
 fun setParameter(context: Context, name: String, key: String?, value: String?) {
     val contentResolver = context.contentResolver
-    try {
+    safeOf({
+        context.toast("apply $name Hz failed!")
+    }) {
         val contentValues = ContentValues(2)
         contentValues.put("name", key)
         contentValues.put("value", value)
         contentResolver.insert(Uri.parse("content://settings/system"), contentValues)
 //        context.toast("apply $name Hz success!")
-    } catch (e: Exception) {
-        context.toast("apply $name Hz failed!")
     }
 }
 
@@ -349,6 +336,12 @@ fun getProp(key: String): String {
     return getProp(key, false)
 }
 
+/**
+ * 获取prop数据
+ * @param key String
+ * @param root Boolean
+ * @return String
+ */
 fun getProp(key: String, root: Boolean): String = safeOf(default = "null") {
     ShellUtils.execCommand("getprop $key", root, true).let {
         if (it.result == 1) "null" else formatSpace(it.successMsg)
@@ -500,11 +493,12 @@ fun Context.getComponentEnabled(component: ComponentName): Int? {
  * 获取闪存信息
  * @return String
  */
-fun getFlashInfo(): String = safeOf(default = "null") {
+fun getFlashInfo(): String =
     ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
-        if (it.result == 1) return@safeOf "null" else return@safeOf formatSpace(it.successMsg)
+        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
+            ?.let { its -> formatSpace(its) } ?: "null"
     }
-}
+
 
 /**
  * 利用正则移除字符串前空格
@@ -953,7 +947,7 @@ fun Context.restartScopes(scopes: Array<String>) {
  * @param packName String 包名
  * @return Unit?
  */
-fun getPackageDir(packName: String): ArrayMap<String, String> {
+fun getPackageAbsolutePath(packName: String): ArrayMap<String, String> {
     ShellUtils.execCommand("pm list packages -f | grep $packName", true, true).apply {
         return if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
             val map = ArrayMap<String, String>()
@@ -970,7 +964,7 @@ fun getPackageDir(packName: String): ArrayMap<String, String> {
 }
 
 /**
- * 卸载APP
+ * 根据包名卸载APP
  * @param packName String 包名
  */
 fun uninstallApp(packName: String, userId: String? = "0") {
@@ -982,7 +976,7 @@ fun uninstallApp(packName: String, userId: String? = "0") {
  * @param packName String 包名
  */
 fun forceUninstallApp(packName: String) {
-    getPackageDir(packName).forEach { (k, v) ->
+    getPackageAbsolutePath(packName).forEach { (k, v) ->
         if (k == packName) ShellUtils.execCommand("rm -rf $v", true)
     }
 }
@@ -1016,7 +1010,7 @@ fun Context.restartAllScope() {
         setMessage(getString(R.string.restart_scope_message))
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
             scope {
-                withIO {
+                withDefault {
                     ShellUtils.execCommand(commands, true)
                 }
             }
@@ -1033,7 +1027,7 @@ fun Context.restartAllScope() {
  */
 fun Context.restartAllScope(scopes: Array<String>) {
     scope {
-        withIO {
+        withDefault {
             val commands = ArrayList<String>()
             for (scope in scopes) {
                 if (scope == "android") continue
@@ -1057,7 +1051,7 @@ fun Context.restartAllScope(scopes: Array<String>) {
  */
 fun callFunc(bundle: Bundle?) {
     scope {
-        withIO {
+        withDefault {
             bundle?.apply {
                 val command = ArrayList<String>()
                 val tileAutoStart = getBoolean("tileAutoStart", false)
@@ -1128,7 +1122,7 @@ fun showRefreshRate(status: Boolean) {
  * @param action Int Action ID
  * @param title String 页面标题
  */
-fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
+fun Fragment.navigatePage(action: Int, title: CharSequence? = "Title") {
     findNavController().navigate(action, Bundle().apply {
         putCharSequence("title_label", title)
     })
@@ -1140,7 +1134,7 @@ fun Fragment.navigate(action: Int, title: CharSequence? = "Title") {
  * @param action Int
  * @param bundle Bundle?
  */
-fun Fragment.navigate(action: Int, bundle: Bundle?) {
+fun Fragment.navigatePage(action: Int, bundle: Bundle?) {
     findNavController().navigate(action, bundle)
 }
 
@@ -1154,7 +1148,6 @@ fun Fragment.navigate(action: Int, bundle: Bundle?) {
 
 fun getScreenOrientation(view: View, result: (Boolean) -> Unit) {
     getScreenOrientation(view.resources) { result(it) }
-
 }
 
 /**
@@ -1187,13 +1180,13 @@ fun getScreenOrientation(resource: Resources, result: (Boolean) -> Unit) {
 
 /**
  * 获取设备用户
- * @return List<String>
+ * @return Array<String>
  */
-fun getUsers(): List<String> {
+fun getUsers(): Array<String> {
     ShellUtils.execCommand("ls /data/user/ -mF", true, true).apply {
         return if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-            successMsg?.replace(" ", "")?.replace("/", "")?.split(",") ?: arrayListOf()
-        } else arrayListOf()
+            successMsg?.replace(" ", "")?.replace("/", "")?.split(",")?.toTypedArray() ?: arrayOf()
+        } else arrayOf()
     }
 }
 
@@ -1255,7 +1248,7 @@ fun Context.getCStatus(id: String): Boolean {
 
 fun Context.ckqcbs(): Boolean {
     scope {
-        withIO {
+        withDefault {
             var qbsval = false
             var cbsval = false
             qbs.takeIf { e -> e.isNotEmpty() }

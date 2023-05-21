@@ -3,6 +3,14 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.4_beta
+
+- [更新] 捐赠名单
+- [适配] OnePlus锁屏双时钟红一 C12.1
+- [适配] OnePlus桌面时钟组件红一 C12.1
+- [适配] 自定义暗色模式列表 C12.1
+- [修复] 锁屏双时钟实例异常 C12.1
+
 ### v1.0.3
 
 - [更新] 捐赠名单

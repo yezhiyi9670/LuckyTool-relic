@@ -9,7 +9,7 @@ import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.IntentClass
 import com.highcapable.yukihookapi.hook.type.android.PendingIntentClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
-import com.luckyzyx.luckytool.hook.utils.DependencyUtils
+import com.luckyzyx.luckytool.hook.utils.sysui.DependencyUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
