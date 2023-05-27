@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.camera.FixHasselbladCustomWatermarkCrash
 import com.luckyzyx.luckytool.hook.scope.camera.HookCameraConfig
 import com.luckyzyx.luckytool.hook.scope.camera.RemoveWatermarkWordLimit
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -17,8 +16,8 @@ object HookCamera : YukiBaseHooker() {
         }
 
         //修复哈苏定制水印崩溃
-        if (prefs(ModulePrefs).getBoolean("fix_hasselblad_custom_watermark_crash", false)) {
-            loadHooker(FixHasselbladCustomWatermarkCrash)
-        }
+//        if (prefs(ModulePrefs).getBoolean("fix_hasselblad_custom_watermark_crash", false)) {
+//            loadHooker(FixHasselbladCustomWatermarkCrash)
+//        }
     }
 }

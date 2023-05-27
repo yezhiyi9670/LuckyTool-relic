@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         tools:ignore="ScopedStorage,QueryAllPackagesPermission">
+    
     <!--网络访问-->
     <uses-permission android:name="android.permission.INTERNET" />
     <!--请求安装包-->

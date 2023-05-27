@@ -21,6 +21,9 @@ object HookCameraConfig : YukiBaseHooker() {
                     paramCount = 1
                 }
                 beforeHook {
+                    //hasselblad_watermark_logo
+                    //hasselblad_watermark_logo_picture
+                    //ic_hasselblad_watermark_logo_picture
                     when (args(0).string()) {
                         //<string name="camera_heic_encode_10bits_title">10 亿色影像</string>
                         //OptionKey PRE_KEY_10BIT_HEIC_ENCODE pref_10bits_heic_encode_key
@@ -36,7 +39,7 @@ object HookCameraConfig : YukiBaseHooker() {
                         "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) resultTrue()
                         //<string name="camera_beauty_makeup_watermark_setting_title">美妆定制水印</string>
                         //OptionKey PRE_KEY_WATERMARK_MAKEUP pref_watermark_makeup_function_key
-//                        "com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
+                        //"com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
                     }
                 }
             }

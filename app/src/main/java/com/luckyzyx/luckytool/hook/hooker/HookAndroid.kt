@@ -68,6 +68,33 @@ object HookAndroid : YukiBaseHooker() {
 
         //电池优化白名单
         loadHooker(BatteryOptimizationWhitelist)
+//
+//        findClass("com.android.server.display.OplusFeatureDCBacklight").hook {
+//            injectMember {
+//                method { name = "updateDCBacklight" }
+//                beforeHook {
+//                    val mIsFeatureOn = field { name = "mIsFeatureOn" }.get(instance).boolean()
+//                    val mCurrentDCMode = field { name = "mCurrentDCMode" }.get(instance).int()
+//                    val mBtExtendSupported =
+//                        field { name = "mBtExtendSupported" }.get(instance).int()
+//                    val mIsApollo = field { name = "mIsApollo" }.get(instance).boolean()
+//                    val mIsPwDCModeSupport =
+//                        field { name = "mIsPwDCModeSupport" }.get(instance).boolean()
+//
+//                    loggerD(
+//                        msg = "mIsFeatureOn -> $mIsFeatureOn" +
+//                                "mCurrentDCMode -> $mCurrentDCMode" +
+//                                "mBtExtendSupported -> $mBtExtendSupported" +
+//                                "mIsApollo -> $mIsApollo" +
+//                                "mIsPwDCModeSupport -> $mIsPwDCModeSupport"
+//                    )
+//                    val mode = args().first().cast<Int>() ?: return@beforeHook
+//                    method { name = "applyApolloDCMode" }.get(instance).call(mode)
+//                    method { name = "applyDCMode" }.get(instance).call(mode)
+//
+//                }
+//            }
+//        }
 
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp

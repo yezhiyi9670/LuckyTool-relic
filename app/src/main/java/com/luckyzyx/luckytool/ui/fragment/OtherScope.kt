@@ -10,6 +10,7 @@ import androidx.preference.SwitchPreference
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
 
@@ -46,10 +47,18 @@ class Everyimage : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -79,10 +88,18 @@ class AlphaBackupPro : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -112,10 +129,18 @@ class KsWeb : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }

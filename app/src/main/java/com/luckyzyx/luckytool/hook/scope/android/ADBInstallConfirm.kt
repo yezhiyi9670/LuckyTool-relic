@@ -13,10 +13,7 @@ object ADBInstallConfirm : YukiBaseHooker() {
             "com.android.server.pm.OplusPackageInstallInterceptManager"
         ).hook {
             injectMember {
-                method {
-                    name = "allowInterceptAdbInstallInInstallStage"
-                    paramCount = 5
-                }
+                method { name = "allowInterceptAdbInstallInInstallStage" }
                 if (isEnable) replaceToFalse()
             }
         }

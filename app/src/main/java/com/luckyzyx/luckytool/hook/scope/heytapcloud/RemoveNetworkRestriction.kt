@@ -19,7 +19,8 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
                 "qa",
                 "t2",
                 "ra",
-                "ob"
+                "ob",
+                "mb"
             ).absolute()
             field().count(0..1)
             method {

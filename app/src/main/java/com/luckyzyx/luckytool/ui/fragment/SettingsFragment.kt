@@ -18,6 +18,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.Base64CodeUtils
 import com.luckyzyx.luckytool.utils.DonateData
+import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.OtherPrefs
 import com.luckyzyx.luckytool.utils.SettingsPrefs
@@ -32,7 +33,6 @@ import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.putInt
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.putStringSet
-import com.luckyzyx.luckytool.utils.readFromUri
 import com.luckyzyx.luckytool.utils.setComponentDisabled
 import com.luckyzyx.luckytool.utils.toast
 import org.json.JSONArray
@@ -52,7 +52,7 @@ class SettingsFragment : ModulePreferenceFragment() {
     private val restoreData =
         registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
-                writeRestoreData(requireActivity(), readFromUri(requireActivity(), it))
+                writeRestoreData(requireActivity(), FileUtils.readFromUri(requireActivity(), it))
             }
         }
 

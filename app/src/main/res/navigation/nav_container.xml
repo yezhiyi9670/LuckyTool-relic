@@ -377,7 +377,15 @@
     <fragment
             android:id="@+id/oplusOta"
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusOta"
-            android:label="{title_label}" />
+            android:label="{title_label}">
+        <action
+                android:id="@+id/action_oplusOta_to_extractOTAFragment"
+                app:destination="@id/extractOTAFragment"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
     <fragment
             android:id="@+id/zoomWindowFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.ZoomWindowFragment"
@@ -421,6 +429,10 @@
     <fragment
             android:id="@+id/statusBarNotifyRemoval"
             android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotifyRemoval"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/extractOTAFragment"
+            android:name="com.luckyzyx.luckytool.ui.fragment.ExtractOTAFragment"
             android:label="{title_label}" />
 
 </navigation>

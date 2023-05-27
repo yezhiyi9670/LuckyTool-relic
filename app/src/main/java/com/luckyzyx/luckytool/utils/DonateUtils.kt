@@ -865,6 +865,34 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "Yu Wen", details(
+                        DCInfo("20230522-161907", CAP, 9.99, "2023052222001484401426545691")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "ChocoFleece", details(
+                        DCInfo("20230522-165106", CAP, 16.66, "2023052222001427051438600213")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "Azurawan", details(
+                        DCInfo("20230522-165250", CWC, 18.88, "10000499012023052201687697826532")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "固体焦", details(
+                        DCInfo("20230523-072821", CAP, 3.0, "2023052322001498531426546842")
+                    )
+                )
+            )
         }
     }
 

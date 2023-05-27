@@ -20,8 +20,13 @@ class ThemeUtils(context: Context) {
         return supportDynamicColor && followSystem
     }
 
-    fun Context.isNightMode(): Boolean {
-        return (resources.configuration.uiMode and 32) > 0
+    /**
+     * 是否为夜间模式
+     * @param context Context
+     * @return Boolean
+     */
+    fun isNightMode(context: Context): Boolean {
+        return (context.resources.configuration.uiMode and 32) > 0
     }
 
     /**

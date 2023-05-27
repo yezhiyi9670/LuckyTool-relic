@@ -40,6 +40,7 @@ import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.jumpEngineermode
+import com.luckyzyx.luckytool.utils.jumpGames
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
@@ -379,10 +380,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = context.checkPackName("com.oplus.games")
                 setOnPreferenceClickListener {
-                    ShellUtils.execCommand(
-                        "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
-                        true
-                    )
+                    jumpGames(context)
                     true
                 }
             })

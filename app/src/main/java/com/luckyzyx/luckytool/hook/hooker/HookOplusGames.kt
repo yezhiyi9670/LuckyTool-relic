@@ -31,13 +31,13 @@ object HookOplusGames : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("enable_developer_page", false)) {
                 loadHooker(EnableDeveloperPage)
             }
-            //启用赛事支持模式
-            if (prefs(ModulePrefs).getBoolean("enable_support_competition_mode", false)) {
-                loadHooker(EnableSupportCompetitionMode)
-            }
             //启用X模式
             if (prefs(ModulePrefs).getBoolean("enable_x_mode_feature", false)) {
                 loadHooker(EnableXModeFeature)
+            }
+            //启用赛事支持模式
+            if (prefs(ModulePrefs).getBoolean("enable_support_competition_mode", false)) {
+                loadHooker(EnableSupportCompetitionMode)
             }
             //移除赛事模式音效
             if (prefs(ModulePrefs).getBoolean("remove_competition_mode_sound", false)) {

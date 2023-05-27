@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.ui.fragment
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -15,6 +14,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scopeDialog
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withDefault
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -32,7 +33,7 @@ import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
 import kotlinx.coroutines.Dispatchers
 import rikka.core.util.ResourceUtils
-import java.util.*
+import java.util.Arrays
 
 class XposedFragment : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -370,31 +371,30 @@ class XposedFragment : ModulePreferenceFragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    @SuppressLint("SetTextI18n")
-    fun Context.bottomSheet() {
-        val xposedScope = resources.getStringArray(R.array.xposed_scope)
-        Arrays.sort(xposedScope)
-        var str = getString(R.string.scope_version_info)
-        for (scope in xposedScope) {
-            val arrayList = getAppVersion(scope)
-            if (arrayList.isEmpty()) continue
-            str += "\n\n${getString(R.string.app_label)}: ${getAppLabel(scope)}\n${getString(R.string.package_name)}: $scope\n${
-                getString(
-                    R.string.version
-                )
-            }: ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
-        }
-        val nestedScrollView = NestedScrollView(this).apply {
-            setPadding(10.dp, 20.dp, 10.dp, 20.dp)
-            addView(
-                TextView(context).apply {
-                    textSize = 16F
-                    text = str
+    private fun Context.bottomSheet() {
+        scopeLife {
+            val xposedScope = resources.getStringArray(R.array.xposed_scope)
+            Arrays.sort(xposedScope)
+            var str = getString(R.string.scope_version_info)
+            withDefault {
+                for (scope in xposedScope) {
+                    val arrayList = getAppVersion(scope)
+                    if (arrayList.isEmpty()) continue
+                    str += "\n\n${getAppLabel(scope)} - $scope - ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
                 }
-            )
+            }
+            val nestedScrollView = NestedScrollView(this@bottomSheet).apply {
+                setPadding(10.dp, 20.dp, 10.dp, 20.dp)
+                addView(
+                    TextView(context).apply {
+                        textSize = 16F
+                        text = str
+                    }
+                )
+            }
+            val bottomSheetDialog = BottomSheetDialog(this@bottomSheet)
+            bottomSheetDialog.setContentView(nestedScrollView)
+            bottomSheetDialog.show()
         }
-        val bottomSheetDialog = BottomSheetDialog(this)
-        bottomSheetDialog.setContentView(nestedScrollView)
-        bottomSheetDialog.show()
     }
 }

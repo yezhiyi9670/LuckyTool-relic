@@ -24,20 +24,22 @@ import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
+import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
-import com.luckyzyx.luckytool.utils.getDocumentPath
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
+import com.luckyzyx.luckytool.utils.jumpBattery
+import com.luckyzyx.luckytool.utils.jumpGames
 import com.luckyzyx.luckytool.utils.jumpOTA
 import com.luckyzyx.luckytool.utils.navigatePage
+import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.restartScopes
 import rikka.core.util.ResourceUtils
-
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -565,8 +567,6 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     key = "statusbar_network_user_typeface"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
-                    isVisible =
-                        context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0"
                 }
             )
             if (context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0") {
@@ -720,6 +720,7 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
                     key = "remove_high_performance_mode_notifications"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = false
                 }
             )
             addPreference(
@@ -746,6 +747,7 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
                     key = "remove_smart_rapid_charging_notification"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = false
                 }
             )
             addPreference(
@@ -2417,18 +2419,16 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
-                val path = getDocumentPath(requireActivity(), it)
+                val path = FileUtils.getDocumentPath(requireActivity(), it)
                 requireActivity().putString(
-                    ModulePrefs,
-                    "replace_side_slider_icon_on_left",
-                    path
+                    ModulePrefs, "replace_side_slider_icon_on_left", path
                 )
                 findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
             }
         }
         val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
-                val path = getDocumentPath(requireActivity(), it)
+                val path = FileUtils.getDocumentPath(requireActivity(), it)
                 requireActivity().putString(
                     ModulePrefs,
                     "replace_side_slider_icon_on_right",
@@ -2545,7 +2545,7 @@ class FingerPrintRelated : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         val loadFPIcon = registerForActivityResult(ActivityResultContracts.GetContent()) {
             if (it != null) {
-                val path = getDocumentPath(requireActivity(), it)
+                val path = FileUtils.getDocumentPath(requireActivity(), it)
                 requireActivity().putString(
                     ModulePrefs, "replace_fingerprint_icon_path", path
                 )
@@ -2858,10 +2858,18 @@ class Settings : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -2954,10 +2962,18 @@ class Battery : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpBattery(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }
@@ -2992,6 +3008,7 @@ class Camera : ModulePreferenceFragment() {
                     key = "fix_hasselblad_custom_watermark_crash"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                    isVisible = false
                 }
             )
             addPreference(
@@ -3013,10 +3030,18 @@ class Camera : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -3162,10 +3187,18 @@ class OplusGames : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpGames(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }
@@ -3197,10 +3230,18 @@ class ThemeStore : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -3232,10 +3273,18 @@ class CloudService : ModulePreferenceFragment() {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) requireActivity().openApp(scopes)
         return super.onOptionsItemSelected(item)
     }
 }
@@ -3295,6 +3344,19 @@ class OplusOta : ModulePreferenceFragment() {
                             true
                         )
                         (activity as MainActivity).restart()
+                        true
+                    }
+                }
+            )
+            addPreference(
+                Preference(context).apply {
+                    title = getString(R.string.extract_ota_information)
+                    summary = getString(R.string.extract_ota_information_summary)
+                    key = "extract_ota_information"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceClickListener {
+                        navigatePage(R.id.action_oplusOta_to_extractOTAFragment, title)
                         true
                     }
                 }

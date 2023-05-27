@@ -199,10 +199,10 @@
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
     <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
-    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
-    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
     <string name="StatusBarTiles">Przełączniki centrum sterowania</string>
     <string name="TileLongClickEvent">Długie przytrzymanie</string>
     <string name="restore_some_tile_long_press_event">Przywróć niektórym przełącznikom długie naciśnięcie</string>
@@ -466,6 +466,11 @@
     <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
     <string name="remove_dm_verity">Usuń wykrywanie dm-verity</string>
     <string name="remove_dm_verity_summary">Bieżący status: %1$s\nWażne tylko dla tej aktualizacji systemu</string>
+    <!--Extract OTA-->
+    <string name="extract_ota_information">Extract OTA information</string>
+    <string name="extract_ota_information_summary">When the new version is obtained, you can click to extract the OTA information</string>
+    <string name="no_ota_data">No OTA Data</string>
+    <string name="extract_ota_source">Extract Source</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Pomiń stronę początkową</string>
     <string name="vip_download">Pobierz oryginał</string>

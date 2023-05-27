@@ -6,21 +6,15 @@ import android.content.*
 import android.content.pm.PackageManager.*
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.os.SystemClock
-import android.provider.DocumentsContract
-import android.provider.MediaStore
 import android.provider.Settings
 import android.service.quicksettings.TileService
 import android.text.SpannableString
-import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.util.ArrayMap
 import android.util.ArraySet
@@ -44,7 +38,6 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import java.io.*
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.roundToLong
@@ -304,12 +297,12 @@ fun getDeviceID(): String {
     ShellUtils.execCommand(
         "cat /sys/devices/soc0/serial_number", false, true
     ).apply {
-        if (result == 0 && successMsg.isNotBlank()) return successMsg
+        if (result == 0 && successMsg != null && successMsg.isNotBlank()) return successMsg
     }
     ShellUtils.execCommand(
         "cat /sys/firmware/devicetree/base/firmware/android/serialno", false, true
     ).apply {
-        if (result == 0 && successMsg.isNotBlank()) return successMsg
+        if (result == 0 && successMsg != null && successMsg.isNotBlank()) return successMsg
     }
     return "null"
 }
@@ -436,6 +429,32 @@ fun jumpHighPerformance(context: Context) {
 }
 
 /**
+ * 跳转到电池
+ * @param context Context
+ */
+fun jumpBattery(context: Context) {
+    if (context.checkPackName("com.oplus.battery")) {
+        ShellUtils.execCommand(
+            "am start com.oplus.battery/com.oplus.powermanager.fuelgaue.PowerConsumptionActivity",
+            true
+        )
+    }
+}
+
+/**
+ * 跳转到游戏助手
+ * @param context Context
+ */
+fun jumpGames(context: Context) {
+    if (context.checkPackName("com.oplus.games")) {
+        ShellUtils.execCommand(
+            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
+            true
+        )
+    }
+}
+
+/**
  * 跳转进程管理
  * @param context Context
  */
@@ -499,17 +518,6 @@ fun getFlashInfo(): String =
             ?.let { its -> formatSpace(its) } ?: "null"
     }
 
-
-/**
- * 利用正则移除字符串前空格
- * @param string String
- */
-fun formatSpace(string: String): String {
-    val pattern = Pattern.compile("\\p{L}")
-    val matcher = pattern.matcher(string)
-    if (!matcher.find()) return string
-    return string.substring(matcher.start())
-}
 
 /**
  * 正常编码中一般只会用到 [dp]/[sp] ;
@@ -649,217 +657,6 @@ fun base64Decode(string: String): String {
 }
 
 /**
- * 从URI文件读取字符串
- * @param context Context
- * @param uri Uri
- * @return String
- */
-fun readFromUri(context: Context, uri: Uri): String {
-    val stringBuilder = StringBuilder()
-    context.contentResolver.openInputStream(uri)?.use { inputStream ->
-        BufferedReader(InputStreamReader(inputStream)).use { reader ->
-            var line: String? = reader.readLine()
-            while (line != null) {
-                stringBuilder.append(line)
-                line = reader.readLine()
-            }
-        }
-    }
-    return stringBuilder.toString()
-}
-
-/**
- * 获取文件路径
- * @param uri Uri 文件URI
- * @return String 文件Path
- */
-fun getDocumentPath(context: Context, uri: Uri): String? {
-    if (ContentResolver.SCHEME_CONTENT != uri.scheme) return "null"
-    if (!DocumentsContract.isDocumentUri(context, uri)) return "null"
-    val authority = when (uri.authority) {
-        "com.android.externalstorage.documents" -> "ExternalStorageDocument"
-        "com.android.providers.downloads.documents" -> "DownloadsDocument"
-        "com.android.providers.media.documents" -> "MediaDocument"
-        else -> "null"
-    }
-    when (authority) {
-        "ExternalStorageDocument" -> {
-            // ExternalStorageProvider
-            val docId = DocumentsContract.getDocumentId(uri)
-            val docArray = docId.split(":")
-            val type = docArray[0]
-            val dir = docArray[1]
-            if ("primary" != type) return "null"
-            return Environment.getExternalStorageDirectory().path + "/" + dir
-        }
-
-        "DownloadsDocument" -> {
-            // DownloadsProvider
-            val docId = DocumentsContract.getDocumentId(uri)
-            if (TextUtils.isEmpty(docId)) return "null"
-            return if (docId.startsWith("raw:")) {
-                docId.replaceFirst("raw:", "")
-            } else if (docId.contains("msf:")) {
-                getMSFFile(context, uri)
-            } else {
-                val contentUri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"), ContentUris.parseId(uri)
-                )
-                getDataColumn(context, contentUri, null, null)
-            }
-        }
-
-        "MediaDocument" -> {
-            // MediaProvider
-            val docId = DocumentsContract.getDocumentId(uri)
-            val docArray = docId.split(":")
-            val contentUri: Uri? = when (docArray[0]) {
-                "image" -> MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                "video" -> MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-                "audio" -> MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
-                else -> null
-            }
-            val selection = "_id=?"
-            val selectionArgs = arrayOf(docArray[1])
-            return getDataColumn(context, contentUri!!, selection, selectionArgs)
-        }
-    }
-    return "null"
-}
-
-/**
- * 获取文件数据列
- * @param context Context
- * @param uri Uri
- * @param selection String?
- * @param selectionArgs Array<String>?
- * @return String?
- */
-fun getDataColumn(
-    context: Context, uri: Uri, selection: String?, selectionArgs: Array<String>?
-): String? {
-    var cursor: Cursor? = null
-    val column = "_data"
-    val projection = arrayOf(column)
-    try {
-        cursor = context.contentResolver.query(uri, projection, selection, selectionArgs, null)
-        if (cursor != null && cursor.moveToFirst()) {
-            val columnIndex: Int = cursor.getColumnIndexOrThrow(column)
-            return cursor.getString(columnIndex)
-        }
-    } finally {
-        cursor?.close()
-    }
-    return null
-}
-
-/**
- * 处理MSF类型
- * @param context Context
- * @param uri Uri
- * @return String?
- */
-fun getMSFFile(context: Context, uri: Uri): String? {
-    val dir =
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool/cache")
-    if (!dir.exists()) dir.mkdirs()
-    File(dir.path + "/.nomedia").createNewFile()
-    val fileType = context.contentResolver.getType(uri)?.split("/")?.get(1)
-    val fileName = SystemClock.uptimeMillis().toString() + "." + fileType
-    val file = File(dir, fileName)
-    val inputStream = context.contentResolver.openInputStream(uri)
-    if (inputStream != null) return copyStreamToFile(inputStream, file)
-    return null
-}
-
-/**
- * 复制文件
- * @param inputStream InputStream
- * @param outputFile File
- * @return String
- */
-fun copyStreamToFile(inputStream: InputStream, outputFile: File): String {
-    inputStream.use { input ->
-        val outputStream = FileOutputStream(outputFile)
-        outputStream.use { output ->
-            val buffer = ByteArray(4 * 1024) // buffer size
-            while (true) {
-                val byteCount = input.read(buffer)
-                if (byteCount < 0) break
-                output.write(buffer, 0, byteCount)
-            }
-            output.flush()
-        }
-    }
-    return outputFile.path
-}
-
-/**
- * 读取文件输出字符串
- * @param file File
- * @return String?
- */
-fun loadFile(file: File): String? {
-    var fis: FileInputStream? = null
-    var output: String? = null
-    try {
-        fis = FileInputStream(file)
-        val buffer = ByteArray(4096)
-        var len: Int
-        val sb = StringBuilder()
-        while (fis.read(buffer).also { len = it } != -1) {
-            sb.append(String(buffer, 0, len))
-        }
-        output = sb.toString()
-    } catch (e: Exception) {
-        e.printStackTrace()
-    } finally {
-        fis?.close()
-    }
-    return output
-}
-
-/**
- * 格式化Date
- * @param format String
- * @return String 格式
- */
-fun formatDate(format: String): String {
-    return formatDate(format, null, null)
-}
-
-/**
- * 格式化Date
- * @param format String 格式
- * @param param Any 要格式的对象
- * @return String
- */
-fun formatDate(format: String, param: Any): String {
-    return formatDate(format, param, null)
-}
-
-/**
- * 格式化Date
- * @param format String 格式
- * @param param Any? 要格式的对象
- * @param locale Locale? 区域
- * @return String
- */
-fun formatDate(format: String, param: Any?, locale: Locale?): String {
-    return SimpleDateFormat(format, locale ?: Locale.getDefault()).format(param ?: Date())
-}
-
-/**
- * 格式化Double
- * @param format String 格式
- * @param param Any 要格式化的对象
- * @return Double
- */
-fun formatDouble(format: String, param: Any): Double {
-    return Formatter().format(format, param).toString().toDoubleOrNull() ?: 0.0
-}
-
-/**
  * 判断语言首选项是否为中文
  * @param context Context
  * @return Boolean
@@ -868,6 +665,36 @@ fun isZh(context: Context): Boolean {
     val locale = context.resources.configuration.locales
     val language = locale[0].language
     return language.endsWith("zh")
+}
+
+/**
+ * 跳转到APP
+ * @receiver Context
+ * @param packNames Array<String>
+ */
+fun Context.openApp(packNames: Array<String>) {
+    packNames.forEach {
+        packageManager.getLaunchIntentForPackage(it)?.apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+            startActivity(this)
+        }
+    }
+}
+
+/**
+ * 跳转到APP
+ * @receiver Context
+ * @param packName String
+ */
+fun Context.openApp(packName: String) {
+    packageManager.getLaunchIntentForPackage(packName)?.apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+        startActivity(this)
+    }
 }
 
 /**

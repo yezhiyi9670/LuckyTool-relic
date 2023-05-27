@@ -62,7 +62,6 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         dataChannel.wait<Int>("set_network_speed_font_size") { getDoubleSize = it }
         var getBottomPadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 0)
         dataChannel.wait<Int>("set_network_speed_padding_bottom") { getBottomPadding = it }
-        if (layoutMode.isBlank() || layoutMode == "0") return
 
         //Source NetworkSpeedView
         VariousClass(
@@ -73,7 +72,6 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                 method { name = "onFinishInflate" }
                 afterHook {
                     val mView = instance<FrameLayout>()
-                    val res = mView.resources
                     val mSpeedNumber =
                         field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
                     val mSpeedUnit = field { name = "mSpeedUnit" }.get(instance).cast<TextView>()
@@ -83,18 +81,18 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                     }
                     when (layoutMode) {
                         "1" -> {
-                            val speedUnitId = res.getIdentifier("unit", "id", packageName)
-                            val speedUnit: TextView = speedUnitId.let { mView.findViewById(it) }
+                            val speedUnit: TextView? =
+                                mView.resources.getIdentifier("unit", "id", packageName)
+                                    .let { mView.findViewById(it) }
                             mView.removeView(speedUnit)
                         }
                     }
                 }
             }
             injectMember {
-                method {
-                    name = "updateNetworkSpeed"
-                }
+                method { name = "updateNetworkSpeed" }
                 beforeHook {
+                    if (layoutMode == "0") return@beforeHook
                     instance<FrameLayout>().apply {
                         layoutParams?.width = LayoutParams.WRAP_CONTENT
                         setPadding(0, 0, 0, getBottomPadding.dp)
@@ -119,6 +117,7 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                                 }
                             }
                         }
+
                         "2" -> {
                             mSpeedNumber?.apply {
                                 text = getTotalUpSpeed().let {

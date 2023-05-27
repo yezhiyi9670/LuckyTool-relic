@@ -18,7 +18,7 @@ object HookSettings : YukiBaseHooker() {
         }
         //应用详情页
         loadHooker(HookAppDetails)
-        //HookSettingsFeature
+        //HookSettingsFeature -> memc
 //        loadHooker(HookSettingsFeature)
         //移除顶部账号显示
         if (prefs(ModulePrefs).getBoolean("remove_top_account_display", false)) {

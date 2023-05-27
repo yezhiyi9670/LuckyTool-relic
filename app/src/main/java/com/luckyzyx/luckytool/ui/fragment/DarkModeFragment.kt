@@ -67,10 +67,8 @@ class DarkModeFragment : Fragment() {
         binding.searchView.apply {
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
+                    s: CharSequence?, start: Int,
+                    count: Int, after: Int
                 ) {
                 }
 

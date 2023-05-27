@@ -4,14 +4,13 @@ import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.SDK
 
 object AlarmClockWidget : YukiBaseHooker() {
 
@@ -21,9 +20,14 @@ object AlarmClockWidget : YukiBaseHooker() {
         redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
 
-        if (SDK < A13) {
-            loadHooker(AlarmClock12)
-            return
+        "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull()?.let {
+            it.hasMethod {
+                param(StringClass, StringClass)
+                returnType = CharSequenceClass
+            }.takeIf { e -> e }?.let {
+                loadHooker(AlarmClock12)
+                return
+            }
         }
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence

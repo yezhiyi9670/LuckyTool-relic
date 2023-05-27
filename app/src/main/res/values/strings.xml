@@ -216,10 +216,10 @@
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
-    <string name="remove_control_center_networkwarn">Remove the VPN information at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
-    <string name="remove_control_center_networkwarn_dialog_and_text">Remove connection information and dialogs</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
     
     <string name="StatusBarTiles">StatusBar Tiles</string>
     <string name="TileLongClickEvent">Tile Long Click Event</string>
@@ -315,7 +315,7 @@
     
     <!--Desktop-->
     <string name="Desktop">Desktop Related</string>
-
+    
     <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
@@ -502,6 +502,12 @@
     <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>
     <string name="remove_dm_verity">Remove dm-verity detection</string>
     <string name="remove_dm_verity_summary">Current status: %1$s\nOnly valid for this system update</string>
+    <!--Extract OTA-->
+    <string name="extract_ota_information">Extract OTA information</string>
+    <string name="extract_ota_information_summary">When the new version is obtained, you can click to extract the OTA information</string>
+    <string name="no_ota_data">No OTA Data</string>
+    <string name="extract_ota_source">Extract Source</string>
+    
     <!--Everyimage-->
     <string name="skip_startup_page">Skip startup page</string>
     <string name="vip_download">Download original</string>

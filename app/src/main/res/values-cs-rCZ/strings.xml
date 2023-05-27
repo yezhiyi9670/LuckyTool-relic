@@ -199,10 +199,10 @@
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
-    <string name="remove_control_center_networkwarn">Odstranit informace o VPN v dolní části ovládacího centra</string>
+    <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
-    <string name="remove_control_center_networkwarn_dialog_and_text">Odebrat informace o připojení a dialogová okna</string>
-    <string name="remove_control_center_networkwarn_summary">Po připojení k VPN se ve spodní části ovládacího centra zobrazí zpráva</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
+    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
     <string name="restore_some_tile_long_press_event">Obnovit některé události dlouhého stisku</string>
@@ -466,6 +466,11 @@
     <string name="unlock_local_upgrade_summary">Po kliknutí budou příslušné operace prováděny automaticky, prosím trpělivě počkejte několik sekund</string>
     <string name="remove_dm_verity">Odstranit detekci dm-verity</string>
     <string name="remove_dm_verity_summary">Aktuální stav: %1$s\nPlatné pouze pro tuto systémovou aktualizaci</string>
+    <!--Extract OTA-->
+    <string name="extract_ota_information">Extrahovat OTA informace</string>
+    <string name="extract_ota_information_summary">Jakmile je nalezena nová verze, můžete zde kliknout pro získání informací o OTA</string>
+    <string name="no_ota_data">Žádná OTA data</string>
+    <string name="extract_ota_source">Extrahovat zdroj</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Přeskočte úvodní obrazovku</string>
     <string name="vip_download">Stáhnout originál</string>

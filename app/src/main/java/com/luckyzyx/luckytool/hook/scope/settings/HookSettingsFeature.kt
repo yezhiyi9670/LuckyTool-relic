@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -12,7 +13,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
         //Source SysFeatureUtils
         searchClass {
-            from("oi", "ki").absolute()
+            from("oi", "ki", "ji").absolute()
             field().count { it > 30 }
             method {
                 emptyParam()
@@ -40,6 +41,6 @@ object HookSettingsFeature : YukiBaseHooker() {
                     }
                 }
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> HookSettingsFeature")
     }
 }
