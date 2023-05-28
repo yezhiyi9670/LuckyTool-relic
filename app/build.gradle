@@ -25,7 +25,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk 28
         versionCode currentVersionCode
-        versionName "1.0.4_beta"
+        versionName "1.0.4"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
