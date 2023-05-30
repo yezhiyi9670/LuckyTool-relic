@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.drake.net.utils.scopeLife
-import com.drake.net.utils.withIO
+import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.textfield.TextInputEditText
@@ -107,7 +107,7 @@ class OtherFragment : Fragment() {
                     ShellUtils.execCommand("getprop service.adb.tcp.port", true, true).let {
                         if (it.result == 0 && it.successMsg != null) it.successMsg else "6666"
                     }
-                val getIP = ShellUtils.execCommand(
+                var getIP = ShellUtils.execCommand(
                     "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
                     true,
                     true
@@ -118,7 +118,6 @@ class OtherFragment : Fragment() {
                     setCancelable(true)
                     setView(R.layout.layout_adb_dialog)
                 }.show()
-
                 val adbPortLayout =
                     adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)?.apply {
                         hint = context.getString(R.string.adb_port)
@@ -150,7 +149,6 @@ class OtherFragment : Fragment() {
                         true
                     }
                 }
-
                 adbDialog.findViewById<MaterialSwitch>(R.id.adb_switch)?.apply {
                     text = context.getString(R.string.enable_remote_adb_debugging)
                     isEnabled = isSu
@@ -173,8 +171,15 @@ class OtherFragment : Fragment() {
                                     "killall -9 adbd 2>/dev/null",
                                     "start adbd"
                                 )
-                                withIO {
+                                withDefault {
                                     ShellUtils.execCommand(commands, true)
+                                    getIP = ShellUtils.execCommand(
+                                        "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
+                                        true,
+                                        true
+                                    ).let {
+                                        if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) it.successMsg else "IP"
+                                    }
                                 }
                                 context.putString(OtherPrefs, "adb_port", port)
                                 adbPortLayout?.isEnabled = false
@@ -192,9 +197,7 @@ class OtherFragment : Fragment() {
                                     "start adbd",
                                     "setprop service.adb.tcp.port ''"
                                 )
-                                withIO {
-                                    ShellUtils.execCommand(commands, true)
-                                }
+                                withDefault { ShellUtils.execCommand(commands, true) }
                                 adbPortLayout?.isEnabled = true
                                 adbTv?.text = ""
                                 adbTvTip?.isVisible = false

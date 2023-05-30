@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.log.loggerE
 import com.highcapable.yukihookapi.hook.xposed.bridge.event.YukiXposedEvent
 import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid
+import com.luckyzyx.luckytool.hook.hooker.HookAod
 import com.luckyzyx.luckytool.hook.hooker.HookApplication
 import com.luckyzyx.luckytool.hook.hooker.HookAutoStart
 import com.luckyzyx.luckytool.hook.hooker.HookBattery
@@ -30,6 +31,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookScreenshot
 import com.luckyzyx.luckytool.hook.hooker.HookSettings
 import com.luckyzyx.luckytool.hook.hooker.HookStatusBar
 import com.luckyzyx.luckytool.hook.hooker.HookThemeStore
+import com.luckyzyx.luckytool.hook.hooker.HookUIEngine
 import com.luckyzyx.luckytool.hook.hooker.StatusBarNotifiyLimit
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
@@ -101,8 +103,14 @@ object MainHook : IYukiHookXposedInit {
         //桌面
         loadApp("com.android.launcher", HookLauncher)
 
+        //息屏
+        loadApp("com.oplus.aod", HookAod)
+        //百变引擎
+        loadApp("com.oplus.uiengine", HookUIEngine)
         //锁屏
-        loadApp("com.android.systemui", HookLockScreen)
+        loadApp("com.android.systemui") {
+            loadHooker(HookLockScreen)
+        }
         //截屏
         loadApp("com.oplus.screenshot", HookScreenshot)
         //应用

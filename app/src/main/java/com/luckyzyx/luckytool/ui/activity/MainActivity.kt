@@ -100,6 +100,7 @@ open class MainActivity : AppCompatActivity() {
             startActivity(intent.setData(Uri.parse("package:$packageName")))
             toast(getString(R.string.all_files_access_permission))
         }
+        UpdateUtils(this).checkBK()
     }
 
     private fun initDynamicShortcuts() {

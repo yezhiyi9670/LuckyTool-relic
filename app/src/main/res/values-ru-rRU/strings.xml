@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
+    <string name="remove_scroll_to_top_white_list">Удалить белый список, который прокручивается вверх при нажатии на строку состояния</string>
+    <string name="remove_scroll_to_top_white_list_summary">Удалить ограничение белого списка, которое прокручивается вверх, когда некоторые приложения нажимают на строку состояния</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
@@ -199,7 +201,7 @@
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
-    <string name="remove_control_center_networkwarn">Удалите предупреждающее сообщение безопасности в нижней части центра управления</string>
+    <string name="remove_control_center_networkwarn">Удалить сообщение безопасности в нижней части центра управления</string>
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>
     <string name="remove_control_center_networkwarn_summary">После подключения к VPN в нижней части центра управления появится сообщение\nПосле установки сертификата ЦС показывает, что сеть может контролироваться</string>
@@ -260,7 +262,13 @@
     <string name="battery_power">Мощность</string>
     <string name="battery_technology">Технология</string>
     <string name="battery_update_time">Время обновления</string>
-    <!--LockScreen-->
+    <!--Aod-->
+    <string name="AodRelated">AOD</string>
+    <string name="remove_aod_music_whitelist">Удалить ограничение виджетов музыки на AOD</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">Восстановить цвет иконки уведомления</string>
+    <string name="set_aod_style_mode">Установить режим стиля AOD</string>
+    <!--LockScreenAod-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenComponent">Компоненты экрана блокировки</string>
     <string name="lock_screen_clock_redone_mode">Красные часы на экране блокировки</string>
@@ -292,7 +300,7 @@
     <string name="AppBadgeRelated">Иконка приложения</string>
     <string name="remove_the_dot_after_app_update">Удалить точку после обновления приложения</string>
     <string name="remove_app_shortcut_badge">Удалить иконку приложения</string>
-    <string name="remove_app_work_badge">Remove app work badge</string>
+    <string name="remove_app_work_badge">Удалить рабочую иконку приложения</string>
     <string name="remove_app_clone_badge">Удалить иконку клонированного приложения</string>
     <string name="launcher_layout_related">Сетка рабочего стола</string>
     <string name="launcher_layout_row_colume">Установите количество строк сетки рабочего стола</string>
@@ -403,7 +411,7 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
-    <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30 °C, и конкретный эффект не гарантируется.</string>
+    <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30°C, и конкретный эффект не гарантируется.</string>
     <string name="BatteryOptimization">Оптимизация батареи</string>
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">Включить режим X</string>
     <string name="enable_super_resolution_feature">Включить супер разрешение</string>
     <string name="enable_one_plus_characteristic">Включить статус OnePlus</string>
+    <string name="custom_media_player_support">Поддержка пользовательского медиаплеера</string>
+    <string name="custom_media_player_support_message">Заполните имя пакета для добавления медиаплеера, каждая строка может иметь только одно приложение</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>

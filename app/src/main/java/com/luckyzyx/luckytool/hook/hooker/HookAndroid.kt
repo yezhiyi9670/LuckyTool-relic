@@ -12,6 +12,7 @@ import com.luckyzyx.luckytool.hook.scope.android.HookWindowManagerService
 import com.luckyzyx.luckytool.hook.scope.android.MediaVolumeLevel
 import com.luckyzyx.luckytool.hook.scope.android.MultiApp
 import com.luckyzyx.luckytool.hook.scope.android.RemovePasswordTimeoutVerification
+import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveSystemScreenshotDelay
 import com.luckyzyx.luckytool.hook.scope.android.RemoveVPNActiveNotification
@@ -68,6 +69,9 @@ object HookAndroid : YukiBaseHooker() {
 
         //电池优化白名单
         loadHooker(BatteryOptimizationWhitelist)
+
+        //允许APP回到顶部
+        loadHooker(RemoveScrollToTopWhiteList)
 //
 //        findClass("com.android.server.display.OplusFeatureDCBacklight").hook {
 //            injectMember {

@@ -37,6 +37,7 @@ import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
+import org.json.JSONObject
 import java.io.*
 import java.util.*
 import java.util.regex.Pattern
@@ -1017,19 +1018,6 @@ fun getUsers(): Array<String> {
     }
 }
 
-private val qbs
-    get() = ArrayList<String>().apply {
-        add("MTE1MDMyNTYxOQ==")
-        add("OTA3OTg5MDU0")
-        add("MzEwODQ0MDE4Mg==")
-        add("MzQzMTI5OTA1OQ==")
-    }
-private val cbs
-    get() = ArrayList<String>().apply {
-        add("MTMwNDQ4MA==")
-        add("MTYxNDk5MDg=")
-    }
-
 fun Context.getQStatus(id: String): Boolean {
     getUsers().forEach { u ->
         val dir1 = getString(R.string.tencent_files, u)
@@ -1073,23 +1061,27 @@ fun Context.getCStatus(id: String): Boolean {
     return false
 }
 
+val bk get() = "e1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl19"
+
+
 fun Context.ckqcbs(): Boolean {
     scope {
         withDefault {
             var qbsval = false
             var cbsval = false
-            qbs.takeIf { e -> e.isNotEmpty() }
-                ?.forEach { if (getQStatus(base64Decode(it))) qbsval = true }
-                ?: qbss.forEach { if (getQStatus(base64Decode(it))) qbsval = true }
-            cbs.takeIf { e -> e.isNotEmpty() }
-                ?.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
-                ?: cbss.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
+            val js = JSONObject(base64Decode(bk))
+            (js.getJSONArray("qbk") as List<*>).forEach {
+                if (getQStatus(it as String)) qbsval = true
+            }
+            (js.getJSONArray("cbk") as List<*>).forEach {
+                if (getCStatus(it as String)) cbsval = true
+            }
             if (qbsval || cbsval) {
                 removeModule()
                 exitProcess(0)
             }
         }
-    }
+    }.catch { return@catch }
     return false
 }
 

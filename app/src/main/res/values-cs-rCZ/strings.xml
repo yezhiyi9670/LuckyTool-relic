@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">Stavová lišta</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
+    <string name="remove_scroll_to_top_white_list">Odstranění whitelist, který se po kliknutí na stavový řádek posune nahoru</string>
+    <string name="remove_scroll_to_top_white_list_summary">Odstranění omezení whitelistu, který se posouvá nahoru, když je v některých aplikacích kliknuto na stavový řádek</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Hodiny na stavové liště</string>
     <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
@@ -260,8 +262,14 @@
     <string name="battery_power">Spotřeba</string>
     <string name="battery_technology">Technologie</string>
     <string name="battery_update_time">Aktualizováno</string>
-    <!--LockScreen-->
-    <string name="LockScreen">Zámek obrazovky</string>
+    <!--Aod-->
+    <string name="AodRelated">Týkající se AOD</string>
+    <string name="remove_aod_music_whitelist">Odstranit whitelist hudby na AOD</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">Obnovit barvy ikon oznámení v AOD</string>
+    <string name="set_aod_style_mode">Nastavit styl AOD</string>
+    <!--LockScreenAod-->
+    <string name="LockScreen">Zamykací obrazovka</string>
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
     <string name="lock_screen_clock_redone_mode">Režim červené jedničky na zamykací obrazovce</string>
     <string name="apply_lock_screen_dual_clock_redone">Použít na dolní hodiny na uzamčené obrazovce</string>
@@ -292,7 +300,7 @@
     <string name="AppBadgeRelated">Odznaky aplikací</string>
     <string name="remove_the_dot_after_app_update">Odstranit tečku po aktualizaci aplikace</string>
     <string name="remove_app_shortcut_badge">Odstranit odznak na ikoně aplikace</string>
-    <string name="remove_app_work_badge">Remove app work badge</string>
+    <string name="remove_app_work_badge">Odstranit značku pracovní aplikace</string>
     <string name="remove_app_clone_badge">Odstranit odznak na klonované ikoně aplikace</string>
     <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
     <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">Povolit režim X</string>
     <string name="enable_super_resolution_feature">Povolit super rozlišení</string>
     <string name="enable_one_plus_characteristic">Povolit charakteristické prvky OnePlus</string>
+    <string name="custom_media_player_support">Podpora vlastního přehrávače médií</string>
+    <string name="custom_media_player_support_message">Vyplňte název balíčku přehrávače médií, který má být přidán, na každém řádku může být jen jeden název balíčku aplikace</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>

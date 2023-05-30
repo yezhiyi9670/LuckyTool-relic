@@ -241,6 +241,16 @@ class StatusBar : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_scroll_to_top_white_list)
+                    summary = getString(R.string.remove_scroll_to_top_white_list_summary)
+                    key = "remove_scroll_to_top_white_list"
+                    setDefaultValue(false)
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                }
+            )
         }
         requireActivity().ckqcbss()
     }
@@ -1919,6 +1929,68 @@ class Launcher : ModulePreferenceFragment() {
     }
 }
 
+class Aod : ModulePreferenceFragment() {
+
+    private val scopes = arrayOf("com.android.systemui", "com.oplus.aod", "com.oplus.uiengine")
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.AodRelated)
+                    key = "AodRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_aod_music_whitelist)
+                    key = "remove_aod_music_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_aod_notification_icon_whitelist)
+                    key = "remove_aod_notification_icon_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                DropDownPreference(context).apply {
+                    title = getString(R.string.set_aod_style_mode)
+                    summary = "%s"
+                    key = "set_aod_style_mode"
+                    entries =
+                        resources.getStringArray(R.array.set_aod_style_mode_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        return super.onOptionsItemSelected(item)
+    }
+}
+
 class LockScreen : ModulePreferenceFragment() {
     private val scopes = arrayOf("com.android.systemui")
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -3103,6 +3175,24 @@ class OplusGames : ModulePreferenceFragment() {
                     key = "enable_developer_page"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                EditTextPreference(context).apply {
+                    title = getString(R.string.custom_media_player_support)
+                    dialogTitle = title
+                    summary = context.getString(
+                        ModulePrefs, "custom_media_player_support", "None"
+                    )
+                    if (summary == "") summary = "None"
+                    dialogMessage = getString(R.string.custom_media_player_support_message)
+                    key = "custom_media_player_support"
+                    setDefaultValue("None")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        summary = if (newValue == "") "None" else newValue as String
+                        true
+                    }
                 }
             )
             addPreference(

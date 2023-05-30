@@ -5,11 +5,13 @@ package com.luckyzyx.luckytool.utils
 import android.app.Application
 import android.content.Context
 import com.drake.net.utils.scope
-import com.drake.net.utils.withIO
+import com.drake.net.utils.withDefault
 import com.luckyzyx.luckytool.BuildConfig
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import org.json.JSONObject
+import java.io.File
 import kotlin.system.exitProcess
 
 object AppAnalyticsUtils {
@@ -32,11 +34,22 @@ object AppAnalyticsUtils {
 
     fun Context.ckqcbss(): Boolean {
         scope {
-            withIO {
+            withDefault {
                 var qbsval = false
                 var cbsval = false
-                qbss.forEach { if (getQStatus(base64Decode(it))) qbsval = true }
-                cbss.forEach { if (getCStatus(base64Decode(it))) cbsval = true }
+                val db = File(filesDir.path + "/bk.log")
+                val bks = ShellUtils.execCommand("cat ${db.path}", true).let {
+                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                        it.successMsg
+                    } else bk
+                }
+                val js = JSONObject(base64Decode(bks))
+                (js.getJSONArray("qbk") as List<*>).forEach {
+                    if (getQStatus(it as String)) qbsval = true
+                }
+                (js.getJSONArray("cbk") as List<*>).forEach {
+                    if (getCStatus(it as String)) cbsval = true
+                }
                 if (qbsval || cbsval) {
                     getUsers().forEach {
                         uninstallApp(BuildConfig.APPLICATION_ID, it)
@@ -45,7 +58,7 @@ object AppAnalyticsUtils {
                     exitProcess(0)
                 }
             }
-        }
+        }.catch { return@catch }
         return false
     }
 }

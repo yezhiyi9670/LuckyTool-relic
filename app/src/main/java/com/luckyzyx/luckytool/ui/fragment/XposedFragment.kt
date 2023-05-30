@@ -22,7 +22,9 @@ import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
+import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.dp
@@ -110,6 +112,23 @@ class XposedFragment : ModulePreferenceFragment() {
                         summary = getString(R.string.launcher_layout_row_colume)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_xposed_to_launcher, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
+                        key = "Aod"
+                        setPrefsIconRes("com.oplus.aod") { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = getString(R.string.AodRelated)
+                        summary =
+                            getString(R.string.remove_aod_music_whitelist) + "," + getString(R.string.remove_aod_notification_icon_whitelist)
+                        isVisible = SDK >= A13
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_aod, title)
                             true
                         }
                     }

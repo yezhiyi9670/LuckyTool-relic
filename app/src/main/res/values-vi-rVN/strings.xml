@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
+    <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
+    <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_mode">Đồng hồ thanh trạng thái</string>
@@ -260,8 +262,14 @@
     <string name="battery_power">Năng lượng</string>
     <string name="battery_technology">Công nghệ</string>
     <string name="battery_update_time">Thời gian cập nhật</string>
-    <!--LockScreen-->
-    <string name="LockScreen">Màn hình khóa</string>
+    <!--Aod-->
+    <string name="AodRelated">Aod Related</string>
+    <string name="remove_aod_music_whitelist">Remove aod music whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">Restore aod notification icon color</string>
+    <string name="set_aod_style_mode">Set aod style mode</string>
+    <!--LockScreenAod-->
+    <string name="LockScreen">Lockscreen Related</string>
     <string name="LockScreenComponent">Thành phần màn hình khóa</string>
     <string name="lock_screen_clock_redone_mode">Đồng hồ khóa màn hình màu đỏ một chế độ</string>
     <string name="apply_lock_screen_dual_clock_redone">Áp dụng cho màn hình khóa đồng hồ kép</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">Bật chế độ X</string>
     <string name="enable_super_resolution_feature">Bật siêu phân giải</string>
     <string name="enable_one_plus_characteristic">Kích hoạt tính năng OnePlus</string>
+    <string name="custom_media_player_support">Custom media player support</string>
+    <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
     <!--CloudService-->
     <string name="remove_network_limit">Xóa giới hạn mạng dữ liệu</string>
     <string name="remove_network_limit_summary">Xóa giới hạn sao lưu/khôi phục không thể sử dụng dữ liệu di động</string>

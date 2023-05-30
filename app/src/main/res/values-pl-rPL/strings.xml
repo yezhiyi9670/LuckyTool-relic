@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
     <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
+    <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
+    <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Zegar</string>
     <string name="statusbar_clock_mode">Zegar paska stanu</string>
@@ -260,8 +262,14 @@
     <string name="battery_power">Zasilanie</string>
     <string name="battery_technology">Rodzaj</string>
     <string name="battery_update_time">Czas aktualizacji</string>
-    <!--LockScreen-->
-    <string name="LockScreen">Ekran blokady</string>
+    <!--Aod-->
+    <string name="AodRelated">Aod Related</string>
+    <string name="remove_aod_music_whitelist">Remove aod music whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">Restore aod notification icon color</string>
+    <string name="set_aod_style_mode">Set aod style mode</string>
+    <!--LockScreenAod-->
+    <string name="LockScreen">Lockscreen Related</string>
     <string name="LockScreenComponent">Komponenty ekranu blokady</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">Włącz tryb X</string>
     <string name="enable_super_resolution_feature">Włącz super rozdzielczość</string>
     <string name="enable_one_plus_characteristic">Włącz funkcje OnePlus</string>
+    <string name="custom_media_player_support">Custom media player support</string>
+    <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenie, według którego kopia zapasowa/przywracanie nie może korzystać z danych mobilnych</string>

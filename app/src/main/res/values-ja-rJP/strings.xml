@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
+    <string name="remove_scroll_to_top_white_list">ステータスバータップ時に最上部へスクロールする機能のホワイトリストを無効化</string>
+    <string name="remove_scroll_to_top_white_list_summary">一部のアプリで、ステータスバーをタップしたときに最上部へスクロールさせる機能の制限を無効化します</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">ステータスバーの時計</string>
     <string name="statusbar_clock_mode">ステータスバーの時計モード</string>
@@ -260,7 +262,13 @@
     <string name="battery_power">Pwr</string>
     <string name="battery_technology">Tech</string>
     <string name="battery_update_time">更新日時</string>
-    <!--LockScreen-->
+    <!--Aod-->
+    <string name="AodRelated">AOD 関連</string>
+    <string name="remove_aod_music_whitelist">音楽のホワイトリストを無効化</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">AOD 通知アイコンの色を復元</string>
+    <string name="set_aod_style_mode">AOD スタイルモードの設定</string>
+    <!--LockScreenAod-->
     <string name="LockScreen">ロック画面関連</string>
     <string name="LockScreenComponent">ロック画面コンポーネント</string>
     <string name="lock_screen_clock_redone_mode">ロック画面時計の赤い「1」表示</string>
@@ -292,7 +300,7 @@
     <string name="AppBadgeRelated">アプリバッジ関連</string>
     <string name="remove_the_dot_after_app_update">アプリ更新のドットを削除</string>
     <string name="remove_app_shortcut_badge">アプリのショートカットバッジを削除</string>
-    <string name="remove_app_work_badge">Remove app work badge</string>
+    <string name="remove_app_work_badge">アプリの仕事用バッジを削除</string>
     <string name="remove_app_clone_badge">アプリのクローンバッジを削除</string>
     <string name="launcher_layout_related">ホーム画面レイアウト関連</string>
     <string name="launcher_layout_row_colume">ホーム画面レイアウトの行と列の最大数を設定します</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">X モードを有効にする</string>
     <string name="enable_super_resolution_feature">超解像機能を有効化</string>
     <string name="enable_one_plus_characteristic">OnePlus 向け機能を有効にする</string>
+    <string name="custom_media_player_support">カスタムメディアプレイヤー対応</string>
+    <string name="custom_media_player_support_message">追加するメディアプレイヤーのパッケージ名を入力してください。各行に1つのパッケージ名のみ入力してください。</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>

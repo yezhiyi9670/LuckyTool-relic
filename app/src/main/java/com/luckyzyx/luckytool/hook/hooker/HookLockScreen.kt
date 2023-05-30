@@ -5,6 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenCarriers
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenChargingComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenClock
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenComponent
+import com.luckyzyx.luckytool.hook.scope.systemui.RemoveAodMusicWhitelist
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomSOSButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenCloseNotificationButton
@@ -15,6 +16,7 @@ import com.luckyzyx.luckytool.utils.SDK
 
 object HookLockScreen : YukiBaseHooker() {
     override fun onHook() {
+
         //锁屏时钟
         loadHooker(LockScreenClock)
 
@@ -41,8 +43,17 @@ object HookLockScreen : YukiBaseHooker() {
         }
 
         //移除锁屏关闭通知按钮
-        if (prefs(ModulePrefs).getBoolean("remove_lock_screen_close_notification_button", false)) {
+        if (prefs(ModulePrefs).getBoolean(
+                "remove_lock_screen_close_notification_button",
+                false
+            )
+        ) {
             loadHooker(RemoveLockScreenCloseNotificationButton)
+        }
+
+        //移除息屏音乐白名单
+        if (prefs(ModulePrefs).getBoolean("remove_aod_music_whitelist", false)) {
+            if (SDK >= A13) loadHooker(RemoveAodMusicWhitelist)
         }
     }
 }

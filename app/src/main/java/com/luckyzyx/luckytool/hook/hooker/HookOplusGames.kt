@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.oplusgames.CloudConditionFeature
+import com.luckyzyx.luckytool.hook.scope.oplusgames.CustomMediaPlayerSupport
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableDeveloperPage
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableSupportCompetitionMode
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableXModeFeature
@@ -18,6 +19,9 @@ object HookOplusGames : YukiBaseHooker() {
         if (packageName == "com.oplus.games") {
             //HookCloudConditionFeature
             loadHooker(CloudConditionFeature)
+
+            //自定义媒体播放器支持
+            loadHooker(CustomMediaPlayerSupport)
 
             //游戏滤镜-->Root检测
             if (prefs(ModulePrefs).getBoolean("remove_root_check", false)) {
@@ -62,7 +66,6 @@ object HookOplusGames : YukiBaseHooker() {
 //            <string name="fast_start_title_tips_no_oswap">闪电启动中</string>
 //            <string name="fast_start_title_success">闪电启动成功，游戏快人一步</string>
 //            <string name="fast_start_success_save_time_tip">闪电启动成功，本次节省 %d s</string>
-
 
             //GPA极限稳帧
             //com.oplus.cosa.gpalibrary.core.GpaCore

@@ -105,6 +105,8 @@
     <!--Status Bar-->
     <string name="StatusBar">Статус бар</string>
     <string name="statusbar_double_click_lock_screen">Двічі клацніть на рядок стану для блокування екрану</string>
+    <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
+    <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Годинник у рядку стану</string>
     <string name="statusbar_clock_mode">Годинник у рядку стану</string>
@@ -260,8 +262,14 @@
     <string name="battery_power">Потужність</string>
     <string name="battery_technology">Технологія</string>
     <string name="battery_update_time">Час оновлення</string>
-    <!--LockScreen-->
-    <string name="LockScreen">Екран блокування</string>
+    <!--Aod-->
+    <string name="AodRelated">Aod Related</string>
+    <string name="remove_aod_music_whitelist">Remove aod music whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="restore_aod_notification_icon_color">Restore aod notification icon color</string>
+    <string name="set_aod_style_mode">Set aod style mode</string>
+    <!--LockScreenAod-->
+    <string name="LockScreen">Lockscreen Related</string>
     <string name="LockScreenComponent">Компоненти екрана блокування</string>
     <string name="lock_screen_clock_redone_mode">Червоний годинник на екрані блокування</string>
     <string name="apply_lock_screen_dual_clock_redone">Застосувати до подвійного годинника на екрані блокування</string>
@@ -448,6 +456,8 @@
     <string name="enable_x_mode_feature">Увімкнути режим X</string>
     <string name="enable_super_resolution_feature">Увімкнути супер роздільну здатність</string>
     <string name="enable_one_plus_characteristic">Увімкнути функції підпису OnePlus</string>
+    <string name="custom_media_player_support">Custom media player support</string>
+    <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
     <!--CloudService-->
     <string name="remove_network_limit">Видалити обмеження мережі передачі даних</string>
     <string name="remove_network_limit_summary">Видалити обмеження, згідно з яким резервне копіювання/відновлення не може використовувати мобільні дані</string>

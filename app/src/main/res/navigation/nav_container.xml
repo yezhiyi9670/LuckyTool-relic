@@ -154,6 +154,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_aod"
+                app:destination="@id/aod"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -433,6 +440,10 @@
     <fragment
             android:id="@+id/extractOTAFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.ExtractOTAFragment"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/aod"
+            android:name="com.luckyzyx.luckytool.ui.fragment.Aod"
             android:label="{title_label}" />
 
 </navigation>
