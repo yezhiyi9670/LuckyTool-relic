@@ -319,6 +319,7 @@
     <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Remove the dot after APP update</string>
     <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Remove app clone badge</string>
     
     <string name="launcher_layout_related">Desktop Layout Related</string>

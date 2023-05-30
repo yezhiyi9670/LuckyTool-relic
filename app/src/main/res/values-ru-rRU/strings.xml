@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">Иконка приложения</string>
     <string name="remove_the_dot_after_app_update">Удалить точку после обновления приложения</string>
     <string name="remove_app_shortcut_badge">Удалить иконку приложения</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Удалить иконку клонированного приложения</string>
     <string name="launcher_layout_related">Сетка рабочего стола</string>
     <string name="launcher_layout_row_colume">Установите количество строк сетки рабочего стола</string>

@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">アプリバッジ関連</string>
     <string name="remove_the_dot_after_app_update">アプリ更新のドットを削除</string>
     <string name="remove_app_shortcut_badge">アプリのショートカットバッジを削除</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">アプリのクローンバッジを削除</string>
     <string name="launcher_layout_related">ホーム画面レイアウト関連</string>
     <string name="launcher_layout_row_colume">ホーム画面レイアウトの行と列の最大数を設定します</string>

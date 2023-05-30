@@ -43,5 +43,7 @@ object HookSettings : YukiBaseHooker() {
 
         //settings put global stay_on_while_plugged_in 7
 
+        //<string name="airplane_mode">飞行模式</string>
+        //com.oplus.settings.feature.network.AirplaneController -> setAirplaneModeOn
     }
 }

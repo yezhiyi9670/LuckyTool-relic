@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">Іконка додатку</string>
     <string name="remove_the_dot_after_app_update">Видаляти крапку після оновлення додатка</string>
     <string name="remove_app_shortcut_badge">Видалити іконку додатку</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Видалити іконку клонованої програми</string>
     <string name="launcher_layout_related">Сітка робочого столу</string>
     <string name="launcher_layout_row_colume">Встановіть кількість рядків сітки робочого столу</string>

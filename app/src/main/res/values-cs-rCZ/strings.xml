@@ -199,10 +199,10 @@
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
-    <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
+    <string name="remove_control_center_networkwarn">Odstranění varovné zprávy o zabezpečení v dolní části ovládacího centra</string>
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
-    <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <string name="remove_control_center_networkwarn_dialog_and_text">Odstranění varovné zprávy a dialogových oken zabezpečení</string>
+    <string name="remove_control_center_networkwarn_summary">Po připojení k síti VPN se v dolní části ovládacího centra zobrazí zpráva\nPo instalaci certifikátu certifikační autority se zobrazí, že síť může být monitorována</string>
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
     <string name="restore_some_tile_long_press_event">Obnovit některé události dlouhého stisku</string>
@@ -217,12 +217,12 @@
     <string name="fix_tile_align_both_sides">Opravit zarovnání dlaždic na obou stranách</string>
     <string name="fix_tile_align_both_sides_summary">Opravit přetečení rozložení na obou stranách, pokud není dlaždice rozbalena</string>
     <string name="control_center_tile_enable">Přepínač pro úpravu funkčích dlaždic v ovládacím centru</string>
-    <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozbaleném stavu (vertikálně)</string>
-    <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozbaleném stavu (horizontálně)</string>
-    <string name="tile_expanded_columns_vertical">Počet sloupců v rozbaleném stavu (vertikálně)</string>
-    <string name="tile_expanded_columns_horizontal">Počet sloupců v rozbaleném stavu (horizontálně)</string>
+    <string name="tile_unexpanded_columns_vertical">Počet sloupců v nerozbaleném ovládacím centru (svisle)</string>
+    <string name="tile_unexpanded_columns_horizontal">Počet sloupců v nerozbaleném ovládacím centru (vodorovně)</string>
+    <string name="tile_expanded_columns_vertical">Počet dlaždic v rozbaleném ovládacím centru (svisle)</string>
+    <string name="tile_expanded_columns_horizontal">Počet dlaždic v rozbaleném ovládacím centru (vodorovně)</string>
     <string name="tile_expanded_rows_vertical">Rozbalené řádky dlaždic (vertikálně)</string>
-    <string name="tile_columns_horizontal_c13">Dlaždic ve sloupci (horizontálně)</string>
+    <string name="tile_columns_horizontal_c13">Dlaždic ve sloupci (vodorovně)</string>
     <!--StatusBarLayout-->
     <string name="StatusBarLayout">Rozložení stavové lišty</string>
     <string name="statusbar_layout_mode">Režim rozvržení stavové lišty</string>
@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">Odznaky aplikací</string>
     <string name="remove_the_dot_after_app_update">Odstranit tečku po aktualizaci aplikace</string>
     <string name="remove_app_shortcut_badge">Odstranit odznak na ikoně aplikace</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Odstranit odznak na klonované ikoně aplikace</string>
     <string name="launcher_layout_related">Nastavení související s rozložením plochy</string>
     <string name="launcher_layout_row_colume">Nastaví maximální počet řádků a sloupců podporovaných rozložením obrazovky</string>

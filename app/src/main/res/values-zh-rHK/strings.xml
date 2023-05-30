@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">应用徽章相关</string>
     <string name="remove_the_dot_after_app_update">移除 APP 更新后圆点</string>
     <string name="remove_app_shortcut_badge">移除应用快捷方式徽章</string>
+    <string name="remove_app_work_badge">移除应用工作空间徽章</string>
     <string name="remove_app_clone_badge">移除应用分身徽章</string>
     <string name="launcher_layout_related">桌面布局相关</string>
     <string name="launcher_layout_row_colume">设置桌面布局支持的最大行列数</string>

@@ -11,16 +11,17 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
     override fun onHook() {
         //Source VirusScanNotifyListener
         searchClass {
-            from("com.coloros.phonemanager.virusdetect.service", "l6", "m6", "n6", "e6").absolute()
-            field {
-                type = ContextClass
-            }.count(1)
-            field {
-                type = StringClass
-            }.count(1)
-            constructor {
-                param(ContextClass, StringClass)
-            }.count(1)
+            from(
+                "com.coloros.phonemanager.virusdetect.service",
+                "l6",
+                "m6",
+                "n6",
+                "e6",
+                "q6"
+            ).absolute()
+            field { type = ContextClass }.count(1)
+            field { type = StringClass }.count(1)
+            constructor { param(ContextClass, StringClass) }.count(1)
             method {
                 emptyParam()
                 returnType = IntType
@@ -29,14 +30,10 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
                 param(StringClass)
                 returnType = StringClass
             }.count(1)
-            method {
-                param(ArrayListClass)
-            }.count(2)
+            method { param(ArrayListClass) }.count(2)
         }.get()?.hook {
             injectMember {
-                method {
-                    param(ArrayListClass)
-                }.all()
+                method { param(ArrayListClass) }.all()
                 intercept()
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveVirusRiskNotificationInPhoneManager")

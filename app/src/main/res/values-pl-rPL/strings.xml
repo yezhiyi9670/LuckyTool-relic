@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">App badge related</string>
     <string name="remove_the_dot_after_app_update">Usuń oznaczenie (kropkę) uaktualnienia aplikacji</string>
     <string name="remove_app_shortcut_badge">Remove app shortcut badge</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Remove app clone badge</string>
     <string name="launcher_layout_related">Układ pulpitu</string>
     <string name="launcher_layout_row_colume">Umożliwia zwiększenie liczby wierszy i kolumn układu pulpitu</string>

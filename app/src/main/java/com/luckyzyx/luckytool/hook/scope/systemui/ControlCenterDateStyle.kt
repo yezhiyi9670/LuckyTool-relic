@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.hook.utils.sysui.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -59,9 +60,11 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         }
 
         if (SDK < A13) return
+        val qsFooterClazz = "com.oplusos.systemui.qs.OplusQSFooterImpl"
+        if (qsFooterClazz.toClass().hasMethod { name = "updateQsDateView" }.not()) return
         var translationX = 0
         //Source OplusQSFooterImpl
-        findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
+        findClass(qsFooterClazz).hook {
             injectMember {
                 method { name = "updateQsDateView" }
                 afterHook {

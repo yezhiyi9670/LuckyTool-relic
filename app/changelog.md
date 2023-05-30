@@ -3,6 +3,13 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.5_beta
+
+- [更新] 捐赠名单
+- [适配] 手机管家移除发现病毒通知v13.1.1
+- [修复] 控制中心农历Hook异常
+- [添加] 移除工作APP徽标
+
 ### v1.0.4
 
 - [更新] 捐赠名单

@@ -292,6 +292,7 @@
     <string name="AppBadgeRelated">Liên quan đến huy hiệu ứng dụng</string>
     <string name="remove_the_dot_after_app_update">Xóa dấu chấm sau khi cập nhật APP</string>
     <string name="remove_app_shortcut_badge">Xóa huy hiệu lối tắt ứng dụng</string>
+    <string name="remove_app_work_badge">Remove app work badge</string>
     <string name="remove_app_clone_badge">Xóa huy hiệu lối tắt ứng dụng</string>
     <string name="launcher_layout_related">Bố cục màn hình chính</string>
     <string name="launcher_layout_row_colume">Đặt số lượng hàng và cột tối đa được hỗ trợ bởi bố cục màn hình</string>

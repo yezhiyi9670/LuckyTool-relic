@@ -1710,6 +1710,15 @@ class Launcher : ModulePreferenceFragment() {
             )
             addPreference(
                 SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_work_badge)
+                    key = "remove_app_work_badge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A13
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
                     title = getString(R.string.remove_app_clone_badge)
                     key = "remove_app_clone_badge"
                     setDefaultValue(false)
@@ -3313,9 +3322,7 @@ class OplusOta : ModulePreferenceFragment() {
                                     "am broadcast --user all -a android.intent.action.AIRPLANE_MODE --ez 'state' 'true'",
                                     "am start com.oplus.ota/com.oplus.otaui.activity.EntryActivity"
                                 )
-                            withDefault {
-                                ShellUtils.execCommand(command, true)
-                            }
+                            withDefault { ShellUtils.execCommand(command, true) }
                         }
                         true
                     }

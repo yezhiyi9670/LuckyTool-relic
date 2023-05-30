@@ -893,6 +893,27 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "naivecoder", details(
+                        DCInfo("20230528-222659", CAP, 30.0, "2023052822001424551454817089")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "*人", details(
+                        DCInfo("20230529-135717", CWC, 10.0, "10000499012023052901235045447563")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "王大锤", details(
+                        DCInfo("20230530-133503", CAP, 5.0, "2023053022001439721427219612")
+                    )
+                )
+            )
         }
     }
 
