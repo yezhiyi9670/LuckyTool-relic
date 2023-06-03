@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v1.0.5_beta
+### v1.0.5
 
 - [更新] 捐赠名单
 - [适配] 手机管家移除发现病毒通知v13.1.1
@@ -16,7 +16,20 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 移除息屏通知图标白名单
 - [添加] 设置息屏样式模式
 - [修复] 锁屏媒体通知圆角异常C13.1
-  
+- [优化] 优化部分作用域Hook逻辑
+- [Update] Donation list
+- [Fix] Mobile Manager removed found virus notification v13.1.1
+- [Fix] The lunar calendar Hook in the control center is abnormal
+- [Add] Remove work APP badge
+- [Fix] Wireless ADB debugging IP exception
+- [Add] Custom Game Assistant media player support
+- [Add] Remove the click status bar to return to the top white list
+- [Add] Remove aod music whitelist
+- [Add] Remove the white list of notification icons on the aod
+- [Add] Set the aod style mode
+- [Fix] The rounded corner of the lock screen media notification is abnormal C13.1
+- [Optimize] Optimize some scope Hook logic
+
 ### v1.0.4
 
 - [更新] 捐赠名单

@@ -265,7 +265,7 @@
     <!--Aod-->
     <string name="AodRelated">AOD</string>
     <string name="remove_aod_music_whitelist">Удалить ограничение виджетов музыки на AOD</string>
-    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">Удалить ограничение иконок уведомлений на AOD</string>
     <string name="restore_aod_notification_icon_color">Восстановить цвет иконки уведомления</string>
     <string name="set_aod_style_mode">Установить режим стиля AOD</string>
     <!--LockScreenAod-->

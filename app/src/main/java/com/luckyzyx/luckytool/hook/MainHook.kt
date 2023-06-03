@@ -12,7 +12,6 @@ import com.highcapable.yukihookapi.hook.xposed.bridge.event.YukiXposedEvent
 import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid
 import com.luckyzyx.luckytool.hook.hooker.HookAod
-import com.luckyzyx.luckytool.hook.hooker.HookApplication
 import com.luckyzyx.luckytool.hook.hooker.HookAutoStart
 import com.luckyzyx.luckytool.hook.hooker.HookBattery
 import com.luckyzyx.luckytool.hook.hooker.HookCamera
@@ -27,6 +26,8 @@ import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
 import com.luckyzyx.luckytool.hook.hooker.HookOtherApp
 import com.luckyzyx.luckytool.hook.hooker.HookPackageInstaller
+import com.luckyzyx.luckytool.hook.hooker.HookPhoneManager
+import com.luckyzyx.luckytool.hook.hooker.HookSafeCenter
 import com.luckyzyx.luckytool.hook.hooker.HookScreenshot
 import com.luckyzyx.luckytool.hook.hooker.HookSettings
 import com.luckyzyx.luckytool.hook.hooker.HookStatusBar
@@ -38,6 +39,7 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
+import com.luckyzyx.luckytool.hook.scope.battery.HookBatteryNotify
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarBattery
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarControlCenter
@@ -77,11 +79,10 @@ object MainHook : IYukiHookXposedInit {
         //状态栏网速
         loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
-        loadApp(
-            "com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager"
-        ) {
-            loadHooker(StatusBarNotify)
-        }
+        loadApp("com.android.systemui", StatusBarNotify)
+        loadApp("com.oplus.battery", HookBatteryNotify)
+        loadApp("com.coloros.phonemanager", HookPhoneManager)
+
         //状态栏通知限制
         loadApp("com.android.systemui", "com.oplus.notificationmanager") {
             loadHooker(StatusBarNotifiyLimit)
@@ -101,7 +102,9 @@ object MainHook : IYukiHookXposedInit {
         //时钟
         loadApp("com.coloros.alarmclock", AlarmClockWidget)
         //桌面
-        loadApp("com.android.launcher", HookLauncher)
+        loadApp("com.oppo.launcher", "com.android.launcher") {
+            loadHooker(HookLauncher)
+        }
 
         //息屏
         loadApp("com.oplus.aod", HookAod)
@@ -113,15 +116,14 @@ object MainHook : IYukiHookXposedInit {
         }
         //截屏
         loadApp("com.oplus.screenshot", HookScreenshot)
-        //应用
+
+        //安全中心
         loadApp(
             "com.oplus.battery",
             "com.oplus.safecenter",
-            "com.coloros.safecenter",
-            "com.android.launcher",
-            "com.oppo.launcher"
+            "com.coloros.safecenter"
         ) {
-            loadHooker(HookApplication)
+            loadHooker(HookSafeCenter)
         }
         //应用安装器
         loadApp("com.android.packageinstaller", HookPackageInstaller)

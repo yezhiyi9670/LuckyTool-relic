@@ -9,7 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object RemoveBatteryNotify : YukiBaseHooker() {
+object HookBatteryNotify : YukiBaseHooker() {
     override fun onHook() {
         //Channel high_performance_channel_id 5
 //        val highPerformance = prefs(ModulePrefs).getBoolean("remove_high_performance_mode_notifications", false)

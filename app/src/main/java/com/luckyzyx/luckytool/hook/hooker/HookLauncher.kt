@@ -10,6 +10,7 @@ import com.luckyzyx.luckytool.hook.scope.launcher.RemoveAppUpdateDot
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveBottomAppIconOfRecentTaskList
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveRecentTaskListClearButton
 import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
+import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookLauncher : YukiBaseHooker() {
@@ -46,6 +47,11 @@ object HookLauncher : YukiBaseHooker() {
             )
         ) {
             loadHooker(RemoveBottomAppIconOfRecentTaskList)
+        }
+
+        //解锁后台任务锁定限制
+        if (prefs(ModulePrefs).getBoolean("unlock_task_locks", false)) {
+            loadHooker(UnlockTaskLocks)
         }
 
         //<string name="oplus_shortcut_lock_app">锁定</string>

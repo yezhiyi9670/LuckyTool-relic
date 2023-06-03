@@ -5,10 +5,10 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 
-object UnlockStartupLimitV13 : YukiBaseHooker() {
+object UnlockStartupLimit : YukiBaseHooker() {
     override fun onHook() {
-        //Source StartupManager
-        //Search -> ? 5 : 20; -1 -> Method
+        //Source StartupManager.java
+        //Search -> ? 5 : 20; -> Method
         searchClass {
             from("i7", "q7", "u7", "y7", "s7", "z8", "b9", "t7", "r7").absolute()
             field().count(4)
@@ -24,8 +24,8 @@ object UnlockStartupLimitV13 : YukiBaseHooker() {
                     emptyParam()
                     returnType = IntType
                 }
-                replaceTo(1000)
+                replaceTo(999)
             }
-        } ?: loggerD(msg = "$packageName\nError -> UnlockStartupLimitV13")
+        } ?: loggerD(msg = "$packageName\nError -> UnlockStartupLimit")
     }
 }

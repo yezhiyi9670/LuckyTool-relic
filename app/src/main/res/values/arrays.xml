@@ -2,6 +2,8 @@
     <string-array name="xposed_scope">
         <item>android</item>
         <item>com.android.systemui</item>
+        <item>com.oplus.battery</item>
+        <item>com.android.settings</item>
         <item>com.android.packageinstaller</item>
         <item>com.android.launcher</item>
         <item>com.oppo.launcher</item>
@@ -11,20 +13,20 @@
         <item>com.coloros.safecenter</item>
         <item>com.coloros.alarmclock</item>
         <item>com.oplus.notificationmanager</item>
+        <item>com.coloros.phonemanager</item>
+        <item>com.oplus.aod</item>
+        <item>com.oplus.uiengine</item>
+        <item>com.coloros.securepay</item>
         <item>com.heytap.themestore</item>
+        <item>com.oplus.themestore</item>
         <item>com.oplus.games</item>
         <item>com.oplus.cosa</item>
         <item>com.heytap.cloud</item>
         <item>com.oplus.screenshot</item>
-        <item>com.oplus.battery</item>
-        <item>com.android.settings</item>
         <item>com.oplus.ota</item>
-        <item>com.oplus.aod</item>
-        <item>com.oplus.uiengine</item>
-        <item>com.coloros.securepay</item>
-        <item>com.coloros.phonemanager</item>
         <item>com.oplus.exsystemservice</item>
         <item>com.android.externalstorage</item>
+        
         <item>com.east2d.everyimage</item>
         <item>ru.kslabs.ksweb</item>
         <item>com.ruet_cse_1503050.ragib.appbackup.pro</item>

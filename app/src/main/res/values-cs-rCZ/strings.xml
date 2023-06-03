@@ -265,7 +265,7 @@
     <!--Aod-->
     <string name="AodRelated">Týkající se AOD</string>
     <string name="remove_aod_music_whitelist">Odstranit whitelist hudby na AOD</string>
-    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">Odstranit ikonu seznamu povolených oznámení na AOD</string>
     <string name="restore_aod_notification_icon_color">Obnovit barvy ikon oznámení v AOD</string>
     <string name="set_aod_style_mode">Nastavit styl AOD</string>
     <!--LockScreenAod-->

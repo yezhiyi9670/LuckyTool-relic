@@ -265,7 +265,7 @@
     <!--Aod-->
     <string name="AodRelated">AOD 関連</string>
     <string name="remove_aod_music_whitelist">音楽のホワイトリストを無効化</string>
-    <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
+    <string name="remove_aod_notification_icon_whitelist">AOD 通知アイコンのホワイトリストを無効化</string>
     <string name="restore_aod_notification_icon_color">AOD 通知アイコンの色を復元</string>
     <string name="set_aod_style_mode">AOD スタイルモードの設定</string>
     <!--LockScreenAod-->
