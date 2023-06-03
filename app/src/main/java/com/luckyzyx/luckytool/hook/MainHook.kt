@@ -11,7 +11,6 @@ import com.highcapable.yukihookapi.hook.log.loggerE
 import com.highcapable.yukihookapi.hook.xposed.bridge.event.YukiXposedEvent
 import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid
-import com.luckyzyx.luckytool.hook.hooker.HookAod
 import com.luckyzyx.luckytool.hook.hooker.HookAutoStart
 import com.luckyzyx.luckytool.hook.hooker.HookBattery
 import com.luckyzyx.luckytool.hook.hooker.HookCamera
@@ -107,7 +106,7 @@ object MainHook : IYukiHookXposedInit {
         }
 
         //息屏
-        loadApp("com.oplus.aod", HookAod)
+        //loadApp("com.oplus.aod", HookAod)
         //百变引擎
         loadApp("com.oplus.uiengine", HookUIEngine)
         //锁屏
@@ -118,11 +117,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.screenshot", HookScreenshot)
 
         //安全中心
-        loadApp(
-            "com.oplus.battery",
-            "com.oplus.safecenter",
-            "com.coloros.safecenter"
-        ) {
+        loadApp("com.oplus.safecenter", "com.coloros.safecenter") {
             loadHooker(HookSafeCenter)
         }
         //应用安装器

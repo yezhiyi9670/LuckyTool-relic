@@ -3,6 +3,12 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.6_beta
+
+- [更新] 捐赠名单
+- [修复] 部分作用域Hook实例异常
+- [优化] 电池温控限制逻辑
+
 ### v1.0.5
 
 - [更新] 捐赠名单

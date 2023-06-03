@@ -19,9 +19,7 @@ object UnlockStartupLimitC12 : YukiBaseHooker() {
                     param(ContextClass)
                     returnType = UnitType
                 }.all()
-                afterHook {
-                    field { type = IntType }.get().set(10000)
-                }
+                afterHook { field { type = IntType }.get().set(10000) }
             }
         }
     }

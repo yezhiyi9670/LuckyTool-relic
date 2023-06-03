@@ -935,6 +935,20 @@ class DonateData(val context: Context) {
                     )
                 )
             )
+            add(
+                DInfo(
+                    "余小晚", details(
+                        DCInfo("20230603-100047", CAP, 6.66, "2023060322001408421440046150")
+                    )
+                )
+            )
+            add(
+                DInfo(
+                    "sg", details(
+                        DCInfo("20230603-100755", CWC, 2.33, "10000499012023060300274582217126")
+                    )
+                )
+            )
         }
     }
 
