@@ -7,9 +7,7 @@ object DisableOTGAutoOff : YukiBaseHooker() {
         // Search OtgHelper 600000
         findClass("com.oplusos.systemui.notification.helper.OtgHelper").hook {
             injectMember {
-                method {
-                    name = "setAutoCloseAlarm"
-                }
+                method { name = "setAutoCloseAlarm" }
                 intercept()
             }
         }

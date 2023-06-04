@@ -13,22 +13,16 @@ object AutoClickUnInstallButton : YukiBaseHooker() {
                     paramCount = 1
                 }
                 afterHook {
-                    field {
-                        name = "mUnInstallButton"
-                    }.get(instance).cast<Button>()?.callOnClick()
+                    field { name = "mUnInstallButton" }.get(instance).cast<Button>()?.callOnClick()
                 }
             }
         }
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.OPlusUninstallAppProgress").hook {
             injectMember {
-                method {
-                    name = "initView"
-                }
+                method { name = "initView" }
                 afterHook {
-                    field {
-                        name = "mOkButton"
-                    }.get(instance).cast<Button>()?.callOnClick()
+                    field { name = "mOkButton" }.get(instance).cast<Button>()?.callOnClick()
                 }
             }
         }

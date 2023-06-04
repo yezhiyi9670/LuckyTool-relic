@@ -18,9 +18,7 @@ object StackedTaskLayout : YukiBaseHooker() {
         //Source DeviceProfile -> overview_page_spacing
         findClass("com.android.launcher3.DeviceProfile").hook {
             injectMember {
-                constructor {
-                    paramCount(8..11)
-                }
+                constructor { paramCount(8..11) }
                 afterHook {
                     if (SDK >= A13) field {
                         name = "overviewPageSpacing"
@@ -37,9 +35,7 @@ object StackedTaskLayout : YukiBaseHooker() {
                         name = "setPageSpacing"
                         superClass()
                     }
-                    beforeHook {
-                        args().first().set(-(level * 10).dp)
-                    }
+                    beforeHook { args().first().set(-(level * 10).dp) }
                 }
             }
 //            injectMember {
@@ -53,9 +49,7 @@ object StackedTaskLayout : YukiBaseHooker() {
 //                }
 //            }
             injectMember {
-                method {
-                    name = "notifyPageSwitchListener"
-                }
+                method { name = "notifyPageSwitchListener" }
                 beforeHook {
                     if (!isFix) return@beforeHook
                     val count = method { name = "getTaskViewCount" }.get(instance).invoke<Int>()
@@ -71,9 +65,7 @@ object StackedTaskLayout : YukiBaseHooker() {
                 }
             }
             injectMember {
-                method {
-                    name = "resetTaskVisuals"
-                }
+                method { name = "resetTaskVisuals" }
                 afterHook {
                     if (!isFix) return@afterHook
                     val count = method { name = "getTaskViewCount" }.get(instance).invoke<Int>()

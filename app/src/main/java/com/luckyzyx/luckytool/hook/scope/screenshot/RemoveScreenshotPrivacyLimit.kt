@@ -7,12 +7,8 @@ object RemoveScreenshotPrivacyLimit : YukiBaseHooker() {
         //Source ScreenshotContext
         findClass("com.oplus.screenshot.screenshot.core.ScreenshotContext").hook {
             injectMember {
-                method {
-                    name = "setScreenshotReject"
-                }
-                beforeHook {
-                    args(0).set("ACCEPTED")
-                }
+                method { name = "setScreenshotReject" }
+                beforeHook { args(0).set("ACCEPTED") }
             }
         }
     }

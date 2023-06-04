@@ -8,13 +8,9 @@ object AutoClickInstallButton : YukiBaseHooker() {
         //Source OPlusPackageInstallerActivity
         findClass("com.android.packageinstaller.oplus.OPlusPackageInstallerActivity").hook {
             injectMember {
-                method {
-                    name = "startInstallConfirm"
-                }
+                method { name = "startInstallConfirm" }
                 afterHook {
-                    field {
-                        name = "mOk"
-                    }.get(instance).cast<Button>()?.callOnClick()
+                    field { name = "mOk" }.get(instance).cast<Button>()?.callOnClick()
                 }
             }
         }

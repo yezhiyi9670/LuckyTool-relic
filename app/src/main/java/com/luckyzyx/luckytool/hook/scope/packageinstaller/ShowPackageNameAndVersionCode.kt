@@ -14,9 +14,7 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
         //Source ApkInfoView
         findClass("com.android.packageinstaller.oplus.view.ApkInfoView").hook {
             injectMember {
-                method {
-                    name = "loadApkInfo"
-                }
+                method { name = "loadApkInfo" }
                 afterHook {
                     val context = field { name = "mContext" }.get(instance).cast<Context>()
                         ?: return@afterHook

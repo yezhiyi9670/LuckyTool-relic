@@ -34,21 +34,13 @@ object DarkModeService : YukiBaseHooker() {
                     val dataMap = ArrayMap<String, Any>()
                     supportListMap.forEach {
                         if (it.value == 0) dataMap[it.key] = darkModeData.newInstance()
-                        else {
-                            dataMap[it.key] = darkModeData.newInstance().current {
-                                field { name = "mCurType" }.set(it.value)
-                            }
+                        else dataMap[it.key] = darkModeData.newInstance().current {
+                            field { name = "mCurType" }.set(it.value)
                         }
                     }
-                    field {
-                        name = "mRusAppMap"
-                    }.get(instance).set(dataMap.toMap())
-//                    field {
-//                        name = "mOpenApp"
-//                    }.get(instance).set(supportlist)
-//                    field {
-//                        name = "mClickApp"
-//                    }.get(instance).set(supportlist)
+                    field { name = "mRusAppMap" }.get(instance).set(dataMap.toMap())
+//                    field { name = "mOpenApp" }.get(instance).set(supportlist)
+//                    field { name = "mClickApp" }.get(instance).set(supportlist)
                 }
             }
         }

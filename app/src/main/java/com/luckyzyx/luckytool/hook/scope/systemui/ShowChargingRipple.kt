@@ -8,22 +8,16 @@ object ShowChargingRipple : YukiBaseHooker() {
         //flag_charging_ripple
         findClass("com.android.systemui.statusbar.FeatureFlags").hook {
             injectMember {
-                method {
-                    name = "isChargingRippleEnabled"
-                }
+                method { name = "isChargingRippleEnabled" }
                 replaceToTrue()
             }
         }
         //Source WiredChargingRippleController
         findClass("com.android.systemui.statusbar.charging.WiredChargingRippleController").hook {
             injectMember {
-                constructor {
-                    paramCount = 8
-                }
+                constructor { paramCount = 8 }
                 afterHook {
-                    field {
-                        name = "rippleEnabled"
-                    }.get(instance).setTrue()
+                    field { name = "rippleEnabled" }.get(instance).setTrue()
                 }
             }
         }

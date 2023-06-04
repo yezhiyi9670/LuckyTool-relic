@@ -12,9 +12,7 @@ object RemoveHighPerformanceModeIcon : YukiBaseHooker() {
                     emptyParam()
                 }
                 beforeHook {
-                    field {
-                        name = "highPerformanceMode"
-                    }.get(instance).setFalse()
+                    field { name = "highPerformanceMode" }.get(instance).setFalse()
                 }
             }
         }

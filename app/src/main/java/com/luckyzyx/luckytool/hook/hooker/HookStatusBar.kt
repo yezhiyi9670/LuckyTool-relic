@@ -7,11 +7,12 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookStatusBar : YukiBaseHooker() {
     override fun onHook() {
+        //HookSystemUIFeature
+        loadHooker(HookSystemUIFeature)
+
         //双击状态栏锁屏
         if (prefs(ModulePrefs).getBoolean("statusbar_double_click_lock_screen", false)) {
             loadHooker(DoubleClickLockScreen)
         }
-        //HookSystemUIFeature
-        loadHooker(HookSystemUIFeature)
     }
 }

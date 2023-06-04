@@ -13,7 +13,7 @@ object FixTileAlignBothSides : YukiBaseHooker() {
     override fun onHook() {
         val isCustomTile = prefs(ModulePrefs).getBoolean("control_center_tile_enable", false)
         val columnHorizontal = prefs(ModulePrefs).getInt("tile_columns_horizontal_c13", 4)
-        //Sourcee QuickStatusBarHeader
+        //Sourcee QuickStatusBarHeader 竖屏溢出
         //Search quick_qs_panel -> qs_header_panel_side_padding 24dp
         findClass("com.android.systemui.qs.QuickStatusBarHeader").hook {
             injectMember {
@@ -30,7 +30,7 @@ object FixTileAlignBothSides : YukiBaseHooker() {
                 }
             }
         }
-        //Source QSFragmentHelper
+        //Source QSFragmentHelper 横屏溢出
         //Search expanded_qs_scroll_view -> qs_brightness_mirror_side_padding / qs_bottom_side_padding 24dp
         findClass("com.oplusos.systemui.qs.helper.QSFragmentHelper").hook {
             injectMember {

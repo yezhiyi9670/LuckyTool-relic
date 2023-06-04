@@ -7,15 +7,11 @@ object RemoveLowBatteryDialogWarning : YukiBaseHooker() {
         //Source OplusPowerNotificationWarnings
         findClass("com.oplusos.systemui.notification.power.OplusPowerNotificationWarnings").hook {
             injectMember {
-                method {
-                    name = "createSavePowerDialog"
-                }
+                method { name = "createSavePowerDialog" }
                 intercept()
             }
             injectMember {
-                method {
-                    name = "createSuperSavePowerDialog"
-                }
+                method { name = "createSuperSavePowerDialog" }
                 intercept()
             }
         }

@@ -15,9 +15,7 @@ object StatusBarPower : YukiBaseHooker() {
         //Source StatBatteryMeterView
         findClass("com.oplusos.systemui.statusbar.widget.StatBatteryMeterView").hook {
             injectMember {
-                method {
-                    name = "updatePercentText"
-                }
+                method { name = "updatePercentText" }
                 afterHook {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
                         if (removePercent) text = text.toString().replace("%", "")

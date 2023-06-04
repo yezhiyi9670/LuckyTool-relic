@@ -7,13 +7,9 @@ object AllowReplaceInstall : YukiBaseHooker() {
         //Search ->  currentVersionCode / apkVersioncode -> Method
         findClass("com.android.packageinstaller.oplus.OPlusPackageInstallerActivity").hook {
             injectMember {
-                method {
-                    name = "parseReplaceInstall"
-                }
+                method { name = "parseReplaceInstall" }
                 replaceUnit {
-                    method {
-                        name = "preSafeInstall"
-                    }.get(instance).call()
+                    method { name = "preSafeInstall" }.get(instance).call()
                 }
             }
         }

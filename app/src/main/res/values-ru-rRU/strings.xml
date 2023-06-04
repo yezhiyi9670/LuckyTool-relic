@@ -29,7 +29,7 @@
     <!-- Other Settings -->
     <string name="other_settings">Другие настройки</string>
     <string name="switch_autostart_function_caller">Переключить вызов функции автозапуска</string>
-    <string name="switch_autostart_function_caller_summary">1.Метод вызова модуля откроет новую страницу модуля и активирует функцию автозапуска. Этот метод может привести к тому, что экран станет недоступным в течение нескольких секунд, когда он разблокирован\n2.Метод вызова системного пользовательского интерфейса вызовет функцию автозапуска в процессе системного пользовательского интерфейса, необходимо предоставить root-права для системного пользовательского интерфейса, в противном случае автозапуск не может быть запущен</string>
+    <string name="switch_autostart_function_caller_summary">1.Метод вызова модуля откроет новую страницу модуля и активирует функцию автозапуска. Этот метод может привести к тому, что экран станет недоступным в течение нескольких секунд, когда он разблокирован\n2.Метод вызова системного интерфейса вызовет функцию автозапуска в процессе системного интерфейса, необходимо предоставить root-права для системного интерфейса, в противном случае автозапуск не может быть запущен</string>
     <string name="switch_autostart_function_caller_module">Вызов модуля</string>
     <string name="switch_autostart_function_caller_systemui">Вызов системного пользовательского интерфейса</string>
     <string name="hide_function_page_icon">Скрыть иконку страницы функций</string>
@@ -319,6 +319,7 @@
     <string name="remove_folder_pagination_component">Удалить компонент разбивки на папки</string>
     <string name="disable_pagination_component_sliding">Отключить свайп компонентов разбивки</string>
     <string name="FolderLayoutRelated">Разметка папки</string>
+    <string name="remove_folder_preview_background">Удалить фон предпросмотра папки</string>
     <string name="enable_folder_layout_adjustment">Включить изменение расположения папок</string>
     <string name="set_icon_columns_in_folder">Задать количество столбцов иконок в папке</string>
     <!--Application-->
@@ -370,6 +371,7 @@
     <string name="remove_usb_connect_dialog">Удалить диалоговое окно USB-подключения</string>
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Удалено диалоговое окно с обнаруженным вирусом безопасной оплаты</string>
+    <string name="remove_access_device_log_dialog">Удалить диалог журнала доступа устройства</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
     <string name="remove_side_slider">Удалить боковую панель</string>
@@ -416,6 +418,8 @@
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>
     <string name="disable_customize_battery_optimization_whiteList_summary">Если приложению вручную предоставлено разрешение \"Игнорировать оптимизацию батареи\", после включения этой функции приложение не будет автоматически добавлено в белый список оптимизации батареи</string>
+    <string name="fix_battery_health_data_display">Исправить отображение данных о состоянии батареи</string>
+    <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>
@@ -531,6 +535,9 @@
     <string name="device_guid">GUID устройства</string>
     <string name="oplusota_copy_tip">Нажмите и удерживайте поле ввода, чтобы скопировать его по отдельности</string>
     <string name="oplusota_copyall">Копировать все</string>
+    <!--Donate-->
+    <string name="donate_tv_title">Поддержать разработку</string>
+    <string name="donate_tv__summary">Пожертвовать разработчику для поддержки последующих обновлений</string>
     <!-- Other -->
     <string name="quick_entry">Быстрый вход в систему</string>
     <string name="quick_entry_summary">Например, инструменты настройки системного интерфейса, управление процессами, режим проекта и т.д.</string>

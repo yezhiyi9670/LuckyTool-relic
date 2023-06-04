@@ -9,13 +9,9 @@ object RemoveRecentTaskListClearButton : YukiBaseHooker() {
         //Source OplusClearAllPanelView -> inflate
         findClass("com.oplus.quickstep.views.OplusClearAllPanelView").hook {
             injectMember {
-                method {
-                    name = "inflateIfNeeded"
-                }
+                method { name = "inflateIfNeeded" }
                 afterHook {
-                    field {
-                        name = "mClearAllBtn"
-                    }.get(instance).cast<Button>()?.isVisible = false
+                    field { name = "mClearAllBtn" }.get(instance).cast<Button>()?.isVisible = false
                 }
             }
         }

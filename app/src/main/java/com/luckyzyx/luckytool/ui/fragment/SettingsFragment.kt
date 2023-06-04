@@ -6,17 +6,30 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.ArraySet
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.preference.DropDownPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.SwitchPreference
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.drake.net.Get
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.scopeNetLife
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.databinding.FragmentDonateListBinding
+import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.Base64CodeUtils
+import com.luckyzyx.luckytool.utils.DCInfo
+import com.luckyzyx.luckytool.utils.DInfo
 import com.luckyzyx.luckytool.utils.DonateData
 import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -27,6 +40,8 @@ import com.luckyzyx.luckytool.utils.base64Decode
 import com.luckyzyx.luckytool.utils.base64Encode
 import com.luckyzyx.luckytool.utils.clearAllPrefs
 import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.getBoolean
+import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putBoolean
@@ -37,9 +52,11 @@ import com.luckyzyx.luckytool.utils.setComponentDisabled
 import com.luckyzyx.luckytool.utils.toast
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.DecimalFormat
 import kotlin.system.exitProcess
 
 class SettingsFragment : ModulePreferenceFragment() {
@@ -312,11 +329,15 @@ class SettingsFragment : ModulePreferenceFragment() {
                         MaterialAlertDialogBuilder(context).apply {
                             setItems(donateList.toTypedArray()) { _, which ->
                                 when (which) {
-                                    0 -> DonateData(context).showQRCode(Base64CodeUtils.qqCode)
-                                    1 -> DonateData(context).showQRCode(Base64CodeUtils.wechatCode)
-                                    2 -> DonateData(context).showQRCode(Base64CodeUtils.alipayCode)
-                                    3 -> if (isZh(context)) DonateData(context).showDonateList()
-                                    else startActivity(
+                                    0 -> DonateData.showQRCode(context, Base64CodeUtils.qqCode)
+                                    1 -> DonateData.showQRCode(context, Base64CodeUtils.wechatCode)
+                                    2 -> DonateData.showQRCode(context, Base64CodeUtils.alipayCode)
+                                    3 -> if (isZh(context)) {
+                                        navigatePage(
+                                            R.id.action_nav_setting_to_donateFragment,
+                                            getString(R.string.donation_list)
+                                        )
+                                    } else startActivity(
                                         Intent(
                                             Intent.ACTION_VIEW,
                                             Uri.parse("https://www.patreon.com/LuckyTool")
@@ -330,7 +351,10 @@ class SettingsFragment : ModulePreferenceFragment() {
                                         )
                                     )
 
-                                    5 -> DonateData(context).showDonateList()
+                                    5 -> navigatePage(
+                                        R.id.action_nav_setting_to_donateFragment,
+                                        getString(R.string.donation_list)
+                                    )
                                 }
                             }
                         }.show()
@@ -546,6 +570,172 @@ class SourceFragment : ModulePreferenceFragment() {
                     )
                 }
             )
+        }
+    }
+}
+
+class DonateFragment : Fragment() {
+
+    private lateinit var binding: FragmentDonateListBinding
+    private lateinit var ddFile: File
+    private var donateAdapter: DonateListAdapter? = null
+    private val allData = ArrayList<DInfo>()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentDonateListBinding.inflate(inflater)
+        return binding.root
+    }
+
+    fun init(context: Context) {
+        scopeLife {
+            binding.swipeRefreshLayout.apply {
+                setOnRefreshListener { init(context) }
+                isRefreshing = true
+            }
+            ddFile = File(context.filesDir.path + "/dd")
+            if (ddFile.exists()) checkDonateData(context)
+            else downloadJson(context, formatDate("YYYYMMddHHmm"))
+        }
+    }
+
+    private fun checkDonateData(context: Context) {
+        scopeNetLife {
+            val latestUrl =
+                "https://api.github.com/repos/luckyzyx/LuckyTool_Doc/releases/tags/donate_data"
+            val lastDDDate =
+                context.getString(SettingsPrefs, "last_update_dd_date", "null")
+            val getDoc = Get<String>(latestUrl).await()
+            JSONObject(getDoc).apply {
+                val date = optString("name").takeIf { e -> e.isNotBlank() } ?: return@scopeNetLife
+                if (date != lastDDDate) downloadJson(context, date)
+                else loadJson(context, ddFile)
+            }
+        }.catch { return@catch }
+    }
+
+    private fun downloadJson(context: Context, date: String) {
+        scopeNetLife {
+            val file =
+                Get<File>("https://raw.gitmirror.com/luckyzyx/LuckyTool_Doc/main/donate.json") {
+                    setDownloadDir(ddFile)
+                    setDownloadMd5Verify()
+                    setDownloadTempFile()
+                }.await()
+            if (file.exists()) {
+                loadJson(context, file)
+                context.putString(SettingsPrefs, "last_update_dd_date", date)
+            }
+        }
+    }
+
+    private fun loadJson(context: Context, file: File) {
+        scopeLife {
+            if (file.readText().contains("datas")) {
+                val json = base64Encode(file.readText())
+                file.writeText("e$json")
+            }
+            allData.clear()
+            val jsonObject = JSONObject(
+                base64Decode(file.readText().let { it.substring(1, it.length) })
+            )
+            val datas = jsonObject.optJSONArray("datas") ?: JSONArray()
+            var count = 0.0
+            var chsCount = 0.0
+            var otherCount = 0.0
+            for (i in 0 until datas.length()) {
+                val obj = datas.getJSONObject(i)
+                val name = obj.optString("name")
+                val details = obj.optJSONArray("details") ?: JSONArray()
+                val infos = ArrayList<DCInfo>()
+                for (o in 0 until details.length()) {
+                    count++
+                    val info = details.optJSONObject(o)
+                    val time = info.optString("time")
+                    val channel = info.optString("channel")
+                    val money = info.optDouble("money")
+                    val order = info.optString("order")
+                    val unit = info.optString("unit")
+                    infos.add(DCInfo(time, channel, money, order, unit))
+                    when (unit) {
+                        "RMB" -> chsCount += money
+                        "$" -> otherCount += money
+                    }
+                }
+                allData.add(DInfo(name, infos.toTypedArray()))
+            }
+            val develop = context.getBoolean(SettingsPrefs, "hidden_function", false)
+            if (develop) allData.add(
+                0,
+                DInfo(
+                    "$count",
+                    arrayOf(
+                        DCInfo("", "", DecimalFormat("0.00").format(chsCount).toDouble(), ""),
+                        DCInfo("", "", DecimalFormat("0.00").format(otherCount).toDouble(), "", "$")
+                    )
+                )
+            )
+            donateAdapter = DonateListAdapter(context, allData)
+            binding.recyclerView.apply {
+                adapter = donateAdapter
+                layoutManager = LinearLayoutManager(context)
+            }
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        init(requireActivity())
+    }
+
+    class DonateListAdapter(val context: Context, val data: ArrayList<DInfo>) :
+        RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val binding =
+                LayoutDonateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return ViewHolder(binding)
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.name.text = data[position].name
+            data[position].details.apply {
+                var isChs = false
+                var isOther = false
+                var count = 0.0
+                var chsCount = 0.0
+                var otherCount = 0.0
+                forEach {
+                    when (it.unit) {
+                        "RMB" -> {
+                            isChs = true
+                            chsCount += it.money
+                        }
+
+                        "$" -> {
+                            isOther = true
+                            otherCount += it.money
+                        }
+
+                        else -> count += it.money
+                    }
+                }
+                val newline = if (isChs && isOther) "\n" else ""
+                val final =
+                    (if (isChs) "$chsCount RMB" else "") + newline + (if (isOther) "$otherCount $" else "") + (if (count != 0.0) "\n$count" else "")
+                holder.money.text = final
+            }
+        }
+
+        override fun getItemCount(): Int {
+            return data.size
+        }
+
+        class ViewHolder(binding: LayoutDonateItemBinding) : RecyclerView.ViewHolder(binding.root) {
+            val name = binding.donateName
+            val money = binding.donateMoney
         }
     }
 }

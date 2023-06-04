@@ -1,8 +1,10 @@
 package com.luckyzyx.luckytool.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.isVisible
@@ -163,6 +165,12 @@ class HomeFragment : Fragment() {
                 }
                 true
             }
+        }
+
+        binding.donateTvView.setOnClickListener {
+            val url = if (isZh(requireActivity())) "https://luckyzyx.github.io/LuckyTool_Doc/donate"
+            else "https://luckyzyx.github.io/LuckyTool_Doc/en/donate"
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
 
         binding.authorized.apply {

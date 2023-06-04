@@ -62,9 +62,7 @@ object StatusBarClock : YukiBaseHooker() {
         var context: Context? = null
         findClass("com.android.systemui.statusbar.policy.Clock").hook {
             injectMember {
-                constructor {
-                    paramCount = 3
-                }
+                constructor { paramCount = 3 }
                 afterHook {
                     context = args(0).cast<Context>()
                     val clockView = instance<TextView>()

@@ -1,19 +1,20 @@
 package com.luckyzyx.luckytool.hook.scope.safecenter
 
-import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.A12
+import com.luckyzyx.luckytool.utils.SDK
 
-object UnlockStartupLimitC12 : YukiBaseHooker() {
+object UnlockStartupLimitOld : YukiBaseHooker() {
+
     override fun onHook() {
-        //Source StratupManager
+        val clazz = if (SDK < A12) "com.coloros.safecenter.startupapp.b"
+        else "com.oplus.safecenter.startupapp.a"
+        //Source StartupManager.java
         //Search -> auto_start_max_allow_count -> update max allow count
-        VariousClass(
-            "com.coloros.safecenter.startupapp.b",
-            "com.oplus.safecenter.startupapp.a"
-        ).hook {
+        findClass(clazz).hook {
             injectMember {
                 method {
                     param(ContextClass)

@@ -7,12 +7,8 @@ object RemoveWarningDialogThatAppRunsOnDesktop : YukiBaseHooker() {
         //Source UnTrustedTouchOcclusionService
         findClass("com.oplus.exsystemservice.untrustedtouch.UnTrustedTouchOcclusionService").hook {
             injectMember {
-                method {
-                    name = "onStartCommand"
-                }
-                beforeHook {
-                    args(0).setNull()
-                }
+                method { name = "onStartCommand" }
+                beforeHook { args(0).setNull() }
             }
         }
     }

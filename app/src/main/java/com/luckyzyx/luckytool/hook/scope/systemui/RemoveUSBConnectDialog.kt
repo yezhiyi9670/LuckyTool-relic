@@ -18,7 +18,7 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
                     paramCount = 1
                 }
                 replaceUnit {
-                    val context = args(0).cast<Context>()!!
+                    val context = args(0).cast<Context>() ?: return@replaceUnit
                     field {
                         name = "sNeedShowUsbDialog"
                         type = BooleanType

@@ -7,9 +7,7 @@ object RemoveNotificationForMuteNotifications : YukiBaseHooker() {
         //Source NoDisturbController
         findClass("com.oplusos.systemui.statusbar.controller.NoDisturbController").hook {
             injectMember {
-                method {
-                    name = "sendNotification"
-                }
+                method { name = "sendNotification" }
                 intercept()
             }
         }

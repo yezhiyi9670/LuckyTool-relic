@@ -7,22 +7,12 @@ object RemoveGreenCapsulePrompt : YukiBaseHooker() {
         //Source SystemPromptView
         findClass("com.oplusos.systemui.statusbar.widget.SystemPromptView").hook {
             injectMember {
-                method {
-                    name = "updateViewVisible"
-                }
-                beforeHook {
-                    field {
-                        name = "disable"
-                    }.get(instance).setTrue()
-                }
+                method { name = "updateViewVisible" }
+                beforeHook { field { name = "disable" }.get(instance).setTrue() }
             }
             injectMember {
-                method {
-                    name = "setViewVisibleByDisable"
-                }
-                beforeHook {
-                    args(0).setTrue()
-                }
+                method { name = "setViewVisibleByDisable" }
+                beforeHook { args(0).setTrue() }
             }
         }
     }

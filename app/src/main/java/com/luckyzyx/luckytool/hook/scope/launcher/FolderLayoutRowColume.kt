@@ -57,9 +57,7 @@ object FolderLayoutRowColume : YukiBaseHooker() {
                     paramCount(3..4)
                 }
                 afterHook {
-                    field {
-                        name = "numFolderColumns"
-                    }.get(instance).set(columns)
+                    field { name = "numFolderColumns" }.get(instance).set(columns)
                 }
             }
         }
@@ -67,9 +65,7 @@ object FolderLayoutRowColume : YukiBaseHooker() {
         //Source FolderGridOrganizer
         findClass("com.android.launcher3.folder.big.BigFolderGridOrganizer").hook {
             injectMember {
-                method {
-                    name = "calculateGridSize"
-                }
+                method { name = "calculateGridSize" }
                 afterHook {
                     field {
                         name = "mCountX"

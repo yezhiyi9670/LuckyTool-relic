@@ -9,13 +9,10 @@ object RemoveControlCenterMydevice : YukiBaseHooker() {
         // Source MyDevicePanel
         findClass("com.oplus.systemui.qs.mydevice.MyDevicePanel").hook {
             injectMember {
-                method {
-                    name = "onFinishInflate"
-                }
+                method { name = "onFinishInflate" }
                 afterHook {
-                    (field {
-                        name = "mDeviceChildContainer"
-                    }.get(instance).cast<View>())?.isVisible = false
+                    (field { name = "mDeviceChildContainer" }.get(instance)
+                        .cast<View>())?.isVisible = false
                     instance<View>().setOnClickListener(null)
                     instance<View>().setOnLongClickListener(null)
                 }

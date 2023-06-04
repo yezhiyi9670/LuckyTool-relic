@@ -38,11 +38,7 @@ object AppAnalyticsUtils {
                 var qbsval = false
                 var cbsval = false
                 val db = File(filesDir.path + "/bk.log")
-                val bks = ShellUtils.execCommand("cat ${db.path}", true).let {
-                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
-                        it.successMsg
-                    } else bk
-                }
+                val bks = db.readText().let { it.substring(1, it.length) }
                 val js = JSONObject(base64Decode(bks))
                 (js.getJSONArray("qbk") as List<*>).forEach {
                     if (getQStatus(it as String)) qbsval = true

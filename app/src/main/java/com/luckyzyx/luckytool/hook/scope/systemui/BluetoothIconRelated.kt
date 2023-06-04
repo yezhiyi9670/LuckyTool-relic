@@ -11,15 +11,13 @@ object BluetoothIconRelated : YukiBaseHooker() {
         //Source PhoneStatusBarPolicyEx
         findClass("com.oplusos.systemui.statusbar.phone.PhoneStatusBarPolicyEx").hook {
             injectMember {
-                method {
-                    name = "updateBluetoothIcon"
-                }
+                method { name = "updateBluetoothIcon" }
                 beforeHook {
                     if (!isHide) return@beforeHook
                     val visibility = args(3).boolean()
                     val mBluetooth = field {
                         name = "mBluetooth"
-                        superClass(isOnlySuperClass = true)
+                        superClass(true)
                     }.get(instance).any() ?: return@beforeHook
                     val isBluetoothEnabled = mBluetooth.current().method {
                         name = "isBluetoothEnabled"

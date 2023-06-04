@@ -14,9 +14,7 @@ object RemoveLockScreenBottomSOSButton : YukiBaseHooker() {
                     paramCount = 1
                 }
                 afterHook {
-                    field {
-                        name = "mEmergencyButton"
-                    }.get(instance).cast<Button>()?.isVisible = false
+                    field { name = "mEmergencyButton" }.get(instance).cast<Button>()?.isVisible = false
                 }
             }
         }

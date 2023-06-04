@@ -18,6 +18,16 @@ object StatusBarNotifiyLimit : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_notification_manager_limit", false)) {
                 loadHooker(RemoveNotificationManagerLimit)
             }
+
+            //通知智能隐藏
+            //com.oplus.notificationmanager.SmartAntiVoyeurActivity
+            //com.oplus.notificationmanager.fragments.antivoyeur.SmartAntiVoyeurFragment
+//            findClass("com.oplus.notificationmanager.config.FeatureOption").hook {
+//                injectMember {
+//                    method { name = "isSmartAntiVoyeurEnabled" }
+//                    replaceToTrue()
+//                }
+//            }
         }
     }
 }

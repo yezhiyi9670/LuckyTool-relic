@@ -26,9 +26,7 @@ object MobileDataIconRelated : YukiBaseHooker() {
             "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarMobileViewExImpl" //C13
         ).hook {
             injectMember {
-                method {
-                    name = "initViewState"
-                }
+                method { name = "initViewState" }
                 afterHook {
                     if (hideNonNetwork) {
                         val state = args().first().any()
@@ -108,9 +106,7 @@ object MobileDataIconRelatedC120 : YukiBaseHooker() {
         //Source StatusBarMobileView
         findClass("com.android.systemui.statusbar.StatusBarMobileView").hook {
             injectMember {
-                method {
-                    name = "initViewState"
-                }
+                method { name = "initViewState" }
                 afterHook {
                     if (hideNonNetwork) {
                         val state = field { name = "mState" }.get(instance).any()
@@ -128,9 +124,7 @@ object MobileDataIconRelatedC120 : YukiBaseHooker() {
                 }
             }
             injectMember {
-                method {
-                    name = "updateState"
-                }
+                method { name = "updateState" }
                 afterHook {
                     if (hideNonNetwork) {
                         val state = field { name = "mState" }.get(instance).any()
@@ -151,9 +145,7 @@ object MobileDataIconRelatedC120 : YukiBaseHooker() {
         //Source SignalClusterView
         findClass("com.oplusos.systemui.statusbar.widget.SignalClusterView").hook {
             injectMember {
-                method {
-                    name = "updateNoSimView"
-                }
+                method { name = "updateNoSimView" }
                 afterHook {
                     if (!hideNoSS) return@afterHook
                     val mNoSims = field { name = "mNoSims" }.get(instance).cast<View>()

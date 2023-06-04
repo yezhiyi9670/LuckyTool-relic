@@ -7,10 +7,12 @@ import com.luckyzyx.luckytool.hook.scope.android.AppSplashScreen
 import com.luckyzyx.luckytool.hook.scope.android.BatteryOptimizationWhitelist
 import com.luckyzyx.luckytool.hook.scope.android.DarkModeService
 import com.luckyzyx.luckytool.hook.scope.android.DisableFlagSecure
+import com.luckyzyx.luckytool.hook.scope.android.FixBatteryHealthDataDisplay
 import com.luckyzyx.luckytool.hook.scope.android.HookNotificationManager
 import com.luckyzyx.luckytool.hook.scope.android.HookWindowManagerService
 import com.luckyzyx.luckytool.hook.scope.android.MediaVolumeLevel
 import com.luckyzyx.luckytool.hook.scope.android.MultiApp
+import com.luckyzyx.luckytool.hook.scope.android.RemoveAccessDeviceLogDialog
 import com.luckyzyx.luckytool.hook.scope.android.RemovePasswordTimeoutVerification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
@@ -72,33 +74,12 @@ object HookAndroid : YukiBaseHooker() {
 
         //允许APP回到顶部
         loadHooker(RemoveScrollToTopWhiteList)
-//
-//        findClass("com.android.server.display.OplusFeatureDCBacklight").hook {
-//            injectMember {
-//                method { name = "updateDCBacklight" }
-//                beforeHook {
-//                    val mIsFeatureOn = field { name = "mIsFeatureOn" }.get(instance).boolean()
-//                    val mCurrentDCMode = field { name = "mCurrentDCMode" }.get(instance).int()
-//                    val mBtExtendSupported =
-//                        field { name = "mBtExtendSupported" }.get(instance).int()
-//                    val mIsApollo = field { name = "mIsApollo" }.get(instance).boolean()
-//                    val mIsPwDCModeSupport =
-//                        field { name = "mIsPwDCModeSupport" }.get(instance).boolean()
-//
-//                    loggerD(
-//                        msg = "mIsFeatureOn -> $mIsFeatureOn" +
-//                                "mCurrentDCMode -> $mCurrentDCMode" +
-//                                "mBtExtendSupported -> $mBtExtendSupported" +
-//                                "mIsApollo -> $mIsApollo" +
-//                                "mIsPwDCModeSupport -> $mIsPwDCModeSupport"
-//                    )
-//                    val mode = args().first().cast<Int>() ?: return@beforeHook
-//                    method { name = "applyApolloDCMode" }.get(instance).call(mode)
-//                    method { name = "applyDCMode" }.get(instance).call(mode)
-//
-//                }
-//            }
-//        }
+
+        //禁用访问设备日志对话框
+        loadHooker(RemoveAccessDeviceLogDialog)
+
+        //修复电池健康数据显示
+        loadHooker(FixBatteryHealthDataDisplay)
 
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp

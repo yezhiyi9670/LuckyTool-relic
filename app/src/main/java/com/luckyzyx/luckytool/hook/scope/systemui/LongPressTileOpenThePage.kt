@@ -45,7 +45,8 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                         superClass()
                     }.boolean()
                     if (dualTarget) {
-                        field { name = "mClickHandler" }.get(instance).cast<android.os.Handler>()?.sendEmptyMessage(4)
+                        field { name = "mClickHandler" }.get(instance).cast<android.os.Handler>()
+                            ?.sendEmptyMessage(4)
                         resultNull()
                     }
                 }
@@ -62,10 +63,11 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                     val controller = field { order().index().first() }.get(instance).cast<Any>()
                     val mView = controller?.current()?.field {
                         name = "mView"
-                        superClass(isOnlySuperClass = true)
+                        superClass(true)
                     }?.cast<ViewGroup>()
                     val mediaData = args().first().any()
-                    val clickIntent = mediaData?.current()?.method { name = "getClickIntent" }?.invoke<PendingIntent>()
+                    val clickIntent = mediaData?.current()?.method { name = "getClickIntent" }
+                        ?.invoke<PendingIntent>()
                     mView?.setOnLongClickListener {
                         clickIntent?.let { its -> openIntent(its) }
                         true
@@ -76,9 +78,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source OplusWifiTile
         findClass("com.oplusos.systemui.qs.tiles.OplusWifiTile").hook {
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isWifi) replaceUnit {
                     openIntent(Intent(Settings.ACTION_WIFI_SETTINGS), 0)
                 }
@@ -87,9 +87,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source OplusCellularTile
         findClass("com.oplusos.systemui.qs.tiles.OplusCellularTile").hook {
             injectMember {
-                method {
-                    name = "getLongClickIntent"
-                }
+                method { name = "getLongClickIntent" }
                 beforeHook {
                     if (!isRestore) return@beforeHook
                     val getState = method {
@@ -108,9 +106,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
                 }
             }
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isMobile) replaceUnit {
                     method {
                         name = "getCellularSettingIntent"
@@ -121,9 +117,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source OplusHotspotTile
         findClass("com.oplusos.systemui.qs.tiles.OplusHotspotTile").hook {
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isWifiAp) replaceUnit {
                     method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
                         ?.let { openIntent(it, 0) }
@@ -133,9 +127,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source OplusBluetoothTile
         findClass("com.oplusos.systemui.qs.tiles.OplusBluetoothTile").hook {
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isBluetooth) replaceUnit {
                     openIntent(Intent(Settings.ACTION_BLUETOOTH_SETTINGS), 0)
                 }
@@ -144,9 +136,7 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source ScreenshotTile
         findClass("com.oplusos.systemui.qs.tiles.ScreenshotTile").hook {
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isScreenshot) replaceUnit {
                     method { name = "getLongClickIntent" }.get(instance).invoke<Intent>()
                         ?.let { openIntent(it, 0) }
@@ -156,13 +146,11 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
         //Source OplusDndTile
         findClass("com.oplusos.systemui.qs.tiles.OplusDndTile").hook {
             injectMember {
-                method {
-                    name = "handleSecondaryClick"
-                }
+                method { name = "handleSecondaryClick" }
                 if (isDnd) replaceUnit {
                     method {
                         name = "getLongClickIntent"
-                        superClass(isOnlySuperClass = true)
+                        superClass(true)
                     }.get(instance).invoke<Intent>()?.let { openIntent(it, 0) }
                 }
             }

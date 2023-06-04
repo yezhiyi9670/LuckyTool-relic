@@ -11,9 +11,7 @@ object RemoveInstallAds : YukiBaseHooker() {
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.InstallAppProgress").hook {
             injectMember {
-                method {
-                    name = "initView"
-                }
+                method { name = "initView" }
                 afterHook {
                     ins = instance
                     removeViews()
@@ -23,20 +21,16 @@ object RemoveInstallAds : YukiBaseHooker() {
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.InstallAppProgress$1").hook {
             injectMember {
-                method {
-                    name = "handleMessage"
-                }
+                method { name = "handleMessage" }
                 afterHook { removeViews() }
             }
         }
     }
 
     private fun removeViews() {
-        ins?.current()?.field {
-            name = "mSuggestLayoutAScrollView"
-        }?.cast<View>()?.isVisible = false
-        ins?.current()?.field {
-            name = "mSuggestLayoutB"
-        }?.cast<View>()?.isVisible = false
+        ins?.current {
+            field { name = "mSuggestLayoutAScrollView" }.cast<View>()?.isVisible = false
+            field { name = "mSuggestLayoutB" }.cast<View>()?.isVisible = false
+        }
     }
 }

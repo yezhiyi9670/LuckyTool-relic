@@ -8,9 +8,7 @@ object RemoveStartupAnimation : YukiBaseHooker() {
         //Search -> startAnimationIn -> Method
         findClass("business.secondarypanel.view.GameOptimizedNewView").hook {
             injectMember {
-                method {
-                    name = "c"
-                }
+                method { name = "c" }
                 intercept()
             }
         }

@@ -1738,39 +1738,16 @@ class Launcher : ModulePreferenceFragment() {
             )
             addPreference(
                 PreferenceCategory(context).apply {
-                    title = getString(R.string.PaginationComponentRelated)
-                    key = "PaginationComponentRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_pagination_component)
-                    key = "remove_pagination_component"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_folder_pagination_component)
-                    key = "remove_folder_pagination_component"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_pagination_component_sliding)
-                    key = "disable_pagination_component_sliding"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
                     title = getString(R.string.FolderLayoutRelated)
                     key = "FolderLayoutRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_folder_preview_background)
+                    key = "remove_folder_preview_background"
+                    setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
@@ -1800,6 +1777,37 @@ class Launcher : ModulePreferenceFragment() {
                     }
                 )
             }
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.PaginationComponentRelated)
+                    key = "PaginationComponentRelated"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_pagination_component)
+                    key = "remove_pagination_component"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_folder_pagination_component)
+                    key = "remove_folder_pagination_component"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_pagination_component_sliding)
+                    key = "disable_pagination_component_sliding"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
             addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.RecentTaskListRelated)
@@ -2474,6 +2482,15 @@ class DialogRelated : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_access_device_log_dialog)
+                    key = "remove_access_device_log_dialog"
+                    setDefaultValue(false)
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 
@@ -2967,10 +2984,26 @@ class Battery : ModulePreferenceFragment() {
                     summary = getString(R.string.open_battery_health_summary)
                     key = "open_battery_health"
                     setDefaultValue(false)
-                    isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
+            if (context.getBoolean(ModulePrefs, "open_battery_health", false)) {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.fix_battery_health_data_display)
+                        summary = getString(R.string.fix_battery_health_data_display_summary)
+                        key = "fix_battery_health_data_display"
+                        setDefaultValue(false)
+                        isVisible = SDK >= A13
+                        isIconSpaceReserved = false
+                    }
+                )
+            }
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.open_screen_power_save)

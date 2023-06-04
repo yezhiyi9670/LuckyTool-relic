@@ -14,27 +14,23 @@ object RemoveLockScreenBottomButton : YukiBaseHooker() {
         //Source KeyguardBottomAreaView
         findClass("com.android.systemui.statusbar.phone.KeyguardBottomAreaView").hook {
             injectMember {
-                method {
-                    name = "updateLeftAffordanceVisibility"
-                }
+                method { name = "updateLeftAffordanceVisibility" }
                 beforeHook {
                     if (!leftButton) return@beforeHook
                     field {
                         name = "mLeftAffordanceView"
-                        superClass(isOnlySuperClass = true)
+                        superClass(true)
                     }.get(instance).cast<View>()?.isVisible = false
                     resultNull()
                 }
             }
             injectMember {
-                method {
-                    name = "updateCameraVisibility"
-                }
+                method { name = "updateCameraVisibility" }
                 beforeHook {
                     if (!rightButton) return@beforeHook
                     field {
                         name = "mRightAffordanceView"
-                        superClass(isOnlySuperClass = true)
+                        superClass(true)
                     }.get(instance).cast<View>()?.isVisible = false
                     resultNull()
                 }

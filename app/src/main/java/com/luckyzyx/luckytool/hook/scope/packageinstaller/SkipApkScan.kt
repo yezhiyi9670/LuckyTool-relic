@@ -50,13 +50,9 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
             //replace to initiateInstall
             //search -> "button_type", "install_old_version_button" -11 -> Method
             injectMember {
-                method {
-                    name = member[2]
-                }
+                method { name = member[2] }
                 replaceUnit {
-                    method {
-                        name = member[3]
-                    }.get(instance).call()
+                    method { name = member[3] }.get(instance).call()
                 }
             }
         }

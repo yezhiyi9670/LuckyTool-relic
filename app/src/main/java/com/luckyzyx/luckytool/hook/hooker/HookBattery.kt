@@ -11,8 +11,8 @@ import com.luckyzyx.luckytool.utils.SDK
 object HookBattery : YukiBaseHooker() {
     override fun onHook() {
         //移除自启数量限制
-        if (prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
-            if (SDK >= A13) loadHooker(UnlockStartupLimit)
+        if (SDK >= A13 && prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
+            loadHooker(UnlockStartupLimit)
         }
 
         //屏幕省电,电池健康
@@ -33,10 +33,7 @@ object HookBattery : YukiBaseHooker() {
 //        val instance = binder?.let { IGuardElfThermalControlUtils(appClassLoader).getInstance(it) }
 //        loggerD(msg = "instance -> ${instance != null}")
 //
-//        val health = IGuardElfThermalControlUtils(appClassLoader).clazz.method {
-//            name = "getUIsohValue"
-//            emptyParam()
-//        }.get(instance).invoke<Int>()
+//        val health = IGuardElfThermalControlUtils(appClassLoader).getUIsohValue(instance)
 //        loggerD(msg = "health -> $health")
     }
 }

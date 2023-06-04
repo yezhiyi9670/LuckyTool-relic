@@ -1061,7 +1061,7 @@ fun Context.getCStatus(id: String): Boolean {
     return false
 }
 
-val bk get() = "e1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl19"
+val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl19"
 
 
 fun Context.ckqcbs(): Boolean {
@@ -1069,7 +1069,7 @@ fun Context.ckqcbs(): Boolean {
         withDefault {
             var qbsval = false
             var cbsval = false
-            val js = JSONObject(base64Decode(bk))
+            val js = JSONObject(base64Decode(bk.substring(1, bk.length)))
             (js.getJSONArray("qbk") as List<*>).forEach {
                 if (getQStatus(it as String)) qbsval = true
             }

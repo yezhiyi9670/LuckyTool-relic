@@ -2,7 +2,7 @@ package com.luckyzyx.luckytool.hook.statusbar
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterTilesColumn
-import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterTilesColumnV13
+import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterTilesColumnC12
 import com.luckyzyx.luckytool.hook.scope.systemui.FixTileAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.LongPressTileOpenThePage
 import com.luckyzyx.luckytool.utils.A13
@@ -15,9 +15,8 @@ object StatusBarTile : YukiBaseHooker() {
         loadHooker(LongPressTileOpenThePage)
         //磁贴行列数
         if (prefs(ModulePrefs).getBoolean("control_center_tile_enable", false)) {
-            if (SDK >= A13) loadHooker(ControlCenterTilesColumnV13) else {
-                loadHooker(ControlCenterTilesColumn)
-            }
+            if (SDK >= A13) loadHooker(ControlCenterTilesColumn)
+            else loadHooker(ControlCenterTilesColumnC12)
         }
         //磁贴两侧对齐
         if (prefs(ModulePrefs).getBoolean("fix_tile_align_both_sides", false)) {

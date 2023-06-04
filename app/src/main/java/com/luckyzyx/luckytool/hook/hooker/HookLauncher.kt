@@ -8,6 +8,7 @@ import com.luckyzyx.luckytool.hook.scope.launcher.LongPressAppIconOpenAppDetails
 import com.luckyzyx.luckytool.hook.scope.launcher.PageIndicator
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveAppUpdateDot
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveBottomAppIconOfRecentTaskList
+import com.luckyzyx.luckytool.hook.scope.launcher.RemoveFolderPreviewBackground
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveRecentTaskListClearButton
 import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
 import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
@@ -33,6 +34,10 @@ object HookLauncher : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_folder_layout_adjustment", false)) {
             loadHooker(FolderLayoutRowColume)
         }
+        //移除文件夹预览背景
+        if (prefs(ModulePrefs).getBoolean("remove_folder_preview_background", false)) {
+            loadHooker(RemoveFolderPreviewBackground)
+        }
         //移除最近任务列表清除按钮
         if (prefs(ModulePrefs).getBoolean("remove_recent_task_list_clear_button", false)) {
             loadHooker(RemoveRecentTaskListClearButton)
@@ -48,7 +53,6 @@ object HookLauncher : YukiBaseHooker() {
         ) {
             loadHooker(RemoveBottomAppIconOfRecentTaskList)
         }
-
         //解锁后台任务锁定限制
         if (prefs(ModulePrefs).getBoolean("unlock_task_locks", false)) {
             loadHooker(UnlockTaskLocks)

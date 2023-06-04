@@ -319,6 +319,7 @@
     <string name="remove_folder_pagination_component">Xóa thành phần phân trang thư mục</string>
     <string name="disable_pagination_component_sliding">Tắt tính năng trượt thành phần phân trang</string>
     <string name="FolderLayoutRelated">Bố cục gạch liên quan</string>
+    <string name="remove_folder_preview_background">Remove folder preview background</string>
     <string name="enable_folder_layout_adjustment">Bật điều chỉnh bố cục thư mục</string>
     <string name="set_icon_columns_in_folder">Đặt số cột biểu tượng trong thư mục</string>
     <!--Application-->
@@ -370,6 +371,7 @@
     <string name="remove_usb_connect_dialog">Gỡ bỏ thông báo kết nối USB</string>
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
     <string name="remove_secure_pay_found_virus_dialog">Đã xóa hộp thoại vi-rút tìm thấy thanh toán an toàn</string>
+    <string name="remove_access_device_log_dialog">Remove access device log dialog</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
     <string name="remove_side_slider">Xóa thanh trượt bên</string>
@@ -416,6 +418,8 @@
     <string name="restore_default_battery_optimization_whitelist">Ngăn chặn sự khôi phục của danh sách trắng tối ưu hoá pin</string>
     <string name="disable_customize_battery_optimization_whiteList">Ngăn chặn sự khôi phục của danh sách trắng tối ưu hoá pin</string>
     <string name="disable_customize_battery_optimization_whiteList_summary">Nếu người dùng cấp quyền `bỏ qua tối ưu hóa pin` cho ứng dụng theo cách thủ công, thì sau khi bật chức năng này, ứng dụng sẽ không tự động được thêm vào danh sách cho phép tối ưu hóa pin</string>
+    <string name="fix_battery_health_data_display">Fix battery health data display</string>
+    <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
     <!--Settings-->
     <string name="remove_top_account_display">Xóa hiển thị tài khoản hàng đầu</string>
     <string name="remove_dpi_restart_recovery">Xóa phục hồi khởi động lại DPI</string>
@@ -531,6 +535,9 @@
     <string name="device_guid">GUID thiết bị</string>
     <string name="oplusota_copy_tip">Nhấn và giữ ô nhập để sao chép riêng lẻ</string>
     <string name="oplusota_copyall">Sao chép tất cả</string>
+    <!--Donate-->
+    <string name="donate_tv_title">Support Development</string>
+    <string name="donate_tv__summary">Donate to the developer to support subsequent updates</string>
     <!-- Other -->
     <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>

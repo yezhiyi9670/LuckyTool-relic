@@ -19,9 +19,7 @@ object EnableSupportCompetitionMode : YukiBaseHooker() {
                 emptyParam()
                 returnType = ListClass
             }.count(1..2)
-            method {
-                param(StringClass, ArrayListClass)
-            }.count(1)
+            method { param(StringClass, ArrayListClass) }.count(1)
             method {
                 emptyParam()
                 returnType = BooleanType

@@ -9,9 +9,7 @@ object LauncherLayoutRowColume : YukiBaseHooker() {
         //Source UiConfig
         findClass("com.android.launcher.UiConfig").hook {
             injectMember {
-                method {
-                    name = "isSupportLayout"
-                }
+                method { name = "isSupportLayout" }
                 replaceToTrue()
             }
         }
@@ -20,9 +18,7 @@ object LauncherLayoutRowColume : YukiBaseHooker() {
         //Source ToggleBarLayoutAdapter
         findClass("com.android.launcher.togglebar.adapter.ToggleBarLayoutAdapter").hook {
             injectMember {
-                method {
-                    name = "initToggleBarLayoutConfigs"
-                }
+                method { name = "initToggleBarLayoutConfigs" }
                 beforeHook {
                     field {
                         name = "MIN_MAX_COLUMN"

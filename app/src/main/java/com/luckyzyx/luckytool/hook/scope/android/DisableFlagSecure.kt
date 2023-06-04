@@ -16,9 +16,7 @@ object DisableFlagSecure : YukiBaseHooker() {
         //Source A11+ -> WindowState A11- -> WindowManagerService
         findClass("com.android.server.wm.WindowState").hook {
             injectMember {
-                method {
-                    name = "isSecureLocked"
-                }
+                method { name = "isSecureLocked" }
                 replaceToFalse()
             }
         }

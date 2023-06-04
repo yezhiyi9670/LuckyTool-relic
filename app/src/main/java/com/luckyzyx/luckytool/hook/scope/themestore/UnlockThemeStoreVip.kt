@@ -7,30 +7,22 @@ object UnlockThemeStoreVip : YukiBaseHooker() {
         //Source VipUserDto
         findClass("com.oppo.cdo.card.theme.dto.vip.VipUserDto").hook {
             injectMember {
-                method {
-                    name = "getVipStatus"
-                }
+                method { name = "getVipStatus" }
                 replaceTo(1)
             }
             injectMember {
-                method {
-                    name = "getVipDays"
-                }
+                method { name = "getVipDays" }
                 replaceTo(999)
             }
         }
         //Source PublishProductItemDto
         findClass("com.oppo.cdo.theme.domain.dto.response.PublishProductItemDto").hook {
             injectMember {
-                method {
-                    name = "getPrice"
-                }
+                method { name = "getPrice" }
                 replaceTo(0.0)
             }
             injectMember {
-                method {
-                    name = "getIsVipAvailable"
-                }
+                method { name = "getIsVipAvailable" }
                 replaceTo(1)
             }
         }

@@ -20,9 +20,7 @@ object EnableXModeFeature : YukiBaseHooker() {
                     paramCount = 1
                     returnType = AnyClass
                 }
-                afterHook {
-                    resultTrue()
-                }
+                afterHook { resultTrue() }
             }
         }
     }

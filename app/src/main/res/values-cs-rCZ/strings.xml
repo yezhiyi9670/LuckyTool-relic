@@ -319,6 +319,7 @@
     <string name="remove_folder_pagination_component">Odstranit komponentu stránkování složky</string>
     <string name="disable_pagination_component_sliding">Zakázat posunutí komponenty stránky</string>
     <string name="FolderLayoutRelated">Rozvržení složky</string>
+    <string name="remove_folder_preview_background">Odstranit náhled pozadí složky</string>
     <string name="enable_folder_layout_adjustment">Povolit úpravu rozložení složek</string>
     <string name="set_icon_columns_in_folder">Nastavte počet sloupců ikon ve složce</string>
     <!--Application-->
@@ -370,6 +371,7 @@
     <string name="remove_usb_connect_dialog">Odstranit dialog po připojení USB</string>
     <string name="remove_usb_connect_dialog_summary">Režim přenosu souborů je vybrán ve výchozím nastavení po připojení USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Odstranit dialog o kontrole virů u zabezpečených plateb</string>
+    <string name="remove_access_device_log_dialog">Odebrat dialogové okno protokolu zařízení</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
     <string name="remove_side_slider">Odstranit boční posuvník</string>
@@ -416,6 +418,8 @@
     <string name="restore_default_battery_optimization_whitelist">Obnovit výchozí optimalizaci baterie v seznamu povolených</string>
     <string name="disable_customize_battery_optimization_whiteList">Zakázat vlastní seznam optimalizovaných aplikací baterie</string>
     <string name="disable_customize_battery_optimization_whiteList_summary">Pokud uživatel aplikaci ručně udělil oprávnění `ignorovat optimalizaci baterie`, nebude aplikace po zapnutí této funkce automaticky přidána na seznam povolených aplikací optimalizace baterie</string>
+    <string name="fix_battery_health_data_display">Opravit zobrazení dat o zdraví baterie</string>
+    <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
@@ -531,6 +535,9 @@
     <string name="device_guid">GUID zařízení</string>
     <string name="oplusota_copy_tip">Dlouhým stisknutím vstupního pole jej zkopírujte jednotlivě</string>
     <string name="oplusota_copyall">Kopírovat vše</string>
+    <!--Donate-->
+    <string name="donate_tv_title">Podpořit vývojáře</string>
+    <string name="donate_tv__summary">Přispějte vývojáři na podporu budoucích aktualizací</string>
     <!-- Other -->
     <string name="quick_entry">Skryté funkce systému</string>
     <string name="quick_entry_summary">například nástroje pro přizpůsobení systémového rozhraní, řízení procesů, engineering mode, atd.</string>

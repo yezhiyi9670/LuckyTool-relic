@@ -9,9 +9,7 @@ object RemoveStatusBarTopNotification : YukiBaseHooker() {
         //Source AlertWindowNotification
         findClass("com.android.server.wm.AlertWindowNotification").hook {
             injectMember {
-                method {
-                    name = "onPostNotification"
-                }
+                method { name = "onPostNotification" }
                 if (isEnable) intercept()
             }
         }

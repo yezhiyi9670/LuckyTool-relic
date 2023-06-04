@@ -13,15 +13,9 @@ object HookKsWeb : YukiBaseHooker() {
         //Source EXTEND TO PRO VERSION / CHECK SERIAL KEY / KSWEB PRO / KSWEB STANDARD
         searchClass {
             from("b4").absolute()
-            field {
-                type = IntType
-            }.count(1)
-            field {
-                type = BooleanType
-            }.count(1)
-            field {
-                type = SharedPreferencesClass
-            }.count(1)
+            field { type = IntType }.count(1)
+            field { type = BooleanType }.count(1)
+            field { type = SharedPreferencesClass }.count(1)
             constructor().count(2)
             method {
                 emptyParam()
@@ -38,12 +32,8 @@ object HookKsWeb : YukiBaseHooker() {
                     returnType = BooleanType
                 }.all()
                 beforeHook {
-                    field {
-                        type = BooleanType
-                    }.get(instance).setTrue()
-                    field {
-                        type = IntType
-                    }.get(instance).set(2)
+                    field { type = BooleanType }.get(instance).setTrue()
+                    field { type = IntType }.get(instance).set(2)
                 }
             }
         }

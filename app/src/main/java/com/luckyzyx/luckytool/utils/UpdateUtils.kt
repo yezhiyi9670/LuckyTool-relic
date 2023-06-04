@@ -22,7 +22,6 @@ import com.google.android.material.textview.MaterialTextView
 import com.luckyzyx.luckytool.R
 import org.json.JSONObject
 import java.io.File
-import java.nio.charset.Charset
 import java.text.DecimalFormat
 
 class UpdateUtils(val context: Context) {
@@ -206,14 +205,14 @@ class UpdateUtils(val context: Context) {
         scopeNet {
             val latestUrl = "https://api.github.com/repos/luckyzyx/LTBK/releases/latest"
             val lastBKDate = context.getString(SettingsPrefs, "last_update_bk_date", "null")
+            val db = File(context.filesDir.path + "/bk")
             val getDoc = Get<String>(latestUrl).await()
             JSONObject(getDoc).apply {
                 val date = optString("name").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
                 val json = optString("body").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
-                if (date != lastBKDate) {
-                    val db = File(context.filesDir.path + "/bk.log")
+                if ((!db.exists()) || (date != lastBKDate)) {
                     if (!db.exists()) db.createNewFile()
-                    db.writeText(json, Charset.defaultCharset())
+                    db.writeText(json)
                     context.putString(SettingsPrefs, "last_update_bk_date", date)
                 }
             }

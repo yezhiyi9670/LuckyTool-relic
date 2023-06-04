@@ -12,23 +12,15 @@ object RemoveWiFiDataInout : YukiBaseHooker() {
             "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarWifiViewExImpl"
         ).hook {
             injectMember {
-                method {
-                    name = "initViewState"
-                }
+                method { name = "initViewState" }
                 afterHook {
-                    field {
-                        name = "mWifiActivity"
-                    }.get(instance).cast<View>()?.isVisible = false
+                    field { name = "mWifiActivity" }.get(instance).cast<View>()?.isVisible = false
                 }
             }
             injectMember {
-                method {
-                    name = "updateState"
-                }
+                method { name = "updateState" }
                 afterHook {
-                    field {
-                        name = "mWifiActivity"
-                    }.get(instance).cast<View>()?.isVisible = false
+                    field { name = "mWifiActivity" }.get(instance).cast<View>()?.isVisible = false
                 }
             }
         }

@@ -14,9 +14,8 @@ object DisableDuplicateFloatingWindow : YukiBaseHooker() {
                     paramCount = 2
                 }
                 afterHook {
-                    (field {
-                        name = "mClipboardPreview"
-                    }.get(instance).cast<View>()?.parent as View).isVisible = false
+                    (field { name = "mClipboardPreview" }.get(instance)
+                        .cast<View>()?.parent as View).isVisible = false
                 }
             }
         }

@@ -21,7 +21,6 @@ object PageIndicator : YukiBaseHooker() {
                 method {
                     name = "onDraw"
                     param(CanvasClass)
-                    paramCount = 1
                 }
                 beforeHook {
                     val view = instance<View>()
@@ -48,7 +47,6 @@ object PageIndicator : YukiBaseHooker() {
                 method {
                     name = "dispatchTouchEvent"
                     param(MotionEventClass)
-                    paramCount = 1
                 }
                 if (disableSliding) replaceToFalse()
             }

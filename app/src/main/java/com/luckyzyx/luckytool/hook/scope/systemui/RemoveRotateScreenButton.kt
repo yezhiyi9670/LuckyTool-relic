@@ -15,13 +15,9 @@ object RemoveRotateScreenButton : YukiBaseHooker() {
             "com.android.systemui.shared.rotation.FloatingRotationButton" //A13
         ).hook {
             injectMember {
-                constructor {
-                    param { it[0] == ContextClass }
-                }
+                constructor { param { it[0] == ContextClass } }
                 afterHook {
-                    field {
-                        name = "mKeyButtonView"
-                    }.get(instance).cast<View>()?.isVisible = false
+                    field { name = "mKeyButtonView" }.get(instance).cast<View>()?.isVisible = false
                 }
             }
         }

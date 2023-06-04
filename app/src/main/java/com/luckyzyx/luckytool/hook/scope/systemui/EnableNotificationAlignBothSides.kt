@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.annotation.SuppressLint
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -102,7 +103,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             if (it && width > 0) {
                 layoutParams = FrameLayout.LayoutParams(layoutParams).apply {
                     width = resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
-//                    gravity = Gravity.CENTER
+                    gravity = Gravity.CENTER
                 }
             }
         }

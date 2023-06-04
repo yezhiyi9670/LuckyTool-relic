@@ -45,9 +45,7 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
                     emptyParam()
                     returnType = IntType
                 }.all()
-                afterHook {
-                    if (result<Int>() == 1) result = 2
-                }
+                afterHook { if (result<Int>() == 1) result = 2 }
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveNetworkRestriction")
     }

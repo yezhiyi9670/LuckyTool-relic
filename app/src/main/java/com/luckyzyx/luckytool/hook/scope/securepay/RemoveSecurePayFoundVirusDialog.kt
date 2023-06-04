@@ -18,9 +18,7 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
             field { type = CheckBoxClass }.count(1)
             field { type = BooleanType }.count(1)
             constructor().count(1)
-            method {
-                emptyParam()
-            }.count(5..6)
+            method { emptyParam() }.count(5..6)
             method {
                 emptyParam()
                 returnType = BooleanType

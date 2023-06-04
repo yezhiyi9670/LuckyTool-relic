@@ -8,6 +8,7 @@ import com.highcapable.yukihookapi.hook.type.android.IBinderClass
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class IGuardElfThermalControlUtils(val classLoader: ClassLoader?) {
 
+    //BatteryServiceExtImpl -> GuardElfThermalControl
     val clazz = "android.os.IGuardElfThermalControl".toClass(classLoader)
     val stub = "android.os.IGuardElfThermalControl\$Stub".toClass(classLoader)
 
@@ -16,5 +17,11 @@ class IGuardElfThermalControlUtils(val classLoader: ClassLoader?) {
             name = "asInterface"
             param(IBinderClass)
         }.get().call(iBinder)
+    }
+
+    fun getUIsohValue(instance: Any?): Int? {
+        return clazz.method {
+            name = "getUIsohValue"
+        }.get(instance).invoke<Int>()
     }
 }

@@ -32,9 +32,7 @@ object DarkModeList : YukiBaseHooker() {
             val darkModeData =
                 (instanceClass.canonicalName!! + "\$$objectName").toClass()
             injectMember {
-                method {
-                    param(Reader::class.java)
-                }
+                method { param(Reader::class.java) }
                 replaceUnit {
                     val supportListMap = ArrayMap<String, Int>()
                     supportlistSet.forEach {

@@ -124,20 +124,52 @@
                 </LinearLayout>
             
             </com.google.android.material.card.MaterialCardView>
-            
+    
             <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="8dp">
-                
+        
                 <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/system_info"
                         android:padding="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-            
+    
             </com.google.android.material.card.MaterialCardView>
+    
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/donate_tv_view"
+                    android:clickable="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp">
+        
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:orientation="vertical">
             
+                    <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/donate_tv_title"
+                            android:text="@string/donate_tv_title"
+                            android:paddingHorizontal="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+            
+                    <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/donate_tv__summary"
+                            android:text="@string/donate_tv__summary"
+                            android:textSize="11sp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+        
+                </LinearLayout>
+    
+            </com.google.android.material.card.MaterialCardView>
+    
             <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/authorized"
                     android:visibility="gone"

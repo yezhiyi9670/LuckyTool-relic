@@ -10,9 +10,7 @@ object RemoveStatusBarDevMode : YukiBaseHooker() {
             "com.oplusos.systemui.statusbar.policy.SystemPromptController"
         ).hook {
             injectMember {
-                method {
-                    name = "updateDeveloperMode"
-                }
+                method { name = "updateDeveloperMode" }
                 intercept()
             }
         }

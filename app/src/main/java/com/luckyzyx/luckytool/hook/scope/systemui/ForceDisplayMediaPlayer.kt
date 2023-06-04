@@ -13,9 +13,7 @@ object ForceDisplayMediaPlayer : YukiBaseHooker() {
                     name = "setQsMediaPanelShown"
                     paramCount = 1
                 }
-                beforeHook {
-                    args().first().setTrue()
-                }
+                beforeHook { args().first().setTrue() }
             }
         }
         //Source QuickStatusBarHeader / OplusQSTileMediaContainerController
@@ -28,9 +26,7 @@ object ForceDisplayMediaPlayer : YukiBaseHooker() {
                     name = "setQsMediaPanelShown"
                     paramCount = 1
                 }
-                beforeHook {
-                    args(0).setTrue()
-                }
+                beforeHook { args(0).setTrue() }
             }
         }
         //Source OplusQSFooterImpl / OplusQSTileMediaContainer
@@ -43,9 +39,7 @@ object ForceDisplayMediaPlayer : YukiBaseHooker() {
                     name = "setMediaMode"
                     paramCount = 1
                 }
-                beforeHook {
-                    args(0).setTrue()
-                }
+                beforeHook { args(0).setTrue() }
             }
         }
     }

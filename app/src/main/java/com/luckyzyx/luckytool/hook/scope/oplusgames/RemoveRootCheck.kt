@@ -42,9 +42,7 @@ object RemoveRootCheck : YukiBaseHooker() {
                     emptyParam()
                     returnType = BundleClass
                 }
-                afterHook {
-                    result<Bundle>()?.putInt("isSafe", 0)
-                }
+                afterHook { result<Bundle>()?.putInt("isSafe", 0) }
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveRootCheck")
     }

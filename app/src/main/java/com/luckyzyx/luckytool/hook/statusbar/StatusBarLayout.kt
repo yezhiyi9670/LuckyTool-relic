@@ -184,9 +184,7 @@ object StatusBarLayout : YukiBaseHooker() {
                 }
             }
             injectMember {
-                method {
-                    name = "onDestroyView"
-                }
+                method { name = "onDestroyView" }
                 if (layoutMode != "0") intercept()
             }
         }
@@ -194,9 +192,7 @@ object StatusBarLayout : YukiBaseHooker() {
         //Source PhoneStatusBarView
         findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
             injectMember {
-                method {
-                    name = "updateLayoutForCutout"
-                }
+                method { name = "updateLayoutForCutout" }
                 afterHook {
                     if (isCompatibleMode) updateCustomLayout(instance<ViewGroup>().context)
                 }
@@ -209,9 +205,7 @@ object StatusBarLayout : YukiBaseHooker() {
             "com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl"
         ).hook {
             injectMember {
-                method {
-                    name = "onFinishInflate"
-                }
+                method { name = "onFinishInflate" }
                 afterHook {
                     //keyguard_status_bar_contents
                     if (isCompatibleMode) field {
