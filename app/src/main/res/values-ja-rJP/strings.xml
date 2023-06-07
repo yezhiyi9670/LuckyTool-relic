@@ -411,7 +411,7 @@
     <string name="performance_mode_and_standby_optimization">パフォーマンスモードとスタンバイの最適化</string>
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
-    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
+    <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">高温制限を無効化</string>
     <string name="remove_high_temperature_limit_summary">カメラ、懐中電灯、ホットスポット、表示エンジンなど、さまざまな機能を使用できない制限を解除します。\n温度は30°Cに偽装します。具体的な効果は保証されていません。</string>

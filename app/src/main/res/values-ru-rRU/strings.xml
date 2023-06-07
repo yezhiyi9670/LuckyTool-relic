@@ -411,7 +411,7 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
-    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
+    <string name="disable_dynamic_refresh_rate">Отключить динамическую частоту обновления</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
     <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30°C, и конкретный эффект не гарантируется.</string>

@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v1.0.6_beta
+### v1.0.6
 
 - [更新] 捐赠名单
 - [修复] 部分作用域Hook实例异常
@@ -18,6 +18,19 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 部分列表右上角菜单开关异常
 - [添加] 禁用CN特供版设置
 - [添加] 禁用动态刷新率
+- [Update] Donation list
+- [Fix] Hook instance exception in some scopes
+- [Optimize] Remove the battery temperature control limit logic
+- [Add] Remove folder preview background
+- [Add] Remove access to device log dialog
+- [Fix] Unlock application self-start quantity limit C12.1
+- [Add] Fix battery health data display
+- [Change] Migrate donation list data
+- [Optimize] Detect update logic and CDN information
+- [Fix] Horizontal screen media notification width exception C12
+- [Fix] The menu switch in the upper right corner of some lists is abnormal
+- [Add] Disable CN special edition setting
+- [Add] Disable Dynamic Refresh Rate
 
 ### v1.0.5
 
