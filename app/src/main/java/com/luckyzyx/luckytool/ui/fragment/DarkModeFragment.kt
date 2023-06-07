@@ -41,6 +41,8 @@ class DarkModeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
     }
@@ -88,13 +90,8 @@ class DarkModeFragment : Fragment() {
         if (appListAllDatas.isEmpty()) loadData()
     }
 
-    /**
-     * 加载数据
-     */
     private fun loadData() {
         scopeLife {
-            isShowSystemApp =
-                requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
             binding.swipeRefreshLayout.isRefreshing = true
             binding.searchViewLayout.isEnabled = false
             binding.searchView.text = null

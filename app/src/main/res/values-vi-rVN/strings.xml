@@ -411,6 +411,7 @@
     <string name="performance_mode_and_standby_optimization">Chế độ hiệu suất và Tối ưu hóa chế độ chờ</string>
     <string name="performance_mode_and_standby_optimization_summary">Cài đặt - Pin - Cài đặt khác</string>
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
+    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Loại bỏ giới hạn nhiệt độ cao</string>
     <string name="remove_high_temperature_limit_summary">Loại bỏ giới hạn không thể sử dụng nhiều chức năng khác nhau,Ví dụ: máy ảnh, đèn pin, điểm phát sóng, công cụ hiển thị màn hình, v.v.\nNhiệt độ ngụy trang lý thuyết là 30°C và không đảm bảo hiệu quả cụ thể.</string>

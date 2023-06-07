@@ -2829,6 +2829,14 @@ class Miscellaneous : ModulePreferenceFragment() {
                     isVisible = SDK >= A12
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_dynamic_refresh_rate)
+                    key = "disable_dynamic_refresh_rate"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 
@@ -2903,6 +2911,15 @@ class Settings : ModulePreferenceFragment() {
                     title = getString(R.string.force_display_bottom_google_settings)
                     key = "force_display_bottom_google_settings"
                     setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.disable_cn_special_edition_setting)
+                    key = "disable_cn_special_edition_setting"
+                    setDefaultValue(false)
+                    isVisible = isZh(context)
                     isIconSpaceReserved = false
                 }
             )

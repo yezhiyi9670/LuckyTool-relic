@@ -411,6 +411,7 @@
     <string name="performance_mode_and_standby_optimization">Режим производительности и оптимизация режима ожидания</string>
     <string name="performance_mode_and_standby_optimization_summary">Настройки - Батарея - Дополнительные настройки</string>
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
+    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
     <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30°C, и конкретный эффект не гарантируется.</string>
@@ -419,7 +420,7 @@
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>
     <string name="disable_customize_battery_optimization_whiteList_summary">Если приложению вручную предоставлено разрешение \"Игнорировать оптимизацию батареи\", после включения этой функции приложение не будет автоматически добавлено в белый список оптимизации батареи</string>
     <string name="fix_battery_health_data_display">Исправить отображение данных о состоянии батареи</string>
-    <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
+    <string name="fix_battery_health_data_display_summary">Не используйте эту функцию, если система поддерживает работоспособность батареи\nТочность данных не гарантируется.</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>

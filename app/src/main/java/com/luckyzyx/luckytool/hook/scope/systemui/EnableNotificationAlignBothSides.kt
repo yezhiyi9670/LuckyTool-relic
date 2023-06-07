@@ -86,10 +86,12 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )
         getScreenOrientation(this) {
-            layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
-                width = if (it) {
-                    resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
-                } else -1
+            if (layoutParams != null) {
+                layoutParams = ViewGroup.LayoutParams(layoutParams).apply {
+                    width = if (it) {
+                        resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
+                    } else -1
+                }
             }
         }
     }
@@ -100,9 +102,11 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             resources.getIdentifier("qs_header_panel_side_padding", "dimen", packageName)
         )
         getScreenOrientation(this) {
-            if (it && width > 0) {
+            if (layoutParams != null) {
                 layoutParams = FrameLayout.LayoutParams(layoutParams).apply {
-                    width = resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
+                    width = if (it) {
+                        resources.displayMetrics.widthPixels - (qsPanelPaddingPx * 2)
+                    } else -1
                     gravity = Gravity.CENTER
                 }
             }

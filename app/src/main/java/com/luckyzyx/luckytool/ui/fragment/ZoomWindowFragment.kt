@@ -48,6 +48,8 @@ class ZoomWindowFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_zoom_window", false)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
     }
@@ -102,8 +104,6 @@ class ZoomWindowFragment : Fragment() {
      */
     private fun loadData() {
         scopeLife {
-            isShowSystemApp =
-                requireActivity().getBoolean(ModulePrefs, "show_system_app_zoom_window", false)
             binding.swipeRefreshLayout.isRefreshing = true
             binding.searchViewLayout.isEnabled = false
             binding.searchView.text = null

@@ -78,16 +78,21 @@ class HomeFragment : Fragment() {
             getVersionName,
             getVersionCode
         ) { versionName, versionCode, function ->
-            binding.updateView.apply {
-                if (getVersionCode < versionCode) {
+            if (getVersionCode < versionCode) {
+                function()
+                binding.updateView.apply {
                     isVisible = true
-                    text =
-                        getString(R.string.check_update_hint) + "  -->  $versionName($versionCode)"
-                    binding.statusCard.setOnClickListener { function() }
+                    text = getString(R.string.check_update_hint) +
+                            "  -->  $versionName($versionCode)"
                 }
-                binding.statusCard.setOnLongClickListener {
-                    if (context.getBoolean(SettingsPrefs, "hidden_function", false)) function()
-                    true
+                binding.statusCard.setOnClickListener { function() }
+            }
+            binding.statusCard.apply {
+                if (context.getBoolean(SettingsPrefs, "hidden_function", false)) {
+                    setOnLongClickListener {
+                        function()
+                        true
+                    }
                 }
             }
         }

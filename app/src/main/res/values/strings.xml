@@ -445,6 +445,7 @@
     <string name="performance_mode_and_standby_optimization">Performance Mode and Standby Optimization</string>
     <string name="performance_mode_and_standby_optimization_summary">Settings - Battery - More settings</string>
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
+    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     
     <!--Battery-->
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
@@ -465,6 +466,7 @@
     <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
+    <string name="disable_cn_special_edition_setting" translatable="false">禁用CN特供版设置</string>
     
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>

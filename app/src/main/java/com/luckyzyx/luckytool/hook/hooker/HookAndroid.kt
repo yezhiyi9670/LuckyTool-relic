@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.hook.scope.android.AllowUntrustedTouch
 import com.luckyzyx.luckytool.hook.scope.android.AppSplashScreen
 import com.luckyzyx.luckytool.hook.scope.android.BatteryOptimizationWhitelist
 import com.luckyzyx.luckytool.hook.scope.android.DarkModeService
+import com.luckyzyx.luckytool.hook.scope.android.DisableDynamicRefreshRate
 import com.luckyzyx.luckytool.hook.scope.android.DisableFlagSecure
 import com.luckyzyx.luckytool.hook.scope.android.FixBatteryHealthDataDisplay
 import com.luckyzyx.luckytool.hook.scope.android.HookNotificationManager
@@ -37,7 +38,7 @@ object HookAndroid : YukiBaseHooker() {
         loadHooker(HookWindowManagerService)
 
         //HookSystemProperties
-//        loadHooker(HookSystemProperties)
+        //loadHooker(HookSystemProperties)
 
         //媒体音量阶数
         loadHooker(MediaVolumeLevel)
@@ -80,6 +81,9 @@ object HookAndroid : YukiBaseHooker() {
 
         //修复电池健康数据显示
         loadHooker(FixBatteryHealthDataDisplay)
+
+        //禁用动态刷新率
+        loadHooker(DisableDynamicRefreshRate)
 
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp

@@ -411,6 +411,7 @@
     <string name="performance_mode_and_standby_optimization">性能模式和待机优化</string>
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="allow_untrusted_touch">允許不受信任的觸控</string>
+    <string name="disable_dynamic_refresh_rate">禁用动态刷新率</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">移除高温限制</string>
     <string name="remove_high_temperature_limit_summary">移除部分功能无法使用的限制，例如：摄像头、手电筒、热点、画面显示引擎等\n理论上伪装温度为30℃，无法保证具体效果</string>

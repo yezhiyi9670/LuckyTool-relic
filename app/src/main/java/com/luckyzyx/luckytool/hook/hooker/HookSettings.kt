@@ -5,6 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
+import com.luckyzyx.luckytool.hook.scope.settings.HookAppFeatureProvider
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveDpiRestartRecovery
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
@@ -18,8 +19,6 @@ object HookSettings : YukiBaseHooker() {
         }
         //应用详情页
         loadHooker(HookAppDetails)
-        //HookSettingsFeature -> memc
-//        loadHooker(HookSettingsFeature)
         //移除顶部账号显示
         if (prefs(ModulePrefs).getBoolean("remove_top_account_display", false)) {
             loadHooker(RemoveTopAccountDisplay)
@@ -41,9 +40,23 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(ForceDisplayBottomGoogleSettings)
         }
 
+        //HookSettingsFeature -> memc
+        //loadHooker(HookSettingsFeature)
+
+        //HookAppFeatureProvider
+        loadHooker(HookAppFeatureProvider)
+
+        //persist.oplus.display.vrr
+        //persist.oplus.display.vrr.adfr
+
+        //keep_screen_on -> 充电时屏幕不休眠
         //settings put global stay_on_while_plugged_in 7
+        //com.android.settings.development.StayAwakePreferenceController
 
         //<string name="airplane_mode">飞行模式</string>
         //com.oplus.settings.feature.network.AirplaneController -> setAirplaneModeOn
+
+        //safecenter_prohibit_monitor safecenter_prohibit_monitor_title -> 禁用权限监控
+        //com.oplus.settings.feature.othersettings.development.ProhibitMonitorPreferenceController
     }
 }

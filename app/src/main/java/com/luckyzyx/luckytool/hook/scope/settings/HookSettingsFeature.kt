@@ -5,12 +5,11 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookSettingsFeature : YukiBaseHooker() {
     override fun onHook() {
-        val memcVideo =
-            prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
+        val memcVideo = false
+            //prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
         //Source SysFeatureUtils
         searchClass {
             from("oi", "ki", "ji").absolute()

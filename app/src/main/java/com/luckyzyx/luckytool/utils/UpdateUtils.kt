@@ -77,15 +77,11 @@ class UpdateUtils(val context: Context) {
                             }
                         )
                         setPositiveButton(context.getString(R.string.direct_update)) { _, _ ->
-                            readyDownload(
-                                context, fileName, downloadUrl
-                            )
+                            readyDownload(context, fileName, downloadUrl)
                         }
                         setNeutralButton(context.getString(R.string.go_download_page)) { _, _ ->
                             context.startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW, Uri.parse(downloadPage)
-                                )
+                                Intent(Intent.ACTION_VIEW, Uri.parse(downloadPage))
                             )
                         }
                         show()
@@ -101,11 +97,11 @@ class UpdateUtils(val context: Context) {
     }
 
     private fun readyDownload(context: Context, fileName: String, downloadUrl: String) {
-        val list = arrayOf("Github", "ddlc", "zyun", "ghproxy")
+        val list = arrayOf("Github", "gitmirror", "ddlc", "ghproxy")
         val cdn = arrayOf(
             "",
+            "https://hub.gitmirror.com/",
             "https://gh.ddlc.top/",
-            "https://proxy.zyun.vip/",
             "https://ghproxy.com/"
         )
         MaterialAlertDialogBuilder(context, dialogCentered).apply {

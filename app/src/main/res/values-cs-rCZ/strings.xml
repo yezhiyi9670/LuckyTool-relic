@@ -411,6 +411,7 @@
     <string name="performance_mode_and_standby_optimization">Optimalizace výkonu a pohotovostního režimu</string>
     <string name="performance_mode_and_standby_optimization_summary">Nastavení - Baterie - Další nastavení</string>
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
+    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Odstranit limit vysoké teploty</string>
     <string name="remove_high_temperature_limit_summary">Odstraňte omezení, že nelze používat různé funkce,Například: fotoaparát, svítilna, hotspot, motor displeje atd.Teoretická teplota maskování je 30 °C a konkrétní účinek není zaručen.</string>
@@ -419,7 +420,7 @@
     <string name="disable_customize_battery_optimization_whiteList">Zakázat vlastní seznam optimalizovaných aplikací baterie</string>
     <string name="disable_customize_battery_optimization_whiteList_summary">Pokud uživatel aplikaci ručně udělil oprávnění `ignorovat optimalizaci baterie`, nebude aplikace po zapnutí této funkce automaticky přidána na seznam povolených aplikací optimalizace baterie</string>
     <string name="fix_battery_health_data_display">Opravit zobrazení dat o zdraví baterie</string>
-    <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
+    <string name="fix_battery_health_data_display_summary">Nepoužívejte tuto funkci, pokud systém podporuje zdraví baterie\nPřesnost dat nelze garantovat</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>

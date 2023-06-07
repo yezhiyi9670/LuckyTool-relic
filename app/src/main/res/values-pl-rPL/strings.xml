@@ -411,6 +411,7 @@
     <string name="performance_mode_and_standby_optimization">Dodaj stronę „Tryb wydajności” i „Optymalne czuwanie”</string>
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia &gt; Bateria &gt; Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwól na niezaufane działania dotykowe</string>
+    <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
     <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.\nThe theoretical camouflage temperature is 30°C, and the specific effect is not guaranteed.</string>
