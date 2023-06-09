@@ -412,6 +412,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Налаштування - Батарея - Додаткові налаштування</string>
     <string name="allow_untrusted_touch">Дозволити небажані торкання</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
+    <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Видалити обмеження високих температур</string>
     <string name="remove_high_temperature_limit_summary">Видаліть обмеження, згідно з яким не можна використовувати різні функції, наприклад: камеру, ліхтарик, точку доступу, механізм відображення екрана і т.д.\nТеоретична температура камуфляжу становить 30°C, і конкретний ефект не гарантується.</string>
@@ -429,6 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">Немає гарантії, що він буде працювати, він використовується лише для відображення опцій функцій</string>
     <string name="force_display_video_memc_frame_insertion">Примусово відображати відео з динамічною вставкою кадрів MEMC</string>
     <string name="video_frame_insertion_support_2K120">Динамічна вставка кадрів відео підтримує роздільну здатність 2К 120 Гц (MEMC)</string>
+    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">Примусово показувати Google внизу налаштувань</string>
     <string name="AppDetailsRelated">Відомості про додаток</string>
     <string name="show_package_name_in_app_details">Показувати ім\'я пакета в деталях додатку</string>

@@ -412,6 +412,7 @@
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
+    <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">高温制限を無効化</string>
     <string name="remove_high_temperature_limit_summary">カメラ、懐中電灯、ホットスポット、表示エンジンなど、さまざまな機能を使用できない制限を解除します。\n温度は30°Cに偽装します。具体的な効果は保証されていません。</string>
@@ -429,6 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
     <string name="force_display_video_memc_frame_insertion">強制的に MEMC ビデオフレーム補間を表示する</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間を 2K 120FPS 対応にする</string>
+    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>

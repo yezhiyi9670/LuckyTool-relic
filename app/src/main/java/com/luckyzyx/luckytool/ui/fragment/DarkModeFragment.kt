@@ -82,9 +82,7 @@ class DarkModeFragment : Fragment() {
             })
         }
         binding.swipeRefreshLayout.apply {
-            setOnRefreshListener {
-                loadData()
-            }
+            setOnRefreshListener { loadData() }
         }
 
         if (appListAllDatas.isEmpty()) loadData()
@@ -264,9 +262,7 @@ class DarkModeAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return filterDatas.size
-    }
+    override fun getItemCount(): Int = filterDatas.size
 
     val getFilter
         get() = object : Filter() {

@@ -3,6 +3,14 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.7_beta
+
+- [添加] 捐赠列表添加搜索框
+- [适配] 移除设置顶部账号显示C12
+- [适配] 桌面时钟组件红一C12
+- [修复] 状态栏电池报错C12 EEA
+- [适配] 移除游戏助手赛事模式音效v8.11.0
+
 ### v1.0.6
 
 - [更新] 捐赠名单

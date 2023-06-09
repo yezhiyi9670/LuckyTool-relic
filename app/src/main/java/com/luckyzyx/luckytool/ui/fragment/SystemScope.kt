@@ -2832,6 +2832,7 @@ class Miscellaneous : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.disable_dynamic_refresh_rate)
+                    summary = getString(R.string.disable_dynamic_refresh_rate_summary)
                     key = "disable_dynamic_refresh_rate"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
@@ -2901,6 +2902,7 @@ class Settings : ModulePreferenceFragment() {
             addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.video_frame_insertion_support_2K120)
+                    summary = getString(R.string.video_frame_insertion_support_2K120_summary)
                     key = "video_frame_insertion_support_2K120"
                     setDefaultValue(false)
                     isIconSpaceReserved = false

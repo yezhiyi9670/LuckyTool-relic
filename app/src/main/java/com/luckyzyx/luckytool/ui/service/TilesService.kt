@@ -280,21 +280,15 @@ class FiveG : TileService() {
     }
 
     private fun refreshData() = startFiveGController {
-        scope(Dispatchers.Default) {
-            if (it == null) {
-                qsTile.state = Tile.STATE_UNAVAILABLE
-                return@scope
-            }
-            val subId = SubscriptionManager.getDefaultDataSubscriptionId()
-            qsTile.state = if (!it.checkCompatibility(subId)) Tile.STATE_UNAVAILABLE
-            else {
-                if (it.getFiveGStatus(subId)) Tile.STATE_ACTIVE
-                else Tile.STATE_INACTIVE
-            }
-        }.finally {
-            qsTile.updateTile()
-            close()
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startFiveGController
         }
+        val subId = SubscriptionManager.getDefaultDataSubscriptionId()
+        qsTile.state = if (!it.checkCompatibility(subId)) Tile.STATE_UNAVAILABLE
+        else if (it.getFiveGStatus(subId)) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 }
 

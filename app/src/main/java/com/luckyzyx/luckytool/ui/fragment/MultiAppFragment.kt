@@ -45,7 +45,8 @@ class MultiAppFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-        isShowSystemApp = requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
+        isShowSystemApp =
+            requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
         return binding.root
     }
@@ -84,9 +85,7 @@ class MultiAppFragment : Fragment() {
             })
         }
         binding.swipeRefreshLayout.apply {
-            setOnRefreshListener {
-                loadData()
-            }
+            setOnRefreshListener { loadData() }
         }
 
         if (appListAllDatas.isEmpty()) loadData()

@@ -412,6 +412,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Nastavení - Baterie - Další nastavení</string>
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
     <string name="disable_dynamic_refresh_rate">Zakázat dynamickou obnovovací frekvenci</string>
+    <string name="disable_dynamic_refresh_rate_summary">Řeší hlavně problém s poklesem snímku, když se obrazovky nedotýkáte</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Odstranit limit vysoké teploty</string>
     <string name="remove_high_temperature_limit_summary">Odstraňte omezení, že nelze používat různé funkce,Například: fotoaparát, svítilna, hotspot, motor displeje atd.Teoretická teplota maskování je 30 °C a konkrétní účinek není zaručen.</string>
@@ -429,6 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">Neexistuje žádná záruka, že to bude fungovat, je to použito pouze pro zobrazení možností</string>
     <string name="force_display_video_memc_frame_insertion">Vynuceně zobrazit interpolační rám MEMC</string>
     <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
+    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>

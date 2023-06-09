@@ -412,6 +412,7 @@
     <string name="performance_mode_and_standby_optimization_summary">Ustawienia &gt; Bateria &gt; Więcej ustawień</string>
     <string name="allow_untrusted_touch">Zezwól na niezaufane działania dotykowe</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
+    <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
     <string name="remove_high_temperature_limit_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.\nThe theoretical camouflage temperature is 30°C, and the specific effect is not guaranteed.</string>
@@ -429,6 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
     <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
     <string name="video_frame_insertion_support_2K120">Włącz obsługę interpolacji klatek wideo dla 2k-120fps</string>
+    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>

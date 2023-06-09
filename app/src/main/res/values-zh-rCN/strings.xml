@@ -412,6 +412,7 @@
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="allow_untrusted_touch">允许不受信任的触摸</string>
     <string name="disable_dynamic_refresh_rate">禁用动态刷新率</string>
+    <string name="disable_dynamic_refresh_rate_summary">主要解决屏幕无触摸时的掉帧问题</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">移除高温限制</string>
     <string name="remove_high_temperature_limit_summary">移除部分功能无法使用的限制，例如：摄像头、手电筒、热点、画面显示引擎等\n理论上伪装温度为30℃，无法保证具体效果</string>
@@ -429,6 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">无法保证一定有效，仅用于显示功能选项</string>
     <string name="force_display_video_memc_frame_insertion">强制显示视频动态插帧MEMC</string>
     <string name="video_frame_insertion_support_2K120">视频插帧支持 2K120</string>
+    <string name="video_frame_insertion_support_2K120_summary">若你的设备不支持 MEMC，请勿使用此功能</string>
     <string name="force_display_bottom_google_settings">强制显示设置底部Google</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>

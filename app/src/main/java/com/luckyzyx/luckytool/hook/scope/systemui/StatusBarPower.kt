@@ -13,7 +13,9 @@ object StatusBarPower : YukiBaseHooker() {
         val customFontSize = prefs(ModulePrefs).getInt("statusbar_power_font_size", 0)
 
         //Source StatBatteryMeterView
-        findClass("com.oplusos.systemui.statusbar.widget.StatBatteryMeterView").hook {
+        val clazz = "com.oplusos.systemui.statusbar.widget.StatBatteryMeterView"
+        if (clazz.toClassOrNull() == null) return
+        findClass(clazz).hook {
             injectMember {
                 method { name = "updatePercentText" }
                 afterHook {

@@ -1,14 +1,18 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.ArraySet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.preference.DropDownPreference
@@ -591,6 +595,34 @@ class DonateFragment : Fragment() {
 
     fun init(context: Context) {
         scopeLife {
+            binding.searchViewLayout.apply {
+                hint = "Name / PackageName"
+                isHintEnabled = true
+                isHintAnimationEnabled = true
+            }
+            binding.searchView.apply {
+                isEnabled = false
+                text = null
+                addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(
+                        s: CharSequence?, start: Int,
+                        count: Int, after: Int
+                    ) {
+                    }
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        donateAdapter?.getFilter?.filter(s.toString())
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {}
+                })
+            }
+
             binding.swipeRefreshLayout.apply {
                 setOnRefreshListener { init(context) }
                 isRefreshing = true
@@ -683,6 +715,7 @@ class DonateFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
             }
             binding.swipeRefreshLayout.isRefreshing = false
+            binding.searchView.isEnabled = true
         }
     }
 
@@ -690,8 +723,16 @@ class DonateFragment : Fragment() {
         init(requireActivity())
     }
 
-    class DonateListAdapter(val context: Context, val data: ArrayList<DInfo>) :
+    class DonateListAdapter(val context: Context, data: ArrayList<DInfo>) :
         RecyclerView.Adapter<DonateListAdapter.ViewHolder>() {
+
+        var allDatas = ArrayList<DInfo>()
+        var filterDatas = ArrayList<DInfo>()
+
+        init {
+            allDatas = data
+            filterDatas = data
+        }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val binding =
@@ -700,8 +741,8 @@ class DonateFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.name.text = data[position].name
-            data[position].details.apply {
+            holder.name.text = filterDatas[position].name
+            filterDatas[position].details.apply {
                 var isChs = false
                 var isOther = false
                 var count = 0.0
@@ -729,8 +770,36 @@ class DonateFragment : Fragment() {
             }
         }
 
-        override fun getItemCount(): Int {
-            return data.size
+        val getFilter
+            get() = object : Filter() {
+                override fun performFiltering(constraint: CharSequence): FilterResults {
+                    filterDatas = if (constraint.isBlank()) allDatas
+                    else {
+                        val filterlist = ArrayList<DInfo>()
+                        allDatas.forEach {
+                            if (it.name.lowercase().contains(constraint.toString().lowercase())) {
+                                filterlist.add(it)
+                            }
+                        }
+                        filterlist
+                    }
+                    val filterResults = FilterResults()
+                    filterResults.values = filterDatas
+                    return filterResults
+                }
+
+                override fun publishResults(constraint: CharSequence, results: FilterResults?) {
+                    @Suppress("UNCHECKED_CAST")
+                    filterDatas = results?.values as ArrayList<DInfo>
+                    refreshDatas()
+                }
+            }
+
+        override fun getItemCount(): Int = filterDatas.size
+
+        @SuppressLint("NotifyDataSetChanged")
+        fun refreshDatas() {
+            notifyDataSetChanged()
         }
 
         class ViewHolder(binding: LayoutDonateItemBinding) : RecyclerView.ViewHolder(binding.root) {

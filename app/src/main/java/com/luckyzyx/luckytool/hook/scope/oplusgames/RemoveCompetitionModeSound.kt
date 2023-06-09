@@ -13,7 +13,7 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
     override fun onHook() {
         //Source SoundPoolPlayManager -> competition_mode_sound
         searchClass {
-            from("v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9", "ca").absolute()
+            from("v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9", "ca", "ea").absolute()
             field { type = ContextClass }.count(1)
             field { type = AudioManager::class.java }.count(1)
             field { type = SoundPool::class.java }.count(1)
@@ -26,9 +26,7 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
                     param(IntType)
                     paramCount = 1
                 }.all()
-                beforeHook {
-                    if (args().first().int() == 9) resultNull()
-                }
+                beforeHook { if (args().first().int() == 9) resultNull() }
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveCompetitionModeSound")
     }
