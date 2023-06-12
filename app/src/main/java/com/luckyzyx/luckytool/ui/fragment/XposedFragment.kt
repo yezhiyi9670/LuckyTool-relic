@@ -62,10 +62,8 @@ class XposedFragment : ModulePreferenceFragment() {
         }.create()
         scopeDialog(dialog, false, Dispatchers.Default) {
             if (preferenceScreen != null) return@scopeDialog
-            val destination = findNavController().backQueue.let { it[it.lastIndex].destination }
-            if (!destination.toString()
-                    .contains(this@XposedFragment::class.java.simpleName)
-            ) return@scopeDialog
+            val destination = findNavController().backQueue.lastOrNull()?.destination
+            if (!destination.toString().contains(this@XposedFragment::class.java.simpleName)) return@scopeDialog
 
             preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
                 addPreference(

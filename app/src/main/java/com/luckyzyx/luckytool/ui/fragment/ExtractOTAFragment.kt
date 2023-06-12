@@ -45,12 +45,10 @@ class ExtractOTAFragment : Fragment() {
             binding.noOtaData.isVisible = true
             binding.copyOtaData.isEnabled = false
             val data = withDefault {
-                val command = arrayOf(
-                    "mkdir -p /sdcard/Download/LuckyTool/cache/",
-                    "cp /data/user/0/com.oplus.ota/databases/ota.db /sdcard/Download/LuckyTool/cache/ota.db"
-                )
+                val command =
+                    "cp /data/user/0/com.oplus.ota/databases/ota.db ${context.cacheDir.path}"
                 ShellUtils.execCommand(command, true)
-                val dbFile = File("/sdcard/Download/LuckyTool/cache/ota.db")
+                val dbFile = File(context.cacheDir.path + "/ota.db")
                 val table = if (dbFile.exists()) {
                     val db = SQLiteUtils.openDataBase(dbFile.path, readOnly)
                     db?.getTableData("pkgList")

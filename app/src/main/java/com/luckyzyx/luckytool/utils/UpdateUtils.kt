@@ -199,7 +199,8 @@ class UpdateUtils(val context: Context) {
 
     fun checkBK() {
         scopeNet {
-            val latestUrl = "https://api.github.com/repos/luckyzyx/LTBK/releases/latest"
+            val latestUrl =
+                "https://api.github.com/repos/luckyzyx/LuckyTool_Doc/releases/tags/ltbks"
             val lastBKDate = context.getString(SettingsPrefs, "last_update_bk_date", "null")
             val db = File(context.filesDir.path + "/bk")
             val getDoc = Get<String>(latestUrl).await()

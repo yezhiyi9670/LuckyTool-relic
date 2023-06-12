@@ -430,7 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">Neexistuje žádná záruka, že to bude fungovat, je to použito pouze pro zobrazení možností</string>
     <string name="force_display_video_memc_frame_insertion">Vynuceně zobrazit interpolační rám MEMC</string>
     <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
-    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
+    <string name="video_frame_insertion_support_2K120_summary">Pokud vaše zařízení nepodporuje MEMC, nepoužívejte tuto funkci</string>
     <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>

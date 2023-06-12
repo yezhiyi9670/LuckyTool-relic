@@ -10,6 +10,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 桌面时钟组件红一C12
 - [修复] 状态栏电池报错C12 EEA
 - [适配] 移除游戏助手赛事模式音效v8.11.0
+- [更改] MicroSoftAppCenterSecret
 
 ### v1.0.6
 

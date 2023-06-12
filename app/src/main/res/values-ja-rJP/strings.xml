@@ -430,7 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
     <string name="force_display_video_memc_frame_insertion">強制的に MEMC ビデオフレーム補間を表示する</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間を 2K 120FPS 対応にする</string>
-    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
+    <string name="video_frame_insertion_support_2K120_summary">お使いのデバイスが MEMC に対応していない場合は、この機能を使用しないでください</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>

@@ -88,6 +88,7 @@ dependencies {
     //Navigation
     //noinspection GradleDependency
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    //noinspection GradleDependency
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'

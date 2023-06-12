@@ -430,7 +430,7 @@
     <string name="force_display_dc_backlight_mode_summary">Нет гарантии, что он будет работать, он используется только для отображения опций функций</string>
     <string name="force_display_video_memc_frame_insertion">Принудительно отображать видео с динамической вставкой кадров MEMC</string>
     <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
-    <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
+    <string name="video_frame_insertion_support_2K120_summary">Если ваше устройство не поддерживает MEMC, пожалуйста, не используйте эту функцию</string>
     <string name="force_display_bottom_google_settings">Принудительно показывать Google внизу настроек</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
