@@ -479,6 +479,8 @@
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を解除します。効果がない場合は FLAG_SECURE を無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
     <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
+    <string name="customize_long_screenshot_max_captured_pages">ロングスクリーンショットの最大ページ数を変更</string>
+    <string name="customize_long_screenshot_max_captured_pages_summary">値が 18 の場合は効果がありません</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">タップした後に関連する操作が自動的に実行されます。しばらくお待ちください</string>

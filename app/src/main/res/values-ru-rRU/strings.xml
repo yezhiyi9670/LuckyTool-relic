@@ -479,6 +479,8 @@
     <string name="remove_screenshot_privacy_limit_summary">Снимите ограничения на конфиденциальность, которые не могут быть перехвачены. Отключите FLAG_SECURE, если это никак не повлияет</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
+    <string name="customize_long_screenshot_max_captured_pages">Настройте максимальное количество захваченных страниц для длинных скриншотов</string>
+    <string name="customize_long_screenshot_max_captured_pages_summary">Если значение равно 18, функция не сработает</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">После нажатия соответствующие операции будут выполняться автоматически, терпеливо подождите несколько секунд</string>

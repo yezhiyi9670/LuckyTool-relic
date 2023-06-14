@@ -20,10 +20,8 @@ object AppAnalyticsUtils {
 
     fun init(instance: Application) {
         if (App_Center_Secret.isNotBlank()) AppCenter.start(
-            instance,
-            App_Center_Secret,
-            Analytics::class.java,
-            Crashes::class.java
+            instance, App_Center_Secret,
+            Analytics::class.java, Crashes::class.java
         )
     }
 

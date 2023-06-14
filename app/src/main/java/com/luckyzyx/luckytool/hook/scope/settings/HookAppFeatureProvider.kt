@@ -15,7 +15,7 @@ object HookAppFeatureProvider : YukiBaseHooker() {
         val isDisableCN = prefs(ModulePrefs).getBoolean("disable_cn_special_edition_setting", false)
         //Source AppFeatureProviderUtils
         searchClass {
-            from("ma", "rb", "yb").absolute()
+            from("ma", "rb", "yb", "sb").absolute()
             method {
                 param(ContentResolverClass, StringClass, BooleanType)
                 returnType = BooleanType

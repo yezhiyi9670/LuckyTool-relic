@@ -2199,6 +2199,20 @@ class Screenshot : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SeekBarPreference(context).apply {
+                    title = getString(R.string.customize_long_screenshot_max_captured_pages)
+                    summary = getString(R.string.customize_long_screenshot_max_captured_pages_summary)
+                    key = "customize_long_screenshot_max_captured_pages"
+                    setDefaultValue(18)
+                    max = 999
+                    min = 18
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 

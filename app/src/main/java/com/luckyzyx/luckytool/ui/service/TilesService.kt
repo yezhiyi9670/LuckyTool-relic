@@ -41,12 +41,10 @@ class ProcessManager : TileService() {
 
 class GameAssistant : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
+        scope(Dispatchers.Unconfined) {
             qsTile.state =
                 if (!checkPackName("com.oplus.games")) Tile.STATE_UNAVAILABLE else Tile.STATE_INACTIVE
-        }.finally {
             qsTile.updateTile()
-            close()
         }
     }
 
@@ -72,17 +70,16 @@ class HighPerformanceMode : TileService() {
 
 class ShowFPS : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
-            ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).apply {
-                if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
-                else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                    qsTile.state = if (getRefreshRateStatus()) Tile.STATE_ACTIVE
-                    else Tile.STATE_INACTIVE
-                } else qsTile.state = Tile.STATE_UNAVAILABLE
-            }
-        }.finally {
+        scope(Dispatchers.Unconfined) {
+            qsTile.state =
+                ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
+                    if (it.result == 1) Tile.STATE_UNAVAILABLE
+                    else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                        if (getRefreshRateStatus()) Tile.STATE_ACTIVE
+                        else Tile.STATE_INACTIVE
+                    } else Tile.STATE_UNAVAILABLE
+                }
             qsTile.updateTile()
-            close()
         }
     }
 
@@ -106,22 +103,22 @@ class ShowFPS : TileService() {
 
 class HighBrightness : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
-            ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).apply {
-                if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
-                else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                    when (successMsg.substring(0, 1)) {
-                        "0" -> qsTile.state = Tile.STATE_INACTIVE
-                        "1" -> qsTile.state = Tile.STATE_ACTIVE
-                    }
-                } else qsTile.state = Tile.STATE_UNAVAILABLE
-                if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-                    SettingsPrefs, "high_brightness_mode", false
-                )
-            }
-        }.finally {
+        scope(Dispatchers.Unconfined) {
+            qsTile.state =
+                ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).let {
+                    if (it.result == 1) Tile.STATE_UNAVAILABLE
+                    else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                        when (it.successMsg.substring(0, 1)) {
+                            "0" -> Tile.STATE_INACTIVE
+                            "1" -> Tile.STATE_ACTIVE
+                            else -> Tile.STATE_UNAVAILABLE
+                        }
+                    } else Tile.STATE_UNAVAILABLE
+                }
             qsTile.updateTile()
-            close()
+            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+                SettingsPrefs, "high_brightness_mode", false
+            )
         }
     }
 
@@ -149,7 +146,7 @@ class HighBrightness : TileService() {
 
 class GlobalDC : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
+        scope(Dispatchers.Unconfined) {
             var oppoExist = true
             var oplusExist = true
             var isOppo = false
@@ -170,12 +167,10 @@ class GlobalDC : TileService() {
                 }
             qsTile.state =
                 if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+            qsTile.updateTile()
             if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
                 SettingsPrefs, "global_dc_mode", false
             )
-        }.finally {
-            qsTile.updateTile()
-            close()
         }
     }
 
@@ -205,24 +200,23 @@ class GlobalDC : TileService() {
 
 class TouchSamplingRate : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
-            ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true)
-                .apply {
-                    if (result == 1) qsTile.state = Tile.STATE_UNAVAILABLE
-                    else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                        when (successMsg.substring(0, 1)) {
-                            "0" -> qsTile.state = Tile.STATE_INACTIVE
-                            "1" -> qsTile.state = Tile.STATE_ACTIVE
-                            else -> qsTile.state = Tile.STATE_UNAVAILABLE
-                        }
-                    } else qsTile.state = Tile.STATE_UNAVAILABLE
-                    if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-                        SettingsPrefs, "touch_sampling_rate", false
-                    )
-                }
-        }.finally {
+        scope(Dispatchers.Unconfined) {
+            qsTile.state =
+                ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true)
+                    .let {
+                        if (it.result == 1) Tile.STATE_UNAVAILABLE
+                        else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                            when (it.successMsg.substring(0, 1)) {
+                                "0" -> Tile.STATE_INACTIVE
+                                "1" -> Tile.STATE_ACTIVE
+                                else -> Tile.STATE_UNAVAILABLE
+                            }
+                        } else Tile.STATE_UNAVAILABLE
+                    }
             qsTile.updateTile()
-            close()
+            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+                SettingsPrefs, "touch_sampling_rate", false
+            )
         }
     }
 
@@ -294,24 +288,21 @@ class FiveG : TileService() {
 
 class VeryDarkMode : TileService() {
     override fun onStartListening() {
-        scope(Dispatchers.Default) {
-            ShellUtils.execCommand(
+        scope(Dispatchers.Unconfined) {
+            qsTile.state = ShellUtils.execCommand(
                 "settings get secure reduce_bright_colors_activated",
                 true, true
-            ).apply {
-                if (result == 1) qsTile.state =
-                    Tile.STATE_UNAVAILABLE
-                else if (result == 0 && successMsg != null && successMsg.isNotBlank()) {
-                    when (successMsg.substring(0, 1)) {
-                        "0" -> qsTile.state = Tile.STATE_INACTIVE
-                        "1" -> qsTile.state = Tile.STATE_ACTIVE
-                        else -> qsTile.state = Tile.STATE_UNAVAILABLE
+            ).let {
+                if (it.result == 1) Tile.STATE_UNAVAILABLE
+                else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                    when (it.successMsg.substring(0, 1)) {
+                        "0" -> Tile.STATE_INACTIVE
+                        "1" -> Tile.STATE_ACTIVE
+                        else -> Tile.STATE_UNAVAILABLE
                     }
-                } else qsTile.state = Tile.STATE_UNAVAILABLE
+                } else Tile.STATE_UNAVAILABLE
             }
-        }.finally {
             qsTile.updateTile()
-            close()
         }
     }
 

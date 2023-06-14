@@ -660,7 +660,7 @@ class DonateFragment : Fragment() {
                 loadJson(context, file)
                 context.putString(SettingsPrefs, "last_update_dd_date", date)
             }
-        }
+        }.catch { if (ddFile.exists()) loadJson(context, ddFile) }
     }
 
     private fun loadJson(context: Context, file: File) {

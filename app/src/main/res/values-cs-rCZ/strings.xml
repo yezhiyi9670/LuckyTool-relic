@@ -479,6 +479,8 @@
     <string name="remove_screenshot_privacy_limit_summary">Odstranit omezení ochrany osobních údajů, která nelze zachytit. Pokud se toto neprojeví, zakažte FLAG_SECURE</string>
     <string name="disable_flag_secure">Zakázat FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Vyřešit většinu problémů aplikací s nahráváním, sdílením obrazovky nebo limity nahrávání\nVyžaduje LSPosed 1.8.6.+</string>
+    <string name="customize_long_screenshot_max_captured_pages">Přizpůsobení maximálního počtu zachycených stránek obrázku při pořizování dlouhého screenshotu</string>
+    <string name="customize_long_screenshot_max_captured_pages_summary">Pokud je hodnota 18, funkce se nebude projevovat</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Povolit lokální upgrade</string>
     <string name="unlock_local_upgrade_summary">Po kliknutí budou příslušné operace prováděny automaticky, prosím trpělivě počkejte několik sekund</string>

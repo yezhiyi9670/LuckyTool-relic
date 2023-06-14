@@ -518,6 +518,9 @@
     <string name="remove_screenshot_privacy_limit_summary">Remove restrictions on privacy which cannot be intercepted. Disable FLAG_SECURE if this does not take effect</string>
     <string name="disable_flag_secure">Disable FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
+    <string name="customize_long_screenshot_max_captured_pages">Customize the max captured pages for long screenshots</string>
+    <string name="customize_long_screenshot_max_captured_pages_summary">If the value is 18, the function will not take effect</string>
+    
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Unlock local upgrade</string>
     <string name="unlock_local_upgrade_summary">After clicking, relevant operations will be performed automatically, please wait patiently for a few seconds</string>

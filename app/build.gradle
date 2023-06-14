@@ -49,8 +49,11 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    viewBinding { enabled = true }
-    buildFeatures { aidl true }
+    buildFeatures {
+        aidl = true
+        viewBinding = true
+        buildConfig = true
+    }
     applicationVariants.all { variant ->
         variant.outputs.all {
             if ('release' == variant.buildType.name) {

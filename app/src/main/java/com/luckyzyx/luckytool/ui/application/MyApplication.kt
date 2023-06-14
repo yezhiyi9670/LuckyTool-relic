@@ -8,7 +8,7 @@ class MyApplication : ModuleApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        if (BuildConfig.DEBUG) return
+        if (BuildConfig.DEBUG || BuildConfig.VERSION_NAME.contains("beta")) return
         AppAnalyticsUtils.init(this)
     }
 }

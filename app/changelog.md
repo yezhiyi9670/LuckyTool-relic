@@ -11,6 +11,11 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 状态栏电池报错C12 EEA
 - [适配] 移除游戏助手赛事模式音效v8.11.0
 - [更改] MicroSoftAppCenterSecret
+- [优化] 优化部分磁贴监听逻辑
+- [添加] 模块完整性检测机制
+- [添加] 自定义长截图最大捕获页数
+- [适配] 设置暗色模式列表C13
+- [适配] 设置禁用CN特供版C13
 
 ### v1.0.6
 

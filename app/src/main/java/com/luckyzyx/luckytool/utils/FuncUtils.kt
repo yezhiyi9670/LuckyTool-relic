@@ -1105,3 +1105,11 @@ fun getCharSpans(char: CharSequence): Array<out ForegroundColorSpan>? {
     val colorSpans = SpannableString(char).getSpans(0, char.length, ForegroundColorSpan::class.java)
     return if (colorSpans == null || colorSpans.isEmpty()) null else colorSpans
 }
+
+fun checkVerify(context: Context) {
+    val packInfo =
+        PackageUtils(context.packageManager).getPackageInfo(BuildConfig.APPLICATION_ID, 0)
+    if (packInfo.longVersionCode != getVersionCode.toLong() || packInfo.versionName != getVersionName) {
+        exitProcess(0)
+    }
+}
