@@ -19,7 +19,10 @@ object RemoveWelfarePage : YukiBaseHooker() {
                 beforeHook {
                     val list = args().first().list<Any>().toMutableList()
                     list.removeLastOrNull() ?: return@beforeHook
-                    if (list.size >= 2) loggerD(msg = "$packageName\nError -> RemoveWelfarePage")
+                    if (list.size >= 2) {
+                        loggerD(msg = "$packageName\nError -> RemoveWelfarePage")
+                        return@beforeHook
+                    }
                     args().first().set(java.util.ArrayList(list))
                 }
             }

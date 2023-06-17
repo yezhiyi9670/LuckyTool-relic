@@ -160,6 +160,8 @@
     <string name="remove_gt_mode_notification">移除 GT 模式通知</string>
     <string name="allow_long_press_notification_modifiable">允许长按通知可修改</string>
     <string name="remove_notification_manager_limit">移除通知管理限制</string>
+    <string name="remove_small_window_reply_whitelist">移除浮窗回复白名单</string>
+    <string name="remove_danmaku_notification_whitelist">移除弹幕通知白名单</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>
@@ -198,6 +200,7 @@
     <string name="enable_notification_importance_classification">启用通知重要性分类</string>
     <string name="ControlCenter_UI_Related">控制中心UI相关</string>
     <string name="force_display_media_player">强制显示媒体播放器</string>
+    <string name="force_enable_media_toggle_button">强制启用媒体切换按钮</string>
     <string name="set_auto_brightness_button_mode">设置自动亮度按钮模式</string>
     <string name="remove_control_center_user_switcher">移除控制中心多用户</string>
     <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
@@ -205,6 +208,7 @@
     <string name="remove_control_center_networkwarn_dialog">移除对话框</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">移除安全警告信息与对话框</string>
     <string name="remove_control_center_networkwarn_summary">连接VPN后，将在控制中心底部显示一条信息\n安装CA证书后，提示网络可能受到监控</string>
+    <!--StatusBar Tiles-->
     <string name="StatusBarTiles">状态栏磁贴</string>
     <string name="TileLongClickEvent">磁贴长按事件</string>
     <string name="restore_some_tile_long_press_event">恢复部分磁贴长按事件</string>

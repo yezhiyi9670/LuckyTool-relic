@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION", "unused" ,"NewApi")
+@file:Suppress("DEPRECATION", "unused", "NewApi")
 
 package com.luckyzyx.luckytool.utils
 
@@ -31,9 +31,9 @@ class PackageUtils(private val packageManager: PackageManager) {
         return packageManager.getInstalledApplications(PackageManager.ApplicationInfoFlags.of(flag.toLong()))
     }
 
-    fun resolveActivity(intent: Intent,flag: Int): ResolveInfo? {
-        if (SDK < 33) return packageManager.resolveActivity(intent,flag)
-        return packageManager.resolveActivity(intent,ResolveInfoFlags.of(flag.toLong()))
+    fun resolveActivity(intent: Intent, flag: Int): ResolveInfo? {
+        if (SDK < 33) return packageManager.resolveActivity(intent, flag)
+        return packageManager.resolveActivity(intent, ResolveInfoFlags.of(flag.toLong()))
     }
 }
 

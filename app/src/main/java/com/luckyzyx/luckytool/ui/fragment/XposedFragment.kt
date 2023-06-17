@@ -33,6 +33,7 @@ import com.luckyzyx.luckytool.utils.getAppVersion
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
+import com.luckyzyx.luckytool.utils.zoomDrawable
 import kotlinx.coroutines.Dispatchers
 import rikka.core.util.ResourceUtils
 import java.util.Arrays
@@ -63,7 +64,9 @@ class XposedFragment : ModulePreferenceFragment() {
         scopeDialog(dialog, false, Dispatchers.Default) {
             if (preferenceScreen != null) return@scopeDialog
             val destination = findNavController().backQueue.lastOrNull()?.destination
-            if (!destination.toString().contains(this@XposedFragment::class.java.simpleName)) return@scopeDialog
+            if (!destination.toString()
+                    .contains(this@XposedFragment::class.java.simpleName)
+            ) return@scopeDialog
 
             preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
                 addPreference(
@@ -169,7 +172,10 @@ class XposedFragment : ModulePreferenceFragment() {
                     Preference(context).apply {
                         key = "com.android.packageinstaller"
                         setPrefsIconRes(key) { resource, show ->
-                            icon = resource
+                            icon =
+                                if (resource != null && ((resource.intrinsicWidth < 48.dp) || (resource.intrinsicHeight < 48.dp))) {
+                                    context.zoomDrawable(resource, 48.dp, 48.dp)
+                                } else resource
                             isIconSpaceReserved = show
                         }
                         title = getString(R.string.Application)
@@ -206,6 +212,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = context.getAppLabel(key)
                         summary =
                             getString(R.string.open_battery_health) + "," + getString(R.string.open_screen_power_save)
+                        isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_function_to_battery, title)
                             true
@@ -239,6 +246,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         title = context.getAppLabel(key)
                         summary =
                             getString(R.string.remove_watermark_word_limit) + "," + getString(R.string.enable_10_bit_image_support)
+                        isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_xposed_to_camera, title)
                             true

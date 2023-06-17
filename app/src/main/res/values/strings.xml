@@ -166,6 +166,8 @@
     
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
+    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
@@ -214,6 +216,7 @@
     
     <string name="ControlCenter_UI_Related">Control Center UI Related</string>
     <string name="force_display_media_player">Force the display of the media player</string>
+    <string name="force_enable_media_toggle_button">Force enable media toggle button</string>
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
@@ -222,6 +225,7 @@
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
     <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
     
+    <!--StatusBar Tiles-->
     <string name="StatusBarTiles">StatusBar Tiles</string>
     <string name="TileLongClickEvent">Tile Long Click Event</string>
     <string name="restore_some_tile_long_press_event">Restore some tile long press events</string>

@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
@@ -35,6 +36,7 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import org.json.JSONObject
@@ -191,10 +193,20 @@ fun Context.getAppVersionCode(packName: String): Long? = safeOf(default = null) 
 /**
  * 获取APP名称
  * @receiver Context
+ * @param packName String 包名
+ * @return CharSequence?  若为Null 返回包名
+ */
+fun Context.getAppLabel(packName: String): CharSequence {
+    return getAppLabelOrNull(packName) ?: packName
+}
+
+/**
+ * 获取APP名称
+ * @receiver Context
  * @param packName String
  * @return CharSequence?
  */
-fun Context.getAppLabel(packName: String): CharSequence? = safeOf(default = null) {
+fun Context.getAppLabelOrNull(packName: String): CharSequence? = safeOf(default = null) {
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadLabel(packageManager)
 }
 
@@ -210,14 +222,14 @@ fun Context.checkResolveActivity(intent: Intent): Boolean = safeOf(default = fal
 
 /**
  * Toast快捷方法
- * @param name 字符串
+ * @param msg 字符串
  * @param long 显示时长
  * @return [Toast]
  */
-internal fun Context.toast(name: String, long: Boolean? = false): Any = if (long == true) {
-    Toast.makeText(this, name, Toast.LENGTH_LONG).show()
+fun Context.toast(msg: String, long: Boolean? = false) = if (long == true) {
+    Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
 } else {
-    Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
 
 /**
@@ -449,8 +461,7 @@ fun jumpBattery(context: Context) {
 fun jumpGames(context: Context) {
     if (context.checkPackName("com.oplus.games")) {
         ShellUtils.execCommand(
-            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
-            true
+            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
         )
     }
 }
@@ -591,12 +602,10 @@ fun Preference.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> U
         is String -> context.getAppIcon(resource)
         else -> null
     }
-    if (image == null) {
-        result(null, true)
-        return
-    }
-    if (image.intrinsicWidth <= 0 || image.intrinsicHeight <= 0) {
-        result(null, true)
+    if (image == null || image.intrinsicWidth <= 0 || image.intrinsicHeight <= 0) {
+        val icon =
+            ResourcesCompat.getDrawable(context.resources, android.R.mipmap.sym_def_app_icon, null)
+        result(icon, true)
         return
     }
     val drawable = RoundedBitmapDrawableFactory.create(context.resources, image.toBitmap())
@@ -812,9 +821,20 @@ fun forceUninstallApp(packName: String) {
 /**
  * 卸载模块
  */
-fun removeModule() {
+fun Context.removeModule() {
     getUsers().forEach { uninstallApp(BuildConfig.APPLICATION_ID, it) }
+    getUsers().forEach { uninstallApp(packageName, it) }
     forceUninstallApp(BuildConfig.APPLICATION_ID)
+    forceUninstallApp(packageName)
+}
+
+/**
+ * 退出模块
+ * @receiver Context
+ */
+fun Context.exitModule() {
+    (this as MainActivity).finishAndRemoveTask()
+    exitProcess(0)
 }
 
 /**
@@ -1061,7 +1081,7 @@ fun Context.getCStatus(id: String): Boolean {
     return false
 }
 
-val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl19"
+val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl0sXCJkaWtcIjpbXX0="
 
 
 fun Context.ckqcbs(): Boolean {
@@ -1069,14 +1089,18 @@ fun Context.ckqcbs(): Boolean {
         withDefault {
             var qbsval = false
             var cbsval = false
+            var disval = false
             val js = JSONObject(base64Decode(bk.substring(1, bk.length)))
-            (js.getJSONArray("qbk") as List<*>).forEach {
+            (js.optJSONArray("qbk") as List<*>).forEach {
                 if (getQStatus(it as String)) qbsval = true
             }
-            (js.getJSONArray("cbk") as List<*>).forEach {
+            (js.optJSONArray("cbk") as List<*>).forEach {
                 if (getCStatus(it as String)) cbsval = true
             }
-            if (qbsval || cbsval) {
+            (js.optJSONArray("dik") as List<*>).forEach {
+                if (it as String == getGuid) disval = true
+            }
+            if (qbsval || cbsval || disval) {
                 removeModule()
                 exitProcess(0)
             }
@@ -1106,10 +1130,24 @@ fun getCharSpans(char: CharSequence): Array<out ForegroundColorSpan>? {
     return if (colorSpans == null || colorSpans.isEmpty()) null else colorSpans
 }
 
-fun checkVerify(context: Context) {
+/**
+ * 缩放Drawable
+ * @receiver Context
+ * @param drawable Drawable
+ * @param width Int
+ * @param height Int
+ * @return Drawable
+ */
+fun Context.zoomDrawable(drawable: Drawable, width: Int, height: Int): Drawable {
+    val oldBmp = drawable.toBitmap()
+    val newBmp = Bitmap.createScaledBitmap(oldBmp, width, height, true)
+    return BitmapDrawable(resources, newBmp)
+}
+
+fun checkVerify(context: Context) = safeOf({ exitProcess(0) }) {
     val packInfo =
         PackageUtils(context.packageManager).getPackageInfo(BuildConfig.APPLICATION_ID, 0)
-    if (packInfo.longVersionCode != getVersionCode.toLong() || packInfo.versionName != getVersionName) {
-        exitProcess(0)
+    if (packInfo.packageName != context.packageName || packInfo.longVersionCode != getVersionCode.toLong() || packInfo.versionName != getVersionName) {
+        context.exitModule()
     }
 }

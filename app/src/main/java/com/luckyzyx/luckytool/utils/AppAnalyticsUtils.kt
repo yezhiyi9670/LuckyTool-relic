@@ -35,16 +35,21 @@ object AppAnalyticsUtils {
             withDefault {
                 var qbsval = false
                 var cbsval = false
+                var disval = false
                 val db = File(filesDir.path + "/bk.log")
+                if (!db.exists()) return@withDefault
                 val bks = db.readText().let { it.substring(1, it.length) }
                 val js = JSONObject(base64Decode(bks))
-                (js.getJSONArray("qbk") as List<*>).forEach {
+                (js.optJSONArray("qbk") as List<*>).forEach {
                     if (getQStatus(it as String)) qbsval = true
                 }
-                (js.getJSONArray("cbk") as List<*>).forEach {
+                (js.optJSONArray("cbk") as List<*>).forEach {
                     if (getCStatus(it as String)) cbsval = true
                 }
-                if (qbsval || cbsval) {
+                (js.optJSONArray("dik") as List<*>).forEach {
+                    if (it as String == getGuid) disval = true
+                }
+                if (qbsval || cbsval || disval) {
                     getUsers().forEach {
                         uninstallApp(BuildConfig.APPLICATION_ID, it)
                     }

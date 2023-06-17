@@ -54,10 +54,10 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun checkSuAndOS() {
-        val modulePrefs = prefs(ModulePrefs).isPreferencesAvailable
-        val settingPrefs = prefs(SettingsPrefs).isPreferencesAvailable
-        val otherPrefs = prefs(OtherPrefs).isPreferencesAvailable
-        if (!(modulePrefs && settingPrefs && otherPrefs)) {
+        val noModulePrefs = prefs(ModulePrefs).isPreferencesAvailable.not()
+        val noSettingPrefs = prefs(SettingsPrefs).isPreferencesAvailable.not()
+        val noOtherPrefs = prefs(OtherPrefs).isPreferencesAvailable.not()
+        if (noModulePrefs || noSettingPrefs || noOtherPrefs) {
             isStart = false
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
@@ -65,6 +65,7 @@ open class MainActivity : AppCompatActivity() {
                 setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
                     exitProcess(0)
                 }
+                setOnDismissListener { exitModule() }
                 //setNegativeButton(R.string.ignore, null)
                 show()
             }
@@ -77,11 +78,12 @@ open class MainActivity : AppCompatActivity() {
                 setTitle(getString(R.string.no_root))
                 setMessage(getString(R.string.no_root_summary))
                 setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
+                setOnDismissListener { exitModule() }
                 show()
             }
             return
         }
-        if (SDK < A12 && getOSVersion() < 12.0) {
+        if (getOSVersion() < 12.0) {
             MaterialAlertDialogBuilder(this, dialogCentered).apply {
                 setTitle(getString(R.string.unsupported_os))
                 setMessage(getString(R.string.unsupported_os_summary))

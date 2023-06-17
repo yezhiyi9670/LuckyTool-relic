@@ -16,13 +16,8 @@ object RemoveRootCheck : YukiBaseHooker() {
         //isSafe:null; -> isSafe:0
         searchClass {
             from(
-                "com.oplus.x",
-                "com.oplus.f",
-                "com.oplus.a0",
-                "yp",
-                "hr",
-                "br",
-                "ir",
+                "com.oplus.x", "com.oplus.f", "com.oplus.a0",
+                "yp", "hr", "br", "ir",
                 "com.oplus.cosa"
             ).absolute()
             field { type = StringClass }.count(5..6)

@@ -23,9 +23,15 @@ object FixBatteryHealthDataDisplay : YukiBaseHooker() {
                         BufferedReader(FileReader("/sys/class/oplus_chg/battery/battery_fcc")).readLine()
                             .trim { it <= ' ' }.toFloatOrNull()
                     }
-                    val setValue = safeOfNull {
+                    var setValue = safeOfNull {
                         BufferedReader(FileReader("/sys/class/oplus_chg/battery/design_capacity")).readLine()
                             .trim { it <= ' ' }.toFloatOrNull()
+                    }
+                    if (setValue == null) {
+                        setValue =
+                            BufferedReader(FileReader("/sys/class/oplus_chg/battery/model_name"))
+                                .readLine().trim { it <= ' ' }.replace("_", "")
+                                .replace("[^(0-9)]".toRegex(), "").toFloatOrNull()
                     }
                     result = if (curValue == null || setValue == null) -1
                     else (curValue / setValue * 100.0F).roundToInt()

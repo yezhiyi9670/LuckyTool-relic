@@ -139,10 +139,10 @@ object MainHook : IYukiHookXposedInit {
             loadHooker(HookMiscellaneous)
         }
 
-        //设置
-        loadApp("com.android.settings", HookSettings)
         //电池
         loadApp("com.oplus.battery", HookBattery)
+        //设置
+        loadApp("com.android.settings", HookSettings)
         //相机
         loadApp("com.oneplus.camera", "com.oplus.camera") {
             loadHooker(HookCamera)

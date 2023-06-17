@@ -845,6 +845,14 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_small_window_reply_whitelist)
+                    key = "remove_small_window_reply_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 
@@ -1127,8 +1135,8 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 }
             )
             if (context.getBoolean(
-                    ModulePrefs,
-                    "statusbar_control_center_date_show_lunar", false
+                    ModulePrefs, "statusbar_control_center_date_show_lunar",
+                    false
                 )
             ) {
                 addPreference(
@@ -1188,8 +1196,23 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 }
             )
+            if (context.getBoolean(ModulePrefs, "force_display_media_player", false)) {
+                addPreference(
+                    SwitchPreference(context).apply {
+                        title = getString(R.string.force_enable_media_toggle_button)
+                        key = "force_enable_media_toggle_button"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        isVisible = SDK >= A13
+                    }
+                )
+            }
             addPreference(
                 DropDownPreference(context).apply {
                     title = getString(R.string.set_auto_brightness_button_mode)
@@ -2202,7 +2225,8 @@ class Screenshot : ModulePreferenceFragment() {
             addPreference(
                 SeekBarPreference(context).apply {
                     title = getString(R.string.customize_long_screenshot_max_captured_pages)
-                    summary = getString(R.string.customize_long_screenshot_max_captured_pages_summary)
+                    summary =
+                        getString(R.string.customize_long_screenshot_max_captured_pages_summary)
                     key = "customize_long_screenshot_max_captured_pages"
                     setDefaultValue(18)
                     max = 999
@@ -3259,6 +3283,14 @@ class OplusGames : ModulePreferenceFragment() {
                         summary = if (newValue == "") "None" else newValue as String
                         true
                     }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_danmaku_notification_whitelist)
+                    key = "remove_danmaku_notification_whitelist"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
                 }
             )
             addPreference(

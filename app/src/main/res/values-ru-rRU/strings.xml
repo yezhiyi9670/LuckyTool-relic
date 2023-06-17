@@ -160,6 +160,8 @@
     <string name="remove_gt_mode_notification">Удалить уведомление о режиме производительности</string>
     <string name="allow_long_press_notification_modifiable">Разрешить изменять уведомления о длительном нажатии</string>
     <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
+    <string name="remove_small_window_reply_whitelist">Удалить белый список ответов в маленьком окне</string>
+    <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -198,6 +200,7 @@
     <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
     <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
+    <string name="force_enable_media_toggle_button">Принудительно включить кнопку переключения медиа</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
@@ -205,6 +208,7 @@
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>
     <string name="remove_control_center_networkwarn_summary">После подключения к VPN в нижней части центра управления появится сообщение\nПосле установки сертификата ЦС показывает, что сеть может контролироваться</string>
+    <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Плитки строки состояния</string>
     <string name="TileLongClickEvent">Долгое нажатие на плитку</string>
     <string name="restore_some_tile_long_press_event">Восстановить некоторые события долгого нажатия на плитки</string>

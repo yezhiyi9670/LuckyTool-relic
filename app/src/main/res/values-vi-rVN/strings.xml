@@ -160,6 +160,8 @@
     <string name="remove_gt_mode_notification">Xóa thông báo chế độ GT</string>
     <string name="allow_long_press_notification_modifiable">Cho phép sửa đổi thông báo nhấn lâu</string>
     <string name="remove_notification_manager_limit">Xóa giới hạn trình quản lý thông báo</string>
+    <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
+    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>
@@ -198,6 +200,7 @@
     <string name="enable_notification_importance_classification">Bật phân loại mức độ quan trọng của thông báo</string>
     <string name="ControlCenter_UI_Related">Giao diện người dùng của trung tâm điều khiển</string>
     <string name="force_display_media_player">Buộc hiển thị trình phát đa phương tiện</string>
+    <string name="force_enable_media_toggle_button">Force enable media toggle button</string>
     <string name="set_auto_brightness_button_mode">Đặt chế độ nút điều chỉnh độ sáng tự động</string>
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
     <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
@@ -205,6 +208,7 @@
     <string name="remove_control_center_networkwarn_dialog">Xóa hộp thoại</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
     <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Ô thanh trạng thái</string>
     <string name="TileLongClickEvent">Sự kiện nhấp chuột dài</string>
     <string name="restore_some_tile_long_press_event">Khôi phục một số sự kiện nhấn và giữ ô xếp</string>

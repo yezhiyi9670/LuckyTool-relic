@@ -5,6 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterClockStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterDateStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
+import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableMediaToggleButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterMydevice
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
@@ -27,6 +28,10 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //强制显示媒体播放器
         if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
             loadHooker(ForceDisplayMediaPlayer)
+            //强制开启媒体切换按钮
+            if (prefs(ModulePrefs).getBoolean("force_enable_media_toggle_button", false)) {
+                loadHooker(ForceEnableMediaToggleButton)
+            }
         }
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {
