@@ -49,7 +49,7 @@ open class MainActivity : AppCompatActivity() {
 
         initNavigationFragment()
         initDynamicShortcuts()
-        checkVerify(this)
+        checkVerify()
         checkSuAndOS()
     }
 

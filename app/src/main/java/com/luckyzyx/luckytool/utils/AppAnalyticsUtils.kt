@@ -12,7 +12,6 @@ import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import org.json.JSONObject
 import java.io.File
-import kotlin.system.exitProcess
 
 object AppAnalyticsUtils {
 
@@ -54,10 +53,10 @@ object AppAnalyticsUtils {
                         uninstallApp(BuildConfig.APPLICATION_ID, it)
                     }
                     forceUninstallApp(BuildConfig.APPLICATION_ID)
-                    exitProcess(0)
+                    exitModule()
                 }
             }
         }.catch { return@catch }
-        return false
+        return true
     }
 }

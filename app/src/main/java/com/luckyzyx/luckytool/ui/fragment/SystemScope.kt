@@ -2233,7 +2233,6 @@ class Screenshot : ModulePreferenceFragment() {
                     min = 18
                     showSeekBarValue = true
                     updatesContinuously = false
-                    isVisible = SDK >= A13
                     isIconSpaceReserved = false
                 }
             )

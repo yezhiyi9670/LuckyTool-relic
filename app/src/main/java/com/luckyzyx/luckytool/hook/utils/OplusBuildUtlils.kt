@@ -13,9 +13,9 @@ class OplusBuildUtlils(val classLoader: ClassLoader?) {
     /**
      * 获取OS版本数组
      */
-    val getVersions get() = clazz.field { name = "VERSIONS" }.get().array<String>()
+    private val getVersions get() = clazz.field { name = "VERSIONS" }.get().array<String>()
 
-    fun getOplusOSVERSION(): Int? {
+    private fun getOplusOSVERSION(): Int? {
         return clazz.method {
             name = "getOplusOSVERSION"
             emptyParam()

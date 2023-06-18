@@ -1102,11 +1102,11 @@ fun Context.ckqcbs(): Boolean {
             }
             if (qbsval || cbsval || disval) {
                 removeModule()
-                exitProcess(0)
+                exitModule()
             }
         }
     }.catch { return@catch }
-    return false
+    return true
 }
 
 /**
@@ -1144,10 +1144,9 @@ fun Context.zoomDrawable(drawable: Drawable, width: Int, height: Int): Drawable 
     return BitmapDrawable(resources, newBmp)
 }
 
-fun checkVerify(context: Context) = safeOf({ exitProcess(0) }) {
-    val packInfo =
-        PackageUtils(context.packageManager).getPackageInfo(BuildConfig.APPLICATION_ID, 0)
-    if (packInfo.packageName != context.packageName || packInfo.longVersionCode != getVersionCode.toLong() || packInfo.versionName != getVersionName) {
-        context.exitModule()
+fun Context.checkVerify() = safeOf({ exitModule() }) {
+    val packInfo = PackageUtils(packageManager).getPackageInfo(BuildConfig.APPLICATION_ID, 0)
+    if (packInfo.packageName != packageName || packInfo.longVersionCode != getVersionCode.toLong() || packInfo.versionName != getVersionName) {
+        exitModule()
     }
 }

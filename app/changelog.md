@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### v1.0.7_beta
+### v1.0.7
 
 - [添加] 捐赠列表添加搜索框
 - [适配] 移除设置顶部账号显示C12
@@ -21,6 +21,22 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 应用自启数量限制C13
 - [修复] 云服务移动网络限制异常
 - [优化] 功能页面图标与标题显示
+- [Add] Added search box to donation list
+- [Fix] Remove the account display C12 at the top of the settings
+- [Fix] Desktop clock component Hongyi C12
+- [Fix] Status bar battery function abnormal C12 EEA
+- [Fix] Remove game assistant game mode sound effects v8.11.X
+- [Change] MicroSoftAppCenterSecret
+- [Optimize] Optimize some tile monitoring logic
+- [Add] Customize the maximum number of captured pages for long screenshots
+- [Fix] Set dark mode list C13
+- [Fix] Set to disable CN special version C13
+- [Add] Remove floating window reply whitelist
+- [Add] Remove danmaku notification whitelist
+- [Add] Force enable media toggle button
+- [Fix] App self-start quantity limit C13
+- [Fix] Cloud service mobile network limit exception
+- [Optimize] Function page icon and title display
 
 ### v1.0.6
 
