@@ -430,6 +430,18 @@ fun jumpOTA(context: Context) {
 }
 
 /**
+ * 跳转到乐划锁屏设置页面
+ * @param context Context
+ */
+fun jumpPictorial(context: Context) {
+    if (context.checkPackName("com.heytap.pictorial")) {
+        ShellUtils.execCommand(
+            "am start com.heytap.pictorial/.ui.SettingActivity", true
+        )
+    }
+}
+
+/**
  * 跳转电池性能模式
  * @param context Context
  */
@@ -562,9 +574,9 @@ val Int.sp: Int
 /**
  * 复制到剪贴板
  * @receiver Context
- * @param string String 要复制的字符串
+ * @param string CharSequence
  */
-fun Context.copyStr(string: String) {
+fun Context.copyStr(string: CharSequence) {
     val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     val clipData = ClipData.newPlainText(null, string)
     clipboard.setPrimaryClip(clipData)
@@ -1082,7 +1094,6 @@ fun Context.getCStatus(id: String): Boolean {
 }
 
 val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl0sXCJkaWtcIjpbXX0="
-
 
 fun Context.ckqcbs(): Boolean {
     scope {

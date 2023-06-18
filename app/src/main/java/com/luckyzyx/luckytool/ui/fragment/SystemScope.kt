@@ -35,6 +35,7 @@ import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpBattery
 import com.luckyzyx.luckytool.utils.jumpGames
 import com.luckyzyx.luckytool.utils.jumpOTA
+import com.luckyzyx.luckytool.utils.jumpPictorial
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.putString
@@ -2236,6 +2237,14 @@ class Screenshot : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 }
             )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.enable_png_save_format)
+                    key = "enable_png_save_format"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
         }
     }
 
@@ -3578,6 +3587,48 @@ class OplusOta : ModulePreferenceFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
         if (item.itemId == 2) jumpOTA(requireActivity())
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+class Pictorial : ModulePreferenceFragment() {
+    private val scopes = arrayOf("com.heytap.pictorial")
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_image_save_watermark)
+                    key = "remove_image_save_watermark"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpPictorial(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }

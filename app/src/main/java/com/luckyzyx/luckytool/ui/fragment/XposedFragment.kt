@@ -64,9 +64,9 @@ class XposedFragment : ModulePreferenceFragment() {
         scopeDialog(dialog, false, Dispatchers.Default) {
             if (preferenceScreen != null) return@scopeDialog
             val destination = findNavController().backQueue.lastOrNull()?.destination
-            if (!destination.toString()
-                    .contains(this@XposedFragment::class.java.simpleName)
-            ) return@scopeDialog
+            if (!destination.toString().contains(this@XposedFragment::class.java.simpleName)) {
+                return@scopeDialog
+            }
 
             preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
                 addPreference(
@@ -316,6 +316,22 @@ class XposedFragment : ModulePreferenceFragment() {
                         isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_function_to_oplusOta, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
+                        key = "com.heytap.pictorial"
+                        setPrefsIconRes(key) { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = context.getAppLabel(key)
+                        summary = getString(R.string.remove_image_save_watermark)
+                        isVisible = context.checkPackName(key)
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_pictorial, title)
                             true
                         }
                     }

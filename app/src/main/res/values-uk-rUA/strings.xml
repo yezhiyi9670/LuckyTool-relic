@@ -485,6 +485,7 @@
     <string name="disable_flag_secure_summary">Більшість додатків не можуть знімати, ділитися скріншотом або обмежують запис\nПотрібен LSPosed 1.8.6+</string>
     <string name="customize_long_screenshot_max_captured_pages">Customize the max captured pages for long screenshots</string>
     <string name="customize_long_screenshot_max_captured_pages_summary">If the value is 18, the function will not take effect</string>
+    <string name="enable_png_save_format">Enable PNG save format</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Розблокувати локальне оновлення</string>
     <string name="unlock_local_upgrade_summary">Після натискання відповідні операції виконуватимуться автоматично, терпляче зачекайте кілька секунд</string>
@@ -495,6 +496,8 @@
     <string name="extract_ota_information_summary">When the new version is obtained, you can click to extract the OTA information</string>
     <string name="no_ota_data">No OTA Data</string>
     <string name="extract_ota_source">Extract Source</string>
+    <!--Pictorial-->
+    <string name="remove_image_save_watermark">Remove image save watermark</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустити стартову сторінку</string>
     <string name="vip_download">Завантажити вихідне зображення</string>

@@ -87,18 +87,17 @@ class ExtractOTAFragment : Fragment() {
                 dataList
             }
             if (data.isNotEmpty()) {
+                var str = ""
+                data.forEach { str += it + "\n\n" }
                 binding.otaData.apply {
-                    var str = ""
-                    data.forEach { str += it + "\n\n" }
                     text = str
-                    isVisible = true
+                    isVisible = text.isNotBlank()
                 }
                 binding.noOtaData.isVisible = !binding.otaData.isVisible
-                binding.copyOtaData.isEnabled = binding.otaData.isVisible
-            }
-
-            binding.copyOtaData.setOnClickListener {
-                requireActivity().copyStr(binding.otaData.text as String)
+                binding.copyOtaData.apply {
+                    isEnabled = binding.otaData.isVisible
+                    setOnClickListener { context.copyStr(str) }
+                }
             }
             binding.swipeRefreshLayout.isRefreshing = false
         }

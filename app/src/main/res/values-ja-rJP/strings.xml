@@ -485,6 +485,7 @@
     <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
     <string name="customize_long_screenshot_max_captured_pages">ロングスクリーンショットの最大ページ数を変更</string>
     <string name="customize_long_screenshot_max_captured_pages_summary">値が 18 の場合は効果がありません</string>
+    <string name="enable_png_save_format">PNG 保存形式を有効化</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">タップした後に関連する操作が自動的に実行されます。しばらくお待ちください</string>
@@ -495,6 +496,8 @@
     <string name="extract_ota_information_summary">新しいバージョンが降ってきたとき、タップすると OTA 情報を抽出できます</string>
     <string name="no_ota_data">OTA 情報なし</string>
     <string name="extract_ota_source">ソースを抽出</string>
+    <!--Pictorial-->
+    <string name="remove_image_save_watermark">画像保存時のウォーターマークを削除</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>

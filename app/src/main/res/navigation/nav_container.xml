@@ -161,6 +161,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_pictorial"
+                app:destination="@id/pictorial"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -455,6 +462,10 @@
     <fragment
             android:id="@+id/donateFragment"
             android:name="com.luckyzyx.luckytool.ui.fragment.DonateFragment"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/pictorial"
+            android:name="com.luckyzyx.luckytool.ui.fragment.Pictorial"
             android:label="{title_label}" />
 
 </navigation>

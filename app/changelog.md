@@ -3,6 +3,13 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### v1.0.8_beta
+
+- [优化] 检测更新逻辑与UI样式
+- [添加] 移除乐划锁屏图片保存水印
+- [添加] 截屏启用PNG保存格式
+- [修复] 提取OTA页面复制按钮崩溃
+
 ### v1.0.7
 
 - [添加] 捐赠列表添加搜索框

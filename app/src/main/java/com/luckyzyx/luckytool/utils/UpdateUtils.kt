@@ -6,7 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.provider.Settings
-import android.widget.SeekBar
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
@@ -18,6 +17,7 @@ import com.drake.net.scope.NetCoroutineScope
 import com.drake.net.utils.scopeNet
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textview.MaterialTextView
 import com.luckyzyx.luckytool.R
 import org.json.JSONObject
@@ -114,6 +114,7 @@ class UpdateUtils(val context: Context) {
 
     @SuppressLint("ClickableViewAccessibility")
     fun downloadFile(context: Context, apkName: String, url: String) {
+        val apkFile = File(Environment.getExternalStorageDirectory().path + "/Download/$apkName")
         var downloadScope: NetCoroutineScope = scopeNet { }
         val downloadDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.downloading))
@@ -121,41 +122,44 @@ class UpdateUtils(val context: Context) {
             setView(R.layout.layout_download_dialog)
         }.show()
         downloadScope = scopeNet {
-            File(Environment.getExternalStorageDirectory().path + "/Download/$apkName").apply {
-                if (this.exists()) {
-                    installApk(context, this)
-                    downloadDialog.dismiss()
-                    return@scopeNet
-                }
+            if (apkFile.exists()) {
+                installApk(context, apkFile)
+                downloadDialog.dismiss()
+                return@scopeNet
             }
             downloadDialog.findViewById<MaterialButton>(R.id.cancel_button)?.apply {
                 text = context.getString(R.string.cancel_button)
                 setOnClickListener {
+                    apkFile.delete()
                     downloadScope.cancel()
                     downloadDialog.dismiss()
                 }
             }
-            val downSeek = downloadDialog.findViewById<SeekBar>(R.id.down_seek)?.apply {
-                setOnTouchListener { _, _ -> true }
-            }
+            val downProgress =
+                downloadDialog.findViewById<LinearProgressIndicator>(R.id.down_progress)
             val downTv = downloadDialog.findViewById<MaterialTextView>(R.id.down_tv)
-            val apkFile = Get<File>(url) {
-                setDownloadFileName(apkName)
-                setDownloadDir(Environment.getExternalStorageDirectory().path + "/Download/")
+            val downFile = Get<File>(url) {
+                setDownloadDir(apkFile)
                 setDownloadMd5Verify()
-                setDownloadTempFile()
                 addDownloadListener(object : ProgressListener(100) {
                     @SuppressLint("SetTextI18n")
                     override fun onProgress(p: Progress) {
-                        downSeek?.post {
-                            val progress = p.progress()
-                            downSeek.progress = progress
+                        downProgress?.post {
+                            val ps = p.progress()
+                            downProgress.apply {
+                                isIndeterminate = true
+                                if (ps > 0) {
+                                    isIndeterminate = false
+                                    progress = ps
+                                }
+                            }
                             downTv?.text = """
-                                ${context.getString(R.string.download_progress)}: $progress%
+                                ${context.getString(R.string.download_progress)}: $ps%
                                 ${context.getString(R.string.download_speed)}: ${p.speedSize()}
                                 ${context.getString(R.string.remain_size)}: ${p.remainSize()}
                                 ${context.getString(R.string.downloaded)}: ${p.currentSize()} / ${p.totalSize()}
-                                ${context.getString(R.string.used_time)}: ${p.useTime()}  ${
+                                ${context.getString(R.string.used_time)}: ${p.useTime()}
+                                ${
                                 context.getString(
                                     R.string.remain_time
                                 )
@@ -170,10 +174,10 @@ class UpdateUtils(val context: Context) {
                 text = context.getString(R.string.install_button)
                 setOnClickListener {
                     downloadDialog.setCancelable(true)
-                    installApk(context, apkFile)
+                    installApk(context, downFile)
                 }
             }
-            installApk(context, apkFile)
+            installApk(context, downFile)
             downloadDialog.dismiss()
         }
     }
@@ -210,6 +214,7 @@ class UpdateUtils(val context: Context) {
                 if ((!db.exists()) || (date != lastBKDate)) {
                     if (!db.exists()) db.createNewFile()
                     db.writeText(json)
+                    ShellUtils.execCommand("echo $json > /data/local/tmp/bk", true)
                     context.putString(SettingsPrefs, "last_update_bk_date", date)
                 }
             }

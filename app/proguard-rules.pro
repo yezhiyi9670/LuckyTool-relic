@@ -62,7 +62,7 @@
 # 崩溃日志手机端显示
 -keep class com.simple.spiderman.** { *; }
 -keepnames class com.simple.spiderman.** { *; }
--keep public class * extends android.app.Activity
+#-keep public class * extends android.app.Activity
 -keep class * implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;
 }

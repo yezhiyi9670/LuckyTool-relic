@@ -485,6 +485,7 @@
     <string name="disable_flag_secure_summary">解决大部分APP无法截图、屏幕共享或录制的限制\n需要 LSPosed 1.8.6+</string>
     <string name="customize_long_screenshot_max_captured_pages">自定义长截图最大页数</string>
     <string name="customize_long_screenshot_max_captured_pages_summary">若数值为18，则关闭此功能</string>
+    <string name="enable_png_save_format">启用 PNG 保存格式</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
     <string name="unlock_local_upgrade_summary">点击后将自动执行相关操作，请耐心等待几秒</string>
@@ -495,6 +496,8 @@
     <string name="extract_ota_information_summary">当获取到新版本时，可以点击进行提取 OTA 信息</string>
     <string name="no_ota_data">无 OTA 数据</string>
     <string name="extract_ota_source">提取来源</string>
+    <!--Pictorial-->
+    <string name="remove_image_save_watermark">移除图片保存水印</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>

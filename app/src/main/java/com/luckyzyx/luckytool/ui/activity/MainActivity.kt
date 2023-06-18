@@ -102,6 +102,7 @@ open class MainActivity : AppCompatActivity() {
             val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
             startActivity(intent.setData(Uri.parse("package:$packageName")))
             toast(getString(R.string.all_files_access_permission))
+            return
         }
         UpdateUtils(this).checkBK()
     }
@@ -156,5 +157,10 @@ open class MainActivity : AppCompatActivity() {
                 recreate()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkPermissions()
     }
 }

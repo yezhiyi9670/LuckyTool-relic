@@ -5,12 +5,12 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="20dp"
         android:orientation="vertical">
-
-    <SeekBar
-            android:id="@+id/down_seek"
+    
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/down_progress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+    
     <com.google.android.material.textview.MaterialTextView
             android:id="@+id/down_tv"
             android:paddingHorizontal="10dp"
@@ -22,20 +22,20 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:orientation="horizontal">
-    
+        
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancel_button"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-    
+                android:layout_height="wrap_content" />
+        
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/install_button"
                 android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        
+                android:layout_height="wrap_content" />
+    
     </LinearLayout>
 
 </LinearLayout>

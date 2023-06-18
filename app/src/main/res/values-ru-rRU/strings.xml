@@ -485,6 +485,7 @@
     <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
     <string name="customize_long_screenshot_max_captured_pages">Настройте максимальное количество захваченных страниц для длинных скриншотов</string>
     <string name="customize_long_screenshot_max_captured_pages_summary">Если значение равно 18, функция не сработает</string>
+    <string name="enable_png_save_format">Включить формат сохранения PNG</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">После нажатия соответствующие операции будут выполняться автоматически, терпеливо подождите несколько секунд</string>
@@ -495,6 +496,8 @@
     <string name="extract_ota_information_summary">Когда будет получена новая версия, вы можете нажать, чтобы извлечь информацию об OTA</string>
     <string name="no_ota_data">Нет данных OTA</string>
     <string name="extract_ota_source">Извлечь источник</string>
+    <!--Pictorial-->
+    <string name="remove_image_save_watermark">Удалить водяной знак сохранения изображения</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

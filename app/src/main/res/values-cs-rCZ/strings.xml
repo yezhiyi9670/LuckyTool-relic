@@ -267,11 +267,11 @@
     <string name="battery_technology">Technologie</string>
     <string name="battery_update_time">Aktualizováno</string>
     <!--Aod-->
-    <string name="AodRelated">Týkající se AOD</string>
-    <string name="remove_aod_music_whitelist">Odstranit whitelist hudby na AOD</string>
-    <string name="remove_aod_notification_icon_whitelist">Odstranit ikonu seznamu povolených oznámení na AOD</string>
+    <string name="AodRelated">Always-on displej</string>
+    <string name="remove_aod_music_whitelist">Odstraňte omezení hudebního widgetu na AOD</string>
+    <string name="remove_aod_notification_icon_whitelist">Odebrat omezení ikony oznámení na AOD</string>
     <string name="restore_aod_notification_icon_color">Obnovit barvy ikon oznámení v AOD</string>
-    <string name="set_aod_style_mode">Nastavit styl AOD</string>
+    <string name="set_aod_style_mode">Nastavte režim stylu AOD</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Zamykací obrazovka</string>
     <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
@@ -485,6 +485,7 @@
     <string name="disable_flag_secure_summary">Vyřešit většinu problémů aplikací s nahráváním, sdílením obrazovky nebo limity nahrávání\nVyžaduje LSPosed 1.8.6.+</string>
     <string name="customize_long_screenshot_max_captured_pages">Přizpůsobení maximálního počtu zachycených stránek obrázku při pořizování dlouhého screenshotu</string>
     <string name="customize_long_screenshot_max_captured_pages_summary">Pokud je hodnota 18, funkce se nebude projevovat</string>
+    <string name="enable_png_save_format">Povolit PNG formát ukládání</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Povolit lokální upgrade</string>
     <string name="unlock_local_upgrade_summary">Po kliknutí budou příslušné operace prováděny automaticky, prosím trpělivě počkejte několik sekund</string>
@@ -495,6 +496,8 @@
     <string name="extract_ota_information_summary">Jakmile je nalezena nová verze, můžete zde kliknout pro získání informací o OTA</string>
     <string name="no_ota_data">Žádná OTA data</string>
     <string name="extract_ota_source">Extrahovat zdroj</string>
+    <!--Pictorial-->
+    <string name="remove_image_save_watermark">Odebrat vodoznak po uložení obrázku</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Přeskočte úvodní obrazovku</string>
     <string name="vip_download">Stáhnout originál</string>

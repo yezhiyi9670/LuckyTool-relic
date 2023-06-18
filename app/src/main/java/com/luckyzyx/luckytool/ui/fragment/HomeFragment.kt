@@ -20,6 +20,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import rikka.core.util.ResourceUtils
 
 class HomeFragment : Fragment() {
@@ -116,7 +117,7 @@ class HomeFragment : Fragment() {
                         ?.apply {
                             setText(getProp("ro.product.name"))
                             setOnLongClickListener {
-                                context.copyStr("ro.product.name -> ${text.toString()}")
+                                context.copyStr(text as CharSequence)
                                 true
                             }
                         }
@@ -125,7 +126,7 @@ class HomeFragment : Fragment() {
                         ?.apply {
                             setText(getProp("ro.build.version.ota"))
                             setOnLongClickListener {
-                                context.copyStr("ro.build.version.ota -> ${text.toString()}")
+                                context.copyStr(text as CharSequence)
                                 true
                             }
                         }
@@ -136,7 +137,7 @@ class HomeFragment : Fragment() {
                         ?.apply {
                             setText(getProp("ro.build.version.realmeui"))
                             setOnLongClickListener {
-                                context.copyStr("ro.build.version.realmeui -> ${text.toString()}")
+                                context.copyStr(text as CharSequence)
                                 true
                             }
                         }
@@ -151,7 +152,7 @@ class HomeFragment : Fragment() {
                         ?.apply {
                             setText(getProp("ro.build.oplus_nv_id"))
                             setOnLongClickListener {
-                                context.copyStr("ro.build.oplus_nv_id -> ${text.toString()}")
+                                context.copyStr(text as CharSequence)
                                 true
                             }
                         }
@@ -159,7 +160,7 @@ class HomeFragment : Fragment() {
                     oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_guid)?.apply {
                         setText(getGuid)
                         setOnLongClickListener {
-                            context.copyStr("guid -> ${text.toString()}")
+                            context.copyStr(text as CharSequence)
                             true
                         }
                     }
@@ -191,6 +192,7 @@ class HomeFragment : Fragment() {
 
         binding.tv.apply {
             isVisible = false
+            text = context.ckqcbss().toString()
 //            text = getPackageDir("com.dragon.read").toString()
         }
     }

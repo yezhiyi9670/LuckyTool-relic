@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.screenshot.CustomizeLongScreenshotMaxCapturedPages
 import com.luckyzyx.luckytool.hook.scope.screenshot.CustomizeLongScreenshotMaxCapturedPages131
+import com.luckyzyx.luckytool.hook.scope.screenshot.EnablePNGSaveFormat
 import com.luckyzyx.luckytool.hook.scope.screenshot.RemoveScreenshotPrivacyLimit
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.getOSVersion
@@ -17,6 +18,10 @@ object HookScreenshot : YukiBaseHooker() {
         if (prefs(ModulePrefs).getInt("customize_long_screenshot_max_captured_pages", 18) > 18) {
             if (getOSVersion() < 13.1) loadHooker(CustomizeLongScreenshotMaxCapturedPages)
             else loadHooker(CustomizeLongScreenshotMaxCapturedPages131)
+        }
+        //启用PNG保存格式
+        if (prefs(ModulePrefs).getBoolean("enable_png_save_format", false)) {
+            loadHooker(EnablePNGSaveFormat)
         }
     }
 }

