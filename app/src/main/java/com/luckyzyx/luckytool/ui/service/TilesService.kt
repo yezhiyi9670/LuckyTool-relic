@@ -73,8 +73,7 @@ class ShowFPS : TileService() {
         scope(Dispatchers.Unconfined) {
             qsTile.state =
                 ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
-                    if (it.result == 1) Tile.STATE_UNAVAILABLE
-                    else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
                         if (getRefreshRateStatus()) Tile.STATE_ACTIVE
                         else Tile.STATE_INACTIVE
                     } else Tile.STATE_UNAVAILABLE
@@ -106,8 +105,7 @@ class HighBrightness : TileService() {
         scope(Dispatchers.Unconfined) {
             qsTile.state =
                 ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).let {
-                    if (it.result == 1) Tile.STATE_UNAVAILABLE
-                    else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
                         when (it.successMsg.substring(0, 1)) {
                             "0" -> Tile.STATE_INACTIVE
                             "1" -> Tile.STATE_ACTIVE
@@ -153,17 +151,17 @@ class GlobalDC : TileService() {
             var isOplus = false
             ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true)
                 .apply {
-                    if (result == 1) oppoExist = false
-                    else if (result == 0 && successMsg != null && successMsg.isNotBlank()
+                    if (result == 0 && successMsg != null && successMsg.isNotBlank()
                         && successMsg.substring(0, 1) == "1"
                     ) isOppo = true
+                    else if (result == 1) oppoExist = false
                 }
             ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true)
                 .apply {
-                    if (result == 1) oplusExist = false
-                    else if (result == 0 && successMsg != null && successMsg.isNotBlank()
+                    if (result == 0 && successMsg != null && successMsg.isNotBlank()
                         && successMsg.substring(0, 1) == "1"
                     ) isOplus = true
+                    else if (result == 1) oplusExist = false
                 }
             qsTile.state =
                 if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
@@ -177,16 +175,22 @@ class GlobalDC : TileService() {
     override fun onClick() {
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 1", true)
-                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 1", true)
+                val command = arrayOf(
+                    "echo > /sys/kernel/oppo_display/dimlayer_hbm 1",
+                    "echo > /sys/kernel/oplus_display/dimlayer_hbm 1"
+                )
+                ShellUtils.execCommand(command, true)
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
                 dataChannel("com.android.systemui").put("global_dc_mode", true)
                 qsTile.state = Tile.STATE_ACTIVE
             }
 
             Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("echo > /sys/kernel/oppo_display/dimlayer_hbm 0", true)
-                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/dimlayer_hbm 0", true)
+                val command = arrayOf(
+                    "echo > /sys/kernel/oppo_display/dimlayer_hbm 0",
+                    "echo > /sys/kernel/oplus_display/dimlayer_hbm 0"
+                )
+                ShellUtils.execCommand(command, true)
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
                 dataChannel("com.android.systemui").put("global_dc_mode", false)
                 qsTile.state = Tile.STATE_INACTIVE
@@ -204,8 +208,7 @@ class TouchSamplingRate : TileService() {
             qsTile.state =
                 ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true)
                     .let {
-                        if (it.result == 1) Tile.STATE_UNAVAILABLE
-                        else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                        if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
                             when (it.successMsg.substring(0, 1)) {
                                 "0" -> Tile.STATE_INACTIVE
                                 "1" -> Tile.STATE_ACTIVE
@@ -293,8 +296,7 @@ class VeryDarkMode : TileService() {
                 "settings get secure reduce_bright_colors_activated",
                 true, true
             ).let {
-                if (it.result == 1) Tile.STATE_UNAVAILABLE
-                else if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
+                if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
                     when (it.successMsg.substring(0, 1)) {
                         "0" -> Tile.STATE_INACTIVE
                         "1" -> Tile.STATE_ACTIVE

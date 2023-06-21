@@ -436,6 +436,7 @@
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間を 2K 120FPS 対応にする</string>
     <string name="video_frame_insertion_support_2K120_summary">お使いのデバイスが MEMC に対応していない場合は、この機能を使用しないでください</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
+    <string name="remove_settings_bottom_laboratory">設定下部のラボを削除</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>
@@ -483,8 +484,8 @@
     <string name="remove_screenshot_privacy_limit_summary">傍受できないプライバシーの制限を解除します。効果がない場合は FLAG_SECURE を無効化してください</string>
     <string name="disable_flag_secure">FLAG_SECUREを無効化</string>
     <string name="disable_flag_secure_summary">スクリーンショット、画面共有、または画面録画ができないアプリでの問題を大抵解決します\nLSPosed 1.8.6以上が必要です</string>
-    <string name="customize_long_screenshot_max_captured_pages">ロングスクリーンショットの最大ページ数を変更</string>
-    <string name="customize_long_screenshot_max_captured_pages_summary">値が 18 の場合は効果がありません</string>
+    <string name="remove_page_limit_for_long_screenshots">ロングスクリーンショットのページ上限を削除</string>
+    <string name="remove_page_limit_for_long_screenshots_summary">一部の状況にのみ対応しています。どうなるかは自分でテストしてください</string>
     <string name="enable_png_save_format">PNG 保存形式を有効化</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
@@ -498,6 +499,8 @@
     <string name="extract_ota_source">ソースを抽出</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">画像保存時のウォーターマークを削除</string>
+    <!--OplusMMS-->
+    <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>
@@ -599,7 +602,10 @@
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->
+    <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
+    <string name="permission_error_toast">Failed to obtain permission: %1$s</string>
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
+    <string name="get_installed_apps_permission">Get permissions for installed apps</string>
     <!--Typeface-->
     <string name="use_user_typeface">ユーザー書体を使用</string>
     <!--CommonWords-->

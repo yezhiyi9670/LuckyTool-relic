@@ -473,6 +473,7 @@
     <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="disable_cn_special_edition_setting" translatable="false">禁用CN特供版设置</string>
+    <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
@@ -522,8 +523,8 @@
     <string name="remove_screenshot_privacy_limit_summary">Remove restrictions on privacy which cannot be intercepted. Disable FLAG_SECURE if this does not take effect</string>
     <string name="disable_flag_secure">Disable FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Resolve most APPs cannot capture, screen share, or record limits\nRequires LSPosed 1.8.6+</string>
-    <string name="customize_long_screenshot_max_captured_pages">Customize the max captured pages for long screenshots</string>
-    <string name="customize_long_screenshot_max_captured_pages_summary">If the value is 18, the function will not take effect</string>
+    <string name="remove_page_limit_for_long_screenshots">Remove the page limit for long screenshots</string>
+    <string name="remove_page_limit_for_long_screenshots_summary">Only some scenarios are supported, please test the specific situation by yourself</string>
     <string name="enable_png_save_format">Enable PNG save format</string>
     
     <!--OplusOta-->
@@ -539,6 +540,9 @@
     
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Remove image save watermark</string>
+    
+    <!--OplusMMS-->
+    <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     
     <!--Everyimage-->
     <string name="skip_startup_page">Skip startup page</string>
@@ -590,6 +594,7 @@
     <string name="device_guid">Device GUID</string>
     <string name="oplusota_copy_tip">Long press the input box to copy it individually</string>
     <string name="oplusota_copyall">Copy All</string>
+    <string name="authorized" translatable="false">未经开发者授权,禁止私自搬运转载分享\n提倡授之以渔,切莫授之以鱼</string>
     
     <!--Donate-->
     <string name="donate_tv_title">Support Development</string>
@@ -643,8 +648,13 @@
     <string name="fiveg_mode">FiveG Switch</string>
     <string name="game_assistant_tile_tips">Game assistant not detected!</string>
     <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
+    
     <!--Permission-->
+    <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
+    <string name="permission_error_toast">Failed to obtain permission: %1$s</string>
     <string name="all_files_access_permission">In order to ensure the normal use of the module, please be sure to give the module permission!</string>
+    <string name="get_installed_apps_permission">Get permissions for installed apps</string>
+    
     <!--Typeface-->
     <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->

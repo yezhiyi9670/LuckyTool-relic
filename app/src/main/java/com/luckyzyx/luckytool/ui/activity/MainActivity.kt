@@ -3,11 +3,8 @@ package com.luckyzyx.luckytool.ui.activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.os.Process
-import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -93,17 +90,7 @@ open class MainActivity : AppCompatActivity() {
             }
         }
         putBoolean(SettingsPrefs, "boot_complete", ckqcbs())
-        checkPermissions()
-    }
-
-    private fun checkPermissions() {
-        //所有文件访问权限
-        if (!Environment.isExternalStorageManager()) {
-            val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
-            startActivity(intent.setData(Uri.parse("package:$packageName")))
-            toast(getString(R.string.all_files_access_permission))
-            return
-        }
+        PermissionUtils(this).checkPermissions()
         UpdateUtils(this).checkBK()
     }
 
@@ -161,6 +148,6 @@ open class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        checkPermissions()
+        PermissionUtils(this).checkPermissions()
     }
 }

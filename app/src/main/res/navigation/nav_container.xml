@@ -168,6 +168,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_oplusMMS"
+                app:destination="@id/oplusMMS"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -466,6 +473,10 @@
     <fragment
             android:id="@+id/pictorial"
             android:name="com.luckyzyx.luckytool.ui.fragment.Pictorial"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/oplusMMS"
+            android:name="com.luckyzyx.luckytool.ui.fragment.OplusMMS"
             android:label="{title_label}" />
 
 </navigation>

@@ -22,6 +22,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookLauncher
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
+import com.luckyzyx.luckytool.hook.hooker.HookOplusMMS
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
 import com.luckyzyx.luckytool.hook.hooker.HookOtherApp
 import com.luckyzyx.luckytool.hook.hooker.HookPackageInstaller
@@ -162,6 +163,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.ota", HookOplusOta)
         //乐划锁屏
         loadApp("com.heytap.pictorial", HookPictorial)
+        //信息
+        loadApp("com.android.mms", HookOplusMMS)
 
         //其他APP
         loadApp(

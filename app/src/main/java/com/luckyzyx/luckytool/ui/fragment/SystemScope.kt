@@ -2224,16 +2224,11 @@ class Screenshot : ModulePreferenceFragment() {
                 }
             )
             addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.customize_long_screenshot_max_captured_pages)
-                    summary =
-                        getString(R.string.customize_long_screenshot_max_captured_pages_summary)
-                    key = "customize_long_screenshot_max_captured_pages"
-                    setDefaultValue(18)
-                    max = 999
-                    min = 18
-                    showSeekBarValue = true
-                    updatesContinuously = false
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_page_limit_for_long_screenshots)
+                    summary = getString(R.string.remove_page_limit_for_long_screenshots_summary)
+                    key = "remove_page_limit_for_long_screenshots"
+                    setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
             )
@@ -2972,6 +2967,14 @@ class Settings : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_settings_bottom_laboratory)
+                    key = "remove_settings_bottom_laboratory"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 PreferenceCategory(context).apply {
                     title = getString(R.string.AppDetailsRelated)
                     key = "AppDetailsRelated"
@@ -3629,6 +3632,41 @@ class Pictorial : ModulePreferenceFragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
         if (item.itemId == 2) jumpPictorial(requireActivity())
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+class OplusMMS : ModulePreferenceFragment() {
+    private val scopes = arrayOf("com.android.mms")
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.remove_verification_code_floating_window)
+                    key = "remove_verification_code_floating_window"
+                    setDefaultValue(false)
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                }
+            )
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ResourceUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
         return super.onOptionsItemSelected(item)
     }
 }

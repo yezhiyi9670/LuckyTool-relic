@@ -436,6 +436,7 @@
     <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
     <string name="video_frame_insertion_support_2K120_summary">Если ваше устройство не поддерживает MEMC, пожалуйста, не используйте эту функцию</string>
     <string name="force_display_bottom_google_settings">Принудительно показывать Google внизу настроек</string>
+    <string name="remove_settings_bottom_laboratory">Удалить настройки лаборатории</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
@@ -483,8 +484,8 @@
     <string name="remove_screenshot_privacy_limit_summary">Снимите ограничения на конфиденциальность, которые не могут быть перехвачены. Отключите FLAG_SECURE, если это никак не повлияет</string>
     <string name="disable_flag_secure">Отключить FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">Большинство приложений не могут снимать, делиться скриншотом или ограничивают запись\nТребуется LSPosed 1.8.6+</string>
-    <string name="customize_long_screenshot_max_captured_pages">Настройте максимальное количество захваченных страниц для длинных скриншотов</string>
-    <string name="customize_long_screenshot_max_captured_pages_summary">Если значение равно 18, функция не сработает</string>
+    <string name="remove_page_limit_for_long_screenshots">Удалить ограничение на количество страниц для длинных скриншотов</string>
+    <string name="remove_page_limit_for_long_screenshots_summary">Поддерживаются только некоторые сценарии, пожалуйста, проверьте конкретную ситуацию самостоятельно</string>
     <string name="enable_png_save_format">Включить формат сохранения PNG</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
@@ -498,6 +499,8 @@
     <string name="extract_ota_source">Извлечь источник</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Удалить водяной знак сохранения изображения</string>
+    <!--OplusMMS-->
+    <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>
@@ -599,7 +602,10 @@
     <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
     <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
     <!--Permission-->
+    <string name="permission_denied_toast">В доступе отказано, пожалуйста, предоставьте разрешение вручную: %1$s</string>
+    <string name="permission_error_toast">Не удалось получить разрешение: %1$s</string>
     <string name="all_files_access_permission">Для обеспечения нормального использования модуля, пожалуйста, дайте модулю права доступа!</string>
+    <string name="get_installed_apps_permission">Получить разрешения для установленных приложений</string>
     <!--Typeface-->
     <string name="use_user_typeface">Использовать пользовательский шрифт</string>
     <!--CommonWords-->

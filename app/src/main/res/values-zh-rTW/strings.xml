@@ -436,6 +436,7 @@
     <string name="video_frame_insertion_support_2K120">视频插帧支持 2K120</string>
     <string name="video_frame_insertion_support_2K120_summary">若你的设备不支持 MEMC，请勿使用此功能</string>
     <string name="force_display_bottom_google_settings">强制显示设置底部Google</string>
+    <string name="remove_settings_bottom_laboratory">移除设置底部实验室</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
     <string name="show_last_update_time_in_app_details">应用详情显示最后更新时间</string>
@@ -483,8 +484,8 @@
     <string name="remove_screenshot_privacy_limit_summary">移除涉及隐私无法截屏的限制, 若此项不生效可开启“禁用FLAG_SECURE”</string>
     <string name="disable_flag_secure">禁用FLAG_SECURE</string>
     <string name="disable_flag_secure_summary">解决大部分APP无法截图、屏幕共享或录制的限制\n需要 LSPosed 1.8.6+</string>
-    <string name="customize_long_screenshot_max_captured_pages">自定义长截图最大页数</string>
-    <string name="customize_long_screenshot_max_captured_pages_summary">若数值为18，则关闭此功能</string>
+    <string name="remove_page_limit_for_long_screenshots">移除长截图页数限制</string>
+    <string name="remove_page_limit_for_long_screenshots_summary">仅支持部分场景，具体情况请自行测试</string>
     <string name="enable_png_save_format">启用 PNG 保存格式</string>
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
@@ -498,6 +499,8 @@
     <string name="extract_ota_source">提取来源</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">移除图片保存水印</string>
+    <!--OplusMMS-->
+    <string name="remove_verification_code_floating_window">移除验证码悬浮窗</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>
@@ -599,7 +602,10 @@
     <string name="game_assistant_tile_tips">未检测到游戏助手！</string>
     <string name="tile_close_autoself_tip">重启作用域后，此功能将不再自动启动</string>
     <!--Permission-->
+    <string name="permission_denied_toast">权限被拒绝，请手动授予权限：%1$s</string>
+    <string name="permission_error_toast">获取权限失败： %1$s</string>
     <string name="all_files_access_permission">为了确保模块的正常使用，请务必授予模块权限！</string>
+    <string name="get_installed_apps_permission">获取应用列表权限</string>
     <!--Typeface-->
     <string name="use_user_typeface">使用用户字体</string>
     <!--CommonWords-->

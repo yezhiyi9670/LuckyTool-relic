@@ -1,12 +1,11 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.luckyzyx.luckytool.hook.scope.screenshot.CustomizeLongScreenshotMaxCapturedPages
-import com.luckyzyx.luckytool.hook.scope.screenshot.CustomizeLongScreenshotMaxCapturedPages131
 import com.luckyzyx.luckytool.hook.scope.screenshot.EnablePNGSaveFormat
 import com.luckyzyx.luckytool.hook.scope.screenshot.RemoveScreenshotPrivacyLimit
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.getOSVersion
 
 object HookScreenshot : YukiBaseHooker() {
     override fun onHook() {
@@ -14,10 +13,11 @@ object HookScreenshot : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_screenshot_privacy_limit", false)) {
             loadHooker(RemoveScreenshotPrivacyLimit)
         }
-        //自定义长截图最大捕获页数
-        if (prefs(ModulePrefs).getInt("customize_long_screenshot_max_captured_pages", 18) > 18) {
-            if (getOSVersion() < 13.1) loadHooker(CustomizeLongScreenshotMaxCapturedPages)
-            else loadHooker(CustomizeLongScreenshotMaxCapturedPages131)
+        //移除长截图页数限制
+        if (prefs(ModulePrefs).getBoolean("remove_page_limit_for_long_screenshots", false)) {
+            val newVer = "com.oplus.providers.AppSettings".toClassOrNull()
+            if (newVer == null) loggerD(msg = "$packageName\n移除长截图页数限制: 不支持此截屏版本\nRemove page limit for long screenshots: this screenshot version is not supported.")
+            else loadHooker(CustomizeLongScreenshotMaxCapturedPages)
         }
         //启用PNG保存格式
         if (prefs(ModulePrefs).getBoolean("enable_png_save_format", false)) {

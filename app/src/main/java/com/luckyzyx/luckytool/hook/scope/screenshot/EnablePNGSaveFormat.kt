@@ -10,7 +10,10 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
     override fun onHook() {
         //Source ImageFileFormat -> JPEG / PNG
         searchClass {
-            from("uc", "rc", "tc", "ac", "fa", "ea", "u9").absolute()
+            from(
+                "com.oplus.screenshot.save.info",
+                "uc", "rc", "tc", "ac", "fa", "ea", "u9"
+            ).absolute()
             constructor().count(1)
             field { type = StringClass }.count(2)
             field { type = Bitmap.CompressFormat::class.java }.count(1)

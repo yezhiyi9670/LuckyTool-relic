@@ -7,7 +7,6 @@ import java.util.Formatter
 import java.util.Locale
 import java.util.regex.Pattern
 
-
 /**
  * 格式化Date
  * @param format String
@@ -53,7 +52,7 @@ fun formatDouble(format: String, param: Any): Double {
  * @param string String
  */
 fun formatSpace(string: String): String {
-    val pattern = Pattern.compile("\\p{L}")
+    val pattern = Pattern.compile("\\p{Alpha}")
     val matcher = pattern.matcher(string)
     if (!matcher.find()) return string
     return string.substring(matcher.start())
@@ -74,3 +73,8 @@ fun formatDataSize(str: String): String {
         DecimalFormat("0.00").format(int / (1024)).toString() + " KB"
     } else "$int B"
 }
+
+/**
+ * 截取字符串中的数字
+ */
+val CharSequence.filterNumber get() = this.replace("\\D".toRegex(), "")

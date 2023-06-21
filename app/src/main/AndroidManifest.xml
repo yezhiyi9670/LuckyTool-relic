@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:ignore="ScopedStorage,QueryAllPackagesPermission"
         package="com.luckyzyx.luckytool">
     
     <!--网络访问-->
@@ -9,14 +8,19 @@
     <!--请求安装包-->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!--读取外部存储-->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!--写入外部存储-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--所有文件访问-->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+            tools:ignore="ScopedStorage" />
     <!--读取应用列表-->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="com.android.permission.GET_INSTALLED_APPS" />
     <uses-permission android:name="com.oplus.ocs.permission.third" />
-    <!--所有文件访问-->
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <!--发送通知-->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     

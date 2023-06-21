@@ -112,6 +112,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
+    // 权限请求框架
+    implementation 'com.github.getActivity:XXPermissions:18.2'
     //崩溃日志显示
     implementation "com.github.simplepeng.SpiderMan:spiderman:v1.1.9"
     // MoShi JSON ksp 注释处理

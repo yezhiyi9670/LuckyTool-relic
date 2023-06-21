@@ -182,7 +182,7 @@ class HomeFragment : Fragment() {
         binding.authorized.apply {
             if (isZh(context)) {
                 isVisible = true
-                text = "未经开发者授权,禁止私自搬运转载分享\n提倡授之以渔,切莫授之以鱼"
+                text = context.getString(R.string.authorized)
             }
             setOnClickListener {
                 val url = "https://luckyzyx.github.io/LuckyTool_Doc/use/download_link"

@@ -950,18 +950,12 @@ fun getRefreshRateStatus(): Boolean = safeOfFalse {
 //    Result: Parcel(NULL)
 //    Result: Parcel(00000000    '....')
     val result = ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
-        if (it.result == 1) return@safeOfFalse false
-        else if (it.result == 0 && it.successMsg.isNotBlank()) it.successMsg
+        if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) it.successMsg
         else return@safeOfFalse false
     }
-    val status = result.replace(" ", "").split("Parcel")[1].let {
-        it.substring(1, it.length - 1)
-    }.split("'")[0].let {
-        it.substring(it.length - 1)
-    }.toString()
-    return when (status) {
-        "0" -> false
-        "1" -> true
+    return when (result.filterNumber.toIntOrNull()) {
+        0 -> false
+        1 -> true
         else -> false
     }
 }
@@ -1161,3 +1155,9 @@ fun Context.checkVerify() = safeOf({ exitModule() }) {
         exitModule()
     }
 }
+
+/**
+ * 判断是否MTK机型
+ */
+val isMTK get() = Pattern.compile("mt[0-9]*").matcher(Build.HARDWARE).find()
+

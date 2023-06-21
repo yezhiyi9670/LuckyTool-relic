@@ -8,6 +8,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppFeatureProvider
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveDpiRestartRecovery
+import com.luckyzyx.luckytool.hook.scope.settings.RemoveSettingsBottomLaboratory
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
@@ -38,6 +39,10 @@ object HookSettings : YukiBaseHooker() {
         //强制显示设置底部Google
         if (prefs(ModulePrefs).getBoolean("force_display_bottom_google_settings", false)) {
             loadHooker(ForceDisplayBottomGoogleSettings)
+        }
+        //移除设置底部实验室
+        if (prefs(ModulePrefs).getBoolean("remove_settings_bottom_laboratory", false)) {
+            loadHooker(RemoveSettingsBottomLaboratory)
         }
 
         //HookSettingsFeature -> memc

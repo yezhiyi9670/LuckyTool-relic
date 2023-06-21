@@ -237,6 +237,22 @@ class XposedFragment : ModulePreferenceFragment() {
                 )
                 addPreference(
                     Preference(context).apply {
+                        key = "com.android.mms"
+                        setPrefsIconRes(key) { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = context.getAppLabel(key)
+                        summary = getString(R.string.remove_verification_code_floating_window)
+                        isVisible = context.checkPackName(key) && SDK >= A13
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_oplusMMS, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
                         val isOneplusCamera = context.checkPackName("com.oneplus.camera")
                         key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
                         setPrefsIconRes(key) { resource, show ->
