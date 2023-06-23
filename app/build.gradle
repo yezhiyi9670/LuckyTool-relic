@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android' version '1.8.21'
-    id 'com.google.devtools.ksp' version '1.8.21-1.0.11'
+    id 'org.jetbrains.kotlin.android' version '1.8.22'
+    id 'com.google.devtools.ksp' version '1.8.22-1.0.11'
 //    id 'stringfog'
 //    id 'com.joom.paranoid'
 }
@@ -43,7 +43,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk 28
         versionCode currentVersionCode
-        versionName "1.0.8_beta"
+        versionName "1.0.8"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
@@ -97,12 +97,12 @@ dependencies {
 //    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 
     //Material主题
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation "com.google.android.material:material:1.9.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     //约束布局
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     //快速创建Settings
-    implementation 'androidx.preference:preference:1.2.0'
+    implementation "androidx.preference:preference-ktx:1.2.0"
     //下拉刷新控件
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     //Navigation
@@ -113,7 +113,7 @@ dependencies {
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     // 权限请求框架
-    implementation 'com.github.getActivity:XXPermissions:18.2'
+    implementation "com.github.getActivity:XXPermissions:18.2"
     //崩溃日志显示
     implementation "com.github.simplepeng.SpiderMan:spiderman:v1.1.9"
     // MoShi JSON ksp 注释处理
@@ -128,8 +128,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
     //Net OkHttp相关
     //noinspection GradleDependency
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
-    implementation 'com.github.liangjingkanji:Net:3.5.8'
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.github.liangjingkanji:Net:3.5.8"
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
     //libsu

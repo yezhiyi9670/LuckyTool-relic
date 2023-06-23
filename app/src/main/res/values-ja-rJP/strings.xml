@@ -602,10 +602,10 @@
     <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
     <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
     <!--Permission-->
-    <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
-    <string name="permission_error_toast">Failed to obtain permission: %1$s</string>
+    <string name="permission_denied_toast">権限がありません。手動で権限を許可してください: %1$s</string>
+    <string name="permission_error_toast">権限の取得に失敗しました: %1$s</string>
     <string name="all_files_access_permission">モジュールを正常に使用するために必ずモジュールの権限を許可してください!</string>
-    <string name="get_installed_apps_permission">Get permissions for installed apps</string>
+    <string name="get_installed_apps_permission">インストールされたアプリの権限を取得する</string>
     <!--Typeface-->
     <string name="use_user_typeface">ユーザー書体を使用</string>
     <!--CommonWords-->
