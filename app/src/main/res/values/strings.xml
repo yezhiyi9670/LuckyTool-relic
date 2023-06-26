@@ -109,9 +109,12 @@
     <string name="usepresig_warn">!!! All packages can override installed App!!\nto install unknown packages</string>
     <!--Status Bar-->
     <string name="StatusBar">StatusBar Related</string>
+    <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
     <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
+    
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
@@ -175,11 +178,12 @@
     <string name="remove_wifi_data_inout">Remove WiFi data inout</string>
     
     <string name="StatusBarMobileDataIcon">Mobile Data Icon</string>
-    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
-    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     <string name="remove_mobile_data_icon">Remove mobile data icon</string>
     <string name="remove_mobile_data_inout">Remove Mobile data inout</string>
     <string name="remove_mobile_data_type">Remove Mobile data type</string>
+    <string name="hide_non_network_card_icon">Hide non-network card icons</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_nosim_noservice">Hide SIM card no service icon</string>
     
     <string name="StatusBarBluetoothIcon">Bluetooth Icon</string>
     <string name="hide_icon_when_bluetooth_not_connected">Hide icon when not connected to bluetooth</string>
@@ -357,6 +361,8 @@
     <string name="remove_folder_preview_background">Remove folder preview background</string>
     <string name="enable_folder_layout_adjustment">Enable folder layout adjustments</string>
     <string name="set_icon_columns_in_folder">Set the number of icon columns in the folder</string>
+    
+    <string name="launcher_events">Launcher Events</string>
     
     <!--Application-->
     <string name="Application">Application related</string>

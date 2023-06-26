@@ -104,7 +104,9 @@
     <string name="usepresig_warn">!!! Všechny balíčky mohou přepsat nainstalovanou aplikaci!!\npro instalaci neznámých balíčků</string>
     <!--Status Bar-->
     <string name="StatusBar">Stavová lišta</string>
+    <string name="StatusbarEvents">Události stavové lišty</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrovat při otevření stavové lišty</string>
     <string name="remove_scroll_to_top_white_list">Odstranění whitelist, který se po kliknutí na stavový řádek posune nahoru</string>
     <string name="remove_scroll_to_top_white_list_summary">Odstranění omezení whitelistu, který se posouvá nahoru, když je v některých aplikacích kliknuto na stavový řádek</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Ikona WIFI</string>
     <string name="remove_wifi_data_inout">Skrýt indikátor využití WiFi</string>
     <string name="StatusBarMobileDataIcon">Ikona mobilních dat</string>
-    <string name="hide_non_network_card_icon">Skrýt ikony SIM karet bez sítě</string>
-    <string name="hide_nosim_noservice">Skrýt ikonu SIM karty bez služby</string>
     <string name="remove_mobile_data_icon">Odstranit ikonu mobilních dat</string>
     <string name="remove_mobile_data_inout">Skrýt indikátor využití mobilních dat</string>
     <string name="remove_mobile_data_type">Odstranit ikonu typu připojení mobilních dat</string>
+    <string name="hide_non_network_card_icon">Skrýt ikony SIM karet bez sítě</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Skrýt neaktivní popisky signálu Gen2x2</string>
+    <string name="hide_nosim_noservice">Skrýt ikonu SIM karty bez služby</string>
     <string name="StatusBarBluetoothIcon">Ikona Bluetooth</string>
     <string name="hide_icon_when_bluetooth_not_connected">Skrýt ikonu, pokud k Bluetooth není nic připojeno</string>
     <string name="StatusBarOtherIcon">Další ikony</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">Odstranit náhled pozadí složky</string>
     <string name="enable_folder_layout_adjustment">Povolit úpravu rozložení složek</string>
     <string name="set_icon_columns_in_folder">Nastavte počet sloupců ikon ve složce</string>
+    <string name="launcher_events">Události spouštěče</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
     <string name="ApplyOtherRestrictions">Ostatní limity</string>

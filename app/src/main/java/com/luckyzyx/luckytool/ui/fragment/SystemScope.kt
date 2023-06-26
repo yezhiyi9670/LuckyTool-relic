@@ -235,9 +235,24 @@ class StatusBar : ModulePreferenceFragment() {
                 }
             )
             addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusbarEvents)
+                    key = "StatusbarEvents"
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
                 SwitchPreference(context).apply {
                     title = getString(R.string.statusbar_double_click_lock_screen)
                     key = "statusbar_double_click_lock_screen"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.vibrate_when_opening_the_statusbar)
+                    key = "vibrate_when_opening_the_statusbar"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                 }
@@ -928,6 +943,14 @@ class StatusBarIcon : ModulePreferenceFragment() {
                             .put("hide_non_network_card_icon", newValue)
                         true
                     }
+                }
+            )
+            addPreference(
+                SwitchPreference(context).apply {
+                    title = getString(R.string.hide_inactive_signal_labels_gen2x2)
+                    key = "hide_inactive_signal_labels_gen2x2"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
                 }
             )
             addPreference(
@@ -1942,6 +1965,13 @@ class Launcher : ModulePreferenceFragment() {
                     }
                 )
             }
+            addPreference(
+                PreferenceCategory(context).apply {
+                    title = getString(R.string.launcher_events)
+                    isIconSpaceReserved = false
+                    isVisible = false
+                }
+            )
         }
     }
 

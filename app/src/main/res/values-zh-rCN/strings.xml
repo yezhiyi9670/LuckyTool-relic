@@ -104,7 +104,9 @@
     <string name="usepresig_warn">所有安装包可以覆盖已安装的App!\n安装未知的安装包时请务必小心</string>
     <!--Status Bar-->
     <string name="StatusBar">状态栏相关</string>
+    <string name="StatusbarEvents">状态栏事件</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
+    <string name="vibrate_when_opening_the_statusbar">打开状态栏时振动</string>
     <string name="remove_scroll_to_top_white_list">移除点击状态栏返回顶部白名单</string>
     <string name="remove_scroll_to_top_white_list_summary">移除部分APP内点击状态栏时滚动到顶部的白名单限制</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">WiFi 图标</string>
     <string name="remove_wifi_data_inout">移除WiFi数据箭头</string>
     <string name="StatusBarMobileDataIcon">移动数据图标</string>
-    <string name="hide_non_network_card_icon">隐藏非上网卡图标</string>
-    <string name="hide_nosim_noservice">隐藏 SIM 卡无服务图标</string>
     <string name="remove_mobile_data_icon">移除移动数据图标</string>
     <string name="remove_mobile_data_inout">移除移动数据箭头</string>
     <string name="remove_mobile_data_type">移除移动数据类型</string>
+    <string name="hide_non_network_card_icon">隐藏非上网卡图标</string>
+    <string name="hide_inactive_signal_labels_gen2x2">隐藏非活动信号标签 Gen2x2</string>
+    <string name="hide_nosim_noservice">隐藏 SIM 卡无服务图标</string>
     <string name="StatusBarBluetoothIcon">蓝牙图标</string>
     <string name="hide_icon_when_bluetooth_not_connected">未连接蓝牙时隐藏图标</string>
     <string name="StatusBarOtherIcon">其他图标</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">移除文件夹预览背景</string>
     <string name="enable_folder_layout_adjustment">启用文件夹布局调整</string>
     <string name="set_icon_columns_in_folder">设置文件夹内图标列数</string>
+    <string name="launcher_events">启动器事件</string>
     <!--Application-->
     <string name="Application">应用相关</string>
     <string name="ApplyOtherRestrictions">其他限制</string>

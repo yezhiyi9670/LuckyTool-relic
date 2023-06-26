@@ -104,7 +104,9 @@
     <string name="usepresig_warn">Uwaga!\nWszystkie pakiety mogą zastąpić zainstalowaną aplikację, co może prowadzić do niebezpiecznych sytuacji.</string>
     <!--Status Bar-->
     <string name="StatusBar">Pasek stanu</string>
+    <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">Dotknij dwukrotnie pasek stanu, aby zablokować ekran</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
     <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Ikona Wi-Fi</string>
     <string name="remove_wifi_data_inout">Usuń wskaźnik użycia Wi-Fi</string>
     <string name="StatusBarMobileDataIcon">Ikona danych mobilnych</string>
-    <string name="hide_non_network_card_icon">Ukryj ikonę karty SIM bez sieci</string>
-    <string name="hide_nosim_noservice">Ukryj ikonę karty SIM bez usługi</string>
     <string name="remove_mobile_data_icon">Usuń ikonę mobilnej sieci</string>
     <string name="remove_mobile_data_inout">Usuń wskaźnik użycia danych mobilnych</string>
     <string name="remove_mobile_data_type">Usuń typ danych mobilnych</string>
+    <string name="hide_non_network_card_icon">Ukryj ikonę karty SIM bez sieci</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_nosim_noservice">Ukryj ikonę karty SIM bez usługi</string>
     <string name="StatusBarBluetoothIcon">Ikona Bluetooth</string>
     <string name="hide_icon_when_bluetooth_not_connected">Ukryj ikonę, gdy nie ma połączenia</string>
     <string name="StatusBarOtherIcon">Inne ikony</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">Remove folder preview background</string>
     <string name="enable_folder_layout_adjustment">Włącz dostosowywanie układu folderu</string>
     <string name="set_icon_columns_in_folder">Ilość kolumn</string>
+    <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
     <string name="ApplyOtherRestrictions">Inne ograniczenia</string>

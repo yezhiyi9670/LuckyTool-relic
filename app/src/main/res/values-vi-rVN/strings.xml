@@ -104,7 +104,9 @@
     <string name="usepresig_warn">!!! Tất cả các gói có thể ghi đè ứng dụng đã cài đặt!!\nđể cài đặt các gói không xác định</string>
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
+    <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
     <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Biểu tượng WIFI</string>
     <string name="remove_wifi_data_inout">Xóa thông tin dữ liệu WiFi</string>
     <string name="StatusBarMobileDataIcon">Biểu tượng dữ liệu di động</string>
-    <string name="hide_non_network_card_icon">Ẩn biểu tượng thẻ không mạng</string>
-    <string name="hide_nosim_noservice">Ẩn thẻ SIM không có biểu tượng dịch vụ</string>
     <string name="remove_mobile_data_icon">Xóa biểu tượng dữ diệu di động</string>
     <string name="remove_mobile_data_inout">Xóa mũi tên dữ liệu di động</string>
     <string name="remove_mobile_data_type">Xoá định dạng dữ liệu di động</string>
+    <string name="hide_non_network_card_icon">Ẩn biểu tượng thẻ không mạng</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_nosim_noservice">Ẩn thẻ SIM không có biểu tượng dịch vụ</string>
     <string name="StatusBarBluetoothIcon">Biểu tượng Bluetooth</string>
     <string name="hide_icon_when_bluetooth_not_connected">Ẩn biểu tượng khi không kết nối bluetooth</string>
     <string name="StatusBarOtherIcon">Biểu tượng khác</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">Remove folder preview background</string>
     <string name="enable_folder_layout_adjustment">Bật điều chỉnh bố cục thư mục</string>
     <string name="set_icon_columns_in_folder">Đặt số cột biểu tượng trong thư mục</string>
+    <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Ứng dụng</string>
     <string name="ApplyOtherRestrictions">Giới hạn khác</string>

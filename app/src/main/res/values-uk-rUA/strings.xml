@@ -104,7 +104,9 @@
     <string name="usepresig_warn">!!!Всі інсталятори можуть перезаписувати встановлені програми!!! Будьте обережні під час встановлення програм з невідомих інсталяторів</string>
     <!--Status Bar-->
     <string name="StatusBar">Статус бар</string>
+    <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">Двічі клацніть на рядок стану для блокування екрану</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
     <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Іконка WI-FI</string>
     <string name="remove_wifi_data_inout">Видалити вхідні Wi-Fi дані</string>
     <string name="StatusBarMobileDataIcon">Іконка мобільних даних</string>
-    <string name="hide_non_network_card_icon">Приховати іконки сім-карт без мережі</string>
-    <string name="hide_nosim_noservice">Приховати іконки SIM-карток без служби</string>
     <string name="remove_mobile_data_icon">Видалити іконку мобільних даних</string>
     <string name="remove_mobile_data_inout">Видалити вхідні мобільні дані</string>
     <string name="remove_mobile_data_type">Видалити іконку мобільних даних</string>
+    <string name="hide_non_network_card_icon">Приховати іконки сім-карт без мережі</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_nosim_noservice">Приховати іконки SIM-карток без служби</string>
     <string name="StatusBarBluetoothIcon">Іконка Bluetooth</string>
     <string name="hide_icon_when_bluetooth_not_connected">Приховати іконку за відсутності підключення до Bluetooth</string>
     <string name="StatusBarOtherIcon">Інші іконки</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">Remove folder preview background</string>
     <string name="enable_folder_layout_adjustment">Увімкнути зміну розташування папок</string>
     <string name="set_icon_columns_in_folder">Задати кількість стовпців іконок у папці</string>
+    <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Додатки</string>
     <string name="ApplyOtherRestrictions">Інші обмеження</string>

@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
 import com.luckyzyx.luckytool.hook.scope.battery.HookThermalController
+import com.luckyzyx.luckytool.hook.scope.battery.LauncherHighTempreatureProtection
 import com.luckyzyx.luckytool.hook.scope.battery.UnlockStartupLimit
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -21,6 +22,7 @@ object HookBattery : YukiBaseHooker() {
         //移除高温限制
         if (prefs(ModulePrefs).getBoolean("remove_high_temperature_limit", false)) {
             loadHooker(HookThermalController)
+            loadHooker(LauncherHighTempreatureProtection)
         }
 
         //BatteryHealthFragment

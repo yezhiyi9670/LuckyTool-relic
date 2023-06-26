@@ -145,7 +145,8 @@ fun Context.getDeviceInfo(): String {
         ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
         ${getString(R.string.build_version)}: ${Build.DISPLAY}
         ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
-        ${getString(R.string.flash)}: ${getFlashInfo()}
+        ${getString(R.string.flash)}: $getFlashInfo
+        LCD: $getLcdInfo
     """.trimIndent()
 }
 
@@ -536,12 +537,24 @@ fun Context.getComponentEnabled(component: ComponentName): Int? {
  * 获取闪存信息
  * @return String
  */
-fun getFlashInfo(): String =
-    ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
-        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
-            ?.let { its -> formatSpace(its) } ?: "null"
-    }
+val getFlashInfo
+    get(): String =
+        ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
+            if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
+                ?.let { its -> formatSpace(its) } ?: "null"
+        }
 
+/**
+ * 获取LCD信息
+ */
+val getLcdInfo: String
+    get() : String = ShellUtils.execCommand(
+        "cat /proc/devinfo/lcd | sed 's/^.*\t//g; s/$/\n/g; s/\n/ /g;'",
+        true, true
+    ).let {
+        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
+            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+    }
 
 /**
  * 正常编码中一般只会用到 [dp]/[sp] ;

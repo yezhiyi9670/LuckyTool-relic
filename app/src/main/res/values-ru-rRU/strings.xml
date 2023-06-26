@@ -104,7 +104,9 @@
     <string name="usepresig_warn">!!!Все установщики могут перезаписывать установленные приложения!!! Будьте осторожны при установке приложений из неизвестных установщиков.</string>
     <!--Status Bar-->
     <string name="StatusBar">Строка состояния</string>
+    <string name="StatusbarEvents">События строки состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
+    <string name="vibrate_when_opening_the_statusbar">Вибрировать при открытии строки состояния</string>
     <string name="remove_scroll_to_top_white_list">Удалить белый список, который прокручивается вверх при нажатии на строку состояния</string>
     <string name="remove_scroll_to_top_white_list_summary">Удалить ограничение белого списка, которое прокручивается вверх, когда некоторые приложения нажимают на строку состояния</string>
     <!--StatusBarClock-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Иконка Wi-Fi</string>
     <string name="remove_wifi_data_inout">Удалить входящие Wi-Fi данные</string>
     <string name="StatusBarMobileDataIcon">Иконка мобильных данных</string>
-    <string name="hide_non_network_card_icon">Скрыть иконки SIM-карт без сети</string>
-    <string name="hide_nosim_noservice">Скрыть иконки SIM-карт без службы</string>
     <string name="remove_mobile_data_icon">Удалить иконку мобильных данных</string>
     <string name="remove_mobile_data_inout">Удалить входящие мобильные данные</string>
     <string name="remove_mobile_data_type">Удалить иконку мобильных данных</string>
+    <string name="hide_non_network_card_icon">Скрыть иконки SIM-карт без сети</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Скрыть метки неактивных сигналов Gen2x2</string>
+    <string name="hide_nosim_noservice">Скрыть иконки SIM-карт без службы</string>
     <string name="StatusBarBluetoothIcon">Иконка Bluetooth</string>
     <string name="hide_icon_when_bluetooth_not_connected">Скрыть иконку при отсутствии подключения к Bluetooth</string>
     <string name="StatusBarOtherIcon">Другие иконки</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">Удалить фон предпросмотра папки</string>
     <string name="enable_folder_layout_adjustment">Включить изменение расположения папок</string>
     <string name="set_icon_columns_in_folder">Задать количество столбцов иконок в папке</string>
+    <string name="launcher_events">События лаунчера</string>
     <!--Application-->
     <string name="Application">Приложения</string>
     <string name="ApplyOtherRestrictions">Прочие ограничения</string>

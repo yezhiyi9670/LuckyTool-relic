@@ -104,7 +104,9 @@
     <string name="usepresig_warn">!!! すべてのインストールされたアプリをすべてのパッケージで上書きする事ができます!!\n不明なパッケージをインストールします</string>
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
+    <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
+    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="remove_scroll_to_top_white_list">ステータスバータップ時に最上部へスクロールする機能のホワイトリストを無効化</string>
     <string name="remove_scroll_to_top_white_list_summary">一部のアプリで、ステータスバーをタップしたときに最上部へスクロールさせる機能の制限を無効化します</string>
     <!--StatusBarClock-->
@@ -159,7 +161,7 @@
     <string name="remove_virus_risk_notification_in_phone_manager">フォンマネージャーのウイルスリスク通知を削除</string>
     <string name="remove_gt_mode_notification">GT モードの通知を削除</string>
     <string name="allow_long_press_notification_modifiable">長押し通知を変更可能にする</string>
-    <string name="remove_notification_manager_limit">通知マネージャーの上限を削除</string>
+    <string name="remove_notification_manager_limit">通知マネージャーの制限を削除する</string>
     <string name="remove_small_window_reply_whitelist">スモールウィンドウの返信ホワイトリストを無効化</string>
     <string name="remove_danmaku_notification_whitelist">弾幕通知のホワイトリストを無効化</string>
     <!--StatusBarIcon-->
@@ -168,11 +170,12 @@
     <string name="StatusBarWIFIIcon">Wi-Fi アイコン</string>
     <string name="remove_wifi_data_inout">Wi-Fiのインジケーターを削除</string>
     <string name="StatusBarMobileDataIcon">モバイルデータアイコン</string>
-    <string name="hide_non_network_card_icon">ネットワークカード以外のアイコンを隠す</string>
-    <string name="hide_nosim_noservice">サービスなしの SIM カードアイコンを隠す</string>
     <string name="remove_mobile_data_icon">モバイルデータアイコンを削除</string>
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
+    <string name="hide_non_network_card_icon">ネットワークカード以外のアイコンを隠す</string>
+    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_nosim_noservice">サービスなしの SIM カードアイコンを隠す</string>
     <string name="StatusBarBluetoothIcon">Bluetooth アイコン</string>
     <string name="hide_icon_when_bluetooth_not_connected">Bluetooth 接続していないときにアイコンを隠す</string>
     <string name="StatusBarOtherIcon">その他のアイコン</string>
@@ -326,6 +329,7 @@
     <string name="remove_folder_preview_background">フォルダプレビューの背景を削除</string>
     <string name="enable_folder_layout_adjustment">フォルダレイアウトの調整を有効化</string>
     <string name="set_icon_columns_in_folder">フォルダ内のアイコン列数を設定</string>
+    <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
     <string name="ApplyOtherRestrictions">その他の制限</string>

@@ -9,6 +9,7 @@ import com.luckyzyx.luckytool.hook.scope.launcher.PageIndicator
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveAppUpdateDot
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveBottomAppIconOfRecentTaskList
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveFolderPreviewBackground
+import com.luckyzyx.luckytool.hook.scope.launcher.RemoveLauncherHighTempreatureProtection
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveRecentTaskListClearButton
 import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
 import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
@@ -56,6 +57,10 @@ object HookLauncher : YukiBaseHooker() {
         //解锁后台任务锁定限制
         if (prefs(ModulePrefs).getBoolean("unlock_task_locks", false)) {
             loadHooker(UnlockTaskLocks)
+        }
+        //移除桌面高温保护
+        if (prefs(ModulePrefs).getBoolean("remove_launcher_high_tempreature_protection", false)) {
+            loadHooker(RemoveLauncherHighTempreatureProtection)
         }
 
         //<string name="oplus_shortcut_lock_app">锁定</string>
