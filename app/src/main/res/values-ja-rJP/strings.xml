@@ -104,9 +104,9 @@
     <string name="usepresig_warn">!!! すべてのインストールされたアプリをすべてのパッケージで上書きする事ができます!!\n不明なパッケージをインストールします</string>
     <!--Status Bar-->
     <string name="StatusBar">ステータスバー関連</string>
-    <string name="StatusbarEvents">StatusBar Events</string>
+    <string name="StatusbarEvents">ステータスバーのイベント</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
-    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
+    <string name="vibrate_when_opening_the_statusbar">ステータスバーを開いたときに振動させる</string>
     <string name="remove_scroll_to_top_white_list">ステータスバータップ時に最上部へスクロールする機能のホワイトリストを無効化</string>
     <string name="remove_scroll_to_top_white_list_summary">一部のアプリで、ステータスバーをタップしたときに最上部へスクロールさせる機能の制限を無効化します</string>
     <!--StatusBarClock-->
@@ -139,6 +139,7 @@
     <string name="statusbar_network_layout">ステータスバーのネットワーク速度レイアウト</string>
     <string name="statusbar_network_no_second">毎秒表示 (/s) を削除する</string>
     <string name="statusbar_network_no_space">ネットワーク速度のスペースを削除</string>
+    <string name="set_network_speed_double_row_spacing">ネットワーク速度の二行の間隔を設定</string>
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">ステータスバー通知</string>
     <string name="StatusBarNotice_summary">ステータスバー通知関連</string>
@@ -174,7 +175,7 @@
     <string name="remove_mobile_data_inout">モバイルデータのインジケーターを削除</string>
     <string name="remove_mobile_data_type">モバイルデータの種類を削除</string>
     <string name="hide_non_network_card_icon">ネットワークカード以外のアイコンを隠す</string>
-    <string name="hide_inactive_signal_labels_gen2x2">Hide inactive signal labels Gen2x2</string>
+    <string name="hide_inactive_signal_labels_gen2x2">非アクティブなシグナルラベル Gen2x2 を非表示にする</string>
     <string name="hide_nosim_noservice">サービスなしの SIM カードアイコンを隠す</string>
     <string name="StatusBarBluetoothIcon">Bluetooth アイコン</string>
     <string name="hide_icon_when_bluetooth_not_connected">Bluetooth 接続していないときにアイコンを隠す</string>
@@ -211,6 +212,7 @@
     <string name="remove_control_center_networkwarn_dialog">ダイアログを削除</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">セキュリティ警告メッセージとダイアログを削除</string>
     <string name="remove_control_center_networkwarn_summary">VPN 接続後にコントロールセンター下部にメッセージが表示されます。\nまた、CA 証明書のインストール後にネットワークが監視されている恐れがあると表示されます</string>
+    <string name="custom_control_center_background_transparency">カスタムコントロールセンターの背景の透明度</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">ステータスバーのタイル</string>
     <string name="TileLongClickEvent">タイルの長押しイベント</string>
@@ -329,7 +331,7 @@
     <string name="remove_folder_preview_background">フォルダプレビューの背景を削除</string>
     <string name="enable_folder_layout_adjustment">フォルダレイアウトの調整を有効化</string>
     <string name="set_icon_columns_in_folder">フォルダ内のアイコン列数を設定</string>
-    <string name="launcher_events">Launcher Events</string>
+    <string name="launcher_events">ホームアプリのイベント</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
     <string name="ApplyOtherRestrictions">その他の制限</string>
@@ -380,6 +382,7 @@
     <string name="remove_usb_connect_dialog_summary">USB接続後、ファイル転送モードがデフォルトで選択されています</string>
     <string name="remove_secure_pay_found_virus_dialog">安全な支払いでウイルスが見つかった時のダイアログを削除</string>
     <string name="remove_access_device_log_dialog">デバイスログへのアクセスダイアログを無効化</string>
+    <string name="custom_volume_dialog_background_transparency">カスタム音量ダイアログの背景の透明度</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">フルスクリーンジェスチャー関連</string>
     <string name="remove_side_slider">サイドスライダーを削除</string>
@@ -412,6 +415,7 @@
     <string name="remove_storage_limit_summary">フォルダが使用できない制限を解除します</string>
     <string name="media_volume_level">メディアのボリュームレベル</string>
     <string name="media_volume_level_summary">0に設定するとこの機能を無効にします。システムの再起動後に有効化されます</string>
+    <string name="minimum_volume_level_can_be_zero">最小音量レベルは0に設定できます</string>
     <string name="open_screen_power_save">バッテリーの画面で省エネモードを開けるようにする</string>
     <string name="open_screen_power_save_summary">設定 - バッテリー - その他の設定 - 省エネモード の順で開けます</string>
     <string name="open_battery_health">バッテリーの状態を開けるようにする</string>
@@ -421,6 +425,8 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
     <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します</string>
+    <string name="force_enable_systemui_blur_feature">システム UI のぼかし機能を強制的に有効化</string>
+    <string name="force_enable_systemui_blur_feature_tips">有効にする前に「システム UI のぼかし機能を強制的に有効化」オプションをオンにする必要があります。\nオプションは「その他」のページにあります。</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">高温制限を無効化</string>
     <string name="remove_high_temperature_limit_summary">カメラ、懐中電灯、ホットスポット、表示エンジンなど、さまざまな機能を使用できない制限を解除します。\n温度は30°Cに偽装します。具体的な効果は保証されていません。</string>
@@ -503,6 +509,7 @@
     <string name="extract_ota_source">ソースを抽出</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">画像保存時のウォーターマークを削除</string>
+    <string name="remove_video_save_watermark">Remove video save watermark</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->
@@ -630,6 +637,8 @@
     <string name="common_words_save">保存</string>
     <string name="common_words_filter">フィルター</string>
     <string name="common_words_loading">読み込み中</string>
+    <string name="common_words_whitelist">ホワイトリスト</string>
+    <string name="common_words_blacklist">ブラックリスト</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">ネットワークに接続できませんでした</string>
     <string name="net_networking_error">現在のネットワークは利用できません</string>

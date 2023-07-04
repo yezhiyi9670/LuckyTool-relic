@@ -40,7 +40,7 @@ object HookAndroid : YukiBaseHooker() {
         //HookSystemProperties
         //loadHooker(HookSystemProperties)
 
-        //媒体音量阶数
+        //音量阶数
         loadHooker(MediaVolumeLevel)
 
         //应用分身限制

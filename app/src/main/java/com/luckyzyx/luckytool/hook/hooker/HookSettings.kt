@@ -12,6 +12,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.RemoveSettingsBottomLaboratory
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
+
 object HookSettings : YukiBaseHooker() {
     override fun onHook() {
         //暗色模式列表
@@ -53,6 +54,16 @@ object HookSettings : YukiBaseHooker() {
 
         //persist.oplus.display.vrr
         //persist.oplus.display.vrr.adfr
+
+        //指纹快速解锁 盲解
+//        findClass("com.oplus.settings.feature.fingerprint.controller.FingerprintFastUnlockPreferenceController").hook {
+//            injectMember {
+//                method {
+//                    name = "getAvailabilityStatus"
+//                }
+//                if (false) replaceTo(0)
+//            }
+//        }
 
         //keep_screen_on -> 充电时屏幕不休眠
         //settings put global stay_on_while_plugged_in 7

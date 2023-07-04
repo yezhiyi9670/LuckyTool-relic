@@ -139,6 +139,7 @@
     <string name="statusbar_network_layout">Rozvržení textu rychlosti sítě ve stavové liště</string>
     <string name="statusbar_network_no_second">Odstranit displej za sekundu(/s)</string>
     <string name="statusbar_network_no_space">Odstranit mezeru v textu rychlosti sítě</string>
+    <string name="set_network_speed_double_row_spacing">Nastavení rychlosti sítě s dvojnásobným rozestupem řádků</string>
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Oznámení ve stavové liště</string>
     <string name="StatusBarNotice_summary">Související s oznámeními ve stavové liště</string>
@@ -211,6 +212,7 @@
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Odstranění varovné zprávy a dialogových oken zabezpečení</string>
     <string name="remove_control_center_networkwarn_summary">Po připojení k síti VPN se v dolní části ovládacího centra zobrazí zpráva\nPo instalaci certifikátu certifikační autority se zobrazí, že síť může být monitorována</string>
+    <string name="custom_control_center_background_transparency">Vlastní průhlednost pozadí ovládacího centra</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
@@ -380,6 +382,7 @@
     <string name="remove_usb_connect_dialog_summary">Režim přenosu souborů je vybrán ve výchozím nastavení po připojení USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Odstranit dialog o kontrole virů u zabezpečených plateb</string>
     <string name="remove_access_device_log_dialog">Odebrat dialogové okno protokolu zařízení</string>
+    <string name="custom_volume_dialog_background_transparency">Vlastní průhlednost pozadí panelu hlasitosti</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
     <string name="remove_side_slider">Odstranit boční posuvník</string>
@@ -412,6 +415,7 @@
     <string name="remove_storage_limit_summary">Odstranit omezení, že tuto složku nelze použít</string>
     <string name="media_volume_level">Úroveň hlasitosti médií</string>
     <string name="media_volume_level_summary">Nastavte na 0 pro vypnutí této funkce, restartujte systém, aby se změny projevily</string>
+    <string name="minimum_volume_level_can_be_zero">Minimální úroveň hlasitosti může být nula</string>
     <string name="open_screen_power_save">Přidejte tlačítko pro zobrazení a ovládání úspory energie obrazovky</string>
     <string name="open_screen_power_save_summary">Nastavení - Baterie - Další nastavení - Úspora napájení obrazovky</string>
     <string name="open_battery_health">Přidat tlačítko pro zjištění zdraví baterie</string>
@@ -421,6 +425,8 @@
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
     <string name="disable_dynamic_refresh_rate">Zakázat dynamickou obnovovací frekvenci</string>
     <string name="disable_dynamic_refresh_rate_summary">Řeší hlavně problém s poklesem snímku, když se obrazovky nedotýkáte</string>
+    <string name="force_enable_systemui_blur_feature">Vynutit povolení systémového rozostření</string>
+    <string name="force_enable_systemui_blur_feature_tips">Podmínky: Musíte zapnout možnost „Vynutit povolení systémové rozostření“\n Umístění funkce: Různé</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Odstranit limit vysoké teploty</string>
     <string name="remove_high_temperature_limit_summary">Odstraňte omezení, že nelze používat různé funkce,Například: fotoaparát, svítilna, hotspot, motor displeje atd.Teoretická teplota maskování je 30 °C a konkrétní účinek není zaručen.</string>
@@ -503,6 +509,7 @@
     <string name="extract_ota_source">Extrahovat zdroj</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Odebrat vodoznak po uložení obrázku</string>
+    <string name="remove_video_save_watermark">Remove video save watermark</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Odstranit plovoucí okno s ověřovacím kódem</string>
     <!--Everyimage-->
@@ -630,6 +637,8 @@
     <string name="common_words_save">Uložit</string>
     <string name="common_words_filter">Třídit</string>
     <string name="common_words_loading">Načítání…</string>
+    <string name="common_words_whitelist">Povolené</string>
+    <string name="common_words_blacklist">Zakázané</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Připojení k síti se nezdařilo</string>
     <string name="net_networking_error">Aktuální síť není k dispozici</string>

@@ -139,6 +139,7 @@
     <string name="statusbar_network_layout">Bố cục tốc độ mạng trên thanh trạng thái</string>
     <string name="statusbar_network_no_second">Xóa hiển thị giây (/s)</string>
     <string name="statusbar_network_no_space">Xóa không gian tốc độ internet</string>
+    <string name="set_network_speed_double_row_spacing">Set network speed double row spacing</string>
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Thông báo thanh trạng thái</string>
     <string name="StatusBarNotice_summary">Thông báo thanh trạng thái</string>
@@ -211,6 +212,7 @@
     <string name="remove_control_center_networkwarn_dialog">Xóa hộp thoại</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
     <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <string name="custom_control_center_background_transparency">Custom control center background transparency</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Ô thanh trạng thái</string>
     <string name="TileLongClickEvent">Sự kiện nhấp chuột dài</string>
@@ -380,6 +382,7 @@
     <string name="remove_usb_connect_dialog_summary">Khi bạn kết nối USB, chế độ truyền tệp được chọn mặc định</string>
     <string name="remove_secure_pay_found_virus_dialog">Đã xóa hộp thoại vi-rút tìm thấy thanh toán an toàn</string>
     <string name="remove_access_device_log_dialog">Remove access device log dialog</string>
+    <string name="custom_volume_dialog_background_transparency">Custom volume dialog background transparency</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Cử chỉ toàn màn hình</string>
     <string name="remove_side_slider">Xóa thanh trượt bên</string>
@@ -412,6 +415,7 @@
     <string name="remove_storage_limit_summary">Xóa giới hạn không thể sử dụng thư mục này</string>
     <string name="media_volume_level">Mức âm lượng</string>
     <string name="media_volume_level_summary">Đặt thành 0 để tắt chức năng này, khởi động lại hệ thống để có hiệu lực</string>
+    <string name="minimum_volume_level_can_be_zero">Minimum volume level can be zero</string>
     <string name="open_screen_power_save">Mở lối vào màn hình tiết kiệm pin</string>
     <string name="open_screen_power_save_summary">Cài đặt - Pin - Cài đặt khác - Tiết kiệm năng lượng màn hình</string>
     <string name="open_battery_health">Mở lối vào tình trạng pin</string>
@@ -421,6 +425,8 @@
     <string name="allow_untrusted_touch">Cho phép chạm không đáng tin cậy</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched</string>
+    <string name="force_enable_systemui_blur_feature">Force enable the systemui blur feature</string>
+    <string name="force_enable_systemui_blur_feature_tips">Preconditions: You need to turn on the option to “force enable the blur feature of the systemui”\nFunctional location: Miscellaneous</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Loại bỏ giới hạn nhiệt độ cao</string>
     <string name="remove_high_temperature_limit_summary">Loại bỏ giới hạn không thể sử dụng nhiều chức năng khác nhau,Ví dụ: máy ảnh, đèn pin, điểm phát sóng, công cụ hiển thị màn hình, v.v.\nNhiệt độ ngụy trang lý thuyết là 30°C và không đảm bảo hiệu quả cụ thể.</string>
@@ -503,6 +509,7 @@
     <string name="extract_ota_source">Extract Source</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Remove image save watermark</string>
+    <string name="remove_video_save_watermark">Remove video save watermark</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     <!--Everyimage-->
@@ -630,6 +637,8 @@
     <string name="common_words_save">Lưu</string>
     <string name="common_words_filter">Bộ lọc</string>
     <string name="common_words_loading">Đang tải</string>
+    <string name="common_words_whitelist">Whitelist</string>
+    <string name="common_words_blacklist">Blacklist</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Không thể kết nối tới mạng</string>
     <string name="net_networking_error">Mạng hiện tại không khả dụng</string>

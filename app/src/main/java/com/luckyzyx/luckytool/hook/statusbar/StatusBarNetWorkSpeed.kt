@@ -62,7 +62,11 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         dataChannel.wait<Int>("set_network_speed_font_size") { getDoubleSize = it }
         var getBottomPadding = prefs(ModulePrefs).getInt("set_network_speed_padding_bottom", 0)
         dataChannel.wait<Int>("set_network_speed_padding_bottom") { getBottomPadding = it }
+        var setInterval = prefs(ModulePrefs).getInt("set_network_speed_double_row_spacing", -1)
+        dataChannel.wait<Int>("set_network_speed_double_row_spacing") { setInterval = it }
 
+        var bMargin = 0
+        var tMargin = 0
         //Source NetworkSpeedView
         VariousClass(
             "com.oplusos.systemui.statusbar.widget.NetworkSpeedView",
@@ -86,6 +90,24 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                                     .let { mView.findViewById(it) }
                             mView.removeView(speedUnit)
                         }
+                    }
+                    //5.34dp
+                    if (bMargin <= 0) bMargin = instance<FrameLayout>().resources.let {
+                        it.getDimensionPixelSize(
+                            it.getIdentifier(
+                                "network_speed_number_margin_bottom",
+                                "dimen", packageName
+                            )
+                        )
+                    }
+                    //7.34dp
+                    if (tMargin <= 0) tMargin = instance<FrameLayout>().resources.let {
+                        it.getDimensionPixelSize(
+                            it.getIdentifier(
+                                "network_speed_unit_margin_top",
+                                "dimen", packageName
+                            )
+                        )
                     }
                 }
             }
@@ -129,6 +151,10 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                                     TypedValue.COMPLEX_UNIT_DIP,
                                     getDoubleSize.toFloat()
                                 )
+                                if (setInterval != -1) layoutParams =
+                                    LayoutParams(layoutParams).apply {
+                                        bottomMargin = bMargin + (setInterval.dp / 2)
+                                    }
                             }
                             mSpeedUnit?.apply {
                                 text = getTotalDownloadSpeed().let {
@@ -140,6 +166,10 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                                     TypedValue.COMPLEX_UNIT_DIP,
                                     getDoubleSize.toFloat()
                                 )
+                                if (setInterval != -1) layoutParams =
+                                    LayoutParams(layoutParams).apply {
+                                        topMargin = tMargin + (setInterval.dp / 2)
+                                    }
                             }
                         }
                     }

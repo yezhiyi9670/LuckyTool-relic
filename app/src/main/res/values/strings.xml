@@ -145,6 +145,8 @@
     <string name="statusbar_network_layout">Statusbar network speed layout</string>
     <string name="statusbar_network_no_second">Remove display per second(/s)</string>
     <string name="statusbar_network_no_space">Remove network speed space</string>
+    <string name="set_network_speed_double_row_spacing">Set network speed double row spacing</string>
+    
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">StatusBar Notifications</string>
     <string name="StatusBarNotice_summary">Status bar notification related</string>
@@ -228,6 +230,7 @@
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
     <string name="remove_control_center_networkwarn_summary">After connecting to VPN, a message will be displayed at the bottom of the control center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <string name="custom_control_center_background_transparency">Custom control center background transparency</string>
     
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">StatusBar Tiles</string>
@@ -415,6 +418,7 @@
     <string name="remove_usb_connect_dialog_summary">The file transfer mode is selected by default after connecting the USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Removed secure pay found virus dialog</string>
     <string name="remove_access_device_log_dialog">Remove access device log dialog</string>
+    <string name="custom_volume_dialog_background_transparency">Custom volume dialog background transparency</string>
     
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Full screen gesture related</string>
@@ -448,6 +452,7 @@
     <string name="remove_storage_limit_summary">Remove the restriction that this folder cannot be used</string>
     <string name="media_volume_level">Media volume level</string>
     <string name="media_volume_level_summary">Set to 0 to disable this function, restart the system to take effect</string>
+    <string name="minimum_volume_level_can_be_zero">Minimum volume level can be zero</string>
     <string name="open_screen_power_save">Open battery screen power saving entrance</string>
     <string name="open_screen_power_save_summary">Settings - Battery - More settings - Screen Power Saving</string>
     <string name="open_battery_health">Open battery health entrance</string>
@@ -457,6 +462,8 @@
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched</string>
+    <string name="force_enable_systemui_blur_feature">Force enable the systemui blur feature</string>
+    <string name="force_enable_systemui_blur_feature_tips">Preconditions: You need to turn on the option to “force enable the blur feature of the systemui”\nFunctional location: Miscellaneous</string>
     
     <!--Battery-->
     <string name="remove_high_temperature_limit">Remove high temperature limit</string>
@@ -546,6 +553,7 @@
     
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Remove image save watermark</string>
+    <string name="remove_video_save_watermark">Remove video save watermark</string>
     
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
@@ -681,6 +689,8 @@
     <string name="common_words_save">Save</string>
     <string name="common_words_filter">Filter</string>
     <string name="common_words_loading">Loading</string>
+    <string name="common_words_whitelist">Whitelist</string>
+    <string name="common_words_blacklist">Blacklist</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

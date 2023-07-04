@@ -14,14 +14,15 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 object LauncherHighTempreatureProtection : YukiBaseHooker() {
     override fun onHook() {
         //Source ThermalHandler high_temperature_shutdown_message / high_temperature_dialog_auto
+        //Key oplus_settings_hightemp_protect
         searchClass {
             from(
                 "com.oplus.modulehub.hightemp.model",
                 "com.oplus.modulehub.c.a",
-                "b6", "c6", "w4", "q4"
+                "b6", "c6", "w4", "q4", "z5"
             ).absolute()
             field { type = ContextClass }.count(2)
-            field { type = IntType }.count(4..5)
+            field { type = IntType }.count(3..5)
             field { type = SharedPreferencesClass }.count(1)
             field { type = PowerManagerClass }.count(1)
             field { type = BroadcastReceiverClass }.count(1)

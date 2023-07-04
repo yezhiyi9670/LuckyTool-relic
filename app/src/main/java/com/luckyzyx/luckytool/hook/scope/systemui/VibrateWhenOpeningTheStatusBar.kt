@@ -2,6 +2,8 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.MembersType
+import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.SDK
 
 object VibrateWhenOpeningTheStatusBar : YukiBaseHooker() {
     override fun onHook() {
@@ -23,6 +25,7 @@ object VibrateWhenOpeningTheStatusBar : YukiBaseHooker() {
                 }
             }
         }
+        if (SDK < A13) return
         //Source StatusBarCommandQueueCallbacks -> config_vibrateOnIconAnimation
         findClass("com.android.systemui.statusbar.phone.StatusBarCommandQueueCallbacks").hook {
             injectMember {

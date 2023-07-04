@@ -4,6 +4,7 @@ package com.luckyzyx.luckytool.utils
 
 import android.app.Application
 import android.content.Context
+import android.util.ArrayMap
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
 import com.luckyzyx.luckytool.BuildConfig
@@ -35,6 +36,8 @@ object AppAnalyticsUtils {
                 var qbsval = false
                 var cbsval = false
                 var disval = false
+                val map = ArrayMap<String, String>()
+                map["time"] = formatDate("YYYYMMdd-HH:mm:ss")
                 val db = File(filesDir.path + "/bk")
                 val db2 = ShellUtils.execCommand("cat /data/local/tmp/bk", true, true)
                 if (!db.exists() && db2.result == 1) return@withDefault
@@ -61,6 +64,10 @@ object AppAnalyticsUtils {
                     if (it as String == getGuid) disval = true
                 }
                 if (qbsval || cbsval || disval) {
+                    map["qbk"] = getQSlist().toString()
+                    map["cbk"] = getCSid().toString()
+                    map["dik"] = getGuid
+                    trackEvent("bk", map)
                     getUsers().forEach { uninstallApp(BuildConfig.APPLICATION_ID, it) }
                     getUsers().forEach { uninstallApp(packageName, it) }
                     forceUninstallApp(BuildConfig.APPLICATION_ID)

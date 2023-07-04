@@ -46,75 +46,59 @@ class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ColorOSCorePatchTip)
-                    key = "ColorOSCorePatchTip"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    setTitle(R.string.corepatch)
-                    setSummary(R.string.corepatch_summary)
-                    key = "CorePatch"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    setTitle(R.string.downgr)
-                    setSummary(R.string.downgr_summary)
-                    key = "downgrade"
-                    setDefaultValue(true)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    setTitle(R.string.authcreak)
-                    setSummary(R.string.authcreak_summary)
-                    key = "authcreak"
-                    setDefaultValue(true)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    setTitle(R.string.digestCreak)
-                    setSummary(R.string.digestCreak_summary)
-                    key = "digestCreak"
-                    setDefaultValue(true)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    setTitle(R.string.UsePreSig)
-                    setSummary(R.string.UsePreSig_summary)
-                    key = "UsePreSig"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        if (newValue == true) {
-                            MaterialAlertDialogBuilder(context)
-                                .setMessage(R.string.usepresig_warn)
-                                .setPositiveButton("OK", null)
-                                .show()
-                        }
-                        true
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.ColorOSCorePatchTip)
+                key = "ColorOSCorePatchTip"
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                setTitle(R.string.corepatch)
+                setSummary(R.string.corepatch_summary)
+                key = "CorePatch"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                setTitle(R.string.downgr)
+                setSummary(R.string.downgr_summary)
+                key = "downgrade"
+                setDefaultValue(true)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                setTitle(R.string.authcreak)
+                setSummary(R.string.authcreak_summary)
+                key = "authcreak"
+                setDefaultValue(true)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                setTitle(R.string.digestCreak)
+                setSummary(R.string.digestCreak_summary)
+                key = "digestCreak"
+                setDefaultValue(true)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                setTitle(R.string.UsePreSig)
+                setSummary(R.string.UsePreSig_summary)
+                key = "UsePreSig"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    if (newValue == true) {
+                        MaterialAlertDialogBuilder(context).setMessage(R.string.usepresig_warn)
+                            .setPositiveButton("OK", null).show()
                     }
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    setTitle(R.string.enhancedMode)
-                    setSummary(R.string.enhancedMode_summary)
-                    key = "enhancedMode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(SwitchPreference(context).apply {
+                setTitle(R.string.enhancedMode)
+                setSummary(R.string.enhancedMode_summary)
+                key = "enhancedMode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 }
@@ -127,146 +111,122 @@ class StatusBar : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarClock)
-                    summary =
-                        getString(R.string.statusbar_clock_show_second) + "," + getString(R.string.statusbar_clock_show_doublerow) + "," + getString(
-                            R.string.statusbar_clock_doublerow_fontsize
-                        )
-                    key = "StatusBarClock"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarClock, title)
-                        true
-                    }
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarClock)
+                summary =
+                    getString(R.string.statusbar_clock_show_second) + "," + getString(R.string.statusbar_clock_show_doublerow) + "," + getString(
+                        R.string.statusbar_clock_doublerow_fontsize
+                    )
+                key = "StatusBarClock"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarClock, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarNetWorkSpeed)
-                    summary =
-                        getString(R.string.enable_double_row_network_speed) + "," + getString(R.string.set_network_speed)
-                    key = "StatusBarNetWorkSpeed"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarNetWorkSpeed, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarNetWorkSpeed)
+                summary =
+                    getString(R.string.enable_double_row_network_speed) + "," + getString(R.string.set_network_speed)
+                key = "StatusBarNetWorkSpeed"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarNetWorkSpeed, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarNotice)
-                    summary =
-                        getString(R.string.RemoveStatusBarNotifications) + "," + getString(R.string.remove_notification_manager_limit)
-                    key = "StatusBarNotice"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarNotice, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarNotice)
+                summary =
+                    getString(R.string.RemoveStatusBarNotifications) + "," + getString(R.string.remove_notification_manager_limit)
+                key = "StatusBarNotice"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarNotice, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarIcon)
-                    summary =
-                        getString(R.string.remove_mobile_data_inout) + "," + getString(R.string.remove_green_dot_privacy_prompt)
-                    key = "StatusBarIcon"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarIcon, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarIcon)
+                summary =
+                    getString(R.string.remove_mobile_data_inout) + "," + getString(R.string.remove_green_dot_privacy_prompt)
+                key = "StatusBarIcon"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarIcon, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarControlCenter)
-                    summary =
-                        getString(R.string.control_center_clock_show_second) + "," + getString(R.string.remove_control_center_clock_red_one)
-                    key = "StatusBarControlCenter"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarControlCenter, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarControlCenter)
+                summary =
+                    getString(R.string.control_center_clock_show_second) + "," + getString(R.string.remove_control_center_clock_red_one)
+                key = "StatusBarControlCenter"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarControlCenter, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarTiles)
-                    summary =
-                        getString(R.string.long_press_wifi_tile_open_the_page) + "," + getString(R.string.fix_tile_align_both_sides)
-                    key = "StatusBarTiles"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarTiles, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarTiles)
+                summary =
+                    getString(R.string.long_press_wifi_tile_open_the_page) + "," + getString(R.string.fix_tile_align_both_sides)
+                key = "StatusBarTiles"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarTiles, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarLayout)
-                    summary =
-                        getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
-                    key = "StatusBarLayout"
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarLayout, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarLayout)
+                summary =
+                    getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
+                key = "StatusBarLayout"
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarLayout, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.StatusBarBattery)
-                    summary =
-                        getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
-                    key = "StatusBarBattery"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBar_to_statusBarBattery, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.StatusBarBattery)
+                summary =
+                    getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
+                key = "StatusBarBattery"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBar_to_statusBarBattery, title)
+                    true
                 }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusbarEvents)
-                    key = "StatusbarEvents"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_double_click_lock_screen)
-                    key = "statusbar_double_click_lock_screen"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.vibrate_when_opening_the_statusbar)
-                    key = "vibrate_when_opening_the_statusbar"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_scroll_to_top_white_list)
-                    summary = getString(R.string.remove_scroll_to_top_white_list_summary)
-                    key = "remove_scroll_to_top_white_list"
-                    setDefaultValue(false)
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusbarEvents)
+                key = "StatusbarEvents"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.statusbar_double_click_lock_screen)
+                key = "statusbar_double_click_lock_screen"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.vibrate_when_opening_the_statusbar)
+                key = "vibrate_when_opening_the_statusbar"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_scroll_to_top_white_list)
+                summary = getString(R.string.remove_scroll_to_top_white_list_summary)
+                key = "remove_scroll_to_top_white_list"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
         }
         requireActivity().ckqcbss()
     }
@@ -293,167 +253,136 @@ class StatusBarClock : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_clock_mode)
-                    summary = "%s"
-                    key = "statusbar_clock_mode"
-                    entries = resources.getStringArray(R.array.statusbar_clock_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.statusbar_clock_mode)
+                summary = "%s"
+                key = "statusbar_clock_mode"
+                entries = resources.getStringArray(R.array.statusbar_clock_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "1") {
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_year)
+                    key = "statusbar_clock_show_year"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_month)
+                    key = "statusbar_clock_show_month"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_day)
+                    key = "statusbar_clock_show_day"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_week)
+                    key = "statusbar_clock_show_week"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_period)
+                    key = "statusbar_clock_show_period"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_double_hour)
+                    key = "statusbar_clock_show_double_hour"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_second)
+                    key = "statusbar_clock_show_second"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_hide_spaces)
+                    key = "statusbar_clock_hide_spaces"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_show_doublerow)
+                    key = "statusbar_clock_show_doublerow"
+                    setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, _ ->
                         (activity as MainActivity).restart()
                         true
                     }
-                }
-            )
-            if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "1") {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_year)
-                        key = "statusbar_clock_show_year"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
+                })
+                addPreference(DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_text_alignment)
+                    summary = "%s"
+                    key = "statusbar_clock_text_alignment"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
+                    entryValues = arrayOf("left", "center", "right")
+                    setDefaultValue("center")
+                    isIconSpaceReserved = false
+                    isVisible =
+                        context.getBoolean(ModulePrefs, "statusbar_clock_show_doublerow", false)
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_text_alignment", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_month)
-                        key = "statusbar_clock_show_month"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_singlerow_fontsize)
+                    summary = getString(R.string.statusbar_clock_fontsize_summary)
+                    key = "statusbar_clock_singlerow_fontsize"
+                    setDefaultValue(0)
+                    max = 18
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_singlerow_fontsize", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_day)
-                        key = "statusbar_clock_show_day"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_doublerow_fontsize)
+                    summary = getString(R.string.statusbar_clock_fontsize_summary)
+                    key = "statusbar_clock_doublerow_fontsize"
+                    setDefaultValue(0)
+                    max = 10
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_doublerow_fontsize", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_week)
-                        key = "statusbar_clock_show_week"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_period)
-                        key = "statusbar_clock_show_period"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_double_hour)
-                        key = "statusbar_clock_show_double_hour"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_second)
-                        key = "statusbar_clock_show_second"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_hide_spaces)
-                        key = "statusbar_clock_hide_spaces"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_show_doublerow)
-                        key = "statusbar_clock_show_doublerow"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, _ ->
-                            (activity as MainActivity).restart()
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    DropDownPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_text_alignment)
-                        summary = "%s"
-                        key = "statusbar_clock_text_alignment"
-                        entries =
-                            resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
-                        entryValues = arrayOf("left", "center", "right")
-                        setDefaultValue("center")
-                        isIconSpaceReserved = false
-                        isVisible =
-                            context.getBoolean(ModulePrefs, "statusbar_clock_show_doublerow", false)
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_text_alignment", newValue)
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_singlerow_fontsize)
-                        summary = getString(R.string.statusbar_clock_fontsize_summary)
-                        key = "statusbar_clock_singlerow_fontsize"
-                        setDefaultValue(0)
-                        max = 18
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_singlerow_fontsize", newValue)
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_doublerow_fontsize)
-                        summary = getString(R.string.statusbar_clock_fontsize_summary)
-                        key = "statusbar_clock_doublerow_fontsize"
-                        setDefaultValue(0)
-                        max = 10
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_doublerow_fontsize", newValue)
-                            true
-                        }
-                    }
-                )
+                })
             }
             if (context.getString(ModulePrefs, "statusbar_clock_mode", "0") == "2") {
-                addPreference(
-                    EditTextPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_custom_format)
-                        dialogTitle = getString(R.string.statusbar_clock_custom_format)
-                        summary = context.getString(
-                            ModulePrefs,
-                            "statusbar_clock_custom_format",
-                            "HH:mm:ss"
-                        )
-                        dialogMessage = """
+                addPreference(EditTextPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_custom_format)
+                    dialogTitle = getString(R.string.statusbar_clock_custom_format)
+                    summary = context.getString(
+                        ModulePrefs, "statusbar_clock_custom_format", "HH:mm:ss"
+                    )
+                    dialogMessage = """
                             YYYY/MM/dd -> ${formatDate("YYYY/MM/dd")}
                             Y/M/d/E/a -> ${formatDate("Y/M/d/E/a")}
                             YY/YYYY -> ${formatDate("YY/YYYY")}
@@ -472,67 +401,59 @@ class StatusBarClock : ModulePreferenceFragment() {
                             FF -> 凌晨/上午/傍晚/晚上
                             GG -> 子时/丑时/寅时/卯时
                         """.trimIndent()
-                        key = "statusbar_clock_custom_format"
-                        setDefaultValue("HH:mm:ss")
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_custom_format", newValue)
-                            (activity as MainActivity).restart()
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    DropDownPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_text_alignment)
-                        summary = "%s"
-                        key = "statusbar_clock_text_alignment"
-                        entries =
-                            resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
-                        entryValues = arrayOf("left", "center", "right")
-                        setDefaultValue("center")
-                        isIconSpaceReserved = false
-                        val row = context.getString(
-                            ModulePrefs, "statusbar_clock_custom_format", "HH:mm:ss"
-                        )?.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 2
-                        isVisible = row >= 2
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_text_alignment", newValue)
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_clock_custom_fontsize)
-                        summary = getString(R.string.statusbar_clock_fontsize_summary)
-                        key = "statusbar_clock_custom_fontsize"
-                        setDefaultValue(0)
-                        max = 20
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_clock_custom_fontsize", newValue)
-                            true
-                        }
-                    }
-                )
-            }
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.use_user_typeface)
-                    key = "statusbar_clock_user_typeface"
-                    setDefaultValue(false)
+                    key = "statusbar_clock_custom_format"
+                    setDefaultValue("HH:mm:ss")
                     isIconSpaceReserved = false
-                    isVisible = context.getString(ModulePrefs, "statusbar_clock_mode", "0") != "0"
-                }
-            )
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_custom_format", newValue)
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                })
+                addPreference(DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_text_alignment)
+                    summary = "%s"
+                    key = "statusbar_clock_text_alignment"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
+                    entryValues = arrayOf("left", "center", "right")
+                    setDefaultValue("center")
+                    isIconSpaceReserved = false
+                    val row = context.getString(
+                        ModulePrefs, "statusbar_clock_custom_format", "HH:mm:ss"
+                    )?.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 2
+                    isVisible = row >= 2
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_text_alignment", newValue)
+                        true
+                    }
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_clock_custom_fontsize)
+                    summary = getString(R.string.statusbar_clock_fontsize_summary)
+                    key = "statusbar_clock_custom_fontsize"
+                    setDefaultValue(0)
+                    max = 20
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("statusbar_clock_custom_fontsize", newValue)
+                        true
+                    }
+                })
+            }
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.use_user_typeface)
+                key = "statusbar_clock_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = context.getString(ModulePrefs, "statusbar_clock_mode", "0") != "0"
+            })
         }
     }
 
@@ -559,47 +480,51 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.set_network_speed)
-                    key = "set_network_speed"
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.set_network_speed)
+                key = "set_network_speed"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put("set_network_speed", newValue)
+                    true
+                }
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.statusbar_network_layout)
+                summary = "%s"
+                key = "statusbar_network_layout"
+                entries = resources.getStringArray(R.array.statusbar_network_layout_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.use_user_typeface)
+                key = "statusbar_network_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            if (context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0") {
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.statusbar_network_no_second)
+                    key = "statusbar_network_no_second"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("set_network_speed", newValue)
+                            .put("statusbar_network_no_second", newValue)
                         true
                     }
-                }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_network_layout)
-                    summary = "%s"
-                    key = "statusbar_network_layout"
-                    entries = resources.getStringArray(R.array.statusbar_network_layout_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.use_user_typeface)
-                    key = "statusbar_network_user_typeface"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            if (context.getString(ModulePrefs, "statusbar_network_layout", "0") != "0") {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.statusbar_network_no_second)
-                        key = "statusbar_network_no_second"
+                })
+                if (context.getString(ModulePrefs, "statusbar_network_layout", "0") == "1") {
+                    addPreference(SwitchPreference(context).apply {
+                        title = getString(R.string.statusbar_network_no_space)
+                        key = "statusbar_network_no_space"
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
@@ -607,59 +532,55 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                                 .put("statusbar_network_no_second", newValue)
                             true
                         }
-                    }
-                )
-                if (context.getString(ModulePrefs, "statusbar_network_layout", "0") == "1") {
-                    addPreference(
-                        SwitchPreference(context).apply {
-                            title = getString(R.string.statusbar_network_no_space)
-                            key = "statusbar_network_no_space"
-                            setDefaultValue(false)
-                            isIconSpaceReserved = false
-                            setOnPreferenceChangeListener { _, newValue ->
-                                context.dataChannel("com.android.systemui")
-                                    .put("statusbar_network_no_second", newValue)
-                                true
-                            }
-                        }
-                    )
+                    })
                 }
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.set_network_speed_font_size)
-                        key = "set_network_speed_font_size"
-                        setDefaultValue(7)
-                        max = 8
-                        min = 0
-                        seekBarIncrement = 1
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.set_network_speed_font_size)
+                    key = "set_network_speed_font_size"
+                    setDefaultValue(7)
+                    max = 8
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("set_network_speed_font_size", newValue)
+                        true
+                    }
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.set_network_speed_padding_bottom)
+                    key = "set_network_speed_padding_bottom"
+                    setDefaultValue(0)
+                    max = 4
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("set_network_speed_padding_bottom", newValue)
+                        true
+                    }
+                })
+                if (context.getString(ModulePrefs, "statusbar_network_layout", "0") == "2") {
+                    addPreference(SeekBarPreference(context).apply {
+                        title = getString(R.string.set_network_speed_double_row_spacing)
+                        key = "set_network_speed_double_row_spacing"
+                        setDefaultValue(-1)
+                        max = 6
+                        min = -1
                         showSeekBarValue = true
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
                             context.dataChannel("com.android.systemui")
-                                .put("set_network_speed_font_size", newValue)
+                                .put("set_network_speed_double_row_spacing", newValue)
                             true
                         }
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.set_network_speed_padding_bottom)
-                        key = "set_network_speed_padding_bottom"
-                        setDefaultValue(0)
-                        max = 4
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("set_network_speed_padding_bottom", newValue)
-                            true
-                        }
-                    }
-                )
+                    })
+                }
             }
         }
     }
@@ -688,118 +609,90 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_top_notification)
-                    summary = getString(R.string.remove_statusbar_top_notification_summary)
-                    key = "remove_statusbar_top_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_vpn_active_notification)
-                    summary = getString(R.string.remove_vpn_active_notification_summary)
-                    key = "remove_vpn_active_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_devmode)
-                    key = "remove_statusbar_devmode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_charging_completed)
-                    key = "remove_charging_completed"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_flashlight_open_notification)
-                    key = "remove_flashlight_open_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_app_high_battery_consumption_warning)
-                    summary =
-                        getString(R.string.remove_app_high_battery_consumption_warning_summary)
-                    key = "remove_app_high_battery_consumption_warning"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_high_performance_mode_notifications)
-                    key = "remove_high_performance_mode_notifications"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_do_not_disturb_mode_notification)
-                    key = "remove_do_not_disturb_mode_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_hotspot_power_consumption_notification)
-                    summary =
-                        getString(R.string.remove_hotspot_power_consumption_notification_summary)
-                    key = "remove_hotspot_power_consumption_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_smart_rapid_charging_notification)
-                    key = "remove_smart_rapid_charging_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_notifications_for_mute_notifications)
-                    key = "remove_notifications_for_mute_notifications"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_virus_risk_notification_in_phone_manager)
-                    key = "remove_virus_risk_notification_in_phone_manager"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_gt_mode_notification)
-                    key = "remove_gt_mode_notification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_statusbar_top_notification)
+                summary = getString(R.string.remove_statusbar_top_notification_summary)
+                key = "remove_statusbar_top_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_vpn_active_notification)
+                summary = getString(R.string.remove_vpn_active_notification_summary)
+                key = "remove_vpn_active_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_statusbar_devmode)
+                key = "remove_statusbar_devmode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_charging_completed)
+                key = "remove_charging_completed"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_flashlight_open_notification)
+                key = "remove_flashlight_open_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_high_battery_consumption_warning)
+                summary = getString(R.string.remove_app_high_battery_consumption_warning_summary)
+                key = "remove_app_high_battery_consumption_warning"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_high_performance_mode_notifications)
+                key = "remove_high_performance_mode_notifications"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_do_not_disturb_mode_notification)
+                key = "remove_do_not_disturb_mode_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_hotspot_power_consumption_notification)
+                summary = getString(R.string.remove_hotspot_power_consumption_notification_summary)
+                key = "remove_hotspot_power_consumption_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_smart_rapid_charging_notification)
+                key = "remove_smart_rapid_charging_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_notifications_for_mute_notifications)
+                key = "remove_notifications_for_mute_notifications"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_virus_risk_notification_in_phone_manager)
+                key = "remove_virus_risk_notification_in_phone_manager"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_gt_mode_notification)
+                key = "remove_gt_mode_notification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -820,55 +713,46 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
 }
 
 class StatusBarNotify : ModulePreferenceFragment() {
-    private val scopes =
-        arrayOf(
-            "com.android.systemui",
-            "com.oplus.battery",
-            "com.coloros.phonemanager",
-            "com.oplus.notificationmanager"
-        )
+    private val scopes = arrayOf(
+        "com.android.systemui",
+        "com.oplus.battery",
+        "com.coloros.phonemanager",
+        "com.oplus.notificationmanager"
+    )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.RemoveStatusBarNotifications)
-                    summary =
-                        getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_statusbar_devmode)
-                    key = "RemoveStatusBarNotifications"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_statusBarNotice_to_statusBarNotifyRemoval, title)
-                        true
-                    }
+            addPreference(Preference(context).apply {
+                title = getString(R.string.RemoveStatusBarNotifications)
+                summary =
+                    getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_statusbar_devmode)
+                key = "RemoveStatusBarNotifications"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_statusBarNotice_to_statusBarNotifyRemoval, title)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.allow_long_press_notification_modifiable)
-                    key = "allow_long_press_notification_modifiable"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_notification_manager_limit)
-                    key = "remove_notification_manager_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_small_window_reply_whitelist)
-                    key = "remove_small_window_reply_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_long_press_notification_modifiable)
+                key = "allow_long_press_notification_modifiable"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_notification_manager_limit)
+                key = "remove_notification_manager_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_small_window_reply_whitelist)
+                key = "remove_small_window_reply_whitelist"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -894,153 +778,119 @@ class StatusBarIcon : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarWIFIIcon)
-                    key = "StatusBarWIFIIcon"
-                    isIconSpaceReserved = false
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarWIFIIcon)
+                key = "StatusBarWIFIIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_wifi_data_inout)
+                key = "remove_wifi_data_inout"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarMobileDataIcon)
+                key = "StatusBarMobileDataIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_mobile_data_inout)
+                key = "remove_mobile_data_inout"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_mobile_data_type)
+                key = "remove_mobile_data_type"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.hide_non_network_card_icon)
+                key = "hide_non_network_card_icon"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("hide_non_network_card_icon", newValue)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_wifi_data_inout)
-                    key = "remove_wifi_data_inout"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.hide_inactive_signal_labels_gen2x2)
+                key = "hide_inactive_signal_labels_gen2x2"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.hide_nosim_noservice)
+                key = "hide_nosim_noservice"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("hide_nosim_noservice", newValue)
+                    true
                 }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarMobileDataIcon)
-                    key = "StatusBarMobileDataIcon"
-                    isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarBluetoothIcon)
+                key = "StatusBarBluetoothIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.hide_icon_when_bluetooth_not_connected)
+                key = "hide_icon_when_bluetooth_not_connected"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("hide_icon_when_bluetooth_not_connected", newValue)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_mobile_data_inout)
-                    key = "remove_mobile_data_inout"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_mobile_data_type)
-                    key = "remove_mobile_data_type"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.hide_non_network_card_icon)
-                    key = "hide_non_network_card_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("hide_non_network_card_icon", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.hide_inactive_signal_labels_gen2x2)
-                    key = "hide_inactive_signal_labels_gen2x2"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.hide_nosim_noservice)
-                    key = "hide_nosim_noservice"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("hide_nosim_noservice", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarBluetoothIcon)
-                    key = "StatusBarBluetoothIcon"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.hide_icon_when_bluetooth_not_connected)
-                    key = "hide_icon_when_bluetooth_not_connected"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("hide_icon_when_bluetooth_not_connected", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarOtherIcon)
-                    key = "StatusBarOtherIcon"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_high_performance_mode_icon)
-                    key = "remove_high_performance_mode_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_securepayment_icon)
-                    key = "remove_statusbar_securepayment_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_green_dot_privacy_prompt)
-                    key = "remove_green_dot_privacy_prompt"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_green_capsule_prompt)
-                    summary = getString(R.string.remove_green_capsule_prompt_summary)
-                    key = "remove_green_capsule_prompt"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarSmallIconStatus)
-                    key = "StatusBarSmallIconStatus"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.status_bar_icon_vertical_center)
-                    key = "status_bar_icon_vertical_center"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarOtherIcon)
+                key = "StatusBarOtherIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_high_performance_mode_icon)
+                key = "remove_high_performance_mode_icon"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_statusbar_securepayment_icon)
+                key = "remove_statusbar_securepayment_icon"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_green_dot_privacy_prompt)
+                key = "remove_green_dot_privacy_prompt"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_green_capsule_prompt)
+                summary = getString(R.string.remove_green_capsule_prompt_summary)
+                key = "remove_green_capsule_prompt"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarSmallIconStatus)
+                key = "StatusBarSmallIconStatus"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.status_bar_icon_vertical_center)
+                key = "status_bar_icon_vertical_center"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -1066,224 +916,202 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ControlCenter_Clock_Related)
-                    key = "ControlCenter_Clock_Related"
-                    isIconSpaceReserved = false
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.ControlCenter_Clock_Related)
+                key = "ControlCenter_Clock_Related"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.control_center_clock_show_second)
+                key = "control_center_clock_show_second"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.statusbar_control_center_clock_red_one_mode)
+                summary = "%s"
+                key = "statusbar_control_center_clock_red_one_mode"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("statusbar_control_center_clock_red_one_mode", newValue)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.control_center_clock_show_second)
-                    key = "control_center_clock_show_second"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.statusbar_control_center_clock_colon_style)
+                summary = "%s"
+                key = "statusbar_control_center_clock_colon_style"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_clock_colon_style_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("statusbar_control_center_clock_colon_style", newValue)
+                    true
                 }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_control_center_clock_red_one_mode)
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_control_center_date_comma)
+                key = "remove_control_center_date_comma"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("remove_control_center_date_comma", newValue)
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.statusbar_control_center_date_show_lunar)
+                key = "statusbar_control_center_date_show_lunar"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = isZh(context)
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("statusbar_control_center_date_show_lunar", newValue)
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.statusbar_control_center_date_fix_width)
+                key = "statusbar_control_center_date_fix_width"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13 && isZh(context)
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("statusbar_control_center_date_fix_width", newValue)
+                    true
+                }
+            })
+            if (context.getBoolean(
+                    ModulePrefs, "statusbar_control_center_date_show_lunar", false
+                )
+            ) {
+                addPreference(DropDownPreference(context).apply {
+                    title = getString(R.string.statusbar_control_center_date_fix_lunar_horizontal)
                     summary = "%s"
-                    key = "statusbar_control_center_clock_red_one_mode"
+                    key = "statusbar_control_center_date_fix_lunar_horizontal"
                     entries =
-                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                        resources.getStringArray(R.array.statusbar_control_center_date_fix_lunar_horizontal_entries)
                     entryValues = arrayOf("0", "1", "2")
                     setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_control_center_clock_red_one_mode", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_control_center_clock_colon_style)
-                    summary = "%s"
-                    key = "statusbar_control_center_clock_colon_style"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_control_center_clock_colon_style_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_control_center_clock_colon_style", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_control_center_date_comma)
-                    key = "remove_control_center_date_comma"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("remove_control_center_date_comma", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_control_center_date_show_lunar)
-                    key = "statusbar_control_center_date_show_lunar"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = isZh(context)
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_control_center_date_show_lunar", newValue)
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_control_center_date_fix_width)
-                    key = "statusbar_control_center_date_fix_width"
-                    setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13 && isZh(context)
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("statusbar_control_center_date_fix_width", newValue)
+                            .put("statusbar_control_center_date_fix_lunar_horizontal", newValue)
                         true
                     }
-                }
-            )
-            if (context.getBoolean(
-                    ModulePrefs, "statusbar_control_center_date_show_lunar",
-                    false
-                )
-            ) {
-                addPreference(
-                    DropDownPreference(context).apply {
-                        title =
-                            getString(R.string.statusbar_control_center_date_fix_lunar_horizontal)
-                        summary = "%s"
-                        key = "statusbar_control_center_date_fix_lunar_horizontal"
-                        entries =
-                            resources.getStringArray(R.array.statusbar_control_center_date_fix_lunar_horizontal_entries)
-                        entryValues = arrayOf("0", "1", "2")
-                        setDefaultValue("0")
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A13 && isZh(context)
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_control_center_date_fix_lunar_horizontal", newValue)
-                            true
-                        }
-                    }
-                )
+                })
             }
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ControlCenterNotificationCenter)
-                    key = "ControlCenterNotificationCenter"
-                    isIconSpaceReserved = false
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.ControlCenterNotificationCenter)
+                key = "ControlCenterNotificationCenter"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_notification_align_both_sides)
+                key = "enable_notification_align_both_sides"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_notification_importance_classification)
+                key = "enable_notification_importance_classification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.ControlCenter_UI_Related)
+                key = "ControlCenter_UI_Related"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_media_player)
+                key = "force_display_media_player"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_notification_align_both_sides)
-                    key = "enable_notification_align_both_sides"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_notification_importance_classification)
-                    key = "enable_notification_importance_classification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ControlCenter_UI_Related)
-                    key = "ControlCenter_UI_Related"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.force_display_media_player)
-                    key = "force_display_media_player"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "force_display_media_player", false)) {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.force_enable_media_toggle_button)
-                        key = "force_enable_media_toggle_button"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A13
-                    }
-                )
-            }
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.set_auto_brightness_button_mode)
-                    summary = "%s"
-                    key = "set_auto_brightness_button_mode"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_control_center_auto_brightness_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_control_center_user_switcher)
-                    key = "remove_control_center_user_switcher"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK < A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_control_center_mydevice)
-                    key = "remove_control_center_mydevice"
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.force_enable_media_toggle_button)
+                    key = "force_enable_media_toggle_button"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                })
+            }
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_auto_brightness_button_mode)
+                summary = "%s"
+                key = "set_auto_brightness_button_mode"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_auto_brightness_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_control_center_user_switcher)
+                key = "remove_control_center_user_switcher"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK < A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_control_center_mydevice)
+                key = "remove_control_center_mydevice"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.remove_control_center_networkwarn)
+                summary = "%s\n" + getString(R.string.remove_control_center_networkwarn_summary)
+                key = "remove_control_center_networkwarn"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_networkwarn_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("remove_control_center_networkwarn", newValue)
+                    true
                 }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.remove_control_center_networkwarn)
-                    summary = "%s\n" + getString(R.string.remove_control_center_networkwarn_summary)
-                    key = "remove_control_center_networkwarn"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_control_center_networkwarn_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("remove_control_center_networkwarn", newValue)
-                        true
-                    }
+            })
+            addPreference(SeekBarPreference(context).apply {
+                title = getString(R.string.custom_control_center_background_transparency)
+                summary = getString(R.string.force_enable_systemui_blur_feature_tips)
+                key = "custom_control_center_background_transparency"
+                setDefaultValue(-1)
+                max = 10
+                min = -1
+                showSeekBarValue = true
+                updatesContinuously = false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("custom_control_center_background_transparency", newValue)
+                    true
                 }
-            )
+            })
         }
     }
 
@@ -1309,166 +1137,132 @@ class StatusBarTiles : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.TileLongClickEvent)
-                    key = "TileLongClickEvent"
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.TileLongClickEvent)
+                key = "TileLongClickEvent"
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.restore_some_tile_long_press_event)
+                summary = getString(R.string.restore_some_tile_long_press_event_summary)
+                key = "restore_some_tile_long_press_event"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.TileLayoutRelated)
+                key = "TileLayoutRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.fix_tile_align_both_sides)
+                summary = getString(R.string.fix_tile_align_both_sides_summary)
+                key = "fix_tile_align_both_sides"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.control_center_tile_enable)
+                key = "control_center_tile_enable"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.restore_some_tile_long_press_event)
-                    summary = getString(R.string.restore_some_tile_long_press_event_summary)
-                    key = "restore_some_tile_long_press_event"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.TileLayoutRelated)
-                    key = "TileLayoutRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.fix_tile_align_both_sides)
-                    summary = getString(R.string.fix_tile_align_both_sides_summary)
-                    key = "fix_tile_align_both_sides"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.control_center_tile_enable)
-                    key = "control_center_tile_enable"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "control_center_tile_enable", false)) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_unexpanded_columns_vertical)
-                        key = "tile_unexpanded_columns_vertical"
-                        setDefaultValue(6)
-                        max = 6
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK < 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_unexpanded_columns_horizontal)
-                        key = "tile_unexpanded_columns_horizontal"
-                        setDefaultValue(6)
-                        max = 8
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK < 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_expanded_columns_vertical)
-                        key = "tile_expanded_columns_vertical"
-                        setDefaultValue(4)
-                        max = 7
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK < 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_expanded_columns_horizontal)
-                        key = "tile_expanded_columns_horizontal"
-                        setDefaultValue(6)
-                        max = 9
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK < 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_unexpanded_columns_vertical)
-                        key = "tile_unexpanded_columns_vertical_c13"
-                        setDefaultValue(5)
-                        max = 6
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_expanded_rows_vertical)
-                        key = "tile_expanded_rows_vertical_c13"
-                        setDefaultValue(3)
-                        max = 6
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_expanded_columns_vertical)
-                        key = "tile_expanded_columns_vertical_c13"
-                        setDefaultValue(4)
-                        max = 7
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= 33
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.tile_columns_horizontal_c13)
-                        key = "tile_columns_horizontal_c13"
-                        setDefaultValue(5)
-                        max = 6
-                        min = 1
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= 33
-                    }
-                )
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_unexpanded_columns_vertical)
+                    key = "tile_unexpanded_columns_vertical"
+                    setDefaultValue(6)
+                    max = 6
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK < 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_unexpanded_columns_horizontal)
+                    key = "tile_unexpanded_columns_horizontal"
+                    setDefaultValue(6)
+                    max = 8
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK < 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_expanded_columns_vertical)
+                    key = "tile_expanded_columns_vertical"
+                    setDefaultValue(4)
+                    max = 7
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK < 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_expanded_columns_horizontal)
+                    key = "tile_expanded_columns_horizontal"
+                    setDefaultValue(6)
+                    max = 9
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK < 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_unexpanded_columns_vertical)
+                    key = "tile_unexpanded_columns_vertical_c13"
+                    setDefaultValue(5)
+                    max = 6
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_expanded_rows_vertical)
+                    key = "tile_expanded_rows_vertical_c13"
+                    setDefaultValue(3)
+                    max = 6
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_expanded_columns_vertical)
+                    key = "tile_expanded_columns_vertical_c13"
+                    setDefaultValue(4)
+                    max = 7
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= 33
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.tile_columns_horizontal_c13)
+                    key = "tile_columns_horizontal_c13"
+                    setDefaultValue(5)
+                    max = 6
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= 33
+                })
             }
         }
     }
@@ -1495,61 +1289,51 @@ class StatusBarLayout : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.statusbar_layout_mode)
-                    summary = "%s"
-                    key = "statusbar_layout_mode"
-                    entries = resources.getStringArray(R.array.statusbar_layout_mode_entries)
-                    entryValues = arrayOf("0", "1")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.statusbar_layout_mode)
+                summary = "%s"
+                key = "statusbar_layout_mode"
+                entries = resources.getStringArray(R.array.statusbar_layout_mode_entries)
+                entryValues = arrayOf("0", "1")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.statusbar_layout_compatible_mode)
+                key = "statusbar_layout_compatible_mode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_layout_compatible_mode)
-                    key = "statusbar_layout_compatible_mode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(
                     ModulePrefs, "statusbar_layout_compatible_mode", false
                 )
             ) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_layout_left_margin)
-                        summary = getString(R.string.statusbar_layout_margin_tip)
-                        key = "statusbar_layout_left_margin"
-                        setDefaultValue(0)
-                        max = 150
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_layout_right_margin)
-                        summary = getString(R.string.statusbar_layout_margin_tip)
-                        key = "statusbar_layout_right_margin"
-                        setDefaultValue(0)
-                        max = 150
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_layout_left_margin)
+                    summary = getString(R.string.statusbar_layout_margin_tip)
+                    key = "statusbar_layout_left_margin"
+                    setDefaultValue(0)
+                    max = 150
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_layout_right_margin)
+                    summary = getString(R.string.statusbar_layout_margin_tip)
+                    key = "statusbar_layout_right_margin"
+                    setDefaultValue(0)
+                    max = 150
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                })
             }
         }
     }
@@ -1576,128 +1360,109 @@ class StatusBarBattery : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_battery_percent)
-                    key = "remove_statusbar_battery_percent"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_statusbar_battery_percent)
+                key = "remove_statusbar_battery_percent"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.use_user_typeface)
+                key = "statusbar_power_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.use_user_typeface)
-                    key = "statusbar_power_user_typeface"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "statusbar_power_user_typeface", false)) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.statusbar_power_font_size)
-                        summary = getString(R.string.statusbar_clock_fontsize_summary)
-                        key = "statusbar_power_font_size"
-                        setDefaultValue(0)
-                        max = 10
-                        min = 0
-                        seekBarIncrement = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
-            }
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.StatusBarBatteryNotify)
-                    key = "StatusBarBatteryNotify"
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.statusbar_power_font_size)
+                    summary = getString(R.string.statusbar_clock_fontsize_summary)
+                    key = "statusbar_power_font_size"
+                    setDefaultValue(0)
+                    max = 10
+                    min = 0
+                    showSeekBarValue = true
+                    updatesContinuously = false
                     isIconSpaceReserved = false
-                    isVisible = SDK >= A12
+                })
+            }
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarBatteryNotify)
+                key = "StatusBarBatteryNotify"
+                isIconSpaceReserved = false
+                isVisible = SDK >= A12
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.battery_information_display_mode)
+                summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
+                key = "battery_information_display_mode"
+                entries =
+                    resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                isVisible = SDK >= A12
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("battery_information_display_mode", newValue)
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.battery_information_display_mode)
-                    summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
-                    key = "battery_information_display_mode"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
+            })
+            if (context.getString(ModulePrefs, "battery_information_display_mode", "0") != "0") {
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_charge)
+                    summary = getString(R.string.battery_information_show_charge_summary)
+                    key = "battery_information_show_charge_info"
+                    setDefaultValue(false)
                     isIconSpaceReserved = false
                     isVisible = SDK >= A12
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("battery_information_display_mode", newValue)
-                        (activity as MainActivity).restart()
+                            .put("battery_information_show_charge_info", newValue)
                         true
                     }
-                }
-            )
-            if (context.getString(ModulePrefs, "battery_information_display_mode", "0") != "0") {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.battery_information_show_charge)
-                        summary = getString(R.string.battery_information_show_charge_summary)
-                        key = "battery_information_show_charge_info"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A12
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("battery_information_show_charge_info", newValue)
-                            true
-                        }
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_dual_voltage)
+                    key = "battery_information_show_dual_voltage"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A12
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("battery_information_show_dual_voltage", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.battery_information_show_dual_voltage)
-                        key = "battery_information_show_dual_voltage"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A12
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("battery_information_show_dual_voltage", newValue)
-                            true
-                        }
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_simple_mode)
+                    key = "battery_information_show_simple_mode"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A12
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("battery_information_show_simple_mode", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.battery_information_show_simple_mode)
-                        key = "battery_information_show_simple_mode"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A12
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("battery_information_show_simple_mode", newValue)
-                            true
-                        }
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.battery_information_show_update_time)
+                    summary = getString(R.string.battery_information_show_update_time_summary)
+                    key = "battery_information_show_update_time"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = SDK >= A12
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("battery_information_show_update_time", newValue)
+                        true
                     }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.battery_information_show_update_time)
-                        summary = getString(R.string.battery_information_show_update_time_summary)
-                        key = "battery_information_show_update_time"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = SDK >= A12
-                        setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("battery_information_show_update_time", newValue)
-                            true
-                        }
-                    }
-                )
+                })
             }
         }
     }
@@ -1724,254 +1489,202 @@ class Launcher : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.alarmclock_widget_redone_mode)
-                    summary = "%s"
-                    key = "alarmclock_widget_redone_mode"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.coloros.alarmclock")
-                            .put("alarmclock_widget_redone_mode", newValue)
-                        true
-                    }
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.alarmclock_widget_redone_mode)
+                summary = "%s"
+                key = "alarmclock_widget_redone_mode"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.coloros.alarmclock")
+                        .put("alarmclock_widget_redone_mode", newValue)
+                    true
                 }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.AppBadgeRelated)
-                    key = "AppBadgeRelated"
-                    isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AppBadgeRelated)
+                key = "AppBadgeRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_the_dot_after_app_update)
+                key = "remove_the_dot_after_app_update"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_shortcut_badge)
+                key = "remove_app_shortcut_badge"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_work_badge)
+                key = "remove_app_work_badge"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_clone_badge)
+                key = "remove_app_clone_badge"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.FolderLayoutRelated)
+                key = "FolderLayoutRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_folder_preview_background)
+                key = "remove_folder_preview_background"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_folder_layout_adjustment)
+                key = "enable_folder_layout_adjustment"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_the_dot_after_app_update)
-                    key = "remove_the_dot_after_app_update"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_app_shortcut_badge)
-                    key = "remove_app_shortcut_badge"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_app_work_badge)
-                    key = "remove_app_work_badge"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_app_clone_badge)
-                    key = "remove_app_clone_badge"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.FolderLayoutRelated)
-                    key = "FolderLayoutRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_folder_preview_background)
-                    key = "remove_folder_preview_background"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_folder_layout_adjustment)
-                    key = "enable_folder_layout_adjustment"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "enable_folder_layout_adjustment", false)) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.set_icon_columns_in_folder)
-                        key = "set_icon_columns_in_folder"
-                        setDefaultValue(3)
-                        max = 7
-                        min = 3
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.set_icon_columns_in_folder)
+                    key = "set_icon_columns_in_folder"
+                    setDefaultValue(3)
+                    max = 7
+                    min = 3
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                })
             }
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.PaginationComponentRelated)
-                    key = "PaginationComponentRelated"
-                    isIconSpaceReserved = false
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.PaginationComponentRelated)
+                key = "PaginationComponentRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_pagination_component)
+                key = "remove_pagination_component"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_folder_pagination_component)
+                key = "remove_folder_pagination_component"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_pagination_component_sliding)
+                key = "disable_pagination_component_sliding"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.RecentTaskListRelated)
+                key = "RecentTaskListRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_stacked_task_layout)
+                key = "enable_stacked_task_layout"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_pagination_component)
-                    key = "remove_pagination_component"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_folder_pagination_component)
-                    key = "remove_folder_pagination_component"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_pagination_component_sliding)
-                    key = "disable_pagination_component_sliding"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.RecentTaskListRelated)
-                    key = "RecentTaskListRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_stacked_task_layout)
-                    key = "enable_stacked_task_layout"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "enable_stacked_task_layout", false)) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.set_task_stacking_level)
-                        key = "set_task_stacking_level"
-                        setDefaultValue(7)
-                        max = 10
-                        min = 5
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.fix_current_task_to_the_top)
-                        key = "fix_current_task_to_the_top"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                    }
-                )
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.set_task_stacking_level)
+                    key = "set_task_stacking_level"
+                    setDefaultValue(7)
+                    max = 10
+                    min = 5
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.fix_current_task_to_the_top)
+                    key = "fix_current_task_to_the_top"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
             }
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_recent_task_list_clear_button)
-                    key = "remove_recent_task_list_clear_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.long_press_app_icon_open_app_details)
+                key = "long_press_app_icon_open_app_details"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_bottom_app_icon_of_recent_task_list)
+                key = "remove_bottom_app_icon_of_recent_task_list"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_recent_task_list_clear_button)
+                key = "remove_recent_task_list_clear_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.launcher_layout_related)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.launcher_layout_enable)
+                summary = getString(R.string.launcher_layout_row_colume)
+                key = "launcher_layout_enable"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.long_press_app_icon_open_app_details)
-                    key = "long_press_app_icon_open_app_details"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_bottom_app_icon_of_recent_task_list)
-                    key = "remove_bottom_app_icon_of_recent_task_list"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.launcher_layout_related)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.launcher_layout_enable)
-                    summary = getString(R.string.launcher_layout_row_colume)
-                    key = "launcher_layout_enable"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
-                }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "launcher_layout_enable", false)) {
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.launcher_layout_max_rows)
-                        key = "launcher_layout_max_rows"
-                        setDefaultValue(6)
-                        max = 10
-                        min = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
-                addPreference(
-                    SeekBarPreference(context).apply {
-                        title = getString(R.string.launcher_layout_max_columns)
-                        key = "launcher_layout_max_columns"
-                        setDefaultValue(4)
-                        max = 8
-                        min = 1
-                        showSeekBarValue = true
-                        updatesContinuously = false
-                        isIconSpaceReserved = false
-                    }
-                )
-            }
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.launcher_events)
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.launcher_layout_max_rows)
+                    key = "launcher_layout_max_rows"
+                    setDefaultValue(6)
+                    max = 10
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
                     isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
+                })
+                addPreference(SeekBarPreference(context).apply {
+                    title = getString(R.string.launcher_layout_max_columns)
+                    key = "launcher_layout_max_columns"
+                    setDefaultValue(4)
+                    max = 8
+                    min = 1
+                    showSeekBarValue = true
+                    updatesContinuously = false
+                    isIconSpaceReserved = false
+                })
+            }
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.launcher_events)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
         }
     }
 
@@ -2059,148 +1772,116 @@ class LockScreen : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.LockScreenComponent)
-                    key = "LockScreenComponent"
-                    isIconSpaceReserved = false
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.LockScreenComponent)
+                key = "LockScreenComponent"
+                isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.lock_screen_clock_redone_mode)
+                summary = "%s"
+                key = "lock_screen_clock_redone_mode"
+                entries =
+                    resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("lock_screen_clock_redone_mode", newValue)
+                    true
                 }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.lock_screen_clock_redone_mode)
-                    summary = "%s"
-                    key = "lock_screen_clock_redone_mode"
-                    entries =
-                        resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("lock_screen_clock_redone_mode", newValue)
-                        true
-                    }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.apply_lock_screen_dual_clock_redone)
+                key = "apply_lock_screen_dual_clock_redone"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("apply_lock_screen_dual_clock_redone", newValue)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.apply_lock_screen_dual_clock_redone)
-                    key = "apply_lock_screen_dual_clock_redone"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("apply_lock_screen_dual_clock_redone", newValue)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.set_lock_screen_centered)
-                    summary = getString(R.string.set_lock_screen_centered_summary)
-                    key = "set_lock_screen_centered"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.lock_screen_use_user_typeface)
-                    key = "lock_screen_use_user_typeface"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.LockScreenCarrier)
-                    key = "LockScreenCarrier"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_statusbar_carriers)
-                    key = "remove_statusbar_carriers"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.statusbar_carriers_use_user_typeface)
-                    key = "statusbar_carriers_use_user_typeface"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.LockScreenButton)
-                    key = "LockScreenButton"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_top_lock_screen_icon)
-                    key = "remove_top_lock_screen_icon"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_bottom_left_button)
-                    key = "remove_lock_screen_bottom_left_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_bottom_right_camera)
-                    key = "remove_lock_screen_bottom_right_camera"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_close_notification_button)
-                    key = "remove_lock_screen_close_notification_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_lock_screen_bottom_sos_button)
-                    summary = getString(R.string.remove_lock_screen_bottom_sos_button_summary)
-                    key = "remove_lock_screen_bottom_sos_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= 33
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.LockScreenEvent)
-                    key = "LockScreenEvent"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_72hour_password_verification)
-                    summary = getString(R.string.remove_72hour_password_verification_summary)
-                    key = "remove_72hour_password_verification"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.set_lock_screen_centered)
+                summary = getString(R.string.set_lock_screen_centered_summary)
+                key = "set_lock_screen_centered"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.lock_screen_use_user_typeface)
+                key = "lock_screen_use_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.LockScreenCarrier)
+                key = "LockScreenCarrier"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_statusbar_carriers)
+                key = "remove_statusbar_carriers"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.statusbar_carriers_use_user_typeface)
+                key = "statusbar_carriers_use_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.LockScreenButton)
+                key = "LockScreenButton"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_top_lock_screen_icon)
+                key = "remove_top_lock_screen_icon"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_lock_screen_bottom_left_button)
+                key = "remove_lock_screen_bottom_left_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_lock_screen_bottom_right_camera)
+                key = "remove_lock_screen_bottom_right_camera"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_lock_screen_close_notification_button)
+                key = "remove_lock_screen_close_notification_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_lock_screen_bottom_sos_button)
+                summary = getString(R.string.remove_lock_screen_bottom_sos_button_summary)
+                key = "remove_lock_screen_bottom_sos_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= 33
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.LockScreenEvent)
+                key = "LockScreenEvent"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_72hour_password_verification)
+                summary = getString(R.string.remove_72hour_password_verification_summary)
+                key = "remove_72hour_password_verification"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -2226,50 +1907,40 @@ class Screenshot : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_system_screenshot_delay)
-                    summary = getString(R.string.remove_system_screenshot_delay_summary)
-                    key = "remove_system_screenshot_delay"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_screenshot_privacy_limit)
-                    summary = getString(R.string.remove_screenshot_privacy_limit_summary)
-                    key = "remove_screenshot_privacy_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_flag_secure)
-                    summary = getString(R.string.disable_flag_secure_summary)
-                    key = "disable_flag_secure"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_page_limit_for_long_screenshots)
-                    summary = getString(R.string.remove_page_limit_for_long_screenshots_summary)
-                    key = "remove_page_limit_for_long_screenshots"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_png_save_format)
-                    key = "enable_png_save_format"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_system_screenshot_delay)
+                summary = getString(R.string.remove_system_screenshot_delay_summary)
+                key = "remove_system_screenshot_delay"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_screenshot_privacy_limit)
+                summary = getString(R.string.remove_screenshot_privacy_limit_summary)
+                key = "remove_screenshot_privacy_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_flag_secure)
+                summary = getString(R.string.disable_flag_secure_summary)
+                key = "disable_flag_secure"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_page_limit_for_long_screenshots)
+                summary = getString(R.string.remove_page_limit_for_long_screenshots_summary)
+                key = "remove_page_limit_for_long_screenshots"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_png_save_format)
+                key = "enable_png_save_format"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -2305,169 +1976,133 @@ class Application : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.AppStartupRelated)
-                    key = "AppStartupRelated"
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AppStartupRelated)
+                key = "AppStartupRelated"
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_splash_screen)
+                key = "disable_splash_screen"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.APPRelatedList)
+                key = "APPRelatedList"
+                isIconSpaceReserved = false
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.zoom_window_support_list)
+                summary = getString(R.string.zoom_window_support_list_summary)
+                key = "zoom_window_support_list"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_application_to_zoomWindowFragment, title)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_splash_screen)
-                    key = "disable_splash_screen"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A13
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.dark_mode_support_list)
+                summary = getString(R.string.zoom_window_support_list_summary)
+                key = "dark_mode_support_list"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_application_to_darkModeFragment, title)
+                    true
                 }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.APPRelatedList)
-                    key = "APPRelatedList"
-                    isIconSpaceReserved = false
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.multi_app_custom_list)
+                summary = getString(R.string.multi_app_custom_list_summary)
+                key = "multi_app_custom_list"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_application_to_multiFragment, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.zoom_window_support_list)
-                    summary = getString(R.string.zoom_window_support_list_summary)
-                    key = "zoom_window_support_list"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_application_to_zoomWindowFragment, title)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.dark_mode_support_list)
-                    summary = getString(R.string.zoom_window_support_list_summary)
-                    key = "dark_mode_support_list"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_application_to_darkModeFragment, title)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.multi_app_custom_list)
-                    summary = getString(R.string.multi_app_custom_list_summary)
-                    key = "multi_app_custom_list"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_application_to_multiFragment, title)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.AppInstallationRelated)
-                    summary = getString(R.string.PackageInstaller_summary)
-                    key = "PackageInstaller"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.skip_apk_scan)
-                    summary = getString(R.string.skip_apk_scan_summary)
-                    key = "skip_apk_scan"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.allow_downgrade_install)
-                    summary = getString(R.string.allow_downgrade_install_summary)
-                    key = "allow_downgrade_install"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_install_ads)
-                    summary = getString(R.string.remove_install_ads_summary)
-                    key = "remove_install_ads"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.auto_click_install_button)
-                    key = "auto_click_install_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.auto_click_uninstall_button)
-                    key = "auto_click_uninstall_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.show_packagename_and_versioncode)
-                    summary = getString(R.string.show_packagename_and_versioncode_summary)
-                    key = "show_packagename_and_versioncode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.replase_aosp_installer)
-                    summary = getString(R.string.replase_aosp_installer_summary)
-                    key = "replase_aosp_installer"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_adb_install_confirm)
-                    summary = getString(R.string.remove_adb_install_confirm_summary)
-                    key = "remove_adb_install_confirm"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.ApplyOtherRestrictions)
-                    key = "ApplyOtherRestrictions"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.unlock_startup_limit)
-                    summary = getString(R.string.unlock_startup_limit_summary)
-                    key = "unlock_startup_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.unlock_task_locks)
-                    key = "unlock_task_locks"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AppInstallationRelated)
+                summary = getString(R.string.PackageInstaller_summary)
+                key = "PackageInstaller"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.skip_apk_scan)
+                summary = getString(R.string.skip_apk_scan_summary)
+                key = "skip_apk_scan"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_downgrade_install)
+                summary = getString(R.string.allow_downgrade_install_summary)
+                key = "allow_downgrade_install"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_install_ads)
+                summary = getString(R.string.remove_install_ads_summary)
+                key = "remove_install_ads"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.auto_click_install_button)
+                key = "auto_click_install_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.auto_click_uninstall_button)
+                key = "auto_click_uninstall_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.show_packagename_and_versioncode)
+                summary = getString(R.string.show_packagename_and_versioncode_summary)
+                key = "show_packagename_and_versioncode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.replase_aosp_installer)
+                summary = getString(R.string.replase_aosp_installer_summary)
+                key = "replase_aosp_installer"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_adb_install_confirm)
+                summary = getString(R.string.remove_adb_install_confirm_summary)
+                key = "remove_adb_install_confirm"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.ApplyOtherRestrictions)
+                key = "ApplyOtherRestrictions"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.unlock_startup_limit)
+                summary = getString(R.string.unlock_startup_limit_summary)
+                key = "unlock_startup_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.unlock_task_locks)
+                key = "unlock_task_locks"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -2489,79 +2124,78 @@ class Application : ModulePreferenceFragment() {
 
 class DialogRelated : ModulePreferenceFragment() {
     private val scopes = arrayOf(
-        "com.android.systemui",
-        "com.oplus.exsystemservice",
-        "com.coloros.securepay"
+        "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_duplicate_floating_window)
-                    summary = getString(R.string.disable_duplicate_floating_window_summary)
-                    key = "disable_duplicate_floating_window"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = Build.VERSION.SDK_INT >= 33
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_duplicate_floating_window)
+                summary = getString(R.string.disable_duplicate_floating_window_summary)
+                key = "disable_duplicate_floating_window"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = Build.VERSION.SDK_INT >= 33
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_headphone_high_volume_warning)
+                summary = getString(R.string.disable_headphone_high_volume_warning_summary)
+                key = "disable_headphone_high_volume_warning"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_low_battery_dialog_warning)
+                summary = getString(R.string.remove_low_battery_dialog_warning_summary)
+                key = "remove_low_battery_dialog_warning"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop)
+                summary = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
+                key = "remove_warning_dialog_that_app_runs_on_desktop"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_usb_connect_dialog)
+                summary = getString(R.string.remove_usb_connect_dialog_summary)
+                key = "remove_usb_connect_dialog"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_secure_pay_found_virus_dialog)
+                key = "remove_secure_pay_found_virus_dialog"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_access_device_log_dialog)
+                key = "remove_access_device_log_dialog"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SeekBarPreference(context).apply {
+                title = getString(R.string.custom_volume_dialog_background_transparency)
+                summary = getString(R.string.force_enable_systemui_blur_feature_tips)
+                key = "custom_volume_dialog_background_transparency"
+                setDefaultValue(-1)
+                max = 10
+                min = -1
+                showSeekBarValue = true
+                updatesContinuously = false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("custom_volume_dialog_background_transparency", newValue)
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_headphone_high_volume_warning)
-                    summary = getString(R.string.disable_headphone_high_volume_warning_summary)
-                    key = "disable_headphone_high_volume_warning"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_low_battery_dialog_warning)
-                    summary = getString(R.string.remove_low_battery_dialog_warning_summary)
-                    key = "remove_low_battery_dialog_warning"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop)
-                    summary =
-                        getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
-                    key = "remove_warning_dialog_that_app_runs_on_desktop"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_usb_connect_dialog)
-                    summary = getString(R.string.remove_usb_connect_dialog_summary)
-                    key = "remove_usb_connect_dialog"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_secure_pay_found_virus_dialog)
-                    key = "remove_secure_pay_found_virus_dialog"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_access_device_log_dialog)
-                    key = "remove_access_device_log_dialog"
-                    setDefaultValue(false)
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                }
-            )
+            })
         }
     }
 
@@ -2599,95 +2233,73 @@ class FullScreenGestureRelated : ModulePreferenceFragment() {
             if (it != null) {
                 val path = FileUtils.getDocumentPath(requireActivity(), it)
                 requireActivity().putString(
-                    ModulePrefs,
-                    "replace_side_slider_icon_on_right",
-                    path
+                    ModulePrefs, "replace_side_slider_icon_on_right", path
                 )
                 findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
             }
         }
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_side_slider)
-                    key = "remove_side_slider"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_side_slider)
+                key = "remove_side_slider"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_side_slider_black_background)
+                key = "remove_side_slider_black_background"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_rotate_screen_button)
+                key = "remove_rotate_screen_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.CustomSideSliderIcon)
+                key = "CustomSideSliderIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.replace_side_slider_icon_switch)
+                summary = getString(R.string.replace_side_slider_icon_switch_summary)
+                key = "replace_side_slider_icon_switch"
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_side_slider_black_background)
-                    key = "remove_side_slider_black_background"
-                    setDefaultValue(false)
+            })
+            if (context.getBoolean(ModulePrefs, "replace_side_slider_icon_switch", false)) {
+                addPreference(Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_left)
+                    key = "replace_side_slider_icon_on_left"
+                    summary = context.getString(
+                        ModulePrefs, "replace_side_slider_icon_on_left", "null"
+                    )
                     isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_rotate_screen_button)
-                    key = "remove_rotate_screen_button"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.CustomSideSliderIcon)
-                    key = "CustomSideSliderIcon"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.replace_side_slider_icon_switch)
-                    summary = getString(R.string.replace_side_slider_icon_switch_summary)
-                    key = "replace_side_slider_icon_switch"
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadLeftImage.launch("image/*")
                         true
                     }
-                }
-            )
-            if (context.getBoolean(ModulePrefs, "replace_side_slider_icon_switch", false)) {
-                addPreference(
-                    Preference(context).apply {
-                        title = getString(R.string.replace_side_slider_icon_on_left)
-                        key = "replace_side_slider_icon_on_left"
-                        summary =
-                            context.getString(
-                                ModulePrefs,
-                                "replace_side_slider_icon_on_left",
-                                "null"
-                            )
-                        isIconSpaceReserved = false
-                        isCopyingEnabled = true
-                        setOnPreferenceClickListener {
-                            loadLeftImage.launch("image/*")
-                            true
-                        }
+                })
+                addPreference(Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_right)
+                    key = "replace_side_slider_icon_on_right"
+                    summary = context.getString(
+                        ModulePrefs, "replace_side_slider_icon_on_right", "null"
+                    )
+                    isIconSpaceReserved = false
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadRightImage.launch("image/*")
+                        true
                     }
-                )
-                addPreference(
-                    Preference(context).apply {
-                        title = getString(R.string.replace_side_slider_icon_on_right)
-                        key = "replace_side_slider_icon_on_right"
-                        summary =
-                            context.getString(
-                                ModulePrefs,
-                                "replace_side_slider_icon_on_right",
-                                "null"
-                            )
-                        isIconSpaceReserved = false
-                        isCopyingEnabled = true
-                        setOnPreferenceClickListener {
-                            loadRightImage.launch("image/*")
-                            true
-                        }
-                    }
-                )
+                })
             }
         }
     }
@@ -2723,48 +2335,39 @@ class FingerPrintRelated : ModulePreferenceFragment() {
         }
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.remove_fingerprint_icon_mode)
-                    summary = "%s"
-                    key = "remove_fingerprint_icon_mode"
-                    entries = resources.getStringArray(R.array.remove_fingerprint_icon_mode_entries)
-                    entryValues = arrayOf("0", "1", "2", "3")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.remove_fingerprint_icon_mode)
+                summary = "%s"
+                key = "remove_fingerprint_icon_mode"
+                entries = resources.getStringArray(R.array.remove_fingerprint_icon_mode_entries)
+                entryValues = arrayOf("0", "1", "2", "3")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.replace_fingerprint_icon_switch)
+                summary = getString(R.string.replace_fingerprint_icon_switch_summary)
+                key = "replace_fingerprint_icon_switch"
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.replace_fingerprint_icon_switch)
-                    summary = getString(R.string.replace_fingerprint_icon_switch_summary)
-                    key = "replace_fingerprint_icon_switch"
+            })
+            if (context.getBoolean(ModulePrefs, "replace_fingerprint_icon_switch", false)) {
+                addPreference(Preference(context).apply {
+                    title = getString(R.string.replace_fingerprint_icon_path)
+                    key = "replace_fingerprint_icon_path"
+                    summary = context.getString(
+                        ModulePrefs, "replace_fingerprint_icon_path", "null"
+                    )
                     isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadFPIcon.launch("image/*")
                         true
                     }
-                }
-            )
-            if (context.getBoolean(ModulePrefs, "replace_fingerprint_icon_switch", false)) {
-                addPreference(
-                    Preference(context).apply {
-                        title = getString(R.string.replace_fingerprint_icon_path)
-                        key = "replace_fingerprint_icon_path"
-                        summary =
-                            context.getString(
-                                ModulePrefs,
-                                "replace_fingerprint_icon_path",
-                                "null"
-                            )
-                        isIconSpaceReserved = false
-                        isCopyingEnabled = true
-                        setOnPreferenceClickListener {
-                            loadFPIcon.launch("image/*")
-                            true
-                        }
-                    }
-                )
+                })
             }
         }
     }
@@ -2797,118 +2400,110 @@ class Miscellaneous : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.FloatingWindowDialogRelated)
-                    summary =
-                        getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(
-                            R.string.disable_headphone_high_volume_warning
-                        )
-                    key = "FloatingWindowDialogRelated"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_miscellaneous_to_dialogRelated, title)
-                        true
-                    }
+            addPreference(Preference(context).apply {
+                title = getString(R.string.FloatingWindowDialogRelated)
+                summary =
+                    getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(
+                        R.string.disable_headphone_high_volume_warning
+                    )
+                key = "FloatingWindowDialogRelated"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_miscellaneous_to_dialogRelated, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.FullScreenGestureRelated)
-                    summary =
-                        getString(R.string.remove_side_slider) + "," + getString(R.string.remove_side_slider_black_background)
-                    key = "FullScreenGestureRelated"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
-                        true
-                    }
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.FullScreenGestureRelated)
+                summary =
+                    getString(R.string.remove_side_slider) + "," + getString(R.string.remove_side_slider_black_background)
+                key = "FullScreenGestureRelated"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
+                    true
+                }
 
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.FingerPrintRelated)
+                summary =
+                    getString(R.string.remove_fingerprint_icon) + "," + getString(R.string.replace_fingerprint_icon_switch)
+                key = "FingerPrintRelated"
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_miscellaneous_to_fingerPrintRelated, title)
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.FingerPrintRelated)
-                    summary =
-                        getString(R.string.remove_fingerprint_icon) + "," + getString(R.string.replace_fingerprint_icon_switch)
-                    key = "FingerPrintRelated"
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_miscellaneous_to_fingerPrintRelated, title)
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.show_charging_ripple)
-                    summary = getString(R.string.show_charging_ripple_summary)
-                    key = "show_charging_ripple"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = Build.VERSION.SDK_INT >= 31
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_otg_auto_off)
-                    summary = getString(R.string.disable_otg_auto_off_summary)
-                    key = "disable_otg_auto_off"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_dpi_reboot_recovery)
-                    summary = getString(R.string.disable_dpi_reboot_recovery_summary)
-                    key = "disable_dpi_reboot_recovery"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_storage_limit)
-                    summary = getString(R.string.remove_storage_limit_summary)
-                    key = "remove_storage_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SeekBarPreference(context).apply {
-                    title = getString(R.string.media_volume_level)
-                    summary = getString(R.string.media_volume_level_summary)
-                    key = "media_volume_level"
-                    setDefaultValue(0)
-                    max = 30
-                    min = 0
-                    seekBarIncrement = 1
-                    showSeekBarValue = true
-                    updatesContinuously = false
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.allow_untrusted_touch)
-                    key = "allow_untrusted_touch"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A12
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_dynamic_refresh_rate)
-                    summary = getString(R.string.disable_dynamic_refresh_rate_summary)
-                    key = "disable_dynamic_refresh_rate"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.show_charging_ripple)
+                summary = getString(R.string.show_charging_ripple_summary)
+                key = "show_charging_ripple"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = Build.VERSION.SDK_INT >= 31
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_otg_auto_off)
+                summary = getString(R.string.disable_otg_auto_off_summary)
+                key = "disable_otg_auto_off"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_dpi_reboot_recovery)
+                summary = getString(R.string.disable_dpi_reboot_recovery_summary)
+                key = "disable_dpi_reboot_recovery"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_storage_limit)
+                summary = getString(R.string.remove_storage_limit_summary)
+                key = "remove_storage_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SeekBarPreference(context).apply {
+                title = getString(R.string.media_volume_level)
+                summary = getString(R.string.media_volume_level_summary)
+                key = "media_volume_level"
+                setDefaultValue(0)
+                max = 30
+                min = 0
+                showSeekBarValue = true
+                updatesContinuously = false
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.minimum_volume_level_can_be_zero)
+                key = "minimum_volume_level_can_be_zero"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A12
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_untrusted_touch)
+                key = "allow_untrusted_touch"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A12
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_dynamic_refresh_rate)
+                summary = getString(R.string.disable_dynamic_refresh_rate_summary)
+                key = "disable_dynamic_refresh_rate"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_enable_systemui_blur_feature)
+                key = "force_enable_systemui_blur_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -2934,115 +2529,89 @@ class Settings : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_top_account_display)
-                    key = "remove_top_account_display"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_dpi_restart_recovery)
-                    summary = getString(R.string.remove_dpi_restart_recovery_summary)
-                    key = "remove_dpi_restart_recovery"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.force_display_dc_backlight_mode)
-                    summary = getString(R.string.force_display_dc_backlight_mode_summary)
-                    key = "force_display_dc_backlight_mode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.force_display_video_memc_frame_insertion)
-                    summary = getString(R.string.force_display_dc_backlight_mode_summary)
-                    key = "force_display_video_memc_frame_insertion"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.video_frame_insertion_support_2K120)
-                    summary = getString(R.string.video_frame_insertion_support_2K120_summary)
-                    key = "video_frame_insertion_support_2K120"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.force_display_bottom_google_settings)
-                    key = "force_display_bottom_google_settings"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.disable_cn_special_edition_setting)
-                    key = "disable_cn_special_edition_setting"
-                    setDefaultValue(false)
-                    isVisible = isZh(context)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_settings_bottom_laboratory)
-                    key = "remove_settings_bottom_laboratory"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.AppDetailsRelated)
-                    key = "AppDetailsRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.show_package_name_in_app_details)
-                    key = "show_package_name_in_app_details"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.show_last_update_time_in_app_details)
-                    key = "show_last_update_time_in_app_details"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_long_press_to_copy_in_app_details)
-                    key = "enable_long_press_to_copy_in_app_details"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.click_icon_open_market_page)
-                    key = "click_icon_open_market_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_top_account_display)
+                key = "remove_top_account_display"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_dpi_restart_recovery)
+                summary = getString(R.string.remove_dpi_restart_recovery_summary)
+                key = "remove_dpi_restart_recovery"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_dc_backlight_mode)
+                summary = getString(R.string.force_display_dc_backlight_mode_summary)
+                key = "force_display_dc_backlight_mode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_video_memc_frame_insertion)
+                summary = getString(R.string.force_display_dc_backlight_mode_summary)
+                key = "force_display_video_memc_frame_insertion"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.video_frame_insertion_support_2K120)
+                summary = getString(R.string.video_frame_insertion_support_2K120_summary)
+                key = "video_frame_insertion_support_2K120"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_bottom_google_settings)
+                key = "force_display_bottom_google_settings"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_cn_special_edition_setting)
+                key = "disable_cn_special_edition_setting"
+                setDefaultValue(false)
+                isVisible = isZh(context)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_settings_bottom_laboratory)
+                key = "remove_settings_bottom_laboratory"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AppDetailsRelated)
+                key = "AppDetailsRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.show_package_name_in_app_details)
+                key = "show_package_name_in_app_details"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.show_last_update_time_in_app_details)
+                key = "show_last_update_time_in_app_details"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_long_press_to_copy_in_app_details)
+                key = "enable_long_press_to_copy_in_app_details"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.click_icon_open_market_page)
+                key = "click_icon_open_market_page"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3076,92 +2645,75 @@ class Battery : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.open_battery_health)
-                    summary = getString(R.string.open_battery_health_summary)
-                    key = "open_battery_health"
-                    setDefaultValue(false)
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, _ ->
-                        (activity as MainActivity).restart()
-                        true
-                    }
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.open_battery_health)
+                summary = getString(R.string.open_battery_health_summary)
+                key = "open_battery_health"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
+            })
             if (context.getBoolean(ModulePrefs, "open_battery_health", false)) {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.fix_battery_health_data_display)
-                        summary = getString(R.string.fix_battery_health_data_display_summary)
-                        key = "fix_battery_health_data_display"
-                        setDefaultValue(false)
-                        isVisible = SDK >= A13
-                        isIconSpaceReserved = false
-                    }
-                )
-            }
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.open_screen_power_save)
-                    summary = getString(R.string.open_screen_power_save_summary)
-                    key = "open_screen_power_save"
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.fix_battery_health_data_display)
+                    summary = getString(R.string.fix_battery_health_data_display_summary)
+                    key = "fix_battery_health_data_display"
                     setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.performance_mode_and_standby_optimization)
-                    summary =
-                        getString(R.string.performance_mode_and_standby_optimization_summary)
-                    key = "performance_mode_and_standby_optimization"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
                     isVisible = SDK >= A13
-                }
-            )
+                    isIconSpaceReserved = false
+                })
+            }
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.open_screen_power_save)
+                summary = getString(R.string.open_screen_power_save_summary)
+                key = "open_screen_power_save"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.performance_mode_and_standby_optimization)
+                summary = getString(R.string.performance_mode_and_standby_optimization_summary)
+                key = "performance_mode_and_standby_optimization"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = SDK >= A13
+            })
 
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_high_temperature_limit)
-                    summary = getString(R.string.remove_high_temperature_limit_summary)
-                    key = "remove_high_temperature_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.BatteryOptimization)
-                    key = "BatteryOptimization"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.restore_default_battery_optimization_whitelist)
-                    key = "restore_default_battery_optimization_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_high_temperature_limit)
+                summary = getString(R.string.remove_high_temperature_limit_summary)
+                key = "remove_high_temperature_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.BatteryOptimization)
+                key = "BatteryOptimization"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.restore_default_battery_optimization_whitelist)
+                key = "restore_default_battery_optimization_whitelist"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
             if (context.getBoolean(
                     ModulePrefs, "restore_default_battery_optimization_whitelist", false
                 )
             ) {
-                addPreference(
-                    SwitchPreference(context).apply {
-                        title = getString(R.string.disable_customize_battery_optimization_whiteList)
-                        summary =
-                            getString(R.string.disable_customize_battery_optimization_whiteList_summary)
-                        key = "disable_customize_battery_optimization_whiteList"
-                        setDefaultValue(false)
-                        isIconSpaceReserved = false
-                        isVisible = false
-                    }
-                )
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.disable_customize_battery_optimization_whiteList)
+                    summary =
+                        getString(R.string.disable_customize_battery_optimization_whiteList_summary)
+                    key = "disable_customize_battery_optimization_whiteList"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    isVisible = false
+                })
             }
         }
     }
@@ -3197,40 +2749,32 @@ class Camera : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_watermark_word_limit)
-                    key = "remove_watermark_word_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_hasselblad_watermark_style)
-                    key = "enable_hasselblad_watermark_style"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.fix_hasselblad_custom_watermark_crash)
-                    summary = getString(R.string.fix_hasselblad_custom_watermark_crash_summary)
-                    key = "fix_hasselblad_custom_watermark_crash"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_10_bit_image_support)
-                    key = "enable_10_bit_image_support"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_watermark_word_limit)
+                key = "remove_watermark_word_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_hasselblad_watermark_style)
+                key = "enable_hasselblad_watermark_style"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.fix_hasselblad_custom_watermark_crash)
+                summary = getString(R.string.fix_hasselblad_custom_watermark_crash_summary)
+                key = "fix_hasselblad_custom_watermark_crash"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                isVisible = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_10_bit_image_support)
+                key = "enable_10_bit_image_support"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3265,155 +2809,121 @@ class OplusGames : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_root_check)
-                    summary = getString(R.string.remove_root_check_summary)
-                    key = "remove_root_check"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_root_check)
+                summary = getString(R.string.remove_root_check_summary)
+                key = "remove_root_check"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_startup_animation)
+                key = "remove_startup_animation"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_welfare_page)
+                key = "remove_welfare_page"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_some_vip_limit)
+                summary = getString(R.string.remove_some_vip_limit_summary)
+                key = "remove_some_vip_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_developer_page)
+                summary = getString(R.string.enable_developer_page_summary)
+                key = "enable_developer_page"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(EditTextPreference(context).apply {
+                title = getString(R.string.custom_media_player_support)
+                dialogTitle = title
+                summary = context.getString(
+                    ModulePrefs, "custom_media_player_support", "None"
+                )
+                if (summary == "") summary = "None"
+                dialogMessage = getString(R.string.custom_media_player_support_message)
+                key = "custom_media_player_support"
+                setDefaultValue("None")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    summary = if (newValue == "") "None" else newValue as String
+                    true
                 }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_startup_animation)
-                    key = "remove_startup_animation"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_welfare_page)
-                    key = "remove_welfare_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_some_vip_limit)
-                    summary = getString(R.string.remove_some_vip_limit_summary)
-                    key = "remove_some_vip_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_developer_page)
-                    summary = getString(R.string.enable_developer_page_summary)
-                    key = "enable_developer_page"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                EditTextPreference(context).apply {
-                    title = getString(R.string.custom_media_player_support)
-                    dialogTitle = title
-                    summary = context.getString(
-                        ModulePrefs, "custom_media_player_support", "None"
-                    )
-                    if (summary == "") summary = "None"
-                    dialogMessage = getString(R.string.custom_media_player_support_message)
-                    key = "custom_media_player_support"
-                    setDefaultValue("None")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        summary = if (newValue == "") "None" else newValue as String
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_danmaku_notification_whitelist)
-                    key = "remove_danmaku_notification_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_x_mode_feature)
-                    key = "enable_x_mode_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_gt_mode_feature)
-                    key = "enable_gt_mode_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_one_plus_characteristic)
-                    key = "enable_one_plus_characteristic"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_adreno_gpu_controller)
-                    key = "enable_adreno_gpu_controller"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_support_competition_mode)
-                    key = "enable_support_competition_mode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_competition_mode_sound)
-                    key = "remove_competition_mode_sound"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_increase_fps_limit_feature)
-                    key = "enable_increase_fps_limit_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_increase_fps_feature)
-                    key = "enable_increase_fps_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_optimise_power_feature)
-                    key = "enable_optimise_power_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.enable_super_resolution_feature)
-                    key = "enable_super_resolution_feature"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_danmaku_notification_whitelist)
+                key = "remove_danmaku_notification_whitelist"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_x_mode_feature)
+                key = "enable_x_mode_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_gt_mode_feature)
+                key = "enable_gt_mode_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_one_plus_characteristic)
+                key = "enable_one_plus_characteristic"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_adreno_gpu_controller)
+                key = "enable_adreno_gpu_controller"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_support_competition_mode)
+                key = "enable_support_competition_mode"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_competition_mode_sound)
+                key = "remove_competition_mode_sound"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_increase_fps_limit_feature)
+                key = "enable_increase_fps_limit_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_increase_fps_feature)
+                key = "enable_increase_fps_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_optimise_power_feature)
+                key = "enable_optimise_power_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_super_resolution_feature)
+                key = "enable_super_resolution_feature"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3448,15 +2958,13 @@ class ThemeStore : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.unlock_themestore_vip)
-                    summary = getString(R.string.unlock_themestore_vip_summary)
-                    key = "unlock_themestore_vip"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.unlock_themestore_vip)
+                summary = getString(R.string.unlock_themestore_vip_summary)
+                key = "unlock_themestore_vip"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3491,15 +2999,13 @@ class CloudService : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_network_limit)
-                    summary = getString(R.string.remove_network_limit_summary)
-                    key = "remove_network_limit"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_network_limit)
+                summary = getString(R.string.remove_network_limit_summary)
+                key = "remove_network_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3534,69 +3040,60 @@ class OplusOta : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.unlock_local_upgrade)
-                    summary = getString(R.string.unlock_local_upgrade_summary)
-                    key = "unlock_local_upgrade"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        scopeLife {
-                            val command =
-                                arrayOf(
-                                    "settings put global development_settings_enabled 1",
-                                    "pm clear com.oplus.ota",
-                                    "settings put global airplane_mode_on 1",
-                                    "am broadcast --user all -a android.intent.action.AIRPLANE_MODE --ez 'state' 'true'",
-                                    "am start com.oplus.ota/com.oplus.otaui.activity.EntryActivity"
-                                )
-                            withDefault { ShellUtils.execCommand(command, true) }
-                        }
-                        true
-                    }
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    val status = ShellUtils.execCommand(
-                        "getprop ro.boot.veritymode",
-                        false,
-                        true
-                    ).let {
-                        if (it.result == 1) "null" else it.successMsg.toString().ifBlank { "null" }
-                    }
-                    title = getString(R.string.remove_dm_verity)
-                    summary = getString(R.string.remove_dm_verity_summary, status)
-                    key = "remove_dm_verity"
-                    isEnabled = status != "enforcing"
-                    isChecked = status == "enforcing"
-                    isPersistent = false
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        val value = newValue as Boolean
-                        ShellUtils.execCommand(
-                            "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}",
-                            true
+            addPreference(Preference(context).apply {
+                title = getString(R.string.unlock_local_upgrade)
+                summary = getString(R.string.unlock_local_upgrade_summary)
+                key = "unlock_local_upgrade"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    scopeLife {
+                        val command = arrayOf(
+                            "settings put global development_settings_enabled 1",
+                            "pm clear com.oplus.ota",
+                            "settings put global airplane_mode_on 1",
+                            "am broadcast --user all -a android.intent.action.AIRPLANE_MODE --ez 'state' 'true'",
+                            "am start com.oplus.ota/com.oplus.otaui.activity.EntryActivity"
                         )
-                        (activity as MainActivity).restart()
-                        true
+                        withDefault { ShellUtils.execCommand(command, true) }
                     }
+                    true
                 }
-            )
-            addPreference(
-                Preference(context).apply {
-                    title = getString(R.string.extract_ota_information)
-                    summary = getString(R.string.extract_ota_information_summary)
-                    key = "extract_ota_information"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_oplusOta_to_extractOTAFragment, title)
+            })
+            addPreference(SwitchPreference(context).apply {
+                val status = ShellUtils.execCommand(
+                    "getprop ro.boot.veritymode", false, true
+                ).let {
+                    if (it.result == 1) "null" else it.successMsg.toString().ifBlank { "null" }
+                }
+                title = getString(R.string.remove_dm_verity)
+                summary = getString(R.string.remove_dm_verity_summary, status)
+                key = "remove_dm_verity"
+                isEnabled = status != "enforcing"
+                isChecked = status == "enforcing"
+                isPersistent = false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    val value = newValue as Boolean
+                    ShellUtils.execCommand(
+                        "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}",
                         true
-                    }
+                    )
+                    (activity as MainActivity).restart()
+                    true
                 }
-            )
+            })
+            addPreference(Preference(context).apply {
+                title = getString(R.string.extract_ota_information)
+                summary = getString(R.string.extract_ota_information_summary)
+                key = "extract_ota_information"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_oplusOta_to_extractOTAFragment, title)
+                    true
+                }
+            })
         }
     }
 
@@ -3631,14 +3128,18 @@ class Pictorial : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_image_save_watermark)
-                    key = "remove_image_save_watermark"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_image_save_watermark)
+                key = "remove_image_save_watermark"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_video_save_watermark)
+                key = "remove_video_save_watermark"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 
@@ -3673,15 +3174,13 @@ class OplusMMS : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_verification_code_floating_window)
-                    key = "remove_verification_code_floating_window"
-                    setDefaultValue(false)
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_verification_code_floating_window)
+                key = "remove_verification_code_floating_window"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
         }
     }
 

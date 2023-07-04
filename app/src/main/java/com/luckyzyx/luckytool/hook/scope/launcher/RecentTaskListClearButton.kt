@@ -4,9 +4,9 @@ import android.widget.Button
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-object RemoveRecentTaskListClearButton : YukiBaseHooker() {
+object RecentTaskListClearButton : YukiBaseHooker() {
     override fun onHook() {
-        //Source OplusClearAllPanelView -> inflate
+        //Source OplusClearAllPanelView
         findClass("com.oplus.quickstep.views.OplusClearAllPanelView").hook {
             injectMember {
                 method { name = "inflateIfNeeded" }

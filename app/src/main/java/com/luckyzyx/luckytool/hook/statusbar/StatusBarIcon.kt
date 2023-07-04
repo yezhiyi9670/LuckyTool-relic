@@ -45,6 +45,7 @@ object StatusBarIcon : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("status_bar_icon_vertical_center", false)) {
             loadHooker(StatusBarIconVerticalCenter)
         }
+
         //seeding_card_container
         //com.oplus.systemui.statusbar.seeding.OplusSeedlingCardContainer
     }

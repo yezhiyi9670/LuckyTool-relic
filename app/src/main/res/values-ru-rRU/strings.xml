@@ -139,6 +139,7 @@
     <string name="statusbar_network_layout">Скорость сети в строке состояния</string>
     <string name="statusbar_network_no_second">Удалить отображение в секунду (/с)</string>
     <string name="statusbar_network_no_space">Удалить пространство скорости сети</string>
+    <string name="set_network_speed_double_row_spacing">Установить интервал скорости двухрядной сети</string>
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Уведомления в строке состояния</string>
     <string name="StatusBarNotice_summary">Верхняя строка состояния и раскрывающаяся строка состояния</string>
@@ -211,6 +212,7 @@
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>
     <string name="remove_control_center_networkwarn_summary">После подключения к VPN в нижней части центра управления появится сообщение\nПосле установки сертификата ЦС показывает, что сеть может контролироваться</string>
+    <string name="custom_control_center_background_transparency">Прозрачность фона центра управления</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Плитки строки состояния</string>
     <string name="TileLongClickEvent">Долгое нажатие на плитку</string>
@@ -380,6 +382,7 @@
     <string name="remove_usb_connect_dialog_summary">Режим передачи файлов выбирается по умолчанию после подключения USB</string>
     <string name="remove_secure_pay_found_virus_dialog">Удалено диалоговое окно с обнаруженным вирусом безопасной оплаты</string>
     <string name="remove_access_device_log_dialog">Удалить диалог журнала доступа устройства</string>
+    <string name="custom_volume_dialog_background_transparency">Прозрачность фона панели громкости</string>
     <!--FullScreenGestureRelated-->
     <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
     <string name="remove_side_slider">Удалить боковую панель</string>
@@ -412,6 +415,7 @@
     <string name="remove_storage_limit_summary">Снять ограничение, на использование хранилища</string>
     <string name="media_volume_level">Уровень громкости мультимедиа</string>
     <string name="media_volume_level_summary">Установите 0, чтобы отключить эту функцию, перезагрузите систему, чтобы изменения вступили в силу</string>
+    <string name="minimum_volume_level_can_be_zero">Минимальный уровень громкости может быть нулевым</string>
     <string name="open_screen_power_save">Открыть режим энергосбережения</string>
     <string name="open_screen_power_save_summary">Настройки - Батарея - Дополнительные настройки - Энергосбережение экрана</string>
     <string name="open_battery_health">Открыть состояние батареи</string>
@@ -421,6 +425,8 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <string name="disable_dynamic_refresh_rate">Отключить динамическую частоту обновления</string>
     <string name="disable_dynamic_refresh_rate_summary">В основном решает проблему падения кадров, когда экран не трогают</string>
+    <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
+    <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
     <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
     <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30°C, и конкретный эффект не гарантируется.</string>
@@ -503,6 +509,7 @@
     <string name="extract_ota_source">Извлечь источник</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Удалить водяной знак сохранения изображения</string>
+    <string name="remove_video_save_watermark">Remove video save watermark</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->
@@ -630,6 +637,8 @@
     <string name="common_words_save">Сохранить</string>
     <string name="common_words_filter">Фильтр</string>
     <string name="common_words_loading">Загрузка</string>
+    <string name="common_words_whitelist">Белый список</string>
+    <string name="common_words_blacklist">Чёрный список</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не удалось подключиться к сети</string>
     <string name="net_networking_error">Текущая сеть недоступна</string>

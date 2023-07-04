@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.statusbar
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterClockStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterDateStyle
+import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterWhiteBackground
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableMediaToggleButton
@@ -44,35 +45,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //磁贴底部网络警告
         loadHooker(RemoveStatusBarBottomNetworkWarn)
 
-        //Source ScrimController -> 通知中心长背景颜色
-//        findClass("com.android.systemui.statusbar.phone.ScrimController").hook {
-//            injectMember {
-//                method { name = "updateScrimColor" }
-//                beforeHook {
-//                    val view = args().first().cast<View>() ?: return@beforeHook
-//                    val alpha = args(1).float()
-//                    val tint = args().last().int()
-//
-////                    scrim_in_front
-////                    scrim_behind
-////                    scrim_notifications
-//
-//                    if (view.toString().contains("notifications")) {
-//                        args().last().set(Color.YELLOW)
-//                    }
-//                }
-//            }
-//        }
-        //Source ActivatableNotificationView -> 通知背景
-//        findClass("com.android.systemui.statusbar.notification.row.ActivatableNotificationView").hook {
-//            injectMember {
-//                method {
-//                    name = "calculateBgColor"
-//                }
-//                afterHook {
-//                    result = Color.RED
-//                }
-//            }
-//        }
+        //控制中心背景透明度
+        loadHooker(ControlCenterWhiteBackground)
     }
 }

@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.DisableDuplicateFloatingWindow
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableHeadphoneHighVolumeWarning
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLowBatteryDialogWarning
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveUSBConnectDialog
+import com.luckyzyx.luckytool.hook.scope.systemui.VolumeDialogWhiteBackground
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -30,14 +31,13 @@ object HookDialogRelated : YukiBaseHooker() {
             if (prefs(ModulePrefs).getBoolean("remove_usb_connect_dialog", false)) {
                 loadHooker(RemoveUSBConnectDialog)
             }
+            //音量对话框背景透明度
+            loadHooker(VolumeDialogWhiteBackground)
         }
 
         if (packageName == "com.oplus.exsystemservice") {
             //移除应用运行在桌面上警告对话框
-            if (prefs(ModulePrefs).getBoolean(
-                    "remove_warning_dialog_that_app_runs_on_desktop", false
-                )
-            ) {
+            if (prefs(ModulePrefs).getBoolean("remove_warning_dialog_that_app_runs_on_desktop", false)) {
                 loadHooker(RemoveWarningDialogThatAppRunsOnDesktop)
             }
         }

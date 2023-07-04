@@ -20,7 +20,7 @@ object MobileDataIconRelated : YukiBaseHooker() {
         dataChannel.wait<Boolean>("hide_non_network_card_icon") { hideNonNetwork = it }
         var hideNoSS = prefs(ModulePrefs).getBoolean("hide_nosim_noservice", false)
         dataChannel.wait<Boolean>("hide_nosim_noservice") { hideNoSS = it }
-        //Source OplusStatusBarMobileViewExImpl
+        //Source OplusStatusBarMobileViewExImpl -> initView
         VariousClass(
             "com.oplusos.systemui.statusbar.OplusStatusBarMobileView", //C12.1
             "com.oplus.systemui.statusbar.phone.signal.OplusStatusBarMobileViewExImpl" //C13
