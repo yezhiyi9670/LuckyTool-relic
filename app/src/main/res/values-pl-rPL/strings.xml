@@ -15,6 +15,8 @@
     <string name="use_dynamic_color">Dynamiczne kolory</string>
     <string name="use_dynamic_color_summary">Wygląd Material You</string>
     <string name="dark_theme">Ciemny motyw</string>
+    <string name="dark_theme_off">Always off</string>
+    <string name="dark_theme_on">Always on</string>
     <string name="follow_system">Zgodny z systemem</string>
     <string name="language">Język</string>
     <string name="privacy_agreement">Polityka prywatności</string>

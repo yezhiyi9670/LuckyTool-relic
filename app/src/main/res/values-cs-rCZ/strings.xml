@@ -15,6 +15,8 @@
     <string name="use_dynamic_color">Dynamický vzhled</string>
     <string name="use_dynamic_color_summary">Použít dynamické barvy</string>
     <string name="dark_theme">Tmavý vzhled</string>
+    <string name="dark_theme_off">Vždy vypnuto</string>
+    <string name="dark_theme_on">Vždy zapnuto</string>
     <string name="follow_system">Podle systému</string>
     <string name="language">Jazyk</string>
     <string name="privacy_agreement">Zásady ochrany soukromí</string>
@@ -405,7 +407,7 @@
     <!--Miscellaneous-->
     <string name="Miscellaneous">Různé</string>
     <string name="Miscellaneous_summary">Zde jsou umístěna různá další specifická nastavení</string>
-    <string name="show_charging_ripple">Zobrazit animaci vln během nabíjení</string>
+    <string name="show_charging_ripple">Zobrazit animací vlnění při nabíjení</string>
     <string name="show_charging_ripple_summary">Platné pouze při připojení k nabíječce</string>
     <string name="disable_otg_auto_off">Zakázat automatické vypnutí OTG</string>
     <string name="disable_otg_auto_off_summary">Zakázat automatické vypnutí OTG po deseti minutách</string>
@@ -509,7 +511,7 @@
     <string name="extract_ota_source">Extrahovat zdroj</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Odebrat vodoznak po uložení obrázku</string>
-    <string name="remove_video_save_watermark">Remove video save watermark</string>
+    <string name="remove_video_save_watermark">Odebrat vodoznak po uložení videa</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Odstranit plovoucí okno s ověřovacím kódem</string>
     <!--Everyimage-->

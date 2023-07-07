@@ -31,6 +31,7 @@ import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
+import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.copyStr
 import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.dp
@@ -41,7 +42,6 @@ import com.luckyzyx.luckytool.utils.getDeviceInfo
 import com.luckyzyx.luckytool.utils.getVersionCode
 import com.luckyzyx.luckytool.utils.getVersionName
 import com.luckyzyx.luckytool.utils.toast
-import rikka.core.util.ResourceUtils.isNightMode
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -110,21 +110,21 @@ class LoggerFragment : Fragment() {
         menu.add(0, 1, 0, getString(R.string.common_words_refresh)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (isNightMode(resources.configuration)) {
+            if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
         menu.add(0, 2, 0, getString(R.string.common_words_save)).apply {
             setIcon(R.drawable.ic_baseline_save_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (isNightMode(resources.configuration)) {
+            if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
         menu.add(0, 3, 0, getString(R.string.common_words_filter)).apply {
             setIcon(R.drawable.baseline_filter_list_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (isNightMode(resources.configuration)) {
+            if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }

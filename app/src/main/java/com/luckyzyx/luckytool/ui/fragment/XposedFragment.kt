@@ -25,6 +25,7 @@ import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.dp
@@ -35,7 +36,6 @@ import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
 import com.luckyzyx.luckytool.utils.zoomDrawable
 import kotlinx.coroutines.Dispatchers
-import rikka.core.util.ResourceUtils
 import java.util.Arrays
 
 class XposedFragment : ModulePreferenceFragment() {
@@ -409,14 +409,14 @@ class XposedFragment : ModulePreferenceFragment() {
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ResourceUtils.isNightMode(resources.configuration)) {
+            if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
         menu.add(0, 2, 0, getString(R.string.menu_versioninfo)).apply {
             setIcon(R.drawable.ic_baseline_extension_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ResourceUtils.isNightMode(resources.configuration)) {
+            if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }

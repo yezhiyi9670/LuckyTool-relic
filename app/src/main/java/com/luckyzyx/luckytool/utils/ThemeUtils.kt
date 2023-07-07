@@ -3,30 +3,31 @@
 package com.luckyzyx.luckytool.utils
 
 import android.content.Context
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.color.DynamicColors
 
-class ThemeUtils(context: Context) {
+object ThemeUtils {
 
     private val supportDynamicColor = DynamicColors.isDynamicColorAvailable()
-    private val useDynamicColor = context.getBoolean(SettingsPrefs, "use_dynamic_color", false)
-    private val followSystem = context.getBoolean(SettingsPrefs, "theme_follow_system", true)
 
-    fun isDynamicColor(): Boolean {
+    fun isDynamicColor(context: Context): Boolean {
+        val useDynamicColor = context.getBoolean(SettingsPrefs, "use_dynamic_color", false)
         return supportDynamicColor && useDynamicColor
     }
 
-    fun isFollowSystem(): Boolean {
+    fun isFollowSystem(context: Context): Boolean {
+        val followSystem = context.getBoolean(SettingsPrefs, "theme_follow_system", true)
         return supportDynamicColor && followSystem
     }
 
     /**
      * 是否为夜间模式
-     * @param context Context
+     * @param configuration Configuration
      * @return Boolean
      */
-    fun isNightMode(context: Context): Boolean {
-        return (context.resources.configuration.uiMode and 32) > 0
+    fun isNightMode(configuration: Configuration): Boolean {
+        return (configuration.uiMode and 32) > 0
     }
 
     /**

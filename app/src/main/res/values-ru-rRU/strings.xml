@@ -15,6 +15,8 @@
     <string name="use_dynamic_color">Динамические цвета</string>
     <string name="use_dynamic_color_summary">Использовать динамические цвета</string>
     <string name="dark_theme">Темная тема</string>
+    <string name="dark_theme_off">Всегда отключен</string>
+    <string name="dark_theme_on">Всегда включен</string>
     <string name="follow_system">Выбор системы</string>
     <string name="language">Язык</string>
     <string name="privacy_agreement">Соглашение о конфиденциальности</string>
@@ -509,7 +511,7 @@
     <string name="extract_ota_source">Извлечь источник</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Удалить водяной знак сохранения изображения</string>
-    <string name="remove_video_save_watermark">Remove video save watermark</string>
+    <string name="remove_video_save_watermark">Удалить водяной знак на видео</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->

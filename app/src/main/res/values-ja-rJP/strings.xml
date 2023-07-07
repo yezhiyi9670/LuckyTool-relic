@@ -15,6 +15,8 @@
     <string name="use_dynamic_color">ダイナミックカラー</string>
     <string name="use_dynamic_color_summary">ダイナミックカラーを使用します</string>
     <string name="dark_theme">ダークテーマ</string>
+    <string name="dark_theme_off">常にオフ</string>
+    <string name="dark_theme_on">常にオン</string>
     <string name="follow_system">システム</string>
     <string name="language">言語</string>
     <string name="privacy_agreement">プライバシーポリシー</string>
@@ -509,7 +511,7 @@
     <string name="extract_ota_source">ソースを抽出</string>
     <!--Pictorial-->
     <string name="remove_image_save_watermark">画像保存時のウォーターマークを削除</string>
-    <string name="remove_video_save_watermark">Remove video save watermark</string>
+    <string name="remove_video_save_watermark">ビデオ保存時の透かしを削除</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->

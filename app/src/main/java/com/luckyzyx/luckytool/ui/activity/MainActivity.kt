@@ -54,8 +54,7 @@ open class MainActivity : AppCompatActivity() {
         val noModulePrefs = prefs(ModulePrefs).isPreferencesAvailable.not()
         val noSettingPrefs = prefs(SettingsPrefs).isPreferencesAvailable.not()
         val noOtherPrefs = prefs(OtherPrefs).isPreferencesAvailable.not()
-        if (noModulePrefs || noSettingPrefs || noOtherPrefs) {
-            isStart = false
+        if (!isStart || noModulePrefs || noSettingPrefs || noOtherPrefs) {
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
                 setMessage(getString(R.string.unsupported_xposed))
@@ -123,11 +122,11 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun checkTheme() {
-        if (ThemeUtils(this).isDynamicColor()) {
+        if (ThemeUtils.isDynamicColor(this)) {
             DynamicColors.applyToActivityIfAvailable(this)
         }
         val themeMode = getString(SettingsPrefs, "dark_theme", "MODE_NIGHT_FOLLOW_SYSTEM")
-        ThemeUtils(this).initTheme(themeMode)
+        ThemeUtils.initTheme(themeMode)
     }
 
     fun restart() {
