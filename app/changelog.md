@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.9_beta
+### 1.0.9
 
 - [适配] 桌面高温保护限制
 - [适配] KSWEB许可证v3.988
@@ -19,6 +19,20 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 截屏PNG保存格式C13.1
 - [适配] 乐划锁屏图片水印v40.9.16.1
 - [添加] 移除乐划锁屏视频保存水印
+- [Fix] Desktop high temperature protection limit
+- [Fix] KSWEB License v3.988
+- [Add] Hide non-Internet signal label Gen2x2
+- [Add] Vibrate when opening status bar
+- [Fix] Game assistant game mode sound effect v8.12.X
+- [Add] Home device LCD information display
+- [Add] The minimum volume level can be 0
+- [Add] Set the double line spacing of the status bar network speed
+- [Add] Custom control center background transparency
+- [Add] Custom volume dialog background transparency
+- [Add] Forced to enable system interface blur feature
+- [Fix] Screenshot PNG save format C13.1
+- [Fix] Lehua lock screen image watermark v40.9.16.1
+- [Add] Remove the watermark saved from Leshua lock screen video
 
 ### v1.0.8
 
