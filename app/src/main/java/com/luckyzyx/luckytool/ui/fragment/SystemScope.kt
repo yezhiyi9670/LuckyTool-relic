@@ -2180,6 +2180,13 @@ class DialogRelated : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_right_volume_bar_display)
+                key = "enable_right_volume_bar_display"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
             addPreference(SeekBarPreference(context).apply {
                 title = getString(R.string.custom_volume_dialog_background_transparency)
                 summary = getString(R.string.force_enable_systemui_blur_feature_tips)

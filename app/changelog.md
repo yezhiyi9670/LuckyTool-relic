@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.10_beta
+
+- [添加] 启用音量条右侧显示
+
 ### 1.0.9
 
 - [适配] 桌面高温保护限制

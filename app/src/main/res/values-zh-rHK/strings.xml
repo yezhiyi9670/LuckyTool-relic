@@ -15,9 +15,9 @@
     <string name="use_dynamic_color">动态取色</string>
     <string name="use_dynamic_color_summary">使用动态取色</string>
     <string name="dark_theme">深色主题</string>
+    <string name="follow_system">跟随系统</string>
     <string name="dark_theme_off">总是关闭</string>
     <string name="dark_theme_on">总是开启</string>
-    <string name="follow_system">跟随系统</string>
     <string name="language">語言</string>
     <string name="privacy_agreement">隐私协议</string>
     <string name="auto_check_update">自動檢查更新</string>
@@ -427,6 +427,7 @@
     <string name="allow_untrusted_touch">允許不受信任的觸摸</string>
     <string name="disable_dynamic_refresh_rate">禁用动态刷新率</string>
     <string name="disable_dynamic_refresh_rate_summary">主要解决屏幕无触摸时的掉帧问题</string>
+    <string name="enable_right_volume_bar_display">启用音量条右侧显示</string>
     <string name="force_enable_systemui_blur_feature">强制启用系统界面模糊特性</string>
     <string name="force_enable_systemui_blur_feature_tips">前提条件：需要开启选项“强制启用系统模糊特性”\n功能位置：杂项</string>
     <!--Battery-->

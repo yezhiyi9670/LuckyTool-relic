@@ -19,6 +19,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("hide_inactive_signal_labels_gen2x2", false)
         //高斯模糊
         val enableBlur = prefs(ModulePrefs).getBoolean("force_enable_systemui_blur_feature", false)
+        //右侧音量条
+        val rightVolume = prefs(ModulePrefs).getBoolean("enable_right_volume_bar_display", false)
         //音量对话框背景透明度
         val volumeBlur =
             prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1) > -1
@@ -51,6 +53,14 @@ object HookSystemUIFeature : YukiBaseHooker() {
             if (SDK < A13) injectMember {
                 method { name = "isAiSdr2HdrSupport" }
                 if (enableBlur) replaceToFalse()
+            }
+            injectMember {
+                method { name = "isOplusVolumeKeyInRight" }
+                if (rightVolume) replaceToTrue()
+            }
+            injectMember {
+                method { name = "areVolumeAndPowerKeysInRight" }
+                if (rightVolume) replaceToTrue()
             }
         }
 

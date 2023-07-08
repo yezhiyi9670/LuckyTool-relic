@@ -15,9 +15,9 @@
     <string name="use_dynamic_color">ダイナミックカラー</string>
     <string name="use_dynamic_color_summary">ダイナミックカラーを使用します</string>
     <string name="dark_theme">ダークテーマ</string>
+    <string name="follow_system">システム</string>
     <string name="dark_theme_off">常にオフ</string>
     <string name="dark_theme_on">常にオン</string>
-    <string name="follow_system">システム</string>
     <string name="language">言語</string>
     <string name="privacy_agreement">プライバシーポリシー</string>
     <string name="auto_check_update">自動でアップデートの確認をする</string>
@@ -427,6 +427,7 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
     <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します</string>
+    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
     <string name="force_enable_systemui_blur_feature">システム UI のぼかし機能を強制的に有効化</string>
     <string name="force_enable_systemui_blur_feature_tips">有効にする前に「システム UI のぼかし機能を強制的に有効化」オプションをオンにする必要があります。\nオプションは「その他」のページにあります。</string>
     <!--Battery-->

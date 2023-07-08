@@ -15,9 +15,9 @@
     <string name="use_dynamic_color">Dynamiczne kolory</string>
     <string name="use_dynamic_color_summary">Wygląd Material You</string>
     <string name="dark_theme">Ciemny motyw</string>
+    <string name="follow_system">Zgodny z systemem</string>
     <string name="dark_theme_off">Always off</string>
     <string name="dark_theme_on">Always on</string>
-    <string name="follow_system">Zgodny z systemem</string>
     <string name="language">Język</string>
     <string name="privacy_agreement">Polityka prywatności</string>
     <string name="auto_check_update">Sprawdzaj uaktualnienia aplikacji</string>
@@ -427,6 +427,7 @@
     <string name="allow_untrusted_touch">Zezwól na niezaufane działania dotykowe</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched</string>
+    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
     <string name="force_enable_systemui_blur_feature">Force enable the systemui blur feature</string>
     <string name="force_enable_systemui_blur_feature_tips">Preconditions: You need to turn on the option to “force enable the blur feature of the systemui”\nFunctional location: Miscellaneous</string>
     <!--Battery-->

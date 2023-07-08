@@ -15,9 +15,9 @@
     <string name="use_dynamic_color">Динамические цвета</string>
     <string name="use_dynamic_color_summary">Использовать динамические цвета</string>
     <string name="dark_theme">Темная тема</string>
+    <string name="follow_system">Выбор системы</string>
     <string name="dark_theme_off">Всегда отключен</string>
     <string name="dark_theme_on">Всегда включен</string>
-    <string name="follow_system">Выбор системы</string>
     <string name="language">Язык</string>
     <string name="privacy_agreement">Соглашение о конфиденциальности</string>
     <string name="auto_check_update">Автоматически проверять наличие обновлений</string>
@@ -427,6 +427,7 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <string name="disable_dynamic_refresh_rate">Отключить динамическую частоту обновления</string>
     <string name="disable_dynamic_refresh_rate_summary">В основном решает проблему падения кадров, когда экран не трогают</string>
+    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
     <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
     <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
