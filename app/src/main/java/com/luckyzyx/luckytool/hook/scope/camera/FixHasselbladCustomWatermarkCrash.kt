@@ -38,10 +38,9 @@ object FixHasselbladCustomWatermarkCrash : YukiBaseHooker() {
                         name = "getCameraPictureResultCallbackAdapter"
                     }
                     if (hasCallbackAdapter == true) return@beforeHook
-                    pictureResult?.javaClass?.hasMethod {
-                        name = "getCameraPictureCallback"
-                    } ?: return@beforeHook
-                    val getCameraPictureCallback = pictureResult?.current(ignored = true)?.method {
+                    pictureResult?.javaClass?.hasMethod { name = "getCameraPictureCallback" }
+                        ?: return@beforeHook
+                    val getCameraPictureCallback = pictureResult?.current(true)?.method {
                         name = "getCameraPictureCallback"
                     }?.call()
                     getCameraPictureCallback?.current()?.method {

@@ -60,11 +60,10 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         }
 
         if (SDK < A13) return
-        val qsFooterClazz = "com.oplusos.systemui.qs.OplusQSFooterImpl"
-        if (qsFooterClazz.toClass().hasMethod { name = "updateQsDateView" }.not()) return
         var translationX = 0
         //Source OplusQSFooterImpl
-        findClass(qsFooterClazz).hook {
+        findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
+            if (instanceClass.hasMethod { name = "updateQsDateView" }.not()) return@hook
             injectMember {
                 method { name = "updateQsDateView" }
                 afterHook {

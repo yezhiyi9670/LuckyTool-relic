@@ -6,6 +6,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 ### 1.0.10_beta
 
 - [添加] 启用音量条右侧显示
+- [修复] 部分设备Hook方法错误
 
 ### 1.0.9
 

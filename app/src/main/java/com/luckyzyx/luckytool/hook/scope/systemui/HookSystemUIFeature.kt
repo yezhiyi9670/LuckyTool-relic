@@ -1,10 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
-import com.luckyzyx.luckytool.utils.getOSVersion
 
 object HookSystemUIFeature : YukiBaseHooker() {
     override fun onHook() {
@@ -54,9 +54,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 method { name = "isAiSdr2HdrSupport" }
                 if (enableBlur) replaceToFalse()
             }
-            injectMember {
-                method { name = "isOplusVolumeKeyInRight" }
-                if (rightVolume) replaceToTrue()
+            if (instanceClass.hasMethod { name = "isOplusVolumeKeyInRight" }) {
+                injectMember {
+                    method { name = "isOplusVolumeKeyInRight" }
+                    if (rightVolume) replaceToTrue()
+                }
             }
             injectMember {
                 method { name = "areVolumeAndPowerKeysInRight" }
@@ -82,9 +84,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 method { name = "getGaussBlurDisabled" }
                 if (enableBlur) replaceToFalse()
             }
-            if (getOSVersion() >= 13.1) injectMember {
-                method { name = "isPanViewBlurDisabled" }
-                if (enableBlur) replaceToFalse()
+            if (instanceClass.hasMethod { name = "isPanViewBlurDisabled" }) {
+                injectMember {
+                    method { name = "isPanViewBlurDisabled" }
+                    if (enableBlur) replaceToFalse()
+                }
             }
         }
 
