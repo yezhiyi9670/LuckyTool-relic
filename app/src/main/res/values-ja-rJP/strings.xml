@@ -427,7 +427,7 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
     <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します</string>
-    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
+    <string name="enable_right_volume_bar_display">音量バーの右側表示を有効化</string>
     <string name="force_enable_systemui_blur_feature">システム UI のぼかし機能を強制的に有効化</string>
     <string name="force_enable_systemui_blur_feature_tips">有効にする前に「システム UI のぼかし機能を強制的に有効化」オプションをオンにする必要があります。\nオプションは「その他」のページにあります。</string>
     <!--Battery-->
@@ -513,6 +513,8 @@
     <!--Pictorial-->
     <string name="remove_image_save_watermark">画像保存時のウォーターマークを削除</string>
     <string name="remove_video_save_watermark">ビデオ保存時の透かしを削除</string>
+    <!--OplusLinker-->
+    <string name="force_display_communication_sharing">シェア機能の表示を強制</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->

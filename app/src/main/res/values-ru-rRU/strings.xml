@@ -427,7 +427,7 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <string name="disable_dynamic_refresh_rate">Отключить динамическую частоту обновления</string>
     <string name="disable_dynamic_refresh_rate_summary">В основном решает проблему падения кадров, когда экран не трогают</string>
-    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
+    <string name="enable_right_volume_bar_display">Включить отображение панели громкости справа</string>
     <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
     <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
@@ -513,6 +513,8 @@
     <!--Pictorial-->
     <string name="remove_image_save_watermark">Удалить водяной знак сохранения изображения</string>
     <string name="remove_video_save_watermark">Удалить водяной знак на видео</string>
+    <!--OplusLinker-->
+    <string name="force_display_communication_sharing">Принудительное отображение обмена информацией</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->

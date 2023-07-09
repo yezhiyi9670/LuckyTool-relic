@@ -513,6 +513,8 @@
     <!--Pictorial-->
     <string name="remove_image_save_watermark">移除图片保存水印</string>
     <string name="remove_video_save_watermark">移除视频保存水印</string>
+    <!--OplusLinker-->
+    <string name="force_display_communication_sharing">强制显示通信共享</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">移除验证码悬浮窗</string>
     <!--Everyimage-->

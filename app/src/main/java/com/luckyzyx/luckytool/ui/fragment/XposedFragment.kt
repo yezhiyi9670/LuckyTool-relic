@@ -354,6 +354,22 @@ class XposedFragment : ModulePreferenceFragment() {
                 )
                 addPreference(
                     Preference(context).apply {
+                        key = "com.oplus.linker"
+                        setPrefsIconRes(key) { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = context.getAppLabel(key)
+                        summary = getString(R.string.force_display_communication_sharing)
+                        isVisible = context.checkPackName(key)
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_oplusLinker, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
                         key = "com.east2d.everyimage"
                         setPrefsIconRes(key) { resource, show ->
                             icon = resource

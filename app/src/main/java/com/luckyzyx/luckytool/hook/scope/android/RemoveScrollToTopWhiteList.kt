@@ -12,14 +12,13 @@ object RemoveScrollToTopWhiteList : YukiBaseHooker() {
         if (SDK < A13) return
         //Source OplusScrollToTopRusHelper -> OplusScrollToTopSystemManager
         findClass("com.android.server.OplusScrollToTopRusHelper").hook {
-            if (instanceClass.hasMethod { name = "isInWhiteList" }) {
-                injectMember {
-                    method {
-                        name = "isInWhiteList"
-                        paramCount = 1
-                    }
-                    if (isEnable) replaceToTrue()
+            if (instanceClass.hasMethod { name = "isInWhiteList" }.not()) return@hook
+            injectMember {
+                method {
+                    name = "isInWhiteList"
+                    paramCount = 1
                 }
+                if (isEnable) replaceToTrue()
             }
         }
     }
