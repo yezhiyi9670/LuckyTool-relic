@@ -450,6 +450,8 @@
     <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
+    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
+    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
     <string name="AppDetailsRelated">Dostosuj informacje o aplikacji</string>
     <string name="show_package_name_in_app_details">Pokaż nazwę pakietu w informacjach o aplikacji</string>
     <string name="show_last_update_time_in_app_details">Pokaż czas ostatniej aktualizacji</string>

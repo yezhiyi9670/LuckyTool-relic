@@ -450,6 +450,8 @@
     <string name="video_frame_insertion_support_2K120_summary">Pokud vaše zařízení nepodporuje MEMC, nepoužívejte tuto funkci</string>
     <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
     <string name="remove_settings_bottom_laboratory">Odstranit nastavení laboratoře</string>
+    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
+    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>

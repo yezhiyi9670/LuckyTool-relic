@@ -450,6 +450,8 @@
     <string name="video_frame_insertion_support_2K120_summary">お使いのデバイスが MEMC に対応していない場合は、この機能を使用しないでください</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="remove_settings_bottom_laboratory">設定下部のラボを削除</string>
+    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
+    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>

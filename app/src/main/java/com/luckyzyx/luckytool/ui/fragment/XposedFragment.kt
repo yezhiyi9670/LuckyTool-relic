@@ -361,7 +361,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         }
                         title = context.getAppLabel(key)
                         summary = getString(R.string.force_display_communication_sharing)
-                        isVisible = context.checkPackName(key)
+                        isVisible = SDK >= A13 && context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_function_to_oplusLinker, title)
                             true

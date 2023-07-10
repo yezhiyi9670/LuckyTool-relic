@@ -60,9 +60,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     if (rightVolume) replaceToTrue()
                 }
             }
-            injectMember {
-                method { name = "areVolumeAndPowerKeysInRight" }
-                if (rightVolume) replaceToTrue()
+            if (instanceClass.hasMethod { name = "areVolumeAndPowerKeysInRight" }) {
+                injectMember {
+                    method { name = "areVolumeAndPowerKeysInRight" }
+                    if (rightVolume) replaceToTrue()
+                }
             }
         }
 

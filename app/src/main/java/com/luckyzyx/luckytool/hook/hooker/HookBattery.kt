@@ -25,6 +25,9 @@ object HookBattery : YukiBaseHooker() {
             loadHooker(LauncherHighTempreatureProtection)
         }
 
+        //charge_protection_switch_state
+        //smart_long_charge_protection_switch_state
+
         //BatteryHealthFragment
         //max_capacity_data
         //battery_health_obtain_fail -> 获取失败

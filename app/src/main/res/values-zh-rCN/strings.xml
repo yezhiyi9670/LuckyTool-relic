@@ -450,6 +450,8 @@
     <string name="video_frame_insertion_support_2K120_summary">若你的设备不支持 MEMC，请勿使用此功能</string>
     <string name="force_display_bottom_google_settings">强制显示设置底部Google</string>
     <string name="remove_settings_bottom_laboratory">移除设置底部实验室</string>
+    <string name="enable_show_never_timeout">启用息屏永不超时</string>
+    <string name="enable_show_never_timeout_summary">启用后即可在设置中看到更多可选项</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
     <string name="show_last_update_time_in_app_details">应用详情显示最后更新时间</string>

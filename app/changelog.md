@@ -8,6 +8,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 启用音量条右侧显示
 - [修复] 部分设备Hook方法错误
 - [添加] 强制显示通信共享
+- [添加] 启用息屏永不超时
 
 ### 1.0.9
 

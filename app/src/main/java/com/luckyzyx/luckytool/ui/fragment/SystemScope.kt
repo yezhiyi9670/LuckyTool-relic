@@ -2590,6 +2590,13 @@ class Settings : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_show_never_timeout)
+                summary = getString(R.string.enable_show_never_timeout_summary)
+                key = "enable_show_never_timeout"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppDetailsRelated)
                 key = "AppDetailsRelated"

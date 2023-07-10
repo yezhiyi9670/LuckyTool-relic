@@ -491,6 +491,8 @@
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="disable_cn_special_edition_setting" translatable="false">禁用CN特供版设置</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
+    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
+    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
     
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>

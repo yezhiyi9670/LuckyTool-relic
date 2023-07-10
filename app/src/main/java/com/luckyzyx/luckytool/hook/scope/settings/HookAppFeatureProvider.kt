@@ -13,6 +13,7 @@ object HookAppFeatureProvider : YukiBaseHooker() {
 
     override fun onHook() {
         val isDisableCN = prefs(ModulePrefs).getBoolean("disable_cn_special_edition_setting", false)
+        val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
         //Source AppFeatureProviderUtils
         searchClass {
             from("ma", "rb", "yb", "sb").absolute()
@@ -46,6 +47,8 @@ object HookAppFeatureProvider : YukiBaseHooker() {
                     when (args().last().string()) {
                         //Source OplusDefaultAutofillPicker -> autofill_password 自动填充密码
                         "com.android.settings.cn_version" -> if (isDisableCN) resultFalse()
+                        //Source DisplayTimeOutController -> 永不息屏(24H)
+                        "com.android.settings.show_never_timeout" -> if (neverTimeout) resultTrue()
                     }
                 }
             }

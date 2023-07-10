@@ -15,6 +15,9 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookSettings : YukiBaseHooker() {
     override fun onHook() {
+        //HookAppFeatureProvider
+        loadHooker(HookAppFeatureProvider)
+
         //暗色模式列表
         if (prefs(ModulePrefs).getBoolean("dark_mode_list_enable", false)) {
             loadHooker(DarkModeList)
@@ -46,11 +49,12 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(RemoveSettingsBottomLaboratory)
         }
 
+        //oplus_display_settings_screen_timeout_title
+        //screen_timeout
+        //dream_timeout_values
+
         //HookSettingsFeature -> memc
         //loadHooker(HookSettingsFeature)
-
-        //HookAppFeatureProvider
-        loadHooker(HookAppFeatureProvider)
 
         //persist.oplus.display.vrr
         //persist.oplus.display.vrr.adfr
