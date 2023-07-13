@@ -26,8 +26,6 @@ object StatusBarControlCenter : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
             loadHooker(EnableNotificationAlignBothSides)
         }
-        //移除通知背景
-
         //强制显示媒体播放器
         if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
             loadHooker(ForceDisplayMediaPlayer)
