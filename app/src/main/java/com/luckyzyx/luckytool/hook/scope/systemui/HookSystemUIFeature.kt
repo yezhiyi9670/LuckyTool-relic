@@ -8,13 +8,13 @@ import com.luckyzyx.luckytool.utils.SDK
 
 object HookSystemUIFeature : YukiBaseHooker() {
     override fun onHook() {
-        //com.android.systemui.remove_auto_brightness
+        //自动亮度 com.android.systemui.remove_auto_brightness
         val autoBrightnessMode =
             prefs(ModulePrefs).getString("set_auto_brightness_button_mode", "0")
-        //com.android.systemui.origin_notification_behavior
+        //通知重要性 com.android.systemui.origin_notification_behavior
         val notifyImportance =
             prefs(ModulePrefs).getBoolean("enable_notification_importance_classification", false)
-        //config_isSystemUiExpSignalUi
+        //隐藏未使用信号标签 config_isSystemUiExpSignalUi
         val hideSignalLabels =
             prefs(ModulePrefs).getBoolean("hide_inactive_signal_labels_gen2x2", false)
         //高斯模糊
