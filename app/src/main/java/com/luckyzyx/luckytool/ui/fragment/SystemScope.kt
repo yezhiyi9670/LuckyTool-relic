@@ -2597,6 +2597,13 @@ class Settings : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_statusbar_clock_format)
+                summary = getString(R.string.enable_statusbar_clock_format_summary)
+                key = "enable_statusbar_clock_format"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppDetailsRelated)
                 key = "AppDetailsRelated"

@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
+import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
@@ -47,6 +48,10 @@ object HookSettings : YukiBaseHooker() {
         //移除设置底部实验室
         if (prefs(ModulePrefs).getBoolean("remove_settings_bottom_laboratory", false)) {
             loadHooker(RemoveSettingsBottomLaboratory)
+        }
+        //启用状态栏时钟格式
+        if (prefs(ModulePrefs).getBoolean("enable_statusbar_clock_format", false)) {
+            loadHooker(EnableStatusBarClockFormat)
         }
 
         //oplus_display_settings_screen_timeout_title

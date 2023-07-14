@@ -2,13 +2,13 @@ package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
-object RemoveSettingsBottomLaboratory : YukiBaseHooker() {
+object EnableStatusBarClockFormat : YukiBaseHooker() {
     override fun onHook() {
-        //Source TopLevelLaboratoryPreferenceController
-        findClass("com.oplus.settings.feature.homepage.TopLevelLaboratoryPreferenceController").hook {
+        //Source RmStatusbarClockPreferenceController
+        findClass("com.oplus.settings.feature.notification.controller.RmStatusbarClockPreferenceController").hook {
             injectMember {
                 method { name = "getAvailabilityStatus" }
-                replaceTo(3)
+                replaceTo(0)
             }
         }
     }

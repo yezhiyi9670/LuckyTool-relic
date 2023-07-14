@@ -493,6 +493,8 @@
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     <string name="enable_show_never_timeout">Enable screen display never timeout</string>
     <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
+    <string name="enable_statusbar_clock_format">Enable status bar clock format</string>
+    <string name="enable_statusbar_clock_format_summary">Enable some systems that do not support the option to modify the status bar clock format</string>
     
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
