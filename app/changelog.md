@@ -12,7 +12,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 截屏页数限制v13.7.2
 - [适配] 游戏助手赛事模式音效v8.13.1
 - [添加] 启用状态栏时钟格式 (设置)
-- [适配] 设置AppFeatureProvider C13.1
+- [适配] 设置FeatureProvider C13.1
 - [修复] 系统界面通知对齐导致CPU占用异常 C12
 
 ### 1.0.9

@@ -32,8 +32,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                     method { name = "updateViewVisibility" }
                     beforeHook {
                         val hostView = field {
-                            name = "hostView"
-                            superClass()
+                            name = "hostView";superClass()
                         }.get(instance).cast<ViewGroup>() ?: return@beforeHook
                         val visible = hostView.visibility
                         val count = hostView.childCount

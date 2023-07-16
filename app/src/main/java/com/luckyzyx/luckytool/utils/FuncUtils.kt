@@ -86,6 +86,18 @@ fun getOSVersion(): Double = safeOf(0.0) {
     return@safeOf 0.0
 }
 
+/***
+ * 获取APP Commit
+ * @receiver Context
+ * @param packName String
+ * @return String
+ */
+@Suppress("DEPRECATION")
+fun Context.getAppCommit(packName: String): String? {
+    val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
+    return safeOfNull { commitInfo.metaData.get("versionCommit").toString() }
+}
+
 /**
  * 获取APP版本/版本号/Commit
  * 写入SP xml文件内
