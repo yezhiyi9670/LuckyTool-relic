@@ -16,7 +16,7 @@ object HookAppFeatureProvider : YukiBaseHooker() {
         val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
         //Source AppFeatureProviderUtils
         searchClass {
-            from("ma", "rb", "yb", "sb").absolute()
+            from("ma", "rb", "yb", "sb", "la").absolute()
             method {
                 param(ContentResolverClass, StringClass, BooleanType)
                 returnType = BooleanType

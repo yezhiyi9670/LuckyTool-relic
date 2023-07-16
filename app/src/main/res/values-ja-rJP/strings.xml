@@ -452,8 +452,8 @@
     <string name="remove_settings_bottom_laboratory">設定下部のラボを削除</string>
     <string name="enable_show_never_timeout">画面表示のタイムアウト無効化オプションを表示</string>
     <string name="enable_show_never_timeout_summary">有効にすると、設定で他のオプションが表示されます</string>
-    <string name="enable_statusbar_clock_format">Enable status bar clock format</string>
-    <string name="enable_statusbar_clock_format_summary">Enable some systems that do not support the option to modify the status bar clock format</string>
+    <string name="enable_statusbar_clock_format">ステータスバーの時計形式を有効化</string>
+    <string name="enable_statusbar_clock_format_summary">ステータスバーの時計形式変更オプションを、非対応のシステムでも使えるようにします</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>

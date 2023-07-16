@@ -93,13 +93,5 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 }
             }
         }
-
-        //Source BlurUtils
-        findClass("com.android.systemui.statusbar.BlurUtils").hook {
-            injectMember {
-                method { name = "supportsBlursOnWindows" }
-                if (enableBlur) replaceToTrue()
-            }
-        }
     }
 }
