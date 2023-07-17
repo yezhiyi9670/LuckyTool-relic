@@ -299,6 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">移除SOS紧急联系按钮</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">移除解锁页面底部的SOS紧急按钮</string>
     <string name="LockScreenEvent">锁屏事件</string>
+    <string name="set_full_screen_charging_animation_mode">全屏充电动画模式</string>
     <string name="remove_72hour_password_verification">移除72小时密码验证</string>
     <string name="remove_72hour_password_verification_summary">移除开机后72小时内不使用密码解锁的安全限制, 系统重启生效</string>
     <!--AlarmClock-->
@@ -629,6 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">使用用户字体</string>
     <!--CommonWords-->
+    <string name="common_words_enable">启用</string>
+    <string name="common_words_disable">禁用</string>
     <string name="common_words_close">关闭</string>
     <string name="common_words_open">打开</string>
     <string name="common_words_add">添加</string>

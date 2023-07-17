@@ -89,8 +89,8 @@
     
     <string-array name="statusbar_control_center_clock_red_one_mode_entries">
         <item>@string/common_words_default</item>
-        <item>@string/common_words_add</item>
-        <item>@string/common_words_remove</item>
+        <item>@string/common_words_enable</item>
+        <item>@string/common_words_disable</item>
     </string-array>
     
     <string-array name="statusbar_control_center_clock_colon_style_entries">
@@ -113,14 +113,20 @@
     
     <string-array name="statusbar_control_center_auto_brightness_mode_entries">
         <item>@string/common_words_default</item>
-        <item>@string/common_words_add</item>
-        <item>@string/common_words_remove</item>
+        <item>@string/common_words_enable</item>
+        <item>@string/common_words_disable</item>
     </string-array>
     
     <string-array name="set_aod_style_mode_entries">
         <item>@string/common_words_default</item>
-        <item>@string/common_words_add</item>
-        <item>@string/common_words_remove</item>
+        <item>@string/common_words_enable</item>
+        <item>@string/common_words_disable</item>
+    </string-array>
+    
+    <string-array name="set_full_screen_charging_animation_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_enable</item>
+        <item>@string/common_words_disable</item>
     </string-array>
 
 </resources>

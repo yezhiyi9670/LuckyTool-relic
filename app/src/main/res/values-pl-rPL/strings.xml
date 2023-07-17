@@ -299,6 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk „Alarmowe SOS”</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--AlarmClock-->
@@ -629,6 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Użyj niestandardowej czcionki</string>
     <!--CommonWords-->
+    <string name="common_words_enable">Enable</string>
+    <string name="common_words_disable">Disable</string>
     <string name="common_words_close">Wyłączone</string>
     <string name="common_words_open">Otwórz</string>
     <string name="common_words_add">Add</string>

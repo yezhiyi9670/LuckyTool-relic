@@ -11,6 +11,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
         //自动亮度 com.android.systemui.remove_auto_brightness
         val autoBrightnessMode =
             prefs(ModulePrefs).getString("set_auto_brightness_button_mode", "0")
+        //全屏充电动画 com.android.systemui.support_fullscreen_charge_anim
+        val fullScreenChargeAnim =
+            prefs(ModulePrefs).getString("set_full_screen_charging_animation_mode", "0")
         //通知重要性 com.android.systemui.origin_notification_behavior
         val notifyImportance =
             prefs(ModulePrefs).getBoolean("enable_notification_importance_classification", false)
@@ -64,6 +67,18 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 injectMember {
                     method { name = "areVolumeAndPowerKeysInRight" }
                     if (rightVolume) replaceToTrue()
+                }
+            }
+            if (instanceClass.hasMethod { name = "isSupportFullScreenChargeAnim" }) {
+                injectMember {
+                    method { name = "isSupportFullScreenChargeAnim" }
+                    beforeHook {
+                        when (fullScreenChargeAnim) {
+                            "1" -> resultTrue()
+                            "2" -> resultFalse()
+                            else -> return@beforeHook
+                        }
+                    }
                 }
             }
         }

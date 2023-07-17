@@ -31,6 +31,7 @@ import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
+import com.luckyzyx.luckytool.utils.getOSVersion
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpBattery
@@ -1874,6 +1875,22 @@ class LockScreen : ModulePreferenceFragment() {
                 title = getString(R.string.LockScreenEvent)
                 key = "LockScreenEvent"
                 isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_full_screen_charging_animation_mode)
+                summary = "%s"
+                key = "set_full_screen_charging_animation_mode"
+                entries =
+                    resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isVisible = getOSVersion() >= 13.1
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("set_full_screen_charging_animation_mode", newValue)
+                    true
+                }
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_72hour_password_verification)

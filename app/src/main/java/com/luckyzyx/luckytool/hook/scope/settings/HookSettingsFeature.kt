@@ -22,26 +22,14 @@ object HookSettingsFeature : YukiBaseHooker() {
 
         //Source SysFeatureUtils
         searchClass {
-            from("oi", "ki", "ji", "vf", "uf").absolute()
+            from("oi", "ki", "ji", "vf", "uf", "qf", "mi").absolute()
             field { type = BooleanClass }.count { it > 30 }
-            method {
-                emptyParam()
-                returnType = BooleanType
-            }.count { it > 30 }
-            method {
-                param(ContextClass)
-                returnType = BooleanType
-            }.count(5..6)
-            method {
-                param(StringClass)
-                returnType = BooleanType
-            }.count(2)
+            method { emptyParam();returnType = BooleanType }.count { it > 30 }
+            method { param(ContextClass);returnType = BooleanType }.count(5..6)
+            method { param(StringClass);returnType = BooleanType }.count(2)
         }.get()?.hook {
             injectMember {
-                method {
-                    param(StringClass)
-                    returnType = BooleanType
-                }.all()
+                method { param(StringClass);returnType = BooleanType }.all()
                 beforeHook {
                     when (args().first().string()) {
                         //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
@@ -77,10 +65,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             }.count(1)
         }.get()?.hook {
             injectMember {
-                method {
-                    param(ContentResolverClass, StringClass)
-                    returnType = BooleanType
-                }
+                method { param(ContentResolverClass, StringClass);returnType = BooleanType }
                 beforeHook {
                     when (args().last().string()) {
                         //Source OplusDefaultAutofillPicker -> autofill_password 自动填充密码
@@ -94,25 +79,22 @@ object HookSettingsFeature : YukiBaseHooker() {
 
         //Source ExpUstUtils
         searchClass {
-            from("ki", "uf", "oi").absolute()
+            from("ki", "uf", "oi", "qf", "mi").absolute()
             field().count(1)
-            method { emptyParam();returnType = StringClass }.count(2)
-            method { emptyParam();returnType = BooleanType }.count(4..5)
             method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
             method { param(CharSequenceArrayClass);returnType = CharSequenceArrayClass }.count(2)
+            method { emptyParam();returnType = StringClass }.count(2)
+            method { emptyParam();returnType = BooleanType }.count(4..5)
             method { param(StringClass);returnType = BooleanType }.count(2..3)
             method { param(IntType);returnType = BooleanType }.count(3)
+            method { param(ContextClass, IntType) }.count(1)
             method { param(IntType);returnType = StringClass }.count(1)
             method { param(IntType, StringClass);returnType = StringClass }.count(1)
             method { param(StringClass);returnType = StringClass }.count(1)
             method { param(StringClass, StringClass);returnType = StringClass }.count(1)
-            method { param(ContextClass, IntType) }.count(1)
         }.get()?.hook {
             injectMember {
-                method {
-                    param(IntType)
-                    returnType = BooleanType
-                }.all()
+                method { param(IntType);returnType = BooleanType }.all()
                 beforeHook {
                     when (args().first().int()) {
                         //Source DisplayTimeOutController -> 永不息屏(24H)

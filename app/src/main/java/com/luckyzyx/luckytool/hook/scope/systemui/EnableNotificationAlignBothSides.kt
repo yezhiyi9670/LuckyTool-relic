@@ -20,7 +20,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
             injectMember {
-                method { name = "onConfigurationChanged" }
+                method { name = "onLayout" }
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
         }
@@ -76,7 +76,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                     afterHook { instance<ViewGroup>().setViewWidth() }
                 }
                 injectMember {
-                    method { name = "onConfigurationChanged" }
+                    method { name = "onLayout" }
                     afterHook { instance<ViewGroup>().setViewWidth() }
                 }
             }

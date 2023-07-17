@@ -16,8 +16,8 @@
     <string name="use_dynamic_color_summary">Sử dụng màu động</string>
     <string name="dark_theme">Chủ đề tối</string>
     <string name="follow_system">Theo hệ thống</string>
-    <string name="dark_theme_off">Always off</string>
-    <string name="dark_theme_on">Always on</string>
+    <string name="dark_theme_off">Luôn tắt</string>
+    <string name="dark_theme_on">Luôn bật</string>
     <string name="language">Ngôn ngữ</string>
     <string name="privacy_agreement">Thỏa thuận bảo mật</string>
     <string name="auto_check_update">Tự động kiểm tra cập nhật</string>
@@ -106,9 +106,9 @@
     <string name="usepresig_warn">!!! Tất cả các gói có thể ghi đè ứng dụng đã cài đặt!!\nđể cài đặt các gói không xác định</string>
     <!--Status Bar-->
     <string name="StatusBar">Thanh trạng thái</string>
-    <string name="StatusbarEvents">StatusBar Events</string>
+    <string name="StatusbarEvents">Nội dung thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
-    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
+    <string name="vibrate_when_opening_the_statusbar">Rung khi mở thanh trạng thái</string>
     <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
     <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
     <!--StatusBarClock-->
@@ -299,6 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Xóa nút liên hệ khẩn cấp SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Đã xóa nút khẩn cấp SOS ở cuối trang mở khóa</string>
     <string name="LockScreenEvent">Thành phần màn hình khóa</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Xóa xác thực mật khẩu 72 giờ</string>
     <string name="remove_72hour_password_verification_summary">Đã xóa hạn chế bảo mật không sử dụng mật khẩu để mở khóa trong vòng 72 giờ sau khi khởi động, có hiệu lực sau khi khởi động lại hệ thống</string>
     <!--AlarmClock-->
@@ -629,6 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Sử dụng kiểu chữ người dùng</string>
     <!--CommonWords-->
+    <string name="common_words_enable">Enable</string>
+    <string name="common_words_disable">Disable</string>
     <string name="common_words_close">Đóng</string>
     <string name="common_words_open">Mở</string>
     <string name="common_words_add">Thêm</string>

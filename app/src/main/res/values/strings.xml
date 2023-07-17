@@ -327,6 +327,7 @@
     <string name="remove_lock_screen_bottom_sos_button_summary">Removed the SOS emergency button at the bottom of the unlock page</string>
     
     <string name="LockScreenEvent">Lock Screen Event</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Remove 72-hour password authentication</string>
     <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting,Effective after system restart</string>
     <!--AlarmClock-->
@@ -683,6 +684,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Use user typeface</string>
     <!--CommonWords-->
+    <string name="common_words_enable">Enable</string>
+    <string name="common_words_disable">Disable</string>
     <string name="common_words_close">Close</string>
     <string name="common_words_open">Open</string>
     <string name="common_words_add">Add</string>

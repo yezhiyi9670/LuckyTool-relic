@@ -299,6 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка екстреного контакту SOS внизу сторінки розблокування буде видалена</string>
     <string name="LockScreenEvent">Події на екрані блокування</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Видалення 72-годинної аутентифікації за паролем</string>
     <string name="remove_72hour_password_verification_summary">Видалити обмеження безпеки, що забороняє використовувати відбиток пальця або розблокування по обличчю після 72 годин роботи смартфона. Набуде чинності після перезавантаження системи</string>
     <!--AlarmClock-->
@@ -629,6 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Використовувати шрифт користувача</string>
     <!--CommonWords-->
+    <string name="common_words_enable">Enable</string>
+    <string name="common_words_disable">Disable</string>
     <string name="common_words_close">Закрити</string>
     <string name="common_words_open">Відкрити</string>
     <string name="common_words_add">Додати</string>
