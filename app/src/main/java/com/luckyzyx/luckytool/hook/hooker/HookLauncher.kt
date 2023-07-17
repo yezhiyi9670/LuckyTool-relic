@@ -60,6 +60,8 @@ object HookLauncher : YukiBaseHooker() {
             loadHooker(RemoveLauncherHighTempreatureProtection)
         }
 
+        //launcher_all_apps_container_background_color
+
         //<string name="oplus_shortcut_lock_app">锁定</string>
         //<string name="oplus_shortcut_locked_app">解锁</string>
         //<string name="oplus_rapid_reach_float_window">浮窗</string>

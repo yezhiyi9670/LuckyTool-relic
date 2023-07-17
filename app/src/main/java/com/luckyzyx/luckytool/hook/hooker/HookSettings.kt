@@ -54,9 +54,8 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(EnableStatusBarClockFormat)
         }
 
-        //oplus_display_settings_screen_timeout_title
-        //screen_timeout
-        //dream_timeout_values
+        //darkmode_third_app
+        //com.oplus.settings.feature.display.darkmode.ui.DarkModeSettingsFragment
 
         //persist.oplus.display.vrr
         //persist.oplus.display.vrr.adfr

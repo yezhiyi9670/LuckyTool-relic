@@ -19,6 +19,10 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                 method { name = "onFinishInflate" }
                 afterHook { instance<ViewGroup>().setViewWidth() }
             }
+            injectMember {
+                method { name = "onConfigurationChanged" }
+                afterHook { instance<ViewGroup>().setViewWidth() }
+            }
         }
 
         if (SDK >= A13) loadHooker(OtherNotificationC13) else loadHooker(OtherNotificationC12)
@@ -69,6 +73,10 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             findClass(ubiquitousExpandableRow).hook {
                 injectMember {
                     method { name = "onFinishInflate" }
+                    afterHook { instance<ViewGroup>().setViewWidth() }
+                }
+                injectMember {
+                    method { name = "onConfigurationChanged" }
                     afterHook { instance<ViewGroup>().setViewWidth() }
                 }
             }

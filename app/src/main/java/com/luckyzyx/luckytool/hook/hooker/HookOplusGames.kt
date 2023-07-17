@@ -68,6 +68,8 @@ object HookOplusGames : YukiBaseHooker() {
                 loadHooker(RemoveSomeVipLimit)
             }
 
+            //game_color_plus_config_map
+
             //Search GamePerfModeModel -> perf_touch_response_extreme_rb
             //<string name="perf_touch_response_extreme_response">极致触控</string>
             //mPerfTouchResponseExtreme click -> setTouchResponse
