@@ -299,7 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
     <string name="LockScreenEvent">Události na zamykací obrazovce</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
+    <string name="set_full_screen_charging_animation_mode">Režim animace nabíjení na celé obrazovce</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
     <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
     <!--AlarmClock-->
@@ -630,8 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">Použít uživatelský typ písma</string>
     <!--CommonWords-->
-    <string name="common_words_enable">Enable</string>
-    <string name="common_words_disable">Disable</string>
+    <string name="common_words_enable">Povolit</string>
+    <string name="common_words_disable">Zakázat</string>
     <string name="common_words_close">Nezobrazit</string>
     <string name="common_words_open">Otevřít</string>
     <string name="common_words_add">Přidat</string>

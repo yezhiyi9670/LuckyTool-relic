@@ -299,7 +299,7 @@
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
     <string name="LockScreenEvent">ロック画面イベント</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
+    <string name="set_full_screen_charging_animation_mode">充電アニメーションの全画面表示</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
     <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を解除します。システム再起動後に有効化されます</string>
     <!--AlarmClock-->
@@ -630,8 +630,8 @@
     <!--Typeface-->
     <string name="use_user_typeface">ユーザー書体を使用</string>
     <!--CommonWords-->
-    <string name="common_words_enable">Enable</string>
-    <string name="common_words_disable">Disable</string>
+    <string name="common_words_enable">有効</string>
+    <string name="common_words_disable">無効</string>
     <string name="common_words_close">閉じる</string>
     <string name="common_words_open">開く</string>
     <string name="common_words_add">追加</string>

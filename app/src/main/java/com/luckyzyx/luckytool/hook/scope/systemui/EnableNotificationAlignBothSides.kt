@@ -41,7 +41,9 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                         val visible = hostView.visibility
                         val count = hostView.childCount
                         if ((visible == 0) && (count > 0)) {
-                            if (hostView.width > 0) hostView.setViewWidth()
+                            if (hostView.width > 0) getScreenOrientation(hostView) {
+                                if (it) hostView.setViewWidth()
+                            }
                         }
                     }
                 }

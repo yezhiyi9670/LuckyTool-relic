@@ -15,6 +15,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 设置FeatureProvider
 - [修复] 通知对齐导致系统界面CPU占用异常 C12
 - [添加] 锁屏-全屏充电动画模式 C13.1
+- [适配] 桌面时钟组件红一 C13
 
 ### 1.0.9
 
