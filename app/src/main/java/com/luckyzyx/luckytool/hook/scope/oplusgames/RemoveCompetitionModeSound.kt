@@ -14,7 +14,8 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
         //Source SoundPoolPlayManager -> competition_mode_sound
         searchClass {
             from(
-                "v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9", "ca", "ea", "la", "q8", "m8"
+                "v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9", "ca", "ea", "la", "q8", "m8",
+                "ja"
             ).absolute()
             field { type = ContextClass }.count(1)
             field { type = AudioManager::class.java }.count(1)
