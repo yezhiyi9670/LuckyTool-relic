@@ -440,6 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Якщо додатку вручну надано дозвіл \"Ігнорувати оптимізацію батареї\", після включення цієї функції програма не буде автоматично додана до білого списку оптимізації батареї</string>
     <string name="fix_battery_health_data_display">Fix battery health data display</string>
     <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
+    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     <!--Settings-->
     <string name="remove_top_account_display">Видалити відображення поверх облікового запису</string>
     <string name="remove_dpi_restart_recovery">Видалити відновлення DPI</string>

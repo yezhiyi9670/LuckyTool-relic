@@ -440,6 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Nếu người dùng cấp quyền `bỏ qua tối ưu hóa pin` cho ứng dụng theo cách thủ công, thì sau khi bật chức năng này, ứng dụng sẽ không tự động được thêm vào danh sách cho phép tối ưu hóa pin</string>
     <string name="fix_battery_health_data_display">Fix battery health data display</string>
     <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
+    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     <!--Settings-->
     <string name="remove_top_account_display">Xóa hiển thị tài khoản hàng đầu</string>
     <string name="remove_dpi_restart_recovery">Xóa phục hồi khởi động lại DPI</string>

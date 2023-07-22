@@ -440,6 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Pokud uživatel aplikaci ručně udělil oprávnění `ignorovat optimalizaci baterie`, nebude aplikace po zapnutí této funkce automaticky přidána na seznam povolených aplikací optimalizace baterie</string>
     <string name="fix_battery_health_data_display">Opravit zobrazení dat o zdraví baterie</string>
     <string name="fix_battery_health_data_display_summary">Nepoužívejte tuto funkci, pokud systém podporuje zdraví baterie\nPřesnost dat nelze garantovat</string>
+    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     <!--Settings-->
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>

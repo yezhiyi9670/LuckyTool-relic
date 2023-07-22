@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.battery.BatteryHealthDataTips
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHiddenEntrance
 import com.luckyzyx.luckytool.hook.scope.battery.HookThermalController
 import com.luckyzyx.luckytool.hook.scope.battery.LauncherHighTempreatureProtection
@@ -25,20 +26,13 @@ object HookBattery : YukiBaseHooker() {
             loadHooker(LauncherHighTempreatureProtection)
         }
 
+        //电池健康数据提示
+        if (SDK >= A13 && prefs(ModulePrefs).getBoolean("fix_battery_health_data_display", false)) {
+            loadHooker(BatteryHealthDataTips)
+        }
+
         //charge_protection_switch_state
         //smart_long_charge_protection_switch_state
 
-        //BatteryHealthFragment
-        //max_capacity_data
-        //battery_health_obtain_fail -> 获取失败
-
-//        val binder = ServiceManagerUtils(appClassLoader).getService("guardelfthermalcontrol")
-//        loggerD(msg = "binder -> ${binder != null}")
-//
-//        val instance = binder?.let { IGuardElfThermalControlUtils(appClassLoader).getInstance(it) }
-//        loggerD(msg = "instance -> ${instance != null}")
-//
-//        val health = IGuardElfThermalControlUtils(appClassLoader).getUIsohValue(instance)
-//        loggerD(msg = "health -> $health")
     }
 }

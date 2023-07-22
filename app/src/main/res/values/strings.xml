@@ -479,6 +479,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">If the APP is manually granted the `ignore battery optimization` permission by the user, After enabling this function, the APP will not be automatically added to the battery optimization whitelist</string>
     <string name="fix_battery_health_data_display">Fix battery health data display</string>
     <string name="fix_battery_health_data_display_summary">Do not use this feature when the system supports battery health\nThe accuracy of the data cannot be guaranteed</string>
+    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     
     <!--Settings-->
     <string name="remove_top_account_display">Remove top account display</string>

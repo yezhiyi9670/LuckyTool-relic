@@ -440,6 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">Если приложению вручную предоставлено разрешение \"Игнорировать оптимизацию батареи\", после включения этой функции приложение не будет автоматически добавлено в белый список оптимизации батареи</string>
     <string name="fix_battery_health_data_display">Исправить отображение данных о состоянии батареи</string>
     <string name="fix_battery_health_data_display_summary">Не используйте эту функцию, если система поддерживает работоспособность батареи\nТочность данных не гарантируется.</string>
+    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     <!--Settings-->
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>

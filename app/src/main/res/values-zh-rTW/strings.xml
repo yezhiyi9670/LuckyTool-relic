@@ -440,6 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">若APP被用户手动授予`忽略电池优化`权限, 开启此功能后, 该APP将不会自动添加进电池优化白名单</string>
     <string name="fix_battery_health_data_display">修复电池健康数据显示</string>
     <string name="fix_battery_health_data_display_summary">当系统支持电池健康时不要使用此功能\n无法保证数据的准确性</string>
+    <string name="fix_battery_health_data_display_tips">尝试重启系统</string>
     <!--Settings-->
     <string name="remove_top_account_display">移除顶部账户显示</string>
     <string name="remove_dpi_restart_recovery">移除 DPI 重启恢复</string>
