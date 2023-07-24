@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasConstructor
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
@@ -21,13 +22,11 @@ object AlarmClockWidget : YukiBaseHooker() {
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
 
         "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull()?.let {
-            it.hasMethod {
-                param(StringClass, StringClass)
-                returnType = CharSequenceClass
-            }.takeIf { e -> e }?.let {
+            if (it.hasMethod { param(StringClass, StringClass);returnType = CharSequenceClass }) {
                 loadHooker(AlarmClock12)
-                return
             }
+            if (it.hasConstructor { emptyParam() }.not()) return
+            return
         }
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence

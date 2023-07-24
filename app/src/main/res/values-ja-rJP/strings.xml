@@ -440,7 +440,7 @@
     <string name="disable_customize_battery_optimization_whiteList_summary">ユーザーによって「バッテリーの最適化を無視」権限がアプリに許可されている場合、 この機能を有効にすると自動的にアプリがバッテリー最適化ホワイトリストに追加されなくなります。</string>
     <string name="fix_battery_health_data_display">バッテリーの状態データ表示を修正</string>
     <string name="fix_battery_health_data_display_summary">システムがバッテリーの状態表示に対応している場合はこの機能を使用しないでください\nデータの精度は無保証です</string>
-    <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
+    <string name="fix_battery_health_data_display_tips">システムを再起動してみてください</string>
     <!--Settings-->
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
