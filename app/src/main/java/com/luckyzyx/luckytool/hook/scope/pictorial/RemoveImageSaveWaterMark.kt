@@ -15,7 +15,7 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
     override fun onHook() {
         //Search ImageSaveManager -> getWaterMaskBitmap -> standard_water_mask_template / high_quality_water_mask_template
         searchClass {
-            from("hi", "fj", "ij", "ej", "cj", "mi", "pi").absolute()
+            from("hi", "fj", "ij", "ej", "cj", "mi", "pi", "ri").absolute()
             field { type = HandlerClass }.count(1)
             field { type = FileClass }.count(1)
             field { type = LongType }.count(1)
