@@ -26,7 +26,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             //prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
             //Source SysFeatureUtils
             searchClass {
-                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi").absolute()
+                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li").absolute()
                 field { type = BooleanClass }.count { it > 30 }
                 method { emptyParam();returnType = BooleanType }.count { it > 30 }
                 method { param(ContextClass);returnType = BooleanType }.count(5..6)
@@ -43,6 +43,40 @@ object HookSettingsFeature : YukiBaseHooker() {
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> HookSysFeature")
+        }
+    }
+
+    private object HookExpUst : YukiBaseHooker() {
+        override fun onHook() {
+            val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
+            //Source ExpUstUtils
+            searchClass {
+                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li").absolute()
+                field().count(1)
+                method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
+                method {
+                    param(CharSequenceArrayClass);returnType = CharSequenceArrayClass
+                }.count(2)
+                method { emptyParam();returnType = StringClass }.count(2)
+                method { emptyParam();returnType = BooleanType }.count(4..5)
+                method { param(StringClass);returnType = BooleanType }.count(2..3)
+                method { param(IntType);returnType = BooleanType }.count(3)
+                method { param(ContextClass, IntType) }.count(1)
+                method { param(IntType);returnType = StringClass }.count(1)
+                method { param(IntType, StringClass);returnType = StringClass }.count(1)
+                method { param(StringClass);returnType = StringClass }.count(1)
+                method { param(StringClass, StringClass);returnType = StringClass }.count(1)
+            }.get()?.hook {
+                injectMember {
+                    method { param(IntType);returnType = BooleanType }.all()
+                    beforeHook {
+                        when (args().first().int()) {
+                            //Source DisplayTimeOutController -> 永不息屏(24H)
+                            11 -> if (neverTimeout) resultTrue()
+                        }
+                    }
+                }
+            } ?: loggerD(msg = "$packageName\nError -> HookExpUst")
         }
     }
 
@@ -87,40 +121,6 @@ object HookSettingsFeature : YukiBaseHooker() {
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> HookAppFeatureProvider")
-        }
-    }
-
-    private object HookExpUst : YukiBaseHooker() {
-        override fun onHook() {
-            val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
-            //Source ExpUstUtils
-            searchClass {
-                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi").absolute()
-                field().count(1)
-                method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
-                method {
-                    param(CharSequenceArrayClass);returnType = CharSequenceArrayClass
-                }.count(2)
-                method { emptyParam();returnType = StringClass }.count(2)
-                method { emptyParam();returnType = BooleanType }.count(4..5)
-                method { param(StringClass);returnType = BooleanType }.count(2..3)
-                method { param(IntType);returnType = BooleanType }.count(3)
-                method { param(ContextClass, IntType) }.count(1)
-                method { param(IntType);returnType = StringClass }.count(1)
-                method { param(IntType, StringClass);returnType = StringClass }.count(1)
-                method { param(StringClass);returnType = StringClass }.count(1)
-                method { param(StringClass, StringClass);returnType = StringClass }.count(1)
-            }.get()?.hook {
-                injectMember {
-                    method { param(IntType);returnType = BooleanType }.all()
-                    beforeHook {
-                        when (args().first().int()) {
-                            //Source DisplayTimeOutController -> 永不息屏(24H)
-                            11 -> if (neverTimeout) resultTrue()
-                        }
-                    }
-                }
-            } ?: loggerD(msg = "$packageName\nError -> HookExpUst")
         }
     }
 }

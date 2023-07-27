@@ -292,7 +292,7 @@
     <string name="LockScreenChargingComponent">Зарядка на экране блокировки</string>
     <string name="set_lock_screen_warp_charging_style">Установить стиль зарядки warp</string>
     <string name="set_lock_screen_charging_text_logo_style">Установить стиль текстового логотипа зарядки</string>
-    <string name="force_lock_screen_charging_show_wattage">Force charging components display wattage</string>
+    <string name="force_lock_screen_charging_show_wattage">Принудительно отображать мощность зарядки</string>
     <string name="lock_screen_charging_use_user_typeface">Компоненты зарядки используют пользовательские шрифты</string>
     <string name="set_full_screen_charging_animation_mode">Анимация во весь экран при зарядке</string>
     <string name="LockScreenCarrier">Оператор на экране блокировки</string>

@@ -16,27 +16,17 @@ object RemoveRootCheck : YukiBaseHooker() {
         //isSafe:null; -> isSafe:0
         searchClass {
             from(
-                "com.oplus.x", "com.oplus.f", "com.oplus.a0",
-                "yp", "hr", "br", "ir",
-                "com.oplus.cosa"
+                "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
+                /*"yp",*/ "hr", "br", "ir"
             ).absolute()
             field { type = StringClass }.count(5..6)
             field { type = BooleanType }.count(2..4)
             field { type = IntType }.count(1..2)
-            method {
-                emptyParam()
-                name = "clear"
-            }.count(1)
-            method {
-                emptyParam()
-                returnType = BundleClass
-            }.count(1)
+            method { name = "clear";emptyParam() }.count(1)
+            method { emptyParam();returnType = BundleClass }.count(1)
         }.get()?.hook {
             injectMember {
-                method {
-                    emptyParam()
-                    returnType = BundleClass
-                }
+                method { emptyParam();returnType = BundleClass }
                 afterHook { result<Bundle>()?.putInt("isSafe", 0) }
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveRootCheck")

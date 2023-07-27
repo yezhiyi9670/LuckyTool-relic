@@ -292,7 +292,7 @@
     <string name="LockScreenChargingComponent">ロック画面の充電コンポーネント</string>
     <string name="set_lock_screen_warp_charging_style">WARP 充電のスタイルを設定</string>
     <string name="set_lock_screen_charging_text_logo_style">充電テキストのロゴスタイルを設定</string>
-    <string name="force_lock_screen_charging_show_wattage">Force charging components display wattage</string>
+    <string name="force_lock_screen_charging_show_wattage">充電コンポーネントにワット数を表示</string>
     <string name="lock_screen_charging_use_user_typeface">充電コンポーネントにユーザー指定のフォントを使用</string>
     <string name="set_full_screen_charging_animation_mode">充電アニメーションの全画面表示</string>
     <string name="LockScreenCarrier">ロック画面のキャリア表示</string>
