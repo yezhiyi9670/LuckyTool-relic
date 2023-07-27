@@ -1856,13 +1856,13 @@ class LockScreen : ModulePreferenceFragment() {
                     }
                 })
                 addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.lock_screen_charging_show_wattage)
-                    key = "lock_screen_charging_show_wattage"
+                    title = getString(R.string.force_lock_screen_charging_show_wattage)
+                    key = "force_lock_screen_charging_show_wattage"
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         context.dataChannel("com.android.systemui")
-                            .put("lock_screen_charging_show_wattage", newValue)
+                            .put("force_lock_screen_charging_show_wattage", newValue)
                         true
                     }
                 })

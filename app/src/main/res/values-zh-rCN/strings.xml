@@ -292,7 +292,7 @@
     <string name="LockScreenChargingComponent">锁屏充电组件</string>
     <string name="set_lock_screen_warp_charging_style">设置 Warp 充电样式</string>
     <string name="set_lock_screen_charging_text_logo_style">设置文本LOGO样式</string>
-    <string name="lock_screen_charging_show_wattage">充电组件显示瓦数</string>
+    <string name="force_lock_screen_charging_show_wattage">充电组件强制显示瓦数</string>
     <string name="lock_screen_charging_use_user_typeface">充电组件使用用户字体</string>
     <string name="set_full_screen_charging_animation_mode">全屏充电动画模式</string>
     <string name="LockScreenCarrier">锁屏运营商</string>

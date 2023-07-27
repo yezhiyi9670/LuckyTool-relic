@@ -292,7 +292,7 @@
     <string name="LockScreenChargingComponent">Lock Screen Charging Component</string>
     <string name="set_lock_screen_warp_charging_style">Set warp charging style</string>
     <string name="set_lock_screen_charging_text_logo_style">Set charging text logo style</string>
-    <string name="lock_screen_charging_show_wattage">Charging components display wattage</string>
+    <string name="force_lock_screen_charging_show_wattage">Force charging components display wattage</string>
     <string name="lock_screen_charging_use_user_typeface">Charging components use user fonts</string>
     <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="LockScreenCarrier">Оператор на екрані блокування</string>

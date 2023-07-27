@@ -29,8 +29,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
             prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1)
         dataChannel.wait<Int>("custom_volume_dialog_background_transparency") { volumeBlur = it }
         //锁屏充电显示瓦数
-        var showWattage = prefs(ModulePrefs).getBoolean("lock_screen_charging_show_wattage", false)
-        dataChannel.wait<Boolean>("lock_screen_charging_show_wattage") { showWattage = it }
+        var showWattage = prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
+        dataChannel.wait<Boolean>("force_lock_screen_charging_show_wattage") { showWattage = it }
         //WARP充电器样式
         var warpCharge = prefs(ModulePrefs).getString("set_lock_screen_warp_charging_style", "0")
         dataChannel.wait<String>("set_lock_screen_warp_charging_style") { warpCharge = it }

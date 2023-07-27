@@ -292,7 +292,7 @@
     <string name="LockScreenChargingComponent">Komponenta nabíjení na zamykací obrazovce</string>
     <string name="set_lock_screen_warp_charging_style">Nastavit styl warp nabíjení</string>
     <string name="set_lock_screen_charging_text_logo_style">Nastavit styl loga nabíjení</string>
-    <string name="lock_screen_charging_show_wattage">Komponenty nabíjení a zobrazení příkonu</string>
+    <string name="force_lock_screen_charging_show_wattage">Zobrazení příkonu nabíjecích komponentů</string>
     <string name="lock_screen_charging_use_user_typeface">Komponenta nabíjení použije na zamykací obrazovce uživatelské písmo</string>
     <string name="set_full_screen_charging_animation_mode">Režim animace nabíjení na celé obrazovce</string>
     <string name="LockScreenCarrier">Název operátora na zamykací obrazovce</string>

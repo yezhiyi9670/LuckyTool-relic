@@ -15,9 +15,8 @@ object LockScreenChargingComponent : YukiBaseHooker() {
         dataChannel.wait<Boolean>("lock_screen_charging_use_user_typeface") { userTypeface = it }
         var textLogo = prefs(ModulePrefs).getString("set_lock_screen_charging_text_logo_style", "0")
         dataChannel.wait<String>("set_lock_screen_charging_text_logo_style") { textLogo = it }
-        val showWattage = false
-        //prefs(ModulePrefs).getBoolean("lock_screen_charging_show_wattage", false)
-        //dataChannel.wait<Boolean>("lock_screen_charging_show_wattage") { showWattage = it }
+        var showWattage = prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
+        dataChannel.wait<Boolean>("force_lock_screen_charging_show_wattage") { showWattage = it }
 
         //Source ChargingLevelAndLogoView
         findClass("com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView").hook {
@@ -48,7 +47,10 @@ object LockScreenChargingComponent : YukiBaseHooker() {
         findClass("com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl").hook {
             injectMember {
                 method { name = "isMaxWattageMatchs" }
-                if (showWattage) replaceToTrue()
+                beforeHook {
+                    val mChargerWattage = field { name = "mChargerWattage" }.get(instance).int()
+                    if (showWattage && (mChargerWattage != 0)) resultTrue()
+                }
             }
         }
 
