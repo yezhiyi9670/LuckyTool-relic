@@ -113,9 +113,7 @@ object MainHook : IYukiHookXposedInit {
         //百变引擎
         loadApp("com.oplus.uiengine", HookUIEngine)
         //锁屏
-        loadApp("com.android.systemui") {
-            loadHooker(HookLockScreen)
-        }
+        loadApp("com.android.systemui", HookLockScreen)
         //截屏
         loadApp("com.oplus.screenshot", HookScreenshot)
 

@@ -77,6 +77,7 @@
     <string name="menu_reboot">メニューを再起動</string>
     <string name="menu_settings">メニューを設定</string>
     <string name="restart_scope">スコープしたプロセスを再起動</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">システムフレームワークを除くすべてのスコープをされたプロセスを再起動してもよろしいですか?\nこれはモジュールが正常に動作していない場合に使用します!\n関連するすべてのスコープがチェックされている事を確認してください!</string>
     <string name="restart_only_this_page_scope">このページのスコープのみを再起動する</string>
     <string name="reboot">システムを再起動</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">AOD スタイルモードの設定</string>
     <!--LockScreenAod-->
     <string name="LockScreen">ロック画面関連</string>
-    <string name="LockScreenComponent">ロック画面コンポーネント</string>
+    <string name="LockScreenClockComponent">ロック画面の時計コンポーネント</string>
     <string name="lock_screen_clock_redone_mode">ロック画面時計の赤い「1」表示</string>
     <string name="apply_lock_screen_dual_clock_redone">ロック画面のデュアル時計に適用</string>
     <string name="remove_lock_screen_redone">ロック画面から赤い数字の1を削除</string>
-    <string name="set_lock_screen_centered">ロック画面のコンポーネントを中央に配置</string>
+    <string name="set_lock_screen_centered">ロック画面の時計コンポーネントを中央に表示</string>
     <string name="set_lock_screen_centered_summary">設定でロック画面の中央に配置ができないシステムのみが対象です</string>
-    <string name="lock_screen_use_user_typeface">ロック画面のコンポーネントでユーザーフォントを使用します</string>
+    <string name="lock_screen_clock_use_user_typeface">ロック画面の時計コンポーネントにユーザー指定のフォントを使用</string>
+    <string name="LockScreenChargingComponent">ロック画面の充電コンポーネント</string>
+    <string name="set_lock_screen_warp_charging_style">WARP 充電のスタイルを設定</string>
+    <string name="set_lock_screen_charging_text_logo_style">充電テキストのロゴスタイルを設定</string>
+    <string name="lock_screen_charging_show_wattage">充電コンポーネントにワット数を表示</string>
+    <string name="lock_screen_charging_use_user_typeface">充電コンポーネントにユーザー指定のフォントを使用</string>
+    <string name="set_full_screen_charging_animation_mode">充電アニメーションの全画面表示</string>
     <string name="LockScreenCarrier">ロック画面のキャリア表示</string>
     <string name="remove_statusbar_carriers">ステータスバーのキャリア表示を削除</string>
     <string name="statusbar_carriers_use_user_typeface">ステータスバーのキャリア表示にユーザーフォントを使用します</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">ロック画面の下部にあるSOS緊急通報ボタンを削除します</string>
     <string name="LockScreenEvent">ロック画面イベント</string>
-    <string name="set_full_screen_charging_animation_mode">充電アニメーションの全画面表示</string>
     <string name="remove_72hour_password_verification">72時間以内のパスワード認証を削除</string>
     <string name="remove_72hour_password_verification_summary">起動してから72時間毎にパスワードを要求される制限を解除します。システム再起動後に有効化されます</string>
     <!--AlarmClock-->

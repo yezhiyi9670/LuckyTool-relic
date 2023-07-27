@@ -25,8 +25,15 @@ object HookSystemUIFeature : YukiBaseHooker() {
         //右侧音量条
         val rightVolume = prefs(ModulePrefs).getBoolean("enable_right_volume_bar_display", false)
         //音量对话框背景透明度
-        val volumeBlur =
-            prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1) > -1
+        var volumeBlur =
+            prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1)
+        dataChannel.wait<Int>("custom_volume_dialog_background_transparency") { volumeBlur = it }
+        //锁屏充电显示瓦数
+        var showWattage = prefs(ModulePrefs).getBoolean("lock_screen_charging_show_wattage", false)
+        dataChannel.wait<Boolean>("lock_screen_charging_show_wattage") { showWattage = it }
+        //WARP充电器样式
+        var warpCharge = prefs(ModulePrefs).getString("set_lock_screen_warp_charging_style", "0")
+        dataChannel.wait<String>("set_lock_screen_warp_charging_style") { warpCharge = it }
 
         //Source FeatureOption
         findClass("com.oplusos.systemui.common.feature.FeatureOption").hook {
@@ -51,7 +58,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
             }
             injectMember {
                 method { name = "isVolumeBlurDisabled" }
-                if (volumeBlur) replaceToFalse()
+                if (volumeBlur > -1) replaceToFalse()
             }
             if (SDK < A13) injectMember {
                 method { name = "isAiSdr2HdrSupport" }
@@ -78,6 +85,20 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             "2" -> resultFalse()
                             else -> return@beforeHook
                         }
+                    }
+                }
+            }
+            injectMember {
+                method { name = "isSupportShowWattage" }
+                if (showWattage) replaceToTrue()
+            }
+            injectMember {
+                method { name = "isUseWarpCharge" }
+                beforeHook {
+                    when (warpCharge) {
+                        "1" -> resultTrue()
+                        "2" -> resultFalse()
+                        else -> return@beforeHook
                     }
                 }
             }

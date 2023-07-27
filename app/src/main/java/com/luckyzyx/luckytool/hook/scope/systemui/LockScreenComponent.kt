@@ -12,7 +12,8 @@ import com.luckyzyx.luckytool.utils.dp
 object LockScreenComponent : YukiBaseHooker() {
     override fun onHook() {
         val isCenter = prefs(ModulePrefs).getBoolean("set_lock_screen_centered", false)
-        val userTypeface = prefs(ModulePrefs).getBoolean("lock_screen_use_user_typeface", false)
+        val userTypeface =
+            prefs(ModulePrefs).getBoolean("lock_screen_clock_use_user_typeface", false)
         //Source RedHorizontalSingleClockView
         findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView").hook {
             injectMember {

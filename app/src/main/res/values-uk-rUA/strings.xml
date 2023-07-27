@@ -77,6 +77,7 @@
     <string name="menu_reboot">Меню перезавантаження</string>
     <string name="menu_settings">Налаштування</string>
     <string name="restart_scope">Перезавантажити заплановані процеси</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Ви дійсно хочете перезавантажити всі процеси із заданою областю дії, окрім системного фреймворку?\nВикористайте, якщо модуль не працює!\nПереконайтеся, що всі відповідні області перевірено!</string>
     <string name="restart_only_this_page_scope">Перезавантажити лише цю область</string>
     <string name="reboot">Перезавантажити систему</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">Set aod style mode</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Lockscreen Related</string>
-    <string name="LockScreenComponent">Компоненти екрана блокування</string>
+    <string name="LockScreenClockComponent">Lock Screen Clock Component</string>
     <string name="lock_screen_clock_redone_mode">Червоний годинник на екрані блокування</string>
     <string name="apply_lock_screen_dual_clock_redone">Застосувати до подвійного годинника на екрані блокування</string>
     <string name="remove_lock_screen_redone">Видалити червоний годинник з екрану блокування</string>
-    <string name="set_lock_screen_centered">Компонент екрану блокування розташований по центру</string>
+    <string name="set_lock_screen_centered">Lockscreen clock component centered</string>
     <string name="set_lock_screen_centered_summary">Тільки для систем, в яких екран блокування не можна відцентрувати в налаштуваннях</string>
-    <string name="lock_screen_use_user_typeface">Компоненти на екрані блокування використовують шрифти користувача</string>
+    <string name="lock_screen_clock_use_user_typeface">Lockscreen clock components use user fonts</string>
+    <string name="LockScreenChargingComponent">Lock Screen Charging Component</string>
+    <string name="set_lock_screen_warp_charging_style">Set warp charging style</string>
+    <string name="set_lock_screen_charging_text_logo_style">Set charging text logo style</string>
+    <string name="lock_screen_charging_show_wattage">Charging components display wattage</string>
+    <string name="lock_screen_charging_use_user_typeface">Charging components use user fonts</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="LockScreenCarrier">Оператор на екрані блокування</string>
     <string name="remove_statusbar_carriers">Видалити оператора у рядку стану</string>
     <string name="statusbar_carriers_use_user_typeface">Оператори використовують користувацькі шрифти в рядку стану</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка екстреного контакту SOS внизу сторінки розблокування буде видалена</string>
     <string name="LockScreenEvent">Події на екрані блокування</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Видалення 72-годинної аутентифікації за паролем</string>
     <string name="remove_72hour_password_verification_summary">Видалити обмеження безпеки, що забороняє використовувати відбиток пальця або розблокування по обличчю після 72 годин роботи смартфона. Набуде чинності після перезавантаження системи</string>
     <!--AlarmClock-->

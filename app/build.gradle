@@ -52,7 +52,6 @@ android {
             debuggable false
             minifyEnabled true
             shrinkResources true
-            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -71,8 +70,8 @@ android {
         viewBinding = true
         buildConfig = true
     }
-    applicationVariants.all { variant ->
-        variant.outputs.all {
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
             if ('release' == variant.buildType.name) {
                 outputFileName = "LuckyTool_v${variant.versionName}(${versionCode}).apk"
             }

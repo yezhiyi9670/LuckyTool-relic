@@ -24,9 +24,9 @@ object AlarmClockWidget : YukiBaseHooker() {
         "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull()?.let {
             if (it.hasMethod { param(StringClass, StringClass);returnType = CharSequenceClass }) {
                 loadHooker(AlarmClock12)
+                return
             }
             if (it.hasConstructor { emptyParam() }.not()) return
-            return
         }
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence

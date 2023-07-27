@@ -83,6 +83,7 @@
     <string name="menu_reboot">Restart menu</string>
     <string name="menu_settings">Set menu</string>
     <string name="restart_scope">Restart scoped processes</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
     <string name="restart_only_this_page_scope">Restart only this page scope</string>
     <string name="reboot">Restart System</string>
@@ -306,13 +307,21 @@
     
     <!--LockScreenAod-->
     <string name="LockScreen">Lockscreen Related</string>
-    <string name="LockScreenComponent">Lock Screen Component</string>
+    
+    <string name="LockScreenClockComponent">Lock Screen Clock Component</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
     <string name="remove_lock_screen_redone">Remove lock screen red 1</string>
-    <string name="set_lock_screen_centered">Center the lockscreen component</string>
+    <string name="set_lock_screen_centered">Lockscreen clock component centered</string>
     <string name="set_lock_screen_centered_summary">Only for systems where the lock screen cannot be centered in the settings</string>
-    <string name="lock_screen_use_user_typeface">Lockscreen components use user fonts</string>
+    <string name="lock_screen_clock_use_user_typeface">Lockscreen clock components use user fonts</string>
+    
+    <string name="LockScreenChargingComponent">Lock Screen Charging Component</string>
+    <string name="set_lock_screen_warp_charging_style">Set warp charging style</string>
+    <string name="set_lock_screen_charging_text_logo_style">Set charging text logo style</string>
+    <string name="lock_screen_charging_show_wattage">Charging components display wattage</string>
+    <string name="lock_screen_charging_use_user_typeface">Charging components use user fonts</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     
     <string name="LockScreenCarrier">Lock Screen Carrier</string>
     <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
@@ -327,9 +336,9 @@
     <string name="remove_lock_screen_bottom_sos_button_summary">Removed the SOS emergency button at the bottom of the unlock page</string>
     
     <string name="LockScreenEvent">Lock Screen Event</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Remove 72-hour password authentication</string>
     <string name="remove_72hour_password_verification_summary">Removed the security restriction of not using a password to unlock within 72 hours after booting,Effective after system restart</string>
+    
     <!--AlarmClock-->
     <string name="alarmclock_widget_redone_mode">Clock widget red one mode</string>
     <string name="remove_alarmclock_widget_redone">Remove desktop clock component red one</string>

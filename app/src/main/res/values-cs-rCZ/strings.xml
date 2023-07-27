@@ -77,6 +77,7 @@
     <string name="menu_reboot">Nabídka restartu</string>
     <string name="menu_settings">Nastavit menu</string>
     <string name="restart_scope">Restartovat zahrnuté procesy</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Opravdu chcete restartovat všechny procesy kromě systémového frameworku?\nPoužijte tuto možnost, pokud modul nefunguje!\nUjistěte se, že jsou zvoleny všechny relevantní rozsahy!</string>
     <string name="restart_only_this_page_scope">Restartovat pouze tento scope</string>
     <string name="reboot">Restartovat systém</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">Nastavte režim stylu AOD</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Zamykací obrazovka</string>
-    <string name="LockScreenComponent">Komponenta zamykací obrazovky</string>
+    <string name="LockScreenClockComponent">Komponenta hodin zamykací obrazovky</string>
     <string name="lock_screen_clock_redone_mode">Režim červené jedničky na zamykací obrazovce</string>
     <string name="apply_lock_screen_dual_clock_redone">Použít na dolní hodiny na uzamčené obrazovce</string>
     <string name="remove_lock_screen_redone">Odstranit červenou jedničku na zamykací obrazovce</string>
-    <string name="set_lock_screen_centered">Vycentrovat komponentu zamykací obrazovky</string>
+    <string name="set_lock_screen_centered">Komponenta hodin na zamykací obrazovce - ve středu </string>
     <string name="set_lock_screen_centered_summary">Pouze pro systémy, u kterých nelze vycentrovat uzamčenou obrazovku z nastavení</string>
-    <string name="lock_screen_use_user_typeface">Použít uživatelské písmo textu komponent na zamykací obrazovce</string>
+    <string name="lock_screen_clock_use_user_typeface">Komponenty hodin na zamykací obrazovce použijí uživatelské fonty</string>
+    <string name="LockScreenChargingComponent">Komponenta nabíjení na zamykací obrazovce</string>
+    <string name="set_lock_screen_warp_charging_style">Nastavit styl warp nabíjení</string>
+    <string name="set_lock_screen_charging_text_logo_style">Nastavit styl loga nabíjení</string>
+    <string name="lock_screen_charging_show_wattage">Komponenty nabíjení a zobrazení příkonu</string>
+    <string name="lock_screen_charging_use_user_typeface">Komponenta nabíjení použije na zamykací obrazovce uživatelské písmo</string>
+    <string name="set_full_screen_charging_animation_mode">Režim animace nabíjení na celé obrazovce</string>
     <string name="LockScreenCarrier">Název operátora na zamykací obrazovce</string>
     <string name="remove_statusbar_carriers">Odstranit název operátora ze stavové lišty</string>
     <string name="statusbar_carriers_use_user_typeface">Použít vlastní font textu operátora ve stavové liště</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">Odstranit SOS tlačítko s nouzovými kontakty</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">V dolní části odemykací stránky odebere nouzové SOS tlačítko</string>
     <string name="LockScreenEvent">Události na zamykací obrazovce</string>
-    <string name="set_full_screen_charging_animation_mode">Režim animace nabíjení na celé obrazovce</string>
     <string name="remove_72hour_password_verification">Odstranit 72hodinové ověření hesla</string>
     <string name="remove_72hour_password_verification_summary">Odstranit bezpečnostní omezení z důvodu nepoužití hesla k odemknutí během 72 hodin po spuštění, účinné po restartu systému</string>
     <!--AlarmClock-->

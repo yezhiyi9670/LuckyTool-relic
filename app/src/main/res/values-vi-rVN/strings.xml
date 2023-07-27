@@ -77,6 +77,7 @@
     <string name="menu_reboot">Menu khởi động lại</string>
     <string name="menu_settings">Menu cài đặt</string>
     <string name="restart_scope">Khởi động lại quy trình phạm vi</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Bạn có chắc chắn muốn khởi động lại tất cả các quy trình có phạm vi ngoại trừ khung hệ thống không?\nHãy sử dụng tùy chọn này nếu mô-đun không hoạt động!\nĐảm bảo rằng tất cả các phạm vi có liên quan đều được chọn!</string>
     <string name="restart_only_this_page_scope">Chỉ khởi động lại phạm vi trang này</string>
     <string name="reboot">Khởi động lại hệ thống</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">Set aod style mode</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Lockscreen Related</string>
-    <string name="LockScreenComponent">Thành phần màn hình khóa</string>
+    <string name="LockScreenClockComponent">Lock Screen Clock Component</string>
     <string name="lock_screen_clock_redone_mode">Đồng hồ khóa màn hình màu đỏ một chế độ</string>
     <string name="apply_lock_screen_dual_clock_redone">Áp dụng cho màn hình khóa đồng hồ kép</string>
     <string name="remove_lock_screen_redone">Xóa số 1 đỏ ở màn hình khóa</string>
-    <string name="set_lock_screen_centered">Căn giữa thành phần màn hình khóa</string>
+    <string name="set_lock_screen_centered">Lockscreen clock component centered</string>
     <string name="set_lock_screen_centered_summary">Chỉ dành cho các hệ thống không thể căn giữa màn hình khóa trong cài đặt</string>
-    <string name="lock_screen_use_user_typeface">Các thành phần màn hình khóa sử dụng phông chữ người dùng</string>
+    <string name="lock_screen_clock_use_user_typeface">Lockscreen clock components use user fonts</string>
+    <string name="LockScreenChargingComponent">Lock Screen Charging Component</string>
+    <string name="set_lock_screen_warp_charging_style">Set warp charging style</string>
+    <string name="set_lock_screen_charging_text_logo_style">Set charging text logo style</string>
+    <string name="lock_screen_charging_show_wattage">Charging components display wattage</string>
+    <string name="lock_screen_charging_use_user_typeface">Charging components use user fonts</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="LockScreenCarrier">Hiển thị và tùy chỉnh nhà cung cấp dịch vụ tùy chỉnh</string>
     <string name="remove_statusbar_carriers">Xóa thanh trạng thái mạng</string>
     <string name="statusbar_carriers_use_user_typeface">StatusBar Carrier sử dụng phông chữ người dùng</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">Xóa nút liên hệ khẩn cấp SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Đã xóa nút khẩn cấp SOS ở cuối trang mở khóa</string>
     <string name="LockScreenEvent">Thành phần màn hình khóa</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Xóa xác thực mật khẩu 72 giờ</string>
     <string name="remove_72hour_password_verification_summary">Đã xóa hạn chế bảo mật không sử dụng mật khẩu để mở khóa trong vòng 72 giờ sau khi khởi động, có hiệu lực sau khi khởi động lại hệ thống</string>
     <!--AlarmClock-->

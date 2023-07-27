@@ -1774,8 +1774,8 @@ class LockScreen : ModulePreferenceFragment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.LockScreenComponent)
-                key = "LockScreenComponent"
+                title = getString(R.string.LockScreenClockComponent)
+                key = "LockScreenClockComponent"
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
@@ -1812,11 +1812,89 @@ class LockScreen : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.lock_screen_use_user_typeface)
-                key = "lock_screen_use_user_typeface"
+                title = getString(R.string.lock_screen_clock_use_user_typeface)
+                key = "lock_screen_clock_use_user_typeface"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.LockScreenChargingComponent)
+                key = "LockScreenChargingComponent"
+                isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_lock_screen_warp_charging_style)
+                summary = "%s"
+                key = "set_lock_screen_warp_charging_style"
+                entries =
+                    resources.getStringArray(R.array.set_lock_screen_warp_charging_style_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("set_lock_screen_warp_charging_style", newValue)
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            if (context.getString(ModulePrefs, "set_lock_screen_warp_charging_style", "0") == "2") {
+                addPreference(DropDownPreference(context).apply {
+                    title = getString(R.string.set_lock_screen_charging_text_logo_style)
+                    summary = "%s"
+                    key = "set_lock_screen_charging_text_logo_style"
+                    entries =
+                        resources.getStringArray(R.array.set_lock_screen_charging_text_logo_style_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("set_lock_screen_charging_text_logo_style", newValue)
+                        true
+                    }
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.lock_screen_charging_show_wattage)
+                    key = "lock_screen_charging_show_wattage"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui")
+                            .put("lock_screen_charging_show_wattage", newValue)
+                        true
+                    }
+                })
+            }
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.lock_screen_charging_use_user_typeface)
+                key = "lock_screen_charging_use_user_typeface"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("lock_screen_charging_use_user_typeface", newValue)
+                    true
+                }
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_full_screen_charging_animation_mode)
+                summary = "%s\n" + getString(R.string.need_restart_scope)
+                key = "set_full_screen_charging_animation_mode"
+                entries =
+                    resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isVisible = getOSVersion() >= 13.1
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("set_full_screen_charging_animation_mode", newValue)
+                    true
+                }
+            })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.LockScreenCarrier)
                 key = "LockScreenCarrier"
@@ -1834,6 +1912,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.LockScreenButton)
                 key = "LockScreenButton"
@@ -1871,26 +1950,11 @@ class LockScreen : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = SDK >= 33
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.LockScreenEvent)
                 key = "LockScreenEvent"
                 isIconSpaceReserved = false
-            })
-            addPreference(DropDownPreference(context).apply {
-                title = getString(R.string.set_full_screen_charging_animation_mode)
-                summary = "%s"
-                key = "set_full_screen_charging_animation_mode"
-                entries =
-                    resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
-                entryValues = arrayOf("0", "1", "2")
-                setDefaultValue("0")
-                isVisible = getOSVersion() >= 13.1
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("set_full_screen_charging_animation_mode", newValue)
-                    true
-                }
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_72hour_password_verification)

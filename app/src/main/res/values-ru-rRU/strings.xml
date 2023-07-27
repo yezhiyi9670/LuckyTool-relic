@@ -77,6 +77,7 @@
     <string name="menu_reboot">Меню перезагрузки</string>
     <string name="menu_settings">Настройки</string>
     <string name="restart_scope">Перезагрузить запланированные процессы</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Вы уверены, что хотите перезагрузить все процессы с заданной областью действия, кроме системного фреймворка?\nИспользуйте это, если модуль не работает!\nУбедитесь, что все соответствующие области отмечены!</string>
     <string name="restart_only_this_page_scope">Перезагрузить только эту область</string>
     <string name="reboot">Перезагрузить</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">Установить режим стиля AOD</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Экран блокировки</string>
-    <string name="LockScreenComponent">Компоненты экрана блокировки</string>
+    <string name="LockScreenClockComponent">Часы на экране блокировки</string>
     <string name="lock_screen_clock_redone_mode">Красные часы на экране блокировки</string>
     <string name="apply_lock_screen_dual_clock_redone">Применить к двойным часам на экране блокировки</string>
     <string name="remove_lock_screen_redone">Удалить красные часы с экрана блокировки</string>
-    <string name="set_lock_screen_centered">Компоненты экрана блокировки расположены по центру</string>
+    <string name="set_lock_screen_centered">Часы экрана блокировки по центру</string>
     <string name="set_lock_screen_centered_summary">Только для систем, в которых экран блокировки нельзя отцентрировать в настройках</string>
-    <string name="lock_screen_use_user_typeface">Компоненты на экране блокировки используют пользовательские шрифты</string>
+    <string name="lock_screen_clock_use_user_typeface">Часы на экране блокировки используют пользовательские шрифты</string>
+    <string name="LockScreenChargingComponent">Зарядка на экране блокировки</string>
+    <string name="set_lock_screen_warp_charging_style">Установить стиль зарядки warp</string>
+    <string name="set_lock_screen_charging_text_logo_style">Установить стиль текстового логотипа зарядки</string>
+    <string name="lock_screen_charging_show_wattage">Отображать мощность зарядки</string>
+    <string name="lock_screen_charging_use_user_typeface">Компоненты зарядки используют пользовательские шрифты</string>
+    <string name="set_full_screen_charging_animation_mode">Анимация во весь экран при зарядке</string>
     <string name="LockScreenCarrier">Оператор на экране блокировки</string>
     <string name="remove_statusbar_carriers">Удалить оператора в строке состояния</string>
     <string name="statusbar_carriers_use_user_typeface">Операторы используют пользовательские шрифты в строке состояния</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Кнопка экстренного контакта SOS внизу страницы разблокировки будет удалена</string>
     <string name="LockScreenEvent">Событие экрана блокировки</string>
-    <string name="set_full_screen_charging_animation_mode">Анимация во весь экран при зарядке</string>
     <string name="remove_72hour_password_verification">Удаление 72-часовой аутентификации по паролю</string>
     <string name="remove_72hour_password_verification_summary">Удалить ограничение безопасности, запрещающее использовать отпечаток пальца или разблокировку по лицу, после 72 часов работы смартфона. Вступит в силу после перезагрузки системы</string>
     <!--AlarmClock-->

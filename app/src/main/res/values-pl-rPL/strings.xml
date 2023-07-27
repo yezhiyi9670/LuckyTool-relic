@@ -77,6 +77,7 @@
     <string name="menu_reboot">Menu restartowania</string>
     <string name="menu_settings">Informacje o autorze</string>
     <string name="restart_scope">Zastosuj wszystkie zmiany</string>
+    <string name="need_restart_scope">Need to restart scope</string>
     <string name="restart_scope_message">Zmiany dla „Android System” mogą być zastosowane dopiero po restarcie urządzenia.\nUżyj tego, jeśli moduł nie działa!\nUpewnij się, czy rekomendowane aplikacje są zaznaczone w LSPosed!</string>
     <string name="restart_only_this_page_scope">Zastosuj zmiany dokonane na tej stronie</string>
     <string name="reboot">Zrestartuj urządzenie</string>
@@ -281,13 +282,19 @@
     <string name="set_aod_style_mode">Set aod style mode</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Lockscreen Related</string>
-    <string name="LockScreenComponent">Komponenty ekranu blokady</string>
+    <string name="LockScreenClockComponent">Lock Screen Clock Component</string>
     <string name="lock_screen_clock_redone_mode">Lock screen clock red one mode</string>
     <string name="apply_lock_screen_dual_clock_redone">Apply to lock screen dual clock</string>
     <string name="remove_lock_screen_redone">Usuń czerwony kolor z cyfry „1”</string>
-    <string name="set_lock_screen_centered">Wyśrodkuj zegar i datę</string>
+    <string name="set_lock_screen_centered">Lockscreen clock component centered</string>
     <string name="set_lock_screen_centered_summary">Dla systemów, w których elementy ekranu blokady nie mogą być wyśrodkowane w ustawieniach</string>
-    <string name="lock_screen_use_user_typeface">Używaj czcionek użytkownika</string>
+    <string name="lock_screen_clock_use_user_typeface">Lockscreen clock components use user fonts</string>
+    <string name="LockScreenChargingComponent">Lock Screen Charging Component</string>
+    <string name="set_lock_screen_warp_charging_style">Set warp charging style</string>
+    <string name="set_lock_screen_charging_text_logo_style">Set charging text logo style</string>
+    <string name="lock_screen_charging_show_wattage">Charging components display wattage</string>
+    <string name="lock_screen_charging_use_user_typeface">Charging components use user fonts</string>
+    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="LockScreenCarrier">Lock Screen Carrier</string>
     <string name="remove_statusbar_carriers">Remove statusbar carriers</string>
     <string name="statusbar_carriers_use_user_typeface">Użyj niestandardowej czcionki w nazwie operatora sieci</string>
@@ -299,7 +306,6 @@
     <string name="remove_lock_screen_bottom_sos_button">Usuń przycisk „Alarmowe SOS”</string>
     <string name="remove_lock_screen_bottom_sos_button_summary">Przycisk znajduje się na ekranie odblokowania</string>
     <string name="LockScreenEvent">Wydarzenia</string>
-    <string name="set_full_screen_charging_animation_mode">Full screen charging animation mode</string>
     <string name="remove_72hour_password_verification">Usuń 72-godzinne ograniczenie</string>
     <string name="remove_72hour_password_verification_summary">Usuń ograniczenie bezpieczeństwa polegające na ograniczeniu możliwości użycia hasła do odblokowania w ciągu 72 godzin od uruchomienia systemu. Skuteczne po ponownym uruchomieniu urządzenia</string>
     <!--AlarmClock-->
