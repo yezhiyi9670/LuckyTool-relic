@@ -9,7 +9,7 @@ object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
     override fun onHook() {
         //Source StitchLimitUtils -> scroll_configs_max_captured_pages / scroll_configs_max_captured_pixels
         searchClass {
-            from("ac", "yb", "zb", "hb", "ib", "bc").absolute()
+            from("ac", "yb", "zb", "hb", "ib", "bc", "mb").absolute()
             field().none()
             method { returnType = IntType }.count(6)
             method { returnType = BooleanType }.count(2)

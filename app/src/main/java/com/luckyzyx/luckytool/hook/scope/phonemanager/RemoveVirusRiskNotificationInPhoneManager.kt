@@ -13,23 +13,13 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
         searchClass {
             from(
                 "com.coloros.phonemanager.virusdetect.service",
-                "l6",
-                "m6",
-                "n6",
-                "e6",
-                "q6"
+                "l6", "m6", "n6", "e6", "q6"
             ).absolute()
             field { type = ContextClass }.count(1)
             field { type = StringClass }.count(1)
-            constructor { param(ContextClass, StringClass) }.count(1)
-            method {
-                emptyParam()
-                returnType = IntType
-            }.count(1)
-            method {
-                param(StringClass)
-                returnType = StringClass
-            }.count(1)
+            constructor { paramCount(2..3) }.count(1)
+            method { emptyParam();returnType = IntType }.count(1)
+            method { param(StringClass);returnType = StringClass }.count(1)
             method { param(ArrayListClass) }.count(2)
         }.get()?.hook {
             injectMember {

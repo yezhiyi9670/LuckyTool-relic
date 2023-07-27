@@ -77,7 +77,7 @@
     <string name="menu_reboot">Nabídka restartu</string>
     <string name="menu_settings">Nastavit menu</string>
     <string name="restart_scope">Restartovat zahrnuté procesy</string>
-    <string name="need_restart_scope">Need to restart scope</string>
+    <string name="need_restart_scope">Je třeba restartovat scope</string>
     <string name="restart_scope_message">Opravdu chcete restartovat všechny procesy kromě systémového frameworku?\nPoužijte tuto možnost, pokud modul nefunguje!\nUjistěte se, že jsou zvoleny všechny relevantní rozsahy!</string>
     <string name="restart_only_this_page_scope">Restartovat pouze tento scope</string>
     <string name="reboot">Restartovat systém</string>

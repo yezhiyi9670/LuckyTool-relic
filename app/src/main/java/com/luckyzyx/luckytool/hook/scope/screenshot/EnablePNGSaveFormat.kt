@@ -12,7 +12,7 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.screenshot.save.info",
-                "uc", "rc", "tc", "ac", "fa", "ea", "u9", "sc"
+                "uc", "rc", "tc", "ac", "fa", "ea", "u9", "sc", "fc"
             ).absolute()
             constructor().count(1)
             field { type = StringClass }.count(2)

@@ -4,10 +4,10 @@ import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.hasConstructor
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
+import com.highcapable.yukihookapi.hook.type.android.RemoteViewsClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -21,13 +21,11 @@ object AlarmClockWidget : YukiBaseHooker() {
         redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
 
-        "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull()?.let {
-            if (it.hasMethod { param(StringClass, StringClass);returnType = CharSequenceClass }) {
-                loadHooker(AlarmClock12)
-                return
-            }
-            if (it.hasConstructor { emptyParam() }.not()) return
+        val clazz = "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull() ?: return
+        if (clazz.hasMethod { param(StringClass, StringClass);returnType = CharSequenceClass }) {
+            loadHooker(AlarmClock12);return
         }
+        if (clazz.hasMethod { returnType(RemoteViewsClass) }.not()) return
 
         //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
         searchClass {

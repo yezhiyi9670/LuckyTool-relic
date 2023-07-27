@@ -26,7 +26,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             //prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
             //Source SysFeatureUtils
             searchClass {
-                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni").absolute()
+                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi").absolute()
                 field { type = BooleanClass }.count { it > 30 }
                 method { emptyParam();returnType = BooleanType }.count { it > 30 }
                 method { param(ContextClass);returnType = BooleanType }.count(5..6)
@@ -95,7 +95,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
             //Source ExpUstUtils
             searchClass {
-                from("ki", "uf", "oi", "qf", "mi", "ni").absolute()
+                from("oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi").absolute()
                 field().count(1)
                 method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
                 method {

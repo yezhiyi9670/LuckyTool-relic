@@ -15,11 +15,50 @@ object LockScreenChargingComponent : YukiBaseHooker() {
         dataChannel.wait<Boolean>("lock_screen_charging_use_user_typeface") { userTypeface = it }
         var textLogo = prefs(ModulePrefs).getString("set_lock_screen_charging_text_logo_style", "0")
         dataChannel.wait<String>("set_lock_screen_charging_text_logo_style") { textLogo = it }
+        val showWattage = false
+        //prefs(ModulePrefs).getBoolean("lock_screen_charging_show_wattage", false)
+        //dataChannel.wait<Boolean>("lock_screen_charging_show_wattage") { showWattage = it }
 
         //Source ChargingLevelAndLogoView
         findClass("com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView").hook {
             injectMember {
                 method { name = "updatePowerFormat" }
+                afterHook {
+                    if (!userTypeface) return@afterHook
+                    instance<LinearLayout>().allViews.forEach {
+                        if (it.javaClass == TextViewClass) {
+                            (it as TextView).typeface = Typeface.DEFAULT_BOLD
+                        }
+                    }
+                }
+            }
+            injectMember {
+                method { name = "showTextLogo" }
+                beforeHook {
+                    when (textLogo) {
+                        "1" -> resultTrue()
+                        "2" -> resultFalse()
+                        else -> return@beforeHook
+                    }
+                }
+            }
+        }
+
+        //Source ChargingAnimationImpl
+        findClass("com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl").hook {
+            injectMember {
+                method { name = "isMaxWattageMatchs" }
+                if (showWattage) replaceToTrue()
+            }
+        }
+
+        val clazz =
+            "com.oplusos.systemui.keyguard.charginganim.siphonanim.flavorone.ChargingLevelAndLogoViewForFlavorOneVfx"
+        if (clazz.toClassOrNull() == null) return
+        //Source ChargingLevelAndLogoViewForFlavorOneVfx
+        findClass(clazz).hook {
+            injectMember {
+                method { name = "setTypeface" }
                 afterHook {
                     if (!userTypeface) return@afterHook
                     instance<LinearLayout>().allViews.forEach {

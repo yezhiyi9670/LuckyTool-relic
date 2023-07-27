@@ -80,6 +80,7 @@ android {
             }
         }
     }
+    //noinspection GrDeprecatedAPIUsage
     androidResources.additionalParameters("--allow-reserved-package-id", "--package-id", "0x64")
 }
 
@@ -122,7 +123,7 @@ dependencies {
     //Rikka
 //    implementation "dev.rikka.rikkax.core:core:1.4.1"
     //kotlin协程
-    def kotlinxCoroutinesVersion = '1.7.1'
+    def kotlinxCoroutinesVersion = '1.7.3'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinxCoroutinesVersion}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}"
     //Net OkHttp相关
@@ -138,7 +139,7 @@ dependencies {
 //    implementation "com.github.topjohnwu.libsu:nio:${libsuVersion}"
 
     //Microsoft AppCenter
-    def appCenterSdkVersion = '5.0.1'
+    def appCenterSdkVersion = '5.0.2'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
