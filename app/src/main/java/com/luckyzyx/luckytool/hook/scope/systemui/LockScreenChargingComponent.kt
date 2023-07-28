@@ -13,9 +13,12 @@ object LockScreenChargingComponent : YukiBaseHooker() {
         var userTypeface =
             prefs(ModulePrefs).getBoolean("lock_screen_charging_use_user_typeface", false)
         dataChannel.wait<Boolean>("lock_screen_charging_use_user_typeface") { userTypeface = it }
+        var warpCharge = prefs(ModulePrefs).getString("set_lock_screen_warp_charging_style", "0")
+        dataChannel.wait<String>("set_lock_screen_warp_charging_style") { warpCharge = it }
         var textLogo = prefs(ModulePrefs).getString("set_lock_screen_charging_text_logo_style", "0")
         dataChannel.wait<String>("set_lock_screen_charging_text_logo_style") { textLogo = it }
-        var showWattage = prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
+        var showWattage =
+            prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
         dataChannel.wait<Boolean>("force_lock_screen_charging_show_wattage") { showWattage = it }
 
         //Source ChargingLevelAndLogoView
@@ -34,6 +37,7 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             injectMember {
                 method { name = "showTextLogo" }
                 beforeHook {
+                    if (warpCharge != "2") return@beforeHook
                     when (textLogo) {
                         "1" -> resultTrue()
                         "2" -> resultFalse()
@@ -48,6 +52,7 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             injectMember {
                 method { name = "isMaxWattageMatchs" }
                 beforeHook {
+                    if (warpCharge != "2") return@beforeHook
                     val mChargerWattage = field { name = "mChargerWattage" }.get(instance).int()
                     if (showWattage && (mChargerWattage != 0)) resultTrue()
                 }
@@ -73,6 +78,7 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             injectMember {
                 method { name = "showTextLogo" }
                 beforeHook {
+                    if (warpCharge != "2") return@beforeHook
                     when (textLogo) {
                         "1" -> resultTrue()
                         "2" -> resultFalse()

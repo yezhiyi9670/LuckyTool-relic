@@ -35,7 +35,7 @@ object BatteryHealthDataTips : YukiBaseHooker() {
                     val tips = if (num == null) "${tipStr}\n" else ""
                     content.apply {
                         gravity = Gravity.CENTER
-                        text = "$text\n${tips}By : LuckyTool"
+                        text = "$text\n${tips}By: LuckyTool"
                     }
                 }
             }
