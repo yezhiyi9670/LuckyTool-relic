@@ -3,7 +3,6 @@ package com.luckyzyx.luckytool.hook.statusbar
 import android.content.Context
 import android.graphics.Typeface
 import android.os.Handler
-import android.provider.Settings
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.TextView
@@ -14,6 +13,7 @@ import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.formatDate
+import com.luckyzyx.luckytool.utils.is24
 import java.lang.reflect.Method
 import java.util.Calendar
 import java.util.Date
@@ -295,7 +295,7 @@ object StatusBarClock : YukiBaseHooker() {
         var period: String
         var doubleHour: String
         var timeFormat = ""
-        timeFormat += if (is24(context)) "HH:mm" else "hh:mm"
+        timeFormat += if (context.is24) "HH:mm" else "hh:mm"
         if (isSecond) timeFormat += ":ss"
         timeFormat = formatDate(timeFormat, nowTime!!)
         if (isPeriod) {
@@ -320,10 +320,5 @@ object StatusBarClock : YukiBaseHooker() {
         val locale = context.resources.configuration.locales[0]
         val language = locale.language
         return language.endsWith("zh")
-    }
-
-    private fun is24(context: Context): Boolean {
-        val t = Settings.System.getString(context.contentResolver, Settings.System.TIME_12_24)
-        return t == "24"
     }
 }

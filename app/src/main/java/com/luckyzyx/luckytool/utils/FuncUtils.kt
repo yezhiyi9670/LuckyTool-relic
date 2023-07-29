@@ -297,9 +297,9 @@ fun setRefresh(context: Context, name: String, refresh: String?) {
     setParameter(context, name, "peak_refresh_rate", refresh)
 }
 
-fun setRefresh(context: Context, name: String, min_refresh: String?, peak_refresh: String?) {
-    setParameter(context, name, "min_refresh_rate", min_refresh)
-    setParameter(context, name, "peak_refresh_rate", peak_refresh)
+fun setRefresh(context: Context, name: String, minRefresh: String?, peakRefresh: String?) {
+    setParameter(context, name, "min_refresh_rate", minRefresh)
+    setParameter(context, name, "peak_refresh_rate", peakRefresh)
 }
 
 fun setParameter(context: Context, name: String, key: String?, value: String?) {
@@ -550,8 +550,8 @@ fun Context.getComponentEnabled(component: ComponentName): Int? {
  * @return String
  */
 val getFlashInfo
-    get(): String =
-        ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true).let {
+    get(): String = ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true)
+        .let {
             if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
                 ?.let { its -> formatSpace(its) } ?: "null"
         }
@@ -561,8 +561,7 @@ val getFlashInfo
  */
 val getLcdInfo: String
     get() : String = ShellUtils.execCommand(
-        "cat /proc/devinfo/lcd | sed 's/^.*\t//g; s/$/\n/g; s/\n/ /g;'",
-        true, true
+        "cat /proc/devinfo/lcd | sed 's/^.*\t//g; s/$/\n/g; s/\n/ /g;'", true, true
     ).let {
         if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
             ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
@@ -1202,4 +1201,14 @@ fun Context.checkVerify() = safeOf({ exitModule() }) {
  * 判断是否MTK机型
  */
 val isMTK get() = Pattern.compile("mt[0-9]*").matcher(Build.HARDWARE).find()
+
+/**
+ * 获取系统当前小时格式
+ * @receiver Context
+ * @return Boolean
+ */
+val Context.is24
+    get() = Settings.System.getString(
+        contentResolver, Settings.System.TIME_12_24
+    ) == "24"
 

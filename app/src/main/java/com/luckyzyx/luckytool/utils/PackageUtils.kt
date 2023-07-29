@@ -16,6 +16,11 @@ class PackageUtils(private val packageManager: PackageManager) {
         return packageManager.getPackageInfo(packName, PackageManager.PackageInfoFlags.of(flag.toLong()))
     }
 
+    fun getPackageUid(packName: String, flag: Int): Int {
+        if (SDK < 33) return packageManager.getPackageUid(packName, flag)
+        return packageManager.getPackageUid(packName, PackageManager.PackageInfoFlags.of(flag.toLong()))
+    }
+
     fun getApplicationInfo(packName: String, flag: Int): ApplicationInfo {
         if (SDK < 33) return packageManager.getApplicationInfo(packName, flag)
         return packageManager.getApplicationInfo(packName, PackageManager.ApplicationInfoFlags.of(flag.toLong()))
