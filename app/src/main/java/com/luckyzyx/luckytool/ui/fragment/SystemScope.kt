@@ -1840,37 +1840,32 @@ class LockScreen : ModulePreferenceFragment() {
                     true
                 }
             })
-            if (context.getString(
-                    ModulePrefs, "set_lock_screen_warp_charging_style", "0"
-                ) == "2" || SDK < A13
-            ) {
-                addPreference(DropDownPreference(context).apply {
-                    title = getString(R.string.set_lock_screen_charging_text_logo_style)
-                    summary = "%s"
-                    key = "set_lock_screen_charging_text_logo_style"
-                    entries =
-                        resources.getStringArray(R.array.set_lock_screen_charging_text_logo_style_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("set_lock_screen_charging_text_logo_style", newValue)
-                        true
-                    }
-                })
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.force_lock_screen_charging_show_wattage)
-                    key = "force_lock_screen_charging_show_wattage"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("force_lock_screen_charging_show_wattage", newValue)
-                        true
-                    }
-                })
-            }
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_lock_screen_charging_text_logo_style)
+                summary = "%s"
+                key = "set_lock_screen_charging_text_logo_style"
+                entries =
+                    resources.getStringArray(R.array.set_lock_screen_charging_text_logo_style_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("set_lock_screen_charging_text_logo_style", newValue)
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_lock_screen_charging_show_wattage)
+                key = "force_lock_screen_charging_show_wattage"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("force_lock_screen_charging_show_wattage", newValue)
+                    true
+                }
+            })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.lock_screen_charging_use_user_typeface)
                 key = "lock_screen_charging_use_user_typeface"
