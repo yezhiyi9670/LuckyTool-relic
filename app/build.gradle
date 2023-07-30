@@ -1,9 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android' version '1.9.0'
-    id 'com.google.devtools.ksp' version '1.9.0-1.0.11'
+    id 'com.google.devtools.ksp' version '1.9.0-1.0.12'
+    id 'com.joom.paranoid'
 //    id 'stringfog'
-//    id 'com.joom.paranoid'
 }
 
 //stringfog {
@@ -43,7 +43,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk 28
         versionCode currentVersionCode
-        versionName "1.0.10_beta"
+        versionName "1.0.10"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 

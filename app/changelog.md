@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.10_beta
+### 1.0.10
 
 - [添加] 启用音量条右侧显示
 - [修复] 部分设备Hook方法错误
@@ -20,6 +20,21 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 乐划锁屏图片保存水印v40.9.17.1
 - [添加] 锁屏充电组件样式
 - [适配] 游戏助手GPU控制器v8.14.2
+- [Add] Enable display on the right side of the volume bar
+- [Fix] Hook method error for some devices
+- [Add] Forced display of communication shares
+- [Add] Enable setting - auto off screen never timeout
+- [Fix] Screen capture page limit v13.7.2
+- [Fix] Game assistant game mode sound effect v8.14.X
+- [Add] Enable setting - status bar clock format
+- [Fix] Set FeatureProvider
+- [Fix] Notification alignment causes abnormal CPU usage on the system interface C12
+- [Add] Lockscreen - Fullscreen charging animation mode C13.1
+- [Add] Hook prompt on battery health page C13
+- [Fix] The new version of the clock component red one v13.11.X
+- [Fix] Lehua lock screen picture save watermark v40.9.17.1
+- [Add] Lock screen charging component style
+- [Fix] Game Assistant GPU Controller v8.14.2
 
 ### 1.0.9
 
