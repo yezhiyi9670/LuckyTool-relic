@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.11_beta
+
+- [适配] 锁屏充电样式 C12
+
 ### 1.0.10
 
 - [添加] 启用音量条右侧显示
