@@ -7,6 +7,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 - [适配] 锁屏充电组件样式 C12
 - [修复] 状态栏电量字体切换导致显示异常
+- [修复] 新版时钟组件Hook异常
 
 ### 1.0.10
 

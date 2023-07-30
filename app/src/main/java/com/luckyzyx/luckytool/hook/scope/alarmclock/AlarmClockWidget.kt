@@ -115,11 +115,11 @@ object AlarmClockWidget : YukiBaseHooker() {
                         this[this.indexOf(it)] = it.substring(2)
                     }
                 }
-            val param = ArrayMap<String, Array<String>>()
+            val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
-                "65b9601", "d29dc32" -> param["a5.v"] = arrayOf("u", "t")
+                "65b9601", "d29dc32" -> list["a5.v"] = arrayOf("u", "t")
             }
-            if (param.isEmpty()) {
+            if (list.keys.isEmpty()) {
                 loggerD(msg = "该版本未进行适配!")
                 loggerD(msg = "This version is not adapted!")
                 return
@@ -127,11 +127,11 @@ object AlarmClockWidget : YukiBaseHooker() {
 
             //Source OppoWeather / OppoWeatherSingle / OppoWeatherVertical
             //Search Class com.oplus.widget.OplusTextClock
-            findClass(param.keyAt(0)).hook {
+            findClass(list.keyAt(0)).hook {
                 injectMember {
                     method { emptyParam();returnType = BooleanType }.all()
                     beforeHook {
-                        if (param.valueAt(0).contains(method.name)) {
+                        if (list.valueAt(0).contains(method.name)) {
                             when (redMode) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
