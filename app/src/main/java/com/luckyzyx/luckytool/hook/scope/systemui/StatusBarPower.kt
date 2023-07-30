@@ -17,6 +17,10 @@ object StatusBarPower : YukiBaseHooker() {
         if (clazz.toClassOrNull() == null) return
         findClass(clazz).hook {
             injectMember {
+                method { name = "onConfigChanged" }
+                afterHook { method { name = "updatePercentText" }.get(instance).call() }
+            }
+            injectMember {
                 method { name = "updatePercentText" }
                 afterHook {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {

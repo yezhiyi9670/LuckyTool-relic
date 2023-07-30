@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.getOSVersion
 import com.luckyzyx.luckytool.utils.getScreenOrientation
 
 @Suppress("UNUSED_VARIABLE", "DiscouragedApi")
@@ -185,7 +186,7 @@ object StatusBarLayout : YukiBaseHooker() {
             }
             injectMember {
                 method { name = "onDestroyView" }
-                if (layoutMode != "0") intercept()
+                if (layoutMode != "0" && getOSVersion() == 13.0) intercept()
             }
         }
 
