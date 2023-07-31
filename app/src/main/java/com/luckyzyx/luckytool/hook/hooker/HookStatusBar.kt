@@ -19,5 +19,15 @@ object HookStatusBar : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("vibrate_when_opening_the_statusbar", false)) {
             loadHooker(VibrateWhenOpeningTheStatusBar)
         }
+
+//        findClass("com.oplusos.systemui.keyguard.clock.ClockExtraTextController").hook {
+//            injectMember {
+//                method { name = "getChargeInfo" }
+//                afterHook {
+//                    val str = result<String>() ?: return@afterHook
+//                    loggerD(msg = str)
+//                }
+//            }
+//        }
     }
 }

@@ -30,7 +30,7 @@ object HookOplusGames : YukiBaseHooker() {
             if (appSet[2] == "0") return
 
             //HookCloudConditionFeature
-            loadHooker(CloudConditionFeature)
+            loadHooker(CloudConditionFeature(appSet))
 
             //自定义媒体播放器支持
             loadHooker(CustomMediaPlayerSupport)

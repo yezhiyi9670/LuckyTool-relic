@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -9,11 +10,11 @@ import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object CloudConditionFeature : YukiBaseHooker() {
+class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker() {
     override fun onHook() {
         loadHooker(HookOplusFeature)
         loadHooker(HookCloudCondition)
-        loadHooker(HookCloudApiImpl)
+        if (appSet[1].toInt() > 80130000) loadHooker(HookCloudApiImpl)
     }
 
     private object HookOplusFeature : YukiBaseHooker() {
@@ -137,7 +138,7 @@ object CloudConditionFeature : YukiBaseHooker() {
 
             //Source CloudApiImpl
             searchClass {
-                from("f8").absolute()
+                from("f8", "l6").absolute()
                 field().none()
                 method().count(7)
                 method { emptyParam() }.count(2)
@@ -162,7 +163,7 @@ object CloudConditionFeature : YukiBaseHooker() {
                         }
                     }
                 }
-            }
+            } ?: loggerD(msg = "$packageName\nError -> HookCloudApiImpl")
         }
     }
 }
