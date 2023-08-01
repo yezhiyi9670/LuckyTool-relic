@@ -117,7 +117,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                 }
             val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
-                "65b9601", "d29dc32" -> list["a5.v"] = arrayOf("u", "t")
+                "65b9601", "d29dc32", "546b861" -> list["a5.v"] = arrayOf("u", "t")
             }
             if (list.keys.isEmpty()) {
                 loggerD(msg = "该版本未进行适配!")
