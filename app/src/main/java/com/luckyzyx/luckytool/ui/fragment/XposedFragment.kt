@@ -253,6 +253,21 @@ class XposedFragment : ModulePreferenceFragment() {
                 )
                 addPreference(
                     Preference(context).apply {
+                        key = "com.heytap.browser"
+                        setPrefsIconRes(key) { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = context.getAppLabel(key)
+                        summary = getString(R.string.remove_weather_page_ads)
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
                         val isOneplusCamera = context.checkPackName("com.oneplus.camera")
                         key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
                         setPrefsIconRes(key) { resource, show ->

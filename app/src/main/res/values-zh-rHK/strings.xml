@@ -674,5 +674,7 @@
     <string name="net_error">未知网络错误</string>
     <string name="net_other_error">未知错误</string>
     <string name="no_error_message">无错误信息</string>
+    <string name="remove_weather_page_ads">移除天气页面底部信息流广告</string>
+    <string name="remove_weather_page_ads_summary">通过在页面 m.weathercn.com 注入 JS 来实现屏蔽广告的效果，适用于通过天气 APP 跳转到的近 15 日天气等需要浏览器的功能</string>
     <!--Black-->
 </resources>
