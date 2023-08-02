@@ -2766,7 +2766,24 @@ class Battery : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isVisible = SDK >= A13
                     isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, _ ->
+                        (activity as MainActivity).restart()
+                        true
+                    }
                 })
+                if (context.getBoolean(ModulePrefs, "fix_battery_health_data_display", false)) {
+                    addPreference(EditTextPreference(context).apply {
+                        title = "自定义电池设计容量"
+                        dialogTitle = title
+                        summary = context.getString(
+                            ModulePrefs, "fix_battery_health_design_capacity", "0"
+                        ) + " mAh"
+                        key = "fix_battery_health_design_capacity"
+                        setDefaultValue("0")
+                        isVisible = false //SDK >= A13
+                        isIconSpaceReserved = false
+                    })
+                }
             }
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.open_screen_power_save)
@@ -2783,7 +2800,6 @@ class Battery : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = SDK >= A13
             })
-
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_high_temperature_limit)
                 summary = getString(R.string.remove_high_temperature_limit_summary)

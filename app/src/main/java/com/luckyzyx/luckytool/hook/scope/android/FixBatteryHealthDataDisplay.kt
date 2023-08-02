@@ -1,6 +1,10 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
+import android.content.Context
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.type.android.ContextClass
+import com.luckyzyx.luckytool.hook.utils.PowerProfileUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -23,18 +27,14 @@ object FixBatteryHealthDataDisplay : YukiBaseHooker() {
                         BufferedReader(FileReader("/sys/class/oplus_chg/battery/battery_fcc")).readLine()
                             .trim { it <= ' ' }.toFloatOrNull()
                     }
-                    var setValue = safeOfNull {
-                        BufferedReader(FileReader("/sys/class/oplus_chg/battery/design_capacity")).readLine()
-                            .trim { it <= ' ' }.toFloatOrNull()
-                    }
-                    if (setValue == null) {
-                        setValue =
-                            BufferedReader(FileReader("/sys/class/oplus_chg/battery/model_name"))
-                                .readLine().trim { it <= ' ' }.replace("_", "")
-                                .replace("[^(0-9)]".toRegex(), "").toFloatOrNull()
-                    }
-                    result = if (curValue == null || setValue == null) -1
-                    else (curValue / setValue * 100.0F).roundToInt()
+                    val extIns = field {
+                        type = "com.android.server.BatteryServiceExtImpl".toClass().javaClass
+                    }.get(instance).any()
+                    val context = extIns?.current()?.field { type = ContextClass }?.cast<Context>()
+                    val powerIns = PowerProfileUtils(appClassLoader).buildInstance(context)
+                    val designValue = PowerProfileUtils(appClassLoader).getBatteryCapacity(powerIns)
+                    result = if (curValue == null || designValue == null) -1
+                    else (curValue / designValue * 100.0F).roundToInt()
                 }
             }
         }
