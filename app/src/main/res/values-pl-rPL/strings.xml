@@ -675,4 +675,6 @@
     <string name="net_other_error">Nieznany błąd</string>
     <string name="no_error_message">Brak wiadomości o błędzie</string>
     <!--Black-->
+    <string name="remove_weather_page_ads">Remove weather page bottom information flow ads</string>
+    <string name="remove_weather_page_ads_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
 </resources>

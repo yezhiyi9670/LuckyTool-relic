@@ -141,6 +141,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         level = chargeInfo.getIntProperty("battery_capacity")
         level_sub = chargeInfo.getIntProperty("sub_soc")
         temperature = chargeInfo.getIntProperty("battery_temp") / 10.0
+        if (temperature > 100 || temperature < 0) temperature = 0.0
         temperature_noplug = chargeInfo.getIntProperty("battery_temp_not_plug") / 10.0
         isSeriesDual = DevicesConfigUtils.isSeriesDualBattery == true
         isParallelDual = DevicesConfigUtils.isParallelDualBattery == true
@@ -155,6 +156,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             voltage2 /= 1000.0
         }
         electricCurrent = chargeInfo.getIntProperty("battery_current_now")
+        if (electricCurrent > 10000) electricCurrent /= 10000
         if (isWireless) {
             val isAirSVOOC = DevicesConfigUtils.isAirSVOOCSupport
             val mChargerWirelessOnline = chargeInfo.getBooleanProperty("chargerWirelessOnline")

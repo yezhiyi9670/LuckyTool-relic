@@ -433,7 +433,7 @@
     <string name="performance_mode_and_standby_optimization_summary">设置 - 电池 - 更多设置</string>
     <string name="allow_untrusted_touch">允許不受信任的觸摸</string>
     <string name="disable_dynamic_refresh_rate">禁用动态刷新率</string>
-    <string name="disable_dynamic_refresh_rate_summary">主要解决屏幕无触摸时的掉帧问题 (注意：这将会同时禁用拥有硬件级别 LTPO 屏幕设备的动态刷新率功能)</string>
+    <string name="disable_dynamic_refresh_rate_summary">主要解决屏幕无触摸时的掉帧问题\n(注意：这将会同时禁用拥有硬件级别 LTPO 屏幕设备的动态刷新率功能)</string>
     <string name="enable_right_volume_bar_display">启用音量条右侧显示</string>
     <string name="force_enable_systemui_blur_feature">强制启用系统界面模糊特性</string>
     <string name="force_enable_systemui_blur_feature_tips">前提条件：需要开启选项“强制启用系统模糊特性”\n功能位置：杂项</string>
@@ -674,7 +674,7 @@
     <string name="net_error">未知网络错误</string>
     <string name="net_other_error">未知错误</string>
     <string name="no_error_message">无错误信息</string>
+    <!--Black-->
     <string name="remove_weather_page_ads">移除天气页面底部信息流广告</string>
     <string name="remove_weather_page_ads_summary">通过在页面 m.weathercn.com 注入 JS 来实现屏蔽广告的效果，适用于通过天气 APP 跳转到的近 15 日天气等需要浏览器的功能</string>
-    <!--Black-->
 </resources>
