@@ -176,6 +176,13 @@
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
         <action
+                android:id="@+id/action_nav_function_to_oplusBrowser"
+                app:destination="@id/oplusBrowser"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
                 android:id="@+id/action_nav_function_to_oplusLinker"
                 app:destination="@id/oplusLinker"
                 app:enterAnim="@anim/fragment_enter"
@@ -484,6 +491,10 @@
     <fragment
             android:id="@+id/oplusMMS"
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusMMS"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/oplusBrowser"
+            android:name="com.luckyzyx.luckytool.ui.fragment.OplusBrowser"
             android:label="{title_label}" />
     <fragment
             android:id="@+id/oplusLinker"

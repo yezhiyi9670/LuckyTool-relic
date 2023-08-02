@@ -13,6 +13,7 @@ import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid
 import com.luckyzyx.luckytool.hook.hooker.HookAutoStart
 import com.luckyzyx.luckytool.hook.hooker.HookBattery
+import com.luckyzyx.luckytool.hook.hooker.HookBrowser
 import com.luckyzyx.luckytool.hook.hooker.HookCamera
 import com.luckyzyx.luckytool.hook.hooker.HookCloudService
 import com.luckyzyx.luckytool.hook.hooker.HookDialogRelated
@@ -166,6 +167,9 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.mms", HookOplusMMS)
         //设备互联服务
         loadApp("com.oplus.linker", HookLinker)
+
+        //浏览器
+        loadApp("com.heytap.browser", HookBrowser)
 
         //其他APP
         loadApp(
