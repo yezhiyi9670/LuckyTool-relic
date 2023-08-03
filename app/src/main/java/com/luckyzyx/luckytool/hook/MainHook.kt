@@ -18,6 +18,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookCamera
 import com.luckyzyx.luckytool.hook.hooker.HookCloudService
 import com.luckyzyx.luckytool.hook.hooker.HookDialogRelated
 import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
+import com.luckyzyx.luckytool.hook.hooker.HookGesture
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLauncher
 import com.luckyzyx.luckytool.hook.hooker.HookLinker
@@ -169,6 +170,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.linker", HookLinker)
         //浏览器
         loadApp("com.heytap.browser", HookBrowser)
+        //手势体感
+        loadApp("com.oplus.gesture", HookGesture)
 
         //其他APP
         loadApp(

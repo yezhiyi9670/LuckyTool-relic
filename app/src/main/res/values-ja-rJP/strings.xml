@@ -495,7 +495,7 @@
     <string name="custom_media_player_support">カスタムメディアプレイヤー対応</string>
     <string name="custom_media_player_support_message">追加するメディアプレイヤーのパッケージ名を入力してください。各行に1つのパッケージ名のみ入力してください。</string>
     <string name="remove_danmaku_notification_whitelist">弾幕通知のホワイトリストを無効化</string>
-    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
+    <string name="remove_game_voice_changer_whitelist">ボイスチェンジャーのホワイトリストを削除</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>
@@ -528,6 +528,13 @@
     <string name="remove_video_save_watermark">ビデオ保存時の透かしを削除</string>
     <!--OplusLinker-->
     <string name="force_display_communication_sharing">シェア機能の表示を強制</string>
+    <!--OplusGesture-->
+    <string name="AonGesture">AON ジェスチャー</string>
+    <string name="force_enable_aon_gestures">AON ジェスチャーを強制的に有効化</string>
+    <string name="force_enable_aon_gestures_summary">注意: AONService (com.aiunit.aon) をインストールする必要があり、カメラ権限の許可が必要です。</string>
+    <string name="custom_aon_gesture_scroll_page_whitelist">カスタムスクロールページのホワイトリスト設定</string>
+    <string name="custom_aon_gesture_video_whitelist">カスタムビデオジェスチャーのホワイトリスト設定</string>
+    <string name="custom_aon_gesture_whitelist_tips">ホワイトリストに追加するパッケージ名を入力してください。各行に1つだけパッケージ名を入力してください</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->

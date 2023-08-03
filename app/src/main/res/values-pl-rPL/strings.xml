@@ -528,6 +528,13 @@
     <string name="remove_video_save_watermark">Remove video save watermark</string>
     <!--OplusLinker-->
     <string name="force_display_communication_sharing">Force display of communication sharing</string>
+    <!--OplusGesture-->
+    <string name="AonGesture">AonGesture</string>
+    <string name="force_enable_aon_gestures">Force enable aon gestures</string>
+    <string name="force_enable_aon_gestures_summary">Note: AONService (com.aiunit.aon) needs to be installed, and the camera permission must be granted!</string>
+    <string name="custom_aon_gesture_scroll_page_whitelist">Custom scroll page whitelist</string>
+    <string name="custom_aon_gesture_video_whitelist">Custom video gesture whitelist</string>
+    <string name="custom_aon_gesture_whitelist_tips">Fill in the package name that needs to be added to the whitelist, and only one package name can be filled in each line</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     <!--Everyimage-->

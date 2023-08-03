@@ -495,7 +495,7 @@
     <string name="custom_media_player_support">Podpora vlastního přehrávače médií</string>
     <string name="custom_media_player_support_message">Vyplňte název balíčku přehrávače médií, který má být přidán, na každém řádku může být jen jeden název balíčku aplikace</string>
     <string name="remove_danmaku_notification_whitelist">Odebrat seznam povolených oznámení danmaku</string>
-    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
+    <string name="remove_game_voice_changer_whitelist">Odstranit omezení měniče hlasu</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>
@@ -528,6 +528,13 @@
     <string name="remove_video_save_watermark">Odebrat vodoznak po uložení videa</string>
     <!--OplusLinker-->
     <string name="force_display_communication_sharing">Vynutit zobrazení sdílení komunikace</string>
+    <!--OplusGesture-->
+    <string name="AonGesture">AON Gesta</string>
+    <string name="force_enable_aon_gestures">Vynutit povolení AON gest</string>
+    <string name="force_enable_aon_gestures_summary">Poznámka: AONService (com.aiunit.aon) musí být nainstalován a oprávnění k fotoaparátu musí být uděleno!</string>
+    <string name="custom_aon_gesture_scroll_page_whitelist">Vlastní seznam povolených posuvných stránek</string>
+    <string name="custom_aon_gesture_video_whitelist">Vlastní seznam gest videí</string>
+    <string name="custom_aon_gesture_whitelist_tips">Vyplňte název balíčku, který má být přidán na whitelist, přičemž na každém řádku může být vyplněn pouze jeden název balíčku.</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Odstranit plovoucí okno s ověřovacím kódem</string>
     <!--Everyimage-->

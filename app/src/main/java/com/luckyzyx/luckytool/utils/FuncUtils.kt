@@ -455,6 +455,18 @@ fun jumpPictorial(context: Context) {
 }
 
 /**
+ * 跳转到手势体感页面
+ * @param context Context
+ */
+fun jumpGesture(context: Context) {
+    if (context.checkPackName("com.oplus.gesture")) {
+        ShellUtils.execCommand(
+            "am start com.oplus.gesture/.guide.GestureMainActivity", true
+        )
+    }
+}
+
+/**
  * 跳转电池性能模式
  * @param context Context
  */

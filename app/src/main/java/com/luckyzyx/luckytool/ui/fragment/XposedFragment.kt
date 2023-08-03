@@ -260,6 +260,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         }
                         title = context.getAppLabel(key)
                         summary = getString(R.string.remove_weather_page_ads)
+                        isVisible = context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
                             true
@@ -379,6 +380,22 @@ class XposedFragment : ModulePreferenceFragment() {
                         isVisible = SDK >= A13 && context.checkPackName(key)
                         setOnPreferenceClickListener {
                             navigatePage(R.id.action_nav_function_to_oplusLinker, title)
+                            true
+                        }
+                    }
+                )
+                addPreference(
+                    Preference(context).apply {
+                        key = "com.oplus.gesture"
+                        setPrefsIconRes(key) { resource, show ->
+                            icon = resource
+                            isIconSpaceReserved = show
+                        }
+                        title = context.getAppLabel(key)
+                        summary = getString(R.string.force_enable_aon_gestures)
+                        isVisible = SDK >= A13 && context.checkPackName(key)
+                        setOnPreferenceClickListener {
+                            navigatePage(R.id.action_nav_function_to_oplusGesture, title)
                             true
                         }
                     }

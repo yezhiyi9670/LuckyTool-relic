@@ -495,7 +495,7 @@
     <string name="custom_media_player_support">Поддержка пользовательского медиаплеера</string>
     <string name="custom_media_player_support_message">Заполните имя пакета для добавления медиаплеера, каждая строка может иметь только одно приложение</string>
     <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
-    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
+    <string name="remove_game_voice_changer_whitelist">Удалить ограничения для смены голоса</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -528,6 +528,13 @@
     <string name="remove_video_save_watermark">Удалить водяной знак на видео</string>
     <!--OplusLinker-->
     <string name="force_display_communication_sharing">Принудительное отображение обмена информацией</string>
+    <!--OplusGesture-->
+    <string name="AonGesture">Жесты AON</string>
+    <string name="force_enable_aon_gestures">Принудительно включить жесты AON</string>
+    <string name="force_enable_aon_gestures_summary">Примечание. Необходимо установить AONService (com.aiunit.aon) и предоставить разрешение на доступ к камере!</string>
+    <string name="custom_aon_gesture_scroll_page_whitelist">Белый список настраиваемых страниц прокрутки</string>
+    <string name="custom_aon_gesture_video_whitelist">Белый список настраиваемых видеожестов</string>
+    <string name="custom_aon_gesture_whitelist_tips">Заполните имя пакета, который необходимо добавить в белый список, и в каждой строке можно указать только одно имя пакета</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->

@@ -528,6 +528,13 @@
     <string name="remove_video_save_watermark">移除视频保存水印</string>
     <!--OplusLinker-->
     <string name="force_display_communication_sharing">强制显示通信共享</string>
+    <!--OplusGesture-->
+    <string name="AonGesture">隔空手势</string>
+    <string name="force_enable_aon_gestures">强制启用隔空手势</string>
+    <string name="force_enable_aon_gestures_summary">注意：需要安装 AONService (com.aiunit.aon)，并且授予摄像头权限！</string>
+    <string name="custom_aon_gesture_scroll_page_whitelist">自定义滑动页面白名单</string>
+    <string name="custom_aon_gesture_video_whitelist">自定义视频手势白名单</string>
+    <string name="custom_aon_gesture_whitelist_tips">填写需要添加到白名单中的包名，每行只能填写一个包名</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">移除验证码悬浮窗</string>
     <!--Everyimage-->

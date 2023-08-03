@@ -29,6 +29,7 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
+import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getOSVersion
@@ -36,6 +37,7 @@ import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpBattery
 import com.luckyzyx.luckytool.utils.jumpGames
+import com.luckyzyx.luckytool.utils.jumpGesture
 import com.luckyzyx.luckytool.utils.jumpOTA
 import com.luckyzyx.luckytool.utils.jumpPictorial
 import com.luckyzyx.luckytool.utils.navigatePage
@@ -3385,6 +3387,93 @@ class OplusLinker : ModulePreferenceFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        return super.onOptionsItemSelected(item)
+    }
+}
+
+class OplusGesture : ModulePreferenceFragment() {
+    private val scopes = arrayOf("com.oplus.gesture")
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        setHasOptionsMenu(true)
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AonGesture)
+                key = "AonGesture"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_enable_aon_gestures)
+                summary = getString(R.string.force_enable_aon_gestures_summary)
+                key = "force_enable_aon_gestures"
+                setDefaultValue(false)
+                isEnabled = context.checkPackName("com.oplus.gesture") &&
+                        context.checkPackName("com.aiunit.aon")
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(EditTextPreference(context).apply {
+                title = getString(R.string.custom_aon_gesture_scroll_page_whitelist)
+                dialogTitle = title
+                summary = context.getString(
+                    ModulePrefs, "custom_aon_gesture_scroll_page_whitelist", "None"
+                )
+                if (summary == "") summary = "None"
+                dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
+                key = "custom_aon_gesture_scroll_page_whitelist"
+                setDefaultValue("None")
+                isEnabled = context.checkPackName("com.oplus.gesture") &&
+                        context.checkPackName("com.aiunit.aon")
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    summary = if (newValue == "") "None" else newValue as String
+                    true
+                }
+            })
+            addPreference(EditTextPreference(context).apply {
+                title = getString(R.string.custom_aon_gesture_video_whitelist)
+                dialogTitle = title
+                summary = context.getString(
+                    ModulePrefs, "custom_aon_gesture_video_whitelist", "None"
+                )
+                if (summary == "") summary = "None"
+                dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
+                key = "custom_aon_gesture_video_whitelist"
+                setDefaultValue("None")
+                isEnabled = context.checkPackName("com.oplus.gesture") &&
+                        context.checkPackName("com.aiunit.aon")
+                isVisible = false //SDK >= A13
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    summary = if (newValue == "") "None" else newValue as String
+                    true
+                }
+            })
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
+            setIcon(R.drawable.ic_baseline_refresh_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ThemeUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
+            setIcon(R.drawable.baseline_open_in_new_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            if (ThemeUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == 1) requireActivity().restartScopes(scopes)
+        if (item.itemId == 2) jumpGesture(requireActivity())
         return super.onOptionsItemSelected(item)
     }
 }

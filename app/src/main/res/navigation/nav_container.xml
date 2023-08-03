@@ -189,6 +189,13 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_oplusGesture"
+                app:destination="@id/oplusGesture"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -499,6 +506,10 @@
     <fragment
             android:id="@+id/oplusLinker"
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusLinker"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/oplusGesture"
+            android:name="com.luckyzyx.luckytool.ui.fragment.OplusGesture"
             android:label="{title_label}" />
 
 </navigation>
