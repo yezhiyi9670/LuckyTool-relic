@@ -82,17 +82,19 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
             //Source CloudConditionUtil
             val oneplusCharacteristic =
                 prefs(ModulePrefs).getBoolean("enable_one_plus_characteristic", false)
+            //Search magic_voice_config
+            val magicVoice =
+                prefs(ModulePrefs).getBoolean("remove_game_voice_changer_whitelist", false)
 
             //Source CloudConditionUtil
             findClass("com.coloros.gamespaceui.config.cloud.CloudConditionUtil").hook {
                 injectMember {
                     method {
                         param(StringClass, MapClass, IntType, AnyClass)
-                        paramCount = 4
                         returnType = BooleanType
                     }
                     beforeHook {
-                        when (args(0).string()) {
+                        when (args().first().string()) {
                             //pickle插帧云控 -> cloudFrameInsertEnable
                             "frame_insert" -> if (pickleFeature) resultTrue()
                             //提升帧率云控 -> cloudIncreaseFpsEnable
@@ -111,13 +113,23 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                 injectMember {
                     method {
                         param(StringClass, MapClass)
-                        paramCount = 2
                         returnType = BooleanType
                     }
                     beforeHook {
-                        when (args(0).string()) {
+                        when (args().first().string()) {
                             //超级分辨率云控 -> cloudSRSupport
                             "super_resolution_config" -> if (superResolution) resultTrue()
+                        }
+                    }
+                }
+                injectMember {
+                    method {
+                        param { it[0] == StringClass && it[1] == MapClass }
+                        paramCount = 3
+                    }
+                    afterHook {
+                        when (args().first().string()) {
+                            "magic_voice_config" -> if (magicVoice) resultTrue()
                         }
                     }
                 }
@@ -151,7 +163,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         paramCount = 2
                     }
                     beforeHook {
-                        when (args(0).string()) {
+                        when (args().first().string()) {
                             //GPU控制器云控 -> isCloudSupportGpuControlPanel
                             "gpu_control_panel" -> if (gpuControl) resultTrue()
                             //OnePlus特性

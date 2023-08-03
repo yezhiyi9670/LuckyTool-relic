@@ -176,7 +176,6 @@
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
-    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">StatusBar Icon</string>
     <string name="StatusBarIcon_summary">Status bar icon related</string>
@@ -540,6 +539,8 @@
     <string name="enable_one_plus_characteristic">Enable OnePlus Characteristic</string>
     <string name="custom_media_player_support">Custom media player support</string>
     <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
+    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
+    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
     
     <!--CloudService-->
     <string name="remove_network_limit">Remove Data Network Limit</string>

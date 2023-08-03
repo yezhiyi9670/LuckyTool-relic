@@ -167,7 +167,6 @@
     <string name="allow_long_press_notification_modifiable">長押し通知を変更可能にする</string>
     <string name="remove_notification_manager_limit">通知マネージャーの制限を削除する</string>
     <string name="remove_small_window_reply_whitelist">スモールウィンドウの返信ホワイトリストを無効化</string>
-    <string name="remove_danmaku_notification_whitelist">弾幕通知のホワイトリストを無効化</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>
@@ -433,7 +432,7 @@
     <string name="performance_mode_and_standby_optimization_summary">設定 - バッテリー - 詳細設定 の順で開けます</string>
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
-    <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します</string>
+    <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します（注意：LTPO パネル搭載デバイスでは動的リフレッシュレートが無効になります）</string>
     <string name="enable_right_volume_bar_display">音量バーの右側表示を有効化</string>
     <string name="force_enable_systemui_blur_feature">システム UI のぼかし機能を強制的に有効化</string>
     <string name="force_enable_systemui_blur_feature_tips">有効にする前に「システム UI のぼかし機能を強制的に有効化」オプションをオンにする必要があります。\nオプションは「その他」のページにあります。</string>
@@ -495,6 +494,8 @@
     <string name="enable_one_plus_characteristic">OnePlus 向け機能を有効にする</string>
     <string name="custom_media_player_support">カスタムメディアプレイヤー対応</string>
     <string name="custom_media_player_support_message">追加するメディアプレイヤーのパッケージ名を入力してください。各行に1つのパッケージ名のみ入力してください。</string>
+    <string name="remove_danmaku_notification_whitelist">弾幕通知のホワイトリストを無効化</string>
+    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>
@@ -675,6 +676,6 @@
     <string name="net_other_error">不明なエラー</string>
     <string name="no_error_message">エラーメッセージなし</string>
     <!--Black-->
-    <string name="remove_weather_page_ads">Remove weather page bottom information flow ads</string>
-    <string name="remove_weather_page_ads_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
+    <string name="remove_weather_page_ads">天気ページ下部の情報フロー広告を削除</string>
+    <string name="remove_weather_page_ads_summary">m.weathercn.com のページに JS を注入して広告をブロックします。天気予報アプリから開ける過去15日間の天気など、ブラウザが必要な機能にも適用されます</string>
 </resources>

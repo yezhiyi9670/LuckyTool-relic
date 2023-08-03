@@ -167,7 +167,6 @@
     <string name="allow_long_press_notification_modifiable">Дозволити змінювати повідомлення про тривале натискання</string>
     <string name="remove_notification_manager_limit">Видалити ліміт диспетчера повідомлень</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
-    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>
@@ -495,6 +494,8 @@
     <string name="enable_one_plus_characteristic">Увімкнути функції підпису OnePlus</string>
     <string name="custom_media_player_support">Custom media player support</string>
     <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
+    <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
+    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
     <!--CloudService-->
     <string name="remove_network_limit">Видалити обмеження мережі передачі даних</string>
     <string name="remove_network_limit_summary">Видалити обмеження, згідно з яким резервне копіювання/відновлення не може використовувати мобільні дані</string>

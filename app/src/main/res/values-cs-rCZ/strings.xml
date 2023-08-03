@@ -167,7 +167,6 @@
     <string name="allow_long_press_notification_modifiable">Povolit upravovat oznámení dlouhým stiskem</string>
     <string name="remove_notification_manager_limit">Odstranit limit správce oznámení</string>
     <string name="remove_small_window_reply_whitelist">Odstranění whitelist aplikací umožňující odpovědí v malém okně</string>
-    <string name="remove_danmaku_notification_whitelist">Odebrat seznam povolených oznámení danmaku</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>
@@ -495,6 +494,8 @@
     <string name="enable_one_plus_characteristic">Povolit charakteristické prvky OnePlus</string>
     <string name="custom_media_player_support">Podpora vlastního přehrávače médií</string>
     <string name="custom_media_player_support_message">Vyplňte název balíčku přehrávače médií, který má být přidán, na každém řádku může být jen jeden název balíčku aplikace</string>
+    <string name="remove_danmaku_notification_whitelist">Odebrat seznam povolených oznámení danmaku</string>
+    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>
@@ -675,6 +676,6 @@
     <string name="net_other_error">Neznámá chyba</string>
     <string name="no_error_message">Žádná chybová zpráva</string>
     <!--Black-->
-    <string name="remove_weather_page_ads">Remove weather page bottom information flow ads</string>
-    <string name="remove_weather_page_ads_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
+    <string name="remove_weather_page_ads">Odstranění reklam na spodní straně informačního toku o počasí</string>
+    <string name="remove_weather_page_ads_summary">Vložením JS do stránky m.weathercn.com se dosáhne efektu blokování reklamy, což vyhovuje funkcím, které vyžadují prohlížeč, jako je počasí za posledních 15 dní, na které se přejde přes aplikaci počasí</string>
 </resources>

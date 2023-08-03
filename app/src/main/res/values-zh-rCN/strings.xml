@@ -167,7 +167,6 @@
     <string name="allow_long_press_notification_modifiable">允许长按通知可修改</string>
     <string name="remove_notification_manager_limit">移除通知管理限制</string>
     <string name="remove_small_window_reply_whitelist">移除浮窗回复白名单</string>
-    <string name="remove_danmaku_notification_whitelist">移除弹幕通知白名单</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>
@@ -495,6 +494,8 @@
     <string name="enable_one_plus_characteristic">启用 One Plus 特征</string>
     <string name="custom_media_player_support">自定义媒体播放器支持</string>
     <string name="custom_media_player_support_message">填写需要添加的媒体播放器的包名，每行只能填写一个包名</string>
+    <string name="remove_danmaku_notification_whitelist">移除弹幕通知白名单</string>
+    <string name="remove_game_voice_changer_whitelist">移除游戏变声白名单</string>
     <!--CloudService-->
     <string name="remove_network_limit">移除数据网络限制</string>
     <string name="remove_network_limit_summary">移除备份/恢复无法使用移动数据的限制</string>

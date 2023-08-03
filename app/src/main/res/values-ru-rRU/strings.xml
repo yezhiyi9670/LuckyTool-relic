@@ -167,7 +167,6 @@
     <string name="allow_long_press_notification_modifiable">Разрешить изменять уведомления о длительном нажатии</string>
     <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
     <string name="remove_small_window_reply_whitelist">Удалить белый список ответов в маленьком окне</string>
-    <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -495,6 +494,8 @@
     <string name="enable_one_plus_characteristic">Включить статус OnePlus</string>
     <string name="custom_media_player_support">Поддержка пользовательского медиаплеера</string>
     <string name="custom_media_player_support_message">Заполните имя пакета для добавления медиаплеера, каждая строка может иметь только одно приложение</string>
+    <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
+    <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -676,5 +677,5 @@
     <string name="no_error_message">Нет сообщения об ошибке</string>
     <!--Black-->
     <string name="remove_weather_page_ads">Удалить рекламу на странице с информацией о погоде</string>
-    <string name="remove_weather_page_ads_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
+    <string name="remove_weather_page_ads_summary">Внедрив JS на страницу m.weathercn.com для достижения эффекта блокировки рекламы, он подходит для функций, требующих браузера, таких как погода за последние 15 дней, к которой вы переходите через приложение погоды</string>
 </resources>

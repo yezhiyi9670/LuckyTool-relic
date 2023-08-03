@@ -68,6 +68,31 @@ object HookOplusGames : YukiBaseHooker() {
                 loadHooker(RemoveSomeVipLimit)
             }
 
+//            val clazz =
+//                "com.coloros.gamespaceui.config.ServerConfigManager".toClass(initialize = true).classes[0].simpleName
+//            findClass("com.coloros.gamespaceui.config.ServerConfigManager\$$clazz").hook {
+//                injectMember {
+//                    method {
+//                        emptyParam()
+//                        returnType = MapClass
+//                    }
+//                    afterHook {
+//                        result<Map<String, String>>()?.forEach { (key, value) ->
+//                            if (key == "magic_voice_config") {
+//                                val json = JSONArray(value).optJSONObject(0) ?: return@afterHook
+//                                val conditionSet =
+//                                    json.optJSONArray("conditionSet") ?: return@afterHook
+//                                val obj = conditionSet.optJSONObject(0) ?: return@afterHook
+//                                if (obj.optString("name") == "supportedGames") {
+//                                    val list = obj.optJSONArray("value") ?: return@afterHook
+//                                    list.put("com.star.minesweeping")
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+
             //game_color_plus_config_map
 
             //Search GamePerfModeModel -> perf_touch_response_extreme_rb
