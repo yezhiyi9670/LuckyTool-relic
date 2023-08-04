@@ -18,10 +18,10 @@ object RemoveCompetitionModeSound : YukiBaseHooker() {
                 "ja"
             ).absolute()
             field { type = ContextClass }.count(1)
-            field { type = AudioManager::class.java }.count(1)
-            field { type = SoundPool::class.java }.count(1)
-            field { type = SparseIntArrayClass }.count(2)
             field { type = BooleanType }.count(2)
+            field { type = SoundPool::class.java }.count(1)
+            field { type = AudioManager::class.java }.count(1)
+            field { type = SparseIntArrayClass }.count(2)
             method { param(IntType) }.count(2)
         }.get()?.hook {
             injectMember {

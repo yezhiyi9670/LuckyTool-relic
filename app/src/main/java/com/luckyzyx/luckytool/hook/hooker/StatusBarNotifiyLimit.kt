@@ -24,6 +24,18 @@ object StatusBarNotifiyLimit : YukiBaseHooker() {
             //com.oplus.notificationmanager.fragments.antivoyeur.SmartAntiVoyeurFragment
 //            findClass("com.oplus.notificationmanager.config.FeatureOption").hook {
 //                injectMember {
+//                    method { name = "loadFeatureOption" }
+//                    afterHook {
+//                        field { name = "IS_AON_ANT_PEEP_DISABLE" }.get().setFalse()
+//                    }
+//                }
+//                injectMember {
+//                    method { name = "loadFeatureServiceOption" }
+//                    afterHook {
+//                        field { name = "IS_AON_ANT_PEEP_DISABLE" }.get().setFalse()
+//                    }
+//                }
+//                injectMember {
 //                    method { name = "isSmartAntiVoyeurEnabled" }
 //                    replaceToTrue()
 //                }

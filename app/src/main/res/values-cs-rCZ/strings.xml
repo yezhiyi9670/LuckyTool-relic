@@ -461,6 +461,7 @@
     <string name="enable_show_never_timeout_summary">Po zapnutí můžete vidět další možnosti v nastavení</string>
     <string name="enable_statusbar_clock_format">Povolit formát hodin ve stavové liště</string>
     <string name="enable_statusbar_clock_format_summary">Povolit změny některým systémům, které nepodporují možnost změny formátu hodin ve stavové liště</string>
+    <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>

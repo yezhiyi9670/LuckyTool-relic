@@ -30,7 +30,7 @@
         <item>com.android.externalstorage</item>
         <item>com.heytap.browser</item>
         <item>com.oplus.gesture</item>
-
+        
         <item>com.east2d.everyimage</item>
         <item>ru.kslabs.ksweb</item>
         <item>com.ruet_cse_1503050.ragib.appbackup.pro</item>
@@ -123,6 +123,12 @@
         <item>@string/common_words_default</item>
         <item>@string/common_words_enable</item>
         <item>@string/common_words_disable</item>
+    </string-array>
+    
+    <string-array name="set_processor_click_page_entries">
+        <item>@string/common_words_default</item>
+        <item>8+ Gen 1</item>
+        <item>8+ Gen 2</item>
     </string-array>
     
     <string-array name="set_full_screen_charging_animation_mode_entries">

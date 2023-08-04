@@ -85,6 +85,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             val isDisableCN =
                 prefs(ModulePrefs).getBoolean("disable_cn_special_edition_setting", false)
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
+            val processorDetail = prefs(ModulePrefs).getString("set_processor_click_page", "0")
             //Source AppFeatureProviderUtils
             searchClass {
                 from("ma", "rb", "yb", "sb", "la").absolute()
@@ -117,6 +118,10 @@ object HookSettingsFeature : YukiBaseHooker() {
                             "com.android.settings.cn_version" -> if (isDisableCN) resultFalse()
                             //Source DisplayTimeOutController -> 永不息屏(24H)
                             "com.android.settings.show_never_timeout" -> if (neverTimeout) resultTrue()
+                            //com.android.settings.processor_detail
+                            "com.android.settings.processor_detail" -> if (processorDetail != "0") resultTrue()
+                            //com.android.settings.processor_detail_gen2
+                            "com.android.settings.processor_detail_gen2" -> if (processorDetail == "2") resultTrue()
                         }
                     }
                 }

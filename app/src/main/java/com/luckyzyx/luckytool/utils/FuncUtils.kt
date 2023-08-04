@@ -63,6 +63,9 @@ val A121 get() = Build.VERSION_CODES.S_V2
 /**Android13 33 TIRAMISU*/
 val A13 get() = Build.VERSION_CODES.TIRAMISU
 
+/**Android14 34 XX*/
+val A14 get() = 34
+
 /**
  * 获取ColorOS版本
  * @return [String]

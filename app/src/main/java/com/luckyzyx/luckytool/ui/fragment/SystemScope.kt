@@ -2686,6 +2686,17 @@ class Settings : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_processor_click_page)
+                summary = "%s"
+                key = "set_processor_click_page"
+                entries =
+                    resources.getStringArray(R.array.set_processor_click_page_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppDetailsRelated)
                 key = "AppDetailsRelated"
