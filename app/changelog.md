@@ -6,6 +6,8 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 ### 1.0.12_beta
 
 - [修复] 锁屏充电组件Hook异常报错
+- [优化] 游戏助手快捷跳转v8.15.0
+- [移除] 游戏助手快捷跳转磁贴
 
 ### 1.0.11
 

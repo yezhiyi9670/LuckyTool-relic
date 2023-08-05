@@ -36,11 +36,11 @@ import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.copyStr
 import com.luckyzyx.luckytool.utils.dialogCentered
+import com.luckyzyx.luckytool.utils.getAppLabel
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.jumpEngineermode
-import com.luckyzyx.luckytool.utils.jumpGames
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
@@ -380,22 +380,34 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.game_assistant_page)
+                summary = "(${context.getAppLabel("com.oplus.games")})"
                 isIconSpaceReserved = false
-                isVisible = context.checkPackName("com.oplus.games")
+                isVisible = context.checkPackName("com.oplus.games") &&
+                        context.checkResolveActivity(
+                            Intent().setClassName(
+                                "com.oplus.games",
+                                "business.compact.activity.GameBoxCoverActivity"
+                            )
+                        )
                 setOnPreferenceClickListener {
-                    jumpGames(context)
+                    ShellUtils.execCommand(
+                        "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
+                        true
+                    )
                     true
                 }
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.game_space_page)
+                summary = "(${context.getAppLabel("com.nearme.gamecenter")})"
                 isIconSpaceReserved = false
-                isVisible = context.checkResolveActivity(
-                    Intent().setClassName(
-                        "com.nearme.gamecenter",
-                        "com.nearme.gamespace.desktopspace.ui.DesktopSpaceMainActivity"
+                isVisible =
+                    context.checkPackName("com.nearme.gamecenter") && context.checkResolveActivity(
+                        Intent().setClassName(
+                            "com.nearme.gamecenter",
+                            "com.nearme.gamespace.desktopspace.ui.DesktopSpaceMainActivity"
+                        )
                     )
-                )
                 setOnPreferenceClickListener {
                     ShellUtils.execCommand(
                         "am start -n com.nearme.gamecenter/com.nearme.gamespace.desktopspace.ui.DesktopSpaceMainActivity",
@@ -406,6 +418,7 @@ class SystemQuickEntry : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.game_assistant_develop_page)
+                summary = "(${context.getAppLabel("com.oplus.games")})"
                 isIconSpaceReserved = false
                 isVisible = context.checkPackName("com.oplus.games") && context.getBoolean(
                     ModulePrefs, "enable_developer_page", false

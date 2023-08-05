@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.ui.fragment
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
@@ -30,13 +31,13 @@ import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.checkPackName
+import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getOSVersion
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpBattery
-import com.luckyzyx.luckytool.utils.jumpGames
 import com.luckyzyx.luckytool.utils.jumpGesture
 import com.luckyzyx.luckytool.utils.jumpOTA
 import com.luckyzyx.luckytool.utils.jumpPictorial
@@ -3077,12 +3078,22 @@ class OplusGames : ModulePreferenceFragment() {
             if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
+            isVisible = requireActivity().checkPackName("com.oplus.games") &&
+                    requireActivity().checkResolveActivity(
+                        Intent().setClassName(
+                            "com.oplus.games",
+                            "business.compact.activity.GameBoxCoverActivity"
+                        )
+                    )
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpGames(requireActivity())
+        if (item.itemId == 2) ShellUtils.execCommand(
+            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
+            true
+        )
         return super.onOptionsItemSelected(item)
     }
 }

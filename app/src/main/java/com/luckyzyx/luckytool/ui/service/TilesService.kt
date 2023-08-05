@@ -10,10 +10,8 @@ import android.telephony.SubscriptionManager
 import com.drake.net.utils.scope
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.IFiveGController
-import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.SettingsPrefs
 import com.luckyzyx.luckytool.utils.ShellUtils
-import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.closeCollapse
 import com.luckyzyx.luckytool.utils.getRefreshRateStatus
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
@@ -21,7 +19,6 @@ import com.luckyzyx.luckytool.utils.jumpHighPerformance
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.showRefreshRate
-import com.luckyzyx.luckytool.utils.toast
 import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
 
@@ -36,27 +33,6 @@ class ProcessManager : TileService() {
     override fun onClick() {
         closeCollapse()
         jumpRunningApp(applicationContext)
-    }
-}
-
-class GameAssistant : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            qsTile.state =
-                if (!checkPackName("com.oplus.games")) Tile.STATE_UNAVAILABLE else Tile.STATE_INACTIVE
-            qsTile.updateTile()
-        }
-    }
-
-    override fun onClick() {
-        closeCollapse()
-        when (qsTile.state) {
-            Tile.STATE_INACTIVE -> ShellUtils.execCommand(
-                "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
-            )
-
-            Tile.STATE_UNAVAILABLE -> toast(getString(R.string.game_assistant_tile_tips))
-        }
     }
 }
 

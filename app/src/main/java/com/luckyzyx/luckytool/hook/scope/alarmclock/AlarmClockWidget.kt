@@ -120,8 +120,8 @@ object AlarmClockWidget : YukiBaseHooker() {
                 "65b9601", "d29dc32", "546b861" -> list["a5.v"] = arrayOf("u", "t")
             }
             if (list.keys.isEmpty()) {
-                loggerD(msg = "该版本未进行适配!")
-                loggerD(msg = "This version is not adapted!")
+                loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")
+                loggerD(msg = "Try to restart the scopes or contact the developer for adaptation !")
                 return
             }
 

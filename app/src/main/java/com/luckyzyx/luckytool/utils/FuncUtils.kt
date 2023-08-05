@@ -495,18 +495,6 @@ fun jumpBattery(context: Context) {
 }
 
 /**
- * 跳转到游戏助手
- * @param context Context
- */
-fun jumpGames(context: Context) {
-    if (context.checkPackName("com.oplus.games")) {
-        ShellUtils.execCommand(
-            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
-        )
-    }
-}
-
-/**
  * 跳转进程管理
  * @param context Context
  */

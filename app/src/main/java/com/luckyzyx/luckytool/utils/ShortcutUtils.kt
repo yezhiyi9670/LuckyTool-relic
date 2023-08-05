@@ -20,7 +20,13 @@ class ShortcutUtils(val context: Context) {
      * @return ArrayList<String>
      */
     fun getShortcutList(): ArrayMap<String, String> {
-        val existOplusGame = context.checkPackName("com.oplus.games")
+        val existOplusGame =
+            context.checkPackName("com.oplus.games") && context.checkResolveActivity(
+                Intent().setClassName(
+                    "com.oplus.games",
+                    "business.compact.activity.GameBoxCoverActivity"
+                )
+            )
         return ArrayMap<String, String>().apply {
             put("module_shortcut_status_lsposed", "LSPosed")
             if (existOplusGame) put(
