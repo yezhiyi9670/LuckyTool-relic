@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.11_beta
+### 1.0.11
 
 - [适配] 锁屏充电组件样式 C12
 - [修复] 状态栏电量字体切换导致显示异常
@@ -20,6 +20,21 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 自定义滑动页面白名单
 - [适配] 游戏助手CloudFeature v8.15.0
 - [添加] 设置处理器点击页面
+- [Fix] Lock screen charging component style C12
+- [Fix] Switching battery fonts in the status bar leads to abnormal display
+- [Fix] The new version of the clock component Hook is abnormal
+- [Remove] The display judgment of the lock screen charging component function
+- [Fix] Hook abnormality in some versions of the game assistant
+- [Fix] Clock component Red One v13.11.10
+- [Changed] Data source of battery health capacity
+- [Add] Remove feed ads at bottom of weather page (browser)
+- [Change] Update dynamic refresh rate function copy
+- [Optimize] Handling of battery notification data exceptions in the status bar
+- [Add] Remove the game assistant voice change whitelist
+- [Add] Mandatory enabling of air gestures
+- [Add] custom slide page whitelist
+- [Fix] Game Assistant CloudFeature v8.15.0
+- [Add] set handler click page
 
 ### 1.0.10
 

@@ -461,7 +461,7 @@
     <string name="enable_show_never_timeout_summary">После включения вы можете увидеть больше опций в настройках</string>
     <string name="enable_statusbar_clock_format">Включить формат часов в строке состояния</string>
     <string name="enable_statusbar_clock_format_summary">Включите некоторые системы, которые не поддерживают возможность изменения формата часов в строке состояния</string>
-    <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
+    <string name="set_processor_click_page">Установите процессор, чтобы перейти к странице</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
