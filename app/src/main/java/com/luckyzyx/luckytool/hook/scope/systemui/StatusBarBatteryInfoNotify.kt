@@ -156,7 +156,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
             voltage2 /= 1000.0
         }
         electricCurrent = chargeInfo.getIntProperty("battery_current_now")
-        if (electricCurrent > 10000) electricCurrent /= 10000
+        if (abs(electricCurrent) > 10000) electricCurrent /= 1000
         if (isWireless) {
             val isAirSVOOC = DevicesConfigUtils.isAirSVOOCSupport
             val mChargerWirelessOnline = chargeInfo.getBooleanProperty("chargerWirelessOnline")
