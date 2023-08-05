@@ -95,13 +95,15 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     if (warpCharge == "2" && showWattage) replaceToTrue()
                 }
             }
-            injectMember {
-                method { name = "isUseWarpCharge" }
-                beforeHook {
-                    if (SDK >= A13) when (warpCharge) {
-                        "1" -> resultTrue()
-                        "2" -> resultFalse()
-                        else -> return@beforeHook
+            if (SDK >= A13 && instanceClass.hasMethod { name = "isUseWarpCharge" }) {
+                injectMember {
+                    method { name = "isUseWarpCharge" }
+                    beforeHook {
+                        when (warpCharge) {
+                            "1" -> resultTrue()
+                            "2" -> resultFalse()
+                            else -> return@beforeHook
+                        }
                     }
                 }
             }

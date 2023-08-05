@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.12_beta
+
+- [修复] 锁屏充电组件Hook异常报错
+
 ### 1.0.11
 
 - [适配] 锁屏充电组件样式 C12
