@@ -18,13 +18,12 @@ object HookSettings : YukiBaseHooker() {
     override fun onHook() {
         //HookSettingsFeature
         loadHooker(HookSettingsFeature)
-
+        //应用详情页
+        loadHooker(HookAppDetails)
         //暗色模式列表
         if (prefs(ModulePrefs).getBoolean("dark_mode_list_enable", false)) {
             loadHooker(DarkModeList)
         }
-        //应用详情页
-        loadHooker(HookAppDetails)
         //移除顶部账号显示
         if (prefs(ModulePrefs).getBoolean("remove_top_account_display", false)) {
             loadHooker(RemoveTopAccountDisplay)

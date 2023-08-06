@@ -11,7 +11,9 @@ import com.highcapable.yukihookapi.hook.type.java.CharSequenceArrayClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object HookSettingsFeature : YukiBaseHooker() {
     override fun onHook() {
@@ -57,8 +59,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                 method {
                     param(CharSequenceArrayClass);returnType = CharSequenceArrayClass
                 }.count(2)
-                method { emptyParam();returnType = StringClass }.count(2)
-                method { emptyParam();returnType = BooleanType }.count(4..5)
+                method { emptyParam();returnType = StringClass }.count(2..3)
+                method { emptyParam();returnType = BooleanType }.count(4..8)
                 method { param(StringClass);returnType = BooleanType }.count(2..3)
                 method { param(IntType);returnType = BooleanType }.count(3)
                 method { param(ContextClass, IntType) }.count(1)
@@ -72,7 +74,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                     beforeHook {
                         when (args().first().int()) {
                             //Source DisplayTimeOutController -> 永不息屏(24H)
-                            11 -> if (neverTimeout) resultTrue()
+                            11 -> if (SDK < A13 && neverTimeout) resultTrue()
                         }
                     }
                 }
@@ -88,7 +90,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             val processorDetail = prefs(ModulePrefs).getString("set_processor_click_page", "0")
             //Source AppFeatureProviderUtils
             searchClass {
-                from("ma", "rb", "yb", "sb", "la").absolute()
+                from("ma", "rb", "yb", "sb", "la", "ub").absolute()
                 method {
                     param(ContentResolverClass, StringClass, BooleanType)
                     returnType = BooleanType
