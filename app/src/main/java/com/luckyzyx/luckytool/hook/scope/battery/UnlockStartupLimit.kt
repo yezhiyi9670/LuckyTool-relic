@@ -10,20 +10,14 @@ object UnlockStartupLimit : YukiBaseHooker() {
         //Source StartupManager.java
         //Search -> ? 5 : 20; -> Method
         searchClass {
-            from("i7", "q7", "u7", "y7", "s7", "z8", "b9", "t7", "r7", "c9").absolute()
+            from("i7", "q7", "u7", "y7", "s7", "z8", "b9", "t7", "r7", "c9", "l9").absolute()
             field().count(4)
             field { type = ContextClass }.count(1)
             constructor { param(ContextClass) }.count(1)
-            method {
-                emptyParam()
-                returnType = IntType
-            }.count(1)
+            method { emptyParam();returnType = IntType }.count(1)
         }.get()?.hook {
             injectMember {
-                method {
-                    emptyParam()
-                    returnType = IntType
-                }
+                method { emptyParam();returnType = IntType }
                 replaceTo(999)
             }
         } ?: loggerD(msg = "$packageName\nError -> UnlockStartupLimit")
