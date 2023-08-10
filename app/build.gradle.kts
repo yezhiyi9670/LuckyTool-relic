@@ -10,25 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.0"
     id("com.google.devtools.ksp") version "1.9.0-1.0.12"
     id("com.joom.paranoid")
-//    id 'stringfog'
 }
-
-//stringfog {
-////    import com.github.megatronking.stringfog.plugin.StringFogMode
-////    import com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator
-//    // 必要：加解密库的实现类路径，需和上面配置的加解密算法库一致。
-//    implementation 'com.github.megatronking.stringfog.xor.StringFogImpl'
-//    // 可选：加密开关，默认开启。
-//    enable true
-//    // 可选：指定需加密的代码包路径，可配置多个，未指定将默认全部加密。
-//    fogPackages = ['com.luckyzyx.luckytool.ui', 'com.luckyzyx.luckytool.utils']
-//    // 可选（3.0版本新增）：指定密钥生成器，默认使用长度8的随机密钥（每个字符串均有不同随机密钥）,
-//    // 也可以指定一个固定的密钥：HardCodeKeyGenerator("This is a key")
-//    kg new RandomKeyGenerator()
-//    // 可选（4.0版本新增）：用于控制字符串加密后在字节码中的存在形式, 默认为base64，
-//    // 也可以使用text或者bytes
-//    mode StringFogMode.base64
-//}
 
 android {
     signingConfigs {
@@ -158,9 +140,6 @@ dependencies {
     val appCenterSdkVersion = "5.0.2"
     implementation("com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}")
     implementation("com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}")
-
-    //StringFog
-//    compileOnly 'com.github.megatronking.stringfog:xor:5.0.0'
 }
 
 fun getVersionCode(): Int {

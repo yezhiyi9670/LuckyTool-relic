@@ -906,11 +906,7 @@ fun Context.restartAllScope() {
     MaterialAlertDialogBuilder(this).apply {
         setMessage(getString(R.string.restart_scope_message))
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
-            scope {
-                withDefault {
-                    ShellUtils.execCommand(commands, true)
-                }
-            }
+            scope { withDefault { ShellUtils.execCommand(commands, true) } }
         }
         setNeutralButton(getString(android.R.string.cancel), null)
         show()
@@ -923,22 +919,18 @@ fun Context.restartAllScope() {
  * @param scopes Array<String>
  */
 fun Context.restartAllScope(scopes: Array<String>) {
-    scope {
-        withDefault {
-            val commands = ArrayList<String>()
-            for (scope in scopes) {
-                if (scope == "android") continue
-                if (scope.contains("systemui")) {
-                    commands.add("kill -9 `pgrep systemui`")
-                    continue
-                }
-                commands.add("killall $scope")
-                commands.add("am force-stop $scope")
-                getAppVersion(scope)
-            }
-            ShellUtils.execCommand(commands, true)
+    val commands = ArrayList<String>()
+    for (scope in scopes) {
+        if (scope == "android") continue
+        if (scope.contains("systemui")) {
+            commands.add("kill -9 `pgrep systemui`")
+            continue
         }
+        commands.add("killall $scope")
+        commands.add("am force-stop $scope")
+        getAppVersion(scope)
     }
+    scope { withDefault { ShellUtils.execCommand(commands, true) } }
 }
 
 /**

@@ -15,7 +15,7 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
         searchClass {
             from(
                 "com.cloud.base.commonsdk.baseutils",
-                "qa", "t2", "ra", "ob", "mb"
+                "qa", "t2", "ra", "ob", "mb", "ie"
             ).absolute()
             method { emptyParam();returnType = IntType }.count(1..2)
             method { param(IntType);returnType = BooleanType }.count(4..5)
