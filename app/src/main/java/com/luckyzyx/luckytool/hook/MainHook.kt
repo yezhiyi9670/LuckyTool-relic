@@ -21,7 +21,6 @@ import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
 import com.luckyzyx.luckytool.hook.hooker.HookGesture
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLauncher
-import com.luckyzyx.luckytool.hook.hooker.HookLinker
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
@@ -52,6 +51,7 @@ import com.luckyzyx.luckytool.hook.statusbar.StatusBarLayout
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNetWorkSpeed
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNotify
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarTile
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.SettingsPrefs
@@ -166,8 +166,6 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.heytap.pictorial", HookPictorial)
         //信息
         loadApp("com.android.mms", HookOplusMMS)
-        //设备互联服务
-        loadApp("com.oplus.linker", HookLinker)
         //浏览器
         loadApp("com.heytap.browser", HookBrowser)
         //手势体感
@@ -189,7 +187,7 @@ object MainHook : IYukiHookXposedInit {
             run {
                 if (lpparam.packageName == "android" && lpparam.processName == "android") {
                     when (SDK) {
-                        TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
+                        TIRAMISU, A14 -> CorePatchForT().handleLoadPackage(lpparam)
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
@@ -201,7 +199,7 @@ object MainHook : IYukiHookXposedInit {
         YukiXposedEvent.onInitZygote { startupParam: IXposedHookZygoteInit.StartupParam ->
             run {
                 when (SDK) {
-                    TIRAMISU -> CorePatchForT().initZygote(startupParam)
+                    TIRAMISU, A14 -> CorePatchForT().initZygote(startupParam)
                     S_V2 -> CorePatchForSv2().initZygote(startupParam)
                     S -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
