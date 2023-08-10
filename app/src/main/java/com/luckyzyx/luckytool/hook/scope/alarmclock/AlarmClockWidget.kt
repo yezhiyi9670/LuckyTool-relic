@@ -118,6 +118,7 @@ object AlarmClockWidget : YukiBaseHooker() {
             val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
                 "65b9601", "d29dc32", "546b861" -> list["a5.v"] = arrayOf("u", "t")
+                "14ae6e7" -> list["i5.v"] = arrayOf("b")
             }
             if (list.keys.isEmpty()) {
                 loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")

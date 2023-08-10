@@ -19,13 +19,8 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
         //Source AppFeatureProviderUtils
         searchClass {
             from(
-                "com.oplus.coreapp.appfeature",
-                "com.oplus.b.a",
-                "k4",
-                "i4",
-                "r5",
-                "o4",
-                "h4"
+                "com.oplus.coreapp.appfeature", "com.oplus.b.a",
+                "k4", "i4", "r5", "o4", "h4", "c6"
             ).absolute()
             method {
 //                name = "isFeatureSupport"

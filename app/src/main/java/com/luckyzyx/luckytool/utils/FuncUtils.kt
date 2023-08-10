@@ -166,6 +166,16 @@ fun Context.getDeviceInfo(): String {
 }
 
 /**
+ * 获取LOG前置信息
+ * @receiver Context
+ */
+fun Context.getLogInfo(): String {
+    val device = getDeviceInfo()
+    val moduleVer = "${getString(R.string.module_version)} $getVersionName($getVersionCode)"
+    return "$device\n$moduleVer\n$getGuid\n\n"
+}
+
+/**
  * 检测包名是否存在
  * @receiver Context
  * @param packName String
@@ -1214,4 +1224,3 @@ val Context.is24
     get() = Settings.System.getString(
         contentResolver, Settings.System.TIME_12_24
     ) == "24"
-

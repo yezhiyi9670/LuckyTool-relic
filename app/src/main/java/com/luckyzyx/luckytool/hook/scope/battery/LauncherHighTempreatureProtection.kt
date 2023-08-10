@@ -19,7 +19,7 @@ object LauncherHighTempreatureProtection : YukiBaseHooker() {
             from(
                 "com.oplus.modulehub.hightemp.model",
                 "com.oplus.modulehub.c.a",
-                "b6", "c6", "w4", "q4", "z5", "y4"
+                "b6", "c6", "w4", "q4", "z5", "y4", "o6"
             ).absolute()
             field { type = ContextClass }.count(2)
             field { type = IntType }.count(3..5)

@@ -95,8 +95,9 @@ android {
             }
         }
     }
-    @Suppress("DEPRECATION")
-    androidResources.additionalParameters("--allow-reserved-package-id", "--package-id", "0x64")
+    androidResources.additionalParameters.addAll(
+        arrayOf("--allow-reserved-package-id", "--package-id", "0x64")
+    )
 }
 
 dependencies {
