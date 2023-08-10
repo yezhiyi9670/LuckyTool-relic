@@ -370,22 +370,6 @@ class XposedFragment : ModulePreferenceFragment() {
                 )
                 addPreference(
                     Preference(context).apply {
-                        key = "com.oplus.linker"
-                        setPrefsIconRes(key) { resource, show ->
-                            icon = resource
-                            isIconSpaceReserved = show
-                        }
-                        title = context.getAppLabel(key)
-                        summary = getString(R.string.force_display_communication_sharing)
-                        isVisible = SDK >= A13 && context.checkPackName(key)
-                        setOnPreferenceClickListener {
-                            navigatePage(R.id.action_nav_function_to_oplusLinker, title)
-                            true
-                        }
-                    }
-                )
-                addPreference(
-                    Preference(context).apply {
                         key = "com.oplus.gesture"
                         setPrefsIconRes(key) { resource, show ->
                             icon = resource
