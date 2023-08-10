@@ -43,6 +43,7 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
 import com.luckyzyx.luckytool.hook.scope.battery.HookBatteryNotify
+import com.luckyzyx.luckytool.hook.scope.systemui.HookSystemUIFeature
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarBattery
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarControlCenter
@@ -76,6 +77,8 @@ object MainHook : IYukiHookXposedInit {
         //系统框架
         loadSystem(HookAndroid)
 
+        //系统界面Feature
+        loadApp("com.android.systemui", HookSystemUIFeature)
         //状态栏功能
         loadApp("com.android.systemui", HookStatusBar)
         //状态栏时钟

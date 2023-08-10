@@ -229,6 +229,7 @@
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>
@@ -257,6 +258,7 @@
     <string name="tile_expanded_columns_horizontal">Expanded tile columns (horizontal)</string>
     <string name="tile_expanded_rows_vertical">Expand tile rows (vertical)</string>
     <string name="tile_columns_horizontal_c13">Tile Columns (horizontal)</string>
+    
     <!--StatusBarLayout-->
     <string name="StatusBarLayout">Status Bar Layout</string>
     <string name="statusbar_layout_mode">Status Bar Layout Mode</string>
@@ -265,6 +267,7 @@
     <string name="statusbar_layout_left_margin">Status bar left margin</string>
     <string name="statusbar_layout_right_margin">Status bar right margin</string>
     <string name="statusbar_layout_margin_tip">If it is 0, the margin size will not be modified</string>
+    
     <!--StatusBarBattery-->
     <string name="StatusBarBattery">Status Bar Battery</string>
     <string name="remove_statusbar_battery_percent">Remove battery percentage number in statusbar</string>

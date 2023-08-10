@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Удалить сообщение безопасности в нижней части центра управления</string>
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>

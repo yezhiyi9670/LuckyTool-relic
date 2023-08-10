@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
     <string name="remove_control_center_mydevice">Usuń przycisk „Moje urządzenia”</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>

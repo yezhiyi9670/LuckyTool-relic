@@ -1086,6 +1086,21 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
             })
             addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_control_center_search_button_mode)
+                summary = "%s"
+                key = "set_control_center_search_button_mode"
+                entries =
+                    resources.getStringArray(R.array.set_control_center_search_button_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui")
+                        .put("set_control_center_search_button_mode", newValue)
+                    true
+                }
+            })
+            addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.remove_control_center_networkwarn)
                 summary = "%s\n" + getString(R.string.remove_control_center_networkwarn_summary)
                 key = "remove_control_center_networkwarn"

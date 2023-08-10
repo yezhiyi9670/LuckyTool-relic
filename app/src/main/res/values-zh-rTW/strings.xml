@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">设置自动亮度按钮模式</string>
     <string name="remove_control_center_user_switcher">移除控制中心多用户</string>
     <string name="remove_control_center_mydevice">移除控制中心我的设备</string>
+    <string name="set_control_center_search_button_mode">设置控制中心搜索按钮模式</string>
     <string name="remove_control_center_networkwarn">移除控制中心底部安全警告信息</string>
     <string name="remove_control_center_networkwarn_dialog">移除对话框</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">移除安全警告信息与对话框</string>

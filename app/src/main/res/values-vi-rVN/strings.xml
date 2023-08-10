@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">Đặt chế độ nút điều chỉnh độ sáng tự động</string>
     <string name="remove_control_center_user_switcher">Xóa trình chuyển đổi người dùng trung tâm điều khiển</string>
     <string name="remove_control_center_mydevice">Xóa trung tâm điều khiển thiết bị của tôi</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Xóa hộp thoại</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Remove security warning message and dialogs</string>

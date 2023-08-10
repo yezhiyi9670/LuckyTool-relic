@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Odstranění varovné zprávy o zabezpečení v dolní části ovládacího centra</string>
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Odstranění varovné zprávy a dialogových oken zabezpečení</string>

@@ -210,6 +210,7 @@
     <string name="set_auto_brightness_button_mode">明るさ自動調整ボタンのモードを設定</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
+    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">コントロールセンターの下部にあるセキュリティ警告メッセージを削除する</string>
     <string name="remove_control_center_networkwarn_dialog">ダイアログを削除</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">セキュリティ警告メッセージとダイアログを削除</string>
