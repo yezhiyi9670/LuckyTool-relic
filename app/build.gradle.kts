@@ -100,7 +100,7 @@ dependencies {
     //约束布局
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //快速创建Settings
-    implementation("androidx.preference:preference-ktx:1.2.0")
+    implementation("androidx.preference:preference-ktx:1.2.1")
     //下拉刷新控件
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //Navigation
