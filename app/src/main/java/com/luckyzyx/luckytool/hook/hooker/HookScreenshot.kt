@@ -16,8 +16,11 @@ object HookScreenshot : YukiBaseHooker() {
         //移除长截图页数限制
         if (prefs(ModulePrefs).getBoolean("remove_page_limit_for_long_screenshots", false)) {
             val newVer = "com.oplus.providers.AppSettings".toClassOrNull()
-            if (newVer == null) loggerD(msg = "$packageName\n移除长截图页数限制: 不支持此截屏版本\nRemove page limit for long screenshots: this screenshot version is not supported.")
-            else loadHooker(CustomizeLongScreenshotMaxCapturedPages)
+            if (newVer != null) loadHooker(CustomizeLongScreenshotMaxCapturedPages)
+            else {
+                loggerD(msg = "移除长截图页数限制: 不支持此截屏版本")
+                loggerD(msg = "Remove page limit for long screenshots: this screenshot version is not supported")
+            }
         }
         //启用PNG保存格式
         if (prefs(ModulePrefs).getBoolean("enable_png_save_format", false)) {
