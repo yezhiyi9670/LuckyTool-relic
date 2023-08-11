@@ -78,6 +78,7 @@
     <string name="menu_settings">メニューを設定</string>
     <string name="restart_scope">スコープしたプロセスを再起動</string>
     <string name="need_restart_scope">スコープの再起動が必要です</string>
+    <string name="need_restart_system">Need to restart system</string>
     <string name="restart_scope_message">システムフレームワークを除くすべてのスコープをされたプロセスを再起動してもよろしいですか?\nこれはモジュールが正常に動作していない場合に使用します!\n関連するすべてのスコープがチェックされている事を確認してください!</string>
     <string name="restart_only_this_page_scope">このページのスコープのみを再起動する</string>
     <string name="reboot">システムを再起動</string>
@@ -210,7 +211,7 @@
     <string name="set_auto_brightness_button_mode">明るさ自動調整ボタンのモードを設定</string>
     <string name="remove_control_center_user_switcher">ユーザーの切り替えをコントロールセンターから削除</string>
     <string name="remove_control_center_mydevice">コントロールセンターからマイデバイスを削除</string>
-    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
+    <string name="set_control_center_search_button_mode">コントロールセンターの検索ボタンモードを設定</string>
     <string name="remove_control_center_networkwarn">コントロールセンターの下部にあるセキュリティ警告メッセージを削除する</string>
     <string name="remove_control_center_networkwarn_dialog">ダイアログを削除</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">セキュリティ警告メッセージとダイアログを削除</string>
@@ -537,6 +538,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">カスタムスクロールページのホワイトリスト設定</string>
     <string name="custom_aon_gesture_video_whitelist">カスタムビデオジェスチャーのホワイトリスト設定</string>
     <string name="custom_aon_gesture_whitelist_tips">ホワイトリストに追加するパッケージ名を入力してください。各行に1つだけパッケージ名を入力してください</string>
+    <string name="enable_volume_key_control_flashlight">Enable the volume keys to control the flashlight</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->

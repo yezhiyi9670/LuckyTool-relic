@@ -84,6 +84,7 @@
     <string name="menu_settings">Set menu</string>
     <string name="restart_scope">Restart scoped processes</string>
     <string name="need_restart_scope">Need to restart scope</string>
+    <string name="need_restart_system">Need to restart system</string>
     <string name="restart_scope_message">Are you sure you want to restart all scoped processes except the system framework?\nUse this if the module isn\'t working!\nMake sure all the relevant scopes are checked!</string>
     <string name="restart_only_this_page_scope">Restart only this page scope</string>
     <string name="reboot">Restart System</string>
@@ -589,6 +590,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">Custom scroll page whitelist</string>
     <string name="custom_aon_gesture_video_whitelist">Custom video gesture whitelist</string>
     <string name="custom_aon_gesture_whitelist_tips">Fill in the package name that needs to be added to the whitelist, and only one package name can be filled in each line</string>
+    <string name="enable_volume_key_control_flashlight">Enable the volume keys to control the flashlight</string>
     
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>

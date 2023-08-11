@@ -19,6 +19,7 @@ import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveSystemScreenshotDelay
 import com.luckyzyx.luckytool.hook.scope.android.RemoveVPNActiveNotification
+import com.luckyzyx.luckytool.hook.scope.android.SystemEnableVolumeKeyControlFlashlight
 import com.luckyzyx.luckytool.hook.scope.android.ZoomWindow
 
 
@@ -84,6 +85,9 @@ object HookAndroid : YukiBaseHooker() {
 
         //禁用动态刷新率
         loadHooker(DisableDynamicRefreshRate)
+
+        //启用音量键控制手电筒手势
+        loadHooker(SystemEnableVolumeKeyControlFlashlight)
 
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp

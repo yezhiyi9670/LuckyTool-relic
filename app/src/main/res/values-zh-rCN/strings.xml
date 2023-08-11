@@ -78,6 +78,7 @@
     <string name="menu_settings">设置菜单</string>
     <string name="restart_scope">重启作用域</string>
     <string name="need_restart_scope">需要重启作用域</string>
+    <string name="need_restart_system">需要重启系统</string>
     <string name="restart_scope_message">确定要重启除系统框架以外的所有作用域？\n模块不生效时使用！\n请确保已勾选所有对应作用域！</string>
     <string name="restart_only_this_page_scope">仅重启此页作用域</string>
     <string name="reboot">重启系统</string>
@@ -537,6 +538,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">自定义滑动页面白名单</string>
     <string name="custom_aon_gesture_video_whitelist">自定义视频手势白名单</string>
     <string name="custom_aon_gesture_whitelist_tips">填写需要添加到白名单中的包名，每行只能填写一个包名</string>
+    <string name="enable_volume_key_control_flashlight">启用音量键控制手电筒</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">移除验证码悬浮窗</string>
     <!--Everyimage-->

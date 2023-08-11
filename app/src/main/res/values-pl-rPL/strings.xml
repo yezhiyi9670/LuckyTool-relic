@@ -78,6 +78,7 @@
     <string name="menu_settings">Informacje o autorze</string>
     <string name="restart_scope">Zastosuj wszystkie zmiany</string>
     <string name="need_restart_scope">Need to restart scope</string>
+    <string name="need_restart_system">Need to restart system</string>
     <string name="restart_scope_message">Zmiany dla „Android System” mogą być zastosowane dopiero po restarcie urządzenia.\nUżyj tego, jeśli moduł nie działa!\nUpewnij się, czy rekomendowane aplikacje są zaznaczone w LSPosed!</string>
     <string name="restart_only_this_page_scope">Zastosuj zmiany dokonane na tej stronie</string>
     <string name="reboot">Zrestartuj urządzenie</string>
@@ -537,6 +538,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">Custom scroll page whitelist</string>
     <string name="custom_aon_gesture_video_whitelist">Custom video gesture whitelist</string>
     <string name="custom_aon_gesture_whitelist_tips">Fill in the package name that needs to be added to the whitelist, and only one package name can be filled in each line</string>
+    <string name="enable_volume_key_control_flashlight">Enable the volume keys to control the flashlight</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     <!--Everyimage-->

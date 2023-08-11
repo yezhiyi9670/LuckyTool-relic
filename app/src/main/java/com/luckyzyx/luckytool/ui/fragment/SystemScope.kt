@@ -3402,6 +3402,14 @@ class OplusGesture : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_volume_key_control_flashlight)
+                summary = getString(R.string.need_restart_system)
+                key = "enable_volume_key_control_flashlight"
+                setDefaultValue(false)
+                isVisible = getOSVersion() >= 13.1
+                isIconSpaceReserved = false
+            })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AonGesture)
                 key = "AonGesture"

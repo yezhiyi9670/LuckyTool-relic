@@ -78,6 +78,7 @@
     <string name="menu_settings">Настройки</string>
     <string name="restart_scope">Перезагрузить запланированные процессы</string>
     <string name="need_restart_scope">Требуется перезапустить область</string>
+    <string name="need_restart_system">Необходимо перезагрузить систему</string>
     <string name="restart_scope_message">Вы уверены, что хотите перезагрузить все процессы с заданной областью действия, кроме системного фреймворка?\nИспользуйте это, если модуль не работает!\nУбедитесь, что все соответствующие области отмечены!</string>
     <string name="restart_only_this_page_scope">Перезагрузить только эту область</string>
     <string name="reboot">Перезагрузить</string>
@@ -210,7 +211,7 @@
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
-    <string name="set_control_center_search_button_mode">Set control center search button mode</string>
+    <string name="set_control_center_search_button_mode">Установить режим кнопки поиска в центре управления</string>
     <string name="remove_control_center_networkwarn">Удалить сообщение безопасности в нижней части центра управления</string>
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>
@@ -537,6 +538,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">Белый список настраиваемых страниц прокрутки</string>
     <string name="custom_aon_gesture_video_whitelist">Белый список настраиваемых видеожестов</string>
     <string name="custom_aon_gesture_whitelist_tips">Заполните имя пакета, который необходимо добавить в белый список, и в каждой строке можно указать только одно имя пакета</string>
+    <string name="enable_volume_key_control_flashlight">Включить управление фонариком кнопками громкости</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->
