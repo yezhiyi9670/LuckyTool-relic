@@ -180,13 +180,15 @@ object HookSystemUIFeature : YukiBaseHooker() {
 
             //Source FlavorOneFeatureOption
             findClass("com.oplusos.systemui.common.feature.FlavorOneFeatureOption").hook {
-                injectMember {
-                    method { name = "isSupportSearch" }
-                    beforeHook {
-                        when (searchBtnMode) {
-                            "1" -> resultTrue()
-                            "2" -> resultFalse()
-                            else -> return@beforeHook
+                if (instanceClass.hasMethod { name = "isSupportSearch" }) {
+                    injectMember {
+                        method { name = "isSupportSearch" }
+                        beforeHook {
+                            when (searchBtnMode) {
+                                "1" -> resultTrue()
+                                "2" -> resultFalse()
+                                else -> return@beforeHook
+                            }
                         }
                     }
                 }
