@@ -22,23 +22,22 @@
 
 #忽略警告
 -ignorewarnings
-
 #不做预校验，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。
 #-dontpreverify
 
 #指定代码优化级别，值在0-7之间，默认为5
--optimizationpasses 10
+-optimizationpasses 7
 #混淆时不使用大小写混合类名
 -dontusemixedcaseclassnames
 
-#关闭代码优化
+#关闭代码优化，会使apk体积增大
 #-dontoptimize
 
 # 有了verbose这句话，混淆后就会生成映射文件
 # 包含有类名->混淆后类名的映射关系
 # 然后使用printmapping指定映射文件的名称
-#-verbose
-#-printmapping proguardMapping.txt
+-verbose
+-printmapping proguardMapping.txt
 
 # 指定混淆时采用的算法，后面的参数是一个过滤器
 # 这个过滤器是谷歌推荐的算法，一般不改变
@@ -59,6 +58,29 @@
 #抛出异常时保留代码行号，在异常分析中可以方便定位
 -keepattributes SourceFile,LineNumberTable
 
+#优化时允许访问并修改有修饰符的类和类的成员，这可以提高优化步骤的结果。
+# 比如，当内联一个公共的getter方法时，这也可能需要外地公共访问。
+# 虽然java二进制规范不需要这个，要不然有的虚拟机处理这些代码会有问题。当有优化和使用-repackageclasses时才适用。
+# 指示语：不能用这个指令处理库中的代码，因为有的类和类成员没有设计成public ,而在api中可能变成public
+#-allowaccessmodification
+#当有优化和使用-repackageclasses时才适用。
+#-repackageclasses ''
+
+# JSON解析异常处理
+# 保护代码中的Annotation不被混淆
+# 这在JSON实体映射时非常重要，比如fastJson
+-keepattributes *Annotation*
+# 避免混淆泛型
+# 这在JSON实体映射时非常重要，比如fastJson
+-keepattributes Signature
+
+#指定外部模糊字典
+-obfuscationdictionary ../keystore/proguard-custom.txt
+#指定class模糊字典
+-classobfuscationdictionary ../keystore/proguard-custom.txt
+#指定package模糊字典
+-packageobfuscationdictionary ../keystore/proguard-custom.txt
+
 # 崩溃日志手机端显示
 -keep class com.simple.spiderman.** { *; }
 -keepnames class com.simple.spiderman.** { *; }
@@ -72,11 +94,3 @@
 # androidx
 -keep public class * extends androidx.annotation.** { *; }
 -keep public class * extends androidx.core.content.FileProvider
-
-# JSON解析异常处理
-# 保护代码中的Annotation不被混淆
-# 这在JSON实体映射时非常重要，比如fastJson
--keepattributes *Annotation*
-# 避免混淆泛型
-# 这在JSON实体映射时非常重要，比如fastJson
--keepattributes Signature
