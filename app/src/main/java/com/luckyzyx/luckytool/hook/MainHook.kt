@@ -52,7 +52,6 @@ import com.luckyzyx.luckytool.hook.statusbar.StatusBarLayout
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNetWorkSpeed
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarNotify
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarTile
-import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.SettingsPrefs
@@ -190,7 +189,7 @@ object MainHook : IYukiHookXposedInit {
             run {
                 if (lpparam.packageName == "android" && lpparam.processName == "android") {
                     when (SDK) {
-                        TIRAMISU, A14 -> CorePatchForT().handleLoadPackage(lpparam)
+                        TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
@@ -202,11 +201,10 @@ object MainHook : IYukiHookXposedInit {
         YukiXposedEvent.onInitZygote { startupParam: IXposedHookZygoteInit.StartupParam ->
             run {
                 when (SDK) {
-                    TIRAMISU, A14 -> CorePatchForT().initZygote(startupParam)
+                    TIRAMISU -> CorePatchForT().initZygote(startupParam)
                     S_V2 -> CorePatchForSv2().initZygote(startupParam)
                     S -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
-                    else -> loggerE(msg = "[CorePatch] Unsupported Version of Android -> $SDK")
                 }
             }
         }
