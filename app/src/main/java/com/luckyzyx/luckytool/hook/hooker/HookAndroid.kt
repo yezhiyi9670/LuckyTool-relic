@@ -89,6 +89,12 @@ object HookAndroid : YukiBaseHooker() {
         //启用音量键控制手电筒手势
         loadHooker(SystemEnableVolumeKeyControlFlashlight)
 
+        //Share
+        //com.android.internal.app.ChooserActivity
+        //201589207 查看应用详情 oplus_resolver_target_pin_detail
+        //Source OplusResolverPagerAdapter
+
+
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp
         //201850912 0x0c080020 oplus_ic_corp_badge_no_background_multiapp

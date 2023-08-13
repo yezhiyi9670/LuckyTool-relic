@@ -12,10 +12,7 @@ object AllowUntrustedTouch : YukiBaseHooker() {
         //Source InputManager
         findClass("android.hardware.input.InputManager").hook {
             injectMember {
-                method {
-                    name = "getBlockUntrustedTouchesMode"
-                    paramCount = 1
-                }
+                method { name = "getBlockUntrustedTouchesMode";paramCount = 1 }
                 if (isEnable) replaceTo(0)
             }
         }

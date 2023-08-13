@@ -9,10 +9,7 @@ object RemovePasswordTimeoutVerification : YukiBaseHooker() {
         //Source LockSettingsStrongAuth -> StrongAuthTimeoutAlarmListener
         findClass("com.android.server.locksettings.LockSettingsStrongAuth").hook {
             injectMember {
-                method {
-                    name = "rescheduleStrongAuthTimeoutAlarm"
-                    paramCount = 2
-                }
+                method { name = "rescheduleStrongAuthTimeoutAlarm";paramCount = 2 }
                 if (isEnable) intercept()
             }
         }

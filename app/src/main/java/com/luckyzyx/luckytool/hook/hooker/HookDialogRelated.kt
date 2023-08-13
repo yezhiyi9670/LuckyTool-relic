@@ -48,9 +48,5 @@ object HookDialogRelated : YukiBaseHooker() {
                 loadHooker(RemoveSecurePayFoundVirusDialog)
             }
         }
-
-        //分享
-        //com.android.internal.app.ChooserActivity
-
     }
 }

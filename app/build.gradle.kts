@@ -19,9 +19,9 @@ android {
             enableV2Signing = true
             enableV3Signing = true
             enableV4Signing = null
+            storeFile = file(keystoreProperties["storeFile"] as String)
             keyAlias = keystoreProperties["keyAlias"] as String
             keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
             storePassword = keystoreProperties["storePassword"] as String
         }
     }
@@ -64,14 +64,14 @@ android {
     }
     applicationVariants.all {
         val buildType = buildType.name
+        val version = "$versionName($versionCode)"
+        println("version -> $version")
         println("buildType -> $buildType")
         outputs.all {
             @Suppress("DEPRECATION")
             if (this is com.android.build.gradle.api.ApkVariantOutput) {
-                if (buildType == "release") outputFileName =
-                    "LuckyTool_v${versionName}(${versionCode}).apk"
-                if (buildType == "debug") outputFileName =
-                    "LuckyTool_v${versionName}(${versionCode})_debug.apk"
+                if (buildType == "release") outputFileName = "LuckyTool_v${version}.apk"
+                if (buildType == "debug") outputFileName = "LuckyTool_v${version}_debug.apk"
                 println("outputFileName -> $outputFileName")
             }
         }

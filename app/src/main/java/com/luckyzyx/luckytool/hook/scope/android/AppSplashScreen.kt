@@ -12,10 +12,7 @@ object AppSplashScreen : YukiBaseHooker() {
         if (SDK < A13) return
         findClass("com.android.server.wm.StartingSurfaceController").hook {
             injectMember {
-                method {
-                    name = "showStartingWindow"
-                    paramCount = 5
-                }
+                method { name = "showStartingWindow";paramCount = 5 }
                 if (isEnable) intercept()
             }
         }

@@ -17,10 +17,7 @@ object DarkModeService : YukiBaseHooker() {
         //Source OplusDarkModeServiceManager
         findClass("com.android.server.OplusDarkModeServiceManager").hook {
             injectMember {
-                method {
-                    name = "updateList"
-                    paramCount = 1
-                }
+                method { name = "updateList";paramCount = 1 }
                 afterHook {
                     if (!isEnable) return@afterHook
                     val supportListMap = ArrayMap<String, Int>()

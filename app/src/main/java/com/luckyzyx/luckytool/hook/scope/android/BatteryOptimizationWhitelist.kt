@@ -14,21 +14,17 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
         //Source oplus-service-jobscheduler -> OplusDeviceIdleHelper
         //Search sys_deviceidle_whitelist
         findClass("com.android.server.OplusDeviceIdleHelper").hook {
-            val getNewWhiteList = instanceClass.hasMethod { name = "getNewWhiteList" }
-            val getNewWhiteListLocked =
-                instanceClass.hasMethod { name = "getNewWhiteListLocked" }
-            if ((getNewWhiteList && getNewWhiteListLocked) || !(getNewWhiteList || getNewWhiteListLocked)) return@hook
             injectMember {
                 method {
-                    if (getNewWhiteList) name = "getNewWhiteList"
-                    if (getNewWhiteListLocked) name = "getNewWhiteListLocked"
+                    name = if (instanceClass.hasMethod { name = "getNewWhiteList" }) "getNewWhiteList"
+                    else if (instanceClass.hasMethod { name = "getNewWhiteListLocked" }) "getNewWhiteListLocked"
+                    else return@hook
                     paramCount = 1
                 }
                 replaceUnit {
                     val whiteListAll = args().first().cast<java.util.ArrayList<String>>()
                     whiteListAll?.clear()
-                    val mDefaultWhitelist =
-                        field { name = "mDefaultWhitelist" }.get().list<String>()
+                    val mDefaultWhitelist = field { name = "mDefaultWhitelist" }.get().list<String>()
                     whiteListAll?.addAll(mDefaultWhitelist)
 
                     if (!disableCustom) method { name = "getCustomizeWhiteList" }.get(instance)

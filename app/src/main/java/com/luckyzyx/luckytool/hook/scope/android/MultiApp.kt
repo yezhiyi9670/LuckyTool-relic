@@ -14,10 +14,7 @@ object MultiApp : YukiBaseHooker() {
         //Source OplusMultiAppConfig
         findClass("com.oplus.multiapp.OplusMultiAppConfig").hook {
             injectMember {
-                method {
-                    name = "getAllowedPkgList"
-                    returnType = ListClass
-                }
+                method { name = "getAllowedPkgList";returnType = ListClass }
                 beforeHook {
                     if (!isEnable || enabledMulti.isEmpty()) return@beforeHook
                     result = java.util.ArrayList(enabledMulti)

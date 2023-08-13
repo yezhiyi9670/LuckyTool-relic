@@ -10,10 +10,7 @@ object RemoveSystemScreenshotDelay : YukiBaseHooker() {
         //Source PhoneWindowManager
         findClass("com.android.server.policy.PhoneWindowManager").hook {
             injectMember {
-                method {
-                    name = "getScreenshotChordLongPressDelay"
-                    returnType = LongType
-                }
+                method { name = "getScreenshotChordLongPressDelay";returnType = LongType }
                 if (isEnable) replaceTo(0L)
             }
         }

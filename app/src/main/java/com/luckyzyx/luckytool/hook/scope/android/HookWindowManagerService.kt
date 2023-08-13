@@ -10,11 +10,7 @@ object HookWindowManagerService : YukiBaseHooker() {
         //Source OplusWindowManagerService
         findClass("com.android.server.wm.OplusWindowManagerService").hook {
             injectMember {
-                method {
-                    name = "clearForcedDisplayDensityForUser"
-                    paramCount = 2
-                    superClass()
-                }
+                method { name = "clearForcedDisplayDensityForUser";paramCount = 2;superClass() }
                 if (isDpi) intercept()
             }
         }

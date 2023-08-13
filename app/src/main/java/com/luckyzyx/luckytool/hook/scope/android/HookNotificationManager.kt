@@ -13,10 +13,7 @@ object HookNotificationManager : YukiBaseHooker() {
         //Source NotificationManager
         findClass("android.app.NotificationManager").hook {
             injectMember {
-                method {
-                    name = "notify"
-                    paramCount = 3
-                }
+                method { name = "notify";paramCount = 3 }
                 beforeHook {
                     when (args(1).int()) {
                         4 -> if (hotspotPowerConsumption) resultNull()

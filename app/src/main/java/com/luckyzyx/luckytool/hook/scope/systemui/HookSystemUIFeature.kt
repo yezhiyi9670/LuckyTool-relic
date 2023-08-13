@@ -180,7 +180,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
             val searchBtnMode =
                 prefs(ModulePrefs).getString("set_control_center_search_button_mode", "0")
 
-            if (SDK < A13) return
             //Source FlavorOneFeatureOption
             findClass("com.oplusos.systemui.common.feature.FlavorOneFeatureOption").hook {
                 if (instanceClass.hasMethod { name = "isSupportSearch" }) {
@@ -194,7 +193,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             }
                         }
                     }
-                }
+                } else return@hook
             }
         }
     }

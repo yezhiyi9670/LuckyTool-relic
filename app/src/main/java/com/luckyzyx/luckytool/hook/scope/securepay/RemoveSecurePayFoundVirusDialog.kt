@@ -19,31 +19,18 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
             field { type = BooleanType }.count(1)
             constructor().count(1)
             method { emptyParam() }.count(5..6)
-            method {
-                emptyParam()
-                returnType = BooleanType
-            }.count(2)
-            method {
-                param(ContextClass, StringClass)
-                returnType = BooleanType
-            }.count(1)
+            method { emptyParam();returnType = BooleanType }.count(2)
+            method { param(ContextClass, StringClass);returnType = BooleanType }.count(1)
             method {
                 param(ContextClass, StringClass, IntType, DialogInterfaceClass, IntType)
             }.count(2)
         }.get()?.hook {
             injectMember {
-                method {
-                    param { it[1] == StringClass }
-                    paramCount = 2
-                    returnType = UnitType
-                }
+                method { param { it[1] == StringClass };paramCount = 2;returnType = UnitType }
                 intercept()
             }
             injectMember {
-                method {
-                    emptyParam()
-                    returnType = UnitType
-                }.all()
+                method { emptyParam();returnType = UnitType }.all()
                 intercept()
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveSecurePayFoundVirusDialog")
