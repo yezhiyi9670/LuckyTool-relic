@@ -64,18 +64,18 @@ import java.text.DecimalFormat
 import kotlin.system.exitProcess
 
 class SettingsFragment : ModulePreferenceFragment() {
-    private val backupData =
-        registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) {
-            if (it != null) {
-                writeBackupData(requireActivity(), it)
-            }
+    private val backupData = registerForActivityResult(
+        ActivityResultContracts.CreateDocument("application/json")
+    ) {
+        if (it != null) {
+            writeBackupData(requireActivity(), it)
         }
-    private val restoreData =
-        registerForActivityResult(ActivityResultContracts.GetContent()) {
-            if (it != null) {
-                writeRestoreData(requireActivity(), FileUtils.readFromUri(requireActivity(), it))
-            }
+    }
+    private val restoreData = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            writeRestoreData(requireActivity(), FileUtils.readFromUri(requireActivity(), it))
         }
+    }
 
     private fun writeBackupData(context: Context, uri: Uri) {
         val json = JSONObject()

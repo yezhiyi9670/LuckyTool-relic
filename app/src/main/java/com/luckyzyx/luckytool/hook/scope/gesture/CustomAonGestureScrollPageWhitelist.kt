@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ArrayMapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
@@ -47,7 +48,7 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     }
                 }
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> CustomAonGestureScrollPageWhitelist")
 
         //Source GestureUtil
         findClass("com.oplus.gesture.util.GestureUtil").hook {

@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusmms
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringArrayClass
@@ -44,6 +45,6 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                     }
                 }
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> HookMMSFeatureOption")
     }
 }

@@ -78,7 +78,7 @@
     <string name="menu_settings">メニューを設定</string>
     <string name="restart_scope">スコープしたプロセスを再起動</string>
     <string name="need_restart_scope">スコープの再起動が必要です</string>
-    <string name="need_restart_system">Need to restart system</string>
+    <string name="need_restart_system">システムの再起動が必要です</string>
     <string name="restart_scope_message">システムフレームワークを除くすべてのスコープをされたプロセスを再起動してもよろしいですか?\nこれはモジュールが正常に動作していない場合に使用します!\n関連するすべてのスコープがチェックされている事を確認してください!</string>
     <string name="restart_only_this_page_scope">このページのスコープのみを再起動する</string>
     <string name="reboot">システムを再起動</string>
@@ -538,7 +538,7 @@
     <string name="custom_aon_gesture_scroll_page_whitelist">カスタムスクロールページのホワイトリスト設定</string>
     <string name="custom_aon_gesture_video_whitelist">カスタムビデオジェスチャーのホワイトリスト設定</string>
     <string name="custom_aon_gesture_whitelist_tips">ホワイトリストに追加するパッケージ名を入力してください。各行に1つだけパッケージ名を入力してください</string>
-    <string name="enable_volume_key_control_flashlight">Enable the volume keys to control the flashlight</string>
+    <string name="enable_volume_key_control_flashlight">音量ボタンでのライト制御を有効化</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
     <!--Everyimage-->

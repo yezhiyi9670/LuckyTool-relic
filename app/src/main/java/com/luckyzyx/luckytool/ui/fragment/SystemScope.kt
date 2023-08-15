@@ -2320,124 +2320,20 @@ class DialogRelated : ModulePreferenceFragment() {
     }
 }
 
-class FullScreenGestureRelated : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
-
-    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
-        val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
-            if (it != null) {
-                val path = FileUtils.getDocumentPath(requireActivity(), it)
-                requireActivity().putString(
-                    ModulePrefs, "replace_side_slider_icon_on_left", path
-                )
-                findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
-            }
-        }
-        val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
-            if (it != null) {
-                val path = FileUtils.getDocumentPath(requireActivity(), it)
-                requireActivity().putString(
-                    ModulePrefs, "replace_side_slider_icon_on_right", path
-                )
-                findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
-            }
-        }
-        preferenceManager.sharedPreferencesName = ModulePrefs
-        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_side_slider)
-                key = "remove_side_slider"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_side_slider_black_background)
-                key = "remove_side_slider_black_background"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_rotate_screen_button)
-                key = "remove_rotate_screen_button"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.CustomSideSliderIcon)
-                key = "CustomSideSliderIcon"
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.replace_side_slider_icon_switch)
-                summary = getString(R.string.replace_side_slider_icon_switch_summary)
-                key = "replace_side_slider_icon_switch"
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, _ ->
-                    (activity as MainActivity).restart()
-                    true
-                }
-            })
-            if (context.getBoolean(ModulePrefs, "replace_side_slider_icon_switch", false)) {
-                addPreference(Preference(context).apply {
-                    title = getString(R.string.replace_side_slider_icon_on_left)
-                    key = "replace_side_slider_icon_on_left"
-                    summary = context.getString(
-                        ModulePrefs, "replace_side_slider_icon_on_left", "null"
-                    )
-                    isIconSpaceReserved = false
-                    isCopyingEnabled = true
-                    setOnPreferenceClickListener {
-                        loadLeftImage.launch("image/*")
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    title = getString(R.string.replace_side_slider_icon_on_right)
-                    key = "replace_side_slider_icon_on_right"
-                    summary = context.getString(
-                        ModulePrefs, "replace_side_slider_icon_on_right", "null"
-                    )
-                    isIconSpaceReserved = false
-                    isCopyingEnabled = true
-                    setOnPreferenceClickListener {
-                        loadRightImage.launch("image/*")
-                        true
-                    }
-                })
-            }
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
-}
-
 class FingerPrintRelated : ModulePreferenceFragment() {
     private val scopes = arrayOf("com.android.systemui")
+    private val loadFPIcon = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            val path = FileUtils.getDocumentPath(requireActivity(), it)
+            requireActivity().putString(
+                ModulePrefs, "replace_fingerprint_icon_path", path
+            )
+            findPreference<Preference>("replace_fingerprint_icon_path")?.summary = path
+        }
+    }
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
-        val loadFPIcon = registerForActivityResult(ActivityResultContracts.GetContent()) {
-            if (it != null) {
-                val path = FileUtils.getDocumentPath(requireActivity(), it)
-                requireActivity().putString(
-                    ModulePrefs, "replace_fingerprint_icon_path", path
-                )
-                findPreference<Preference>("replace_fingerprint_icon_path")?.summary = path
-            }
-        }
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
@@ -2517,18 +2413,6 @@ class Miscellaneous : ModulePreferenceFragment() {
                     navigatePage(R.id.action_miscellaneous_to_dialogRelated, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
-                title = getString(R.string.FullScreenGestureRelated)
-                summary =
-                    getString(R.string.remove_side_slider) + "," + getString(R.string.remove_side_slider_black_background)
-                key = "FullScreenGestureRelated"
-                isIconSpaceReserved = false
-                setOnPreferenceClickListener {
-                    navigatePage(R.id.action_miscellaneous_to_fullScreenGestureRelated, title)
-                    true
-                }
-
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.FingerPrintRelated)
@@ -3396,7 +3280,25 @@ class OplusBrowser : ModulePreferenceFragment() {
 }
 
 class OplusGesture : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.gesture")
+    private val scopes = arrayOf("com.android.systemui", "com.oplus.gesture")
+    private val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            val path = FileUtils.getDocumentPath(requireActivity(), it)
+            requireActivity().putString(
+                ModulePrefs, "replace_side_slider_icon_on_left", path
+            )
+            findPreference<Preference>("replace_side_slider_icon_on_left")?.summary = path
+        }
+    }
+    private val loadRightImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            val path = FileUtils.getDocumentPath(requireActivity(), it)
+            requireActivity().putString(
+                ModulePrefs, "replace_side_slider_icon_on_right", path
+            )
+            findPreference<Preference>("replace_side_slider_icon_on_right")?.summary = path
+        }
+    }
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
@@ -3463,6 +3365,72 @@ class OplusGesture : ModulePreferenceFragment() {
                     true
                 }
             })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.FullScreenGestureRelated)
+                key = "FullScreenGestureRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_side_slider)
+                key = "remove_side_slider"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_side_slider_black_background)
+                key = "remove_side_slider_black_background"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_rotate_screen_button)
+                key = "remove_rotate_screen_button"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.CustomSideSliderIcon)
+                key = "CustomSideSliderIcon"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.replace_side_slider_icon_switch)
+                summary = getString(R.string.replace_side_slider_icon_switch_summary)
+                key = "replace_side_slider_icon_switch"
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            if (context.getBoolean(ModulePrefs, "replace_side_slider_icon_switch", false)) {
+                addPreference(Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_left)
+                    key = "replace_side_slider_icon_on_left"
+                    summary = context.getString(
+                        ModulePrefs, "replace_side_slider_icon_on_left", "null"
+                    )
+                    isIconSpaceReserved = false
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadLeftImage.launch("image/*")
+                        true
+                    }
+                })
+                addPreference(Preference(context).apply {
+                    title = getString(R.string.replace_side_slider_icon_on_right)
+                    key = "replace_side_slider_icon_on_right"
+                    summary = context.getString(
+                        ModulePrefs, "replace_side_slider_icon_on_right", "null"
+                    )
+                    isIconSpaceReserved = false
+                    isCopyingEnabled = true
+                    setOnPreferenceClickListener {
+                        loadRightImage.launch("image/*")
+                        true
+                    }
+                })
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.pictorial
 
 import android.graphics.Bitmap
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
@@ -15,7 +16,7 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
     override fun onHook() {
         //Search ImageSaveManager -> getWaterMaskBitmap -> standard_water_mask_template / high_quality_water_mask_template
         searchClass {
-            from("hi", "fj", "ij", "ej", "cj", "mi", "pi", "ri").absolute()
+            from("hi", "fj", "ij", "ej", "cj", "mi", "pi", "ri", "wi").absolute()
             field { type = HandlerClass }.count(1)
             field { type = FileClass }.count(1)
             field { type = LongType }.count(1)
@@ -42,6 +43,6 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
                 }
                 afterHook { result = args(2).cast<Bitmap>() ?: return@afterHook }
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> RemoveImageSaveWaterMark")
     }
 }

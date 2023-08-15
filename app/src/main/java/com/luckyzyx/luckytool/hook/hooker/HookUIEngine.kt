@@ -17,6 +17,6 @@ object HookUIEngine : YukiBaseHooker() {
         }
 
         //设置息屏样式模式
-        loadHooker(SetAodStyleMode(prefs(ModulePrefs).getString("set_aod_style_mode", "0")))
+        loadHooker(SetAodStyleMode)
     }
 }

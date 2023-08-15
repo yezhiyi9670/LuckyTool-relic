@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 
@@ -58,6 +59,6 @@ object EnableAonGestures : YukiBaseHooker() {
                 }
                 replaceToTrue()
             }
-        }
+        } ?: loggerD(msg = "$packageName\nError -> EnableAonGestures")
     }
 }

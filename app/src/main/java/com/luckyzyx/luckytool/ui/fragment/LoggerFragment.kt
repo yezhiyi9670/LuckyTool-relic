@@ -174,14 +174,15 @@ class LoggerFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private val createDocument =
-        registerForActivityResult(ActivityResultContracts.CreateDocument("text/log")) {
-            if (it != null) {
+    private val createDocument = registerForActivityResult(
+        ActivityResultContracts.CreateDocument("text/log")
+    ) {
+        if (it != null) {
 //                val dir = it.path?.split(":")?.get(1) ?: "/sdcard/Download/$fileName"
 //                YukiHookLogger.saveToFile(dir,listData)
-                alterDocument(requireActivity(), it)
-            }
+            alterDocument(requireActivity(), it)
         }
+    }
 
     private fun saveFile(fileName: String) {
         checkDirs()
