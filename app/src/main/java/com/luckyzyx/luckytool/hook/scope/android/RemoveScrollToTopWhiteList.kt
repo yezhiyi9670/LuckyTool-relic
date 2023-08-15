@@ -17,7 +17,7 @@ object RemoveScrollToTopWhiteList : YukiBaseHooker() {
                     method { name = "isInWhiteList";paramCount = 1 }
                     if (isEnable) replaceToTrue()
                 }
-            } else return@hook
+            } else return
         }
     }
 }

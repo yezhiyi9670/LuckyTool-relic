@@ -193,7 +193,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             }
                         }
                     }
-                } else return@hook
+                } else return
             }
         }
     }

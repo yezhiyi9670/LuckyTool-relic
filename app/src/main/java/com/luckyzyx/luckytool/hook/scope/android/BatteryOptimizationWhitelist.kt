@@ -18,7 +18,7 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
                 method {
                     name = if (instanceClass.hasMethod { name = "getNewWhiteList" }) "getNewWhiteList"
                     else if (instanceClass.hasMethod { name = "getNewWhiteListLocked" }) "getNewWhiteListLocked"
-                    else return@hook
+                    else return
                     paramCount = 1
                 }
                 replaceUnit {

@@ -20,7 +20,7 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
             }
         }
         val clazz = when (appSet[2]) {
-            "8d5b992", "38e5b1a", "b696b47" -> "$7"
+            "8d5b992", "38e5b1a", "b696b47", "02aac8a" -> "$7"
             else -> "$5"
         }
         // Source CameraSubSettingFragment
@@ -45,10 +45,7 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
         }.get()?.apply {
             findClass(canonicalName!! + clazz).hook {
                 injectMember {
-                    method {
-                        name = "filter"
-                        returnType = CharSequenceClass
-                    }
+                    method { name = "filter";returnType = CharSequenceClass }
                     intercept()
                 }
             }
