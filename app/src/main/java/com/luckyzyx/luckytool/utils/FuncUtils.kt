@@ -658,8 +658,35 @@ fun Preference.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> U
         return
     }
     val drawable = RoundedBitmapDrawableFactory.create(context.resources, image.toBitmap())
+    drawable.setAntiAlias(true)
     drawable.cornerRadius = 30F
     result(drawable, true)
+}
+
+/**
+ * 修复Icon显示大小
+ * @receiver Preference
+ * @param icon Drawable?
+ * @return Drawable?
+ */
+fun Preference.fixIconSize(icon: Drawable?): Drawable? {
+    return if (icon != null && ((icon.intrinsicWidth < 48.dp) || (icon.intrinsicHeight < 48.dp))) {
+        context.zoomDrawable(icon, 48.dp, 48.dp)
+    } else icon
+}
+
+/**
+ * 处理Summary方法
+ * @param string Array<out String>
+ * @return String
+ */
+fun arraySummary(vararg string: String): String {
+    var res = ""
+    string.forEachIndexed { index, s ->
+        res += s
+        if (index != string.lastIndex) res += ","
+    }
+    return res
 }
 
 /**
