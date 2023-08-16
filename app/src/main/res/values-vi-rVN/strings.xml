@@ -356,6 +356,7 @@
     <string name="disable_splash_screen">Vô hiệu hóa màn hình khởi động ứng dụng</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Danh sách ứng dụng liên quan</string>
+    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
     <string name="enable_zoom_window">Bật danh sách hỗ trợ</string>
     <string name="zoom_window_support_list">Danh sách hỗ trợ cửa sổ thu phóng tùy chỉnh</string>
     <string name="zoom_window_support_list_summary">Kích hoạt theo nhu cầu của bạn, nếu không sẽ có những vấn đề không thể khắc phục được</string>

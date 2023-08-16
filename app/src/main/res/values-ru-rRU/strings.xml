@@ -281,8 +281,8 @@
     <string name="remove_aod_notification_icon_whitelist">Удалить ограничение иконок уведомлений на AOD</string>
     <string name="restore_aod_notification_icon_color">Восстановить цвет иконки уведомления</string>
     <string name="set_aod_style_mode">Установить режим стиля AOD</string>
-    <string name="force_enable_screen_off_music_support">Force enable screen-off music support</string>
-    <string name="force_enable_screen_off_music_support_summary">Applicable only to models that do not support screen-off music</string>
+    <string name="force_enable_screen_off_music_support">Включить поддержку музыки при отключенном экране</string>
+    <string name="force_enable_screen_off_music_support_summary">Применимо только к моделям, которые не поддерживают музыку при отключенном экране</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenClockComponent">Часы на экране блокировки</string>
@@ -356,6 +356,7 @@
     <string name="disable_splash_screen">Отключить заставку</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Список приложений</string>
+    <string name="force_all_apps_support_split_screen">Разрешить всем приложениям использовать раздельный экран</string>
     <string name="enable_zoom_window">Включить список поддержки</string>
     <string name="zoom_window_support_list">Пользовательское окно масштаба</string>
     <string name="zoom_window_support_list_summary">Включить в соответствии с вашими потребностями, в противном случае возникнут непоправимые проблемы</string>

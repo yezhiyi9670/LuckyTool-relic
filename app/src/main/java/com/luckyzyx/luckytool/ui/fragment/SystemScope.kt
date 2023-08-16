@@ -2091,6 +2091,16 @@ class Application : ModulePreferenceFragment() {
                 key = "APPRelatedList"
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_all_apps_support_split_screen)
+                key = "force_all_apps_support_split_screen"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("android").put(key, newValue as Boolean)
+                    true
+                }
+            })
             addPreference(Preference(context).apply {
                 title = getString(R.string.zoom_window_support_list)
                 summary = getString(R.string.zoom_window_support_list_summary)

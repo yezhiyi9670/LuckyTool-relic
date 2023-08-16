@@ -395,8 +395,10 @@
     <string name="unlock_task_locks">Unlocks the number of background tasks</string>
     <string name="AppStartupRelated">Application startup related</string>
     <string name="disable_splash_screen">Disable splash screen</string>
+    
     <!--APPRelatedList-->
     <string name="APPRelatedList">App Related List</string>
+    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
     <string name="enable_zoom_window">Enable support list</string>
     <string name="zoom_window_support_list">Custom Zoom Window Support List</string>
     <string name="zoom_window_support_list_summary">Enable according to your needs, otherwise there will be irreparable problems</string>
@@ -405,6 +407,7 @@
     <string name="multi_app_custom_list_summary">After the function is turned on, the original list of app clones will be replaced by this list, too many will cause lag</string>
     <string name="dark_mode_support_list">Custom dark mode support list</string>
     <string name="cur_type_none" translatable="false">None</string>
+    
     <!--AppInstallationRelated-->
     <string name="AppInstallationRelated">App Installation Related</string>
     <string name="PackageInstaller_summary">Need to be used with the core patch</string>

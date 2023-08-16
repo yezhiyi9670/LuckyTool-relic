@@ -9,6 +9,7 @@ import com.luckyzyx.luckytool.hook.scope.android.DarkModeService
 import com.luckyzyx.luckytool.hook.scope.android.DisableDynamicRefreshRate
 import com.luckyzyx.luckytool.hook.scope.android.DisableFlagSecure
 import com.luckyzyx.luckytool.hook.scope.android.FixBatteryHealthDataDisplay
+import com.luckyzyx.luckytool.hook.scope.android.ForceAllAppsSupportSplitScreen
 import com.luckyzyx.luckytool.hook.scope.android.HookNotificationManager
 import com.luckyzyx.luckytool.hook.scope.android.HookWindowManagerService
 import com.luckyzyx.luckytool.hook.scope.android.MediaVolumeLevel
@@ -89,11 +90,13 @@ object HookAndroid : YukiBaseHooker() {
         //启用音量键控制手电筒手势
         loadHooker(SystemEnableVolumeKeyControlFlashlight)
 
+        //强制所有应用支持分屏
+        loadHooker(ForceAllAppsSupportSplitScreen)
+
         //Share
         //com.android.internal.app.ChooserActivity
         //201589207 查看应用详情 oplus_resolver_target_pin_detail
         //Source OplusResolverPagerAdapter
-
 
         //201850903 0x0c080017 oplus_ic_corp_icon_badge_multiapp
         //201850911 0x0c08001f oplus_ic_corp_badge_case_multiapp
