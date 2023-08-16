@@ -356,6 +356,7 @@
     <string name="disable_splash_screen">Zakázat animaci úvodní obrazovky</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
     <string name="force_all_apps_support_split_screen">Donutit všechny aplikace podporovat rozdělenou obrazovku</string>
     <string name="enable_zoom_window">Povolit seznam podporovatelů</string>
     <string name="zoom_window_support_list">Vlastní nastavení přiblížení</string>

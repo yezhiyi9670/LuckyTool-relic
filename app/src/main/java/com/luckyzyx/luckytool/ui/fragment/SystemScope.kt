@@ -2092,6 +2092,12 @@ class Application : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_locking_unlocking_of_excluded_activity)
+                key = "allow_locking_unlocking_of_excluded_activity"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.force_all_apps_support_split_screen)
                 key = "force_all_apps_support_split_screen"
                 setDefaultValue(false)

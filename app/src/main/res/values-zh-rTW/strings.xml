@@ -356,6 +356,7 @@
     <string name="disable_splash_screen">关闭应用遮罩</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">应用相关列表</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">允许锁定/解锁已排除活动</string>
     <string name="force_all_apps_support_split_screen">强制所有应用支持分屏</string>
     <string name="enable_zoom_window">启用支持列表</string>
     <string name="zoom_window_support_list">自定义小窗支持列表</string>

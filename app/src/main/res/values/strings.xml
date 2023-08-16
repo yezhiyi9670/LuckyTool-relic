@@ -398,6 +398,7 @@
     
     <!--APPRelatedList-->
     <string name="APPRelatedList">App Related List</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
     <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
     <string name="enable_zoom_window">Enable support list</string>
     <string name="zoom_window_support_list">Custom Zoom Window Support List</string>

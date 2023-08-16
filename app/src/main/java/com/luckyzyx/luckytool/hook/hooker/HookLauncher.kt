@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.launcher.AllowLockingUnLockingOfExcludedActivity
 import com.luckyzyx.luckytool.hook.scope.launcher.FolderLayoutRowColume
 import com.luckyzyx.luckytool.hook.scope.launcher.HookAppBadge
 import com.luckyzyx.luckytool.hook.scope.launcher.LauncherLayoutRowColume
@@ -59,8 +60,13 @@ object HookLauncher : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_launcher_high_tempreature_protection", false)) {
             loadHooker(RemoveLauncherHighTempreatureProtection)
         }
+        //允许锁定或解锁已排除活动
+        if (prefs(ModulePrefs).getBoolean("allow_locking_unlocking_of_excluded_activity", false)) {
+            loadHooker(AllowLockingUnLockingOfExcludedActivity)
+        }
 
-        //launcher_all_apps_container_background_color
+        //com.android.quickstep.views.OplusTaskMenuViewImpl
+        //res/layout/oplus_task_menu_option.xml
 
         //<string name="oplus_shortcut_lock_app">锁定</string>
         //<string name="oplus_shortcut_locked_app">解锁</string>
