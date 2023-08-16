@@ -113,7 +113,7 @@ object MainHook : IYukiHookXposedInit {
         }
 
         //息屏
-        //loadApp("com.oplus.aod", HookAod)
+//        loadApp("com.oplus.aod", HookAod)
         //百变引擎
         loadApp("com.oplus.uiengine", HookUIEngine)
         //锁屏
@@ -175,7 +175,9 @@ object MainHook : IYukiHookXposedInit {
 
         //其他APP
         loadApp(
-            "com.east2d.everyimage", "com.ruet_cse_1503050.ragib.appbackup.pro", "ru.kslabs.ksweb"
+            "com.east2d.everyimage",
+            "com.ruet_cse_1503050.ragib.appbackup.pro",
+            "ru.kslabs.ksweb"
         ) {
             loadHooker(HookOtherApp)
         }

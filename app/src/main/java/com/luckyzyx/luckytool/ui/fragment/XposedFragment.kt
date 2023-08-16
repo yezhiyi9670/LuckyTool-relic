@@ -113,14 +113,15 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.FolderLayoutRelated),
                         getString(R.string.launcher_layout_related)
                     )
+                    isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_launcher, title)
                         true
                     }
                 })
                 addPreference(Preference(context).apply {
-                    key = "Aod"
-                    setPrefsIconRes("com.oplus.aod") { resource, show ->
+                    key = "com.oplus.aod"
+                    setPrefsIconRes(key) { resource, show ->
                         icon = resource
                         isIconSpaceReserved = show
                     }
@@ -129,7 +130,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.remove_aod_music_whitelist),
                         getString(R.string.remove_aod_notification_icon_whitelist)
                     )
-                    isVisible = SDK >= A13
+                    isVisible = SDK >= A13 && context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_aod, title)
                         true
@@ -162,6 +163,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.remove_system_screenshot_delay),
                         getString(R.string.remove_screenshot_privacy_limit)
                     )
+                    isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_screenshot, title)
                         true
@@ -237,7 +239,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     title = context.getAppLabel(key)
                     summary =
                         arraySummary(getString(R.string.remove_verification_code_floating_window))
-                    isVisible = context.checkPackName(key) && SDK >= A13
+                    isVisible = SDK >= A13 && context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_oplusMMS, title)
                         true

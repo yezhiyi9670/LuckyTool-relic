@@ -1731,41 +1731,40 @@ class Aod : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(
-                PreferenceCategory(context).apply {
-                    title = getString(R.string.AodRelated)
-                    key = "AodRelated"
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_aod_music_whitelist)
-                    key = "remove_aod_music_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                SwitchPreference(context).apply {
-                    title = getString(R.string.remove_aod_notification_icon_whitelist)
-                    key = "remove_aod_notification_icon_whitelist"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                }
-            )
-            addPreference(
-                DropDownPreference(context).apply {
-                    title = getString(R.string.set_aod_style_mode)
-                    summary = "%s"
-                    key = "set_aod_style_mode"
-                    entries =
-                        resources.getStringArray(R.array.set_aod_style_mode_entries)
-                    entryValues = arrayOf("0", "1", "2")
-                    setDefaultValue("0")
-                    isIconSpaceReserved = false
-                }
-            )
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AodRelated)
+                key = "AodRelated"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_aod_music_whitelist)
+                key = "remove_aod_music_whitelist"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_aod_notification_icon_whitelist)
+                key = "remove_aod_notification_icon_whitelist"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_aod_style_mode)
+                summary = "%s"
+                key = "set_aod_style_mode"
+                entries =
+                    resources.getStringArray(R.array.set_aod_style_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_enable_screen_off_music_support)
+                summary = getString(R.string.force_enable_screen_off_music_support_summary)
+                key = "force_enable_screen_off_music_support"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 

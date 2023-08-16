@@ -281,6 +281,8 @@
     <string name="remove_aod_notification_icon_whitelist">Remove aod notification icon whitelist</string>
     <string name="restore_aod_notification_icon_color">Restore aod notification icon color</string>
     <string name="set_aod_style_mode">Set aod style mode</string>
+    <string name="force_enable_screen_off_music_support">Force enable screen-off music support</string>
+    <string name="force_enable_screen_off_music_support_summary">Applicable only to models that do not support screen-off music</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Lockscreen Related</string>
     <string name="LockScreenClockComponent">Lock Screen Clock Component</string>

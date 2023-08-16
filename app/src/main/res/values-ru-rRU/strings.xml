@@ -281,6 +281,8 @@
     <string name="remove_aod_notification_icon_whitelist">Удалить ограничение иконок уведомлений на AOD</string>
     <string name="restore_aod_notification_icon_color">Восстановить цвет иконки уведомления</string>
     <string name="set_aod_style_mode">Установить режим стиля AOD</string>
+    <string name="force_enable_screen_off_music_support">Force enable screen-off music support</string>
+    <string name="force_enable_screen_off_music_support_summary">Applicable only to models that do not support screen-off music</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Экран блокировки</string>
     <string name="LockScreenClockComponent">Часы на экране блокировки</string>

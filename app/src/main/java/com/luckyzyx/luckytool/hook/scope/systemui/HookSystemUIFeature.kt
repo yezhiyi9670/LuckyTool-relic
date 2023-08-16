@@ -54,6 +54,10 @@ object HookSystemUIFeature : YukiBaseHooker() {
             //Source FeatureOption
             findClass("com.oplusos.systemui.common.feature.FeatureOption").hook {
                 injectMember {
+                    method { name = "loadFeatureOption" }
+                    afterHook {}
+                }
+                injectMember {
                     method { name = "shouldRemoveAutoBrightness" }
                     beforeHook {
                         when (autoBrightnessMode) {

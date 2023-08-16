@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableScreenOffMusicSupport
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenCarriers
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenChargingComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenClock
@@ -54,6 +55,10 @@ object HookLockScreen : YukiBaseHooker() {
         //移除息屏音乐白名单
         if (prefs(ModulePrefs).getBoolean("remove_aod_music_whitelist", false)) {
             if (SDK >= A13) loadHooker(RemoveAodMusicWhitelist)
+        }
+        //强制启用息屏音乐支持
+        if (prefs(ModulePrefs).getBoolean("force_enable_screen_off_music_support", false)) {
+            if (SDK >= A13) loadHooker(ForceEnableScreenOffMusicSupport)
         }
     }
 }

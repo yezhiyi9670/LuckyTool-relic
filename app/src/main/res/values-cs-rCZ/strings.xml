@@ -281,6 +281,8 @@
     <string name="remove_aod_notification_icon_whitelist">Odebrat omezení ikony oznámení na AOD</string>
     <string name="restore_aod_notification_icon_color">Obnovit barvy ikon oznámení v AOD</string>
     <string name="set_aod_style_mode">Nastavte režim stylu AOD</string>
+    <string name="force_enable_screen_off_music_support">Force enable screen-off music support</string>
+    <string name="force_enable_screen_off_music_support_summary">Applicable only to models that do not support screen-off music</string>
     <!--LockScreenAod-->
     <string name="LockScreen">Zamykací obrazovka</string>
     <string name="LockScreenClockComponent">Komponenta hodin zamykací obrazovky</string>
