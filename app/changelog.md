@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.13_beta
+
+- [适配] 时钟组件红一 v14.0.4(e6df2db)
+
 ### 1.0.12
 
 - [修复] 锁屏充电组件Hook异常报错

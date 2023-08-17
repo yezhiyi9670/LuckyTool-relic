@@ -35,35 +35,37 @@ object AlarmClockWidget : YukiBaseHooker() {
         loadHooker(AlarmClock131)
     }
 
-    private fun setCharRedOne(format: CharSequence): CharSequence {
-        val sp = SpannableStringBuilder(format)
-        val length = if (format.contains(":")) format.toString().substringBefore(":").length
-        else if (format.contains("\u2236")) format.toString().substringBefore("\u2236").length
-        else format.length
-        for (i in 0 until length) {
-            if (format[i].toString() == "1") {
-                val colorRes = Color.parseColor("#c41442")
-                sp.setSpan(ForegroundColorSpan(colorRes), i, i + 1, 34)
-            }
-        }
-        return sp
-    }
-
-    private object AlarmClock12 : YukiBaseHooker() {
+    private object AlarmClock131 : YukiBaseHooker() {
         override fun onHook() {
-            //Source OnePlusWidget
-            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook {
-                injectMember {
-                    method {
-                        param(StringClass, StringClass)
-                        returnType = CharSequenceClass
+            val appSet =
+                prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
+                    Arrays.sort(this)
+                    forEach {
+                        this[this.indexOf(it)] = it.substring(2)
                     }
-                    afterHook {
-                        if (redMode == "0") return@afterHook
-                        result = when (redMode) {
-                            "1" -> result<CharSequence>()?.let { setCharRedOne(it) }
-                            "2" -> result<CharSequence>().toString()
-                            else -> result
+                }
+            val list = ArrayMap<String, Array<String>>()
+            when (appSet[2]) {
+                "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")
+                "14ae6e7", "e6df2db" -> list["i5.v"] = arrayOf("b", "v")
+            }
+            if (list.keys.isEmpty()) {
+                loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")
+                loggerD(msg = "Try to restart the scopes or contact the developer for adaptation !")
+                return
+            }
+
+            //Source OppoWeather / OppoWeatherSingle / OppoWeatherVertical
+            //Search Class com.oplus.widget.OplusTextClock
+            findClass(list.keyAt(0)).hook {
+                injectMember {
+                    method { emptyParam();returnType = BooleanType }.all()
+                    beforeHook {
+                        if (list.valueAt(0).contains(method.name)) {
+                            when (redMode) {
+                                "1" -> resultTrue()
+                                "2" -> resultFalse()
+                            }
                         }
                     }
                 }
@@ -106,41 +108,39 @@ object AlarmClockWidget : YukiBaseHooker() {
         }
     }
 
-    private object AlarmClock131 : YukiBaseHooker() {
+    private object AlarmClock12 : YukiBaseHooker() {
         override fun onHook() {
-            val appSet =
-                prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-                    Arrays.sort(this)
-                    forEach {
-                        this[this.indexOf(it)] = it.substring(2)
-                    }
-                }
-            val list = ArrayMap<String, Array<String>>()
-            when (appSet[2]) {
-                "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")
-                "14ae6e7" -> list["i5.v"] = arrayOf("b", "v")
-            }
-            if (list.keys.isEmpty()) {
-                loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")
-                loggerD(msg = "Try to restart the scopes or contact the developer for adaptation !")
-                return
-            }
-
-            //Source OppoWeather / OppoWeatherSingle / OppoWeatherVertical
-            //Search Class com.oplus.widget.OplusTextClock
-            findClass(list.keyAt(0)).hook {
+            //Source OnePlusWidget
+            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook {
                 injectMember {
-                    method { emptyParam();returnType = BooleanType }.all()
-                    beforeHook {
-                        if (list.valueAt(0).contains(method.name)) {
-                            when (redMode) {
-                                "1" -> resultTrue()
-                                "2" -> resultFalse()
-                            }
+                    method {
+                        param(StringClass, StringClass)
+                        returnType = CharSequenceClass
+                    }
+                    afterHook {
+                        if (redMode == "0") return@afterHook
+                        result = when (redMode) {
+                            "1" -> result<CharSequence>()?.let { setCharRedOne(it) }
+                            "2" -> result<CharSequence>().toString()
+                            else -> result
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun setCharRedOne(format: CharSequence): CharSequence {
+        val sp = SpannableStringBuilder(format)
+        val length = if (format.contains(":")) format.toString().substringBefore(":").length
+        else if (format.contains("\u2236")) format.toString().substringBefore("\u2236").length
+        else format.length
+        for (i in 0 until length) {
+            if (format[i].toString() == "1") {
+                val colorRes = Color.parseColor("#c41442")
+                sp.setSpan(ForegroundColorSpan(colorRes), i, i + 1, 34)
+            }
+        }
+        return sp
     }
 }
