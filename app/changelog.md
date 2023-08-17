@@ -29,6 +29,30 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 允许锁定或解锁已排除活动
 - [添加] 解锁默认桌面限制
 - [修复] 系统版本判断异常 ColorOS13.1.1
+- [Fix] The Hook of the lock screen charging component is abnormally reported
+- [Optimize] Game assistant quick jump v8.15.0
+- [Remove] Game assistant quick jump tile
+- [Optimize] Handling of battery notification data exceptions in the status bar
+- [Fix] Battery related function Hook exception v1.2.1(3263c9c)
+- [Fix] Desktop Clock Component v14.0.0(14ae6e7)
+- [Remove] Force display of communication shares
+- [Fix] Cloud service mobile network restriction v7.0.2
+- [Add] Set control center search button mode
+- [Fix] Desktop clock component v13.11.3(379d9ec)
+- [Fix] Remove the self-start quantity limit v1.2.1(3263c9c)
+- [Fix] Screenshot - image save format v13.10.10(272321d)
+- [Fix] Screenshot - long screenshot page limit v13.10.10(272321d)
+- [Add] Enable volume keys to control flashlight gesture C13.1
+- [Fix] Camera watermark character limit v3.431.5(02aac8a)
+- [Fix] Screenshot PNG save format v12.12.24(719aeb8)
+- [Optimize] Icon size and rounded corner style of function page
+- [Fix] Leshua lock screen removes image save watermark v40.9.18.1(c0d0a97)
+- [Change] Full-screen gesture-related functions migrated to the gesture somatosensory partition
+- [Add] Force-enabled screen-off music support
+- [Add] Force all apps to support split screen
+- [Add] Allow to lock or unlock excluded activities
+- [Add] Unlock default desktop restrictions
+- [Fix] The system version judgment is abnormal ColorOS13.1.1
 
 ### 1.0.11
 
