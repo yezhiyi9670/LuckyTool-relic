@@ -387,12 +387,8 @@
     
     <!--Application-->
     <string name="Application">Application related</string>
-    <string name="ApplyOtherRestrictions">Other Limits</string>
-    <string name="remove_adb_install_confirm">Remove ADB installation confirmation</string>
-    <string name="remove_adb_install_confirm_summary">Use ADB to install APP without tapping</string>
-    <string name="unlock_startup_limit">Unlock Self-Startup Limit</string>
-    <string name="unlock_startup_limit_summary">Unlock app self-startup limit</string>
-    <string name="unlock_task_locks">Unlocks the number of background tasks</string>
+    
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Application startup related</string>
     <string name="disable_splash_screen">Disable splash screen</string>
     
@@ -426,6 +422,16 @@
     <string name="replase_aosp_installer_summary">Replace with Google Native Installer</string>
     <string name="show_packagename_and_versioncode">Show package name and version code</string>
     <string name="show_packagename_and_versioncode_summary">Display the package name and version code at the top of the installation page</string>
+    
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Other Limits</string>
+    <string name="remove_adb_install_confirm">Remove ADB installation confirmation</string>
+    <string name="remove_adb_install_confirm_summary">Use ADB to install APP without tapping</string>
+    <string name="unlock_startup_limit">Unlock Self-Startup Limit</string>
+    <string name="unlock_startup_limit_summary">Unlock app self-startup limit</string>
+    <string name="unlock_task_locks">Unlocks the number of background tasks</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Floating Window / Dialog Related</string>
     <string name="disable_duplicate_floating_window">Disable Duplicate Window</string>

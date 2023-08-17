@@ -346,18 +346,13 @@
     <string name="launcher_events">ホームアプリのイベント</string>
     <!--Application-->
     <string name="Application">アプリ関連</string>
-    <string name="ApplyOtherRestrictions">その他の制限</string>
-    <string name="remove_adb_install_confirm">ADBインストール確認の削除</string>
-    <string name="remove_adb_install_confirm_summary">ADBを使用してタップをせずにアプリをインストールします</string>
-    <string name="unlock_startup_limit">自動起動の制限を解除</string>
-    <string name="unlock_startup_limit_summary">アプリの自動起動の制限を解除します</string>
-    <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">アプリの自動起動関連</string>
     <string name="disable_splash_screen">スプラッシュ画面を無効化</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">アプリ関連のリスト</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
-    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">除外されたアクティビティのロックまたはロック解除を許可</string>
+    <string name="force_all_apps_support_split_screen">すべてのアプリで画面分割対応を強制する</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
     <string name="zoom_window_support_list">カスタムズームウィンドウのサポートリスト</string>
     <string name="zoom_window_support_list_summary">必要に応じて有効化をしてください。取り返しのつかない問題が発生するかもしれません</string>
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Googleのネイティブなインストーラーに置き換えます</string>
     <string name="show_packagename_and_versioncode">パッケージ名とバージョンコードを表示</string>
     <string name="show_packagename_and_versioncode_summary">インストール画面の上部にパッケージ名とバージョンコードを表示します</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">その他の制限</string>
+    <string name="remove_adb_install_confirm">ADBインストール確認の削除</string>
+    <string name="remove_adb_install_confirm_summary">ADBを使用してタップをせずにアプリをインストールします</string>
+    <string name="unlock_startup_limit">自動起動の制限を解除</string>
+    <string name="unlock_startup_limit_summary">アプリの自動起動の制限を解除します</string>
+    <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
     <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>

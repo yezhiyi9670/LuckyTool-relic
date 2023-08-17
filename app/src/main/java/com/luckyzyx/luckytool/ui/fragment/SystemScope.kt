@@ -2066,7 +2066,8 @@ class Application : ModulePreferenceFragment() {
         "com.android.launcher",
         "com.oppo.launcher",
         "com.android.settings",
-        "com.android.packageinstaller"
+        "com.android.packageinstaller",
+        "com.android.permissioncontroller"
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -2213,6 +2214,12 @@ class Application : ModulePreferenceFragment() {
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.unlock_task_locks)
                 key = "unlock_task_locks"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.unlock_default_desktop_limit)
+                key = "unlock_default_desktop_limit"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })

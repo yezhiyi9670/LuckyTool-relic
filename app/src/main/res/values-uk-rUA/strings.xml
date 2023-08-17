@@ -346,12 +346,7 @@
     <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Додатки</string>
-    <string name="ApplyOtherRestrictions">Інші обмеження</string>
-    <string name="remove_adb_install_confirm">Видалити підтвердження встановлення ADB</string>
-    <string name="remove_adb_install_confirm_summary">Встановіть програму безпосередньо за допомогою ADB</string>
-    <string name="unlock_startup_limit">Розблокувати обмеження на автозапуск додатку</string>
-    <string name="unlock_startup_limit_summary">Розблокувати обмеження на кількість автозапусків додатку</string>
-    <string name="unlock_task_locks">Розблокувати кількість заблокованих фонових задач</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Запуск додатку</string>
     <string name="disable_splash_screen">Вимкнути заставку</string>
     <!--APPRelatedList-->
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Замінити на рідний інсталятор Google</string>
     <string name="show_packagename_and_versioncode">Показати ім\'я пакета та код версії</string>
     <string name="show_packagename_and_versioncode_summary">Відображати назву пакета та код версії у верхній частині сторінки установки</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Інші обмеження</string>
+    <string name="remove_adb_install_confirm">Видалити підтвердження встановлення ADB</string>
+    <string name="remove_adb_install_confirm_summary">Встановіть програму безпосередньо за допомогою ADB</string>
+    <string name="unlock_startup_limit">Розблокувати обмеження на автозапуск додатку</string>
+    <string name="unlock_startup_limit_summary">Розблокувати обмеження на кількість автозапусків додатку</string>
+    <string name="unlock_task_locks">Розблокувати кількість заблокованих фонових задач</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плаваюче вікно / Діалогове вікно</string>
     <string name="disable_duplicate_floating_window">Вимкнути дублювання плаваючого вікна</string>

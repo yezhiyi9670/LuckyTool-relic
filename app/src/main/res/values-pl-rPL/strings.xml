@@ -346,12 +346,7 @@
     <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Aplikacje</string>
-    <string name="ApplyOtherRestrictions">Inne ograniczenia</string>
-    <string name="remove_adb_install_confirm">Usuń potwierdzenie instalacji ADB</string>
-    <string name="remove_adb_install_confirm_summary">Użyj ADB, aby zainstalować aplikację bez dotykania</string>
-    <string name="unlock_startup_limit">Odblokuj limit autostartu</string>
-    <string name="unlock_startup_limit_summary">Odblokowuje limit samodzielnego uruchamiania aplikacji</string>
-    <string name="unlock_task_locks">Odblokuj liczbę procesów w tle</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Dostosuj uruchamianie aplikacji</string>
     <string name="disable_splash_screen">Wyłącz ekran powitalny</string>
     <!--APPRelatedList-->
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Podmienia instalator aplikacji na ten z AOSP</string>
     <string name="show_packagename_and_versioncode">Pokaż nazwę pakietu i kod wersji</string>
     <string name="show_packagename_and_versioncode_summary">Wyświetlaj nazwę pakietu i kod wersji na górze strony instalacji</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Inne ograniczenia</string>
+    <string name="remove_adb_install_confirm">Usuń potwierdzenie instalacji ADB</string>
+    <string name="remove_adb_install_confirm_summary">Użyj ADB, aby zainstalować aplikację bez dotykania</string>
+    <string name="unlock_startup_limit">Odblokuj limit autostartu</string>
+    <string name="unlock_startup_limit_summary">Odblokowuje limit samodzielnego uruchamiania aplikacji</string>
+    <string name="unlock_task_locks">Odblokuj liczbę procesów w tle</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Dostosuj pływające i dialogowe okno</string>
     <string name="disable_duplicate_floating_window">Wyłącz zduplikowane okno</string>

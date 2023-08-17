@@ -346,12 +346,7 @@
     <string name="launcher_events">启动器事件</string>
     <!--Application-->
     <string name="Application">应用相关</string>
-    <string name="ApplyOtherRestrictions">其他限制</string>
-    <string name="remove_adb_install_confirm">移除ADB安装确认</string>
-    <string name="remove_adb_install_confirm_summary">无需点击即可直接使用ADB安装APP</string>
-    <string name="unlock_startup_limit">解锁应用自启数量限制</string>
-    <string name="unlock_startup_limit_summary">解锁应用自启动数量限制</string>
-    <string name="unlock_task_locks">解锁后台任务锁定数量</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">应用启动相关</string>
     <string name="disable_splash_screen">关闭应用遮罩</string>
     <!--APPRelatedList-->
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">替换为AOSP原生安装器</string>
     <string name="show_packagename_and_versioncode">显示包名和版本号</string>
     <string name="show_packagename_and_versioncode_summary">在安装页面顶部显示包名和版本号</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">其他限制</string>
+    <string name="remove_adb_install_confirm">移除ADB安装确认</string>
+    <string name="remove_adb_install_confirm_summary">无需点击即可直接使用ADB安装APP</string>
+    <string name="unlock_startup_limit">解锁应用自启数量限制</string>
+    <string name="unlock_startup_limit_summary">解锁应用自启动数量限制</string>
+    <string name="unlock_task_locks">解锁后台任务锁定数量</string>
+    <string name="unlock_default_desktop_limit">解锁默认桌面限制</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">悬浮窗/对话框相关</string>
     <string name="disable_duplicate_floating_window">禁用复制悬浮窗</string>

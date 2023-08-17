@@ -28,6 +28,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookOplusMMS
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
 import com.luckyzyx.luckytool.hook.hooker.HookOtherApp
 import com.luckyzyx.luckytool.hook.hooker.HookPackageInstaller
+import com.luckyzyx.luckytool.hook.hooker.HookPermissionController
 import com.luckyzyx.luckytool.hook.hooker.HookPhoneManager
 import com.luckyzyx.luckytool.hook.hooker.HookPictorial
 import com.luckyzyx.luckytool.hook.hooker.HookSafeCenter
@@ -172,6 +173,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.heytap.browser", HookBrowser)
         //手势体感
         loadApp("com.oplus.gesture", HookGesture)
+        //权限控制器
+        loadApp("com.android.permissioncontroller", HookPermissionController)
 
         //其他APP
         loadApp(

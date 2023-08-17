@@ -346,17 +346,12 @@
     <string name="launcher_events">События лаунчера</string>
     <!--Application-->
     <string name="Application">Приложения</string>
-    <string name="ApplyOtherRestrictions">Прочие ограничения</string>
-    <string name="remove_adb_install_confirm">Удалить подтверждение установки ADB</string>
-    <string name="remove_adb_install_confirm_summary">Установите приложение напрямую с помощью ADB</string>
-    <string name="unlock_startup_limit">Разблокировать ограничение на автозапуск приложения</string>
-    <string name="unlock_startup_limit_summary">Разблокировать ограничение на количество автозапусков приложения</string>
-    <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Запуск приложения</string>
     <string name="disable_splash_screen">Отключить заставку</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Список приложений</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Разрешить блокировку или разблокировку исключенных действий</string>
     <string name="force_all_apps_support_split_screen">Разрешить всем приложениям использовать раздельный экран</string>
     <string name="enable_zoom_window">Включить список поддержки</string>
     <string name="zoom_window_support_list">Пользовательское окно масштаба</string>
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Заменить собственным установщиком</string>
     <string name="show_packagename_and_versioncode">Показать имя пакета и код версии</string>
     <string name="show_packagename_and_versioncode_summary">Отображать название пакета и код версии в верхней части страницы установки</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Прочие ограничения</string>
+    <string name="remove_adb_install_confirm">Удалить подтверждение установки ADB</string>
+    <string name="remove_adb_install_confirm_summary">Установите приложение напрямую с помощью ADB</string>
+    <string name="unlock_startup_limit">Разблокировать ограничение на автозапуск приложения</string>
+    <string name="unlock_startup_limit_summary">Разблокировать ограничение на количество автозапусков приложения</string>
+    <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плавающее окно/Диалоговое окно</string>
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>

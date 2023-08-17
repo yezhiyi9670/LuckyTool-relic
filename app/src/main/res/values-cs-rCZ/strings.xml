@@ -346,17 +346,12 @@
     <string name="launcher_events">Události spouštěče</string>
     <!--Application-->
     <string name="Application">Aplikace</string>
-    <string name="ApplyOtherRestrictions">Ostatní limity</string>
-    <string name="remove_adb_install_confirm">Odstranit ADB potvrzení instalace</string>
-    <string name="remove_adb_install_confirm_summary">Použít ADB k instalaci aplikace bez klepnutí</string>
-    <string name="unlock_startup_limit">Odemknout limit automatického spuštění</string>
-    <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
-    <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Nastavení související se spouštěním aplikací</string>
     <string name="disable_splash_screen">Zakázat animaci úvodní obrazovky</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Povolit blokování nebo odemykání vyloučených aktivit</string>
     <string name="force_all_apps_support_split_screen">Donutit všechny aplikace podporovat rozdělenou obrazovku</string>
     <string name="enable_zoom_window">Povolit seznam podporovatelů</string>
     <string name="zoom_window_support_list">Vlastní nastavení přiblížení</string>
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Nahradit nativním Google instalátorem</string>
     <string name="show_packagename_and_versioncode">Zobrazit název balíčku a kód verze</string>
     <string name="show_packagename_and_versioncode_summary">Zobrazit název balíčku a kód verze v horní části instalační stránky</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Ostatní limity</string>
+    <string name="remove_adb_install_confirm">Odstranit ADB potvrzení instalace</string>
+    <string name="remove_adb_install_confirm_summary">Použít ADB k instalaci aplikace bez klepnutí</string>
+    <string name="unlock_startup_limit">Odemknout limit automatického spuštění</string>
+    <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
+    <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
     <string name="disable_duplicate_floating_window">Zakázat plovoucí oznámení o zkopírovaném textu či položce</string>

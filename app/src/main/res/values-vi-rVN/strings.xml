@@ -346,12 +346,7 @@
     <string name="launcher_events">Launcher Events</string>
     <!--Application-->
     <string name="Application">Ứng dụng</string>
-    <string name="ApplyOtherRestrictions">Giới hạn khác</string>
-    <string name="remove_adb_install_confirm">Xóa xác nhận cài đặt ADB</string>
-    <string name="remove_adb_install_confirm_summary">Sử dụng ADB để cài đặt APP mà không cần nhấn</string>
-    <string name="unlock_startup_limit">Mở khóa giới hạn ứng dụng tự khởi động</string>
-    <string name="unlock_startup_limit_summary">Mở khóa giới hạn ứng dụng tự khởi động</string>
-    <string name="unlock_task_locks">Mở khóa số lượng tác vụ nền</string>
+    <!--AppStartupRelated-->
     <string name="AppStartupRelated">Khởi động ứng dụng</string>
     <string name="disable_splash_screen">Vô hiệu hóa màn hình khởi động ứng dụng</string>
     <!--APPRelatedList-->
@@ -382,6 +377,14 @@
     <string name="replase_aosp_installer_summary">Thay thế bằng trình cài đặt Google</string>
     <string name="show_packagename_and_versioncode">Hiển thị tên gói và mã phiên bản</string>
     <string name="show_packagename_and_versioncode_summary">Hiển thị tên gói và mã phiên bản ở đầu trang cài đặt</string>
+    <!--ApplyOtherRestrictions-->
+    <string name="ApplyOtherRestrictions">Giới hạn khác</string>
+    <string name="remove_adb_install_confirm">Xóa xác nhận cài đặt ADB</string>
+    <string name="remove_adb_install_confirm_summary">Sử dụng ADB để cài đặt APP mà không cần nhấn</string>
+    <string name="unlock_startup_limit">Mở khóa giới hạn ứng dụng tự khởi động</string>
+    <string name="unlock_startup_limit_summary">Mở khóa giới hạn ứng dụng tự khởi động</string>
+    <string name="unlock_task_locks">Mở khóa số lượng tác vụ nền</string>
+    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Cửa sổ nổi/Hộp thoại</string>
     <string name="disable_duplicate_floating_window">Vô hiệu hóa cửa sổ trùng lặp</string>
