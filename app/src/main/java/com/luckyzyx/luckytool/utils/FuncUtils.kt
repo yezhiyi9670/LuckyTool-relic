@@ -25,6 +25,7 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toBitmapOrNull
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
@@ -67,7 +68,10 @@ val A14 get() = 34
 /**
  * 获取OS版本名
  */
-val getOSVersionName get() = safeOf(default = "null") { OplusBuildUtlils().getOSVersionName ?: "null" }
+val getOSVersionName
+    get() = safeOf(default = "null") {
+        OplusBuildUtlils().getOSVersionName ?: "null"
+    }
 
 /**
  * 获取OS版本号
@@ -650,7 +654,12 @@ fun Preference.setPrefsIconRes(resource: Any?, result: (Drawable?, Boolean) -> U
         result(icon, true)
         return
     }
-    val drawable = RoundedBitmapDrawableFactory.create(context.resources, image.toBitmap())
+    val bitmap = image.toBitmapOrNull()
+    if (bitmap == null) {
+        result(null, false)
+        return
+    }
+    val drawable = RoundedBitmapDrawableFactory.create(context.resources, bitmap)
     drawable.setAntiAlias(true)
     drawable.cornerRadius = 30F
     result(drawable, true)

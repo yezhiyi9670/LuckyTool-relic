@@ -29,6 +29,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 允许锁定或解锁已排除活动
 - [添加] 解锁默认桌面限制
 - [修复] 系统版本判断异常 ColorOS13.1.1
+- [修复] 功能页面显示异常
 - [Fix] The Hook of the lock screen charging component is abnormally reported
 - [Optimize] Game assistant quick jump v8.15.0
 - [Remove] Game assistant quick jump tile
@@ -53,6 +54,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [Add] Allow to lock or unlock excluded activities
 - [Add] Unlock default desktop restrictions
 - [Fix] The system version judgment is abnormal ColorOS13.1.1
+- [Fix] The function page displays abnormally
 
 ### 1.0.11
 

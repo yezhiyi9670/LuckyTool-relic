@@ -10,10 +10,10 @@ import com.luckyzyx.luckytool.utils.SDK
 
 object SystemEnableVolumeKeyControlFlashlight : YukiBaseHooker() {
     override fun onHook() {
-        if (SDK < A13) return
         val isEnable = prefs(ModulePrefs).getBoolean("enable_volume_key_control_flashlight", false)
+        if (SDK < A13) return
         //Source OplusScreenOffTorchHelper
-        findClass("com.android.server.power.OplusScreenOffTorchHelper").hook {
+        "com.android.server.power.OplusScreenOffTorchHelper".toClassOrNull()?.hook {
             injectMember {
                 method { name = "getInstance";param(ContextClass) }
                 afterHook {

@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
-import androidx.core.graphics.drawable.RoundedBitmapDrawable
 import androidx.core.widget.NestedScrollView
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
@@ -326,9 +325,7 @@ class XposedFragment : ModulePreferenceFragment() {
                 addPreference(Preference(context).apply {
                     key = "com.oplus.ota"
                     setPrefsIconRes(key) { resource, show ->
-                        icon = (resource as RoundedBitmapDrawable).apply {
-                            cornerRadius = 200F
-                        }
+                        icon = resource
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
