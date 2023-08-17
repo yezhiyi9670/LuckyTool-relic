@@ -34,7 +34,7 @@ import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
-import com.luckyzyx.luckytool.utils.getOSVersion
+import com.luckyzyx.luckytool.utils.getOSVersionCode
 import com.luckyzyx.luckytool.utils.getString
 import com.luckyzyx.luckytool.utils.isZh
 import com.luckyzyx.luckytool.utils.jumpBattery
@@ -1902,7 +1902,7 @@ class LockScreen : ModulePreferenceFragment() {
                     resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
-                isVisible = getOSVersion() >= 13.1
+                isVisible = getOSVersionCode >= 27
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui")
@@ -3331,7 +3331,7 @@ class OplusGesture : ModulePreferenceFragment() {
                 summary = getString(R.string.need_restart_system)
                 key = "enable_volume_key_control_flashlight"
                 setDefaultValue(false)
-                isVisible = getOSVersion() >= 13.1
+                isVisible = getOSVersionCode >= 27
                 isIconSpaceReserved = false
             })
             addPreference(PreferenceCategory(context).apply {

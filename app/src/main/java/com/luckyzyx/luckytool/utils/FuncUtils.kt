@@ -31,11 +31,9 @@ import androidx.preference.Preference
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.highcapable.yukihookapi.hook.factory.field
-import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.factory.toClass
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.hook.utils.OplusBuildUtlils
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
@@ -67,27 +65,22 @@ val A13 get() = Build.VERSION_CODES.TIRAMISU
 val A14 get() = 34
 
 /**
- * 获取ColorOS版本
- * @return [String]
+ * 获取OS版本名
  */
-val getColorOSVersion
-    get() = safeOf(default = "null") {
-        "com.oplus.os.OplusBuild".toClass().let {
-            it.field { name = "VERSIONS" }.ignored().get().array<String>()
-                .takeIf { e -> e.isNotEmpty() }
-                ?.get(it.method { name = "getOplusOSVERSION" }.ignored().get().int() - 1)
-        }
-    }
+val getOSVersionName get() = safeOf(default = "null") { OplusBuildUtlils().getOSVersionName ?: "null" }
 
 /**
- * 获取OS版本
- * @return Double?
+ * 获取OS版本号
+ * 23 -> c12
+ * 24 -> c12.1
+ * 25 -> c12.2
+ * 26 -> c13
+ * 27 -> c13.1
+ * 28 -> c13.1.1
+ * 29 -> c13.2
+ * 30 -> c14
  */
-fun getOSVersion(): Double = safeOf(0.0) {
-    val os = getColorOSVersion
-    if (!os.isNullOrBlank()) return@safeOf os.replace("V", "").toDouble()
-    return@safeOf 0.0
-}
+val getOSVersionCode get() = safeOf(default = 0) { OplusBuildUtlils().getOSVersionCode ?: 0 }
 
 /***
  * 获取APP Commit
@@ -155,7 +148,7 @@ fun Context.getDeviceInfo(): String {
         ${getString(R.string.brand)}: ${Build.BRAND}
         ${getString(R.string.model)}: ${Build.MODEL}
         ${getString(R.string.product)}: ${Build.PRODUCT}
-        ${getString(R.string.system)}: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getColorOSVersion]
+        ${getString(R.string.system)}: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getOSVersionName]
         ${getString(R.string.device)}: ${Build.DEVICE}
         ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
         ${getString(R.string.build_version)}: ${Build.DISPLAY}

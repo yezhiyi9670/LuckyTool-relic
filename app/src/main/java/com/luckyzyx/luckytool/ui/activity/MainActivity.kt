@@ -79,7 +79,7 @@ open class MainActivity : AppCompatActivity() {
             }
             return
         }
-        if (getOSVersion() < 12.0) {
+        if (getOSVersionCode < 23) {
             MaterialAlertDialogBuilder(this, dialogCentered).apply {
                 setTitle(getString(R.string.unsupported_os))
                 setMessage(getString(R.string.unsupported_os_summary))

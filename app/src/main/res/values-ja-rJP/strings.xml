@@ -384,7 +384,7 @@
     <string name="unlock_startup_limit">自動起動の制限を解除</string>
     <string name="unlock_startup_limit_summary">アプリの自動起動の制限を解除します</string>
     <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
-    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    <string name="unlock_default_desktop_limit">デフォルトホーム画面の制限を解除</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
     <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>

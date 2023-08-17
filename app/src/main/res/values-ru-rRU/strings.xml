@@ -384,7 +384,7 @@
     <string name="unlock_startup_limit">Разблокировать ограничение на автозапуск приложения</string>
     <string name="unlock_startup_limit_summary">Разблокировать ограничение на количество автозапусков приложения</string>
     <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
-    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    <string name="unlock_default_desktop_limit">Разблокировать ограничения рабочего стола</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плавающее окно/Диалоговое окно</string>
     <string name="disable_duplicate_floating_window">Отключить дублирование плавающего окна</string>

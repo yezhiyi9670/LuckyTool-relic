@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.12_beta
+### 1.0.12
 
 - [修复] 锁屏充电组件Hook异常报错
 - [优化] 游戏助手快捷跳转v8.15.0
@@ -28,6 +28,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 强制所有应用支持分屏
 - [添加] 允许锁定或解锁已排除活动
 - [添加] 解锁默认桌面限制
+- [修复] 系统版本判断异常 ColorOS13.1.1
 
 ### 1.0.11
 

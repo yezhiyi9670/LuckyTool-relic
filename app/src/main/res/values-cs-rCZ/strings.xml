@@ -384,7 +384,7 @@
     <string name="unlock_startup_limit">Odemknout limit automatického spuštění</string>
     <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
     <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
-    <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    <string name="unlock_default_desktop_limit">Odemknout výchozí omezení pro plochu</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
     <string name="disable_duplicate_floating_window">Zakázat plovoucí oznámení o zkopírovaném textu či položce</string>
