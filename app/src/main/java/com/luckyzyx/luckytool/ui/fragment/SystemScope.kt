@@ -3,7 +3,6 @@ package com.luckyzyx.luckytool.ui.fragment
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -30,8 +29,10 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
+import com.luckyzyx.luckytool.utils.arraySummary
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
+import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getBoolean
 import com.luckyzyx.luckytool.utils.getOSVersionCode
@@ -86,12 +87,15 @@ class Android : ModulePreferenceFragment() {
                 setTitle(R.string.UsePreSig)
                 setSummary(R.string.UsePreSig_summary)
                 key = "UsePreSig"
-                setDefaultValue(false)
+                setDefaultValue(true)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     if (newValue == true) {
-                        MaterialAlertDialogBuilder(context).setMessage(R.string.usepresig_warn)
-                            .setPositiveButton("OK", null).show()
+                        MaterialAlertDialogBuilder(context, dialogCentered).apply {
+                            setMessage(R.string.usepresig_warn)
+                            setPositiveButton(android.R.string.ok, null)
+                            show()
+                        }
                     }
                     true
                 }
@@ -117,10 +121,13 @@ class StatusBar : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarClock)
-                summary =
-                    getString(R.string.statusbar_clock_show_second) + "," + getString(R.string.statusbar_clock_show_doublerow) + "," + getString(
+                summary = arraySummary(
+                    getString(R.string.statusbar_clock_show_second),
+                    getString(R.string.statusbar_clock_show_doublerow),
+                    getString(
                         R.string.statusbar_clock_doublerow_fontsize
                     )
+                )
                 key = "StatusBarClock"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -130,8 +137,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarNetWorkSpeed)
-                summary =
-                    getString(R.string.enable_double_row_network_speed) + "," + getString(R.string.set_network_speed)
+                summary = arraySummary(
+                    getString(R.string.enable_double_row_network_speed),
+                    getString(R.string.set_network_speed)
+                )
                 key = "StatusBarNetWorkSpeed"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -141,8 +150,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarNotice)
-                summary =
-                    getString(R.string.RemoveStatusBarNotifications) + "," + getString(R.string.remove_notification_manager_limit)
+                summary = arraySummary(
+                    getString(R.string.RemoveStatusBarNotifications),
+                    getString(R.string.remove_notification_manager_limit)
+                )
                 key = "StatusBarNotice"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -152,8 +163,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarIcon)
-                summary =
-                    getString(R.string.remove_mobile_data_inout) + "," + getString(R.string.remove_green_dot_privacy_prompt)
+                summary = arraySummary(
+                    getString(R.string.remove_mobile_data_inout),
+                    getString(R.string.remove_green_dot_privacy_prompt)
+                )
                 key = "StatusBarIcon"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -163,8 +176,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarControlCenter)
-                summary =
-                    getString(R.string.control_center_clock_show_second) + "," + getString(R.string.remove_control_center_clock_red_one)
+                summary = arraySummary(
+                    getString(R.string.control_center_clock_show_second),
+                    getString(R.string.remove_control_center_clock_red_one)
+                )
                 key = "StatusBarControlCenter"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -174,8 +189,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarTiles)
-                summary =
-                    getString(R.string.long_press_wifi_tile_open_the_page) + "," + getString(R.string.fix_tile_align_both_sides)
+                summary = arraySummary(
+                    getString(R.string.long_press_wifi_tile_open_the_page),
+                    getString(R.string.fix_tile_align_both_sides)
+                )
                 key = "StatusBarTiles"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -185,8 +202,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarLayout)
-                summary =
-                    getString(R.string.statusbar_layout_mode) + "," + getString(R.string.statusbar_layout_compatible_mode)
+                summary = arraySummary(
+                    getString(R.string.statusbar_layout_mode),
+                    getString(R.string.statusbar_layout_compatible_mode)
+                )
                 key = "StatusBarLayout"
                 isIconSpaceReserved = false
                 isVisible = SDK >= A13
@@ -197,8 +216,10 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarBattery)
-                summary =
-                    getString(R.string.remove_statusbar_battery_percent) + "," + getString(R.string.use_user_typeface)
+                summary = arraySummary(
+                    getString(R.string.remove_statusbar_battery_percent),
+                    getString(R.string.use_user_typeface)
+                )
                 key = "StatusBarBattery"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -337,12 +358,11 @@ class StatusBarClock : ModulePreferenceFragment() {
                         resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
                     entryValues = arrayOf("left", "center", "right")
                     setDefaultValue("center")
-                    isIconSpaceReserved = false
                     isVisible =
                         context.getBoolean(ModulePrefs, "statusbar_clock_show_doublerow", false)
+                    isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_text_alignment", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -357,8 +377,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                     updatesContinuously = false
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_singlerow_fontsize", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -373,8 +392,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                     updatesContinuously = false
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_doublerow_fontsize", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -409,8 +427,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                     setDefaultValue("HH:mm:ss")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_custom_format", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         (activity as MainActivity).restart()
                         true
                     }
@@ -423,14 +440,13 @@ class StatusBarClock : ModulePreferenceFragment() {
                         resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
                     entryValues = arrayOf("left", "center", "right")
                     setDefaultValue("center")
-                    isIconSpaceReserved = false
                     val row = context.getString(
                         ModulePrefs, "statusbar_clock_custom_format", "HH:mm:ss"
                     )?.takeIf { e -> e.isNotBlank() }?.split("\n")?.size ?: 2
                     isVisible = row >= 2
+                    isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_text_alignment", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -445,8 +461,7 @@ class StatusBarClock : ModulePreferenceFragment() {
                     updatesContinuously = false
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_clock_custom_fontsize", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -455,8 +470,8 @@ class StatusBarClock : ModulePreferenceFragment() {
                 title = getString(R.string.use_user_typeface)
                 key = "statusbar_clock_user_typeface"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = context.getString(ModulePrefs, "statusbar_clock_mode", "0") != "0"
+                isIconSpaceReserved = false
             })
         }
     }
@@ -490,7 +505,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui").put("set_network_speed", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -520,8 +535,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     setDefaultValue(false)
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_network_no_second", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -532,8 +546,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         setDefaultValue(false)
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("statusbar_network_no_second", newValue)
+                            context.dataChannel("com.android.systemui").put(key, newValue)
                             true
                         }
                     })
@@ -548,8 +561,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     updatesContinuously = false
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("set_network_speed_font_size", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -563,8 +575,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                     updatesContinuously = false
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("set_network_speed_padding_bottom", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -579,8 +590,7 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
                         updatesContinuously = false
                         isIconSpaceReserved = false
                         setOnPreferenceChangeListener { _, newValue ->
-                            context.dataChannel("com.android.systemui")
-                                .put("set_network_speed_double_row_spacing", newValue)
+                            context.dataChannel("com.android.systemui").put(key, newValue)
                             true
                         }
                     })
@@ -676,8 +686,8 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
                 title = getString(R.string.remove_smart_rapid_charging_notification)
                 key = "remove_smart_rapid_charging_notification"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = false
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_notifications_for_mute_notifications)
@@ -730,8 +740,10 @@ class StatusBarNotify : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.RemoveStatusBarNotifications)
-                summary =
-                    getString(R.string.remove_statusbar_top_notification) + "," + getString(R.string.remove_statusbar_devmode)
+                summary = arraySummary(
+                    getString(R.string.remove_statusbar_top_notification),
+                    getString(R.string.remove_statusbar_devmode)
+                )
                 key = "RemoveStatusBarNotifications"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -816,8 +828,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("hide_non_network_card_icon", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -833,8 +844,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("hide_nosim_noservice", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -849,8 +859,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("hide_icon_when_bluetooth_not_connected", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -941,8 +950,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("statusbar_control_center_clock_red_one_mode", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -957,8 +965,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
                 isVisible = SDK >= A13
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("statusbar_control_center_clock_colon_style", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -968,8 +975,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("remove_control_center_date_comma", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -977,11 +983,10 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 title = getString(R.string.statusbar_control_center_date_show_lunar)
                 key = "statusbar_control_center_date_show_lunar"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = isZh(context)
+                isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("statusbar_control_center_date_show_lunar", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     (activity as MainActivity).restart()
                     true
                 }
@@ -990,11 +995,10 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 title = getString(R.string.statusbar_control_center_date_fix_width)
                 key = "statusbar_control_center_date_fix_width"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13 && isZh(context)
+                isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("statusbar_control_center_date_fix_width", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1010,11 +1014,10 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                         resources.getStringArray(R.array.statusbar_control_center_date_fix_lunar_horizontal_entries)
                     entryValues = arrayOf("0", "1", "2")
                     setDefaultValue("0")
-                    isIconSpaceReserved = false
                     isVisible = SDK >= A13 && isZh(context)
+                    isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("statusbar_control_center_date_fix_lunar_horizontal", newValue)
+                        context.dataChannel("com.android.systemui").put(key, newValue)
                         true
                     }
                 })
@@ -1045,8 +1048,8 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 title = getString(R.string.force_display_media_player)
                 key = "force_display_media_player"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, _ ->
                     (activity as MainActivity).restart()
                     true
@@ -1057,8 +1060,8 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     title = getString(R.string.force_enable_media_toggle_button)
                     key = "force_enable_media_toggle_button"
                     setDefaultValue(false)
-                    isIconSpaceReserved = false
                     isVisible = SDK >= A13
+                    isIconSpaceReserved = false
                 })
             }
             addPreference(DropDownPreference(context).apply {
@@ -1075,15 +1078,15 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 title = getString(R.string.remove_control_center_user_switcher)
                 key = "remove_control_center_user_switcher"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK < A13
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_control_center_mydevice)
                 key = "remove_control_center_mydevice"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_control_center_search_button_mode)
@@ -1095,8 +1098,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("set_control_center_search_button_mode", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1110,8 +1112,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("remove_control_center_networkwarn", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1126,8 +1127,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 updatesContinuously = false
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("custom_control_center_background_transparency", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1159,16 +1159,16 @@ class StatusBarTiles : ModulePreferenceFragment() {
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.TileLongClickEvent)
                 key = "TileLongClickEvent"
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.restore_some_tile_long_press_event)
                 summary = getString(R.string.restore_some_tile_long_press_event_summary)
                 key = "restore_some_tile_long_press_event"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
             })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.TileLayoutRelated)
@@ -1180,8 +1180,8 @@ class StatusBarTiles : ModulePreferenceFragment() {
                 summary = getString(R.string.fix_tile_align_both_sides_summary)
                 key = "fix_tile_align_both_sides"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.control_center_tile_enable)
@@ -1408,80 +1408,74 @@ class StatusBarBattery : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 })
             }
-            addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.StatusBarBatteryNotify)
-                key = "StatusBarBatteryNotify"
-                isIconSpaceReserved = false
-                isVisible = SDK >= A12
-            })
-            addPreference(DropDownPreference(context).apply {
-                title = getString(R.string.battery_information_display_mode)
-                summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
-                key = "battery_information_display_mode"
-                entries =
-                    resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
-                entryValues = arrayOf("0", "1", "2")
-                setDefaultValue("0")
-                isIconSpaceReserved = false
-                isVisible = SDK >= A12
-                setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("battery_information_display_mode", newValue)
-                    (activity as MainActivity).restart()
-                    true
+            if (SDK >= A12) {
+                addPreference(PreferenceCategory(context).apply {
+                    title = getString(R.string.StatusBarBatteryNotify)
+                    key = "StatusBarBatteryNotify"
+                    isIconSpaceReserved = false
+                })
+                addPreference(DropDownPreference(context).apply {
+                    title = getString(R.string.battery_information_display_mode)
+                    summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
+                    key = "battery_information_display_mode"
+                    entries =
+                        resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
+                    entryValues = arrayOf("0", "1", "2")
+                    setDefaultValue("0")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        context.dataChannel("com.android.systemui").put(key, newValue)
+                        (activity as MainActivity).restart()
+                        true
+                    }
+                })
+                if (context.getString(
+                        ModulePrefs, "battery_information_display_mode", "0"
+                    ) != "0"
+                ) {
+                    addPreference(SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_charge)
+                        summary = getString(R.string.battery_information_show_charge_summary)
+                        key = "battery_information_show_charge_info"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui").put(key, newValue)
+                            true
+                        }
+                    })
+                    addPreference(SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_dual_voltage)
+                        key = "battery_information_show_dual_voltage"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui").put(key, newValue)
+                            true
+                        }
+                    })
+                    addPreference(SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_simple_mode)
+                        key = "battery_information_show_simple_mode"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui").put(key, newValue)
+                            true
+                        }
+                    })
+                    addPreference(SwitchPreference(context).apply {
+                        title = getString(R.string.battery_information_show_update_time)
+                        summary = getString(R.string.battery_information_show_update_time_summary)
+                        key = "battery_information_show_update_time"
+                        setDefaultValue(false)
+                        isIconSpaceReserved = false
+                        setOnPreferenceChangeListener { _, newValue ->
+                            context.dataChannel("com.android.systemui").put(key, newValue)
+                            true
+                        }
+                    })
                 }
-            })
-            if (context.getString(ModulePrefs, "battery_information_display_mode", "0") != "0") {
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_charge)
-                    summary = getString(R.string.battery_information_show_charge_summary)
-                    key = "battery_information_show_charge_info"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A12
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("battery_information_show_charge_info", newValue)
-                        true
-                    }
-                })
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_dual_voltage)
-                    key = "battery_information_show_dual_voltage"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A12
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("battery_information_show_dual_voltage", newValue)
-                        true
-                    }
-                })
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_simple_mode)
-                    key = "battery_information_show_simple_mode"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A12
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("battery_information_show_simple_mode", newValue)
-                        true
-                    }
-                })
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.battery_information_show_update_time)
-                    summary = getString(R.string.battery_information_show_update_time_summary)
-                    key = "battery_information_show_update_time"
-                    setDefaultValue(false)
-                    isIconSpaceReserved = false
-                    isVisible = SDK >= A12
-                    setOnPreferenceChangeListener { _, newValue ->
-                        context.dataChannel("com.android.systemui")
-                            .put("battery_information_show_update_time", newValue)
-                        true
-                    }
-                })
             }
         }
     }
@@ -1518,8 +1512,7 @@ class Launcher : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.coloros.alarmclock")
-                        .put("alarmclock_widget_redone_mode", newValue)
+                    context.dataChannel("com.coloros.alarmclock").put(key, newValue)
                     true
                 }
             })
@@ -1534,27 +1527,26 @@ class Launcher : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_app_shortcut_badge)
-                key = "remove_app_shortcut_badge"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                isVisible = SDK >= A13
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_app_work_badge)
-                key = "remove_app_work_badge"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                isVisible = SDK >= A13
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_app_clone_badge)
-                key = "remove_app_clone_badge"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                isVisible = SDK >= A13
-            })
+            if (SDK >= A13) {
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_shortcut_badge)
+                    key = "remove_app_shortcut_badge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_work_badge)
+                    key = "remove_app_work_badge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.remove_app_clone_badge)
+                    key = "remove_app_clone_badge"
+                    setDefaultValue(false)
+                    isIconSpaceReserved = false
+                })
+            }
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.FolderLayoutRelated)
                 key = "FolderLayoutRelated"
@@ -1664,6 +1656,7 @@ class Launcher : ModulePreferenceFragment() {
             })
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.launcher_layout_related)
+                key = "DesktopLayoutRelated"
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
@@ -1701,8 +1694,9 @@ class Launcher : ModulePreferenceFragment() {
             }
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.launcher_events)
-                isIconSpaceReserved = false
+                key = "LauncherEvents"
                 isVisible = false
+                isIconSpaceReserved = false
             })
         }
     }
@@ -1752,8 +1746,7 @@ class Aod : ModulePreferenceFragment() {
                 title = getString(R.string.set_aod_style_mode)
                 summary = "%s"
                 key = "set_aod_style_mode"
-                entries =
-                    resources.getStringArray(R.array.set_aod_style_mode_entries)
+                entries = resources.getStringArray(R.array.set_aod_style_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
                 isIconSpaceReserved = false
@@ -1805,8 +1798,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("lock_screen_clock_redone_mode", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1816,8 +1808,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("apply_lock_screen_dual_clock_redone", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1851,8 +1842,7 @@ class LockScreen : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("set_lock_screen_warp_charging_style", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     (activity as MainActivity).restart()
                     true
                 }
@@ -1867,8 +1857,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("set_lock_screen_charging_text_logo_style", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1878,8 +1867,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("force_lock_screen_charging_show_wattage", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1889,8 +1877,7 @@ class LockScreen : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("lock_screen_charging_use_user_typeface", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1905,8 +1892,7 @@ class LockScreen : ModulePreferenceFragment() {
                 isVisible = getOSVersionCode >= 27
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("set_full_screen_charging_animation_mode", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -1963,8 +1949,8 @@ class LockScreen : ModulePreferenceFragment() {
                 summary = getString(R.string.remove_lock_screen_bottom_sos_button_summary)
                 key = "remove_lock_screen_bottom_sos_button"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
-                isVisible = SDK >= 33
             })
 
             addPreference(PreferenceCategory(context).apply {
@@ -2074,19 +2060,21 @@ class Application : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.AppStartupRelated)
-                key = "AppStartupRelated"
-                isIconSpaceReserved = false
-                isVisible = SDK >= A13
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.disable_splash_screen)
-                key = "disable_splash_screen"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                isVisible = SDK >= A13
-            })
+            if (SDK >= A13) {
+                addPreference(PreferenceCategory(context).apply {
+                    title = getString(R.string.AppStartupRelated)
+                    key = "AppStartupRelated"
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.disable_splash_screen)
+                    key = "disable_splash_screen"
+                    setDefaultValue(false)
+                    isVisible = SDK >= A13
+                    isIconSpaceReserved = false
+                })
+            }
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.APPRelatedList)
                 key = "APPRelatedList"
@@ -2173,8 +2161,8 @@ class Application : ModulePreferenceFragment() {
                 summary = getString(R.string.replase_aosp_installer_summary)
                 key = "replase_aosp_installer"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = false
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_adb_install_confirm)
@@ -2263,8 +2251,9 @@ class DialogRelated : ModulePreferenceFragment() {
                 summary = getString(R.string.disable_duplicate_floating_window_summary)
                 key = "disable_duplicate_floating_window"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
-                isVisible = Build.VERSION.SDK_INT >= 33
+
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.disable_headphone_high_volume_warning)
@@ -2325,8 +2314,7 @@ class DialogRelated : ModulePreferenceFragment() {
                 updatesContinuously = false
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("custom_volume_dialog_background_transparency", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
@@ -2432,10 +2420,10 @@ class Miscellaneous : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.FloatingWindowDialogRelated)
-                summary =
-                    getString(R.string.remove_low_battery_dialog_warning_summary) + "," + getString(
-                        R.string.disable_headphone_high_volume_warning
-                    )
+                summary = arraySummary(
+                    getString(R.string.remove_low_battery_dialog_warning_summary),
+                    getString(R.string.disable_headphone_high_volume_warning)
+                )
                 key = "FloatingWindowDialogRelated"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -2445,8 +2433,10 @@ class Miscellaneous : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.FingerPrintRelated)
-                summary =
-                    getString(R.string.remove_fingerprint_icon) + "," + getString(R.string.replace_fingerprint_icon_switch)
+                summary = arraySummary(
+                    getString(R.string.remove_fingerprint_icon),
+                    getString(R.string.replace_fingerprint_icon_switch)
+                )
                 key = "FingerPrintRelated"
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
@@ -2459,8 +2449,8 @@ class Miscellaneous : ModulePreferenceFragment() {
                 summary = getString(R.string.show_charging_ripple_summary)
                 key = "show_charging_ripple"
                 setDefaultValue(false)
+                isVisible = SDK >= A12
                 isIconSpaceReserved = false
-                isVisible = Build.VERSION.SDK_INT >= 31
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.disable_otg_auto_off)
@@ -2468,14 +2458,6 @@ class Miscellaneous : ModulePreferenceFragment() {
                 key = "disable_otg_auto_off"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.disable_dpi_reboot_recovery)
-                summary = getString(R.string.disable_dpi_reboot_recovery_summary)
-                key = "disable_dpi_reboot_recovery"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                isVisible = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_storage_limit)
@@ -2499,15 +2481,15 @@ class Miscellaneous : ModulePreferenceFragment() {
                 title = getString(R.string.minimum_volume_level_can_be_zero)
                 key = "minimum_volume_level_can_be_zero"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A12
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.allow_untrusted_touch)
                 key = "allow_untrusted_touch"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A12
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.disable_dynamic_refresh_rate)
@@ -2572,8 +2554,8 @@ class Settings : ModulePreferenceFragment() {
                 summary = getString(R.string.force_display_dc_backlight_mode_summary)
                 key = "force_display_video_memc_frame_insertion"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = false
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.video_frame_insertion_support_2K120)
@@ -2619,8 +2601,7 @@ class Settings : ModulePreferenceFragment() {
                 title = getString(R.string.set_processor_click_page)
                 summary = "%s"
                 key = "set_processor_click_page"
-                entries =
-                    resources.getStringArray(R.array.set_processor_click_page_entries)
+                entries = resources.getStringArray(R.array.set_processor_click_page_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
                 isVisible = SDK >= A13
@@ -2739,8 +2720,8 @@ class Battery : ModulePreferenceFragment() {
                 summary = getString(R.string.performance_mode_and_standby_optimization_summary)
                 key = "performance_mode_and_standby_optimization"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_high_temperature_limit)
@@ -2770,8 +2751,8 @@ class Battery : ModulePreferenceFragment() {
                         getString(R.string.disable_customize_battery_optimization_whiteList_summary)
                     key = "disable_customize_battery_optimization_whiteList"
                     setDefaultValue(false)
-                    isIconSpaceReserved = false
                     isVisible = false
+                    isIconSpaceReserved = false
                 })
             }
         }
@@ -2825,8 +2806,8 @@ class Camera : ModulePreferenceFragment() {
                 summary = getString(R.string.fix_hasselblad_custom_watermark_crash_summary)
                 key = "fix_hasselblad_custom_watermark_crash"
                 setDefaultValue(false)
-                isIconSpaceReserved = false
                 isVisible = false
+                isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.enable_10_bit_image_support)
@@ -3006,21 +2987,19 @@ class OplusGames : ModulePreferenceFragment() {
             if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
-            isVisible = requireActivity().checkPackName("com.oplus.games") &&
-                    requireActivity().checkResolveActivity(
-                        Intent().setClassName(
-                            "com.oplus.games",
-                            "business.compact.activity.GameBoxCoverActivity"
-                        )
+            isVisible =
+                requireActivity().checkPackName("com.oplus.games") && requireActivity().checkResolveActivity(
+                    Intent().setClassName(
+                        "com.oplus.games", "business.compact.activity.GameBoxCoverActivity"
                     )
+                )
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == 1) requireActivity().restartScopes(scopes)
         if (item.itemId == 2) ShellUtils.execCommand(
-            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity",
-            true
+            "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
         )
         return super.onOptionsItemSelected(item)
     }
@@ -3151,8 +3130,7 @@ class OplusOta : ModulePreferenceFragment() {
                 setOnPreferenceChangeListener { _, newValue ->
                     val value = newValue as Boolean
                     ShellUtils.execCommand(
-                        "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}",
-                        true
+                        "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}", true
                     )
                     (activity as MainActivity).restart()
                     true
@@ -3352,8 +3330,8 @@ class OplusGesture : ModulePreferenceFragment() {
                     summary = getString(R.string.force_enable_aon_gestures_summary)
                     key = "force_enable_aon_gestures"
                     setDefaultValue(false)
-                    isEnabled = context.checkPackName("com.oplus.gesture") &&
-                            context.checkPackName("com.aiunit.aon")
+                    isEnabled =
+                        context.checkPackName("com.oplus.gesture") && context.checkPackName("com.aiunit.aon")
                     isIconSpaceReserved = false
                 })
                 addPreference(EditTextPreference(context).apply {
@@ -3366,8 +3344,8 @@ class OplusGesture : ModulePreferenceFragment() {
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_scroll_page_whitelist"
                     setDefaultValue("None")
-                    isEnabled = context.checkPackName("com.oplus.gesture") &&
-                            context.checkPackName("com.aiunit.aon")
+                    isEnabled =
+                        context.checkPackName("com.oplus.gesture") && context.checkPackName("com.aiunit.aon")
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->
                         summary = if (newValue == "") "None" else newValue as String
@@ -3384,8 +3362,8 @@ class OplusGesture : ModulePreferenceFragment() {
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_video_whitelist"
                     setDefaultValue("None")
-                    isEnabled = context.checkPackName("com.oplus.gesture") &&
-                            context.checkPackName("com.aiunit.aon")
+                    isEnabled =
+                        context.checkPackName("com.oplus.gesture") && context.checkPackName("com.aiunit.aon")
                     isVisible = false //SDK >= A13
                     isIconSpaceReserved = false
                     setOnPreferenceChangeListener { _, newValue ->

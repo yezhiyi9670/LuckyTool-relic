@@ -384,7 +384,7 @@
     <string name="unlock_task_locks">Разблокировать количество заблокированных фоновых задач</string>
     <string name="unlock_default_desktop_limit">Разблокировать ограничения рабочего стола</string>
     <string name="force_all_apps_support_split_screen">Разрешить всем приложениям использовать раздельный экран</string>
-    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="remove_app_uninstall_button_blacklist">Удалить черный список кнопки удаления приложения</string>
     <string name="allow_locking_unlocking_of_excluded_activity">Разрешить блокировку или разблокировку исключенных действий</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плавающее окно/Диалоговое окно</string>
@@ -427,8 +427,6 @@
     <string name="show_charging_ripple_summary">Работает только при подключении к зарядному устройству</string>
     <string name="disable_otg_auto_off">Отключить автоотключение OTG</string>
     <string name="disable_otg_auto_off_summary">Отключить автоматическое отключение OTG через 10 минут</string>
-    <string name="disable_dpi_reboot_recovery">Отключить восстановление DPI после перезагрузки</string>
-    <string name="disable_dpi_reboot_recovery_summary">Этот модуль не несет ответственности за любые сбои загрузки из-за установки слишком большого значения DPI\nЧтобы восстановить значение DPI по умолчанию, вам необходимо включить эту функцию и сбросить значение DPI по умолчанию после перезагрузки</string>
     <string name="remove_storage_limit">Удалить ограничение хранилища</string>
     <string name="remove_storage_limit_summary">Снять ограничение, на использование хранилища</string>
     <string name="media_volume_level">Уровень громкости мультимедиа</string>

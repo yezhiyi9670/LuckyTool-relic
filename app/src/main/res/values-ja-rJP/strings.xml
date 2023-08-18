@@ -427,8 +427,6 @@
     <string name="show_charging_ripple_summary">充電器接続時のみ有効です</string>
     <string name="disable_otg_auto_off">OTGの自動オフを無効化</string>
     <string name="disable_otg_auto_off_summary">10分以上経つと OTG が自動的にオフになる制限を無効化します</string>
-    <string name="disable_dpi_reboot_recovery">再起動後のDPIの復元を無効化</string>
-    <string name="disable_dpi_reboot_recovery_summary">このモジュールで大きすぎるDPI設定の影響で起動をしなくなった場合の責任は一切負いません\nデフォルトのDPIに戻す場合は、この機能を有効化しスコープの再起動後にデフォルトのDPIにリセットをする必要があります</string>
     <string name="remove_storage_limit">ストレージの制限を削除</string>
     <string name="remove_storage_limit_summary">フォルダが使用できない制限を解除します</string>
     <string name="media_volume_level">メディアのボリュームレベル</string>

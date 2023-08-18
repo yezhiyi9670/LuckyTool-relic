@@ -125,7 +125,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinxCoroutinesVersion}")
     //Net OkHttp相关
     //noinspection GradleDependency
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.github.liangjingkanji:Net:3.5.8")
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'

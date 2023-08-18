@@ -427,8 +427,6 @@
     <string name="show_charging_ripple_summary">Widoczne przy podłączaniu do ładowarki</string>
     <string name="disable_otg_auto_off">Wyłącz auto. wyłączanie OTG</string>
     <string name="disable_otg_auto_off_summary">Połączenie OTG nie zostanie wyłączone po 10 minutach bezczynności</string>
-    <string name="disable_dpi_reboot_recovery">Wyłącz restart do recovery DPI</string>
-    <string name="disable_dpi_reboot_recovery_summary">Moduł nie ponosi odpowiedzialności za brak możliwości uruchomienia systemu z powodu ustawienia zbyt dużej wartości DPI. Aby przywrócić domyślne DPI, należy włączyć tę funkcję, zrestartować uruchomione procesy i przywrócić domyślną wartość DPI</string>
     <string name="remove_storage_limit">Usuń ograniczenie dostępu do pamięci</string>
     <string name="remove_storage_limit_summary">Usuwa ograniczenie „Ten folder nie może być używany”, podczas próby przypisania folderu dla danej aplikacji</string>
     <string name="media_volume_level">Kroki głośności multimediów</string>
