@@ -351,8 +351,6 @@
     <string name="disable_splash_screen">スプラッシュ画面を無効化</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">アプリ関連のリスト</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">除外されたアクティビティのロックまたはロック解除を許可</string>
-    <string name="force_all_apps_support_split_screen">すべてのアプリで画面分割対応を強制する</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
     <string name="zoom_window_support_list">カスタムズームウィンドウのサポートリスト</string>
     <string name="zoom_window_support_list_summary">必要に応じて有効化をしてください。取り返しのつかない問題が発生するかもしれません</string>
@@ -385,6 +383,9 @@
     <string name="unlock_startup_limit_summary">アプリの自動起動の制限を解除します</string>
     <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
     <string name="unlock_default_desktop_limit">デフォルトホーム画面の制限を解除</string>
+    <string name="force_all_apps_support_split_screen">すべてのアプリで画面分割対応を強制する</string>
+    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">除外されたアクティビティのロックまたはロック解除を許可</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
     <string name="disable_duplicate_floating_window">複製ウィンドウを無効化</string>

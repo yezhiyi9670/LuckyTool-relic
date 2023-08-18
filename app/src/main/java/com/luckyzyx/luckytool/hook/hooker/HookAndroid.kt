@@ -15,6 +15,7 @@ import com.luckyzyx.luckytool.hook.scope.android.HookWindowManagerService
 import com.luckyzyx.luckytool.hook.scope.android.MediaVolumeLevel
 import com.luckyzyx.luckytool.hook.scope.android.MultiApp
 import com.luckyzyx.luckytool.hook.scope.android.RemoveAccessDeviceLogDialog
+import com.luckyzyx.luckytool.hook.scope.android.RemoveAppUninstallButtonBlackList
 import com.luckyzyx.luckytool.hook.scope.android.RemovePasswordTimeoutVerification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
@@ -92,6 +93,9 @@ object HookAndroid : YukiBaseHooker() {
 
         //强制所有应用支持分屏
         loadHooker(ForceAllAppsSupportSplitScreen)
+
+        //移除应用禁止卸载黑名单
+        loadHooker(RemoveAppUninstallButtonBlackList)
 
         //Share
         //com.android.internal.app.ChooserActivity

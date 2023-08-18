@@ -351,8 +351,6 @@
     <string name="disable_splash_screen">Wyłącz ekran powitalny</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Lista aplikacji</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
-    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
     <string name="enable_zoom_window">Włącz obsługę listy</string>
     <string name="zoom_window_support_list">Własna lista obsługi okna powiększenia</string>
     <string name="zoom_window_support_list_summary">Włącz w zależności od Twoich potrzeb, w przeciwnym razie pojawią się nieodwracalne problemy.</string>
@@ -385,6 +383,9 @@
     <string name="unlock_startup_limit_summary">Odblokowuje limit samodzielnego uruchamiania aplikacji</string>
     <string name="unlock_task_locks">Odblokuj liczbę procesów w tle</string>
     <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
+    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Dostosuj pływające i dialogowe okno</string>
     <string name="disable_duplicate_floating_window">Wyłącz zduplikowane okno</string>

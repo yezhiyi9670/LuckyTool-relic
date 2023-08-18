@@ -2092,22 +2092,6 @@ class Application : ModulePreferenceFragment() {
                 key = "APPRelatedList"
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.allow_locking_unlocking_of_excluded_activity)
-                key = "allow_locking_unlocking_of_excluded_activity"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.force_all_apps_support_split_screen)
-                key = "force_all_apps_support_split_screen"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("android").put(key, newValue as Boolean)
-                    true
-                }
-            })
             addPreference(Preference(context).apply {
                 title = getString(R.string.zoom_window_support_list)
                 summary = getString(R.string.zoom_window_support_list_summary)
@@ -2220,6 +2204,29 @@ class Application : ModulePreferenceFragment() {
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.unlock_default_desktop_limit)
                 key = "unlock_default_desktop_limit"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_all_apps_support_split_screen)
+                key = "force_all_apps_support_split_screen"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("android").put(key, newValue as Boolean)
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_uninstall_button_blacklist)
+                key = "remove_app_uninstall_button_blacklist"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_locking_unlocking_of_excluded_activity)
+                key = "allow_locking_unlocking_of_excluded_activity"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
@@ -3334,59 +3341,59 @@ class OplusGesture : ModulePreferenceFragment() {
                 isVisible = getOSVersionCode >= 27
                 isIconSpaceReserved = false
             })
-            addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.AonGesture)
-                key = "AonGesture"
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.force_enable_aon_gestures)
-                summary = getString(R.string.force_enable_aon_gestures_summary)
-                key = "force_enable_aon_gestures"
-                setDefaultValue(false)
-                isEnabled = context.checkPackName("com.oplus.gesture") &&
-                        context.checkPackName("com.aiunit.aon")
-                isVisible = SDK >= A13
-                isIconSpaceReserved = false
-            })
-            addPreference(EditTextPreference(context).apply {
-                title = getString(R.string.custom_aon_gesture_scroll_page_whitelist)
-                dialogTitle = title
-                summary = context.getString(
-                    ModulePrefs, "custom_aon_gesture_scroll_page_whitelist", "None"
-                )
-                if (summary == "") summary = "None"
-                dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
-                key = "custom_aon_gesture_scroll_page_whitelist"
-                setDefaultValue("None")
-                isEnabled = context.checkPackName("com.oplus.gesture") &&
-                        context.checkPackName("com.aiunit.aon")
-                isVisible = SDK >= A13
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, newValue ->
-                    summary = if (newValue == "") "None" else newValue as String
-                    true
-                }
-            })
-            addPreference(EditTextPreference(context).apply {
-                title = getString(R.string.custom_aon_gesture_video_whitelist)
-                dialogTitle = title
-                summary = context.getString(
-                    ModulePrefs, "custom_aon_gesture_video_whitelist", "None"
-                )
-                if (summary == "") summary = "None"
-                dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
-                key = "custom_aon_gesture_video_whitelist"
-                setDefaultValue("None")
-                isEnabled = context.checkPackName("com.oplus.gesture") &&
-                        context.checkPackName("com.aiunit.aon")
-                isVisible = false //SDK >= A13
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, newValue ->
-                    summary = if (newValue == "") "None" else newValue as String
-                    true
-                }
-            })
+            if (SDK >= A13) {
+                addPreference(PreferenceCategory(context).apply {
+                    title = getString(R.string.AonGesture)
+                    key = "AonGesture"
+                    isIconSpaceReserved = false
+                })
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.force_enable_aon_gestures)
+                    summary = getString(R.string.force_enable_aon_gestures_summary)
+                    key = "force_enable_aon_gestures"
+                    setDefaultValue(false)
+                    isEnabled = context.checkPackName("com.oplus.gesture") &&
+                            context.checkPackName("com.aiunit.aon")
+                    isIconSpaceReserved = false
+                })
+                addPreference(EditTextPreference(context).apply {
+                    title = getString(R.string.custom_aon_gesture_scroll_page_whitelist)
+                    dialogTitle = title
+                    summary = context.getString(
+                        ModulePrefs, "custom_aon_gesture_scroll_page_whitelist", "None"
+                    )
+                    if (summary == "") summary = "None"
+                    dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
+                    key = "custom_aon_gesture_scroll_page_whitelist"
+                    setDefaultValue("None")
+                    isEnabled = context.checkPackName("com.oplus.gesture") &&
+                            context.checkPackName("com.aiunit.aon")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        summary = if (newValue == "") "None" else newValue as String
+                        true
+                    }
+                })
+                addPreference(EditTextPreference(context).apply {
+                    title = getString(R.string.custom_aon_gesture_video_whitelist)
+                    dialogTitle = title
+                    summary = context.getString(
+                        ModulePrefs, "custom_aon_gesture_video_whitelist", "None"
+                    )
+                    if (summary == "") summary = "None"
+                    dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
+                    key = "custom_aon_gesture_video_whitelist"
+                    setDefaultValue("None")
+                    isEnabled = context.checkPackName("com.oplus.gesture") &&
+                            context.checkPackName("com.aiunit.aon")
+                    isVisible = false //SDK >= A13
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        summary = if (newValue == "") "None" else newValue as String
+                        true
+                    }
+                })
+            }
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.FullScreenGestureRelated)
                 key = "FullScreenGestureRelated"

@@ -19,26 +19,22 @@ object HookAppDetails : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi", "SetTextI18n")
     override fun onHook() {
         val isPackName = prefs(ModulePrefs).getBoolean("show_package_name_in_app_details", false)
-        val isLastUpdateTime = prefs(ModulePrefs).getBoolean("show_last_update_time_in_app_details", false)
+        val isLastUpdateTime =
+            prefs(ModulePrefs).getBoolean("show_last_update_time_in_app_details", false)
         val isEnableCopy =
             prefs(ModulePrefs).getBoolean("enable_long_press_to_copy_in_app_details", false)
         val isIconMarket = prefs(ModulePrefs).getBoolean("click_icon_open_market_page", false)
         //Source AppInfoFeature
         findClass("com.oplus.settings.feature.appmanager.AppInfoFeature").hook {
             injectMember {
-                method {
-                    name = "setAppLabelAndIcon"
-                    paramCount = 1
-                }
+                method { name = "setAppLabelAndIcon";paramCount = 1 }
                 afterHook {
-                    val mRootView = field {
-                        name = "mRootView"
-                    }.get(instance).cast<View>() ?: return@afterHook
-                    val appButtonsPreferenceController = args().first().any()!!
+                    val mRootView = field { name = "mRootView" }.get(instance).cast<View>()
+                        ?: return@afterHook
+                    val appButtonsPreferenceController = args().first().any() ?: return@afterHook
                     val instrumentedPreferenceFragment =
-                        appButtonsPreferenceController.current().field {
-                            name = "mFragment"
-                        }.any()!!
+                        appButtonsPreferenceController.current().field { name = "mFragment" }
+                            .any() ?: return@afterHook
                     val packageInfo = instrumentedPreferenceFragment.current().field {
                         type = PackageInfoClass
                     }.cast<PackageInfo>() ?: return@afterHook

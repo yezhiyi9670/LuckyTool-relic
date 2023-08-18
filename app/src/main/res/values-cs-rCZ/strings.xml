@@ -351,8 +351,6 @@
     <string name="disable_splash_screen">Zakázat animaci úvodní obrazovky</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Povolit blokování nebo odemykání vyloučených aktivit</string>
-    <string name="force_all_apps_support_split_screen">Donutit všechny aplikace podporovat rozdělenou obrazovku</string>
     <string name="enable_zoom_window">Povolit seznam podporovatelů</string>
     <string name="zoom_window_support_list">Vlastní nastavení přiblížení</string>
     <string name="zoom_window_support_list_summary">Povolte podle vašich potřeb, jinak dojde k nenapravitelným problémům</string>
@@ -385,6 +383,9 @@
     <string name="unlock_startup_limit_summary">Odemknout limit automatického spuštění aplikace</string>
     <string name="unlock_task_locks">Odemkne počet úloh na pozadí</string>
     <string name="unlock_default_desktop_limit">Odemknout výchozí omezení pro plochu</string>
+    <string name="force_all_apps_support_split_screen">Donutit všechny aplikace podporovat rozdělenou obrazovku</string>
+    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Povolit blokování nebo odemykání vyloučených aktivit</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Plovoucí okno / dialogové okno</string>
     <string name="disable_duplicate_floating_window">Zakázat plovoucí oznámení o zkopírovaném textu či položce</string>

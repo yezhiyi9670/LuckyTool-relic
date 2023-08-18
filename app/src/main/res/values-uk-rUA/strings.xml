@@ -351,8 +351,6 @@
     <string name="disable_splash_screen">Вимкнути заставку</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Список додатків</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
-    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
     <string name="enable_zoom_window">Увімкнути список підтримки</string>
     <string name="zoom_window_support_list">Користувальницьке вікно масштабу</string>
     <string name="zoom_window_support_list_summary">Увімкнути відповідно до ваших потреб, інакше виникнуть непоправні проблеми</string>
@@ -385,6 +383,9 @@
     <string name="unlock_startup_limit_summary">Розблокувати обмеження на кількість автозапусків додатку</string>
     <string name="unlock_task_locks">Розблокувати кількість заблокованих фонових задач</string>
     <string name="unlock_default_desktop_limit">Unlock default desktop restrictions</string>
+    <string name="force_all_apps_support_split_screen">Force all apps to support split screen</string>
+    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">Allow locking or unlocking of excluded activities</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">Плаваюче вікно / Діалогове вікно</string>
     <string name="disable_duplicate_floating_window">Вимкнути дублювання плаваючого вікна</string>

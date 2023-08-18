@@ -367,7 +367,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         getString(R.string.enable_volume_key_control_flashlight),
                         getString(R.string.force_enable_aon_gestures)
                     )
-                    isVisible = SDK >= A13 && context.checkPackName(key)
+                    isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_oplusGesture, title)
                         true

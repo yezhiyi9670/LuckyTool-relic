@@ -351,8 +351,6 @@
     <string name="disable_splash_screen">关闭应用遮罩</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">应用相关列表</string>
-    <string name="allow_locking_unlocking_of_excluded_activity">允许锁定/解锁已排除活动</string>
-    <string name="force_all_apps_support_split_screen">强制所有应用支持分屏</string>
     <string name="enable_zoom_window">启用支持列表</string>
     <string name="zoom_window_support_list">自定义小窗支持列表</string>
     <string name="zoom_window_support_list_summary">按需启用，否则将出现其他异常问题</string>
@@ -385,6 +383,9 @@
     <string name="unlock_startup_limit_summary">解锁应用自启动数量限制</string>
     <string name="unlock_task_locks">解锁后台任务锁定数量</string>
     <string name="unlock_default_desktop_limit">解锁默认桌面限制</string>
+    <string name="force_all_apps_support_split_screen">强制所有应用支持分屏</string>
+    <string name="remove_app_uninstall_button_blacklist">移除应用卸载按钮黑名单</string>
+    <string name="allow_locking_unlocking_of_excluded_activity">允许锁定/解锁已排除活动</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">悬浮窗/对话框相关</string>
     <string name="disable_duplicate_floating_window">禁用复制悬浮窗</string>
@@ -559,7 +560,7 @@
     <string name="brand">品牌</string>
     <string name="model">型号</string>
     <string name="product">产品</string>
-    <string name="market_name">市场名</string>
+    <string name="market_name">市场</string>
     <string name="flash">闪存</string>
     <string name="build_version">构建</string>
     <string name="device">设备</string>

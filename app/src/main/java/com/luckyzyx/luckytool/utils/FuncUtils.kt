@@ -34,7 +34,6 @@ import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
-import com.luckyzyx.luckytool.hook.utils.OplusBuildUtlils
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
@@ -45,46 +44,6 @@ import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
 import kotlin.system.exitProcess
-
-
-/**SDK_INT版本*/
-val SDK get() = Build.VERSION.SDK_INT
-
-/**Android11 30 R*/
-val A11 get() = Build.VERSION_CODES.R
-
-/**Android12 31 S*/
-val A12 get() = Build.VERSION_CODES.S
-
-/**Android12.1 32 S_V2*/
-val A121 get() = Build.VERSION_CODES.S_V2
-
-/**Android13 33 TIRAMISU*/
-val A13 get() = Build.VERSION_CODES.TIRAMISU
-
-/**Android14 34 XX*/
-val A14 get() = 34
-
-/**
- * 获取OS版本名
- */
-val getOSVersionName
-    get() = safeOf(default = "null") {
-        OplusBuildUtlils().getOSVersionName ?: "null"
-    }
-
-/**
- * 获取OS版本号
- * 23 -> c12
- * 24 -> c12.1
- * 25 -> c12.2
- * 26 -> c13
- * 27 -> c13.1
- * 28 -> c13.1.1
- * 29 -> c13.2
- * 30 -> c14
- */
-val getOSVersionCode get() = safeOf(default = 0) { OplusBuildUtlils().getOSVersionCode ?: 0 }
 
 /***
  * 获取APP Commit
@@ -134,13 +93,6 @@ fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default 
     putStringSet(ModulePrefs, packName, arraySet)
     return arrayList
 }
-
-/**
- * 获取构建版本名/版本号
- * @return [String]
- */
-val getVersionName get() = BuildConfig.VERSION_NAME
-val getVersionCode get() = BuildConfig.VERSION_CODE
 
 /**
  * 获取设备信息
@@ -860,7 +812,7 @@ fun Context.restartScopes(scopes: Array<String>) {
 /**
  * 获取Apk绝对路径
  * @param packName String 包名
- * @return Unit?
+ * @return ArrayMap<String, String>
  */
 fun getPackageAbsolutePath(packName: String): ArrayMap<String, String> {
     ShellUtils.execCommand("pm list packages -f | grep $packName", true, true).apply {
