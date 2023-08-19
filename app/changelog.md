@@ -10,6 +10,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 部分系统手势体感入口问题
 - [更改] 暗色模式按钮选项替换Slider
 - [适配] 时钟组件红一 v14.0.2(18140a4)
+- [更改] 移除dm-verity校验功能名称
 
 ### 1.0.12
 

@@ -331,7 +331,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     title = context.getAppLabel(key)
                     summary = arraySummary(
                         getString(R.string.unlock_local_upgrade),
-                        getString(R.string.remove_dm_verity)
+                        getString(R.string.restore_ota_update_verity)
                     )
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {

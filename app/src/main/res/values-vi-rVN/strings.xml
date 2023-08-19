@@ -525,8 +525,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Mở khóa nâng cấp cục bộ</string>
     <string name="unlock_local_upgrade_summary">Sau khi nhấp vào, các thao tác liên quan sẽ được thực hiện tự động, hãy kiên nhẫn chờ trong vài giây</string>
-    <string name="remove_dm_verity">Xóa phát hiện dm-verity</string>
-    <string name="remove_dm_verity_summary">Trạng thái hiện tại: %1$s\nChỉ hợp lệ cho bản cập nhật hệ thống này</string>
+    <string name="restore_ota_update_verity">Resume OTA update verification</string>
+    <string name="restore_ota_update_verity_summary">Current Status: [%1$s]\nTry to use this feature if the OTA update prompts for validation failure or prompts for dm-verity\nDo not ask why the feature is grayed out because the system has update validation enabled by default\nWhen validation is turned off the OTA update fails, so when the feature is turned on it locks out this feature</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">Extract OTA information</string>
     <string name="extract_ota_information_summary">When the new version is obtained, you can click to extract the OTA information</string>

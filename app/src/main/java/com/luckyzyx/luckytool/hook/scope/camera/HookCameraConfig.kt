@@ -20,11 +20,12 @@ object HookCameraConfig : YukiBaseHooker() {
                     name = "getConfigBooleanValue"
                     paramCount = 1
                 }
-                beforeHook {
+                afterHook {
                     //hasselblad_watermark_logo
                     //hasselblad_watermark_logo_picture
                     //ic_hasselblad_watermark_logo_picture
-                    when (args(0).string()) {
+
+                    when (args().first().string()) {
                         //<string name="camera_heic_encode_10bits_title">10 亿色影像</string>
                         //OptionKey PRE_KEY_10BIT_HEIC_ENCODE pref_10bits_heic_encode_key
                         "com.oplus.10bits.heic.encode.support" -> if (is10bit) resultTrue()
@@ -39,7 +40,23 @@ object HookCameraConfig : YukiBaseHooker() {
                         "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) resultTrue()
                         //<string name="camera_beauty_makeup_watermark_setting_title">美妆定制水印</string>
                         //OptionKey PRE_KEY_WATERMARK_MAKEUP pref_watermark_makeup_function_key
-                        //"com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
+//                        "com.oplus.feature.custom.makeup.watermark.support" -> if (isHasselblad) resultTrue()
+                        //res/layout/camera_watermark_makeup_visual_layout.xml
+                        //imageView_watermark_makeup_visual
+                        //key PRE_KEY_WATERMARK_MAKEUP / pref_watermark_makeup_function_key
+                        //is_slogan
+
+                        "com.oplus.old.watermark" -> {}
+                        "com.oplus.video.watermark.support" -> {}
+
+                        "com.oplus.blur.edit.in.gallery.support" -> {} //resultTrue()
+                        "com.oplus.watermark.edit.in.gallery.support" -> {} //resultTrue()
+
+                        "com.oplus.camera.customwatermark.config.size" -> {} //resultTrue()
+                        "com.oplus.watermark.is.new.project.behavior" -> {} //resultTrue()
+                        "com.oplus.video.watermark.hal.support" -> {} //resultTrue()
+
+                        "com.oplus.camera.support.custom.hasselblad.watermark.sellmode.default.open" -> {}
                     }
                 }
             }

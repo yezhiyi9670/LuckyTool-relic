@@ -525,8 +525,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">解锁本地安装</string>
     <string name="unlock_local_upgrade_summary">点击后将自动执行相关操作，请耐心等待几秒</string>
-    <string name="remove_dm_verity">移除 dm-verity 检测</string>
-    <string name="remove_dm_verity_summary">当前状态：%1$s\n仅用于此次系统更新</string>
+    <string name="restore_ota_update_verity">恢复 OTA 更新验证</string>
+    <string name="restore_ota_update_verity_summary">当前状态：%1$s\n如果 OTA 更新提示验证失败或者提示 dm-verity，可以尝试使用此功能\n不要询问为什么功能显示灰色，因为系统默认启用更新验证\n当验证关闭后就会导致 OTA 更新失败，所以当功能开启后就会锁定此功能</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">提取 OTA 信息</string>
     <string name="extract_ota_information_summary">当获取到新版本时，可以点击进行提取 OTA 信息</string>

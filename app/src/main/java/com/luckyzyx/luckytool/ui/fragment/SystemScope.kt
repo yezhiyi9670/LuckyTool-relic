@@ -3115,24 +3115,25 @@ class OplusOta : ModulePreferenceFragment() {
                 }
             })
             addPreference(SwitchPreference(context).apply {
-                val status = ShellUtils.execCommand(
+                val getStatus = ShellUtils.execCommand(
                     "getprop ro.boot.veritymode", false, true
-                ).let {
-                    if (it.result == 1) "null" else it.successMsg.toString().ifBlank { "null" }
-                }
-                title = getString(R.string.remove_dm_verity)
-                summary = getString(R.string.remove_dm_verity_summary, status)
-                key = "remove_dm_verity"
+                )
+                val status = if (getStatus.result == 1) "null"
+                else getStatus.successMsg.toString().ifBlank { "null" }
+                title = getString(R.string.restore_ota_update_verity)
+                summary = getString(R.string.restore_ota_update_verity_summary, status)
+                key = "restore_ota_update_verity"
                 isEnabled = status != "enforcing"
                 isChecked = status == "enforcing"
                 isPersistent = false
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    val value = newValue as Boolean
-                    ShellUtils.execCommand(
-                        "resetprop ro.boot.veritymode ${if (value) "enforcing" else "\"\""}", true
-                    )
-                    (activity as MainActivity).restart()
+                    val value = if (newValue as Boolean) "" else "\"\""
+                    val command = "resetprop ro.boot.veritymode $value"
+                    val exec = ShellUtils.execCommand(command, true, true)
+                    if (exec.result == 0) {
+                        summary = getString(R.string.restore_ota_update_verity_summary, value)
+                    } else (activity as MainActivity).restart()
                     true
                 }
             })

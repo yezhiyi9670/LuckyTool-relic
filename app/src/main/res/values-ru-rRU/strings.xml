@@ -525,8 +525,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">После нажатия соответствующие операции будут выполняться автоматически, терпеливо подождите несколько секунд</string>
-    <string name="remove_dm_verity">Удалить обнаружение dm-verity</string>
-    <string name="remove_dm_verity_summary">Текущий статус: %1$s\nТолько для этого обновления системы</string>
+    <string name="restore_ota_update_verity">Resume OTA update verification</string>
+    <string name="restore_ota_update_verity_summary">Current Status: [%1$s]\nTry to use this feature if the OTA update prompts for validation failure or prompts for dm-verity\nDo not ask why the feature is grayed out because the system has update validation enabled by default\nWhen validation is turned off the OTA update fails, so when the feature is turned on it locks out this feature</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">Извлечь информацию OTA</string>
     <string name="extract_ota_information_summary">Когда будет получена новая версия, вы можете нажать, чтобы извлечь информацию об OTA</string>

@@ -525,8 +525,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Povolit lokální upgrade</string>
     <string name="unlock_local_upgrade_summary">Po kliknutí budou příslušné operace prováděny automaticky, prosím trpělivě počkejte několik sekund</string>
-    <string name="remove_dm_verity">Odstranit detekci dm-verity</string>
-    <string name="remove_dm_verity_summary">Aktuální stav: %1$s\nPlatné pouze pro tuto systémovou aktualizaci</string>
+    <string name="restore_ota_update_verity">Resume OTA update verification</string>
+    <string name="restore_ota_update_verity_summary">Current Status: [%1$s]\nTry to use this feature if the OTA update prompts for validation failure or prompts for dm-verity\nDo not ask why the feature is grayed out because the system has update validation enabled by default\nWhen validation is turned off the OTA update fails, so when the feature is turned on it locks out this feature</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">Extrahovat OTA informace</string>
     <string name="extract_ota_information_summary">Jakmile je nalezena nová verze, můžete zde kliknout pro získání informací o OTA</string>

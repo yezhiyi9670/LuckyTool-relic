@@ -48,6 +48,8 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
                     method { name = "filter";returnType = CharSequenceClass }
                     intercept()
                 }
+            }.onHookClassNotFoundFailure {
+                loggerD(msg = "Error -> RemoveWatermarkWordLimit")
             }
         } ?: loggerD(msg = "$packageName\nError -> RemoveWatermarkWordLimit")
     }

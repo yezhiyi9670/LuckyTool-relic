@@ -384,7 +384,7 @@
     <string name="unlock_task_locks">バックグラウンドタスク数の制限を解除</string>
     <string name="unlock_default_desktop_limit">デフォルトホーム画面の制限を解除</string>
     <string name="force_all_apps_support_split_screen">すべてのアプリで画面分割対応を強制する</string>
-    <string name="remove_app_uninstall_button_blacklist">Remove blacklist of app uninstall button</string>
+    <string name="remove_app_uninstall_button_blacklist">アプリのアンインストールボタンのブラックリストを削除</string>
     <string name="allow_locking_unlocking_of_excluded_activity">除外されたアクティビティのロックまたはロック解除を許可</string>
     <!--FloatingWindowDialogRelated-->
     <string name="FloatingWindowDialogRelated">フローティングウィンドウ / ダイアログ関連</string>
@@ -525,8 +525,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">ローカルアップグレードを解放</string>
     <string name="unlock_local_upgrade_summary">タップした後に関連する操作が自動的に実行されます。しばらくお待ちください</string>
-    <string name="remove_dm_verity">dm-verityの検出を削除</string>
-    <string name="remove_dm_verity_summary">現在の状態: %1$s\nこのシステムアップデートにのみ有効です</string>
+    <string name="restore_ota_update_verity">Resume OTA update verification</string>
+    <string name="restore_ota_update_verity_summary">Current Status: [%1$s]\nTry to use this feature if the OTA update prompts for validation failure or prompts for dm-verity\nDo not ask why the feature is grayed out because the system has update validation enabled by default\nWhen validation is turned off the OTA update fails, so when the feature is turned on it locks out this feature</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">OTA 情報を抽出</string>
     <string name="extract_ota_information_summary">新しいバージョンが降ってきたとき、タップすると OTA 情報を抽出できます</string>
