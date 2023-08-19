@@ -174,6 +174,13 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         if (enableBlur) replaceToFalse()
                     }
                 }
+//                injectMember {
+//                    method { name = "isAodMediaDisable" }
+//                    afterHook {
+//                        loggerD(msg = "isAodMediaDisable -> $result")
+//                        resultFalse()
+//                    }
+//                }
             }
         }
     }
