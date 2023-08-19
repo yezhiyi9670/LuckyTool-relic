@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.provider.Settings
 import android.service.quicksettings.TileService
 import android.text.SpannableString
@@ -32,6 +33,7 @@ import androidx.preference.Preference
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
@@ -1197,3 +1199,12 @@ val Context.is24
     get() = Settings.System.getString(
         contentResolver, Settings.System.TIME_12_24
     ) == "24"
+
+/**
+ * 调用锁屏事件 (反射)
+ * @param context Context
+ */
+fun closeScreen(context: Context) {
+    val service = context.getSystemService(Context.POWER_SERVICE)
+    service.current().method { name = "goToSleep" }.call(SystemClock.uptimeMillis())
+}

@@ -304,6 +304,8 @@
     <string name="LockScreenButton">Кнопки екрану блокування</string>
     <string name="remove_top_lock_screen_icon">Видалити іконку замка на екрані блокування</string>
     <string name="remove_lock_screen_bottom_left_button">Видалити ліву нижню кнопку на екрані блокування</string>
+    <string name="lock_screen_bottom_left_button_replace_with_flashlight">The button in the lower left corner of the lock screen is replaced with a flashlight</string>
+    <string name="lock_screen_switch_flashlight_auto_close_screen">Switch the flashlight to automatically turn off the screen</string>
     <string name="remove_lock_screen_bottom_right_camera">Видалити камеру з правого нижнього кута екрана блокування</string>
     <string name="remove_lock_screen_close_notification_button">Видалити кнопку сповіщення закриття екрана блокування</string>
     <string name="remove_lock_screen_bottom_sos_button">Видалити кнопку екстреного контакту SOS</string>

@@ -304,6 +304,8 @@
     <string name="LockScreenButton">ロック画面ボタン</string>
     <string name="remove_top_lock_screen_icon">ロック画面上のアイコンを削除</string>
     <string name="remove_lock_screen_bottom_left_button">ロック画面の左下のボタンを削除</string>
+    <string name="lock_screen_bottom_left_button_replace_with_flashlight">The button in the lower left corner of the lock screen is replaced with a flashlight</string>
+    <string name="lock_screen_switch_flashlight_auto_close_screen">Switch the flashlight to automatically turn off the screen</string>
     <string name="remove_lock_screen_bottom_right_camera">ロック画面の右下のカメラボタンを削除</string>
     <string name="remove_lock_screen_close_notification_button">ロック画面の通知削除ボタンを削除する</string>
     <string name="remove_lock_screen_bottom_sos_button">SOS緊急連絡先ボタンを削除</string>

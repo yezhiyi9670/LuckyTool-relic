@@ -304,6 +304,8 @@
     <string name="LockScreenButton">锁屏按钮</string>
     <string name="remove_top_lock_screen_icon">移除锁屏顶部图标</string>
     <string name="remove_lock_screen_bottom_left_button">移除锁屏左下角按钮</string>
+    <string name="lock_screen_bottom_left_button_replace_with_flashlight">锁屏左下角按钮替换手电筒</string>
+    <string name="lock_screen_switch_flashlight_auto_close_screen">开关手电筒自动息屏</string>
     <string name="remove_lock_screen_bottom_right_camera">移除锁屏右下角相机</string>
     <string name="remove_lock_screen_close_notification_button">移除锁屏关闭通知按钮</string>
     <string name="remove_lock_screen_bottom_sos_button">移除SOS紧急联系按钮</string>

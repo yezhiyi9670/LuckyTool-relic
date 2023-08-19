@@ -1,11 +1,9 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.content.Context
-import android.os.SystemClock
 import android.view.MotionEvent
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
+import com.luckyzyx.luckytool.utils.closeScreen
 import kotlin.math.abs
 
 object DoubleClickLockScreen : YukiBaseHooker() {
@@ -32,7 +30,7 @@ object DoubleClickLockScreen : YukiBaseHooker() {
                                 curTouchY - lastTouchY
                             ) < 100f
                         ) {
-                            goToSleep(v.context)
+                            closeScreen(v.context)
                             curTouchTime = 0L
                             curTouchX = 0F
                             curTouchY = 0F
@@ -43,10 +41,5 @@ object DoubleClickLockScreen : YukiBaseHooker() {
                 }
             }
         }
-    }
-
-    private fun goToSleep(context: Context) {
-        val service = context.getSystemService(Context.POWER_SERVICE)
-        service.current().method { name = "goToSleep" }.call(SystemClock.uptimeMillis())
     }
 }

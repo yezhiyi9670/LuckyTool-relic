@@ -304,6 +304,8 @@
     <string name="LockScreenButton">Кнопки экрана блокировки</string>
     <string name="remove_top_lock_screen_icon">Удалить иконку замка на экране блокировки</string>
     <string name="remove_lock_screen_bottom_left_button">Удалить нижнюю левую кнопку на экране блокировки</string>
+    <string name="lock_screen_bottom_left_button_replace_with_flashlight">The button in the lower left corner of the lock screen is replaced with a flashlight</string>
+    <string name="lock_screen_switch_flashlight_auto_close_screen">Switch the flashlight to automatically turn off the screen</string>
     <string name="remove_lock_screen_bottom_right_camera">Удалить камеру из правого нижнего угла экрана блокировки</string>
     <string name="remove_lock_screen_close_notification_button">Удалить кнопку уведомления закрытия экрана блокировки</string>
     <string name="remove_lock_screen_bottom_sos_button">Удалить кнопку экстренного контакта SOS</string>
@@ -525,8 +527,8 @@
     <!--OplusOta-->
     <string name="unlock_local_upgrade">Разблокировать локальное обновление</string>
     <string name="unlock_local_upgrade_summary">После нажатия соответствующие операции будут выполняться автоматически, терпеливо подождите несколько секунд</string>
-    <string name="restore_ota_update_verity">Resume OTA update verification</string>
-    <string name="restore_ota_update_verity_summary">Current Status: [%1$s]\nTry to use this feature if the OTA update prompts for validation failure or prompts for dm-verity\nDo not ask why the feature is grayed out because the system has update validation enabled by default\nWhen validation is turned off the OTA update fails, so when the feature is turned on it locks out this feature</string>
+    <string name="restore_ota_update_verity">Возобновить проверку обновления OTA</string>
+    <string name="restore_ota_update_verity_summary">Текущее состояние: [%1$s]\nПопробуйте использовать эту функцию, если OTA-обновление запрашивает ошибку проверки или запрашивает dm-verity\nНе спрашивайте, почему эта функция недоступна, поскольку в системе по умолчанию включена проверка обновлений\nКогда проверка отключена, OTA-обновление не выполняется, поэтому при включении функция блокирует эту функцию</string>
     <!--Extract OTA-->
     <string name="extract_ota_information">Извлечь информацию OTA</string>
     <string name="extract_ota_information_summary">Когда будет получена новая версия, вы можете нажать, чтобы извлечь информацию об OTA</string>

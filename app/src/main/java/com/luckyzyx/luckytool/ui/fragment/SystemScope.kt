@@ -23,6 +23,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -1931,12 +1932,47 @@ class LockScreen : ModulePreferenceFragment() {
                 key = "remove_lock_screen_bottom_left_button"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.lock_screen_bottom_left_button_replace_with_flashlight)
+                key = "lock_screen_bottom_left_button_replace_with_flashlight"
+                setDefaultValue(false)
+                isVisible = SDK < A14 && context.getBoolean(
+                    ModulePrefs, "remove_lock_screen_bottom_left_button", false
+                ) == false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.lock_screen_switch_flashlight_auto_close_screen)
+                key = "lock_screen_switch_flashlight_auto_close_screen"
+                setDefaultValue(false)
+                isVisible = SDK < A14 && context.getBoolean(
+                    ModulePrefs, "remove_lock_screen_bottom_left_button", false
+                ) == false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    true
+                }
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_lock_screen_bottom_right_camera)
                 key = "remove_lock_screen_bottom_right_camera"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    true
+                }
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_lock_screen_close_notification_button)

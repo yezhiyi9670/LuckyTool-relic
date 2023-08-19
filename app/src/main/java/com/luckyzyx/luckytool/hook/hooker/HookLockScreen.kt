@@ -2,12 +2,12 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableScreenOffMusicSupport
+import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenBottomButton
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenCarriers
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenChargingComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenClock
 import com.luckyzyx.luckytool.hook.scope.systemui.LockScreenComponent
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveAodMusicWhitelist
-import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenBottomSOSButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveLockScreenCloseNotificationButton
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveTopLockScreenIcon
@@ -28,7 +28,7 @@ object HookLockScreen : YukiBaseHooker() {
         loadHooker(LockScreenChargingComponent)
 
         //锁屏下方按钮
-        loadHooker(RemoveLockScreenBottomButton)
+        loadHooker(LockScreenBottomButton)
 
         //锁屏状态栏运营商
         loadHooker(LockScreenCarriers)
