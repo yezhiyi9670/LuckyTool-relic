@@ -52,7 +52,7 @@ class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(PreferenceCategory(context).apply {
+            addPreference(Preference(context).apply {
                 title = getString(R.string.ColorOSCorePatchTip)
                 key = "ColorOSCorePatchTip"
                 isIconSpaceReserved = false
@@ -3211,7 +3211,7 @@ class OplusOta : ModulePreferenceFragment() {
     }
 }
 
-class Pictorial : ModulePreferenceFragment() {
+class OplusPictorial : ModulePreferenceFragment() {
     private val scopes = arrayOf("com.heytap.pictorial")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {

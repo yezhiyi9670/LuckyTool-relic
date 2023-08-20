@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:paddingHorizontal="16dp"
-                android:paddingVertical="?dialogPreferredPadding"
+                android:paddingVertical="16dp"
                 android:orientation="vertical">
             
             <com.google.android.material.card.MaterialCardView

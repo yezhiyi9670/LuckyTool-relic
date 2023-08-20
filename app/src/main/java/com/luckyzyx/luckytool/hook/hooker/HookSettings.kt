@@ -53,9 +53,27 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(EnableStatusBarClockFormat)
         }
 
+        //<string name="disable_text">停用</string>
+        //<string name="enable_text">启用</string>
+//        findClass("com.android.settings.applications.appinfo.AppButtonsPreferenceController").hook {
+//            injectMember {
+//                method { name = "handleDisableable" }
+//                afterHook {
+//                    val mAppEntry =
+//                        field { name = "mAppEntry" }.get(instance).any() ?: return@afterHook
+//                    val appInfo = mAppEntry.current().field { type = ApplicationInfoClass }
+//                        .cast<ApplicationInfo>() ?: return@afterHook
+//                    val packName = appInfo.packageName
+//                    loggerD(msg = "handleDisableable -> $packName -> $result")
+//                    resultTrue()
+//                }
+//            }
+//        }
+
         //darkmode_third_app
         //com.oplus.settings.feature.display.darkmode.ui.DarkModeSettingsFragment
 
+        //LTPO
         //persist.oplus.display.vrr
         //persist.oplus.display.vrr.adfr
 

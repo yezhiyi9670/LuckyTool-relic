@@ -352,7 +352,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     )
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_pictorial, title)
+                        navigatePage(R.id.action_nav_function_to_oplusPictorial, title)
                         true
                     }
                 })

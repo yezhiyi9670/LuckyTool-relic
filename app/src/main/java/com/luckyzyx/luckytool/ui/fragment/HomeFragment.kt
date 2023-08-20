@@ -182,6 +182,7 @@ class HomeFragment : Fragment() {
             if (isZh(context)) {
                 isVisible = true
                 text = context.getString(R.string.authorized)
+                setTextColor(Color.RED)
             }
             setOnClickListener {
                 val url = "https://luckyzyx.github.io/LuckyTool_Doc/use/download_link"

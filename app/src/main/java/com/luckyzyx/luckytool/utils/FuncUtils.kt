@@ -113,6 +113,7 @@ fun Context.getDeviceInfo(): String {
         ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
         ${getString(R.string.flash)}: $getFlashInfo
         LCD: $getLcdInfo
+        PAS: $getPcbInfo $getSnInfo
     """.trimIndent()
 }
 
@@ -526,6 +527,28 @@ val getFlashInfo
 val getLcdInfo: String
     get() : String = ShellUtils.execCommand(
         "cat /proc/devinfo/lcd | sed 's/^.*\t//g; s/$/\n/g; s/\n/ /g;'", true, true
+    ).let {
+        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
+            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+    }
+
+/**
+ * 获取PCB信息
+ */
+val getPcbInfo: String
+    get() : String = ShellUtils.execCommand(
+        "echo \$(getprop gsm.serial)\$(getprop vendor.gsm.serial)", true, true
+    ).let {
+        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
+            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+    }
+
+/**
+ * 获取SN信息
+ */
+val getSnInfo: String
+    get() : String = ShellUtils.execCommand(
+        "echo \$(getprop ro.serialno) | tr 'a-z' 'A-Z' ", true, true
     ).let {
         if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
             ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
