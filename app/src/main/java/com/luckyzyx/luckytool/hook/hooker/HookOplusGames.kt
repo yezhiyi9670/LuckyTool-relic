@@ -68,6 +68,23 @@ object HookOplusGames : YukiBaseHooker() {
                 loadHooker(RemoveSomeVipLimit)
             }
 
+            //res/layout/layout_perf_cpu_setting_panel_land.xml
+            //    <string name="cpu_control_panel">CPU 性能面板</string>
+            //    <string name="cpu_control_panel_extension">极客性能面板</string>
+            //<string name="cpu_switch_tlitle_extension">CPU调频</string> cpu_switch_title cpu_switch
+
+            //oplus.software.performance_setting_extension
+            //Source GameCpuSettingViewModel
+//            findClass("business.module.cpusetting.GameCpuSettingViewModel").hook {
+//                injectMember {
+//                    method {
+//                        param(VagueType, StringClass, IntType, AnyClass)
+//                        returnType = BooleanType
+//                    }
+//                    replaceToTrue()
+//                }
+//            }
+
 //            val clazz =
 //                "com.coloros.gamespaceui.config.ServerConfigManager".toClass(initialize = true).classes[0].simpleName
 //            findClass("com.coloros.gamespaceui.config.ServerConfigManager\$$clazz").hook {

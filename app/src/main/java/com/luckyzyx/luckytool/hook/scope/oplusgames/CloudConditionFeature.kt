@@ -40,7 +40,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         paramCount = 5
                         returnType = BooleanType
                     }
-                    beforeHook {
+                    afterHook {
                         when (args(1).string()) {
                             //feature -> isSupportFrameInsert
                             "oplus.software.display.game.memc_enable" -> if (pickleFeature || fpsFeature || powerFeature) resultTrue()
@@ -58,6 +58,14 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                             "oplus.software.display.game.sr_enable" -> if (superResolution) resultTrue()
                             //全超分辨率 -> isSupportFullSupperResolution
                             "oplus.software.display.game.sr.fully_enable" -> if (superResolution) resultTrue()
+//                            //isSupportBackClipFull
+//                            "oplus.software.general.cooling.back.clip.enable" -> {
+//                                loggerD(msg = "isSupportBackClipFull")
+//                                resultFalse()
+//                            }
+//                            //极客性能面板 -> isSupportCpuSettingExtension
+//                            "oplus.software.performance_setting_extension" -> resultTrue()
+
                         }
                     }
                 }
