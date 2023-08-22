@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.otherapp.HookADM
 import com.luckyzyx.luckytool.hook.scope.otherapp.HookAlphaBackupPro
 import com.luckyzyx.luckytool.hook.scope.otherapp.HookKsWeb
 import com.luckyzyx.luckytool.hook.scope.otherapp.HookMoreAnime
@@ -16,5 +17,7 @@ object HookOtherApp : YukiBaseHooker() {
         //KSWEB
         if (packageName == "ru.kslabs.ksweb") loadHooker(HookKsWeb)
 
+        //ADM
+        if (packageName == "com.dv.adm") loadHooker(HookADM)
     }
 }

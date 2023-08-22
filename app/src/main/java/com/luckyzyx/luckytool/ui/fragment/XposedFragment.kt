@@ -417,6 +417,20 @@ class XposedFragment : ModulePreferenceFragment() {
                         true
                     }
                 })
+                addPreference(Preference(context).apply {
+                    key = "com.dv.adm"
+                    setPrefsIconRes(key) { resource, show ->
+                        icon = resource
+                        isIconSpaceReserved = show
+                    }
+                    title = context.getAppLabel(key)
+                    summary = arraySummary(getString(R.string.adm_unlock_pro))
+                    isVisible = context.checkPackName(key)
+                    setOnPreferenceClickListener {
+                        navigatePage(R.id.action_nav_function_to_ADM, title)
+                        true
+                    }
+                })
             }
         }
     }

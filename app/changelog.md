@@ -13,6 +13,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [更改] 移除dm-verity校验功能名称
 - [添加] 锁屏左下角按钮替换手电筒
 - [适配] 设置FeatureUtils v13.0.5(9508ac6)
+- [添加] ADM解锁Pro v14.0.22
 
 ### 1.0.12
 

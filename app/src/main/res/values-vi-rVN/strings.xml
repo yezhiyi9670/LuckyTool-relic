@@ -554,6 +554,8 @@
     <string name="vip_download">Tải xuống bản gốc</string>
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">Xóa phát hiện giấy phép</string>
+    <!--ADM-->
+    <string name="adm_unlock_pro">Unlock Pro</string>
     <!--Home-->
     <string name="fps_title">KHÓA TỐC ĐỘ LÀM TƯƠI</string>
     <string name="fps_summary">Xung đột với các quy trình tốc độ làm mới động khác, chẳng hạn như “dpfs”</string>

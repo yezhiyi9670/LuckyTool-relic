@@ -554,6 +554,8 @@
     <string name="vip_download">Stáhnout originál</string>
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">Odstranit detekci licence</string>
+    <!--ADM-->
+    <string name="adm_unlock_pro">Unlock Pro</string>
     <!--Home-->
     <string name="fps_title">Vynutit obnovovací frekvenci</string>
     <string name="fps_summary">Konflikt s ostatními procesy dynamické obnovovací frekvence, například „dpfs“</string>

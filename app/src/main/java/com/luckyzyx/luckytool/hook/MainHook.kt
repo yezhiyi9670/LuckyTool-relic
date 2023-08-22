@@ -180,7 +180,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp(
             "com.east2d.everyimage",
             "com.ruet_cse_1503050.ragib.appbackup.pro",
-            "ru.kslabs.ksweb"
+            "ru.kslabs.ksweb",
+            "com.dv.adm"
         ) {
             loadHooker(HookOtherApp)
         }

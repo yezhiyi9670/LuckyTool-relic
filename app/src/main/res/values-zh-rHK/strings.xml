@@ -554,6 +554,8 @@
     <string name="vip_download">下载原图</string>
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">移除许可证检测</string>
+    <!--ADM-->
+    <string name="adm_unlock_pro">解鎖 Pro</string>
     <!--Home-->
     <string name="fps_title">强制刷新率</string>
     <string name="fps_summary">与其他动态刷新率进程冲突, 例如dfps</string>

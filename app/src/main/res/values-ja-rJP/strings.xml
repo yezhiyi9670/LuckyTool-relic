@@ -554,6 +554,8 @@
     <string name="vip_download">オリジナルをダウンロードする</string>
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">ライセンスの検出を削除</string>
+    <!--ADM-->
+    <string name="adm_unlock_pro">Unlock Pro</string>
     <!--Home-->
     <string name="fps_title">リフレッシュレートの強制</string>
     <string name="fps_summary">他の動的リフレッシュレート処理 (dpfsなど) と競合します</string>
