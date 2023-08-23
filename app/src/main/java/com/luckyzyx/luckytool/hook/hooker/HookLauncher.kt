@@ -65,6 +65,88 @@ object HookLauncher : YukiBaseHooker() {
             loadHooker(AllowLockingUnLockingOfExcludedActivity)
         }
 
+//        //KEY_APP_UPDATE_DOT / app_update_dot
+//        findClass("com.android.launcher.settings.LauncherSettingsUtils").hook {
+//            injectMember {
+//                method { name = "isSupportAppUpdateDot" }
+//                replaceToTrue()
+//            }
+//        }
+
+//        //Source LauncherSettingsFragment
+//        findClass("com.android.launcher.settings.LauncherSettingsFragment").hook {
+//            injectMember {
+//                method { name = "initPreferences" }
+//                afterHook {
+//                    val context = field { name = "mContext" }.get(instance).cast<Context>()
+//                        ?: return@afterHook
+//                    val mAppStartupSpeedPreference =
+//                        field { name = "mAppStartupSpeedPreference" }.get(instance).any()
+//                            ?: return@afterHook
+//                    val arrayId = context.resources.getIdentifier(
+//                        "app_startup_anim_speed", "array", packageName
+//                    ).takeIf { e -> e != 0 } ?: return@afterHook
+//                    val stringArray =
+//                        safeOfNull { context.resources.getStringArray(arrayId) } ?: return@afterHook
+//                    mAppStartupSpeedPreference.current().method {
+//                        name = "setEntries"
+//                        param(CharSequenceArrayClass)
+//                    }.call(stringArray)
+//                }
+//            }
+//        }
+//
+//        findClass("com.android.launcher3.anim.AppLaunchAnimSpeedHandler").hook {
+//            injectMember {
+//                method { name = "isNotSupportSpeedModify" }
+//                replaceToFalse()
+//            }
+//            injectMember {
+//                constructor { paramCount = 1 }
+//                afterHook {
+//                    val launcher = args().first().any() ?: return@afterHook
+//                    val contentResolver = launcher.current().method {
+//                        name = "getContentResolver";emptyParam();superClass()
+//                    }.invoke<ContentResolver>() ?: return@afterHook
+//                    val mSpeedLevelObserver =
+//                        field { name = "mSpeedLevelObserver" }.get(instance).cast<ContentObserver>()
+//                            ?: return@afterHook
+//                    contentResolver.unregisterContentObserver(mSpeedLevelObserver)
+//                }
+//            }
+//        }
+
+//        findClass("com.android.launcher3.anim.AppLaunchAnimSpeedHandler\$Companion").hook {
+//            injectMember {
+//                method { name = "isNotSupportSpeedModify" }
+//                replaceToFalse()
+//            }
+//            injectMember {
+//                method { name = "parseSpeedLevel" }
+//                beforeHook {
+//                    args().last().setTrue()
+//                }
+//                afterHook {
+//                    val context = args().first().cast<Context>() ?: return@afterHook
+//                    val str = args(1).string()
+//                    val bool = args().last().boolean()
+//                    loggerD(msg = "parseSpeedLevel -> $str $bool -> $result")
+//                    if (bool && str == "2") {
+//                        Settings.Secure.putString(
+//                            context.contentResolver, "setting_app_startup_anim_speed", str
+//                        )
+//                    }
+//                    result = str.toInt()
+//                }
+//            }
+//        }
+//
+//        "com.android.launcher3.OplusLauncherAppTransitionValueAnimator".toClass().apply {
+//            val DURATION_MS = field { name = "DURATION_MS" }.get().cast<LongArray>() ?: return@apply
+//            val newArray = DURATION_MS.toMutableList().apply { add(850L) }
+//            field { name = "DURATION_MS" }.get().set(newArray.toLongArray())
+//        }
+
         //com.android.quickstep.views.OplusTaskMenuViewImpl
         //res/layout/oplus_task_menu_option.xml
 
