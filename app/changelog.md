@@ -40,6 +40,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [移除] 长按媒体播放器跳转
 - [适配] (Test) 磁贴两侧对齐 C14
 - [适配] (Test) 电池图标样式 C14
+- [适配] (Test) 锁屏时钟样式 C14
 
 ### 1.0.12
 

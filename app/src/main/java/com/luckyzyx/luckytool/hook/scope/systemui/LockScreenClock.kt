@@ -4,12 +4,14 @@ import android.content.Context
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.hook.utils.sysui.ClockSwitchHelper
 import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
 import com.luckyzyx.luckytool.hook.utils.sysui.WeatherInfoParseHelper
 import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import java.util.Calendar
@@ -27,7 +29,10 @@ object LockScreenClock : YukiBaseHooker() {
 
         //OPPO/Realme kgd_single_clock / kgd_dual_clock
         //Source SingleClockView kgd_single_clock
-        findClass("com.oplusos.systemui.keyguard.clock.SingleClockView").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.SingleClockView", //C13
+            "com.oplus.systemui.shared.clocks.SingleClockView" //C14
+        ).hook {
             injectMember {
                 method { name = "updateStandardTime" }
                 afterHook {
@@ -42,7 +47,10 @@ object LockScreenClock : YukiBaseHooker() {
         }
         //OnePlus kgd_red_horizontal_single_clock / kgd_red_horizontal_dual_clock
         //Source RedTextClock
-        findClass("com.oplusos.systemui.keyguard.clock.RedTextClock").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.RedTextClock", //C13
+            "com.oplus.systemui.shared.clocks.RedTextClock" //C14
+        ).hook {
             injectMember {
                 method { name = "onTimeChanged" }
                 afterHook {
@@ -60,9 +68,13 @@ object LockScreenClock : YukiBaseHooker() {
             }
         }
         val weatherInfoClazz =
-            "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo".toClass()
+            if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo"
+            else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo".toClass()
         //Source DualClockView kgd_dual_clock
-        findClass("com.oplusos.systemui.keyguard.clock.DualClockView").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.DualClockView", //C13
+            "com.oplus.systemui.shared.clocks.DualClockView" //C14
+        ).hook {
             injectMember {
                 method { param(weatherInfoClazz) }.all()
                 afterHook {
@@ -177,9 +189,13 @@ object LockScreenClock : YukiBaseHooker() {
     private object HookRedDuanClock13 : YukiBaseHooker() {
         override fun onHook() {
             val timeInfoClazz =
-                "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
+                if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo"
+                else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
             //Source RedHorizontalDualClockView kgd_red_horizontal_dual_clock
-            findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView").hook {
+            VariousClass(
+                "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
+                "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
+            ).hook {
                 injectMember {
                     method {
                         param { it[2] == timeInfoClazz }
