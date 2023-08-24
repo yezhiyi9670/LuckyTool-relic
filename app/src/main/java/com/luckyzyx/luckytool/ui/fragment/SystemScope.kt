@@ -2291,7 +2291,7 @@ class DialogRelated : ModulePreferenceFragment() {
                 summary = getString(R.string.disable_duplicate_floating_window_summary)
                 key = "disable_duplicate_floating_window"
                 setDefaultValue(false)
-                isVisible = SDK >= A13
+                isVisible = getOSVersionCode == 26
                 isIconSpaceReserved = false
 
             })
