@@ -3,16 +3,13 @@ package com.luckyzyx.luckytool.hook.statusbar
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.systemui.BluetoothIconRelated
 import com.luckyzyx.luckytool.hook.scope.systemui.MobileDataIconRelated
-import com.luckyzyx.luckytool.hook.scope.systemui.MobileDataIconRelatedC120
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveGreenCapsulePrompt
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveGreenDotPrivacyPrompt
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveHighPerformanceModeIcon
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarSecurePayment
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveWiFiDataInout
 import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarIconVerticalCenter
-import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.SDK
 
 object StatusBarIcon : YukiBaseHooker() {
     override fun onHook() {
@@ -25,8 +22,7 @@ object StatusBarIcon : YukiBaseHooker() {
             loadHooker(RemoveWiFiDataInout)
         }
         //移动数据图标相关
-        if (SDK <= A11) loadHooker(MobileDataIconRelatedC120)
-        else loadHooker(MobileDataIconRelated)
+        loadHooker(MobileDataIconRelated)
         //未连接蓝牙时隐藏图标
         loadHooker(BluetoothIconRelated)
         //移除高性能模式图标

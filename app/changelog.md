@@ -27,6 +27,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 弹幕通知白名单 C14
 - [适配] (Test) 允许长按通知修改 C14
 - [适配] (Test) 状态栏支付保护图标 C14
+- [适配] (Test) 未连接蓝牙时隐藏图标 C14
 
 ### 1.0.12
 
