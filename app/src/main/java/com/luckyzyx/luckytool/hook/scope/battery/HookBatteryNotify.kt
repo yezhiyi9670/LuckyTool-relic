@@ -24,7 +24,7 @@ object HookBatteryNotify : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.common.notification", "com.oplus.a.g",
-                "c4", "a4", "i5", "g4", "z3", "y5"
+                "c4", "a4", "i5", "g4", "z3", "y5", "f6"
             ).absolute()
             constructor { paramCount = 1 }.count(1)
             field { type = ContextClass }.count(1)
@@ -32,6 +32,13 @@ object HookBatteryNotify : YukiBaseHooker() {
             field { type = HandlerClass }.count(1)
             method { param(StringClass, BooleanType) }.count(4)
         }.get()?.hook {
+            injectMember {
+                method {
+                    param(StringClass, BooleanType)
+                    paramCount = 2
+                }.all()
+                if (highBatteryConsumption) intercept()
+            }
 //            injectMember {
 //                constructor {
 //                    paramCount = 1
@@ -56,13 +63,6 @@ object HookBatteryNotify : YukiBaseHooker() {
 //                    }
 //                }
 //            }
-            injectMember {
-                method {
-                    param(StringClass, BooleanType)
-                    paramCount = 2
-                }.all()
-                if (highBatteryConsumption) intercept()
-            }
         } ?: loggerD(msg = "$packageName\nError -> RemoveBatteryNotify")
     }
 }

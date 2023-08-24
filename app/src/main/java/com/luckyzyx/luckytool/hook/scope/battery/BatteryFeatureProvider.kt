@@ -9,7 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object BatteryHiddenEntrance : YukiBaseHooker() {
+object BatteryFeatureProvider : YukiBaseHooker() {
     override fun onHook() {
         val openScreenPowerSave = prefs(ModulePrefs).getBoolean("open_screen_power_save", false)
         val openBatteryHealth = prefs(ModulePrefs).getBoolean("open_battery_health", false)
@@ -20,7 +20,7 @@ object BatteryHiddenEntrance : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.coreapp.appfeature", "com.oplus.b.a",
-                "k4", "i4", "r5", "o4", "h4", "c6"
+                "k4", "i4", "r5", "o4", "h4", "c6", "k6"
             ).absolute()
             method {
 //                name = "isFeatureSupport"
