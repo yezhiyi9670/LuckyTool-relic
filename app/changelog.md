@@ -46,6 +46,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 低电量对话框警告 C14
 - [适配] (Test) 除USB连接对话框 C14
 - [适配] (Test) 音量对话框背景透明度 C14
+- [适配] (Test) 全面屏手势侧滑条 C14
 
 ### 1.0.12
 

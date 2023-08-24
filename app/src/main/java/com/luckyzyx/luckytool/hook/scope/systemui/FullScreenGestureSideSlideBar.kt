@@ -23,33 +23,24 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
             prefs(ModulePrefs).getString("replace_side_slider_icon_on_right", "null")
         VariousClass(
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
-            "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView"
+            "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView",
+            "com.oplus.systemui.navigationbar.gesture.sidegesture.SideGestureNavView" //C14
         ).hook {
             injectMember {
-                method {
-                    name = "onDraw"
-                    paramCount = 1
-                }
+                method { name = "onDraw";paramCount = 1 }
                 if (removeView) intercept()
             }
             injectMember {
-                method {
-                    name = "initPaint"
-                    emptyParam()
-                }
+                method { name = "initPaint";emptyParam() }
                 afterHook {
                     if (!removeBackground) return@afterHook
                     field {
-                        name = "mBezierPaint"
-                        type = PaintClass
+                        name = "mBezierPaint";type = PaintClass
                     }.get(instance).cast<Paint>()?.color = Color.TRANSPARENT
                 }
             }
             injectMember {
-                method {
-                    name = "setBackIcon"
-                    param(BitmapClass)
-                }
+                method { name = "setBackIcon";param(BitmapClass) }
                 beforeHook {
                     if (!isReplace) return@beforeHook
                     val res = when (field { name = "mPosition" }.get(instance).int()) {
