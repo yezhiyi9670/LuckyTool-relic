@@ -1,13 +1,22 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.A14
+import com.luckyzyx.luckytool.utils.SDK
 
 object RemoveDanmakuNotificationWhitelist : YukiBaseHooker() {
     override fun onHook() {
         //Source DanmakuHelper
-        findClass("com.oplusos.systemui.notification.helper.DanmakuHelper").hook {
+        VariousClass(
+            "com.oplusos.systemui.notification.helper.DanmakuHelper", //C13
+            "com.oplus.systemui.statusbar.notification.helper.HeadsUpHelper" //C14
+        ).hook {
             injectMember {
-                method { name = "isSupportDanmaku" }
+                method {
+                    name = if (SDK >= A14) "isPkgBarrageEnable"
+                    else "isSupportDanmaku"
+                }
                 replaceToTrue()
             }
         }

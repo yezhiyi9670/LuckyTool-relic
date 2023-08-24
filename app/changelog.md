@@ -24,6 +24,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 通知勿扰通知 C14
 - [适配] (Test) GT模式通知 C14
 - [适配] (Test) 浮窗回复白名单 C14
+- [适配] (Test) 弹幕通知白名单 C14
 
 ### 1.0.12
 
