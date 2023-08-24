@@ -39,6 +39,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 磁贴长按事件 C14
 - [移除] 长按媒体播放器跳转
 - [适配] (Test) 磁贴两侧对齐 C14
+- [适配] (Test) 电池图标样式 C14
 
 ### 1.0.12
 

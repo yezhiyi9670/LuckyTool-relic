@@ -4,7 +4,9 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object StatusBarPower : YukiBaseHooker() {
     override fun onHook() {
@@ -13,10 +15,10 @@ object StatusBarPower : YukiBaseHooker() {
         val customFontSize = prefs(ModulePrefs).getInt("statusbar_power_font_size", 0)
 
         //Source StatBatteryMeterView
-        val clazz = "com.oplusos.systemui.statusbar.widget.StatBatteryMeterView"
-        if (clazz.toClassOrNull() == null) return
-        findClass(clazz).hook {
-            injectMember {
+        val clazz = if (SDK >= A14) "com.oplus.keyguard.covermanager.OplusCoverBatteryMeterView"
+        else "com.oplusos.systemui.statusbar.widget.StatBatteryMeterView"
+        clazz.toClassOrNull()?.hook {
+            if (SDK < A14) injectMember {
                 method { name = "onConfigChanged" }
                 afterHook { method { name = "updatePercentText" }.get(instance).call() }
             }
