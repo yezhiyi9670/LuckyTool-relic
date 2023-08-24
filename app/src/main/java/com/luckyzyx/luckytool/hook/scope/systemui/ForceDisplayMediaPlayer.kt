@@ -1,45 +1,31 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
 
 object ForceDisplayMediaPlayer : YukiBaseHooker() {
     override fun onHook() {
-        //Controller OplusQSContainerImplController -> onViewAttached -> onChanged
-        //Source OplusQSContainerImpl
-        findClass("com.oplusos.systemui.qs.OplusQSContainerImpl").hook {
+        //Source OplusQsMediaCarouselController
+        findClass("com.oplus.systemui.qs.media.OplusQsMediaCarouselController").hook {
             injectMember {
-                method {
-                    name = "setQsMediaPanelShown"
-                    paramCount = 1
+                method { name = "setCurrentMediaData" }
+                afterHook {
+                    val mediaModeChangeListener =
+                        field { name = "mediaModeChangeListener" }.get(instance).any()
+                            ?: return@afterHook
+                    mediaModeChangeListener.current().method {
+                        name = "onChanged"
+                    }.call(true)
                 }
-                beforeHook { args().first().setTrue() }
             }
-        }
-        //Source QuickStatusBarHeader / OplusQSTileMediaContainerController
-        VariousClass(
-            "com.oplusos.systemui.qs.OplusQSTileMediaContainerController",
-            "com.android.systemui.qs.QuickStatusBarHeader"
-        ).hook {
             injectMember {
-                method {
-                    name = "setQsMediaPanelShown"
-                    paramCount = 1
+                method { name = "setMediaModeChangeListener" }
+                afterHook {
+                    val mediaModeChangeListener = args().first().any() ?: return@afterHook
+                    mediaModeChangeListener.current().method {
+                        name = "onChanged"
+                    }.call(true)
                 }
-                beforeHook { args(0).setTrue() }
-            }
-        }
-        //Source OplusQSFooterImpl / OplusQSTileMediaContainer
-        VariousClass(
-            "com.oplusos.systemui.qs.OplusQSTileMediaContainer",
-            "com.oplusos.systemui.qs.OplusQSFooterImpl"
-        ).hook {
-            injectMember {
-                method {
-                    name = "setMediaMode"
-                    paramCount = 1
-                }
-                beforeHook { args(0).setTrue() }
             }
         }
     }

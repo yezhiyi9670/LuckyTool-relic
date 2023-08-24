@@ -13,6 +13,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.closeScreen
+import com.luckyzyx.luckytool.utils.safeOfNull
 
 object LockScreenBottomButton : YukiBaseHooker() {
     override fun onHook() {
@@ -59,7 +60,7 @@ object LockScreenBottomButton : YukiBaseHooker() {
                         ?.invoke<Boolean>() ?: false
                     val resId = if (isEnable) R.drawable.affordance_flashlight_on
                     else R.drawable.affordance_flashlight
-                    val drawable = ResourcesCompat.getDrawable(context.resources, resId, null)
+                    val drawable = safeOfNull { ResourcesCompat.getDrawable(context.resources, resId, null) }
                     field { name = "mLeftAffordanceView";superClass() }.get(instance).any()
                         ?.current()?.method {
                             name = "setImageDrawable"
