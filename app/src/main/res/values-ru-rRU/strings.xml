@@ -555,7 +555,7 @@
     <!--AlphaBackupPro-->
     <string name="remove_pro_license">Удалить обнаружение лицензии</string>
     <!--ADM-->
-    <string name="adm_unlock_pro">Unlock Pro</string>
+    <string name="adm_unlock_pro">Разблокировка Pro</string>
     <!--Home-->
     <string name="fps_title">Принудительная частота обновления</string>
     <string name="fps_summary">Конфликты с другими процессами динамической частоты обновления, такими как dfps</string>

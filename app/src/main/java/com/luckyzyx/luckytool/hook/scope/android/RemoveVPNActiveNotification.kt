@@ -9,7 +9,7 @@ object RemoveVPNActiveNotification : YukiBaseHooker() {
         val isEnable = prefs(ModulePrefs).getBoolean("remove_vpn_active_notification", false)
         // Source OplusVpnHelper
         VariousClass(
-            "com.android.server.connectivity.VpnExtImpl", //C12
+            "com.android.server.connectivity.VpnExtImpl", //C12 C13 C14
             "com.android.server.connectivity.OplusVpnHelper"
         ).hook {
             injectMember {

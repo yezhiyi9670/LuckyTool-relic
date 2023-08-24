@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.13_beta
+### 1.0.13
 
 - [适配] 时钟组件红一 v14.0.4(e6df2db)
 - [添加] 移除应用禁止卸载黑名单
@@ -54,6 +54,55 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 电池-高耗电通知v1.2.1(20f0b99)
 - [适配] 电池-自启数量限制v1.2.1(20f0b99)
 - [适配] 电池-移除高温限制v1.2.1(20f0b99)
+- [Fix] Clock component Red One v14.0.4(e6df2db)
+- [Add] Remove the blacklist of apps that are forbidden to uninstall
+- [Fix] Some system gestures and somatosensory entry problems
+- [Change] Dark mode button option to replace Slider
+- [Fix] Clock component Red One v14.0.2(18140a4)
+- [Change] Remove dm-verity function name
+- [Add] The button in the lower left corner of the lock screen replaces the flashlight
+- [Fix] Set FeatureUtils v13.0.5(9508ac6)
+- [Add] ADM Unlock Pro v14.0.22
+- [Fix] Game Assistant Feature v8.16.1
+- [Fix] (Test) hide unused signal label Gen2x2 C14
+- [Fix] (Test) Auto Brightness Button Mode C14
+- [Fix] (Test) Lock screen charging animation style C14
+- [Fix] (Test) Vibrate when opening status bar C14
+- [Fix] (Test) Flashlight turned on notification C14
+- [Fix] (Test) Do Not Disturb Mode Notification C14
+- [Fix] (Test) Notification Do Not Disturb C14
+- [Fix] (Test) GT Mode Notification C14
+- [Fix] (Test) Floating window reply white list C14
+- [Fix] (Test) Bullet chat notification whitelist C14
+- [Fix] (Test) Allow long press notification to modify C14
+- [Fix] (Test) Status bar payment protection icon C14
+- [Fix] (Test) Hide icon when not connected to bluetooth C14
+- [Fix] (Test) High performance mode icon C14
+- [Fix] (Test) Green dot privacy reminder C14
+- [Fix] (Test) Green Capsule Tip C14
+- [Fix] (Test) Control Center clock style C14
+- [Fix] (Test) Control Center date style C14
+- [Fix] (Test) Notification side alignment C14
+- [Fix] (Test) Force display of media player C14
+- [Fix] (Test) Network warning at the bottom of Control Center C14
+- [Fix] (Test) tile long press event C14
+- [Remove] Long press the media player to jump
+- [Fix] (Test) tile side-aligned C14
+- [Fix] (Test) battery icon style C14
+- [Fix] (Test) lock screen clock style C14
+- [Fix] (Test) Lock screen component style C14
+- [Fix] (Test) Headphone high volume warning C14
+- [Fix] (Test) Low battery dialog warning C14
+- [Fix] (Test) remove USB connection dialog C14
+- [Fix] (Test) Volume dialog background transparency C14
+- [Fix] (Test) Full screen gesture side slider C14
+- [Fix] (Test) Rotate screen button C14
+- [Fix] (Test) Fingerprint icon C14
+- [Fix] (Test) Charging Ripple C14
+- [Fix] (Test) Disable OTG auto-off C14
+- [Fix] Battery - High battery consumption notification v1.2.1(20f0b99)
+- [Fix] Battery - auto-start quantity limit v1.2.1(20f0b99)
+- [Fix] battery - remove high temperature limit v1.2.1 (20f0b99)
 
 ### 1.0.12
 
