@@ -9,8 +9,9 @@ object AllowLongPressNotificationModifiable : YukiBaseHooker() {
     override fun onHook() {
         //Source NotificationSettingsModel
         VariousClass(
-            "com.oplusos.systemui.notification.settingspanel.NotificationSettingsModel", //OnePlus C13.0
-            "com.oplusos.systemui.notification.settingspanel.controller.NotificationController" //Realme C13.1
+            "com.oplusos.systemui.notification.settingspanel.NotificationSettingsModel", //C13
+            "com.oplusos.systemui.notification.settingspanel.controller.NotificationController", //C13.1
+            "com.oplus.systemui.statusbar.notification.settingspanel.controller.NotificationController" //C14
         ).hook {
             injectMember {
                 method {
@@ -24,7 +25,7 @@ object AllowLongPressNotificationModifiable : YukiBaseHooker() {
                 beforeHook {
                     val hasField = instance.javaClass.hasField { name = "isAppModifiable" }
                     if (hasField) field { name = "isAppModifiable" }.get(instance).setTrue()
-                    else args(0).any()?.current()?.field { name = "isAppModifiable" }?.setTrue()
+                    else args().first().any()?.current()?.field { name = "isAppModifiable" }?.setTrue()
                 }
             }
         }
