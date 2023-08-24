@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.utils.A13
@@ -23,11 +24,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
             val fullScreenChargeAnim =
                 prefs(ModulePrefs).getString("set_full_screen_charging_animation_mode", "0")
             //通知重要性 com.android.systemui.origin_notification_behavior
-            val notifyImportance =
-                prefs(ModulePrefs).getBoolean(
-                    "enable_notification_importance_classification",
-                    false
-                )
+            val notifyImportance = prefs(ModulePrefs).getBoolean(
+                "enable_notification_importance_classification", false
+            )
             //高斯模糊
             val enableBlur =
                 prefs(ModulePrefs).getBoolean("force_enable_systemui_blur_feature", false)
@@ -139,7 +138,10 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("hide_inactive_signal_labels_gen2x2", false)
 
             //Source StatusBarFeatureOption
-            findClass("com.oplusos.systemui.statusbar.feature.StatusBarFeatureOption").hook {
+            VariousClass(
+                "com.oplusos.systemui.statusbar.feature.StatusBarFeatureOption", //C13
+                "com.oplusos.systemui.common.feature.StatusBarFeatureOption" //C14
+            ).hook {
                 injectMember {
                     method { name = "isSystemUiExpSignalUi" }
                     if (hideSignalLabels) replaceToTrue()
