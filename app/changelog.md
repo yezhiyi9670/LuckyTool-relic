@@ -29,6 +29,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 状态栏支付保护图标 C14
 - [适配] (Test) 未连接蓝牙时隐藏图标 C14
 - [适配] (Test) 高性能模式图标 C14
+- [适配] (Test) 绿点隐私提示 C14
 
 ### 1.0.12
 
