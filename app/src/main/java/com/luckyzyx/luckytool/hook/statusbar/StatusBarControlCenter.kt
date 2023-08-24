@@ -19,7 +19,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //控制中心时钟样式
         loadHooker(ControlCenterClockStyle)
 
-        //移除控制中心日期
+        //控制中心日期样式
         loadHooker(ControlCenterDateStyle)
 
         //通知两侧对齐

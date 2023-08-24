@@ -32,6 +32,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 绿点隐私提示 C14
 - [适配] (Test) 绿色胶囊提示 C14
 - [适配] (Test) 控制中心时钟样式 C14
+- [适配] (Test) 控制中心日期样式 C14
 
 ### 1.0.12
 

@@ -6,6 +6,7 @@ import android.util.LayoutDirection
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.hasMethod
@@ -36,7 +37,10 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         }
 
         //Source WeatherInfoParseHelper -> cn_comma
-        findClass("com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper", //C13
+            "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper" //C14
+        ).hook {
             injectMember {
                 method {
                     name = "getChineseDateInfo"
@@ -62,7 +66,10 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         if (SDK < A13) return
         var translationX = 0
         //Source OplusQSFooterImpl
-        findClass("com.oplusos.systemui.qs.OplusQSFooterImpl").hook {
+        VariousClass(
+            "com.oplusos.systemui.qs.OplusQSFooterImpl", //C13
+            "com.oplus.systemui.qs.OplusQSFooterImpl" //C14
+        ).hook {
             if (instanceClass.hasMethod { name = "updateQsDateView" }.not()) return@hook
             injectMember {
                 method { name = "updateQsDateView" }
