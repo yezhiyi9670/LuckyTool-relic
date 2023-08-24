@@ -1843,7 +1843,7 @@ class LockScreen : ModulePreferenceFragment() {
                     resources.getStringArray(R.array.set_lock_screen_warp_charging_style_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
-                isVisible = SDK >= A13
+                isVisible = SDK == A13
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
@@ -1869,6 +1869,7 @@ class LockScreen : ModulePreferenceFragment() {
                 title = getString(R.string.force_lock_screen_charging_show_wattage)
                 key = "force_lock_screen_charging_show_wattage"
                 setDefaultValue(false)
+                isVisible = SDK == A13
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
