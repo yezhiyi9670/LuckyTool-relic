@@ -9,12 +9,13 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
         //Source UsbService
         VariousClass(
             "com.coloros.systemui.notification.usb.UsbService", //A11
-            "com.oplusos.systemui.notification.usb.UsbService"
+            "com.oplusos.systemui.notification.usb.UsbService",
+            "com.oplus.systemui.usb.UsbService" //C14
         ).hook {
             injectMember {
                 method { name = "onUsbConnected" }
                 replaceUnit {
-                    val context = args(0).cast<Context>() ?: return@replaceUnit
+                    val context = args().first().cast<Context>() ?: return@replaceUnit
                     method { name = "onUsbSelect" }.get(instance).call(1)
                     method { name = "updateAdbNotification" }.get(instance).call(context)
                     method { name = "updateUsbNotification" }.get(instance).call(context, 1)
