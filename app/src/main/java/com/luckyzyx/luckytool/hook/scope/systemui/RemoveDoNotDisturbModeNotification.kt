@@ -8,13 +8,11 @@ object RemoveDoNotDisturbModeNotification : YukiBaseHooker() {
         //Source DndAlertHelper
         VariousClass(
             "com.oplusos.systemui.notification.helper.DndAlertHelper",
-            "com.coloros.systemui.notification.helper.DndAlertHelper"
+            "com.coloros.systemui.notification.helper.DndAlertHelper",
+            "com.oplus.systemui.statusbar.notification.helper.DndAlertHelper" //C14
         ).hook {
             injectMember {
-                method {
-                    name = "sendNotificationWithEndtime"
-                    paramCount = 1
-                }
+                method { name = "sendNotificationWithEndtime";paramCount = 1 }
                 intercept()
             }
         }
