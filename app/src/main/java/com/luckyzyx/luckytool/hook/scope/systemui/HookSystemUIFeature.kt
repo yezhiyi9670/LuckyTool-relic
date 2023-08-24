@@ -4,6 +4,7 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -13,6 +14,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
         loadHooker(HookStatusBarFeature)
         loadHooker(HookNotificationAppFeature)
         loadHooker(HookFlavorOneFeature)
+        if (SDK == A14) loadHooker(HookQSFeatureOption)
     }
 
     private object HookFeatureOption : YukiBaseHooker() {
@@ -207,6 +209,28 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         }
                     }
                 } else return
+            }
+        }
+    }
+
+    private object HookQSFeatureOption : YukiBaseHooker() {
+        override fun onHook() {
+            //自动亮度 com.android.systemui.remove_auto_brightness
+            val autoBrightnessMode =
+                prefs(ModulePrefs).getString("set_auto_brightness_button_mode", "0")
+
+            //Source QSFeatureOption
+            findClass("com.oplusos.systemui.common.feature.QSFeatureOption").hook {
+                injectMember {
+                    method { name = "getShouldRemoveAutoBrightness" }
+                    beforeHook {
+                        when (autoBrightnessMode) {
+                            "1" -> resultFalse()
+                            "2" -> resultTrue()
+                            else -> return@beforeHook
+                        }
+                    }
+                }
             }
         }
     }

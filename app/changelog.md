@@ -16,6 +16,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] ADM解锁Pro v14.0.22
 - [适配] 游戏助手Feature v8.16.1
 - [适配] (Test) 隐藏未使用信号标签Gen2x2 C14
+- [适配] (Test) 自动亮度按钮模式 C14
 
 ### 1.0.12
 
