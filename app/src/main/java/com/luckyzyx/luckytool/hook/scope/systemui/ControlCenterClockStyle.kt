@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
 import com.luckyzyx.luckytool.utils.A12
@@ -28,7 +29,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 beforeHook {
                     val view = instance<TextView>()
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@beforeHook
-                    if (showSecond) args(0).setTrue()
+                    if (showSecond) args().first().setTrue()
                 }
             }
             if (SDK >= A12) return@hook
@@ -40,24 +41,25 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                 afterHook {
                     val view = instance<TextView>()
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
-                    val char = args(0).cast<CharSequence>() ?: return@afterHook
+                    val char = args().first().cast<CharSequence>() ?: return@afterHook
                     setStyle(view, char, "0", redOneMode)
                 }
             }
         }
         //Source BaseClockExt
-        val clazz = "com.oplusos.systemui.ext.BaseClockExt"
-        if (clazz.toClassOrNull() == null) return
-        findClass(clazz).hook {
+        VariousClass(
+            "com.oplusos.systemui.ext.BaseClockExt", //C13
+            "com.android.systemui.common.clock.OplusClockEx" //C14
+        ).hook {
             injectMember {
                 method {
                     name = "setTextWithRedOneStyle"
                     paramCount = 2
                 }
                 afterHook {
-                    val view = args(0).cast<TextView>() ?: return@afterHook
+                    val view = args().first().cast<TextView>() ?: return@afterHook
                     if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@afterHook
-                    val char = args(1).cast<CharSequence>() ?: return@afterHook
+                    val char = args().last().cast<CharSequence>() ?: return@afterHook
                     setStyle(view, char, colonStyle, redOneMode)
                 }
             }
