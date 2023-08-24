@@ -18,6 +18,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 隐藏未使用信号标签Gen2x2 C14
 - [适配] (Test) 自动亮度按钮模式 C14
 - [适配] (Test) 锁屏充电动画样式 C14
+- [适配] (Test) 打开状态栏时振动 C14
 
 ### 1.0.12
 
