@@ -116,7 +116,7 @@ object LockScreenClock : YukiBaseHooker() {
                 }
             }
         }
-        if (SDK >= A13) loadHooker(HookRedDuanClock13) else loadHooker(HookRedDuanClock12)
+        if (SDK >= A13) loadHooker(HookRedDuanClock) else loadHooker(HookRedDuanClock12)
     }
 
     private fun TextView.setClockRed(format: String, redMode: String) {
@@ -132,6 +132,60 @@ object LockScreenClock : YukiBaseHooker() {
             }
         }
         text = sp
+    }
+
+    private object HookRedDuanClock : YukiBaseHooker() {
+        override fun onHook() {
+            val timeInfoClazz =
+                if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo"
+                else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
+            //Source RedHorizontalDualClockView kgd_red_horizontal_dual_clock
+            VariousClass(
+                "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
+                "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
+            ).hook {
+                injectMember {
+                    method {
+                        param { it[2] == timeInfoClazz }
+                        paramCount = 3
+                    }.all()
+                    afterHook {
+                        if (!dualClock) return@afterHook
+                        val type: String = method.name.let {
+                            if (it.contains("updateLocateTime")) "LocateTime"
+                            else if (it.contains("updateResidentTime")) "ResidentTime"
+                            else return@afterHook
+                        }
+                        val view = args().first().any() ?: return@afterHook
+                        when (type) {
+                            "LocateTime" -> {
+                                val mLocatedTimeHour =
+                                    view.current()
+                                        .field { name = "mTvHorizontalLocateClockHour" }
+                                        .cast<TextView>() ?: return@afterHook
+                                val mLocatedTimeInfo = args().last().any() ?: return@afterHook
+                                val mHour =
+                                    mLocatedTimeInfo.current().method { name = "getHour" }
+                                        .invoke<String>() ?: return@afterHook
+                                mLocatedTimeHour.setClockRed(mHour, redMode)
+                            }
+
+                            "ResidentTime" -> {
+                                val mResidentTimeHour =
+                                    view.current()
+                                        .field { name = "mTvHorizontalResidentClockHour" }
+                                        .cast<TextView>() ?: return@afterHook
+                                val mResidentTimeInfo = args().last().any() ?: return@afterHook
+                                val mHour =
+                                    mResidentTimeInfo.current().method { name = "getHour" }
+                                        .invoke<String>() ?: return@afterHook
+                                mResidentTimeHour.setClockRed(mHour, redMode)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private object HookRedDuanClock12 : YukiBaseHooker() {
@@ -180,60 +234,6 @@ object LockScreenClock : YukiBaseHooker() {
                             mResidentTimeInfo.current().method { name = "getHour" }.invoke<String>()
                                 ?: return@afterHook
                         mResidentTimeHour.setClockRed(mHour, redMode)
-                    }
-                }
-            }
-        }
-    }
-
-    private object HookRedDuanClock13 : YukiBaseHooker() {
-        override fun onHook() {
-            val timeInfoClazz =
-                if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo"
-                else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
-            //Source RedHorizontalDualClockView kgd_red_horizontal_dual_clock
-            VariousClass(
-                "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
-                "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
-            ).hook {
-                injectMember {
-                    method {
-                        param { it[2] == timeInfoClazz }
-                        paramCount = 3
-                    }.all()
-                    afterHook {
-                        if (!dualClock) return@afterHook
-                        val type: String = method.name.let {
-                            if (it.contains("updateLocateTime")) "LocateTime"
-                            else if (it.contains("updateResidentTime")) "ResidentTime"
-                            else return@afterHook
-                        }
-                        val view = args().first().any() ?: return@afterHook
-                        when (type) {
-                            "LocateTime" -> {
-                                val mLocatedTimeHour =
-                                    view.current()
-                                        .field { name = "mTvHorizontalLocateClockHour" }
-                                        .cast<TextView>() ?: return@afterHook
-                                val mLocatedTimeInfo = args().last().any() ?: return@afterHook
-                                val mHour =
-                                    mLocatedTimeInfo.current().method { name = "getHour" }
-                                        .invoke<String>() ?: return@afterHook
-                                mLocatedTimeHour.setClockRed(mHour, redMode)
-                            }
-
-                            "ResidentTime" -> {
-                                val mResidentTimeHour =
-                                    view.current()
-                                        .field { name = "mTvHorizontalResidentClockHour" }
-                                        .cast<TextView>() ?: return@afterHook
-                                val mResidentTimeInfo = args().last().any() ?: return@afterHook
-                                val mHour =
-                                    mResidentTimeInfo.current().method { name = "getHour" }
-                                        .invoke<String>() ?: return@afterHook
-                                mResidentTimeHour.setClockRed(mHour, redMode)
-                            }
-                        }
                     }
                 }
             }

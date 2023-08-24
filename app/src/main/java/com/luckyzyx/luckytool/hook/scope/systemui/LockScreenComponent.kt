@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.dp
@@ -14,8 +15,12 @@ object LockScreenComponent : YukiBaseHooker() {
         val isCenter = prefs(ModulePrefs).getBoolean("set_lock_screen_centered", false)
         val userTypeface =
             prefs(ModulePrefs).getBoolean("lock_screen_clock_use_user_typeface", false)
+
         //Source RedHorizontalSingleClockView
-        findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView", //C13
+            "com.oplus.systemui.shared.clocks.RedHorizontalSingleClockView" //C14
+        ).hook {
             injectMember {
                 method { name = "onFinishInflate" }
                 afterHook {
@@ -47,7 +52,10 @@ object LockScreenComponent : YukiBaseHooker() {
             }
         }
         //Source RedHorizontalDualClockView
-        findClass("com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView").hook {
+        VariousClass(
+            "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
+            "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
+        ).hook {
             injectMember {
                 method { name = "setTextFont" }
                 if (userTypeface) intercept()
