@@ -12,7 +12,7 @@ object RemoveRotateScreenButton : YukiBaseHooker() {
         VariousClass(
             "com.android.systemui.statusbar.phone.FloatingRotationButton", //A11
             "com.android.systemui.navigationbar.gestural.FloatingRotationButton", //A12
-            "com.android.systemui.shared.rotation.FloatingRotationButton" //A13
+            "com.android.systemui.shared.rotation.FloatingRotationButton" //C13 C14
         ).hook {
             injectMember {
                 constructor { param { it[0] == ContextClass } }
