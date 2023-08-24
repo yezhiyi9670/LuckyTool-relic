@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.*
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.SDK
@@ -25,7 +26,43 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             }
         }
 
-        if (SDK >= A13) loadHooker(OtherNotificationC13) else loadHooker(OtherNotificationC12)
+        if (SDK >= A13) loadHooker(OtherNotification) else loadHooker(OtherNotificationC12)
+    }
+
+    private object OtherNotification : YukiBaseHooker() {
+        override fun onHook() {
+            //Source KeyguardMediaController -> MediaHost -> HostView -> parent
+            VariousClass(
+                "com.android.systemui.media.KeyguardMediaController", //C13
+                "com.android.systemui.media.controls.ui.KeyguardMediaController" //C14
+            ).hook {
+                injectMember {
+                    method { name = "setVisibility";paramCount = 2 }
+                    beforeHook {
+                        val viewGroup = args().first().cast<ViewGroup>() ?: return@beforeHook
+                        val visible = args().last().cast<Int>() ?: return@beforeHook
+                        val count = viewGroup.childCount
+                        if ((visible == 0) && (count > 0)) {
+                            if (viewGroup.width > 0) viewGroup.setViewWidth()
+                        }
+                    }
+                }
+            }
+
+            val ubiquitousExpandableRow =
+                "com.oplusos.systemui.statusbar.notification.row.UbiquitousExpandableRow"
+            //Source UbiquitousExpandableRow
+            ubiquitousExpandableRow.toClassOrNull()?.hook {
+                injectMember {
+                    method { name = "onFinishInflate" }
+                    afterHook { instance<ViewGroup>().setViewWidth() }
+                }
+                injectMember {
+                    method { name = "onLayout" }
+                    afterHook { instance<ViewGroup>().setViewWidth() }
+                }
+            }
+        }
     }
 
     private object OtherNotificationC12 : YukiBaseHooker() {
@@ -46,40 +83,6 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                             }
                         }
                     }
-                }
-            }
-        }
-    }
-
-    private object OtherNotificationC13 : YukiBaseHooker() {
-        override fun onHook() {
-            //Source KeyguardMediaController -> MediaHost -> HostView -> parent
-            findClass("com.android.systemui.media.KeyguardMediaController").hook {
-                injectMember {
-                    method { name = "setVisibility";paramCount = 2 }
-                    beforeHook {
-                        val viewGroup = args().first().cast<ViewGroup>() ?: return@beforeHook
-                        val visible = args().last().cast<Int>() ?: return@beforeHook
-                        val count = viewGroup.childCount
-                        if ((visible == 0) && (count > 0)) {
-                            if (viewGroup.width > 0) viewGroup.setViewWidth()
-                        }
-                    }
-                }
-            }
-
-            val ubiquitousExpandableRow =
-                "com.oplusos.systemui.statusbar.notification.row.UbiquitousExpandableRow"
-            if (ubiquitousExpandableRow.toClassOrNull() == null) return
-            //Source UbiquitousExpandableRow
-            findClass(ubiquitousExpandableRow).hook {
-                injectMember {
-                    method { name = "onFinishInflate" }
-                    afterHook { instance<ViewGroup>().setViewWidth() }
-                }
-                injectMember {
-                    method { name = "onLayout" }
-                    afterHook { instance<ViewGroup>().setViewWidth() }
                 }
             }
         }
