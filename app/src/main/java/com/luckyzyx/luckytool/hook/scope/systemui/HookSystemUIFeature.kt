@@ -51,6 +51,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
             var warpCharge =
                 prefs(ModulePrefs).getString("set_lock_screen_warp_charging_style", "0")
             dataChannel.wait<String>("set_lock_screen_warp_charging_style") { warpCharge = it }
+            //移除我的设备
+            val removeMyDevice =
+                prefs(ModulePrefs).getBoolean("remove_control_center_mydevice", false)
 
             //Source FeatureOption
             findClass("com.oplusos.systemui.common.feature.FeatureOption").hook {
@@ -130,6 +133,13 @@ object HookSystemUIFeature : YukiBaseHooker() {
                                 else -> return@beforeHook
                             }
                         }
+                    }
+                }
+                //C13 C14
+                if (instanceClass.hasMethod { name = "isSupportMyDevice" }) {
+                    injectMember {
+                        method { name = "isSupportMyDevice" }
+                        if (removeMyDevice) replaceToFalse()
                     }
                 }
             }

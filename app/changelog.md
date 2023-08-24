@@ -35,6 +35,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 控制中心日期样式 C14
 - [适配] (Test) 通知两侧对齐 C14
 - [适配] (Test) 强制显示媒体播放器 C14
+- [适配] (Test) 控制中心底部网络警告 C14
 
 ### 1.0.12
 

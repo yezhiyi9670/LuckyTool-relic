@@ -7,7 +7,6 @@ import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterWhiteBackground
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
 import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableMediaToggleButton
-import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterMydevice
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.utils.A13
@@ -38,11 +37,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {
             if (SDK < A13) loadHooker(RemoveControlCenterUserSwitcher)
         }
-        //移除控制中心我的设备
-        if (prefs(ModulePrefs).getBoolean("remove_control_center_mydevice", false)) {
-            if (SDK >= A13) loadHooker(RemoveControlCenterMydevice)
-        }
-        //磁贴底部网络警告
+        //控制中心底部网络警告
         loadHooker(RemoveStatusBarBottomNetworkWarn)
 
         //控制中心背景透明度
