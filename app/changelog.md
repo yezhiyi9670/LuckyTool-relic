@@ -19,6 +19,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] (Test) 自动亮度按钮模式 C14
 - [适配] (Test) 锁屏充电动画样式 C14
 - [适配] (Test) 打开状态栏时振动 C14
+- [适配] (Test) 手电筒已开启通知 C14
 
 ### 1.0.12
 

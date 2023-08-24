@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.factory.field
 
 object HideInActiveSignalLabelsGen2x2 : YukiBaseHooker() {
     override fun onHook() {
-        //SourceMobileIconSets -> Companion
+        //SourceMobileIconSets -> Companion -> config_isSystemUiExpSignalUi
         findClass("com.oplus.systemui.statusbar.policy.MobileIconSets\$Companion").hook {
             injectMember {
                 method { name = "getVolteIcon" }
