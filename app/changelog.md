@@ -14,7 +14,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 锁屏左下角按钮替换手电筒
 - [适配] 设置FeatureUtils v13.0.5(9508ac6)
 - [添加] ADM解锁Pro v14.0.22
-- [适配] 游戏助手v8.16.1
+- [适配] 游戏助手Feature v8.16.1
 
 ### 1.0.12
 
