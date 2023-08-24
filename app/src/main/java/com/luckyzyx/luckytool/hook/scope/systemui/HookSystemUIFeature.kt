@@ -187,12 +187,13 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                     if (notifyImportance) replaceToTrue()
                 }
-                //C13
-                if (instanceClass.hasMethod { name = "getGaussBlurDisabled" }) {
-                    injectMember {
-                        method { name = "getGaussBlurDisabled" }
-                        if (enableBlur) replaceToFalse()
+                //C13 C14
+                if (SDK >= A13) injectMember {
+                    method {
+                        name = if (SDK >= A14) "isGaussBlurDisabled"
+                        else "getGaussBlurDisabled"
                     }
+                    if (enableBlur) replaceToFalse()
                 }
                 if (instanceClass.hasMethod { name = "isPanViewBlurDisabled" }) {
                     injectMember {

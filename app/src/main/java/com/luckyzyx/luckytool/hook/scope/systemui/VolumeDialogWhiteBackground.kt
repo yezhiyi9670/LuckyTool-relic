@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.annotation.SuppressLint
 import android.graphics.drawable.LayerDrawable
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.type.android.DialogInterfaceClass
@@ -17,7 +18,10 @@ object VolumeDialogWhiteBackground : YukiBaseHooker() {
             customAlpha = it
         }
         //Source VolumeDialogImplEx
-        findClass("com.oplusos.systemui.volume.VolumeDialogImplEx").hook {
+        VariousClass(
+            "com.oplusos.systemui.volume.VolumeDialogImplEx", //C13
+            "com.oplus.systemui.volume.OplusVolumeDialogImpl" //C14
+        ).hook {
             injectMember {
                 method { name = "isSurrealQualityOn" }
                 afterHook {
@@ -30,7 +34,7 @@ object VolumeDialogWhiteBackground : YukiBaseHooker() {
                 beforeHook {
                     if (customAlpha < 0) return@beforeHook
                     val value = customAlpha * 25
-                    field { name = "mVerticalRowsLayerDrawable" }.get(instance)
+                        field { name = "mVerticalRowsLayerDrawable" }.get(instance)
                         .cast<LayerDrawable>()?.apply {
                             getDrawable(0)?.setBlurRadius(value.dp)
                             getDrawable(1)?.alpha = value
