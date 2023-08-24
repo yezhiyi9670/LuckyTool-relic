@@ -1023,6 +1023,7 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                     }
                 })
             }
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.ControlCenterNotificationCenter)
                 key = "ControlCenterNotificationCenter"
@@ -1038,8 +1039,10 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
                 title = getString(R.string.enable_notification_importance_classification)
                 key = "enable_notification_importance_classification"
                 setDefaultValue(false)
+                isVisible = SDK < A14
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.ControlCenter_UI_Related)
                 key = "ControlCenter_UI_Related"

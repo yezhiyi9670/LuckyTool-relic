@@ -73,9 +73,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
 //                method { name = "isFpBlindUnlockDisabled" }
 //                if (false) replaceToFalse()
 //            }
-                injectMember {
-                    method { name = "isOriginNotificationBehavior" }
-                    if (notifyImportance) replaceToTrue()
+                if (instanceClass.hasMethod { name = "isOriginNotificationBehavior" }) {
+                    injectMember {
+                        method { name = "isOriginNotificationBehavior" }
+                        if (notifyImportance) replaceToTrue()
+                    }
                 }
                 injectMember {
                     method { name = "isVolumeBlurDisabled" }
@@ -163,9 +165,15 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("force_enable_systemui_blur_feature", false)
 
             //Source NotificationAppFeatureOption
-            findClass("com.oplusos.systemui.common.util.NotificationAppFeatureOption").hook {
-                injectMember {
-                    method { name = "originNotificationBehavior" }
+            VariousClass(
+                "com.oplusos.systemui.common.util.NotificationAppFeatureOption", //C13
+                "com.oplusos.systemui.common.feature.NotificationFeatureOption" //C14
+            ).hook {
+                if (SDK != A14) injectMember {
+                    method {
+                        name = if (SDK >= A14) "isOriginNotificationBehavior"
+                        else "originNotificationBehavior"
+                    }
                     if (notifyImportance) replaceToTrue()
                 }
                 injectMember {
