@@ -3,9 +3,9 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.14_beta
+### 1.0.14
 
-- [修复] Hook系统界面黑屏崩溃 Android14
+- [修复] Android14系统界面黑屏崩溃
 - [适配] 设置 v14.0.0(bf663cc,b89fb9e)
 - [适配] 电池 v1.2.1(9015c8b)
 - [适配] 权限控制器-解锁默认桌面限制 v14.00.001
@@ -16,6 +16,17 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 锁屏时钟组件与充电组件样式 C14
 - [适配] 状态栏时钟组件与网速组件 C14
 - [优化] 截屏隐私限制Hook逻辑
+- [Fix] Android14 system interface black screen crash
+- [Fix] set v14.0.0(bf663cc,b89fb9e)
+- [Fix] Battery v1.2.1(9015c8b)
+- [Fix] Permission Controller - Unlock Default Desktop Restriction v14.00.001
+- [Fix] desktop - remove update dot v14.0.6(1377ee0)
+- [Change] Hide lock screen bottom button function C14
+- [Fix] Lock screen status bar carrier style C14
+- [Fix] SOS button at the bottom of the lock screen unlock page C14
+- [Fix] Lock screen clock component and charging component style C14
+- [Fix] Status bar clock component and network speed component C14
+- [Optimize] Hook logic for screen capture privacy restrictions
 
 ### 1.0.13
 
