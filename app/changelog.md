@@ -3,6 +3,19 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.14_beta
+
+- [修复] Hook系统界面黑屏崩溃 Android14
+- [适配] 设置 v14.0.0(bf663cc,b89fb9e)
+- [适配] 电池 v1.2.1(9015c8b)
+- [适配] 权限控制器-解锁默认桌面限制 v14.00.001
+- [适配] 桌面-移除更新圆点 v14.0.6(1377ee0)
+- [更改] 隐藏锁屏底部按钮功能 C14
+- [适配] 锁屏状态栏运营商样式 C14
+- [适配] 锁屏解锁页面底部SOS按钮 C14
+- [适配] 锁屏时钟组件与充电组件样式 C14
+- [适配] 状态栏时钟组件与网速组件 C14
+
 ### 1.0.13
 
 - [适配] 时钟组件红一 v14.0.4(e6df2db)

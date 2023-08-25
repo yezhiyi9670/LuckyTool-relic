@@ -36,7 +36,8 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
         //Search postUpdateNetworkSpeedDelay
         VariousClass(
             "com.oplusos.systemui.statusbar.controller.NetworkSpeedController",
-            "com.oplus.systemui.statusbar.phone.netspeed.OplusNetworkSpeedControllExImpl"
+            "com.oplus.systemui.statusbar.phone.netspeed.OplusNetworkSpeedControllExImpl", //C13
+            "com.oplus.systemui.statusbar.phone.netspeed.OplusNetworkSpeedControllerExImpl" //C14
         ).hook {
             injectMember {
                 method {

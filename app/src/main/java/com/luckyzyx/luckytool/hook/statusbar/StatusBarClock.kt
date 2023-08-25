@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.TypedValue
 import android.view.Gravity
 import android.widget.TextView
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.hook.utils.sysui.LunarHelperUtils
@@ -103,7 +104,10 @@ object StatusBarClock : YukiBaseHooker() {
         }
 
         //Source StatClock
-        findClass("com.oplusos.systemui.statusbar.widget.StatClock").hook {
+        VariousClass(
+            "com.oplusos.systemui.statusbar.widget.StatClock", //C12 C13
+            "com.oplus.systemui.statusbar.widget.StatClock" //C14
+        ).hook {
             injectMember {
                 method {
                     if (SDK == A11) name = "onConfigChanged"
