@@ -3,11 +3,6 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.14_beta
-
-- [更改] 强制分屏禁止在ColorOS12上使用
-- [优化] 允许不受信任的触摸Hook
-
 ### 1.0.13
 
 - [适配] 时钟组件红一 v14.0.4(e6df2db)
@@ -59,6 +54,9 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 电池-高耗电通知v1.2.1(20f0b99)
 - [适配] 电池-自启数量限制v1.2.1(20f0b99)
 - [适配] 电池-移除高温限制v1.2.1(20f0b99)
+- [更改] 强制分屏禁止在ColorOS12上使用
+- [优化] 允许不受信任的触摸Hook
+- [修复] 恢复OTA更新校验失效
 - [Fix] Clock component Red One v14.0.4(e6df2db)
 - [Add] Remove the blacklist of apps that are forbidden to uninstall
 - [Fix] Some system gestures and somatosensory entry problems
@@ -108,6 +106,9 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [Fix] Battery - High battery consumption notification v1.2.1(20f0b99)
 - [Fix] Battery - auto-start quantity limit v1.2.1(20f0b99)
 - [Fix] battery - remove high temperature limit v1.2.1 (20f0b99)
+- [Change] Forced split screen disabled on ColorOS12
+- [Optimize] Allow untrusted touch hook
+- [Fix] Restoring OTA update checksum invalid
 
 ### 1.0.12
 

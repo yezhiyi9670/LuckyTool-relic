@@ -47,6 +47,7 @@ import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.restartScopes
+import com.luckyzyx.luckytool.utils.toast
 
 class Android : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -2115,6 +2116,7 @@ class Application : ModulePreferenceFragment() {
                     isIconSpaceReserved = false
                 })
             }
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.APPRelatedList)
                 key = "APPRelatedList"
@@ -2150,6 +2152,7 @@ class Application : ModulePreferenceFragment() {
                     true
                 }
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppInstallationRelated)
                 summary = getString(R.string.PackageInstaller_summary)
@@ -2211,6 +2214,7 @@ class Application : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.ApplyOtherRestrictions)
                 key = "ApplyOtherRestrictions"
@@ -2239,6 +2243,7 @@ class Application : ModulePreferenceFragment() {
                 title = getString(R.string.force_all_apps_support_split_screen)
                 key = "force_all_apps_support_split_screen"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("android").put(key, newValue as Boolean)
@@ -3168,8 +3173,9 @@ class OplusOta : ModulePreferenceFragment() {
                 isPersistent = false
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    val value = if (newValue as Boolean) "" else "\"\""
+                    val value = if (newValue as Boolean) "enforcing" else "\"\""
                     val command = "resetprop ro.boot.veritymode $value"
+                    context.toast(command)
                     val exec = ShellUtils.execCommand(command, true, true)
                     if (exec.result == 0) {
                         summary = getString(R.string.restore_ota_update_verity_summary, value)
