@@ -3,6 +3,11 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.14_beta
+
+- [更改] 强制分屏禁止在ColorOS12上使用
+- [优化] 允许不受信任的触摸Hook
+
 ### 1.0.13
 
 - [适配] 时钟组件红一 v14.0.4(e6df2db)

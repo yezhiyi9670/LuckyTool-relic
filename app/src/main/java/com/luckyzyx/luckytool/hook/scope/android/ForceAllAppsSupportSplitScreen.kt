@@ -7,18 +7,18 @@ import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
+@Suppress("UNUSED_VARIABLE")
 object ForceAllAppsSupportSplitScreen : YukiBaseHooker() {
-    @Suppress("UNUSED_VARIABLE")
     override fun onHook() {
         var isEnable = prefs(ModulePrefs).getBoolean("force_all_apps_support_split_screen", false)
         dataChannel.wait<Boolean>("force_all_apps_support_split_screen") { isEnable = it }
+        if (SDK < A13) return
         //Source OplusSplitScreenManagerService
         findClass("com.android.server.wm.OplusSplitScreenManagerService").hook {
             injectMember {
                 method { name = "isInBlackList" }
-                if (SDK < A13 && isEnable) replaceToFalse()
+                if (isEnable) replaceToFalse()
             }
-            if (SDK < A13) return@hook
             injectMember {
                 method { name = "supportsSplitScreenByVendorPolicy";paramCount = 3 }
                 beforeHook {
