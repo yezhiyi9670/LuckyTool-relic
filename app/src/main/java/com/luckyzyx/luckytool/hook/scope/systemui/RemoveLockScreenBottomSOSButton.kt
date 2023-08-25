@@ -1,20 +1,23 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
-import android.widget.Button
+import android.view.View
 import androidx.core.view.isVisible
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
 object RemoveLockScreenBottomSOSButton : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusEmergencyButtonControllExImpl
-        findClass("com.oplus.systemui.keyguard.OplusEmergencyButtonControllExImpl").hook {
+        VariousClass(
+            "com.oplus.systemui.keyguard.OplusEmergencyButtonControllExImpl", //C13
+            "com.oplus.keyguard.OplusEmergencyButtonExImpl" //C14
+        ).hook {
             injectMember {
-                method {
-                    name = "updateClickState"
-                    paramCount = 1
-                }
-                afterHook {
-                    field { name = "mEmergencyButton" }.get(instance).cast<Button>()?.isVisible = false
+                method { name = "shouldUpdateEmergencyCallButton" }
+                beforeHook {
+                    field { name = "mEmergencyButton" }.get(instance).cast<View>()
+                        ?.isVisible = false
+                    resultTrue()
                 }
             }
         }
