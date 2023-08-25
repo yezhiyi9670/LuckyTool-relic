@@ -9,10 +9,13 @@ object UnlockDefaultDesktopLimit : YukiBaseHooker() {
     override fun onHook() {
         //Source FeatureOption -> oplus.software.defaultapp.remove_force_launcher
         searchClass {
-            from("com.oplusos.permissioncontroller.permission", "w4")
-            field { type = BooleanType }.count(3)
+            from(
+                "com.oplusos.permissioncontroller.permission",
+                "w4", "o6"
+            )
+            field { type = BooleanType }.count(3..4)
             method { param(ContextClass);returnType = UnitType }.count(1)
-            method { emptyParam();returnType = BooleanType }.count(4..5)
+            method { emptyParam();returnType = BooleanType }.count(4..6)
         }.get()?.hook {
             injectMember {
                 method { param(ContextClass) }
