@@ -24,7 +24,7 @@ object HookBatteryNotify : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.common.notification", "com.oplus.a.g",
-                "c4", "a4", "i5", "g4", "z3", "y5", "f6"
+                "c4", "a4", "i5", "g4", "z3", "y5", "f6", "b6"
             ).absolute()
             constructor { paramCount = 1 }.count(1)
             field { type = ContextClass }.count(1)

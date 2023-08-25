@@ -20,7 +20,7 @@ object BatteryFeatureProvider : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.coreapp.appfeature", "com.oplus.b.a",
-                "k4", "i4", "r5", "o4", "h4", "c6", "k6"
+                "k4", "i4", "r5", "o4", "h4", "c6", "k6", "g6"
             ).absolute()
             method {
 //                name = "isFeatureSupport"
