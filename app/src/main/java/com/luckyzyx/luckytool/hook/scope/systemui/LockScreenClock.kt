@@ -68,7 +68,7 @@ object LockScreenClock : YukiBaseHooker() {
             }
         }
         val weatherInfoClazz =
-            if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo"
+            if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo".toClass()
             else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$WeatherInfo".toClass()
         //Source DualClockView kgd_dual_clock
         VariousClass(
@@ -76,7 +76,7 @@ object LockScreenClock : YukiBaseHooker() {
             "com.oplus.systemui.shared.clocks.DualClockView" //C14
         ).hook {
             injectMember {
-                method { param(weatherInfoClazz) }.all()
+                method { param { it.contains(weatherInfoClazz) } }.all()
                 afterHook {
                     if (!dualClock) return@afterHook
                     val type: String = method.name.let {
@@ -137,7 +137,7 @@ object LockScreenClock : YukiBaseHooker() {
     private object HookRedDuanClock : YukiBaseHooker() {
         override fun onHook() {
             val timeInfoClazz =
-                if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo"
+                if (SDK >= A14) "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
                 else "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper\$TimeInfo".toClass()
             //Source RedHorizontalDualClockView kgd_red_horizontal_dual_clock
             VariousClass(
@@ -145,10 +145,7 @@ object LockScreenClock : YukiBaseHooker() {
                 "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
             ).hook {
                 injectMember {
-                    method {
-                        param { it[2] == timeInfoClazz }
-                        paramCount = 3
-                    }.all()
+                    method { param { it.contains(timeInfoClazz) };paramCount = 3 }.all()
                     afterHook {
                         if (!dualClock) return@afterHook
                         val type: String = method.name.let {

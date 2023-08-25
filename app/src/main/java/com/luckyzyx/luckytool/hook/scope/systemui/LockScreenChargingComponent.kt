@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
+import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.getOSVersionCode
 
@@ -40,7 +41,7 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             //Source ChargingLevelAndLogoView
             findClass("com.oplus.charge.view.ChargeLevelAndLogoView").hook {
                 injectMember {
-                    method { name = "setTypeface" }
+                    method { param(TypefaceClass) }
                     afterHook {
                         if (!userTypeface) return@afterHook
                         instance<LinearLayout>().allViews.forEach {
