@@ -3,6 +3,11 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.15_beta
+
+- [适配] 桌面时钟组件 v14.0.6(3368efe)
+- [适配] 设置FeatureUtils v13.0.5(5630e9d)
+
 ### 1.0.14
 
 - [修复] Android14系统界面黑屏崩溃

@@ -1,3 +1,4 @@
+import com.github.megatronking.stringfog.plugin.StringFogExtension
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -10,6 +11,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.0"
     id("com.google.devtools.ksp") version "1.9.0-1.0.13"
     id("com.joom.paranoid")
+    id("stringfog")
 }
 
 android {
@@ -33,7 +35,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk = 28
         versionCode = getVersionCode()
-        versionName = "1.0.14"
+        versionName = "1.0.15_beta"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
@@ -140,6 +142,17 @@ dependencies {
     val appCenterSdkVersion = "5.0.2"
     implementation("com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}")
     implementation("com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}")
+
+    //StringFog
+    compileOnly("com.github.megatronking.stringfog:xor:5.0.0")
+}
+
+configure<StringFogExtension> {
+    implementation = "com.github.megatronking.stringfog.xor.StringFogImpl"
+    enable = false
+//    fogPackages = arrayOf("com.luckyzyx.luckytool")
+    kg = com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator()
+    mode = com.github.megatronking.stringfog.plugin.StringFogMode.base64
 }
 
 fun getVersionCode(): Int {

@@ -3368,6 +3368,7 @@ class OplusGesture : ModulePreferenceFragment() {
                 isVisible = getOSVersionCode >= 27
                 isIconSpaceReserved = false
             })
+
             if (SDK >= A13) {
                 addPreference(PreferenceCategory(context).apply {
                     title = getString(R.string.AonGesture)
@@ -3421,6 +3422,7 @@ class OplusGesture : ModulePreferenceFragment() {
                     }
                 })
             }
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.FullScreenGestureRelated)
                 key = "FullScreenGestureRelated"
@@ -3444,6 +3446,7 @@ class OplusGesture : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.CustomSideSliderIcon)
                 key = "CustomSideSliderIcon"

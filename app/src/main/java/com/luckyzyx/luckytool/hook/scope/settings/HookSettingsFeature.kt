@@ -29,7 +29,8 @@ object HookSettingsFeature : YukiBaseHooker() {
             //Source SysFeatureUtils
             searchClass {
                 from(
-                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km"
+                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
+                    "ri"
                 ).absolute()
                 field { type = BooleanClass }.count { it > 30 }
                 method { emptyParam();returnType = BooleanType }.count { it > 30 }
@@ -56,7 +57,8 @@ object HookSettingsFeature : YukiBaseHooker() {
             //Source ExpUstUtils
             searchClass {
                 from(
-                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km"
+                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
+                    "ri"
                 ).absolute()
                 field().count(1)
                 method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
@@ -94,7 +96,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             val processorDetail = prefs(ModulePrefs).getString("set_processor_click_page", "0")
             //Source AppFeatureProviderUtils
             searchClass {
-                from("ma", "rb", "yb", "sb", "la", "ub", "kf", "gf").absolute()
+                from("ma", "rb", "yb", "sb", "la", "ub", "kf", "gf", "zb").absolute()
                 method {
                     param(ContentResolverClass, StringClass, BooleanType)
                     returnType = BooleanType
