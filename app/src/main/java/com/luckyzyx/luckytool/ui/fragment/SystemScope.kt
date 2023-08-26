@@ -21,6 +21,7 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
@@ -2103,7 +2104,7 @@ class Application : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            if (SDK >= A13) {
+            if (SDK < A11) {
                 addPreference(PreferenceCategory(context).apply {
                     title = getString(R.string.AppStartupRelated)
                     key = "AppStartupRelated"
