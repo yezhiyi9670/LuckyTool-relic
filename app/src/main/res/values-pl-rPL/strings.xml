@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
     <string name="remove_notification_manager_limit">Remove notification manager limit</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
+    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony</string>
     <string name="StatusBarIcon_summary">Usuń ikony z pasku stanu</string>

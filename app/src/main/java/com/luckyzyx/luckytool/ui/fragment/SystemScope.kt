@@ -771,7 +771,30 @@ class StatusBarNotify : ModulePreferenceFragment() {
                 key = "remove_small_window_reply_whitelist"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, _ ->
+                    (activity as MainActivity).restart()
+                    true
+                }
             })
+            if (context.getBoolean(ModulePrefs, "remove_small_window_reply_whitelist")) {
+                addPreference(EditTextPreference(context).apply {
+                    title = getString(R.string.set_small_window_reply_blacklist)
+                    dialogTitle = title
+                    summary = context.getString(
+                        ModulePrefs, "set_small_window_reply_blacklist", "None"
+                    )
+                    if (summary.isNullOrBlank()) summary = "None"
+                    dialogMessage = getString(R.string.set_small_window_reply_blacklist_message)
+                    key = "set_small_window_reply_blacklist"
+                    setDefaultValue("None")
+                    isIconSpaceReserved = false
+                    setOnPreferenceChangeListener { _, newValue ->
+                        summary = if (newValue == "") "None" else newValue as String
+                        context.dataChannel("com.android.systemui").put(key, newValue)
+                        true
+                    }
+                })
+            }
         }
     }
 
@@ -2936,7 +2959,7 @@ class OplusGames : ModulePreferenceFragment() {
                 summary = context.getString(
                     ModulePrefs, "custom_media_player_support", "None"
                 )
-                if (summary == "") summary = "None"
+                if (summary.isNullOrBlank()) summary = "None"
                 dialogMessage = getString(R.string.custom_media_player_support_message)
                 key = "custom_media_player_support"
                 setDefaultValue("None")
@@ -3391,7 +3414,7 @@ class OplusGesture : ModulePreferenceFragment() {
                     summary = context.getString(
                         ModulePrefs, "custom_aon_gesture_scroll_page_whitelist", "None"
                     )
-                    if (summary == "") summary = "None"
+                    if (summary.isNullOrBlank()) summary = "None"
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_scroll_page_whitelist"
                     setDefaultValue("None")
@@ -3409,7 +3432,7 @@ class OplusGesture : ModulePreferenceFragment() {
                     summary = context.getString(
                         ModulePrefs, "custom_aon_gesture_video_whitelist", "None"
                     )
-                    if (summary == "") summary = "None"
+                    if (summary.isNullOrBlank()) summary = "None"
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_video_whitelist"
                     setDefaultValue("None")

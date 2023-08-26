@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">長押し通知を変更可能にする</string>
     <string name="remove_notification_manager_limit">通知マネージャーの制限を削除する</string>
     <string name="remove_small_window_reply_whitelist">スモールウィンドウの返信ホワイトリストを無効化</string>
+    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>

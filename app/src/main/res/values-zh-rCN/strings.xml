@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">允许长按通知可修改</string>
     <string name="remove_notification_manager_limit">移除通知管理限制</string>
     <string name="remove_small_window_reply_whitelist">移除浮窗回复白名单</string>
+    <string name="set_small_window_reply_blacklist">设置浮窗回复黑名单</string>
+    <string name="set_small_window_reply_blacklist_message">填写需要添加到黑名单的包名，每行只能填写一个包名</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>

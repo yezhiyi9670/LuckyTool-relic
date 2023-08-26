@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Разрешить изменять уведомления о длительном нажатии</string>
     <string name="remove_notification_manager_limit">Удалить лимит диспетчера уведомлений</string>
     <string name="remove_small_window_reply_whitelist">Удалить белый список ответов в маленьком окне</string>
+    <string name="set_small_window_reply_blacklist">Установить черный список ответов в маленьком окне</string>
+    <string name="set_small_window_reply_blacklist_message">Заполните имя пакета, который необходимо добавить в черный список, в каждой строке можно заполнить только одно имя пакета</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -471,7 +473,7 @@
     <string name="enable_show_never_timeout_summary">После включения вы можете увидеть больше опций в настройках</string>
     <string name="enable_statusbar_clock_format">Включить формат часов в строке состояния</string>
     <string name="enable_statusbar_clock_format_summary">Включите некоторые системы, которые не поддерживают возможность изменения формата часов в строке состояния</string>
-    <string name="set_processor_click_page">Установите процессор, чтобы перейти к странице</string>
+    <string name="set_processor_click_page">Выберите CPU, чтобы открыть меню в \"Об устройстве\"</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>

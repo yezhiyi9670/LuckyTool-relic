@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Cho phép sửa đổi thông báo nhấn lâu</string>
     <string name="remove_notification_manager_limit">Xóa giới hạn trình quản lý thông báo</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
+    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Biểu tượng thanh trạng thái</string>
     <string name="StatusBarIcon_summary">Các biểu tượng thanh trạng thái</string>

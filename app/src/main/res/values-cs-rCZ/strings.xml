@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Povolit upravovat oznámení dlouhým stiskem</string>
     <string name="remove_notification_manager_limit">Odstranit limit správce oznámení</string>
     <string name="remove_small_window_reply_whitelist">Odstranění whitelist aplikací umožňující odpovědí v malém okně</string>
+    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>

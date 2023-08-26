@@ -78,3 +78,8 @@ fun formatDataSize(str: String): String {
  * 截取字符串中的数字
  */
 val CharSequence.filterNumber get() = this.replace("\\D".toRegex(), "")
+
+/**
+ * 替换字符串空格
+ */
+val String.replaceSpace get() = this.replace(" ","")

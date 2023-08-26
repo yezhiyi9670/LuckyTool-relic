@@ -8,6 +8,8 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 桌面时钟组件 v14.0.6(3368efe)
 - [适配] 设置FeatureUtils v13.0.5(5630e9d)
 - [移除] 关闭APP启动遮罩功能
+- [适配] 截屏-v14.0.2(a85f365)
+- [添加] 设置浮窗回复黑名单
 
 ### 1.0.14
 

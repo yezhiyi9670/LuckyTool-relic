@@ -168,6 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Дозволити змінювати повідомлення про тривале натискання</string>
     <string name="remove_notification_manager_limit">Видалити ліміт диспетчера повідомлень</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
+    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>
