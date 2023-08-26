@@ -7,9 +7,12 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 
 object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
     override fun onHook() {
-        //Source StitchLimitUtils -> scroll_configs_max_captured_pages / scroll_configs_max_captured_pixels
+        //Source ScrollCaptureConfigs -> scroll_configs_max_captured_pages / scroll_configs_max_captured_pixels
+        //Source StitchLimitUtils -> isCapturedPagesReachLimit / trimToStitchLimit
         searchClass {
-            from("ac", "yb", "zb", "hb", "ib", "bc", "mb", "xb").absolute()
+            from(
+                "ac", "yb", "zb", "hb", "ib", "bc", "mb", "xb", "xa"
+            ).absolute()
             field().none()
             method { returnType = IntType }.count(6)
             method { returnType = BooleanType }.count(2)
