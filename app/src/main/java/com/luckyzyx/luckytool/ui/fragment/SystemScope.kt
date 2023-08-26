@@ -47,6 +47,7 @@ import com.luckyzyx.luckytool.utils.jumpPictorial
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.putString
+import com.luckyzyx.luckytool.utils.replaceBlankLine
 import com.luckyzyx.luckytool.utils.restartScopes
 import com.luckyzyx.luckytool.utils.toast
 
@@ -788,9 +789,13 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     key = "set_small_window_reply_blacklist"
                     setDefaultValue("None")
                     isIconSpaceReserved = false
+                    setOnBindEditTextListener {
+                        it.setText((summary as String).replaceBlankLine)
+                    }
                     setOnPreferenceChangeListener { _, newValue ->
-                        summary = if (newValue == "") "None" else newValue as String
-                        context.dataChannel("com.android.systemui").put(key, newValue)
+                        val format = (newValue as String).replaceBlankLine
+                        summary = if (format == "") "None" else format
+                        context.dataChannel("com.android.systemui").put(key, format)
                         true
                     }
                 })
@@ -2765,7 +2770,7 @@ class Battery : ModulePreferenceFragment() {
                         true
                     }
                 })
-                if (context.getBoolean(ModulePrefs, "fix_battery_health_data_display", false)) {
+                if (context.getBoolean(ModulePrefs, "fix_battery_health_data_display")) {
                     addPreference(EditTextPreference(context).apply {
                         title = "自定义电池设计容量"
                         dialogTitle = title
@@ -2964,8 +2969,12 @@ class OplusGames : ModulePreferenceFragment() {
                 key = "custom_media_player_support"
                 setDefaultValue("None")
                 isIconSpaceReserved = false
+                setOnBindEditTextListener {
+                    it.setText((summary as String).replaceBlankLine)
+                }
                 setOnPreferenceChangeListener { _, newValue ->
-                    summary = if (newValue == "") "None" else newValue as String
+                    val format = (newValue as String).replaceBlankLine
+                    summary = if (format == "") "None" else format
                     true
                 }
             })
@@ -3418,11 +3427,14 @@ class OplusGesture : ModulePreferenceFragment() {
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_scroll_page_whitelist"
                     setDefaultValue("None")
-                    isEnabled =
-                        context.checkPackName("com.oplus.gesture") && context.checkPackName("com.aiunit.aon")
+                    isEnabled = context.checkPackName("com.aiunit.aon")
                     isIconSpaceReserved = false
+                    setOnBindEditTextListener {
+                        it.setText((summary as String).replaceBlankLine)
+                    }
                     setOnPreferenceChangeListener { _, newValue ->
-                        summary = if (newValue == "") "None" else newValue as String
+                        val format = (newValue as String).replaceBlankLine
+                        summary = if (format == "") "None" else format
                         true
                     }
                 })
@@ -3436,12 +3448,15 @@ class OplusGesture : ModulePreferenceFragment() {
                     dialogMessage = getString(R.string.custom_aon_gesture_whitelist_tips)
                     key = "custom_aon_gesture_video_whitelist"
                     setDefaultValue("None")
-                    isEnabled =
-                        context.checkPackName("com.oplus.gesture") && context.checkPackName("com.aiunit.aon")
+                    isEnabled = context.checkPackName("com.aiunit.aon")
                     isVisible = false //SDK >= A13
                     isIconSpaceReserved = false
+                    setOnBindEditTextListener {
+                        it.setText((summary as String).replaceBlankLine)
+                    }
                     setOnPreferenceChangeListener { _, newValue ->
-                        summary = if (newValue == "") "None" else newValue as String
+                        val format = (newValue as String).replaceBlankLine
+                        summary = if (format == "") "None" else format
                         true
                     }
                 })

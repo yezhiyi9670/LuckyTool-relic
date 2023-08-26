@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.replaceSpace
 
 object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
     override fun onHook() {
@@ -40,9 +41,9 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     if (field.isEmpty()) return@afterHook
                     result = field.toMutableList().apply {
                         if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
-                            if (scrollList.contains("\n")) {
-                                scrollList.replace(" ", "").split("\n")
-                                    .forEach { if (it.isNotBlank()) add(it) }
+                            val listString = scrollList.replaceSpace
+                            if (listString.contains("\n")) {
+                                listString.split("\n").forEach { if (it.isNotBlank()) add(it) }
                             } else add(scrollList)
                         }
                     }
@@ -57,9 +58,10 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                 afterHook {
                     val list = result<List<String>>() ?: return@afterHook
                     result = list.toMutableList().apply {
-                        if (scrollList.contains("\n")) {
-                            scrollList.replace(" ", "").split("\n")
-                                .forEach { if (it.isNotBlank()) add(it) }
+                        val listString = scrollList.replaceSpace
+
+                        if (listString.contains("\n")) {
+                            listString.split("\n").forEach { if (it.isNotBlank()) add(it) }
                         } else add(scrollList)
                     }
                 }

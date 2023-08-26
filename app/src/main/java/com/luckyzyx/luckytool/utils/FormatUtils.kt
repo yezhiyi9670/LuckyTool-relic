@@ -80,6 +80,24 @@ fun formatDataSize(str: String): String {
 val CharSequence.filterNumber get() = this.replace("\\D".toRegex(), "")
 
 /**
- * 替换字符串空格
+ * 格式化字符串空格
  */
-val String.replaceSpace get() = this.replace(" ","")
+val String.replaceSpace get() = this.replace(" ", "")
+
+/**
+ * 格式化空白行
+ */
+val String.replaceBlankLine: String
+    get() {
+        val listString = this.replaceSpace
+        if (listString.contains("\n").not()) return listString
+        val formatList = listString.split("\n").toMutableList().apply {
+            removeIf { it.isBlank() }
+        }
+        var finalString = ""
+        formatList.forEachIndexed { index, s ->
+            finalString += s
+            if (formatList.lastIndex != index) finalString += "\n"
+        }
+        return finalString
+    }

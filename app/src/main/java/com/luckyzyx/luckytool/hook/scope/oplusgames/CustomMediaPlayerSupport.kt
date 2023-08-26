@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.replaceSpace
 
 object CustomMediaPlayerSupport : YukiBaseHooker() {
     override fun onHook() {
@@ -19,9 +20,9 @@ object CustomMediaPlayerSupport : YukiBaseHooker() {
                     if (customList.isBlank() || customList == "None") return@afterHook
                     val list = result<List<String>>() ?: return@afterHook
                     result = list.toMutableList().apply {
-                        if (customList.contains("\n")) {
-                            customList.replace(" ", "").split("\n")
-                                .forEach { if (it.isNotBlank()) add(it) }
+                        val listString = customList.replaceSpace
+                        if (listString.contains("\n")) {
+                            listString.split("\n").forEach { if (it.isNotBlank()) add(it) }
                         } else add(customList)
                     }
                 }
