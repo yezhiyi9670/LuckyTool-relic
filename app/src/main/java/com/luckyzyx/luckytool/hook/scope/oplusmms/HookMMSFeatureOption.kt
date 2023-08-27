@@ -14,10 +14,13 @@ object HookMMSFeatureOption : YukiBaseHooker() {
         val removeVerifyCode =
             prefs(ModulePrefs).getBoolean("remove_verification_code_floating_window", false)
 
-        //Source FeatureOption
+        //Source FeatureOption.java
         searchClass {
             //com.oplus.common -> C12
-            from("com.oplus.mms.foundation.libcompat")
+            from(
+                "com.oplus.mms.foundation.libcompat",
+                "zd"
+            )
             field { type = BooleanType }.count { it > 40 }
             field { type = StringArrayClass }.count(3)
             method { param(StringClass);returnType = BooleanType }.count(1)
