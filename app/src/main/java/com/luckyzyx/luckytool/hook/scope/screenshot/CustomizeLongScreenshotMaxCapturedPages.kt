@@ -11,7 +11,7 @@ object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
         //Source StitchLimitUtils -> isCapturedPagesReachLimit / trimToStitchLimit
         searchClass {
             from(
-                "ac", "yb", "zb", "hb", "ib", "bc", "mb", "xb", "xa"
+                "ac", "yb", "zb", "hb", "ib", "bc", "mb", "xb", "xa", "kb"
             ).absolute()
             field().none()
             method { returnType = IntType }.count(6)

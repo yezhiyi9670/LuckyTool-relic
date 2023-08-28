@@ -19,7 +19,7 @@ object HookMMSFeatureOption : YukiBaseHooker() {
             //com.oplus.common -> C12
             from(
                 "com.oplus.mms.foundation.libcompat",
-                "zd"
+                "zd","ie"
             )
             field { type = BooleanType }.count { it > 40 }
             field { type = StringArrayClass }.count(3)
