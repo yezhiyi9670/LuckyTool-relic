@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.android.ADBInstallConfirm
 import com.luckyzyx.luckytool.hook.scope.android.AllowUntrustedTouch
+import com.luckyzyx.luckytool.hook.scope.android.AppSplashScreen
 import com.luckyzyx.luckytool.hook.scope.android.BatteryOptimizationWhitelist
 import com.luckyzyx.luckytool.hook.scope.android.DarkModeService
 import com.luckyzyx.luckytool.hook.scope.android.DisableDynamicRefreshRate
@@ -58,7 +59,7 @@ object HookAndroid : YukiBaseHooker() {
         loadHooker(RemoveSystemScreenshotDelay)
 
         //移除遮罩Splash Screen
-//        loadHooker(AppSplashScreen)
+        loadHooker(AppSplashScreen)
 
         //禁用FLAG_SECURE
         loadHooker(DisableFlagSecure)
