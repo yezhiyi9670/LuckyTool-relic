@@ -18,6 +18,7 @@ import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -124,7 +125,7 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
             public void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
                 if (prefs.getBoolean("digestCreak", true)) {
-                    if (!prefs.getBoolean("UsePreSig", false)) {
+                    if (!prefs.getBoolean("UsePreSig", true)) {
                         final Object block = constructor.newInstance(param.args[0]);
                         Object[] infos = (Object[]) XposedHelpers.callMethod(block, "getSignerInfos");
                         Object info = infos[0];
@@ -150,7 +151,7 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
                     if (throwable != null || parseErr != null) {
                         Signature[] lastSigs = null;
                         try {
-                            if (prefs.getBoolean("UsePreSig", false)) {
+                            if (prefs.getBoolean("UsePreSig", true)) {
                                 PackageManager PM = AndroidAppHelper.currentApplication().getPackageManager();
                                 if (PM == null) {
                                     XposedBridge.log("E: " + BuildConfig.APPLICATION_ID + " Cannot get the Package Manager... Are you using MiUI?");
@@ -260,6 +261,30 @@ public class CorePatchForR extends XposedHelper implements IXposedHookLoadPackag
                     }
                 }
             }
+        }
+        
+        var keySetManagerClass = findClass("com.android.server.pm.KeySetManagerService", loadPackageParam.classLoader);
+        if (keySetManagerClass != null) {
+            var shouldBypass = new ThreadLocal<Boolean>();
+            hookAllMethods(keySetManagerClass, "shouldCheckUpgradeKeySetLocked", new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    if (prefs.getBoolean("digestCreak", true) && Arrays.stream(Thread.currentThread().getStackTrace()).anyMatch((o) -> "preparePackageLI".equals(o.getMethodName()))) {
+                        shouldBypass.set(true);
+                        param.setResult(true);
+                    } else {
+                        shouldBypass.set(false);
+                    }
+                }
+            });
+            hookAllMethods(keySetManagerClass, "checkUpgradeKeySetLocked", new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                    if (prefs.getBoolean("digestCreak", true) && shouldBypass.get()) {
+                        param.setResult(true);
+                    }
+                }
+            });
         }
     }
     

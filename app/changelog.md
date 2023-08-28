@@ -14,6 +14,8 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [更改] 主页捐赠按钮跳转链接
 - [适配] 桌面时钟组件 v14.1.0(775bc1d)
 - [适配] 移除短信验证码弹窗 v14.999.0(a436243)
+- [修复] 同步上游CorePatch-修复Apk签名验证
+- [更改] CorePatch默认启用安装时使用已安装APP的签名
 
 ### 1.0.14
 
