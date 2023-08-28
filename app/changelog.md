@@ -16,6 +16,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 移除短信验证码弹窗 v14.999.0(a436243)
 - [修复] 同步上游CorePatch-修复Apk签名验证
 - [更改] CorePatch默认启用安装时使用已安装APP的签名
+- [更改] 回滚复制悬浮窗的系统判定
 
 ### 1.0.14
 

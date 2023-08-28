@@ -9,13 +9,10 @@ object DisableDuplicateFloatingWindow : YukiBaseHooker() {
         //Source ClipboardOverlayController
         findClass("com.android.systemui.clipboardoverlay.ClipboardOverlayController").hook {
             injectMember {
-                method {
-                    name = "showEditableText"
-                    paramCount = 2
-                }
+                method { name = "showSinglePreview" }
                 afterHook {
-                    (field { name = "mClipboardPreview" }.get(instance)
-                        .cast<View>()?.parent as View).isVisible = false
+                    args().first().cast<View>()?.isVisible = false
+                    field { name = "mView" }.get(instance).cast<View>()?.isVisible = false
                 }
             }
         }
