@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -18,6 +19,7 @@ import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.prefs
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
+import com.luckyzyx.luckytool.ui.fragment.HomeFragment
 import com.luckyzyx.luckytool.utils.*
 import kotlin.system.exitProcess
 
@@ -29,6 +31,8 @@ open class MainActivity : AppCompatActivity() {
     private val EXTRA_SAVED_INSTANCE_STATE = KEY_PREFIX + "SAVED_INSTANCE_STATE"
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navHostFragment: NavHostFragment
+    private lateinit var navController: NavController
 
     private fun newIntent(context: Context): Intent {
         return Intent(context, MainActivity::class.java)
@@ -80,12 +84,13 @@ open class MainActivity : AppCompatActivity() {
             return
         }
         if (getOSVersionCode < 23) {
+            val current = navController.currentDestination.toString()
             MaterialAlertDialogBuilder(this, dialogCentered).apply {
                 setTitle(getString(R.string.unsupported_os))
                 setMessage(getString(R.string.unsupported_os_summary))
                 setNeutralButton(getString(R.string.common_words_ignore), null)
                 setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
-                show()
+                if (current.contains(HomeFragment::class.java.simpleName)) show()
             }
         }
         putBoolean(SettingsPrefs, "boot_complete", ckqcbs())
@@ -99,9 +104,9 @@ open class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigationFragment() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
-        val navController = navHostFragment.navController
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)
+                as NavHostFragment
+        navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.nav_other,
             R.id.nav_function,

@@ -68,9 +68,9 @@
     <string name="participate_translation">Participă în traducerile modulelor</string>
     <string name="participate_translation_summary">Du-te la Crowdin pentru a contribui cu traducerea</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Modulul nu a fost activat.\nVă rugăm să utilizaţi cea mai recentă versiune de LSPosed pentru a verifica domeniul de aplicare al modulului.\n Dacă ați completat cele de mai sus, puteți face clic pe OK pentru a ieși din aplicație și pentru a deschide modulul</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed v1.9.0 and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Sistem neacceptat</string>
-    <string name="unsupported_os_summary">Deoarece acest mod este disponibil numai pentru Color OS 12+, cele mai multe funcții nu vor merge pe acest sistem! Asiguraţi-vă că luaţi măsuri de siguranţă!</string>
+    <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
     <string name="no_root">Fără permisiune root</string>
     <string name="no_root_summary">Permisiunea root nu este detectată, unele funcții nu vor fi disponibile!</string>
     <!-- Menu -->

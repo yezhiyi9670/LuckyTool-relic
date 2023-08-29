@@ -115,6 +115,8 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                             "cool_back_clip_blacklist" -> if (xMode) resultTrue()
                             //OnePlus特性
                             "one_plus_characteristic" -> if (oneplusCharacteristic) resultTrue()
+                            //游戏滤镜
+//                            "game_filter_config" -> resultTrue()
                         }
                     }
                 }
@@ -137,6 +139,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                     }
                     afterHook {
                         when (args().first().string()) {
+                            //游戏变声
                             "magic_voice_config" -> if (magicVoice) resultTrue()
                         }
                     }
@@ -180,6 +183,8 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                             "super_resolution_config" -> if (superResolution) resultTrue()
                             //全超分辨率云控 -> isSupportFullSupperResolution
                             "super_resolution_config_full" -> if (superResolution) resultTrue()
+                            //游戏滤镜
+//                            "game_filter_config" -> resultTrue()
                         }
                     }
                 }

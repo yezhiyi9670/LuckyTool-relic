@@ -68,9 +68,9 @@
     <string name="participate_translation">参与模块翻译</string>
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">检测到模块未激活\n请使用最新版LSPosed勾选模块的作用域!\n若上述已经完成, 可点击确定退出APP, 然后打开模块</string>
+    <string name="unsupported_xposed">检测到模块未激活\n请使用LSPosed v1.9.0及以上版本勾选模块作用域\n如果已完成此步骤，可尝试点击“确定”退出并重新打开模块</string>
     <string name="unsupported_os">不受支持的系统</string>
-    <string name="unsupported_os_summary">因为此模块仅适用于ColorOS 12+，所以在此系统上绝大多数功能将无法使用！请务必做好救砖措施！</string>
+    <string name="unsupported_os_summary">由于该模块仅支持ColorOS 12及以上系统，请务必做好安全措施！</string>
     <string name="no_root">无 Root 权限</string>
     <string name="no_root_summary">未检测到Root权限，部分功能将无法使用！</string>
     <!-- Menu -->

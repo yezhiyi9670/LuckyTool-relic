@@ -44,6 +44,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                             //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
                             "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
                             "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
+                            //Source
+                            "oplus.software.display.rgb_ball_support" -> {}
                         }
                     }
                 }

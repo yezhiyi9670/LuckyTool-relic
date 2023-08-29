@@ -68,9 +68,9 @@
     <string name="participate_translation">Взяти участь у перекладі модуля</string>
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Модуль не активовано.\nБудь ласка, використовуйте останню версію LS Posed.\n Якщо ви виконали все вищезазначене, ви можете натиснути OK, щоб вийти з програми та відкрити модуль</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed v1.9.0 and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Непідтримувана система</string>
-    <string name="unsupported_os_summary">Оскільки цей мод доступний лише для Color OS 12+, більшість функцій не працюватимуть у цій системі! Будь ласка, обов\'язково дотримуйтесь заходів безпеки!</string>
+    <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
     <string name="no_root">Немає root-прав</string>
     <string name="no_root_summary">Рут-доступ не виявлено, деякі функції будуть недоступні!</string>
     <!-- Menu -->

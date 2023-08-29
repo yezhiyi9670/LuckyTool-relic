@@ -68,9 +68,9 @@
     <string name="participate_translation">Účast na překladu modulu</string>
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte nejnovější verzi LS Posed ke kontrole rozsahu modulu.\n Pokud jste dokončili výše uvedené, můžete kliknout na tlačítko OK pro ukončení aplikace a otevření modulu</string>
+    <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte LSPosed v1.9.0 nebo novější pro kontrolu rozsahu modulů.\nPokud jste tento krok dokončili, můžete zkusit ťuknout na tlačítko OK, abyste znovu načetli modul.</string>
     <string name="unsupported_os">Nepodporovaný systém</string>
-    <string name="unsupported_os_summary">Vzhledem k tomu, že tento mod je dostupný pouze pro Color OS 12+, většina funkcí nebude fungovat na tomto systému! Nezapomeňte prosím vzít v potaz bezpečnostní opatření!</string>
+    <string name="unsupported_os_summary">Protože modul podporuje pouze ColorOS 12 a novější, nezapomeňte přijmout bezpečnostní opatření!</string>
     <string name="no_root">Nemáte oprávnění root</string>
     <string name="no_root_summary">Nebylo zjištěno root oprávnění, některé funkce nebudou k dispozici!</string>
     <!-- Menu -->
@@ -168,8 +168,8 @@
     <string name="allow_long_press_notification_modifiable">Povolit upravovat oznámení dlouhým stiskem</string>
     <string name="remove_notification_manager_limit">Odstranit limit správce oznámení</string>
     <string name="remove_small_window_reply_whitelist">Odstranění whitelist aplikací umožňující odpovědí v malém okně</string>
-    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
-    <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
+    <string name="set_small_window_reply_blacklist">Nastavit černou listinu pro odpovědi v malém okně</string>
+    <string name="set_small_window_reply_blacklist_message">Vyplňte název balíčku, který má být přidán na černou listinu, na každém řádku může být vyplněn pouze jeden název balíčku</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>

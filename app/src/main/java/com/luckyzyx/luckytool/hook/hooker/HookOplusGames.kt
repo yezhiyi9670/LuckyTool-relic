@@ -83,32 +83,24 @@ object HookOplusGames : YukiBaseHooker() {
 //                        returnType = BooleanType
 //                    }
 //                    afterHook {
-//                        val str = args().first().string()
-//                        loggerD(msg = "str -> $str -> $result")
+//                        val key = args().first().string()
+//                        loggerD(msg = "isSupportCpuFreqCtrlPanel ($key) -> $result")
 //                        resultTrue()
 //                    }
 //                }
 //            }
 
-//            val clazz =
-//                "com.coloros.gamespaceui.config.ServerConfigManager".toClass(initialize = true).classes[0].simpleName
+//            val clazz = "com.coloros.gamespaceui.config.ServerConfigManager"
+//                .toClass(initialize = true).classes[0].simpleName
 //            findClass("com.coloros.gamespaceui.config.ServerConfigManager\$$clazz").hook {
 //                injectMember {
-//                    method {
-//                        emptyParam()
-//                        returnType = MapClass
-//                    }
+//                    method { emptyParam();returnType = MapClass }
 //                    afterHook {
-//                        result<Map<String, String>>()?.forEach { (key, value) ->
-//                            if (key == "magic_voice_config") {
-//                                val json = JSONArray(value).optJSONObject(0) ?: return@afterHook
-//                                val conditionSet =
-//                                    json.optJSONArray("conditionSet") ?: return@afterHook
-//                                val obj = conditionSet.optJSONObject(0) ?: return@afterHook
-//                                if (obj.optString("name") == "supportedGames") {
-//                                    val list = obj.optJSONArray("value") ?: return@afterHook
-//                                    list.put("com.star.minesweeping")
-//                                }
+//                        val res = result<Map<String, String>>()
+//                        loggerD(msg = res?.keys.toString())
+//                        res?.forEach { (key, value) ->
+//                            if (value.contains("com.tencent.tmgp.sgame")) {
+//                                loggerD(msg = "com.tencent.tmgp.sgame -> $key")
 //                            }
 //                        }
 //                    }
