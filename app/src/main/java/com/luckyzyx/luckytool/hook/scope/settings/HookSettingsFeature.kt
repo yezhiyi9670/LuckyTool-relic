@@ -26,6 +26,8 @@ object HookSettingsFeature : YukiBaseHooker() {
         override fun onHook() {
             val memcVideo = false
             //prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
+            val rgbPalette =
+                prefs(ModulePrefs).getBoolean("enable_screen_color_temperature_rgb_palette", false)
             //Source SysFeatureUtils
             searchClass {
                 from(
@@ -44,8 +46,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                             //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
                             "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
                             "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
-                            //Source
-                            "oplus.software.display.rgb_ball_support" -> {}
+                            //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
+                            "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
                         }
                     }
                 }

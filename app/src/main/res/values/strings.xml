@@ -510,21 +510,30 @@
     <string name="fix_battery_health_data_display_tips">Try rebooting the system</string>
     
     <!--Settings-->
-    <string name="remove_top_account_display">Remove top account display</string>
-    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
-    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
+    <string name="settings_status_bar">StatusBar</string>
+    <string name="enable_statusbar_clock_format">Enable status bar clock format</string>
+    <string name="enable_statusbar_clock_format_summary">Enable some systems that do not support the option to modify the status bar clock format</string>
+    
+    <string name="settings_lock_screen">LockScreen</string>
+    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
+    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
+    
+    <string name="settings_display">Display</string>
     <string name="force_display_dc_backlight_mode">Forced to display low brightness and no flicker eye protection</string>
     <string name="force_display_dc_backlight_mode_summary">There is no guarantee that it will work, it is only used to display function options</string>
     <string name="force_display_video_memc_frame_insertion">Forcibly display video MEMC interpolation frame</string>
     <string name="video_frame_insertion_support_2K120">Video frame insertion supports 2K 120</string>
     <string name="video_frame_insertion_support_2K120_summary">If your device does not support MEMC, please do not use this function</string>
+    <string name="enable_screen_color_temperature_rgb_palette">Enable screen color temperature RGB palette</string>
+    <string name="enable_screen_color_temperature_rgb_palette_summary">May be overridden by DC function</string>
+    
+    <string name="settings_other_preference">Other Preferences</string>
+    <string name="remove_top_account_display">Remove top account display</string>
+    <string name="remove_dpi_restart_recovery">Remove DPI restart recovery</string>
+    <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="disable_cn_special_edition_setting" translatable="false">禁用CN特供版设置</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
-    <string name="enable_show_never_timeout">Enable screen display never timeout</string>
-    <string name="enable_show_never_timeout_summary">After enabling, you can see more options in the settings</string>
-    <string name="enable_statusbar_clock_format">Enable status bar clock format</string>
-    <string name="enable_statusbar_clock_format_summary">Enable some systems that do not support the option to modify the status bar clock format</string>
     <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
     
     <string name="AppDetailsRelated">App Details Related</string>

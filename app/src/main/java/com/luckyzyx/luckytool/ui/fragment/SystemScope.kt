@@ -31,7 +31,8 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
-import com.luckyzyx.luckytool.utils.arraySummary
+import com.luckyzyx.luckytool.utils.arraySummaryDot
+import com.luckyzyx.luckytool.utils.arraySummaryLine
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.dialogCentered
@@ -125,7 +126,7 @@ class StatusBar : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarClock)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.statusbar_clock_show_second),
                     getString(R.string.statusbar_clock_show_doublerow),
                     getString(
@@ -141,7 +142,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarNetWorkSpeed)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.enable_double_row_network_speed),
                     getString(R.string.set_network_speed)
                 )
@@ -154,7 +155,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarNotice)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.RemoveStatusBarNotifications),
                     getString(R.string.remove_notification_manager_limit)
                 )
@@ -167,7 +168,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarIcon)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.remove_mobile_data_inout),
                     getString(R.string.remove_green_dot_privacy_prompt)
                 )
@@ -180,7 +181,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarControlCenter)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.control_center_clock_show_second),
                     getString(R.string.remove_control_center_clock_red_one)
                 )
@@ -193,7 +194,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarTiles)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.long_press_wifi_tile_open_the_page),
                     getString(R.string.fix_tile_align_both_sides)
                 )
@@ -206,7 +207,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarLayout)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.statusbar_layout_mode),
                     getString(R.string.statusbar_layout_compatible_mode)
                 )
@@ -220,7 +221,7 @@ class StatusBar : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.StatusBarBattery)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.remove_statusbar_battery_percent),
                     getString(R.string.use_user_typeface)
                 )
@@ -744,7 +745,7 @@ class StatusBarNotify : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.RemoveStatusBarNotifications)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.remove_statusbar_top_notification),
                     getString(R.string.remove_statusbar_devmode)
                 )
@@ -2496,7 +2497,7 @@ class Miscellaneous : ModulePreferenceFragment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
                 title = getString(R.string.FloatingWindowDialogRelated)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.remove_low_battery_dialog_warning_summary),
                     getString(R.string.disable_headphone_high_volume_warning)
                 )
@@ -2509,7 +2510,7 @@ class Miscellaneous : ModulePreferenceFragment() {
             })
             addPreference(Preference(context).apply {
                 title = getString(R.string.FingerPrintRelated)
-                summary = arraySummary(
+                summary = arraySummaryDot(
                     getString(R.string.remove_fingerprint_icon),
                     getString(R.string.replace_fingerprint_icon_switch)
                 )
@@ -2605,17 +2606,35 @@ class Settings : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_top_account_display)
-                key = "remove_top_account_display"
-                setDefaultValue(false)
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_lock_screen)
+                key = "settings_status_bar"
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_dpi_restart_recovery)
-                summary = getString(R.string.remove_dpi_restart_recovery_summary)
-                key = "remove_dpi_restart_recovery"
+                title = getString(R.string.enable_statusbar_clock_format)
+                summary = getString(R.string.enable_statusbar_clock_format_summary)
+                key = "enable_statusbar_clock_format"
                 setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_lock_screen)
+                key = "settings_lock_screen"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_show_never_timeout)
+                summary = getString(R.string.enable_show_never_timeout_summary)
+                key = "enable_show_never_timeout"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_display)
+                key = "settings_display"
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
@@ -2641,6 +2660,36 @@ class Settings : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_screen_color_temperature_rgb_palette)
+                summary = arraySummaryLine(
+                    getString(R.string.need_restart_system),
+                    getString(R.string.enable_screen_color_temperature_rgb_palette_summary)
+                )
+                key = "enable_screen_color_temperature_rgb_palette"
+                setDefaultValue(false)
+                isVisible = getOSVersionCode >= 27
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_other_preference)
+                key = "settings_other_preference"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_top_account_display)
+                key = "remove_top_account_display"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_dpi_restart_recovery)
+                summary = getString(R.string.remove_dpi_restart_recovery_summary)
+                key = "remove_dpi_restart_recovery"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.force_display_bottom_google_settings)
                 key = "force_display_bottom_google_settings"
                 setDefaultValue(false)
@@ -2659,20 +2708,6 @@ class Settings : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.enable_show_never_timeout)
-                summary = getString(R.string.enable_show_never_timeout_summary)
-                key = "enable_show_never_timeout"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.enable_statusbar_clock_format)
-                summary = getString(R.string.enable_statusbar_clock_format_summary)
-                key = "enable_statusbar_clock_format"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_processor_click_page)
                 summary = "%s"
@@ -2683,6 +2718,7 @@ class Settings : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppDetailsRelated)
                 key = "AppDetailsRelated"

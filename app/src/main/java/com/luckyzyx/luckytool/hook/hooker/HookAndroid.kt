@@ -21,6 +21,7 @@ import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveSystemScreenshotDelay
 import com.luckyzyx.luckytool.hook.scope.android.RemoveVPNActiveNotification
+import com.luckyzyx.luckytool.hook.scope.android.ScreenColorTemperatureRGBPalette
 import com.luckyzyx.luckytool.hook.scope.android.SystemEnableVolumeKeyControlFlashlight
 import com.luckyzyx.luckytool.hook.scope.android.ZoomWindow
 
@@ -96,6 +97,9 @@ object HookAndroid : YukiBaseHooker() {
 
         //移除应用禁止卸载黑名单
         loadHooker(RemoveAppUninstallButtonBlackList)
+
+        //屏幕色温RGB调色板
+        loadHooker(ScreenColorTemperatureRGBPalette)
 
         //Share
         //com.android.internal.app.ChooserActivity

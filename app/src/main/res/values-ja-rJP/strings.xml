@@ -68,9 +68,9 @@
     <string name="participate_translation">モジュールの翻訳に参加する</string>
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed v1.9.0 and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
+    <string name="unsupported_xposed">モジュールが有効化されていません。\nLSPosed v1.9.0 以降を使用してモジュールのスコープをチェックしてください。\n完了したら OK ボタンを押して終了し、モジュールを開き直してください。</string>
     <string name="unsupported_os">非対応のシステム</string>
-    <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
+    <string name="unsupported_os_summary">モジュールは ColorOS 12 以降しかサポートしていません。古いシステムには脆弱性があるため、しっかりセキュリティ対策してください。</string>
     <string name="no_root">root 権限がありません</string>
     <string name="no_root_summary">root 権限を検出できませんでした。一部の機能は利用できません！</string>
     <!-- Menu -->
@@ -459,20 +459,26 @@
     <string name="fix_battery_health_data_display_summary">システムがバッテリーの状態表示に対応している場合はこの機能を使用しないでください\nデータの精度は無保証です</string>
     <string name="fix_battery_health_data_display_tips">システムを再起動してみてください</string>
     <!--Settings-->
-    <string name="remove_top_account_display">トップのアカウント表示を削除</string>
-    <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
-    <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
+    <string name="settings_status_bar">StatusBar</string>
+    <string name="enable_statusbar_clock_format">ステータスバーの時計形式を有効化</string>
+    <string name="enable_statusbar_clock_format_summary">ステータスバーの時計形式変更オプションを、非対応のシステムでも使えるようにします</string>
+    <string name="settings_lock_screen">LockScreen</string>
+    <string name="enable_show_never_timeout">画面表示のタイムアウト無効化オプションを表示</string>
+    <string name="enable_show_never_timeout_summary">有効にすると、設定で他のオプションが表示されます</string>
+    <string name="settings_display">Display</string>
     <string name="force_display_dc_backlight_mode">低輝度とちらつき防止を強制する</string>
     <string name="force_display_dc_backlight_mode_summary">動作する保証はありません。機能オプションを表示させるためにのみ使用されます</string>
     <string name="force_display_video_memc_frame_insertion">強制的に MEMC ビデオフレーム補間を表示する</string>
     <string name="video_frame_insertion_support_2K120">ビデオフレーム補間を 2K 120FPS 対応にする</string>
     <string name="video_frame_insertion_support_2K120_summary">お使いのデバイスが MEMC に対応していない場合は、この機能を使用しないでください</string>
+    <string name="enable_screen_color_temperature_rgb_palette">Enable screen color temperature RGB palette</string>
+    <string name="enable_screen_color_temperature_rgb_palette_summary">May be overridden by DC function</string>
+    <string name="settings_other_preference">Other Preferences</string>
+    <string name="remove_top_account_display">トップのアカウント表示を削除</string>
+    <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
+    <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
     <string name="remove_settings_bottom_laboratory">設定下部のラボを削除</string>
-    <string name="enable_show_never_timeout">画面表示のタイムアウト無効化オプションを表示</string>
-    <string name="enable_show_never_timeout_summary">有効にすると、設定で他のオプションが表示されます</string>
-    <string name="enable_statusbar_clock_format">ステータスバーの時計形式を有効化</string>
-    <string name="enable_statusbar_clock_format_summary">ステータスバーの時計形式変更オプションを、非対応のシステムでも使えるようにします</string>
     <string name="set_processor_click_page">プロセッサーをタップしてページにジャンプするように設定します</string>
     <string name="AppDetailsRelated">アプリの詳細関連</string>
     <string name="show_package_name_in_app_details">パッケージ名をアプリ詳細に表示</string>

@@ -26,7 +26,7 @@ import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ThemeUtils
-import com.luckyzyx.luckytool.utils.arraySummary
+import com.luckyzyx.luckytool.utils.arraySummaryDot
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.dialogCentered
 import com.luckyzyx.luckytool.utils.dp
@@ -77,7 +77,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.corepatch))
+                    summary = arraySummaryDot(getString(R.string.corepatch))
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_android, title)
                         true
@@ -90,7 +90,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.StatusBar)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.StatusBarNotice),
                         getString(R.string.StatusBarIcon),
                         getString(R.string.StatusBarClock)
@@ -107,7 +107,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Desktop)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.AppBadgeRelated),
                         getString(R.string.FolderLayoutRelated),
                         getString(R.string.launcher_layout_related)
@@ -125,7 +125,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.AodRelated)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_aod_music_whitelist),
                         getString(R.string.remove_aod_notification_icon_whitelist)
                     )
@@ -142,7 +142,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.LockScreen)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_lock_screen_redone),
                         getString(R.string.remove_lock_screen_bottom_right_camera)
                     )
@@ -158,7 +158,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Screenshot)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_system_screenshot_delay),
                         getString(R.string.remove_screenshot_privacy_limit)
                     )
@@ -175,7 +175,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Application)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.skip_apk_scan), getString(R.string.unlock_startup_limit)
                     )
                     setOnPreferenceClickListener {
@@ -190,7 +190,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = getString(R.string.Miscellaneous)
-                    summary = arraySummary(getString(R.string.Miscellaneous_summary))
+                    summary = arraySummaryDot(getString(R.string.Miscellaneous_summary))
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_miscellaneous, title)
                         true
@@ -203,7 +203,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.open_battery_health),
                         getString(R.string.open_screen_power_save)
                     )
@@ -220,7 +220,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_top_account_display),
                         getString(R.string.remove_dpi_restart_recovery)
                     )
@@ -237,7 +237,7 @@ class XposedFragment : ModulePreferenceFragment() {
                     }
                     title = context.getAppLabel(key)
                     summary =
-                        arraySummary(getString(R.string.remove_verification_code_floating_window))
+                        arraySummaryDot(getString(R.string.remove_verification_code_floating_window))
                     isVisible = SDK >= A13 && context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_oplusMMS, title)
@@ -251,7 +251,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.remove_weather_page_ads))
+                    summary = arraySummaryDot(getString(R.string.remove_weather_page_ads))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
@@ -266,7 +266,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_watermark_word_limit),
                         getString(R.string.enable_10_bit_image_support)
                     )
@@ -283,7 +283,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_root_check),
                         getString(R.string.enable_developer_page)
                     )
@@ -301,7 +301,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.unlock_themestore_vip))
+                    summary = arraySummaryDot(getString(R.string.unlock_themestore_vip))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_themeStore, title)
@@ -315,7 +315,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.remove_network_limit))
+                    summary = arraySummaryDot(getString(R.string.remove_network_limit))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_cloudService, title)
@@ -329,7 +329,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.unlock_local_upgrade),
                         getString(R.string.restore_ota_update_verity)
                     )
@@ -346,7 +346,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.remove_image_save_watermark),
                         getString(R.string.remove_video_save_watermark)
                     )
@@ -363,7 +363,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.enable_volume_key_control_flashlight),
                         getString(R.string.force_enable_aon_gestures)
                     )
@@ -380,7 +380,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(
+                    summary = arraySummaryDot(
                         getString(R.string.skip_startup_page), getString(R.string.vip_download)
                     )
                     isVisible = context.checkPackName(key)
@@ -396,7 +396,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.remove_pro_license))
+                    summary = arraySummaryDot(getString(R.string.remove_pro_license))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_xposed_to_alphaBackupPro, title)
@@ -410,7 +410,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.remove_pro_license))
+                    summary = arraySummaryDot(getString(R.string.remove_pro_license))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_ksWeb, title)
@@ -424,7 +424,7 @@ class XposedFragment : ModulePreferenceFragment() {
                         isIconSpaceReserved = show
                     }
                     title = context.getAppLabel(key)
-                    summary = arraySummary(getString(R.string.adm_unlock_pro))
+                    summary = arraySummaryDot(getString(R.string.adm_unlock_pro))
                     isVisible = context.checkPackName(key)
                     setOnPreferenceClickListener {
                         navigatePage(R.id.action_nav_function_to_ADM, title)

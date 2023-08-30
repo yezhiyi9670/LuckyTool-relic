@@ -655,15 +655,29 @@ fun Preference.fixIconSize(icon: Drawable?): Drawable? {
 }
 
 /**
- * 处理Summary方法
+ * 格式化Summary添加逗号
  * @param string Array<out String>
  * @return String
  */
-fun arraySummary(vararg string: String): String {
+fun arraySummaryDot(vararg string: String): String {
     var res = ""
     string.forEachIndexed { index, s ->
         res += s
         if (index != string.lastIndex) res += ","
+    }
+    return res
+}
+
+/**
+ * 格式化Summary添加换行
+ * @param string Array<out String>
+ * @return String
+ */
+fun arraySummaryLine(vararg string: String): String {
+    var res = ""
+    string.forEachIndexed { index, s ->
+        res += s
+        if (index != string.lastIndex) res += "\n"
     }
     return res
 }
