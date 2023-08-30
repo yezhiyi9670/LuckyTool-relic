@@ -459,21 +459,21 @@
     <string name="fix_battery_health_data_display_summary">Nepoužívejte tuto funkci, pokud systém podporuje zdraví baterie\nPřesnost dat nelze garantovat</string>
     <string name="fix_battery_health_data_display_tips">Zkuste restartovat systém</string>
     <!--Settings-->
-    <string name="settings_status_bar">StatusBar</string>
+    <string name="settings_status_bar">Stavová lišta</string>
     <string name="enable_statusbar_clock_format">Povolit formát hodin ve stavové liště</string>
     <string name="enable_statusbar_clock_format_summary">Povolit změny některým systémům, které nepodporují možnost změny formátu hodin ve stavové liště</string>
-    <string name="settings_lock_screen">LockScreen</string>
+    <string name="settings_lock_screen">Zamykací obrazovka</string>
     <string name="enable_show_never_timeout">Povolení nevypršení časového limitu obrazovky</string>
     <string name="enable_show_never_timeout_summary">Po zapnutí můžete vidět další možnosti v nastavení</string>
-    <string name="settings_display">Display</string>
+    <string name="settings_display">Displej</string>
     <string name="force_display_dc_backlight_mode">Vynucené zobrazení nízkého jasu a bez ochrany očí</string>
     <string name="force_display_dc_backlight_mode_summary">Neexistuje žádná záruka, že to bude fungovat, je to použito pouze pro zobrazení možností</string>
     <string name="force_display_video_memc_frame_insertion">Vynuceně zobrazit interpolační rám MEMC</string>
     <string name="video_frame_insertion_support_2K120">Interpolace snímků videa je podporována při frekvenci 2K 120FPS</string>
     <string name="video_frame_insertion_support_2K120_summary">Pokud vaše zařízení nepodporuje MEMC, nepoužívejte tuto funkci</string>
-    <string name="enable_screen_color_temperature_rgb_palette">Enable screen color temperature RGB palette</string>
-    <string name="enable_screen_color_temperature_rgb_palette_summary">May be overridden by DC function</string>
-    <string name="settings_other_preference">Other Preferences</string>
+    <string name="enable_screen_color_temperature_rgb_palette">Povolit paletu pro teplotu barev obrazovky RGB</string>
+    <string name="enable_screen_color_temperature_rgb_palette_summary">Může být přepsáno DC funkcí</string>
+    <string name="settings_other_preference">Další předvolby</string>
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
     <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>

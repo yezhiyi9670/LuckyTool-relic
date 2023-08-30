@@ -25,6 +25,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [更改] 模块未激活时的对话框信息
 - [添加] 屏幕色温RGB调色板
 - [适配] 设置FeatureUtils v13.0.5(7f73945)
+- [适配] 桌面时钟组件 v13.12.2(87619ee)
 
 ### 1.0.14
 

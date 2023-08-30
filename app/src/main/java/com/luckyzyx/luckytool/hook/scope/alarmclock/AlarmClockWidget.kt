@@ -47,6 +47,7 @@ object AlarmClockWidget : YukiBaseHooker() {
             val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
                 "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")
+                "87619ee" -> list["a5.v"] = arrayOf("b", "v")
                 "14ae6e7", "e6df2db", "18140a4" -> list["i5.v"] = arrayOf("b", "v")
                 "3368efe" -> list["v4.v"] = arrayOf("b", "u")
                 "775bc1d" -> list["k5.v"] = arrayOf("b", "u")
