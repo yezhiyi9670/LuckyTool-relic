@@ -51,6 +51,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                 "14ae6e7", "e6df2db", "18140a4" -> list["i5.v"] = arrayOf("b", "v")
                 "3368efe" -> list["v4.v"] = arrayOf("b", "u")
                 "775bc1d" -> list["k5.v"] = arrayOf("b", "u")
+                "f67b677" -> list["j5.u"] = arrayOf("b", "v")
             }
             if (list.keys.isEmpty()) {
                 loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")

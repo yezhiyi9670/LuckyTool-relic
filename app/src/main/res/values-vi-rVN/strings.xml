@@ -68,7 +68,7 @@
     <string name="participate_translation">Tham gia dịch module</string>
     <string name="participate_translation_summary">Truy cập Crowdin để đóng góp bản dịch của bạn</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed v1.9.0 and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Hệ thống không được hỗ trợ</string>
     <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
     <string name="no_root">Không có quyền Root</string>
@@ -480,6 +480,7 @@
     <string name="force_display_bottom_google_settings">Buộc hiển thị Google ở cuối cài đặt</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
+    <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
     <string name="AppDetailsRelated">Kệ ứng dụng</string>
     <string name="show_package_name_in_app_details">Hiển thị tên gói trong chi tiết ứng dụng</string>
     <string name="show_last_update_time_in_app_details">Hiển thị tên gói trong chi tiết ứng dụng</string>

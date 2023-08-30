@@ -61,7 +61,7 @@ open class MainActivity : AppCompatActivity() {
         if (!isStart || noModulePrefs || noSettingPrefs || noOtherPrefs) {
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
-                setMessage(getString(R.string.unsupported_xposed))
+                setMessage(getString(R.string.unsupported_xposed, "v1.9.1"))
                 setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
                     exitProcess(0)
                 }

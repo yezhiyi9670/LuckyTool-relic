@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.settings.CustomizeDeviceSharingPageParameters
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
@@ -52,23 +53,10 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_statusbar_clock_format", false)) {
             loadHooker(EnableStatusBarClockFormat)
         }
-
-        //<string name="disable_text">停用</string>
-        //<string name="enable_text">启用</string>
-//        findClass("com.android.settings.applications.appinfo.AppButtonsPreferenceController").hook {
-//            injectMember {
-//                method { name = "handleDisableable" }
-//                afterHook {
-//                    val mAppEntry =
-//                        field { name = "mAppEntry" }.get(instance).any() ?: return@afterHook
-//                    val appInfo = mAppEntry.current().field { type = ApplicationInfoClass }
-//                        .cast<ApplicationInfo>() ?: return@afterHook
-//                    val packName = appInfo.packageName
-//                    loggerD(msg = "handleDisableable -> $packName -> $result")
-//                    resultTrue()
-//                }
-//            }
-//        }
+        //自定义设备分享页面参数
+        if (prefs(ModulePrefs).getBoolean("customize_device_sharing_page_parameters", false)) {
+            loadHooker(CustomizeDeviceSharingPageParameters)
+        }
 
         //darkmode_third_app
         //com.oplus.settings.feature.display.darkmode.ui.DarkModeSettingsFragment

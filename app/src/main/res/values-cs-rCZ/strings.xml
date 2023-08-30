@@ -68,7 +68,7 @@
     <string name="participate_translation">Účast na překladu modulu</string>
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte LSPosed v1.9.0 nebo novější pro kontrolu rozsahu modulů.\nPokud jste tento krok dokončili, můžete zkusit ťuknout na tlačítko OK, abyste znovu načetli modul.</string>
+    <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte LSPosed %1$s nebo novější pro kontrolu rozsahu modulů.\nPokud jste tento krok dokončili, můžete zkusit ťuknout na tlačítko OK, abyste znovu načetli modul.</string>
     <string name="unsupported_os">Nepodporovaný systém</string>
     <string name="unsupported_os_summary">Protože modul podporuje pouze ColorOS 12 a novější, nezapomeňte přijmout bezpečnostní opatření!</string>
     <string name="no_root">Nemáte oprávnění root</string>
@@ -480,6 +480,7 @@
     <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
     <string name="remove_settings_bottom_laboratory">Odstranit nastavení laboratoře</string>
     <string name="set_processor_click_page">Nastavit procesor pro přechod na stránku</string>
+    <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
     <string name="AppDetailsRelated">Podrobnosti o aplikaci</string>
     <string name="show_package_name_in_app_details">Zobrazit název balíčku v podrobnostech aplikace</string>
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>

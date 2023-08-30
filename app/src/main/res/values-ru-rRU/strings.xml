@@ -68,7 +68,7 @@
     <string name="participate_translation">Участвовать в переводе модуля</string>
     <string name="participate_translation_summary">Перейдите на сайт Crowdin, чтобы добавить свой перевод</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Модуль не активирован.\nПожалуйста, используйте LSPosed v1.9.0 и выше, чтобы проверить область применения.\nЕсли вы завершили этот шаг, вы можете попытаться нажать \"ОК\" для выхода и открыть модуль заново.</string>
+    <string name="unsupported_xposed">Модуль не активирован.\nПожалуйста, используйте LSPosed %1$s и выше, чтобы проверить область применения.\nЕсли вы завершили этот шаг, вы можете попытаться нажать \"ОК\" для выхода и открыть модуль заново.</string>
     <string name="unsupported_os">Неподдерживаемая система</string>
     <string name="unsupported_os_summary">Поскольку модуль поддерживает только системы ColorOS 12 и выше, обязательно примите меры безопасности!</string>
     <string name="no_root">Нет root-прав</string>
@@ -480,6 +480,7 @@
     <string name="force_display_bottom_google_settings">Принудительно показывать Google внизу настроек</string>
     <string name="remove_settings_bottom_laboratory">Удалить настройки лаборатории</string>
     <string name="set_processor_click_page">Выберите CPU, чтобы открыть меню в \"Об устройстве\"</string>
+    <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>

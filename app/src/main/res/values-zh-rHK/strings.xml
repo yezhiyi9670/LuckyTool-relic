@@ -68,7 +68,7 @@
     <string name="participate_translation">参与模块翻译</string>
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">检测到模块未激活\n请使用LSPosed v1.9.0及以上版本勾选模块作用域\n如果已完成此步骤，可尝试点击“确定”退出并重新打开模块</string>
+    <string name="unsupported_xposed">检测到模块未激活\n请使用LSPosed %1$s 及以上版本勾选模块作用域\n如果已完成此步骤，可尝试点击“确定”退出并重新打开模块</string>
     <string name="unsupported_os">不受支持的系统</string>
     <string name="unsupported_os_summary">由于该模块仅支持ColorOS 12及以上系统，请务必做好安全措施！</string>
     <string name="no_root">无 Root 权限</string>
@@ -480,6 +480,7 @@
     <string name="force_display_bottom_google_settings">强制显示设置底部Google</string>
     <string name="remove_settings_bottom_laboratory">移除设置底部实验室</string>
     <string name="set_processor_click_page">设置处理器点击页面</string>
+    <string name="customize_device_sharing_page_parameters">自定义设备分享页面参数</string>
     <string name="AppDetailsRelated">应用详情相关</string>
     <string name="show_package_name_in_app_details">应用详情显示包名</string>
     <string name="show_last_update_time_in_app_details">应用详情显示最后更新时间</string>

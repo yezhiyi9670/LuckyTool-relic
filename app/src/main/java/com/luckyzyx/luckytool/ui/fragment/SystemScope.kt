@@ -2718,6 +2718,12 @@ class Settings : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.customize_device_sharing_page_parameters)
+                key = "customize_device_sharing_page_parameters"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
 
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.AppDetailsRelated)

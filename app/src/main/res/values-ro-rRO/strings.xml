@@ -68,7 +68,7 @@
     <string name="participate_translation">Participă în traducerile modulelor</string>
     <string name="participate_translation_summary">Du-te la Crowdin pentru a contribui cu traducerea</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed v1.9.0 and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
+    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Sistem neacceptat</string>
     <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
     <string name="no_root">Fără permisiune root</string>
@@ -480,6 +480,7 @@
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
+    <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
     <string name="AppDetailsRelated">App Details Related</string>
     <string name="show_package_name_in_app_details">Show package name in app details</string>
     <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
