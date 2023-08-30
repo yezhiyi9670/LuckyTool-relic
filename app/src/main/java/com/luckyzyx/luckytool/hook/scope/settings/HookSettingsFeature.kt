@@ -32,7 +32,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             searchClass {
                 from(
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri"
+                    "ri", "zi"
                 ).absolute()
                 field { type = BooleanClass }.count { it > 30 }
                 method { emptyParam();returnType = BooleanType }.count { it > 30 }
@@ -62,7 +62,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             searchClass {
                 from(
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri"
+                    "ri", "zi"
                 ).absolute()
                 field().count(1)
                 method { param(StringClass);returnType = ApplicationInfoClass }.count(1)

@@ -459,21 +459,21 @@
     <string name="fix_battery_health_data_display_summary">Не используйте эту функцию, если система поддерживает работоспособность батареи\nТочность данных не гарантируется.</string>
     <string name="fix_battery_health_data_display_tips">Попробуйте перезагрузить систему</string>
     <!--Settings-->
-    <string name="settings_status_bar">StatusBar</string>
+    <string name="settings_status_bar">Строка состояния</string>
     <string name="enable_statusbar_clock_format">Включить формат часов в строке состояния</string>
     <string name="enable_statusbar_clock_format_summary">Включите некоторые системы, которые не поддерживают возможность изменения формата часов в строке состояния</string>
-    <string name="settings_lock_screen">LockScreen</string>
+    <string name="settings_lock_screen">Экран блокировки</string>
     <string name="enable_show_never_timeout">Включить отображение экрана без тайм-аута</string>
     <string name="enable_show_never_timeout_summary">После включения вы можете увидеть больше опций в настройках</string>
-    <string name="settings_display">Display</string>
+    <string name="settings_display">Экран</string>
     <string name="force_display_dc_backlight_mode">Принудительно отображать низкую яркость и защиту глаз от мерцания</string>
     <string name="force_display_dc_backlight_mode_summary">Нет гарантии, что он будет работать, он используется только для отображения опций функций</string>
     <string name="force_display_video_memc_frame_insertion">Принудительно отображать видео с динамической вставкой кадров MEMC</string>
     <string name="video_frame_insertion_support_2K120">Динамическая вставка кадров видео поддерживает разрешение 2К 120 Гц (MEMC)</string>
     <string name="video_frame_insertion_support_2K120_summary">Если ваше устройство не поддерживает MEMC, пожалуйста, не используйте эту функцию</string>
-    <string name="enable_screen_color_temperature_rgb_palette">Enable screen color temperature RGB palette</string>
-    <string name="enable_screen_color_temperature_rgb_palette_summary">May be overridden by DC function</string>
-    <string name="settings_other_preference">Other Preferences</string>
+    <string name="enable_screen_color_temperature_rgb_palette">Включить цветовую температуру экрана в палитре RGB</string>
+    <string name="enable_screen_color_temperature_rgb_palette_summary">Может быть переопределено функцией DC</string>
+    <string name="settings_other_preference">Другие настройки</string>
     <string name="remove_top_account_display">Удалить отображение аккаунта в настройках</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>
     <string name="remove_dpi_restart_recovery_summary">После включения функции и перезапуска области откройте страницу параметров разработчика и установите минимальную ширину</string>

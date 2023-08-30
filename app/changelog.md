@@ -24,6 +24,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [优化] 系统不支持时的对话框显示逻辑
 - [更改] 模块未激活时的对话框信息
 - [添加] 屏幕色温RGB调色板
+- [适配] 设置FeatureUtils v13.0.5(7f73945)
 
 ### 1.0.14
 
