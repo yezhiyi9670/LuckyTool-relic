@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.15_beta
+### 1.0.15
 
 - [适配] 桌面时钟组件 v14.0.6(3368efe)
 - [适配] 设置FeatureUtils v13.0.5(5630e9d)
@@ -29,6 +29,30 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 状态栏隐藏未使用的信号标签 C14
 - [适配] 桌面时钟组件 v14.1.2(f67b677)
 - [更改] APP启动遮罩功能介绍
+- [Fix] Desktop clock component v14.0.6(3368efe)
+- [Fix] Settings FeatureUtils v13.0.5(5630e9d)
+- [Fix] screenshot-v14.0.2(a85f365)
+- [Add] Set floating window reply blacklist
+- [Optimize] Determination of blank lines in some dialog boxes
+- [Change] Donate button jump link on home page
+- [Fix] Desktop Clock Component v14.1.0(775bc1d)
+- [Fix] Remove SMS verification code popup v14.999.0(a436243)
+- [Fix] Synchronize upstream CorePatch - fix Apk signature verification
+- [Change] CorePatch is enabled by default to use the signature of the installed APP when installing
+- [Change] Rollback the system judgment of duplicating the floating window
+- [Fix] Cloud Service - Mobile Network Limitation v7.0.4(41daf8f)
+- [Fix] Screenshot - long screenshot page limit v14.0.2(a85f365)
+- [Fix] Screenshot-PNG save format v14.0.2(a85f365)
+- [Fix] Information-Verification Code Floating Window v14.10.0(e751698)
+- [Optimize] The dialog box display logic when the system does not support
+- [Change] Dialog message when module is not active
+- [Add] Screen color temperature RGB palette
+- [Fix] Settings FeatureUtils v13.0.5(7f73945)
+- [Fix] Desktop clock component v13.12.2(87619ee)
+- [Add] Custom device sharing page parameters
+- [Fix] Hide unused signal labels in the status bar C14
+- [Fix] Desktop Clock Component v14.1.2(f67b677)
+- [Change] Introduction of APP splash screen function
 
 ### 1.0.14
 
