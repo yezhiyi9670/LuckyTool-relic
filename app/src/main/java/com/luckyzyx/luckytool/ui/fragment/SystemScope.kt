@@ -21,7 +21,6 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
@@ -2133,21 +2132,23 @@ class Application : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            if (SDK < A11) {
-                addPreference(PreferenceCategory(context).apply {
-                    title = getString(R.string.AppStartupRelated)
-                    key = "AppStartupRelated"
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                })
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.disable_splash_screen)
-                    key = "disable_splash_screen"
-                    setDefaultValue(false)
-                    isVisible = SDK >= A13
-                    isIconSpaceReserved = false
-                })
-            }
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.AppStartupRelated)
+                key = "AppStartupRelated"
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_splash_screen)
+                summary = arraySummaryLine(
+                    getString(R.string.need_restart_system),
+                    getString(R.string.disable_splash_screen_summary)
+                )
+                key = "disable_splash_screen"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
 
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.APPRelatedList)

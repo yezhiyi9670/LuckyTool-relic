@@ -353,6 +353,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">应用启动相关</string>
     <string name="disable_splash_screen">关闭应用遮罩</string>
+    <string name="disable_splash_screen_summary">由于启动遮罩动画被移除，所有当APP启动时会有1-2秒的空档，介意勿开</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">应用相关列表</string>
     <string name="enable_zoom_window">启用支持列表</string>

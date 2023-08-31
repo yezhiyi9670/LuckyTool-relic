@@ -396,6 +396,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">Application startup related</string>
     <string name="disable_splash_screen">Disable splash screen</string>
+    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1-2 second gap period when the APP is started.If you mind, please do not turn it on</string>
     
     <!--APPRelatedList-->
     <string name="APPRelatedList">App Related List</string>

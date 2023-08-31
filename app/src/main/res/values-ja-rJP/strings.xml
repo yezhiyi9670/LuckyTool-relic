@@ -353,6 +353,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">アプリの自動起動関連</string>
     <string name="disable_splash_screen">スプラッシュ画面を無効化</string>
+    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1-2 second gap period when the APP is started.If you mind, please do not turn it on</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">アプリ関連のリスト</string>
     <string name="enable_zoom_window">サポートリストを有効化</string>
