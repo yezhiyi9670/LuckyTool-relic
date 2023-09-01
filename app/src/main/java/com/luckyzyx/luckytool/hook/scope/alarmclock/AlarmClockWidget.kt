@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.util.ArrayMap
-import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.log.loggerD
@@ -15,7 +14,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import java.util.Arrays
+import com.luckyzyx.luckytool.utils.getAppSet
 
 object AlarmClockWidget : YukiBaseHooker() {
 
@@ -37,13 +36,7 @@ object AlarmClockWidget : YukiBaseHooker() {
 
     private object AlarmClock131 : YukiBaseHooker() {
         override fun onHook() {
-            val appSet =
-                prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-                    Arrays.sort(this)
-                    forEach {
-                        this[this.indexOf(it)] = it.substring(2)
-                    }
-                }
+            val appSet = getAppSet(ModulePrefs, packageName)
             val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
                 "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")

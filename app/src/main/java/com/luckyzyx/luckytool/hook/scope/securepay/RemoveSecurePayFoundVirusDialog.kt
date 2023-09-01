@@ -5,7 +5,6 @@ import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.CheckBoxClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.DialogInterfaceClass
-import com.highcapable.yukihookapi.hook.type.android.LinearLayoutClass
 import com.highcapable.yukihookapi.hook.type.defined.VagueType
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -17,14 +16,12 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
         //Source RiskDialogWrapper
         searchClass {
             from("com.coloros.securepay").absolute()
-            field { type = ContextClass }.count(0..1)
             field { type = BooleanType }.count(1)
             field { type = CheckBoxClass }.count(1)
-            field { type = LinearLayoutClass }.count(0..1)
 
             method { emptyParam() }.count(5..6)
             method { emptyParam();returnType = BooleanType }.count(2)
-            method { param(ContextClass, StringClass);returnType = BooleanType }.count(0..1)
+            method { param { it[0] == ContextClass && it[1] == StringClass } }.count(3..8)
             method {
                 param(ContextClass, StringClass, IntType, DialogInterfaceClass, IntType)
             }.count(2)

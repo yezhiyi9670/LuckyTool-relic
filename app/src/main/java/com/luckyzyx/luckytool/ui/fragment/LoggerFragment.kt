@@ -19,6 +19,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.drake.net.scope.AndroidScope
 import com.drake.net.utils.scopeLife
 import com.drake.net.utils.withIO
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -53,6 +54,7 @@ class LoggerFragment : Fragment() {
     private var logInfoViewAdapter: LogInfoViewAdapter? = null
     private var fileName: String = ""
     private var filterString = ""
+    private var scope: AndroidScope? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -73,16 +75,16 @@ class LoggerFragment : Fragment() {
         binding.swipeRefreshLayout.apply {
             setOnRefreshListener { loadLogger() }
         }
-        if (listData.isEmpty()) loadLogger()
     }
 
     @OptIn(CauseProblemsApi::class)
     private fun loadLogger() {
-        scopeLife {
-            binding.swipeRefreshLayout.isRefreshing = true
+        scope = scopeLife {
             listData.clear()
-            withIO {
-                requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
+            binding.swipeRefreshLayout.isRefreshing = true
+            binding.logNodataView.isVisible = true
+            requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
+                withIO {
                     requireActivity().dataChannel(scope).allowSendTooLargeData()
                         .obtainLoggerInMemoryData { its ->
                             its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
@@ -91,10 +93,7 @@ class LoggerFragment : Fragment() {
                 }
             }
             binding.loglistView.isVisible = listData.isNotEmpty()
-            binding.logNodataView.apply {
-                text = getString(R.string.log_no_data)
-                isVisible = listData.isEmpty()
-            }
+            binding.logNodataView.isVisible = listData.isEmpty()
             binding.swipeRefreshLayout.isRefreshing = false
         }
     }
@@ -102,6 +101,12 @@ class LoggerFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadLogger()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        scope?.cancel(null)
+        scope?.close()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -186,19 +191,15 @@ class LoggerFragment : Fragment() {
 
     private fun saveFile(fileName: String) {
         checkDirs()
-        if (listData.isEmpty()) {
-            requireActivity().toast(getString(R.string.log_data_is_empty))
-        } else {
-            createDocument.launch(fileName)
-        }
+        if (listData.isEmpty()) requireActivity().toast(getString(R.string.log_data_is_empty))
+        else createDocument.launch(fileName)
     }
 
     private fun checkDirs(): String {
-        val dir: File =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/LuckyTool")
-        if (!dir.exists()) {
-            dir.mkdirs()
-        }
+        val dir: File = Environment.getExternalStoragePublicDirectory(
+            Environment.DIRECTORY_DOWNLOADS + "/LuckyTool"
+        )
+        if (!dir.exists()) dir.mkdirs()
         return dir.name
     }
 

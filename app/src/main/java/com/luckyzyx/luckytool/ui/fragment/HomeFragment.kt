@@ -10,6 +10,8 @@ import android.view.*
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withDefault
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -29,16 +31,13 @@ class HomeFragment : Fragment() {
     private var enableModule: Boolean = false
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
         setHasOptionsMenu(true)
         return binding.root
     }
 
-    @Suppress("LocalVariableName")
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -69,29 +68,26 @@ class HomeFragment : Fragment() {
             }
         }
 
-        if (requireActivity().getBoolean(
-                SettingsPrefs,
-                "auto_check_update",
-                true
-            )
-        ) UpdateUtils(requireActivity()).checkUpdate(
-            getVersionName,
-            getVersionCode
-        ) { versionName, versionCode, function ->
-            if (getVersionCode < versionCode) {
-                function()
-                binding.updateView.apply {
-                    isVisible = true
-                    text = getString(R.string.check_update_hint) +
-                            "  -->  $versionName($versionCode)"
+        if (requireActivity().getBoolean(SettingsPrefs, "auto_check_update", true)) {
+            UpdateUtils(requireActivity()).checkUpdate(
+                getVersionName,
+                getVersionCode
+            ) { versionName, versionCode, function ->
+                if (getVersionCode < versionCode) {
+                    function()
+                    binding.updateView.apply {
+                        isVisible = true
+                        text =
+                            getString(R.string.check_update_hint) + "  -->  $versionName($versionCode)"
+                    }
+                    binding.statusCard.setOnClickListener { function() }
                 }
-                binding.statusCard.setOnClickListener { function() }
-            }
-            binding.statusCard.apply {
-                if (context.getBoolean(SettingsPrefs, "hidden_function", false)) {
-                    setOnLongClickListener {
-                        function()
-                        true
+                binding.statusCard.apply {
+                    if (context.getBoolean(SettingsPrefs, "hidden_function", false)) {
+                        setOnLongClickListener {
+                            function()
+                            true
+                        }
                     }
                 }
             }
@@ -104,14 +100,20 @@ class HomeFragment : Fragment() {
         }
 
         binding.systemInfo.apply {
-            text = context.getDeviceInfo()
+            scopeLife {
+                val deviceInfo = withDefault {
+                    context.getDeviceInfo()
+                }
+                text = deviceInfo
+                binding.systemInfoCard.isVisible = true
+            }
             setOnLongClickListener {
                 val isRealmeUI: Boolean
                 val oplusOtaDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
                     setTitle("OPLUS OTA")
                     setView(R.layout.layout_oplusota_dialog)
                 }.show()
-                val product_model =
+                val productModel =
                     oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_product_model)
                         ?.apply {
                             setText(getProp("ro.product.name"))
@@ -120,7 +122,7 @@ class HomeFragment : Fragment() {
                                 true
                             }
                         }
-                val ota_version =
+                val otaVersion =
                     oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_ota_version)
                         ?.apply {
                             setText(getProp("ro.build.version.ota"))
@@ -129,9 +131,9 @@ class HomeFragment : Fragment() {
                                 true
                             }
                         }
-                val realmeui_version_layout =
+                val realmeuiVersionLayout =
                     oplusOtaDialog.findViewById<TextInputLayout>(R.id.oplusota_realmeui_version_layout)
-                val realmeui_version =
+                val realmeuiVersion =
                     oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_realmeui_version)
                         ?.apply {
                             setText(getProp("ro.build.version.realmeui"))
@@ -140,13 +142,13 @@ class HomeFragment : Fragment() {
                                 true
                             }
                         }
-                if (realmeui_version?.text.toString()
-                        .isBlank() || realmeui_version?.text.toString() == "null"
+                if (realmeuiVersion?.text.toString()
+                        .isBlank() || realmeuiVersion?.text.toString() == "null"
                 ) {
                     isRealmeUI = false
-                    realmeui_version_layout?.isVisible = false
+                    realmeuiVersionLayout?.isVisible = false
                 } else isRealmeUI = true
-                val nv_identifier =
+                val nvIdentifier =
                     oplusOtaDialog.findViewById<TextInputEditText>(R.id.oplusota_nv_identifier)
                         ?.apply {
                             setText(getProp("ro.build.oplus_nv_id"))
@@ -165,7 +167,7 @@ class HomeFragment : Fragment() {
                     }
                 oplusOtaDialog.findViewById<MaterialButton>(R.id.oplusota_copyall)?.apply {
                     setOnClickListener {
-                        context.copyStr("ro.product.name -> ${product_model?.text}\nro.build.version.ota -> ${ota_version?.text}\n${if (isRealmeUI) "ro.build.version.realmeui -> ${realmeui_version?.text}\n" else ""}ro.build.oplus_nv_id -> ${nv_identifier?.text}\nguid -> ${guid?.text}\n")
+                        context.copyStr("ro.product.name -> ${productModel?.text}\nro.build.version.ota -> ${otaVersion?.text}\n${if (isRealmeUI) "ro.build.version.realmeui -> ${realmeuiVersion?.text}\n" else ""}ro.build.oplus_nv_id -> ${nvIdentifier?.text}\nguid -> ${guid?.text}\n")
                     }
                 }
                 true
@@ -209,8 +211,7 @@ class HomeFragment : Fragment() {
 
                             4 -> startActivity(
                                 Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://paypal.me/luckyzyx")
+                                    Intent.ACTION_VIEW, Uri.parse("https://paypal.me/luckyzyx")
                                 )
                             )
 

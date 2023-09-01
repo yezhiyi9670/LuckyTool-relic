@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "IMPLICIT_NOTHING_TYPE_ARGUMENT_IN_RETURN_POSITION")
 
 package com.luckyzyx.luckytool.utils
 
@@ -36,6 +36,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
+import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
@@ -65,35 +66,45 @@ fun Context.getAppCommit(packName: String): String? {
  * @return [ArraySet]
  */
 @Suppress("DEPRECATION") //修复获取null
-fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(default = ArrayList()) {
+fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(ArrayList()) {
     val arrayList = ArrayList<String>()
     val arraySet = ArraySet<String>()
     val packageInfo = PackageUtils(packageManager).getPackageInfo(packName, 0)
     val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
-    val versionName = safeOf(default = "null") { packageInfo.versionName.toString() }
+    val versionName = safeOf("null") { packageInfo.versionName.toString() }
     arrayList.add(versionName)
-    arraySet.add("0.$versionName")
-    val versionCode = safeOf(default = "null") { packageInfo.longVersionCode.toString() }
+    arraySet.add("name|$versionName")
+    val versionCode = safeOf("null") { packageInfo.longVersionCode.toString() }
     arrayList.add(versionCode)
-    arraySet.add("1.$versionCode")
+    arraySet.add("code|$versionCode")
     val versionCommit =
-        safeOf(default = "null") { commitInfo.metaData.get("versionCommit").toString() }
-    val versionDate = safeOf(default = "null") { commitInfo.metaData.get("versionDate").toString() }
+        safeOf("null") { commitInfo.metaData.get("versionCommit").toString() }
+    val versionDate = safeOf("null") { commitInfo.metaData.get("versionDate").toString() }
     //Fix the camera's commit is empty
-    if (versionCommit.isBlank()) {
-        if (versionDate.isBlank()) {
-            arrayList.add("null")
-            arraySet.add("2.null")
-        } else {
-            arrayList.add(versionDate)
-            arraySet.add("2.$versionDate")
-        }
-    } else {
-        arrayList.add(versionCommit)
-        arraySet.add("2.$versionCommit")
-    }
+    val commit = versionCommit.ifBlank { versionDate.ifBlank { "null" } }
+    arrayList.add(commit)
+    arraySet.add("commit|$commit")
     putStringSet(ModulePrefs, packName, arraySet)
     return arrayList
+}
+
+/**
+ * 获取APP版本数组
+ * @param prefsName String
+ * @param packName String
+ */
+fun getAppSet(prefsName: String, packName: String): Array<String> {
+    val newArray = arrayOf("null", "null", "null")
+    prefs(prefsName).getStringSet(packName, ArraySet()).toTypedArray().apply {
+        if (isEmpty()) return newArray
+        forEach {
+            if (it.isNullOrEmpty()) return@forEach
+            if (it.contains("name|")) newArray[0] = it.substring(5)
+            if (it.contains("code|")) newArray[1] = it.substring(5)
+            if (it.contains("commit|")) newArray[2] = it.substring(7)
+        }
+        return newArray
+    }
 }
 
 /**
@@ -144,7 +155,7 @@ fun Context.checkPackName(packName: String) = safeOfFalse {
  * @param packName String
  * @return Drawable?
  */
-fun Context.getAppIcon(packName: String): Drawable? = safeOf(default = null) {
+fun Context.getAppIcon(packName: String): Drawable? = safeOfNull {
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadIcon(packageManager)
 }
 
@@ -154,7 +165,7 @@ fun Context.getAppIcon(packName: String): Drawable? = safeOf(default = null) {
  * @param packName String
  * @return String?
  */
-fun Context.getAppVersionName(packName: String): String? = safeOf(default = null) {
+fun Context.getAppVersionName(packName: String): String? = safeOfNull {
     return PackageUtils(packageManager).getPackageInfo(packName, 0).versionName
 }
 
@@ -164,7 +175,7 @@ fun Context.getAppVersionName(packName: String): String? = safeOf(default = null
  * @param packName String
  * @return Long?
  */
-fun Context.getAppVersionCode(packName: String): Long? = safeOf(default = null) {
+fun Context.getAppVersionCode(packName: String): Long? = safeOfNull {
     return PackageUtils(packageManager).getPackageInfo(packName, 0).longVersionCode
 }
 
@@ -184,7 +195,7 @@ fun Context.getAppLabel(packName: String): CharSequence {
  * @param packName String
  * @return CharSequence?
  */
-fun Context.getAppLabelOrNull(packName: String): CharSequence? = safeOf(default = null) {
+fun Context.getAppLabelOrNull(packName: String): CharSequence? = safeOfNull {
     return PackageUtils(packageManager).getApplicationInfo(packName, 0).loadLabel(packageManager)
 }
 
@@ -194,7 +205,7 @@ fun Context.getAppLabelOrNull(packName: String): CharSequence? = safeOf(default 
  * @param intent Intent
  * @return Boolean
  */
-fun Context.checkResolveActivity(intent: Intent): Boolean = safeOf(default = false) {
+fun Context.checkResolveActivity(intent: Intent): Boolean = safeOfFalse {
     return PackageUtils(packageManager).resolveActivity(intent, 0) != null
 }
 
@@ -326,7 +337,7 @@ fun getProp(key: String): String {
  * @param root Boolean
  * @return String
  */
-fun getProp(key: String, root: Boolean): String = safeOf(default = "null") {
+fun getProp(key: String, root: Boolean): String = safeOf("null") {
     ShellUtils.execCommand("getprop $key", root, true).let {
         if (it.result == 1) "null" else formatSpace(it.successMsg)
     }

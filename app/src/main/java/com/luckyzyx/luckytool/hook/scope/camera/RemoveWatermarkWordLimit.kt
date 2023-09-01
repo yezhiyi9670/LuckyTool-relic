@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.scope.camera
 
-import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
@@ -9,16 +8,11 @@ import com.highcapable.yukihookapi.hook.type.android.ViewGroupClass
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import java.util.Arrays
+import com.luckyzyx.luckytool.utils.getAppSet
 
 object RemoveWatermarkWordLimit : YukiBaseHooker() {
     override fun onHook() {
-        val appSet = prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-            Arrays.sort(this)
-            forEach {
-                this[this.indexOf(it)] = it.substring(2)
-            }
-        }
+        val appSet = getAppSet(ModulePrefs, packageName)
         val clazz = when (appSet[2]) {
             "8d5b992", "38e5b1a", "b696b47", "02aac8a" -> "$7"
             else -> "$5"

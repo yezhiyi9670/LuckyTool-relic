@@ -1,6 +1,5 @@
 package com.luckyzyx.luckytool.hook.hooker
 
-import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.oplusgames.CloudConditionFeature
 import com.luckyzyx.luckytool.hook.scope.oplusgames.CustomMediaPlayerSupport
@@ -13,19 +12,13 @@ import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveSomeVipLimit
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveStartupAnimation
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveWelfarePage
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import java.util.Arrays
-
+import com.luckyzyx.luckytool.utils.getAppSet
 
 object HookOplusGames : YukiBaseHooker() {
     override fun onHook() {
         if (packageName == "com.oplus.games") {
-            val appSet =
-                prefs(ModulePrefs).getStringSet(packageName, ArraySet()).toTypedArray().apply {
-                    Arrays.sort(this)
-                    forEach {
-                        this[this.indexOf(it)] = it.substring(2)
-                    }
-                }
+            val appSet = getAppSet(ModulePrefs, packageName)
+
             //非ColorOS官方安装器直接返回
             if (appSet[2] == "0") return
 

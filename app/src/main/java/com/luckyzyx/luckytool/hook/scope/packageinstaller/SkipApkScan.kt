@@ -23,12 +23,9 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
 //                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
 //                }
                 //d132ce2,faec6ba,860700c,3d2dbd1
-                else -> if (isNew) arrayOf(
-                    ADRU,
-                    "shouldStartAppDetail",
-                    "checkToScanRisk",
-                    "initiateInstall"
-                ) else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
+                else -> if (isNew)
+                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
+                else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         findClass(member[0]).hook {
@@ -39,7 +36,7 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
                     name = member[1]
                     if (member[0] == OPIA) returnType = BooleanType
                     if (member[0] == ADRU) returnType = IntType
-                }
+                }.all()
                 if (member[0] == OPIA) replaceToFalse()
                 if (member[0] == ADRU) replaceTo(9)
             }

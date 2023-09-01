@@ -14,7 +14,9 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
     override fun onHook() {
         loadHooker(HookOplusFeature)
         loadHooker(HookCloudCondition)
-        if (appSet[1].toInt() > 80130000) loadHooker(HookCloudApiImpl)
+
+        val versionCode = appSet[1].toIntOrNull()?.takeIf { it > 80130000 } ?: 0
+        if (versionCode > 80130000) loadHooker(HookCloudApiImpl)
     }
 
     private object HookOplusFeature : YukiBaseHooker() {

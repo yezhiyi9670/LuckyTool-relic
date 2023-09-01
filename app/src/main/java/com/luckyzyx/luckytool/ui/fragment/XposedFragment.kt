@@ -42,12 +42,6 @@ import java.util.Arrays
 class XposedFragment : ModulePreferenceFragment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         setHasOptionsMenu(true)
-        requireActivity().ckqcbss()
-    }
-
-    override fun onResume() {
-        init()
-        super.onResume()
     }
 
     private fun init() {
@@ -69,370 +63,380 @@ class XposedFragment : ModulePreferenceFragment() {
                 return@scopeDialog
             }
 
-            preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-                addPreference(Preference(context).apply {
-                    key = "android"
-                    setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.corepatch))
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_android, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "StatusBar"
-                    setPrefsIconRes("com.android.systemui") { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.StatusBar)
-                    summary = arraySummaryDot(
-                        getString(R.string.StatusBarNotice),
-                        getString(R.string.StatusBarIcon),
-                        getString(R.string.StatusBarClock)
-                    )
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_statusBar, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.android.launcher"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.Desktop)
-                    summary = arraySummaryDot(
-                        getString(R.string.AppBadgeRelated),
-                        getString(R.string.FolderLayoutRelated),
-                        getString(R.string.launcher_layout_related)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_launcher, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.aod"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.AodRelated)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_aod_music_whitelist),
-                        getString(R.string.remove_aod_notification_icon_whitelist)
-                    )
-                    isVisible = SDK >= A13 && context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_aod, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "LockScreen"
-                    setPrefsIconRes("com.android.systemui") { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.LockScreen)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_lock_screen_redone),
-                        getString(R.string.remove_lock_screen_bottom_right_camera)
-                    )
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_lockScreen, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.screenshot"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.Screenshot)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_system_screenshot_delay),
-                        getString(R.string.remove_screenshot_privacy_limit)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_screenshot, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.android.packageinstaller"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = fixIconSize(resource)
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.Application)
-                    summary = arraySummaryDot(
-                        getString(R.string.skip_apk_scan), getString(R.string.unlock_startup_limit)
-                    )
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_application, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "Miscellaneous"
-                    setPrefsIconRes("com.android.systemui") { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = getString(R.string.Miscellaneous)
-                    summary = arraySummaryDot(getString(R.string.Miscellaneous_summary))
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_miscellaneous, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.battery"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.open_battery_health),
-                        getString(R.string.open_screen_power_save)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_battery, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.android.settings"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_top_account_display),
-                        getString(R.string.remove_dpi_restart_recovery)
-                    )
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_settings, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.android.mms"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary =
-                        arraySummaryDot(getString(R.string.remove_verification_code_floating_window))
-                    isVisible = SDK >= A13 && context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_oplusMMS, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.heytap.browser"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.remove_weather_page_ads))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    val isOneplusCamera = context.checkPackName("com.oneplus.camera")
-                    key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_watermark_word_limit),
-                        getString(R.string.enable_10_bit_image_support)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_camera, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.games"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_root_check),
-                        getString(R.string.enable_developer_page)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_oplusGames, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    val isHeytap = context.checkPackName("com.heytap.themestore")
-                    key = if (isHeytap) "com.heytap.themestore" else "com.oplus.themestore"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.unlock_themestore_vip))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_themeStore, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.heytap.cloud"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.remove_network_limit))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_cloudService, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.ota"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.unlock_local_upgrade),
-                        getString(R.string.restore_ota_update_verity)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_oplusOta, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.heytap.pictorial"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.remove_image_save_watermark),
-                        getString(R.string.remove_video_save_watermark)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_oplusPictorial, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.oplus.gesture"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = fixIconSize(resource)
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.enable_volume_key_control_flashlight),
-                        getString(R.string.force_enable_aon_gestures)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_oplusGesture, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.east2d.everyimage"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(
-                        getString(R.string.skip_startup_page), getString(R.string.vip_download)
-                    )
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_everyimage, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.ruet_cse_1503050.ragib.appbackup.pro"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.remove_pro_license))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_xposed_to_alphaBackupPro, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "ru.kslabs.ksweb"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.remove_pro_license))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_ksWeb, title)
-                        true
-                    }
-                })
-                addPreference(Preference(context).apply {
-                    key = "com.dv.adm"
-                    setPrefsIconRes(key) { resource, show ->
-                        icon = resource
-                        isIconSpaceReserved = show
-                    }
-                    title = context.getAppLabel(key)
-                    summary = arraySummaryDot(getString(R.string.adm_unlock_pro))
-                    isVisible = context.checkPackName(key)
-                    setOnPreferenceClickListener {
-                        navigatePage(R.id.action_nav_function_to_ADM, title)
-                        true
-                    }
-                })
-            }
+            createPreference()
         }
+    }
+
+    private fun createPreference() {
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(Preference(context).apply {
+                key = "android"
+                setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.corepatch))
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_android, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "StatusBar"
+                setPrefsIconRes("com.android.systemui") { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.StatusBar)
+                summary = arraySummaryDot(
+                    getString(R.string.StatusBarNotice),
+                    getString(R.string.StatusBarIcon),
+                    getString(R.string.StatusBarClock)
+                )
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_statusBar, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.android.launcher"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.Desktop)
+                summary = arraySummaryDot(
+                    getString(R.string.AppBadgeRelated),
+                    getString(R.string.FolderLayoutRelated),
+                    getString(R.string.launcher_layout_related)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_launcher, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.aod"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.AodRelated)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_aod_music_whitelist),
+                    getString(R.string.remove_aod_notification_icon_whitelist)
+                )
+                isVisible = SDK >= A13 && context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_aod, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "LockScreen"
+                setPrefsIconRes("com.android.systemui") { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.LockScreen)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_lock_screen_redone),
+                    getString(R.string.remove_lock_screen_bottom_right_camera)
+                )
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_lockScreen, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.screenshot"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.Screenshot)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_system_screenshot_delay),
+                    getString(R.string.remove_screenshot_privacy_limit)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_screenshot, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.android.packageinstaller"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = fixIconSize(resource)
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.Application)
+                summary = arraySummaryDot(
+                    getString(R.string.skip_apk_scan), getString(R.string.unlock_startup_limit)
+                )
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_application, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "Miscellaneous"
+                setPrefsIconRes("com.android.systemui") { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = getString(R.string.Miscellaneous)
+                summary = arraySummaryDot(getString(R.string.Miscellaneous_summary))
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_miscellaneous, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.battery"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.open_battery_health),
+                    getString(R.string.open_screen_power_save)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_battery, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.android.settings"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_top_account_display),
+                    getString(R.string.remove_dpi_restart_recovery)
+                )
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_settings, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.android.mms"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary =
+                    arraySummaryDot(getString(R.string.remove_verification_code_floating_window))
+                isVisible = SDK >= A13 && context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusMMS, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.heytap.browser"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.remove_weather_page_ads))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                val isOneplusCamera = context.checkPackName("com.oneplus.camera")
+                key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_watermark_word_limit),
+                    getString(R.string.enable_10_bit_image_support)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_camera, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.games"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_root_check),
+                    getString(R.string.enable_developer_page)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_oplusGames, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                val isHeytap = context.checkPackName("com.heytap.themestore")
+                key = if (isHeytap) "com.heytap.themestore" else "com.oplus.themestore"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.unlock_themestore_vip))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_themeStore, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.heytap.cloud"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.remove_network_limit))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_cloudService, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.ota"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.unlock_local_upgrade),
+                    getString(R.string.restore_ota_update_verity)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusOta, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.heytap.pictorial"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_image_save_watermark),
+                    getString(R.string.remove_video_save_watermark)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusPictorial, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.oplus.gesture"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = fixIconSize(resource)
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.enable_volume_key_control_flashlight),
+                    getString(R.string.force_enable_aon_gestures)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusGesture, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.east2d.everyimage"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.skip_startup_page), getString(R.string.vip_download)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_everyimage, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.ruet_cse_1503050.ragib.appbackup.pro"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.remove_pro_license))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_xposed_to_alphaBackupPro, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "ru.kslabs.ksweb"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.remove_pro_license))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_ksWeb, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
+                key = "com.dv.adm"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.adm_unlock_pro))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_ADM, title)
+                    true
+                }
+            })
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        init()
+        requireActivity().ckqcbss()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

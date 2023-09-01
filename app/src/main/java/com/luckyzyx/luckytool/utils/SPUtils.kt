@@ -1,4 +1,6 @@
-@file:Suppress("unused", "DEPRECATION", "WorldReadableFiles", "ApplySharedPref")
+@file:Suppress("unused", "DEPRECATION", "WorldReadableFiles", "ApplySharedPref",
+    "LocalVariableName"
+)
 
 package com.luckyzyx.luckytool.utils
 
