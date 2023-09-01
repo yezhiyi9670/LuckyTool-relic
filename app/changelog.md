@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.16_beta
+
+- [适配] 支付保护-发现病毒对话框 v13.6.0(ce42387)
+
 ### 1.0.15
 
 - [适配] 桌面时钟组件 v14.0.6(3368efe)
