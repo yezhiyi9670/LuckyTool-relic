@@ -447,7 +447,7 @@
     <string name="allow_untrusted_touch">允許不受信任的觸摸</string>
     <string name="disable_dynamic_refresh_rate">禁用动态刷新率</string>
     <string name="disable_dynamic_refresh_rate_summary">主要解决屏幕无触摸时的掉帧问题\n(注意：这将会同时禁用拥有硬件级别 LTPO 屏幕设备的动态刷新率功能)</string>
-    <string name="enable_right_volume_bar_display">启用音量条右侧显示</string>
+    <string name="set_volume_bar_display_position">设置音量条显示位置</string>
     <string name="force_enable_systemui_blur_feature">强制启用系统界面模糊特性</string>
     <string name="force_enable_systemui_blur_feature_tips">前提条件：需要开启选项“强制启用系统模糊特性”\n功能位置：杂项</string>
     <!--Battery-->
@@ -672,6 +672,8 @@
     <!--CommonWords-->
     <string name="common_words_enable">启用</string>
     <string name="common_words_disable">禁用</string>
+    <string name="common_words_left">左侧</string>
+    <string name="common_words_right">右侧</string>
     <string name="common_words_close">关闭</string>
     <string name="common_words_open">打开</string>
     <string name="common_words_add">添加</string>

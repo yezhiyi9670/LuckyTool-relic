@@ -2382,10 +2382,13 @@ class DialogRelated : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.enable_right_volume_bar_display)
-                key = "enable_right_volume_bar_display"
-                setDefaultValue(false)
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_volume_bar_display_position)
+                summary = "%s"
+                key = "set_volume_bar_display_position"
+                entries = resources.getStringArray(R.array.set_volume_bar_display_position_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })

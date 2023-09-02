@@ -447,7 +447,7 @@
     <string name="allow_untrusted_touch">Разрешить нежелательные касания</string>
     <string name="disable_dynamic_refresh_rate">Отключить динамическую частоту обновления</string>
     <string name="disable_dynamic_refresh_rate_summary">В основном решает проблему падения кадров, когда экран не трогают</string>
-    <string name="enable_right_volume_bar_display">Включить отображение панели громкости справа</string>
+    <string name="set_volume_bar_display_position">Set the volume bar display position</string>
     <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
     <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
@@ -672,6 +672,8 @@
     <!--CommonWords-->
     <string name="common_words_enable">Включить</string>
     <string name="common_words_disable">Отключить</string>
+    <string name="common_words_left">Left</string>
+    <string name="common_words_right">Right</string>
     <string name="common_words_close">Отключено</string>
     <string name="common_words_open">Открыть</string>
     <string name="common_words_add">Добавить</string>

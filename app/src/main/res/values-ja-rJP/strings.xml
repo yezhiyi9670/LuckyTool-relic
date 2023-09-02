@@ -447,7 +447,7 @@
     <string name="allow_untrusted_touch">信頼されないタッチ操作を許可</string>
     <string name="disable_dynamic_refresh_rate">動的リフレッシュレートを無効化</string>
     <string name="disable_dynamic_refresh_rate_summary">画面がタッチされていないときのフレームドロップの問題などを解決します（注意：LTPO パネル搭載デバイスでは動的リフレッシュレートが無効になります）</string>
-    <string name="enable_right_volume_bar_display">音量バーの右側表示を有効化</string>
+    <string name="set_volume_bar_display_position">Set the volume bar display position</string>
     <string name="force_enable_systemui_blur_feature">システム UI のぼかし機能を強制的に有効化</string>
     <string name="force_enable_systemui_blur_feature_tips">有効にする前に「システム UI のぼかし機能を強制的に有効化」オプションをオンにする必要があります。\nオプションは「その他」のページにあります。</string>
     <!--Battery-->
@@ -672,6 +672,8 @@
     <!--CommonWords-->
     <string name="common_words_enable">有効</string>
     <string name="common_words_disable">無効</string>
+    <string name="common_words_left">Left</string>
+    <string name="common_words_right">Right</string>
     <string name="common_words_close">閉じる</string>
     <string name="common_words_open">開く</string>
     <string name="common_words_add">追加</string>

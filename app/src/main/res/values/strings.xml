@@ -496,7 +496,7 @@
     <string name="allow_untrusted_touch">Allow untrusted touch</string>
     <string name="disable_dynamic_refresh_rate">Disable dynamic refresh rate</string>
     <string name="disable_dynamic_refresh_rate_summary">Mainly solve the frame drop problem when the screen is not touched (Note: This will also disable dynamic refresh rate for devices with hardware-level LTPO screens)</string>
-    <string name="enable_right_volume_bar_display">Enable the right side of the volume bar to display</string>
+    <string name="set_volume_bar_display_position">Set the volume bar display position</string>
     <string name="force_enable_systemui_blur_feature">Force enable the systemui blur feature</string>
     <string name="force_enable_systemui_blur_feature_tips">Preconditions: You need to turn on the option to “force enable the blur feature of the systemui”\nFunctional location: Miscellaneous</string>
     
@@ -739,9 +739,12 @@
     
     <!--Typeface-->
     <string name="use_user_typeface">Use user typeface</string>
+    
     <!--CommonWords-->
     <string name="common_words_enable">Enable</string>
     <string name="common_words_disable">Disable</string>
+    <string name="common_words_left">Left</string>
+    <string name="common_words_right">Right</string>
     <string name="common_words_close">Close</string>
     <string name="common_words_open">Open</string>
     <string name="common_words_add">Add</string>
@@ -761,6 +764,7 @@
     <string name="common_words_loading">Loading</string>
     <string name="common_words_whitelist">Whitelist</string>
     <string name="common_words_blacklist">Blacklist</string>
+    
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Failed to connect to the network</string>
     <string name="net_networking_error">The current network is unavailable</string>

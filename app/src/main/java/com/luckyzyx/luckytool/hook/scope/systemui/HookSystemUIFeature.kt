@@ -32,9 +32,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
             //高斯模糊
             val enableBlur =
                 prefs(ModulePrefs).getBoolean("force_enable_systemui_blur_feature", false)
-            //右侧音量条
-            val rightVolume =
-                prefs(ModulePrefs).getBoolean("enable_right_volume_bar_display", false)
+            //音量条位置
+            val volumePosition =
+                prefs(ModulePrefs).getString("set_volume_bar_display_position", "0")
             //音量对话框背景透明度
             var volumeBlur =
                 prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1)
@@ -65,7 +65,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             when (autoBrightnessMode) {
                                 "1" -> resultFalse()
                                 "2" -> resultTrue()
-                                else -> return@beforeHook
                             }
                         }
                     }
@@ -92,14 +91,24 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 if (instanceClass.hasMethod { name = "isOplusVolumeKeyInRight" }) {
                     injectMember {
                         method { name = "isOplusVolumeKeyInRight" }
-                        if (rightVolume) replaceToTrue()
+                        beforeHook {
+                            when (volumePosition) {
+                                "1" -> replaceToFalse()
+                                "2" -> replaceToTrue()
+                            }
+                        }
                     }
                 }
                 //C13
                 if (instanceClass.hasMethod { name = "areVolumeAndPowerKeysInRight" }) {
                     injectMember {
                         method { name = "areVolumeAndPowerKeysInRight" }
-                        if (rightVolume) replaceToTrue()
+                        beforeHook {
+                            when (volumePosition) {
+                                "1" -> replaceToFalse()
+                                "2" -> replaceToTrue()
+                            }
+                        }
                     }
                 }
                 //C13
@@ -110,7 +119,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             when (fullScreenChargeAnim) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
-                                else -> return@beforeHook
                             }
                         }
                     }
@@ -130,7 +138,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             when (warpCharge) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
-                                else -> return@beforeHook
                             }
                         }
                     }
@@ -180,11 +187,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 "com.oplusos.systemui.common.util.NotificationAppFeatureOption", //C13
                 "com.oplusos.systemui.common.feature.NotificationFeatureOption" //C14
             ).hook {
-                if (SDK != A14) injectMember {
-                    method {
-                        name = if (SDK >= A14) "isOriginNotificationBehavior"
-                        else "originNotificationBehavior"
-                    }
+                if (SDK < A14) injectMember {
+                    method { name = "originNotificationBehavior" }
                     if (notifyImportance) replaceToTrue()
                 }
                 //C13 C14
@@ -227,7 +231,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             when (searchBtnMode) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
-                                else -> return@beforeHook
                             }
                         }
                     }
@@ -250,7 +253,6 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         when (autoBrightnessMode) {
                             "1" -> resultFalse()
                             "2" -> resultTrue()
-                            else -> return@beforeHook
                         }
                     }
                 }

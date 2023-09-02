@@ -447,7 +447,7 @@
     <string name="allow_untrusted_touch">Povolit nedůvěryhodné dotyky</string>
     <string name="disable_dynamic_refresh_rate">Zakázat dynamickou obnovovací frekvenci</string>
     <string name="disable_dynamic_refresh_rate_summary">Řeší hlavně problém s poklesem snímku, když se obrazovky nedotýkáte</string>
-    <string name="enable_right_volume_bar_display">Povolení zobrazení panelu hlasitosti vpravo </string>
+    <string name="set_volume_bar_display_position">Set the volume bar display position</string>
     <string name="force_enable_systemui_blur_feature">Vynutit povolení systémového rozostření</string>
     <string name="force_enable_systemui_blur_feature_tips">Podmínky: Musíte zapnout možnost „Vynutit povolení systémové rozostření“\n Umístění funkce: Různé</string>
     <!--Battery-->
@@ -672,6 +672,8 @@
     <!--CommonWords-->
     <string name="common_words_enable">Povolit</string>
     <string name="common_words_disable">Zakázat</string>
+    <string name="common_words_left">Left</string>
+    <string name="common_words_right">Right</string>
     <string name="common_words_close">Nezobrazit</string>
     <string name="common_words_open">Otevřít</string>
     <string name="common_words_add">Přidat</string>
