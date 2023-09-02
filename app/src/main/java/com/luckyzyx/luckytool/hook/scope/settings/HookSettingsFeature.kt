@@ -28,15 +28,17 @@ object HookSettingsFeature : YukiBaseHooker() {
             //prefs(ModulePrefs).getBoolean("force_display_video_memc_frame_insertion", false)
             val rgbPalette =
                 prefs(ModulePrefs).getBoolean("enable_screen_color_temperature_rgb_palette", false)
+
             //Source SysFeatureUtils
             searchClass {
                 from(
+                    "com.oplus.settings.utils",
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
                     "ri", "zi"
                 ).absolute()
-                field { type = BooleanClass }.count { it > 30 }
-                method { emptyParam();returnType = BooleanType }.count { it > 30 }
-                method { param(ContextClass);returnType = BooleanType }.count(5..6)
+                field { type = BooleanClass }.count { it > 40 }
+                method { emptyParam();returnType = BooleanType }.count { it > 80 }
+                method { param(ContextClass);returnType = BooleanType }.count(5..7)
                 method { param(StringClass);returnType = BooleanType }.count(2)
             }.get()?.hook {
                 injectMember {
@@ -58,13 +60,14 @@ object HookSettingsFeature : YukiBaseHooker() {
     private object HookExpUst : YukiBaseHooker() {
         override fun onHook() {
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
+
             //Source ExpUstUtils
             searchClass {
                 from(
+                    "com.oplus.settings.utils",
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
                     "ri", "zi"
                 ).absolute()
-                field().count(1)
                 method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
                 method {
                     param(CharSequenceArrayClass);returnType = CharSequenceArrayClass
@@ -98,9 +101,13 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("disable_cn_special_edition_setting", false)
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
             val processorDetail = prefs(ModulePrefs).getString("set_processor_click_page", "0")
+
             //Source AppFeatureProviderUtils
             searchClass {
-                from("ma", "rb", "yb", "sb", "la", "ub", "kf", "gf", "zb").absolute()
+                from(
+                    "com.oplus.coreapp.appfeature",
+                    "ma", "rb", "yb", "sb", "la", "ub", "kf", "gf", "zb"
+                ).absolute()
                 method {
                     param(ContentResolverClass, StringClass, BooleanType)
                     returnType = BooleanType

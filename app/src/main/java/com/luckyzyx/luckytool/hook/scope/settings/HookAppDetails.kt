@@ -50,7 +50,7 @@ object HookAppDetails : YukiBaseHooker() {
                         )
                     )
                     val packName = packageInfo.packageName
-                    val appVers = context.getAppVersion(packName)
+                    val appVers = context.getAppVersion(packName,false)
                     if (appVers.size < 3) return@afterHook
                     val version =
                         if (appVers[2] == "null") "${appVers[0]}(${appVers[1]})" else "${appVers[0]}(${appVers[1]})_${appVers[2]}"

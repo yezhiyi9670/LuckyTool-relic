@@ -15,7 +15,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scopeDialog
 import com.drake.net.utils.scopeLife
-import com.drake.net.utils.withDefault
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -467,12 +466,10 @@ class XposedFragment : ModulePreferenceFragment() {
             val xposedScope = resources.getStringArray(R.array.xposed_scope)
             Arrays.sort(xposedScope)
             var str = getString(R.string.scope_version_info)
-            withDefault {
-                for (scope in xposedScope) {
-                    val arrayList = getAppVersion(scope)
-                    if (arrayList.isEmpty()) continue
-                    str += "\n\n${getAppLabel(scope)} - $scope - ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
-                }
+            xposedScope.forEach {
+                val arrayList = getAppVersion(it)
+                if (arrayList.isEmpty()) return@forEach
+                str += "\n\n${getAppLabel(it)} - $it - ${arrayList[0]}(${arrayList[1]})[${arrayList[2]}]"
             }
             val nestedScrollView = NestedScrollView(this@bottomSheet).apply {
                 setPadding(10.dp, 20.dp, 10.dp, 20.dp)

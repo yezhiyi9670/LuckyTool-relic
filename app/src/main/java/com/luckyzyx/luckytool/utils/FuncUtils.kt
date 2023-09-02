@@ -66,27 +66,28 @@ fun Context.getAppCommit(packName: String): String? {
  * @return [ArraySet]
  */
 @Suppress("DEPRECATION") //修复获取null
-fun Context.getAppVersion(packName: String): ArrayList<String> = safeOf(ArrayList()) {
-    val arrayList = ArrayList<String>()
-    val arraySet = ArraySet<String>()
-    val packageInfo = PackageUtils(packageManager).getPackageInfo(packName, 0)
-    val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
-    val versionName = safeOf("null") { packageInfo.versionName.toString() }
-    arrayList.add(versionName)
-    arraySet.add("name|$versionName")
-    val versionCode = safeOf("null") { packageInfo.longVersionCode.toString() }
-    arrayList.add(versionCode)
-    arraySet.add("code|$versionCode")
-    val versionCommit =
-        safeOf("null") { commitInfo.metaData.get("versionCommit").toString() }
-    val versionDate = safeOf("null") { commitInfo.metaData.get("versionDate").toString() }
-    //Fix the camera's commit is empty
-    val commit = versionCommit.ifBlank { versionDate.ifBlank { "null" } }
-    arrayList.add(commit)
-    arraySet.add("commit|$commit")
-    putStringSet(ModulePrefs, packName, arraySet)
-    return arrayList
-}
+fun Context.getAppVersion(packName: String, save: Boolean = true): ArrayList<String> =
+    safeOf(ArrayList()) {
+        val arrayList = ArrayList<String>()
+        val arraySet = ArraySet<String>()
+        val packageInfo = PackageUtils(packageManager).getPackageInfo(packName, 0)
+        val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
+        val versionName = safeOf("null") { packageInfo.versionName.toString() }
+        arrayList.add(versionName)
+        arraySet.add("name|$versionName")
+        val versionCode = safeOf("null") { packageInfo.longVersionCode.toString() }
+        arrayList.add(versionCode)
+        arraySet.add("code|$versionCode")
+        val versionCommit =
+            safeOf("null") { commitInfo.metaData.get("versionCommit").toString() }
+        val versionDate = safeOf("null") { commitInfo.metaData.get("versionDate").toString() }
+        //Fix the camera's commit is empty
+        val commit = versionCommit.ifBlank { versionDate.ifBlank { "null" } }
+        arrayList.add(commit)
+        arraySet.add("commit|$commit")
+        if (save) putStringSet(ModulePrefs, packName, arraySet)
+        return arrayList
+    }
 
 /**
  * 获取APP版本数组

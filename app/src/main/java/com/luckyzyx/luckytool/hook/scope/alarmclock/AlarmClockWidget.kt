@@ -21,6 +21,8 @@ object AlarmClockWidget : YukiBaseHooker() {
     private lateinit var redMode: String
 
     override fun onHook() {
+        val appSet = getAppSet(ModulePrefs, packageName)
+
         redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
 
@@ -31,12 +33,11 @@ object AlarmClockWidget : YukiBaseHooker() {
         if (clazz.hasMethod { returnType(RemoteViewsClass) }) {
             loadHooker(AlarmClock13);return
         }
-        loadHooker(AlarmClock131)
+        loadHooker(AlarmClock131(appSet))
     }
 
-    private object AlarmClock131 : YukiBaseHooker() {
+    private class AlarmClock131(val appSet: Array<String>) : YukiBaseHooker() {
         override fun onHook() {
-            val appSet = getAppSet(ModulePrefs, packageName)
             val list = ArrayMap<String, Array<String>>()
             when (appSet[2]) {
                 "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")
