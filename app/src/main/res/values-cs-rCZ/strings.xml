@@ -213,6 +213,7 @@
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
     <string name="remove_control_center_mydevice">Odebrat moje zařízení z ovládacího centra</string>
+    <string name="restore_page_layout_row_count_for_edit_tiles">Restore page layout row count for edit tiles</string>
     <string name="set_control_center_search_button_mode">Nastavit režim tlačítka hledání v ovládacím centru</string>
     <string name="remove_control_center_networkwarn">Odstranění varovné zprávy o zabezpečení v dolní části ovládacího centra</string>
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
@@ -353,7 +354,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">Nastavení související se spouštěním aplikací</string>
     <string name="disable_splash_screen">Zakázat animaci úvodní obrazovky</string>
-    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1-2 second gap period when the APP is started.If you mind, please do not turn it on</string>
+    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1–2 second gap period when the APP is started.If you mind, please do not turn it on</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Nastavení související se seznamem aplikací</string>
     <string name="enable_zoom_window">Povolit seznam podporovatelů</string>

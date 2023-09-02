@@ -1204,6 +1204,7 @@ class StatusBarTiles : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.TileLayoutRelated)
                 key = "TileLayoutRelated"
@@ -1213,6 +1214,13 @@ class StatusBarTiles : ModulePreferenceFragment() {
                 title = getString(R.string.fix_tile_align_both_sides)
                 summary = getString(R.string.fix_tile_align_both_sides_summary)
                 key = "fix_tile_align_both_sides"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.restore_page_layout_row_count_for_edit_tiles)
+                key = "restore_page_layout_row_count_for_edit_tiles"
                 setDefaultValue(false)
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false

@@ -213,6 +213,7 @@
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
     <string name="remove_control_center_mydevice">Удалить центр управления моим устройством</string>
+    <string name="restore_page_layout_row_count_for_edit_tiles">Restore page layout row count for edit tiles</string>
     <string name="set_control_center_search_button_mode">Установить режим кнопки поиска в центре управления</string>
     <string name="remove_control_center_networkwarn">Удалить сообщение безопасности в нижней части центра управления</string>
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
@@ -353,7 +354,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">Запуск приложения</string>
     <string name="disable_splash_screen">Отключить заставку</string>
-    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1-2 second gap period when the APP is started.If you mind, please do not turn it on</string>
+    <string name="disable_splash_screen_summary">Поскольку анимация заставки была удалена, при запуске приложения будет пауза в 1–2 секунды. Если вы не возражаете, пожалуйста, не включайте ее</string>
     <!--APPRelatedList-->
     <string name="APPRelatedList">Список приложений</string>
     <string name="enable_zoom_window">Включить список поддержки</string>
@@ -481,7 +482,7 @@
     <string name="force_display_bottom_google_settings">Принудительно показывать Google внизу настроек</string>
     <string name="remove_settings_bottom_laboratory">Удалить настройки лаборатории</string>
     <string name="set_processor_click_page">Выберите CPU, чтобы открыть меню в \"Об устройстве\"</string>
-    <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
+    <string name="customize_device_sharing_page_parameters">Настройка параметров страницы совместного доступа к устройствам</string>
     <string name="AppDetailsRelated">Сведения о приложении</string>
     <string name="show_package_name_in_app_details">Показывать имя пакета в подробностях приложения</string>
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>

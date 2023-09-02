@@ -233,6 +233,7 @@
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Remove control center user switcher</string>
     <string name="remove_control_center_mydevice">Remove control center my device</string>
+    <string name="restore_page_layout_row_count_for_edit_tiles">Restore page layout row count for edit tiles</string>
     <string name="set_control_center_search_button_mode">Set control center search button mode</string>
     <string name="remove_control_center_networkwarn">Remove the security warning message at the bottom of the control center</string>
     <string name="remove_control_center_networkwarn_dialog">Remove dialog</string>
@@ -396,7 +397,7 @@
     <!--AppStartupRelated-->
     <string name="AppStartupRelated">Application startup related</string>
     <string name="disable_splash_screen">Disable splash screen</string>
-    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1-2 second gap period when the APP is started.If you mind, please do not turn it on</string>
+    <string name="disable_splash_screen_summary">Since the splash screen animation has been removed, there will be a 1–2 second gap period when the APP is started.If you mind, please do not turn it on</string>
     
     <!--APPRelatedList-->
     <string name="APPRelatedList">App Related List</string>

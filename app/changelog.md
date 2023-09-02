@@ -12,6 +12,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 设置FeatureUtils v14.0.0(975a2d7)
 - [适配] 设置-暗色模式列表 v14.0.0(975a2d7)
 - [适配] 锁屏运营商组件样式 C14
+- [添加] 恢复磁贴编辑页面布局行数
 
 ### 1.0.15
 
