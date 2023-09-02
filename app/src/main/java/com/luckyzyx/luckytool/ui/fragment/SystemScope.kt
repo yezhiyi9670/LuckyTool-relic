@@ -2557,7 +2557,7 @@ class Miscellaneous : ModulePreferenceFragment() {
                 summary = getString(R.string.media_volume_level_summary)
                 key = "media_volume_level"
                 setDefaultValue(0)
-                max = 30
+                max = 50
                 min = 0
                 showSeekBarValue = true
                 updatesContinuously = false
