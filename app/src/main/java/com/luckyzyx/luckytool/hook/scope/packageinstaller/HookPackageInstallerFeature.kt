@@ -10,19 +10,13 @@ object HookPackageInstallerFeature : YukiBaseHooker() {
         //Source FeatureOption
         findClass("com.android.packageinstaller.oplus.common.FeatureOption").hook {
             injectMember {
-                method {
-                    name = "init"
-                    paramCount = 1
-                }
+                method { name = "init";paramCount = 1 }
                 afterHook {
                     if (isAds) field { name = "sIsBusinessCustomProduct" }.get().setFalse()
                 }
             }
             injectMember {
-                method {
-                    name = "setIsClosedSuperFirewall"
-                    paramCount = 1
-                }
+                method { name = "setIsClosedSuperFirewall";paramCount = 1 }
                 afterHook {
                     if (isAOSP) field { name = "sIsClosedSuperFirewall" }.get().setTrue()
                 }

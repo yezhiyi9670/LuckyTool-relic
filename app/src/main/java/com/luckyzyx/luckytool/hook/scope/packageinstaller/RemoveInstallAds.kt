@@ -6,29 +6,26 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 
 object RemoveInstallAds : YukiBaseHooker() {
-    private var ins: Any? = null
     override fun onHook() {
+        var ins: Any? = null
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.InstallAppProgress").hook {
             injectMember {
                 method { name = "initView" }
-                afterHook {
-                    ins = instance
-                    removeViews()
-                }
+                afterHook { ins = instance;ins?.removeViews() }
             }
         }
         //Source InstallAppProgress
         findClass("com.android.packageinstaller.oplus.InstallAppProgress$1").hook {
             injectMember {
                 method { name = "handleMessage" }
-                afterHook { removeViews() }
+                afterHook { ins?.removeViews() }
             }
         }
     }
 
-    private fun removeViews() {
-        ins?.current {
+    private fun Any.removeViews() {
+        current {
             field { name = "mSuggestLayoutAScrollView" }.cast<View>()?.isVisible = false
             field { name = "mSuggestLayoutB" }.cast<View>()?.isVisible = false
         }

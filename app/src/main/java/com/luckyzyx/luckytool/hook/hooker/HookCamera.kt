@@ -4,9 +4,13 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.camera.HookCameraConfig
 import com.luckyzyx.luckytool.hook.scope.camera.RemoveWatermarkWordLimit
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.getAppSet
 
 object HookCamera : YukiBaseHooker() {
     override fun onHook() {
+        val appSet = getAppSet(ModulePrefs, packageName)
+        if (appSet[2] == "null") return
+
         //HookCameraConfig
         loadHooker(HookCameraConfig)
 

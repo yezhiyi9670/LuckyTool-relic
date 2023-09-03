@@ -19,18 +19,13 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
                 "75fe984", "532ffef" -> arrayOf(OPIA, "L", "D", "i")
                 "38477f0" -> arrayOf(OPIA, "M", "D", "k")
                 "a222497" -> arrayOf(OPIA, "M", "E", "j")
-//                "d1fd8fc", "890f77b", "40d7750", "215dfe4", "d37ed05", "a0ec813", "cade971", "6bdefec" -> {
-//                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
-//                }
-                //d132ce2,faec6ba,860700c,3d2dbd1
                 else -> if (isNew)
                     arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
                 else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
+        //Search SP_KEY_COUNT_CANCELED_BY_APP_DETAIL / count_canceled_by_app_detail
         findClass(member[0]).hook {
-            //Skip appdetail,search isStartAppDetail
-            //Search Method SP_KEY_COUNT_CANCELED_BY_APP_DETAIL / count_canceled_by_app_detail -4 OPIA ? -5 ADRU
             injectMember {
                 method {
                     name = member[1]
@@ -41,16 +36,12 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
                 if (member[0] == ADRU) replaceTo(9)
             }
         }
+        //Source OPlusPackageInstallerActivity
+        //Search button_type / install_old_version_button
         findClass(OPIA).hook {
-            //skip app scan, search method checkToScanRisk
-            //search -> "button_type", "install_old_version_button" -5 -> Method
-            //replace to initiateInstall
-            //search -> "button_type", "install_old_version_button" -11 -> Method
             injectMember {
                 method { name = member[2] }
-                replaceUnit {
-                    method { name = member[3] }.get(instance).call()
-                }
+                replaceUnit { method { name = member[3] }.get(instance).call() }
             }
         }
     }

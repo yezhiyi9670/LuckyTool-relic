@@ -71,16 +71,16 @@ fun Context.getAppVersion(packName: String, save: Boolean = true): ArrayList<Str
         val arrayList = ArrayList<String>()
         val arraySet = ArraySet<String>()
         val packageInfo = PackageUtils(packageManager).getPackageInfo(packName, 0)
-        val commitInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
+        val applicationInfo = PackageUtils(packageManager).getApplicationInfo(packName, 128)
+        val commitData = applicationInfo.metaData
         val versionName = safeOf("null") { packageInfo.versionName.toString() }
         arrayList.add(versionName)
         arraySet.add("name|$versionName")
         val versionCode = safeOf("null") { packageInfo.longVersionCode.toString() }
         arrayList.add(versionCode)
         arraySet.add("code|$versionCode")
-        val versionCommit =
-            safeOf("null") { commitInfo.metaData.get("versionCommit").toString() }
-        val versionDate = safeOf("null") { commitInfo.metaData.get("versionDate").toString() }
+        val versionCommit = safeOf("null") { commitData.get("versionCommit").toString() }
+        val versionDate = safeOf("null") { commitData.get("versionDate").toString() }
         //Fix the camera's commit is empty
         val commit = versionCommit.ifBlank { versionDate.ifBlank { "null" } }
         arrayList.add(commit)

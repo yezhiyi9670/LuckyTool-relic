@@ -20,6 +20,7 @@ object HookPackageInstaller : YukiBaseHooker() {
 
         //HookFeatureOption
         loadHooker(HookPackageInstallerFeature)
+
         //跳过安装扫描
         if (prefs(ModulePrefs).getBoolean("skip_apk_scan", false)) {
             loadHooker(SkipApkScan(appSet[2]))

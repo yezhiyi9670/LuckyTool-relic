@@ -16,6 +16,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [更改] 媒体音量阶数提高至50
 - [移除] 启用音量条右侧显示
 - [添加] 设置音量条显示位置
+- [优化] 非ColorOS版本相机Hook判定
 
 ### 1.0.15
 
