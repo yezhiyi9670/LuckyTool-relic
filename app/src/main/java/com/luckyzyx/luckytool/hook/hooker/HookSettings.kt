@@ -19,8 +19,10 @@ object HookSettings : YukiBaseHooker() {
     override fun onHook() {
         //HookSettingsFeature
         loadHooker(HookSettingsFeature)
+
         //应用详情页
         loadHooker(HookAppDetails)
+
         //暗色模式列表
         if (prefs(ModulePrefs).getBoolean("dark_mode_list_enable", false)) {
             loadHooker(DarkModeList)
