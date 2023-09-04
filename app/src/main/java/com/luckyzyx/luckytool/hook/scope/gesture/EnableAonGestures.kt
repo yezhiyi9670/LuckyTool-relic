@@ -9,7 +9,7 @@ object EnableAonGestures : YukiBaseHooker() {
     override fun onHook() {
         //Search oplus.software.aon_enable
         searchClass {
-            from("p6", "r6", "r5", "z5").absolute()
+            from("p6", "r6", "r5", "z5", "q6").absolute()
             field { type = BooleanType }.count(11..13)
             method { emptyParam();returnType = BooleanType }.count(1..2)
             method { param(ContextClass);returnType = BooleanType }.count(8)

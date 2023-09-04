@@ -22,7 +22,7 @@ object DarkModeList : YukiBaseHooker() {
         searchClass {
             from(
                 "com.oplus.settings.feature.display.darkmode.utils",
-                "qc", "oe", "re", "qe", "be", "te", "ue", "ae", "pe", "je", "ie", "oc", "ke"
+                "qc", "oe", "re", "qe", "be", "te", "ue", "ae", "pe", "je", "ie", "oc", "ke", "bi"
             ).absolute()
             field { type = AnyClass }.count(2)
             field { type = AtomicBooleanClass }.count(1)

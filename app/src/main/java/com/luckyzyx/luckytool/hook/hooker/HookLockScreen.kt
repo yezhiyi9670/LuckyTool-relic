@@ -45,12 +45,8 @@ object HookLockScreen : YukiBaseHooker() {
         }
 
         //移除锁屏关闭通知按钮
-        if (prefs(ModulePrefs).getBoolean(
-                "remove_lock_screen_close_notification_button",
-                false
-            )
-        ) {
-            loadHooker(RemoveLockScreenCloseNotificationButton)
+        if (prefs(ModulePrefs).getBoolean("remove_lock_screen_close_notification_button", false)) {
+            if (SDK < A13) loadHooker(RemoveLockScreenCloseNotificationButton)
         }
 
         //移除息屏音乐白名单

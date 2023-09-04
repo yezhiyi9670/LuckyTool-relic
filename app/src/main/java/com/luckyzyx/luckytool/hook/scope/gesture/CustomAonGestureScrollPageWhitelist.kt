@@ -24,7 +24,7 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
 
         //Search com.ss.android.ugc.aweme / com.smile.gifmaker
         searchClass {
-            from("p6", "r6", "r5", "z5").absolute()
+            from("p6", "r6", "r5", "z5", "q6").absolute()
             field { type = ContextClass }.count(1)
             field { type = ArrayListClass }.count(1)
             field { type = ArrayMapClass }.count(1)
