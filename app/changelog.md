@@ -17,6 +17,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [移除] 启用音量条右侧显示
 - [添加] 设置音量条显示位置
 - [优化] 非ColorOS版本相机Hook判定
+- [优化] 调整重启作用域Kill命令
 
 ### 1.0.15
 

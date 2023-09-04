@@ -926,14 +926,14 @@ fun Context.restartAllScope() {
     val xposedScope = resources.getStringArray(R.array.xposed_scope)
     val commands = ArrayList<String>()
     for (scope in xposedScope) {
+        getAppVersion(scope)
         if (scope == "android") continue
         if (scope.contains("systemui")) {
             commands.add("kill -9 `pgrep systemui`")
             continue
         }
-        commands.add("killall $scope")
+        commands.add("pkill -9 $scope")
         commands.add("am force-stop $scope")
-        getAppVersion(scope)
     }
     MaterialAlertDialogBuilder(this).apply {
         setMessage(getString(R.string.restart_scope_message))
