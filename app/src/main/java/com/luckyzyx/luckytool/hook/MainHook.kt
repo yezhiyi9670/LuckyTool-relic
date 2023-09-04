@@ -129,9 +129,7 @@ object MainHook : IYukiHookXposedInit {
         //应用安装器
         loadApp("com.android.packageinstaller", HookPackageInstaller)
         //对话框相关
-        loadApp(
-            "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
-        ) {
+        loadApp("com.android.systemui", "com.coloros.securepay") {
             loadHooker(HookDialogRelated)
         }
         //全面屏手势相关
