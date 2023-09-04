@@ -836,6 +836,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.StatusBarMobileDataIcon)
                 key = "StatusBarMobileDataIcon"
@@ -879,6 +880,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     true
                 }
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.StatusBarBluetoothIcon)
                 key = "StatusBarBluetoothIcon"
@@ -894,6 +896,7 @@ class StatusBarIcon : ModulePreferenceFragment() {
                     true
                 }
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.StatusBarOtherIcon)
                 key = "StatusBarOtherIcon"
@@ -921,17 +924,6 @@ class StatusBarIcon : ModulePreferenceFragment() {
                 title = getString(R.string.remove_green_capsule_prompt)
                 summary = getString(R.string.remove_green_capsule_prompt_summary)
                 key = "remove_green_capsule_prompt"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.StatusBarSmallIconStatus)
-                key = "StatusBarSmallIconStatus"
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.status_bar_icon_vertical_center)
-                key = "status_bar_icon_vertical_center"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
@@ -2352,13 +2344,6 @@ class DialogRelated : ModulePreferenceFragment() {
                 title = getString(R.string.remove_low_battery_dialog_warning)
                 summary = getString(R.string.remove_low_battery_dialog_warning_summary)
                 key = "remove_low_battery_dialog_warning"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop)
-                summary = getString(R.string.remove_warning_dialog_that_app_runs_on_desktop_summary)
-                key = "remove_warning_dialog_that_app_runs_on_desktop"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })

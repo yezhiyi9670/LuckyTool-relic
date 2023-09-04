@@ -8,7 +8,6 @@ import com.luckyzyx.luckytool.hook.scope.systemui.RemoveGreenDotPrivacyPrompt
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveHighPerformanceModeIcon
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarSecurePayment
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveWiFiDataInout
-import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarIconVerticalCenter
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object StatusBarIcon : YukiBaseHooker() {
@@ -36,10 +35,6 @@ object StatusBarIcon : YukiBaseHooker() {
         //移除绿色胶囊提示
         if (prefs(ModulePrefs).getBoolean("remove_green_capsule_prompt", false)) {
             loadHooker(RemoveGreenCapsulePrompt)
-        }
-        //状态栏图标垂直居中
-        if (prefs(ModulePrefs).getBoolean("status_bar_icon_vertical_center", false)) {
-            loadHooker(StatusBarIconVerticalCenter)
         }
 
         //seeding_card_container

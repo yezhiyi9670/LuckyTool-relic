@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.luckyzyx.luckytool.hook.scope.exsystemservice.RemoveWarningDialogThatAppRunsOnDesktop
 import com.luckyzyx.luckytool.hook.scope.securepay.RemoveSecurePayFoundVirusDialog
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableDuplicateFloatingWindow
 import com.luckyzyx.luckytool.hook.scope.systemui.DisableHeadphoneHighVolumeWarning
@@ -33,13 +32,6 @@ object HookDialogRelated : YukiBaseHooker() {
             }
             //音量对话框背景透明度
             loadHooker(VolumeDialogWhiteBackground)
-        }
-
-        if (packageName == "com.oplus.exsystemservice") {
-            //移除应用运行在桌面上警告对话框
-            if (prefs(ModulePrefs).getBoolean("remove_warning_dialog_that_app_runs_on_desktop", false)) {
-                loadHooker(RemoveWarningDialogThatAppRunsOnDesktop)
-            }
         }
 
         if (packageName == "com.coloros.securepay") {

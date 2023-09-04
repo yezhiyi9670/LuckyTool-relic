@@ -30,10 +30,7 @@ object StatusBarNotify : YukiBaseHooker() {
             loadHooker(RemoveDoNotDisturbModeNotification)
         }
         //移除通知勿扰通知
-        if (prefs(ModulePrefs).getBoolean(
-                "remove_notifications_for_mute_notifications", false
-            )
-        ) {
+        if (prefs(ModulePrefs).getBoolean("remove_notifications_for_mute_notifications", false)) {
             loadHooker(RemoveNotificationForMuteNotifications)
         }
         //移除GT模式通知
