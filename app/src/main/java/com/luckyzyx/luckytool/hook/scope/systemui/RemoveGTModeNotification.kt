@@ -2,6 +2,8 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.utils.A14
+import com.luckyzyx.luckytool.utils.SDK
 
 object RemoveGTModeNotification : YukiBaseHooker() {
     override fun onHook() {
@@ -11,7 +13,10 @@ object RemoveGTModeNotification : YukiBaseHooker() {
             "com.oplus.systemui.statusbar.util.GTUtils" //C14
         ).hook {
             injectMember {
-                method { name = "showOpenGtModeNotify";paramCount = 1 }
+                method {
+                    name = if (SDK >= A14) "notifyOpenGtMode"
+                    else "showOpenGtModeNotify"
+                }
                 intercept()
             }
         }
