@@ -1,14 +1,20 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.content.Context
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.utils.SettingsUtils
+import com.luckyzyx.luckytool.utils.A14
+import com.luckyzyx.luckytool.utils.SDK
 
 object ForceEnableScreenOffMusicSupport : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusBlackScreenGestureControllExImpl
-        findClass("com.oplus.systemui.keyguard.OplusBlackScreenGestureControllExImpl").hook {
+        VariousClass(
+            "com.oplus.systemui.keyguard.OplusBlackScreenGestureControllExImpl", //C13
+            "com.oplus.systemui.keyguard.gesture.OplusBlackScreenGestureControllExImpl" //C14
+        ).hook {
             injectMember {
                 method { name = "resetAodMediaSupportConfig" }
                 afterHook {
@@ -17,8 +23,11 @@ object ForceEnableScreenOffMusicSupport : YukiBaseHooker() {
                     SettingsUtils(appClassLoader).Secure.method {
                         name = "putIntForUser";paramCount = 4
                     }.get().call(context.contentResolver, "aod_media_support", 1, 0)
-                    "com.oplusos.systemui.notification.util.NotificationStatisticUtil".toClass()
-                        .method { name = "setAodMediaSupport";paramCount = 1 }.get().call(true)
+                    val utilCls =
+                        if (SDK >= A14) "com.oplus.systemui.aod.mediapanel.util.AodMediaStatisticUtil"
+                        else "com.oplusos.systemui.notification.util.NotificationStatisticUtil"
+                    utilCls.toClass().method { name = "setAodMediaSupport";paramCount = 1 }.get()
+                        .call(true)
                 }
             }
         }
