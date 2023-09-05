@@ -6,6 +6,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 ### 1.0.17_beta
 
 - [适配] 设置FeatureUtils v12.1.2(af160a4)
+- [修复] 音量条显示位置Hook异常
 
 ### 1.0.16
 

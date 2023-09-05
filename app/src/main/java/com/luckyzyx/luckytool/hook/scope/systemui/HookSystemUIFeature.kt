@@ -93,8 +93,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         method { name = "isOplusVolumeKeyInRight" }
                         beforeHook {
                             when (volumePosition) {
-                                "1" -> replaceToFalse()
-                                "2" -> replaceToTrue()
+                                "1" -> resultFalse()
+                                "2" -> resultTrue()
                             }
                         }
                     }
@@ -105,8 +105,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         method { name = "areVolumeAndPowerKeysInRight" }
                         beforeHook {
                             when (volumePosition) {
-                                "1" -> replaceToFalse()
-                                "2" -> replaceToTrue()
+                                "1" -> resultFalse()
+                                "2" -> resultTrue()
                             }
                         }
                     }
