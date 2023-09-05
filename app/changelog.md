@@ -27,6 +27,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 禁用复制悬浮窗 C14
 - [适配] 隐藏未使用的标签Gen2x2 C14
 - [适配] 手势体感-隔空手势 v8.1.0(7c43a38)
+- [适配] 设置FeatureUtils v12.1.2(af160a4)
 
 ### 1.0.15
 

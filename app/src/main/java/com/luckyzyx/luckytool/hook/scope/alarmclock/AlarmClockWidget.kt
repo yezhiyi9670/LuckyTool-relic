@@ -44,7 +44,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                 "87619ee" -> list["a5.v"] = arrayOf("b", "v")
                 "14ae6e7", "e6df2db", "18140a4" -> list["i5.v"] = arrayOf("b", "v")
                 "3368efe" -> list["v4.v"] = arrayOf("b", "u")
-                "775bc1d" -> list["k5.v"] = arrayOf("b", "u")
+                "775bc1d" -> list["k5.v"] = arrayOf("b", "u", "v")
                 "f67b677" -> list["j5.u"] = arrayOf("b", "v")
             }
             if (list.keys.isEmpty()) {

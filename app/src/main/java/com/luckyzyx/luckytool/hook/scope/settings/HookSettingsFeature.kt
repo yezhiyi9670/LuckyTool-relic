@@ -34,7 +34,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                 from(
                     "com.oplus.settings.utils",
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri", "zi", "nm"
+                    "ri", "zi", "nm", "uf"
                 ).absolute()
                 field { type = BooleanClass }.count { it > 40 }
                 method { emptyParam();returnType = BooleanType }.count { it > 80 }
@@ -66,7 +66,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                 from(
                     "com.oplus.settings.utils",
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri", "zi", "nm"
+                    "ri", "zi", "nm", "uf"
                 ).absolute()
                 method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
                 method {
