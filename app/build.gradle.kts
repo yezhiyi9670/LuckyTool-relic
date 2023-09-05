@@ -2,14 +2,14 @@ import com.github.megatronking.stringfog.plugin.StringFogExtension
 import java.io.FileInputStream
 import java.util.Properties
 
-val keystorePropertiesFile = rootProject.file("keystore/keystore.properties")
+val keystorePropertiesFile: File = rootProject.file("keystore/keystore.properties")
 val keystoreProperties = Properties()
 keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android") version "1.9.0"
-    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
+    id("org.jetbrains.kotlin.android") version "1.9.10"
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
     id("com.joom.paranoid")
     id("stringfog")
 }
@@ -35,7 +35,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk = 28
         versionCode = getVersionCode()
-        versionName = "1.0.16_beta"
+        versionName = "1.0.16"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 

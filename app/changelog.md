@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.16_beta
+### 1.0.16
 
 - [适配] 支付保护-发现病毒对话框 v13.6.0(ce42387)
 - [优化] 模块部分页面卡顿问题
@@ -28,6 +28,29 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 隐藏未使用的标签Gen2x2 C14
 - [适配] 手势体感-隔空手势 v8.1.0(7c43a38)
 - [适配] 设置FeatureUtils v12.1.2(af160a4)
+- [Fix] Payment Protection - Virus Found Dialog v13.6.0(ce42387)
+- [Optimize] The page freeze problem of some modules
+- [Change] data key-value format (need to restart all scopes to reload)
+- [Fix] App Package Installer - Skip Apk Scanning v13.1.2(263ef6f)
+- [Fix] Settings FeatureUtils v14.0.0(975a2d7)
+- [Fix] Settings-Dark Mode List v14.0.0(975a2d7)
+- [Fix] Lock screen operator component style C14
+- [Add] Restore tile edit page layout row count
+- [Change] Media volume scale increased to 50
+- [Remove] Enable display on right side of volume bar
+- [Add] Set volume bar display position
+- [Optimize] Non-ColorOS version camera Hook judgment
+- [Optimize] Adjust the restart scope Kill command
+- [Fix] Settings FeatureUtils v14.0.0(29f4f65)
+- [Remove] System Service - Application running on system desktop warning dialog
+- [Remove] Status bar icons are vertically centered
+- [Fix] GT mode notification C14
+- [Optimize] Horizontal screen tiles are aligned on both sides C14
+- [Fix] Forcibly turn on off-screen music C14
+- [Fix] Disable copying of floating windows C14
+- [Fix] Hide unused tags Gen2x2 C14
+- [Fix] Gesture somatosensory-air gesture v8.1.0(7c43a38)
+- [Fix] Settings FeatureUtils v12.1.2(af160a4)
 
 ### 1.0.15
 
