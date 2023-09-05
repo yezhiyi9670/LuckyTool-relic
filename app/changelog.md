@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.17_beta
+
+- [适配] 设置FeatureUtils v12.1.2(af160a4)
+
 ### 1.0.16
 
 - [适配] 支付保护-发现病毒对话框 v13.6.0(ce42387)

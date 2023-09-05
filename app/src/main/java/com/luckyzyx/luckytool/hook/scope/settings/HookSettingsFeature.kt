@@ -36,8 +36,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                     "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
                     "ri", "zi", "nm", "uf"
                 ).absolute()
-                field { type = BooleanClass }.count { it > 40 }
-                method { emptyParam();returnType = BooleanType }.count { it > 80 }
+                field { type = BooleanClass }.count { it > 30 }
+                method { emptyParam();returnType = BooleanType }.count { it > 70 }
                 method { param(ContextClass);returnType = BooleanType }.count(5..7)
                 method { param(StringClass);returnType = BooleanType }.count(2)
             }.get()?.hook {

@@ -102,7 +102,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                         }
                     }
                 }
-            }
+            } ?: loggerD(msg = "${packageName}\nError -> AlarmClock13")
         }
     }
 
