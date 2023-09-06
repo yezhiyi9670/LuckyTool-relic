@@ -1,9 +1,11 @@
 package com.luckyzyx.luckytool.hook.scope.alarmclock
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import android.util.ArrayMap
+import com.highcapable.yukihookapi.hook.core.YukiMemberHookCreator
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.log.loggerD
@@ -12,60 +14,104 @@ import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.android.RemoteViewsClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
+import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.getAppSet
+import com.luckyzyx.luckytool.utils.safeOfNull
 
 object AlarmClockWidget : YukiBaseHooker() {
 
     private lateinit var redMode: String
 
     override fun onHook() {
-        val appSet = getAppSet(ModulePrefs, packageName)
-
         redMode = prefs(ModulePrefs).getString("alarmclock_widget_redone_mode", "0")
         dataChannel.wait<String>("alarmclock_widget_redone_mode") { redMode = it }
 
         val clazz = "com.coloros.widget.smallweather.OnePlusWidget".toClassOrNull() ?: return
         if (clazz.hasMethod { param(StringClass, StringClass);returnType = CharSequenceClass }) {
-            loadHooker(AlarmClock12);return
-        }
-        if (clazz.hasMethod { returnType(RemoteViewsClass) }) {
-            loadHooker(AlarmClock13);return
-        }
-        loadHooker(AlarmClock131(appSet))
+            loadHooker(AlarmClock12)
+        } else if (clazz.hasMethod { returnType(RemoteViewsClass) }) {
+            loadHooker(AlarmClock13)
+        } else loadHooker(AlarmClock131())
     }
 
-    private class AlarmClock131(val appSet: Array<String>) : YukiBaseHooker() {
+    private class AlarmClock131 : YukiBaseHooker() {
         override fun onHook() {
-            val list = ArrayMap<String, Array<String>>()
-            when (appSet[2]) {
-                "65b9601", "d29dc32", "546b861", "379d9ec" -> list["a5.v"] = arrayOf("u", "t")
-                "87619ee" -> list["a5.v"] = arrayOf("b", "v")
-                "14ae6e7", "e6df2db", "18140a4" -> list["i5.v"] = arrayOf("b", "v")
-                "3368efe" -> list["v4.v"] = arrayOf("b", "u")
-                "775bc1d" -> list["k5.v"] = arrayOf("b", "u", "v")
-                "f67b677" -> list["j5.u"] = arrayOf("b", "v")
-            }
-            if (list.keys.isEmpty()) {
-                loggerD(msg = "尝试重启作用域或者联系开发者进行适配!")
-                loggerD(msg = "Try to restart the scopes or contact the developer for adaptation !")
-                return
-            }
-
-            //Source OppoWeather / OppoWeatherSingle / OppoWeatherVertical
+            //Source OnePlusWidget / OppoWeather / OppoWeatherSingle / OppoWeatherVertical
             //Search Class com.oplus.widget.OplusTextClock
-            findClass(list.keyAt(0)).hook {
-                injectMember {
-                    method { emptyParam();returnType = BooleanType }.all()
-                    beforeHook {
-                        if (list.valueAt(0).contains(method.name)) {
-                            when (redMode) {
-                                "1" -> resultTrue()
-                                "2" -> resultFalse()
-                            }
-                        }
-                    }
+            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook { injMember() }
+            findClass("com.coloros.widget.smallweather.OppoWeather").hook { injMember() }
+            findClass("com.coloros.widget.smallweather.OppoWeatherSingle").hook { injMember() }
+            findClass("com.coloros.widget.smallweather.OppoWeatherVertical").hook { injMember() }
+            findClass("com.coloros.widget.smallweather.OppoWeatherMultiVertical").hook { injMember() }
+        }
+
+        @SuppressLint("DiscouragedApi")
+        fun getReplaceLayout(context: Context, layoutName: String?, redMode: String): Int? {
+            var entryName = when (layoutName) {
+                //OnePlusWidget
+                "op_double_clock_red_widget_land_view" -> "op_double_clock_widget_land_view"
+                "op_double_clock_red_widget_view" -> "op_double_clock_widget_view"
+                "one_plus_red_widget_land_view" -> "one_plus_widget_land_view"
+                "one_plus_red_widget_view" -> "one_plus_widget_view"
+                "table_op_double_clock_red_widget_land_view" -> "table_op_double_clock_widget_land_view"
+                "table_op_double_clock_red_widget_view" -> "table_op_double_clock_widget_view"
+                "table_one_plus_red_widget_land_view" -> "table_one_plus_widget_land_view"
+                "table_one_plus_red_widget_view" -> "table_one_plus_widget_view"
+                //OppoWeather
+                "hor_double_clock_red_widget_land_view_t" -> "hor_double_clock_widget_land_view_t"
+                "hor_double_clock_red_widget_view_t" -> "hor_double_clock_widget_view_t"
+                "hor_single_clock_red_widget_land_view_t" -> "hor_single_clock_widget_land_view_t"
+                "hor_single_clock_red_widget_view_t" -> "hor_single_clock_widget_view_t"
+                "table_hor_double_clock_red_widget_land_view_t" -> "table_hor_double_clock_widget_land_view_t"
+                "table_hor_double_clock_red_widget_view_t" -> "table_hor_double_clock_widget_view_t"
+                "table_hor_single_clock_red_widget_land_view_t" -> "table_hor_single_clock_widget_land_view_t"
+                "table_hor_single_clock_red_widget_view_t" -> "table_hor_single_clock_widget_view_t"
+                //OppoWeatherSingle
+                "one_line_double_clock_red_widget_land_view_t" -> "one_line_double_clock_widget_land_view_t"
+                "one_line_double_clock_red_widget_view_t" -> "one_line_double_clock_widget_view_t"
+                "one_line_hor_single_clock_red_widget_land_view_t" -> "one_line_hor_single_clock_widget_land_view_t"
+                "one_line_hor_single_clock_red_widget_view_t" -> "one_line_hor_single_clock_widget_view_t"
+                "table_one_line_double_clock_red_widget_land_view_t" -> "table_one_line_double_clock_widget_land_view_t"
+                "table_one_line_double_clock_red_widget_view_t" -> "table_one_line_double_clock_widget_view_t"
+                "table_one_line_hor_single_clock_red_widget_land_view_t" -> "table_one_line_hor_single_clock_widget_land_view_t"
+                "table_one_line_hor_single_clock_red_widget_view_t" -> "table_one_line_hor_single_clock_widget_view_t"
+                //OppoWeatherVertical
+                "vertical_double_clock_red_widget_land_view_t" -> "vertical_double_clock_widget_land_view_t"
+                "vertical_double_clock_red_widget_view_t" -> "vertical_double_clock_widget_view_t"
+                "vertical_single_clock_red_widget_land_view_t" -> "vertical_single_clock_widget_land_view_t"
+                "vertical_single_clock_red_widget_view_t" -> "vertical_single_clock_widget_view_t"
+                "table_vertical_double_clock_red_widget_land_view_t" -> "table_vertical_double_clock_widget_land_view_t"
+                "table_vertical_double_clock_red_widget_view_t" -> "table_vertical_double_clock_widget_view_t"
+                "table_vertical_single_clock_red_widget_land_view_t" -> "table_vertical_single_clock_widget_land_view_t"
+                //"vertical_single_clock_red_widget_view_t" -> "vertical_single_clock_widget_view_t"
+                //OppoWeatherMultiVertical
+                //"hor_double_clock_red_widget_land_view_t" -> "hor_double_clock_widget_land_view_t"
+                //"hor_double_clock_red_widget_view_t" -> "hor_double_clock_widget_view_t"
+                //"hor_single_clock_red_widget_land_view_t" -> "hor_single_clock_widget_land_view_t"
+                "vertical_multi_clock_red_widget_view_t" -> "vertical_multi_clock_widget_view_t"
+                //"table_hor_double_clock_red_widget_land_view_t" -> "table_hor_double_clock_widget_land_view_t"
+                //"table_hor_double_clock_red_widget_view_t" -> "table_hor_double_clock_widget_view_t"
+                //"table_hor_single_clock_red_widget_land_view_t" -> "table_hor_single_clock_widget_land_view_t"
+                "table_vertical_multi_clock_red_widget_view_t" -> "table_vertical_multi_clock_widget_view_t"
+                else -> return null
+            }
+            if (redMode == "1") entryName = layoutName
+            val id = context.resources.getIdentifier(entryName, "layout", packageName)
+            return id.takeIf { it != 0 }
+        }
+
+        fun YukiMemberHookCreator.injMember(): YukiMemberHookCreator.MemberHookCreator.Result {
+            return injectMember {
+                method { emptyParam();returnType = IntType }.all()
+                afterHook {
+                    if (redMode == "0") return@afterHook
+                    val context = field { type = ContextClass;superClass() }.get(instance)
+                        .cast<Context>() ?: return@afterHook
+                    val resId = result<Int>() ?: return@afterHook
+                    if (resId < 1000) return@afterHook
+                    val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
+                    result = (getReplaceLayout(context, entryName, redMode) ?: return@afterHook)
                 }
             }
         }

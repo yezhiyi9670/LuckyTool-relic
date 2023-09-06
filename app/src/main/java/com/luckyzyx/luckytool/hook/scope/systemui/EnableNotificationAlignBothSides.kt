@@ -43,7 +43,7 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                         val visible = args().last().cast<Int>() ?: return@beforeHook
                         val count = viewGroup.childCount
                         if ((visible == 0) && (count > 0)) {
-                            if (viewGroup.width > 0) viewGroup.setViewWidth()
+                            if (viewGroup.width != 0) viewGroup.setViewWidth()
                         }
                     }
                 }
@@ -72,15 +72,12 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
                 injectMember {
                     method { name = "updateViewVisibility" }
                     beforeHook {
-                        val hostView = field {
-                            name = "hostView";superClass()
-                        }.get(instance).cast<ViewGroup>() ?: return@beforeHook
+                        val hostView = field { name = "hostView";superClass() }.get(instance)
+                            .cast<ViewGroup>() ?: return@beforeHook
                         val visible = hostView.visibility
                         val count = hostView.childCount
                         if ((visible == 0) && (count > 0)) {
-                            if (hostView.width > 0) getScreenOrientation(hostView) {
-                                if (it) hostView.setViewWidth()
-                            }
+                            if (hostView.width != 0) hostView.setViewWidth()
                         }
                     }
                 }

@@ -7,6 +7,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 - [适配] 设置FeatureUtils v12.1.2(af160a4)
 - [修复] 音量条显示位置Hook异常
+- [更改] 桌面时钟组件红一适配方案
 
 ### 1.0.16
 
