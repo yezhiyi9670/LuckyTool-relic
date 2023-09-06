@@ -157,12 +157,15 @@ configure<StringFogExtension> {
 
 fun getVersionCode(): Int {
     val propsFile = file("version.properties")
-    val properties = Properties()
-    properties.load(FileInputStream(propsFile))
-    var vCode = properties["versionCode"].toString().toInt()
-    properties["versionCode"] = (++vCode).toString()
-    properties.store(propsFile.writer(), null)
-    return vCode
+    if (propsFile.canRead()) {
+        val properties = Properties()
+        properties.load(FileInputStream(propsFile))
+        var vCode = properties["versionCode"].toString().toInt()
+        properties["versionCode"] = (++vCode).toString()
+        properties.store(propsFile.writer(), null)
+        println("versionCode -> $vCode")
+        return vCode
+    } else throw GradleException("无法读取 version.properties!")
 }
 
 fun getAppCenterSecret(): String {

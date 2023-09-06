@@ -2926,6 +2926,7 @@ class Camera : ModulePreferenceFragment() {
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.enable_10_bit_image_support)
+                summary = getString(R.string.enable_10_bit_image_support_summary)
                 key = "enable_10_bit_image_support"
                 setDefaultValue(false)
                 isIconSpaceReserved = false

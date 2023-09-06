@@ -491,6 +491,7 @@
     <!--Camera-->
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
+    <string name="enable_10_bit_image_support_summary">部分机型启用此功能可能会导致照片变绿</string>
     <string name="enable_hasselblad_watermark_style">启用 Hasselblad 水印支持</string>
     <string name="fix_hasselblad_custom_watermark_crash">修复 Hasselblad 定制水印崩溃</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">若你的相机不支持 Hasselbad 定制水印 (白色长条形状)，请勿使用</string>

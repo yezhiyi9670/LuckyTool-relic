@@ -16,8 +16,8 @@
     <string name="use_dynamic_color_summary">Використовувати динамічні кольори</string>
     <string name="dark_theme">Темна тема</string>
     <string name="follow_system">Як в системі</string>
-    <string name="dark_theme_off">Always off</string>
-    <string name="dark_theme_on">Always on</string>
+    <string name="dark_theme_off">Завжди вимкнено</string>
+    <string name="dark_theme_on">Завжди увімкнено</string>
     <string name="language">Мова</string>
     <string name="privacy_agreement">Угода про конфіденційність</string>
     <string name="auto_check_update">Автоматично перевіряти наявність оновлень</string>
@@ -68,17 +68,17 @@
     <string name="participate_translation">Взяти участь у перекладі модуля</string>
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
-    <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
+    <string name="unsupported_xposed">Виявлено неактивований модуль.\nБудь ласка, використовуйте LSPosed %1$s і вище, щоб активувати модуль.\nЯкщо ви виконали цей крок, ви можете спробувати натиснути «ОК», щоб вийти та знову відкрити модуль.</string>
     <string name="unsupported_os">Непідтримувана система</string>
-    <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
+    <string name="unsupported_os_summary">Оскільки модуль підтримує лише системи ColorOS 12 і вище, будь ласка, вживайте заходи безпеки!</string>
     <string name="no_root">Немає root-прав</string>
     <string name="no_root_summary">Рут-доступ не виявлено, деякі функції будуть недоступні!</string>
     <!-- Menu -->
     <string name="menu_reboot">Меню перезавантаження</string>
     <string name="menu_settings">Налаштування</string>
     <string name="restart_scope">Перезавантажити заплановані процеси</string>
-    <string name="need_restart_scope">Need to restart scope</string>
-    <string name="need_restart_system">Need to restart system</string>
+    <string name="need_restart_scope">Потрібно перезапустити область</string>
+    <string name="need_restart_system">Потрібно перезапустити систему</string>
     <string name="restart_scope_message">Ви дійсно хочете перезавантажити всі процеси із заданою областю дії, окрім системного фреймворку?\nВикористайте, якщо модуль не працює!\nПереконайтеся, що всі відповідні області перевірено!</string>
     <string name="restart_only_this_page_scope">Перезавантажити лише цю область</string>
     <string name="reboot">Перезавантажити систему</string>
@@ -108,11 +108,11 @@
     <string name="usepresig_warn">!!!Всі інсталятори можуть перезаписувати встановлені програми!!! Будьте обережні під час встановлення програм з невідомих інсталяторів</string>
     <!--Status Bar-->
     <string name="StatusBar">Статус бар</string>
-    <string name="StatusbarEvents">StatusBar Events</string>
+    <string name="StatusbarEvents">Події в статус барі</string>
     <string name="statusbar_double_click_lock_screen">Двічі клацніть на рядок стану для блокування екрану</string>
-    <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
-    <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
-    <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
+    <string name="vibrate_when_opening_the_statusbar">Вібрація при відкритті статус бару</string>
+    <string name="remove_scroll_to_top_white_list">Видалити білий список, який прокручує вгору, коли натиснуто на статус бар</string>
+    <string name="remove_scroll_to_top_white_list_summary">Видалити обмеження в білому списку для додатків, які прокручуються на початок, коли натискати на статус бар</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Годинник у рядку стану</string>
     <string name="statusbar_clock_mode">Годинник у рядку стану</string>
@@ -143,7 +143,7 @@
     <string name="statusbar_network_layout">Швидкість мережі у рядку стану</string>
     <string name="statusbar_network_no_second">Видалити відображення в секунду (/с)</string>
     <string name="statusbar_network_no_space">Видалити місце для швидкості мережі</string>
-    <string name="set_network_speed_double_row_spacing">Set network speed double row spacing</string>
+    <string name="set_network_speed_double_row_spacing">Встановити інтервал для подвійного рядка швидкості мережі</string>
     <!--StatusBarNotify-->
     <string name="StatusBarNotice">Сповіщення у рядку стану</string>
     <string name="StatusBarNotice_summary">Статус бар та панель сповіщень</string>
@@ -167,8 +167,8 @@
     <string name="remove_gt_mode_notification">Видалити сповіщення про режим продуктивності</string>
     <string name="allow_long_press_notification_modifiable">Дозволити змінювати повідомлення про тривале натискання</string>
     <string name="remove_notification_manager_limit">Видалити ліміт диспетчера повідомлень</string>
-    <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
-    <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
+    <string name="remove_small_window_reply_whitelist">Видалити білий список для відповідей маленького вікна</string>
+    <string name="set_small_window_reply_blacklist">Задати чорний список для відповідей маленького вікна</string>
     <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
@@ -491,6 +491,7 @@
     <!--Camera-->
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
     <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>
+    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Увімкнути стиль водяного знаку Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash">Виправлена ​​помилка водяного знаку користувача Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Якщо ваша камера не підтримує користувальницький водяний знак Hasselblad, будь ласка, не вмикайте його</string>
