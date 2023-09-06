@@ -46,9 +46,41 @@ object AlarmClockWidget : YukiBaseHooker() {
             findClass("com.coloros.widget.smallweather.OppoWeatherMultiVertical").hook { injMember() }
         }
 
+        fun YukiMemberHookCreator.injMember(): YukiMemberHookCreator.MemberHookCreator.Result {
+            return injectMember {
+                method { emptyParam();returnType = IntType }.all()
+                afterHook {
+                    if (redMode == "0") return@afterHook
+                    val context = field { type = ContextClass;superClass() }.get(instance)
+                        .cast<Context>() ?: return@afterHook
+                    val resId = result<Int>() ?: return@afterHook
+                    if (resId < 1000) return@afterHook
+                    val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
+                        ?: return@afterHook
+                    result = (getReplaceLayout(context, entryName, redMode) ?: return@afterHook)
+                }
+            }
+        }
+
         @SuppressLint("DiscouragedApi")
-        fun getReplaceLayout(context: Context, layoutName: String?, redMode: String): Int? {
-            var entryName = when (layoutName) {
+        fun getReplaceLayout(context: Context, layoutName: String, redMode: String): Int? {
+            val curRedMode = layoutName.contains("red")
+            val entryName = when (redMode) {
+                "1" -> if (curRedMode) layoutName else getRedLayoutRes(layoutName)
+                "2" -> if (curRedMode) getNonRedLayoutRes(layoutName) else layoutName
+                else -> return null
+            }
+            val resId = context.resources.getIdentifier(entryName, "layout", packageName)
+            return resId.takeIf { it != 0 }
+        }
+
+        /**
+         * 获取非红一布局
+         * @param layoutName String?
+         * @return String?
+         */
+        fun getNonRedLayoutRes(layoutName: String?): String? {
+            return when (layoutName) {
                 //OnePlusWidget
                 "op_double_clock_red_widget_land_view" -> "op_double_clock_widget_land_view"
                 "op_double_clock_red_widget_view" -> "op_double_clock_widget_view"
@@ -94,27 +126,66 @@ object AlarmClockWidget : YukiBaseHooker() {
                 //"table_hor_double_clock_red_widget_view_t" -> "table_hor_double_clock_widget_view_t"
                 //"table_hor_single_clock_red_widget_land_view_t" -> "table_hor_single_clock_widget_land_view_t"
                 "table_vertical_multi_clock_red_widget_view_t" -> "table_vertical_multi_clock_widget_view_t"
-                else -> return null
+                else -> null
             }
-            if (redMode == "1") entryName = layoutName
-            val id = context.resources.getIdentifier(entryName, "layout", packageName)
-            return id.takeIf { it != 0 }
         }
 
-        fun YukiMemberHookCreator.injMember(): YukiMemberHookCreator.MemberHookCreator.Result {
-            return injectMember {
-                method { emptyParam();returnType = IntType }.all()
-                afterHook {
-                    if (redMode == "0") return@afterHook
-                    val context = field { type = ContextClass;superClass() }.get(instance)
-                        .cast<Context>() ?: return@afterHook
-                    val resId = result<Int>() ?: return@afterHook
-                    if (resId < 1000) return@afterHook
-                    val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
-                    result = (getReplaceLayout(context, entryName, redMode) ?: return@afterHook)
-                }
+        /**
+         * 获取红一布局
+         * @param layoutName String?
+         * @return String?
+         */
+        fun getRedLayoutRes(layoutName: String?): String? {
+            return when (layoutName) {
+                //OnePlusWidget
+                "op_double_clock_widget_land_view" -> "op_double_clock_red_widget_land_view"
+                "op_double_clock_widget_view" -> "op_double_clock_red_widget_view"
+                "one_plus_widget_land_view" -> "one_plus_red_widget_land_view"
+                "one_plus_widget_view" -> "one_plus_red_widget_view"
+                "table_op_double_clock_widget_land_view" -> "table_op_double_clock_red_widget_land_view"
+                "table_op_double_clock_widget_view" -> "table_op_double_clock_red_widget_view"
+                "table_one_plus_widget_land_view" -> "table_one_plus_red_widget_land_view"
+                "table_one_plus_widget_view" -> "table_one_plus_red_widget_view"
+                //OppoWeather
+                "hor_double_clock_widget_land_view_t" -> "hor_double_clock_red_widget_land_view_t"
+                "hor_double_clock_widget_view_t" -> "hor_double_clock_red_widget_view_t"
+                "hor_single_clock_widget_land_view_t" -> "hor_single_clock_red_widget_land_view_t"
+                "hor_single_clock_widget_view_t" -> "hor_single_clock_red_widget_view_t"
+                "table_hor_double_clock_widget_land_view_t" -> "table_hor_double_clock_red_widget_land_view_t"
+                "table_hor_double_clock_widget_view_t" -> "table_hor_double_clock_red_widget_view_t"
+                "table_hor_single_clock_widget_land_view_t" -> "table_hor_single_clock_red_widget_land_view_t"
+                "table_hor_single_clock_widget_view_t" -> "table_hor_single_clock_red_widget_view_t"
+                //OppoWeatherSingle
+                "one_line_double_clock_widget_land_view_t" -> "one_line_double_clock_red_widget_land_view_t"
+                "one_line_double_clock_widget_view_t" -> "one_line_double_clock_red_widget_view_t"
+                "one_line_hor_single_clock_widget_land_view_t" -> "one_line_hor_single_clock_red_widget_land_view_t"
+                "one_line_hor_single_clock_widget_view_t" -> "one_line_hor_single_clock_red_widget_view_t"
+                "table_one_line_double_clock_widget_land_view_t" -> "table_one_line_double_clock_red_widget_land_view_t"
+                "table_one_line_double_clock_widget_view_t" -> "table_one_line_double_clock_red_widget_view_t"
+                "table_one_line_hor_single_clock_widget_land_view_t" -> "table_one_line_hor_single_clock_red_widget_land_view_t"
+                "table_one_line_hor_single_clock_widget_view_t" -> "table_one_line_hor_single_clock_red_widget_view_t"
+                //OppoWeatherVertical
+                "vertical_double_clock_widget_land_view_t" -> "vertical_double_clock_red_widget_land_view_t"
+                "vertical_double_clock_widget_view_t" -> "vertical_double_clock_red_widget_view_t"
+                "vertical_single_clock_widget_land_view_t" -> "vertical_single_clock_red_widget_land_view_t"
+                "vertical_single_clock_widget_view_t" -> "vertical_single_clock_red_widget_view_t"
+                "table_vertical_double_clock_widget_land_view_t" -> "table_vertical_double_clock_red_widget_land_view_t"
+                "table_vertical_double_clock_widget_view_t" -> "table_vertical_double_clock_red_widget_view_t"
+                "table_vertical_single_clock_widget_land_view_t" -> "table_vertical_single_clock_red_widget_land_view_t"
+                //"vertical_single_clock_red_widget_view_t" -> "vertical_single_clock_widget_view_t"
+                //OppoWeatherMultiVertical
+                //"hor_double_clock_red_widget_land_view_t" -> "hor_double_clock_widget_land_view_t"
+                //"hor_double_clock_red_widget_view_t" -> "hor_double_clock_widget_view_t"
+                //"hor_single_clock_red_widget_land_view_t" -> "hor_single_clock_widget_land_view_t"
+                "vertical_multi_clock_widget_view_t" -> "vertical_multi_clock_red_widget_view_t"
+                //"table_hor_double_clock_red_widget_land_view_t" -> "table_hor_double_clock_widget_land_view_t"
+                //"table_hor_double_clock_red_widget_view_t" -> "table_hor_double_clock_widget_view_t"
+                //"table_hor_single_clock_red_widget_land_view_t" -> "table_hor_single_clock_widget_land_view_t"
+                "table_vertical_multi_clock_widget_view_t" -> "table_vertical_multi_clock_red_widget_view_t"
+                else -> null
             }
         }
+
     }
 
     private object AlarmClock13 : YukiBaseHooker() {
