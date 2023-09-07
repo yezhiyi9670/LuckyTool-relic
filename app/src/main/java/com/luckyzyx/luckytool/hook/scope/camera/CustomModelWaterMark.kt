@@ -11,7 +11,6 @@ import com.highcapable.yukihookapi.hook.type.android.SizeClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.FloatType
-import com.highcapable.yukihookapi.hook.type.java.IntArrayType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
@@ -19,7 +18,7 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object CustomModelWaterMark : YukiBaseHooker() {
     override fun onHook() {
-        val isRealme = Build.MODEL.contains("RM", true)
+        val isRealme = Build.MODEL.startsWith("RM", true)
         if (isRealme) return
         loadHooker(HookCameraModelWaterMark)
     }
@@ -44,23 +43,22 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     afterHook {
                         val res = result<String>() ?: return@afterHook
                         if (res.contains("getVendorMarketName")) return@afterHook
-                        else result = waterMark
+                        result = waterMark
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark MarketUtil")
 
-            //WatermarkHelper
+            //Source WatermarkHelper
             searchClass {
                 from("com.oplus.camera.feature.watermark").absolute()
-                field { type = IntArrayType }.count(1)
                 method { returnType = UnitType }.count(6)
                 method { returnType = PaintClass }.count(1)
                 method { returnType = SizeClass }.count(3)
                 method { returnType = BitmapClass }.count(2)
-                method { emptyParam();returnType = BooleanType }.count(4)
+                method { emptyParam();returnType = BooleanType }.count(4..6)
                 method { emptyParam();returnType = StringClass }.count(5)
                 method { param { it[0] == ContextClass } }.count(14)
-                method { param { it[0] == StringClass } }.count(9)
+                method { param { it[0] == StringClass } }.count(8..9)
                 method { param { it[0] == SizeClass } }.count(4)
                 method { param(ContextClass, FloatType);returnType = FloatType }.count(3)
                 method { param(ContextClass, IntType, FloatType);returnType = FloatType }.count(1)
@@ -73,12 +71,13 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     afterHook {
                         val res = result<String>() ?: return@afterHook
                         if (res.contains("removeChineseOfString")) return@afterHook
+                        if (res.toIntOrNull() != null) return@afterHook
                         result = waterMark
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark WatermarkHelper")
 
-            //Source SloganUtil
+            //Source SloganUtil.java
             searchClass {
                 from("com.oplus.camera").absolute()
                 field().count(2)
@@ -104,7 +103,7 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         afterHook {
                             val res = result<String>() ?: return@afterHook
                             if (res.contains("getVendorMarketName")) return@afterHook
-                            else result = waterMark
+                            result = waterMark
                         }
                     }
                 } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark SloganUtil")
