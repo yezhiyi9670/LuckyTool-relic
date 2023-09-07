@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.camera
 
+import android.os.Build
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ActivityClass
@@ -13,59 +14,67 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object CustomModelWaterMark : YukiBaseHooker() {
     override fun onHook() {
-        val waterMark = prefs(ModulePrefs).getString("custom_model_watermark", "None")
-        if (waterMark.isBlank() || waterMark == "None") return
+        val isRealme = Build.MODEL.contains("RM", true)
+        if (isRealme) return
+        loadHooker(HookCameraModelWaterMark)
+    }
 
-        //Source SloganUtil
-        searchClass {
-            from("com.oplus.camera").absolute()
-            field().count(2)
-            field { type = BooleanType }.count(1)
-            method { param { it[0] == ActivityClass } }.count(2)
-        }.onNoClassDefFoundError {
+    private object HookCameraModelWaterMark : YukiBaseHooker() {
+        override fun onHook() {
+            val waterMark = prefs(ModulePrefs).getString("custom_model_watermark", "None")
+            if (waterMark.isBlank() || waterMark == "None") return
+
+            //Source MarketUtil
             searchClass {
-                from("com.oplus.camera").absolute()
-                field { type = ActivityClass }.count(1)
-                field { type = SizeClass }.count(1)
-                field { type = IntType }.count(6)
-                field { type = BooleanType }.count(1)
-                field { type = StringClass }.count(2)
-                field { type = TypefaceClass }.count(3)
-                method { param { it[0] == ActivityClass } }.count(2)
-                method { param { it[0] == ContextClass } }.count(6)
-                method { emptyParam();returnType = BooleanType }.count(1)
-                method { emptyParam();returnType = StringClass }.count(1)
-                method { param(IntType);returnType = StringClass }.count(1)
+                from("com.oplus.camera.common.utils").absolute()
+                field().count(1)
+                field { type = StringClass }.count(1)
+                constructor().none()
+                method().count(2..4)
+                method { returnType = StringClass }.count(2..4)
+                method { emptyParam();returnType = StringClass }.count(2)
             }.get()?.hook {
                 injectMember {
-                    method { emptyParam();returnType = StringClass }
+                    method { emptyParam();returnType = StringClass }.all()
                     afterHook {
                         val res = result<String>() ?: return@afterHook
                         if (res.contains("getVendorMarketName")) return@afterHook
                         else result = waterMark
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark")
-        }
+            } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark MarketUtil")
 
-        //Source MarketUtil
-        searchClass {
-            from("com.oplus.camera.common.utils").absolute()
-            field().count(1)
-            field { type = StringClass }.count(1)
-            constructor().none()
-            method().count(2..4)
-            method { returnType = StringClass }.count(2..4)
-            method { emptyParam();returnType = StringClass }.count(2)
-        }.get()?.hook {
-            injectMember {
-                method { emptyParam();returnType = StringClass }.all()
-                afterHook {
-                    val res = result<String>() ?: return@afterHook
-                    if (res.contains("getVendorMarketName")) return@afterHook
-                    else result = waterMark
-                }
+            //Source SloganUtil
+            searchClass {
+                from("com.oplus.camera").absolute()
+                field().count(2)
+                field { type = BooleanType }.count(1)
+                method { param { it[0] == ActivityClass } }.count(2)
+            }.ignored().onNoClassDefFoundError {
+                searchClass {
+                    from("com.oplus.camera").absolute()
+                    field { type = ActivityClass }.count(1)
+                    field { type = SizeClass }.count(1)
+                    field { type = IntType }.count(6)
+                    field { type = BooleanType }.count(1)
+                    field { type = StringClass }.count(2)
+                    field { type = TypefaceClass }.count(3)
+                    method { param { it[0] == ActivityClass } }.count(2)
+                    method { param { it[0] == ContextClass } }.count(6)
+                    method { emptyParam();returnType = BooleanType }.count(1)
+                    method { emptyParam();returnType = StringClass }.count(1)
+                    method { param(IntType);returnType = StringClass }.count(1)
+                }.get()?.hook {
+                    injectMember {
+                        method { emptyParam();returnType = StringClass }
+                        afterHook {
+                            val res = result<String>() ?: return@afterHook
+                            if (res.contains("getVendorMarketName")) return@afterHook
+                            else result = waterMark
+                        }
+                    }
+                } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark SloganUtil")
             }
-        } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark")
+        }
     }
 }

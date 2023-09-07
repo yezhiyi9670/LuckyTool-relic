@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.ui.fragment
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -2926,6 +2927,7 @@ class Camera : ModulePreferenceFragment() {
                 key = "custom_model_watermark"
                 setDefaultValue("None")
                 isIconSpaceReserved = false
+                isVisible = Build.MODEL.contains("RM", true).not()
                 setOnPreferenceChangeListener { _, newValue ->
                     summary = (newValue as String).ifBlank { "None" }
                     true
