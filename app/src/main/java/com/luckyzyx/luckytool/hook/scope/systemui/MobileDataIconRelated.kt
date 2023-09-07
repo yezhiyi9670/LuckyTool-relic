@@ -95,8 +95,10 @@ object MobileDataIconRelated : YukiBaseHooker() {
                                 .call()
                             else field { name = "iconController" }.get(instance).any()
                         val slotNoSim = field { name = "slotNoSim" }.get(instance).cast<String>()
-                        iconController?.current()?.method { name = "setIconVisibility" }
-                            ?.call(slotNoSim, false)
+                        iconController?.current()?.method {
+                            name = "setIconVisibility"
+                            if (instanceClass.simpleName == "StatusBarSignalPolicyExt") superClass()
+                        }?.call(slotNoSim, false)
                     }
                 }
             }

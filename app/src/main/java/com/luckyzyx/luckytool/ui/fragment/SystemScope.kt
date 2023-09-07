@@ -232,6 +232,7 @@ class StatusBar : ModulePreferenceFragment() {
                     true
                 }
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.StatusbarEvents)
                 key = "StatusbarEvents"

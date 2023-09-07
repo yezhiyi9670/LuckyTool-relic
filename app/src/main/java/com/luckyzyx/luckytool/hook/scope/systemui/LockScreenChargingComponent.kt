@@ -5,6 +5,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
@@ -208,13 +209,15 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                         }
                     }
                 }
-                injectMember {
-                    method { name = "isLocaleZhCN" }
-                    beforeHook {
-                        when (textLogo) {
-                            "1" -> resultTrue()
-                            "2" -> resultFalse()
-                            else -> return@beforeHook
+                if (instanceClass.hasMethod { name = "isLocaleZhCN" }) {
+                    injectMember {
+                        method { name = "isLocaleZhCN" }
+                        beforeHook {
+                            when (textLogo) {
+                                "1" -> resultTrue()
+                                "2" -> resultFalse()
+                                else -> return@beforeHook
+                            }
                         }
                     }
                 }

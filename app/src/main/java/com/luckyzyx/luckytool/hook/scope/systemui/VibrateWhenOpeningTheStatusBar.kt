@@ -4,8 +4,6 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.MembersType
 import com.highcapable.yukihookapi.hook.factory.hasField
-import com.luckyzyx.luckytool.utils.A14
-import com.luckyzyx.luckytool.utils.SDK
 
 object VibrateWhenOpeningTheStatusBar : YukiBaseHooker() {
     override fun onHook() {
@@ -19,24 +17,29 @@ object VibrateWhenOpeningTheStatusBar : YukiBaseHooker() {
                 afterHook { field { name = "mVibrateOnOpening" }.get(instance).setTrue() }
             }
         }
+
         //Source StatusBarCommandQueueCallbacks -> config_vibrateOnIconAnimation
         VariousClass(
             "com.android.systemui.statusbar.phone.StatusBarCommandQueueCallbacks", //C13
             "com.android.systemui.statusbar.phone.CentralSurfacesCommandQueueCallbacks" //C14
-        ).hook {
-            if (instanceClass.hasField { name = "mVibrateOnOpening" }) {
+        ).getOrNull(appClassLoader)?.let {
+            if (it.hasField { name = "mVibrateOnOpening" }.not()) return@let
+            it.hook {
                 injectMember {
                     allMembers(MembersType.CONSTRUCTOR)
                     afterHook { field { name = "mVibrateOnOpening" }.get(instance).setTrue() }
                 }
             }
         }
-        if (SDK >= A14) return
+
         //Source PanelViewController -> config_vibrateOnIconAnimation
-        findClass("com.android.systemui.statusbar.phone.StatusBar").hook {
-            injectMember {
-                method { name = "start" }
-                afterHook { field { name = "mVibrateOnOpening" }.get(instance).setTrue() }
+        "com.android.systemui.statusbar.phone.StatusBar".toClass().let {
+            if (it.hasField { name = "mVibrateOnOpening" }.not()) return@let
+            it.hook {
+                injectMember {
+                    method { name = "start" }
+                    afterHook { field { name = "mVibrateOnOpening" }.get(instance).setTrue() }
+                }
             }
         }
     }
