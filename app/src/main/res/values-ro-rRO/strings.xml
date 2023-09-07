@@ -495,7 +495,6 @@
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Enable Hasselblad Watermark Style</string>
     <string name="custom_model_watermark">Custom model watermark</string>
-    <string name="custom_model_watermark_summary">Only supports English letters and numbers</string>
     <string name="fix_hasselblad_custom_watermark_crash">Fix Hasselblad custom watermark crash</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">If your camera does not support Hasselblad custom watermark (white strip shape), please do not open it</string>
     <!--OplusGames-->

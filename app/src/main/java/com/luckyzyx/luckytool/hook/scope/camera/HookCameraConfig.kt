@@ -74,7 +74,7 @@ object HookCameraConfig : YukiBaseHooker() {
                     }
                     afterHook {
                         when (args().first().string()) {
-                            //通用哈苏水印样式
+                            //通用哈苏水印样式 camera_slogan_hasselblad
                             "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) result =
                                 "1"
                         }
