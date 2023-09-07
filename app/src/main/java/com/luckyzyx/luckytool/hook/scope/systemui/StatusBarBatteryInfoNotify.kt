@@ -205,7 +205,15 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         createChannel(context)
         //com.oplusos.systemui.keyguard.charginganim.ChargingTypeConstants
         val technology = when (chargerTechnology) {
-            0 -> if (ppsMode == 1) "PPS" else "Normal"
+            0 -> {
+                when (ppsMode) {
+                    1 -> "PPS"
+                    3 -> "PublicUFCS"
+                    4 -> "PrivateUFCS"
+                    else -> "Normal"
+                }
+            }
+
             1 -> "VOOC"
             2 -> "SUPERVOOC"
             20 -> "SUPERVOOC2.0"

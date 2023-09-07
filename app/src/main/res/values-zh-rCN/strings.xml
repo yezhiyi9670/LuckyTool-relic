@@ -480,6 +480,7 @@
     <string name="remove_dpi_restart_recovery">移除 DPI 重启恢复</string>
     <string name="remove_dpi_restart_recovery_summary">启用功能并重启作用域后，打开开发者选项页面并设置最小宽度</string>
     <string name="force_display_bottom_google_settings">强制显示设置底部Google</string>
+    <string name="force_display_process_management">强制显示进程管理</string>
     <string name="remove_settings_bottom_laboratory">移除设置底部实验室</string>
     <string name="set_processor_click_page">设置处理器点击页面</string>
     <string name="customize_device_sharing_page_parameters">自定义设备分享页面参数</string>
@@ -494,6 +495,7 @@
     <string name="enable_10_bit_image_support_summary">部分机型启用此功能可能会导致照片变绿</string>
     <string name="enable_hasselblad_watermark_style">启用 Hasselblad 水印支持</string>
     <string name="custom_model_watermark">自定义机型水印</string>
+    <string name="custom_model_watermark_summary">仅支持英文字母与数字</string>
     <string name="fix_hasselblad_custom_watermark_crash">修复 Hasselblad 定制水印崩溃</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">若你的相机不支持 Hasselbad 定制水印 (白色长条形状)，请勿使用</string>
     <!--OplusGames-->

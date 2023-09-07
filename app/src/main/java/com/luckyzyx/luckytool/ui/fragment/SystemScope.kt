@@ -2929,6 +2929,7 @@ class Camera : ModulePreferenceFragment() {
                 summary = context.getString(
                     ModulePrefs, "custom_model_watermark", "None"
                 )
+                dialogMessage = getString(R.string.custom_model_watermark_summary)
                 if (summary.isNullOrBlank()) summary = "None"
                 key = "custom_model_watermark"
                 setDefaultValue("None")

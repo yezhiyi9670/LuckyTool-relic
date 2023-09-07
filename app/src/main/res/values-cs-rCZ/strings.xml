@@ -480,6 +480,7 @@
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
     <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>
     <string name="force_display_bottom_google_settings">Vynutit zobrazení Google v dolní části nastavení</string>
+    <string name="force_display_process_management">Force display of process management</string>
     <string name="remove_settings_bottom_laboratory">Odstranit nastavení laboratoře</string>
     <string name="set_processor_click_page">Nastavit procesor pro přechod na stránku</string>
     <string name="customize_device_sharing_page_parameters">Konfigurace nastavení stránky sdílení zařízení</string>
@@ -494,6 +495,7 @@
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Povolit Hasselblad styl vodoznaku</string>
     <string name="custom_model_watermark">Custom model watermark</string>
+    <string name="custom_model_watermark_summary">Only supports English letters and numbers</string>
     <string name="fix_hasselblad_custom_watermark_crash">Opravit pád při použití vlastního Hasselblad vodoznaku</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Pokud váš fotoaparát nepodporuje vlastní vodoznak Hasselblad (bílý proužek), neotevírejte toto prosím</string>
     <!--OplusGames-->

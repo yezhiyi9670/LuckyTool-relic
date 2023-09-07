@@ -480,6 +480,7 @@
     <string name="remove_dpi_restart_recovery">Zapobiegaj przywróceniu DPI do oryginalnej wartości po ponownym uruchomieniu urządzenia</string>
     <string name="remove_dpi_restart_recovery_summary">Po zastosowaniu zmian, znajdź „Najmniejsza szerokość” w „Opcje programisty”, aby ustalić wartość „DP”</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
+    <string name="force_display_process_management">Force display of process management</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
     <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
@@ -494,6 +495,7 @@
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Włącz styl znaku wodnego „Hasselblad”</string>
     <string name="custom_model_watermark">Custom model watermark</string>
+    <string name="custom_model_watermark_summary">Only supports English letters and numbers</string>
     <string name="fix_hasselblad_custom_watermark_crash">Napraw awarię znaku wodnego „Hasselblad”</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Jeśli aparat nie obsługuje znaku wodnego Hasselbad (długi biały pasek), nie używaj go</string>
     <!--OplusGames-->

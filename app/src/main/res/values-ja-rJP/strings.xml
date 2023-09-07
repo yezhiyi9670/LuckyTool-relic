@@ -480,6 +480,7 @@
     <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>
     <string name="remove_dpi_restart_recovery_summary">機能を有効にしてスコープを再起動した後、開発者向けオプションページを開いて最小幅を設定してください</string>
     <string name="force_display_bottom_google_settings">設定の下部に強制的に Google を表示</string>
+    <string name="force_display_process_management">Force display of process management</string>
     <string name="remove_settings_bottom_laboratory">設定下部のラボを削除</string>
     <string name="set_processor_click_page">プロセッサーをタップしてページにジャンプするように設定します</string>
     <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
@@ -494,6 +495,7 @@
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Hasselblad ウォーターマークを有効化</string>
     <string name="custom_model_watermark">Custom model watermark</string>
+    <string name="custom_model_watermark_summary">Only supports English letters and numbers</string>
     <string name="fix_hasselblad_custom_watermark_crash">Hasselblad カスタムウォーターマークでのクラッシュを修正</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">お使いのカメラが Hasselblad のカスタム透かしに対応していない場合は有効化しないでください</string>
     <!--OplusGames-->
