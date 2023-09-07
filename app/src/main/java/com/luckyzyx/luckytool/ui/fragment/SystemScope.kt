@@ -794,7 +794,7 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     }
                     setOnPreferenceChangeListener { _, newValue ->
                         val format = (newValue as String).replaceBlankLine
-                        summary = if (format == "") "None" else format
+                        summary = format.ifBlank { "None" }
                         context.dataChannel("com.android.systemui").put(key, format)
                         true
                     }
@@ -2916,6 +2916,21 @@ class Camera : ModulePreferenceFragment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(EditTextPreference(context).apply {
+                title = getString(R.string.custom_model_watermark)
+                dialogTitle = title
+                summary = context.getString(
+                    ModulePrefs, "custom_model_watermark", "None"
+                )
+                if (summary.isNullOrBlank()) summary = "None"
+                key = "custom_model_watermark"
+                setDefaultValue("None")
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    summary = (newValue as String).ifBlank { "None" }
+                    true
+                }
+            })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.fix_hasselblad_custom_watermark_crash)
                 summary = getString(R.string.fix_hasselblad_custom_watermark_crash_summary)
@@ -3014,7 +3029,7 @@ class OplusGames : ModulePreferenceFragment() {
                 }
                 setOnPreferenceChangeListener { _, newValue ->
                     val format = (newValue as String).replaceBlankLine
-                    summary = if (format == "") "None" else format
+                    summary = format.ifBlank { "None" }
                     true
                 }
             })
@@ -3474,7 +3489,7 @@ class OplusGesture : ModulePreferenceFragment() {
                     }
                     setOnPreferenceChangeListener { _, newValue ->
                         val format = (newValue as String).replaceBlankLine
-                        summary = if (format == "") "None" else format
+                        summary = format.ifBlank { "None" }
                         true
                     }
                 })
@@ -3496,7 +3511,7 @@ class OplusGesture : ModulePreferenceFragment() {
                     }
                     setOnPreferenceChangeListener { _, newValue ->
                         val format = (newValue as String).replaceBlankLine
-                        summary = if (format == "") "None" else format
+                        summary = format.ifBlank { "None" }
                         true
                     }
                 })

@@ -493,6 +493,7 @@
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Включить стиль водяного знака Hasselblad</string>
+    <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Исправлена ошибка пользовательского водяного знака Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Если ваша камера не поддерживает пользовательский водяной знак Hasselblad, пожалуйста, не включайте его</string>
     <!--OplusGames-->

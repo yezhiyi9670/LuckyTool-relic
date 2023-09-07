@@ -493,6 +493,7 @@
     <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Hasselblad ウォーターマークを有効化</string>
+    <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Hasselblad カスタムウォーターマークでのクラッシュを修正</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">お使いのカメラが Hasselblad のカスタム透かしに対応していない場合は有効化しないでください</string>
     <!--OplusGames-->
