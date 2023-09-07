@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
+import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayProcessManagement
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
 import com.luckyzyx.luckytool.hook.scope.settings.HookSettingsFeature
@@ -58,6 +59,11 @@ object HookSettings : YukiBaseHooker() {
         //自定义设备分享页面参数
         if (prefs(ModulePrefs).getBoolean("customize_device_sharing_page_parameters", false)) {
             loadHooker(CustomizeDeviceSharingPageParameters)
+        }
+
+        //强制开启进程管理
+        if (prefs(ModulePrefs).getBoolean("force_display_process_management", false)) {
+            loadHooker(ForceDisplayProcessManagement)
         }
 
         //darkmode_third_app

@@ -101,6 +101,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("disable_cn_special_edition_setting", false)
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
             val processorDetail = prefs(ModulePrefs).getString("set_processor_click_page", "0")
+            val processManagement =
+                prefs(ModulePrefs).getBoolean("force_display_process_management", false)
 
             //Source AppFeatureProviderUtils
             searchClass {
@@ -141,6 +143,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                             "com.android.settings.processor_detail" -> if (processorDetail != "0") resultTrue()
                             //com.android.settings.processor_detail_gen2
                             "com.android.settings.processor_detail_gen2" -> if (processorDetail == "2") resultTrue()
+                            //com.android.settings.ultimate_cleanup
+                            "com.android.settings.ultimate_cleanup" -> if (processManagement) resultTrue()
                         }
                     }
                 }

@@ -2701,6 +2701,12 @@ class Settings : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_process_management)
+                key = "force_display_process_management"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_settings_bottom_laboratory)
                 key = "remove_settings_bottom_laboratory"
                 setDefaultValue(false)

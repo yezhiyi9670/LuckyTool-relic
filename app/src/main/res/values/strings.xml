@@ -535,6 +535,7 @@
     <string name="remove_dpi_restart_recovery_summary">After enabling the feature and restarting the scope,Open the developer options page and set the minimum width</string>
     <string name="force_display_bottom_google_settings">Force to show Google at the bottom of the settings</string>
     <string name="disable_cn_special_edition_setting" translatable="false">禁用CN特供版设置</string>
+    <string name="force_display_process_management">Force display of process management</string>
     <string name="remove_settings_bottom_laboratory">Remove settings bottom laboratory</string>
     <string name="set_processor_click_page">Set the processor to click to jump to the page</string>
     <string name="customize_device_sharing_page_parameters">Customize device sharing page parameters</string>
