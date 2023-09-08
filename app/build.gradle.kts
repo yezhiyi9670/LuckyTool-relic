@@ -52,6 +52,7 @@ android {
         debug {
             isDebuggable = true
             isMinifyEnabled = false
+            isShrinkResources = false
             signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -150,7 +151,7 @@ dependencies {
 configure<StringFogExtension> {
     implementation = "com.github.megatronking.stringfog.xor.StringFogImpl"
     enable = false
-//    fogPackages = arrayOf("com.luckyzyx.luckytool")
+    fogPackages = arrayOf("com.luckyzyx.luckytool.ui")
     kg = com.github.megatronking.stringfog.plugin.kg.RandomKeyGenerator()
     mode = com.github.megatronking.stringfog.plugin.StringFogMode.base64
 }

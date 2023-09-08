@@ -802,6 +802,23 @@ class StatusBarNotify : ModulePreferenceFragment() {
                     }
                 })
             }
+            addPreference(SeekBarPreference(context).apply {
+                title = getString(R.string.custom_notification_background_transparency)
+                summary = getString(R.string.force_enable_systemui_blur_feature_tips)
+                key = "custom_notification_background_transparency"
+                setDefaultValue(-1)
+                max = 10
+                min = -1
+                showSeekBarValue = true
+                updatesContinuously = false
+                isVisible = getOSVersionCode >= 25
+                isVisible = false
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    true
+                }
+            })
         }
     }
 

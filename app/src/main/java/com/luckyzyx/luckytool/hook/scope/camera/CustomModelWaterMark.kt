@@ -2,13 +2,12 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import android.os.Build
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.log.loggerD
-import com.highcapable.yukihookapi.hook.type.android.ActivityClass
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
 import com.highcapable.yukihookapi.hook.type.android.SizeClass
-import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.FloatType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -24,6 +23,7 @@ object CustomModelWaterMark : YukiBaseHooker() {
     }
 
     private object HookCameraModelWaterMark : YukiBaseHooker() {
+        @Suppress("unused")
         override fun onHook() {
             val waterMark = prefs(ModulePrefs).getString("custom_model_watermark", "None")
             if (waterMark.isBlank() || waterMark == "None") return
@@ -51,20 +51,20 @@ object CustomModelWaterMark : YukiBaseHooker() {
             //Source WatermarkHelper
             searchClass {
                 from("com.oplus.camera.feature.watermark").absolute()
-                method { returnType = UnitType }.count(6)
                 method { returnType = PaintClass }.count(1)
-                method { returnType = SizeClass }.count(3)
                 method { returnType = BitmapClass }.count(2)
-                method { emptyParam();returnType = BooleanType }.count(4..6)
-                method { emptyParam();returnType = StringClass }.count(5)
-                method { param { it[0] == ContextClass } }.count(14)
+                method { returnType = UnitType }.count(3..6)
+
+                method { param { it[0] == ContextClass } }.count(10..14)
                 method { param { it[0] == StringClass } }.count(8..9)
-                method { param { it[0] == SizeClass } }.count(4)
-                method { param(ContextClass, FloatType);returnType = FloatType }.count(3)
+                method { paramCount = 8;returnType = StringClass }.count(2)
+
+                method { param(StringClass);returnType = IntType }.count(1)
+                method { param(StringClass);returnType = BooleanType }.count(1)
+                method { param(StringClass);returnType = StringClass }.count(3..4)
+
+                method { param(ContextClass, FloatType);returnType = FloatType }.count(1..3)
                 method { param(ContextClass, IntType, FloatType);returnType = FloatType }.count(1)
-                method {
-                    param(ContextClass, FloatType, BooleanType, IntType);returnType = FloatType
-                }.count(1)
             }.get()?.hook {
                 injectMember {
                     method { param(StringClass);returnType = StringClass }.all()
@@ -76,37 +76,38 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark WatermarkHelper")
+        }
+    }
 
-            //Source SloganUtil.java
-            searchClass {
-                from("com.oplus.camera").absolute()
-                field().count(2)
-                field { type = BooleanType }.count(1)
-                method { param { it[0] == ActivityClass } }.count(2)
-            }.ignored().onNoClassDefFoundError {
-                searchClass {
-                    from("com.oplus.camera").absolute()
-                    field { type = ActivityClass }.count(1)
-                    field { type = SizeClass }.count(1)
-                    field { type = IntType }.count(6)
-                    field { type = BooleanType }.count(1)
-                    field { type = StringClass }.count(2)
-                    field { type = TypefaceClass }.count(3)
-                    method { param { it[0] == ActivityClass } }.count(2)
-                    method { param { it[0] == ContextClass } }.count(6)
-                    method { emptyParam();returnType = BooleanType }.count(1)
-                    method { emptyParam();returnType = StringClass }.count(1)
-                    method { param(IntType);returnType = StringClass }.count(1)
-                }.get()?.hook {
-                    injectMember {
-                        method { emptyParam();returnType = StringClass }
-                        afterHook {
-                            val res = result<String>() ?: return@afterHook
-                            if (res.contains("getVendorMarketName")) return@afterHook
-                            result = waterMark
-                        }
-                    }
-                } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark SloganUtil")
+    @Suppress("unused")
+    fun getClsMembers(clazz: Class<*>) {
+        clazz.apply {
+            method { returnType = UnitType }.giveAll().size.let {
+                loggerD(msg = "UnitType -> $it")
+            }
+            method { returnType = PaintClass }.giveAll().size.let {
+                loggerD(msg = "PaintClass -> $it")
+            }
+            method { returnType = SizeClass }.giveAll().size.let {
+                loggerD(msg = "SizeClass -> $it")
+            }
+            method { returnType = BitmapClass }.giveAll().size.let {
+                loggerD(msg = "BitmapClass -> $it")
+            }
+            method { emptyParam();returnType = BooleanType }.giveAll().size.let {
+                loggerD(msg = "R BooleanType -> $it")
+            }
+            method { emptyParam();returnType = StringClass }.giveAll().size.let {
+                loggerD(msg = "R StringClass -> $it")
+            }
+            method { param { it[0] == ContextClass } }.giveAll().size.let {
+                loggerD(msg = "P ContextClass -> $it")
+            }
+            method { param { it[0] == StringClass } }.giveAll().size.let {
+                loggerD(msg = "P StringClass -> $it")
+            }
+            method { param { it[0] == SizeClass } }.giveAll().size.let {
+                loggerD(msg = "P SizeClass -> $it")
             }
         }
     }

@@ -170,6 +170,7 @@
     <string name="remove_small_window_reply_whitelist">Видалити білий список для відповідей маленького вікна</string>
     <string name="set_small_window_reply_blacklist">Задати чорний список для відповідей маленького вікна</string>
     <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
+    <string name="custom_notification_background_transparency">Custom notification background transparency</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Іконки в рядку стану</string>
     <string name="StatusBarIcon_summary">Іконка рядку стану</string>

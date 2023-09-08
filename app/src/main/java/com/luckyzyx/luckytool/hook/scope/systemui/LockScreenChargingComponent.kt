@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -122,19 +121,18 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                         if (showWattage && (mChargerWattage != 0)) resultTrue()
                     }
                 }
-                injectMember {
-                    method { name = "isUFCSCharging" }
-                    afterHook {
-                        loggerD(msg = "isUFCSCharging -> $result")
-
-                        val mIsPublicUFCSCharging =
-                            field { name = "mIsPublicUFCSCharging" }.get(instance).cast<Boolean>()
-                        val mIsPrivateUFCSCharging =
-                            field { name = "mIsPrivateUFCSCharging" }.get(instance).cast<Boolean>()
-                        loggerD(msg = "IsPublicUFCSCharging -> $mIsPublicUFCSCharging")
-                        loggerD(msg = "IsPrivateUFCSCharging -> $mIsPrivateUFCSCharging")
-                    }
-                }
+//                injectMember {
+//                    method { name = "isUFCSCharging" }
+//                    afterHook {
+//                        loggerD(msg = "isUFCSCharging -> $result")
+//                        val mIsPublicUFCSCharging =
+//                            field { name = "mIsPublicUFCSCharging" }.get(instance).cast<Boolean>()
+//                        val mIsPrivateUFCSCharging =
+//                            field { name = "mIsPrivateUFCSCharging" }.get(instance).cast<Boolean>()
+//                        loggerD(msg = "IsPublicUFCSCharging -> $mIsPublicUFCSCharging")
+//                        loggerD(msg = "IsPrivateUFCSCharging -> $mIsPrivateUFCSCharging")
+//                    }
+//                }
 //                injectMember {
 //                    method { name = "isPublicUFCSCharging" }
 //                    afterHook {

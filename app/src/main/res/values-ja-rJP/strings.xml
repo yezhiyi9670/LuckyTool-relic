@@ -170,6 +170,7 @@
     <string name="remove_small_window_reply_whitelist">スモールウィンドウの返信ホワイトリストを無効化</string>
     <string name="set_small_window_reply_blacklist">スモールウィンドウ返信のブラックリストを設定</string>
     <string name="set_small_window_reply_blacklist_message">ブラックリストに追加するパッケージ名を入力してください。各行はパッケージ名を1つだけ入力できます。</string>
+    <string name="custom_notification_background_transparency">Custom notification background transparency</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">ステータスバーアイコン</string>
     <string name="StatusBarIcon_summary">ステータスバーアイコン関連</string>

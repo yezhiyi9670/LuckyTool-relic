@@ -45,5 +45,7 @@ object StatusBarNotify : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("remove_danmaku_notification_whitelist", false)) {
             loadHooker(RemoveDanmakuNotificationWhitelist)
         }
+        //自定义通知背景透明度
+        //loadHooker(CustomNotificationBackgroundTransparency)
     }
 }

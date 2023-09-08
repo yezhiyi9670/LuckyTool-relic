@@ -170,6 +170,7 @@
     <string name="remove_small_window_reply_whitelist">移除浮窗回复白名单</string>
     <string name="set_small_window_reply_blacklist">设置浮窗回复黑名单</string>
     <string name="set_small_window_reply_blacklist_message">填写需要添加到黑名单的包名，每行只能填写一个包名</string>
+    <string name="custom_notification_background_transparency">自定义通知背景透明度</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">状态栏图标</string>
     <string name="StatusBarIcon_summary">状态栏图标相关</string>

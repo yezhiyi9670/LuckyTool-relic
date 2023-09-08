@@ -23,11 +23,16 @@ object ThemeUtils {
 
     /**
      * 是否为夜间模式
+     */
+    val Context.isNightMode get() = isNightMode(resources.configuration)
+
+    /**
+     * 是否为夜间模式
      * @param configuration Configuration
      * @return Boolean
      */
     fun isNightMode(configuration: Configuration): Boolean {
-        return (configuration.uiMode and 32) > 0
+        return (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
     }
 
     /**
