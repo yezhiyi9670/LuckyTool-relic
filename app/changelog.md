@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.17_beta
+### 1.0.17
 
 - [适配] 设置 FeatureUtils v12.1.2(af160a4)
 - [修复] 音量条显示位置Hook异常
@@ -23,6 +23,24 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 部分时钟Hook异常
 - [适配] 相机—水印字数限制 v3.415.47(fb5193d)
 - [添加] 移除游戏助手温度检测
+- [Fix] Settings FeatureUtils v12.1.2(af160a4)
+- [Fix] The volume bar display position Hook is abnormal
+- [Change] Desktop clock component red one adaptation solution
+- [Change] Camera billion color image function prompts
+- [Fix] Lock Screen Pictorial v40.9.19.1(b57fd84)
+- [Add] Custom camera model watermark
+- [Fix] Abnormal Hasselblad universal watermark style on some models
+- [Add] Settings—Force process management to be enabled
+- [Optimize] Status bar battery notification UFCS judgment
+- [Fix] Abnormal Chinese characters in watermark of camera model
+- [Fix] Lock screen charging component Hook abnormality C12.1
+- [Fix] The Hook of the mobile data icon in the status bar is abnormal C12.1
+- [Fix] Abnormality in the vibration hook of the drop-down status bar C12.1
+- [Add] Camera—Enable Master Filter
+- [Add] Camera—Enable Jiang Wen filter
+- [Fix] Some clock Hook exceptions
+- [Fix] Camera—watermark character limit v3.415.47(fb5193d)
+- [Add] Remove Game Assistant temperature detection
 
 ### 1.0.16
 
