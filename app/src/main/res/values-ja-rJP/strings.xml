@@ -491,13 +491,17 @@
     <string name="enable_long_press_to_copy_in_app_details">アプリ詳細で長押ししてコピーできるようにする</string>
     <string name="click_icon_open_market_page">アイコンをタップしてストアページを開く</string>
     <!--Camera-->
+    <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>
-    <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
-    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Hasselblad ウォーターマークを有効化</string>
     <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Hasselblad カスタムウォーターマークでのクラッシュを修正</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">お使いのカメラが Hasselblad のカスタム透かしに対応していない場合は有効化しないでください</string>
+    <string name="CameraFilter">Filter</string>
+    <string name="enable_master_filter">Enable Master filter</string>
+    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="enable_10_bit_image_support">10 bitの画像をサポート</string>
+    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <!--OplusGames-->
     <string name="remove_root_check">ゲームフィルターの制限を削除</string>
     <string name="remove_root_check_summary">ゲームフィルターからRoot検出による制限を削除します</string>

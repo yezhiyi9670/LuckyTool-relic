@@ -59,7 +59,6 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     val list = result<List<String>>() ?: return@afterHook
                     result = list.toMutableList().apply {
                         val listString = scrollList.replaceSpace
-
                         if (listString.contains("\n")) {
                             listString.split("\n").forEach { if (it.isNotBlank()) add(it) }
                         } else add(scrollList)

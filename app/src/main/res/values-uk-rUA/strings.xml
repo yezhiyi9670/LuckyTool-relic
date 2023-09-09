@@ -491,13 +491,17 @@
     <string name="enable_long_press_to_copy_in_app_details">Увімкнути довге натискання, щоб скопіювати деталі програми</string>
     <string name="click_icon_open_market_page">Натисніть на іконку, щоб відкрити сторінку магазину</string>
     <!--Camera-->
+    <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>
-    <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>
-    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Увімкнути стиль водяного знаку Hasselblad</string>
     <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Виправлена ​​помилка водяного знаку користувача Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Якщо ваша камера не підтримує користувальницький водяний знак Hasselblad, будь ласка, не вмикайте його</string>
+    <string name="CameraFilter">Filter</string>
+    <string name="enable_master_filter">Enable Master filter</string>
+    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="enable_10_bit_image_support">Увімкнути підтримку 10-розрядних зображень</string>
+    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <!--OplusGames-->
     <string name="remove_root_check">Видалити визначення ігрового фільтра</string>
     <string name="remove_root_check_summary">Видалити виявлення рута з ігрових фільтрів</string>

@@ -491,13 +491,17 @@
     <string name="enable_long_press_to_copy_in_app_details">应用详情启用长按复制</string>
     <string name="click_icon_open_market_page">点击图标打开商店页面</string>
     <!--Camera-->
+    <string name="CameraWaterMark">水印</string>
     <string name="remove_watermark_word_limit">移除水印字数限制</string>
-    <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
-    <string name="enable_10_bit_image_support_summary">部分机型启用此功能可能会导致照片变绿</string>
     <string name="enable_hasselblad_watermark_style">启用 Hasselblad 水印支持</string>
     <string name="custom_model_watermark">自定义机型水印</string>
     <string name="fix_hasselblad_custom_watermark_crash">修复 Hasselblad 定制水印崩溃</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">若你的相机不支持 Hasselbad 定制水印 (白色长条形状)，请勿使用</string>
+    <string name="CameraFilter">滤镜</string>
+    <string name="enable_master_filter">启用大师滤镜</string>
+    <string name="enable_jiangwen_filter">启用姜文滤镜</string>
+    <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
+    <string name="enable_10_bit_image_support_summary">部分机型启用此功能可能会导致照片变绿</string>
     <!--OplusGames-->
     <string name="remove_root_check">移除游戏滤镜限制</string>
     <string name="remove_root_check_summary">移除游戏滤镜的Root检测限制</string>

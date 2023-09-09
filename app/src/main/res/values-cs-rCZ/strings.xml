@@ -491,13 +491,17 @@
     <string name="enable_long_press_to_copy_in_app_details">Povolit dlouhé stisknutí pro zkopírování podrobností aplikace</string>
     <string name="click_icon_open_market_page">Klikněte na ikonu pro otevření Google play obchodu</string>
     <!--Camera-->
+    <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
-    <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
-    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Povolit Hasselblad styl vodoznaku</string>
     <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Opravit pád při použití vlastního Hasselblad vodoznaku</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Pokud váš fotoaparát nepodporuje vlastní vodoznak Hasselblad (bílý proužek), neotevírejte toto prosím</string>
+    <string name="CameraFilter">Filter</string>
+    <string name="enable_master_filter">Enable Master filter</string>
+    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
+    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <!--OplusGames-->
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>

@@ -491,13 +491,17 @@
     <string name="enable_long_press_to_copy_in_app_details">Włącz zaznaczanie i kopiowanie</string>
     <string name="click_icon_open_market_page">Dotknij ikonę aplikacji, aby otworzyć sklep</string>
     <!--Camera-->
+    <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">Usuń limit długości znaków znaku wodnego</string>
-    <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
-    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <string name="enable_hasselblad_watermark_style">Włącz styl znaku wodnego „Hasselblad”</string>
     <string name="custom_model_watermark">Custom model watermark</string>
     <string name="fix_hasselblad_custom_watermark_crash">Napraw awarię znaku wodnego „Hasselblad”</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Jeśli aparat nie obsługuje znaku wodnego Hasselbad (długi biały pasek), nie używaj go</string>
+    <string name="CameraFilter">Filter</string>
+    <string name="enable_master_filter">Enable Master filter</string>
+    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="enable_10_bit_image_support">Włącz obsługę 10-bitowych obrazów</string>
+    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
     <!--OplusGames-->
     <string name="remove_root_check">Usuń limit filtrów gier</string>
     <string name="remove_root_check_summary">Wyłącza wykrywanie roota dla filtrów gier</string>

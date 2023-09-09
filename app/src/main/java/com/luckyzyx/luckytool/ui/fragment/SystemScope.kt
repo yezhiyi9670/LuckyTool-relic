@@ -2929,6 +2929,11 @@ class Camera : ModulePreferenceFragment() {
         setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.CameraWaterMark)
+                key = "CameraWaterMark"
+                isIconSpaceReserved = false
+            })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_watermark_word_limit)
                 key = "remove_watermark_word_limit"
@@ -2963,6 +2968,23 @@ class Camera : ModulePreferenceFragment() {
                 key = "fix_hasselblad_custom_watermark_crash"
                 setDefaultValue(false)
                 isVisible = false
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.CameraFilter)
+                key = "CameraFilter"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_master_filter)
+                key = "enable_master_filter"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_jiangwen_filter)
+                key = "enable_jiangwen_filter"
+                setDefaultValue(false)
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
