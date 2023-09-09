@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableDeveloperPage
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableSupportCompetitionMode
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableXModeFeature
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveCompetitionModeSound
+import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveGameAssistantTemperatureDetection
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveSomeVipLimit
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveStartupAnimation
@@ -59,6 +60,10 @@ object HookOplusGames : YukiBaseHooker() {
             //移除部分VIP限制
             if (prefs(ModulePrefs).getBoolean("remove_some_vip_limit", false)) {
                 loadHooker(RemoveSomeVipLimit)
+            }
+            //移除游戏助手温度检测
+            if (prefs(ModulePrefs).getBoolean("remove_game_assistant_temperature_detection")) {
+                loadHooker(RemoveGameAssistantTemperatureDetection)
             }
 
             //res/layout/layout_perf_cpu_setting_panel_land.xml

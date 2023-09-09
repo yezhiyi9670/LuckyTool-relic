@@ -526,6 +526,8 @@
     <string name="custom_media_player_support_message">填写需要添加的媒体播放器的包名，每行只能填写一个包名</string>
     <string name="remove_danmaku_notification_whitelist">移除弹幕通知白名单</string>
     <string name="remove_game_voice_changer_whitelist">移除游戏变声白名单</string>
+    <string name="remove_game_assistant_temperature_detection">移除游戏助手温度检测</string>
+    <string name="remove_game_assistant_temperature_detection_summary">主要解决在 X 模式中温度过高问题</string>
     <!--CloudService-->
     <string name="remove_network_limit">移除数据网络限制</string>
     <string name="remove_network_limit_summary">移除备份/恢复无法使用移动数据的限制</string>

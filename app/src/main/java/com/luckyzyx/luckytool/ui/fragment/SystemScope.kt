@@ -3107,6 +3107,13 @@ class OplusGames : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_game_assistant_temperature_detection)
+                summary = getString(R.string.remove_game_assistant_temperature_detection_summary)
+                key = "remove_game_assistant_temperature_detection"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.enable_x_mode_feature)
                 key = "enable_x_mode_feature"
                 setDefaultValue(false)

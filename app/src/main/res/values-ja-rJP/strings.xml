@@ -526,6 +526,8 @@
     <string name="custom_media_player_support_message">追加するメディアプレイヤーのパッケージ名を入力してください。各行に1つのパッケージ名のみ入力してください。</string>
     <string name="remove_danmaku_notification_whitelist">弾幕通知のホワイトリストを無効化</string>
     <string name="remove_game_voice_changer_whitelist">ボイスチェンジャーのホワイトリストを削除</string>
+    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
+    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">データ通信の制限を削除</string>
     <string name="remove_network_limit_summary">バックアップと復元でモバイルデータが使用できない制限を削除します</string>

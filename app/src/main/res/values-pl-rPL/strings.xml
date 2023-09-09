@@ -526,6 +526,8 @@
     <string name="custom_media_player_support_message">Fill in the package name of the media player to be added,Each line can only fill in one APP</string>
     <string name="remove_danmaku_notification_whitelist">Remove danmaku notification whitelist</string>
     <string name="remove_game_voice_changer_whitelist">Remove game voice changer whitelist</string>
+    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
+    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Usuń limit danych sieciowych</string>
     <string name="remove_network_limit_summary">Usuwa ograniczenie, według którego kopia zapasowa/przywracanie nie może korzystać z danych mobilnych</string>

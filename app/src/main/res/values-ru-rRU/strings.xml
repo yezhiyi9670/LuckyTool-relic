@@ -526,6 +526,8 @@
     <string name="custom_media_player_support_message">Заполните имя пакета для добавления медиаплеера, каждая строка может иметь только одно приложение</string>
     <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
     <string name="remove_game_voice_changer_whitelist">Удалить ограничения для смены голоса</string>
+    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
+    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>

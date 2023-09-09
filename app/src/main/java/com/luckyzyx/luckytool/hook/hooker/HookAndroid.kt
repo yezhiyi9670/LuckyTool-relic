@@ -101,6 +101,9 @@ object HookAndroid : YukiBaseHooker() {
         //屏幕色温RGB调色板
         loadHooker(ScreenColorTemperatureRGBPalette)
 
+        //OPLUS_FEATURE_POWERKEY_SHORT_PRESS_SHUTDOWN = "oplus.software.short_press_powerkey_shutdown";
+        //OPLUS_FEATURE_POWERKEY_SHUTDOWN = "oplus.software.long_press_powerkey_shutdown";
+
         //Share
         //com.android.internal.app.ChooserActivity
         //201589207 查看应用详情 oplus_resolver_target_pin_detail

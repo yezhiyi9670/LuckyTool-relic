@@ -526,6 +526,8 @@
     <string name="custom_media_player_support_message">Vyplňte název balíčku přehrávače médií, který má být přidán, na každém řádku může být jen jeden název balíčku aplikace</string>
     <string name="remove_danmaku_notification_whitelist">Odebrat seznam povolených oznámení danmaku</string>
     <string name="remove_game_voice_changer_whitelist">Odstranit omezení měniče hlasu</string>
+    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
+    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>
