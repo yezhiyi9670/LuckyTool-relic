@@ -16,10 +16,10 @@ object HookCamera : YukiBaseHooker() {
         if (appSet[2] == "null") return
 
         //HookCameraConfig
-        loadHooker(HookCameraConfig)
+        if (SDK >= A13) loadHooker(HookCameraConfig)
 
         //自定义机型水印
-        loadHooker(CustomModelWaterMark)
+        if (SDK >= A13) loadHooker(CustomModelWaterMark)
 
         //移除水印字数限制
         if (prefs(ModulePrefs).getBoolean("remove_watermark_word_limit", false)) {

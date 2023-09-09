@@ -13,7 +13,9 @@ import com.luckyzyx.luckytool.hook.scope.settings.HookSettingsFeature
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveDpiRestartRecovery
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveSettingsBottomLaboratory
 import com.luckyzyx.luckytool.hook.scope.settings.RemoveTopAccountDisplay
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 
 object HookSettings : YukiBaseHooker() {
@@ -58,7 +60,7 @@ object HookSettings : YukiBaseHooker() {
         }
         //自定义设备分享页面参数
         if (prefs(ModulePrefs).getBoolean("customize_device_sharing_page_parameters", false)) {
-            loadHooker(CustomizeDeviceSharingPageParameters)
+            if (SDK >= A13) loadHooker(CustomizeDeviceSharingPageParameters)
         }
 
         //强制开启进程管理

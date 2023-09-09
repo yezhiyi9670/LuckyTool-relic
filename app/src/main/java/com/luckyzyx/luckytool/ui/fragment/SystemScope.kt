@@ -2744,6 +2744,7 @@ class Settings : ModulePreferenceFragment() {
                 title = getString(R.string.customize_device_sharing_page_parameters)
                 key = "customize_device_sharing_page_parameters"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
 
@@ -2944,6 +2945,7 @@ class Camera : ModulePreferenceFragment() {
                 title = getString(R.string.enable_hasselblad_watermark_style)
                 key = "enable_hasselblad_watermark_style"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(EditTextPreference(context).apply {
@@ -2956,7 +2958,7 @@ class Camera : ModulePreferenceFragment() {
                 key = "custom_model_watermark"
                 setDefaultValue("None")
                 isIconSpaceReserved = false
-                isVisible = Build.MODEL.contains("RM", true).not()
+                isVisible = SDK >= A13 && Build.MODEL.contains("RM", true).not()
                 setOnPreferenceChangeListener { _, newValue ->
                     summary = (newValue as String).ifBlank { "None" }
                     true
@@ -2970,6 +2972,7 @@ class Camera : ModulePreferenceFragment() {
                 isVisible = false
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.CameraFilter)
                 key = "CameraFilter"
@@ -2990,8 +2993,10 @@ class Camera : ModulePreferenceFragment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.settings_other_preference)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
@@ -2999,6 +3004,7 @@ class Camera : ModulePreferenceFragment() {
                 summary = getString(R.string.enable_10_bit_image_support_summary)
                 key = "enable_10_bit_image_support"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
         }
