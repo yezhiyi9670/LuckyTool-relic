@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import com.highcapable.yukihookapi.hook.bean.HookClass
 import com.highcapable.yukihookapi.hook.core.YukiMemberHookCreator
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
@@ -39,11 +40,16 @@ object AlarmClockWidget : YukiBaseHooker() {
         override fun onHook() {
             //Source OnePlusWidget / OppoWeather / OppoWeatherSingle / OppoWeatherVertical
             //Search Class com.oplus.widget.OplusTextClock
-            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook { injMember() }
-            findClass("com.coloros.widget.smallweather.OppoWeather").hook { injMember() }
-            findClass("com.coloros.widget.smallweather.OppoWeatherSingle").hook { injMember() }
-            findClass("com.coloros.widget.smallweather.OppoWeatherVertical").hook { injMember() }
-            findClass("com.coloros.widget.smallweather.OppoWeatherMultiVertical").hook { injMember() }
+            findClass("com.coloros.widget.smallweather.OnePlusWidget").injHook()
+            findClass("com.coloros.widget.smallweather.OppoWeather").injHook()
+            findClass("com.coloros.widget.smallweather.OppoWeatherSingle").injHook()
+            findClass("com.coloros.widget.smallweather.OppoWeatherVertical").injHook()
+            "com.coloros.widget.smallweather.OppoWeatherMultiVertical".toClassOrNull()
+                ?.hook { injMember() }
+        }
+
+        fun HookClass.injHook() {
+            hook { injMember() }
         }
 
         fun YukiMemberHookCreator.injMember(): YukiMemberHookCreator.MemberHookCreator.Result {

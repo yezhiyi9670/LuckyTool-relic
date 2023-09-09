@@ -20,6 +20,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 下拉状态栏振动Hook异常 C12.1
 - [添加] 相机—启用大师滤镜
 - [添加] 相机—启用姜文滤镜
+- [修复] 部分时钟Hook异常
 
 ### 1.0.16
 
