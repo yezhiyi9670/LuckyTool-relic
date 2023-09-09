@@ -2973,18 +2973,25 @@ class Camera : ModulePreferenceFragment() {
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.CameraFilter)
                 key = "CameraFilter"
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.enable_master_filter)
                 key = "enable_master_filter"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.enable_jiangwen_filter)
                 key = "enable_jiangwen_filter"
                 setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_other_preference)
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {

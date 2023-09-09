@@ -2,12 +2,10 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import android.os.Build
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
-import com.highcapable.yukihookapi.hook.type.android.SizeClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.FloatType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -76,39 +74,6 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     }
                 }
             } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark WatermarkHelper")
-        }
-    }
-
-    @Suppress("unused")
-    fun getClsMembers(clazz: Class<*>) {
-        clazz.apply {
-            method { returnType = UnitType }.giveAll().size.let {
-                loggerD(msg = "UnitType -> $it")
-            }
-            method { returnType = PaintClass }.giveAll().size.let {
-                loggerD(msg = "PaintClass -> $it")
-            }
-            method { returnType = SizeClass }.giveAll().size.let {
-                loggerD(msg = "SizeClass -> $it")
-            }
-            method { returnType = BitmapClass }.giveAll().size.let {
-                loggerD(msg = "BitmapClass -> $it")
-            }
-            method { emptyParam();returnType = BooleanType }.giveAll().size.let {
-                loggerD(msg = "R BooleanType -> $it")
-            }
-            method { emptyParam();returnType = StringClass }.giveAll().size.let {
-                loggerD(msg = "R StringClass -> $it")
-            }
-            method { param { it[0] == ContextClass } }.giveAll().size.let {
-                loggerD(msg = "P ContextClass -> $it")
-            }
-            method { param { it[0] == StringClass } }.giveAll().size.let {
-                loggerD(msg = "P StringClass -> $it")
-            }
-            method { param { it[0] == SizeClass } }.giveAll().size.let {
-                loggerD(msg = "P SizeClass -> $it")
-            }
         }
     }
 }
