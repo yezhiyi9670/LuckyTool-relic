@@ -603,6 +603,7 @@
     <string name="select_download_source">Вибрати джерело завантаження</string>
     <string name="update_logs">Журнал оновлень</string>
     <string name="check_update_hint">Виявлена нова версія!</string>
+    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
     <string name="go_download_page">Перейти на сторінку завантаження</string>
     <string name="copy_download_link">Скопіювати посилання для завантаження</string>
     <string name="direct_update">Пряме оновлення</string>

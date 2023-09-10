@@ -68,6 +68,11 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(ForceDisplayProcessManagement)
         }
 
+        //debug_display_category
+        //single_pulse_EM_mode_switch single_pulse_EM_mode_title
+        //com.oplus.settings.feature.othersettings.development.OplusSinglePulseEMDevelopController
+        //display_single_pulse_settings_switch
+
         //darkmode_third_app
         //com.oplus.settings.feature.display.darkmode.ui.DarkModeSettingsFragment
 

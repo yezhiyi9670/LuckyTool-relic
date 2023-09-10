@@ -15,8 +15,8 @@ object HookScreenshot : YukiBaseHooker() {
         }
         //移除长截图页数限制
         if (prefs(ModulePrefs).getBoolean("remove_page_limit_for_long_screenshots", false)) {
-            val newVer = "com.oplus.providers.AppSettings".toClassOrNull()
-            if (newVer != null) loadHooker(CustomizeLongScreenshotMaxCapturedPages)
+            val newVer = "com.oplus.providers.AppSettings".hasClass()
+            if (newVer) loadHooker(CustomizeLongScreenshotMaxCapturedPages)
             else {
                 loggerD(msg = "此截屏版本不支持移除长截图页数限制,请关闭此功能或者更换截屏版本!")
                 loggerD(msg = "This screenshot version does not support removing the page limit for long screenshots, please disable this function or replace the screenshot version!")

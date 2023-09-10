@@ -3,6 +3,12 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.18_beta
+
+- [修复] 大师滤镜Hook异常
+- [更改] 相机水印字数限制方案
+- [优化] 检测更新失败提示
+
 ### 1.0.17
 
 - [适配] 设置 FeatureUtils v12.1.2(af160a4)

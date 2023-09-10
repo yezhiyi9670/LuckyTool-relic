@@ -11,7 +11,6 @@ import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import com.drake.net.Get
 import com.drake.net.component.Progress
-import com.drake.net.exception.ConvertException
 import com.drake.net.interfaces.ProgressListener
 import com.drake.net.scope.NetCoroutineScope
 import com.drake.net.utils.scopeNet
@@ -88,12 +87,7 @@ class UpdateUtils(val context: Context) {
                     }
                 }
             }
-        }.catch {
-            when (it) {
-                is ConvertException -> return@catch
-                else -> handleError(it)
-            }
-        }
+        }.catch { context.toast(context.getString(R.string.check_update_error)) }
     }
 
     private fun readyDownload(context: Context, fileName: String, downloadUrl: String) {

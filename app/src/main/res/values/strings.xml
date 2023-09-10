@@ -671,6 +671,7 @@
     <string name="select_download_source">Select download source</string>
     <string name="update_logs">Update logs</string>
     <string name="check_update_hint">New version detected!</string>
+    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
     <string name="go_download_page">Go to the download page</string>
     <string name="copy_download_link">Copy the download link</string>
     <string name="direct_update">Direct update</string>

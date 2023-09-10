@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 
 object EnableMasterFilter : YukiBaseHooker() {
     override fun onHook() {
@@ -10,29 +9,29 @@ object EnableMasterFilter : YukiBaseHooker() {
             injectMember {
                 method { name = "initVideoFilterGroup" }
                 afterHook {
+                    val mbBasicAndStyleNotEmpty = field { name = "mbBasicAndStyleNotEmpty" }.get()
+                        .cast<Boolean>() ?: return@afterHook
+                    if (mbBasicAndStyleNotEmpty) return@afterHook
                     val sVideoFilterGroup = field { name = "sVideoFilterGroup" }.get().any()
                         ?: return@afterHook
-                    instance.callMasterFilter(sVideoFilterGroup)
+                    method {
+                        name = "initMasterFilterGroup";paramCount = 2
+                    }.get().call("com.oplus.photo.master.filter.type.list", sVideoFilterGroup)
                 }
             }
             injectMember {
                 method { name = "initStickerFilterGroup" }
                 afterHook {
+                    val mbBasicAndStyleNotEmpty = field { name = "mbBasicAndStyleNotEmpty" }.get()
+                        .cast<Boolean>() ?: return@afterHook
+                    if (mbBasicAndStyleNotEmpty) return@afterHook
                     val sStickerFilterGroup = field { name = "sStickerFilterGroup" }.get().any()
                         ?: return@afterHook
-                    instance.callMasterFilter(sStickerFilterGroup)
+                    method {
+                        name = "initMasterFilterGroup";paramCount = 2
+                    }.get().call("com.oplus.photo.master.filter.type.list", sStickerFilterGroup)
                 }
             }
         }
-    }
-
-    private fun Any.callMasterFilter(group: Any) {
-        val mbBasicAndStyleNotEmpty = current().field { name = "mbBasicAndStyleNotEmpty" }
-            .cast<Boolean>() ?: return
-        if (mbBasicAndStyleNotEmpty) return
-        current().method {
-            name = "initMasterFilterGroup"
-            paramCount = 2
-        }.call("com.oplus.photo.master.filter.type.list", group)
     }
 }

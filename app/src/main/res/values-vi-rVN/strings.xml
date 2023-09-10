@@ -603,6 +603,7 @@
     <string name="select_download_source">Chọn nguồn tải xuống</string>
     <string name="update_logs">Nhật ký cập nhật</string>
     <string name="check_update_hint">Đã phát hiện phiên bản mới!</string>
+    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
     <string name="go_download_page">Đi đến trang tải xuống</string>
     <string name="copy_download_link">Sao chép liên kết tải xuống</string>
     <string name="direct_update">Cập nhật trực tiếp</string>

@@ -603,6 +603,7 @@
     <string name="select_download_source">选择下载源</string>
     <string name="update_logs">更新日志</string>
     <string name="check_update_hint">检测到新版本!</string>
+    <string name="check_update_error">检测更新失败，请检查网络等问题！</string>
     <string name="go_download_page">跳转下载页面</string>
     <string name="copy_download_link">复制下载链接</string>
     <string name="direct_update">直接更新</string>

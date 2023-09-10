@@ -35,7 +35,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk = 28
         versionCode = getVersionCode()
-        versionName = "1.0.17"
+        versionName = "1.0.18_beta"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 
@@ -99,7 +99,7 @@ dependencies {
 
     //Material主题
     implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     //约束布局
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //快速创建Settings

@@ -603,6 +603,7 @@
     <string name="select_download_source">Выбрать источник загрузки</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
+    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>
     <string name="copy_download_link">Скопируйте ссылку для загрузки</string>
     <string name="direct_update">Прямое обновление</string>

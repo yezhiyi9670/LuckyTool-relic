@@ -603,6 +603,7 @@
     <string name="select_download_source">ダウンロード元を選択</string>
     <string name="update_logs">アップデートログ</string>
     <string name="check_update_hint">新しいバージョンがあります!</string>
+    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
     <string name="go_download_page">ダウンロードページを開く</string>
     <string name="copy_download_link">ダウンロードリンクをコピー</string>
     <string name="direct_update">直接でアップデート</string>
