@@ -14,7 +14,7 @@ import com.luckyzyx.luckytool.utils.getOSVersionCode
 object LockScreenChargingComponent : YukiBaseHooker() {
     override fun onHook() {
         when (getOSVersionCode) {
-            30 -> loadHooker(ChargingComponentC14)
+            in 30..Int.MAX_VALUE -> loadHooker(ChargingComponentC14)
             in 26..29 -> loadHooker(ChargingComponentC13)
             else -> loadHooker(ChargingComponentC12)
         }
@@ -121,30 +121,6 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                         if (showWattage && (mChargerWattage != 0)) resultTrue()
                     }
                 }
-//                injectMember {
-//                    method { name = "isUFCSCharging" }
-//                    afterHook {
-//                        loggerD(msg = "isUFCSCharging -> $result")
-//                        val mIsPublicUFCSCharging =
-//                            field { name = "mIsPublicUFCSCharging" }.get(instance).cast<Boolean>()
-//                        val mIsPrivateUFCSCharging =
-//                            field { name = "mIsPrivateUFCSCharging" }.get(instance).cast<Boolean>()
-//                        loggerD(msg = "IsPublicUFCSCharging -> $mIsPublicUFCSCharging")
-//                        loggerD(msg = "IsPrivateUFCSCharging -> $mIsPrivateUFCSCharging")
-//                    }
-//                }
-//                injectMember {
-//                    method { name = "isPublicUFCSCharging" }
-//                    afterHook {
-//                        loggerD(msg = "isPublicUFCSCharging -> $result")
-//                    }
-//                }
-//                injectMember {
-//                    method { name = "isPrivateUFCSCharging" }
-//                    afterHook {
-//                        loggerD(msg = "isPrivateUFCSCharging -> $result")
-//                    }
-//                }
             }
 
             val clazz =

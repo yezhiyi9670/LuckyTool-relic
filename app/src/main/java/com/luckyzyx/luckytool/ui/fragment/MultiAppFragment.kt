@@ -14,6 +14,7 @@ import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,8 +34,9 @@ import com.luckyzyx.luckytool.utils.getStringSet
 import com.luckyzyx.luckytool.utils.jumpMultiApp
 import com.luckyzyx.luckytool.utils.putBoolean
 import com.luckyzyx.luckytool.utils.putStringSet
+import com.luckyzyx.luckytool.utils.setupMenuProvider
 
-class MultiAppFragment : Fragment() {
+class MultiAppFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
@@ -44,7 +46,7 @@ class MultiAppFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        setHasOptionsMenu(true)
+        setupMenuProvider(this)
         isShowSystemApp =
             requireActivity().getBoolean(ModulePrefs, "show_system_app_multi_app", false)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
@@ -52,8 +54,6 @@ class MultiAppFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         binding.enableSwitch.apply {
             text = getString(R.string.multi_app_enable)
             isChecked = context.getBoolean(ModulePrefs, "multi_app_enable", false)
@@ -123,8 +123,8 @@ class MultiAppFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.app_list_menu, menu)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.app_list_menu, menu)
         menu.findItem(R.id.show_system_app).isChecked = isShowSystemApp
         menu.add(0, 1, 0, getString(R.string.common_words_open)).apply {
             setIcon(R.drawable.baseline_open_in_new_24)
@@ -135,17 +135,17 @@ class MultiAppFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) jumpMultiApp(requireActivity())
-        if (item.itemId == R.id.show_system_app) {
-            item.isChecked = !item.isChecked
-            isShowSystemApp = item.isChecked
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == 1) jumpMultiApp(requireActivity())
+        if (menuItem.itemId == R.id.show_system_app) {
+            menuItem.isChecked = !menuItem.isChecked
+            isShowSystemApp = menuItem.isChecked
             requireActivity().putBoolean(
                 ModulePrefs, "show_system_app_multi_app", isShowSystemApp
             )
             loadData()
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 }
 

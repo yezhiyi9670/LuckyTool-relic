@@ -4,12 +4,16 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
+import androidx.core.view.MenuProvider
 import androidx.core.widget.NestedScrollView
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
@@ -35,12 +39,20 @@ import com.luckyzyx.luckytool.utils.getAppVersion
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
+import com.luckyzyx.luckytool.utils.setupMenuProvider
 import kotlinx.coroutines.Dispatchers
 import java.util.Arrays
 
-class XposedFragment : ModulePreferenceFragment() {
+class XposedFragment : ModulePreferenceFragment(), MenuProvider {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        setupMenuProvider(this)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
+        init()
     }
 
     private fun init() {
@@ -57,11 +69,10 @@ class XposedFragment : ModulePreferenceFragment() {
         }.create()
         scopeDialog(dialog, false, Dispatchers.Default) {
             if (preferenceScreen != null) return@scopeDialog
-            val destination = findNavController().backQueue.lastOrNull()?.destination
+            val destination = findNavController().currentBackStack.value.lastOrNull()?.destination
             if (!destination.toString().contains(this@XposedFragment::class.java.simpleName)) {
                 return@scopeDialog
             }
-
             createPreference()
         }
     }
@@ -434,11 +445,10 @@ class XposedFragment : ModulePreferenceFragment() {
 
     override fun onResume() {
         super.onResume()
-        init()
         requireActivity().ckqcbss()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -455,10 +465,10 @@ class XposedFragment : ModulePreferenceFragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) (activity as MainActivity).restartMain()
-        if (item.itemId == 2) requireActivity().bottomSheet()
-        return super.onOptionsItemSelected(item)
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == 1) (activity as MainActivity).restartMain()
+        if (menuItem.itemId == 2) requireActivity().bottomSheet()
+        return true
     }
 
     private fun Context.bottomSheet() {

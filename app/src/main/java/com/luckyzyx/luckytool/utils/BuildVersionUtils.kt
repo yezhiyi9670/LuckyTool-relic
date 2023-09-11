@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.luckyzyx.luckytool.utils
 
 import android.os.Build
@@ -20,7 +22,7 @@ val A121 get() = Build.VERSION_CODES.S_V2
 val A13 get() = Build.VERSION_CODES.TIRAMISU
 
 /**Android14 34 XX*/
-val A14 get() = Build.VERSION_CODES.TIRAMISU + 1
+val A14 get() = Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 
 /**
  * 获取构建版本名/版本号

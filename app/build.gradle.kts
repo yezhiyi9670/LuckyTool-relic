@@ -27,7 +27,7 @@ android {
             storePassword = keystoreProperties["storePassword"] as String
         }
     }
-    compileSdk = 33
+    compileSdk = 34
     namespace = "com.luckyzyx.luckytool"
     defaultConfig {
         applicationId = "com.luckyzyx.luckytool"
@@ -107,10 +107,8 @@ dependencies {
     //下拉刷新控件
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //Navigation
-    //noinspection GradleDependency
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
-    //noinspection GradleDependency
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     // 权限请求框架

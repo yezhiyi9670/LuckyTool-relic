@@ -13,6 +13,7 @@ import android.util.ArraySet
 import android.view.*
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +28,7 @@ import com.luckyzyx.luckytool.databinding.FragmentApplistFunctionLayoutBinding
 import com.luckyzyx.luckytool.databinding.LayoutAppinfoSwitchItemDarkmodeBinding
 import com.luckyzyx.luckytool.utils.*
 
-class DarkModeFragment : Fragment() {
+class DarkModeFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentApplistFunctionLayoutBinding
     private var appListAllDatas = ArrayList<AppInfo>()
@@ -38,7 +39,7 @@ class DarkModeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        setHasOptionsMenu(true)
+        setupMenuProvider(this)
         isShowSystemApp =
             requireActivity().getBoolean(ModulePrefs, "show_system_app_dark_mode", false)
         binding = FragmentApplistFunctionLayoutBinding.inflate(inflater)
@@ -46,8 +47,6 @@ class DarkModeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         binding.enableSwitch.apply {
             text = context.getString(R.string.enable_zoom_window)
             isChecked = context.getBoolean(ModulePrefs, "dark_mode_list_enable", false)
@@ -125,8 +124,8 @@ class DarkModeFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.app_list_menu, menu)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.app_list_menu, menu)
         menu.findItem(R.id.show_system_app).isChecked = isShowSystemApp
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
@@ -144,18 +143,18 @@ class DarkModeFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpDarkMode(requireActivity())
-        if (item.itemId == R.id.show_system_app) {
-            item.isChecked = !item.isChecked
-            isShowSystemApp = item.isChecked
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == 1) requireActivity().restartScopes(scopes)
+        if (menuItem.itemId == 2) jumpDarkMode(requireActivity())
+        if (menuItem.itemId == R.id.show_system_app) {
+            menuItem.isChecked = !menuItem.isChecked
+            isShowSystemApp = menuItem.isChecked
             requireActivity().putBoolean(
                 ModulePrefs, "show_system_app_dark_mode", isShowSystemApp
             )
             loadData()
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 }
 

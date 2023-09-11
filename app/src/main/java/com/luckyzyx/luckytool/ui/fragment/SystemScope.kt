@@ -1,14 +1,10 @@
 package com.luckyzyx.luckytool.ui.fragment
 
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuProvider
 import androidx.preference.DropDownPreference
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
@@ -19,9 +15,9 @@ import com.drake.net.utils.scopeLife
 import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
-import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
+import com.luckyzyx.luckytool.ui.fragment.base.BaseScopePreferenceFeagment
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
@@ -30,7 +26,6 @@ import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ShellUtils
-import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.arraySummaryDot
 import com.luckyzyx.luckytool.utils.arraySummaryLine
 import com.luckyzyx.luckytool.utils.checkPackName
@@ -49,10 +44,9 @@ import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.openApp
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.replaceBlankLine
-import com.luckyzyx.luckytool.utils.restartScopes
 import com.luckyzyx.luckytool.utils.toast
 
-class Android : ModulePreferenceFragment() {
+class Android : BaseScopePreferenceFeagment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -116,12 +110,11 @@ class Android : ModulePreferenceFragment() {
     }
 }
 
-class StatusBar : ModulePreferenceFragment() {
-    private val scopes =
+class StatusBar : BaseScopePreferenceFeagment() {
+    override val scopes =
         arrayOf("com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
@@ -262,26 +255,13 @@ class StatusBar : ModulePreferenceFragment() {
         requireActivity().ckqcbss()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarClock : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarClock : BaseScopePreferenceFeagment(), MenuProvider {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
@@ -482,27 +462,13 @@ class StatusBarClock : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarNetWorkSpeed : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -605,28 +571,14 @@ class StatusBarNetWorkSpeed : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarNotifyRemoval : ModulePreferenceFragment() {
-    private val scopes =
+class StatusBarNotifyRemoval : BaseScopePreferenceFeagment() {
+    override val scopes =
         arrayOf("com.android.systemui", "com.oplus.battery", "com.coloros.phonemanager")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -716,24 +668,11 @@ class StatusBarNotifyRemoval : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarNotify : ModulePreferenceFragment() {
-    private val scopes = arrayOf(
+class StatusBarNotify : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf(
         "com.android.systemui",
         "com.oplus.battery",
         "com.coloros.phonemanager",
@@ -741,7 +680,6 @@ class StatusBarNotify : ModulePreferenceFragment() {
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
@@ -822,26 +760,13 @@ class StatusBarNotify : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarIcon : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarIcon : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -949,26 +874,13 @@ class StatusBarIcon : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarControlCenter : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarControlCenter : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -1179,26 +1091,13 @@ class StatusBarControlCenter : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarTiles : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarTiles : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -1339,26 +1238,13 @@ class StatusBarTiles : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarLayout : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarLayout : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
@@ -1410,26 +1296,13 @@ class StatusBarLayout : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarBattery : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class StatusBarBattery : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -1533,26 +1406,13 @@ class StatusBarBattery : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Launcher : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.coloros.alarmclock", "com.android.launcher")
+class Launcher : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.coloros.alarmclock", "com.android.launcher")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
@@ -1754,28 +1614,13 @@ class Launcher : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Aod : ModulePreferenceFragment() {
-
-    private val scopes = arrayOf("com.android.systemui", "com.oplus.aod", "com.oplus.uiengine")
+class Aod : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui", "com.oplus.aod", "com.oplus.uiengine")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -1814,26 +1659,13 @@ class Aod : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class LockScreen : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class LockScreen : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -2059,26 +1891,13 @@ class LockScreen : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Screenshot : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.screenshot")
+class Screenshot : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.oplus.screenshot")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -2118,25 +1937,12 @@ class Screenshot : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Application : ModulePreferenceFragment() {
+class Application : BaseScopePreferenceFeagment() {
 
-    private val scopes = arrayOf(
+    override val scopes = arrayOf(
         "com.oplus.battery",
         "com.oplus.safecenter",
         "com.coloros.safecenter",
@@ -2148,7 +1954,6 @@ class Application : ModulePreferenceFragment() {
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -2318,29 +2123,15 @@ class Application : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class DialogRelated : ModulePreferenceFragment() {
-    private val scopes = arrayOf(
+class DialogRelated : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf(
         "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -2414,24 +2205,11 @@ class DialogRelated : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class FingerPrintRelated : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui")
+class FingerPrintRelated : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui")
     private val loadFPIcon = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it != null) {
             val path = FileUtils.getDocumentPath(requireActivity(), it)
@@ -2443,7 +2221,6 @@ class FingerPrintRelated : ModulePreferenceFragment() {
     }
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
@@ -2483,24 +2260,11 @@ class FingerPrintRelated : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Miscellaneous : ModulePreferenceFragment() {
-    private val scopes = arrayOf(
+class Miscellaneous : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf(
         "com.android.systemui",
         "com.android.externalstorage",
         "com.oplus.exsystemservice",
@@ -2508,7 +2272,6 @@ class Miscellaneous : ModulePreferenceFragment() {
     )
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
@@ -2600,26 +2363,13 @@ class Miscellaneous : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class Settings : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.settings")
+class Settings : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.settings")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -2780,34 +2530,15 @@ class Settings : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) requireActivity().openApp(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = requireActivity().openApp(scopes)
 }
 
-class Battery : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.battery")
+class Battery : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.oplus.battery")
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -2899,35 +2630,15 @@ class Battery : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpBattery(requireActivity())
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = jumpBattery(requireActivity())
 }
 
-class Camera : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oneplus.camera", "com.oplus.camera")
+class Camera : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.oneplus.camera", "com.oplus.camera")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
@@ -3010,35 +2721,15 @@ class Camera : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) requireActivity().openApp(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = requireActivity().openApp(scopes)
 }
 
-class OplusGames : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.games", "com.oplus.cosa")
+class OplusGames : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.oplus.games", "com.oplus.cosa")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3176,43 +2867,25 @@ class OplusGames : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-            isVisible =
-                requireActivity().checkPackName("com.oplus.games") && requireActivity().checkResolveActivity(
-                    Intent().setClassName(
-                        "com.oplus.games", "business.compact.activity.GameBoxCoverActivity"
-                    )
-                )
-        }
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean =
+        requireActivity().checkPackName("com.oplus.games") && requireActivity().checkResolveActivity(
+            Intent().setClassName(
+                "com.oplus.games", "business.compact.activity.GameBoxCoverActivity"
+            )
+        )
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) ShellUtils.execCommand(
+    override fun callOpenMenu() {
+        ShellUtils.execCommand(
             "am start -n com.oplus.games/business.compact.activity.GameBoxCoverActivity", true
         )
-        return super.onOptionsItemSelected(item)
     }
 }
 
-class ThemeStore : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.heytap.themestore")
+class ThemeStore : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.heytap.themestore")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3225,35 +2898,15 @@ class ThemeStore : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) requireActivity().openApp(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = requireActivity().openApp(scopes)
 }
 
-class CloudService : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.heytap.cloud")
+class CloudService : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.heytap.cloud")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3266,35 +2919,15 @@ class CloudService : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) requireActivity().openApp(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = requireActivity().openApp(scopes)
 }
 
-class OplusOta : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.oplus.ota")
+class OplusOta : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.oplus.ota")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(Preference(context).apply {
@@ -3355,35 +2988,15 @@ class OplusOta : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpOTA(requireActivity())
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = jumpOTA(requireActivity())
 }
 
-class OplusPictorial : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.heytap.pictorial")
+class OplusPictorial : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.heytap.pictorial")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3401,35 +3014,15 @@ class OplusPictorial : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpPictorial(requireActivity())
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = jumpPictorial(requireActivity())
 }
 
-class OplusMMS : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.mms")
+class OplusMMS : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.mms")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3442,27 +3035,13 @@ class OplusMMS : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class OplusBrowser : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.heytap.browser")
+class OplusBrowser : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.heytap.browser")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3475,24 +3054,11 @@ class OplusBrowser : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
 }
 
-class OplusGesture : ModulePreferenceFragment() {
-    private val scopes = arrayOf("com.android.systemui", "com.oplus.gesture")
+class OplusGesture : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.android.systemui", "com.oplus.gesture")
     private val loadLeftImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it != null) {
             val path = FileUtils.getDocumentPath(requireActivity(), it)
@@ -3513,7 +3079,6 @@ class OplusGesture : ModulePreferenceFragment() {
     }
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        setHasOptionsMenu(true)
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
@@ -3655,26 +3220,7 @@ class OplusGesture : ModulePreferenceFragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
-            setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 2, 0, getString(R.string.common_words_open)).apply {
-            setIcon(R.drawable.baseline_open_in_new_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartScopes(scopes)
-        if (item.itemId == 2) jumpGesture(requireActivity())
-        return super.onOptionsItemSelected(item)
-    }
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = jumpGesture(requireActivity())
 }

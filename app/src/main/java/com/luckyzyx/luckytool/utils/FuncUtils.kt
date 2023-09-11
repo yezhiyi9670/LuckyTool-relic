@@ -21,13 +21,20 @@ import android.text.style.ForegroundColorSpan
 import android.util.ArrayMap
 import android.util.ArraySet
 import android.util.Base64
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.MenuRes
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toBitmapOrNull
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scope
@@ -348,6 +355,7 @@ fun getProp(key: String, root: Boolean): String = safeOf("null") {
  * 打开空活动以关闭折叠面板
  * @receiver TileService
  */
+@Suppress("DEPRECATION")
 fun TileService.closeCollapse() {
     Intent(Intent.ACTION_VIEW).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -1257,3 +1265,30 @@ fun closeScreen(context: Context) {
     val service = context.getSystemService(Context.POWER_SERVICE)
     service.current().method { name = "goToSleep" }.call(SystemClock.uptimeMillis())
 }
+
+/**
+ * Fragment快捷设置MenuProvider
+ * @receiver Fragment
+ * @param menuId Int Menu Resource ID
+ * @param onMenuSelected Function1<MenuItem, Boolean>
+ */
+fun Fragment.setupMenuProvider(@MenuRes menuId: Int, onMenuSelected: (MenuItem) -> Boolean) =
+    (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) =
+            menuInflater.inflate(menuId, menu)
+
+        override fun onMenuItemSelected(menuItem: MenuItem) = onMenuSelected(menuItem)
+    }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+/**
+ * Fragment快捷设置MenuProvider
+ * @receiver Fragment
+ * @param menuProvider MenuProvider
+ */
+fun Fragment.setupMenuProvider(menuProvider: MenuProvider) =
+    (requireActivity() as MenuHost).addMenuProvider(
+        menuProvider,
+        viewLifecycleOwner,
+        Lifecycle.State.RESUMED
+    )
+

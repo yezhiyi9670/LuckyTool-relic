@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
@@ -24,7 +25,7 @@ import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -34,14 +35,12 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater)
-        setHasOptionsMenu(true)
+        setupMenuProvider(this)
         return binding.root
     }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         enableModule = requireActivity().getBoolean(ModulePrefs, "enable_module", false)
 
         if (enableModule && YukiHookAPI.Status.isModuleActive) {
@@ -245,7 +244,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.add(0, 1, 0, getString(R.string.menu_reboot)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -262,9 +261,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) requireActivity().restartMain()
-        if (item.itemId == 2) {
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == 1) requireActivity().restartMain()
+        if (menuItem.itemId == 2) {
             MaterialAlertDialogBuilder(requireActivity()).apply {
                 setTitle(getString(R.string.about_author))
                 setView(MaterialTextView(context).apply {
@@ -281,6 +280,6 @@ class HomeFragment : Fragment() {
                 show()
             }
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 }

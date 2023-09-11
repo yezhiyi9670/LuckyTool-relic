@@ -14,6 +14,7 @@ import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -40,6 +41,7 @@ import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getAppIcon
 import com.luckyzyx.luckytool.utils.getAppLabel
 import com.luckyzyx.luckytool.utils.getLogInfo
+import com.luckyzyx.luckytool.utils.setupMenuProvider
 import com.luckyzyx.luckytool.utils.toast
 import java.io.File
 import java.io.FileNotFoundException
@@ -47,7 +49,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-class LoggerFragment : Fragment() {
+class LoggerFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentLogsBinding
     private var listData = ArrayList<YukiLoggerData>()
@@ -59,14 +61,12 @@ class LoggerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        setHasOptionsMenu(true)
+        setupMenuProvider(this)
         binding = FragmentLogsBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         logInfoViewAdapter = LogInfoViewAdapter(requireActivity(), listData)
         binding.loglistView.apply {
             adapter = logInfoViewAdapter
@@ -109,7 +109,8 @@ class LoggerFragment : Fragment() {
         scope?.close()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.add(0, 1, 0, getString(R.string.common_words_refresh)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
             setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -133,13 +134,13 @@ class LoggerFragment : Fragment() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == 1) loadLogger()
-        if (item.itemId == 2) {
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        if (menuItem.itemId == 1) loadLogger()
+        if (menuItem.itemId == 2) {
             fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + ".log"
             saveFile(fileName)
         }
-        if (item.itemId == 3) {
+        if (menuItem.itemId == 3) {
             val dialog = MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
                 setTitle(getString(R.string.log_filter_title))
                 setView(R.layout.layout_log_filter_dialog)
@@ -176,7 +177,7 @@ class LoggerFragment : Fragment() {
                 })
             }
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 
     private val createDocument = registerForActivityResult(
