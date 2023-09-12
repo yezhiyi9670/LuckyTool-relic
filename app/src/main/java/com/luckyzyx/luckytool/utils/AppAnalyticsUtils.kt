@@ -18,11 +18,14 @@ object AppAnalyticsUtils {
 
     private const val App_Center_Secret = BuildConfig.APP_CENTER_SECRET
 
-    fun init(instance: Application) {
-        if (App_Center_Secret.isNotBlank()) AppCenter.start(
-            instance, App_Center_Secret,
-            Analytics::class.java, Crashes::class.java
-        )
+    fun init(instance: Application, isBeta: Boolean) {
+        if (App_Center_Secret.isNotBlank()) {
+            if (isBeta) AppCenter.start(instance, App_Center_Secret, Analytics::class.java)
+            else AppCenter.start(
+                instance, App_Center_Secret,
+                Analytics::class.java, Crashes::class.java
+            )
+        }
     }
 
     fun trackEvent(name: String, data: Map<String, String>? = null) {

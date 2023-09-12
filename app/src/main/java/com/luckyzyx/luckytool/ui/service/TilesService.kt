@@ -7,20 +7,20 @@ import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.telephony.SubscriptionManager
-import com.drake.net.utils.scope
 import com.highcapable.yukihookapi.hook.factory.dataChannel
+import com.luckyzyx.luckytool.IDarkModeController
 import com.luckyzyx.luckytool.IFiveGController
+import com.luckyzyx.luckytool.IGlobalDCController
+import com.luckyzyx.luckytool.IHighBrightnessController
+import com.luckyzyx.luckytool.IRefreshRateController
+import com.luckyzyx.luckytool.ITouchPanelController
 import com.luckyzyx.luckytool.utils.SettingsPrefs
-import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.closeCollapse
-import com.luckyzyx.luckytool.utils.getRefreshRateStatus
 import com.luckyzyx.luckytool.utils.jumpBatteryInfo
 import com.luckyzyx.luckytool.utils.jumpHighPerformance
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.putBoolean
-import com.luckyzyx.luckytool.utils.showRefreshRate
 import com.topjohnwu.superuser.ipc.RootService
-import kotlinx.coroutines.Dispatchers
 
 class ChargingTest : TileService() {
     override fun onClick() {
@@ -45,179 +45,201 @@ class HighPerformanceMode : TileService() {
 }
 
 class ShowFPS : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            qsTile.state =
-                ShellUtils.execCommand("service call SurfaceFlinger 1034 i32 2", true, true).let {
-                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
-                        if (getRefreshRateStatus()) Tile.STATE_ACTIVE
-                        else Tile.STATE_INACTIVE
-                    } else Tile.STATE_UNAVAILABLE
-                }
-            qsTile.updateTile()
-        }
+    private var iRefreshRateController: IRefreshRateController? = null
+
+    override fun onStartListening() = refreshData()
+
+    override fun onClick() = startController {
+        if (qsTile.state == Tile.STATE_INACTIVE) it?.refreshRateDisplay = true
+        else if (qsTile.state == Tile.STATE_ACTIVE) it?.refreshRateDisplay = false
+        refreshData()
     }
 
-    override fun onClick() {
-        when (qsTile.state) {
-            Tile.STATE_INACTIVE -> {
-                showRefreshRate(true)
-                qsTile.state = Tile.STATE_ACTIVE
-            }
+    private fun startController(controller: (IRefreshRateController?) -> Unit) {
+        if (iRefreshRateController != null) controller(iRefreshRateController)
+        else RootService.bind(Intent(this, RefreshRateControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(
+                    name: ComponentName?,
+                    service: IBinder?
+                ) {
+                    iRefreshRateController = IRefreshRateController.Stub.asInterface(service)
+                    controller(iRefreshRateController)
+                }
 
-            Tile.STATE_ACTIVE -> {
-                showRefreshRate(false)
-                qsTile.state = Tile.STATE_INACTIVE
-            }
+                override fun onServiceDisconnected(name: ComponentName?) {
 
-            Tile.STATE_UNAVAILABLE -> {}
+                }
+            })
+    }
+
+    private fun refreshData() = startController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startController
         }
+        qsTile.state = if (it.refreshRateDisplay) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
         qsTile.updateTile()
     }
 }
 
 class HighBrightness : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            qsTile.state =
-                ShellUtils.execCommand("cat /sys/kernel/oplus_display/hbm", true, true).let {
-                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
-                        when (it.successMsg.substring(0, 1)) {
-                            "0" -> Tile.STATE_INACTIVE
-                            "1" -> Tile.STATE_ACTIVE
-                            else -> Tile.STATE_UNAVAILABLE
-                        }
-                    } else Tile.STATE_UNAVAILABLE
-                }
-            qsTile.updateTile()
-            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-                SettingsPrefs, "high_brightness_mode", false
-            )
-        }
-    }
+    private var iHighBrightnessControllerService: IHighBrightnessController? = null
+    override fun onStartListening() = refreshData()
 
-    override fun onClick() {
+    override fun onClick() = startController {
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 1", true)
+                it?.highBrightnessMode = true
                 putBoolean(SettingsPrefs, "high_brightness_mode", true)
                 dataChannel("com.android.systemui").put("high_brightness_mode", true)
-                qsTile.state = Tile.STATE_ACTIVE
             }
 
             Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("echo > /sys/kernel/oplus_display/hbm 0", true)
+                it?.highBrightnessMode = false
                 putBoolean(SettingsPrefs, "high_brightness_mode", false)
                 dataChannel("com.android.systemui").put("high_brightness_mode", false)
-                qsTile.state = Tile.STATE_INACTIVE
             }
 
             Tile.STATE_UNAVAILABLE -> {}
         }
+        refreshData()
+    }
+
+    private fun startController(controller: (IHighBrightnessController?) -> Unit) {
+        if (iHighBrightnessControllerService != null) controller(iHighBrightnessControllerService)
+        else RootService.bind(Intent(this, HighBrightnessControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    iHighBrightnessControllerService =
+                        IHighBrightnessController.Stub.asInterface(service)
+                    controller(iHighBrightnessControllerService)
+                }
+
+                override fun onServiceDisconnected(name: ComponentName?) {
+
+                }
+            })
+    }
+
+    private fun refreshData() = startController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startController
+        }
+        qsTile.state = if (!it.checkHighBrightnessMode()) Tile.STATE_UNAVAILABLE
+        else if (it.highBrightnessMode) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
         qsTile.updateTile()
+        if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+            SettingsPrefs, "high_brightness_mode", false
+        )
     }
 }
 
 class GlobalDC : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            var oppoExist = true
-            var oplusExist = true
-            var isOppo = false
-            var isOplus = false
-            ShellUtils.execCommand("cat /sys/kernel/oppo_display/dimlayer_hbm", true, true)
-                .apply {
-                    if (result == 0 && successMsg != null && successMsg.isNotBlank()
-                        && successMsg.substring(0, 1) == "1"
-                    ) isOppo = true
-                    else if (result == 1) oppoExist = false
-                }
-            ShellUtils.execCommand("cat /sys/kernel/oplus_display/dimlayer_hbm", true, true)
-                .apply {
-                    if (result == 0 && successMsg != null && successMsg.isNotBlank()
-                        && successMsg.substring(0, 1) == "1"
-                    ) isOplus = true
-                    else if (result == 1) oplusExist = false
-                }
-            qsTile.state =
-                if (!(oppoExist || oplusExist)) Tile.STATE_UNAVAILABLE else if (isOppo || isOplus) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-            qsTile.updateTile()
-            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-                SettingsPrefs, "global_dc_mode", false
-            )
-        }
-    }
+    private var iGlobalDCController: IGlobalDCController? = null
+    override fun onStartListening() = refreshData()
 
-    override fun onClick() {
+    override fun onClick() = startController {
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
-                val command = arrayOf(
-                    "echo > /sys/kernel/oppo_display/dimlayer_hbm 1",
-                    "echo > /sys/kernel/oplus_display/dimlayer_hbm 1"
-                )
-                ShellUtils.execCommand(command, true)
+                it?.globalDCMode = true
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
                 dataChannel("com.android.systemui").put("global_dc_mode", true)
-                qsTile.state = Tile.STATE_ACTIVE
             }
 
             Tile.STATE_ACTIVE -> {
-                val command = arrayOf(
-                    "echo > /sys/kernel/oppo_display/dimlayer_hbm 0",
-                    "echo > /sys/kernel/oplus_display/dimlayer_hbm 0"
-                )
-                ShellUtils.execCommand(command, true)
+                it?.globalDCMode = false
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
                 dataChannel("com.android.systemui").put("global_dc_mode", false)
-                qsTile.state = Tile.STATE_INACTIVE
             }
 
             Tile.STATE_UNAVAILABLE -> {}
         }
+        refreshData()
+    }
+
+    private fun startController(controller: (IGlobalDCController?) -> Unit) {
+        if (iGlobalDCController != null) controller(iGlobalDCController)
+        else RootService.bind(Intent(this, GlobalDCControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    iGlobalDCController = IGlobalDCController.Stub.asInterface(service)
+                    controller(iGlobalDCController)
+                }
+
+                override fun onServiceDisconnected(name: ComponentName?) {
+
+                }
+            })
+    }
+
+    private fun refreshData() = startController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startController
+        }
+        qsTile.state = if (!it.checkGlobalDCMode()) Tile.STATE_UNAVAILABLE
+        else if (it.globalDCMode) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
         qsTile.updateTile()
+        if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+            SettingsPrefs, "global_dc_mode", false
+        )
     }
 }
 
 class TouchSamplingRate : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            qsTile.state =
-                ShellUtils.execCommand("cat /proc/touchpanel/game_switch_enable", true, true)
-                    .let {
-                        if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
-                            when (it.successMsg.substring(0, 1)) {
-                                "0" -> Tile.STATE_INACTIVE
-                                "1" -> Tile.STATE_ACTIVE
-                                else -> Tile.STATE_UNAVAILABLE
-                            }
-                        } else Tile.STATE_UNAVAILABLE
-                    }
-            qsTile.updateTile()
-            if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-                SettingsPrefs, "touch_sampling_rate", false
-            )
-        }
-    }
+    private var iTouchPanelController: ITouchPanelController? = null
+    override fun onStartListening() = refreshData()
 
-    override fun onClick() {
+    override fun onClick() = startController {
         when (qsTile.state) {
             Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 1", true)
+                it?.touchMode = true
                 putBoolean(SettingsPrefs, "touch_sampling_rate", true)
                 dataChannel("com.android.systemui").put("touch_sampling_rate", true)
-                qsTile.state = Tile.STATE_ACTIVE
             }
 
             Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("echo > /proc/touchpanel/game_switch_enable 0", true)
+                it?.touchMode = false
                 putBoolean(SettingsPrefs, "touch_sampling_rate", false)
                 dataChannel("com.android.systemui").put("touch_sampling_rate", false)
-                qsTile.state = Tile.STATE_INACTIVE
             }
 
             Tile.STATE_UNAVAILABLE -> {}
         }
+        refreshData()
+    }
+
+    private fun startController(controller: (ITouchPanelController?) -> Unit) {
+        if (iTouchPanelController != null) controller(iTouchPanelController)
+        else RootService.bind(Intent(this, TouchPanelControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    iTouchPanelController = ITouchPanelController.Stub.asInterface(service)
+                    controller(iTouchPanelController)
+                }
+
+                override fun onServiceDisconnected(name: ComponentName?) {
+
+                }
+            })
+    }
+
+    private fun refreshData() = startController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startController
+        }
+        qsTile.state = if (!it.checkTouchMode()) Tile.STATE_UNAVAILABLE
+        else if (it.touchMode) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
         qsTile.updateTile()
+        if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
+            SettingsPrefs, "touch_sampling_rate", false
+        )
     }
 }
 
@@ -225,37 +247,32 @@ class FiveG : TileService() {
     private var iFiveGController: IFiveGController? = null
     override fun onStartListening() = refreshData()
 
-    override fun onClick() = startFiveGController {
+    override fun onClick() = startController {
         val subId = SubscriptionManager.getDefaultDataSubscriptionId()
         if (qsTile.state == Tile.STATE_INACTIVE) it?.setFiveGStatus(subId, true)
         else if (qsTile.state == Tile.STATE_ACTIVE) it?.setFiveGStatus(subId, false)
         refreshData()
     }
 
-    private fun startFiveGController(controller: (IFiveGController?) -> Unit) {
+    private fun startController(controller: (IFiveGController?) -> Unit) {
         if (iFiveGController != null) controller(iFiveGController)
-        else {
-            RootService.bind(Intent(this@FiveG, FiveGControllerService::class.java),
-                object : ServiceConnection {
-                    override fun onServiceConnected(
-                        name: ComponentName?,
-                        service: IBinder?
-                    ) {
-                        iFiveGController = IFiveGController.Stub.asInterface(service)
-                        controller(iFiveGController)
-                    }
+        else RootService.bind(Intent(this, FiveGControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    iFiveGController = IFiveGController.Stub.asInterface(service)
+                    controller(iFiveGController)
+                }
 
-                    override fun onServiceDisconnected(name: ComponentName?) {
+                override fun onServiceDisconnected(name: ComponentName?) {
 
-                    }
-                })
-        }
+                }
+            })
     }
 
-    private fun refreshData() = startFiveGController {
+    private fun refreshData() = startController {
         if (it == null) {
             qsTile.state = Tile.STATE_UNAVAILABLE
-            return@startFiveGController
+            return@startController
         }
         val subId = SubscriptionManager.getDefaultDataSubscriptionId()
         qsTile.state = if (!it.checkCompatibility(subId)) Tile.STATE_UNAVAILABLE
@@ -266,38 +283,42 @@ class FiveG : TileService() {
 }
 
 class VeryDarkMode : TileService() {
-    override fun onStartListening() {
-        scope(Dispatchers.Unconfined) {
-            qsTile.state = ShellUtils.execCommand(
-                "settings get secure reduce_bright_colors_activated",
-                true, true
-            ).let {
-                if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) {
-                    when (it.successMsg.substring(0, 1)) {
-                        "0" -> Tile.STATE_INACTIVE
-                        "1" -> Tile.STATE_ACTIVE
-                        else -> Tile.STATE_UNAVAILABLE
-                    }
-                } else Tile.STATE_UNAVAILABLE
-            }
-            qsTile.updateTile()
-        }
-    }
+    private var iDarkModeController: IDarkModeController? = null
 
-    override fun onClick() {
+    override fun onStartListening() = refreshData()
+
+    override fun onClick() = startController {
         when (qsTile.state) {
-            Tile.STATE_INACTIVE -> {
-                ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 1", true)
-                qsTile.state = Tile.STATE_ACTIVE
-            }
-
-            Tile.STATE_ACTIVE -> {
-                ShellUtils.execCommand("settings put secure reduce_bright_colors_activated 0", true)
-                qsTile.state = Tile.STATE_INACTIVE
-            }
-
+            Tile.STATE_INACTIVE -> it?.darkMode = true
+            Tile.STATE_ACTIVE -> it?.darkMode = false
             Tile.STATE_UNAVAILABLE -> {}
         }
+        refreshData()
+    }
+
+    private fun startController(controller: (IDarkModeController?) -> Unit) {
+        if (iDarkModeController != null) controller(iDarkModeController)
+        else RootService.bind(Intent(this, DarkModeControllerService::class.java),
+            object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    iDarkModeController = IDarkModeController.Stub.asInterface(service)
+                    controller(iDarkModeController)
+                }
+
+                override fun onServiceDisconnected(name: ComponentName?) {
+
+                }
+            })
+    }
+
+    private fun refreshData() = startController {
+        if (it == null) {
+            qsTile.state = Tile.STATE_UNAVAILABLE
+            return@startController
+        }
+        qsTile.state = if (!it.checkDarkMode()) Tile.STATE_UNAVAILABLE
+        else if (it.darkMode) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
         qsTile.updateTile()
     }
 }

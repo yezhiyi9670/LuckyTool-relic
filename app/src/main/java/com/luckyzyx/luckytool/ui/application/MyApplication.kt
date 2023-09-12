@@ -8,8 +8,8 @@ class MyApplication : ModuleApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        if (BuildConfig.DEBUG || BuildConfig.VERSION_NAME.contains("beta")) return
-        AppAnalyticsUtils.init(this)
+        val isBeta = BuildConfig.DEBUG || BuildConfig.VERSION_NAME.contains("beta")
+        AppAnalyticsUtils.init(this, isBeta)
     }
 }
 

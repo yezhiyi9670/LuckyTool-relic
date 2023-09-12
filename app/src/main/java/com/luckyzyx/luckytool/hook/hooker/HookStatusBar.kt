@@ -20,5 +20,12 @@ object HookStatusBar : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("hide_inactive_signal_labels_gen2x2", false)) {
             loadHooker(HideInActiveSignalLabelsGen2x2)
         }
+
+        //com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView
+        //this.mBatteryIntegerLevelView = (TextView) findViewById(R.id.battery_integer_level);
+        //this.mBatteryDecimalLevelView = (TextView) findViewById(R.id.battery_decimal_level);
+        //updatePowerFormat setVisibility
+        //updateBatteryLevelView
+
     }
 }

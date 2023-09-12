@@ -1,11 +1,9 @@
 package com.luckyzyx.luckytool.ui.service
 
-import android.content.Context
 import android.content.Intent
 import android.os.RemoteException
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.hook.utils.ITelephonyUtils
-import com.luckyzyx.luckytool.hook.utils.ServiceManagerUtils
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.SDK
 import com.topjohnwu.superuser.ipc.RootService
@@ -15,7 +13,7 @@ class FiveGControllerService : RootService() {
     companion object {
 
         private val telephonyService by lazy {
-            ServiceManagerUtils(null).getService(Context.TELEPHONY_SERVICE)
+            ITelephonyUtils(null).getService()
         }
 
         private val iTelephony by lazy {
