@@ -47,11 +47,9 @@ object DarkModeList : YukiBaseHooker() {
                     }
                     val dataMap = ArrayMap<String, Any>()
                     supportListMap.forEach {
-                        if (it.value == 0) dataMap[it.key] = darkModeData.newInstance()
-                        else {
-                            dataMap[it.key] = darkModeData.buildOf(0L, 0, it.value, 0) {
-                                paramCount = 4
-                            }
+                        if (it.value == 0) dataMap[it.key] = darkModeData.buildOf { emptyParam() }
+                        else dataMap[it.key] = darkModeData.buildOf(0L, 0, it.value, 0) {
+                            paramCount = 4
                         }
                     }
                     field { type = MapClass }.get().set(dataMap.toMap())

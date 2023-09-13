@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 import android.util.ArrayMap
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.buildOf
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
@@ -30,8 +31,8 @@ object DarkModeService : YukiBaseHooker() {
                     }
                     val dataMap = ArrayMap<String, Any>()
                     supportListMap.forEach {
-                        if (it.value == 0) dataMap[it.key] = darkModeData.newInstance()
-                        else dataMap[it.key] = darkModeData.newInstance().current {
+                        if (it.value == 0) dataMap[it.key] = darkModeData.buildOf { emptyParam() }
+                        else dataMap[it.key] = darkModeData.buildOf { emptyParam() }?.current {
                             field { name = "mCurType" }.set(it.value)
                         }
                     }

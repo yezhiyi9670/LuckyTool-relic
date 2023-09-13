@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION", "unused", "NewApi")
+@file:Suppress("unused", "NewApi")
 
 package com.luckyzyx.luckytool.utils
 

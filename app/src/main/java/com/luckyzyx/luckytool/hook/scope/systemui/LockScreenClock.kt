@@ -6,6 +6,7 @@ import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.buildOf
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.hook.utils.sysui.ClockSwitchHelper
 import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
@@ -220,9 +221,10 @@ object LockScreenClock : YukiBaseHooker() {
                             ?: return@afterHook
                         val info = ClockSwitchHelper(appClassLoader).let {
                             it.getInstance(mContext)?.let { its -> it.getResidentWeatherInfo(its) }
-                        } ?: WeatherInfoParseHelper(appClassLoader).weatherInfoClazz.newInstance()
-                        val timeZone =
-                            info.current().method { name = "getTimeZone" }.invoke<String>() ?: "0.0"
+                        } ?: WeatherInfoParseHelper(appClassLoader).weatherInfoClazz.buildOf {
+                            emptyParam()
+                        }
+                        val timeZone = info?.current()?.method { name = "getTimeZone" }?.invoke<String>() ?: "0.0"
                         val mResidentTimeInfo =
                             WeatherInfoParseHelper(appClassLoader).getResidentTimeInfo(
                                 mContext, timeZone

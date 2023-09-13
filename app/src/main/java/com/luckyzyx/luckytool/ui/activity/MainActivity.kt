@@ -134,6 +134,7 @@ open class MainActivity : AppCompatActivity() {
         ThemeUtils.initTheme(themeMode)
     }
 
+    @Suppress("DEPRECATION")
     fun restart() {
         if (SDK >= A12 || !Process.isApplicationUid(Process.myUid())) {
             recreate()

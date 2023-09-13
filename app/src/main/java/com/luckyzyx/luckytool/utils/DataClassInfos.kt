@@ -22,3 +22,15 @@ data class DCInfo(
     val order: String,
     val unit: String = "RMB"
 ) : Serializable
+
+data class DisplayMode(
+    val id: Int,
+    val width: Int? = null,
+    val height: Int? = null,
+    val xDpi: Float? = null,
+    val yDpi: Float? = null,
+    val refreshRate: Float? = null,
+    val appVsyncOffsetNanos: Long? = null,
+    val presentationDeadlineNanos: Long? = null,
+    val group: Int? = null,
+) : Serializable
