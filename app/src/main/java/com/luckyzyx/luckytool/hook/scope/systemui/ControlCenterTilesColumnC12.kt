@@ -37,9 +37,17 @@ object ControlCenterTilesColumn : YukiBaseHooker() {
             }
             injectMember {
                 method { name = "updateMaxRows" }
-                afterHook {
+                beforeHook {
                     getScreenOrientation(instance<ViewGroup>()) {
                         if (it) field { name = "mRows" }.get(instance).set(rowExpandedVerticalC13)
+                    }
+                }
+                afterHook {
+                    getScreenOrientation(instance<ViewGroup>()) {
+                        if (it) {
+                            field { name = "mRows" }.get(instance).set(rowExpandedVerticalC13)
+                            resultTrue()
+                        }
                     }
                 }
             }

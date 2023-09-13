@@ -58,8 +58,7 @@ class ShowFPS : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = IRefreshRateController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
@@ -97,8 +96,7 @@ class HighBrightness : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = IHighBrightnessController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
@@ -141,8 +139,7 @@ class GlobalDC : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = IGlobalDCController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
@@ -185,8 +182,7 @@ class TouchSamplingRate : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = ITouchPanelController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
@@ -217,8 +213,7 @@ class FiveG : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = IFiveGController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
@@ -250,8 +245,7 @@ class VeryDarkMode : TileService() {
             { _: ComponentName?, iBinder: IBinder? ->
                 controller = IDarkModeController.Stub.asInterface(iBinder)
                 refreshData()
-            }, {}, true
-        )
+            })
     }
 
     private fun refreshData() {
