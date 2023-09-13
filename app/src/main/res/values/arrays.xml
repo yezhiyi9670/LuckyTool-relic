@@ -155,6 +155,12 @@
         <item>@string/common_words_disable</item>
     </string-array>
     
+    <string-array name="set_media_player_display_mode_entries">
+        <item>@string/common_words_default</item>
+        <item>@string/common_words_enable</item>
+        <item>@string/common_words_disable</item>
+    </string-array>
+    
     <string-array name="set_volume_bar_display_position_entries">
         <item>@string/common_words_default</item>
         <item>@string/common_words_left</item>

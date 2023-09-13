@@ -1001,18 +1001,22 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
                 key = "ControlCenter_UI_Related"
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.force_display_media_player)
-                key = "force_display_media_player"
-                setDefaultValue(false)
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_media_player_display_mode)
+                summary = "%s"
+                key = "set_media_player_display_mode"
+                entries = resources.getStringArray(R.array.set_media_player_display_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, _ ->
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     (activity as MainActivity).restart()
                     true
                 }
             })
-            if (context.getBoolean(ModulePrefs, "force_display_media_player", false)) {
+            if (context.getString(ModulePrefs, "set_media_player_display_mode") == "1") {
                 addPreference(SwitchPreference(context).apply {
                     title = getString(R.string.force_enable_media_toggle_button)
                     key = "force_enable_media_toggle_button"

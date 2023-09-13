@@ -14,14 +14,13 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
         val ADRU = "com.android.packageinstaller.oplus.utils.AppDetailRedirectionUtils"
         val isNew = ADRU.toClass().hasMethod { name = "shouldStartAppDetail" }
         val member: Array<String> =
-            when (commit) {
+            if (isNew) arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
+            else when (commit) {
                 "7bc7db7", "e1a2c58" -> arrayOf(OPIA, "L", "C", "K")
                 "75fe984", "532ffef" -> arrayOf(OPIA, "L", "D", "i")
                 "38477f0" -> arrayOf(OPIA, "M", "D", "k")
                 "a222497" -> arrayOf(OPIA, "M", "E", "j")
-                else -> if (isNew)
-                    arrayOf(ADRU, "shouldStartAppDetail", "checkToScanRisk", "initiateInstall")
-                else arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
+                else -> arrayOf(OPIA, "isStartAppDetail", "checkToScanRisk", "initiateInstall")
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         //Search SP_KEY_COUNT_CANCELED_BY_APP_DETAIL / count_canceled_by_app_detail

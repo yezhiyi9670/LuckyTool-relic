@@ -170,7 +170,7 @@
     <string name="remove_small_window_reply_whitelist">Удалить белый список ответов в маленьком окне</string>
     <string name="set_small_window_reply_blacklist">Установить черный список ответов в маленьком окне</string>
     <string name="set_small_window_reply_blacklist_message">Заполните имя пакета, который необходимо добавить в черный список, в каждой строке можно заполнить только одно имя пакета</string>
-    <string name="custom_notification_background_transparency">Custom notification background transparency</string>
+    <string name="custom_notification_background_transparency">Прозрачность фона уведомлений</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Иконки в строке состояния</string>
     <string name="StatusBarIcon_summary">Иконка строки состояния</string>
@@ -209,7 +209,7 @@
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
     <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
-    <string name="force_display_media_player">Принудительно отображать медиаплеер</string>
+    <string name="set_media_player_display_mode">Set media player display mode</string>
     <string name="force_enable_media_toggle_button">Принудительно включить кнопку переключения медиа</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
@@ -491,15 +491,15 @@
     <string name="enable_long_press_to_copy_in_app_details">Включить долгое нажатие для копирования сведений о приложении</string>
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
     <!--Camera-->
-    <string name="CameraWaterMark">WaterMark</string>
+    <string name="CameraWaterMark">Водяной знак</string>
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
     <string name="enable_hasselblad_watermark_style">Включить стиль водяного знака Hasselblad</string>
     <string name="custom_model_watermark">Пользовательский водяной знак</string>
     <string name="fix_hasselblad_custom_watermark_crash">Исправлена ошибка пользовательского водяного знака Hasselblad</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Если ваша камера не поддерживает пользовательский водяной знак Hasselblad, пожалуйста, не включайте его</string>
-    <string name="CameraFilter">Filter</string>
-    <string name="enable_master_filter">Enable Master filter</string>
-    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="CameraFilter">Фильтр</string>
+    <string name="enable_master_filter">Включить основной фильтр</string>
+    <string name="enable_jiangwen_filter">Включить фильтр Jiang Wen</string>
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
     <string name="enable_10_bit_image_support_summary">Включение этой функции на некоторых моделях может привести к тому, что фото станет зеленым</string>
     <!--OplusGames-->
@@ -526,8 +526,8 @@
     <string name="custom_media_player_support_message">Заполните имя пакета для добавления медиаплеера, каждая строка может иметь только одно приложение</string>
     <string name="remove_danmaku_notification_whitelist">Удалить белый список уведомлений danmaku</string>
     <string name="remove_game_voice_changer_whitelist">Удалить ограничения для смены голоса</string>
-    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
-    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
+    <string name="remove_game_assistant_temperature_detection">Удалить определение температуры игрового помощника</string>
+    <string name="remove_game_assistant_temperature_detection_summary">В основном решает проблему чрезмерной температуры в режиме X</string>
     <!--CloudService-->
     <string name="remove_network_limit">Удалить ограничения сети передачи данных</string>
     <string name="remove_network_limit_summary">Удалить ограничение, согласно которому резервное копирование/восстановление не может использовать мобильные данные</string>
@@ -578,7 +578,7 @@
     <!--ADM-->
     <string name="adm_unlock_pro">Разблокировка Pro</string>
     <!--Home-->
-    <string name="fps_title">Принудительная частота обновления</string>
+    <string name="fps_title">Частота обновления экрана</string>
     <string name="fps_summary">Конфликты с другими процессами динамической частоты обновления, такими как dfps</string>
     <string name="brand">Бренд</string>
     <string name="model">Модель</string>
@@ -603,7 +603,7 @@
     <string name="select_download_source">Выбрать источник загрузки</string>
     <string name="update_logs">Журналы обновления</string>
     <string name="check_update_hint">Обнаружена новая версия!</string>
-    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
+    <string name="check_update_error">Не удалось обнаружить обновления, проверьте сеть и другие проблемы!</string>
     <string name="go_download_page">Перейти на страницу загрузки</string>
     <string name="copy_download_link">Скопируйте ссылку для загрузки</string>
     <string name="direct_update">Прямое обновление</string>

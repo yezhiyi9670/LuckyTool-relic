@@ -996,11 +996,9 @@ fun Context.restartAllScope(scopes: Array<String>) {
 fun Context.bindRootService(
     clazz: Class<*>,
     onConnected: (ComponentName?, IBinder?) -> Unit,
-    onDisconnected: (ComponentName?) -> Unit = {},
-    isDaemon: Boolean = false
+    onDisconnected: (ComponentName?) -> Unit = {}
 ) {
     val intent = Intent(this, clazz)
-    if (isDaemon) intent.addCategory(RootService.CATEGORY_DAEMON_MODE)
     RootService.bind(intent, object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) =
             onConnected(name, service)

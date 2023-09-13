@@ -209,7 +209,7 @@
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
     <string name="enable_notification_importance_classification">Povolit klasifikaci důležitosti pro notifikace</string>
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
-    <string name="force_display_media_player">Vynutit zobrazování přehrávače médií</string>
+    <string name="set_media_player_display_mode">Set media player display mode</string>
     <string name="force_enable_media_toggle_button">Vynutit povolení přepínače médií</string>
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>

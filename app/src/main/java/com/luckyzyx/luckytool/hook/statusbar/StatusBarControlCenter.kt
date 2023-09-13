@@ -5,8 +5,7 @@ import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterClockStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterDateStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterWhiteBackground
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
-import com.luckyzyx.luckytool.hook.scope.systemui.ForceDisplayMediaPlayer
-import com.luckyzyx.luckytool.hook.scope.systemui.ForceEnableMediaToggleButton
+import com.luckyzyx.luckytool.hook.scope.systemui.MediaPlayerPanel
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.utils.A13
@@ -21,17 +20,12 @@ object StatusBarControlCenter : YukiBaseHooker() {
         //控制中心日期样式
         loadHooker(ControlCenterDateStyle)
 
+        //媒体播放器
+        loadHooker(MediaPlayerPanel)
+
         //通知两侧对齐
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {
             loadHooker(EnableNotificationAlignBothSides)
-        }
-        //强制显示媒体播放器
-        if (prefs(ModulePrefs).getBoolean("force_display_media_player", false)) {
-            loadHooker(ForceDisplayMediaPlayer)
-            //强制开启媒体切换按钮
-            if (prefs(ModulePrefs).getBoolean("force_enable_media_toggle_button", false)) {
-                loadHooker(ForceEnableMediaToggleButton)
-            }
         }
         //移除控制中心多用户
         if (prefs(ModulePrefs).getBoolean("remove_control_center_user_switcher", false)) {

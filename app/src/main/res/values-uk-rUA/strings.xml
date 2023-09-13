@@ -209,7 +209,7 @@
     <string name="enable_notification_align_both_sides">Увімкнути вирівнювання повідомлень по обидва боки</string>
     <string name="enable_notification_importance_classification">Увімкнути класифікацію важливості сповіщень</string>
     <string name="ControlCenter_UI_Related">Інтерфейс користувача центру управління</string>
-    <string name="force_display_media_player">Примусово відображати медіаплеєр</string>
+    <string name="set_media_player_display_mode">Set media player display mode</string>
     <string name="force_enable_media_toggle_button">Force enable media toggle button</string>
     <string name="set_auto_brightness_button_mode">Показувати кнопку автояскравості</string>
     <string name="remove_control_center_user_switcher">Видалити перемикач користувачів центру керування</string>

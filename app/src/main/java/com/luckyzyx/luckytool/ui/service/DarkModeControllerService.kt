@@ -8,12 +8,8 @@ import com.topjohnwu.superuser.ipc.RootService
 class DarkModeControllerService : RootService() {
     companion object {
 
-        private val colorDisplayService by lazy {
-            IColorDisplayUtils(null).getService()
-        }
-
         private val iColorDisplayManager by lazy {
-            IColorDisplayUtils(null).getInstance(colorDisplayService)
+            IColorDisplayUtils(null).getInstance()
         }
     }
 

@@ -303,6 +303,9 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                             "com.android.settings",
                             "com.android.settings.Settings\$ReduceBrightColorsSettingsActivity"
                         )
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
                         startActivity(this)
                     }
                     true
@@ -330,6 +333,8 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                 setOnPreferenceClickListener {
                     Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
                         startActivity(this)
                     }
                     true
@@ -365,6 +370,9 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                                 "key.fragment.name",
                                 "com.heytap.browser.settings.homepage.HomepagePreferenceFragment"
                             )
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
                             startActivity(this)
                         }
                     } catch (ignore: Exception) {
