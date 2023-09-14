@@ -41,6 +41,25 @@ class DisplayManagerUtils(val classLoader: ClassLoader?) {
         } else getInternalDisplayToken()
     }
 
+    fun getDynamicDisplayInfo(displayInfo: Any): Any? {
+        val address = displayInfo.current().field { name = "address" }.any() ?: return null
+        val extend = (address.javaClass.extends(addressPhysicalClazz))
+        val params = surfaceControlClazz.method { name = "getDynamicDisplayInfo";paramCount = 1 }
+            .give()?.parameterTypes ?: return null
+        val physicalDisplayId = getPhysicalDisplayId(address)
+        val displayTokenOrId: Any? = when (params[0]) {
+            LongType -> if (extend) physicalDisplayId else 0
+            IBinderClass -> if (extend) getPhysicalDisplayToken(physicalDisplayId)
+            else getInternalDisplayToken()
+
+            else -> return null
+        }
+        return surfaceControlClazz.method {
+            name = "getDynamicDisplayInfo"
+            paramCount = 1
+        }.get().call(displayTokenOrId)
+    }
+
     fun getPhysicalDisplayId(physical: Any?): Long? {
         return addressPhysicalClazz.method {
             name = "getPhysicalDisplayId"
@@ -60,12 +79,5 @@ class DisplayManagerUtils(val classLoader: ClassLoader?) {
             name = "getInternalDisplayToken"
             emptyParam()
         }.get().invoke<IBinder>()
-    }
-
-    fun getDynamicDisplayInfo(displayToken: IBinder?): Any? {
-        return surfaceControlClazz.method {
-            name = "getDynamicDisplayInfo"
-            param(IBinderClass)
-        }.get().call(displayToken)
     }
 }

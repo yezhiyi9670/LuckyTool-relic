@@ -9,9 +9,12 @@ import com.luckyzyx.luckytool.IRefreshRateController
 import com.luckyzyx.luckytool.hook.utils.DisplayManagerUtils
 import com.luckyzyx.luckytool.hook.utils.ServiceManagerUtils
 import com.luckyzyx.luckytool.utils.DisplayMode
+import com.luckyzyx.luckytool.utils.LogUtils
 import com.topjohnwu.superuser.ipc.RootService
 
 class RefreshRateControllerService : RootService() {
+    val tag = "RefreshRateControllerService"
+
     companion object {
         private const val serviceName = "SurfaceFlinger"
         private const val interfaceClazz = "android.ui.ISurfaceComposer"
@@ -35,8 +38,10 @@ class RefreshRateControllerService : RootService() {
                     obtain.recycle()
                     return status
                 }
+                LogUtils.d(tag, "getRefreshRateDisplay", "surfaceFlinger is null")
                 return false
             } catch (e: RemoteException) {
+                LogUtils.d(tag, "getRefreshRateDisplay ", "$e")
                 return false
             }
         }
@@ -50,7 +55,9 @@ class RefreshRateControllerService : RootService() {
                     surfaceFlinger?.transact(1034, obtain, null, 0)
                     obtain.recycle()
                 }
-            } catch (_: RemoteException) {
+                LogUtils.d(tag, "setRefreshRateDisplay", "surfaceFlinger is null")
+            } catch (e: RemoteException) {
+                LogUtils.d(tag, "setRefreshRateDisplay ", "$e")
             }
         }
 
@@ -60,16 +67,21 @@ class RefreshRateControllerService : RootService() {
             return try {
                 DisplayManagerUtils(null).apply {
                     val displayManager = getService(context)
+                    LogUtils.d(tag, "getSupportModes", "${displayManager.javaClass}")
                     val display = displayManager.getDisplay(0)
+                    LogUtils.d(tag, "getSupportModes", "${display.javaClass}")
                     val displayInfo = displayInfoClazz.buildOf { emptyParam() } ?: return list
+                    LogUtils.d(tag, "getSupportModes", "${displayInfo.javaClass}")
                     if (display.getDisplayInfo(displayInfo) != true) return list
-                    val mDefaultDisplayToken = getDefaultDisplayToken(displayInfo)
-                    val dynamicInfo = getDynamicDisplayInfo(mDefaultDisplayToken)
+                    LogUtils.d(tag, "getSupportModes", "getDisplayInfo true")
+                    val dynamicInfo = getDynamicDisplayInfo(displayInfo)
+                    LogUtils.d(tag, "getSupportModes", "${dynamicInfo?.javaClass}")
                     val supportedDisplayModes = dynamicInfo?.current()?.field {
                         name = "supportedDisplayModes"
                     }?.array<Any>()
-
+                    LogUtils.d(tag, "getSupportModes", "AllMode ${supportedDisplayModes?.toList()}")
                     supportedDisplayModes?.forEach {
+                        LogUtils.d(tag, "getSupportModes", "Mode $it")
                         val id = it.current().field { name = "id" }.cast<Int>() ?: return@forEach
                         val width = it.current().field { name = "width" }.cast<Int>()
                         val height = it.current().field { name = "height" }.cast<Int>()
@@ -83,16 +95,18 @@ class RefreshRateControllerService : RootService() {
                             name = "presentationDeadlineNanos"
                         }.cast<Long>()
                         val group = it.current().field { name = "group" }.cast<Int>()
-                        list.add(
-                            id, DisplayMode(
-                                id, width, height, xDpi, yDpi, refreshRate,
-                                appVsyncOffsetNanos, presentationDeadlineNanos, group
-                            )
+                        val mode = DisplayMode(
+                            id, width, height, xDpi, yDpi,
+                            refreshRate, appVsyncOffsetNanos, presentationDeadlineNanos, group
                         )
+                        list.add(id, mode)
+                        LogUtils.d(tag, "getSupportModes", "Mode is add")
                     }
                 }
+                LogUtils.d(tag, "getSupportModes", "Size ${list.size}")
                 list
-            } catch (_: Throwable) {
+            } catch (e: Throwable) {
+                LogUtils.d(tag, "getSupportModes", " $e")
                 list
             }
         }
@@ -106,16 +120,16 @@ class RefreshRateControllerService : RootService() {
                     surfaceFlinger?.transact(1035, obtain, null, 0)
                     obtain.recycle()
                 }
-            } catch (_: Throwable) {
-
+            } catch (e: Throwable) {
+                LogUtils.d(tag, "setRefreshRateMode", "$e")
             }
         }
 
         override fun resetRefreshRateMode() {
             try {
                 setRefreshRateMode(-1)
-            } catch (_: Throwable) {
-
+            } catch (e: Throwable) {
+                LogUtils.d(tag, "resetRefreshRateMode", "$e")
             }
         }
     }

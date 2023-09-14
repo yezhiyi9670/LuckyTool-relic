@@ -21,11 +21,11 @@ object CustomizeDeviceSharingPageParameters : YukiBaseHooker() {
                 method { name = "onCreate" }
                 afterHook {
                     val activity = instance<Activity>()
-                    val shareViewId =
-                        activity.resources.getIdentifier("share_view", "id", packageName)
-                    if (shareViewId == 0) return@afterHook
-                    val shareView =
-                        activity.findViewById<LinearLayout>(shareViewId) ?: return@afterHook
+                    val shareViewId = activity.resources.getIdentifier(
+                        "share_view", "id", packageName
+                    ).takeIf { it != 0 } ?: return@afterHook
+                    val shareView = activity.findViewById<LinearLayout>(shareViewId)
+                        ?: return@afterHook
 
                     shareView.children.forEach {
                         //title_phone_ly / bran_share_card / about_share_card_bg

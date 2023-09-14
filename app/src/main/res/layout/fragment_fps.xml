@@ -137,7 +137,7 @@
             android:visibility="gone"
             android:textSize="16sp"
             android:text="@string/fps_no_data"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/control_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

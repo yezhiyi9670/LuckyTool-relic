@@ -21,7 +21,7 @@ object StatusBarControlCenter : YukiBaseHooker() {
         loadHooker(ControlCenterDateStyle)
 
         //媒体播放器
-        loadHooker(MediaPlayerPanel)
+        if (SDK >= A13) loadHooker(MediaPlayerPanel)
 
         //通知两侧对齐
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {

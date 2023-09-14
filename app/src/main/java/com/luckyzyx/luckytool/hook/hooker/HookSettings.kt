@@ -62,7 +62,6 @@ object HookSettings : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("customize_device_sharing_page_parameters", false)) {
             if (SDK >= A13) loadHooker(CustomizeDeviceSharingPageParameters)
         }
-
         //强制开启进程管理
         if (prefs(ModulePrefs).getBoolean("force_display_process_management", false)) {
             loadHooker(ForceDisplayProcessManagement)

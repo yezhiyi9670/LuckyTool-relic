@@ -1,0 +1,31 @@
+package com.luckyzyx.luckytool.utils
+
+import android.util.Log
+import com.luckyzyx.luckytool.BuildConfig
+
+@Suppress("MemberVisibilityCanBePrivate")
+object LogUtils {
+
+    private const val globalTag = "LuckyTool"
+    var enable = BuildConfig.DEBUG
+
+    fun d(tag: String, method: String, msg: String) {
+        if (enable) Log.d("${globalTag}_$tag", "$method -> $msg")
+    }
+
+    fun e(tag: String, method: String, msg: String) {
+        if (enable) Log.e("${globalTag}_$tag", "$method -> $msg")
+    }
+
+    fun i(tag: String, method: String, msg: String) {
+        if (enable) Log.i("${globalTag}_$tag", "$method -> $msg")
+    }
+
+    fun v(tag: String, method: String, msg: String) {
+        if (enable) Log.v("${globalTag}_$tag", "$method -> $msg")
+    }
+
+    fun w(tag: String, method: String, msg: String) {
+        if (enable) Log.w("${globalTag}_$tag", "$method -> $msg")
+    }
+}
