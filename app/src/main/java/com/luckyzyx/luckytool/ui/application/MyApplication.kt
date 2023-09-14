@@ -7,7 +7,6 @@ import com.luckyzyx.luckytool.utils.AppAnalyticsUtils
 class MyApplication : ModuleApplication() {
     override fun onCreate() {
         super.onCreate()
-
         val isBeta = BuildConfig.DEBUG || BuildConfig.VERSION_NAME.contains("beta")
         AppAnalyticsUtils.init(this, isBeta)
     }

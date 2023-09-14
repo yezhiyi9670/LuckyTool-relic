@@ -32,15 +32,6 @@ class DisplayManagerUtils(val classLoader: ClassLoader?) {
         }.get(this).invoke<Boolean>(outDisplayInfo)
     }
 
-    fun getDefaultDisplayToken(displayInfo: Any): IBinder? {
-        val address = displayInfo.current().field { name = "address" }.any() ?: return null
-        val extend = (address.javaClass.extends(addressPhysicalClazz))
-        return if (extend) {
-            val physicalDisplayId = getPhysicalDisplayId(address)
-            getPhysicalDisplayToken(physicalDisplayId)
-        } else getInternalDisplayToken()
-    }
-
     fun getDynamicDisplayInfo(displayInfo: Any): Any? {
         val address = displayInfo.current().field { name = "address" }.any() ?: return null
         val extend = (address.javaClass.extends(addressPhysicalClazz))

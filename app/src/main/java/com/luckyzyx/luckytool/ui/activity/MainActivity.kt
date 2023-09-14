@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.ui.activity
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
@@ -62,11 +61,8 @@ open class MainActivity : AppCompatActivity() {
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
                 setMessage(getString(R.string.unsupported_xposed, "v1.9.1"))
-                setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
-                    exitProcess(0)
-                }
+                setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }
                 setOnDismissListener { exitModule() }
-                //setNegativeButton(R.string.ignore, null)
                 show()
             }
             return
@@ -75,6 +71,7 @@ open class MainActivity : AppCompatActivity() {
         putBoolean(SettingsPrefs, "is_su", isSu)
         if (!isSu) {
             MaterialAlertDialogBuilder(this, dialogCentered).apply {
+                setCancelable(false)
                 setTitle(getString(R.string.no_root))
                 setMessage(getString(R.string.no_root_summary))
                 setPositiveButton(android.R.string.ok) { _, _ -> exitProcess(0) }

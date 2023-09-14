@@ -184,11 +184,11 @@ class HomeFragment : Fragment(), MenuProvider {
                     getString(R.string.qq),
                     getString(R.string.wechat),
                     getString(R.string.alipay),
-                    getString(R.string.donation_list)
+//                    getString(R.string.donation_list)
                 )
                 if (!isZh(context)) {
                     donateList.add(3, getString(R.string.patreon))
-                    donateList.add(4, getString(R.string.paypal))
+//                    donateList.add(4, getString(R.string.paypal))
                 }
                 MaterialAlertDialogBuilder(context).apply {
                     setItems(donateList.toTypedArray()) { _, which ->
@@ -196,28 +196,26 @@ class HomeFragment : Fragment(), MenuProvider {
                             0 -> DonateData.showQRCode(context, Base64CodeUtils.qqCode)
                             1 -> DonateData.showQRCode(context, Base64CodeUtils.wechatCode)
                             2 -> DonateData.showQRCode(context, Base64CodeUtils.alipayCode)
-                            3 -> if (isZh(context)) {
-                                navigatePage(
-                                    R.id.action_nav_setting_to_donateFragment,
-                                    getString(R.string.donation_list)
-                                )
-                            } else startActivity(
+                            3 -> if (!isZh(context)) startActivity(
                                 Intent(
                                     Intent.ACTION_VIEW,
                                     Uri.parse("https://www.patreon.com/LuckyTool")
                                 )
-                            )
-
-                            4 -> startActivity(
-                                Intent(
-                                    Intent.ACTION_VIEW, Uri.parse("https://paypal.me/luckyzyx")
-                                )
-                            )
-
-                            5 -> navigatePage(
+                            )/* else navigatePage(
                                 R.id.action_nav_setting_to_donateFragment,
                                 getString(R.string.donation_list)
-                            )
+                            )*/
+
+//                            4 -> startActivity(
+//                                Intent(
+//                                    Intent.ACTION_VIEW, Uri.parse("https://paypal.me/luckyzyx")
+//                                )
+//                            )
+
+//                            5 -> navigatePage(
+//                                R.id.action_nav_setting_to_donateFragment,
+//                                getString(R.string.donation_list)
+//                            )
                         }
                     }
                 }.show()

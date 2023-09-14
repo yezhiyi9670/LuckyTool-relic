@@ -19,35 +19,35 @@ class SystemPropertiesUtils(classLoader: ClassLoader?) {
         }.get().invoke<String>(key)
     }
 
-    fun get(key: String, defValue: String): String? {
+    fun get(key: String, defValue: String?): String? {
         return clazz.method {
             name = "get"
             param(StringClass, StringClass)
         }.get().invoke<String>(key, defValue)
     }
 
-    fun getBoolean(key: String, defValue: Boolean): Boolean? {
+    fun getBoolean(key: String, defValue: Boolean?): Boolean? {
         return clazz.method {
             name = "getBoolean"
             param(StringClass, BooleanType)
         }.get().invoke<Boolean>(key, defValue)
     }
 
-    fun getInt(key: String, defValue: Int): Int? {
+    fun getInt(key: String, defValue: Int?): Int? {
         return clazz.method {
             name = "getInt"
             param(StringClass, IntType)
         }.get().invoke<Int>(key, defValue)
     }
 
-    fun getLong(key: String, defValue: Long): Long? {
+    fun getLong(key: String, defValue: Long?): Long? {
         return clazz.method {
             name = "getLong"
             param(StringClass, LongType)
         }.get().invoke<Long>(key, defValue)
     }
 
-    fun set(key: String, value: String) {
+    fun set(key: String, value: String?) {
         clazz.method {
             name = "set"
             param(StringClass, StringClass)

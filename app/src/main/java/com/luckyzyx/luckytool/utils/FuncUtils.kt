@@ -1021,8 +1021,7 @@ fun Context.callFunc(bundle: Bundle?) {
                 val fpsMode = getInt("fps_mode", 1)
                 val fpsCur = getInt("fps_cur", -1)
                 if ((fpsMode == 2) && (fpsCur != -1)) {
-                    bindRootService(
-                        RefreshRateControllerService::class.java,
+                    bindRootService(RefreshRateControllerService::class.java,
                         { _: ComponentName?, iBinder: IBinder? ->
                             val controller = IRefreshRateController.Stub.asInterface(iBinder)
                             controller.setRefreshRateMode(fpsCur)
@@ -1031,8 +1030,7 @@ fun Context.callFunc(bundle: Bundle?) {
             }
             //触控采样率相关
             if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
-                bindRootService(
-                    TouchPanelControllerService::class.java,
+                bindRootService(TouchPanelControllerService::class.java,
                     { _: ComponentName?, iBinder: IBinder? ->
                         val controller = ITouchPanelController.Stub.asInterface(iBinder)
                         if (controller.checkTouchMode()) controller.touchMode = true
@@ -1040,8 +1038,7 @@ fun Context.callFunc(bundle: Bundle?) {
             }
             //高亮度模式
             if (tileAutoStart && getBoolean("highBrightness", false)) {
-                bindRootService(
-                    HighBrightnessControllerService::class.java,
+                bindRootService(HighBrightnessControllerService::class.java,
                     { _: ComponentName?, iBinder: IBinder? ->
                         val controller = IHighBrightnessController.Stub.asInterface(iBinder)
                         if (controller.checkHighBrightnessMode()) controller.highBrightnessMode =
@@ -1050,12 +1047,10 @@ fun Context.callFunc(bundle: Bundle?) {
             }
             //全局DC模式
             if (tileAutoStart && getBoolean("globalDC", false)) {
-                bindRootService(
-                    GlobalDCControllerService::class.java,
+                bindRootService(GlobalDCControllerService::class.java,
                     { _: ComponentName?, iBinder: IBinder? ->
                         val controller = IGlobalDCController.Stub.asInterface(iBinder)
-                        if (controller.checkGlobalDCMode()) controller.globalDCMode =
-                            true
+                        if (controller.checkGlobalDCMode()) controller.globalDCMode = true
                     })
             }
         }
@@ -1338,8 +1333,6 @@ fun Fragment.setupMenuProvider(@MenuRes menuId: Int, onMenuSelected: (MenuItem) 
  */
 fun Fragment.setupMenuProvider(menuProvider: MenuProvider) =
     (requireActivity() as MenuHost).addMenuProvider(
-        menuProvider,
-        viewLifecycleOwner,
-        Lifecycle.State.RESUMED
+        menuProvider, viewLifecycleOwner, Lifecycle.State.RESUMED
     )
 

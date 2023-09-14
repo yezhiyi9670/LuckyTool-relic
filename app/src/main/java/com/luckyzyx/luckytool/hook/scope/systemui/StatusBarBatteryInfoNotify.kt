@@ -20,6 +20,7 @@ import com.luckyzyx.luckytool.utils.formatDouble
 import com.luckyzyx.luckytool.utils.getBooleanProperty
 import com.luckyzyx.luckytool.utils.getIntProperty
 import com.luckyzyx.luckytool.utils.getStringProperty
+import com.luckyzyx.luckytool.utils.safeOf
 import com.luckyzyx.luckytool.utils.safeOfNull
 import java.io.StringReader
 import java.util.Locale
@@ -310,7 +311,7 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.clearNotification(context, 112233)
     }
 
-    private fun getChargeInfo(): Properties {
+    private fun getChargeInfo(): Properties = safeOf(Properties()) {
         val queryChargeInfo = IChargerUtils(appClassLoader).queryChargeInfo()
         return Properties().apply {
             load(StringReader(queryChargeInfo))

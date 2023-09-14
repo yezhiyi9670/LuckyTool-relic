@@ -35,17 +35,13 @@ abstract class BaseScopePreferenceFeagment : ModulePreferenceFragment(), MenuPro
      * 是否启用重启菜单
      * @return Boolean
      */
-    open fun isEnableRestartMenu(): Boolean {
-        return false
-    }
+    open fun isEnableRestartMenu(): Boolean = false
 
     /**
      * 是否启用跳转菜单
      * @return Boolean
      */
-    open fun isEnableOpenMenu(): Boolean {
-        return false
-    }
+    open fun isEnableOpenMenu(): Boolean = false
 
     /**
      * 自定义跳转菜单点击事件

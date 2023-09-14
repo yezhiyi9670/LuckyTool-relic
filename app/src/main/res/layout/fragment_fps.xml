@@ -93,6 +93,7 @@
         <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/fps_self_start"
                 android:text="@string/fps_autostart"
+                android:enabled="false"
                 android:paddingHorizontal="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -100,6 +101,7 @@
         <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/fps_show"
                 android:text="@string/display_refresh_rate"
+                android:enabled="false"
                 android:paddingHorizontal="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
