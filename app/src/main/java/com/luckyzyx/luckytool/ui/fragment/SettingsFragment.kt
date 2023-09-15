@@ -27,6 +27,7 @@ import com.drake.net.utils.scopeNetLife
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
+import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentDonateListBinding
 import com.luckyzyx.luckytool.databinding.LayoutDonateItemBinding
@@ -184,6 +185,15 @@ class SettingsFragment : ModulePreferenceFragment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                key = "enable_module_print_logs"
+                title = getString(R.string.enable_module_print_logs)
+                summary = getString(R.string.enable_module_print_logs_summary)
+                setDefaultValue(BuildConfig.DEBUG)
+                isChecked = BuildConfig.DEBUG
+                isVisible = false
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 key = "auto_check_update"
                 title = getString(R.string.auto_check_update)
                 summary = getString(R.string.auto_check_update_summary)
@@ -197,8 +207,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                 setDefaultValue(true)
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("tile_auto_start", newValue)
+                    context.dataChannel("com.android.systemui").put("tile_auto_start", newValue)
                     true
                 }
             })
@@ -207,8 +216,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                 summary =
                     getString(R.string.common_words_current_mode) + ": %s\n\n" + getString(R.string.switch_autostart_function_caller_summary)
                 key = "switch_autostart_function_caller"
-                entries =
-                    resources.getStringArray(R.array.switch_autostart_function_caller_entries)
+                entries = resources.getStringArray(R.array.switch_autostart_function_caller_entries)
                 entryValues = arrayOf("0", "1")
                 setDefaultValue("0")
                 isIconSpaceReserved = false
@@ -253,8 +261,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                 title = getString(R.string.backup_data)
                 isIconSpaceReserved = false
                 setOnPreferenceClickListener {
-                    val fileName =
-                        "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + "_backup.json"
+                    val fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + "_backup.json"
                     backupData.launch(fileName)
                     true
                 }
@@ -324,8 +331,7 @@ class SettingsFragment : ModulePreferenceFragment() {
 
                                 4 -> startActivity(
                                     Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://paypal.me/luckyzyx")
+                                        Intent.ACTION_VIEW, Uri.parse("https://paypal.me/luckyzyx")
                                     )
                                 )
 
@@ -352,52 +358,49 @@ class SettingsFragment : ModulePreferenceFragment() {
                         getString(R.string.telegram_group),
                         getString(R.string.lsposed_repo)
                     )
-                    MaterialAlertDialogBuilder(context)
-                        .setItems(updatelist) { _, which ->
-                            when (which) {
-                                0 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("coolmarket://u/1930284")
-                                    )
+                    MaterialAlertDialogBuilder(context).setItems(updatelist) { _, which ->
+                        when (which) {
+                            0 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW, Uri.parse("coolmarket://u/1930284")
                                 )
+                            )
 
-                                1 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://luckyzyx.github.io/LuckyTool_Doc/")
-                                    )
+                            1 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://luckyzyx.github.io/LuckyTool_Doc/")
                                 )
+                            )
 
-                                2 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
-                                    )
+                            2 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://pd.qq.com/s/ahjm4zyxb")
                                 )
+                            )
 
-                                3 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://t.me/LuckyTool")
-                                    )
+                            3 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW, Uri.parse("https://t.me/LuckyTool")
                                 )
+                            )
 
-                                4 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
-                                    )
+                            4 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://t.me/+F42pfv-c0h4zNDc9")
                                 )
+                            )
 
-                                5 -> startActivity(
-                                    Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")
-                                    )
+                            5 -> startActivity(
+                                Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://modules.lsposed.org/module/com.luckyzyx.luckytool")
                                 )
-                            }
-                        }.show()
+                            )
+                        }
+                    }.show()
                     true
                 }
             })
@@ -408,8 +411,7 @@ class SettingsFragment : ModulePreferenceFragment() {
                 setOnPreferenceClickListener {
                     startActivity(
                         Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse("https://crwd.in/luckytool")
+                            Intent.ACTION_VIEW, Uri.parse("https://crwd.in/luckytool")
                         )
                     )
                     true
@@ -439,23 +441,20 @@ class SourceFragment : ModulePreferenceFragment() {
                 title = "Xposed"
                 summary = "rovo89 , Apache License 2.0"
                 isIconSpaceReserved = false
-                intent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/rovo89/Xposed"))
+                intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/rovo89/Xposed"))
             })
             addPreference(Preference(context).apply {
                 title = "LSPosed"
                 summary = "LSPosed , GPL-3.0 License"
                 isIconSpaceReserved = false
-                intent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/LSPosed/LSPosed"))
+                intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/LSPosed/LSPosed"))
             })
             addPreference(Preference(context).apply {
                 title = "YukiHookAPI"
                 summary = "fankes , MIT License"
                 isIconSpaceReserved = false
                 intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/fankes/YukiHookAPI")
+                    Intent.ACTION_VIEW, Uri.parse("https://github.com/fankes/YukiHookAPI")
                 )
             })
             addPreference(Preference(context).apply {
@@ -463,8 +462,7 @@ class SourceFragment : ModulePreferenceFragment() {
                 summary = "fankes , AGPL-3.0 License"
                 isIconSpaceReserved = false
                 intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/fankes/ColorOSNotifyIcon")
+                    Intent.ACTION_VIEW, Uri.parse("https://github.com/fankes/ColorOSNotifyIcon")
                 )
             })
             addPreference(Preference(context).apply {
@@ -488,8 +486,7 @@ class SourceFragment : ModulePreferenceFragment() {
                 summary = "LSPosed , GPL-2.0 license"
                 isIconSpaceReserved = false
                 intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/LSPosed/CorePatch")
+                    Intent.ACTION_VIEW, Uri.parse("https://github.com/LSPosed/CorePatch")
                 )
             })
             addPreference(Preference(context).apply {
@@ -497,8 +494,7 @@ class SourceFragment : ModulePreferenceFragment() {
                 summary = "LSPosed , GPL-3.0 license"
                 isIconSpaceReserved = false
                 intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/LSPosed/DisableFlagSecure")
+                    Intent.ACTION_VIEW, Uri.parse("https://github.com/LSPosed/DisableFlagSecure")
                 )
             })
             addPreference(Preference(context).apply {
@@ -506,8 +502,7 @@ class SourceFragment : ModulePreferenceFragment() {
                 summary = "libxzr , MIT license"
                 isIconSpaceReserved = false
                 intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/libxzr/FivegTile")
+                    Intent.ACTION_VIEW, Uri.parse("https://github.com/libxzr/FivegTile")
                 )
             })
             addPreference(Preference(context).apply {
@@ -530,9 +525,7 @@ class DonateFragment : Fragment() {
     private var donateAdapter: DonateListAdapter? = null
     private val allData = ArrayList<DInfo>()
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentDonateListBinding.inflate(inflater)
         return binding.root
@@ -550,16 +543,12 @@ class DonateFragment : Fragment() {
                 text = null
                 addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
-                        s: CharSequence?, start: Int,
-                        count: Int, after: Int
+                        s: CharSequence?, start: Int, count: Int, after: Int
                     ) {
                     }
 
                     override fun onTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        before: Int,
-                        count: Int
+                        s: CharSequence?, start: Int, before: Int, count: Int
                     ) {
                         donateAdapter?.getFilter?.filter(s.toString())
                     }
@@ -582,8 +571,7 @@ class DonateFragment : Fragment() {
         scopeNetLife {
             val latestUrl =
                 "https://api.github.com/repos/luckyzyx/LuckyTool_Doc/releases/tags/donate_data"
-            val lastDDDate =
-                context.getString(SettingsPrefs, "last_update_dd_date", "null")
+            val lastDDDate = context.getString(SettingsPrefs, "last_update_dd_date", "null")
             val getDoc = Get<String>(latestUrl).await()
             JSONObject(getDoc).apply {
                 val date = optString("name").takeIf { e -> e.isNotBlank() } ?: return@scopeNetLife
@@ -645,10 +633,8 @@ class DonateFragment : Fragment() {
             }
             val develop = context.getBoolean(SettingsPrefs, "hidden_function", false)
             if (develop) allData.add(
-                0,
-                DInfo(
-                    "$count",
-                    arrayOf(
+                0, DInfo(
+                    "$count", arrayOf(
                         DCInfo("", "", DecimalFormat("0.00").format(chsCount).toDouble(), ""),
                         DCInfo("", "", DecimalFormat("0.00").format(otherCount).toDouble(), "", "$")
                     )
@@ -733,8 +719,8 @@ class DonateFragment : Fragment() {
                     return filterResults
                 }
 
+                @Suppress("UNCHECKED_CAST")
                 override fun publishResults(constraint: CharSequence, results: FilterResults?) {
-                    @Suppress("UNCHECKED_CAST")
                     filterDatas = results?.values as ArrayList<DInfo>
                     refreshDatas()
                 }

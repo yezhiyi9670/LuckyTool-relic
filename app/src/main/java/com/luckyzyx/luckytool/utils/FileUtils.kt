@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.utils
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Environment
@@ -10,12 +11,15 @@ import android.os.SystemClock
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.text.TextUtils
+import androidx.core.content.FileProvider
+import com.luckyzyx.luckytool.BuildConfig
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.io.InputStreamReader
+
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 object FileUtils {
@@ -188,5 +192,25 @@ object FileUtils {
             }
         }
         return stringBuilder.toString()
+    }
+
+    /**
+     * 分享文件
+     * @param context Context
+     * @param title String
+     * @param file File
+     */
+    fun shareFile(context: Context, title: String, file: File) {
+        if (file.exists()) {
+            val share = Intent(Intent.ACTION_SEND)
+            val contentUri = FileProvider.getUriForFile(
+                context, BuildConfig.APPLICATION_ID + ".FileProvider", file
+            )
+            share.putExtra(Intent.EXTRA_STREAM, contentUri)
+            share.type = "application/vnd.android.package-archive"
+            share.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            context.startActivity(Intent.createChooser(share, title))
+        }
     }
 }

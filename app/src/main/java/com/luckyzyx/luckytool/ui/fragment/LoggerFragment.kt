@@ -33,6 +33,7 @@ import com.highcapable.yukihookapi.hook.log.YukiLoggerData
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
+import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.copyStr
 import com.luckyzyx.luckytool.utils.dialogCentered
@@ -57,6 +58,7 @@ class LoggerFragment : Fragment(), MenuProvider {
     private var fileName: String = ""
     private var filterString = ""
     private var scope: AndroidScope? = null
+    private lateinit var logsDir: File
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -67,6 +69,7 @@ class LoggerFragment : Fragment(), MenuProvider {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        checkDirs()
         logInfoViewAdapter = LogInfoViewAdapter(requireActivity(), listData)
         binding.loglistView.apply {
             adapter = logInfoViewAdapter
@@ -113,21 +116,28 @@ class LoggerFragment : Fragment(), MenuProvider {
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.add(0, 1, 0, getString(R.string.common_words_refresh)).apply {
             setIcon(R.drawable.ic_baseline_refresh_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
             if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
         }
-        menu.add(0, 2, 0, getString(R.string.common_words_save)).apply {
-            setIcon(R.drawable.ic_baseline_save_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
-            if (ThemeUtils.isNightMode(resources.configuration)) {
-                iconTintList = ColorStateList.valueOf(Color.WHITE)
-            }
-        }
-        menu.add(0, 3, 0, getString(R.string.common_words_filter)).apply {
+        menu.add(0, 2, 0, getString(R.string.common_words_filter)).apply {
             setIcon(R.drawable.baseline_filter_list_24)
-            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            if (ThemeUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+        menu.add(0, 3, 0, getString(R.string.common_words_save)).apply {
+            setIcon(R.drawable.ic_baseline_save_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+            if (ThemeUtils.isNightMode(resources.configuration)) {
+                iconTintList = ColorStateList.valueOf(Color.WHITE)
+            }
+        }
+        menu.add(0, 4, 0, getString(R.string.common_words_share)).apply {
+            setIcon(R.drawable.baseline_share_24)
+            setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
             if (ThemeUtils.isNightMode(resources.configuration)) {
                 iconTintList = ColorStateList.valueOf(Color.WHITE)
             }
@@ -137,10 +147,6 @@ class LoggerFragment : Fragment(), MenuProvider {
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId == 1) loadLogger()
         if (menuItem.itemId == 2) {
-            fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + ".log"
-            saveFile(fileName)
-        }
-        if (menuItem.itemId == 3) {
             val dialog = MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
                 setTitle(getString(R.string.log_filter_title))
                 setView(R.layout.layout_log_filter_dialog)
@@ -157,18 +163,12 @@ class LoggerFragment : Fragment(), MenuProvider {
                 setText(filterString)
                 addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int
+                        s: CharSequence?, start: Int, count: Int, after: Int
                     ) {
                     }
 
                     override fun onTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        before: Int,
-                        count: Int
+                        s: CharSequence?, start: Int, before: Int, count: Int
                     ) {
                         filterString = s.toString()
                     }
@@ -176,6 +176,14 @@ class LoggerFragment : Fragment(), MenuProvider {
                     override fun afterTextChanged(s: Editable?) {}
                 })
             }
+        }
+        if (menuItem.itemId == 3) {
+            fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + ".log"
+            saveFile(fileName)
+        }
+        if (menuItem.itemId == 4) {
+            fileName = "LuckyTool_" + formatDate("yyyyMMdd_HHmmss") + ".log"
+            shareFile(fileName)
         }
         return true
     }
@@ -196,24 +204,30 @@ class LoggerFragment : Fragment(), MenuProvider {
         else createDocument.launch(fileName)
     }
 
-    private fun checkDirs(): String {
+    private fun shareFile(fileName: String) {
+        checkDirs()
+        if (listData.isEmpty()) requireActivity().toast(getString(R.string.log_data_is_empty))
+        else {
+            logsDir.mkdirs()
+            val logFile = File(logsDir, fileName)
+            if (!logFile.exists()) logFile.createNewFile()
+            logFile.writeText(getLogsString(requireActivity()))
+            FileUtils.shareFile(requireActivity(), "Share", logFile)
+        }
+    }
+
+    private fun checkDirs() {
         val dir: File = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_DOWNLOADS + "/LuckyTool"
         )
         if (!dir.exists()) dir.mkdirs()
-        return dir.name
+        logsDir = File(requireActivity().cacheDir, "logs")
+        logsDir.listFiles()?.forEach { if (it.exists()) it.delete() }
+        if (logsDir.exists()) logsDir.delete()
     }
 
     private fun alterDocument(context: Context, uri: Uri) {
-        var str = ""
-        str += context.getLogInfo()
-        listData.forEach {
-            val time = formatDate("yyyy/MM/dd-HH:mm:ss", it.timestamp)
-            val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
-            val throwableFinal =
-                if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"
-            str += "[${time}][${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
-        }
+        val str = getLogsString(context)
         try {
             context.contentResolver.openFileDescriptor(uri, "w")?.use { its ->
                 FileOutputStream(its.fileDescriptor).use {
@@ -228,6 +242,19 @@ class LoggerFragment : Fragment(), MenuProvider {
             e.printStackTrace()
             context.toast(getString(R.string.log_save_failed))
         }
+    }
+
+    private fun getLogsString(context: Context): String {
+        var str = ""
+        str += context.getLogInfo()
+        listData.forEach {
+            val time = formatDate("yyyy/MM/dd-HH:mm:ss", it.timestamp)
+            val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
+            val throwableFinal =
+                if (it.throwable.toString() != "null") "\nThrowable -> ${it.throwable}\n\n" else "\n\n"
+            str += "[${time}][${it.tag}][${it.priority}][${it.packageName}][${it.userId}]$messageFinal$throwableFinal"
+        }
+        return str
     }
 }
 
@@ -264,16 +291,12 @@ class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) 
         holder.logRoot.setOnClickListener {
             MaterialAlertDialogBuilder(context, dialogCentered).apply {
                 setTitle(context.getAppLabel(packageName))
-                setView(
-                    NestedScrollView(context).apply {
-                        addView(
-                            MaterialTextView(context).apply {
-                                setPadding(20.dp, 0, 20.dp, 20.dp)
-                                text = msg + if (throwable != "null") "\n\n$throwable" else ""
-                            }
-                        )
-                    }
-                )
+                setView(NestedScrollView(context).apply {
+                    addView(MaterialTextView(context).apply {
+                        setPadding(20.dp, 0, 20.dp, 20.dp)
+                        text = msg + if (throwable != "null") "\n\n$throwable" else ""
+                    })
+                })
                 setPositiveButton(android.R.string.copy) { _, _ ->
                     val messageFinal = if (msg != "null") "\nMessage -> $msg" else ""
                     val throwableFinal =
@@ -307,8 +330,8 @@ class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) 
                 return filterResults
             }
 
+            @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence, results: FilterResults?) {
-                @Suppress("UNCHECKED_CAST")
                 filterData = results?.values as ArrayList<YukiLoggerData>
                 refreshDatas()
             }

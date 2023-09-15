@@ -30,6 +30,8 @@
     <string name="clear_all_data_message">确定要清除模块所有功能数据，清除后需要重新设置功能？</string>
     <!-- Other Settings -->
     <string name="other_settings">其他设置</string>
+    <string name="enable_module_print_logs">启用模块打印日志</string>
+    <string name="enable_module_print_logs_summary">此功能仅用于打印模块App本身的运行日志\n关闭开关后将获取日志文件</string>
     <string name="switch_autostart_function_caller">切换自启功能调用者</string>
     <string name="switch_autostart_function_caller_summary">1、模块调用方式将打开模块的新页面并触发自启功能， 当屏幕解锁时可能导致无法触摸几秒钟\n2、系统界面调用方式将使用系统界面进程调用自启功能， 需要给予系统界面Root权限，否则无法触发</string>
     <string name="switch_autostart_function_caller_module">调用模块</string>
@@ -687,6 +689,7 @@
     <string name="common_words_right">右侧</string>
     <string name="common_words_close">关闭</string>
     <string name="common_words_open">打开</string>
+    <string name="common_words_share">分享</string>
     <string name="common_words_add">添加</string>
     <string name="common_words_remove">移除</string>
     <string name="common_words_ignore">忽略</string>

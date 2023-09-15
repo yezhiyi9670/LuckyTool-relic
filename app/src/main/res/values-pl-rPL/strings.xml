@@ -30,6 +30,8 @@
     <string name="clear_all_data_message">Czy chcesz przywrócić wszystkie zmiany w funckach modułu do stanu domyślnego?</string>
     <!-- Other Settings -->
     <string name="other_settings">Inne ustawienia</string>
+    <string name="enable_module_print_logs">Enable module print logs</string>
+    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
     <string name="switch_autostart_function_caller">Metody wywołania autostartu</string>
     <string name="switch_autostart_function_caller_summary">Wybierz metodę wywołania funkcji autostartu w LuckyTool, która pozwali na ustawienie odświeżania ekranu po uruchomieniu systemu</string>
     <string name="switch_autostart_function_caller_module">Wywołanie przez moduł</string>
@@ -687,6 +689,7 @@
     <string name="common_words_right">Right</string>
     <string name="common_words_close">Wyłączone</string>
     <string name="common_words_open">Otwórz</string>
+    <string name="common_words_share">Share</string>
     <string name="common_words_add">Add</string>
     <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>

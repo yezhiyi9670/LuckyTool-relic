@@ -153,7 +153,7 @@ fun Context.getDeviceInfo(): String {
 fun Context.getLogInfo(): String {
     val device = getDeviceInfo()
     val moduleVer = "${getString(R.string.module_version)} $getVersionName($getVersionCode)"
-    return "$device\n$moduleVer\n$getGuid\n\n"
+    return "$device\n$moduleVer\n\n"
 }
 
 /**

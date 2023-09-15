@@ -34,6 +34,8 @@
     <string name="clear_all_data_message">Make sure you want to clear all the function data of the module, and you need to reset the function after clearing?</string>
     <!-- Other Settings -->
     <string name="other_settings">Other settings</string>
+    <string name="enable_module_print_logs">Enable module print logs</string>
+    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
     <string name="switch_autostart_function_caller">Switch autostart function caller</string>
     <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
     <string name="switch_autostart_function_caller_module">Module call</string>
@@ -761,6 +763,7 @@
     <string name="common_words_right">Right</string>
     <string name="common_words_close">Close</string>
     <string name="common_words_open">Open</string>
+    <string name="common_words_share">Share</string>
     <string name="common_words_add">Add</string>
     <string name="common_words_remove">Remove</string>
     <string name="common_words_ignore">Ignore</string>

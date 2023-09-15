@@ -30,6 +30,8 @@
     <string name="clear_all_data_message">Убедитесь, что вы хотите очистить все функциональные данные модуля, и вам нужно сбросить функцию после очистки?</string>
     <!-- Other Settings -->
     <string name="other_settings">Другие настройки</string>
+    <string name="enable_module_print_logs">Enable module print logs</string>
+    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
     <string name="switch_autostart_function_caller">Переключить вызов функции автозапуска</string>
     <string name="switch_autostart_function_caller_summary">1.Метод вызова модуля откроет новую страницу модуля и активирует функцию автозапуска. Этот метод может привести к тому, что экран станет недоступным в течение нескольких секунд, когда он разблокирован\n2.Метод вызова системного интерфейса вызовет функцию автозапуска в процессе системного интерфейса, необходимо предоставить root-права для системного интерфейса, в противном случае автозапуск не может быть запущен</string>
     <string name="switch_autostart_function_caller_module">Вызов модуля</string>
@@ -687,6 +689,7 @@
     <string name="common_words_right">Вправо</string>
     <string name="common_words_close">Отключено</string>
     <string name="common_words_open">Открыть</string>
+    <string name="common_words_share">Share</string>
     <string name="common_words_add">Добавить</string>
     <string name="common_words_remove">Удалить</string>
     <string name="common_words_ignore">Игнорировать</string>

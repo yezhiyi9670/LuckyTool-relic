@@ -16,6 +16,7 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.prefs
+import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.ui.fragment.HomeFragment
@@ -90,6 +91,7 @@ open class MainActivity : AppCompatActivity() {
                 if (current.contains(HomeFragment::class.java.simpleName)) show()
             }
         }
+        if (!BuildConfig.DEBUG) putBoolean(SettingsPrefs, "enable_module_print_logs", false)
         putBoolean(SettingsPrefs, "boot_complete", ckqcbs())
         PermissionUtils(this).checkPermissions()
         UpdateUtils(this).checkBK()

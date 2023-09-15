@@ -30,6 +30,8 @@
     <string name="clear_all_data_message">Đảm bảo rằng bạn muốn xóa tất cả dữ liệu chức năng của mô-đun và bạn cần đặt lại chức năng sau khi xóa?</string>
     <!-- Other Settings -->
     <string name="other_settings">Tùy chỉnh khác</string>
+    <string name="enable_module_print_logs">Enable module print logs</string>
+    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
     <string name="switch_autostart_function_caller">Chuyển người gọi chức năng tự khởi động</string>
     <string name="switch_autostart_function_caller_summary">1.Phương thức gọi mô-đun sẽ mở một trang mới của mô-đun và kích hoạt chức năng tự khởi động,Phương thức này có thể khiến màn hình không thể chạm được trong vài giây khi nó được mở khóa\n2.Phương thức gọi ui hệ thống sẽ gọi chức năng tự khởi động trên quy trình của hệ thống ui, Cần cấp quyền root cho hệ thống ui, Nếu không, tính năng tự khởi động không thể được kích hoạt</string>
     <string name="switch_autostart_function_caller_module">Gọi module</string>
@@ -687,6 +689,7 @@
     <string name="common_words_right">Right</string>
     <string name="common_words_close">Đóng</string>
     <string name="common_words_open">Mở</string>
+    <string name="common_words_share">Share</string>
     <string name="common_words_add">Thêm</string>
     <string name="common_words_remove">Loại bỏ</string>
     <string name="common_words_ignore">Bỏ qua</string>
