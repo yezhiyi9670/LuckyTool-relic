@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.luckyzyx.luckytool.hook.scope.settings.AllowDisablingSystemApps
 import com.luckyzyx.luckytool.hook.scope.settings.CustomizeDeviceSharingPageParameters
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
@@ -65,6 +66,10 @@ object HookSettings : YukiBaseHooker() {
         //强制开启进程管理
         if (prefs(ModulePrefs).getBoolean("force_display_process_management", false)) {
             loadHooker(ForceDisplayProcessManagement)
+        }
+        //允许停用系统应用
+        if (prefs(ModulePrefs).getBoolean("allow_disabling_system_apps", false)) {
+            loadHooker(AllowDisablingSystemApps)
         }
 
         //debug_display_category

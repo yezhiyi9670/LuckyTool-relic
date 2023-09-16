@@ -483,6 +483,8 @@
     <string name="show_last_update_time_in_app_details">Hiển thị tên gói trong chi tiết ứng dụng</string>
     <string name="enable_long_press_to_copy_in_app_details">Cho phép nhấn và giữ để sao chép trong chi tiết ứng dụng</string>
     <string name="click_icon_open_market_page">Nhấp vào biểu tượng để mở trang cửa hàng</string>
+    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
+    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
     <!--Camera-->
     <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">Xóa giới hạn từ hình mờ</string>

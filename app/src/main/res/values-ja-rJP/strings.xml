@@ -483,6 +483,8 @@
     <string name="show_last_update_time_in_app_details">アプリ詳細に最終更新日時を表示する</string>
     <string name="enable_long_press_to_copy_in_app_details">アプリ詳細で長押ししてコピーできるようにする</string>
     <string name="click_icon_open_market_page">アイコンをタップしてストアページを開く</string>
+    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
+    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
     <!--Camera-->
     <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">ウォーターマークの文字数制限を解除</string>

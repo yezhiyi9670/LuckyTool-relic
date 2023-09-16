@@ -483,6 +483,8 @@
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
     <string name="enable_long_press_to_copy_in_app_details">Включить долгое нажатие для копирования сведений о приложении</string>
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
+    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
+    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
     <!--Camera-->
     <string name="CameraWaterMark">Водяной знак</string>
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>

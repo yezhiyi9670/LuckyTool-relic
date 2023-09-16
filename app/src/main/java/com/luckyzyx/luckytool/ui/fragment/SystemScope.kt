@@ -2537,6 +2537,13 @@ class Settings : BaseScopePreferenceFeagment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.allow_disabling_system_apps)
+                summary = getString(R.string.allow_disabling_system_apps_summary)
+                key = "allow_disabling_system_apps"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
         }
     }
 

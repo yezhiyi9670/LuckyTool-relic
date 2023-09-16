@@ -540,6 +540,8 @@
     <string name="show_last_update_time_in_app_details">Show last update time in app details</string>
     <string name="enable_long_press_to_copy_in_app_details">Enable long press to copy in app details</string>
     <string name="click_icon_open_market_page">Click on the icon to open the store page</string>
+    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
+    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
     
     <!--Camera-->
     <string name="CameraWaterMark">WaterMark</string>
