@@ -101,6 +101,9 @@ object HookAndroid : YukiBaseHooker() {
         //屏幕色温RGB调色板
         loadHooker(ScreenColorTemperatureRGBPalette)
 
+        //电源菜单显示延迟
+        //loadHooker(ReducePowerMenuDisplayDelay)
+
         //OPLUS_FEATURE_POWERKEY_SHORT_PRESS_SHUTDOWN = "oplus.software.short_press_powerkey_shutdown";
         //OPLUS_FEATURE_POWERKEY_SHUTDOWN = "oplus.software.long_press_powerkey_shutdown";
 

@@ -2134,7 +2134,6 @@ class DialogRelated : BaseScopePreferenceFeagment() {
     override val scopes = arrayOf(
         "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
     )
-
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -2205,6 +2204,13 @@ class DialogRelated : BaseScopePreferenceFeagment() {
                     context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.reduce_power_menu_display_delay)
+                key = "reduce_power_menu_display_delay"
+                setDefaultValue(false)
+                isVisible = false
+                isIconSpaceReserved = false
             })
         }
     }

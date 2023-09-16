@@ -410,16 +410,7 @@
     <string name="remove_secure_pay_found_virus_dialog">Odstranit dialog o kontrole virů u zabezpečených plateb</string>
     <string name="remove_access_device_log_dialog">Odebrat dialogové okno protokolu zařízení</string>
     <string name="custom_volume_dialog_background_transparency">Vlastní průhlednost pozadí panelu hlasitosti</string>
-    <!--FullScreenGestureRelated-->
-    <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
-    <string name="remove_side_slider">Odstranit boční posuvník</string>
-    <string name="remove_side_slider_black_background">Odstranit černé pozadí bočního posuvníku</string>
-    <string name="remove_rotate_screen_button">Odebrat tlačítko otáčení obrazovky</string>
-    <string name="CustomSideSliderIcon">Vlastní ikona bočního posuvníku</string>
-    <string name="replace_side_slider_icon_switch">Nahradit přepínač bočních ikon posuvníku</string>
-    <string name="replace_side_slider_icon_switch_summary">Je doporučeno mít šířku ikony okolo 100px</string>
-    <string name="replace_side_slider_icon_on_left">Nahradit levou ikonu bočního posuvníku</string>
-    <string name="replace_side_slider_icon_on_right">Nahradit pravou ikonu bočního posuvníku</string>
+    <string name="reduce_power_menu_display_delay">Reduce power menu display delay</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Nastavení související s otiskem prstu</string>
     <string name="remove_fingerprint_icon_mode">Odstranit ikonu otisku prstu</string>
@@ -570,6 +561,16 @@
     <string name="custom_aon_gesture_video_whitelist">Vlastní seznam gest videí</string>
     <string name="custom_aon_gesture_whitelist_tips">Vyplňte název balíčku, který má být přidán na whitelist, přičemž na každém řádku může být vyplněn pouze jeden název balíčku.</string>
     <string name="enable_volume_key_control_flashlight">Povolit ovládání svítilny pomocí tlačítek hlasitosti</string>
+    <!--FullScreenGestureRelated-->
+    <string name="FullScreenGestureRelated">Gesta přes celou obrazovku</string>
+    <string name="remove_side_slider">Odstranit boční posuvník</string>
+    <string name="remove_side_slider_black_background">Odstranit černé pozadí bočního posuvníku</string>
+    <string name="remove_rotate_screen_button">Odebrat tlačítko otáčení obrazovky</string>
+    <string name="CustomSideSliderIcon">Vlastní ikona bočního posuvníku</string>
+    <string name="replace_side_slider_icon_switch">Nahradit přepínač bočních ikon posuvníku</string>
+    <string name="replace_side_slider_icon_switch_summary">Je doporučeno mít šířku ikony okolo 100px</string>
+    <string name="replace_side_slider_icon_on_left">Nahradit levou ikonu bočního posuvníku</string>
+    <string name="replace_side_slider_icon_on_right">Nahradit pravou ikonu bočního posuvníku</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Odstranit plovoucí okno s ověřovacím kódem</string>
     <!--Everyimage-->

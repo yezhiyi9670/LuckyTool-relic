@@ -410,16 +410,7 @@
     <string name="remove_secure_pay_found_virus_dialog">Видалено діалогове вікно з виявленим вірусом безпечної оплати</string>
     <string name="remove_access_device_log_dialog">Remove access device log dialog</string>
     <string name="custom_volume_dialog_background_transparency">Custom volume dialog background transparency</string>
-    <!--FullScreenGestureRelated-->
-    <string name="FullScreenGestureRelated">Повноекранні жести</string>
-    <string name="remove_side_slider">Видалити бічну панель</string>
-    <string name="remove_side_slider_black_background">Прибрати чорний фон бічної панелі</string>
-    <string name="remove_rotate_screen_button">Видалити кнопку повороту екрану</string>
-    <string name="CustomSideSliderIcon">Користувацька іконка бічної панелі</string>
-    <string name="replace_side_slider_icon_switch">Замінити іконку бічної панелі</string>
-    <string name="replace_side_slider_icon_switch_summary">Ширина іконки рекомендується близько 100px</string>
-    <string name="replace_side_slider_icon_on_left">Замінити іконку бічної панелі зліва</string>
-    <string name="replace_side_slider_icon_on_right">Замінити іконку бічної панелі праворуч</string>
+    <string name="reduce_power_menu_display_delay">Reduce power menu display delay</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Відбиток пальця</string>
     <string name="remove_fingerprint_icon_mode">Видалити іконку відбитка</string>
@@ -570,6 +561,16 @@
     <string name="custom_aon_gesture_video_whitelist">Custom video gesture whitelist</string>
     <string name="custom_aon_gesture_whitelist_tips">Fill in the package name that needs to be added to the whitelist, and only one package name can be filled in each line</string>
     <string name="enable_volume_key_control_flashlight">Enable the volume keys to control the flashlight</string>
+    <!--FullScreenGestureRelated-->
+    <string name="FullScreenGestureRelated">Повноекранні жести</string>
+    <string name="remove_side_slider">Видалити бічну панель</string>
+    <string name="remove_side_slider_black_background">Прибрати чорний фон бічної панелі</string>
+    <string name="remove_rotate_screen_button">Видалити кнопку повороту екрану</string>
+    <string name="CustomSideSliderIcon">Користувацька іконка бічної панелі</string>
+    <string name="replace_side_slider_icon_switch">Замінити іконку бічної панелі</string>
+    <string name="replace_side_slider_icon_switch_summary">Ширина іконки рекомендується близько 100px</string>
+    <string name="replace_side_slider_icon_on_left">Замінити іконку бічної панелі зліва</string>
+    <string name="replace_side_slider_icon_on_right">Замінити іконку бічної панелі праворуч</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     <!--Everyimage-->

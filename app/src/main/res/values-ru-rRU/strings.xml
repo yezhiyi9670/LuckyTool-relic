@@ -410,16 +410,7 @@
     <string name="remove_secure_pay_found_virus_dialog">Удалено диалоговое окно с обнаруженным вирусом безопасной оплаты</string>
     <string name="remove_access_device_log_dialog">Удалить диалог журнала доступа устройства</string>
     <string name="custom_volume_dialog_background_transparency">Прозрачность фона панели громкости</string>
-    <!--FullScreenGestureRelated-->
-    <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
-    <string name="remove_side_slider">Удалить боковую панель</string>
-    <string name="remove_side_slider_black_background">Убрать черный фон боковой панели</string>
-    <string name="remove_rotate_screen_button">Удалить кнопку поворота экрана</string>
-    <string name="CustomSideSliderIcon">Пользовательская иконка боковой панели</string>
-    <string name="replace_side_slider_icon_switch">Заменить иконку боковой панели</string>
-    <string name="replace_side_slider_icon_switch_summary">Ширина иконки рекомендуется около 100px</string>
-    <string name="replace_side_slider_icon_on_left">Заменить иконку боковой панели слева</string>
-    <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
+    <string name="reduce_power_menu_display_delay">Reduce power menu display delay</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Отпечаток пальца</string>
     <string name="remove_fingerprint_icon_mode">Удалить иконку отпечатка</string>
@@ -570,6 +561,16 @@
     <string name="custom_aon_gesture_video_whitelist">Белый список настраиваемых видеожестов</string>
     <string name="custom_aon_gesture_whitelist_tips">Заполните имя пакета, который необходимо добавить в белый список, и в каждой строке можно указать только одно имя пакета</string>
     <string name="enable_volume_key_control_flashlight">Включить управление фонариком кнопками громкости</string>
+    <!--FullScreenGestureRelated-->
+    <string name="FullScreenGestureRelated">Полноэкранные жесты</string>
+    <string name="remove_side_slider">Удалить боковую панель</string>
+    <string name="remove_side_slider_black_background">Убрать черный фон боковой панели</string>
+    <string name="remove_rotate_screen_button">Удалить кнопку поворота экрана</string>
+    <string name="CustomSideSliderIcon">Пользовательская иконка боковой панели</string>
+    <string name="replace_side_slider_icon_switch">Заменить иконку боковой панели</string>
+    <string name="replace_side_slider_icon_switch_summary">Ширина иконки рекомендуется около 100px</string>
+    <string name="replace_side_slider_icon_on_left">Заменить иконку боковой панели слева</string>
+    <string name="replace_side_slider_icon_on_right">Заменить иконку боковой панели справа</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--Everyimage-->
