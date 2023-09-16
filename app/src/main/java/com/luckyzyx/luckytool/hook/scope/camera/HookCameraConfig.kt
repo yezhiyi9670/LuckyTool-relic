@@ -2,9 +2,10 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.type.java.BooleanType
+import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.safeOfNull
 
 object HookCameraConfig : YukiBaseHooker() {
     override fun onHook() {
@@ -77,17 +78,24 @@ object HookCameraConfig : YukiBaseHooker() {
                 }
                 injectMember {
                     method {
-                        param(StringClass, BooleanType)
-                        returnType = StringClass
-                    }
+                        param(StringClass)
+                        returnType = ListClass
+                    }.all()
                     afterHook {
+                        val type = safeOfNull { method.genericReturnType }?.typeName
+                            ?: return@afterHook
+                        if (type.contains("String").not()) return@afterHook
                         when (args().first().string()) {
                             //通用哈苏水印样式 camera_slogan_hasselblad
-                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) result =
-                                "1"
+                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad)
+                                result = listOf("1")
                             //Source FilterGroupManager 照片 / 人像 大师滤镜
-                            "com.oplus.photo.master.filter.type.list", "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter) result =
-                                "Emerald.cube.rgb.bin,Radiance.cube.rgb.bin,Serenity.cube.rgb.bin"
+                            "com.oplus.photo.master.filter.type.list",
+                            "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter)
+                                result = listOf(
+                                    "Emerald.cube.rgb.bin", "Radiance.cube.rgb.bin",
+                                    "Serenity.cube.rgb.bin"
+                                )
                         }
                     }
                 }

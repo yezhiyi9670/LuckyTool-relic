@@ -163,7 +163,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
 
             //Source CloudApiImpl
             searchClass {
-                from("f8", "l6", "v7", "x7").absolute()
+                from("f8", "l6", "v7", "x7", "w7").absolute()
                 field().none()
                 method().count(7)
                 method { emptyParam() }.count(2)
