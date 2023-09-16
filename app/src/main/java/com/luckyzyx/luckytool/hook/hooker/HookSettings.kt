@@ -7,6 +7,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
+import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDisabledAppsManager
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayProcessManagement
 import com.luckyzyx.luckytool.hook.scope.settings.HookAppDetails
 import com.luckyzyx.luckytool.hook.scope.settings.HookIris5Controller
@@ -70,6 +71,10 @@ object HookSettings : YukiBaseHooker() {
         //允许停用系统应用
         if (prefs(ModulePrefs).getBoolean("allow_disabling_system_apps", false)) {
             loadHooker(AllowDisablingSystemApps)
+        }
+        //强制显示已停用应用管理器
+        if (prefs(ModulePrefs).getBoolean("force_display_disabled_apps_manager", false)) {
+            loadHooker(ForceDisplayDisabledAppsManager)
         }
 
         //debug_display_category

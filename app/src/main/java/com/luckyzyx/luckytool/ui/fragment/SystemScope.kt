@@ -2448,6 +2448,18 @@ class Settings : BaseScopePreferenceFeagment() {
             })
 
             addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_application)
+                key = "settings_application"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_disabled_apps_manager)
+                key = "force_display_disabled_apps_manager"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.settings_other_preference)
                 key = "settings_other_preference"
                 isIconSpaceReserved = false

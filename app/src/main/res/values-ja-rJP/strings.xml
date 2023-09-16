@@ -469,6 +469,8 @@
     <string name="video_frame_insertion_support_2K120_summary">お使いのデバイスが MEMC に対応していない場合は、この機能を使用しないでください</string>
     <string name="enable_screen_color_temperature_rgb_palette">画面の色温度 RGB パレットを有効化</string>
     <string name="enable_screen_color_temperature_rgb_palette_summary">DC 調光で上書きされる可能性があります</string>
+    <string name="settings_application">Application</string>
+    <string name="force_display_disabled_apps_manager">Force display of disabled apps manager</string>
     <string name="settings_other_preference">その他の設定</string>
     <string name="remove_top_account_display">トップのアカウント表示を削除</string>
     <string name="remove_dpi_restart_recovery">再起動で DPI が元に戻らないようにする</string>

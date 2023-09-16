@@ -469,6 +469,8 @@
     <string name="video_frame_insertion_support_2K120_summary">Pokud vaše zařízení nepodporuje MEMC, nepoužívejte tuto funkci</string>
     <string name="enable_screen_color_temperature_rgb_palette">Povolit paletu pro teplotu barev obrazovky RGB</string>
     <string name="enable_screen_color_temperature_rgb_palette_summary">Může být přepsáno DC funkcí</string>
+    <string name="settings_application">Application</string>
+    <string name="force_display_disabled_apps_manager">Force display of disabled apps manager</string>
     <string name="settings_other_preference">Další předvolby</string>
     <string name="remove_top_account_display">Odstranit zobrazení ikony profilu v horní části</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>

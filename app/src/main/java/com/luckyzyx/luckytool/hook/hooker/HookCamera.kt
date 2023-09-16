@@ -30,10 +30,5 @@ object HookCamera : YukiBaseHooker() {
         if (prefs(ModulePrefs).getBoolean("enable_master_filter", false)) {
             if (SDK >= A13) loadHooker(EnableMasterFilter)
         }
-
-        //修复哈苏定制水印崩溃
-//        if (prefs(ModulePrefs).getBoolean("fix_hasselblad_custom_watermark_crash", false)) {
-//            loadHooker(FixHasselbladCustomWatermarkCrash)
-//        }
     }
 }
