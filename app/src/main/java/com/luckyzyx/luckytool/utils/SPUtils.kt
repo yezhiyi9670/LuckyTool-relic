@@ -124,9 +124,9 @@ fun Context.getBoolean(PrefsName: String?, key: String?, defaultValue: Boolean):
  * @param PrefsName String?
  * @return Boolean
  */
-fun Context.clearPrefs(PrefsName: String?): Boolean = safeOfFalse {
+fun Context.clearPrefs(PrefsName: String?) = runInSafe {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_WORLD_READABLE)
-    return prefs.edit().clear().commit()
+    prefs.edit().clear().commit()
 }
 
 /**

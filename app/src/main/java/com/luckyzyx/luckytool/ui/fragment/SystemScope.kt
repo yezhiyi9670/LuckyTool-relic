@@ -2469,6 +2469,7 @@ class Settings : BaseScopePreferenceFeagment() {
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.settings_phone_preference)
                 key = "settings_phone_preference"
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {

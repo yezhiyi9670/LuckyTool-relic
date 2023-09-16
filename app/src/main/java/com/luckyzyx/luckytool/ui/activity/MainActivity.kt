@@ -99,6 +99,7 @@ open class MainActivity : AppCompatActivity() {
 
     private fun initDynamicShortcuts() {
         if (!ShortcutUtils(this).getIconStatus()) return
+        if (ShortcutUtils(this).getShortcutEnabledList().isEmpty()) return
         ShortcutUtils(this).setDynamicShortcuts()
     }
 

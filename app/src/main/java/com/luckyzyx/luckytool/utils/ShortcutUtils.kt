@@ -137,10 +137,7 @@ class ShortcutUtils(val context: Context) {
      */
     fun getIconStatus(): Boolean {
         return when (context.getComponentEnabled(
-            ComponentName(
-                context.packageName,
-                "${context.packageName}.Hide"
-            )
+            ComponentName(context.packageName, "${context.packageName}.Hide")
         )) {
             0 -> true
             1 -> true
@@ -157,17 +154,22 @@ class ShortcutUtils(val context: Context) {
      * @param intent Intent
      * @return ShortcutInfo
      */
-    fun createShortcutInfo(
-        id: String,
-        label: String,
-        icon: Icon?,
-        intent: Intent?
-    ): ShortcutInfo {
+    fun createShortcutInfo(id: String, label: String, icon: Icon?, intent: Intent?): ShortcutInfo {
         return ShortcutInfo.Builder(context, id).apply {
             setShortLabel(label)
             setIcon(icon)
             intent?.let { setIntent(it) }
         }.build()
+    }
+
+    /**
+     * 获取动态快捷方式
+     * @return List<ShortcutInfo>?
+     */
+    fun getDynamicShortcuts(): List<ShortcutInfo>? = safeOfNull {
+        val shortcutManager = context.getSystemService(ShortcutManager::class.java)
+                as ShortcutManager
+        shortcutManager.dynamicShortcuts
     }
 
     /**
