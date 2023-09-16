@@ -2134,6 +2134,7 @@ class DialogRelated : BaseScopePreferenceFeagment() {
     override val scopes = arrayOf(
         "com.android.systemui", "com.oplus.exsystemservice", "com.coloros.securepay"
     )
+
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
@@ -2453,6 +2454,12 @@ class Settings : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_process_management)
+                key = "force_display_process_management"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.force_display_disabled_apps_manager)
                 key = "force_display_disabled_apps_manager"
                 setDefaultValue(false)
@@ -2460,46 +2467,8 @@ class Settings : BaseScopePreferenceFeagment() {
             })
 
             addPreference(PreferenceCategory(context).apply {
-                title = getString(R.string.settings_other_preference)
-                key = "settings_other_preference"
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_top_account_display)
-                key = "remove_top_account_display"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_dpi_restart_recovery)
-                summary = getString(R.string.remove_dpi_restart_recovery_summary)
-                key = "remove_dpi_restart_recovery"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.force_display_bottom_google_settings)
-                key = "force_display_bottom_google_settings"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.disable_cn_special_edition_setting)
-                key = "disable_cn_special_edition_setting"
-                setDefaultValue(false)
-                isVisible = isZh(context)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.force_display_process_management)
-                key = "force_display_process_management"
-                setDefaultValue(false)
-                isIconSpaceReserved = false
-            })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_settings_bottom_laboratory)
-                key = "remove_settings_bottom_laboratory"
-                setDefaultValue(false)
+                title = getString(R.string.settings_phone_preference)
+                key = "settings_phone_preference"
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
@@ -2517,6 +2486,57 @@ class Settings : BaseScopePreferenceFeagment() {
                 key = "customize_device_sharing_page_parameters"
                 setDefaultValue(false)
                 isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_other_preference)
+                key = "settings_other_preference"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_top_account_display)
+                key = "remove_top_account_display"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.disable_cn_special_edition_setting)
+                key = "disable_cn_special_edition_setting"
+                setDefaultValue(false)
+                isVisible = isZh(context)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_content_recommend)
+                key = "force_display_content_recommend"
+                setDefaultValue(false)
+                isVisible = isZh(context)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_settings_bottom_laboratory)
+                key = "remove_settings_bottom_laboratory"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.force_display_bottom_google_settings)
+                key = "force_display_bottom_google_settings"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.settings_developer_preference)
+                key = "settings_developer_preference"
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_dpi_restart_recovery)
+                summary = getString(R.string.remove_dpi_restart_recovery_summary)
+                key = "remove_dpi_restart_recovery"
+                setDefaultValue(false)
                 isIconSpaceReserved = false
             })
 

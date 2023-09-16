@@ -6,6 +6,7 @@ import com.luckyzyx.luckytool.hook.scope.settings.CustomizeDeviceSharingPagePara
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
+import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayContentRecommend
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDCBackLightMode
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayDisabledAppsManager
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayProcessManagement
@@ -75,6 +76,10 @@ object HookSettings : YukiBaseHooker() {
         //强制显示已停用应用管理器
         if (prefs(ModulePrefs).getBoolean("force_display_disabled_apps_manager", false)) {
             loadHooker(ForceDisplayDisabledAppsManager)
+        }
+        //强制显示内容推荐
+        if (prefs(ModulePrefs).getBoolean("force_display_content_recommend", false)) {
+            loadHooker(ForceDisplayContentRecommend)
         }
 
         //debug_display_category
