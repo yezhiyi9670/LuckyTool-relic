@@ -30,8 +30,8 @@
     <string name="clear_all_data_message">Убедитесь, что вы хотите очистить все функциональные данные модуля, и вам нужно сбросить функцию после очистки?</string>
     <!-- Other Settings -->
     <string name="other_settings">Другие настройки</string>
-    <string name="enable_module_print_logs">Enable module print logs</string>
-    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
+    <string name="enable_module_print_logs">Включить выведение логов модуля</string>
+    <string name="enable_module_print_logs_summary">Эта функция используется только для выведения текущих логов самого приложения модуля.\nФайлы логов будут получены, когда этот переключатель отключен</string>
     <string name="switch_autostart_function_caller">Переключить вызов функции автозапуска</string>
     <string name="switch_autostart_function_caller_summary">1.Метод вызова модуля откроет новую страницу модуля и активирует функцию автозапуска. Этот метод может привести к тому, что экран станет недоступным в течение нескольких секунд, когда он разблокирован\n2.Метод вызова системного интерфейса вызовет функцию автозапуска в процессе системного интерфейса, необходимо предоставить root-права для системного интерфейса, в противном случае автозапуск не может быть запущен</string>
     <string name="switch_autostart_function_caller_module">Вызов модуля</string>
@@ -211,7 +211,7 @@
     <string name="enable_notification_align_both_sides">Включить выравнивание уведомлений по обе стороны</string>
     <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
-    <string name="set_media_player_display_mode">Set media player display mode</string>
+    <string name="set_media_player_display_mode">Установить режим отображения медиаплеера</string>
     <string name="force_enable_media_toggle_button">Принудительно включить кнопку переключения медиа</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
@@ -410,7 +410,7 @@
     <string name="remove_secure_pay_found_virus_dialog">Удалено диалоговое окно с обнаруженным вирусом безопасной оплаты</string>
     <string name="remove_access_device_log_dialog">Удалить диалог журнала доступа устройства</string>
     <string name="custom_volume_dialog_background_transparency">Прозрачность фона панели громкости</string>
-    <string name="reduce_power_menu_display_delay">Reduce power menu display delay</string>
+    <string name="reduce_power_menu_display_delay">Уменьшить задержку отображения меню питания</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Отпечаток пальца</string>
     <string name="remove_fingerprint_icon_mode">Удалить иконку отпечатка</string>
@@ -469,13 +469,13 @@
     <string name="video_frame_insertion_support_2K120_summary">Если ваше устройство не поддерживает MEMC, пожалуйста, не используйте эту функцию</string>
     <string name="enable_screen_color_temperature_rgb_palette">Включить цветовую температуру экрана в палитре RGB</string>
     <string name="enable_screen_color_temperature_rgb_palette_summary">Может быть переопределено функцией DC</string>
-    <string name="settings_application">Application</string>
+    <string name="settings_application">Приложение</string>
     <string name="force_display_process_management">Принудительно отображать управление процессами</string>
-    <string name="force_display_disabled_apps_manager">Force display of disabled apps manager</string>
-    <string name="settings_phone_preference">About Phone</string>
+    <string name="force_display_disabled_apps_manager">Принудительное отображение отключенного менеджера приложений</string>
+    <string name="settings_phone_preference">О телефоне</string>
     <string name="set_processor_click_page">Выберите CPU, чтобы открыть меню в \"Об устройстве\"</string>
     <string name="customize_device_sharing_page_parameters">Настройка параметров страницы совместного доступа к устройствам</string>
-    <string name="settings_developer_preference">Developer Options</string>
+    <string name="settings_developer_preference">Параметры разработчика</string>
     <string name="remove_dpi_restart_recovery">Удалить восстановление DPI</string>
     <string name="remove_dpi_restart_recovery_summary">После включения функции и перезапуска области откройте страницу параметров разработчика и установите минимальную ширину</string>
     <string name="settings_other_preference">Другие настройки</string>
@@ -487,8 +487,8 @@
     <string name="show_last_update_time_in_app_details">Показывать время последнего обновления в подробностях приложения</string>
     <string name="enable_long_press_to_copy_in_app_details">Включить долгое нажатие для копирования сведений о приложении</string>
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
-    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
-    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
+    <string name="allow_disabling_system_apps">Разрешить отключение системных приложений</string>
+    <string name="allow_disabling_system_apps_summary">Этот модуль не несет ответственности, если системное приложение не может быть восстановлено из-за действий пользователя</string>
     <!--Camera-->
     <string name="CameraWaterMark">Водяной знак</string>
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
@@ -502,10 +502,10 @@
     <string name="enable_10_bit_image_support">Включить поддержку 10-битных изображений</string>
     <string name="enable_10_bit_image_support_summary">Включение этой функции на некоторых моделях может привести к тому, что фото станет зеленым</string>
     <!--Gallery-->
-    <string name="GalleryWaterMark">WaterMark</string>
-    <string name="enable_hasselblad_watermark_editing">Enable Hasselblad watermark editing</string>
-    <string name="replace_oneplus_model_watermark">Replace OnePlus model watermark</string>
-    <string name="replace_oneplus_model_watermark_summary">When editing the watermark, [Shot On OnePlus] will be replaced with the customized model</string>
+    <string name="GalleryWaterMark">Водяной знак</string>
+    <string name="enable_hasselblad_watermark_editing">Включить стиль водяного знака Hasselblad</string>
+    <string name="replace_oneplus_model_watermark">Заменить водяной знак модели OnePlus</string>
+    <string name="replace_oneplus_model_watermark_summary">При редактировании водяного знака [Снято на OnePlus] будет заменено выбранной моделью</string>
     <!--OplusGames-->
     <string name="remove_root_check">Удалить определение игрового фильтра</string>
     <string name="remove_root_check_summary">Удалить обнаружение рута из игровых фильтров</string>
@@ -677,7 +677,7 @@
     <string name="log_save_failed">Лог не сохранён!</string>
     <string name="log_data_is_empty">Пустой лог!</string>
     <string name="log_no_data">Нет аномальных данных</string>
-    <string name="log_filter_title">Введите что фильтровать</string>
+    <string name="log_filter_title">Поиск по фильтру</string>
     <string name="log_filter_layout_hint">Например, имя пакета, и т.д.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
@@ -701,7 +701,7 @@
     <string name="common_words_right">Вправо</string>
     <string name="common_words_close">Отключено</string>
     <string name="common_words_open">Открыть</string>
-    <string name="common_words_share">Share</string>
+    <string name="common_words_share">Поделиться</string>
     <string name="common_words_add">Добавить</string>
     <string name="common_words_remove">Удалить</string>
     <string name="common_words_ignore">Игнорировать</string>

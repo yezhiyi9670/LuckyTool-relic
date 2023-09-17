@@ -21,11 +21,9 @@ object HookStatusBar : YukiBaseHooker() {
             loadHooker(HideInActiveSignalLabelsGen2x2)
         }
 
-        //com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView
-        //this.mBatteryIntegerLevelView = (TextView) findViewById(R.id.battery_integer_level);
-        //this.mBatteryDecimalLevelView = (TextView) findViewById(R.id.battery_decimal_level);
-        //updatePowerFormat setVisibility
-        //updateBatteryLevelView
+        //res/layout/bubble_expanded_view.xml
+        //<string name="bubble_close">关闭对话</string>
+        //<string name="open_app">进入应用</string>
 
     }
 }

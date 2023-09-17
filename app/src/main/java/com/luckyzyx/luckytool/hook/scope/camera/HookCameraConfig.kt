@@ -78,17 +78,28 @@ object HookCameraConfig : YukiBaseHooker() {
                 }
                 injectMember {
                     method {
+                        param { it[0] == StringClass }
+                        paramCount(1..2)
+                        returnType = StringClass
+                    }.all()
+                    afterHook {
+                        when (args().first().string()) {
+                            //哈苏水印样式 camera_slogan_hasselblad
+                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) result =
+                                "1"
+                        }
+                    }
+                }
+                injectMember {
+                    method {
                         param(StringClass)
                         returnType = ListClass
                     }.all()
                     afterHook {
-                        val type = safeOfNull { method.genericReturnType }?.typeName
+                        val type = safeOfNull { method.genericReturnType.typeName }
                             ?: return@afterHook
-                        if (type.contains("String").not()) return@afterHook
+                        if (type.contains(StringClass.name).not()) return@afterHook
                         when (args().first().string()) {
-                            //通用哈苏水印样式 camera_slogan_hasselblad
-                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad)
-                                result = listOf("1")
                             //Source FilterGroupManager 照片 / 人像 大师滤镜
                             "com.oplus.photo.master.filter.type.list",
                             "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter)
