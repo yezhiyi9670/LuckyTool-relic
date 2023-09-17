@@ -21,6 +21,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 强制显示内容推荐
 - [适配] 游戏助手Feature v8.18.0
 - [优化] 截屏Hook判断 C14
+- [添加] 相册哈苏水印编辑
 
 ### 1.0.17
 

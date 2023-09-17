@@ -18,6 +18,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookCamera
 import com.luckyzyx.luckytool.hook.hooker.HookCloudService
 import com.luckyzyx.luckytool.hook.hooker.HookDialogRelated
 import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
+import com.luckyzyx.luckytool.hook.hooker.HookGallery
 import com.luckyzyx.luckytool.hook.hooker.HookGesture
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLauncher
@@ -151,6 +152,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oneplus.camera", "com.oplus.camera") {
             loadHooker(HookCamera)
         }
+        //相册
+        loadApp("com.coloros.gallery3d", HookGallery)
         //主题商店
         loadApp("com.heytap.themestore", "com.oplus.themestore") {
             loadHooker(HookThemeStore)

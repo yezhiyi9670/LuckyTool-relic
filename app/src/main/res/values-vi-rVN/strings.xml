@@ -501,6 +501,11 @@
     <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
     <string name="enable_10_bit_image_support">Bật hỗ trợ hình ảnh 10 bit</string>
     <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
+    <!--Gallery-->
+    <string name="GalleryWaterMark">WaterMark</string>
+    <string name="enable_hasselblad_watermark_editing">Enable Hasselblad watermark editing</string>
+    <string name="replace_oneplus_model_watermark">Replace OnePlus model watermark</string>
+    <string name="replace_oneplus_model_watermark_summary">When editing the watermark, [Shot On OnePlus] will be replaced with the customized model</string>
     <!--OplusGames-->
     <string name="remove_root_check">Xóa giới hạn bộ lọc trò chơi</string>
     <string name="remove_root_check_summary">Xóa giới hạn phát hiện root cho bộ lọc trò chơi</string>

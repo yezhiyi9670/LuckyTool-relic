@@ -2776,6 +2776,41 @@ class Camera : BaseScopePreferenceFeagment() {
     override fun callOpenMenu() = requireActivity().openApp(scopes)
 }
 
+class OplusGallery : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.coloros.gallery3d")
+
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.GalleryWaterMark)
+                key = "GalleryWaterMark"
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_hasselblad_watermark_editing)
+                key = "enable_hasselblad_watermark_editing"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.replace_oneplus_model_watermark)
+                summary = getString(R.string.replace_oneplus_model_watermark_summary)
+                key = "replace_oneplus_model_watermark"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+        }
+    }
+
+    override fun isEnableRestartMenu(): Boolean = true
+    override fun isEnableOpenMenu(): Boolean = true
+    override fun callOpenMenu() = requireActivity().openApp(scopes)
+}
+
 class OplusGames : BaseScopePreferenceFeagment() {
     override val scopes = arrayOf("com.oplus.games", "com.oplus.cosa")
 

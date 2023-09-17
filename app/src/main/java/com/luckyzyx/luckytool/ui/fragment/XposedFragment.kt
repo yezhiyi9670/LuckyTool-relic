@@ -286,6 +286,20 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                 }
             })
             addPreference(Preference(context).apply {
+                key = "com.coloros.gallery3d"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.enable_hasselblad_watermark_editing))
+                isVisible = SDK >= A13 && context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusGallery, title)
+                    true
+                }
+            })
+            addPreference(Preference(context).apply {
                 key = "com.oplus.games"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource

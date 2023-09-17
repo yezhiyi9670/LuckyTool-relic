@@ -501,6 +501,11 @@
     <string name="enable_jiangwen_filter">启用姜文滤镜</string>
     <string name="enable_10_bit_image_support">启用10亿色影像支持</string>
     <string name="enable_10_bit_image_support_summary">部分机型启用此功能可能会导致照片变绿</string>
+    <!--Gallery-->
+    <string name="GalleryWaterMark">水印</string>
+    <string name="enable_hasselblad_watermark_editing">启用 Hasselbad 水印编辑</string>
+    <string name="replace_oneplus_model_watermark">替换 OnePlus 机型水印</string>
+    <string name="replace_oneplus_model_watermark_summary">编辑水印时, 将 [Shot On OnePlus] 替换为自定义机型</string>
     <!--OplusGames-->
     <string name="remove_root_check">移除游戏滤镜限制</string>
     <string name="remove_root_check_summary">移除游戏滤镜的Root检测限制</string>
