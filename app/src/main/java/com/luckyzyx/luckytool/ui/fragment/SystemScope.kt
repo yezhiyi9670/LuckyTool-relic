@@ -871,6 +871,20 @@ class StatusBarIcon : BaseScopePreferenceFeagment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.StatusBarSmallIconStatus)
+                key = "StatusBarSmallIconStatus"
+                isVisible = SDK <= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.status_bar_icon_vertical_center)
+                key = "status_bar_icon_vertical_center"
+                setDefaultValue(false)
+                isVisible = SDK <= A13
+                isIconSpaceReserved = false
+            })
         }
     }
 
