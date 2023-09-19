@@ -70,6 +70,8 @@ class ShowFPS : TileService() {
 
 class HighBrightness : TileService() {
     private var controller: IHighBrightnessController? = null
+    val key = "high_brightness_mode"
+
     override fun onStartListening() = startController()
 
     override fun onClick() {
@@ -77,13 +79,13 @@ class HighBrightness : TileService() {
             Tile.STATE_INACTIVE -> {
                 controller?.highBrightnessMode = true
                 putBoolean(SettingsPrefs, "high_brightness_mode", true)
-                dataChannel("com.android.systemui").put("high_brightness_mode", true)
+                dataChannel("com.android.systemui").put(key, true)
             }
 
             Tile.STATE_ACTIVE -> {
                 controller?.highBrightnessMode = false
                 putBoolean(SettingsPrefs, "high_brightness_mode", false)
-                dataChannel("com.android.systemui").put("high_brightness_mode", false)
+                dataChannel("com.android.systemui").put(key, false)
             }
 
             Tile.STATE_UNAVAILABLE -> {}
@@ -106,13 +108,15 @@ class HighBrightness : TileService() {
         else Tile.STATE_INACTIVE
         qsTile.updateTile()
         if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-            SettingsPrefs, "high_brightness_mode", false
+            SettingsPrefs, key, false
         )
     }
 }
 
 class GlobalDC : TileService() {
     private var controller: IGlobalDCController? = null
+    val key = "global_dc_mode"
+
     override fun onStartListening() = startController()
 
     override fun onClick() {
@@ -120,13 +124,13 @@ class GlobalDC : TileService() {
             Tile.STATE_INACTIVE -> {
                 controller?.globalDCMode = true
                 putBoolean(SettingsPrefs, "global_dc_mode", true)
-                dataChannel("com.android.systemui").put("global_dc_mode", true)
+                dataChannel("com.android.systemui").put(key, true)
             }
 
             Tile.STATE_ACTIVE -> {
                 controller?.globalDCMode = false
                 putBoolean(SettingsPrefs, "global_dc_mode", false)
-                dataChannel("com.android.systemui").put("global_dc_mode", false)
+                dataChannel("com.android.systemui").put(key, false)
             }
 
             Tile.STATE_UNAVAILABLE -> {}
@@ -149,13 +153,15 @@ class GlobalDC : TileService() {
         else Tile.STATE_INACTIVE
         qsTile.updateTile()
         if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-            SettingsPrefs, "global_dc_mode", false
+            SettingsPrefs, key, false
         )
     }
 }
 
 class TouchSamplingRate : TileService() {
     private var controller: ITouchPanelController? = null
+    val key = "touch_sampling_rate"
+
     override fun onStartListening() = startController()
 
     override fun onClick() {
@@ -163,13 +169,13 @@ class TouchSamplingRate : TileService() {
             Tile.STATE_INACTIVE -> {
                 controller?.touchMode = true
                 putBoolean(SettingsPrefs, "touch_sampling_rate", true)
-                dataChannel("com.android.systemui").put("touch_sampling_rate", true)
+                dataChannel("com.android.systemui").put(key, true)
             }
 
             Tile.STATE_ACTIVE -> {
                 controller?.touchMode = false
                 putBoolean(SettingsPrefs, "touch_sampling_rate", false)
-                dataChannel("com.android.systemui").put("touch_sampling_rate", false)
+                dataChannel("com.android.systemui").put(key, false)
             }
 
             Tile.STATE_UNAVAILABLE -> {}
@@ -192,7 +198,7 @@ class TouchSamplingRate : TileService() {
         else Tile.STATE_INACTIVE
         qsTile.updateTile()
         if (qsTile.state == Tile.STATE_UNAVAILABLE) putBoolean(
-            SettingsPrefs, "touch_sampling_rate", false
+            SettingsPrefs, key, false
         )
     }
 }

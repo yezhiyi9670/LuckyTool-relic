@@ -43,17 +43,9 @@ import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.BuildConfig
-import com.luckyzyx.luckytool.IGlobalDCController
-import com.luckyzyx.luckytool.IHighBrightnessController
-import com.luckyzyx.luckytool.IRefreshRateController
-import com.luckyzyx.luckytool.ITouchPanelController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
 import com.luckyzyx.luckytool.ui.activity.MainActivity
-import com.luckyzyx.luckytool.ui.service.GlobalDCControllerService
-import com.luckyzyx.luckytool.ui.service.HighBrightnessControllerService
-import com.luckyzyx.luckytool.ui.service.RefreshRateControllerService
-import com.luckyzyx.luckytool.ui.service.TouchPanelControllerService
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.topjohnwu.superuser.ipc.RootService
@@ -1009,49 +1001,36 @@ fun Context.bindRootService(
 
 /**
  * 调用自启功能
- * @receiver Context
  * @param bundle Bundle?
  */
-fun Context.callFunc(bundle: Bundle?) {
+fun callFunc(bundle: Bundle?) {
     scope {
-        bundle?.apply {
-            val tileAutoStart = getBoolean("tileAutoStart", false)
-            //自启功能相关
-            if (getBoolean("fps_auto", false)) {
-                val fpsMode = getInt("fps_mode", 1)
-                val fpsCur = getInt("fps_cur", -1)
-                if ((fpsMode == 2) && (fpsCur != -1)) {
-                    bindRootService(RefreshRateControllerService::class.java,
-                        { _: ComponentName?, iBinder: IBinder? ->
-                            val controller = IRefreshRateController.Stub.asInterface(iBinder)
-                            controller.setRefreshRateMode(fpsCur)
-                        })
+        withDefault {
+            bundle?.apply {
+                val command = ArrayList<String>()
+                val tileAutoStart = getBoolean("tileAutoStart", false)
+                //自启功能相关
+                if (getBoolean("fps_auto", false)) {
+                    val fpsMode = getInt("fps_mode", 1)
+                    val fpsCur = getInt("fps_cur", -1)
+                    if ((fpsMode == 2) && (fpsCur != -1)) {
+                        command.add("service call SurfaceFlinger 1035 i32 $fpsCur")
+                    }
                 }
-            }
-            //触控采样率相关
-            if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
-                bindRootService(TouchPanelControllerService::class.java,
-                    { _: ComponentName?, iBinder: IBinder? ->
-                        val controller = ITouchPanelController.Stub.asInterface(iBinder)
-                        if (controller.checkTouchMode()) controller.touchMode = true
-                    })
-            }
-            //高亮度模式
-            if (tileAutoStart && getBoolean("highBrightness", false)) {
-                bindRootService(HighBrightnessControllerService::class.java,
-                    { _: ComponentName?, iBinder: IBinder? ->
-                        val controller = IHighBrightnessController.Stub.asInterface(iBinder)
-                        if (controller.checkHighBrightnessMode()) controller.highBrightnessMode =
-                            true
-                    })
-            }
-            //全局DC模式
-            if (tileAutoStart && getBoolean("globalDC", false)) {
-                bindRootService(GlobalDCControllerService::class.java,
-                    { _: ComponentName?, iBinder: IBinder? ->
-                        val controller = IGlobalDCController.Stub.asInterface(iBinder)
-                        if (controller.checkGlobalDCMode()) controller.globalDCMode = true
-                    })
+                //触控采样率相关
+                if (tileAutoStart && getBoolean("touchSamplingRate", false)) {
+                    command.add("echo > /proc/touchpanel/game_switch_enable 1")
+                }
+                //高亮度模式
+                if (tileAutoStart && getBoolean("highBrightness", false)) {
+                    command.add("echo > /sys/kernel/oplus_display/hbm 1")
+                }
+                //全局DC模式
+                if (tileAutoStart && getBoolean("globalDC", false)) {
+                    command.add("echo > /sys/kernel/oppo_display/dimlayer_hbm 1")
+                    command.add("echo > /sys/kernel/oplus_display/dimlayer_hbm 1")
+                }
+                if (command.isNotEmpty()) ShellUtils.execCommand(command, true)
             }
         }
     }

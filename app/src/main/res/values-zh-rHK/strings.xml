@@ -221,7 +221,7 @@
     <string name="remove_control_center_networkwarn">移除控制中心底部安全警告信息</string>
     <string name="remove_control_center_networkwarn_dialog">移除对话框</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">移除安全警告信息与对话框</string>
-    <string name="remove_control_center_networkwarn_summary">连接VPN后，将在控制中心底部显示一条信息\n安装CA证书后，提示网络可能受到监控</string>
+    <string name="remove_control_center_networkwarn_summary">连接VPN后，将在控制中心底部显示一行文字\n安装CA证书后，提示网络可能受到监控</string>
     <string name="custom_control_center_background_transparency">自定义控制中心背景透明度</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">状态栏磁贴</string>

@@ -1079,7 +1079,10 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.remove_control_center_networkwarn)
-                summary = "%s\n" + getString(R.string.remove_control_center_networkwarn_summary)
+                summary = arraySummaryLine(
+                    "%s",
+                    getString(R.string.remove_control_center_networkwarn_summary)
+                )
                 key = "remove_control_center_networkwarn"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_networkwarn_entries)

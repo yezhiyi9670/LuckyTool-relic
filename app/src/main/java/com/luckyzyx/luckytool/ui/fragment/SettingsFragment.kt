@@ -40,6 +40,7 @@ import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.OtherPrefs
 import com.luckyzyx.luckytool.utils.SettingsPrefs
+import com.luckyzyx.luckytool.utils.arraySummaryLine
 import com.luckyzyx.luckytool.utils.backupAllPrefs
 import com.luckyzyx.luckytool.utils.base64Decode
 import com.luckyzyx.luckytool.utils.base64Encode
@@ -213,16 +214,17 @@ class SettingsFragment : ModulePreferenceFragment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.switch_autostart_function_caller)
-                summary =
-                    getString(R.string.common_words_current_mode) + ": %s\n\n" + getString(R.string.switch_autostart_function_caller_summary)
+                summary = arraySummaryLine(
+                    getString(R.string.common_words_current_mode) + ": %s\n",
+                    getString(R.string.switch_autostart_function_caller_summary)
+                )
                 key = "switch_autostart_function_caller"
                 entries = resources.getStringArray(R.array.switch_autostart_function_caller_entries)
                 entryValues = arrayOf("0", "1")
                 setDefaultValue("0")
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui")
-                        .put("switch_autostart_function_caller", newValue)
+                    context.dataChannel("com.android.systemui").put(key, newValue)
                     true
                 }
             })
