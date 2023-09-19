@@ -1020,7 +1020,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
                 summary = "%s"
                 key = "set_media_player_display_mode"
                 entries = resources.getStringArray(R.array.set_media_player_display_mode_entries)
-                entryValues = arrayOf("0", "1", "2")
+                entryValues = arrayOf("0", "1", "2", "3")
                 setDefaultValue("0")
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false

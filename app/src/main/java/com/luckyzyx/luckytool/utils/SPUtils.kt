@@ -11,6 +11,7 @@ import android.util.ArrayMap
 const val ModulePrefs: String = "ModulePrefs"
 const val SettingsPrefs: String = "SettingsPrefs"
 const val OtherPrefs: String = "OtherPrefs"
+const val DexkitPrefs: String = "DexkitPrefs"
 
 fun Context.putString(PrefsName: String?, key: String?, value: String?): Boolean = safeOfFalse {
     val prefs = getSharedPreferences(PrefsName, Context.MODE_WORLD_READABLE)

@@ -58,7 +58,8 @@ open class MainActivity : AppCompatActivity() {
         val noModulePrefs = prefs(ModulePrefs).isPreferencesAvailable.not()
         val noSettingPrefs = prefs(SettingsPrefs).isPreferencesAvailable.not()
         val noOtherPrefs = prefs(OtherPrefs).isPreferencesAvailable.not()
-        if (!isStart || noModulePrefs || noSettingPrefs || noOtherPrefs) {
+        val noDexkitPrefs = prefs(DexkitPrefs).isPreferencesAvailable.not()
+        if (!isStart || noModulePrefs || noSettingPrefs || noOtherPrefs || noDexkitPrefs) {
             MaterialAlertDialogBuilder(this).apply {
                 setCancelable(false)
                 setMessage(getString(R.string.unsupported_xposed, "v1.9.1"))

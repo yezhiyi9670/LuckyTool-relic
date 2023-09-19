@@ -15,7 +15,7 @@ import com.luckyzyx.luckytool.utils.safeOfNull
 object MediaPlayerPanel : YukiBaseHooker() {
     override fun onHook() {
         //媒体播放器显示模式
-        if (getOSVersionCode == 29) loadHooker(MediaPlayerDisplayModeC132)
+        if (getOSVersionCode >= 29) loadHooker(MediaPlayerDisplayModeC132)
         else loadHooker(MediaPlayerDisplayMode)
         //强制开启媒体切换按钮
         if (prefs(ModulePrefs).getBoolean("force_enable_media_toggle_button", false)) {

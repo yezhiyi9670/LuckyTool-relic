@@ -75,7 +75,6 @@ object MainHook : IYukiHookXposedInit {
     override fun onHook() = encase {
         if (prefs(ModulePrefs).getBoolean("enable_module", false).not()) return@encase
         if (prefs(SettingsPrefs).getBoolean("is_su", false).not()) return@encase
-        System.loadLibrary("dexkit")
         //系统框架
         loadSystem(HookAndroid)
 
@@ -180,7 +179,6 @@ object MainHook : IYukiHookXposedInit {
 
         //其他APP
         loadApp(
-            "com.east2d.everyimage",
             "com.ruet_cse_1503050.ragib.appbackup.pro",
             "ru.kslabs.ksweb",
             "com.dv.adm"

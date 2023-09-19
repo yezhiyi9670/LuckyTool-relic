@@ -30,9 +30,8 @@ object HookOplusGames : YukiBaseHooker() {
             loadHooker(CustomMediaPlayerSupport)
 
             //游戏滤镜-->Root检测
-            if (prefs(ModulePrefs).getBoolean("remove_root_check", false)) {
-                loadHooker(RemoveRootCheck)
-            }
+            loadHooker(RemoveRootCheck)
+
             //简洁页面
             if (prefs(ModulePrefs).getBoolean("remove_startup_animation", false)) {
                 loadHooker(RemoveStartupAnimation)

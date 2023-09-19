@@ -2,6 +2,7 @@
 
 package com.luckyzyx.luckytool.utils
 
+import android.annotation.SuppressLint
 import android.content.*
 import android.content.pm.PackageManager.*
 import android.content.res.Configuration
@@ -40,7 +41,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
+import com.drake.net.utils.withMain
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.progressindicator.LinearProgressIndicator
+import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
@@ -49,6 +53,7 @@ import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.topjohnwu.superuser.ipc.RootService
+import kotlinx.coroutines.Dispatchers
 import org.json.JSONObject
 import java.io.*
 import java.util.*
@@ -932,6 +937,36 @@ fun Context.exitModule() {
 }
 
 /**
+ * 重载作用域适配数据
+ * @param scopes Array<String>
+ */
+@SuppressLint("SetTextI18n")
+suspend fun Context.reloadScopeData(scopes: Array<String>) {
+    val dialog = MaterialAlertDialogBuilder(this@reloadScopeData, dialogCentered).apply {
+        setTitle("loading...")
+        setCancelable(false)
+        setView(R.layout.layout_reload_scope_dialog)
+    }.show()
+    val indicator = dialog.findViewById<LinearProgressIndicator>(R.id.reload_progress)?.apply {
+        max = scopes.size
+    }
+    val tv = dialog.findViewById<MaterialTextView>(R.id.reload_tv)
+    scopes.forEachIndexed { index, scope ->
+        try {
+            indicator?.progress = index
+            tv?.text = "Loading: $scope"
+            withDefault {
+                getAppVersion(scope)
+                DexkitUtils(this@reloadScopeData, scope).start()
+            }
+        } catch (e: Throwable) {
+            LogUtils.e("reloadAllScope", scope, "$e")
+        }
+    }
+    dialog.dismiss()
+}
+
+/**
  * 重启全部作用域
  * @receiver Context
  */
@@ -939,7 +974,6 @@ fun Context.restartAllScope() {
     val xposedScope = resources.getStringArray(R.array.xposed_scope)
     val commands = ArrayList<String>()
     for (scope in xposedScope) {
-        getAppVersion(scope)
         if (scope == "android") continue
         if (scope.contains("systemui")) {
             commands.add("kill -9 `pgrep systemui`")
@@ -951,7 +985,10 @@ fun Context.restartAllScope() {
     MaterialAlertDialogBuilder(this).apply {
         setMessage(getString(R.string.restart_scope_message))
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
-            scope { withDefault { ShellUtils.execCommand(commands, true) } }
+            scope(Dispatchers.Default) {
+                withMain { reloadScopeData(xposedScope) }
+                ShellUtils.execCommand(commands, true)
+            }
         }
         setNeutralButton(getString(android.R.string.cancel), null)
         show()
@@ -973,9 +1010,11 @@ fun Context.restartAllScope(scopes: Array<String>) {
         }
         commands.add("killall $scope")
         commands.add("am force-stop $scope")
-        getAppVersion(scope)
     }
-    scope { withDefault { ShellUtils.execCommand(commands, true) } }
+    scope(Dispatchers.Default) {
+        withMain { reloadScopeData(scopes) }
+        ShellUtils.execCommand(commands, true)
+    }
 }
 
 /**

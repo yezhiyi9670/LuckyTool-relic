@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -10,21 +9,41 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitPrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
 import org.luckypray.dexkit.DexKitBridge
+import org.luckypray.dexkit.query.ClassDataList
 
 object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
+    const val key = "replace_oneplus_model_watermark"
+
     override fun onHook() {
-        val apkPath = appInfo.sourceDir
-        val bridge = DexKitBridge.create(apkPath) ?: run {
-            loggerD(msg = "$packageName\nError -> ReplaceOnePlusModelWaterMark")
-            return
+        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
+        if (!isEnable) return
+
+        val clsName = prefs(DexkitPrefs).getString(key, "null")
+        //Source ConfigAbilityImpl
+        findClass(clsName).hook {
+            injectMember {
+                method {
+                    param(StringClass, BooleanType)
+                    returnType = BooleanClass
+                }
+                beforeHook {
+                    when (args().first().string()) {
+                        "is_oneplus_brand" -> resultFalse()
+                    }
+                }
+            }
         }
-        bridge.findClass {
+    }
+
+    fun searchDexkit(bridge: DexKitBridge?): ClassDataList? {
+        val result = bridge?.findClass {
             searchPackages = listOf("co", "ho", "jr", "qn", "ao", "nq", "hr", "es")
             matcher {
                 fields {
                     addForType(ContextClass.name)
-                    count = 3
                 }
                 methods {
                     add { name = "close";paramCount = 0 }
@@ -48,21 +67,7 @@ object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
                     }
                 }
             }
-        }.forEach {
-            findClass(it.className).hook {
-                injectMember {
-                    method {
-                        param(StringClass, BooleanType)
-                        returnType = BooleanClass
-                    }
-                    beforeHook {
-                        when (args().first().string()) {
-                            "is_oneplus_brand" -> resultFalse()
-                        }
-                    }
-                }
-            }
         }
-        bridge.close()
+        return result
     }
 }

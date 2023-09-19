@@ -2,33 +2,54 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import android.os.Bundle
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitPrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import org.luckypray.dexkit.DexKitBridge
+import org.luckypray.dexkit.query.ClassDataList
 
 object RemoveRootCheck : YukiBaseHooker() {
+    const val key = "remove_root_check"
+
     override fun onHook() {
         //Source COSASDKManager
         //Search getSupportCoolEx new Bundle -> Class
         //Search getFeature -> dynamic_feature_cool_ex
         //isSafe:null; -> isSafe:0
-        searchClass {
-            from(
-                "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
-                /*"yp",*/ "hr", "br", "ir"
-            ).absolute()
-            field { type = StringClass }.count(5..6)
-            field { type = BooleanType }.count(2..4)
-            field { type = IntType }.count(1..2)
-            method { name = "clear";emptyParam() }.count(1)
-            method { emptyParam();returnType = BundleClass }.count(1)
-        }.get()?.hook {
+        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
+        if (!isEnable) return
+
+        val clsName = prefs(DexkitPrefs).getString(key, "null")
+        //Source OtherSystemStorage
+        findClass(clsName).hook {
             injectMember {
                 method { emptyParam();returnType = BundleClass }
                 afterHook { result<Bundle>()?.putInt("isSafe", 0) }
             }
-        } ?: loggerD(msg = "$packageName\nError -> RemoveRootCheck")
+        }
+    }
+
+    fun searchDexkit(bridge: DexKitBridge?): ClassDataList? {
+        val result = bridge?.findClass {
+            searchPackages = listOf(
+                "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
+                "yp", "hr", "br", "ir"
+            )
+            matcher {
+                fields {
+                    addForType(StringClass.name)
+                    addForType(BooleanType.name)
+                    addForType(IntType.name)
+                }
+                methods {
+                    add { name = "clear";paramCount = 0 }
+                    add { paramCount = 0;returnType = BundleClass.name }
+                }
+            }
+        }
+        return result
     }
 }
