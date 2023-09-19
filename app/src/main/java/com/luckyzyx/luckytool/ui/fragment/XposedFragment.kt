@@ -397,22 +397,6 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                 }
             })
             addPreference(Preference(context).apply {
-                key = "com.east2d.everyimage"
-                setPrefsIconRes(key) { resource, show ->
-                    icon = resource
-                    isIconSpaceReserved = show
-                }
-                title = context.getAppLabel(key)
-                summary = arraySummaryDot(
-                    getString(R.string.skip_startup_page), getString(R.string.vip_download)
-                )
-                isVisible = context.checkPackName(key)
-                setOnPreferenceClickListener {
-                    navigatePage(R.id.action_nav_xposed_to_everyimage, title)
-                    true
-                }
-            })
-            addPreference(Preference(context).apply {
                 key = "com.ruet_cse_1503050.ragib.appbackup.pro"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
