@@ -2806,8 +2806,8 @@ class OplusGallery : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.enable_hasselblad_watermark_editing)
-                key = "enable_hasselblad_watermark_editing"
+                title = getString(R.string.enable_watermark_editing)
+                key = "enable_watermark_editing"
                 setDefaultValue(false)
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false

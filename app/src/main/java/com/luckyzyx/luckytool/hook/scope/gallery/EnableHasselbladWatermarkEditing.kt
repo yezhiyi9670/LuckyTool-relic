@@ -14,7 +14,7 @@ object EnableHasselbladWatermarkEditing : YukiBaseHooker() {
     override fun onHook() {
         //Source OtherSystemStorage
         searchClass {
-            from("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or").absolute()
+            from("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or", "ls").absolute()
             field { type = ContextClass }.count(1)
             method { returnType = IntClass }.count(1)
             method { returnType = LongClass }.count(1)
@@ -35,6 +35,8 @@ object EnableHasselbladWatermarkEditing : YukiBaseHooker() {
                         configNode.contains("feature_is_support_hassel_watermark") -> resultTrue()
                         //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
                         configNode.contains("feature_is_support_photo_editor_watermark") -> resultTrue()
+                        //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
+                        configNode.contains("feature_is_support_privacy_watermark") -> resultTrue()
                     }
                 }
             }

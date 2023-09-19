@@ -21,7 +21,6 @@ object CustomModelWaterMark : YukiBaseHooker() {
     }
 
     private object HookCameraModelWaterMark : YukiBaseHooker() {
-        @Suppress("unused")
         override fun onHook() {
             val waterMark = prefs(ModulePrefs).getString("custom_model_watermark", "None")
             if (waterMark.isBlank() || waterMark == "None") return
@@ -33,8 +32,8 @@ object CustomModelWaterMark : YukiBaseHooker() {
                 field { type = StringClass }.count(1)
                 constructor().none()
                 method().count(2..4)
-                method { returnType = StringClass }.count(2..4)
                 method { emptyParam();returnType = StringClass }.count(2)
+                method { returnType = StringClass }.count(2..4)
             }.get()?.hook {
                 injectMember {
                     method { emptyParam();returnType = StringClass }.all()

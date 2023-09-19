@@ -503,7 +503,7 @@
     <string name="enable_10_bit_image_support_summary">Включение этой функции на некоторых моделях может привести к тому, что фото станет зеленым</string>
     <!--Gallery-->
     <string name="GalleryWaterMark">Водяной знак</string>
-    <string name="enable_hasselblad_watermark_editing">Включить стиль водяного знака Hasselblad</string>
+    <string name="enable_watermark_editing">Enable watermark editing</string>
     <string name="replace_oneplus_model_watermark">Заменить водяной знак модели OnePlus</string>
     <string name="replace_oneplus_model_watermark_summary">При редактировании водяного знака [Снято на OnePlus] будет заменено выбранной моделью</string>
     <!--OplusGames-->

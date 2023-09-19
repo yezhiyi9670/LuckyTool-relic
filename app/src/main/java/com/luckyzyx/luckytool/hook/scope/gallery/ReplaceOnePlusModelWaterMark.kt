@@ -10,32 +10,59 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import org.luckypray.dexkit.DexKitBridge
 
 object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
     override fun onHook() {
-        //Source ConfigAbilityImpl
-        searchClass {
-            from("co", "ho", "jr", "qn", "ao", "nq", "hr").absolute()
-            field { type = ContextClass }.count(1)
-            method { name = "close";emptyParam() }.count(1)
-            method { name = "contains";param(StringClass) }.count(1)
-            method { returnType = AutoCloseable::class.java }.count(1)
-            method { param(StringClass, IntType);returnType = IntClass }.count(1)
-            method { param(StringClass, LongType);returnType = LongClass }.count(1)
-            method { param(StringClass, StringClass);returnType = StringClass }.count(1)
-            method { param(StringClass, BooleanType);returnType = BooleanClass }.count(1)
-        }.get()?.hook {
-            injectMember {
-                method {
-                    param(StringClass, BooleanType)
-                    returnType = BooleanClass
+        val apkPath = appInfo.sourceDir
+        val bridge = DexKitBridge.create(apkPath) ?: run {
+            loggerD(msg = "$packageName\nError -> ReplaceOnePlusModelWaterMark")
+            return
+        }
+        bridge.findClass {
+            searchPackages = listOf("co", "ho", "jr", "qn", "ao", "nq", "hr", "es")
+            matcher {
+                fields {
+                    addForType(ContextClass.name)
+                    count = 3
                 }
-                beforeHook {
-                    when (args().first().string()) {
-                        "is_oneplus_brand" -> resultFalse()
+                methods {
+                    add { name = "close";paramCount = 0 }
+                    add { name = "contains";paramTypes = listOf(StringClass.name) }
+                    add { returnType = AutoCloseable::class.java.name }
+                    add {
+                        paramTypes = listOf(StringClass.name, IntType.name)
+                        returnType = IntClass.name
+                    }
+                    add {
+                        paramTypes = listOf(StringClass.name, LongType.name)
+                        returnType = LongClass.name
+                    }
+                    add {
+                        paramTypes = listOf(StringClass.name, StringClass.name)
+                        returnType = StringClass.name
+                    }
+                    add {
+                        paramTypes = listOf(StringClass.name, BooleanType.name)
+                        returnType = BooleanClass.name
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> ReplaceOnePlusModelWaterMark")
+        }.forEach {
+            findClass(it.className).hook {
+                injectMember {
+                    method {
+                        param(StringClass, BooleanType)
+                        returnType = BooleanClass
+                    }
+                    beforeHook {
+                        when (args().first().string()) {
+                            "is_oneplus_brand" -> resultFalse()
+                        }
+                    }
+                }
+            }
+        }
+        bridge.close()
     }
 }

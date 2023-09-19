@@ -567,7 +567,7 @@
     
     <!--Gallery-->
     <string name="GalleryWaterMark">WaterMark</string>
-    <string name="enable_hasselblad_watermark_editing">Enable Hasselblad watermark editing</string>
+    <string name="enable_watermark_editing">Enable watermark editing</string>
     <string name="replace_oneplus_model_watermark">Replace OnePlus model watermark</string>
     <string name="replace_oneplus_model_watermark_summary">When editing the watermark, [Shot On OnePlus] will be replaced with the customized model</string>
     

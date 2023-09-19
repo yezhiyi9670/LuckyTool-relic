@@ -292,7 +292,10 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     isIconSpaceReserved = show
                 }
                 title = context.getAppLabel(key)
-                summary = arraySummaryDot(getString(R.string.enable_hasselblad_watermark_editing))
+                summary = arraySummaryDot(
+                    getString(R.string.enable_watermark_editing),
+                    getString(R.string.replace_oneplus_model_watermark)
+                )
                 isVisible = SDK >= A13 && context.checkPackName(key)
                 setOnPreferenceClickListener {
                     navigatePage(R.id.action_nav_function_to_oplusGallery, title)

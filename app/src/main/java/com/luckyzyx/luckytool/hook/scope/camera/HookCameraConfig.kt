@@ -26,15 +26,8 @@ object HookCameraConfig : YukiBaseHooker() {
                 "com.oplus.camera.configure.CameraConfig" //C13
             ).hook {
                 injectMember {
-                    method {
-                        name = "getConfigBooleanValue"
-                        paramCount = 1
-                    }
+                    method { name = "getConfigBooleanValue";paramCount = 1 }
                     afterHook {
-                        //hasselblad_watermark_logo
-                        //hasselblad_watermark_logo_picture
-                        //ic_hasselblad_watermark_logo_picture
-
                         when (args().first().string()) {
                             //<string name="camera_heic_encode_10bits_title">10 亿色影像</string>
                             //OptionKey PRE_KEY_10BIT_HEIC_ENCODE pref_10bits_heic_encode_key
@@ -85,8 +78,9 @@ object HookCameraConfig : YukiBaseHooker() {
                     afterHook {
                         when (args().first().string()) {
                             //哈苏水印样式 camera_slogan_hasselblad
-                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) result =
-                                "1"
+                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) {
+                                if (result<String>()?.toIntOrNull() != null) result = "1"
+                            }
                         }
                     }
                 }

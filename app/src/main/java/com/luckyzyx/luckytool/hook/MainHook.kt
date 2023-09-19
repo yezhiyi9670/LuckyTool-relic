@@ -75,6 +75,7 @@ object MainHook : IYukiHookXposedInit {
     override fun onHook() = encase {
         if (prefs(ModulePrefs).getBoolean("enable_module", false).not()) return@encase
         if (prefs(SettingsPrefs).getBoolean("is_su", false).not()) return@encase
+        System.loadLibrary("dexkit")
         //系统框架
         loadSystem(HookAndroid)
 
