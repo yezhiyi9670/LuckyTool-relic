@@ -32,21 +32,24 @@ object RemoveRootCheck : YukiBaseHooker() {
         }
     }
 
-    fun searchDexkit(bridge: DexKitBridge?): ClassDataList? {
-        val result = bridge?.findClass {
-            searchPackages = listOf(
-                "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
-                "yp", "hr", "br", "ir"
-            )
-            matcher {
-                fields {
-                    addForType(StringClass.name)
-                    addForType(BooleanType.name)
-                    addForType(IntType.name)
-                }
-                methods {
-                    add { name = "clear";paramCount = 0 }
-                    add { paramCount = 0;returnType = BundleClass.name }
+    fun searchDexkit(appPath: String): ClassDataList {
+        var result = ClassDataList()
+        DexKitBridge.create(appPath)?.use { bridge ->
+            result = bridge.findClass {
+                searchPackages = listOf(
+                    "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
+                    "yp", "hr", "br", "ir"
+                )
+                matcher {
+                    fields {
+                        addForType(StringClass.name)
+                        addForType(BooleanType.name)
+                        addForType(IntType.name)
+                    }
+                    methods {
+                        add { name = "clear";paramCount = 0 }
+                        add { paramCount = 0;returnType = BundleClass.name }
+                    }
                 }
             }
         }

@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.utils
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import com.luckyzyx.luckytool.hook.scope.gallery.EnableWatermarkEditing
 import com.luckyzyx.luckytool.hook.scope.gallery.ReplaceOnePlusModelWaterMark
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
 import org.luckypray.dexkit.DexKitBridge
@@ -20,26 +19,27 @@ class DexkitUtils(val context: Context, val packName: String) {
         appPath = appInfo.sourceDir
     }
 
-    fun start() {
-        when (packName) {
+    fun start(): String {
+        val result = when (packName) {
             "com.oplus.games" -> {
-                bridge = create(packName)
-                RemoveRootCheck.apply {
-                    searchDexkit(bridge).printValue("RemoveRootCheck", key)
-                }
+                arraySummaryLine(
+                    RemoveRootCheck.let {
+                        it.searchDexkit(appPath).printValue("RemoveRootCheck", it.key)
+                    }
+                )
             }
 
             "com.coloros.gallery3d" -> {
-                bridge = create(packName)
-                EnableWatermarkEditing.apply {
-                    searchDexkit(bridge).printValue("EnableWatermarkEditing", key)
-                }
-                ReplaceOnePlusModelWaterMark.apply {
-                    searchDexkit(bridge).printValue("ReplaceOnePlusModelWaterMark", key)
-                }
+                arraySummaryLine(
+                    ReplaceOnePlusModelWaterMark.let {
+                        it.searchDexkit(appPath).printValue("ReplaceOnePlusModelWaterMark", it.key)
+                    }
+                )
             }
+
+            else -> ""
         }
-        bridge?.close()
+        return result
     }
 
     /**
@@ -48,13 +48,8 @@ class DexkitUtils(val context: Context, val packName: String) {
      * @return DexKitBridge?
      */
     fun create(tag: String): DexKitBridge? {
-        return try {
-            DexKitBridge.create(appPath) ?: kotlin.run {
-                LogUtils.e(tag, "create", "DexKitBridge.create() failed")
-                null
-            }
-        } catch (e: Throwable) {
-            LogUtils.e(tag, "create catch", "DexKitBridge.create() failed")
+        return DexKitBridge.create(appPath) ?: run {
+            LogUtils.e(tag, "create", "DexKitBridge.create() failed")
             null
         }
     }
@@ -65,10 +60,14 @@ class DexkitUtils(val context: Context, val packName: String) {
      * @param tag String
      * @param key String
      */
-    fun ClassDataList?.printValue(tag: String, key: String) {
-        if (isNullOrEmpty()) LogUtils.e(tag, "searchDexkit", "ClassDataList isNullOrEmpty")
-        else if (size != 1) {
-            LogUtils.e(tag, "searchDexkit", "findClass size == $size")
+    fun ClassDataList.printValue(tag: String, key: String): String {
+        var msg = ""
+        if (isNullOrEmpty()) {
+            msg = "$tag -> ClassDataList isNullOrEmpty"
+            LogUtils.e(tag, "searchDexkit", msg)
+        } else if (size != 1) {
+            msg = "$tag -> findClass size == $size"
+            LogUtils.e(tag, "searchDexkit", msg)
             forEachIndexed { index, classData ->
                 LogUtils.d(tag, "searchDexkit", "$index -> ${classData.className}")
             }
@@ -76,5 +75,6 @@ class DexkitUtils(val context: Context, val packName: String) {
             context.putString(DexkitPrefs, key, first().className)
             LogUtils.d(tag, "searchDexkit", "findClass ${first().className}")
         }
+        return msg
     }
 }

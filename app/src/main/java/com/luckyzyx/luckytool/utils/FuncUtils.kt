@@ -35,6 +35,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toBitmapOrNull
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
@@ -689,9 +690,10 @@ fun Preference.fixIconSize(icon: Drawable?): Drawable? {
  * @param string Array<out String>
  * @return String
  */
-fun arraySummaryDot(vararg string: String): String {
+fun arraySummaryDot(vararg string: String?): String {
     var res = ""
     string.forEachIndexed { index, s ->
+        if (s.isNullOrBlank()) return@forEachIndexed
         res += s
         if (index != string.lastIndex) res += ","
     }
@@ -703,9 +705,10 @@ fun arraySummaryDot(vararg string: String): String {
  * @param string Array<out String>
  * @return String
  */
-fun arraySummaryLine(vararg string: String): String {
+fun arraySummaryLine(vararg string: String?): String {
     var res = ""
     string.forEachIndexed { index, s ->
+        if (s.isNullOrBlank()) return@forEachIndexed
         res += s
         if (index != string.lastIndex) res += "\n"
     }
@@ -942,28 +945,37 @@ fun Context.exitModule() {
  */
 @SuppressLint("SetTextI18n")
 suspend fun Context.reloadScopeData(scopes: Array<String>) {
+    var eTv: MaterialTextView? = null
     val dialog = MaterialAlertDialogBuilder(this@reloadScopeData, dialogCentered).apply {
-        setTitle("loading...")
+        setTitle("Loading Scopes")
         setCancelable(false)
         setView(R.layout.layout_reload_scope_dialog)
+        setNeutralButton(R.string.common_words_ignore, null)
+        setPositiveButton(android.R.string.copy) { _: DialogInterface, _: Int ->
+            if (eTv?.text?.isBlank() == false) copyStr(eTv?.text!!)
+        }
     }.show()
     val indicator = dialog.findViewById<LinearProgressIndicator>(R.id.reload_progress)?.apply {
         max = scopes.size
     }
     val tv = dialog.findViewById<MaterialTextView>(R.id.reload_tv)
+    eTv = dialog.findViewById(R.id.reload_error)
     scopes.forEachIndexed { index, scope ->
         try {
             indicator?.progress = index
             tv?.text = "Loading: $scope"
-            withDefault {
+            val e = withDefault {
                 getAppVersion(scope)
                 DexkitUtils(this@reloadScopeData, scope).start()
             }
+            if (e.isNotBlank()) eTv?.text = arraySummaryLine((eTv?.text as String?), e)
         } catch (e: Throwable) {
             LogUtils.e("reloadAllScope", scope, "$e")
         }
     }
-    dialog.dismiss()
+    indicator?.isVisible = false
+    tv?.isVisible = false
+    if (eTv != null && eTv.text.isBlank()) dialog.dismiss()
 }
 
 /**
