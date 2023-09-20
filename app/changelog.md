@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.19_beta
+
+- [适配] 设置Feature v13.0.5(9dfae6f)
+
 ### 1.0.18
 
 - [修复] 修复大师滤镜Hook异常
