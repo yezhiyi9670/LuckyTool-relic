@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.18_beta
+### 1.0.18
 
 - [修复] 修复大师滤镜Hook异常
 - [更改] 更改相机水印字数限制方案
@@ -25,6 +25,26 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [恢复] 状态栏图标垂直居中
 - [适配] 相册 v14.3.1(dc2aad2)
 - [优化] Dexkit搜索逻辑
+- [Fix] Fixed master filter Hook exception
+- [Change] Change camera watermark character limit scheme
+- [Optimize] Adjust the prompt for failed update detection
+- [Optimize] Rewrite tile reflection logic and optimize control center lag
+- [Optimize] Rewrite forced refresh rate reflection logic
+- [Fix] The number of status bar tile probability rows is abnormal
+- [Remove] Force display of media player
+- [Add] Set media player display mode
+- [Fix] Media player display mode C13.2
+- [Fix] Forced refresh rate reflection parameter C14
+- [Add] Add share button to log page
+- [Add] Allow disabling system apps
+- [Add] Force display of disabled app manager
+- [Add] Forced display of content recommendations
+- [Fix] Game Assistant Feature v8.18.0
+- [Optimize] Screenshot adaptation version judgment C14
+- [Add] Album watermark editing
+- [Restore] Status bar icon vertically centered
+- [Fix] Photo Album v14.3.1(dc2aad2)
+- [Optimize] Dexkit search logic
 
 ### 1.0.17
 

@@ -966,7 +966,7 @@ suspend fun Context.reloadScopeData(scopes: Array<String>) {
             tv?.text = "Loading: $scope"
             val e = withDefault {
                 getAppVersion(scope)
-                DexkitUtils(this@reloadScopeData, scope).start()
+                DexkitUtils.start(this@reloadScopeData, scope)
             }
             if (e.isNotBlank()) eTv?.text = arraySummaryLine((eTv?.text as String?), e)
         } catch (e: Throwable) {

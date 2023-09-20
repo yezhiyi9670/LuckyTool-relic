@@ -221,7 +221,7 @@
     <string name="remove_control_center_networkwarn">Удалить сообщение безопасности в нижней части центра управления</string>
     <string name="remove_control_center_networkwarn_dialog">Удалить диалог</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Удалить предупреждение системы безопасности и диалоги</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, A line of text will appear at the bottom of Control Center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <string name="remove_control_center_networkwarn_summary">После подключения к VPN в нижней части центра управления появится сообщение\nПосле установки сертификата CA сеть можно будет мониторить</string>
     <string name="custom_control_center_background_transparency">Прозрачность фона центра управления</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Плитки строки состояния</string>
@@ -503,7 +503,7 @@
     <string name="enable_10_bit_image_support_summary">Включение этой функции на некоторых моделях может привести к тому, что фото станет зеленым</string>
     <!--Gallery-->
     <string name="GalleryWaterMark">Водяной знак</string>
-    <string name="enable_watermark_editing">Enable watermark editing</string>
+    <string name="enable_watermark_editing">Включить изменение водяного знака</string>
     <string name="replace_oneplus_model_watermark">Заменить водяной знак модели OnePlus</string>
     <string name="replace_oneplus_model_watermark_summary">При редактировании водяного знака [Снято на OnePlus] будет заменено выбранной моделью</string>
     <!--OplusGames-->

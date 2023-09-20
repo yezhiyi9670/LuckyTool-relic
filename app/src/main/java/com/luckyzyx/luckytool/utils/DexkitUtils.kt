@@ -1,65 +1,25 @@
 package com.luckyzyx.luckytool.utils
 
 import android.content.Context
-import android.content.pm.ApplicationInfo
-import com.luckyzyx.luckytool.hook.scope.gallery.EnableWatermarkEditing
-import com.luckyzyx.luckytool.hook.scope.gallery.ReplaceOnePlusModelWaterMark
-import com.luckyzyx.luckytool.hook.scope.oplusgames.CompetitionModeSound
-import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
-import org.luckypray.dexkit.DexKitBridge
+import com.luckyzyx.luckytool.hook.dexkit.OplusGallery
+import com.luckyzyx.luckytool.hook.dexkit.OplusGame
 import org.luckypray.dexkit.query.ClassDataList
 
 @Suppress("unused", "MemberVisibilityCanBePrivate")
-class DexkitUtils(val context: Context, val packName: String) {
-    var appInfo: ApplicationInfo
-    var appPath: String
-    var bridge: DexKitBridge? = null
+object DexkitUtils {
 
     init {
         System.loadLibrary("dexkit")
-        appInfo = PackageUtils(context.packageManager).getApplicationInfo(packName, 0)
-        appPath = appInfo.sourceDir
     }
 
-    fun start(): String {
+    fun start(context: Context, packName: String): String {
+        val appInfo = PackageUtils(context.packageManager).getApplicationInfo(packName, 0)
         val result = when (packName) {
-            "com.oplus.games" -> {
-                arraySummaryLine(
-                    RemoveRootCheck.let {
-                        it.searchDexkit(appPath).printValue("RemoveRootCheck", it.key)
-                    },
-                    CompetitionModeSound.let {
-                        it.searchDexkit(appPath).printValue("CompetitionModeSound", it.key)
-                    }
-                )
-            }
-
-            "com.coloros.gallery3d" -> {
-                arraySummaryLine(
-                    EnableWatermarkEditing.let {
-                        it.searchDexkit(appPath).printValue("EnableWatermarkEditing", it.key)
-                    },
-                    ReplaceOnePlusModelWaterMark.let {
-                        it.searchDexkit(appPath).printValue("ReplaceOnePlusModelWaterMark", it.key)
-                    }
-                )
-            }
-
+            "com.oplus.games" -> OplusGame.get(context, appInfo.sourceDir)
+            "com.coloros.gallery3d" -> OplusGallery.get(context, appInfo.sourceDir)
             else -> ""
         }
         return result
-    }
-
-    /**
-     * 创建Dexkit实例
-     * @param tag String
-     * @return DexKitBridge?
-     */
-    fun create(tag: String): DexKitBridge? {
-        return DexKitBridge.create(appPath) ?: run {
-            LogUtils.e(tag, "create", "DexKitBridge.create() failed")
-            null
-        }
     }
 
     /**
@@ -68,10 +28,10 @@ class DexkitUtils(val context: Context, val packName: String) {
      * @param tag String
      * @param key String
      */
-    fun ClassDataList.printValue(tag: String, key: String): String {
+    fun ClassDataList.printValue(context: Context, tag: String, key: String): String {
         val msg: String
         if (isNullOrEmpty()) {
-            msg = "$tag -> ClassDataList isNullOrEmpty"
+            msg = "$tag -> findClass isNullOrEmpty"
             LogUtils.e(tag, "searchDexkit", msg)
         } else if (size != 1) {
             msg = "$tag -> findClass size == $size"
