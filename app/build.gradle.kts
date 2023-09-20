@@ -98,7 +98,7 @@ dependencies {
 //    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 
     //Dexkit
-    implementation("org.luckypray:dexkit:2.0.0-rc2")
+    implementation("org.luckypray:dexkit:2.0.0-rc3")
 
     //Material主题
     implementation("com.google.android.material:material:1.9.0")

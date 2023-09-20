@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.defined.VagueType
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -51,10 +52,9 @@ object EnableWatermarkEditing : YukiBaseHooker() {
             result = bridge.findClass {
                 searchPackages = listOf("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or", "ls")
                 matcher {
-//                    fields {
-//                        addForType(ContextClass.name)
-//                        addForName(Lazy::class.java.name)
-//                    }
+                    fields {
+                        addForType(ContextClass.name)
+                    }
                     methods {
                         add { paramCount(2);returnType(IntClass.name) }
                         add { paramCount(2);returnType(LongClass.name) }
