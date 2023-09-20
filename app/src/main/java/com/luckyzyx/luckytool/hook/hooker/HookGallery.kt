@@ -12,9 +12,7 @@ object HookGallery : YukiBaseHooker() {
         if (appSet[1].toIntOrNull()?.let { it < 13005000 } == true) return
 
         //启用哈苏水印编辑
-        if (prefs(ModulePrefs).getBoolean("enable_watermark_editing", false)) {
-            loadHooker(EnableWatermarkEditing)
-        }
+        loadHooker(EnableWatermarkEditing)
 
         //替换OnePlus机型水印
         loadHooker(ReplaceOnePlusModelWaterMark)

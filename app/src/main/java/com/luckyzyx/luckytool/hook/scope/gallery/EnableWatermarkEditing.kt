@@ -1,27 +1,29 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
-import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.defined.VagueType
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntClass
 import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitPrefs
+import com.luckyzyx.luckytool.utils.ModulePrefs
+import org.luckypray.dexkit.DexKitBridge
+import org.luckypray.dexkit.query.ClassDataList
 
 object EnableWatermarkEditing : YukiBaseHooker() {
+    const val key = "enable_watermark_editing"
+
     override fun onHook() {
+        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
+        if (!isEnable) return
+
+        val clsName = prefs(DexkitPrefs).getString(key, "null")
+
         //Source OtherSystemStorage
-        searchClass {
-            from("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or", "ls").absolute()
-            field { type = ContextClass }.count(1)
-            method { returnType = IntClass }.count(1)
-            method { returnType = LongClass }.count(1)
-            method { returnType = BooleanClass }.count(1)
-            method { returnType = StringClass }.count(1..2)
-            method { returnType = BooleanType }.count(5..7)
-        }.get()?.hook {
+        findClass(clsName).hook {
             injectMember {
                 method {
                     param(VagueType, BooleanType)
@@ -40,6 +42,31 @@ object EnableWatermarkEditing : YukiBaseHooker() {
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> EnableHasselbladWatermarkEditing")
+        }
+    }
+
+    fun searchDexkit(appPath: String): ClassDataList {
+        var result = ClassDataList()
+        DexKitBridge.create(appPath)?.use { bridge ->
+            result = bridge.findClass {
+                searchPackages = listOf("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or", "ls")
+                matcher {
+//                    fields {
+//                        addForType(ContextClass.name)
+//                        addForName(Lazy::class.java.name)
+//                    }
+                    methods {
+                        add { paramCount(2);returnType(IntClass.name) }
+                        add { paramCount(2);returnType(LongClass.name) }
+                        add { paramCount(2);returnType(BooleanClass.name) }
+                        add { paramCount(2);returnType(StringClass.name) }
+                        add { paramCount(2);returnType(UnitType.name) }
+                        add { paramCount(0);returnType(BooleanType.name) }
+                        add { paramCount(4);returnType(BooleanType.name) }
+                    }
+                }
+            }
+        }
+        return result
     }
 }

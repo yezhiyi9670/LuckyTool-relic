@@ -2,11 +2,11 @@ package com.luckyzyx.luckytool.hook.hooker
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.oplusgames.CloudConditionFeature
+import com.luckyzyx.luckytool.hook.scope.oplusgames.CompetitionModeSound
 import com.luckyzyx.luckytool.hook.scope.oplusgames.CustomMediaPlayerSupport
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableDeveloperPage
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableSupportCompetitionMode
 import com.luckyzyx.luckytool.hook.scope.oplusgames.EnableXModeFeature
-import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveCompetitionModeSound
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveGameAssistantTemperatureDetection
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveRootCheck
 import com.luckyzyx.luckytool.hook.scope.oplusgames.RemoveSomeVipLimit
@@ -49,9 +49,8 @@ object HookOplusGames : YukiBaseHooker() {
                 loadHooker(EnableSupportCompetitionMode)
             }
             //移除赛事模式音效
-            if (prefs(ModulePrefs).getBoolean("remove_competition_mode_sound", false)) {
-                loadHooker(RemoveCompetitionModeSound)
-            }
+            loadHooker(CompetitionModeSound)
+
             //移除游戏助手福利页面
             if (prefs(ModulePrefs).getBoolean("remove_welfare_page", false)) {
                 loadHooker(RemoveWelfarePage)
