@@ -2,7 +2,6 @@
 
 package com.luckyzyx.luckytool.utils
 
-import android.annotation.SuppressLint
 import android.content.*
 import android.content.pm.PackageManager.*
 import android.content.res.Configuration
@@ -35,17 +34,13 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toBitmapOrNull
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
-import com.drake.net.utils.withMain
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.factory.current
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
@@ -940,45 +935,6 @@ fun Context.exitModule() {
 }
 
 /**
- * 重载作用域适配数据
- * @param scopes Array<String>
- */
-@SuppressLint("SetTextI18n")
-suspend fun Context.reloadScopeData(scopes: Array<String>) {
-    var eTv: MaterialTextView? = null
-    val dialog = MaterialAlertDialogBuilder(this@reloadScopeData, dialogCentered).apply {
-        setTitle("Loading Scopes")
-        setCancelable(false)
-        setView(R.layout.layout_reload_scope_dialog)
-        setNeutralButton(R.string.common_words_ignore, null)
-        setPositiveButton(android.R.string.copy) { _: DialogInterface, _: Int ->
-            if (eTv?.text?.isBlank() == false) copyStr(eTv?.text!!)
-        }
-    }.show()
-    val indicator = dialog.findViewById<LinearProgressIndicator>(R.id.reload_progress)?.apply {
-        max = scopes.size
-    }
-    val tv = dialog.findViewById<MaterialTextView>(R.id.reload_tv)
-    eTv = dialog.findViewById(R.id.reload_error)
-    scopes.forEachIndexed { index, scope ->
-        try {
-            indicator?.progress = index
-            tv?.text = "Loading: $scope"
-            val e = withDefault {
-                getAppVersion(scope)
-                DexkitUtils.start(this@reloadScopeData, scope)
-            }
-            if (e.isNotBlank()) eTv?.text = arraySummaryLine((eTv?.text as String?), e)
-        } catch (e: Throwable) {
-            LogUtils.e("reloadAllScope", scope, "$e")
-        }
-    }
-    indicator?.isVisible = false
-    tv?.isVisible = false
-    if (eTv != null && eTv.text.isBlank()) dialog.dismiss()
-}
-
-/**
  * 重启全部作用域
  * @receiver Context
  */
@@ -993,14 +949,12 @@ fun Context.restartAllScope() {
         }
         commands.add("pkill -9 $scope")
         commands.add("am force-stop $scope")
+        getAppVersion(scope)
     }
     MaterialAlertDialogBuilder(this).apply {
         setMessage(getString(R.string.restart_scope_message))
         setPositiveButton(getString(android.R.string.ok)) { _: DialogInterface?, _: Int ->
-            scope(Dispatchers.Default) {
-                withMain { reloadScopeData(xposedScope) }
-                ShellUtils.execCommand(commands, true)
-            }
+            scope(Dispatchers.Default) { ShellUtils.execCommand(commands, true) }
         }
         setNeutralButton(getString(android.R.string.cancel), null)
         show()
@@ -1022,11 +976,9 @@ fun Context.restartAllScope(scopes: Array<String>) {
         }
         commands.add("killall $scope")
         commands.add("am force-stop $scope")
+        getAppVersion(scope)
     }
-    scope(Dispatchers.Default) {
-        withMain { reloadScopeData(scopes) }
-        ShellUtils.execCommand(commands, true)
-    }
+    scope(Dispatchers.Default) { ShellUtils.execCommand(commands, true) }
 }
 
 /**

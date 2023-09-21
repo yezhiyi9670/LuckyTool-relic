@@ -9,20 +9,14 @@ import com.highcapable.yukihookapi.hook.type.java.IntClass
 import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
-import com.luckyzyx.luckytool.utils.DexkitPrefs
-import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.DexKitBridge
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import org.luckypray.dexkit.query.ClassDataList
 
 object EnableWatermarkEditing : YukiBaseHooker() {
-    const val key = "enable_watermark_editing"
 
     override fun onHook() {
-        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
-        if (!isEnable) return
-
-        val clsName = prefs(DexkitPrefs).getString(key, "null")
-
+        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+            ?: "null"
         //Source OtherSystemStorage
         findClass(clsName).hook {
             injectMember {
@@ -46,11 +40,10 @@ object EnableWatermarkEditing : YukiBaseHooker() {
         }
     }
 
-    fun searchDexkit(appPath: String): ClassDataList {
+    private fun searchDexkit(appPath: String): ClassDataList {
         var result = ClassDataList()
-        DexKitBridge.create(appPath)?.use { bridge ->
+        DexkitUtils.create(appPath)?.use { bridge ->
             result = bridge.findClass {
-                searchPackages = listOf("oo", "jo", "qr", "qn", "xn", "ho", "uq", "or", "ls")
                 matcher {
                     fields {
                         addForType(ContextClass.name)

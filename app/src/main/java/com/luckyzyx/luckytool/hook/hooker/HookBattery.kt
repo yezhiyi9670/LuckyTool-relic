@@ -17,8 +17,8 @@ object HookBattery : YukiBaseHooker() {
         loadHooker(BatteryFeatureProvider)
 
         //移除自启数量限制
-        if (SDK >= A13 && prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
-            loadHooker(UnlockStartupLimit)
+        if (prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {
+            if (SDK >= A13) loadHooker(UnlockStartupLimit)
         }
 
         //移除高温限制

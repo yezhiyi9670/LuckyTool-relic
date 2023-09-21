@@ -1,13 +1,14 @@
 package com.luckyzyx.luckytool.hook.scope.battery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContentResolverClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import org.luckypray.dexkit.query.ClassDataList
 
 object BatteryFeatureProvider : YukiBaseHooker() {
     override fun onHook() {
@@ -16,34 +17,11 @@ object BatteryFeatureProvider : YukiBaseHooker() {
         val performanceModeStandbyOptimization =
             prefs(ModulePrefs).getBoolean("performance_mode_and_standby_optimization", false)
         val openBatteryOptimize = false
+
+        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+            ?: "null"
         //Source AppFeatureProviderUtils
-        searchClass {
-            from(
-                "com.oplus.coreapp.appfeature", "com.oplus.b.a",
-                "k4", "i4", "r5", "o4", "h4", "c6", "k6", "g6"
-            ).absolute()
-            method {
-//                name = "isFeatureSupport"
-                param(ContentResolverClass, StringClass)
-                returnType = BooleanType
-            }.count(1)
-            method {
-//                name = "getInt"
-                param(ContentResolverClass, StringClass, IntType)
-                returnType = IntType
-            }.count(1)
-            method {
-//                name = "getBoolean"
-                param(ContentResolverClass, StringClass, BooleanType)
-                returnType = BooleanType
-            }.count(1)
-            method {
-//                name = "getStringList"
-//                name = "getStringListForFeature"
-                param(ContentResolverClass, StringClass)
-                returnType = ListClass
-            }.count(1..2)
-        }.get()?.hook {
+        findClass(clsName).hook {
             injectMember {
                 method {
 //                    name = "isFeatureSupport"
@@ -91,9 +69,40 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> BatteryHiddenEntrance")
+        }
 
         //res/xml/battery_health_preference.xml
         //BatteryHealthDataPreference
+    }
+
+    private fun searchDexkit(appPath: String): ClassDataList {
+        var result = ClassDataList()
+        DexkitUtils.create(appPath)?.use { bridge ->
+            result = bridge.findClass {
+                matcher {
+                    methods {
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name)
+                            returnType(BooleanType.name)
+                        }
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name, IntType.name)
+                            returnType(IntType.name)
+                        }
+                        add {
+                            paramTypes(
+                                ContentResolverClass.name, StringClass.name, BooleanType.name
+                            )
+                            returnType(BooleanType.name)
+                        }
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name)
+                            returnType(ListClass.name)
+                        }
+                    }
+                }
+            }
+        }
+        return result
     }
 }

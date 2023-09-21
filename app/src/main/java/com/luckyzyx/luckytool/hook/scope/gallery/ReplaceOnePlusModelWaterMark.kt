@@ -9,19 +9,14 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.DexkitPrefs
-import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.DexKitBridge
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import org.luckypray.dexkit.query.ClassDataList
 
 object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
-    const val key = "replace_oneplus_model_watermark"
 
     override fun onHook() {
-        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
-        if (!isEnable) return
-
-        val clsName = prefs(DexkitPrefs).getString(key, "null")
+        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+            ?: "null"
         //Source ConfigAbilityImpl
         findClass(clsName).hook {
             injectMember {
@@ -38,11 +33,10 @@ object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
         }
     }
 
-    fun searchDexkit(appPath: String): ClassDataList {
+    private fun searchDexkit(appPath: String): ClassDataList {
         var result = ClassDataList()
-        DexKitBridge.create(appPath)?.use { bridge ->
+        DexkitUtils.create(appPath)?.use { bridge ->
             result = bridge.findClass {
-                searchPackages = listOf("co", "ho", "jr", "qn", "ao", "nq", "hr", "es")
                 matcher {
                     fields {
                         addForType(ContextClass.name)

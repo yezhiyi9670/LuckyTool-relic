@@ -9,18 +9,14 @@ import com.highcapable.yukihookapi.hook.type.android.SparseIntArrayClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
-import com.luckyzyx.luckytool.utils.DexkitPrefs
-import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.DexKitBridge
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import org.luckypray.dexkit.query.ClassDataList
 
 object CompetitionModeSound : YukiBaseHooker() {
     const val key = "remove_competition_mode_sound"
     override fun onHook() {
-        val isEnable = prefs(ModulePrefs).getBoolean("remove_competition_mode_sound", false)
-        if (!isEnable) return
-        val clsName = prefs(DexkitPrefs).getString(RemoveRootCheck.key, "null")
-
+        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+            ?: "null"
         //Source SoundPoolPlayManager -> competition_mode_sound
         findClass(clsName).hook {
             injectMember {
@@ -36,14 +32,10 @@ object CompetitionModeSound : YukiBaseHooker() {
         }
     }
 
-    fun searchDexkit(appPath: String): ClassDataList {
+    private fun searchDexkit(appPath: String): ClassDataList {
         var result = ClassDataList()
-        DexKitBridge.create(appPath)?.use { bridge ->
+        DexkitUtils.create(appPath)?.use { bridge ->
             result = bridge.findClass {
-                searchPackages = listOf(
-                    "v9", "w9", "u9", "n9", "m9", "ve", "pe", "x9", "y9", "ca", "ea", "la", "q8",
-                    "m8", "ja"
-                )
                 matcher {
                     fields {
                         addForType(ContextClass.name)

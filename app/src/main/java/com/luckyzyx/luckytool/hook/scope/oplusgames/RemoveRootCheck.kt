@@ -6,23 +6,17 @@ import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.luckyzyx.luckytool.utils.DexkitPrefs
-import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.DexKitBridge
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import org.luckypray.dexkit.query.ClassDataList
 
 object RemoveRootCheck : YukiBaseHooker() {
-    const val key = "remove_root_check"
-
     override fun onHook() {
         //Source COSASDKManager
         //Search getSupportCoolEx new Bundle -> Class
         //Search getFeature -> dynamic_feature_cool_ex
         //isSafe:null; -> isSafe:0
-        val isEnable = prefs(ModulePrefs).getBoolean(key, false)
-        if (!isEnable) return
-
-        val clsName = prefs(DexkitPrefs).getString(key, "null")
+        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+            ?: "null"
         //Source OtherSystemStorage
         findClass(clsName).hook {
             injectMember {
@@ -32,14 +26,10 @@ object RemoveRootCheck : YukiBaseHooker() {
         }
     }
 
-    fun searchDexkit(appPath: String): ClassDataList {
+    private fun searchDexkit(appPath: String): ClassDataList {
         var result = ClassDataList()
-        DexKitBridge.create(appPath)?.use { bridge ->
+        DexkitUtils.create(appPath)?.use { bridge ->
             result = bridge.findClass {
-                searchPackages = listOf(
-                    "com.oplus.cosa", "com.oplus.x", "com.oplus.f", "com.oplus.a0",
-                    "yp", "hr", "br", "ir"
-                )
                 matcher {
                     fields {
                         addForType(StringClass.name)
@@ -47,8 +37,8 @@ object RemoveRootCheck : YukiBaseHooker() {
                         addForType(IntType.name)
                     }
                     methods {
-                        add { name = "clear";paramCount = 0 }
-                        add { paramCount = 0;returnType = BundleClass.name }
+                        add { name = "clear";paramCount(0) }
+                        add { paramCount(0);returnType(BundleClass.name) }
                     }
                 }
             }

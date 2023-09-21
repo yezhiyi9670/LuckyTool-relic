@@ -30,8 +30,9 @@ object HookOplusGames : YukiBaseHooker() {
             loadHooker(CustomMediaPlayerSupport)
 
             //游戏滤镜-->Root检测
-            loadHooker(RemoveRootCheck)
-
+            if (prefs(ModulePrefs).getBoolean("remove_root_check", false)) {
+                loadHooker(RemoveRootCheck)
+            }
             //简洁页面
             if (prefs(ModulePrefs).getBoolean("remove_startup_animation", false)) {
                 loadHooker(RemoveStartupAnimation)
@@ -49,8 +50,9 @@ object HookOplusGames : YukiBaseHooker() {
                 loadHooker(EnableSupportCompetitionMode)
             }
             //移除赛事模式音效
-            loadHooker(CompetitionModeSound)
-
+            if (prefs(ModulePrefs).getBoolean("remove_competition_mode_sound", false)) {
+                loadHooker(CompetitionModeSound)
+            }
             //移除游戏助手福利页面
             if (prefs(ModulePrefs).getBoolean("remove_welfare_page", false)) {
                 loadHooker(RemoveWelfarePage)
