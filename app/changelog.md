@@ -3,6 +3,11 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.0.19_beta
+
+- [添加] 移除高性能模式通知
+- [移除] 刷新率方案一分辨率字符
+
 ### 1.0.18_fix
 
 - [适配] 设置Feature v13.0.5(9dfae6f)

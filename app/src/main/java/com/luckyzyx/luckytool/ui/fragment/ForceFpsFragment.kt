@@ -150,7 +150,8 @@ class ForceFpsFragment : Fragment() {
         allData.forEachIndexed { index, any ->
             val fps = any?.let { (it as DisplayMode) } ?: return@forEachIndexed
             idData.add(index)
-            fpsData.add("${fps.id}   ${fps.width} x ${fps.height}   ${fps.refreshRate}")
+            if (fpsMode == 1) fpsData.add("${fps.id}                 ${fps.refreshRate}")
+            else fpsData.add("${fps.id}   ${fps.width} x ${fps.height}   ${fps.refreshRate}")
         }
     }
 

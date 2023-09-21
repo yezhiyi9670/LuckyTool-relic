@@ -625,7 +625,6 @@ class StatusBarNotifyRemoval : BaseScopePreferenceFeagment() {
                 key = "remove_high_performance_mode_notifications"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
-                isVisible = false
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_do_not_disturb_mode_notification)

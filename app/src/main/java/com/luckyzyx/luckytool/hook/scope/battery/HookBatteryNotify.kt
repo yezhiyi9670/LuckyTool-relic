@@ -13,7 +13,8 @@ import com.luckyzyx.luckytool.utils.ModulePrefs
 object HookBatteryNotify : YukiBaseHooker() {
     override fun onHook() {
         //Channel high_performance_channel_id 5
-//        val highPerformance = prefs(ModulePrefs).getBoolean("remove_high_performance_mode_notifications", false)
+        val highPerformance =
+            prefs(ModulePrefs).getBoolean("remove_high_performance_mode_notifications", false)
         //Channel PowerConsumptionOptimizationChannel / PowerConsumptionOptimizationChannelLow 17
         //power_consumption_optimization_title
         val highBatteryConsumption =
@@ -22,7 +23,9 @@ object HookBatteryNotify : YukiBaseHooker() {
 //        val smartRapidCharge = prefs(ModulePrefs).getBoolean("remove_smart_rapid_charging_notification", false)
 
         //Source NotifyUtil
-        DexkitUtils.searchDexClass("HookBatteryNotify", appInfo.sourceDir) { dexKitBridge ->
+        val clsName = DexkitUtils.searchDexClass(
+            "HookBatteryNotify", appInfo.sourceDir
+        ) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -39,38 +42,40 @@ object HookBatteryNotify : YukiBaseHooker() {
                     usingStrings("NotifyUtil")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(StringClass, BooleanType)
-                    paramCount = 2
-                }.all()
-                if (highBatteryConsumption) intercept()
+        }?.firstOrNull()?.className ?: "null"
+
+        if (highPerformance) {
+            DexkitUtils.searchDexMethod(
+                "HookBatteryNotify highPerformance", appInfo.sourceDir
+            ) { dexKitBridge ->
+                dexKitBridge.findMethod {
+                    searchPackages(clsName)
+                    matcher {
+                        addUsingString("high_performance_channel_id")
+                        addUsingString("ACTION_HIGH_PERFORMANCE")
+                        addUsingNumber(5)
+                    }
+                }
+            }?.firstOrNull()?.apply {
+                className.hook {
+                    injectMember {
+                        method { name = methodName;emptyParam() }
+                        intercept()
+                    }
+                }
             }
-//            injectMember {
-//                constructor {
-//                    paramCount = 1
-//                }
-//                afterHook {
-//                    field {
-//                        type = NotificationManager::class.java
-//                    }.get(instance).cast<NotificationManager>()?.javaClass?.hook {
-//                        injectMember {
-//                            method {
-//                                name = "notify"
-//                                param(StringClass, IntType, NotificationClass)
-//                                paramCount = 3
-//                            }
-//                            beforeHook {
-//                                when (args(1).cast<Int>()) {
-//                                    5 -> if (highPerformance) resultNull()
-//                                    20 -> if (smartRapidCharge) resultNull()
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+        }
+
+        if (highBatteryConsumption) {
+            clsName.hook {
+                injectMember {
+                    method {
+                        param(StringClass, BooleanType)
+                        paramCount = 2
+                    }.all()
+                    intercept()
+                }
+            }
         }
     }
 }
