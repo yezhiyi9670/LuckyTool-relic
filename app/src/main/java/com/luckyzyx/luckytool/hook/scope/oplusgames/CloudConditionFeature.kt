@@ -1,14 +1,16 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import org.luckypray.dexkit.query.ClassDataList
 
 class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker() {
     override fun onHook() {
@@ -161,15 +163,10 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
             val oneplusCharacteristic =
                 prefs(ModulePrefs).getBoolean("enable_one_plus_characteristic", false)
 
+            val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
+                ?: "null"
             //Source CloudApiImpl
-            searchClass {
-                from("f8", "l6", "v7", "x7", "w7").absolute()
-                field().none()
-                method().count(7)
-                method { emptyParam() }.count(2)
-                method { returnType = ListClass }.count(2)
-                method { returnType = BooleanType }.count(1)
-            }.get()?.hook {
+            findClass(clsName).hook {
                 injectMember {
                     method {
                         name = "isFunctionEnabledFromCloud"
@@ -190,7 +187,25 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         }
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> HookCloudApiImpl")
+            }
+        }
+
+        private fun searchDexkit(appPath: String): ClassDataList {
+            var result = ClassDataList()
+            DexkitUtils.create(appPath)?.use { bridge ->
+                result = bridge.findClass {
+                    matcher {
+                        usingStrings("cloudKey", "defaultDate", "spFileName")
+                        methods {
+                            add { paramCount(0);returnType(ListClass.name) }
+                            add { paramCount(1);returnType(ListClass.name) }
+                            add { paramCount(2);returnType(BooleanType.name) }
+                        }
+                    }
+                }
+            }
+            result.printLog("HookCloudApiImpl")
+            return result
         }
     }
 }

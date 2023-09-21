@@ -7,6 +7,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 import org.luckypray.dexkit.query.ClassDataList
 
 object RemoveRootCheck : YukiBaseHooker() {
@@ -43,6 +44,7 @@ object RemoveRootCheck : YukiBaseHooker() {
                 }
             }
         }
+        result.printLog("RemoveRootCheck")
         return result
     }
 }
