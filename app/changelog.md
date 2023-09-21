@@ -3,11 +3,14 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.19_beta
+### 1.0.18_fix
 
 - [适配] 设置Feature v13.0.5(9dfae6f)
 - [移除] Dexkit搜索对话框
 - [优化] 混淆方法迁移至Dexkit
+- [Fix] Set Feature v13.0.5(9dfae6f)
+- [Remove] Dexkit search dialog
+- [Optimize] Migrate obfuscation method to Dexkit
 
 ### 1.0.18
 
