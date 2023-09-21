@@ -9,30 +9,15 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
-import org.luckypray.dexkit.query.ClassDataList
 
 object CompetitionModeSound : YukiBaseHooker() {
     const val key = "remove_competition_mode_sound"
     override fun onHook() {
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
         //Source SoundPoolPlayManager -> competition_mode_sound
-        findClass(clsName).hook {
-            injectMember {
-                method {
-                    param(IntType)
-                    paramCount = 1
-                }.all()
-                beforeHook { if (args().first().int() == 9) resultNull() }
-            }
-        }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
+        DexkitUtils.searchDexClass(
+            "CompetitionModeSound", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(ContextClass.name)
@@ -53,8 +38,14 @@ object CompetitionModeSound : YukiBaseHooker() {
                     }
                 }
             }
+        }?.firstOrNull()?.className?.hook {
+            injectMember {
+                method {
+                    param(IntType)
+                    paramCount = 1
+                }.all()
+                beforeHook { if (args().first().int() == 9) resultNull() }
+            }
         }
-        result.printLog("CompetitionModeSound")
-        return result
     }
 }

@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import android.os.Build
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
@@ -11,6 +10,7 @@ import com.highcapable.yukihookapi.hook.type.java.FloatType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object CustomModelWaterMark : YukiBaseHooker() {
@@ -26,15 +26,26 @@ object CustomModelWaterMark : YukiBaseHooker() {
             if (waterMark.isBlank() || waterMark == "None") return
 
             //Source MarketUtil
-            searchClass {
-                from("com.oplus.camera.common.utils").absolute()
-                field().count(1)
-                field { type = StringClass }.count(1)
-                constructor().none()
-                method().count(2..4)
-                method { emptyParam();returnType = StringClass }.count(2)
-                method { returnType = StringClass }.count(2..4)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass(
+                "CustomModelWaterMark MarketUtil", appInfo.sourceDir
+            ) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        fields {
+                            addForType(StringClass.name)
+                            count(1)
+                        }
+                        methods {
+                            add { paramCount(0) }
+                            add { returnType(StringClass.name) }
+                            add { paramCount(0);returnType(StringClass.name) }
+                            add { paramTypes(StringClass.name);returnType(StringClass.name) }
+                            count(2..4)
+                        }
+                        usingStrings("ro.vendor.oplus.market.enname", "ro.vendor.oplus.market.name")
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method { emptyParam();returnType = StringClass }.all()
                     afterHook {
@@ -43,26 +54,31 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         result = waterMark
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark MarketUtil")
+            }
 
             //Source WatermarkHelper
-            searchClass {
-                from("com.oplus.camera.feature.watermark").absolute()
-                method { returnType = PaintClass }.count(1)
-                method { returnType = BitmapClass }.count(2)
-                method { returnType = UnitType }.count(3..6)
-
-                method { param { it[0] == ContextClass } }.count(10..14)
-                method { param { it[0] == StringClass } }.count(8..9)
-                method { paramCount = 8;returnType = StringClass }.count(2)
-
-                method { param(StringClass);returnType = IntType }.count(1)
-                method { param(StringClass);returnType = BooleanType }.count(1)
-                method { param(StringClass);returnType = StringClass }.count(3..4)
-
-                method { param(ContextClass, FloatType);returnType = FloatType }.count(1..3)
-                method { param(ContextClass, IntType, FloatType);returnType = FloatType }.count(1)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass(
+                "CustomModelWaterMark WatermarkHelper", appInfo.sourceDir
+            ) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        methods {
+                            add { returnType(PaintClass.name) }
+                            add { returnType(BitmapClass.name) }
+                            add { returnType(UnitType.name) }
+                            add { returnType(IntType.name) }
+                            add { returnType(FloatType.name) }
+                            add { returnType(BooleanType.name) }
+                            add { returnType(StringClass.name) }
+                            add { paramCount(8) }
+                            add { paramTypes(StringClass.name) }
+                            add { paramTypes(ContextClass.name, FloatType.name) }
+                            add { paramTypes(ContextClass.name, IntType.name, FloatType.name) }
+                        }
+                        usingStrings("WatermarkHelper", "removeChineseOfString")
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method { param(StringClass);returnType = StringClass }.all()
                     afterHook {
@@ -72,7 +88,7 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         result = waterMark
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> CustomModelWaterMark WatermarkHelper")
+            }
         }
     }
 }

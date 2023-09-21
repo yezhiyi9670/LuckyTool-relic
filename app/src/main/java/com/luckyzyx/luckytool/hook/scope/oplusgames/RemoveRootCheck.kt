@@ -7,8 +7,6 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
-import org.luckypray.dexkit.query.ClassDataList
 
 object RemoveRootCheck : YukiBaseHooker() {
     override fun onHook() {
@@ -16,21 +14,10 @@ object RemoveRootCheck : YukiBaseHooker() {
         //Search getSupportCoolEx new Bundle -> Class
         //Search getFeature -> dynamic_feature_cool_ex
         //isSafe:null; -> isSafe:0
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
-        //Source OtherSystemStorage
-        findClass(clsName).hook {
-            injectMember {
-                method { emptyParam();returnType = BundleClass }
-                afterHook { result<Bundle>()?.putInt("isSafe", 0) }
-            }
-        }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
+        DexkitUtils.searchDexClass(
+            "RemoveRootCheck", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(StringClass.name)
@@ -43,8 +30,11 @@ object RemoveRootCheck : YukiBaseHooker() {
                     }
                 }
             }
+        }?.firstOrNull()?.className?.hook {
+            injectMember {
+                method { emptyParam();returnType = BundleClass }
+                afterHook { result<Bundle>()?.putInt("isSafe", 0) }
+            }
         }
-        result.printLog("RemoveRootCheck")
-        return result
     }
 }

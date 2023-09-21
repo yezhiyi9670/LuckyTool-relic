@@ -1,19 +1,33 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object EnableAonGestures : YukiBaseHooker() {
     override fun onHook() {
         //Search oplus.software.aon_enable
-        searchClass {
-            from("p6", "r6", "r5", "z5", "q6").absolute()
-            field { type = BooleanType }.count(11..13)
-            method { emptyParam();returnType = BooleanType }.count(1..2)
-            method { param(ContextClass);returnType = BooleanType }.count(8)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass("EnableAonGestures", appInfo.sourceDir) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(BooleanType.name)
+                    }
+                    methods {
+                        add { paramCount(0);returnType(BooleanType.name) }
+                        add { paramTypes(ContextClass.name);returnType(BooleanType.name) }
+                    }
+                    usingStrings(
+                        "oplus.software.aon_gestureui_enable",
+                        "oplus.software.aon_gesture_press",
+                        "oplus.software.aon_phone_mute",
+                        "oplus.software.aon_phone_enable",
+                        "oplus.software.aon_enable"
+                    )
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             //oplus.software.aon_gestureui_enable
             injectMember {
                 method {
@@ -59,6 +73,6 @@ object EnableAonGestures : YukiBaseHooker() {
                 }
                 replaceToTrue()
             }
-        } ?: loggerD(msg = "$packageName\nError -> EnableAonGestures")
+        }
     }
 }

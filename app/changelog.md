@@ -7,6 +7,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 - [适配] 设置Feature v13.0.5(9dfae6f)
 - [移除] Dexkit搜索对话框
+- [优化] 混淆方法迁移至Dexkit
 
 ### 1.0.18
 

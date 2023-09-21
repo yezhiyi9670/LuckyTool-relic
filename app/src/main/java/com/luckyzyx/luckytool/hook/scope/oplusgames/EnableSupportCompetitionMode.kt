@@ -6,31 +6,15 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
-import org.luckypray.dexkit.query.ClassDataList
 
 object EnableSupportCompetitionMode : YukiBaseHooker() {
     override fun onHook() {
         //Source CompetitionModeManager
         //Search isSupportCompetitionMode
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
-        findClass(clsName).hook {
-            injectMember {
-                method {
-                    emptyParam()
-                    returnType = BooleanType
-                    order().index(2)
-                }
-                replaceToTrue()
-            }
-        }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
+        DexkitUtils.searchDexClass(
+            "EnableSupportCompetitionMode", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(ListClass.name)
@@ -42,8 +26,15 @@ object EnableSupportCompetitionMode : YukiBaseHooker() {
                     }
                 }
             }
+        }?.firstOrNull()?.className?.hook {
+            injectMember {
+                method {
+                    emptyParam()
+                    returnType = BooleanType
+                    order().index(2)
+                }
+                replaceToTrue()
+            }
         }
-        result.printLog("EnableSupportCompetitionMode")
-        return result
     }
 }

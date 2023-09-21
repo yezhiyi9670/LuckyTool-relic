@@ -1,24 +1,32 @@
 package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
     override fun onHook() {
         //Source ScrollCaptureConfigs -> scroll_configs_max_captured_pages / scroll_configs_max_captured_pixels
         //Source StitchLimitUtils -> isCapturedPagesReachLimit / trimToStitchLimit
-        searchClass {
-            from(
-                "ac", "yb", "zb", "hb", "ib", "bc", "mb", "xb", "xa", "kb"
-            ).absolute()
-            field().none()
-            method { returnType = IntType }.count(6)
-            method { returnType = BooleanType }.count(2)
-            method { param { it[1] == IntType } }.count(6)
-            method { param(IntType, IntType);returnType = IntType }.count(1)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass(
+            "CustomizeLongScreenshotMaxCapturedPages", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fieldCount(0)
+                    methods {
+                        add { returnType(IntType.name) }
+                        add { returnType(BooleanType.name) }
+                        add {
+                            paramTypes(IntType.name, IntType.name)
+                            returnType(IntType.name)
+                        }
+                    }
+                    usingStrings("StitchLimitUtils")
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method {
                     param { it[1] == IntType }
@@ -35,6 +43,6 @@ object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
                 }
                 replaceTo(-1)
             }
-        } ?: loggerD(msg = "$packageName\nError -> CustomizeLongScreenshotMaxCapturedPages")
+        }
     }
 }

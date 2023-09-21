@@ -9,7 +9,6 @@ import com.highcapable.yukihookapi.hook.bean.HookClass
 import com.highcapable.yukihookapi.hook.core.YukiMemberHookCreator
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.android.RemoteViewsClass
@@ -17,6 +16,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.safeOfNull
 
@@ -197,20 +197,27 @@ object AlarmClockWidget : YukiBaseHooker() {
     private object AlarmClock13 : YukiBaseHooker() {
         override fun onHook() {
             //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
-            searchClass {
-                from("m0", "j0", "o0", "l0", "k0").absolute()
-                field { type = CharSequenceClass }.count(1)
-                field { type = HandlerClass }.count(1)
-                field { type = BooleanType }.count(3)
-                method {
-                    param(ContextClass, StringClass, StringClass)
-                    returnType = CharSequenceClass
-                }.count(1)
-                method {
-                    param(ContextClass, StringClass)
-                    returnType = CharSequenceClass
-                }.count(1)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass("AlarmClock13", appInfo.sourceDir) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        fields {
+                            addForType(BooleanType.name)
+                            addForType(HandlerClass.name)
+                        }
+                        methods {
+                            add { returnType(BooleanType.name) }
+                            add { returnType(HandlerClass.name) }
+                            add { paramTypes(ContextClass.name) }
+                            add { paramTypes(ContextClass.name, StringClass.name) }
+                            add {
+                                paramTypes(
+                                    ContextClass.name, StringClass.name, StringClass.name
+                                )
+                            }
+                        }
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method {
                         param { it[0] == ContextClass && it[1] == StringClass }
@@ -225,7 +232,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                         }
                     }
                 }
-            } ?: loggerD(msg = "${packageName}\nError -> AlarmClock13")
+            }
         }
     }
 

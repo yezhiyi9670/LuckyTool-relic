@@ -1,11 +1,11 @@
 package com.luckyzyx.luckytool.hook.scope.oplusmms
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.highcapable.yukihookapi.hook.type.java.StringArrayClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookMMSFeatureOption : YukiBaseHooker() {
@@ -15,24 +15,27 @@ object HookMMSFeatureOption : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("remove_verification_code_floating_window", false)
 
         //Source FeatureOption.java
-        searchClass {
-            //com.oplus.common -> C12
-            from(
-                "com.oplus.mms.foundation.libcompat",
-                "zd","ie"
-            )
-            field { type = BooleanType }.count { it > 40 }
-            field { type = StringArrayClass }.count(3)
-            method { param(StringClass);returnType = BooleanType }.count(1)
-            method { param(StringClass, BooleanType);returnType = BooleanType }.count(1)
-            method { param(ContextClass);returnType = BooleanType }.count(8)
-            method { param(ContextClass, StringArrayClass) }.count(1)
-            method { param(ContextClass, StringClass);returnType = BooleanType }.count(3)
-            method {
-                param(ContextClass, StringClass, StringClass)
-                returnType = BooleanType
-            }.count(1)
-        }.get()?.hook {
+        //com.oplus.common -> C12
+        DexkitUtils.searchDexClass(
+            "HookMMSFeatureOption", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(BooleanType.name)
+                    }
+                    methods {
+                        add { paramTypes(ContextClass.name) }
+                        add { paramTypes(StringClass.name) }
+                        add { paramTypes(StringClass.name, BooleanType.name) }
+                        add { paramTypes(ContextClass.name, StringClass.name) }
+                        add { paramTypes(ContextClass.name, StringClass.name, StringClass.name) }
+                        add { returnType(UnitType.name) }
+                        add { returnType(BooleanType.name) }
+                    }
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method {
                     param(ContextClass, StringClass, StringClass)
@@ -48,6 +51,6 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> HookMMSFeatureOption")
+        }
     }
 }

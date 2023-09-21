@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ArrayMapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
@@ -10,6 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.replaceSpace
 
@@ -23,17 +23,27 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
         if (scrollList.isBlank() || scrollList == "None") return
 
         //Search com.ss.android.ugc.aweme / com.smile.gifmaker
-        searchClass {
-            from("p6", "r6", "r5", "z5", "q6").absolute()
-            field { type = ContextClass }.count(1)
-            field { type = ArrayListClass }.count(1)
-            field { type = ArrayMapClass }.count(1)
-            field { type = IntType }.count(2)
-            field { type = FloatType }.count(3)
-            field { type = ListClass }.count(3..4)
-            method { param(StringClass);returnType = IntType }.count(6)
-            method { param(ListClass);returnType = UnitType }.count(2)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass(
+            "CustomAonGestureScrollPageWhitelist", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(ContextClass.name)
+                        addForType(ArrayListClass.name)
+                        addForType(ArrayMapClass.name)
+                        addForType(IntType.name)
+                        addForType(FloatType.name)
+                        addForType(ListClass.name)
+                    }
+                    methods {
+                        add { paramTypes(StringClass.name);returnType(IntType.name) }
+                        add { paramTypes(ListClass.name);returnType(UnitType.name) }
+                    }
+                    usingStrings("com.ss.android.ugc.aweme", "com.smile.gifmaker")
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method { emptyParam();returnType = ListClass }.all()
                 afterHook {
@@ -49,7 +59,7 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> CustomAonGestureScrollPageWhitelist")
+        }
 
         //Source GestureUtil
         findClass("com.oplus.gesture.util.GestureUtil").hook {

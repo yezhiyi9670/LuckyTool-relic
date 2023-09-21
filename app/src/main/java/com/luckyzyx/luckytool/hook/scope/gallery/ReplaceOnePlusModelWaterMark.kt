@@ -10,33 +10,15 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import org.luckypray.dexkit.query.ClassDataList
 
 object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
 
     override fun onHook() {
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
         //Source ConfigAbilityImpl
-        findClass(clsName).hook {
-            injectMember {
-                method {
-                    param(StringClass, BooleanType)
-                    returnType = BooleanClass
-                }
-                beforeHook {
-                    when (args().first().string()) {
-                        "is_oneplus_brand" -> resultFalse()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
+        DexkitUtils.searchDexClass(
+            "ReplaceOnePlusModelWaterMark", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(ContextClass.name)
@@ -64,7 +46,18 @@ object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
                     }
                 }
             }
+        }?.firstOrNull()?.className?.hook {
+            injectMember {
+                method {
+                    param(StringClass, BooleanType)
+                    returnType = BooleanClass
+                }
+                beforeHook {
+                    when (args().first().string()) {
+                        "is_oneplus_brand" -> resultFalse()
+                    }
+                }
+            }
         }
-        return result
     }
 }

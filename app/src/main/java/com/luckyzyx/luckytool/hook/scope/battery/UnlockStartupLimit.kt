@@ -8,27 +8,16 @@ import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import org.luckypray.dexkit.query.ClassDataList
 
 object UnlockStartupLimit : YukiBaseHooker() {
 
     override fun onHook() {
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
         //Source StartupManager.java
         //Search -> ? 5 : 20; -> Method
-        findClass(clsName).hook {
-            injectMember {
-                method { emptyParam();returnType = IntType }
-                replaceTo(999)
-            }
-        }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
+        DexkitUtils.searchDexClass(
+            "UnlockStartupLimit", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(AnyClass.name)
@@ -42,7 +31,14 @@ object UnlockStartupLimit : YukiBaseHooker() {
                     }
                 }
             }
+        }?.firstOrNull()?.className?.hook {
+            injectMember {
+                method {
+                    emptyParam()
+                    returnType = IntType
+                }
+                replaceTo(999)
+            }
         }
-        return result
     }
 }

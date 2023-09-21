@@ -2,25 +2,29 @@ package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import android.graphics.Bitmap
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object EnablePNGSaveFormat : YukiBaseHooker() {
 
     override fun onHook() {
         //Source ImageFileFormat -> JPEG / PNG
-        searchClass {
-            from(
-                "com.oplus.screenshot.save.info",
-                "uc", "rc", "tc", "ac", "fa", "ea", "u9", "sc", "fc", "qc", "p6", "ob", "dc"
-            ).absolute()
-            constructor().count(1)
-            field { type = StringClass }.count(2)
-            field { type = Bitmap.CompressFormat::class.java }.count(1)
-            method { emptyParam();name = "values" }.count(1)
-            method { emptyParam();returnType = StringClass }.count(2)
-            method { returnType = Bitmap.CompressFormat::class.java }.count(1)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass("EnablePNGSaveFormat", appInfo.sourceDir) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(StringClass.name)
+                        addForType(Bitmap.CompressFormat::class.java.name)
+                    }
+                    methods {
+                        add("values")
+                        add { returnType(StringClass.name) }
+                        add { returnType(Bitmap.CompressFormat::class.java.name) }
+                    }
+                    usingStrings("image/jpeg", "image/png")
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method { returnType = StringClass }.all()
                 afterHook {
@@ -40,6 +44,6 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
                     }
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> EnablePNGSaveFormat")
+        }
     }
 }

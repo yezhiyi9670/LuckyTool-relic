@@ -10,15 +10,32 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import org.luckypray.dexkit.query.ClassDataList
 
 object EnableWatermarkEditing : YukiBaseHooker() {
 
     override fun onHook() {
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
         //Source OtherSystemStorage
-        findClass(clsName).hook {
+        DexkitUtils.searchDexClass(
+            "EnableWatermarkEditing", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(ContextClass.name)
+                        addForType("kotlin.Lazy")
+                    }
+                    methods {
+                        add { paramCount(2);returnType(IntClass.name) }
+                        add { paramCount(2);returnType(LongClass.name) }
+                        add { paramCount(2);returnType(BooleanClass.name) }
+                        add { paramCount(2);returnType(StringClass.name) }
+                        add { paramCount(2);returnType(UnitType.name) }
+                        add { paramCount(0);returnType(BooleanType.name) }
+                        add { paramCount(4);returnType(BooleanType.name) }
+                    }
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method {
                     param(VagueType, BooleanType)
@@ -38,28 +55,5 @@ object EnableWatermarkEditing : YukiBaseHooker() {
                 }
             }
         }
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
-                matcher {
-                    fields {
-                        addForType(ContextClass.name)
-                    }
-                    methods {
-                        add { paramCount(2);returnType(IntClass.name) }
-                        add { paramCount(2);returnType(LongClass.name) }
-                        add { paramCount(2);returnType(BooleanClass.name) }
-                        add { paramCount(2);returnType(StringClass.name) }
-                        add { paramCount(2);returnType(UnitType.name) }
-                        add { paramCount(0);returnType(BooleanType.name) }
-                        add { paramCount(4);returnType(BooleanType.name) }
-                    }
-                }
-            }
-        }
-        return result
     }
 }

@@ -1,17 +1,16 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ApplicationInfoClass
 import com.highcapable.yukihookapi.hook.type.android.ContentResolverClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
-import com.highcapable.yukihookapi.hook.type.java.CharSequenceArrayClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.A13
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -30,17 +29,21 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("enable_screen_color_temperature_rgb_palette", false)
 
             //Source SysFeatureUtils
-            searchClass {
-                from(
-                    "com.oplus.settings.utils",
-                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri", "zi", "nm", "uf", "aj"
-                ).absolute()
-                field { type = BooleanClass }.count { it > 30 }
-                method { emptyParam();returnType = BooleanType }.count { it > 70 }
-                method { param(ContextClass);returnType = BooleanType }.count(5..7)
-                method { param(StringClass);returnType = BooleanType }.count(2)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass("HookSysFeature", appInfo.sourceDir) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        fields {
+                            addForType(BooleanClass.name)
+                        }
+                        methods {
+                            add { paramCount(0);returnType(BooleanType.name) }
+                            add { paramTypes(ContextClass.name);returnType(BooleanType.name) }
+                            add { paramTypes(StringClass.name);returnType(BooleanType.name) }
+                        }
+                        usingStrings("SysFeatureUtils")
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method { param(StringClass);returnType = BooleanType }.all()
                     beforeHook {
@@ -53,7 +56,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> HookSysFeature")
+            }
         }
     }
 
@@ -62,26 +65,23 @@ object HookSettingsFeature : YukiBaseHooker() {
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
 
             //Source ExpUstUtils
-            searchClass {
-                from(
-                    "com.oplus.settings.utils",
-                    "oi", "ki", "ji", "vf", "uf", "qf", "mi", "ni", "qi", "li", "pi", "om", "km",
-                    "ri", "zi", "nm", "uf", "aj"
-                ).absolute()
-                method { param(StringClass);returnType = ApplicationInfoClass }.count(1)
-                method {
-                    param(CharSequenceArrayClass);returnType = CharSequenceArrayClass
-                }.count(2)
-                method { emptyParam();returnType = StringClass }.count(2..3)
-                method { emptyParam();returnType = BooleanType }.count(4..8)
-                method { param(StringClass);returnType = BooleanType }.count(2..3)
-                method { param(IntType);returnType = BooleanType }.count(3)
-                method { param(ContextClass, IntType) }.count(1)
-                method { param(IntType);returnType = StringClass }.count(1)
-                method { param(IntType, StringClass);returnType = StringClass }.count(1)
-                method { param(StringClass);returnType = StringClass }.count(1)
-                method { param(StringClass, StringClass);returnType = StringClass }.count(1)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass("HookExpUst", appInfo.sourceDir) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        methods {
+                            add { returnType(StringClass.name) }
+                            add { returnType(BooleanType.name) }
+                            add { returnType(ApplicationInfoClass.name) }
+                            add { paramTypes(StringClass.name) }
+                            add { paramTypes(IntType.name) }
+                            add { paramTypes(IntType.name, StringClass.name) }
+                            add { paramTypes(StringClass.name) }
+                            add { paramTypes(StringClass.name, StringClass.name) }
+                        }
+                        usingStrings("screen_off_timeout")
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method { param(IntType);returnType = BooleanType }.all()
                     beforeHook {
@@ -91,7 +91,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> HookExpUst")
+            }
         }
     }
 
@@ -105,32 +105,43 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("force_display_process_management", false)
 
             //Source AppFeatureProviderUtils
-            searchClass {
-                from(
-                    "com.oplus.coreapp.appfeature",
-                    "ma", "rb", "yb", "sb", "la", "ub", "kf", "gf", "zb", "if"
-                ).absolute()
-                method {
-                    param(ContentResolverClass, StringClass, BooleanType)
-                    returnType = BooleanType
-                }.count(1)
-                method {
-                    param(ContentResolverClass, StringClass, IntType)
-                    returnType = IntType
-                }.count(1)
-                method {
-                    param(ContentResolverClass, StringClass, StringClass)
-                    returnType = StringClass
-                }.count(1..2)
-                method {
-                    param(ContentResolverClass, StringClass)
-                    returnType = ListClass
-                }.count(1..2)
-                method {
-                    param(ContentResolverClass, StringClass)
-                    returnType = BooleanType
-                }.count(1)
-            }.get()?.hook {
+            DexkitUtils.searchDexClass(
+                "HookAppFeatureProvider", appInfo.sourceDir
+            ) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        methods {
+                            add {
+                                paramTypes(
+                                    ContentResolverClass.name, StringClass.name, BooleanType.name
+                                )
+                                returnType(BooleanType.name)
+                            }
+                            add {
+                                paramTypes(
+                                    ContentResolverClass.name, StringClass.name, IntType.name
+                                )
+                                returnType(IntType.name)
+                            }
+                            add {
+                                paramTypes(
+                                    ContentResolverClass.name, StringClass.name, StringClass.name
+                                )
+                                returnType(StringClass.name)
+                            }
+                            add {
+                                paramTypes(ContentResolverClass.name, StringClass.name)
+                                returnType(ListClass.name)
+                            }
+                            add {
+                                paramTypes(ContentResolverClass.name, StringClass.name)
+                                returnType(BooleanType.name)
+                            }
+                        }
+                        usingStrings("AppFeatureProviderUtils")
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method { param(ContentResolverClass, StringClass);returnType = BooleanType }
                     beforeHook {
@@ -148,7 +159,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                     }
                 }
-            } ?: loggerD(msg = "$packageName\nError -> HookAppFeatureProvider")
+            }
         }
     }
 }

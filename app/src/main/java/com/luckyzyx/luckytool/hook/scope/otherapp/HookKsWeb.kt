@@ -1,9 +1,12 @@
 package com.luckyzyx.luckytool.hook.scope.otherapp
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.SharedPreferencesClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookKsWeb : YukiBaseHooker() {
@@ -11,15 +14,29 @@ object HookKsWeb : YukiBaseHooker() {
         val isPro = prefs(ModulePrefs).getBoolean("ksweb_remove_check_license", false)
         if (!isPro) return
         //Source EXTEND TO PRO VERSION / CHECK SERIAL KEY / KSWEB PRO / KSWEB STANDARD
-        searchClass {
-            from("b4", "c5").absolute()
-            field { type = IntType }.count(1)
-            field { type = BooleanType }.count(1)
-            field { type = SharedPreferencesClass }.count(1)
-            constructor().count(2)
-            method { emptyParam();returnType = IntType }.count(1)
-            method { emptyParam();returnType = BooleanType }.count(3..5)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass("HookKsWeb", appInfo.sourceDir) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(IntType.name)
+                        addForType(BooleanType.name)
+                        addForType(SharedPreferencesClass.name)
+                    }
+                    methods {
+                        add { paramCount(0);returnType(IntType.name) }
+                        add { paramCount(0);returnType(BooleanType.name) }
+                        add { paramTypes(IntType.name);returnType(UnitType.name) }
+                        add { paramTypes(ContextClass.name);returnType(UnitType.name) }
+                    }
+                    usingStrings(
+                        "EXTEND TO PRO VERSION",
+                        "CHECK SERIAL KEY",
+                        "KSWEB PRO",
+                        "KSWEB STANDARD"
+                    )
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method {
                     emptyParam()

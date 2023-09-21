@@ -8,9 +8,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.query.ClassDataList
 
 class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker() {
     override fun onHook() {
@@ -163,10 +161,21 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
             val oneplusCharacteristic =
                 prefs(ModulePrefs).getBoolean("enable_one_plus_characteristic", false)
 
-            val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-                ?: "null"
             //Source CloudApiImpl
-            findClass(clsName).hook {
+            DexkitUtils.searchDexClass(
+                "HookCloudApiImpl", appInfo.sourceDir
+            ) { dexKitBridge ->
+                dexKitBridge.findClass {
+                    matcher {
+                        usingStrings("cloudKey", "defaultDate", "spFileName")
+                        methods {
+                            add { paramCount(0);returnType(ListClass.name) }
+                            add { paramCount(1);returnType(ListClass.name) }
+                            add { paramCount(2);returnType(BooleanType.name) }
+                        }
+                    }
+                }
+            }?.firstOrNull()?.className?.hook {
                 injectMember {
                     method {
                         name = "isFunctionEnabledFromCloud"
@@ -188,24 +197,6 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                     }
                 }
             }
-        }
-
-        private fun searchDexkit(appPath: String): ClassDataList {
-            var result = ClassDataList()
-            DexkitUtils.create(appPath)?.use { bridge ->
-                result = bridge.findClass {
-                    matcher {
-                        usingStrings("cloudKey", "defaultDate", "spFileName")
-                        methods {
-                            add { paramCount(0);returnType(ListClass.name) }
-                            add { paramCount(1);returnType(ListClass.name) }
-                            add { paramCount(2);returnType(BooleanType.name) }
-                        }
-                    }
-                }
-            }
-            result.printLog("HookCloudApiImpl")
-            return result
         }
     }
 }

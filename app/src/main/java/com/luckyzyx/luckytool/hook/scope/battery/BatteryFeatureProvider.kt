@@ -8,7 +8,6 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import org.luckypray.dexkit.query.ClassDataList
 
 object BatteryFeatureProvider : YukiBaseHooker() {
     override fun onHook() {
@@ -18,10 +17,35 @@ object BatteryFeatureProvider : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("performance_mode_and_standby_optimization", false)
         val openBatteryOptimize = false
 
-        val clsName = searchDexkit(appInfo.sourceDir).firstOrNull()?.className
-            ?: "null"
         //Source AppFeatureProviderUtils
-        findClass(clsName).hook {
+        DexkitUtils.searchDexClass(
+            "BatteryFeatureProvider", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    methods {
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name)
+                            returnType(BooleanType.name)
+                        }
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name, IntType.name)
+                            returnType(IntType.name)
+                        }
+                        add {
+                            paramTypes(
+                                ContentResolverClass.name, StringClass.name, BooleanType.name
+                            )
+                            returnType(BooleanType.name)
+                        }
+                        add {
+                            paramTypes(ContentResolverClass.name, StringClass.name)
+                            returnType(ListClass.name)
+                        }
+                    }
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method {
 //                    name = "isFeatureSupport"
@@ -73,36 +97,5 @@ object BatteryFeatureProvider : YukiBaseHooker() {
 
         //res/xml/battery_health_preference.xml
         //BatteryHealthDataPreference
-    }
-
-    private fun searchDexkit(appPath: String): ClassDataList {
-        var result = ClassDataList()
-        DexkitUtils.create(appPath)?.use { bridge ->
-            result = bridge.findClass {
-                matcher {
-                    methods {
-                        add {
-                            paramTypes(ContentResolverClass.name, StringClass.name)
-                            returnType(BooleanType.name)
-                        }
-                        add {
-                            paramTypes(ContentResolverClass.name, StringClass.name, IntType.name)
-                            returnType(IntType.name)
-                        }
-                        add {
-                            paramTypes(
-                                ContentResolverClass.name, StringClass.name, BooleanType.name
-                            )
-                            returnType(BooleanType.name)
-                        }
-                        add {
-                            paramTypes(ContentResolverClass.name, StringClass.name)
-                            returnType(ListClass.name)
-                        }
-                    }
-                }
-            }
-        }
-        return result
     }
 }

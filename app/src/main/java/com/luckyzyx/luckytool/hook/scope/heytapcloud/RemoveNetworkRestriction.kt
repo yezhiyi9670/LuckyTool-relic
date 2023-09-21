@@ -1,10 +1,12 @@
 package com.luckyzyx.luckytool.hook.scope.heytapcloud
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
+import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.highcapable.yukihookapi.hook.type.java.UnitType
+import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
@@ -12,21 +14,33 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
         //Source WifiCheck -> check -> BackupRestoreCode -> NO_WIFI / SUCCESS
         //Source NetworkUtil -> 2 == ?() -> getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
-        searchClass {
-            from(
-                "com.cloud.base.commonsdk.baseutils",
-                "qa", "t2", "ra", "ob", "mb", "ie", "ne"
-            ).absolute()
-            method { emptyParam();returnType = IntType }.count(1..2)
-            method { param(IntType);returnType = BooleanType }.count(4..5)
-            method { param(ContextClass);returnType = BooleanType }.count(2..5)
-            method { returnType = IntType }.count(2..4)
-            method { returnType = BooleanType }.count(7..10)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass(
+            "RemoveNetworkRestriction", appInfo.sourceDir
+        ) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    methods {
+                        add { paramTypes(IntType.name) }
+                        add { paramTypes(ContextClass.name) }
+                        add { returnType(IntType.name) }
+                        add { returnType(BooleanType.name) }
+                        add { returnType(StringClass.name) }
+                        add { returnType(UnitType.name) }
+                    }
+                    usingStrings(
+                        "NetworkUtil",
+                        "connectivity",
+                        "getNetworkTypeString",
+                        "isMobileDataNetwork",
+                        "isNetworkConnected"
+                    )
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             injectMember {
                 method { emptyParam();returnType = IntType }.all()
                 afterHook { if (result<Int>() == 1) result = 2 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> RemoveNetworkRestriction")
+        }
     }
 }

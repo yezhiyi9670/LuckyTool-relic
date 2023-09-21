@@ -4,12 +4,11 @@ import android.util.ArrayMap
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.buildOf
-import com.highcapable.yukihookapi.hook.log.loggerD
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.AtomicBooleanClass
 import com.highcapable.yukihookapi.hook.type.java.InputStreamClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
-import com.highcapable.yukihookapi.hook.type.java.OutputStreamClass
+import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import java.io.Reader
 
@@ -19,18 +18,22 @@ object DarkModeList : YukiBaseHooker() {
         dataChannel.wait<Set<String>>("dark_mode_support_list") { supportlistSet = it }
 
         //Source DarkModeFileUtils
-        searchClass {
-            from(
-                "com.oplus.settings.feature.display.darkmode.utils",
-                "qc", "oe", "re", "qe", "be", "te", "ue", "ae", "pe", "je", "ie", "oc", "ke", "bi"
-            ).absolute()
-            field { type = AnyClass }.count(2)
-            field { type = AtomicBooleanClass }.count(1)
-            field { type = MapClass }.count(1)
-            method { param(Reader::class.java) }.count(1)
-            method { param(InputStreamClass) }.count(1)
-            method { param { it[0] == OutputStreamClass } }.count(1)
-        }.get()?.hook {
+        DexkitUtils.searchDexClass("DarkModeList", appInfo.sourceDir) { dexKitBridge ->
+            dexKitBridge.findClass {
+                matcher {
+                    fields {
+                        addForType(AnyClass.name)
+                        addForType(AtomicBooleanClass.name)
+                        addForType(MapClass.name)
+                    }
+                    methods {
+                        add { paramTypes(Reader::class.java.name) }
+                        add { paramTypes(InputStreamClass.name) }
+                    }
+                    usingStrings("DarkModeFileUtils")
+                }
+            }
+        }?.firstOrNull()?.className?.hook {
             val objectName = instanceClass.classes[0]?.simpleName
             val darkModeData =
                 (instanceClass.canonicalName!! + "\$$objectName").toClass()
@@ -55,6 +58,6 @@ object DarkModeList : YukiBaseHooker() {
                     field { type = MapClass }.get().set(dataMap.toMap())
                 }
             }
-        } ?: loggerD(msg = "$packageName\nError -> DarkModeList")
+        }
     }
 }
