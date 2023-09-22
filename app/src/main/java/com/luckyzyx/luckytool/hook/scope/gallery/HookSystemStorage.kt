@@ -10,19 +10,20 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object EnableWatermarkEditing : YukiBaseHooker() {
+object HookSystemStorage : YukiBaseHooker() {
 
     override fun onHook() {
+        //启用水印编辑
+        val waterMark = prefs(ModulePrefs).getBoolean("enable_watermark_editing", false)
+
         //Source OtherSystemStorage
-        DexkitUtils.searchDexClass(
-            "EnableWatermarkEditing", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.searchDexClass("HookSystemStorage", appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
                         addForType(ContextClass.name)
-                        addForType("kotlin.Lazy")
                     }
                     methods {
                         add { paramCount(2);returnType(IntClass.name) }
@@ -33,6 +34,7 @@ object EnableWatermarkEditing : YukiBaseHooker() {
                         add { paramCount(0);returnType(BooleanType.name) }
                         add { paramCount(4);returnType(BooleanType.name) }
                     }
+                    usingStrings("configNode")
                 }
             }
         }?.firstOrNull()?.className?.hook {
@@ -45,12 +47,17 @@ object EnableWatermarkEditing : YukiBaseHooker() {
                     val configNode = args().first().any()?.toString() ?: return@afterHook
                     when {
                         //com.oplus.camera.support.custom.hasselblad.watermark
-                        configNode.contains("feature_is_support_watermark") -> resultTrue()
-                        configNode.contains("feature_is_support_hassel_watermark") -> resultTrue()
+                        configNode.contains("feature_is_support_watermark") -> if (waterMark) resultTrue()
+                        configNode.contains("feature_is_support_hassel_watermark") -> if (waterMark) resultTrue()
                         //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
-                        configNode.contains("feature_is_support_photo_editor_watermark") -> resultTrue()
+                        configNode.contains("feature_is_support_photo_editor_watermark") -> if (waterMark) resultTrue()
                         //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
-                        configNode.contains("feature_is_support_privacy_watermark") -> resultTrue()
+                        configNode.contains("feature_is_support_privacy_watermark") -> if (waterMark) resultTrue()
+                        //debug.gallery.lns / os.graphic.gallery.photoview.lns
+                        configNode.contains("feature_is_support_lns") -> {
+//                            loggerD(msg = "configNode -> lns call -> $result")
+//                            resultTrue()
+                        }
                     }
                 }
             }

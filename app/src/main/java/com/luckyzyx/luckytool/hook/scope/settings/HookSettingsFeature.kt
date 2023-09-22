@@ -45,7 +45,10 @@ object HookSettingsFeature : YukiBaseHooker() {
                 }
             }?.firstOrNull()?.className?.hook {
                 injectMember {
-                    method { param(StringClass);returnType = BooleanType }.all()
+                    method {
+                        param(StringClass)
+                        returnType = BooleanType
+                    }.all()
                     beforeHook {
                         when (args().first().string()) {
                             //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
@@ -53,6 +56,8 @@ object HookSettingsFeature : YukiBaseHooker() {
                             "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
                             //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
                             "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
+                            //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
+//                            "oplus.software.display.pwm_switch.support" -> resultTrue()
                         }
                     }
                 }

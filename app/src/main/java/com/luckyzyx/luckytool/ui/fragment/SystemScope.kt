@@ -2819,6 +2819,19 @@ class OplusGallery : BaseScopePreferenceFeagment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.CameraFilter)
+                key = "GalleryFilter"
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_jiangwen_filter)
+                key = "enable_gallery_jiangwen_filter"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
         }
     }
 

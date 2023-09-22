@@ -10,14 +10,18 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.ModulePrefs
 
-object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
+object HookConfigAbility : YukiBaseHooker() {
 
     override fun onHook() {
+        //启用水印编辑
+        val waterMark = prefs(ModulePrefs).getBoolean("enable_watermark_editing", false)
+        //替换OnePlus机型水印
+        val notOplus = prefs(ModulePrefs).getBoolean("replace_oneplus_model_watermark", false)
+
         //Source ConfigAbilityImpl
-        DexkitUtils.searchDexClass(
-            "ReplaceOnePlusModelWaterMark", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.searchDexClass("HookConfigAbility", appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -52,9 +56,17 @@ object ReplaceOnePlusModelWaterMark : YukiBaseHooker() {
                     param(StringClass, BooleanType)
                     returnType = BooleanClass
                 }
-                beforeHook {
+                afterHook {
                     when (args().first().string()) {
-                        "is_oneplus_brand" -> resultFalse()
+                        "is_oneplus_brand" -> if (notOplus) resultFalse()
+                        "feature_is_support_watermark" -> if (waterMark) resultTrue()
+                        "feature_is_support_hassel_watermark" ->  if (waterMark) resultTrue()
+                        "feature_is_support_photo_editor_watermark" ->  if (waterMark) resultTrue()
+                        "feature_is_support_privacy_watermark" ->  if (waterMark) resultTrue()
+                        "feature_is_support_lns" -> {
+//                            loggerD(msg = "ConfigAbility -> lns call -> $result")
+//                            resultTrue()
+                        }
                     }
                 }
             }

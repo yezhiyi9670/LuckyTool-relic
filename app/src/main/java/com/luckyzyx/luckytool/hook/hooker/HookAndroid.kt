@@ -101,6 +101,27 @@ object HookAndroid : YukiBaseHooker() {
         //屏幕色温RGB调色板
         loadHooker(ScreenColorTemperatureRGBPalette)
 
+        //com.oplus.vrr.OPlusRefreshRateService RefreshRateHandler
+        //handleSinglePulseModeChange
+        //com.android.server.display.OplusFeatureSinglePulseDinmming
+        //display_pwm_settings_switch
+//        findClass("com.android.server.wm.OplusRefreshRatePolicyImpl").hook {
+//            injectMember {
+//                constructor { paramCount(3) }
+//                afterHook {
+//                    field { name = "mSupportPWMSwitch" }.get(instance).setTrue()
+//                }
+//            }
+//        }
+//        findClass("com.android.server.display.OplusSmartBrightnessController").hook {
+//            injectMember {
+//                method { name = "updateSupportedFeatureState" }
+//                afterHook {
+//                    field { name = "mPWMBacklightSupport" }.get(instance).setTrue()
+//                }
+//            }
+//        }
+
         //电源菜单显示延迟
         //loadHooker(ReducePowerMenuDisplayDelay)
 

@@ -82,10 +82,10 @@ object HookSettings : YukiBaseHooker() {
             loadHooker(ForceDisplayContentRecommend)
         }
 
-        //debug_display_category
-        //single_pulse_EM_mode_switch single_pulse_EM_mode_title
+        //<string name="single_pulse_EM_mode_title">单脉冲调光模式</string>
+        //prefs key single_pulse_EM_mode_switch
         //com.oplus.settings.feature.othersettings.development.OplusSinglePulseEMDevelopController
-        //display_single_pulse_settings_switch
+        //Settings Secure display_single_pulse_settings_switch Int
 
         //darkmode_third_app
         //com.oplus.settings.feature.display.darkmode.ui.DarkModeSettingsFragment

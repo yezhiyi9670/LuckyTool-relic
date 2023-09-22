@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
 import com.luckyzyx.luckytool.hook.utils.sysui.DependencyUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.getOSVersionCode
@@ -15,7 +16,7 @@ import com.luckyzyx.luckytool.utils.safeOfNull
 object MediaPlayerPanel : YukiBaseHooker() {
     override fun onHook() {
         //媒体播放器显示模式
-        if (getOSVersionCode >= 29) loadHooker(MediaPlayerDisplayModeC132)
+        if (getOSVersionCode == 29) loadHooker(MediaPlayerDisplayModeC132)
         else loadHooker(MediaPlayerDisplayMode)
         //强制开启媒体切换按钮
         if (prefs(ModulePrefs).getBoolean("force_enable_media_toggle_button", false)) {
@@ -162,6 +163,36 @@ object MediaPlayerPanel : YukiBaseHooker() {
                 }
             }
         }
+    }
+
+    @Suppress("unused")
+    fun getMediaData(): Any? {
+        val clazz = "com.oplus.systemui.qs.media.OplusQsMediaCarouselController\$MediaPlayerData"
+            .toClass(initialize = true)
+        val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
+        val firstActiveMedia = mediaPlayerData.current().method {
+            name = "firstActiveMedia";emptyParam()
+        }.call() ?: return null
+        val getData = firstActiveMedia.current().method {
+            name = "getData";emptyParam()
+        }.call() ?: return null
+        return getData
+    }
+
+    @Suppress("unused")
+    fun getMediaDataC132(): Any? {
+        val clazz = "com.oplusos.systemui.media.OplusMediaControllerImpl\$MediaPlayerData"
+            .toClass(initialize = true)
+        val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
+        val firstActiveMediaSortKey = mediaPlayerData.current().method {
+            name = "getFirstActiveMediaSortKey";emptyParam()
+        }.call() ?: return null
+        mediaPlayerData.current().method { name = "getMediaDataKey";paramCount = 1 }
+            .call(firstActiveMediaSortKey) ?: return null
+        val getData = firstActiveMediaSortKey.current().method {
+            name = "getData";emptyParam()
+        }.call() ?: return null
+        return getData
     }
 
     fun Any.connectSet(
