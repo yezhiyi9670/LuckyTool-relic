@@ -1073,11 +1073,14 @@ fun showRefreshRate(status: Boolean) {
  * @param action Int Action ID
  * @param title String 页面标题
  */
-fun Fragment.navigatePage(action: Int, title: CharSequence? = "Title") {
+fun Fragment.navigatePage(action: Int, title: CharSequence? = "Title") = try {
     findNavController().navigate(action, Bundle().apply {
         putCharSequence("title_label", title)
     })
+} catch (_: IllegalArgumentException) {
+
 }
+
 
 /**
  * 跳转fragment传递参数
@@ -1085,9 +1088,12 @@ fun Fragment.navigatePage(action: Int, title: CharSequence? = "Title") {
  * @param action Int
  * @param bundle Bundle?
  */
-fun Fragment.navigatePage(action: Int, bundle: Bundle?) {
+fun Fragment.navigatePage(action: Int, bundle: Bundle?) = try {
     findNavController().navigate(action, bundle)
+} catch (_: IllegalArgumentException) {
+
 }
+
 
 /**
  * 获取屏幕状态

@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import com.drake.net.utils.scopeDialog
 import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withMain
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -40,6 +41,7 @@ import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.restartMain
 import com.luckyzyx.luckytool.utils.setPrefsIconRes
 import com.luckyzyx.luckytool.utils.setupMenuProvider
+import com.luckyzyx.luckytool.utils.toast
 import kotlinx.coroutines.Dispatchers
 import java.util.Arrays
 
@@ -51,9 +53,7 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
-        init()
-    }
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {}
 
     private fun init() {
         val dialog = MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
@@ -73,13 +73,23 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
             if (!destination.toString().contains(this@XposedFragment::class.java.simpleName)) {
                 return@scopeDialog
             }
-            createPreference()
+            preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+                getPreferences(context).forEachIndexed { index, preference ->
+                    try {
+                        if (preferenceScreen != null) preferenceScreen = preferenceScreen.apply {
+                            addPreference(preference)
+                        } else addPreference(preference)
+                    } catch (_: Throwable) {
+                        withMain { context.toast("Error: $index ${preference.key}") }
+                    }
+                }
+            }
         }
     }
 
-    private fun createPreference() {
-        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
-            addPreference(Preference(context).apply {
+    private fun getPreferences(context: Context): List<Preference> {
+        return listOf(
+            Preference(context).apply {
                 key = "android"
                 setPrefsIconRes(android.R.mipmap.sym_def_app_icon) { resource, show ->
                     icon = resource
@@ -91,8 +101,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_android, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "StatusBar"
                 setPrefsIconRes("com.android.systemui") { resource, show ->
                     icon = resource
@@ -108,8 +118,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_statusBar, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.android.launcher"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -126,8 +136,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_launcher, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.aod"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -143,8 +153,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_aod, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "LockScreen"
                 setPrefsIconRes("com.android.systemui") { resource, show ->
                     icon = resource
@@ -159,8 +169,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_lockScreen, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.screenshot"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -176,8 +186,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_screenshot, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.android.packageinstaller"
                 setPrefsIconRes(key) { resource, show ->
                     icon = fixIconSize(resource)
@@ -191,8 +201,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_application, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "Miscellaneous"
                 setPrefsIconRes("com.android.systemui") { resource, show ->
                     icon = resource
@@ -204,8 +214,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_miscellaneous, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.battery"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -221,8 +231,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_battery, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.android.settings"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -237,8 +247,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_settings, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.android.mms"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -252,8 +262,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusMMS, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.heytap.browser"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -266,8 +276,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusBrowser, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 val isOneplusCamera = context.checkPackName("com.oneplus.camera")
                 key = if (isOneplusCamera) "com.oneplus.camera" else "com.oplus.camera"
                 setPrefsIconRes(key) { resource, show ->
@@ -284,8 +294,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_camera, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.coloros.gallery3d"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -301,8 +311,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusGallery, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.games"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -318,8 +328,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_oplusGames, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 val isHeytap = context.checkPackName("com.heytap.themestore")
                 key = if (isHeytap) "com.heytap.themestore" else "com.oplus.themestore"
                 setPrefsIconRes(key) { resource, show ->
@@ -333,8 +343,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_themeStore, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.heytap.cloud"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -347,8 +357,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_cloudService, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.ota"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -364,8 +374,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusOta, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.heytap.pictorial"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -381,8 +391,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusPictorial, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.oplus.gesture"
                 setPrefsIconRes(key) { resource, show ->
                     icon = fixIconSize(resource)
@@ -398,8 +408,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_oplusGesture, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.ruet_cse_1503050.ragib.appbackup.pro"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -412,8 +422,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_xposed_to_alphaBackupPro, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "ru.kslabs.ksweb"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -426,8 +436,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_ksWeb, title)
                     true
                 }
-            })
-            addPreference(Preference(context).apply {
+            },
+            Preference(context).apply {
                 key = "com.dv.adm"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -440,12 +450,13 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_ADM, title)
                     true
                 }
-            })
-        }
+            }
+        )
     }
 
     override fun onResume() {
         super.onResume()
+        init()
         requireActivity().ckqcbss()
     }
 
