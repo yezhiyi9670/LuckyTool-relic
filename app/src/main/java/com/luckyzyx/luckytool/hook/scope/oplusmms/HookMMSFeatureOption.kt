@@ -30,9 +30,11 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                         add { paramTypes(StringClass.name, BooleanType.name) }
                         add { paramTypes(ContextClass.name, StringClass.name) }
                         add { paramTypes(ContextClass.name, StringClass.name, StringClass.name) }
-                        add { returnType(UnitType.name) }
-                        add { returnType(BooleanType.name) }
+                        add { paramTypes(ContextClass.name);returnType(UnitType.name) }
+                        add { paramTypes(ContextClass.name);returnType(BooleanType.name) }
+                        add { paramCount(0);returnType(BooleanType.name) }
                     }
+                    usingStrings("FeatureOption")
                 }
             }
         }?.firstOrNull()?.className?.hook {

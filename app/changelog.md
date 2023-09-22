@@ -7,6 +7,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 - [添加] 移除高性能模式通知
 - [移除] 刷新率方案一分辨率字符
+- [优化] 信息验证码悬浮窗Dex规则
 
 ### 1.0.18_fix
 
