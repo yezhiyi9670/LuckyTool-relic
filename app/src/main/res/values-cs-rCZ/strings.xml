@@ -608,6 +608,8 @@
     <string name="restore_default_refresh_rate">Obnovit výchozí obnovovací frekvenci</string>
     <string name="module_isactivated">Modul je aktivní</string>
     <string name="module_notactive">Modul není aktivní</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">Verze modulu: </string>
     <string name="enable_module">Povolit modul</string>
     <string name="version_name">Název verze</string>

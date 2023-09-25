@@ -42,6 +42,7 @@ import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
@@ -1324,3 +1325,11 @@ fun Fragment.setupMenuProvider(menuProvider: MenuProvider) =
         menuProvider, viewLifecycleOwner, Lifecycle.State.RESUMED
     )
 
+/**
+ * 检查宿主模块版本是否匹配
+ * @receiver Context
+ * @param isValied Function1<Boolean, Unit>
+ */
+fun Context.checkModuleValied(isValied: (Boolean) -> Unit) {
+    dataChannel("com.android.systemui").checkingVersionEquals(result = isValied)
+}

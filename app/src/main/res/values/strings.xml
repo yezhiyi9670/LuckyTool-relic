@@ -683,6 +683,8 @@
     <string name="restore_default_refresh_rate">Restore default refresh rate</string>
     <string name="module_isactivated">Module activated</string>
     <string name="module_notactive">Module not activated</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">Module version:</string>
     <string name="enable_module">Enable Module</string>
     <string name="version_name">Version Name</string>

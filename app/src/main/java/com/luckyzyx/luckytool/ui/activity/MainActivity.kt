@@ -26,7 +26,7 @@ import kotlin.system.exitProcess
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
     //检测Prefs状态
-    private var isStart = YukiHookAPI.Status.isModuleActive
+    private var isStart = YukiHookAPI.Status.isXposedModuleActive
     private val KEY_PREFIX = MainActivity::class.java.name + '.'
     private val EXTRA_SAVED_INSTANCE_STATE = KEY_PREFIX + "SAVED_INSTANCE_STATE"
 

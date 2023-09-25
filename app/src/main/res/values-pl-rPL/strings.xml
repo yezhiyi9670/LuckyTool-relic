@@ -608,6 +608,8 @@
     <string name="restore_default_refresh_rate">Przywróć domyślne odświeżanie</string>
     <string name="module_isactivated">Aktywowano</string>
     <string name="module_notactive">Nieaktywny</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">Wersja modułu: </string>
     <string name="enable_module">Aktywuj moduł</string>
     <string name="version_name">Nazwa wersji</string>

@@ -42,20 +42,8 @@ class HomeFragment : Fragment(), MenuProvider {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         enableModule = requireActivity().getBoolean(ModulePrefs, "enable_module", false)
+        refreshModuleStatus()
 
-        if (enableModule && YukiHookAPI.Status.isModuleActive) {
-            binding.statusIcon.setImageResource(R.drawable.ic_round_check_24)
-            binding.statusTitle.text = getString(R.string.module_isactivated)
-        } else {
-            binding.statusCard.setCardBackgroundColor(Color.GRAY)
-            binding.statusIcon.setImageResource(R.drawable.ic_round_warning_24)
-            binding.statusTitle.text = getString(R.string.module_notactive)
-        }
-
-        binding.statusSummary.apply {
-            text = getString(R.string.module_version)
-            text = "$text$getVersionName($getVersionCode)"
-        }
         binding.enableModule.apply {
             text = context.getString(R.string.enable_module)
             isChecked = enableModule
@@ -69,8 +57,7 @@ class HomeFragment : Fragment(), MenuProvider {
 
         if (requireActivity().getBoolean(SettingsPrefs, "auto_check_update", true)) {
             UpdateUtils(requireActivity()).checkUpdate(
-                getVersionName,
-                getVersionCode
+                getVersionName, getVersionCode
             ) { versionName, versionCode, function ->
                 if (getVersionCode < versionCode) {
                     function()
@@ -279,5 +266,28 @@ class HomeFragment : Fragment(), MenuProvider {
             }
         }
         return true
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun refreshModuleStatus() {
+        when {
+            YukiHookAPI.Status.isXposedModuleActive && enableModule -> {
+                binding.statusIcon.setImageResource(R.drawable.ic_round_check_24)
+            }
+
+            else -> {
+                binding.statusCard.setCardBackgroundColor(Color.GRAY)
+                binding.statusIcon.setImageResource(R.drawable.ic_round_warning_24)
+            }
+        }
+        binding.statusTitle.text = when {
+            YukiHookAPI.Status.isXposedModuleActive && enableModule.not() -> getString(R.string.module_is_disabled)
+            YukiHookAPI.Status.isXposedModuleActive -> getString(R.string.module_isactivated)
+            else -> getString(R.string.module_notactive)
+        }
+
+        binding.statusSummary.apply {
+            text = "${getString(R.string.module_version)}$getVersionName($getVersionCode)"
+        }
     }
 }

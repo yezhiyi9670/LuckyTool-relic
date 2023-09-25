@@ -608,6 +608,8 @@
     <string name="restore_default_refresh_rate">標準のリフレッシュレートを復元</string>
     <string name="module_isactivated">モジュールは有効です</string>
     <string name="module_notactive">モジュールは無効です</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">バージョン:</string>
     <string name="enable_module">モジュールを有効化</string>
     <string name="version_name">バージョン名</string>

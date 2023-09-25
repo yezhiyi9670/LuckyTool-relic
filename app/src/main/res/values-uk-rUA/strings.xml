@@ -608,6 +608,8 @@
     <string name="restore_default_refresh_rate">Відновити частоту оновлення за замовчуванням</string>
     <string name="module_isactivated">Модуль активний</string>
     <string name="module_notactive">Модуль не активний</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">Версія модуля:</string>
     <string name="enable_module">Увімкнути модуль</string>
     <string name="version_name">Назва версії</string>

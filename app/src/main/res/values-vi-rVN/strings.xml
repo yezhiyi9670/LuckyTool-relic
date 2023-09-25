@@ -608,6 +608,8 @@
     <string name="restore_default_refresh_rate">Khôi phục tốc độ làm mới mặc định</string>
     <string name="module_isactivated">Mô-đun đã kích hoạt</string>
     <string name="module_notactive">Mô-đun chưa kích hoạt</string>
+    <string name="module_has_updated">Module has been updated</string>
+    <string name="module_is_disabled">Module is disabled</string>
     <string name="module_version">Phiên bản mô-đun:</string>
     <string name="enable_module">Bật mô-đun</string>
     <string name="version_name">Tên phiên bản</string>
