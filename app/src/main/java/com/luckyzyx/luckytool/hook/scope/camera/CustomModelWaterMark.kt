@@ -36,10 +36,10 @@ object CustomModelWaterMark : YukiBaseHooker() {
                             count(1)
                         }
                         methods {
-                            add { paramCount(0) }
-                            add { returnType(StringClass.name) }
-                            add { paramCount(0);returnType(StringClass.name) }
-                            add { paramTypes(StringClass.name);returnType(StringClass.name) }
+                            add {
+                                paramCount(0)
+                                returnType(StringClass.name)
+                            }
                             count(2..4)
                         }
                         usingStrings("ro.vendor.oplus.market.enname", "ro.vendor.oplus.market.name")

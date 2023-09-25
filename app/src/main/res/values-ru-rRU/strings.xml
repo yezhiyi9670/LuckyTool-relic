@@ -212,6 +212,7 @@
     <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
     <string name="set_media_player_display_mode">Установить режим отображения медиаплеера</string>
+    <string name="set_media_player_display_mode_hide_when_no_meida_player">Hide when no media is playing</string>
     <string name="force_enable_media_toggle_button">Принудительно включить кнопку переключения медиа</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>

@@ -30,8 +30,8 @@
     <string name="clear_all_data_message">Ujistěte se, že chcete vymazat všechna data funkcí modulu a že je potřeba resetovat funkci po vymazání?</string>
     <!-- Other Settings -->
     <string name="other_settings">Další nastavení</string>
-    <string name="enable_module_print_logs">Enable module print logs</string>
-    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
+    <string name="enable_module_print_logs">Povolit zobrazení protokolů modulů</string>
+    <string name="enable_module_print_logs_summary">Tato funkce slouží pouze k vypisování aktuálních logů samotné aplikace modulu.\nPři vypnutí tohoto přepínače budou načteny logy.</string>
     <string name="switch_autostart_function_caller">Přepnout volající funkci automatického spuštění</string>
     <string name="switch_autostart_function_caller_summary">1.Metoda volání modulu otevře novou stránku modulu a spustí funkci samočinného spuštění, tato metoda může způsobit, že obrazovka nebude po odemknutí několik sekund reagovat\n2.Metoda volání System UI vyvolá funkci samočinného spuštění v procesu System UI, je třeba udělit oprávnění root procesu System UI, jinak nelze spustit samočinné spuštění</string>
     <string name="switch_autostart_function_caller_module">Volání modulu</string>
@@ -172,7 +172,7 @@
     <string name="remove_small_window_reply_whitelist">Odstranění whitelist aplikací umožňující odpovědí v malém okně</string>
     <string name="set_small_window_reply_blacklist">Nastavit černou listinu pro odpovědi v malém okně</string>
     <string name="set_small_window_reply_blacklist_message">Vyplňte název balíčku, který má být přidán na černou listinu, na každém řádku může být vyplněn pouze jeden název balíčku</string>
-    <string name="custom_notification_background_transparency">Custom notification background transparency</string>
+    <string name="custom_notification_background_transparency">Vlastní průhlednost pozadí panelu notifikací</string>
     <!--StatusBarIcon-->
     <string name="StatusBarIcon">Ikony ve stavové liště</string>
     <string name="StatusBarIcon_summary">Související s ikonami ve stavové liště</string>
@@ -211,7 +211,8 @@
     <string name="enable_notification_align_both_sides">Povolit zarovnání notifikací z obou stran</string>
     <string name="enable_notification_importance_classification">Povolit klasifikaci důležitosti pro notifikace</string>
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
-    <string name="set_media_player_display_mode">Set media player display mode</string>
+    <string name="set_media_player_display_mode">Nastavit režim zobrazení přehrávače médií</string>
+    <string name="set_media_player_display_mode_hide_when_no_meida_player">Hide when no media is playing</string>
     <string name="force_enable_media_toggle_button">Vynutit povolení přepínače médií</string>
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
@@ -221,7 +222,7 @@
     <string name="remove_control_center_networkwarn">Odstranění varovné zprávy o zabezpečení v dolní části ovládacího centra</string>
     <string name="remove_control_center_networkwarn_dialog">Odstranit dialogové okno</string>
     <string name="remove_control_center_networkwarn_dialog_and_text">Odstranění varovné zprávy a dialogových oken zabezpečení</string>
-    <string name="remove_control_center_networkwarn_summary">After connecting to VPN, A line of text will appear at the bottom of Control Center\nAfter installing the CA certificate, it shows that the network may be monitored</string>
+    <string name="remove_control_center_networkwarn_summary">Po připojení k síti VPN se v dolní části řídicího centra zobrazí zpráva / Po instalaci certifikátu certifikační autority lze síť sledovat</string>
     <string name="custom_control_center_background_transparency">Vlastní průhlednost pozadí ovládacího centra</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Dlaždice stavové lišty</string>
@@ -410,7 +411,7 @@
     <string name="remove_secure_pay_found_virus_dialog">Odstranit dialog o kontrole virů u zabezpečených plateb</string>
     <string name="remove_access_device_log_dialog">Odebrat dialogové okno protokolu zařízení</string>
     <string name="custom_volume_dialog_background_transparency">Vlastní průhlednost pozadí panelu hlasitosti</string>
-    <string name="reduce_power_menu_display_delay">Reduce power menu display delay</string>
+    <string name="reduce_power_menu_display_delay">Snížit zpoždění nabídky tlačítka napájení</string>
     <!--FingerPrintRelated-->
     <string name="FingerPrintRelated">Nastavení související s otiskem prstu</string>
     <string name="remove_fingerprint_icon_mode">Odstranit ikonu otisku prstu</string>
@@ -469,13 +470,13 @@
     <string name="video_frame_insertion_support_2K120_summary">Pokud vaše zařízení nepodporuje MEMC, nepoužívejte tuto funkci</string>
     <string name="enable_screen_color_temperature_rgb_palette">Povolit paletu pro teplotu barev obrazovky RGB</string>
     <string name="enable_screen_color_temperature_rgb_palette_summary">Může být přepsáno DC funkcí</string>
-    <string name="settings_application">Application</string>
-    <string name="force_display_process_management">Force display of process management</string>
-    <string name="force_display_disabled_apps_manager">Force display of disabled apps manager</string>
-    <string name="settings_phone_preference">About Phone</string>
+    <string name="settings_application">Aplikace</string>
+    <string name="force_display_process_management">Vynutit zobrazení řízení procesů</string>
+    <string name="force_display_disabled_apps_manager">Vynutit zobrazení správce zakázaných aplikací</string>
+    <string name="settings_phone_preference">O telefonu</string>
     <string name="set_processor_click_page">Nastavit procesor pro přechod na stránku</string>
     <string name="customize_device_sharing_page_parameters">Konfigurace nastavení stránky sdílení zařízení</string>
-    <string name="settings_developer_preference">Developer Options</string>
+    <string name="settings_developer_preference">Možnosti pro vývojáře</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
     <string name="remove_dpi_restart_recovery_summary">Po povolení funkce a restartování rozsahu otevřete stránku Pro vývojáře a nastavte minimální šířku</string>
     <string name="settings_other_preference">Další předvolby</string>
@@ -487,25 +488,25 @@
     <string name="show_last_update_time_in_app_details">Zobrazit čas poslední aktualizace v podrobnostech aplikace</string>
     <string name="enable_long_press_to_copy_in_app_details">Povolit dlouhé stisknutí pro zkopírování podrobností aplikace</string>
     <string name="click_icon_open_market_page">Klikněte na ikonu pro otevření Google play obchodu</string>
-    <string name="allow_disabling_system_apps">Allow disabling system apps</string>
-    <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
+    <string name="allow_disabling_system_apps">Povolit zakázání systémových aplikací</string>
+    <string name="allow_disabling_system_apps_summary">Tento modul neodpovídá za to, že systémovou aplikaci nelze obnovit v důsledku zásahů uživatele.</string>
     <!--Camera-->
-    <string name="CameraWaterMark">WaterMark</string>
+    <string name="CameraWaterMark">Vodoznak</string>
     <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
     <string name="enable_hasselblad_watermark_style">Povolit Hasselblad styl vodoznaku</string>
-    <string name="custom_model_watermark">Custom model watermark</string>
+    <string name="custom_model_watermark">Vlastní model vodoznak</string>
     <string name="fix_hasselblad_custom_watermark_crash">Opravit pád při použití vlastního Hasselblad vodoznaku</string>
     <string name="fix_hasselblad_custom_watermark_crash_summary">Pokud váš fotoaparát nepodporuje vlastní vodoznak Hasselblad (bílý proužek), neotevírejte toto prosím</string>
-    <string name="CameraFilter">Filter</string>
-    <string name="enable_master_filter">Enable Master filter</string>
-    <string name="enable_jiangwen_filter">Enable Jiang Wen filter</string>
+    <string name="CameraFilter">Filtr</string>
+    <string name="enable_master_filter">Povolit hlavní filtr</string>
+    <string name="enable_jiangwen_filter">Povolit filtr Jiang Wen</string>
     <string name="enable_10_bit_image_support">Povolit podporu pro 10 bitové obrázky</string>
-    <string name="enable_10_bit_image_support_summary">Enabling this feature on some models may cause the photo to turn green</string>
+    <string name="enable_10_bit_image_support_summary">Povolení této funkce na některých modelech může způsobit, že se fotka zbarví dozelena</string>
     <!--Gallery-->
-    <string name="GalleryWaterMark">WaterMark</string>
-    <string name="enable_watermark_editing">Enable watermark editing</string>
-    <string name="replace_oneplus_model_watermark">Replace OnePlus model watermark</string>
-    <string name="replace_oneplus_model_watermark_summary">When editing the watermark, [Shot On OnePlus] will be replaced with the customized model</string>
+    <string name="GalleryWaterMark">Vodoznak</string>
+    <string name="enable_watermark_editing">Povolit úpravy vodoznaků</string>
+    <string name="replace_oneplus_model_watermark">Nahradit model vodoznaku OnePlus</string>
+    <string name="replace_oneplus_model_watermark_summary">Při úpravách vodoznaku bude [Shot On OnePlus] nahrazen upraveným modelem</string>
     <!--OplusGames-->
     <string name="remove_root_check">Odstranit limit herního filtru</string>
     <string name="remove_root_check_summary">Odstranit limit detekce root pro herní filtr</string>
@@ -530,8 +531,8 @@
     <string name="custom_media_player_support_message">Vyplňte název balíčku přehrávače médií, který má být přidán, na každém řádku může být jen jeden název balíčku aplikace</string>
     <string name="remove_danmaku_notification_whitelist">Odebrat seznam povolených oznámení danmaku</string>
     <string name="remove_game_voice_changer_whitelist">Odstranit omezení měniče hlasu</string>
-    <string name="remove_game_assistant_temperature_detection">Remove Game Assistant temperature detection</string>
-    <string name="remove_game_assistant_temperature_detection_summary">Mainly solves the problem of excessive temperature in X mode</string>
+    <string name="remove_game_assistant_temperature_detection">Odstranit detekci teploty asistenta hry</string>
+    <string name="remove_game_assistant_temperature_detection_summary">Především řeší problém nadměrné teploty v X módu</string>
     <!--CloudService-->
     <string name="remove_network_limit">Odstranit limit datové sítě</string>
     <string name="remove_network_limit_summary">Odstraňte omezení, že zálohování/obnova nemůže používat mobilní data</string>
@@ -617,7 +618,7 @@
     <string name="select_download_source">Vyberte zdroj stahování</string>
     <string name="update_logs">Aktualizovat protokoly</string>
     <string name="check_update_hint">Byla nalezena nová verze!</string>
-    <string name="check_update_error">Failed to detect updates, please check network and other issues!</string>
+    <string name="check_update_error">Nepodařilo se najít aktualizace, prosím zkontrolujte síť a další problémy!</string>
     <string name="go_download_page">Přejít na stránku pro stažení</string>
     <string name="copy_download_link">Kopírovat odkaz pro stažení</string>
     <string name="direct_update">Přímá aktualizace</string>
@@ -701,7 +702,7 @@
     <string name="common_words_right">Vpravo</string>
     <string name="common_words_close">Nezobrazit</string>
     <string name="common_words_open">Otevřít</string>
-    <string name="common_words_share">Share</string>
+    <string name="common_words_share">Sdílet</string>
     <string name="common_words_add">Přidat</string>
     <string name="common_words_remove">Odstranit</string>
     <string name="common_words_ignore">Ignorovat</string>

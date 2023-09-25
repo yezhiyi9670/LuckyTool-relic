@@ -5,19 +5,25 @@ import android.content.res.Resources
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.luckyzyx.luckytool.hook.utils.sysui.DependencyUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
-import com.luckyzyx.luckytool.utils.getOSVersionCode
 import com.luckyzyx.luckytool.utils.safeOfNull
 
 object MediaPlayerPanel : YukiBaseHooker() {
     override fun onHook() {
         //媒体播放器显示模式
-        if (getOSVersionCode == 29) loadHooker(MediaPlayerDisplayModeC132)
-        else loadHooker(MediaPlayerDisplayMode)
+        val isPermanent = VariousClass(
+            "com.oplusos.systemui.qs.OplusQSTileMediaContainer", //C13.1
+            "com.oplus.systemui.qs.OplusQSTileMediaContainer" //C14
+        ).toClass().hasMethod { name = "setMediaMode" }.not()
+
+        if (isPermanent) loadHooker(MediaPlayerDisplayMode)
+        else loadHooker(MediaPlayerDisplayModeC13)
         //强制开启媒体切换按钮
         if (prefs(ModulePrefs).getBoolean("force_enable_media_toggle_button", false)) {
             loadHooker(ForceEnableMediaToggleButton)
@@ -25,59 +31,23 @@ object MediaPlayerPanel : YukiBaseHooker() {
     }
 
     object MediaPlayerDisplayMode : YukiBaseHooker() {
-        override fun onHook() {
-            var mode = prefs(ModulePrefs).getString("set_media_player_display_mode", "0")
-            dataChannel.wait<String>("set_media_player_display_mode") { mode = it }
-
-            //Source OplusQsMediaCarouselController
-            findClass("com.oplus.systemui.qs.media.OplusQsMediaCarouselController").hook {
-                injectMember {
-                    method { name = "setCurrentMediaData" }
-                    afterHook {
-                        val status = when (mode) {
-                            "1" -> true
-                            "2" -> false
-                            else -> return@afterHook
-                        }
-                        val mediaModeChangeListener = field { name = "mediaModeChangeListener" }
-                            .get(instance).any() ?: return@afterHook
-                        mediaModeChangeListener.current().method {
-                            name = "onChanged"
-                        }.call(status)
-                    }
-                }
-                injectMember {
-                    method { name = "setMediaModeChangeListener" }
-                    afterHook {
-                        val status = when (mode) {
-                            "1" -> true
-                            "2" -> false
-                            else -> return@afterHook
-                        }
-                        val mediaModeChangeListener = args().first().any() ?: return@afterHook
-                        mediaModeChangeListener.current().method {
-                            name = "onChanged"
-                        }.call(status)
-                    }
-                }
-            }
-        }
-    }
-
-    object MediaPlayerDisplayModeC132 : YukiBaseHooker() {
         @SuppressLint("DiscouragedApi")
         override fun onHook() {
             var mode = prefs(ModulePrefs).getString("set_media_player_display_mode", "0")
             dataChannel.wait<String>("set_media_player_display_mode") { mode = it }
 
             //Source updateQsMediaPanelView
-            findClass("com.oplusos.systemui.qs.OplusQSTileMediaContainer").hook {
+            VariousClass(
+                "com.oplusos.systemui.qs.OplusQSTileMediaContainer", //C13.1
+                "com.oplus.systemui.qs.OplusQSTileMediaContainer" //C14
+            ).hook {
                 injectMember {
                     method { name = "updateQsMediaPanelView" }
                     beforeHook {
                         val status = when (mode) {
                             "1" -> 0
                             "2" -> 8
+                            "3" -> if (getMediaData() == null) 8 else 0
                             else -> return@beforeHook
                         }
                         val res = args().first().cast<Resources>() ?: return@beforeHook
@@ -108,9 +78,10 @@ object MediaPlayerPanel : YukiBaseHooker() {
                 injectMember {
                     method { name = "updateQsSecondTileContainer" }
                     beforeHook {
-                        val status = when (mode) {
+                        val isShow = when (mode) {
                             "1" -> true
                             "2" -> false
+                            "3" -> getMediaData() != null
                             else -> return@beforeHook
                         }
                         val res = args().first().cast<Resources>() ?: return@beforeHook
@@ -133,7 +104,7 @@ object MediaPlayerPanel : YukiBaseHooker() {
                         val guideLine = res.getIdentifier(
                             "guide_line", "id", packageName
                         ).takeIf { it != 0 } ?: return@beforeHook
-                        if (status) {
+                        if (isShow) {
                             val firstTile = field { name = "mFirstTileContainer" }.get(instance)
                                 .cast<LinearLayout>() ?: return@beforeHook
                             val smallContainerMargin = res.getIdentifier(
@@ -152,12 +123,11 @@ object MediaPlayerPanel : YukiBaseHooker() {
                             mTmpConstraintSet.connectSet(
                                 linear.id, 3, firstTile.id, 4, containerSize
                             )
-                            resultNull()
-                            return@beforeHook
+                        } else {
+                            mTmpConstraintSet.connectSet(linear.id, 6, guideLine, 7, sideSize)
+                            mTmpConstraintSet.connectSet(linear.id, 7, 0, 7, 0)
+                            mTmpConstraintSet.connectSet(linear.id, 3, 0, 3, 0)
                         }
-                        mTmpConstraintSet.connectSet(linear.id, 6, guideLine, 7, sideSize)
-                        mTmpConstraintSet.connectSet(linear.id, 7, 0, 7, 0)
-                        mTmpConstraintSet.connectSet(linear.id, 3, 0, 3, 0)
                         resultNull()
                     }
                 }
@@ -165,24 +135,45 @@ object MediaPlayerPanel : YukiBaseHooker() {
         }
     }
 
-    @Suppress("unused")
-    fun getMediaData(): Any? {
-        val clazz = "com.oplus.systemui.qs.media.OplusQsMediaCarouselController\$MediaPlayerData"
-            .toClass(initialize = true)
-        val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
-        val firstActiveMedia = mediaPlayerData.current().method {
-            name = "firstActiveMedia";emptyParam()
-        }.call() ?: return null
-        val getData = firstActiveMedia.current().method {
-            name = "getData";emptyParam()
-        }.call() ?: return null
-        return getData
+    object MediaPlayerDisplayModeC13 : YukiBaseHooker() {
+        override fun onHook() {
+            var mode = prefs(ModulePrefs).getString("set_media_player_display_mode", "0")
+            dataChannel.wait<String>("set_media_player_display_mode") { mode = it }
+
+            //Source OplusQsMediaCarouselController
+            findClass("com.oplus.systemui.qs.media.OplusQsMediaCarouselController").hook {
+                injectMember {
+                    method { name = "setCurrentMediaData" }
+                    afterHook {
+                        val status = when (mode) {
+                            "1" -> true
+                            "2" -> false
+                            else -> return@afterHook
+                        }
+                        val mediaModeChangeListener = field { name = "mediaModeChangeListener" }
+                            .get(instance).any() ?: return@afterHook
+                        mediaModeChangeListener.current().method { name = "onChanged" }.call(status)
+                    }
+                }
+                injectMember {
+                    method { name = "setMediaModeChangeListener" }
+                    afterHook {
+                        val status = when (mode) {
+                            "1" -> true
+                            "2" -> false
+                            else -> return@afterHook
+                        }
+                        val mediaModeChangeListener = args().first().any() ?: return@afterHook
+                        mediaModeChangeListener.current().method { name = "onChanged" }.call(status)
+                    }
+                }
+            }
+        }
     }
 
-    @Suppress("unused")
-    fun getMediaDataC132(): Any? {
+    fun getMediaData(): Any? {
         val clazz = "com.oplusos.systemui.media.OplusMediaControllerImpl\$MediaPlayerData"
-            .toClass(initialize = true)
+            .toClass()
         val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
         val firstActiveMediaSortKey = mediaPlayerData.current().method {
             name = "getFirstActiveMediaSortKey";emptyParam()
@@ -191,13 +182,25 @@ object MediaPlayerPanel : YukiBaseHooker() {
             .call(firstActiveMediaSortKey) ?: return null
         val getData = firstActiveMediaSortKey.current().method {
             name = "getData";emptyParam()
-        }.call() ?: return null
+        }.call()
         return getData
     }
 
-    fun Any.connectSet(
-        startId: Int, startSide: Int, endId: Int, endSide: Int, margin: Int
-    ) {
+    @Suppress("unused")
+    fun getMediaDataC13(): Any? {
+        val clazz = "com.oplus.systemui.qs.media.OplusQsMediaCarouselController\$MediaPlayerData"
+            .toClass()
+        val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
+        val firstActiveMedia = mediaPlayerData.current().method {
+            name = "firstActiveMedia";emptyParam()
+        }.call() ?: return null
+        val getData = firstActiveMedia.current().method {
+            name = "getData";emptyParam()
+        }.call()
+        return getData
+    }
+
+    fun Any.connectSet(startId: Int, startSide: Int, endId: Int, endSide: Int, margin: Int) {
         this.current().method {
             name = "connect"
             paramCount = 5

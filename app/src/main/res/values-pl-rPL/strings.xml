@@ -212,6 +212,7 @@
     <string name="enable_notification_importance_classification">Enable notification importance classification</string>
     <string name="ControlCenter_UI_Related">Dostosuj centrum sterowania</string>
     <string name="set_media_player_display_mode">Set media player display mode</string>
+    <string name="set_media_player_display_mode_hide_when_no_meida_player">Hide when no media is playing</string>
     <string name="force_enable_media_toggle_button">Force enable media toggle button</string>
     <string name="set_auto_brightness_button_mode">Set auto-brightness button mode</string>
     <string name="remove_control_center_user_switcher">Usuń ikonę użytkownika</string>
