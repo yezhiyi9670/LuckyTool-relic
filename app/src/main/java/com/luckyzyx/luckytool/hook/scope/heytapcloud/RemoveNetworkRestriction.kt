@@ -5,7 +5,6 @@ import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
-import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object RemoveNetworkRestriction : YukiBaseHooker() {
@@ -20,12 +19,12 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
             dexKitBridge.findClass {
                 matcher {
                     methods {
-                        add { paramTypes(IntType.name) }
-                        add { paramTypes(ContextClass.name) }
-                        add { returnType(IntType.name) }
-                        add { returnType(BooleanType.name) }
-                        add { returnType(StringClass.name) }
-                        add { returnType(UnitType.name) }
+                        add { paramCount(0);returnType(IntType.name) }
+                        add { paramCount(1..2);returnType(BooleanType.name) }
+                        add { paramTypes(IntType.name);returnType(IntType.name) }
+                        add { paramTypes(IntType.name);returnType(BooleanType.name) }
+                        add { paramTypes(ContextClass.name);returnType(BooleanType.name) }
+                        add { paramTypes(ContextClass.name);returnType(StringClass.name) }
                     }
                     usingStrings(
                         "NetworkUtil",

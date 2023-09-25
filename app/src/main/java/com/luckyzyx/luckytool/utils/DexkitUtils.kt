@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.utils
 
 import com.highcapable.yukihookapi.hook.log.loggerD
+import com.highcapable.yukihookapi.hook.log.loggerE
 import com.luckyzyx.luckytool.BuildConfig
 import org.luckypray.dexkit.DexKitBridge
 import org.luckypray.dexkit.query.ClassDataList
@@ -8,6 +9,7 @@ import org.luckypray.dexkit.query.MethodDataList
 
 @Suppress("MemberVisibilityCanBePrivate")
 object DexkitUtils {
+    const val tag = "LuckyTool"
     val debug = BuildConfig.DEBUG
 
     /**
@@ -44,13 +46,15 @@ object DexkitUtils {
      * @param instance String
      */
     private fun ClassDataList?.printLog(instance: String) {
-        val msg = if (isNullOrEmpty()) "$instance -> findClass isNullOrEmpty"
-        else if (size != 1) {
+        if (isNullOrEmpty()) {
+            loggerE(tag, "$instance -> findClass isNullOrEmpty")
+        } else if (size != 1) {
             var f = ""
             forEach { f += "[${it.className}]" }
-            "$instance -> findClass size ($size) -> $f"
-        } else if (debug) "$instance -> findclass ${first().className}" else ""
-        if (msg.isNotBlank()) loggerD("LuckyTool", msg)
+            loggerE(tag, "$instance -> findClass size ($size) -> $f")
+        } else if (debug) {
+            loggerD(tag, "$instance -> findclass ${first().className}")
+        }
     }
 
     /**
@@ -77,12 +81,12 @@ object DexkitUtils {
      * @param instance String
      */
     private fun MethodDataList?.printLog(instance: String) {
-        val msg = if (isNullOrEmpty()) "$instance -> findMethod isNullOrEmpty"
-        else if (debug) {
+        if (isNullOrEmpty()) {
+            loggerE(tag, "$instance -> findMethod isNullOrEmpty")
+        } else if (debug) {
             var f = ""
             forEach { f += "[${it.className} - ${it.methodName}]" }
-            "$instance -> findMethod size ($size) -> $f"
-        } else ""
-        if (msg.isNotBlank()) loggerD("LuckyTool", msg)
+            loggerD(tag, "$instance -> findMethod size ($size) -> $f")
+        }
     }
 }

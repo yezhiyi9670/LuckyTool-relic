@@ -26,10 +26,10 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
                         addForType(CheckBoxClass.name)
                     }
                     methods {
-                        add { paramCount(0) }
-                        add { paramTypes(ViewClass.name) }
-                        add { returnType(UnitType.name) }
-                        add { returnType(BooleanType.name) }
+                        add { paramCount(0);returnType(UnitType.name) }
+                        add { paramCount(4..8);returnType(UnitType.name) }
+                        add { paramCount(0);returnType(BooleanType.name) }
+                        add { paramTypes(ViewClass.name);returnType(UnitType.name) }
                         add {
                             paramTypes(
                                 ContextClass.name,
@@ -38,9 +38,9 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
                                 DialogInterfaceClass.name,
                                 IntType.name
                             )
+                            returnType(UnitType.name)
                         }
                     }
-                    usingStrings("BROADCAST_SECURITY", "OPPO_COMPONENT_SAFE")
                 }
             }
         }?.firstOrNull()?.className?.hook {
