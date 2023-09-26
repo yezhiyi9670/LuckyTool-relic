@@ -9,6 +9,7 @@
 <a href="https://t.me/LuckyTool"><img alt="Telegram Channel" src="https://img.shields.io/badge/Telegram-Channel-blue.svg?logo=telegram"></a>   
 <a href="https://crowdin.com/project/luckytool"><img alt="Crowdin" src="https://badges.crowdin.net/luckytool/localized.svg"></a>
 <p>Extended and optimized Xposed module for ColorOS</p>
+<p>Without the authorization of the developer, unauthorized transfer, reprinting and sharing are prohibited</p>
 </div>
 
 ---
@@ -20,8 +21,8 @@ Recommend ColorOS 12+
 OnePlus 9RT A13 C13
 
 ## Scopes
-system framework,security center,clock,system interface,system desktop,camera,application package installer,game assistant,cloud services,theme store,screenshot,battery  
-AnimePictures,AlphaBackupPro
+system framework,security center,clock,system interface,system desktop,camera,gallery,application package installer,game assistant,cloud services,theme store,screenshot,battery,etc.  
+AlphaBackupPro,KSWeb,ADM
 
 <div align="left">
 <p>

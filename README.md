@@ -9,7 +9,8 @@
 <a href="https://t.me/LuckyTool"><img alt="Telegram Channel" src="https://img.shields.io/badge/Telegram-频道-blue.svg?logo=telegram"></a>   
 <a href="https://crowdin.com/project/luckytool"><img alt="Crowdin" src="https://badges.crowdin.net/luckytool/localized.svg"></a>
 <p>对ColorOS系统进行的扩展优化的Xposed模块</p>
-<p>未经开发者授权，禁止私自搬运转载</p>
+<p>未经开发者授权，禁止私自搬运转载分享</p>
+<p>提倡授之以渔，切莫授之以鱼</p>
 </div>
 
 ---
@@ -24,8 +25,8 @@ OnePlus 9RT A13 C13
 
 ## 作用域
 
-系统框架,安全中心,时钟,系统界面,系统桌面,相机,应用包安装程序,游戏助手,云服务,主题商店,截屏,电池  
-好多动漫,AlphaBackupPro
+系统框架,安全中心,时钟,系统界面,系统桌面,相机,相册,应用包安装程序,游戏助手,云服务,主题商店,截屏,电池等  
+AlphaBackupPro,KSWeb,ADM
 
 <div align="left">
 <p>
