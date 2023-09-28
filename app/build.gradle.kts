@@ -93,7 +93,6 @@ dependencies {
     //YukiHookAPI ksp
     implementation("com.highcapable.yukihookapi:api:1.1.12")
     ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.11")
-
 //    implementation(files("libs/yukihookapi-release.jar"))
 //    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 
@@ -118,10 +117,6 @@ dependencies {
     implementation("com.github.getActivity:XXPermissions:18.2")
     //崩溃日志显示
     implementation("com.github.simplepeng.SpiderMan:spiderman:v1.1.9")
-    // MoShi JSON ksp 注释处理
-    val moshiVersion = "1.15.0"
-    implementation("com.squareup.moshi:moshi:${moshiVersion}")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}")
     //Rikka
 //    implementation "dev.rikka.rikkax.core:core:1.4.1"
     //kotlin协程
