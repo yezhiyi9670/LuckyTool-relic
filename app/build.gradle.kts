@@ -110,8 +110,8 @@ dependencies {
     //下拉刷新控件
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     // 权限请求框架
@@ -131,7 +131,7 @@ dependencies {
     //Net OkHttp相关
     //noinspection GradleDependency
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
-    implementation("com.github.liangjingkanji:Net:3.5.8")
+    implementation("com.github.liangjingkanji:Net:3.6.2")
     //Apache DigestUtils md5 sha256
 //    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
     //libsu
