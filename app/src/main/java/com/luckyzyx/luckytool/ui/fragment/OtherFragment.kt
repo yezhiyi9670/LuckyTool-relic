@@ -67,39 +67,35 @@ class OtherFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initController()
 
-        binding.quickEntryTitle.text = getString(R.string.quick_entry)
-        binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
         binding.quickEntry.setOnClickListener {
             navigatePage(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
         }
 
-        binding.shortcutTitle.text = getString(R.string.set_module_shortcuts)
-        binding.shortcutSummary.text = getString(R.string.set_module_shortcuts_summary)
-        binding.shortcut.setOnClickListener {
-            val shortcutDialog =
-                MaterialAlertDialogBuilder(requireActivity(), dialogCentered).apply {
+        binding.shortcut.apply {
+            setOnClickListener {
+                val dialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
                     setView(R.layout.layout_shortcut_dialog)
                 }.show()
-            val keys =
-                ArrayList<String>().apply { addAll(ShortcutUtils(requireActivity()).getShortcutList().keys) }
-            val values =
-                ArrayList<String>().apply { addAll(ShortcutUtils(requireActivity()).getShortcutList().values) }
-            shortcutDialog.findViewById<ListView>(R.id.shortcut_list)?.apply {
-                choiceMode = ListView.CHOICE_MODE_MULTIPLE
-                adapter = ArrayAdapter(
-                    context, android.R.layout.simple_list_item_multiple_choice, values
-                )
-                keys.forEach {
-                    if (context.getBoolean(SettingsPrefs, it, false)) {
-                        val index = keys.indexOf(it)
-                        if (index != -1) setItemChecked(index, true)
+                val shortcutList = ShortcutUtils(context).getShortcutList()
+                val keys = ArrayList<String>(shortcutList.keys)
+                val titles = ArrayList<String>(shortcutList.values)
+                dialog.findViewById<ListView>(R.id.shortcut_list)?.apply {
+                    choiceMode = ListView.CHOICE_MODE_MULTIPLE
+                    adapter = ArrayAdapter(
+                        context, android.R.layout.simple_list_item_multiple_choice, titles
+                    )
+                    keys.forEach {
+                        if (context.getBoolean(SettingsPrefs, it, false)) {
+                            val index = keys.indexOf(it)
+                            if (index != -1) setItemChecked(index, true)
+                        }
                     }
-                }
-                onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
-                    val curId = keys[position]
-                    val isChecked = (view as AppCompatCheckedTextView).isChecked
-                    ShortcutUtils(context).setShortcutStatus(curId, isChecked)
-                    ShortcutUtils(context).setDynamicShortcuts()
+                    onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
+                        val key = keys[position]
+                        val isChecked = (view as AppCompatCheckedTextView).isChecked
+                        ShortcutUtils(context).setShortcutStatus(key, isChecked)
+                        ShortcutUtils(context).setDynamicShortcuts()
+                    }
                 }
             }
         }

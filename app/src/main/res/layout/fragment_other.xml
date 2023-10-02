@@ -33,6 +33,7 @@
                     
                     <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/quick_entry_title"
+                            android:text="@string/quick_entry"
                             android:paddingHorizontal="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
@@ -40,6 +41,7 @@
                     <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/quick_entry_summary"
                             android:textSize="11sp"
+                            android:text="@string/quick_entry_summary"
                             android:paddingHorizontal="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
@@ -64,6 +66,7 @@
                     
                     <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/shortcut_title"
+                            android:text="@string/set_module_shortcuts"
                             android:paddingHorizontal="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
@@ -71,6 +74,7 @@
                     <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/shortcut_summary"
                             android:textSize="11sp"
+                            android:text="@string/set_module_shortcuts_summary"
                             android:paddingHorizontal="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />

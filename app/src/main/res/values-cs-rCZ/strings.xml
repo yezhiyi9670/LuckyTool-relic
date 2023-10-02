@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">Události stavové lišty</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
     <string name="vibrate_when_opening_the_statusbar">Vibrovat při otevření stavové lišty</string>
-    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
-    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Nastavte režim pro kliknutí na stavovou lištu pro návrat do horní části</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Odstranit limit seznamu povolených</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Hodiny na stavové liště</string>
     <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
