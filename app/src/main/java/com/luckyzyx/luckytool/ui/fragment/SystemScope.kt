@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.MenuProvider
 import androidx.preference.DropDownPreference
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
@@ -251,6 +250,7 @@ class StatusBar : BaseScopePreferenceFeagment() {
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
+
         }
         requireActivity().ckqcbss()
     }
@@ -258,7 +258,7 @@ class StatusBar : BaseScopePreferenceFeagment() {
     override fun isEnableRestartMenu(): Boolean = true
 }
 
-class StatusBarClock : BaseScopePreferenceFeagment(), MenuProvider {
+class StatusBarClock : BaseScopePreferenceFeagment() {
     override val scopes = arrayOf("com.android.systemui")
 
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
@@ -266,7 +266,7 @@ class StatusBarClock : BaseScopePreferenceFeagment(), MenuProvider {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.statusbar_clock_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "statusbar_clock_mode"
                 entries = resources.getStringArray(R.array.statusbar_clock_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
@@ -338,7 +338,7 @@ class StatusBarClock : BaseScopePreferenceFeagment(), MenuProvider {
                 })
                 addPreference(DropDownPreference(context).apply {
                     title = getString(R.string.statusbar_clock_text_alignment)
-                    summary = "%s"
+                    summary = getString(R.string.common_words_current_mode) + ": %s"
                     key = "statusbar_clock_text_alignment"
                     entries =
                         resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
@@ -420,7 +420,7 @@ class StatusBarClock : BaseScopePreferenceFeagment(), MenuProvider {
                 })
                 addPreference(DropDownPreference(context).apply {
                     title = getString(R.string.statusbar_clock_text_alignment)
-                    summary = "%s"
+                    summary = getString(R.string.common_words_current_mode) + ": %s"
                     key = "statusbar_clock_text_alignment"
                     entries =
                         resources.getStringArray(R.array.statusbar_clock_text_alignment_entries)
@@ -483,7 +483,7 @@ class StatusBarNetWorkSpeed : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.statusbar_network_layout)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "statusbar_network_layout"
                 entries = resources.getStringArray(R.array.statusbar_network_layout_entries)
                 entryValues = arrayOf("0", "1", "2")
@@ -909,7 +909,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.statusbar_control_center_clock_red_one_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "statusbar_control_center_clock_red_one_mode"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
@@ -923,7 +923,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.statusbar_control_center_clock_colon_style)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "statusbar_control_center_clock_colon_style"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_clock_colon_style_entries)
@@ -975,7 +975,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             ) {
                 addPreference(DropDownPreference(context).apply {
                     title = getString(R.string.statusbar_control_center_date_fix_lunar_horizontal)
-                    summary = "%s"
+                    summary = getString(R.string.common_words_current_mode) + ": %s"
                     key = "statusbar_control_center_date_fix_lunar_horizontal"
                     entries =
                         resources.getStringArray(R.array.statusbar_control_center_date_fix_lunar_horizontal_entries)
@@ -1016,7 +1016,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_media_player_display_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_media_player_display_mode"
                 entries = resources.getStringArray(R.array.set_media_player_display_mode_entries)
                 entryValues = arrayOf("0", "1", "2", "3")
@@ -1040,7 +1040,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             }
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_auto_brightness_button_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_auto_brightness_button_mode"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_auto_brightness_mode_entries)
@@ -1064,7 +1064,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_control_center_search_button_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_control_center_search_button_mode"
                 entries =
                     resources.getStringArray(R.array.set_control_center_search_button_mode_entries)
@@ -1079,7 +1079,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.remove_control_center_networkwarn)
                 summary = arraySummaryLine(
-                    "%s",
+                    getString(R.string.common_words_current_mode) + ": %s",
                     getString(R.string.remove_control_center_networkwarn_summary)
                 )
                 key = "remove_control_center_networkwarn"
@@ -1269,7 +1269,7 @@ class StatusBarLayout : BaseScopePreferenceFeagment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.statusbar_layout_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "statusbar_layout_mode"
                 entries = resources.getStringArray(R.array.statusbar_layout_mode_entries)
                 entryValues = arrayOf("0", "1")
@@ -1362,7 +1362,10 @@ class StatusBarBattery : BaseScopePreferenceFeagment() {
                 })
                 addPreference(DropDownPreference(context).apply {
                     title = getString(R.string.battery_information_display_mode)
-                    summary = "%s\n" + getString(R.string.battery_information_display_mode_summary)
+                    summary = arraySummaryLine(
+                        getString(R.string.common_words_current_mode) + ": %s",
+                        getString(R.string.battery_information_display_mode_summary)
+                    )
                     key = "battery_information_display_mode"
                     entries =
                         resources.getStringArray(R.array.statusbar_battery_information_notify_entries)
@@ -1437,7 +1440,7 @@ class Launcher : BaseScopePreferenceFeagment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.alarmclock_widget_redone_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "alarmclock_widget_redone_mode"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
@@ -1662,7 +1665,7 @@ class Aod : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_aod_style_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_aod_style_mode"
                 entries = resources.getStringArray(R.array.set_aod_style_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
@@ -1695,7 +1698,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.lock_screen_clock_redone_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "lock_screen_clock_redone_mode"
                 entries =
                     resources.getStringArray(R.array.statusbar_control_center_clock_red_one_mode_entries)
@@ -1738,7 +1741,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_lock_screen_warp_charging_style)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_lock_screen_warp_charging_style"
                 entries =
                     resources.getStringArray(R.array.set_lock_screen_warp_charging_style_entries)
@@ -1754,7 +1757,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_lock_screen_charging_text_logo_style)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_lock_screen_charging_text_logo_style"
                 entries =
                     resources.getStringArray(R.array.set_lock_screen_charging_text_logo_style_entries)
@@ -1789,7 +1792,10 @@ class LockScreen : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_full_screen_charging_animation_mode)
-                summary = "%s\n" + getString(R.string.need_restart_scope)
+                summary = arraySummaryLine(
+                    getString(R.string.common_words_current_mode) + ": %s",
+                    getString(R.string.need_restart_scope)
+                )
                 key = "set_full_screen_charging_animation_mode"
                 entries =
                     resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
@@ -2199,7 +2205,7 @@ class DialogRelated : BaseScopePreferenceFeagment() {
             })
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_volume_bar_display_position)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_volume_bar_display_position"
                 entries = resources.getStringArray(R.array.set_volume_bar_display_position_entries)
                 entryValues = arrayOf("0", "1", "2")
@@ -2252,7 +2258,7 @@ class FingerPrintRelated : BaseScopePreferenceFeagment() {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.remove_fingerprint_icon_mode)
-                summary = "%s"
+                summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "remove_fingerprint_icon_mode"
                 entries = resources.getStringArray(R.array.remove_fingerprint_icon_mode_entries)
                 entryValues = arrayOf("0", "1", "2", "3")

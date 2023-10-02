@@ -6,7 +6,7 @@ import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
-object RemoveScrollToTopWhiteList : YukiBaseHooker() {
+object ScrollToTopWhiteList : YukiBaseHooker() {
     override fun onHook() {
         val isEnable = prefs(ModulePrefs).getBoolean("remove_scroll_to_top_white_list", false)
         if (SDK < A13) return

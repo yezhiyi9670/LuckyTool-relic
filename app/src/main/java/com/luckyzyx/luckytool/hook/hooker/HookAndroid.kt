@@ -17,11 +17,11 @@ import com.luckyzyx.luckytool.hook.scope.android.MultiApp
 import com.luckyzyx.luckytool.hook.scope.android.RemoveAccessDeviceLogDialog
 import com.luckyzyx.luckytool.hook.scope.android.RemoveAppUninstallButtonBlackList
 import com.luckyzyx.luckytool.hook.scope.android.RemovePasswordTimeoutVerification
-import com.luckyzyx.luckytool.hook.scope.android.RemoveScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.RemoveStatusBarTopNotification
 import com.luckyzyx.luckytool.hook.scope.android.RemoveSystemScreenshotDelay
 import com.luckyzyx.luckytool.hook.scope.android.RemoveVPNActiveNotification
 import com.luckyzyx.luckytool.hook.scope.android.ScreenColorTemperatureRGBPalette
+import com.luckyzyx.luckytool.hook.scope.android.ScrollToTopWhiteList
 import com.luckyzyx.luckytool.hook.scope.android.SystemEnableVolumeKeyControlFlashlight
 import com.luckyzyx.luckytool.hook.scope.android.ZoomWindow
 
@@ -78,7 +78,7 @@ object HookAndroid : YukiBaseHooker() {
         loadHooker(BatteryOptimizationWhitelist)
 
         //允许APP回到顶部
-        loadHooker(RemoveScrollToTopWhiteList)
+        loadHooker(ScrollToTopWhiteList)
 
         //禁用访问设备日志对话框
         loadHooker(RemoveAccessDeviceLogDialog)
