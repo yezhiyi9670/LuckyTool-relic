@@ -1,14 +1,14 @@
 package com.luckyzyx.luckytool.ui.fragment
 
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.Settings
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -25,13 +25,16 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
+import com.luckyzyx.luckytool.IAdbDebugController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentOtherBinding
+import com.luckyzyx.luckytool.ui.service.AdbDebugControllerService
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.OtherPrefs
 import com.luckyzyx.luckytool.utils.SettingsPrefs
 import com.luckyzyx.luckytool.utils.ShellUtils
 import com.luckyzyx.luckytool.utils.ShortcutUtils
+import com.luckyzyx.luckytool.utils.bindRootService
 import com.luckyzyx.luckytool.utils.checkPackName
 import com.luckyzyx.luckytool.utils.checkResolveActivity
 import com.luckyzyx.luckytool.utils.copyStr
@@ -46,9 +49,11 @@ import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
 import com.luckyzyx.luckytool.utils.toast
 
+
 class OtherFragment : Fragment() {
 
     private lateinit var binding: FragmentOtherBinding
+    private var adbController: IAdbDebugController? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -60,7 +65,7 @@ class OtherFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val isSu = ShellUtils.checkRootPermission()
+        initController()
 
         binding.quickEntryTitle.text = getString(R.string.quick_entry)
         binding.quickEntrySummary.text = getString(R.string.quick_entry_summary)
@@ -99,115 +104,88 @@ class OtherFragment : Fragment() {
             }
         }
 
-        binding.remoteAdbDebugTitle.text = getString(R.string.remote_adb_debug_title)
-        binding.remoteAdbDebugSummary.text = getString(R.string.remote_adb_debug_summary)
         binding.remoteAdbDebug.apply {
             setOnClickListener {
-                val getPort =
-                    ShellUtils.execCommand("getprop service.adb.tcp.port", true, true).let {
-                        if (it.result == 0 && it.successMsg != null) it.successMsg else "6666"
-                    }
-                var getIP = ShellUtils.execCommand(
-                    "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
-                    true,
-                    true
-                ).let {
-                    if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) it.successMsg else "IP"
-                }
+                val getPort = adbController?.adbPort ?: return@setOnClickListener
+                var getIP = adbController?.wifiIP ?: "IP"
+
                 val adbDialog = MaterialAlertDialogBuilder(context).apply {
                     setCancelable(true)
                     setView(R.layout.layout_adb_dialog)
                 }.show()
-                val adbPortLayout =
-                    adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)?.apply {
-                        hint = context.getString(R.string.adb_port)
-                        isHintEnabled = true
-                        isHintAnimationEnabled = true
-                        isCounterEnabled = true
-                        counterMaxLength = 6
-                    }
+                val adbPortLayout = adbDialog.findViewById<TextInputLayout>(R.id.adb_port_layout)
                 val adbPort = adbDialog.findViewById<TextInputEditText>(R.id.adb_port)?.apply {
-                    inputType = EditorInfo.TYPE_CLASS_NUMBER
-                    setText(context.getString(OtherPrefs, "adb_port", "6666"))
+                    setText(
+                        if (getPort == 0 || getPort == -1) {
+                            context.getString(OtherPrefs, "adb_port", "6666")
+                        } else getPort.toString()
+                    )
                 }
                 val adbTv = adbDialog.findViewById<MaterialTextView>(R.id.adb_tv)?.apply {
-                    gravity = Gravity.CENTER
-                    if (!(getPort == "" || getPort.toInt() == -1)) {
-                        text = "adb connect $getIP:$getPort"
-                    }
+                    if (getPort != 0 && getPort != -1) text = "adb connect $getIP:$getPort"
                     setOnLongClickListener {
                         context.copyStr(text.toString())
                         true
                     }
                 }
                 val adbTvTip = adbDialog?.findViewById<MaterialTextView>(R.id.adb_tv_tip)?.apply {
-                    gravity = Gravity.CENTER
-                    isVisible = adbTv?.text != ""
-                    text = getString(R.string.adb_tv_tip)
+                    isVisible = adbTv?.text.isNullOrBlank().not()
                     setOnLongClickListener {
                         context.copyStr(adbTv?.text.toString())
                         true
                     }
                 }
                 adbDialog.findViewById<MaterialSwitch>(R.id.adb_switch)?.apply {
-                    text = context.getString(R.string.enable_remote_adb_debugging)
-                    isEnabled = isSu
-                    isChecked = isSu && getPort.isNotBlank() && getPort.toInt() != -1
+                    isEnabled = adbController != null
+                    isChecked = isEnabled && getPort != 0 && getPort != -1
                     adbPortLayout?.isEnabled = isChecked.not()
-                    setOnCheckedChangeListener { buttonView, isChecked ->
+                    setOnCheckedChangeListener { buttonView, checked ->
                         if (!buttonView.isPressed) return@setOnCheckedChangeListener
-                        if (isChecked) {
-                            val port = adbPort?.text.toString()
-                            if (port == "") {
-                                this.isChecked = false
+                        if (checked) {
+                            val portStr = adbPort?.text
+                            if (portStr.isNullOrBlank()) {
+                                isChecked = false
                                 adbTv?.text = context.getString(R.string.adb_debug_port_cannot_null)
                                 return@setOnCheckedChangeListener
                             }
                             scopeLife {
+                                val port = portStr.toString().toInt()
                                 isEnabled = false
-                                val commands = arrayOf(
-                                    "setprop service.adb.tcp.port '$port'",
-                                    "stop adbd",
-                                    "killall -9 adbd 2>/dev/null",
-                                    "start adbd"
-                                )
                                 withDefault {
-                                    ShellUtils.execCommand(commands, true)
-                                    getIP = ShellUtils.execCommand(
-                                        "ifconfig wlan0 | grep 'inet addr' | awk '{ print $2}' | awk -F: '{print $2}' 2>/dev/null",
-                                        true,
-                                        true
-                                    ).let {
-                                        if (it.result == 0 && it.successMsg != null && it.successMsg.isNotBlank()) it.successMsg else "IP"
-                                    }
+                                    adbController?.adbPort = port
+                                    adbController?.restartAdb()
+                                    getIP = adbController?.wifiIP ?: "IP"
+                                    context.putString(OtherPrefs, "adb_port", port.toString())
                                 }
-                                context.putString(OtherPrefs, "adb_port", port)
                                 adbPortLayout?.isEnabled = false
-                                adbTv?.text = "adb connect $getIP:$port"
+                                adbTv?.text = "adb connect $getIP:$portStr"
                                 adbTvTip?.isVisible = true
                                 isEnabled = true
                             }
-                        } else {
-                            scopeLife {
-                                isEnabled = false
-                                val commands = arrayOf(
-                                    "setprop service.adb.tcp.port -1",
-                                    "stop adbd",
-                                    "killall -9 adbd 2>/dev/null",
-                                    "start adbd",
-                                    "setprop service.adb.tcp.port ''"
-                                )
-                                withDefault { ShellUtils.execCommand(commands, true) }
-                                adbPortLayout?.isEnabled = true
-                                adbTv?.text = ""
-                                adbTvTip?.isVisible = false
-                                isEnabled = true
+                        } else scopeLife {
+                            isEnabled = false
+                            withDefault {
+                                adbController?.adbPort = -1
+                                adbController?.restartAdb()
+                                adbController?.adbPort = 0
                             }
+                            adbPortLayout?.isEnabled = true
+                            adbTv?.text = ""
+                            adbTvTip?.isVisible = false
+                            isEnabled = true
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun initController() {
+        if (adbController == null) requireActivity().bindRootService(
+            AdbDebugControllerService::class.java, { _: ComponentName?, iBinder: IBinder? ->
+                adbController = IAdbDebugController.Stub.asInterface(iBinder)
+                binding.remoteAdbDebug.isVisible = true
+            })
     }
 }
 

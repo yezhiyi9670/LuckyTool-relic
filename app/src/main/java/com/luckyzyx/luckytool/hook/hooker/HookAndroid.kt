@@ -101,6 +101,35 @@ object HookAndroid : YukiBaseHooker() {
         //屏幕色温RGB调色板
         loadHooker(ScreenColorTemperatureRGBPalette)
 
+        //Source ScanPackageUtils
+//        findClass("com.android.server.pm.ScanPackageUtils").hook {
+//            injectMember {
+//                method { name = "assertMinSignatureSchemeIsValid";paramCount(2) }
+//                beforeHook {
+//                    val clazz = "com.android.server.pm.pkg.parsing.ParsingPackageUtils"
+//                        .toClassOrNull()
+//                    val isSystemDir = clazz?.field { name = "PARSE_IS_SYSTEM_DIR";type(IntType) }
+//                        ?.get()?.cast<Int>() ?: return@beforeHook
+//                    val parseFlags = args().last().cast<Int>() ?: return@beforeHook
+//                    if ((parseFlags and isSystemDir) != 0) resultNull()
+//                }
+//            }
+//        }
+
+        //Source ApkSignatureVerifier
+//        findClass("android.util.apk.ApkSignatureVerifier").hook {
+//            injectMember {
+//                method { name = "unsafeGetCertsWithoutVerification";paramCount(3) }
+//                beforeHook {
+//                    val clazz = "android.content.pm.SigningDetails\$SignatureSchemeVersion"
+//                        .toClassOrNull()
+//                    val jar = clazz?.field { name = "JAR";type(IntType) }?.get()?.cast<Int>()
+//                        ?: return@beforeHook
+//                    args().last().set(jar)
+//                }
+//            }
+//        }
+
         //com.oplus.vrr.OPlusRefreshRateService RefreshRateHandler
         //handleSinglePulseModeChange
         //com.android.server.display.OplusFeatureSinglePulseDinmming

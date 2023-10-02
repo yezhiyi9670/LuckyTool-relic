@@ -12,7 +12,7 @@ object DisableOTGAutoOff : YukiBaseHooker() {
         ).hook {
             injectMember {
                 method { name = "setAutoCloseAlarm" }
-                intercept()
+                afterHook { method { name = "cancelAutoCloseAlarm" }.get(instance).call() }
             }
         }
     }

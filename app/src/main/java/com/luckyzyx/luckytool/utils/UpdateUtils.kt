@@ -32,9 +32,7 @@ class UpdateUtils(val context: Context) {
     @SuppressLint("SetTextI18n")
     @Suppress("UNUSED_PARAMETER")
     fun checkUpdate(
-        versionName: String,
-        versionCode: Int,
-        result: (String, Int, () -> Unit) -> Unit
+        versionName: String, versionCode: Int, result: (String, Int, () -> Unit) -> Unit
     ) {
         scopeNet {
             val latestUrl =
