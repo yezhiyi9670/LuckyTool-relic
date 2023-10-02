@@ -119,8 +119,8 @@
     <string name="StatusbarEvents">StatusBar Events</string>
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
-    <string name="remove_scroll_to_top_white_list">Remove the whitelist that scrolls to the top when the status bar is clicked</string>
-    <string name="remove_scroll_to_top_white_list_summary">Remove the whitelist restriction that scrolls to the top when some apps click on the status bar</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>

@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">События строки состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
     <string name="vibrate_when_opening_the_statusbar">Вибрировать при открытии строки состояния</string>
-    <string name="remove_scroll_to_top_white_list">Удалить белый список, который прокручивается вверх при нажатии на строку состояния</string>
-    <string name="remove_scroll_to_top_white_list_summary">Удалить ограничение белого списка, которое прокручивается вверх, когда некоторые приложения нажимают на строку состояния</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
@@ -212,7 +212,7 @@
     <string name="enable_notification_importance_classification">Включить классификацию важности уведомлений</string>
     <string name="ControlCenter_UI_Related">Пользовательский интерфейс центра управления</string>
     <string name="set_media_player_display_mode">Установить режим отображения медиаплеера</string>
-    <string name="set_media_player_display_mode_hide_when_no_meida_player">Hide when no media is playing</string>
+    <string name="set_media_player_display_mode_hide_when_no_meida_player">Скрывать, когда нет воспроизведения</string>
     <string name="force_enable_media_toggle_button">Принудительно включить кнопку переключения медиа</string>
     <string name="set_auto_brightness_button_mode">Показывать кнопку автояркости</string>
     <string name="remove_control_center_user_switcher">Удалить переключатель пользователей центра управления</string>
@@ -608,8 +608,8 @@
     <string name="restore_default_refresh_rate">Восстановить частоту обновления по умолчанию</string>
     <string name="module_isactivated">Модуль активен</string>
     <string name="module_notactive">Модуль не активен</string>
-    <string name="module_has_updated">Module has been updated</string>
-    <string name="module_is_disabled">Module is disabled</string>
+    <string name="module_has_updated">Модуль был обновлён</string>
+    <string name="module_is_disabled"> Модуль отключен</string>
     <string name="module_version">Версия модуля:</string>
     <string name="enable_module">Включить модуль</string>
     <string name="version_name">Название версии</string>

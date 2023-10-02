@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">Nội dung thanh trạng thái</string>
     <string name="statusbar_double_click_lock_screen">Nhấp đôi thanh trạng thái để khoá máy</string>
     <string name="vibrate_when_opening_the_statusbar">Rung khi mở thanh trạng thái</string>
-    <string name="remove_scroll_to_top_white_list">Xóa thanh trạng thái nhấp chuột và quay lại danh sách trắng hàng đầu</string>
-    <string name="remove_scroll_to_top_white_list_summary">Xóa hạn chế danh sách trắng khiến phải cuộn lên trên cùng khi nhấp vào thanh trạng thái trong một số ứng dụng</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Thanh trạng thái đồng hồ</string>
     <string name="statusbar_clock_mode">Đồng hồ thanh trạng thái</string>

@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">Події в статус барі</string>
     <string name="statusbar_double_click_lock_screen">Двічі клацніть на рядок стану для блокування екрану</string>
     <string name="vibrate_when_opening_the_statusbar">Вібрація при відкритті статус бару</string>
-    <string name="remove_scroll_to_top_white_list">Видалити білий список, який прокручує вгору, коли натиснуто на статус бар</string>
-    <string name="remove_scroll_to_top_white_list_summary">Видалити обмеження в білому списку для додатків, які прокручуються на початок, коли натискати на статус бар</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Годинник у рядку стану</string>
     <string name="statusbar_clock_mode">Годинник у рядку стану</string>

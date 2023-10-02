@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">Události stavové lišty</string>
     <string name="statusbar_double_click_lock_screen">Dvojitým klepnutím na stavovou lištu zamknout obrazovku</string>
     <string name="vibrate_when_opening_the_statusbar">Vibrovat při otevření stavové lišty</string>
-    <string name="remove_scroll_to_top_white_list">Odstranění whitelist, který se po kliknutí na stavový řádek posune nahoru</string>
-    <string name="remove_scroll_to_top_white_list_summary">Odstranění omezení whitelistu, který se posouvá nahoru, když je v některých aplikacích kliknuto na stavový řádek</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Hodiny na stavové liště</string>
     <string name="statusbar_clock_mode">Režim rozložení hodin ve stavové liště</string>
@@ -212,7 +212,7 @@
     <string name="enable_notification_importance_classification">Povolit klasifikaci důležitosti pro notifikace</string>
     <string name="ControlCenter_UI_Related">Nastavení související s UI</string>
     <string name="set_media_player_display_mode">Nastavit režim zobrazení přehrávače médií</string>
-    <string name="set_media_player_display_mode_hide_when_no_meida_player">Hide when no media is playing</string>
+    <string name="set_media_player_display_mode_hide_when_no_meida_player">Skrýt pokud se nepřehrávají žádná média</string>
     <string name="force_enable_media_toggle_button">Vynutit povolení přepínače médií</string>
     <string name="set_auto_brightness_button_mode">Nastavit režim tlačítka automatického jasu</string>
     <string name="remove_control_center_user_switcher">Odstranit přepínač uživatelů v ovládacím centru</string>
@@ -608,8 +608,8 @@
     <string name="restore_default_refresh_rate">Obnovit výchozí obnovovací frekvenci</string>
     <string name="module_isactivated">Modul je aktivní</string>
     <string name="module_notactive">Modul není aktivní</string>
-    <string name="module_has_updated">Module has been updated</string>
-    <string name="module_is_disabled">Module is disabled</string>
+    <string name="module_has_updated">Modul byl aktualizován</string>
+    <string name="module_is_disabled">Modul je zakázán</string>
     <string name="module_version">Verze modulu: </string>
     <string name="enable_module">Povolit modul</string>
     <string name="version_name">Název verze</string>

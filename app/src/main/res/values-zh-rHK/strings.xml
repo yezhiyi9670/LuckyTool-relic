@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">状态栏事件</string>
     <string name="statusbar_double_click_lock_screen">双击状态栏锁屏</string>
     <string name="vibrate_when_opening_the_statusbar">打开状态栏时振动</string>
-    <string name="remove_scroll_to_top_white_list">移除点击状态栏返回顶部白名单</string>
-    <string name="remove_scroll_to_top_white_list_summary">移除部分APP内点击状态栏时滚动到顶部的白名单限制</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">设置点击状态栏返回顶部模式</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">移除白名单限制</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">状态栏时钟</string>
     <string name="statusbar_clock_mode">状态栏时钟模式</string>

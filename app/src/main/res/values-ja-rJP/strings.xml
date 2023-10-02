@@ -113,8 +113,8 @@
     <string name="StatusbarEvents">ステータスバーのイベント</string>
     <string name="statusbar_double_click_lock_screen">ステータスバーをダブルタップして画面をロックする</string>
     <string name="vibrate_when_opening_the_statusbar">ステータスバーを開いたときに振動させる</string>
-    <string name="remove_scroll_to_top_white_list">ステータスバータップ時に最上部へスクロールする機能のホワイトリストを無効化</string>
-    <string name="remove_scroll_to_top_white_list_summary">一部のアプリで、ステータスバーをタップしたときに最上部へスクロールさせる機能の制限を無効化します</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">ステータスバーの時計</string>
     <string name="statusbar_clock_mode">ステータスバーの時計モード</string>

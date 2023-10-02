@@ -242,15 +242,20 @@ class StatusBar : BaseScopePreferenceFeagment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
-            addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_scroll_to_top_white_list)
-                summary = getString(R.string.remove_scroll_to_top_white_list_summary)
-                key = "remove_scroll_to_top_white_list"
-                setDefaultValue(false)
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_click_statusbar_scroll_to_top_mode)
+                summary = arraySummaryLine(
+                    getString(R.string.common_words_current_mode) + ": %s",
+                    getString(R.string.need_restart_system)
+                )
+                key = "set_click_statusbar_scroll_to_top_mode"
+                entries =
+                    resources.getStringArray(R.array.set_click_statusbar_scroll_to_top_mode_entries)
+                entryValues = arrayOf("0", "1", "2")
+                setDefaultValue("0")
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
-
         }
         requireActivity().ckqcbss()
     }
