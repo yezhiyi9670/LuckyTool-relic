@@ -4,6 +4,13 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 
 object HookThermalController : YukiBaseHooker() {
     override fun onHook() {
+        //Source ThermalControlConfig
+        findClass("com.oplus.thermalcontrol.ThermalControlConfig").hook {
+            injectMember {
+                method { name = "isThermalControlEnable" }
+                replaceToFalse()
+            }
+        }
         //Source ThermalControllerCenter
         findClass("com.oplus.thermalcontrol.ThermalControllerCenter").hook {
             injectMember {
@@ -47,6 +54,13 @@ object HookThermalController : YukiBaseHooker() {
                 afterHook {
                     val temp = result<Float>() ?: return@afterHook
                     if (temp > 30.0F) result = 30.0F
+                }
+            }
+            injectMember {
+                method { name = "sendThermalLevelChangeBroadcast" }
+                beforeHook {
+                    args().first().set(-1)
+                    args().last().set(30)
                 }
             }
             injectMember {
