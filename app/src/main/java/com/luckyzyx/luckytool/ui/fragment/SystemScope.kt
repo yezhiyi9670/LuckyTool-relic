@@ -3195,9 +3195,19 @@ class OplusBrowser : BaseScopePreferenceFeagment() {
                     true
                 }
             })
+            addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.common_words_ads)
+                isIconSpaceReserved = false
+            })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_ads_from_download_dialog)
                 key = "remove_ads_from_download_dialog"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_ads_at_download_page_bottom)
+                key = "remove_ads_at_download_page_bottom"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })

@@ -590,6 +590,7 @@
     <string name="remove_ads_from_weather_page">移除天气页面底部信息流广告</string>
     <string name="remove_ads_from_weather_page_summary">通过在页面 m.weathercn.com 注入 JS 来实现屏蔽广告的效果，适用于通过天气 APP 跳转到的近 15 日天气等需要浏览器的功能</string>
     <string name="remove_ads_from_download_dialog">移除下载对话框广告</string>
+    <string name="remove_ads_at_download_page_bottom">移除下载页面底部广告</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>
@@ -724,6 +725,7 @@
     <string name="common_words_loading">加载中</string>
     <string name="common_words_whitelist">白名单</string>
     <string name="common_words_blacklist">黑名单</string>
+    <string name="common_words_ads">广告</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">连接网络失败</string>
     <string name="net_networking_error">当前网络不可用</string>

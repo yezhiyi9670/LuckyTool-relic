@@ -22,8 +22,9 @@ object RemoveAdsFromWeatherPage : YukiBaseHooker() {
                 method { name { it.startsWith("onPage") } }
                 afterHook {
                     val currentWebView = args().first().any()?.current()
-                    val currentUrl =
-                        currentWebView?.method { name = "getUrl";superClass() }?.string() ?: ""
+                    val currentUrl = currentWebView?.method {
+                        name = "getUrl";superClass()
+                    }?.string() ?: ""
                     if (currentUrl.let { it.startsWith("http://m.weathercn.com") || it.startsWith("https://m.weathercn.com") }) {
                         currentWebView?.method {
                             name = "evaluateJavascript"

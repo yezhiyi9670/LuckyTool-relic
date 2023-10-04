@@ -5,12 +5,13 @@ import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import org.luckypray.dexkit.DexKitBridge
 
 object RemoveAdsFromDownloadDialog : YukiBaseHooker() {
     override fun onHook() {
         //Source DownloadCardAdProvider
-        DexkitUtils.searchDexClass("", appInfo.sourceDir) { dexKitBridge: DexKitBridge ->
+        DexkitUtils.searchDexClass(
+            "RemoveAdsFromDownloadDialog", appInfo.sourceDir
+        ) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {

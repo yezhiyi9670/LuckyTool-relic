@@ -590,6 +590,7 @@
     <string name="remove_ads_from_weather_page">Remove weather page bottom information flow ads</string>
     <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
     <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
+    <string name="remove_ads_at_download_page_bottom">Remove ads at the bottom of download page</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Bỏ qua trang khởi động</string>
     <string name="vip_download">Tải xuống bản gốc</string>
@@ -724,6 +725,7 @@
     <string name="common_words_loading">Đang tải</string>
     <string name="common_words_whitelist">Danh sách trắng</string>
     <string name="common_words_blacklist">Danh sách đen</string>
+    <string name="common_words_ads">Ads</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Không thể kết nối tới mạng</string>
     <string name="net_networking_error">Mạng hiện tại không khả dụng</string>
