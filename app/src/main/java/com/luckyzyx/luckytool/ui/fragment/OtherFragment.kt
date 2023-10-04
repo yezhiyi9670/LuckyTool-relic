@@ -47,7 +47,6 @@ import com.luckyzyx.luckytool.utils.jumpEngineermode
 import com.luckyzyx.luckytool.utils.jumpRunningApp
 import com.luckyzyx.luckytool.utils.navigatePage
 import com.luckyzyx.luckytool.utils.putString
-import com.luckyzyx.luckytool.utils.toast
 
 
 class OtherFragment : Fragment() {
@@ -326,32 +325,6 @@ class SystemQuickEntry : ModulePreferenceFragment() {
                     ShellUtils.execCommand(
                         "am start -n com.oplus.camera/.ui.menu.algoswitch.AlgoSwitchActivity", true
                     )
-                    true
-                }
-            })
-            addPreference(Preference(context).apply {
-                title = getString(R.string.browser_concise_mode)
-                isIconSpaceReserved = false
-                isVisible = context.checkPackName("com.heytap.browser")
-                setOnPreferenceClickListener {
-                    try {
-                        Intent().apply {
-                            setClassName(
-                                "com.heytap.browser",
-                                "com.heytap.browser.settings.component.BrowserPreferenceActivity"
-                            )
-                            putExtra(
-                                "key.fragment.name",
-                                "com.heytap.browser.settings.homepage.HomepagePreferenceFragment"
-                            )
-                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
-                            addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
-                            startActivity(this)
-                        }
-                    } catch (ignore: Exception) {
-                        context.toast("Error: Please check your browser version!")
-                    }
                     true
                 }
             })

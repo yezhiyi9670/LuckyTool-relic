@@ -3169,6 +3169,32 @@ class OplusBrowser : BaseScopePreferenceFeagment() {
     override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(Preference(context).apply {
+                title = getString(R.string.browser_concise_mode)
+                isVisible = context.checkPackName("com.heytap.browser")
+                isIconSpaceReserved = false
+                setOnPreferenceClickListener {
+                    try {
+                        Intent().apply {
+                            setClassName(
+                                "com.heytap.browser",
+                                "com.heytap.browser.settings.component.BrowserPreferenceActivity"
+                            )
+                            putExtra(
+                                "key.fragment.name",
+                                "com.heytap.browser.settings.homepage.HomepagePreferenceFragment"
+                            )
+                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+                            startActivity(this)
+                        }
+                    } catch (_: Exception) {
+                        context.toast("Error: Please check your browser version!")
+                    }
+                    true
+                }
+            })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.remove_ads_from_download_dialog)
                 key = "remove_ads_from_download_dialog"
