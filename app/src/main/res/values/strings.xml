@@ -662,6 +662,11 @@
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Remove verification code floating window</string>
     
+    <!--OplusBrowser-->
+    <string name="remove_ads_from_weather_page">Remove weather page bottom information flow ads</string>
+    <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
+    <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
+    
     <!--Everyimage-->
     <string name="skip_startup_page">Skip startup page</string>
     <string name="vip_download">Download original</string>
@@ -832,7 +837,5 @@
     <string name="tencent_files" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/</string>
     <string name="tencent_configs" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/aladdin_configs/</string>
     <string name="cool_black" translatable="false">/data/user/%1$s/com.coolapk.market/shared_prefs/coolapk_preferences_v7.xml</string>
-    <string name="remove_weather_page_ads">Remove weather page bottom information flow ads</string>
-    <string name="remove_weather_page_ads_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
 
 </resources>

@@ -3170,9 +3170,15 @@ class OplusBrowser : BaseScopePreferenceFeagment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_weather_page_ads)
-                summary = getString(R.string.remove_weather_page_ads_summary)
-                key = "remove_weather_page_ads"
+                title = getString(R.string.remove_ads_from_download_dialog)
+                key = "remove_ads_from_download_dialog"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_ads_from_weather_page)
+                summary = getString(R.string.remove_ads_from_weather_page_summary)
+                key = "remove_ads_from_weather_page"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })

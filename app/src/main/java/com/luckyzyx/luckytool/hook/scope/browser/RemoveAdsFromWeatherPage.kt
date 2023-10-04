@@ -3,7 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.browser
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 
-object HookBrowser : YukiBaseHooker() {
+object RemoveAdsFromWeatherPage : YukiBaseHooker() {
 
     private const val REMOVE_ADS_JS_COMMAND = """
         (function () {

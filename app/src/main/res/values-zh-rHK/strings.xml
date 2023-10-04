@@ -586,6 +586,10 @@
     <string name="replace_side_slider_icon_on_right">替换右侧侧滑图标</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">移除验证码悬浮窗</string>
+    <!--OplusBrowser-->
+    <string name="remove_ads_from_weather_page">移除天气页面底部信息流广告</string>
+    <string name="remove_ads_from_weather_page_summary">通过在页面 m.weathercn.com 注入 JS 来实现屏蔽广告的效果，适用于通过天气 APP 跳转到的近 15 日天气等需要浏览器的功能</string>
+    <string name="remove_ads_from_download_dialog">移除下载对话框广告</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>
@@ -737,6 +741,4 @@
     <string name="net_other_error">未知错误</string>
     <string name="no_error_message">无错误信息</string>
     <!--Black-->
-    <string name="remove_weather_page_ads">移除天气页面底部信息流广告</string>
-    <string name="remove_weather_page_ads_summary">通过在页面 m.weathercn.com 注入 JS 来实现屏蔽广告的效果，适用于通过天气 APP 跳转到的近 15 日天气等需要浏览器的功能</string>
 </resources>

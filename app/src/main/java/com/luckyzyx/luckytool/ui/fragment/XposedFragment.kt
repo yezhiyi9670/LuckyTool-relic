@@ -270,7 +270,10 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     isIconSpaceReserved = show
                 }
                 title = context.getAppLabel(key)
-                summary = arraySummaryDot(getString(R.string.remove_weather_page_ads))
+                summary = arraySummaryDot(
+                    getString(R.string.remove_ads_from_download_dialog),
+                    getString(R.string.remove_ads_from_weather_page),
+                )
                 isVisible = context.checkPackName(key)
                 setOnPreferenceClickListener {
                     navigatePage(R.id.action_nav_function_to_oplusBrowser, title)

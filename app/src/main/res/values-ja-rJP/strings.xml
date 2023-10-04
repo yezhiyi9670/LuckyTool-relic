@@ -586,6 +586,10 @@
     <string name="replace_side_slider_icon_on_right">右側のサイドスライドアイコンを置き換え</string>
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">検証コードのフローティングウィンドウを削除</string>
+    <!--OplusBrowser-->
+    <string name="remove_ads_from_weather_page">Remove weather page bottom information flow ads</string>
+    <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
+    <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>
@@ -737,6 +741,4 @@
     <string name="net_other_error">不明なエラー</string>
     <string name="no_error_message">エラーメッセージなし</string>
     <!--Black-->
-    <string name="remove_weather_page_ads">天気ページ下部の情報フロー広告を削除</string>
-    <string name="remove_weather_page_ads_summary">m.weathercn.com のページに JS を注入して広告をブロックします。天気予報アプリから開ける過去15日間の天気など、ブラウザが必要な機能にも適用されます</string>
 </resources>
