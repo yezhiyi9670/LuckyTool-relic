@@ -70,6 +70,7 @@
     <string name="participate_translation">Участвовать в переводе модуля</string>
     <string name="participate_translation_summary">Перейдите на сайт Crowdin, чтобы добавить свой перевод</string>
     <!-- check lsposed -->
+    <string name="system_not_support">Текущая система не поддерживается!</string>
     <string name="unsupported_xposed">Модуль не активирован.\nПожалуйста, используйте LSPosed %1$s и выше, чтобы проверить область применения.\nЕсли вы завершили этот шаг, вы можете попытаться нажать \"ОК\" для выхода и открыть модуль заново.</string>
     <string name="unsupported_os">Неподдерживаемая система</string>
     <string name="unsupported_os_summary">Поскольку модуль поддерживает только системы ColorOS 12 и выше, обязательно примите меры безопасности!</string>
@@ -113,8 +114,8 @@
     <string name="StatusbarEvents">События строки состояния</string>
     <string name="statusbar_double_click_lock_screen">Дважды щелкните по строке состояния для блокировки экрана</string>
     <string name="vibrate_when_opening_the_statusbar">Вибрировать при открытии строки состояния</string>
-    <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
-    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
+    <string name="set_click_statusbar_scroll_to_top_mode">Задать режим для нажатия на строку состояния, чтобы вернуться к началу</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Удалить лимит белого списка</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">Часы в строке состояния</string>
     <string name="statusbar_clock_mode">Часы в строке состояния</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">Быстрый вход в систему</string>
     <string name="quick_entry_summary">Например, инструменты настройки системного интерфейса, управление процессами, режим проекта и т.д.</string>
-    <string name="display_refresh_rate">Показать/скрыть Частоту обновления</string>
     <string name="SystemDebuggingRelated">Отладка системы</string>
     <string name="engineering_mode">Инженерный режим</string>
     <string name="charging_test">Тест зарядки</string>
-    <string name="process_manager">Управление процессом</string>
-    <string name="system_interface_adjustment">Настройки SystemUI</string>
     <string name="developer_option">Параметры разработчика</string>
+    <string name="system_interface_adjustment">Настройки SystemUI</string>
+    <string name="AOSPSettingsPage">Вид настроек как в AOSP</string>
     <string name="HidePageRelated">Скрытые настройки</string>
-    <string name="camera_algo_page">Страница алгоритмов камеры</string>
-    <string name="browser_concise_mode">Режим настройки браузера</string>
+    <string name="process_manager">Управление процессом</string>
+    <string name="very_dark_mode">Очень тёмный режим</string>
     <string name="battery_health">Состояние батареи</string>
     <string name="battery_optimization">Оптимизация батареи</string>
-    <string name="system_not_support">Текущая система не поддерживается!</string>
-    <string name="very_dark_mode">Очень тёмный режим</string>
-    <string name="high_performance_mode">Режим высокой производительности</string>
+    <string name="camera_algo_page">Страница алгоритмов камеры</string>
+    <string name="browser_concise_mode">Режим настройки браузера</string>
     <string name="GameAssistantRelated">Игровой помощник</string>
     <string name="game_assistant_page">Страница игрового помощника</string>
     <string name="game_space_page">Игровой помощник</string>
     <string name="game_assistant_develop_page">Меню разработчика игрового помощника</string>
-    <string name="AOSPSettingsPage">Вид настроек как в AOSP</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">Установить ярлыки модуля</string>
     <string name="set_module_shortcuts_summary">Нажмите и удерживайте иконку модуля, чтобы отобразить включенные ярлыки</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">Например, имя пакета, и т.д.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Увеличьте частоту дискретизации касания</string>
-    <string name="increase_touch_sampling_rate_summary">Автоматически запускать один раз после включения функции, после чего будет автоматически запускаться после разблокировки экрана</string>
     <string name="high_brightness_mode">Режим высокой яркости</string>
+    <string name="high_performance_mode">Режим высокой производительности</string>
     <string name="global_dc">Глобальный DC</string>
     <string name="fiveg_mode">Переключатель 5G</string>
-    <string name="game_assistant_tile_tips">Игровой помощник не обнаружен!</string>
-    <string name="tile_close_autoself_tip">После перезагрузки области эта функция больше не будет автоматически запускаться</string>
+    <string name="display_refresh_rate">Показать/скрыть Частоту обновления</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">В доступе отказано, пожалуйста, предоставьте разрешение вручную: %1$s</string>
     <string name="permission_error_toast">Не удалось получить разрешение: %1$s</string>

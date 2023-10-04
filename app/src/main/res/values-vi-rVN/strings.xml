@@ -70,6 +70,7 @@
     <string name="participate_translation">Tham gia dịch module</string>
     <string name="participate_translation_summary">Truy cập Crowdin để đóng góp bản dịch của bạn</string>
     <!-- check lsposed -->
+    <string name="system_not_support">Hệ thống hiện tại không hỗ trợ!</string>
     <string name="unsupported_xposed">Phát hiện thấy mô-đun chưa được kích hoạt\nVui lòng sử dụng LPosed %1$s trở lên để kiểm tra phạm vi mô-đun\nNếu bạn đã hoàn thành bước này, bạn có thể thử nhấp vào \"OK\" để thoát và mở lại mô-đun.</string>
     <string name="unsupported_os">Hệ thống không được hỗ trợ</string>
     <string name="unsupported_os_summary">Vì mô-đun này chỉ hỗ trợ các hệ thống ColorOS 12 trở lên nên hãy đảm bảo thực hiện các biện pháp an toàn!</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">Lối tắt hệ thống</string>
     <string name="quick_entry_summary">Ví dụ: Các công cụ đối chiếu giao diện người dùng hệ thống, quản lý quy trình, chế độ kỹ thuật, v.v.</string>
-    <string name="display_refresh_rate">Hiện/Ẩn tốc độ làm mới</string>
     <string name="SystemDebuggingRelated">Gỡ lỗi hệ thống</string>
     <string name="engineering_mode">Chế độ kỹ thuật</string>
     <string name="charging_test">Kiểm tra sạc</string>
-    <string name="process_manager">Trình quản lý quy trình</string>
-    <string name="system_interface_adjustment">Điều chỉnh giao diện người dùng hệ thống</string>
     <string name="developer_option">Tuỳ chọn nhà phát triển</string>
+    <string name="system_interface_adjustment">Điều chỉnh giao diện người dùng hệ thống</string>
+    <string name="AOSPSettingsPage">Trang cài đặt gốc AOSP</string>
     <string name="HidePageRelated">Ẩn trang</string>
-    <string name="camera_algo_page">Trang thuật toán máy ảnh</string>
-    <string name="browser_concise_mode">Bố cục trang chủ</string>
+    <string name="process_manager">Trình quản lý quy trình</string>
+    <string name="very_dark_mode">Chế độ rất tối</string>
     <string name="battery_health">Tình trạng pin</string>
     <string name="battery_optimization">Tối ưu hóa pin</string>
-    <string name="system_not_support">Hệ thống hiện tại không hỗ trợ!</string>
-    <string name="very_dark_mode">Chế độ rất tối</string>
-    <string name="high_performance_mode">Chế độ hiệu suất cao</string>
+    <string name="camera_algo_page">Trang thuật toán máy ảnh</string>
+    <string name="browser_concise_mode">Bố cục trang chủ</string>
     <string name="GameAssistantRelated">Trợ lý trò chơi</string>
     <string name="game_assistant_page">Trang trợ lý trò chơi</string>
     <string name="game_space_page">Trang không gian trò chơi</string>
     <string name="game_assistant_develop_page">Trang dành cho nhà phát triển trợ lý trò chơi</string>
-    <string name="AOSPSettingsPage">Trang cài đặt gốc AOSP</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">Đặt phím tắt mô-đun</string>
     <string name="set_module_shortcuts_summary">Nhấn và giữ vào biểu tượng mô-đun để hiển thị các phím tắt đã bật</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">Chẳng hạn như tên gói, nội dung, v.v.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Tăng tỷ lệ lấy mẫu cảm ứng</string>
-    <string name="increase_touch_sampling_rate_summary">Tự động thực hiện một lần sau khi chức năng được bật và sau đó nó sẽ tự động được kích hoạt sau khi mở khóa màn hình</string>
     <string name="high_brightness_mode">Chế độ độ sáng cao</string>
+    <string name="high_performance_mode">Chế độ hiệu suất cao</string>
     <string name="global_dc">DC toàn cầu</string>
     <string name="fiveg_mode">Chuyển đổi FiveG</string>
-    <string name="game_assistant_tile_tips">Không phát hiện trợ lý trò chơi!</string>
-    <string name="tile_close_autoself_tip">Sau khi khởi động lại khu vực, tính năng này sẽ không tự khởi động nữa</string>
+    <string name="display_refresh_rate">Hiện/Ẩn tốc độ làm mới</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">Quyền bị từ chối, vui lòng cấp quyền theo cách thủ công: %1$s</string>
     <string name="permission_error_toast">Không xin được quyền: %1$s</string>

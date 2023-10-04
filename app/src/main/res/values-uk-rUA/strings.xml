@@ -70,6 +70,7 @@
     <string name="participate_translation">Взяти участь у перекладі модуля</string>
     <string name="participate_translation_summary">Перейдіть в Crowdin, щоб додати свій переклад</string>
     <!-- check lsposed -->
+    <string name="system_not_support">Поточна система не підтримується!</string>
     <string name="unsupported_xposed">Виявлено неактивований модуль.\nБудь ласка, використовуйте LSPosed %1$s і вище, щоб активувати модуль.\nЯкщо ви виконали цей крок, ви можете спробувати натиснути «ОК», щоб вийти та знову відкрити модуль.</string>
     <string name="unsupported_os">Непідтримувана система</string>
     <string name="unsupported_os_summary">Оскільки модуль підтримує лише системи ColorOS 12 і вище, будь ласка, вживайте заходи безпеки!</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">Швидкий вхід до системи</string>
     <string name="quick_entry_summary">Наприклад, інструменти налаштування системного інтерфейсу, управління процесами, режим проекту тощо.</string>
-    <string name="display_refresh_rate">Показати/приховати частоту оновлення</string>
     <string name="SystemDebuggingRelated">Налагодження системи</string>
     <string name="engineering_mode">Інженерний режим</string>
     <string name="charging_test">Тест зарядки</string>
-    <string name="process_manager">Управління процесом</string>
-    <string name="system_interface_adjustment">Налаштування SystemUI</string>
     <string name="developer_option">Параметри розробника</string>
+    <string name="system_interface_adjustment">Налаштування SystemUI</string>
+    <string name="AOSPSettingsPage">Сторінка стандартних налаштувань AOSP</string>
     <string name="HidePageRelated">Приховані налаштування</string>
-    <string name="camera_algo_page">Сторінка алгоритмів камери</string>
-    <string name="browser_concise_mode">Режим налаштування браузера</string>
+    <string name="process_manager">Управління процесом</string>
+    <string name="very_dark_mode">Надзвичайно темний режим</string>
     <string name="battery_health">Стан батареї</string>
     <string name="battery_optimization">Оптимізація батареї</string>
-    <string name="system_not_support">Поточна система не підтримується!</string>
-    <string name="very_dark_mode">Надзвичайно темний режим</string>
-    <string name="high_performance_mode">Режим високої продуктивності</string>
+    <string name="camera_algo_page">Сторінка алгоритмів камери</string>
+    <string name="browser_concise_mode">Режим налаштування браузера</string>
     <string name="GameAssistantRelated">Ігровий помічник</string>
     <string name="game_assistant_page">Сторінка ігрового помічника</string>
     <string name="game_space_page">Ігровий помічник</string>
     <string name="game_assistant_develop_page">Меню розробника ігрового помічника</string>
-    <string name="AOSPSettingsPage">Сторінка стандартних налаштувань AOSP</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">Встановити ярлики модуля</string>
     <string name="set_module_shortcuts_summary">Натисніть та утримуйте іконку модуля, щоб відобразити увімкнені ярлики</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">Наприклад, ім\'я пакета і т.д.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Збільшення частоти дискретизації дотику</string>
-    <string name="increase_touch_sampling_rate_summary">Автоматично запускати один раз після увімкнення функції, після чого автоматично запускатиметься після розблокування екрану</string>
     <string name="high_brightness_mode">Режим високої яскравості (HBM)</string>
+    <string name="high_performance_mode">Режим високої продуктивності</string>
     <string name="global_dc">Глобальний DC</string>
     <string name="fiveg_mode">Перемикач 5G</string>
-    <string name="game_assistant_tile_tips">Ігровий помічник не виявлено!</string>
-    <string name="tile_close_autoself_tip">Після перезавантаження області ця функція більше не буде автоматично запускатися</string>
+    <string name="display_refresh_rate">Показати/приховати частоту оновлення</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
     <string name="permission_error_toast">Failed to obtain permission: %1$s</string>

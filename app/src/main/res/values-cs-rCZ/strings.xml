@@ -70,6 +70,7 @@
     <string name="participate_translation">Účast na překladu modulu</string>
     <string name="participate_translation_summary">Přejděte na Crowdin a přispějte svým překladem</string>
     <!-- check lsposed -->
+    <string name="system_not_support">Aktuální systém není podporován!</string>
     <string name="unsupported_xposed">Modul nebyl aktivován.\nProsím použijte LSPosed %1$s nebo novější pro kontrolu rozsahu modulů.\nPokud jste tento krok dokončili, můžete zkusit ťuknout na tlačítko OK, abyste znovu načetli modul.</string>
     <string name="unsupported_os">Nepodporovaný systém</string>
     <string name="unsupported_os_summary">Protože modul podporuje pouze ColorOS 12 a novější, nezapomeňte přijmout bezpečnostní opatření!</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">Skryté funkce systému</string>
     <string name="quick_entry_summary">například nástroje pro přizpůsobení systémového rozhraní, řízení procesů, engineering mode, atd.</string>
-    <string name="display_refresh_rate">Zobrazit/skrýt obnovovací frekvenci</string>
     <string name="SystemDebuggingRelated">Nastavení související s laděním systému</string>
     <string name="engineering_mode">Engineering mode</string>
     <string name="charging_test">Zkouška nabíjení</string>
-    <string name="process_manager">Správce procesů</string>
-    <string name="system_interface_adjustment">Nastavení SystemUI</string>
     <string name="developer_option">Možnosti pro vývojáře</string>
+    <string name="system_interface_adjustment">Nastavení SystemUI</string>
+    <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
     <string name="HidePageRelated">Skrytá nastavení</string>
-    <string name="camera_algo_page">Stránka nastavení algoritmů kamery</string>
-    <string name="browser_concise_mode">Stručný režim prohlížeče</string>
+    <string name="process_manager">Správce procesů</string>
+    <string name="very_dark_mode">Velmi tmavý režim</string>
     <string name="battery_health">Zdraví baterie</string>
     <string name="battery_optimization">Optimalizace baterie</string>
-    <string name="system_not_support">Aktuální systém není podporován!</string>
-    <string name="very_dark_mode">Velmi tmavý režim</string>
-    <string name="high_performance_mode">Režim vysokého výkonu</string>
+    <string name="camera_algo_page">Stránka nastavení algoritmů kamery</string>
+    <string name="browser_concise_mode">Stručný režim prohlížeče</string>
     <string name="GameAssistantRelated">Nastavení související s Herním asistentem</string>
     <string name="game_assistant_page">Stránka Herního asistenta</string>
     <string name="game_space_page">Herní prostor</string>
     <string name="game_assistant_develop_page">Stránka vývojáře Herního asistenta</string>
-    <string name="AOSPSettingsPage">Zobrazení nativního nastavení AOSP</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">Nastavit zkratky modulu</string>
     <string name="set_module_shortcuts_summary">Dlouhým stiskem na ikony modulu zobrazíte povolené zkratky</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">Např. název balíčku, obsah, a tak dále</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zvyšit vzorkovací frekvenci dotyku</string>
-    <string name="increase_touch_sampling_rate_summary">Automaticky spustit, jakmile je funkce zapnuta, pak bude automaticky spuštěna po odemknutí obrazovky</string>
     <string name="high_brightness_mode">Režim vysokého jasu</string>
+    <string name="high_performance_mode">Režim vysokého výkonu</string>
     <string name="global_dc">Globální DC</string>
     <string name="fiveg_mode">Přepínač 5G</string>
-    <string name="game_assistant_tile_tips">Herní asistent nebyl detekován!</string>
-    <string name="tile_close_autoself_tip">Po restartování rozsahu již tato funkce nebude automaticky spuštěna</string>
+    <string name="display_refresh_rate">Zobrazit/skrýt obnovovací frekvenci</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">Oprávnění odepřeno, udělte oprávnění ručně: %1$s</string>
     <string name="permission_error_toast">Nepodařilo se získat oprávnění: %1$s</string>

@@ -70,6 +70,7 @@
     <string name="participate_translation">参与模块翻译</string>
     <string name="participate_translation_summary">前往Crowdin贡献你的翻译</string>
     <!-- check lsposed -->
+    <string name="system_not_support">当前系统不支持!</string>
     <string name="unsupported_xposed">检测到模块未激活\n请使用LSPosed %1$s 及以上版本勾选模块作用域\n如果已完成此步骤，可尝试点击“确定”退出并重新打开模块</string>
     <string name="unsupported_os">不受支持的系统</string>
     <string name="unsupported_os_summary">由于该模块仅支持ColorOS 12及以上系统，请务必做好安全措施！</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">系统快捷入口</string>
     <string name="quick_entry_summary">例如系统界面调节工具,进程管理,工程模式等</string>
-    <string name="display_refresh_rate">显示/隐藏刷新率</string>
     <string name="SystemDebuggingRelated">系统调试相关</string>
     <string name="engineering_mode">工程模式</string>
     <string name="charging_test">充电测试</string>
-    <string name="process_manager">进程管理</string>
-    <string name="system_interface_adjustment">系统界面调节工具</string>
     <string name="developer_option">开发者选项</string>
+    <string name="system_interface_adjustment">系统界面调节工具</string>
+    <string name="AOSPSettingsPage">AOSP 原生设置页面</string>
     <string name="HidePageRelated">隐藏页面相关</string>
-    <string name="camera_algo_page">相机算法页面</string>
-    <string name="browser_concise_mode">浏览器简洁模式</string>
+    <string name="process_manager">进程管理</string>
+    <string name="very_dark_mode">极暗模式</string>
     <string name="battery_health">电池健康度</string>
     <string name="battery_optimization">电池优化</string>
-    <string name="system_not_support">当前系统不支持!</string>
-    <string name="very_dark_mode">极暗模式</string>
-    <string name="high_performance_mode">高性能模式</string>
+    <string name="camera_algo_page">相机算法页面</string>
+    <string name="browser_concise_mode">浏览器简洁模式</string>
     <string name="GameAssistantRelated">游戏助手相关</string>
     <string name="game_assistant_page">游戏助手页面</string>
     <string name="game_space_page">游戏空间页面</string>
     <string name="game_assistant_develop_page">游戏助手开发者页面</string>
-    <string name="AOSPSettingsPage">AOSP 原生设置页面</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">设置模块快捷方式</string>
     <string name="set_module_shortcuts_summary">长按模块图标即可显示已启用的快捷方式</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">例如包名、内容等</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">增加触摸采样率</string>
-    <string name="increase_touch_sampling_rate_summary">开启功能后自动执行一次，此后将在解锁屏幕后自动触发</string>
     <string name="high_brightness_mode">高亮度模式</string>
+    <string name="high_performance_mode">高性能模式</string>
     <string name="global_dc">全局 DC</string>
     <string name="fiveg_mode">5G开关</string>
-    <string name="game_assistant_tile_tips">未检测到游戏助手！</string>
-    <string name="tile_close_autoself_tip">重启作用域后，此功能将不再自动启动</string>
+    <string name="display_refresh_rate">显示/隐藏刷新率</string>
+    <string name="google_service">Google 服務</string>
     <!--Permission-->
     <string name="permission_denied_toast">权限被拒绝，请手动授予权限：%1$s</string>
     <string name="permission_error_toast">获取权限失败： %1$s</string>

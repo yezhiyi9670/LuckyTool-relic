@@ -17,6 +17,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [移除] 移除点击状态栏返回顶部白名单
 - [添加] 设置点击状态栏返回顶部模式
 - [优化] 禁用电池温控与模拟温度
+- [添加] Google服务磁贴
 
 ### 1.0.18_fix
 

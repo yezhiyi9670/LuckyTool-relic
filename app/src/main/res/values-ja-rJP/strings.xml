@@ -70,6 +70,7 @@
     <string name="participate_translation">モジュールの翻訳に参加する</string>
     <string name="participate_translation_summary">Crowdinでアプリの翻訳にご協力ください</string>
     <!-- check lsposed -->
+    <string name="system_not_support">現在のシステムではサポートをしていません!</string>
     <string name="unsupported_xposed">モジュールが有効化されていません。\nLSPosed %1$s 以降を使用してモジュールのスコープをチェックしてください。\n完了したら OK ボタンを押して終了し、モジュールを開き直してください。</string>
     <string name="unsupported_os">非対応のシステム</string>
     <string name="unsupported_os_summary">モジュールは ColorOS 12 以降しかサポートしていません。古いシステムには脆弱性があるため、しっかりセキュリティ対策してください。</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">システムクイックエントリー</string>
     <string name="quick_entry_summary">例: システムUI調整ツール、プロセスマネージャー、エンジニアリングモードなど</string>
-    <string name="display_refresh_rate">リフレッシュレートを表示/非表示</string>
     <string name="SystemDebuggingRelated">システムデバッグ関連</string>
     <string name="engineering_mode">エンジニアリングモード</string>
     <string name="charging_test">充電テスト</string>
-    <string name="process_manager">プロセスマネージャー</string>
-    <string name="system_interface_adjustment">システムUI調整ツール</string>
     <string name="developer_option">開発者向けオプション</string>
+    <string name="system_interface_adjustment">システムUI調整ツール</string>
+    <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <string name="HidePageRelated">隠されたページ関連</string>
-    <string name="camera_algo_page">カメラアルゴリズムのページ</string>
-    <string name="browser_concise_mode">ブラウザコンサイスモード</string>
+    <string name="process_manager">プロセスマネージャー</string>
+    <string name="very_dark_mode">画面の輝度をさらに下げる</string>
     <string name="battery_health">バッテリーの状態</string>
     <string name="battery_optimization">バッテリーの最適化</string>
-    <string name="system_not_support">現在のシステムではサポートをしていません!</string>
-    <string name="very_dark_mode">画面の輝度をさらに下げる</string>
-    <string name="high_performance_mode">高パフォーマンスモード</string>
+    <string name="camera_algo_page">カメラアルゴリズムのページ</string>
+    <string name="browser_concise_mode">ブラウザコンサイスモード</string>
     <string name="GameAssistantRelated">ゲームアシスタント関連</string>
     <string name="game_assistant_page">ゲームアシスタントのページ</string>
     <string name="game_space_page">ゲームスペースのページ</string>
     <string name="game_assistant_develop_page">ゲームアシスタントの開発者ページ</string>
-    <string name="AOSPSettingsPage">AOSPの設定ページを開く</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">モジュールショートカットの設定</string>
     <string name="set_module_shortcuts_summary">有効なショートカットを表示するには、モジュールアイコンを長押ししてください</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">パッケージ名、コンテンツなど</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">タッチサンプリングレートを上げる</string>
-    <string name="increase_touch_sampling_rate_summary">機能をオンにした後は自動的に一度だけ実行し、その後は画面のロックを解除した後に自動的にトリガーされます</string>
     <string name="high_brightness_mode">高輝度モード</string>
+    <string name="high_performance_mode">高パフォーマンスモード</string>
     <string name="global_dc">グローバルDC</string>
     <string name="fiveg_mode">5G スイッチ</string>
-    <string name="game_assistant_tile_tips">ゲームアシスタントが検出されません!</string>
-    <string name="tile_close_autoself_tip">スコープを再起動すると、この機能は自動的に起動しなくなります</string>
+    <string name="display_refresh_rate">リフレッシュレートを表示/非表示</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">権限がありません。手動で権限を許可してください: %1$s</string>
     <string name="permission_error_toast">権限の取得に失敗しました: %1$s</string>

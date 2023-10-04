@@ -54,6 +54,7 @@ class RefreshRateControllerService : RootService() {
                     obtain.writeInt(if (status) 1 else 0)
                     surfaceFlinger?.transact(1034, obtain, null, 0)
                     obtain.recycle()
+                    return
                 }
                 LogUtils.d(tag, "setRefreshRateDisplay", "surfaceFlinger is null")
             } catch (e: RemoteException) {
@@ -119,7 +120,9 @@ class RefreshRateControllerService : RootService() {
                     obtain.writeInt(modeId)
                     surfaceFlinger?.transact(1035, obtain, null, 0)
                     obtain.recycle()
+                    return
                 }
+                LogUtils.d(tag, "setRefreshRateMode", "surfaceFlinger is null")
             } catch (e: Throwable) {
                 LogUtils.d(tag, "setRefreshRateMode", "$e")
             }

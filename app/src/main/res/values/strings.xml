@@ -75,12 +75,15 @@
     <string name="open_source_summary">Click to view the open source list</string>
     <string name="participate_translation">Participate in module translations</string>
     <string name="participate_translation_summary">Go to Crowdin to contribute your translation</string>
+    
     <!-- check lsposed -->
+    <string name="system_not_support">The current system does not support!</string>
     <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Unsupported system</string>
     <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
     <string name="no_root">No Root permission</string>
     <string name="no_root_summary">Root permission is not detected, some functions will not be available!</string>
+    
     <!-- Menu -->
     <string name="menu_reboot">Restart menu</string>
     <string name="menu_settings">Set menu</string>
@@ -723,29 +726,31 @@
     <!-- Other -->
     <string name="quick_entry">System Quick Entry</string>
     <string name="quick_entry_summary">e.g. System UI reconciliation tools, process management, engineering mode, etc.</string>
-    <string name="display_refresh_rate">Show/Hide Refresh Rate</string>
+    
     <string name="SystemDebuggingRelated">System Debugging Related</string>
     <string name="engineering_mode">Engineering Mode</string>
     <string name="charging_test">Charging Test</string>
-    <string name="process_manager">Process management</string>
-    <string name="system_interface_adjustment">SystemUI adjustment</string>
     <string name="developer_option">Developer Options</string>
+    <string name="system_interface_adjustment">SystemUI adjustment</string>
+    <string name="AOSPSettingsPage">AOSP native settings page</string>
+    
     <string name="HidePageRelated">Hide page related</string>
-    <string name="camera_algo_page">Camera Algorithms Page</string>
-    <string name="browser_concise_mode">Browser Concise Mode</string>
+    <string name="process_manager">Process management</string>
+    <string name="very_dark_mode">Very dark mode</string>
     <string name="battery_health">Battery Health</string>
     <string name="battery_optimization">Battery Optimization</string>
-    <string name="system_not_support">The current system does not support!</string>
-    <string name="very_dark_mode">Very dark mode</string>
-    <string name="high_performance_mode">High performance mode</string>
+    <string name="camera_algo_page">Camera Algorithms Page</string>
+    <string name="browser_concise_mode">Browser Concise Mode</string>
+    
     <string name="GameAssistantRelated">Game Assistant Related</string>
     <string name="game_assistant_page">Game Assistant Page</string>
     <string name="game_space_page">Game Space Page</string>
     <string name="game_assistant_develop_page">Game Assistant Developer Page</string>
-    <string name="AOSPSettingsPage">AOSP native settings page</string>
+    
     <!--Shortcut-->
     <string name="set_module_shortcuts">Set module shortcuts</string>
     <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
+    
     <!-- ADB相关 -->
     <string name="remote_adb_debug_title">Remote ADB debugging</string>
     <string name="remote_adb_debug_summary">Please close it when not in use</string>
@@ -753,6 +758,7 @@
     <string name="enable_remote_adb_debugging">Enable remote ADB debugging</string>
     <string name="adb_debug_port_cannot_null">ADB debug port cannot be null</string>
     <string name="adb_tv_tip">Long press to copy</string>
+    
     <!--LOG Fragment-->
     <string name="log_save_success">LOG Saved Success!</string>
     <string name="log_save_failed">LOG Saved Failed!</string>
@@ -760,14 +766,15 @@
     <string name="log_no_data">No abnormal data</string>
     <string name="log_filter_title">Enter what to filter</string>
     <string name="log_filter_layout_hint">Such as package name, content, etc</string>
+    
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Increase touch sampling rate</string>
-    <string name="increase_touch_sampling_rate_summary">Automatically execute once after the function is turned on, thereafter will be automatically triggered after unlocking the screen</string>
     <string name="high_brightness_mode">High Brightness Mode</string>
+    <string name="high_performance_mode">High performance mode</string>
     <string name="global_dc">Global DC</string>
     <string name="fiveg_mode">FiveG Switch</string>
-    <string name="game_assistant_tile_tips">Game assistant not detected!</string>
-    <string name="tile_close_autoself_tip">After restarting the scope, this feature will no longer start automatically</string>
+    <string name="display_refresh_rate">Show/Hide Refresh Rate</string>
+    <string name="google_service">Google Service</string>
     
     <!--Permission-->
     <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
@@ -820,6 +827,7 @@
     <string name="net_error">Unknown network error</string>
     <string name="net_other_error">Unknown error</string>
     <string name="no_error_message">No error message</string>
+    
     <!--Black-->
     <string name="tencent_files" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/</string>
     <string name="tencent_configs" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/aladdin_configs/</string>

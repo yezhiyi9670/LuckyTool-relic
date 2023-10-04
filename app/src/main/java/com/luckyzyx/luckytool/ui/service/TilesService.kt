@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.IDarkModeController
 import com.luckyzyx.luckytool.IFiveGController
 import com.luckyzyx.luckytool.IGlobalDCController
+import com.luckyzyx.luckytool.IGoogleServiceController
 import com.luckyzyx.luckytool.IHighBrightnessController
 import com.luckyzyx.luckytool.IRefreshRateController
 import com.luckyzyx.luckytool.ITouchPanelController
@@ -258,6 +259,36 @@ class VeryDarkMode : TileService() {
         qsTile.state = if (controller == null) Tile.STATE_UNAVAILABLE
         else if (!controller!!.checkDarkMode()) Tile.STATE_UNAVAILABLE
         else if (controller!!.darkMode) Tile.STATE_ACTIVE
+        else Tile.STATE_INACTIVE
+        qsTile.updateTile()
+    }
+}
+
+class GoogleService : TileService() {
+    private var controller: IGoogleServiceController? = null
+
+    override fun onStartListening() = startController()
+
+    override fun onClick() {
+        when (qsTile.state) {
+            Tile.STATE_INACTIVE -> controller?.googleStatus = true
+            Tile.STATE_ACTIVE -> controller?.googleStatus = false
+            Tile.STATE_UNAVAILABLE -> {}
+        }
+        refreshData()
+    }
+
+    private fun startController() {
+        if (controller == null) bindRootService(GoogleServiceControllerService::class.java,
+            { _: ComponentName?, iBinder: IBinder? ->
+                controller = IGoogleServiceController.Stub.asInterface(iBinder)
+                refreshData()
+            })
+    }
+
+    private fun refreshData() {
+        qsTile.state = if (controller == null) Tile.STATE_UNAVAILABLE
+        else if (controller!!.googleStatus) Tile.STATE_ACTIVE
         else Tile.STATE_INACTIVE
         qsTile.updateTile()
     }

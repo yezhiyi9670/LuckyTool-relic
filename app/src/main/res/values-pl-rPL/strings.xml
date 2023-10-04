@@ -70,6 +70,7 @@
     <string name="participate_translation">Przetłumacz aplikację</string>
     <string name="participate_translation_summary">Przejdź do Crowdin, aby przetłumaczyć moduł</string>
     <!-- check lsposed -->
+    <string name="system_not_support">Obecny system nie jest wspierany!</string>
     <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Unsupported system</string>
     <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
@@ -645,26 +646,23 @@
     <!-- Other -->
     <string name="quick_entry">Ukryte funkcje systemowe</string>
     <string name="quick_entry_summary">Ustawienia AOSP, Kalibrator System UI, Dodatkowe przyciemnianie ekranu</string>
-    <string name="display_refresh_rate">Wskaźnik odświeżania ekranu</string>
     <string name="SystemDebuggingRelated">Debugowanie systemu</string>
     <string name="engineering_mode">Tryb inżynieryjny</string>
     <string name="charging_test">Test ładowania</string>
-    <string name="process_manager">Menedżer procesów</string>
-    <string name="system_interface_adjustment">Kalibrator System UI</string>
     <string name="developer_option">Opcje programistyczne</string>
+    <string name="system_interface_adjustment">Kalibrator System UI</string>
+    <string name="AOSPSettingsPage">Ustawienia AOSP</string>
     <string name="HidePageRelated">Ukryte strony</string>
-    <string name="camera_algo_page">Algorytmy kamery</string>
-    <string name="browser_concise_mode">Tryb zwięzły przeglądarki</string>
+    <string name="process_manager">Menedżer procesów</string>
+    <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
     <string name="battery_health">Stan baterii</string>
     <string name="battery_optimization">Optymalizacja baterii</string>
-    <string name="system_not_support">Obecny system nie jest wspierany!</string>
-    <string name="very_dark_mode">Dodatkowe przyciemnienie ekranu</string>
-    <string name="high_performance_mode">Tryb wysokiej wydajności</string>
+    <string name="camera_algo_page">Algorytmy kamery</string>
+    <string name="browser_concise_mode">Tryb zwięzły przeglądarki</string>
     <string name="GameAssistantRelated">Asystent gier</string>
     <string name="game_assistant_page">Strona asystenta gier</string>
     <string name="game_space_page">Przestrzeń gier</string>
     <string name="game_assistant_develop_page">Strona programisty Asystenta Gier</string>
-    <string name="AOSPSettingsPage">Ustawienia AOSP</string>
     <!--Shortcut-->
     <string name="set_module_shortcuts">Set module shortcuts</string>
     <string name="set_module_shortcuts_summary">Long press on module icon to show enabled shortcuts</string>
@@ -684,12 +682,12 @@
     <string name="log_filter_layout_hint">Taki jak nazwa pakietu, zawartość itp.</string>
     <!--Tile-->
     <string name="increase_touch_sampling_rate">Zwiększ częstotliwość próbkowania dotyku</string>
-    <string name="increase_touch_sampling_rate_summary">Funkcja uruchamia się po wybudzeniu ekranu</string>
     <string name="high_brightness_mode">Tryb wysokiej jasności</string>
+    <string name="high_performance_mode">Tryb wysokiej wydajności</string>
     <string name="global_dc">Globalny DC</string>
     <string name="fiveg_mode">Przełącznik trybu 5G</string>
-    <string name="game_assistant_tile_tips">Nie wykryto asystenta gier!</string>
-    <string name="tile_close_autoself_tip">Po restarcie ograniczonego zakresu, ta funkcja nie będzie już uruchamiana automatycznie</string>
+    <string name="display_refresh_rate">Wskaźnik odświeżania ekranu</string>
+    <string name="google_service">Google Service</string>
     <!--Permission-->
     <string name="permission_denied_toast">Permission denied, please grant permission manually: %1$s</string>
     <string name="permission_error_toast">Failed to obtain permission: %1$s</string>
