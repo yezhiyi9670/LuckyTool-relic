@@ -45,7 +45,7 @@ object DexkitUtils {
      * @receiver ClassDataList
      * @param instance String
      */
-    private fun ClassDataList?.printLog(instance: String) {
+    fun ClassDataList?.printLog(instance: String): ClassDataList? {
         if (isNullOrEmpty()) {
             loggerE(tag, "$instance -> findClass isNullOrEmpty")
         } else if (size != 1) {
@@ -55,6 +55,7 @@ object DexkitUtils {
         } else if (debug) {
             loggerD(tag, "$instance -> findclass ${first().className}")
         }
+        return this
     }
 
     /**
@@ -80,7 +81,7 @@ object DexkitUtils {
      * @receiver MethodDataList
      * @param instance String
      */
-    private fun MethodDataList?.printLog(instance: String) {
+    fun MethodDataList?.printLog(instance: String): MethodDataList? {
         if (isNullOrEmpty()) {
             loggerE(tag, "$instance -> findMethod isNullOrEmpty")
         } else if (debug) {
@@ -88,5 +89,6 @@ object DexkitUtils {
             forEach { f += "[${it.className} - ${it.methodName}]" }
             loggerD(tag, "$instance -> findMethod size ($size) -> $f")
         }
+        return this
     }
 }

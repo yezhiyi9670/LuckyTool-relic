@@ -1,16 +1,19 @@
 package com.luckyzyx.luckytool.hook.scope.browser
 
+import android.view.View
+import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 
 object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
     override fun onHook() {
         //Source AppRecommendManager
-        DexkitUtils.searchDexClass("RemoveAdsAtDownloadPageBottom", appInfo.sourceDir) { dexKitBridge ->
-            dexKitBridge.findClass {
+        DexkitUtils.create(appInfo.sourceDir)?.use { dexkitBridge ->
+            val clsList = dexkitBridge.findClass {
                 matcher {
                     fields {
                         addForType(ContextClass.name)
@@ -31,11 +34,32 @@ object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
                     }
                     usingStrings("AppRecommendManager")
                 }
-            }
-        }?.firstOrNull()?.className?.toClassOrNull()?.hook {
-            injectMember {
-                method { param("com.heytap.browser.downloads.entity.RecommendConfig") }
-                beforeHook { args().first().setNull() }
+            }.printLog("RemoveAdsAtDownloadPageBottom")
+            if (clsList.isNullOrEmpty().not() && clsList?.size == 1) {
+                val methodList = dexkitBridge.findMethod {
+                    searchPackages(clsList.first().className)
+                    matcher {
+                        paramCount(0)
+                        returnType(UnitType.name)
+                        usingNumbers(0, 8, 500L)
+                    }
+                }.printLog("RemoveAdsAtDownloadPageBottom")
+                if (methodList.isNullOrEmpty().not() && methodList?.size == 1) {
+                    val member = methodList.firstOrNull() ?: return
+                    findClass(member.className).hook {
+                        injectMember {
+                            method {
+                                name = member.methodName
+                                emptyParam()
+                                returnType(UnitType)
+                            }
+                            replaceUnit {
+                                field { type("android.widget.LinearLayout") }.get(instance)
+                                    .cast<View>()?.isVisible = false
+                            }
+                        }
+                    }
+                }
             }
         }
     }

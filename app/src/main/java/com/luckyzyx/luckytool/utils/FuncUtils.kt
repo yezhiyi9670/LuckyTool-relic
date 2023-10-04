@@ -566,8 +566,9 @@ val getPcbInfo: String
     get() : String = ShellUtils.execCommand(
         "echo \$(getprop gsm.serial)\$(getprop vendor.gsm.serial)", true, true
     ).let {
-        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
-            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+        if (it.result == 1) return "null"
+        else return it.successMsg.takeIf { e -> e.isNullOrBlank().not() }
+            ?.let { its -> its.replaceSpace.substring(0, its.length) }?.uppercase() ?: "null"
     }
 
 /**
@@ -577,8 +578,9 @@ val getSnInfo: String
     get() : String = ShellUtils.execCommand(
         "echo \$(getprop ro.serialno) | tr 'a-z' 'A-Z' ", true, true
     ).let {
-        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
-            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+        if (it.result == 1) return "null"
+        else return it.successMsg.takeIf { e -> e.isNullOrBlank().not() }
+            ?.let { its -> its.replaceSpace.substring(0, its.length) }?.uppercase() ?: "null"
     }
 
 /**
