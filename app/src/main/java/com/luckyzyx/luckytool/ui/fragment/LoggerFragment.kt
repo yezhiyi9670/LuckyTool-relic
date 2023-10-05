@@ -30,9 +30,11 @@ import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.annotation.CauseProblemsApi
 import com.highcapable.yukihookapi.hook.factory.dataChannel
 import com.highcapable.yukihookapi.hook.log.YukiLoggerData
+import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
 import com.luckyzyx.luckytool.databinding.LayoutLoginfoItemBinding
+import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.copyStr
@@ -41,7 +43,7 @@ import com.luckyzyx.luckytool.utils.dp
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.getAppIcon
 import com.luckyzyx.luckytool.utils.getAppLabel
-import com.luckyzyx.luckytool.utils.getLogInfo
+import com.luckyzyx.luckytool.utils.getDeviceInfo
 import com.luckyzyx.luckytool.utils.setupMenuProvider
 import com.luckyzyx.luckytool.utils.toast
 import java.io.File
@@ -53,6 +55,8 @@ import java.util.*
 class LoggerFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentLogsBinding
+    private var logFuncController: IGlobalFuncController? = null
+
     private var listData = ArrayList<YukiLoggerData>()
     private var logInfoViewAdapter: LogInfoViewAdapter? = null
     private var fileName: String = ""
@@ -85,7 +89,7 @@ class LoggerFragment : Fragment(), MenuProvider {
         scope = scopeLife {
             listData.clear()
             binding.swipeRefreshLayout.isRefreshing = true
-            binding.logNodataView.isVisible = true
+            binding.logNodataView.isVisible = false
             requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
                 withIO {
                     requireActivity().dataChannel(scope).allowSendTooLargeData()
@@ -104,11 +108,12 @@ class LoggerFragment : Fragment(), MenuProvider {
     override fun onResume() {
         super.onResume()
         loadLogger()
+        initController()
     }
 
     override fun onPause() {
         super.onPause()
-        scope?.cancel(null)
+        scope?.cancel()
         scope?.close()
     }
 
@@ -246,7 +251,7 @@ class LoggerFragment : Fragment(), MenuProvider {
 
     private fun getLogsString(context: Context): String {
         var str = ""
-        str += context.getLogInfo()
+        str += context.getDeviceInfo(logFuncController, true)
         listData.forEach {
             val time = formatDate("yyyy/MM/dd-HH:mm:ss", it.timestamp)
             val messageFinal = if (it.msg != "null") "\nMessage -> ${it.msg}" else ""
@@ -256,6 +261,15 @@ class LoggerFragment : Fragment(), MenuProvider {
         }
         return str
     }
+
+    private fun initController() {
+        if (logFuncController == null) {
+            (activity as MainActivity).initController {
+                logFuncController = it
+            }
+        }
+    }
+
 }
 
 class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) :

@@ -17,9 +17,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.prefs
 import com.luckyzyx.luckytool.BuildConfig
+import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.ui.fragment.HomeFragment
+import com.luckyzyx.luckytool.ui.service.GlobalFuncControllerService
 import com.luckyzyx.luckytool.utils.*
 import kotlin.system.exitProcess
 
@@ -149,6 +151,13 @@ open class MainActivity : AppCompatActivity() {
                 recreate()
             }
         }
+    }
+
+    fun initController(result: (IGlobalFuncController) -> Unit) {
+        bindRootService(GlobalFuncControllerService::class.java, { _, iBinder ->
+            val funcController = IGlobalFuncController.Stub.asInterface(iBinder)
+            result(funcController)
+        })
     }
 
     override fun onResume() {

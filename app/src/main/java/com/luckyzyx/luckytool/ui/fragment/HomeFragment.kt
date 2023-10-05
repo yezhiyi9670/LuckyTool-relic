@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.highcapable.yukihookapi.YukiHookAPI
+import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
@@ -28,6 +29,7 @@ import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 class HomeFragment : Fragment(), MenuProvider {
 
     private lateinit var binding: FragmentHomeBinding
+    private var homeFuncController: IGlobalFuncController? = null
 
     private var enableModule: Boolean = false
 
@@ -86,11 +88,6 @@ class HomeFragment : Fragment(), MenuProvider {
         }
 
         binding.systemInfo.apply {
-            scopeLife {
-                val deviceInfo = withDefault { context.getDeviceInfo() }
-                text = deviceInfo
-                binding.systemInfoCard.isVisible = true
-            }
             setOnLongClickListener {
                 val isRealmeUI: Boolean
                 val oplusOtaDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
@@ -224,6 +221,30 @@ class HomeFragment : Fragment(), MenuProvider {
             isVisible = false
             text = context.ckqcbss().toString()
         }
+    }
+
+    private fun initSystemInfoText(funcController: IGlobalFuncController) {
+        scopeLife {
+            val deviceInfo = withDefault { requireActivity().getDeviceInfo(funcController) }
+            binding.systemInfo.text = deviceInfo
+            binding.systemInfoCard.isVisible = true
+        }
+    }
+
+    private fun initController() {
+        if (homeFuncController == null) {
+            (activity as MainActivity).initController {
+                homeFuncController = it
+                initSystemInfoText(it)
+            }
+        } else {
+            initSystemInfoText(homeFuncController!!)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initController()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

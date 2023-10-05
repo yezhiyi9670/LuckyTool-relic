@@ -24,6 +24,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLauncher
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
+import com.luckyzyx.luckytool.hook.hooker.HookNotificationManager
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
 import com.luckyzyx.luckytool.hook.hooker.HookOplusMMS
 import com.luckyzyx.luckytool.hook.hooker.HookOplusOta
@@ -92,9 +93,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.coloros.phonemanager", HookPhoneManager)
 
         //状态栏通知限制
-        loadApp("com.android.systemui", "com.oplus.notificationmanager") {
-            loadHooker(StatusBarNotifiyLimit)
-        }
+        loadApp("com.android.systemui", StatusBarNotifiyLimit)
+        loadApp("com.oplus.notificationmanager", HookNotificationManager)
 
         //状态栏图标
         loadApp("com.android.systemui", StatusBarIcon)

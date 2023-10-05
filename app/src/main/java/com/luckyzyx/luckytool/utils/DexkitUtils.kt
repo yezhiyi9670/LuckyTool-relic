@@ -35,13 +35,10 @@ object DexkitUtils {
      * @return ClassDataList?
      */
     fun searchDexClass(
-        tag: String,
-        appPath: String,
-        initialization: (DexKitBridge) -> ClassDataList?
+        tag: String, appPath: String, initialization: (DexKitBridge) -> ClassDataList?
     ): ClassDataList? {
         val result = create(appPath)?.use { initialization(it) }
-        if (tag.isBlank()) result.printLog(appPath)
-        else result.printLog(tag)
+        if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
         return result
     }
 
@@ -71,13 +68,10 @@ object DexkitUtils {
      * @return MethodDataList?
      */
     fun searchDexMethod(
-        tag: String,
-        appPath: String,
-        initialization: (DexKitBridge) -> MethodDataList?
+        tag: String, appPath: String, initialization: (DexKitBridge) -> MethodDataList?
     ): MethodDataList? {
         val result = create(appPath)?.use { initialization(it) }
-        if (tag.isBlank()) result.printLog(appPath)
-        else result.printLog(tag)
+        if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
         return result
     }
 

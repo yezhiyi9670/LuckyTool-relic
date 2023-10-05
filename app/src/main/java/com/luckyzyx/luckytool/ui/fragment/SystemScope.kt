@@ -20,7 +20,6 @@ import com.luckyzyx.luckytool.ui.fragment.base.BaseScopePreferenceFeagment
 import com.luckyzyx.luckytool.utils.A12
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.FileUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -257,7 +256,6 @@ class StatusBar : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
         }
-        requireActivity().ckqcbss()
     }
 
     override fun isEnableRestartMenu(): Boolean = true
