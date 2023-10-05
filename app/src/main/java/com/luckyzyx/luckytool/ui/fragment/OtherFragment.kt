@@ -99,6 +99,7 @@ class OtherFragment : Fragment() {
         }
 
         binding.remoteAdbDebug.apply {
+            isVisible = adbController != null
             setOnClickListener {
                 val getPort = adbController?.adbPort ?: return@setOnClickListener
                 var getIP = adbController?.wifiIP ?: "IP"
@@ -183,7 +184,7 @@ class OtherFragment : Fragment() {
         if (adbController == null) requireActivity().bindRootService(
             AdbDebugControllerService::class.java, { _: ComponentName?, iBinder: IBinder? ->
                 adbController = IAdbDebugController.Stub.asInterface(iBinder)
-                binding.remoteAdbDebug.isVisible = true
+                binding.remoteAdbDebug.isVisible = adbController != null
             })
     }
 }

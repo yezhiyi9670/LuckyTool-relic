@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.1.0_beta
+
+- [修复] ADB远程调试显示异常
+
 ### 1.0.19
 
 - [添加] 移除高性能模式通知
