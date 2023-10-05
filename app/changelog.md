@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.0.19_beta
+### 1.0.19
 
 - [添加] 移除高性能模式通知
 - [移除] 刷新率方案一的分辨率字符
@@ -20,6 +20,21 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] Google服务磁贴
 - [更改] 浏览器简洁模式快捷入口迁移至功能区
 - [添加] 添加更多浏览器优化功能()
+- [Add] Remove high performance mode notification
+- [Remove] Resolution characters for refresh rate scheme 1
+- [Optimize] Information verification code floating window Dex rules
+- [Add] Enable Jiang Wen filter in photo album
+- [Fix] Camera custom model watermark v4.110.62
+- [Add] Hide media player when no media is playing
+- [Fix] Payment protection dialog v13.6.0(ce42387)
+- [Fix] Cloud service mobile network restrictions v6.0.64(812b4f6)
+- [Optimize] ADB wireless debugging migration Aidl service
+- [Remove] Remove click status bar to return to the top whitelist
+- [Add] Set the mode of clicking the status bar to return to the top
+- [Optimize] Disable battery temperature control and simulated temperature
+- [Add] Google Services Tile
+- [Change] The browser simple mode shortcut entry is moved to the xposed page
+- [Add] Add more browser optimization features()
 
 ### 1.0.18_fix
 
