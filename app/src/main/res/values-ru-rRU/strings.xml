@@ -587,10 +587,10 @@
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Удалить плавающее окно с проверочным кодом</string>
     <!--OplusBrowser-->
-    <string name="remove_ads_from_weather_page">Remove weather page bottom information flow ads</string>
-    <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
-    <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
-    <string name="remove_ads_at_download_page_bottom">Remove ads at the bottom of download page</string>
+    <string name="remove_ads_from_weather_page">Удалить рекламу на странице с информацией о погоде</string>
+    <string name="remove_ads_from_weather_page_summary">Внедрив JS на страницу m.weathercn.com для достижения эффекта блокировки рекламы, он подходит для функций, требующих браузера, таких как погода за последние 15 дней, к которой вы переходите через приложение погоды</string>
+    <string name="remove_ads_from_download_dialog">Удалить рекламу из диалога загрузки</string>
+    <string name="remove_ads_at_download_page_bottom">Удалить рекламу в нижней части страницы загрузки</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>
@@ -692,7 +692,7 @@
     <string name="global_dc">Глобальный DC</string>
     <string name="fiveg_mode">Переключатель 5G</string>
     <string name="display_refresh_rate">Показать/скрыть Частоту обновления</string>
-    <string name="google_service">Google Service</string>
+    <string name="google_service">Сервисы Google</string>
     <!--Permission-->
     <string name="permission_denied_toast">В доступе отказано, пожалуйста, предоставьте разрешение вручную: %1$s</string>
     <string name="permission_error_toast">Не удалось получить разрешение: %1$s</string>
@@ -725,7 +725,7 @@
     <string name="common_words_loading">Загрузка</string>
     <string name="common_words_whitelist">Белый список</string>
     <string name="common_words_blacklist">Чёрный список</string>
-    <string name="common_words_ads">Ads</string>
+    <string name="common_words_ads">Реклама</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Не удалось подключиться к сети</string>
     <string name="net_networking_error">Текущая сеть недоступна</string>

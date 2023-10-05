@@ -12,7 +12,7 @@ import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
     override fun onHook() {
         //Source AppRecommendManager
-        DexkitUtils.create(appInfo.sourceDir)?.use { dexkitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexkitBridge ->
             val clsList = dexkitBridge.findClass {
                 matcher {
                     fields {
@@ -45,7 +45,7 @@ object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
                     }
                 }.printLog("RemoveAdsAtDownloadPageBottom")
                 if (methodList.isNullOrEmpty().not() && methodList?.size == 1) {
-                    val member = methodList.firstOrNull() ?: return
+                    val member = methodList.firstOrNull() ?: return@create
                     findClass(member.className).hook {
                         injectMember {
                             method {

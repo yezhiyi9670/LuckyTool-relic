@@ -87,9 +87,7 @@ class HomeFragment : Fragment(), MenuProvider {
 
         binding.systemInfo.apply {
             scopeLife {
-                val deviceInfo = withDefault {
-                    context.getDeviceInfo()
-                }
+                val deviceInfo = withDefault { context.getDeviceInfo() }
                 text = deviceInfo
                 binding.systemInfoCard.isVisible = true
             }
@@ -225,7 +223,6 @@ class HomeFragment : Fragment(), MenuProvider {
         binding.tv.apply {
             isVisible = false
             text = context.ckqcbss().toString()
-//            text = getPackageDir("com.dragon.read").toString()
         }
     }
 

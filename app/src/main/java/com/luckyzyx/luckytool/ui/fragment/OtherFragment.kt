@@ -64,7 +64,6 @@ class OtherFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initController()
 
         binding.quickEntry.setOnClickListener {
             navigatePage(R.id.action_nav_other_to_systemQuickEntry, getString(R.string.quick_entry))
@@ -173,6 +172,11 @@ class OtherFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initController()
     }
 
     private fun initController() {

@@ -22,6 +22,11 @@ object DexkitUtils {
         return DexKitBridge.create(appPath)
     }
 
+    fun create(appPath: String, result: (DexKitBridge) -> Unit) {
+        System.loadLibrary("dexkit")
+        DexKitBridge.create(appPath)?.use { result(it) }
+    }
+
     /**
      * 使用规则查找Class
      * @param tag String
