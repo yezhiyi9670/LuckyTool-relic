@@ -19,7 +19,7 @@ object SystemEnableVolumeKeyControlFlashlight : YukiBaseHooker() {
                 after {
                     if (!isEnable) return@after
                     val context = args().first().cast<Context>() ?: return@after
-                    if (result == null) result = instanceClass.buildOf(context) {
+                    if (result == null) result = (this@apply).buildOf(context) {
                         param(ContextClass)
                     }
                 }
