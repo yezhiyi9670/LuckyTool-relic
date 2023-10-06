@@ -858,7 +858,6 @@ fun Context.restartMain() {
         }
         show()
     }
-    ckqcbs()
 }
 
 /**

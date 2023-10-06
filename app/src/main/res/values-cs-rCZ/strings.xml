@@ -587,10 +587,10 @@
     <!--OplusMMS-->
     <string name="remove_verification_code_floating_window">Odstranit plovoucí okno s ověřovacím kódem</string>
     <!--OplusBrowser-->
-    <string name="remove_ads_from_weather_page">Remove weather page bottom information flow ads</string>
-    <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
-    <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
-    <string name="remove_ads_at_download_page_bottom">Remove ads at the bottom of download page</string>
+    <string name="remove_ads_from_weather_page">Odstranění reklam na spodní straně informačního toku o počasí</string>
+    <string name="remove_ads_from_weather_page_summary">Vložením JS do stránky m.weathercn.com, aby se dosáhlo efektu blokování reklamy, se hodí funkce, které vyžadují prohlížeč, jako je počasí za posledních 15 dní, na které se přejde přes aplikaci počasí</string>
+    <string name="remove_ads_from_download_dialog">Odstranit reklamy z dialogového okna stahování</string>
+    <string name="remove_ads_at_download_page_bottom">Odstranit reklamy v dolní části stránky stahování</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Přeskočte úvodní obrazovku</string>
     <string name="vip_download">Stáhnout originál</string>
@@ -725,7 +725,7 @@
     <string name="common_words_loading">Načítání…</string>
     <string name="common_words_whitelist">Povolené</string>
     <string name="common_words_blacklist">Zakázané</string>
-    <string name="common_words_ads">Ads</string>
+    <string name="common_words_ads">Reklamy</string>
     <!--Net 网络请求异常-->
     <string name="net_connect_error">Připojení k síti se nezdařilo</string>
     <string name="net_networking_error">Aktuální síť není k dispozici</string>

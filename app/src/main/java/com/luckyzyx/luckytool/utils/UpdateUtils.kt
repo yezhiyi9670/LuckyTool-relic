@@ -55,7 +55,7 @@ class UpdateUtils(val context: Context) {
                 result(name, code.toInt()) {
                     MaterialAlertDialogBuilder(context, dialogCentered).apply {
                         setTitle(context.getString(R.string.check_update_hint))
-                        if (context.getBoolean(SettingsPrefs, "hidden_function"))
+                        if (!context.getBoolean(SettingsPrefs, "hidden_function"))
                             setCancelable(false)
                         setView(
                             NestedScrollView(context).apply {
@@ -115,8 +115,7 @@ class UpdateUtils(val context: Context) {
         var downloadScope: NetCoroutineScope = scopeNet { }
         val downloadDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.downloading))
-            if (context.getBoolean(SettingsPrefs, "hidden_function"))
-                setCancelable(false)
+            setCancelable(false)
             setView(R.layout.layout_download_dialog)
         }.show()
         downloadScope = scopeNet {

@@ -6,7 +6,7 @@
     <string name="nav_function">Funcție</string>
     <string name="nav_home">Pagina principală</string>
     <string name="nav_other">Alte</string>
-    <string name="nav_log">Logs</string>
+    <string name="nav_log">Log-uri</string>
     <string name="nav_setting">Setări</string>
     <string name="fragment_source">Cod sursă</string>
     <!-- Settings -->
@@ -22,7 +22,7 @@
     <string name="privacy_agreement">Acord de confidențialitate</string>
     <string name="auto_check_update">Verifică automat actualizările</string>
     <string name="auto_check_update_summary">Verifică automat actualizările la deschiderea paginii principale a modulului</string>
-    <string name="tile_auto_start">Allow built-in tiles to start automatically</string>
+    <string name="tile_auto_start">Permite pornirea automată a pieselor încorporate</string>
     <string name="tile_auto_start_summary">When the host-side module version number is consistent with the local module version number,and enable this function,The function of opened tiles will be automatically triggered after the screen is unlocked.If the trigger fails,please restart the scope and check Root permissions</string>
     <string name="read_agreement">Trebuie să citiți și să acceptați următorul conținut înainte de a putea utiliza acest modul</string>
     <string name="clear_all_data">Șterge toate datele</string>
@@ -30,8 +30,8 @@
     <string name="clear_all_data_message">Asigurați-vă că doriți să ștergeți toate datele funcției modulului și că trebuie să resetați funcția după ștergere?</string>
     <!-- Other Settings -->
     <string name="other_settings">Alte setări</string>
-    <string name="enable_module_print_logs">Enable module print logs</string>
-    <string name="enable_module_print_logs_summary">This function is only used to print the running log of the module App itself.\nLog files will be obtained when this switch is turned off.</string>
+    <string name="enable_module_print_logs">Activează jurnalele de imprimare ale modulelor</string>
+    <string name="enable_module_print_logs_summary">Această funcţie este folosită doar pentru a imprima jurnalul de rulare al modulului în sine.\nFișierele jurnal vor fi obținute când acest buton este oprit.</string>
     <string name="switch_autostart_function_caller">Comutați apelantul funcției autopornire</string>
     <string name="switch_autostart_function_caller_summary">1.The module calling method will open a new page of the module and trigger the self-starting function,This method may cause the screen to be untouchable for a few seconds when it is unlocked\n2.The system ui calling method will call the self-starting function on the process of the system ui,Need to give root permission to the system ui,Otherwise, the autostart cannot be triggered</string>
     <string name="switch_autostart_function_caller_module">Apel modul</string>
@@ -49,7 +49,7 @@
     <!-- About -->
     <string name="about_title">Despre</string>
     <string name="about_author">Autor</string>
-    <string name="donate">Donate reward</string>
+    <string name="donate">Recompensă de donare</string>
     <string name="donate_message">Asigură-te că vei nota porecla sau ID-ul tău la donație</string>
     <string name="donate_summary">Donatia dumneavoastra va fi forţa conducatoare pentru actualizarea modulului</string>
     <string name="qq">QQ</string>
@@ -63,17 +63,17 @@
     <string name="qq_channel">Canal QQ</string>
     <string name="telegram_channel">Canal Telegram</string>
     <string name="telegram_group">Grup Telegram</string>
-    <string name="lsposed_repo">LSPosed Repository</string>
-    <string name="github_repo">Github Repository</string>
+    <string name="lsposed_repo">Repozitoriu LSPosed</string>
+    <string name="github_repo">Repozitoriu GitHub</string>
     <string name="open_source">Cod sursă public</string>
     <string name="open_source_summary">Apasă pentru a vedea lista cu cod sursă deschis</string>
     <string name="participate_translation">Participă în traducerile modulelor</string>
     <string name="participate_translation_summary">Du-te la Crowdin pentru a contribui cu traducerea</string>
     <!-- check lsposed -->
-    <string name="system_not_support">The current system does not support!</string>
+    <string name="system_not_support">Sistemul actual nu acceptă!</string>
     <string name="unsupported_xposed">Module not activated detected.\nPlease use LSPosed %1$s and above to check the module scope.\nIf you have completed this step, you can try to click OK to exit and reopen the module.</string>
     <string name="unsupported_os">Sistem neacceptat</string>
-    <string name="unsupported_os_summary">Because the module only supports ColorOS 12 and above systems, please be sure to take security measures!</string>
+    <string name="unsupported_os_summary">Deoarece modulul acceptă doar sistemele ColorOS 12 sau mai sus, asigurați-vă că luați măsuri de securitate!</string>
     <string name="no_root">Fără permisiune root</string>
     <string name="no_root_summary">Permisiunea root nu este detectată, unele funcții nu vor fi disponibile!</string>
     <!-- Menu -->
@@ -85,28 +85,28 @@
     <string name="restart_scope_message">Sunteți sigur că doriți să reporniți toate procesele modificate cu excepția System Framework?\nUtilizați acest lucru doar dacă modulul nu funcționează!\nAsigurați-vă că toate procesele modificate sunt verificate!</string>
     <string name="restart_only_this_page_scope">Repornește doar procesele modificate pe această pagină</string>
     <string name="reboot">Repornește sistemul</string>
-    <string name="fast_reboot">Fast reboot</string>
-    <string name="menu_versioninfo">Version Information</string>
+    <string name="fast_reboot">Repornire rapidă</string>
+    <string name="menu_versioninfo">Informații versiune</string>
     <string name="scope_version_info">Scope version information</string>
     <string name="show_system_app">Show system APP</string>
     <!--Xposed-->
-    <string name="Android">System Related</string>
-    <string name="app_label">App Name</string>
-    <string name="package_name">Package Name</string>
-    <string name="version">Version</string>
+    <string name="Android">Legate de sistem</string>
+    <string name="app_label">Nume Aplicație</string>
+    <string name="package_name">Numele pachetului</string>
+    <string name="version">Versiune</string>
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">The official Color OS installer needs to enable other functions to use\nFunction List-Application Related-Application Installation Related</string>
     <string name="corepatch">Core Patch</string>
-    <string name="corepatch_summary">Remove install limits, supports Android 11–13</string>
-    <string name="downgr">Allow downgrade apps</string>
-    <string name="downgr_summary">Allows the app to override older versions if new versions are installed.</string>
+    <string name="corepatch_summary">Eliminați limitele de instalare, suportă Android 11–13</string>
+    <string name="downgr">Permite downgrade aplicații</string>
+    <string name="downgr_summary">Permite aplicației să suprascrie versiunile mai vechi dacă sunt instalate versiuni noi.</string>
     <string name="authcreak">Disable package manager signature validation</string>
     <string name="authcreak_summary">Signature verification when installing apps can be installed.</string>
-    <string name="digestCreak">Disable APK Signature validation</string>
-    <string name="digestCreak_summary">Allows overriding directly installed apps with different signatures to the package</string>
-    <string name="UsePreSig">Always use the signed installed APP while installing</string>
-    <string name="UsePreSig_summary">Is not a normal!danger! Only enable when absolutely needed</string>
-    <string name="enhancedMode">Enhancement mode</string>
+    <string name="digestCreak">Dezactivează validarea semnăturii APK</string>
+    <string name="digestCreak_summary">Permite suprascrierea aplicațiilor instalate direct cu semnături diferite ale pachetului</string>
+    <string name="UsePreSig">Utilizează întotdeauna aplicația semnată instalată în timpul instalării</string>
+    <string name="UsePreSig_summary">Nu este un pericol normal!! Activează doar atunci când este absolut necesar</string>
+    <string name="enhancedMode">Mod de îmbunătățire</string>
     <string name="enhancedMode_summary">You can solve some internal integrity check within the app, which does not need to be enabled</string>
     <string name="usepresig_warn">!!! All packages can override installed App!!\nto install unknown packages</string>
     <!--Status Bar-->
@@ -115,18 +115,18 @@
     <string name="statusbar_double_click_lock_screen">Double click statusbar to lock screen</string>
     <string name="vibrate_when_opening_the_statusbar">Vibrate when opening the status bar</string>
     <string name="set_click_statusbar_scroll_to_top_mode">Set the mode for clicking the status bar to return to the top</string>
-    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Remove the whitelist limit</string>
+    <string name="set_click_statusbar_scroll_to_top_mode_remove_white_list">Elimină limita de whitelist</string>
     <!--StatusBarClock-->
     <string name="StatusBarClock">StatusBar Clock</string>
     <string name="statusbar_clock_mode">Status bar clock mode</string>
-    <string name="statusbar_clock_show_year">Show year</string>
-    <string name="statusbar_clock_show_month">Show month</string>
-    <string name="statusbar_clock_show_day">Show date</string>
-    <string name="statusbar_clock_show_week">Show week</string>
-    <string name="statusbar_clock_show_period">Show period</string>
-    <string name="statusbar_clock_show_double_hour">Show Double Hour</string>
-    <string name="statusbar_clock_show_second">Show seconds</string>
-    <string name="statusbar_clock_hide_spaces">Hide spaces</string>
+    <string name="statusbar_clock_show_year">Arată anul</string>
+    <string name="statusbar_clock_show_month">Arată luna</string>
+    <string name="statusbar_clock_show_day">Arată data</string>
+    <string name="statusbar_clock_show_week">Arată săptămâna</string>
+    <string name="statusbar_clock_show_period">Arată perioada</string>
+    <string name="statusbar_clock_show_double_hour">Arată Ora Dublă</string>
+    <string name="statusbar_clock_show_second">Arată secunde</string>
+    <string name="statusbar_clock_hide_spaces">Ascunde spațiile</string>
     <string name="statusbar_clock_text_alignment">Clock Text Alignment</string>
     <string name="statusbar_clock_left_align">Left Align</string>
     <string name="statusbar_clock_center_align">Center Align</string>
@@ -164,12 +164,12 @@
     <string name="remove_do_not_disturb_mode_notification">Remove Do Not Disturb Mode Notification</string>
     <string name="remove_hotspot_power_consumption_notification">Remove personal hotspot power consumption notification</string>
     <string name="remove_hotspot_power_consumption_notification_summary">Notify: Turning on the personal hotspot for a long time will increase power consumption and heat</string>
-    <string name="remove_smart_rapid_charging_notification">Remove the “Smart rapid charging” notification</string>
-    <string name="remove_notifications_for_mute_notifications">Remove notifications for muted notifications</string>
+    <string name="remove_smart_rapid_charging_notification">Eliminați notificarea „Încărcare rapidă inteligentă”</string>
+    <string name="remove_notifications_for_mute_notifications">Elimină notificările pentru notificările dezactivate</string>
     <string name="remove_virus_risk_notification_in_phone_manager">Remove the virus risk notification in Phone Manager</string>
     <string name="remove_gt_mode_notification">Remove GT mode notification</string>
     <string name="allow_long_press_notification_modifiable">Allow long press notifications to be modifiable</string>
-    <string name="remove_notification_manager_limit">Remove notification manager limit</string>
+    <string name="remove_notification_manager_limit">Eliminați limita managerului de notificări</string>
     <string name="remove_small_window_reply_whitelist">Remove small window reply whitelist</string>
     <string name="set_small_window_reply_blacklist">Set small window reply blacklist</string>
     <string name="set_small_window_reply_blacklist_message">Fill in the package name that needs to be added to the blacklist, each line can only fill in one package name</string>
