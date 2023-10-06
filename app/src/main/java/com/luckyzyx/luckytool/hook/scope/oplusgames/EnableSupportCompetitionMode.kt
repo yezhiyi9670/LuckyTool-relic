@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
@@ -26,13 +27,12 @@ object EnableSupportCompetitionMode : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    emptyParam()
-                    returnType = BooleanType
-                    order().index(2)
-                }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                emptyParam()
+                returnType = BooleanType
+                order().index(2)
+            }.hook {
                 replaceToTrue()
             }
         }

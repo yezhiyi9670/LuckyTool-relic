@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.battery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContentResolverClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -45,14 +46,13 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
 //                    name = "isFeatureSupport"
-                    param(ContentResolverClass, StringClass)
-                    returnType = BooleanType
-                }
-                beforeHook {
+                param(ContentResolverClass, StringClass)
+                returnType = BooleanType
+            }.hook {
+                before {
                     when (args(1).cast<String>()) {
                         //屏幕省电
                         "com.oplus.battery.cabc_level_dynamic_enable" -> if (openScreenPowerSave) resultTrue()
@@ -65,13 +65,12 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                     }
                 }
             }
-            injectMember {
-                method {
+            method {
 //                    name = "getInt"
-                    param(ContentResolverClass, StringClass, IntType)
-                    returnType = IntType
-                }
-                beforeHook {
+                param(ContentResolverClass, StringClass, IntType)
+                returnType = IntType
+            }.hook {
+                before {
                     val array = arrayOf(args(1).cast<String>(), args(2).cast<Int>())
                     //电池引擎优化
                     if (array[0] == "com.oplus.battery.life.mode.notificate" && array[1] == 0) {
@@ -79,13 +78,12 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                     }
                 }
             }
-            injectMember {
-                method {
+            method {
 //                    name = "getBoolean"
-                    param(ContentResolverClass, StringClass, BooleanType)
-                    returnType = BooleanType
-                }
-                beforeHook {
+                param(ContentResolverClass, StringClass, BooleanType)
+                returnType = BooleanType
+            }.hook {
+                before {
                     val array = arrayOf(args(1).cast<String>(), args(2).cast<Boolean>())
                     when (array[0]) {
                         //睡眠待机优化

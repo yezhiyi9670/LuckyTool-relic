@@ -1,14 +1,14 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveTopLockScreenIcon : YukiBaseHooker() {
     override fun onHook() {
         //Source LockIcon
-        findClass("com.android.systemui.statusbar.phone.LockIcon").hook {
-            injectMember {
-                method { name = "updateIconVisibility" }
-                beforeHook { args(0).setFalse() }
+        "com.android.systemui.statusbar.phone.LockIcon".toClass().apply {
+            method { name = "updateIconVisibility" }.hook {
+                before { args(0).setFalse() }
             }
         }
     }

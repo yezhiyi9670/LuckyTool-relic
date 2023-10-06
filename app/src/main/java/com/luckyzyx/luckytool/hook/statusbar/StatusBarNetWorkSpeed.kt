@@ -10,6 +10,8 @@ import android.widget.FrameLayout.LayoutParams
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.dp
 import java.text.DecimalFormat
@@ -38,13 +40,12 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
             "com.oplusos.systemui.statusbar.controller.NetworkSpeedController",
             "com.oplus.systemui.statusbar.phone.netspeed.OplusNetworkSpeedControllExImpl", //C13
             "com.oplus.systemui.statusbar.phone.netspeed.OplusNetworkSpeedControllerExImpl" //C14
-        ).hook {
-            injectMember {
-                method {
-                    name = "postUpdateNetworkSpeedDelay"
-                    paramCount = 1
-                }
-                beforeHook {
+        ).toClass().apply {
+            method {
+                name = "postUpdateNetworkSpeedDelay"
+                paramCount = 1
+            }.hook {
+                before {
                     if (networkSpeed && (args().first().long() == 4000L)) {
                         args(0).set(1000L)
                     }
@@ -68,14 +69,14 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
 
         var bMargin = 0
         var tMargin = 0
+
         //Source NetworkSpeedView
         VariousClass(
             "com.oplusos.systemui.statusbar.widget.NetworkSpeedView",
             "com.oplus.systemui.statusbar.phone.netspeed.widget.NetworkSpeedView"
-        ).hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                afterHook {
+        ).toClass().apply {
+            method { name = "onFinishInflate" }.hook {
+                after {
                     val mView = instance<FrameLayout>()
                     val mSpeedNumber =
                         field { name = "mSpeedNumber" }.get(instance).cast<TextView>()
@@ -87,7 +88,10 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                     when (layoutMode) {
                         "1" -> {
                             val speedUnit: TextView? =
-                                mView.resources.getIdentifier("unit", "id", packageName)
+                                mView.resources.getIdentifier(
+                                    "unit", "id",
+                                    StatusBarNetWorkSpeed.packageName
+                                )
                                     .let { mView.findViewById(it) }
                             mView.removeView(speedUnit)
                         }
@@ -97,7 +101,7 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                         it.getDimensionPixelSize(
                             it.getIdentifier(
                                 "network_speed_number_margin_bottom",
-                                "dimen", packageName
+                                "dimen", StatusBarNetWorkSpeed.packageName
                             )
                         )
                     }
@@ -106,16 +110,15 @@ object StatusBarNetWorkSpeed : YukiBaseHooker() {
                         it.getDimensionPixelSize(
                             it.getIdentifier(
                                 "network_speed_unit_margin_top",
-                                "dimen", packageName
+                                "dimen", StatusBarNetWorkSpeed.packageName
                             )
                         )
                     }
                 }
             }
-            injectMember {
-                method { name = "updateNetworkSpeed" }
-                beforeHook {
-                    if (layoutMode == "0") return@beforeHook
+            method { name = "updateNetworkSpeed" }.hook {
+                before {
+                    if (layoutMode == "0") return@before
                     instance<FrameLayout>().apply {
                         layoutParams?.width = LayoutParams.WRAP_CONTENT
                         setPadding(0, 0, 0, getBottomPadding.dp)

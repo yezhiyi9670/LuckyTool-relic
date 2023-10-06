@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 import android.util.DisplayMetrics
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.DisplayMetricsClass
 import com.highcapable.yukihookapi.hook.type.java.FloatType
@@ -14,13 +15,12 @@ object FolderLayoutRowColume : YukiBaseHooker() {
     override fun onHook() {
         val columns = prefs(ModulePrefs).getInt("set_icon_columns_in_folder", 3)
         //Source OplusDeviceProfile
-        findClass("com.android.launcher3.OplusDeviceProfile").hook {
-            injectMember {
-                method {
-                    name = "updateOplusFolderCellSize"
-                    paramCount = 2
-                }
-                afterHook {
+        "com.android.launcher3.OplusDeviceProfile".toClass().apply {
+            method {
+                name = "updateOplusFolderCellSize"
+                paramCount = 2
+            }.hook {
+                after {
                     val folderPageMarginLRDp = field {
                         name = "inv"
                         superClass()
@@ -50,23 +50,21 @@ object FolderLayoutRowColume : YukiBaseHooker() {
             }
         }
         //Source InvariantDeviceProfile
-        findClass("com.android.launcher3.InvariantDeviceProfile").hook {
-            injectMember {
-                method {
-                    name = "initGrid"
-                    paramCount(3..4)
-                }
-                afterHook {
+        "com.android.launcher3.InvariantDeviceProfile".toClass().apply {
+            method {
+                name = "initGrid"
+                paramCount(3..4)
+            }.hook {
+                after {
                     field { name = "numFolderColumns" }.get(instance).set(columns)
                 }
             }
         }
         if (SDK < A13) return
         //Source FolderGridOrganizer
-        findClass("com.android.launcher3.folder.big.BigFolderGridOrganizer").hook {
-            injectMember {
-                method { name = "calculateGridSize" }
-                afterHook {
+        "com.android.launcher3.folder.big.BigFolderGridOrganizer".toClass().apply {
+            method { name = "calculateGridSize" }.hook {
+                after {
                     field {
                         name = "mCountX"
                         superClass()

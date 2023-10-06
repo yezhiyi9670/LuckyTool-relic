@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.openAppDetailIntent
@@ -11,26 +12,26 @@ import com.luckyzyx.luckytool.utils.openAppDetailIntent
 object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
     override fun onHook() {
         //Source OplusTaskHeaderView
-        findClass("com.android.quickstep.views.OplusTaskViewImpl").hook {
-            injectMember {
-                method {
-                    name = "setIcon"
-                    paramCount(1..2)
-                }
-                afterHook {
-                    val headerView =
-                        method { name = "getHeaderView" }.get(instance).call() ?: return@afterHook
+        "com.android.quickstep.views.OplusTaskViewImpl".toClass().apply {
+            method {
+                name = "setIcon"
+                paramCount(1..2)
+            }.hook {
+                after {
+                    val headerView = instance.current().method { name = "getHeaderView" }.call()
+                        ?: return@after
                     val iconView =
                         headerView.current().method { name = "getTaskIcon" }.invoke<View>()
-                            ?: return@afterHook
+                            ?: return@after
                     val titleView = headerView.current()
                         .field { name = if (SDK >= A13) "titleTv" else "mTitleView" }
-                        .cast<TextView>() ?: return@afterHook
-                    val task = method { name = "getTask";superClass(true) }.get(instance).call()
-                        ?: return@afterHook
-                    val key = task.current().field { name = "key" }.any() ?: return@afterHook
+                        .cast<TextView>() ?: return@after
+                    val task = instance.current().method {
+                        name = "getTask";superClass(true)
+                    }.call() ?: return@after
+                    val key = task.current().field { name = "key" }.any() ?: return@after
                     val packName = key.current().method { name = "getPackageName" }.invoke<String>()
-                        ?: return@afterHook
+                        ?: return@after
                     val userId = key.current().field { name = "userId" }.int()
                     iconView.setLongClick(packName, userId)
                     titleView.setLongClick(packName, userId)
@@ -39,17 +40,16 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
         }
 
         //Source DockIconView
-        findClass("com.oplus.quickstep.dock.DockIconView").hook {
-            injectMember {
-                method {
-                    name = "setIcon"
-                    paramCount = 1
-                }
-                afterHook {
-                    val task = method { name = "getTask" }.get(instance).call() ?: return@afterHook
-                    val key = task.current().field { name = "key" }.any() ?: return@afterHook
+        "com.oplus.quickstep.dock.DockIconView".toClass().apply {
+            method {
+                name = "setIcon"
+                paramCount = 1
+            }.hook {
+                after {
+                    val task = instance.current().method { name = "getTask" }.call() ?: return@after
+                    val key = task.current().field { name = "key" }.any() ?: return@after
                     val packName = key.current().method { name = "getPackageName" }.invoke<String>()
-                        ?: return@afterHook
+                        ?: return@after
                     val userId = key.current().field { name = "userId" }.int()
                     instance<View>().setLongClick(packName, userId)
                 }

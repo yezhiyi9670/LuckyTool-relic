@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -56,12 +57,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("remove_control_center_mydevice", false)
 
             //Source FeatureOption
-            findClass("com.oplusos.systemui.common.feature.FeatureOption").hook {
+            "com.oplusos.systemui.common.feature.FeatureOption".toClass().apply {
                 //C12 C13
-                if (instanceClass.hasMethod { name = "shouldRemoveAutoBrightness" }) {
-                    injectMember {
-                        method { name = "shouldRemoveAutoBrightness" }
-                        beforeHook {
+                if (hasMethod { name = "shouldRemoveAutoBrightness" }) {
+                    method { name = "shouldRemoveAutoBrightness" }.hook {
+                        before {
                             when (autoBrightnessMode) {
                                 "1" -> resultFalse()
                                 "2" -> resultTrue()
@@ -70,28 +70,24 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                 }
                 //C12 C13
-                if (instanceClass.hasMethod { name = "isOriginNotificationBehavior" }) {
-                    injectMember {
-                        method { name = "isOriginNotificationBehavior" }
+                if (hasMethod { name = "isOriginNotificationBehavior" }) {
+                    method { name = "isOriginNotificationBehavior" }.hook {
                         if (notifyImportance) replaceToTrue()
                     }
                 }
-                injectMember {
-                    method { name = "isVolumeBlurDisabled" }
+                method { name = "isVolumeBlurDisabled" }.hook {
                     if (volumeBlur > -1) replaceToFalse()
                 }
                 //C12
-                if (instanceClass.hasMethod { name = "isAiSdr2HdrSupport" }) {
-                    injectMember {
-                        method { name = "isAiSdr2HdrSupport" }
+                if (hasMethod { name = "isAiSdr2HdrSupport" }) {
+                    method { name = "isAiSdr2HdrSupport" }.hook {
                         if (enableBlur) replaceToFalse()
                     }
                 }
                 //C13 C14
-                if (instanceClass.hasMethod { name = "isOplusVolumeKeyInRight" }) {
-                    injectMember {
-                        method { name = "isOplusVolumeKeyInRight" }
-                        beforeHook {
+                if (hasMethod { name = "isOplusVolumeKeyInRight" }) {
+                    method { name = "isOplusVolumeKeyInRight" }.hook {
+                        before {
                             when (volumePosition) {
                                 "1" -> resultFalse()
                                 "2" -> resultTrue()
@@ -100,10 +96,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                 }
                 //C13
-                if (instanceClass.hasMethod { name = "areVolumeAndPowerKeysInRight" }) {
-                    injectMember {
-                        method { name = "areVolumeAndPowerKeysInRight" }
-                        beforeHook {
+                if (hasMethod { name = "areVolumeAndPowerKeysInRight" }) {
+                    method { name = "areVolumeAndPowerKeysInRight" }.hook {
+                        before {
                             when (volumePosition) {
                                 "1" -> resultFalse()
                                 "2" -> resultTrue()
@@ -112,10 +107,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                 }
                 //C13
-                if (instanceClass.hasMethod { name = "isSupportFullScreenChargeAnim" }) {
-                    injectMember {
-                        method { name = "isSupportFullScreenChargeAnim" }
-                        beforeHook {
+                if (hasMethod { name = "isSupportFullScreenChargeAnim" }) {
+                    method { name = "isSupportFullScreenChargeAnim" }.hook {
+                        before {
                             when (fullScreenChargeAnim) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
@@ -124,17 +118,15 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                 }
                 //C13
-                if (instanceClass.hasMethod { name = "isSupportShowWattage" }) {
-                    injectMember {
-                        method { name = "isSupportShowWattage" }
+                if (hasMethod { name = "isSupportShowWattage" }) {
+                    method { name = "isSupportShowWattage" }.hook {
                         if (warpCharge == "2" && showWattage) replaceToTrue()
                     }
                 }
                 //C12 C13
-                if (SDK == A13 && instanceClass.hasMethod { name = "isUseWarpCharge" }) {
-                    injectMember {
-                        method { name = "isUseWarpCharge" }
-                        beforeHook {
+                if (SDK == A13 && hasMethod { name = "isUseWarpCharge" }) {
+                    method { name = "isUseWarpCharge" }.hook {
+                        before {
                             when (warpCharge) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
@@ -143,9 +135,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
                     }
                 }
                 //C13 C14
-                if (instanceClass.hasMethod { name = "isSupportMyDevice" }) {
-                    injectMember {
-                        method { name = "isSupportMyDevice" }
+                if (hasMethod { name = "isSupportMyDevice" }) {
+                    method { name = "isSupportMyDevice" }.hook {
                         if (removeMyDevice) replaceToFalse()
                     }
                 }
@@ -163,9 +154,8 @@ object HookSystemUIFeature : YukiBaseHooker() {
             VariousClass(
                 "com.oplusos.systemui.statusbar.feature.StatusBarFeatureOption", //C13
                 "com.oplusos.systemui.common.feature.StatusBarFeatureOption" //C14
-            ).hook {
-                injectMember {
-                    method { name = "isSystemUiExpSignalUi" }
+            ).toClass().apply {
+                method { name = "isSystemUiExpSignalUi" }.hook {
                     if (hideSignalLabels) replaceToTrue()
                 }
             }
@@ -186,32 +176,29 @@ object HookSystemUIFeature : YukiBaseHooker() {
             VariousClass(
                 "com.oplusos.systemui.common.util.NotificationAppFeatureOption", //C13
                 "com.oplusos.systemui.common.feature.NotificationFeatureOption" //C14
-            ).hook {
-                if (SDK < A14) injectMember {
-                    method { name = "originNotificationBehavior" }
+            ).toClass().apply {
+                if (SDK < A14) method { name = "originNotificationBehavior" }.hook {
                     if (notifyImportance) replaceToTrue()
                 }
+
                 //C13 C14
-                if (SDK >= A13) injectMember {
-                    method {
-                        name = if (SDK >= A14) "isGaussBlurDisabled"
-                        else "getGaussBlurDisabled"
-                    }
+                if (SDK >= A13) method {
+                    name = if (SDK >= A14) "isGaussBlurDisabled"
+                    else "getGaussBlurDisabled"
+                }.hook {
                     if (enableBlur) replaceToFalse()
                 }
-                if (instanceClass.hasMethod { name = "isPanViewBlurDisabled" }) {
-                    injectMember {
-                        method { name = "isPanViewBlurDisabled" }
+
+                if (hasMethod { name = "isPanViewBlurDisabled" }) {
+                    method { name = "isPanViewBlurDisabled" }.hook {
                         if (enableBlur) replaceToFalse()
                     }
                 }
-//                injectMember {
 //                    method { name = "isAodMediaDisable" }
 //                    afterHook {
 //                        loggerD(msg = "isAodMediaDisable -> $result")
 //                        resultFalse()
 //                    }
-//                }
             }
         }
     }
@@ -223,18 +210,17 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getString("set_control_center_search_button_mode", "0")
 
             //Source FlavorOneFeatureOption
-            findClass("com.oplusos.systemui.common.feature.FlavorOneFeatureOption").hook {
-                if (instanceClass.hasMethod { name = "isSupportSearch" }) {
-                    injectMember {
-                        method { name = "isSupportSearch" }
-                        beforeHook {
+            "com.oplusos.systemui.common.feature.FlavorOneFeatureOption".toClass().apply {
+                if (hasMethod { name = "isSupportSearch" }) {
+                    method { name = "isSupportSearch" }.hook {
+                        before {
                             when (searchBtnMode) {
                                 "1" -> resultTrue()
                                 "2" -> resultFalse()
                             }
                         }
                     }
-                } else return
+                }
             }
         }
     }
@@ -246,10 +232,9 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getString("set_auto_brightness_button_mode", "0")
 
             //Source QSFeatureOption
-            findClass("com.oplusos.systemui.common.feature.QSFeatureOption").hook {
-                injectMember {
-                    method { name = "getShouldRemoveAutoBrightness" }
-                    beforeHook {
+            "com.oplusos.systemui.common.feature.QSFeatureOption".toClass().apply {
+                method { name = "getShouldRemoveAutoBrightness" }.hook {
+                    before {
                         when (autoBrightnessMode) {
                             "1" -> resultFalse()
                             "2" -> resultTrue()

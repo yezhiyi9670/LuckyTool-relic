@@ -5,6 +5,8 @@ import android.app.NotificationManager
 import android.content.ClipboardManager
 import android.content.SharedPreferences
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ActivityClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.android.MediaPlayerClass
@@ -41,19 +43,20 @@ object HookADM : YukiBaseHooker() {
                     usingStrings("firebase.test.lab")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    modifiers { isStatic }
-                    param(ActivityClass)
-                    returnType = UnitType
-                }.all()
-                afterHook {
-                    field {
-                        name = "n"
-                        modifiers { isStatic }
-                        type(BooleanType)
-                    }.get().setTrue()
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                modifiers { isStatic }
+                param(ActivityClass)
+                returnType = UnitType
+            }.giveAll().forEach {
+                it.hook {
+                    after {
+                        field {
+                            name = "n"
+                            modifiers { isStatic }
+                            type(BooleanType)
+                        }.get().setTrue()
+                    }
                 }
             }
         }

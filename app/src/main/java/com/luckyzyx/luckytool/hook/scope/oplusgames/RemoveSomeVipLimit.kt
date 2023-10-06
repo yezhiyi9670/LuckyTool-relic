@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveSomeVipLimit : YukiBaseHooker() {
     override fun onHook() {
@@ -8,76 +9,63 @@ object RemoveSomeVipLimit : YukiBaseHooker() {
 
         //Source VipInfoBean -> VipInfosDTO
         //<string name="magic_voice_buy_vip_tip">开启游戏变声，尽享全部变声效果</string>
-        findClass("com.oplus.games.account.bean.VipInfoBean\$VipInfosDTO").hook {
-            injectMember {
-                method { name = "getVip" }
+        "com.oplus.games.account.bean.VipInfoBean\$VipInfosDTO".toClass().apply {
+            method { name = "getVip" }.hook {
                 replaceToTrue()
+
             }
-            injectMember {
-                method { name = "getExpiredVip" }
+            method { name = "getExpiredVip" }.hook {
                 replaceToFalse()
             }
-            injectMember {
-                method { name = "getExpireTime" }
+            method { name = "getExpireTime" }.hook {
                 replaceTo("2999-12-31")
             }
-            injectMember {
-                method { name = "getSign" }
+            method { name = "getSign" }.hook {
                 replaceToTrue()
             }
         }
         //Source TrialVipV2InfoBean
-        findClass("com.oplus.games.account.bean.TrialVipInfoBean").hook {
-            injectMember {
-                method { name = "isHit" }
+        "com.oplus.games.account.bean.TrialVipInfoBean".toClass().apply {
+            method { name = "isHit" }.hook {
                 replaceToTrue()
             }
         }
         //Source TrialVipV2InfoBean
-        findClass("com.oplus.games.account.bean.TrialVipV2InfoBean").hook {
-            injectMember {
-                method { name = "isDeviceHasTrialQualification" }
+        "com.oplus.games.account.bean.TrialVipV2InfoBean".toClass().apply {
+            method { name = "isDeviceHasTrialQualification" }.hook {
                 replaceToTrue()
             }
-            injectMember {
-                method { name = "isHit" }
+            method { name = "isHit" }.hook {
                 replaceToTrue()
             }
         }
         //Source VipAccelearateResponse
-        findClass("com.oplus.games.account.bean.VipAccelearateResponse").hook {
-            injectMember {
-                method { name = "getSuperBooster" }
+        "com.oplus.games.account.bean.VipAccelearateResponse".toClass().apply {
+            method { name = "getSuperBooster" }.hook {
                 replaceToTrue()
             }
-            injectMember {
-                method { name = "isSuperBooster" }
+            method { name = "isSuperBooster" }.hook {
                 replaceToTrue()
             }
         }
         //Source VIPStateBean
-        findClass("com.oplus.games.account.bean.VIPStateBean").hook {
-            injectMember {
-                method { name = "getVipState" }
+        "com.oplus.games.account.bean.VIPStateBean".toClass().apply {
+            method { name = "getVipState" }.hook {
                 replaceTo(5)
             }
-            injectMember {
-                method { name = "getExpireTime" }
+            method { name = "getExpireTime" }.hook {
                 replaceTo("2999-12-31")
             }
         }
         //Source UserInfo
-        findClass("com.coloros.gamespaceui.module.magicvoice.oplus.data.UserInfo").hook {
-            injectMember {
-                method { name = "getExpireTime" }
+        "com.coloros.gamespaceui.module.magicvoice.oplus.data.UserInfo".toClass().apply {
+            method { name = "getExpireTime" }.hook {
                 replaceTo("2999-12-31")
             }
-            injectMember {
-                method { name = "getHasTrialQualifications" }
+            method { name = "getHasTrialQualifications" }.hook {
                 replaceToTrue()
             }
-            injectMember {
-                method { name = "getUserIdentity" }
+            method { name = "getUserIdentity" }.hook {
                 replaceTo(3)
             }
         }

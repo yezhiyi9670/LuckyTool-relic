@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.battery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.IntentClass
@@ -31,12 +32,11 @@ object UnlockStartupLimit : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    emptyParam()
-                    returnType = IntType
-                }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                emptyParam()
+                returnType = IntType
+            }.hook {
                 replaceTo(999)
             }
         }

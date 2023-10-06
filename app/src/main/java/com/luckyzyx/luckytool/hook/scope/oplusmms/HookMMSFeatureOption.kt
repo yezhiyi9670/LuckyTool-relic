@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusmms
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -37,13 +38,12 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                     usingStrings("FeatureOption")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(ContextClass, StringClass, StringClass)
-                    returnType = BooleanType
-                }
-                beforeHook {
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(ContextClass, StringClass, StringClass)
+                returnType = BooleanType
+            }.hook {
+                before {
                     val key = args(1).cast<String>()
                     val key2 = args(2).cast<String>()
                     if (key == null) {

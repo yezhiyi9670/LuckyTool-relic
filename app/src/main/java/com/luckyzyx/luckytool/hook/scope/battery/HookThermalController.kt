@@ -1,74 +1,65 @@
 package com.luckyzyx.luckytool.hook.scope.battery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 
 object HookThermalController : YukiBaseHooker() {
     override fun onHook() {
         //Source ThermalControlConfig
-        findClass("com.oplus.thermalcontrol.ThermalControlConfig").hook {
-            injectMember {
-                method { name = "isThermalControlEnable" }
+        "com.oplus.thermalcontrol.ThermalControlConfig".toClass().apply {
+            method { name = "isThermalControlEnable" }.hook {
                 replaceToFalse()
             }
         }
         //Source ThermalControllerCenter
-        findClass("com.oplus.thermalcontrol.ThermalControllerCenter").hook {
-            injectMember {
-                method { name = "start5GModemMethods" }
+        "com.oplus.thermalcontrol.ThermalControllerCenter".toClass().apply {
+            method { name = "start5GModemMethods" }.hook {
                 intercept()
             }
-            injectMember {
-                method { name = "startCollingMethods" }
+            method { name = "startCollingMethods" }.hook {
                 intercept()
             }
-            injectMember {
-                method { name = "startRestrictMethods" }
+            method { name = "startRestrictMethods" }.hook {
                 intercept()
             }
-            injectMember {
-                method { name = "startCategoryChangeMethods" }
+            method { name = "startCategoryChangeMethods" }.hook {
                 intercept()
             }
-            injectMember {
-                method { name = "stopCollingMethods" }
-                beforeHook {
+            method { name = "stopCollingMethods" }.hook {
+                before {
                     field { name = "mThermalControlState" }.get(instance).setTrue()
                 }
             }
         }
         //Source ThermalControlUtils
-        findClass("com.oplus.thermalcontrol.ThermalControlUtils").hook {
-            injectMember {
-                method { name = "getCurrentThermalStatus" }
+        "com.oplus.thermalcontrol.ThermalControlUtils".toClass().apply {
+            method { name = "getCurrentThermalStatus" }.hook {
                 replaceTo(-1)
             }
-            injectMember {
-                method { name = "getCurrentTemperature" }
-                afterHook {
-                    val temp = result<Float>() ?: return@afterHook
+            method { name = "getCurrentTemperature" }.hook {
+                after {
+                    val temp = result<Float>() ?: return@after
                     if (temp > 30.0F) result = 30.0F
                 }
             }
-            injectMember {
-                method { name = "getTempFromBind" }
-                afterHook {
-                    val temp = result<Float>() ?: return@afterHook
+            method { name = "getTempFromBind" }.hook {
+                after {
+                    val temp = result<Float>() ?: return@after
                     if (temp > 30.0F) result = 30.0F
                 }
             }
-            injectMember {
-                method { name = "sendThermalLevelChangeBroadcast" }
-                beforeHook {
+            method { name = "sendThermalLevelChangeBroadcast" }.hook {
+                before {
                     args().first().set(-1)
                     args().last().set(30)
                 }
             }
-            injectMember {
-                method {
-                    name = "setChargingLevel"
-                    paramCount(1..3)
-                }
-                beforeHook {
+            method {
+                name = "setChargingLevel"
+                paramCount(1..3)
+            }.hook {
+                before {
                     args(0).set(0)
                     if (args.size >= 3) {
                         args(1).set(0)
@@ -76,12 +67,11 @@ object HookThermalController : YukiBaseHooker() {
                     }
                 }
             }
-            injectMember {
-                method {
-                    name = "setFps"
-                    paramCount = 2
-                }
-                beforeHook { args(0).set(0) }
+            method {
+                name = "setFps"
+                paramCount = 2
+            }.hook {
+                before { args(0).set(0) }
             }
         }
     }

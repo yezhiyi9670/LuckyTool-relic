@@ -1,7 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
+import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
@@ -54,14 +55,11 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
                 }
             }
         }?.firstOrNull()?.className ?: "null"
-        findClass(clsName + clazz).hook {
-            injectMember {
-                method { name = "filter";returnType = CharSequenceClass }
+        (clsName + clazz).toClassOrNull()?.apply {
+            method { name = "filter";returnType = CharSequenceClass }.hook {
                 intercept()
             }
-        }.onHookClassNotFoundFailure {
-            loggerD(msg = "Error -> RemoveWatermarkWordLimit")
-        }
+        } ?: run { YLog.debug("Error -> RemoveWatermarkWordLimit") }
     }
 }
 

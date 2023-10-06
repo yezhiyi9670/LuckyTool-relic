@@ -4,6 +4,8 @@ import android.util.ArrayMap
 import android.util.ArraySet
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.buildOf
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.AtomicBooleanClass
 import com.highcapable.yukihookapi.hook.type.java.InputStreamClass
@@ -33,12 +35,10 @@ object DarkModeList : YukiBaseHooker() {
                     usingStrings("DarkModeFileUtils")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            val objectName = instanceClass.classes[0]?.simpleName
-            val darkModeData =
-                (instanceClass.canonicalName!! + "\$$objectName").toClass()
-            injectMember {
-                method { param(Reader::class.java) }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            val objectName = classes[0]?.simpleName
+            val darkModeData = (canonicalName!! + "\$$objectName").toClass()
+            method { param(Reader::class.java) }.hook {
                 replaceUnit {
                     val supportListMap = ArrayMap<String, Int>()
                     supportlistSet.forEach {

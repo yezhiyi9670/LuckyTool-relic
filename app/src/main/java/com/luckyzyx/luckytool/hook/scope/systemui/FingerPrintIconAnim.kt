@@ -7,6 +7,7 @@ import android.widget.ImageView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object FingerPrintIconAnim : YukiBaseHooker() {
@@ -20,18 +21,17 @@ object FingerPrintIconAnim : YukiBaseHooker() {
             "com.oplusos.systemui.keyguard.onscreenfingerprint.OnScreenFingerprintOpticalAnimCtrl", //C12
             "com.oplus.systemui.keyguard.finger.onscreenfingerprint.OnScreenFingerprintUiMech", //C13
             "com.oplus.systemui.biometrics.finger.udfps.OnScreenFingerprintUiMach" //C14
-        ).hook {
-            injectMember {
-                method { name = "loadAnimDrawables" }
+        ).toClass().apply {
+            method { name = "loadAnimDrawables" }.hook {
                 when (removeMode) {
-                    "0" -> if (isReplaceIcon) afterHook {
+                    "0" -> if (isReplaceIcon) after {
                         instance.setCustomDrawable(
                             iconPath, true
                         )
                     }
 
-                    "1" -> afterHook { instance.setCustomDrawable(null, true) }
-                    "2" -> afterHook {
+                    "1" -> after { instance.setCustomDrawable(null, true) }
+                    "2" -> after {
                         instance.removePressAnim()
                         if (isReplaceIcon) instance.setCustomDrawable(iconPath, true)
                     }
@@ -39,14 +39,12 @@ object FingerPrintIconAnim : YukiBaseHooker() {
                     "3" -> intercept()
                 }
             }
-            injectMember {
-                method { name = "startFadeInAnimation" }
+            method { name = "startFadeInAnimation" }.hook {
                 if (isReplaceIcon) replaceUnit {
                     instance.setCustomDrawable(iconPath, false)
                 } else if (removeMode == "1" || removeMode == "3") intercept()
             }
-            injectMember {
-                method { name = "startFadeOutAnimation" }
+            method { name = "startFadeOutAnimation" }.hook {
                 if (isReplaceIcon) intercept()
                 else if (removeMode == "1" || removeMode == "3") intercept()
             }

@@ -8,6 +8,9 @@ import android.view.Gravity
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.luckyzyx.luckytool.hook.utils.sysui.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A11
@@ -61,13 +64,14 @@ object StatusBarClock : YukiBaseHooker() {
         dataChannel.wait<Int>("statusbar_clock_singlerow_fontsize") { singleRowFontSize = it }
         dataChannel.wait<Int>("statusbar_clock_doublerow_fontsize") { doubleRowFontSize = it }
         var context: Context? = null
-        findClass("com.android.systemui.statusbar.policy.Clock").hook {
-            injectMember {
-                constructor { paramCount = 3 }
-                afterHook {
+
+        //Source Clock
+        "com.android.systemui.statusbar.policy.Clock".toClass().apply {
+            constructor { paramCount = 3 }.hook {
+                after {
                     context = args(0).cast<Context>()
                     val clockView = instance<TextView>()
-                    if (clockView.resources.getResourceEntryName(clockView.id) != "clock") return@afterHook
+                    if (clockView.resources.getResourceEntryName(clockView.id) != "clock") return@after
                     val d: Method = clockView.javaClass.superclass.getDeclaredMethod("updateClock")
                     val r = Runnable {
                         d.isAccessible = true
@@ -82,14 +86,10 @@ object StatusBarClock : YukiBaseHooker() {
                     Timer().scheduleAtFixedRate(T(), 1000 - System.currentTimeMillis() % 1000, 1000)
                 }
             }
-            injectMember {
-                method {
-                    name = "getSmallTime"
-                    returnType = CharSequenceClass
-                }
-                afterHook {
+            method { name = "getSmallTime";returnType = CharSequenceClass }.hook {
+                after {
                     instance<TextView>().apply {
-                        if (resources.getResourceEntryName(id) != "clock") return@afterHook
+                        if (resources.getResourceEntryName(id) != "clock") return@after
                         initView()
                     }
                     val mCalendar = field { name = "mCalendar" }.get(instance).cast<Calendar>()
@@ -107,14 +107,12 @@ object StatusBarClock : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.statusbar.widget.StatClock", //C12 C13
             "com.oplus.systemui.statusbar.widget.StatClock" //C14
-        ).hook {
-            injectMember {
-                method {
-                    if (SDK == A11) name = "onConfigChanged"
-                    if (SDK > A11) name = "onConfigurationChanged"
-                }
-                intercept()
-            }
+        ).toClass().apply {
+            method {
+                if (SDK == A11) name = "onConfigChanged"
+                if (SDK > A11) name = "onConfigurationChanged"
+            }.hook { intercept() }
+
         }
     }
 

@@ -5,6 +5,8 @@ import android.graphics.drawable.LayerDrawable
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.DialogInterfaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.dp
@@ -21,18 +23,16 @@ object VolumeDialogWhiteBackground : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.volume.VolumeDialogImplEx", //C13
             "com.oplus.systemui.volume.OplusVolumeDialogImpl" //C14
-        ).hook {
-            injectMember {
-                method { name = "isSurrealQualityOn" }
-                afterHook {
-                    if (customAlpha < 0) return@afterHook
+        ).toClass().apply {
+            method { name = "isSurrealQualityOn" }.hook {
+                after {
+                    if (customAlpha < 0) return@after
                     resultFalse()
                 }
             }
-            injectMember {
-                method { param(DialogInterfaceClass) }
-                beforeHook {
-                    if (customAlpha < 0) return@beforeHook
+            method { param(DialogInterfaceClass) }.hook {
+                before {
+                    if (customAlpha < 0) return@before
                     val value = customAlpha * 25
                     field { name = "mVerticalRowsLayerDrawable" }.get(instance)
                         .cast<LayerDrawable>()?.apply {

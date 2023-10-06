@@ -90,9 +90,10 @@ dependencies {
 
     //Xposed基础
     compileOnly("de.robv.android.xposed:api:82")
-    //YukiHookAPI ksp
-    implementation("com.highcapable.yukihookapi:api:1.1.12")
-    ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.12")
+    //YukiHookAPI
+//    implementation("com.highcapable.yukireflection:api:1.0.2")
+    implementation("com.highcapable.yukihookapi:api:1.2.0")
+    ksp("com.highcapable.yukihookapi:ksp-xposed:1.2.0")
 //    implementation(files("libs/yukihookapi-release.jar"))
 //    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 

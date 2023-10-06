@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.browser
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -30,14 +31,11 @@ object RemoveAdsFromDownloadDialog : YukiBaseHooker() {
                     usingStrings("DownloadCardAdProvider")
                 }
             }
-        }?.firstOrNull()?.className?.toClassOrNull()?.hook {
-            injectMember {
-                method {
-                    paramCount(1)
-                    returnType("com.opos.feed.api.params.AdRequest")
-                }
-                replaceTo(null)
-            }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                paramCount(1)
+                returnType("com.opos.feed.api.params.AdRequest")
+            }.hook { replaceTo(null) }
         }
     }
 }

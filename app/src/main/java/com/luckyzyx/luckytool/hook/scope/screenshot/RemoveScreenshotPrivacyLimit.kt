@@ -1,28 +1,27 @@
 package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveScreenshotPrivacyLimit : YukiBaseHooker() {
     override fun onHook() {
         //Source ScreenshotContext
-        findClass("com.oplus.screenshot.screenshot.core.ScreenshotContext").hook {
-            injectMember {
-                method { name = "setScreenshotReject" }
-                beforeHook {
-                    val rejectCls = args().first().any()?.javaClass ?: return@beforeHook
-                    if (rejectCls.isEnum.not()) return@beforeHook
-                    val enumConstants = rejectCls.enumConstants ?: return@beforeHook
+        "com.oplus.screenshot.screenshot.core.ScreenshotContext".toClass().apply {
+            method { name = "setScreenshotReject" }.hook {
+                before {
+                    val rejectCls = args().first().any()?.javaClass ?: return@before
+                    if (rejectCls.isEnum.not()) return@before
+                    val enumConstants = rejectCls.enumConstants ?: return@before
                     enumConstants.forEach {
                         if (it.toString() == "ACCEPTED") args().first().set(it)
                     }
                 }
             }
-            injectMember {
-                method { name = "setLongshotReject" }
-                beforeHook {
-                    val rejectCls = args().first().any()?.javaClass ?: return@beforeHook
-                    if (rejectCls.isEnum.not()) return@beforeHook
-                    val enumConstants = rejectCls.enumConstants ?: return@beforeHook
+            method { name = "setLongshotReject" }.hook {
+                before {
+                    val rejectCls = args().first().any()?.javaClass ?: return@before
+                    if (rejectCls.isEnum.not()) return@before
+                    val enumConstants = rejectCls.enumConstants ?: return@before
                     enumConstants.forEach {
                         if (it.toString() == "ACCEPTED") args().first().set(it)
                     }

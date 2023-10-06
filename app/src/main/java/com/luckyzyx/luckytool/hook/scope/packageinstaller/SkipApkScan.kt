@@ -1,7 +1,9 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import java.util.*
@@ -24,23 +26,25 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
             }
         //Source OPlusPackageInstallerActivity ? AppDetailRedirectionUtils
         //Search SP_KEY_COUNT_CANCELED_BY_APP_DETAIL / count_canceled_by_app_detail
-        findClass(member[0]).hook {
-            injectMember {
-                method {
-                    name = member[1]
-                    if (member[0] == OPIA) returnType = BooleanType
-                    if (member[0] == ADRU) returnType = IntType
-                }.all()
-                if (member[0] == OPIA) replaceToFalse()
-                if (member[0] == ADRU) replaceTo(9)
+        member[0].toClass().apply {
+            method {
+                name = member[1]
+                if (member[0] == OPIA) returnType = BooleanType
+                if (member[0] == ADRU) returnType = IntType
+            }.giveAll().forEach {
+                it.hook {
+                    if (member[0] == OPIA) replaceToFalse()
+                    if (member[0] == ADRU) replaceTo(9)
+                }
             }
         }
         //Source OPlusPackageInstallerActivity
         //Search button_type / install_old_version_button
-        findClass(OPIA).hook {
-            injectMember {
-                method { name = member[2] }
-                replaceUnit { method { name = member[3] }.get(instance).call() }
+        OPIA.toClass().apply {
+            method { name = member[2] }.hook {
+                replaceUnit {
+                    instance.current().method { name = member[3] }.call()
+                }
             }
         }
     }

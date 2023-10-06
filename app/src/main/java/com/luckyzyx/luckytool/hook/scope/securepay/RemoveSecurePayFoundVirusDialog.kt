@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.securepay
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.CheckBoxClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.DialogInterfaceClass
@@ -43,20 +44,16 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(VagueType, StringClass)
-                    returnType = UnitType
-                }
-                intercept()
-            }
-            injectMember {
-                method {
-                    emptyParam()
-                    returnType = UnitType
-                }.all()
-                intercept()
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(VagueType, StringClass)
+                returnType = UnitType
+            }.hook { intercept() }
+            method {
+                emptyParam()
+                returnType = UnitType
+            }.giveAll().forEach {
+                it.hook { intercept() }
             }
         }
     }

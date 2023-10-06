@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.utils.DexkitUtils
@@ -27,16 +28,13 @@ object EnableAonGestures : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.hook {
+        }?.firstOrNull()?.className?.toClass()?.apply {
             //oplus.software.aon_gestureui_enable
-            injectMember {
-                method {
-                    name = "c"
-                    param(ContextClass)
-                    returnType = BooleanType
-                }
-                replaceToTrue()
-            }
+            method {
+                name = "c"
+                param(ContextClass)
+                returnType = BooleanType
+            }.hook { replaceToTrue() }
             //oplus.software.aon_gesture_press
 //            injectMember {
 //                method {
@@ -65,14 +63,11 @@ object EnableAonGestures : YukiBaseHooker() {
 //                replaceToTrue()
 //            }
             //oplus.software.aon_enable
-            injectMember {
-                method {
-                    name = "g"
-                    param(ContextClass)
-                    returnType = BooleanType
-                }
-                replaceToTrue()
-            }
+            method {
+                name = "g"
+                param(ContextClass)
+                returnType = BooleanType
+            }.hook { replaceToTrue() }
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookNotificationManager : YukiBaseHooker() {
@@ -11,10 +12,9 @@ object HookNotificationManager : YukiBaseHooker() {
             prefs(ModulePrefs).getBoolean("remove_hotspot_power_consumption_notification", false)
 
         //Source NotificationManager
-        findClass("android.app.NotificationManager").hook {
-            injectMember {
-                method { name = "notify";paramCount = 3 }
-                beforeHook {
+        "android.app.NotificationManager".toClass().apply {
+            method { name = "notify";paramCount = 3 }.hook {
+                before {
                     when (args(1).int()) {
                         4 -> if (hotspotPowerConsumption) resultNull()
                     }

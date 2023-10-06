@@ -2,7 +2,9 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.MembersType
+import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -12,19 +14,18 @@ object ShowChargingRipple : YukiBaseHooker() {
         VariousClass(
             "com.android.systemui.statusbar.charging.WiredChargingRippleController", //C13
             "com.android.systemui.charging.WiredChargingRippleController" //C14
-        ).hook {
-            injectMember {
-                allMembers(MembersType.CONSTRUCTOR)
-                afterHook {
+        ).toClass().apply {
+            constructor().hook {
+                after {
                     field { name = "rippleEnabled" }.get(instance).setTrue()
                 }
             }
+
         }
         if (SDK >= A14) return
         //Sourcee FeatureFlags -> flag_charging_ripple
-        findClass("com.android.systemui.statusbar.FeatureFlags").hook {
-            injectMember {
-                method { name = "isChargingRippleEnabled" }
+        "com.android.systemui.statusbar.FeatureFlags".toClass().apply {
+            method { name = "isChargingRippleEnabled" }.hook {
                 replaceToTrue()
             }
         }

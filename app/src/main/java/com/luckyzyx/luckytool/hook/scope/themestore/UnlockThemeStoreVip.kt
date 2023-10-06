@@ -1,28 +1,25 @@
 package com.luckyzyx.luckytool.hook.scope.themestore
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object UnlockThemeStoreVip : YukiBaseHooker() {
     override fun onHook() {
         //Source VipUserDto
-        findClass("com.oppo.cdo.card.theme.dto.vip.VipUserDto").hook {
-            injectMember {
-                method { name = "getVipStatus" }
+        "com.oppo.cdo.card.theme.dto.vip.VipUserDto".toClass().apply {
+            method { name = "getVipStatus" }.hook {
                 replaceTo(1)
             }
-            injectMember {
-                method { name = "getVipDays" }
+            method { name = "getVipDays" }.hook {
                 replaceTo(999)
             }
         }
         //Source PublishProductItemDto
-        findClass("com.oppo.cdo.theme.domain.dto.response.PublishProductItemDto").hook {
-            injectMember {
-                method { name = "getPrice" }
+        "com.oppo.cdo.theme.domain.dto.response.PublishProductItemDto".toClass().apply {
+            method { name = "getPrice" }.hook {
                 replaceTo(0.0)
             }
-            injectMember {
-                method { name = "getIsVipAvailable" }
+            method { name = "getIsVipAvailable" }.hook {
                 replaceTo(1)
             }
         }

@@ -7,6 +7,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.dp
 
@@ -20,11 +22,10 @@ object LockScreenComponent : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.keyguard.clock.RedHorizontalSingleClockView", //C13
             "com.oplus.systemui.shared.clocks.RedHorizontalSingleClockView" //C14
-        ).hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                afterHook {
-                    if (!isCenter) return@afterHook
+        ).toClass().apply {
+            method { name = "onFinishInflate" }.hook {
+                after {
+                    if (!isCenter) return@after
                     instance<LinearLayout>().setPadding(0, 20.dp, 0, 0)
 
                     field { name = "mTvWeek" }.get(instance).cast<TextView>()
@@ -46,8 +47,7 @@ object LockScreenComponent : YukiBaseHooker() {
                         ?.setCenterHorizontally()
                 }
             }
-            injectMember {
-                method { name = "setTextFont" }
+            method { name = "setTextFont" }.hook {
                 if (userTypeface) intercept()
             }
         }
@@ -55,9 +55,8 @@ object LockScreenComponent : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
             "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
-        ).hook {
-            injectMember {
-                method { name = "setTextFont" }
+        ).toClass().apply {
+            method { name = "setTextFont" }.hook {
                 if (userTypeface) intercept()
             }
         }

@@ -3,6 +3,8 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object BluetoothIconRelated : YukiBaseHooker() {
@@ -13,24 +15,24 @@ object BluetoothIconRelated : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.statusbar.phone.PhoneStatusBarPolicyEx", //C13
             "com.oplus.systemui.statusbar.phone.OplusPhoneStatusBarPolicyExImpl" //C14
-        ).hook {
-            injectMember {
-                method { name = "updateBluetoothIcon";paramCount = 4 }
-                beforeHook {
-                    if (!isHide) return@beforeHook
+        ).toClass().apply {
+            method { name = "updateBluetoothIcon";paramCount = 4 }.hook {
+                before {
+                    if (!isHide) return@before
                     val visibility = args().last().boolean()
                     val mBluetooth = field {
                         name = "mBluetooth"
                         superClass(true)
-                    }.get(instance).any() ?: return@beforeHook
+                    }.get(instance).any() ?: return@before
                     val isBluetoothEnabled = mBluetooth.current().method {
                         name = "isBluetoothEnabled"
-                    }.invoke<Boolean>() ?: return@beforeHook
+                    }.invoke<Boolean>() ?: return@before
                     val isBluetoothConnected = mBluetooth.current().method {
                         name = "isBluetoothConnected"
-                    }.invoke<Boolean>() ?: return@beforeHook
-                    if (visibility && isBluetoothEnabled && isBluetoothConnected) args(3).setTrue()
-                    else args().last().setFalse()
+                    }.invoke<Boolean>() ?: return@before
+                    args().last().set(
+                        visibility && isBluetoothEnabled && isBluetoothConnected
+                    )
                 }
             }
         }

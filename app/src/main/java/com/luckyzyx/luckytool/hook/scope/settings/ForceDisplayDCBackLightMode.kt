@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object ForceDisplayDCBackLightMode : YukiBaseHooker() {
     override fun onHook() {
@@ -10,11 +11,11 @@ object ForceDisplayDCBackLightMode : YukiBaseHooker() {
 //        </com.oplus.settings.widget.preference.SettingsPreferenceCategory>
 
         //Source DcBackLightModePreferenceController
-        findClass("com.oplus.settings.feature.display.controller.DcBackLightModePreferenceController").hook {
-            injectMember {
-                method { name = "getAvailabilityStatus" }
-                replaceTo(0)
+        "com.oplus.settings.feature.display.controller.DcBackLightModePreferenceController".toClass()
+            .apply {
+                method { name = "getAvailabilityStatus" }.hook {
+                    replaceTo(0)
+                }
             }
-        }
     }
 }

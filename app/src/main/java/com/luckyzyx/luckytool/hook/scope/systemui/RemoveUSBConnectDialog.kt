@@ -3,6 +3,9 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.content.Context
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveUSBConnectDialog : YukiBaseHooker() {
     override fun onHook() {
@@ -11,20 +14,18 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
             "com.coloros.systemui.notification.usb.UsbService", //A11
             "com.oplusos.systemui.notification.usb.UsbService",
             "com.oplus.systemui.usb.UsbService" //C14
-        ).hook {
-            injectMember {
-                method { name = "onUsbConnected" }
+        ).toClass().apply {
+            method { name = "onUsbConnected" }.hook {
                 replaceUnit {
                     val context = args().first().cast<Context>() ?: return@replaceUnit
-                    method { name = "onUsbSelect" }.get(instance).call(1)
-                    method { name = "updateAdbNotification" }.get(instance).call(context)
-                    method { name = "updateUsbNotification" }.get(instance).call(context, 1)
-                    method { name = "changeUsbConfig" }.get(instance).call(context, 1)
+                    instance.current().method { name = "onUsbSelect" }.call(1)
+                    instance.current().method { name = "updateAdbNotification" }.call(context)
+                    instance.current().method { name = "updateUsbNotification" }.call(context, 1)
+                    instance.current().method { name = "changeUsbConfig" }.call(context, 1)
                 }
             }
-            injectMember {
-                method { name = "updateUsbNotification" }
-                beforeHook { field { name = "sNeedShowUsbDialog" }.get().setFalse() }
+            method { name = "updateUsbNotification" }.hook {
+                before { field { name = "sNeedShowUsbDialog" }.get().setFalse() }
             }
         }
     }

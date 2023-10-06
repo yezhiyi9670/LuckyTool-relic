@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -50,19 +51,18 @@ object HookConfigAbility : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(StringClass, BooleanType)
-                    returnType = BooleanClass
-                }
-                afterHook {
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(StringClass, BooleanType)
+                returnType = BooleanClass
+            }.hook {
+                after {
                     when (args().first().string()) {
                         "is_oneplus_brand" -> if (notOplus) resultFalse()
                         "feature_is_support_watermark" -> if (waterMark) resultTrue()
-                        "feature_is_support_hassel_watermark" ->  if (waterMark) resultTrue()
-                        "feature_is_support_photo_editor_watermark" ->  if (waterMark) resultTrue()
-                        "feature_is_support_privacy_watermark" ->  if (waterMark) resultTrue()
+                        "feature_is_support_hassel_watermark" -> if (waterMark) resultTrue()
+                        "feature_is_support_photo_editor_watermark" -> if (waterMark) resultTrue()
+                        "feature_is_support_privacy_watermark" -> if (waterMark) resultTrue()
                         "feature_is_support_lns" -> {
 //                            loggerD(msg = "ConfigAbility -> lns call -> $result")
 //                            resultTrue()

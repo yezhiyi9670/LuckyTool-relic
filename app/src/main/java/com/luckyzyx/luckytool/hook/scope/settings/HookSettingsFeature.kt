@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ApplicationInfoClass
 import com.highcapable.yukihookapi.hook.type.android.ContentResolverClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
@@ -43,21 +44,19 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("SysFeatureUtils")
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method {
-                        param(StringClass)
-                        returnType = BooleanType
-                    }.all()
-                    beforeHook {
-                        when (args().first().string()) {
-                            //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
-                            "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
-                            "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
-                            //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
-                            "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
-                            //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method { param(StringClass);returnType = BooleanType }.giveAll().forEach {
+                    it.hook {
+                        before {
+                            when (args().first().string()) {
+                                //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
+                                "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
+                                "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
+                                //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
+                                "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
+                                //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
 //                            "oplus.software.display.pwm_switch.support" -> resultTrue()
+                            }
                         }
                     }
                 }
@@ -86,13 +85,14 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("screen_off_timeout")
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method { param(IntType);returnType = BooleanType }.all()
-                    beforeHook {
-                        when (args().first().int()) {
-                            //Source DisplayTimeOutController -> 永不息屏(24H)
-                            11 -> if (SDK < A13 && neverTimeout) resultTrue()
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method { param(IntType);returnType = BooleanType }.giveAll().forEach {
+                    it.hook {
+                        before {
+                            when (args().first().int()) {
+                                //Source DisplayTimeOutController -> 永不息屏(24H)
+                                11 -> if (SDK < A13 && neverTimeout) resultTrue()
+                            }
                         }
                     }
                 }
@@ -146,10 +146,12 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("AppFeatureProviderUtils")
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method { param(ContentResolverClass, StringClass);returnType = BooleanType }
-                    beforeHook {
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method {
+                    param(ContentResolverClass, StringClass)
+                    returnType = BooleanType
+                }.hook {
+                    before {
                         when (args().last().string()) {
                             //Source OplusDefaultAutofillPicker -> autofill_password 自动填充密码
                             "com.android.settings.cn_version" -> if (isDisableCN) resultFalse()

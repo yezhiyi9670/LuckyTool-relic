@@ -3,6 +3,8 @@ package com.luckyzyx.luckytool.hook.scope.android
 import android.content.Context
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.luckyzyx.luckytool.hook.utils.PowerProfileUtils
 import com.luckyzyx.luckytool.utils.A13
@@ -17,12 +19,12 @@ object FixBatteryHealthDataDisplay : YukiBaseHooker() {
     val isEnable = prefs(ModulePrefs).getBoolean("fix_battery_health_data_display", false)
     override fun onHook() {
         if (SDK < A13) return
+
         //Source BatteryServiceExtImpl -> GuardElfThermalControl
-        findClass("com.android.server.BatteryServiceExtImpl\$GuardElfThermalControl").hook {
-            injectMember {
-                method { name = "getUIsohValue" }
-                afterHook {
-                    if (!isEnable) return@afterHook
+        "com.android.server.BatteryServiceExtImpl\$GuardElfThermalControl".toClass().apply {
+            method { name = "getUIsohValue" }.hook {
+                after {
+                    if (!isEnable) return@after
                     val curValue = safeOfNull {
                         BufferedReader(FileReader("/sys/class/oplus_chg/battery/battery_fcc")).readLine()
                             .trim { it <= ' ' }.toFloatOrNull()

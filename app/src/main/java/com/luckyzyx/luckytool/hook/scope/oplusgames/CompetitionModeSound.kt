@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 import android.media.AudioManager
 import android.media.SoundPool
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.SparseIntArrayClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -38,13 +39,11 @@ object CompetitionModeSound : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(IntType)
-                    paramCount = 1
-                }.all()
-                beforeHook { if (args().first().int() == 9) resultNull() }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { param(IntType) }.giveAll().forEach {
+                it.hook {
+                    before { if (args().first().int() == 9) resultNull() }
+                }
             }
         }
     }

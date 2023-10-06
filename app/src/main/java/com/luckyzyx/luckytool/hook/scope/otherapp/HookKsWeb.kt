@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.otherapp
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.SharedPreferencesClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -36,15 +38,13 @@ object HookKsWeb : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    emptyParam()
-                    returnType = BooleanType
-                }.all()
-                beforeHook {
-                    field { type = BooleanType }.get(instance).setTrue()
-                    field { type = IntType }.get(instance).set(2)
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { emptyParam();returnType = BooleanType }.giveAll().forEach {
+                it.hook {
+                    before {
+                        field { type = BooleanType }.get(instance).setTrue()
+                        field { type = IntType }.get(instance).set(2)
+                    }
                 }
             }
         }

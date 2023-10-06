@@ -5,7 +5,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -40,11 +42,10 @@ object LockScreenChargingComponent : YukiBaseHooker() {
 //            }
 
             //Source ChargingLevelAndLogoView
-            findClass("com.oplus.charge.view.ChargeLevelAndLogoView").hook {
-                injectMember {
-                    method { param(TypefaceClass) }
-                    afterHook {
-                        if (!userTypeface) return@afterHook
+            "com.oplus.charge.view.ChargeLevelAndLogoView".toClass().apply {
+                method { param(TypefaceClass) }.hook {
+                    after {
+                        if (!userTypeface) return@after
                         instance<LinearLayout>().allViews.forEach {
                             if (it.javaClass == TextViewClass) {
                                 (it as TextView).typeface = Typeface.DEFAULT_BOLD
@@ -52,13 +53,12 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                         }
                     }
                 }
-                injectMember {
-                    method { name = "showTextLogo" }
-                    beforeHook {
+                method { name = "showTextLogo" }.hook {
+                    before {
                         when (textLogo) {
                             "1" -> resultTrue()
                             "2" -> resultFalse()
-                            else -> return@beforeHook
+                            else -> return@before
                         }
                     }
                 }
@@ -86,71 +86,65 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             }
 
             //Source ChargingLevelAndLogoView
-            findClass("com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView").hook {
-                injectMember {
-                    method { name = "updatePowerFormat" }
-                    afterHook {
-                        if (!userTypeface) return@afterHook
-                        instance<LinearLayout>().allViews.forEach {
-                            if (it.javaClass == TextViewClass) {
-                                (it as TextView).typeface = Typeface.DEFAULT_BOLD
+            "com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView".toClass()
+                .apply {
+                    method { name = "updatePowerFormat" }.hook {
+                        after {
+                            if (!userTypeface) return@after
+                            instance<LinearLayout>().allViews.forEach {
+                                if (it.javaClass == TextViewClass) {
+                                    (it as TextView).typeface = Typeface.DEFAULT_BOLD
+                                }
+                            }
+                        }
+                    }
+                    method { name = "showTextLogo" }.hook {
+                        before {
+                            if (warpCharge != "2") return@before
+                            when (textLogo) {
+                                "1" -> resultTrue()
+                                "2" -> resultFalse()
+                                else -> return@before
                             }
                         }
                     }
                 }
-                injectMember {
-                    method { name = "showTextLogo" }
-                    beforeHook {
-                        if (warpCharge != "2") return@beforeHook
-                        when (textLogo) {
-                            "1" -> resultTrue()
-                            "2" -> resultFalse()
-                            else -> return@beforeHook
-                        }
-                    }
-                }
-            }
 
             //Source ChargingAnimationImpl
-            findClass("com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl").hook {
-                injectMember {
-                    method { name = "isMaxWattageMatchs" }
-                    beforeHook {
-                        if (warpCharge != "2") return@beforeHook
+            "com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl".toClass().apply {
+                method { name = "isMaxWattageMatchs" }.hook {
+                    before {
+                        if (warpCharge != "2") return@before
                         val mChargerWattage = field { name = "mChargerWattage" }.get(instance).int()
                         if (showWattage && (mChargerWattage != 0)) resultTrue()
                     }
                 }
             }
 
-            val clazz =
-                "com.oplusos.systemui.keyguard.charginganim.siphonanim.flavorone.ChargingLevelAndLogoViewForFlavorOneVfx"
-            if (clazz.toClassOrNull() == null) return
             //Source ChargingLevelAndLogoViewForFlavorOneVfx
-            findClass(clazz).hook {
-                injectMember {
-                    method { name = "setTypeface" }
-                    afterHook {
-                        if (!userTypeface) return@afterHook
-                        instance<LinearLayout>().allViews.forEach {
-                            if (it.javaClass == TextViewClass) {
-                                (it as TextView).typeface = Typeface.DEFAULT_BOLD
+            "com.oplusos.systemui.keyguard.charginganim.siphonanim.flavorone.ChargingLevelAndLogoViewForFlavorOneVfx"
+                .toClassOrNull()?.apply {
+                    method { name = "setTypeface" }.hook {
+                        after {
+                            if (!userTypeface) return@after
+                            instance<LinearLayout>().allViews.forEach {
+                                if (it.javaClass == TextViewClass) {
+                                    (it as TextView).typeface = Typeface.DEFAULT_BOLD
+                                }
+                            }
+                        }
+                    }
+                    method { name = "showTextLogo" }.hook {
+                        before {
+                            if (warpCharge != "2") return@before
+                            when (textLogo) {
+                                "1" -> resultTrue()
+                                "2" -> resultFalse()
+                                else -> return@before
                             }
                         }
                     }
                 }
-                injectMember {
-                    method { name = "showTextLogo" }
-                    beforeHook {
-                        if (warpCharge != "2") return@beforeHook
-                        when (textLogo) {
-                            "1" -> resultTrue()
-                            "2" -> resultFalse()
-                            else -> return@beforeHook
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -171,36 +165,34 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             }
 
             //Source ChargingLevelAndLogoView
-            findClass("com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView").hook {
-                injectMember {
-                    method { name = "updatePowerFormat" }
-                    afterHook {
-                        if (!userTypeface) return@afterHook
-                        instance<LinearLayout>().allViews.forEach {
-                            if (it.javaClass == TextViewClass) {
-                                (it as TextView).typeface = Typeface.DEFAULT_BOLD
+            "com.oplusos.systemui.keyguard.charginganim.siphonanim.ChargingLevelAndLogoView".toClass()
+                .apply {
+                    method { name = "updatePowerFormat" }.hook {
+                        after {
+                            if (!userTypeface) return@after
+                            instance<LinearLayout>().allViews.forEach {
+                                if (it.javaClass == TextViewClass) {
+                                    (it as TextView).typeface = Typeface.DEFAULT_BOLD
+                                }
+                            }
+                        }
+                    }
+                    if (hasMethod { name = "isLocaleZhCN" }) {
+                        method { name = "isLocaleZhCN" }.hook {
+                            before {
+                                when (textLogo) {
+                                    "1" -> resultTrue()
+                                    "2" -> resultFalse()
+                                    else -> return@before
+                                }
                             }
                         }
                     }
                 }
-                if (instanceClass.hasMethod { name = "isLocaleZhCN" }) {
-                    injectMember {
-                        method { name = "isLocaleZhCN" }
-                        beforeHook {
-                            when (textLogo) {
-                                "1" -> resultTrue()
-                                "2" -> resultFalse()
-                                else -> return@beforeHook
-                            }
-                        }
-                    }
-                }
-            }
 
             //Source ChargingAnimationImpl
-            findClass("com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl").hook {
-                injectMember {
-                    method { name = "isSupportShowWattage" }
+            "com.oplusos.systemui.keyguard.charginganim.ChargingAnimationImpl".toClass().apply {
+                method { name = "isSupportShowWattage" }.hook {
                     if (showWattage) replaceToTrue()
                 }
             }

@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -35,14 +36,13 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                 prefs(ModulePrefs).getBoolean("enable_super_resolution_feature", false)
 
             //Source OplusFeatureHelper
-            findClass("com.oplus.addon.OplusFeatureHelper\$Companion").hook {
-                injectMember {
-                    method {
-                        param { it[1] == StringClass && it[2] == BooleanType && it[3] == IntType && it[4] == AnyClass }
-                        paramCount = 5
-                        returnType = BooleanType
-                    }
-                    afterHook {
+            "com.oplus.addon.OplusFeatureHelper\$Companion".toClass().apply {
+                method {
+                    param { it[1] == StringClass && it[2] == BooleanType && it[3] == IntType && it[4] == AnyClass }
+                    paramCount = 5
+                    returnType = BooleanType
+                }.hook {
+                    after {
                         when (args(1).string()) {
                             //feature -> isSupportFrameInsert
                             "oplus.software.display.game.memc_enable" -> if (pickleFeature || fpsFeature || powerFeature) resultTrue()
@@ -97,13 +97,12 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                 prefs(ModulePrefs).getBoolean("remove_game_voice_changer_whitelist", false)
 
             //Source CloudConditionUtil
-            findClass("com.coloros.gamespaceui.config.cloud.CloudConditionUtil").hook {
-                injectMember {
-                    method {
-                        param(StringClass, MapClass, IntType, AnyClass)
-                        returnType = BooleanType
-                    }
-                    beforeHook {
+            "com.coloros.gamespaceui.config.cloud.CloudConditionUtil".toClass().apply {
+                method {
+                    param(StringClass, MapClass, IntType, AnyClass)
+                    returnType = BooleanType
+                }.hook {
+                    before {
                         when (args().first().string()) {
                             //pickle插帧云控 -> cloudFrameInsertEnable
                             "frame_insert" -> if (pickleFeature) resultTrue()
@@ -122,24 +121,22 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         }
                     }
                 }
-                injectMember {
-                    method {
-                        param(StringClass, MapClass)
-                        returnType = BooleanType
-                    }
-                    beforeHook {
+                method {
+                    param(StringClass, MapClass)
+                    returnType = BooleanType
+                }.hook {
+                    before {
                         when (args().first().string()) {
                             //超级分辨率云控 -> cloudSRSupport
                             "super_resolution_config" -> if (superResolution) resultTrue()
                         }
                     }
                 }
-                injectMember {
-                    method {
-                        param { it[0] == StringClass && it[1] == MapClass }
-                        paramCount = 3
-                    }
-                    afterHook {
+                method {
+                    param { it[0] == StringClass && it[1] == MapClass }
+                    paramCount = 3
+                }.hook {
+                    after {
                         when (args().first().string()) {
                             //游戏变声
                             "magic_voice_config" -> if (magicVoice) resultTrue()
@@ -175,13 +172,12 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         }
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method {
-                        name = "isFunctionEnabledFromCloud"
-                        paramCount = 2
-                    }
-                    beforeHook {
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method {
+                    name = "isFunctionEnabledFromCloud"
+                    paramCount = 2
+                }.hook {
+                    before {
                         when (args().first().string()) {
                             //GPU控制器云控 -> isCloudSupportGpuControlPanel
                             "gpu_control_panel" -> if (gpuControl) resultTrue()

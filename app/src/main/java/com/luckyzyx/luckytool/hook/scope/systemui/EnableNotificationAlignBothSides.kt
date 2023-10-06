@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.core.view.*
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.getScreenOrientation
@@ -15,16 +17,15 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
     private var qsPanelPaddingPx = 0
     override fun onHook() {
         //Source ExpandableNotificationRow
-        findClass("com.android.systemui.statusbar.notification.row.ExpandableNotificationRow").hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                afterHook { instance<ViewGroup>().setViewWidth() }
+        "com.android.systemui.statusbar.notification.row.ExpandableNotificationRow".toClass()
+            .apply {
+                method { name = "onFinishInflate" }.hook {
+                    after { instance<ViewGroup>().setViewWidth() }
+                }
+                method { name = "onLayout" }.hook {
+                    after { instance<ViewGroup>().setViewWidth() }
+                }
             }
-            injectMember {
-                method { name = "onLayout" }
-                afterHook { instance<ViewGroup>().setViewWidth() }
-            }
-        }
 
         if (SDK >= A13) loadHooker(OtherNotification) else loadHooker(OtherNotificationC12)
     }
@@ -35,12 +36,11 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             VariousClass(
                 "com.android.systemui.media.KeyguardMediaController", //C13
                 "com.android.systemui.media.controls.ui.KeyguardMediaController" //C14
-            ).hook {
-                injectMember {
-                    method { name = "setVisibility";paramCount = 2 }
-                    beforeHook {
-                        val viewGroup = args().first().cast<ViewGroup>() ?: return@beforeHook
-                        val visible = args().last().cast<Int>() ?: return@beforeHook
+            ).toClass().apply {
+                method { name = "setVisibility";paramCount = 2 }.hook {
+                    before {
+                        val viewGroup = args().first().cast<ViewGroup>() ?: return@before
+                        val visible = args().last().cast<Int>() ?: return@before
                         val count = viewGroup.childCount
                         if ((visible == 0) && (count > 0)) {
                             if (viewGroup.width != 0) viewGroup.setViewWidth()
@@ -52,14 +52,12 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
             val ubiquitousExpandableRow =
                 "com.oplusos.systemui.statusbar.notification.row.UbiquitousExpandableRow"
             //Source UbiquitousExpandableRow
-            ubiquitousExpandableRow.toClassOrNull()?.hook {
-                injectMember {
-                    method { name = "onFinishInflate" }
-                    afterHook { instance<ViewGroup>().setViewWidth() }
+            ubiquitousExpandableRow.toClassOrNull()?.apply {
+                method { name = "onFinishInflate" }.hook {
+                    after { instance<ViewGroup>().setViewWidth() }
                 }
-                injectMember {
-                    method { name = "onLayout" }
-                    afterHook { instance<ViewGroup>().setViewWidth() }
+                method { name = "onLayout" }.hook {
+                    after { instance<ViewGroup>().setViewWidth() }
                 }
             }
         }
@@ -68,12 +66,11 @@ object EnableNotificationAlignBothSides : YukiBaseHooker() {
     private object OtherNotificationC12 : YukiBaseHooker() {
         override fun onHook() {
             //Source OplusMediaHost
-            findClass("com.oplusos.systemui.media.OplusMediaHost").hook {
-                injectMember {
-                    method { name = "updateViewVisibility" }
-                    beforeHook {
+            "com.oplusos.systemui.media.OplusMediaHost".toClass().apply {
+                method { name = "updateViewVisibility" }.hook {
+                    before {
                         val hostView = field { name = "hostView";superClass() }.get(instance)
-                            .cast<ViewGroup>() ?: return@beforeHook
+                            .cast<ViewGroup>() ?: return@before
                         val visible = hostView.visibility
                         val count = hostView.childCount
                         if ((visible == 0) && (count > 0)) {

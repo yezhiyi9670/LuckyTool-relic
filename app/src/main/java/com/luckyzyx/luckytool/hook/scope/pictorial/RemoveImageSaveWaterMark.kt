@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.pictorial
 
 import android.graphics.Bitmap
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
@@ -38,13 +39,12 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(BooleanType, VagueType, BitmapClass, BooleanType)
-                    returnType = BitmapClass
-                }
-                afterHook { result = args(2).cast<Bitmap>() ?: return@afterHook }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(BooleanType, VagueType, BitmapClass, BooleanType)
+                returnType = BitmapClass
+            }.hook {
+                after { result = args(2).cast<Bitmap>() ?: return@after }
             }
         }
     }

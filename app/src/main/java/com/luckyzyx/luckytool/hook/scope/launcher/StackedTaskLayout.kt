@@ -2,6 +2,10 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 
 import android.view.View
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -15,11 +19,11 @@ object StackedTaskLayout : YukiBaseHooker() {
         val level = prefs(ModulePrefs).getInt("set_task_stacking_level", 7)
         val isFix = prefs(ModulePrefs).getBoolean("fix_current_task_to_the_top", false)
         if (!isEnable) return
+
         //Source DeviceProfile -> overview_page_spacing
-        findClass("com.android.launcher3.DeviceProfile").hook {
-            injectMember {
-                constructor { paramCount(8..11) }
-                afterHook {
+        "com.android.launcher3.DeviceProfile".toClass().apply {
+            constructor { paramCount(8..11) }.hook {
+                after {
                     if (SDK >= A13) field {
                         name = "overviewPageSpacing"
                     }.get(instance).set(-(level * 10).dp)
@@ -28,35 +32,32 @@ object StackedTaskLayout : YukiBaseHooker() {
         }
         var oldView: View? = null
         //Source RecentsView
-        findClass("com.android.quickstep.views.RecentsView").hook {
+        "com.android.quickstep.views.RecentsView".toClass().apply {
             if (SDK < A13) {
-                injectMember {
-                    method {
-                        name = "setPageSpacing"
-                        superClass()
-                    }
-                    beforeHook { args().first().set(-(level * 10).dp) }
+                method {
+                    name = "setPageSpacing"
+                    superClass()
+                }.hook {
+                    before { args().first().set(-(level * 10).dp) }
                 }
             }
-//            injectMember {
-//                method {
-//                    name = "applyLoadPlan"
-//                }
-//                beforeHook {
+//            method {
+//                name = "applyLoadPlan"
+//            }.hook {
+//                before {
 //                    args().first().apply {
 //                        set(java.util.ArrayList(list<Any>().reversed()))
 //                    }
 //                }
 //            }
-            injectMember {
-                method { name = "notifyPageSwitchListener" }
-                beforeHook {
-                    if (!isFix) return@beforeHook
-                    val count = method { name = "getTaskViewCount" }.get(instance).invoke<Int>()
-                    if (count == null || count == 0) return@beforeHook
-                    val view =
-                        method { name = "getCurrentPageTaskView" }.get(instance).invoke<View>()
-                            ?: return@beforeHook
+            method { name = "notifyPageSwitchListener" }.hook {
+                before {
+                    if (!isFix) return@before
+                    val count = instance.current().method { name = "getTaskViewCount" }
+                        .invoke<Int>()
+                    if (count == null || count == 0) return@before
+                    val view = instance.current().method { name = "getCurrentPageTaskView" }
+                        .invoke<View>() ?: return@before
                     view.z = 999f
                     if (oldView != view) {
                         oldView?.z = 0f
@@ -64,15 +65,15 @@ object StackedTaskLayout : YukiBaseHooker() {
                     }
                 }
             }
-            injectMember {
-                method { name = "resetTaskVisuals" }
-                afterHook {
-                    if (!isFix) return@afterHook
-                    val count = method { name = "getTaskViewCount" }.get(instance).invoke<Int>()
-                    if (count == null || count == 0) return@afterHook
-                    val view =
-                        method { name = "getCurrentPageTaskView" }.get(instance).invoke<View>()
-                            ?: return@afterHook
+            method { name = "resetTaskVisuals" }.hook {
+                after {
+                    if (!isFix) return@after
+                    val count = instance.current().method { name = "getTaskViewCount" }
+                        .invoke<Int>()
+                    if (count == null || count == 0) return@after
+                    val view = instance.current().method { name = "getCurrentPageTaskView" }
+                        .invoke<View>()
+                        ?: return@after
                     view.z = 999f
                     if (oldView != view) {
                         oldView?.z = 0f

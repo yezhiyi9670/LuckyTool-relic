@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.launcher
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -11,19 +13,19 @@ object HookAppBadge : YukiBaseHooker() {
         val isWork = prefs(ModulePrefs).getBoolean("remove_app_work_badge", false)
         val isClone = prefs(ModulePrefs).getBoolean("remove_app_clone_badge", false)
         if (SDK < A13) return
+
         //Source BitmapInfo
-        findClass("com.android.launcher3.icons.BitmapInfo").hook {
-            injectMember {
-                method {
-                    name = "applyFlags"
-                    paramCount = 3
-                }
-                beforeHook {
+        "com.android.launcher3.icons.BitmapInfo".toClass().apply {
+            method {
+                name = "applyFlags"
+                paramCount = 3
+            }.hook {
+                before {
                     val drawableCreationFlags = args().last().cast<Int>()
-                        ?: return@beforeHook
+                        ?: return@before
                     val badgeInfo = field { name = "badgeInfo" }.get(instance).any()
                     val flag = field { name = "flags" }.get(instance).cast<Int>()
-                        ?: return@beforeHook
+                        ?: return@before
                     if ((drawableCreationFlags and 2) == 0) {
                         if (badgeInfo != null) {
                             if (isShortcut) resultNull()

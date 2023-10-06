@@ -2,6 +2,8 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.method
 
 object DisableOTGAutoOff : YukiBaseHooker() {
     override fun onHook() {
@@ -9,10 +11,11 @@ object DisableOTGAutoOff : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.notification.helper.OtgHelper", //C13
             "com.oplus.systemui.qs.helper.OtgHelper" //C14
-        ).hook {
-            injectMember {
-                method { name = "setAutoCloseAlarm" }
-                afterHook { method { name = "cancelAutoCloseAlarm" }.get(instance).call() }
+        ).toClass().apply {
+            method { name = "setAutoCloseAlarm" }.hook {
+                after {
+                    instance.current().method { name = "cancelAutoCloseAlarm" }.call()
+                }
             }
         }
     }

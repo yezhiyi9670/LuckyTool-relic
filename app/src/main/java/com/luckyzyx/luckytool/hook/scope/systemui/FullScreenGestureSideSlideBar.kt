@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -25,28 +27,24 @@ object FullScreenGestureSideSlideBar : YukiBaseHooker() {
             "com.oplusos.systemui.navbar.gesture.sidegesture.SideGestureNavView", //A11
             "com.oplusos.systemui.navigationbar.gesture.sidegesture.SideGestureNavView",
             "com.oplus.systemui.navigationbar.gesture.sidegesture.SideGestureNavView" //C14
-        ).hook {
-            injectMember {
-                method { name = "onDraw";paramCount = 1 }
+        ).toClass().apply {
+            method { name = "onDraw";paramCount = 1 }.hook {
                 if (removeView) intercept()
             }
-            injectMember {
-                method { name = "initPaint";emptyParam() }
-                afterHook {
-                    if (!removeBackground) return@afterHook
-                    field {
-                        name = "mBezierPaint";type = PaintClass
-                    }.get(instance).cast<Paint>()?.color = Color.TRANSPARENT
+            method { name = "initPaint";emptyParam() }.hook {
+                after {
+                    if (!removeBackground) return@after
+                    field { name = "mBezierPaint";type = PaintClass }.get(instance)
+                        .cast<Paint>()?.color = Color.TRANSPARENT
                 }
             }
-            injectMember {
-                method { name = "setBackIcon";param(BitmapClass) }
-                beforeHook {
-                    if (!isReplace) return@beforeHook
+            method { name = "setBackIcon";param(BitmapClass) }.hook {
+                before {
+                    if (!isReplace) return@before
                     val res = when (field { name = "mPosition" }.get(instance).int()) {
                         0 -> BitmapFactory.decodeFile(leftPath)
                         1 -> BitmapFactory.decodeFile(rightPath)
-                        else -> return@beforeHook
+                        else -> return@before
                     }
                     res?.let { args(0).set(it) }
                 }

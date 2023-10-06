@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.view.MotionEvent
 import android.view.ViewGroup
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.closeScreen
 import kotlin.math.abs
 
@@ -13,10 +14,9 @@ object DoubleClickLockScreen : YukiBaseHooker() {
         var curTouchY = 0F
 
         //Source PhoneStatusBarView
-        findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                beforeHook {
+        "com.android.systemui.statusbar.phone.PhoneStatusBarView".toClass().apply {
+            method { name = "onFinishInflate" }.hook {
+                before {
                     val statusbar = instance<ViewGroup>()
                     statusbar.setOnTouchListener { v, event ->
                         if (event.action != MotionEvent.ACTION_DOWN) return@setOnTouchListener false

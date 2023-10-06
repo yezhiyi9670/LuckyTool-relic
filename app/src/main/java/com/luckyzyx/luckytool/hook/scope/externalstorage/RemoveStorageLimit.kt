@@ -1,13 +1,13 @@
 package com.luckyzyx.luckytool.hook.scope.externalstorage
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
-object RemoveStorageLimit : YukiBaseHooker(){
+object RemoveStorageLimit : YukiBaseHooker() {
     override fun onHook() {
         //Source ExternalStorageProvider
-        findClass("com.android.externalstorage.ExternalStorageProvider").hook {
-            injectMember {
-                method { name = "shouldBlockFromTree" }
+        "com.android.externalstorage.ExternalStorageProvider".toClass().apply {
+            method { name = "shouldBlockFromTree" }.hook {
                 replaceToFalse()
             }
         }

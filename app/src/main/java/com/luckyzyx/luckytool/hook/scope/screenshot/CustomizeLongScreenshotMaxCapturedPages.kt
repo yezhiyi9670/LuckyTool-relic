@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.DexkitUtils
@@ -26,23 +27,17 @@ object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
                     usingStrings("StitchLimitUtils")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param { it[1] == IntType }
-                    paramCount = 2
-                    returnType = BooleanType
-                }
-                replaceToFalse()
-            }
-            injectMember {
-                method {
-                    param { it[1] == IntType && it[2] == IntType }
-                    paramCount = 3
-                    returnType = IntType
-                }
-                replaceTo(-1)
-            }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param { it[1] == IntType }
+                paramCount = 2
+                returnType = BooleanType
+            }.hook { replaceToFalse() }
+            method {
+                param { it[1] == IntType && it[2] == IntType }
+                paramCount = 3
+                returnType = IntType
+            }.hook { replaceTo(-1) }
         }
     }
 }

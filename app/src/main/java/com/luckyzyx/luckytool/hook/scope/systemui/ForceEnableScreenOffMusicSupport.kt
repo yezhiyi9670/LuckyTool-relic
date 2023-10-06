@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.content.Context
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.utils.SettingsUtils
 import com.luckyzyx.luckytool.utils.A14
@@ -14,12 +15,11 @@ object ForceEnableScreenOffMusicSupport : YukiBaseHooker() {
         VariousClass(
             "com.oplus.systemui.keyguard.OplusBlackScreenGestureControllExImpl", //C13
             "com.oplus.systemui.keyguard.gesture.OplusBlackScreenGestureControllExImpl" //C14
-        ).hook {
-            injectMember {
-                method { name = "resetAodMediaSupportConfig" }
-                afterHook {
+        ).toClass().apply {
+            method { name = "resetAodMediaSupportConfig" }.hook {
+                after {
                     val context = field { name = "mContext" }.get(instance).cast<Context>()
-                        ?: return@afterHook
+                        ?: return@after
                     SettingsUtils(appClassLoader).Secure.method {
                         name = "putIntForUser";paramCount = 4
                     }.get().call(context.contentResolver, "aod_media_support", 1, 0)

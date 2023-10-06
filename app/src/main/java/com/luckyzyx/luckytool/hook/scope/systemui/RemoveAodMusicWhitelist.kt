@@ -1,17 +1,16 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveAodMusicWhitelist : YukiBaseHooker() {
     override fun onHook() {
         //Source AodMediaDataListener
-        findClass("com.oplusos.systemui.aod.mediapanel.AodMediaDataListener\$Companion").hook {
-            injectMember {
-                method { name = "isAodMediaSupport" }
+        "com.oplusos.systemui.aod.mediapanel.AodMediaDataListener\$Companion".toClass().apply {
+            method { name = "isAodMediaSupport" }.hook {
                 replaceToTrue()
             }
-            injectMember {
-                method { name = "isAodMediaSupportWithoutFeature" }
+            method { name = "isAodMediaSupportWithoutFeature" }.hook {
                 replaceToTrue()
             }
         }

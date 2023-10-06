@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.safecenter
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ApplicationInfoClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.AnyClass
@@ -42,13 +44,14 @@ object UnlockStartupLimitOld : YukiBaseHooker() {
                     usingStrings("StartupManager")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(ContextClass)
-                    returnType = UnitType
-                }.all()
-                afterHook { field { type = IntType }.get().set(10000) }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(ContextClass)
+                returnType = UnitType
+            }.giveAll().forEach {
+                it.hook {
+                    after { field { type = IntType }.get().set(10000) }
+                }
             }
         }
     }

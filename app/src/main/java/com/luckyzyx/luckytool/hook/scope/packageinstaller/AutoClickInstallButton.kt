@@ -2,26 +2,26 @@ package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import android.widget.Button
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 
 object AutoClickInstallButton : YukiBaseHooker() {
     override fun onHook() {
         //Source OPlusPackageInstallerActivity
-        findClass("com.android.packageinstaller.oplus.OPlusPackageInstallerActivity").hook {
-            injectMember {
-                method { name = "startInstallConfirm" }
-                afterHook {
+        "com.android.packageinstaller.oplus.OPlusPackageInstallerActivity".toClass().apply {
+            method { name = "startInstallConfirm" }.hook {
+                after {
                     field { name = "mOk" }.get(instance).cast<Button>()?.callOnClick()
                 }
             }
         }
         //Source InstallAppProgress
-        findClass("com.android.packageinstaller.oplus.InstallAppProgress").hook {
-            injectMember {
-                method {
-                    name = "onPackageInstalled"
-                    paramCount = 1
-                }
-                afterHook {
+        "com.android.packageinstaller.oplus.InstallAppProgress".toClass().apply {
+            method {
+                name = "onPackageInstalled"
+                paramCount = 1
+            }.hook {
+                after {
                     if (args().first().int() == 0) field {
                         name = "mDoneButton"
                     }.get(instance).cast<Button>()?.callOnClick()

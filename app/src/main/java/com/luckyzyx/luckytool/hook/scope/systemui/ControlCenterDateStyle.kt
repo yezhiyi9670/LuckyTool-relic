@@ -9,7 +9,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.utils.sysui.LunarHelperUtils
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -40,16 +42,15 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.keyguard.clock.WeatherInfoParseHelper", //C13
             "com.oplus.systemui.keyguard.clock.WeatherInfoParseHelper" //C14
-        ).hook {
-            injectMember {
-                method {
-                    name = "getChineseDateInfo"
-                    paramCount = 2
-                }
-                afterHook {
+        ).toClass().apply {
+            method {
+                name = "getChineseDateInfo"
+                paramCount = 2
+            }.hook {
+                after {
                     if (removeComma) result = result<String>()?.replace("，", " ")
                     if (showLunar) {
-                        val context = args().last().cast<Context>() ?: return@afterHook
+                        val context = args().last().cast<Context>() ?: return@after
                         val lunarInstance = LunarHelperUtils(appClassLoader).buildInstance(context)
                         val lunarDate = LunarHelperUtils(appClassLoader).getDateToString(
                             lunarInstance, System.currentTimeMillis()
@@ -69,18 +70,17 @@ object ControlCenterDateStyle : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.qs.OplusQSFooterImpl", //C13
             "com.oplus.systemui.qs.OplusQSFooterImpl" //C14
-        ).hook {
-            if (instanceClass.hasMethod { name = "updateQsDateView" }.not()) return@hook
-            injectMember {
-                method { name = "updateQsDateView" }
-                afterHook {
+        ).toClass().apply {
+            if (hasMethod { name = "updateQsDateView" }.not()) return@apply
+            method { name = "updateQsDateView" }.hook {
+                after {
                     val mTmpConstraintSet =
                         field { name = "mTmpConstraintSet" }.get(instance).any()
-                            ?: return@afterHook
+                            ?: return@after
                     val mClockView = field { name = "mClockView" }.get(instance).cast<TextView>()
-                        ?: return@afterHook
+                        ?: return@after
                     val mQsDateView = field { name = "mQsDateView" }.get(instance).cast<TextView>()
-                        ?: return@afterHook
+                        ?: return@after
 
                     if (fixWidth) mTmpConstraintSet.current().method {
                         name = "constrainWidth"
@@ -92,21 +92,21 @@ object ControlCenterDateStyle : YukiBaseHooker() {
                         val qs_footer_date_width = res.getDimensionPixelSize(
                             res.getIdentifier(
                                 "qs_footer_date_width", "dimen",
-                                packageName
+                                ControlCenterDateStyle.packageName
                             )
                         )
                         //10dp
                         val qs_footer_date_margin_start = res.getDimensionPixelSize(
                             res.getIdentifier(
                                 "qs_footer_date_margin_start", "dimen",
-                                packageName
+                                ControlCenterDateStyle.packageName
                             )
                         )
                         //51dp
                         val qs_footer_date_expand_translation_y = res.getDimensionPixelSize(
                             res.getIdentifier(
                                 "qs_footer_date_expand_translation_y", "dimen",
-                                packageName
+                                ControlCenterDateStyle.packageName
                             )
                         )
                         val isRtl =

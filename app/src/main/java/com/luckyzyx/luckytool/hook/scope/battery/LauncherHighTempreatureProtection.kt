@@ -3,6 +3,8 @@ package com.luckyzyx.luckytool.hook.scope.battery
 import android.os.Handler
 import android.os.Looper
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.type.android.BroadcastReceiverClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
@@ -37,10 +39,9 @@ object LauncherHighTempreatureProtection : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                constructor { paramCount = 3 }
-                afterHook {
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            constructor { paramCount = 3 }.hook {
+                after {
                     field { type = HandlerClass }.get(instance)
                         .set(Handler(Looper.getMainLooper()))
                 }

@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.getOSVersionCode
 import com.luckyzyx.luckytool.utils.getScreenOrientation
@@ -22,19 +24,19 @@ object FixTileAlignBothSides : YukiBaseHooker() {
         override fun onHook() {
             //Sourcee QuickStatusBarHeader 竖屏溢出
             //Search quick_qs_panel -> qs_header_panel_side_padding 24dp
-            findClass("com.android.systemui.qs.QuickStatusBarHeader").hook {
-                injectMember {
-                    method { name = "updateHeadersPadding" }
-                    afterHook {
+            "com.android.systemui.qs.QuickStatusBarHeader".toClass().apply {
+                method { name = "updateHeadersPadding" }.hook {
+                    after {
                         field { name = "mHeaderQsPanel" }.get(instance).cast<LinearLayout>()
                             ?.apply {
                                 val qsHeaderPanelSidePadding = safeOfNull {
                                     resources.getDimensionPixelSize(
                                         resources.getIdentifier(
-                                            "qs_header_panel_side_padding", "dimen", packageName
+                                            "qs_header_panel_side_padding", "dimen",
+                                            HookTileAlignVertical.packageName
                                         )
                                     )
-                                } ?: return@afterHook
+                                } ?: return@after
                                 setViewPadding(qsHeaderPanelSidePadding)
                             }
                     }
@@ -54,10 +56,9 @@ object FixTileAlignBothSides : YukiBaseHooker() {
             VariousClass(
                 "com.oplusos.systemui.qs.helper.QSFragmentHelper", //C13
                 "com.oplus.systemui.qs.helper.QSFragmentHelper" //C14
-            ).hook {
-                injectMember {
-                    method { name = "updateQsState" }
-                    afterHook {
+            ).toClass().apply {
+                method { name = "updateQsState" }.hook {
+                    after {
                         field { name = "mQSPanelScrollView" }.get(instance).cast<ViewGroup>()
                             ?.apply {
                                 getScreenOrientation(this) {
@@ -69,7 +70,7 @@ object FixTileAlignBothSides : YukiBaseHooker() {
                                                     resources.getIdentifier(
                                                         "qs_brightness_mirror_side_padding",
                                                         "dimen",
-                                                        packageName
+                                                        HookTileAlignHorizontal.packageName
                                                     )
                                                 )
                                             } ?: return@getScreenOrientation

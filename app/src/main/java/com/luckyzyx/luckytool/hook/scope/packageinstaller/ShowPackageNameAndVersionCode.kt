@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.safeOf
 
@@ -13,14 +14,13 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi")
     override fun onHook() {
         //Source ApkInfoView
-        findClass("com.android.packageinstaller.oplus.view.ApkInfoView").hook {
-            injectMember {
-                method { name = "loadApkInfo" }
-                afterHook {
+        "com.android.packageinstaller.oplus.view.ApkInfoView".toClass().apply {
+            method { name = "loadApkInfo" }.hook {
+                after {
                     val context = field { name = "mContext" }.get(instance).cast<Context>()
-                        ?: return@afterHook
+                        ?: return@after
                     val mAppVersion = field { name = "mAppVersion" }.get(instance).cast<TextView>()
-                        ?: return@afterHook
+                        ?: return@after
                     mAppVersion.apply {
                         (parent as LinearLayout).orientation = LinearLayout.VERTICAL
                         (layoutParams as LinearLayout.LayoutParams).width =
@@ -28,8 +28,8 @@ object ShowPackageNameAndVersionCode : YukiBaseHooker() {
                         isSingleLine = false
                         setTextIsSelectable(true)
                     }
-                    val apkInfo = args().first().any() ?: return@afterHook
-                    val sourceInfo = args().last().any() ?: return@afterHook
+                    val apkInfo = args().first().any() ?: return@after
+                    val sourceInfo = args().last().any() ?: return@after
                     val actionType = sourceInfo.current().field { name = "actionType" }.int()
                     val packName = apkInfo.current().field { name = "packageName" }.string()
                     val versionName = apkInfo.current().field { name = "versionName" }.string()

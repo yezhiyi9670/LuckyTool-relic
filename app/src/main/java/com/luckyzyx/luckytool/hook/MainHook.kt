@@ -7,7 +7,7 @@ import android.os.Build.VERSION_CODES.TIRAMISU
 import com.highcapable.yukihookapi.annotation.xposed.InjectYukiHookWithXposed
 import com.highcapable.yukihookapi.hook.factory.configs
 import com.highcapable.yukihookapi.hook.factory.encase
-import com.highcapable.yukihookapi.hook.log.loggerE
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.xposed.bridge.event.YukiXposedEvent
 import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid
@@ -77,7 +77,7 @@ object MainHook : IYukiHookXposedInit {
         if (prefs(ModulePrefs).getBoolean("enable_module", false).not()) return@encase
         if (prefs(SettingsPrefs).getBoolean("is_su", false).not()) return@encase
 
-        if (processName.substringBefore(":") != packageName) return@encase
+//        if (processName.substringBefore(":") != packageName) return@encase
 
         //系统框架
         loadSystem(HookAndroid)
@@ -202,7 +202,7 @@ object MainHook : IYukiHookXposedInit {
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
-                        else -> loggerE(msg = "[CorePatch] Unsupported Version of Android -> $SDK")
+                        else -> YLog.error("[CorePatch] Unsupported Version of Android -> $SDK")
                     }
                 }
             }

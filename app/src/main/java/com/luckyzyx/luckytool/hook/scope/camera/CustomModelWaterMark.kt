@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import android.os.Build
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.BitmapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.PaintClass
@@ -45,13 +46,14 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         usingStrings("ro.vendor.oplus.market.enname", "ro.vendor.oplus.market.name")
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method { emptyParam();returnType = StringClass }.all()
-                    afterHook {
-                        val res = result<String>() ?: return@afterHook
-                        if (res.contains("getVendorMarketName")) return@afterHook
-                        result = waterMark
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method { emptyParam();returnType = StringClass }.giveAll().forEach {
+                    it.hook {
+                        after {
+                            val res = result<String>() ?: return@after
+                            if (res.contains("getVendorMarketName")) return@after
+                            result = waterMark
+                        }
                     }
                 }
             }
@@ -78,14 +80,15 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         usingStrings("WatermarkHelper", "removeChineseOfString")
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method { param(StringClass);returnType = StringClass }.all()
-                    afterHook {
-                        val res = result<String>() ?: return@afterHook
-                        if (res.contains("removeChineseOfString")) return@afterHook
-                        if (res.toIntOrNull() != null) return@afterHook
-                        result = waterMark
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method { param(StringClass);returnType = StringClass }.giveAll().forEach {
+                    it.hook {
+                        after {
+                            val res = result<String>() ?: return@after
+                            if (res.contains("removeChineseOfString")) return@after
+                            if (res.toIntOrNull() != null) return@after
+                            result = waterMark
+                        }
                     }
                 }
             }

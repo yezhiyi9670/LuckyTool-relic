@@ -8,6 +8,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -70,13 +72,12 @@ object StatusBarLayout : YukiBaseHooker() {
         }
 
         //Source ScreenDecorations
-        findClass("com.android.systemui.ScreenDecorations\$DisplayCutoutView").hook {
-            injectMember {
-                method {
-                    name = "boundsFromDirection"
-                    paramCount = 3
-                }
-                beforeHook {
+        "com.android.systemui.ScreenDecorations\$DisplayCutoutView".toClass().apply {
+            method {
+                name = "boundsFromDirection"
+                paramCount = 3
+            }.hook {
+                before {
                     if (isCompatibleMode) args(1).set(0)
                 }
             }
@@ -86,34 +87,48 @@ object StatusBarLayout : YukiBaseHooker() {
         VariousClass(
             "com.android.systemui.statusbar.phone.CollapsedStatusBarFragment", //A12
             "com.android.systemui.statusbar.phone.fragment.CollapsedStatusBarFragment" //C13
-        ).hook {
-            injectMember {
-                method {
-                    name = "onViewCreated"
-                    paramCount = 2
-                }
-                afterHook {
+        ).toClass().apply {
+            method {
+                name = "onViewCreated"
+                paramCount = 2
+            }.hook {
+                after {
                     val phoneStatusBarView = args(0).cast<ViewGroup>()!!
                     val context = phoneStatusBarView.context
                     val res = phoneStatusBarView.resources
-                    val statusBarId = res?.getIdentifier("status_bar", "id", packageName)
+                    val statusBarId = res?.getIdentifier(
+                        "status_bar", "id",
+                        StatusBarLayout.packageName
+                    )
                     val statusBarContentsId =
-                        res?.getIdentifier("status_bar_contents", "id", packageName)
+                        res?.getIdentifier("status_bar_contents", "id", StatusBarLayout.packageName)
 
                     val statusBarLeftSideId =
-                        res?.getIdentifier("status_bar_left_side", "id", packageName)
-                    val clockId = res?.getIdentifier("clock", "id", packageName)
+                        res?.getIdentifier(
+                            "status_bar_left_side", "id",
+                            StatusBarLayout.packageName
+                        )
+                    val clockId = res?.getIdentifier("clock", "id", StatusBarLayout.packageName)
                     val systemPromptViewId =
-                        res?.getIdentifier("system_prompt_view", "id", packageName)
+                        res?.getIdentifier("system_prompt_view", "id", StatusBarLayout.packageName)
                     val notificationIconAreaInnerId =
-                        res?.getIdentifier("notification_icon_area_inner", "id", packageName)
+                        res?.getIdentifier(
+                            "notification_icon_area_inner", "id",
+                            StatusBarLayout.packageName
+                        )
 
-                    val systemIconAreaId = res?.getIdentifier("system_icon_area", "id", packageName)
-                    val statusIconsId = res?.getIdentifier("statusIcons", "id", packageName)
-                    val batteryId = res?.getIdentifier("battery", "id", packageName)
+                    val systemIconAreaId = res?.getIdentifier(
+                        "system_icon_area", "id",
+                        StatusBarLayout.packageName
+                    )
+                    val statusIconsId = res?.getIdentifier(
+                        "statusIcons", "id",
+                        StatusBarLayout.packageName
+                    )
+                    val batteryId = res?.getIdentifier("battery", "id", StatusBarLayout.packageName)
 
                     mStatusBar =
-                        statusBarId?.let { phoneStatusBarView.findViewById(it) } ?: return@afterHook
+                        statusBarId?.let { phoneStatusBarView.findViewById(it) } ?: return@after
                     val statusBarContents: ViewGroup? =
                         statusBarContentsId?.let { phoneStatusBarView.findViewById(it) }
                     val statusBarLeftSide: ViewGroup? =
@@ -155,9 +170,9 @@ object StatusBarLayout : YukiBaseHooker() {
                     if (layoutMode == "0" && isCompatibleMode) {
                         setCustomMargin()
                         updateDefaultLayout(context, statusBarLeftSide, systemIconArea)
-                        return@afterHook
+                        return@after
                     }
-                    if (layoutMode.isBlank() || layoutMode == "0") return@afterHook
+                    if (layoutMode.isBlank() || layoutMode == "0") return@after
 
                     (clock?.parent as ViewGroup).removeView(clock)
                     (statusBarLeftSide?.parent as ViewGroup).removeView(statusBarLeftSide)
@@ -184,17 +199,15 @@ object StatusBarLayout : YukiBaseHooker() {
                     updateCustomLayout(context)
                 }
             }
-            injectMember {
-                method { name = "onDestroyView" }
+            method { name = "onDestroyView" }.hook {
                 if (layoutMode != "0" && getOSVersionCode == 26) intercept()
             }
         }
 
         //Source PhoneStatusBarView
-        findClass("com.android.systemui.statusbar.phone.PhoneStatusBarView").hook {
-            injectMember {
-                method { name = "updateLayoutForCutout" }
-                afterHook {
+        "com.android.systemui.statusbar.phone.PhoneStatusBarView".toClass().apply {
+            method { name = "updateLayoutForCutout" }.hook {
+                after {
                     if (isCompatibleMode) updateCustomLayout(instance<ViewGroup>().context)
                 }
             }
@@ -204,10 +217,9 @@ object StatusBarLayout : YukiBaseHooker() {
         VariousClass(
             "com.oplusos.systemui.statusbar.phone.KeyguardStatusBarViewEx", //A12
             "com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl"
-        ).hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                afterHook {
+        ).toClass().apply {
+            method { name = "onFinishInflate" }.hook {
+                after {
                     //keyguard_status_bar_contents
                     if (isCompatibleMode) field {
                         name = "keyguardStatusbarLeftContView"

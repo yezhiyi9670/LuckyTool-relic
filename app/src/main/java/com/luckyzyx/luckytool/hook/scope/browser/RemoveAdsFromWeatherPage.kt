@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.browser
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.method
 
 object RemoveAdsFromWeatherPage : YukiBaseHooker() {
 
@@ -17,10 +18,9 @@ object RemoveAdsFromWeatherPage : YukiBaseHooker() {
 
     override fun onHook() {
         //Source WrappedMCWebViewClient
-        findClass("com.heytap.browser.webview.WrappedMCWebViewClient").hook {
-            injectMember {
-                method { name { it.startsWith("onPage") } }
-                afterHook {
+        "com.heytap.browser.webview.WrappedMCWebViewClient".toClass().apply {
+            method { name { it.startsWith("onPage") } }.hook {
+                after {
                     val currentWebView = args().first().any()?.current()
                     val currentUrl = currentWebView?.method {
                         name = "getUrl";superClass()

@@ -18,11 +18,13 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.google.android.material.textview.MaterialTextView
+import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.R
 import org.json.JSONObject
 import java.io.File
 import java.text.DecimalFormat
 
+@Obfuscate
 class UpdateUtils(val context: Context) {
 
     @Suppress("unused")
@@ -53,6 +55,8 @@ class UpdateUtils(val context: Context) {
                 result(name, code.toInt()) {
                     MaterialAlertDialogBuilder(context, dialogCentered).apply {
                         setTitle(context.getString(R.string.check_update_hint))
+                        if (context.getBoolean(SettingsPrefs, "hidden_function"))
+                            setCancelable(false)
                         setView(
                             NestedScrollView(context).apply {
                                 addView(
@@ -98,6 +102,7 @@ class UpdateUtils(val context: Context) {
         )
         MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.select_download_source))
+            setCancelable(false)
             setItems(list) { _, which ->
                 downloadFile(context, fileName, cdn[which] + downloadUrl)
             }
@@ -110,7 +115,8 @@ class UpdateUtils(val context: Context) {
         var downloadScope: NetCoroutineScope = scopeNet { }
         val downloadDialog = MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.downloading))
-            setCancelable(false)
+            if (context.getBoolean(SettingsPrefs, "hidden_function"))
+                setCancelable(false)
             setView(R.layout.layout_download_dialog)
         }.show()
         downloadScope = scopeNet {

@@ -1,7 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
+import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import de.robv.android.xposed.XposedBridge
 import java.lang.reflect.Member
@@ -13,10 +14,10 @@ object DisableFlagSecure : YukiBaseHooker() {
     override fun onHook() {
         val isEnable = prefs(ModulePrefs).getBoolean("disable_flag_secure", false)
         if (!isEnable) return
+
         //Source A11+ -> WindowState A11- -> WindowManagerService
-        findClass("com.android.server.wm.WindowState").hook {
-            injectMember {
-                method { name = "isSecureLocked" }
+        "com.android.server.wm.WindowState".toClass().apply {
+            method { name = "isSecureLocked" }.hook {
                 replaceToFalse()
             }
         }
@@ -25,7 +26,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                 XposedBridge::class.java.getDeclaredMethod("deoptimizeMethod", Member::class.java)
             deoptimizeMethod = m
         } catch (e: Exception) {
-            loggerD(msg = e.toString())
+            YLog.debug(e.toString())
         }
 
         try {
@@ -51,7 +52,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                 }
             }
         } catch (e: Exception) {
-            loggerD(msg = e.toString())
+            YLog.debug(e.toString())
         }
     }
 
@@ -63,7 +64,7 @@ object DisableFlagSecure : YukiBaseHooker() {
                 }
             }
         } catch (e: Exception) {
-            loggerD(msg = e.toString())
+            YLog.debug(e.toString())
         }
     }
 }

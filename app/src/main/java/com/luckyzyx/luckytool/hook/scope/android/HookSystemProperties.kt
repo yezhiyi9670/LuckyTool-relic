@@ -1,28 +1,28 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.log.loggerD
+import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 
 object HookSystemProperties : YukiBaseHooker() {
     override fun onHook() {
         //Source SystemProperties
-        findClass("android.os.SystemProperties").hook {
-            injectMember {
-                method {
-                    name = "get"
-                    param(StringClass, StringClass)
-                    returnType = StringClass
-                }
-                afterHook {
+        "android.os.SystemProperties".toClass().apply {
+            method {
+                name = "get"
+                param(StringClass, StringClass)
+                returnType = StringClass
+            }.hook {
+                after {
                     when (args().first().string()) {
                         "persist.oplus.display.vrr.adfr" -> {
-                            loggerD(msg = "adfr -> " + result.toString())
+                            YLog.debug("adfr -> " + result.toString())
                             result = "0"
                         }
 
                         "persist.oplus.display.vrr" -> {
-                            loggerD(msg = "vrr -> " + result.toString())
+                            YLog.debug("vrr -> " + result.toString())
                             result = "0"
                         }
                     }

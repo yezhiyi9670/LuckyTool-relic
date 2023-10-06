@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.battery
 
 import android.app.NotificationManager
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -57,9 +58,8 @@ object HookBatteryNotify : YukiBaseHooker() {
                     }
                 }
             }?.firstOrNull()?.apply {
-                className.hook {
-                    injectMember {
-                        method { name = methodName;emptyParam() }
+                className.toClass().apply {
+                    method { name = methodName;emptyParam() }.hook {
                         intercept()
                     }
                 }
@@ -67,13 +67,12 @@ object HookBatteryNotify : YukiBaseHooker() {
         }
 
         if (highBatteryConsumption) {
-            clsName.hook {
-                injectMember {
-                    method {
-                        param(StringClass, BooleanType)
-                        paramCount = 2
-                    }.all()
-                    intercept()
+            clsName.toClass().apply {
+                method {
+                    param(StringClass, BooleanType)
+                    paramCount = 2
+                }.giveAll().forEach {
+                    it.hook { intercept() }
                 }
             }
         }

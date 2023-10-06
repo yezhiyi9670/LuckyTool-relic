@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.heytapcloud
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -35,10 +36,11 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { emptyParam();returnType = IntType }.all()
-                afterHook { if (result<Int>() == 1) result = 2 }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { emptyParam();returnType = IntType }.giveAll().forEach {
+                it.hook {
+                    after { if (result<Int>() == 1) result = 2 }
+                }
             }
         }
     }

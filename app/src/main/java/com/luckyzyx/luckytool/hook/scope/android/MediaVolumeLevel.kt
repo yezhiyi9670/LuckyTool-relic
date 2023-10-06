@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -9,11 +11,11 @@ object MediaVolumeLevel : YukiBaseHooker() {
     override fun onHook() {
         val mediaVolumeLevel = prefs(ModulePrefs).getInt("media_volume_level", 0)
         val minVolumeZero = prefs(ModulePrefs).getBoolean("minimum_volume_level_can_be_zero", false)
+
         //Source AudioServiceExtImpl
-        findClass("com.android.server.audio.AudioServiceExtImpl").hook {
-            injectMember {
-                method { name = "resetSystemVolume" }
-                afterHook {
+        "com.android.server.audio.AudioServiceExtImpl".toClass().apply {
+            method { name = "resetSystemVolume" }.hook {
+                after {
                     if (mediaVolumeLevel != 0) {
                         val maxField = if (SDK >= A13) "mMaxStreamVolume" else "MAX_STREAM_VOLUME"
                         val maxArray = field { name = maxField }.get(instance).cast<IntArray>()

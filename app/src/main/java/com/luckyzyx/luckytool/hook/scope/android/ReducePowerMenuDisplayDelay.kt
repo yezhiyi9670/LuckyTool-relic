@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.android
 
 import android.view.KeyEvent
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object ReducePowerMenuDisplayDelay : YukiBaseHooker() {
@@ -10,13 +11,12 @@ object ReducePowerMenuDisplayDelay : YukiBaseHooker() {
         dataChannel.wait<Boolean>("reduce_power_menu_display_delay") { isEnable = it }
 
         //Source PhoneWindowManager -> PowerKeyRule -> super getVeryLongPressTimeoutMs
-        findClass("com.android.server.policy.SingleKeyGestureDetectorExtImpl").hook {
-            injectMember {
-                method { name = "modifyPressTimeout" }
-                afterHook {
-                    if (!isEnable) return@afterHook
-                    val pressType = args().first().cast<Int>() ?: return@afterHook
-                    val event = args().last().cast<KeyEvent>() ?: return@afterHook
+        "com.android.server.policy.SingleKeyGestureDetectorExtImpl".toClass().apply {
+            method { name = "modifyPressTimeout" }.hook {
+                after {
+                    if (!isEnable) return@after
+                    val pressType = args().first().cast<Int>() ?: return@after
+                    val event = args().last().cast<KeyEvent>() ?: return@after
                     if (pressType == 1 && event.keyCode == 26) result = 800L
                 }
             }

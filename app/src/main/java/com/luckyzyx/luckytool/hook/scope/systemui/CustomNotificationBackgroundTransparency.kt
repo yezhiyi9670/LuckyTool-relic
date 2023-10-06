@@ -4,7 +4,9 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.view.View
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.ThemeUtils.isNightMode
 import com.luckyzyx.luckytool.utils.getOSVersionCode
@@ -32,47 +34,45 @@ object CustomNotificationBackgroundTransparency : YukiBaseHooker() {
                 } ?: false
 
         //Source OplusNotificationBackgroundView
-        findClass("com.oplusos.systemui.statusbar.notification.row.OplusNotificationBackgroundView").hook {
-            injectMember {
+        if (!isOld) "com.oplusos.systemui.statusbar.notification.row.OplusNotificationBackgroundView".toClass()
+            .apply {
                 method { name = "drawRegionBlur";paramCount = 2 }.remedys {
                     method { name = "draw";paramCount = 2 }
+                }.hook {
+                    before {
+                        if (customAlpha < 0) return@before
+                        modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>())
+                    }
                 }
-                beforeHook {
-                    if (customAlpha < 0) return@beforeHook
-                    modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>())
+                method { name = "draw";paramCount = 2;superClass() }.hook {
+                    before {
+                        if (customAlpha < 0) return@before
+                        modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>())
+                    }
                 }
             }
-            injectMember {
-                method { name = "draw";paramCount = 2;superClass() }
-                beforeHook {
-                    if (customAlpha < 0) return@beforeHook
-                    modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>())
-                }
-            }
-        }.by { isOld.not() }
 
         //Source NotificationBackgroundView
-        findClass("com.android.systemui.statusbar.notification.row.NotificationBackgroundView").hook {
-            injectMember {
-                method { name = "draw";paramCount = 2 }
-                beforeHook { modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>()) }
+        if (isOld) "com.android.systemui.statusbar.notification.row.NotificationBackgroundView".toClass()
+            .apply {
+                method { name = "draw";paramCount = 2 }.hook {
+                    before { modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>()) }
+                }
+                method { name = "drawCustom";paramCount = 2 }.hook {
+                    before { modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>()) }
+                }.ignoredHookingFailure()
             }
-            injectMember {
-                method { name = "drawCustom";paramCount = 2 }
-                beforeHook { modifyNotifyPanelAlpha(instance(), args().last().cast<Drawable>()) }
-            }.ignoredNoSuchMemberFailure()
-        }.by { isOld }
 
         //Source ExpandableNotificationRow
-        findClass("com.android.systemui.statusbar.notification.row.ExpandableNotificationRow").hook {
-            injectMember {
-                method { name = "updateBackgroundForGroupState";emptyParam() }
-                beforeHook {
-                    if (customAlpha < 0) return@beforeHook
-                    field { name = "mShowGroupBackgroundWhenExpanded" }.get(instance).setTrue()
+        "com.android.systemui.statusbar.notification.row.ExpandableNotificationRow".toClass()
+            .apply {
+                method { name = "updateBackgroundForGroupState";emptyParam() }.hook {
+                    before {
+                        if (customAlpha < 0) return@before
+                        field { name = "mShowGroupBackgroundWhenExpanded" }.get(instance).setTrue()
+                    }
                 }
             }
-        }
     }
 
     /**

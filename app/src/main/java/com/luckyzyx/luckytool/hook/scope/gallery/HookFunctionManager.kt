@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
@@ -33,13 +34,12 @@ object HookFunctionManager : YukiBaseHooker() {
                     usingStrings("FunctionSwitchManager")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(StringClass)
-                    returnType(BooleanType)
-                }
-                afterHook {
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(StringClass)
+                returnType(BooleanType)
+            }.hook {
+                after {
                     when (args().first().string()) {
                         //姜文电影滤镜
                         "pref_jiangwen_filter_enable" -> if (jangWen) resultTrue()

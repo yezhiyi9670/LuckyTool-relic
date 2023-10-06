@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import android.view.View
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.safeOfNull
 
@@ -12,17 +13,17 @@ object ControlCenterWhiteBackground : YukiBaseHooker() {
         dataChannel.wait<Int>("custom_control_center_background_transparency") {
             customAlpha = it
         }
+
         //Source ScrimController
-        findClass("com.android.systemui.statusbar.phone.ScrimController").hook {
-            injectMember {
-                method { name = "updateScrimColor" }
-                beforeHook {
-                    if (customAlpha < 0) return@beforeHook
+        "com.android.systemui.statusbar.phone.ScrimController".toClass().apply {
+            method { name = "updateScrimColor" }.hook {
+                before {
+                    if (customAlpha < 0) return@before
                     val value = customAlpha / 10.0F
-                    val view = args().first().cast<View>() ?: return@beforeHook
-                    val alpha = args(1).cast<Float>() ?: return@beforeHook
+                    val view = args().first().cast<View>() ?: return@before
+                    val alpha = args(1).cast<Float>() ?: return@before
                     val name = safeOfNull { view.resources.getResourceEntryName(view.id) }
-                        ?: return@beforeHook
+                        ?: return@before
                     when (name) {
                         "scrim_in_front" -> {}
                         "scrim_behind" -> if (alpha > value) args(1).set(value)

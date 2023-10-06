@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.permissioncontroller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
@@ -30,10 +32,9 @@ object UnlockDefaultDesktopLimit : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { param(ContextClass) }
-                afterHook { field { type(BooleanType).index(1) }.get().setTrue() }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { param(ContextClass) }.hook {
+                after { field { type(BooleanType).index(1) }.get().setTrue() }
             }
         }
     }

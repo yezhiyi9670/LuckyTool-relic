@@ -5,10 +5,10 @@ import android.content.Context
 import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
-import com.highcapable.yukihookapi.hook.bean.HookClass
-import com.highcapable.yukihookapi.hook.core.YukiMemberHookCreator
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.android.HandlerClass
 import com.highcapable.yukihookapi.hook.type.android.RemoteViewsClass
@@ -40,33 +40,31 @@ object AlarmClockWidget : YukiBaseHooker() {
         override fun onHook() {
             //Source OnePlusWidget / OppoWeather / OppoWeatherSingle / OppoWeatherVertical
             //Search Class com.oplus.widget.OplusTextClock
-            findClass("com.coloros.widget.smallweather.OnePlusWidget").injHook()
-            findClass("com.coloros.widget.smallweather.OppoWeather").injHook()
-            findClass("com.coloros.widget.smallweather.OppoWeatherSingle").injHook()
-            findClass("com.coloros.widget.smallweather.OppoWeatherVertical").injHook()
+            "com.coloros.widget.smallweather.OnePlusWidget".toClass().injHook()
+            "com.coloros.widget.smallweather.OppoWeather".toClass().injHook()
+            "com.coloros.widget.smallweather.OppoWeatherSingle".toClass().injHook()
+            "com.coloros.widget.smallweather.OppoWeatherVertical".toClass().injHook()
             "com.coloros.widget.smallweather.OppoWeatherMultiVertical".toClassOrNull()
-                ?.hook { injMember() }
+                ?.injHook()
         }
 
-        fun HookClass.injHook() {
-            hook { injMember() }
-        }
-
-        fun YukiMemberHookCreator.injMember(): YukiMemberHookCreator.MemberHookCreator.Result {
-            return injectMember {
-                method { emptyParam();returnType = IntType }.all()
-                afterHook {
-                    if (redMode == "0") return@afterHook
-                    val context = field { type = ContextClass;superClass() }.get(instance)
-                        .cast<Context>() ?: return@afterHook
-                    val resId = result<Int>() ?: return@afterHook
-                    if (resId < 1000) return@afterHook
-                    val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
-                        ?: return@afterHook
-                    result = (getReplaceLayout(context, entryName, redMode) ?: return@afterHook)
+        fun Class<*>.injHook() {
+            method { emptyParam();returnType = IntType }.giveAll().forEach {
+                it.hook {
+                    after {
+                        if (redMode == "0") return@after
+                        val context = field { type = ContextClass;superClass() }.get(instance)
+                            .cast<Context>() ?: return@after
+                        val resId = result<Int>() ?: return@after
+                        if (resId < 1000) return@after
+                        val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
+                            ?: return@after
+                        result = (getReplaceLayout(context, entryName, redMode) ?: return@after)
+                    }
                 }
             }
         }
+
 
         @SuppressLint("DiscouragedApi")
         fun getReplaceLayout(context: Context, layoutName: String, redMode: String): Int? {
@@ -217,18 +215,19 @@ object AlarmClockWidget : YukiBaseHooker() {
                         }
                     }
                 }
-            }?.firstOrNull()?.className?.hook {
-                injectMember {
-                    method {
-                        param { it[0] == ContextClass && it[1] == StringClass }
-                        paramCount(2..3)
-                    }.all()
-                    afterHook {
-                        if (redMode == "0") return@afterHook
-                        result = when (redMode) {
-                            "1" -> result<CharSequence>()?.let { setCharRedOne(it) }
-                            "2" -> result<CharSequence>().toString()
-                            else -> result
+            }?.firstOrNull()?.className?.toClass()?.apply {
+                method {
+                    param { it[0] == ContextClass && it[1] == StringClass }
+                    paramCount(2..3)
+                }.giveAll().forEach {
+                    it.hook {
+                        after {
+                            if (redMode == "0") return@after
+                            result = when (redMode) {
+                                "1" -> result<CharSequence>()?.let { s -> setCharRedOne(s) }
+                                "2" -> result<CharSequence>().toString()
+                                else -> result
+                            }
                         }
                     }
                 }
@@ -239,14 +238,13 @@ object AlarmClockWidget : YukiBaseHooker() {
     private object AlarmClock12 : YukiBaseHooker() {
         override fun onHook() {
             //Source OnePlusWidget
-            findClass("com.coloros.widget.smallweather.OnePlusWidget").hook {
-                injectMember {
-                    method {
-                        param(StringClass, StringClass)
-                        returnType = CharSequenceClass
-                    }
-                    afterHook {
-                        if (redMode == "0") return@afterHook
+            "com.coloros.widget.smallweather.OnePlusWidget".toClass().apply {
+                method {
+                    param(StringClass, StringClass)
+                    returnType = CharSequenceClass
+                }.hook {
+                    after {
+                        if (redMode == "0") return@after
                         result = when (redMode) {
                             "1" -> result<CharSequence>()?.let { setCharRedOne(it) }
                             "2" -> result<CharSequence>().toString()

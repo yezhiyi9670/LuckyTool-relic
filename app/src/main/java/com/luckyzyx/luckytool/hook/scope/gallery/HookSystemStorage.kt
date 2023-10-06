@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gallery
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.defined.VagueType
 import com.highcapable.yukihookapi.hook.type.java.BooleanClass
@@ -37,14 +38,13 @@ object HookSystemStorage : YukiBaseHooker() {
                     usingStrings("configNode")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method {
-                    param(VagueType, BooleanType)
-                    returnType = BooleanClass
-                }
-                afterHook {
-                    val configNode = args().first().any()?.toString() ?: return@afterHook
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method {
+                param(VagueType, BooleanType)
+                returnType = BooleanClass
+            }.hook {
+                after {
+                    val configNode = args().first().any()?.toString() ?: return@after
                     when {
                         //com.oplus.camera.support.custom.hasselblad.watermark
                         configNode.contains("feature_is_support_watermark") -> if (waterMark) resultTrue()

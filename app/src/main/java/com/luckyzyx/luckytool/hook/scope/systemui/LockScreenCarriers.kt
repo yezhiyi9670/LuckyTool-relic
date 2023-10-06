@@ -4,6 +4,9 @@ import android.graphics.Typeface
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.constructor
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -21,21 +24,18 @@ object LockScreenCarriers : YukiBaseHooker() {
             val isRemove = prefs(ModulePrefs).getBoolean("remove_statusbar_carriers", false)
 
             //Source OplusStatCarrierTextController
-            findClass("com.oplus.systemui.statusbar.widget.OplusStatCarrierTextController").hook {
-                injectMember {
-                    method { name = "onViewAttached" }
-                    afterHook {
+            "com.oplus.systemui.statusbar.widget.OplusStatCarrierTextController".toClass().apply {
+                method { name = "onViewAttached" }.hook {
+                    after {
                         if (isRemove) field { name = "mView";superClass() }.get(instance)
                             .cast<TextView>()?.isVisible = false
                     }
                 }
-                injectMember {
-                    method { name = "setVisible" }
-                    beforeHook { if (isRemove) args().first().setFalse() }
+                method { name = "setVisible" }.hook {
+                    before { if (isRemove) args().first().setFalse() }
                 }
-                injectMember {
-                    method { name = "updateCarrierInfo" }
-                    afterHook {
+                method { name = "updateCarrierInfo" }.hook {
+                    after {
                         if (isRemove) field { name = "mView";superClass() }.get(instance)
                             .cast<TextView>()?.isVisible = false
                     }
@@ -43,16 +43,14 @@ object LockScreenCarriers : YukiBaseHooker() {
             }
 
             //Source OplusStatCarrierText
-            findClass("com.oplus.systemui.statusbar.widget.OplusStatCarrierText").hook {
-                injectMember {
-                    constructor { paramCount = 2 }
-                    afterHook {
+            "com.oplus.systemui.statusbar.widget.OplusStatCarrierText".toClass().apply {
+                constructor { paramCount = 2 }.hook {
+                    after {
                         if (userFont) instance<TextView>().typeface = Typeface.DEFAULT_BOLD
                     }
                 }
-                injectMember {
-                    method { name = "onConfigurationChanged" }
-                    afterHook {
+                method { name = "onConfigurationChanged" }.hook {
+                    after {
                         if (userFont) instance<TextView>().typeface = Typeface.DEFAULT_BOLD
                     }
                 }
@@ -65,23 +63,21 @@ object LockScreenCarriers : YukiBaseHooker() {
             val userFont =
                 prefs(ModulePrefs).getBoolean("statusbar_carriers_use_user_typeface", false)
             val isRemove = prefs(ModulePrefs).getBoolean("remove_statusbar_carriers", false)
+
             //Source StatOperatorNameView
-            findClass("com.oplusos.systemui.statusbar.widget.StatOperatorNameView").hook {
-                injectMember {
-                    constructor { paramCount = 3 }
-                    afterHook {
+            "com.oplusos.systemui.statusbar.widget.StatOperatorNameView".toClass().apply {
+                constructor { paramCount = 3 }.hook {
+                    after {
                         if (userFont) instance<TextView>().typeface = Typeface.DEFAULT_BOLD
                     }
                 }
-                injectMember {
-                    method { name = "onConfigurationChanged" }
-                    afterHook {
+                method { name = "onConfigurationChanged" }.hook {
+                    after {
                         if (userFont) instance<TextView>().typeface = Typeface.DEFAULT_BOLD
                     }
                 }
-                injectMember {
-                    method { name = "updateCarrierInfo";superClass() }
-                    afterHook { if (isRemove) instance<TextView>().isVisible = false }
+                method { name = "updateCarrierInfo";superClass() }.hook {
+                    after { if (isRemove) instance<TextView>().isVisible = false }
                 }
             }
         }

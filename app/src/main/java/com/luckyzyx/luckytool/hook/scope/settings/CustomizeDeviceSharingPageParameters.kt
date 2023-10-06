@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.core.view.forEach
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.utils.appcompat.dialog.COUIAlertDialogBuilder
 
 object CustomizeDeviceSharingPageParameters : YukiBaseHooker() {
@@ -16,16 +17,15 @@ object CustomizeDeviceSharingPageParameters : YukiBaseHooker() {
     @SuppressLint("DiscouragedApi")
     override fun onHook() {
         //Source ShareAboutPhoneActivity
-        findClass("com.oplus.settings.feature.deviceinfo.aboutphone.ShareAboutPhoneActivity").hook {
-            injectMember {
-                method { name = "onCreate" }
-                afterHook {
+        "com.oplus.settings.feature.deviceinfo.aboutphone.ShareAboutPhoneActivity".toClass().apply {
+            method { name = "onCreate" }.hook {
+                after {
                     val activity = instance<Activity>()
                     val shareViewId = activity.resources.getIdentifier(
-                        "share_view", "id", packageName
-                    ).takeIf { it != 0 } ?: return@afterHook
+                        "share_view", "id", this@CustomizeDeviceSharingPageParameters.packageName
+                    ).takeIf { it != 0 } ?: return@after
                     val shareView = activity.findViewById<LinearLayout>(shareViewId)
-                        ?: return@afterHook
+                        ?: return@after
 
                     shareView.children.forEach {
                         //title_phone_ly / bran_share_card / about_share_card_bg

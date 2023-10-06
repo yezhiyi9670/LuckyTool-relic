@@ -4,6 +4,9 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -17,14 +20,14 @@ object StatusBarPower : YukiBaseHooker() {
         //Source StatBatteryMeterView
         val clazz = if (SDK >= A14) "com.oplus.keyguard.covermanager.OplusCoverBatteryMeterView"
         else "com.oplusos.systemui.statusbar.widget.StatBatteryMeterView"
-        clazz.toClassOrNull()?.hook {
-            if (SDK < A14) injectMember {
-                method { name = "onConfigChanged" }
-                afterHook { method { name = "updatePercentText" }.get(instance).call() }
+        clazz.toClassOrNull()?.apply {
+            if (SDK < A14) method { name = "onConfigChanged" }.hook {
+                after {
+                    instance.current().method { name = "updatePercentText" }.call()
+                }
             }
-            injectMember {
-                method { name = "updatePercentText" }
-                afterHook {
+            method { name = "updatePercentText" }.hook {
+                after {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
                         if (removePercent) text = text.toString().replace("%", "")
                         if (userTypeface) {

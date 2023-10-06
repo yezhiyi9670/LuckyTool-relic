@@ -1,14 +1,14 @@
 package com.luckyzyx.luckytool.hook.scope.settings
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 
 object AllowDisablingSystemApps : YukiBaseHooker() {
     override fun onHook() {
         //Source AppButtonsPreferenceControllerAdaptor
-        findClass("com.oplus.settings.adaptor.AppButtonsPreferenceControllerAdaptor").hook {
-            injectMember {
-                method { name = "setUninstallButtonEnabled" }
-                beforeHook { args().first().setTrue() }
+        "com.oplus.settings.adaptor.AppButtonsPreferenceControllerAdaptor".toClass().apply {
+            method { name = "setUninstallButtonEnabled" }.hook {
+                before { args().first().setTrue() }
             }
         }
     }

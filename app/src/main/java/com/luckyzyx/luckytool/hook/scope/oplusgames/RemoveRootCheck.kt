@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.oplusgames
 
 import android.os.Bundle
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -30,10 +31,9 @@ object RemoveRootCheck : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { emptyParam();returnType = BundleClass }
-                afterHook { result<Bundle>()?.putInt("isSafe", 0) }
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { emptyParam();returnType = BundleClass }.hook {
+                after { result<Bundle>()?.putInt("isSafe", 0) }
             }
         }
     }

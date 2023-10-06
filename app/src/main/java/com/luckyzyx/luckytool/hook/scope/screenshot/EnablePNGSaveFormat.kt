@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.screenshot
 
 import android.graphics.Bitmap
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
 
@@ -24,23 +25,24 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
                     usingStrings("image/jpeg", "image/png")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { returnType = StringClass }.all()
-                afterHook {
-                    result = when (result<String>()) {
-                        "image/jpeg" -> "image/png"
-                        ".jpg" -> ".png"
-                        else -> return@afterHook
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { returnType = StringClass }.giveAll().forEach {
+                it.hook {
+                    after {
+                        result = when (result<String>()) {
+                            "image/jpeg" -> "image/png"
+                            ".jpg" -> ".png"
+                            else -> return@after
+                        }
                     }
                 }
             }
-            injectMember {
-                method { returnType = Bitmap.CompressFormat::class.java }
-                afterHook {
+
+            method { returnType = Bitmap.CompressFormat::class.java }.hook {
+                after {
                     result = when (result<Bitmap.CompressFormat>()) {
                         Bitmap.CompressFormat.JPEG -> Bitmap.CompressFormat.PNG
-                        else -> return@afterHook
+                        else -> return@after
                     }
                 }
             }

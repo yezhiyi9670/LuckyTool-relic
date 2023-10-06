@@ -27,9 +27,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
-import com.highcapable.yukihookapi.annotation.CauseProblemsApi
 import com.highcapable.yukihookapi.hook.factory.dataChannel
-import com.highcapable.yukihookapi.hook.log.YukiLoggerData
+import com.highcapable.yukihookapi.hook.log.data.YLogData
+import com.highcapable.yukihookapi.hook.xposed.channel.annotation.SendTooLargeChannelData
 import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentLogsBinding
@@ -57,7 +57,7 @@ class LoggerFragment : Fragment(), MenuProvider {
     private lateinit var binding: FragmentLogsBinding
     private var logFuncController: IGlobalFuncController? = null
 
-    private var listData = ArrayList<YukiLoggerData>()
+    private var listData = ArrayList<YLogData>()
     private var logInfoViewAdapter: LogInfoViewAdapter? = null
     private var fileName: String = ""
     private var filterString = ""
@@ -84,7 +84,7 @@ class LoggerFragment : Fragment(), MenuProvider {
         }
     }
 
-    @OptIn(CauseProblemsApi::class)
+    @OptIn(SendTooLargeChannelData::class)
     private fun loadLogger() {
         scope = scopeLife {
             listData.clear()
@@ -272,11 +272,11 @@ class LoggerFragment : Fragment(), MenuProvider {
 
 }
 
-class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) :
+class LogInfoViewAdapter(val context: Context, data: ArrayList<YLogData>) :
     RecyclerView.Adapter<LogInfoViewAdapter.ViewHolder>() {
 
-    private var allData = ArrayList<YukiLoggerData>()
-    private var filterData = ArrayList<YukiLoggerData>()
+    private var allData = ArrayList<YLogData>()
+    private var filterData = ArrayList<YLogData>()
 
     init {
         allData = data
@@ -331,7 +331,7 @@ class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) 
                 filterData = if (constraint.isBlank()) {
                     allData
                 } else {
-                    val filterlist = ArrayList<YukiLoggerData>()
+                    val filterlist = ArrayList<YLogData>()
                     allData.forEach {
                         if (it.toString().lowercase().contains(constraint.toString().lowercase())) {
                             filterlist.add(it)
@@ -346,7 +346,7 @@ class LogInfoViewAdapter(val context: Context, data: ArrayList<YukiLoggerData>) 
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence, results: FilterResults?) {
-                filterData = results?.values as ArrayList<YukiLoggerData>
+                filterData = results?.values as ArrayList<YLogData>
                 refreshDatas()
             }
         }

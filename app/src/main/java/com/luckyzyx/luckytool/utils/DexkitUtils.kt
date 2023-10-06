@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.utils
 
-import com.highcapable.yukihookapi.hook.log.loggerD
-import com.highcapable.yukihookapi.hook.log.loggerE
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.luckyzyx.luckytool.BuildConfig
 import org.luckypray.dexkit.DexKitBridge
 import org.luckypray.dexkit.query.ClassDataList
@@ -10,6 +9,7 @@ import org.luckypray.dexkit.query.MethodDataList
 @Suppress("MemberVisibilityCanBePrivate")
 object DexkitUtils {
     const val tag = "LuckyTool"
+    const val print = true
     val debug = BuildConfig.DEBUG
 
     /**
@@ -38,7 +38,7 @@ object DexkitUtils {
         tag: String, appPath: String, initialization: (DexKitBridge) -> ClassDataList?
     ): ClassDataList? {
         val result = create(appPath)?.use { initialization(it) }
-        if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
+        if (print) if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
         return result
     }
 
@@ -49,13 +49,13 @@ object DexkitUtils {
      */
     fun ClassDataList?.printLog(instance: String): ClassDataList? {
         if (isNullOrEmpty()) {
-            loggerE(tag, "$instance -> findClass isNullOrEmpty")
+            YLog.error("$instance -> findClass isNullOrEmpty", tag = tag)
         } else if (size != 1) {
             var f = ""
             forEach { f += "[${it.className}]" }
-            loggerE(tag, "$instance -> findClass size ($size) -> $f")
+            YLog.error("$instance -> findClass size ($size) -> $f", tag = tag)
         } else if (debug) {
-            loggerD(tag, "$instance -> findclass ${first().className}")
+            YLog.debug("$instance -> findclass ${first().className}", tag = tag)
         }
         return this
     }
@@ -71,7 +71,7 @@ object DexkitUtils {
         tag: String, appPath: String, initialization: (DexKitBridge) -> MethodDataList?
     ): MethodDataList? {
         val result = create(appPath)?.use { initialization(it) }
-        if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
+        if (print) if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
         return result
     }
 
@@ -82,11 +82,11 @@ object DexkitUtils {
      */
     fun MethodDataList?.printLog(instance: String): MethodDataList? {
         if (isNullOrEmpty()) {
-            loggerE(tag, "$instance -> findMethod isNullOrEmpty")
+            YLog.error("$instance -> findMethod isNullOrEmpty", tag = tag)
         } else if (debug) {
             var f = ""
             forEach { f += "[${it.className} - ${it.methodName}]" }
-            loggerD(tag, "$instance -> findMethod size ($size) -> $f")
+            YLog.debug("$instance -> findMethod size ($size) -> $f", tag = tag)
         }
         return this
     }

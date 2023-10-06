@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.phonemanager
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
@@ -27,10 +28,9 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
                     usingStrings("VirusScanNotifyListener")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { param(ArrayListClass) }.all()
-                intercept()
+        }?.firstOrNull()?.className?.toClassOrNull()?.apply {
+            method { param(ArrayListClass) }.giveAll().forEach {
+                it.hook { intercept() }
             }
         }
     }

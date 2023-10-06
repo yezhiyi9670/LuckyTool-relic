@@ -7,7 +7,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
+import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.DrawableClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.R
@@ -40,27 +42,26 @@ object LockScreenBottomButton : YukiBaseHooker() {
         }
 
         //Source KeyguardBottomAreaView
-        findClass("com.android.systemui.statusbar.phone.KeyguardBottomAreaView").hook {
-            injectMember {
-                method { name = "onFinishInflate" }
-                beforeHook {
-                    if (!useFlashLight) return@beforeHook
+        "com.android.systemui.statusbar.phone.KeyguardBottomAreaView".toClass().apply {
+            method { name = "onFinishInflate" }.hook {
+                before {
+                    if (!useFlashLight) return@before
                     instance<ViewGroup>().context.injectModuleAppResources()
                 }
             }
-            injectMember {
-                method { name = "updateLeftAffordanceIcon" }
-                afterHook {
-                    if (!useFlashLight) return@afterHook
+            method { name = "updateLeftAffordanceIcon" }.hook {
+                after {
+                    if (!useFlashLight) return@after
                     val context = instance<ViewGroup>().context
-                    method { name = "updateLeftAffordanceVisibility" }.get(instance).call()
+                    instance.current().method { name = "updateLeftAffordanceVisibility" }.call()
                     val mFlashlightController =
                         field { name = "mFlashlightController" }.get(instance).any()
                     val isEnable = mFlashlightController?.current()?.method { name = "isEnabled" }
                         ?.invoke<Boolean>() ?: false
                     val resId = if (isEnable) R.drawable.affordance_flashlight_on
                     else R.drawable.affordance_flashlight
-                    val drawable = safeOfNull { ResourcesCompat.getDrawable(context.resources, resId, null) }
+                    val drawable =
+                        safeOfNull { ResourcesCompat.getDrawable(context.resources, resId, null) }
                     field { name = "mLeftAffordanceView";superClass() }.get(instance).any()
                         ?.current()?.method {
                             name = "setImageDrawable"
@@ -69,13 +70,12 @@ object LockScreenBottomButton : YukiBaseHooker() {
                         }?.call(drawable, !isEnable)
                 }
             }
-            injectMember {
-                method { name = "updateLeftAffordanceVisibility" }
-                afterHook {
+            method { name = "updateLeftAffordanceVisibility" }.hook {
+                after {
                     if (leftButton) {
                         field { name = "mLeftAffordanceView";superClass() }.get(instance)
                             .cast<View>()?.isVisible = false
-                        return@afterHook
+                        return@after
                     }
                     if (useFlashLight) {
                         field { name = "mLeftAffordanceView";superClass() }.get(instance)
@@ -83,25 +83,24 @@ object LockScreenBottomButton : YukiBaseHooker() {
                     }
                 }
             }
-            injectMember {
-                method { name = "launchLeftAffordance" }
-                beforeHook {
-                    if (!useFlashLight) return@beforeHook
-                    method { name = "baseLaunchLeftAffordance" }.get(instance).call()
+            method { name = "launchLeftAffordance" }.hook {
+                before {
+                    if (!useFlashLight) return@before
+                    instance.current().method { name = "baseLaunchLeftAffordance" }.call()
                     val mFlashlightController =
                         field { name = "mFlashlightController" }.get(instance).any()
-                    val isEnable = mFlashlightController?.current()?.method { name = "isEnabled" }
-                        ?.invoke<Boolean>() ?: true
+                    val isEnable =
+                        mFlashlightController?.current()?.method { name = "isEnabled" }
+                            ?.invoke<Boolean>() ?: true
                     mFlashlightController?.setFlashlight(!isEnable)
-                    method { name = "updateLeftAffordanceIcon" }.get(instance).call()
+                    instance.current().method { name = "updateLeftAffordanceIcon" }.call()
                     if (autoCloseScreen) closeScreen(instance<ViewGroup>().context)
                     resultNull()
                 }
             }
-            injectMember {
-                method { name = "updateCameraVisibility" }
-                beforeHook {
-                    if (!rightButton) return@beforeHook
+            method { name = "updateCameraVisibility" }.hook {
+                before {
+                    if (!rightButton) return@before
                     field { name = "mRightAffordanceView";superClass() }.get(instance)
                         .cast<ImageView>()?.isVisible = false
                     resultNull()

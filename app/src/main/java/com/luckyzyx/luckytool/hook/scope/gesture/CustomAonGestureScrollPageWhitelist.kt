@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.hook.scope.gesture
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ArrayMapClass
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
@@ -15,11 +16,9 @@ import com.luckyzyx.luckytool.utils.replaceSpace
 
 object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
     override fun onHook() {
-
         val scrollList =
             prefs(ModulePrefs).getString("custom_aon_gesture_scroll_page_whitelist", "None")
 //        val videoList = prefs(ModulePrefs).getString("custom_aon_gesture_video_whitelist", "None")
-
         if (scrollList.isBlank() || scrollList == "None") return
 
         //Search com.ss.android.ugc.aweme / com.smile.gifmaker
@@ -43,18 +42,21 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     usingStrings("com.ss.android.ugc.aweme", "com.smile.gifmaker")
                 }
             }
-        }?.firstOrNull()?.className?.hook {
-            injectMember {
-                method { emptyParam();returnType = ListClass }.all()
-                afterHook {
-                    val field = result<List<String>>() ?: return@afterHook
-                    if (field.isEmpty()) return@afterHook
-                    result = field.toMutableList().apply {
-                        if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
-                            val listString = scrollList.replaceSpace
-                            if (listString.contains("\n")) {
-                                listString.split("\n").forEach { if (it.isNotBlank()) add(it) }
-                            } else add(scrollList)
+        }?.firstOrNull()?.className?.toClass()?.apply {
+            method { emptyParam();returnType = ListClass }.giveAll().forEach {
+                it.hook {
+                    after {
+                        val field = result<List<String>>() ?: return@after
+                        if (field.isEmpty()) return@after
+                        result = field.toMutableList().apply {
+                            if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
+                                val listString = scrollList.replaceSpace
+                                if (listString.contains("\n")) {
+                                    listString.split("\n").forEach { s ->
+                                        if (s.isNotBlank()) add(s)
+                                    }
+                                } else add(scrollList)
+                            }
                         }
                     }
                 }
@@ -62,11 +64,10 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
         }
 
         //Source GestureUtil
-        findClass("com.oplus.gesture.util.GestureUtil").hook {
-            injectMember {
-                method { name = "getLocalAonAppListTurnPage" }
-                afterHook {
-                    val list = result<List<String>>() ?: return@afterHook
+        "com.oplus.gesture.util.GestureUtil".toClass().apply {
+            method { name = "getLocalAonAppListTurnPage" }.hook {
+                after {
+                    val list = result<List<String>>() ?: return@after
                     result = list.toMutableList().apply {
                         val listString = scrollList.replaceSpace
                         if (listString.contains("\n")) {
@@ -77,9 +78,9 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
             }
 //            injectMember {
 //                method { name = "getLocalAonAppListPauseOrPlay" }
-//                afterHook {
-//                    if (videoList.isBlank() || videoList == "None") return@afterHook
-//                    val list = result<List<String>>() ?: return@afterHook
+//                after {
+//                    if (videoList.isBlank() || videoList == "None") return@after
+//                    val list = result<List<String>>() ?: return@after
 //                    result = list.toMutableList().apply {
 //                        if (videoList.contains("\n")) {
 //                            videoList.replace(" ", "").split("\n")

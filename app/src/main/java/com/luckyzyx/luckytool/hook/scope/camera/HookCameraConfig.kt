@@ -2,6 +2,7 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -24,10 +25,9 @@ object HookCameraConfig : YukiBaseHooker() {
             VariousClass(
                 "com.oplus.camera.aps.config.CameraConfig", //C12
                 "com.oplus.camera.configure.CameraConfig" //C13
-            ).hook {
-                injectMember {
-                    method { name = "getConfigBooleanValue";paramCount = 1 }
-                    afterHook {
+            ).toClass().apply {
+                method { name = "getConfigBooleanValue";paramCount = 1 }.hook {
+                    after {
                         when (args().first().string()) {
                             //<string name="camera_heic_encode_10bits_title">10 亿色影像</string>
                             //OptionKey PRE_KEY_10BIT_HEIC_ENCODE pref_10bits_heic_encode_key
@@ -69,38 +69,40 @@ object HookCameraConfig : YukiBaseHooker() {
                         }
                     }
                 }
-                injectMember {
-                    method {
-                        param { it[0] == StringClass }
-                        paramCount(1..2)
-                        returnType = StringClass
-                    }.all()
-                    afterHook {
-                        when (args().first().string()) {
-                            //哈苏水印样式 camera_slogan_hasselblad
-                            "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) {
-                                if (result<String>()?.toIntOrNull() != null) result = "1"
+                method {
+                    param { it[0] == StringClass }
+                    paramCount(1..2)
+                    returnType = StringClass
+                }.giveAll().forEach {
+                    it.hook {
+                        after {
+                            when (args().first().string()) {
+                                //哈苏水印样式 camera_slogan_hasselblad
+                                "com.oplus.use.hasselblad.style.support" -> if (isHasselblad) {
+                                    if (result<String>()?.toIntOrNull() != null) result = "1"
+                                }
                             }
                         }
                     }
                 }
-                injectMember {
-                    method {
-                        param(StringClass)
-                        returnType = ListClass
-                    }.all()
-                    afterHook {
-                        val type = safeOfNull { method.genericReturnType.typeName }
-                            ?: return@afterHook
-                        if (type.contains(StringClass.name).not()) return@afterHook
-                        when (args().first().string()) {
-                            //Source FilterGroupManager 照片 / 人像 大师滤镜
-                            "com.oplus.photo.master.filter.type.list",
-                            "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter)
-                                result = listOf(
-                                    "Emerald.cube.rgb.bin", "Radiance.cube.rgb.bin",
-                                    "Serenity.cube.rgb.bin"
-                                )
+                method {
+                    param(StringClass)
+                    returnType = ListClass
+                }.giveAll().forEach {
+                    it.hook {
+                        after {
+                            val type = safeOfNull { method.genericReturnType.typeName }
+                                ?: return@after
+                            if (type.contains(StringClass.name).not()) return@after
+                            when (args().first().string()) {
+                                //Source FilterGroupManager 照片 / 人像 大师滤镜
+                                "com.oplus.photo.master.filter.type.list",
+                                "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter)
+                                    result = listOf(
+                                        "Emerald.cube.rgb.bin", "Radiance.cube.rgb.bin",
+                                        "Serenity.cube.rgb.bin"
+                                    )
+                            }
                         }
                     }
                 }
