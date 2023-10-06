@@ -92,7 +92,7 @@ dependencies {
     compileOnly("de.robv.android.xposed:api:82")
     //YukiHookAPI ksp
     implementation("com.highcapable.yukihookapi:api:1.1.12")
-    ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.11")
+    ksp("com.highcapable.yukihookapi:ksp-xposed:1.1.12")
 //    implementation(files("libs/yukihookapi-release.jar"))
 //    ksp files("libs/yukihookapi-ksp-xposed-1.1.5-beta2.jar")
 
@@ -100,7 +100,7 @@ dependencies {
     implementation("org.luckypray:dexkit:2.0.0-rc3")
 
     //Material主题
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     //约束布局
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -109,8 +109,8 @@ dependencies {
     //下拉刷新控件
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     // 权限请求框架
