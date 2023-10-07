@@ -45,18 +45,16 @@ object HookSettingsFeature : YukiBaseHooker() {
                     }
                 }
             }?.firstOrNull()?.className?.toClass()?.apply {
-                method { param(StringClass);returnType = BooleanType }.giveAll().forEach {
-                    it.hook {
-                        before {
-                            when (args().first().string()) {
-                                //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
-                                "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
-                                "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
-                                //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
-                                "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
-                                //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
+                method { param(StringClass);returnType = BooleanType }.hookAll {
+                    before {
+                        when (args().first().string()) {
+                            //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
+                            "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
+                            "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
+                            //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
+                            "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
+                            //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
 //                            "oplus.software.display.pwm_switch.support" -> resultTrue()
-                            }
                         }
                     }
                 }
@@ -86,13 +84,11 @@ object HookSettingsFeature : YukiBaseHooker() {
                     }
                 }
             }?.firstOrNull()?.className?.toClass()?.apply {
-                method { param(IntType);returnType = BooleanType }.giveAll().forEach {
-                    it.hook {
-                        before {
-                            when (args().first().int()) {
-                                //Source DisplayTimeOutController -> 永不息屏(24H)
-                                11 -> if (SDK < A13 && neverTimeout) resultTrue()
-                            }
+                method { param(IntType);returnType = BooleanType }.hookAll {
+                    before {
+                        when (args().first().int()) {
+                            //Source DisplayTimeOutController -> 永不息屏(24H)
+                            11 -> if (SDK < A13 && neverTimeout) resultTrue()
                         }
                     }
                 }

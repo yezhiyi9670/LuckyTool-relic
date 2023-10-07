@@ -48,10 +48,8 @@ object UnlockStartupLimitOld : YukiBaseHooker() {
             method {
                 param(ContextClass)
                 returnType = UnitType
-            }.giveAll().forEach {
-                it.hook {
-                    after { field { type = IntType }.get().set(10000) }
-                }
+            }.hookAll {
+                after { field { type = IntType }.get().set(10000) }
             }
         }
     }

@@ -9,10 +9,8 @@ object EnableXModeFeature : YukiBaseHooker() {
     override fun onHook() {
         //Source CoolingBackClipHelper
         "business.module.perfmode.CoolingBackClipHelper".toClass().apply {
-            method { emptyParam();returnType = BooleanType }.giveAll().forEach {
-                it.hook {
-                    replaceToTrue()
-                }
+            method { emptyParam();returnType = BooleanType }.hookAll {
+                replaceToTrue()
             }
             method {
                 paramCount = 1

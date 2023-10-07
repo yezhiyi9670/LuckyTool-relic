@@ -39,12 +39,10 @@ object HookKsWeb : YukiBaseHooker() {
                 }
             }
         }?.firstOrNull()?.className?.toClass()?.apply {
-            method { emptyParam();returnType = BooleanType }.giveAll().forEach {
-                it.hook {
-                    before {
-                        field { type = BooleanType }.get(instance).setTrue()
-                        field { type = IntType }.get(instance).set(2)
-                    }
+            method { emptyParam();returnType = BooleanType }.hookAll {
+                before {
+                    field { type = BooleanType }.get(instance).setTrue()
+                    field { type = IntType }.get(instance).set(2)
                 }
             }
         }

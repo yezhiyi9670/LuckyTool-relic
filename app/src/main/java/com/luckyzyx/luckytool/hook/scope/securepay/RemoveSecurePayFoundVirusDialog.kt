@@ -52,8 +52,8 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
             method {
                 emptyParam()
                 returnType = UnitType
-            }.giveAll().forEach {
-                it.hook { intercept() }
+            }.hookAll {
+                intercept()
             }
         }
     }

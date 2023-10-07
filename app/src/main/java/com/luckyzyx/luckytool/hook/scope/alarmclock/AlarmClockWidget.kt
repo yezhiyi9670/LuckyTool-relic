@@ -49,18 +49,16 @@ object AlarmClockWidget : YukiBaseHooker() {
         }
 
         fun Class<*>.injHook() {
-            method { emptyParam();returnType = IntType }.giveAll().forEach {
-                it.hook {
-                    after {
-                        if (redMode == "0") return@after
-                        val context = field { type = ContextClass;superClass() }.get(instance)
-                            .cast<Context>() ?: return@after
-                        val resId = result<Int>() ?: return@after
-                        if (resId < 1000) return@after
-                        val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
-                            ?: return@after
-                        result = (getReplaceLayout(context, entryName, redMode) ?: return@after)
-                    }
+            method { emptyParam();returnType = IntType }.hookAll {
+                after {
+                    if (redMode == "0") return@after
+                    val context = field { type = ContextClass;superClass() }.get(instance)
+                        .cast<Context>() ?: return@after
+                    val resId = result<Int>() ?: return@after
+                    if (resId < 1000) return@after
+                    val entryName = safeOfNull { context.resources.getResourceEntryName(resId) }
+                        ?: return@after
+                    result = (getReplaceLayout(context, entryName, redMode) ?: return@after)
                 }
             }
         }
@@ -219,15 +217,13 @@ object AlarmClockWidget : YukiBaseHooker() {
                 method {
                     param { it[0] == ContextClass && it[1] == StringClass }
                     paramCount(2..3)
-                }.giveAll().forEach {
-                    it.hook {
-                        after {
-                            if (redMode == "0") return@after
-                            result = when (redMode) {
-                                "1" -> result<CharSequence>()?.let { s -> setCharRedOne(s) }
-                                "2" -> result<CharSequence>().toString()
-                                else -> result
-                            }
+                }.hookAll {
+                    after {
+                        if (redMode == "0") return@after
+                        result = when (redMode) {
+                            "1" -> result<CharSequence>()?.let { s -> setCharRedOne(s) }
+                            "2" -> result<CharSequence>().toString()
+                            else -> result
                         }
                     }
                 }

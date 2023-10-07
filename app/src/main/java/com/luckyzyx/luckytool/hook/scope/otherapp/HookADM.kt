@@ -48,15 +48,13 @@ object HookADM : YukiBaseHooker() {
                 modifiers { isStatic }
                 param(ActivityClass)
                 returnType = UnitType
-            }.giveAll().forEach {
-                it.hook {
-                    after {
-                        field {
-                            name = "n"
-                            modifiers { isStatic }
-                            type(BooleanType)
-                        }.get().setTrue()
-                    }
+            }.hookAll {
+                after {
+                    field {
+                        name = "n"
+                        modifiers { isStatic }
+                        type(BooleanType)
+                    }.get().setTrue()
                 }
             }
         }

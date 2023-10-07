@@ -71,9 +71,7 @@ object HookBatteryNotify : YukiBaseHooker() {
                 method {
                     param(StringClass, BooleanType)
                     paramCount = 2
-                }.giveAll().forEach {
-                    it.hook { intercept() }
-                }
+                }.hookAll { intercept() }
             }
         }
     }

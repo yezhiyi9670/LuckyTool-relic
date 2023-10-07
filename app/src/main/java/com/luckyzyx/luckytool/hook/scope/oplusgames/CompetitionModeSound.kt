@@ -40,10 +40,8 @@ object CompetitionModeSound : YukiBaseHooker() {
                 }
             }
         }?.firstOrNull()?.className?.toClass()?.apply {
-            method { param(IntType) }.giveAll().forEach {
-                it.hook {
-                    before { if (args().first().int() == 9) resultNull() }
-                }
+            method { param(IntType) }.hookAll {
+                before { if (args().first().int() == 9) resultNull() }
             }
         }
     }

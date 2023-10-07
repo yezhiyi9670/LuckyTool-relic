@@ -76,43 +76,41 @@ object LockScreenClock : YukiBaseHooker() {
             "com.oplusos.systemui.keyguard.clock.DualClockView", //C13
             "com.oplus.systemui.shared.clocks.DualClockView" //C14
         ).toClass().apply {
-            method { param { it.contains(weatherInfoClazz) } }.giveAll().forEach {
-                it.hook {
-                    after {
-                        if (!dualClock) return@after
-                        val type: String = method.name.let { s ->
-                            if (s.contains("updateLocatedTime")) "LocatedTime"
-                            else if (s.contains("updateResidentTime")) "ResidentTime"
-                            else return@after
+            method { param { it.contains(weatherInfoClazz) } }.hookAll {
+                after {
+                    if (!dualClock) return@after
+                    val type: String = method.name.let { s ->
+                        if (s.contains("updateLocatedTime")) "LocatedTime"
+                        else if (s.contains("updateResidentTime")) "ResidentTime"
+                        else return@after
+                    }
+                    when (type) {
+                        "LocatedTime" -> {
+                            val mLocatedTimeHour =
+                                field { name = "mLocatedTimeHour" }.get(instance)
+                                    .cast<TextView>()
+                                    ?: return@after
+                            val mLocatedTimeInfo =
+                                field { name = "mLocatedTimeInfo" }.get(instance).any()
+                                    ?: return@after
+                            val mHour =
+                                mLocatedTimeInfo.current().method { name = "getHour" }
+                                    .invoke<String>() ?: return@after
+                            mLocatedTimeHour.setClockRed(mHour, redMode)
                         }
-                        when (type) {
-                            "LocatedTime" -> {
-                                val mLocatedTimeHour =
-                                    field { name = "mLocatedTimeHour" }.get(instance)
-                                        .cast<TextView>()
-                                        ?: return@after
-                                val mLocatedTimeInfo =
-                                    field { name = "mLocatedTimeInfo" }.get(instance).any()
-                                        ?: return@after
-                                val mHour =
-                                    mLocatedTimeInfo.current().method { name = "getHour" }
-                                        .invoke<String>() ?: return@after
-                                mLocatedTimeHour.setClockRed(mHour, redMode)
-                            }
 
-                            "ResidentTime" -> {
-                                val mResidentTimeHour =
-                                    field { name = "mResidentTimeHour" }.get(instance)
-                                        .cast<TextView>()
-                                        ?: return@after
-                                val mResidentTimeInfo =
-                                    field { name = "mResidentTimeInfo" }.get(instance).any()
-                                        ?: return@after
-                                val mHour =
-                                    mResidentTimeInfo.current().method { name = "getHour" }
-                                        .invoke<String>() ?: return@after
-                                mResidentTimeHour.setClockRed(mHour, redMode)
-                            }
+                        "ResidentTime" -> {
+                            val mResidentTimeHour =
+                                field { name = "mResidentTimeHour" }.get(instance)
+                                    .cast<TextView>()
+                                    ?: return@after
+                            val mResidentTimeInfo =
+                                field { name = "mResidentTimeInfo" }.get(instance).any()
+                                    ?: return@after
+                            val mHour =
+                                mResidentTimeInfo.current().method { name = "getHour" }
+                                    .invoke<String>() ?: return@after
+                            mResidentTimeHour.setClockRed(mHour, redMode)
                         }
                     }
                 }
@@ -146,40 +144,38 @@ object LockScreenClock : YukiBaseHooker() {
                 "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13
                 "com.oplus.systemui.shared.clocks.RedHorizontalDualClockView" //C14
             ).toClass().apply {
-                method { param { it.contains(timeInfoClazz) };paramCount = 3 }.giveAll().forEach {
-                    it.hook {
-                        after {
-                            if (!dualClock) return@after
-                            val type: String = method.name.let { s ->
-                                if (s.contains("updateLocateTime")) "LocateTime"
-                                else if (s.contains("updateResidentTime")) "ResidentTime"
-                                else return@after
+                method { param { it.contains(timeInfoClazz) };paramCount = 3 }.hookAll {
+                    after {
+                        if (!dualClock) return@after
+                        val type: String = method.name.let { s ->
+                            if (s.contains("updateLocateTime")) "LocateTime"
+                            else if (s.contains("updateResidentTime")) "ResidentTime"
+                            else return@after
+                        }
+                        val view = args().first().any() ?: return@after
+                        when (type) {
+                            "LocateTime" -> {
+                                val mLocatedTimeHour =
+                                    view.current()
+                                        .field { name = "mTvHorizontalLocateClockHour" }
+                                        .cast<TextView>() ?: return@after
+                                val mLocatedTimeInfo = args().last().any() ?: return@after
+                                val mHour =
+                                    mLocatedTimeInfo.current().method { name = "getHour" }
+                                        .invoke<String>() ?: return@after
+                                mLocatedTimeHour.setClockRed(mHour, redMode)
                             }
-                            val view = args().first().any() ?: return@after
-                            when (type) {
-                                "LocateTime" -> {
-                                    val mLocatedTimeHour =
-                                        view.current()
-                                            .field { name = "mTvHorizontalLocateClockHour" }
-                                            .cast<TextView>() ?: return@after
-                                    val mLocatedTimeInfo = args().last().any() ?: return@after
-                                    val mHour =
-                                        mLocatedTimeInfo.current().method { name = "getHour" }
-                                            .invoke<String>() ?: return@after
-                                    mLocatedTimeHour.setClockRed(mHour, redMode)
-                                }
 
-                                "ResidentTime" -> {
-                                    val mResidentTimeHour =
-                                        view.current()
-                                            .field { name = "mTvHorizontalResidentClockHour" }
-                                            .cast<TextView>() ?: return@after
-                                    val mResidentTimeInfo = args().last().any() ?: return@after
-                                    val mHour =
-                                        mResidentTimeInfo.current().method { name = "getHour" }
-                                            .invoke<String>() ?: return@after
-                                    mResidentTimeHour.setClockRed(mHour, redMode)
-                                }
+                            "ResidentTime" -> {
+                                val mResidentTimeHour =
+                                    view.current()
+                                        .field { name = "mTvHorizontalResidentClockHour" }
+                                        .cast<TextView>() ?: return@after
+                                val mResidentTimeInfo = args().last().any() ?: return@after
+                                val mHour =
+                                    mResidentTimeInfo.current().method { name = "getHour" }
+                                        .invoke<String>() ?: return@after
+                                mResidentTimeHour.setClockRed(mHour, redMode)
                             }
                         }
                     }

@@ -31,11 +31,9 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
                 name = member[1]
                 if (member[0] == OPIA) returnType = BooleanType
                 if (member[0] == ADRU) returnType = IntType
-            }.giveAll().forEach {
-                it.hook {
-                    if (member[0] == OPIA) replaceToFalse()
-                    if (member[0] == ADRU) replaceTo(9)
-                }
+            }.hookAll {
+                if (member[0] == OPIA) replaceToFalse()
+                if (member[0] == ADRU) replaceTo(9)
             }
         }
         //Source OPlusPackageInstallerActivity

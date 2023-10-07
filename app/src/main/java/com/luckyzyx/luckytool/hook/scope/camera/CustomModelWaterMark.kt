@@ -47,13 +47,11 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     }
                 }
             }?.firstOrNull()?.className?.toClass()?.apply {
-                method { emptyParam();returnType = StringClass }.giveAll().forEach {
-                    it.hook {
-                        after {
-                            val res = result<String>() ?: return@after
-                            if (res.contains("getVendorMarketName")) return@after
-                            result = waterMark
-                        }
+                method { emptyParam();returnType = StringClass }.hookAll {
+                    after {
+                        val res = result<String>() ?: return@after
+                        if (res.contains("getVendorMarketName")) return@after
+                        result = waterMark
                     }
                 }
             }
@@ -81,14 +79,12 @@ object CustomModelWaterMark : YukiBaseHooker() {
                     }
                 }
             }?.firstOrNull()?.className?.toClass()?.apply {
-                method { param(StringClass);returnType = StringClass }.giveAll().forEach {
-                    it.hook {
-                        after {
-                            val res = result<String>() ?: return@after
-                            if (res.contains("removeChineseOfString")) return@after
-                            if (res.toIntOrNull() != null) return@after
-                            result = waterMark
-                        }
+                method { param(StringClass);returnType = StringClass }.hookAll {
+                    after {
+                        val res = result<String>() ?: return@after
+                        if (res.contains("removeChineseOfString")) return@after
+                        if (res.toIntOrNull() != null) return@after
+                        result = waterMark
                     }
                 }
             }

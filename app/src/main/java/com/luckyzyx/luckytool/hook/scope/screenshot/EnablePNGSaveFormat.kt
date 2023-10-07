@@ -26,14 +26,12 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
                 }
             }
         }?.firstOrNull()?.className?.toClass()?.apply {
-            method { returnType = StringClass }.giveAll().forEach {
-                it.hook {
-                    after {
-                        result = when (result<String>()) {
-                            "image/jpeg" -> "image/png"
-                            ".jpg" -> ".png"
-                            else -> return@after
-                        }
+            method { returnType = StringClass }.hookAll {
+                after {
+                    result = when (result<String>()) {
+                        "image/jpeg" -> "image/png"
+                        ".jpg" -> ".png"
+                        else -> return@after
                     }
                 }
             }

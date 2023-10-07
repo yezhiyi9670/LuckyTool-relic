@@ -43,20 +43,18 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                 }
             }
         }?.firstOrNull()?.className?.toClass()?.apply {
-            method { emptyParam();returnType = ListClass }.giveAll().forEach {
-                it.hook {
-                    after {
-                        val field = result<List<String>>() ?: return@after
-                        if (field.isEmpty()) return@after
-                        result = field.toMutableList().apply {
-                            if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
-                                val listString = scrollList.replaceSpace
-                                if (listString.contains("\n")) {
-                                    listString.split("\n").forEach { s ->
-                                        if (s.isNotBlank()) add(s)
-                                    }
-                                } else add(scrollList)
-                            }
+            method { emptyParam();returnType = ListClass }.hookAll {
+                after {
+                    val field = result<List<String>>() ?: return@after
+                    if (field.isEmpty()) return@after
+                    result = field.toMutableList().apply {
+                        if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
+                            val listString = scrollList.replaceSpace
+                            if (listString.contains("\n")) {
+                                listString.split("\n").forEach { s ->
+                                    if (s.isNotBlank()) add(s)
+                                }
+                            } else add(scrollList)
                         }
                     }
                 }
