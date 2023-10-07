@@ -591,6 +591,9 @@
     <string name="remove_ads_from_weather_page_summary">Внедрив JS на страницу m.weathercn.com для достижения эффекта блокировки рекламы, он подходит для функций, требующих браузера, таких как погода за последние 15 дней, к которой вы переходите через приложение погоды</string>
     <string name="remove_ads_from_download_dialog">Удалить рекламу из диалога загрузки</string>
     <string name="remove_ads_at_download_page_bottom">Удалить рекламу в нижней части страницы загрузки</string>
+    <!--OplusBreeno-->
+    <string name="BreenoTouch">Breeno Touch</string>
+    <string name="remove_app_recommend_card">Remove app recommend card</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

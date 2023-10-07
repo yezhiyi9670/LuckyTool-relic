@@ -3389,3 +3389,37 @@ class OplusGesture : BaseScopePreferenceFeagment() {
     override fun isEnableOpenMenu(): Boolean = true
     override fun callOpenMenu() = jumpGesture(requireActivity())
 }
+
+class OplusBreenoTouch : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.coloros.directui", "com.coloros.colordirectservice")
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_recommend_card)
+                key = "remove_touch_app_recommend_card"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+        }
+    }
+
+    override fun isEnableRestartMenu(): Boolean = true
+}
+
+class OplusSearchBox : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.heytap.quicksearchbox")
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_app_recommend_card)
+                key = "remove_searchbox_app_recommend_card"
+                setDefaultValue(false)
+                isIconSpaceReserved = false
+            })
+        }
+    }
+
+    override fun isEnableRestartMenu(): Boolean = true
+}

@@ -17,6 +17,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookBrowser
 import com.luckyzyx.luckytool.hook.hooker.HookCamera
 import com.luckyzyx.luckytool.hook.hooker.HookCloudService
 import com.luckyzyx.luckytool.hook.hooker.HookDialogRelated
+import com.luckyzyx.luckytool.hook.hooker.HookDirectUI
 import com.luckyzyx.luckytool.hook.hooker.HookFingerPrintRelated
 import com.luckyzyx.luckytool.hook.hooker.HookGallery
 import com.luckyzyx.luckytool.hook.hooker.HookGesture
@@ -33,6 +34,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookPackageInstaller
 import com.luckyzyx.luckytool.hook.hooker.HookPermissionController
 import com.luckyzyx.luckytool.hook.hooker.HookPhoneManager
 import com.luckyzyx.luckytool.hook.hooker.HookPictorial
+import com.luckyzyx.luckytool.hook.hooker.HookQuickSearchBox
 import com.luckyzyx.luckytool.hook.hooker.HookSafeCenter
 import com.luckyzyx.luckytool.hook.hooker.HookScreenshot
 import com.luckyzyx.luckytool.hook.hooker.HookSettings
@@ -45,7 +47,6 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
-import com.luckyzyx.luckytool.hook.scope.battery.HookBatteryNotify
 import com.luckyzyx.luckytool.hook.scope.systemui.HookSystemUIFeature
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarBattery
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock
@@ -77,8 +78,6 @@ object MainHook : IYukiHookXposedInit {
         if (prefs(ModulePrefs).getBoolean("enable_module", false).not()) return@encase
         if (prefs(SettingsPrefs).getBoolean("is_su", false).not()) return@encase
 
-        if (processName.substringBefore(":") != packageName) return@encase
-
         //系统框架
         loadSystem(HookAndroid)
 
@@ -92,7 +91,6 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.android.systemui", StatusBarNetWorkSpeed)
         //状态栏通知
         loadApp("com.android.systemui", StatusBarNotify)
-        loadApp("com.oplus.battery", HookBatteryNotify)
         loadApp("com.coloros.phonemanager", HookPhoneManager)
 
         //状态栏通知限制
@@ -179,6 +177,10 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.oplus.gesture", HookGesture)
         //权限控制器
         loadApp("com.android.permissioncontroller", HookPermissionController)
+        //小布识屏
+        loadApp("com.coloros.directui", HookDirectUI)
+        //全局搜索
+        loadApp("com.heytap.quicksearchbox", HookQuickSearchBox)
 
         //其他APP
         loadApp(

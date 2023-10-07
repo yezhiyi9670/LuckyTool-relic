@@ -88,15 +88,14 @@ object HookCameraConfig : YukiBaseHooker() {
                     returnType = ListClass
                 }.hookAll {
                     after {
-                        val type = safeOfNull { method.genericReturnType.typeName }
-                            ?: return@after
+                        val type = safeOfNull { method.genericReturnType.typeName } ?: return@after
                         if (type.contains(StringClass.name).not()) return@after
                         when (args().first().string()) {
                             //Source FilterGroupManager 照片 / 人像 大师滤镜
-                            "com.oplus.photo.master.filter.type.list",
-                            "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter)
-                                result = listOf(
-                                    "Emerald.cube.rgb.bin", "Radiance.cube.rgb.bin",
+                            "com.oplus.photo.master.filter.type.list", "com.oplus.portrait.master.filter.type.list" -> if (isHasselblad && masterFilter) result =
+                                listOf(
+                                    "Emerald.cube.rgb.bin",
+                                    "Radiance.cube.rgb.bin",
                                     "Serenity.cube.rgb.bin"
                                 )
                         }

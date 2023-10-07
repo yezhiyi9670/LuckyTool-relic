@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.drake.net.scope.AndroidScope
 import com.drake.net.utils.scopeLife
-import com.drake.net.utils.withIO
+import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -91,7 +91,7 @@ class LoggerFragment : Fragment(), MenuProvider {
             binding.swipeRefreshLayout.isRefreshing = true
             binding.logNodataView.isVisible = false
             requireActivity().resources.getStringArray(R.array.xposed_scope).forEach { scope ->
-                withIO {
+                withDefault {
                     requireActivity().dataChannel(scope).allowSendTooLargeData()
                         .obtainLoggerInMemoryData { its ->
                             its.takeIf { e -> e.isNotEmpty() }?.run { listData.addAll(its) }
@@ -107,8 +107,8 @@ class LoggerFragment : Fragment(), MenuProvider {
 
     override fun onResume() {
         super.onResume()
-        loadLogger()
         initController()
+        loadLogger()
     }
 
     override fun onPause() {

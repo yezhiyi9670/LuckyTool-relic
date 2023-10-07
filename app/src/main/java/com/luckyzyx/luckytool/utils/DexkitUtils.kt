@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.utils
 
 import com.highcapable.yukihookapi.hook.log.YLog
-import com.luckyzyx.luckytool.BuildConfig
 import org.luckypray.dexkit.DexKitBridge
 import org.luckypray.dexkit.query.ClassDataList
 import org.luckypray.dexkit.query.MethodDataList
@@ -10,7 +9,7 @@ import org.luckypray.dexkit.query.MethodDataList
 object DexkitUtils {
     const val tag = "LuckyTool"
     const val print = true
-    val debug = BuildConfig.DEBUG
+    val debug = false//BuildConfig.DEBUG
 
     /**
      * 创建Dexkit实例

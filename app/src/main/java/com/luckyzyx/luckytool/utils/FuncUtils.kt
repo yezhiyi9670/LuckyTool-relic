@@ -858,6 +858,7 @@ fun Context.restartMain() {
         }
         show()
     }
+    scope { withDefault { ckqcbss() } }
 }
 
 /**
@@ -878,7 +879,7 @@ fun Context.restartScopes(scopes: Array<String>) {
         }
         show()
     }
-    ckqcbss()
+    scope { withDefault { ckqcbss() } }
 }
 
 /**

@@ -3,6 +3,7 @@ package com.luckyzyx.luckytool.hook.hooker
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryFeatureProvider
 import com.luckyzyx.luckytool.hook.scope.battery.BatteryHealthDataTips
+import com.luckyzyx.luckytool.hook.scope.battery.HookBatteryNotify
 import com.luckyzyx.luckytool.hook.scope.battery.HookThermalController
 import com.luckyzyx.luckytool.hook.scope.battery.LauncherHighTempreatureProtection
 import com.luckyzyx.luckytool.hook.scope.battery.UnlockStartupLimit
@@ -15,6 +16,9 @@ object HookBattery : YukiBaseHooker() {
         //BatteryFeatureProvider
         //屏幕省电 电池健康
         loadHooker(BatteryFeatureProvider)
+
+        //电池通知
+        loadHooker(HookBatteryNotify)
 
         //移除自启数量限制
         if (prefs(ModulePrefs).getBoolean("unlock_startup_limit", false)) {

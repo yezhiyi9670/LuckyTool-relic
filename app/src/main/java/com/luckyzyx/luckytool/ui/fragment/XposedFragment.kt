@@ -27,7 +27,6 @@ import com.highcapable.yukihookapi.hook.xposed.prefs.ui.ModulePreferenceFragment
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.A13
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.ThemeUtils
 import com.luckyzyx.luckytool.utils.arraySummaryDot
@@ -413,6 +412,40 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                 }
             },
             Preference(context).apply {
+                key = "com.coloros.directui"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_app_recommend_card),
+                )
+                isVisible = context.checkPackName(key) && context.checkPackName(
+                    "com.coloros.colordirectservice"
+                )
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusBreenoTouch, title)
+                    true
+                }
+            },
+            Preference(context).apply {
+                key = "com.heytap.quicksearchbox"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_app_recommend_card),
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusSearchBox, title)
+                    true
+                }
+            },
+            Preference(context).apply {
                 key = "com.ruet_cse_1503050.ragib.appbackup.pro"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource
@@ -460,7 +493,6 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
     override fun onResume() {
         super.onResume()
         init()
-        requireActivity().ckqcbss()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

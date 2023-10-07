@@ -475,7 +475,7 @@
     <string name="force_display_process_management">Vynutit zobrazení řízení procesů</string>
     <string name="force_display_disabled_apps_manager">Vynutit zobrazení správce zakázaných aplikací</string>
     <string name="settings_phone_preference">O telefonu</string>
-    <string name="set_processor_click_page">Nastavit procesor pro přechod na stránku</string>
+    <string name="set_processor_click_page">Nastavit jméno procesoru na stránce Informace o zařízení</string>
     <string name="customize_device_sharing_page_parameters">Konfigurace nastavení stránky sdílení zařízení</string>
     <string name="settings_developer_preference">Možnosti pro vývojáře</string>
     <string name="remove_dpi_restart_recovery">Zabránit návratu DPI na původní hodnotu po restartování zařízení</string>
@@ -591,6 +591,9 @@
     <string name="remove_ads_from_weather_page_summary">Vložením JS do stránky m.weathercn.com, aby se dosáhlo efektu blokování reklamy, se hodí funkce, které vyžadují prohlížeč, jako je počasí za posledních 15 dní, na které se přejde přes aplikaci počasí</string>
     <string name="remove_ads_from_download_dialog">Odstranit reklamy z dialogového okna stahování</string>
     <string name="remove_ads_at_download_page_bottom">Odstranit reklamy v dolní části stránky stahování</string>
+    <!--OplusBreeno-->
+    <string name="BreenoTouch">Dotyk Breeno</string>
+    <string name="remove_app_recommend_card">Remove app recommend card</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Přeskočte úvodní obrazovku</string>
     <string name="vip_download">Stáhnout originál</string>

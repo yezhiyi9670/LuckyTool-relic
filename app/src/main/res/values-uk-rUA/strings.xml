@@ -591,6 +591,9 @@
     <string name="remove_ads_from_weather_page_summary">By injecting JS into the page m.weathercn.com to achieve the effect of blocking ads, it is suitable for functions that require a browser, such as the weather of the past 15 days that you jump to through the weather app</string>
     <string name="remove_ads_from_download_dialog">Remove ads from download dialog</string>
     <string name="remove_ads_at_download_page_bottom">Remove ads at the bottom of download page</string>
+    <!--OplusBreeno-->
+    <string name="BreenoTouch">Breeno Touch</string>
+    <string name="remove_app_recommend_card">Remove app recommend card</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустити стартову сторінку</string>
     <string name="vip_download">Завантажити вихідне зображення</string>

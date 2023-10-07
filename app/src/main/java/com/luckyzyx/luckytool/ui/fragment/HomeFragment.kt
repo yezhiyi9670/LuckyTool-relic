@@ -24,7 +24,6 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.databinding.FragmentHomeBinding
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 
 class HomeFragment : Fragment(), MenuProvider {
 
@@ -219,15 +218,14 @@ class HomeFragment : Fragment(), MenuProvider {
 
         binding.tv.apply {
             isVisible = false
-            text = context.ckqcbss().toString()
         }
     }
 
     private fun initSystemInfoText(funcController: IGlobalFuncController) {
         scopeLife {
             val deviceInfo = withDefault { requireActivity().getDeviceInfo(funcController) }
+            binding.systemInfo.gravity = Gravity.START
             binding.systemInfo.text = deviceInfo
-            binding.systemInfoCard.isVisible = true
         }
     }
 

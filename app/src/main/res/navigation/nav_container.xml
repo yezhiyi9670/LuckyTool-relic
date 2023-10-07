@@ -196,6 +196,20 @@
                 app:exitAnim="@anim/fragment_exit"
                 app:popEnterAnim="@anim/fragment_enter_pop"
                 app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_oplusBreenoTouch"
+                app:destination="@id/oplusBreenoTouch"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+                android:id="@+id/action_nav_function_to_oplusSearchBox"
+                app:destination="@id/oplusSearchBox"
+                app:enterAnim="@anim/fragment_enter"
+                app:exitAnim="@anim/fragment_exit"
+                app:popEnterAnim="@anim/fragment_enter_pop"
+                app:popExitAnim="@anim/fragment_exit_pop" />
     </fragment>
     <fragment
             android:id="@+id/nav_log"
@@ -499,6 +513,14 @@
     <fragment
             android:id="@+id/oplusGallery"
             android:name="com.luckyzyx.luckytool.ui.fragment.OplusGallery"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/oplusBreenoTouch"
+            android:name="com.luckyzyx.luckytool.ui.fragment.OplusBreenoTouch"
+            android:label="{title_label}" />
+    <fragment
+            android:id="@+id/oplusSearchBox"
+            android:name="com.luckyzyx.luckytool.ui.fragment.OplusSearchBox"
             android:label="{title_label}" />
 
 </navigation>

@@ -11,6 +11,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.drake.net.utils.scopeLife
+import com.drake.net.utils.withDefault
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -94,7 +96,7 @@ open class MainActivity : AppCompatActivity() {
             }
         }
         if (!BuildConfig.DEBUG) putBoolean(SettingsPrefs, "enable_module_print_logs", false)
-        putBoolean(SettingsPrefs, "boot_complete", ckqcbs())
+        scopeLife { withDefault { putBoolean(SettingsPrefs, "boot_complete", ckqcbs()) } }
         PermissionUtils(this).checkPermissions()
         UpdateUtils(this).checkBK()
     }
