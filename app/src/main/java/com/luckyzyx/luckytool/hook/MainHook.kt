@@ -77,7 +77,7 @@ object MainHook : IYukiHookXposedInit {
         if (prefs(ModulePrefs).getBoolean("enable_module", false).not()) return@encase
         if (prefs(SettingsPrefs).getBoolean("is_su", false).not()) return@encase
 
-//        if (processName.substringBefore(":") != packageName) return@encase
+        if (processName.substringBefore(":") != packageName) return@encase
 
         //系统框架
         loadSystem(HookAndroid)

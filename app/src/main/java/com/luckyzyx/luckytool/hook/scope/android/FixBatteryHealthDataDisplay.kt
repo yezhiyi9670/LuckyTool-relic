@@ -29,9 +29,8 @@ object FixBatteryHealthDataDisplay : YukiBaseHooker() {
                         BufferedReader(FileReader("/sys/class/oplus_chg/battery/battery_fcc")).readLine()
                             .trim { it <= ' ' }.toFloatOrNull()
                     }
-                    val extIns = field {
-                        type = "com.android.server.BatteryServiceExtImpl".toClass().javaClass
-                    }.get(instance).any()
+                    val extIns = field { type = "com.android.server.BatteryServiceExtImpl" }
+                        .get(instance).any()
                     val context = extIns?.current()?.field { type = ContextClass }?.cast<Context>()
                     val powerIns = PowerProfileUtils(appClassLoader).buildInstance(context)
                     val designValue = PowerProfileUtils(appClassLoader).getBatteryCapacity(powerIns)
