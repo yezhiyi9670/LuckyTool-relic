@@ -91,13 +91,13 @@ object MobileDataIconRelated : YukiBaseHooker() {
                     after {
                         if (!hideNoSS) return@after
                         val iconController =
-                            if (SDK >= A13) instance.current().method { name = "getIconController" }
+                            if (SDK >= A13) method { name = "getIconController" }.get(instance)
                                 .call()
                             else field { name = "iconController" }.get(instance).any()
                         val slotNoSim = field { name = "slotNoSim" }.get(instance).cast<String>()
                         iconController?.current()?.method {
                             name = "setIconVisibility"
-                            if (instanceClass.simpleName == "StatusBarSignalPolicyExt") superClass()
+                            if (simpleName == "StatusBarSignalPolicyExt") superClass()
                         }?.call(slotNoSim, false)
                     }
                 }
@@ -161,7 +161,7 @@ object MobileDataIconRelated : YukiBaseHooker() {
                     after {
                         if (!hideNoSS) return@after
                         val mNoSims = field { name = "mNoSims" }.get(instance).cast<View>()
-                        instance.current().method { name = "animateHide" }.call(mNoSims, 8)
+                        method { name = "animateHide" }.get(instance).call(mNoSims, 8)
                     }
                 }
             }

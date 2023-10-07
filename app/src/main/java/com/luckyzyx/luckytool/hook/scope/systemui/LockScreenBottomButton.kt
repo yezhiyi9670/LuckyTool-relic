@@ -53,7 +53,7 @@ object LockScreenBottomButton : YukiBaseHooker() {
                 after {
                     if (!useFlashLight) return@after
                     val context = instance<ViewGroup>().context
-                    instance.current().method { name = "updateLeftAffordanceVisibility" }.call()
+                    method { name = "updateLeftAffordanceVisibility" }.get(instance).call()
                     val mFlashlightController =
                         field { name = "mFlashlightController" }.get(instance).any()
                     val isEnable = mFlashlightController?.current()?.method { name = "isEnabled" }
@@ -86,14 +86,14 @@ object LockScreenBottomButton : YukiBaseHooker() {
             method { name = "launchLeftAffordance" }.hook {
                 before {
                     if (!useFlashLight) return@before
-                    instance.current().method { name = "baseLaunchLeftAffordance" }.call()
+                    method { name = "baseLaunchLeftAffordance" }.get(instance).call()
                     val mFlashlightController =
                         field { name = "mFlashlightController" }.get(instance).any()
                     val isEnable =
                         mFlashlightController?.current()?.method { name = "isEnabled" }
                             ?.invoke<Boolean>() ?: true
                     mFlashlightController?.setFlashlight(!isEnable)
-                    instance.current().method { name = "updateLeftAffordanceIcon" }.call()
+                    method { name = "updateLeftAffordanceIcon" }.get(instance).call()
                     if (autoCloseScreen) closeScreen(instance<ViewGroup>().context)
                     resultNull()
                 }

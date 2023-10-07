@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.method
 
 object AllowReplaceInstall : YukiBaseHooker() {
@@ -10,7 +9,7 @@ object AllowReplaceInstall : YukiBaseHooker() {
         "com.android.packageinstaller.oplus.OPlusPackageInstallerActivity".toClass().apply {
             method { name = "parseReplaceInstall" }.hook {
                 replaceUnit {
-                    instance.current().method { name = "preSafeInstall" }.call()
+                    method { name = "preSafeInstall" }.get(instance).call()
                 }
             }
         }

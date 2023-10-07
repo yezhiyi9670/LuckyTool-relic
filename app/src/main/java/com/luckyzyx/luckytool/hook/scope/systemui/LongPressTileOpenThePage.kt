@@ -45,16 +45,16 @@ object LongPressTileOpenThePage : YukiBaseHooker() {
             method { name = "getLongClickIntent" }.hook {
                 before {
                     if (!isRestore) return@before
-                    val getState = instance.current().method {
+                    val getState = method {
                         name = "getState";superClass()
-                    }.invoke<Any>() ?: return@before
+                    }.get(instance).invoke<Any>() ?: return@before
                     val state = getState.current().field {
                         name = "state";superClass()
                     }.cast<Int>() ?: return@before
                     result = if (state == 0) Intent("android.settings.WIRELESS_SETTINGS")
-                    else instance.current().method {
+                    else method {
                         name = "getCellularSettingIntent";superClass()
-                    }.invoke<Intent>()
+                    }.get(instance).invoke<Intent>()
                 }
             }
         }

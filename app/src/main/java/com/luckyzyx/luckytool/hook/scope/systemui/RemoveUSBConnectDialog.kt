@@ -3,7 +3,6 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 import android.content.Context
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 
@@ -18,10 +17,10 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
             method { name = "onUsbConnected" }.hook {
                 replaceUnit {
                     val context = args().first().cast<Context>() ?: return@replaceUnit
-                    instance.current().method { name = "onUsbSelect" }.call(1)
-                    instance.current().method { name = "updateAdbNotification" }.call(context)
-                    instance.current().method { name = "updateUsbNotification" }.call(context, 1)
-                    instance.current().method { name = "changeUsbConfig" }.call(context, 1)
+                    method { name = "onUsbSelect" }.get(instance).call(1)
+                    method { name = "updateAdbNotification" }.get(instance).call(context)
+                    method { name = "updateUsbNotification" }.get(instance).call(context, 1)
+                    method { name = "changeUsbConfig" }.get(instance).call(context, 1)
                 }
             }
             method { name = "updateUsbNotification" }.hook {

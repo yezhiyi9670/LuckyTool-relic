@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.packageinstaller
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
@@ -41,7 +40,7 @@ class SkipApkScan(private val commit: String) : YukiBaseHooker() {
         OPIA.toClass().apply {
             method { name = member[2] }.hook {
                 replaceUnit {
-                    instance.current().method { name = member[3] }.call()
+                    method { name = member[3] }.get(instance).call()
                 }
             }
         }

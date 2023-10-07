@@ -191,12 +191,10 @@ object LockScreenClock : YukiBaseHooker() {
                 method { name = "updateLocateTime" }.hook {
                     after {
                         if (!dualClock) return@after
-                        val mContext =
-                            instanceClass.current().field { name = "mContext" }.cast<Context>()
-                                ?: return@after
-                        val mLocatedTimeHour =
-                            instanceClass.current().field { name = "mTvHorizontalLocateClockHour" }
-                                .cast<TextView>() ?: return@after
+                        val mContext = field { name = "mContext" }.get(instance).cast<Context>()
+                            ?: return@after
+                        val mLocatedTimeHour = field { name = "mTvHorizontalLocateClockHour" }
+                            .get(instance).cast<TextView>() ?: return@after
                         val mLocatedTimeInfo =
                             WeatherInfoParseHelper(appClassLoader).getLocalTimeInfo(mContext)
                                 ?: return@after
@@ -209,12 +207,10 @@ object LockScreenClock : YukiBaseHooker() {
                 method { name = "updateResidentTime" }.hook {
                     after {
                         if (!dualClock) return@after
-                        val mContext =
-                            instanceClass.current().field { name = "mContext" }.cast<Context>()
-                                ?: return@after
-                        val mResidentTimeHour = instanceClass.current()
-                            .field { name = "mTvHorizontalResidentClockHour" }.cast<TextView>()
+                        val mContext = field { name = "mContext" }.get(instance).cast<Context>()
                             ?: return@after
+                        val mResidentTimeHour = field { name = "mTvHorizontalResidentClockHour" }
+                            .get(instance).cast<TextView>() ?: return@after
                         val info = ClockSwitchHelper(appClassLoader).let {
                             it.getInstance(mContext)?.let { its -> it.getResidentWeatherInfo(its) }
                         } ?: WeatherInfoParseHelper(appClassLoader).weatherInfoClazz.buildOf {

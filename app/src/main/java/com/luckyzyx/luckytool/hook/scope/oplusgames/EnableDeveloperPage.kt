@@ -14,7 +14,7 @@ object EnableDeveloperPage : YukiBaseHooker() {
             }.hook {
                 before {
                     instance<Activity>().intent.apply {
-                        putExtra("gameDevelopOptions", instanceClass.simpleName)
+                        putExtra("gameDevelopOptions", simpleName)
                         putExtra("openAutomation", -1)
                     }
                     args().first().setNull()

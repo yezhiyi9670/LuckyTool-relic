@@ -4,7 +4,6 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A14
@@ -23,7 +22,7 @@ object StatusBarPower : YukiBaseHooker() {
         clazz.toClassOrNull()?.apply {
             if (SDK < A14) method { name = "onConfigChanged" }.hook {
                 after {
-                    instance.current().method { name = "updatePercentText" }.call()
+                    method { name = "updatePercentText" }.get(instance).call()
                 }
             }
             method { name = "updatePercentText" }.hook {

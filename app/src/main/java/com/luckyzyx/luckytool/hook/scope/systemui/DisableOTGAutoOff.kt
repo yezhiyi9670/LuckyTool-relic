@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.hook.scope.systemui
 
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.method
 
 object DisableOTGAutoOff : YukiBaseHooker() {
@@ -14,7 +13,7 @@ object DisableOTGAutoOff : YukiBaseHooker() {
         ).toClass().apply {
             method { name = "setAutoCloseAlarm" }.hook {
                 after {
-                    instance.current().method { name = "cancelAutoCloseAlarm" }.call()
+                    method { name = "cancelAutoCloseAlarm" }.get(instance).call()
                 }
             }
         }

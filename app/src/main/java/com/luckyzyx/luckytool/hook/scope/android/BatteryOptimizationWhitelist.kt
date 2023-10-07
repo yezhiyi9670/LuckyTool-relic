@@ -1,7 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.android
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
@@ -31,9 +30,9 @@ object BatteryOptimizationWhitelist : YukiBaseHooker() {
                         field { name = "mDefaultWhitelist" }.get().list<String>()
                     whiteListAll?.addAll(mDefaultWhitelist)
 
-                    if (!disableCustom) instance.current().method { name = "getCustomizeWhiteList" }
+                    if (!disableCustom) method { name = "getCustomizeWhiteList" }.get(instance)
                         .call(whiteListAll)
-                    instance.current().method { name = "addNfcJapanFelica" }.call(whiteListAll)
+                    method { name = "addNfcJapanFelica" }.get(instance).call(whiteListAll)
 //                    whiteListAll?.add("com.oplus.upgradeguide")
                 }
             }

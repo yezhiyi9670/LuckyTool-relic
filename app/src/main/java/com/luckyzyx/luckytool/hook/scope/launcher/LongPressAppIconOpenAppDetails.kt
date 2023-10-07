@@ -18,7 +18,7 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                 paramCount(1..2)
             }.hook {
                 after {
-                    val headerView = instance.current().method { name = "getHeaderView" }.call()
+                    val headerView = method { name = "getHeaderView" }.get(instance).call()
                         ?: return@after
                     val iconView =
                         headerView.current().method { name = "getTaskIcon" }.invoke<View>()
@@ -26,9 +26,9 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                     val titleView = headerView.current()
                         .field { name = if (SDK >= A13) "titleTv" else "mTitleView" }
                         .cast<TextView>() ?: return@after
-                    val task = instance.current().method {
+                    val task = method {
                         name = "getTask";superClass(true)
-                    }.call() ?: return@after
+                    }.get(instance).call() ?: return@after
                     val key = task.current().field { name = "key" }.any() ?: return@after
                     val packName = key.current().method { name = "getPackageName" }.invoke<String>()
                         ?: return@after
@@ -46,7 +46,7 @@ object LongPressAppIconOpenAppDetails : YukiBaseHooker() {
                 paramCount = 1
             }.hook {
                 after {
-                    val task = instance.current().method { name = "getTask" }.call() ?: return@after
+                    val task = method { name = "getTask" }.get(instance).call() ?: return@after
                     val key = task.current().field { name = "key" }.any() ?: return@after
                     val packName = key.current().method { name = "getPackageName" }.invoke<String>()
                         ?: return@after

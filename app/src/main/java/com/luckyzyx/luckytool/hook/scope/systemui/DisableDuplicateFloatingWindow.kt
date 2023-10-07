@@ -18,7 +18,7 @@ object DisableDuplicateFloatingWindow : YukiBaseHooker() {
             method { name = "showSinglePreview" }.hook {
                 after {
                     args().first().cast<View>()?.isVisible = false
-                    when (instanceClass.simpleName) {
+                    when (simpleName) {
                         "ClipboardOverlayView" -> instance<View>().isVisible = false
                         "ClipboardOverlayController" -> field { name = "mView" }.get(instance)
                             .cast<View>()?.isVisible = false

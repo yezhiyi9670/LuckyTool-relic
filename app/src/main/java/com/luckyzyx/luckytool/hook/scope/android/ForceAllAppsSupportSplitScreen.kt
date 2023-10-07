@@ -25,9 +25,9 @@ object ForceAllAppsSupportSplitScreen : YukiBaseHooker() {
                     val packageName = args().first().string()
                     val activityName = args(1).string()
                     val candidate = args().last().boolean()
-                    val isSafeSenterUI = instance.current().method {
+                    val isSafeSenterUI = method {
                         name = "isSafeSenterUI";paramCount = 1
-                    }.invoke<Boolean>(activityName)
+                    }.get(instance).invoke<Boolean>(activityName)
                     val appReader = "com.android.server.wm.OplusSplitScreenAppReader".toClass()
                     val getInstance = appReader.method { name = "getInstance" }.get().call()
                     val isInForbidActivityList = getInstance?.current()?.method {

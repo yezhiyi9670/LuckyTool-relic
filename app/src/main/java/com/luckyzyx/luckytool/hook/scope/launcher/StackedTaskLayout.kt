@@ -3,7 +3,6 @@ package com.luckyzyx.luckytool.hook.scope.launcher
 import android.view.View
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.constructor
-import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A13
@@ -53,10 +52,10 @@ object StackedTaskLayout : YukiBaseHooker() {
             method { name = "notifyPageSwitchListener" }.hook {
                 before {
                     if (!isFix) return@before
-                    val count = instance.current().method { name = "getTaskViewCount" }
+                    val count = method { name = "getTaskViewCount" }.get(instance)
                         .invoke<Int>()
                     if (count == null || count == 0) return@before
-                    val view = instance.current().method { name = "getCurrentPageTaskView" }
+                    val view = method { name = "getCurrentPageTaskView" }.get(instance)
                         .invoke<View>() ?: return@before
                     view.z = 999f
                     if (oldView != view) {
@@ -68,12 +67,11 @@ object StackedTaskLayout : YukiBaseHooker() {
             method { name = "resetTaskVisuals" }.hook {
                 after {
                     if (!isFix) return@after
-                    val count = instance.current().method { name = "getTaskViewCount" }
+                    val count = method { name = "getTaskViewCount" }.get(instance)
                         .invoke<Int>()
                     if (count == null || count == 0) return@after
-                    val view = instance.current().method { name = "getCurrentPageTaskView" }
-                        .invoke<View>()
-                        ?: return@after
+                    val view = method { name = "getCurrentPageTaskView" }.get(instance)
+                        .invoke<View>() ?: return@after
                     view.z = 999f
                     if (oldView != view) {
                         oldView?.z = 0f
