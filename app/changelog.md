@@ -6,7 +6,6 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 ### 1.1.0_beta
 
 - [修复] ADB远程调试显示异常
-- [修复] 部分系统Hook进程异常
 - [添加] 移除小布识屏应用推荐卡片
 - [添加] 移除全局搜索应用推荐卡片
 
