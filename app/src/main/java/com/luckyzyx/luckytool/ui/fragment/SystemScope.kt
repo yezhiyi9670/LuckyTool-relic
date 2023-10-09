@@ -1037,7 +1037,7 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
                     title = getString(R.string.force_enable_media_toggle_button)
                     key = "force_enable_media_toggle_button"
                     setDefaultValue(false)
-                    isVisible = SDK >= A13
+                    isVisible = SDK == A13
                     isIconSpaceReserved = false
                 })
             }
