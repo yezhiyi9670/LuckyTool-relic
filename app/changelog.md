@@ -19,6 +19,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 状态栏媒体播放器Hook异常 C14
 - [适配] 浏览器下载页面应用推荐 v40.8.18.9(e788b75)
 - [修复] 设备参数分享页面Hook异常 C14
+- [修复] 隔空手势Hook异常 C14
 
 ### 1.0.19
 

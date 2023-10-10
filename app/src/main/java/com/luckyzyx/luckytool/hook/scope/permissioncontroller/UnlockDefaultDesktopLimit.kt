@@ -90,11 +90,8 @@ object UnlockDefaultDesktopLimit : YukiBaseHooker() {
             }.printLog("UnlockDefaultDesktopLimit tableMethod")
             forceMethod.remove(tableMethod?.firstOrNull())
             forceMethod.apply {
-                if (size != 1) {
-                    printLog("UnlockDefaultDesktopLimit finalMethod")
-                    return@apply
-                }
-                firstOrNull()?.apply {
+                printLog("UnlockDefaultDesktopLimit finalMethod")
+                if (size == 1) firstOrNull()?.apply {
                     className.toClass().apply {
                         method { name = methodName }.hook {
                             replaceToTrue()
