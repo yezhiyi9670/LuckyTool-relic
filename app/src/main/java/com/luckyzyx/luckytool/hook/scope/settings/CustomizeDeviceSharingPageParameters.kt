@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.children
 import androidx.core.view.forEach
@@ -22,9 +21,10 @@ object CustomizeDeviceSharingPageParameters : YukiBaseHooker() {
                 after {
                     val activity = instance<Activity>()
                     val shareViewId = activity.resources.getIdentifier(
-                        "share_view", "id", this@CustomizeDeviceSharingPageParameters.packageName
+                        "share_view", "id",
+                        this@CustomizeDeviceSharingPageParameters.packageName
                     ).takeIf { it != 0 } ?: return@after
-                    val shareView = activity.findViewById<LinearLayout>(shareViewId)
+                    val shareView = activity.findViewById<ViewGroup>(shareViewId)
                         ?: return@after
 
                     shareView.children.forEach {
