@@ -7,11 +7,11 @@ import com.highcapable.yukihookapi.hook.factory.method
 object HookThermalController : YukiBaseHooker() {
     override fun onHook() {
         //Source ThermalControlConfig
-        "com.oplus.thermalcontrol.ThermalControlConfig".toClass().apply {
-            method { name = "isThermalControlEnable" }.hook {
-                replaceToFalse()
-            }
-        }
+//        "com.oplus.thermalcontrol.ThermalControlConfig".toClass().apply {
+//            method { name = "isThermalControlEnable" }.hook {
+//                replaceToFalse()
+//            }
+//        }
         //Source ThermalControllerCenter
         "com.oplus.thermalcontrol.ThermalControllerCenter".toClass().apply {
             method { name = "start5GModemMethods" }.hook {

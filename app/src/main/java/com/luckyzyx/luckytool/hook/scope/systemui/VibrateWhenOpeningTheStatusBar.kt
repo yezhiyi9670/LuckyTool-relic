@@ -31,7 +31,7 @@ object VibrateWhenOpeningTheStatusBar : YukiBaseHooker() {
         }
 
         //Source PanelViewController -> config_vibrateOnIconAnimation
-        "com.android.systemui.statusbar.phone.StatusBar".toClass().apply {
+        "com.android.systemui.statusbar.phone.StatusBar".toClassOrNull()?.apply {
             if (hasField { name = "mVibrateOnOpening" }.not()) return@apply
             method { name = "start" }.hook {
                 after { field { name = "mVibrateOnOpening" }.get(instance).setTrue() }

@@ -5,49 +5,51 @@ import androidx.core.view.isVisible
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.type.android.ContextClass
-import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
 import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
 
 object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
     override fun onHook() {
-        //Source AppRecommendManager
-        DexkitUtils.create(appInfo.sourceDir) { dexkitBridge ->
-            val clsList = dexkitBridge.findClass {
+        //Source AppRecommendManager -> LinearLayout setVisibility 0/8 500L
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
+            dexKitBridge.findMethod {
                 matcher {
-                    fields {
-                        addForType(ContextClass.name)
-                        addForType(BooleanType.name)
-                        addForType("java.util.List")
-                        addForType("com.heytap.nearx.uikit.widget.NearTabLayout")
-                        addForType("com.heytap.browser.downloads.entity.RecommendConfig")
-                    }
-                    methods {
-                        add { paramCount(0);returnType(UnitType.name) }
-                        add { paramCount(0);returnType(BooleanType.name) }
-                        add { returnType("com.heytap.nearx.uikit.widget.NearTabLayout") }
-                        add { returnType("com.heytap.browser.downloads.entity.RecommendConfig") }
-                        add {
-                            paramTypes("com.heytap.browser.downloads.entity.RecommendConfig")
-                            returnType(UnitType.name)
+                    paramCount(0)
+                    returnType(UnitType.name)
+                    usingNumbers(0, 8, 500L)
+                    addUsingField {
+                        matcher {
+                            addPutMethod {
+                                paramTypes("com.heytap.browser.downloads.entity.RecommendConfig")
+                                returnType(UnitType.name)
+                            }
+                            type("com.heytap.browser.downloads.entity.RecommendConfig")
                         }
                     }
-                    usingStrings("AppRecommendManager")
-                }
-            }.printLog("RemoveAdsAtDownloadPageBottom")
-            if (clsList.isNullOrEmpty().not() && clsList?.size == 1) {
-                val methodList = dexkitBridge.findMethod {
-                    searchPackages(clsList.first().name)
-                    matcher {
-                        paramCount(0)
-                        returnType(UnitType.name)
-                        usingNumbers(0, 8, 500L)
+                    addUsingField {
+                        matcher {
+                            addPutMethod {
+                                paramCount(0)
+                                returnType(UnitType.name)
+                            }
+                            type("android.widget.LinearLayout")
+                        }
                     }
-                }.printLog("RemoveAdsAtDownloadPageBottom")
-                if (methodList.isNullOrEmpty().not() && methodList?.size == 1) {
-                    val member = methodList.firstOrNull() ?: return@create
+                    addUsingField {
+                        matcher {
+                            addPutMethod {
+                                paramCount(0)
+                                returnType(UnitType.name)
+                            }
+                            type("com.coui.appcompat.tablayout.COUITabLayout")
+                        }
+                    }
+                }
+            }.apply {
+                printLog("RemoveAdsAtDownloadPageBottom")
+                if (isNullOrEmpty().not() && size == 1) {
+                    val member = firstOrNull() ?: return@create
                     member.className.toClass().apply {
                         method {
                             name = member.methodName
