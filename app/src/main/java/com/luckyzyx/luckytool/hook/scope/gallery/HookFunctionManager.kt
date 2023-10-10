@@ -34,7 +34,7 @@ object HookFunctionManager : YukiBaseHooker() {
                     usingStrings("FunctionSwitchManager")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(StringClass)
                 returnType(BooleanType)

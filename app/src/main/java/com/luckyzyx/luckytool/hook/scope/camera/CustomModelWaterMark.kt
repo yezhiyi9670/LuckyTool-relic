@@ -46,7 +46,7 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         usingStrings("ro.vendor.oplus.market.enname", "ro.vendor.oplus.market.name")
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method { emptyParam();returnType = StringClass }.hookAll {
                     after {
                         val res = result<String>() ?: return@after
@@ -78,7 +78,7 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         usingStrings("WatermarkHelper", "removeChineseOfString")
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method { param(StringClass);returnType = StringClass }.hookAll {
                     after {
                         val res = result<String>() ?: return@after

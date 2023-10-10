@@ -39,7 +39,7 @@ object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
             }.printLog("RemoveAdsAtDownloadPageBottom")
             if (clsList.isNullOrEmpty().not() && clsList?.size == 1) {
                 val methodList = dexkitBridge.findMethod {
-                    searchPackages(clsList.first().className)
+                    searchPackages(clsList.first().name)
                     matcher {
                         paramCount(0)
                         returnType(UnitType.name)

@@ -25,6 +25,8 @@ object MediaPlayerPanel : YukiBaseHooker() {
             "com.oplus.systemui.qs.OplusQSTileMediaContainer" //C14
         ).toClass().hasMethod { name = "setMediaMode" }.not()
 
+//        YLog.debug("isPermanent -> $isPermanent")
+
         if (isPermanent) loadHooker(MediaPlayerDisplayMode)
         else loadHooker(MediaPlayerDisplayModeC13)
         //强制开启媒体切换按钮

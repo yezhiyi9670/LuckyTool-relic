@@ -101,6 +101,20 @@ object HookAndroid : YukiBaseHooker() {
         //屏幕色温RGB调色板
         loadHooker(ScreenColorTemperatureRGBPalette)
 
+
+//        "com.oplus.content.OplusFeatureConfigManager".toClass().apply {
+//            method { name = "hasFeature";param(StringClass) }.hook {
+//                after {
+//                    val key = args().first().cast<String>() ?: return@after
+//
+//                    if (key.contains("remove_force_launcher")) {
+//                        YLog.debug("$key -> $result")
+//                        resultTrue()
+//                    }
+//                }
+//            }
+//        }
+
         //Source ScanPackageUtils
 //        findClass("com.android.server.pm.ScanPackageUtils").hook {
 //            injectMember {

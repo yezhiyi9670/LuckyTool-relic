@@ -54,7 +54,7 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className ?: "null"
+        }
         (clsName + clazz).toClassOrNull()?.apply {
             method { name = "filter";returnType = CharSequenceClass }.hook {
                 intercept()

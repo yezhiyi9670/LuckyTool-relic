@@ -35,10 +35,10 @@ object DexkitUtils {
      */
     fun searchDexClass(
         tag: String, appPath: String, initialization: (DexKitBridge) -> ClassDataList?
-    ): ClassDataList? {
+    ): String {
         val result = create(appPath)?.use { initialization(it) }
         if (print) if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
-        return result
+        return result?.firstOrNull()?.name ?: tag.ifBlank { appPath }
     }
 
     /**
@@ -51,10 +51,10 @@ object DexkitUtils {
             YLog.error("$instance -> findClass isNullOrEmpty", tag = tag)
         } else if (size != 1) {
             var f = ""
-            forEach { f += "[${it.className}]" }
+            forEach { f += "[${it.name}]" }
             YLog.error("$instance -> findClass size ($size) -> $f", tag = tag)
         } else if (debug) {
-            YLog.debug("$instance -> findclass ${first().className}", tag = tag)
+            YLog.debug("$instance -> findclass ${first().name}", tag = tag)
         }
         return this
     }

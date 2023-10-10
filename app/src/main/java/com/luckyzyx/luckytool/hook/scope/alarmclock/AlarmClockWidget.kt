@@ -213,7 +213,7 @@ object AlarmClockWidget : YukiBaseHooker() {
                         }
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method {
                     param { it[0] == ContextClass && it[1] == StringClass }
                     paramCount(2..3)

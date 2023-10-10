@@ -32,7 +32,7 @@ object UnlockStartupLimit : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 emptyParam()
                 returnType = IntType

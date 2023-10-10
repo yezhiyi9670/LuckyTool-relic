@@ -172,7 +172,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                         }
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method {
                     name = "isFunctionEnabledFromCloud"
                     paramCount = 2
@@ -188,7 +188,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                             //全超分辨率云控 -> isSupportFullSupperResolution
                             "super_resolution_config_full" -> if (superResolution) resultTrue()
                             //游戏滤镜
-//                            "game_filter_config" -> resultTrue()
+        //                            "game_filter_config" -> resultTrue()
                         }
                     }
                 }

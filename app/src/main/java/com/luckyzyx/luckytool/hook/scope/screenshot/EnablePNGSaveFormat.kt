@@ -18,14 +18,14 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
                         addForType(Bitmap.CompressFormat::class.java.name)
                     }
                     methods {
-                        add("values")
+                        add { name("values") }
                         add { returnType(StringClass.name) }
                         add { returnType(Bitmap.CompressFormat::class.java.name) }
                     }
                     usingStrings("image/jpeg", "image/png")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method { returnType = StringClass }.hookAll {
                 after {
                     result = when (result<String>()) {

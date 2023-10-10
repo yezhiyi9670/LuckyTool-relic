@@ -46,9 +46,9 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
-//                    name = "isFeatureSupport"
+    //                    name = "isFeatureSupport"
                 param(ContentResolverClass, StringClass)
                 returnType = BooleanType
             }.hook {
@@ -66,7 +66,7 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                 }
             }
             method {
-//                    name = "getInt"
+    //                    name = "getInt"
                 param(ContentResolverClass, StringClass, IntType)
                 returnType = IntType
             }.hook {
@@ -79,7 +79,7 @@ object BatteryFeatureProvider : YukiBaseHooker() {
                 }
             }
             method {
-//                    name = "getBoolean"
+    //                    name = "getBoolean"
                 param(ContentResolverClass, StringClass, BooleanType)
                 returnType = BooleanType
             }.hook {

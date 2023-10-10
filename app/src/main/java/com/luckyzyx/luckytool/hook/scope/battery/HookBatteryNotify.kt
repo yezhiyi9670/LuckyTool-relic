@@ -43,7 +43,7 @@ object HookBatteryNotify : YukiBaseHooker() {
                     usingStrings("NotifyUtil")
                 }
             }
-        }?.firstOrNull()?.className ?: "null"
+        }
 
         if (highPerformance) {
             DexkitUtils.searchDexMethod(

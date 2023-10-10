@@ -31,7 +31,7 @@ object RemoveAdsFromDownloadDialog : YukiBaseHooker() {
                     usingStrings("DownloadCardAdProvider")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 paramCount(1)
                 returnType("com.opos.feed.api.params.AdRequest")

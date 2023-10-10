@@ -28,7 +28,7 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
                     usingStrings("VirusScanNotifyListener")
                 }
             }
-        }?.firstOrNull()?.className?.toClassOrNull()?.apply {
+        }.toClass().apply {
             method { param(ArrayListClass) }.hookAll {
                 intercept()
             }

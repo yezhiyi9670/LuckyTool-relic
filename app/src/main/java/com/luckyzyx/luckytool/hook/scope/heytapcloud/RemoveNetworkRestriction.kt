@@ -36,7 +36,7 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method { emptyParam();returnType = IntType }.giveAll().forEach {
                 it.hook {
                     after { if (result<Int>() == 1) result = 2 }

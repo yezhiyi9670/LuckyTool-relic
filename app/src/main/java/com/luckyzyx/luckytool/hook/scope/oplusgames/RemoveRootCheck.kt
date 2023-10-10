@@ -31,7 +31,7 @@ object RemoveRootCheck : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method { emptyParam();returnType = BundleClass }.hook {
                 after { result<Bundle>()?.putInt("isSafe", 0) }
             }

@@ -27,7 +27,7 @@ object CustomizeLongScreenshotMaxCapturedPages : YukiBaseHooker() {
                     usingStrings("StitchLimitUtils")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param { it[1] == IntType }
                 paramCount = 2

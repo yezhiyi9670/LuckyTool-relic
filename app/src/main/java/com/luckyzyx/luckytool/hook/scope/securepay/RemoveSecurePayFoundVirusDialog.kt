@@ -44,7 +44,7 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(VagueType, StringClass)
                 returnType = UnitType

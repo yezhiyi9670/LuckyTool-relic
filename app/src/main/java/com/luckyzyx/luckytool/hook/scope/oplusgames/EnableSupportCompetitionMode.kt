@@ -27,7 +27,7 @@ object EnableSupportCompetitionMode : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 emptyParam()
                 returnType = BooleanType

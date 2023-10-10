@@ -44,7 +44,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("SysFeatureUtils")
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method { param(StringClass);returnType = BooleanType }.hookAll {
                     before {
                         when (args().first().string()) {
@@ -54,7 +54,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                             //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
                             "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
                             //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
-//                            "oplus.software.display.pwm_switch.support" -> resultTrue()
+        //                            "oplus.software.display.pwm_switch.support" -> resultTrue()
                         }
                     }
                 }
@@ -83,7 +83,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("screen_off_timeout")
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method { param(IntType);returnType = BooleanType }.hookAll {
                     before {
                         when (args().first().int()) {
@@ -142,7 +142,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                         usingStrings("AppFeatureProviderUtils")
                     }
                 }
-            }?.firstOrNull()?.className?.toClass()?.apply {
+            }.toClass().apply {
                 method {
                     param(ContentResolverClass, StringClass)
                     returnType = BooleanType

@@ -42,7 +42,7 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     usingStrings("com.ss.android.ugc.aweme", "com.smile.gifmaker")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method { emptyParam();returnType = ListClass }.hookAll {
                 after {
                     val field = result<List<String>>() ?: return@after

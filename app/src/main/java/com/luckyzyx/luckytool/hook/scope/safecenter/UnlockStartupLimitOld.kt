@@ -44,7 +44,7 @@ object UnlockStartupLimitOld : YukiBaseHooker() {
                     usingStrings("StartupManager")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(ContextClass)
                 returnType = UnitType

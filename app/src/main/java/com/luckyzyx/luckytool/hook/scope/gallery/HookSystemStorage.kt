@@ -38,7 +38,7 @@ object HookSystemStorage : YukiBaseHooker() {
                     usingStrings("configNode")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(VagueType, BooleanType)
                 returnType = BooleanClass
@@ -55,8 +55,8 @@ object HookSystemStorage : YukiBaseHooker() {
                         configNode.contains("feature_is_support_privacy_watermark") -> if (waterMark) resultTrue()
                         //debug.gallery.lns / os.graphic.gallery.photoview.lns
                         configNode.contains("feature_is_support_lns") -> {
-//                            loggerD(msg = "configNode -> lns call -> $result")
-//                            resultTrue()
+    //                            loggerD(msg = "configNode -> lns call -> $result")
+    //                            resultTrue()
                         }
                     }
                 }

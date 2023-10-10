@@ -35,7 +35,7 @@ object DarkModeList : YukiBaseHooker() {
                     usingStrings("DarkModeFileUtils")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             val objectName = classes[0]?.simpleName
             val darkModeData = (canonicalName!! + "\$$objectName").toClass()
             method { param(Reader::class.java) }.hook {

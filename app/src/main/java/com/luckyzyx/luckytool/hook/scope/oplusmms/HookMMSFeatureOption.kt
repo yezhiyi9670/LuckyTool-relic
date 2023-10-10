@@ -38,7 +38,7 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                     usingStrings("FeatureOption")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(ContextClass, StringClass, StringClass)
                 returnType = BooleanType

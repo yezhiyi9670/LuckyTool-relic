@@ -43,7 +43,7 @@ object HookADM : YukiBaseHooker() {
                     usingStrings("firebase.test.lab")
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 modifiers { isStatic }
                 param(ActivityClass)

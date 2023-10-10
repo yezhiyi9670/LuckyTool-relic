@@ -33,13 +33,13 @@ object LauncherHighTempreatureProtection : YukiBaseHooker() {
                         addForType(BroadcastReceiverClass.name)
                     }
                     methods {
-                        add("handleMessage")
+                        add { name("handleMessage") }
                         add { paramTypes(ContextClass.name) }
                         add { paramTypes(IntType.name, IntType.name) }
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             constructor { paramCount = 3 }.hook {
                 after {
                     field { type = HandlerClass }.get(instance)

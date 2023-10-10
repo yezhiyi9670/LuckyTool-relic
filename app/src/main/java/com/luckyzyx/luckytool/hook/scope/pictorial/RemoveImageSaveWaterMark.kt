@@ -39,7 +39,7 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
                     }
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             method {
                 param(BooleanType, VagueType, BitmapClass, BooleanType)
                 returnType = BitmapClass

@@ -28,7 +28,7 @@ object EnableAonGestures : YukiBaseHooker() {
                     )
                 }
             }
-        }?.firstOrNull()?.className?.toClass()?.apply {
+        }.toClass().apply {
             //oplus.software.aon_gestureui_enable
             method {
                 name = "c"
@@ -36,32 +36,32 @@ object EnableAonGestures : YukiBaseHooker() {
                 returnType = BooleanType
             }.hook { replaceToTrue() }
             //oplus.software.aon_gesture_press
-//            injectMember {
-//                method {
-//                    name = "d"
-//                    param(ContextClass)
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
+    //            injectMember {
+    //                method {
+    //                    name = "d"
+    //                    param(ContextClass)
+    //                    returnType = BooleanType
+    //                }
+    //                replaceToTrue()
+    //            }
             //oplus.software.aon_phone_mute
-//            injectMember {
-//                method {
-//                    name = "e"
-//                    param(ContextClass)
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
+    //            injectMember {
+    //                method {
+    //                    name = "e"
+    //                    param(ContextClass)
+    //                    returnType = BooleanType
+    //                }
+    //                replaceToTrue()
+    //            }
             //oplus.software.aon_phone_enable / oplus.software.aon_phone_camera_gesture_recognition
-//            injectMember {
-//                method {
-//                    name = "f"
-//                    param(ContextClass)
-//                    returnType = BooleanType
-//                }
-//                replaceToTrue()
-//            }
+    //            injectMember {
+    //                method {
+    //                    name = "f"
+    //                    param(ContextClass)
+    //                    returnType = BooleanType
+    //                }
+    //                replaceToTrue()
+    //            }
             //oplus.software.aon_enable
             method {
                 name = "g"
