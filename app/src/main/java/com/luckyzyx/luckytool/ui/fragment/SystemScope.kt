@@ -1332,6 +1332,7 @@ class StatusBarBattery : BaseScopePreferenceFeagment() {
                 title = getString(R.string.remove_statusbar_battery_percent)
                 key = "remove_statusbar_battery_percent"
                 setDefaultValue(false)
+                isVisible = SDK < A14
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
