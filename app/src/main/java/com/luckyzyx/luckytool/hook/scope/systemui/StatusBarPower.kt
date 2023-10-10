@@ -10,7 +10,6 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.constructor
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.log.YLog
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
@@ -67,7 +66,6 @@ object StatusBarPower : YukiBaseHooker() {
             method { name = "updatePercentText" }.hook {
                 after {
                     field { name = "batteryPercentText" }.get(instance).cast<TextView>()?.apply {
-                        YLog.debug(text.toString())
                         if (removePercent) text = text.toString().replace("%", "")
                         if (userTypeface) {
                             typeface = Typeface.DEFAULT_BOLD
