@@ -204,7 +204,7 @@ class StatusBar : BaseScopePreferenceFeagment() {
                 )
                 key = "StatusBarLayout"
                 isIconSpaceReserved = false
-                isVisible = SDK >= A13
+                isVisible = SDK == A13
                 setOnPreferenceClickListener {
                     navigatePage(R.id.action_statusBar_to_statusBarLayout, title)
                     true

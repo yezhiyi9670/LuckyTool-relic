@@ -24,7 +24,7 @@ object StatusBarLayout : YukiBaseHooker() {
     private var statusBarBottomMargin: Int = 0
 
     override fun onHook() {
-        if (SDK < A13) return
+        if (SDK != A13) return
         var mLeftLayout: LinearLayout? = null
         var mRightLayout: LinearLayout? = null
         var mCenterLayout: LinearLayout?
@@ -214,15 +214,16 @@ object StatusBarLayout : YukiBaseHooker() {
         }
 
         //Source KeyguardStatusBarViewExImpl
-        VariousClass(
-            "com.oplusos.systemui.statusbar.phone.KeyguardStatusBarViewEx", //A12
-            "com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl"
-        ).toClass().apply {
+        "com.oplus.systemui.statusbar.phone.KeyguardStatusBarViewExImpl".toClass().apply {
             method { name = "onFinishInflate" }.hook {
                 after {
                     //keyguard_status_bar_contents
                     if (isCompatibleMode) field {
-                        name = "keyguardStatusbarLeftContView"
+//                        keyguardStatusbarLeftContView / keyguardStatusBarLeftContView
+                        name {
+                            it.startsWith("keyguardStatus")
+                            it.endsWith("LeftContView")
+                        }
                     }.get(instance).cast<ViewGroup>()?.setPadding(leftMargin, 0, 0, 0)
                 }
             }
