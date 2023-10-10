@@ -1,18 +1,19 @@
 package com.luckyzyx.luckytool.hook.utils.sysui
 
 import android.content.Context
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.factory.buildOf
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarClock.toClass
-import com.luckyzyx.luckytool.utils.A14
-import com.luckyzyx.luckytool.utils.SDK
 
 class LunarHelperUtils(val classLoader: ClassLoader?) {
 
-    val clazz = if (SDK >= A14) "com.oplus.systemui.keyguard.clock.LunarHelper".toClass(classLoader)
-    else "com.oplusos.systemui.keyguard.clock.LunarHelper".toClass(classLoader)
+    val clazz = VariousClass(
+        "com.oplusos.systemui.keyguard.clock.LunarHelper",  //C13
+        "com.oplus.systemui.keyguard.clock.LunarHelper"  //C14
+    ).toClass(classLoader)
 
     /**
      * 构建日历对象实例

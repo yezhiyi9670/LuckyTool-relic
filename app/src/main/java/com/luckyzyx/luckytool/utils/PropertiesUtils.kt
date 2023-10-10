@@ -17,6 +17,12 @@ fun Properties.getStringProperty(key: String, def: String? = ""): String? {
     } else getStringProperty(key)
 }
 
+/**
+ * 读取Int
+ * @receiver Properties
+ * @param key String
+ * @return Int 不存在或异常时返回-1
+ */
 fun Properties.getIntProperty(key: String): Int {
     val stringProperty = getStringProperty(key)
     return if (TextUtils.isEmpty(stringProperty)) {

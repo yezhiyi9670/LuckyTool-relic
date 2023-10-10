@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -12,9 +13,11 @@ import com.highcapable.yukihookapi.hook.factory.injectModuleAppResources
 import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.utils.IChargerUtils
 import com.luckyzyx.luckytool.hook.utils.SystemPropertiesUtils
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.DevicesConfigUtils
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.NotifyUtils
+import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.formatDate
 import com.luckyzyx.luckytool.utils.formatDouble
 import com.luckyzyx.luckytool.utils.getBooleanProperty
@@ -311,8 +314,12 @@ object StatusBarBatteryInfoNotify : YukiBaseHooker() {
         NotifyUtils.clearNotification(context, 112233)
     }
 
+    @SuppressLint("DeprecatedSinceApi")
     private fun getChargeInfo(): Properties = safeOf(Properties()) {
-        val queryChargeInfo = IChargerUtils(appClassLoader).queryChargeInfo()
+        val queryChargeInfo = IChargerUtils(appClassLoader).let {
+            val ins = if (SDK >= A14) it.getInstance() else it.getInstanceC13()
+            it.queryChargeInfo(ins)
+        }
         return Properties().apply {
             load(StringReader(queryChargeInfo))
         }

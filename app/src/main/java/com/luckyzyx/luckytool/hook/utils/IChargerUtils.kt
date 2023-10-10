@@ -1,31 +1,53 @@
 package com.luckyzyx.luckytool.hook.utils
 
+import android.os.IBinder
+import androidx.annotation.DeprecatedSinceApi
+import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.type.android.IBinderClass
 import com.luckyzyx.luckytool.hook.scope.systemui.StatusBarBatteryInfoNotify.toClass
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
-class IChargerUtils(classLoader: ClassLoader?) {
+class IChargerUtils(val classLoader: ClassLoader?) {
 
-    val clazz = "vendor.oplus.hardware.charger.V1_0.ICharger".toClass(classLoader)
+    val clazz = VariousClass(
+        "vendor.oplus.hardware.charger.V1_0.ICharger",  //C13
+        "vendor.oplus.hardware.charger.ICharger" //C14
+    ).toClass(classLoader)
 
-    fun getDefaultInstance(): Any? {
+    val stub = "${clazz.canonicalName}\$Stub".toClass(classLoader)
+    val serviceName = "vendor.oplus.hardware.charger.ICharger/default"
+
+    @DeprecatedSinceApi(34, "不支持在ColorOS14中使用")
+    fun getInstanceC13(): Any? {
         return clazz.method {
             name = "getService"
             emptyParam()
         }.get().call()
     }
 
-    fun queryChargeInfo(): String? {
+    fun getService(): IBinder? {
+        return ServiceManagerUtils(classLoader).getService(serviceName)
+    }
+
+    fun getInstance(): Any? {
+        return stub.method {
+            name = "asInterface"
+            param(IBinderClass)
+        }.get().call(getService())
+    }
+
+    fun queryChargeInfo(ins: Any?): String? {
         return clazz.method {
             name = "queryChargeInfo"
             emptyParam()
-        }.get(getDefaultInstance()).invoke<String>()
+        }.get(ins).invoke<String>()
     }
 
-    fun getUIsohValue(): Int? {
+    fun getUIsohValue(ins: Any?): Int? {
         return clazz.method {
             name = "getUIsohValue"
             emptyParam()
-        }.get(getDefaultInstance()).invoke<Int>()
+        }.get(ins).invoke<Int>()
     }
 }
