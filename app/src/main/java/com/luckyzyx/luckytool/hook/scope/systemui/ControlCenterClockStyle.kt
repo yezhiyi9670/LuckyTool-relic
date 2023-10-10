@@ -1,16 +1,18 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.method
-import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
-import com.luckyzyx.luckytool.utils.A12
+import com.luckyzyx.luckytool.utils.A11
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.getCharColor
+import com.luckyzyx.luckytool.utils.safeOf
 
 object ControlCenterClockStyle : YukiBaseHooker() {
     override fun onHook() {
@@ -23,6 +25,11 @@ object ControlCenterClockStyle : YukiBaseHooker() {
             prefs(ModulePrefs).getString("statusbar_control_center_clock_colon_style", "0")
         dataChannel.wait<String>("statusbar_control_center_clock_colon_style") { colonStyle = it }
 
+        if (SDK == A11) {
+            loadHooker(ControlCenterClockStyleA11)
+            return
+        }
+
         //Source Clock
         "com.android.systemui.statusbar.policy.Clock".toClass().apply {
             method { name = "setShowSecondsAndUpdate" }.hook {
@@ -32,23 +39,12 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                     if (showSecond) args().first().setTrue()
                 }
             }
-            if (SDK < A12) method {
-                name = "setTextWithOpStyle"
-                paramCount = 1
-            }.hook {
-                after {
-                    val view = instance<TextView>()
-                    if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@after
-                    val char = args().first().cast<CharSequence>() ?: return@after
-                    setStyle(view, char, "0", redOneMode)
-                }
-            }
         }
 
         //Source BaseClockExt
         VariousClass(
             "com.oplusos.systemui.ext.BaseClockExt", //C13
-            "com.android.systemui.common.clock.OplusClockEx" //C14
+            "com.oplus.systemui.common.clock.OplusClockExImpl" //C14
         ).toClass().apply {
             method {
                 name = "setTextWithRedOneStyle"
@@ -64,6 +60,7 @@ object ControlCenterClockStyle : YukiBaseHooker() {
         }
     }
 
+    @SuppressLint("DiscouragedApi")
     private fun setStyle(view: TextView, char: CharSequence, colonStyle: String, redStyle: String) {
         val colonMode = if (colonStyle == "1") 1 else if (colonStyle == "2") 2 else 0
         val redMode = if (redStyle == "1") 1 else if (redStyle == "2") 2 else 0
@@ -92,19 +89,53 @@ object ControlCenterClockStyle : YukiBaseHooker() {
                         }
 
                         1 -> {
-                            val colorRes =
-                                ThemeColorUtils(appClassLoader).let {
-                                    it.getColor(17) ?: it.controlCenterRedOne
-                                }
-                            sp.setSpan(
-                                ForegroundColorSpan(colorRes),
-                                i2, i2 + 1, 0
-                            )
+                            val color = safeOf(Color.parseColor("#c41442")) {
+                                view.context.getColor(
+                                    view.resources.getIdentifier(
+                                        "red_clock_hour_color", "color", packageName
+                                    )
+                                )
+                            }
+                            sp.setSpan(ForegroundColorSpan(color), i2, i2 + 1, 0)
                         }
                     }
                 }
             }
             view.setText(sp, TextView.BufferType.SPANNABLE)
         } else view.text = sb
+    }
+
+    object ControlCenterClockStyleA11 : YukiBaseHooker() {
+        override fun onHook() {
+            val showSecond =
+                prefs(ModulePrefs).getBoolean("control_center_clock_show_second", false)
+            var redOneMode =
+                prefs(ModulePrefs).getString("statusbar_control_center_clock_red_one_mode", "0")
+            dataChannel.wait<String>("statusbar_control_center_clock_red_one_mode") {
+                redOneMode = it
+            }
+
+            //Source Clock
+            "com.android.systemui.statusbar.policy.Clock".toClass().apply {
+                method { name = "setShowSecondsAndUpdate" }.hook {
+                    before {
+                        val view = instance<TextView>()
+                        if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@before
+                        if (showSecond) args().first().setTrue()
+                    }
+                }
+                method {
+                    name = "setTextWithOpStyle"
+                    paramCount = 1
+                }.hook {
+                    after {
+                        val view = instance<TextView>()
+                        if (view.context.resources.getResourceEntryName(view.id) != "qs_footer_clock") return@after
+                        val char = args().first().cast<CharSequence>() ?: return@after
+                        setStyle(view, char, "0", redOneMode)
+                    }
+                }
+            }
+        }
     }
 }

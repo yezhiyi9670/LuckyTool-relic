@@ -5,6 +5,8 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
+import com.luckyzyx.luckytool.utils.A14
+import com.luckyzyx.luckytool.utils.SDK
 
 object RemoveUSBConnectDialog : YukiBaseHooker() {
     override fun onHook() {
@@ -23,7 +25,9 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
                     method { name = "changeUsbConfig" }.get(instance).call(context, 1)
                 }
             }
-            method { name = "updateUsbNotification" }.hook {
+            if (SDK >= A14) method { name = "showUsbDialog" }.hook {
+                intercept()
+            } else method { name = "updateUsbNotification" }.hook {
                 before { field { name = "sNeedShowUsbDialog" }.get().setFalse() }
             }
         }

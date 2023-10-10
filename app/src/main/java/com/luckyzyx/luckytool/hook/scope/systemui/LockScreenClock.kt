@@ -1,6 +1,8 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
@@ -11,12 +13,12 @@ import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.hook.utils.sysui.ClockSwitchHelper
-import com.luckyzyx.luckytool.hook.utils.sysui.ThemeColorUtils
 import com.luckyzyx.luckytool.hook.utils.sysui.WeatherInfoParseHelper
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
+import com.luckyzyx.luckytool.utils.safeOf
 import java.util.Calendar
 
 object LockScreenClock : YukiBaseHooker() {
@@ -119,15 +121,20 @@ object LockScreenClock : YukiBaseHooker() {
         if (SDK >= A13) loadHooker(HookRedDuanClock) else loadHooker(HookRedDuanClock12)
     }
 
+    @SuppressLint("DiscouragedApi")
     private fun TextView.setClockRed(format: String, redMode: String) {
         val sp = SpannableStringBuilder(format)
         if (redMode == "1") {
             for (i in format.indices) {
                 if (format[i].toString() == "1") {
-                    val colorRes = ThemeColorUtils(appClassLoader).let {
-                        it.getColor(17) ?: it.controlCenterRedOne
+                    val color = safeOf(Color.parseColor("#c41442")) {
+                        context.getColor(
+                            resources.getIdentifier(
+                                "red_clock_hour_color", "color", packageName
+                            )
+                        )
                     }
-                    sp.setSpan(ForegroundColorSpan(colorRes), i, i + 1, 34)
+                    sp.setSpan(ForegroundColorSpan(color), i, i + 1, 34)
                 }
             }
         }

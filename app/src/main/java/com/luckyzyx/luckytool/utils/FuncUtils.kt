@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -1356,3 +1357,5 @@ fun Fragment.setupMenuProvider(menuProvider: MenuProvider) =
 fun Context.checkModuleValied(isValied: (Boolean) -> Unit) {
     dataChannel("com.android.systemui").checkingVersionEquals(result = isValied)
 }
+
+val redOneTextColor = Color.parseColor("#c41442")
