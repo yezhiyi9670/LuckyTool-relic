@@ -4,6 +4,7 @@ import android.os.Build.VERSION_CODES.R
 import android.os.Build.VERSION_CODES.S
 import android.os.Build.VERSION_CODES.S_V2
 import android.os.Build.VERSION_CODES.TIRAMISU
+import android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE
 import com.highcapable.yukihookapi.annotation.xposed.InjectYukiHookWithXposed
 import com.highcapable.yukihookapi.hook.factory.configs
 import com.highcapable.yukihookapi.hook.factory.encase
@@ -200,7 +201,7 @@ object MainHook : IYukiHookXposedInit {
             run {
                 if (lpparam.packageName == "android" && lpparam.processName == "android") {
                     when (SDK) {
-                        TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
+                        TIRAMISU, UPSIDE_DOWN_CAKE -> CorePatchForT().handleLoadPackage(lpparam)
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
@@ -212,7 +213,7 @@ object MainHook : IYukiHookXposedInit {
         YukiXposedEvent.onInitZygote { startupParam: IXposedHookZygoteInit.StartupParam ->
             run {
                 when (SDK) {
-                    TIRAMISU -> CorePatchForT().initZygote(startupParam)
+                    TIRAMISU, UPSIDE_DOWN_CAKE -> CorePatchForT().initZygote(startupParam)
                     S_V2 -> CorePatchForSv2().initZygote(startupParam)
                     S -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
