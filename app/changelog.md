@@ -22,6 +22,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [修复] 隔空手势Hook异常 C14
 - [适配] 移除解锁页面底部SOS按钮 C14
 - [适配] 锁屏充电动画瓦数显示 C14
+- [适配] 状态栏移动数据与蓝牙图标 C14
 
 ### 1.0.19
 

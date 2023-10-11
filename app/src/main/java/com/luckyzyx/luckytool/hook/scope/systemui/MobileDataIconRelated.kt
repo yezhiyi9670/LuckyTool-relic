@@ -8,9 +8,9 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
+import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A12
-import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -90,13 +90,14 @@ object MobileDataIconRelated : YukiBaseHooker() {
                 }.hook {
                     after {
                         if (!hideNoSS) return@after
-                        val iconController =
-                            if (SDK >= A13) method { name = "getIconController" }.get(instance)
-                                .call()
-                            else field { name = "iconController" }.get(instance).any()
+                        val iconController = if (hasMethod { name = "getIconController" }) method {
+                            name = "getIconController"
+                        }.get(instance).call()
+                        else field { name = "iconController" }.get(instance).any()
                         val slotNoSim = field { name = "slotNoSim" }.get(instance).cast<String>()
                         iconController?.current()?.method {
                             name = "setIconVisibility"
+                            paramCount = 2
                             if (simpleName == "StatusBarSignalPolicyExt") superClass()
                         }?.call(slotNoSim, false)
                     }

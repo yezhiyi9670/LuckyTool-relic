@@ -5,7 +5,9 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object BluetoothIconRelated : YukiBaseHooker() {
     override fun onHook() {
@@ -19,20 +21,18 @@ object BluetoothIconRelated : YukiBaseHooker() {
             method { name = "updateBluetoothIcon";paramCount = 4 }.hook {
                 before {
                     if (!isHide) return@before
-                    val visibility = args().last().boolean()
-                    val mBluetooth = field {
-                        name = "mBluetooth"
-                        superClass(true)
+                    val isBluetoothEnabled = args().last().boolean()
+                    val controller = field {
+                        if (SDK >= A14) name = "bluetoothController"
+                        else {
+                            name = "mBluetooth"
+                            superClass(true)
+                        }
                     }.get(instance).any() ?: return@before
-                    val isBluetoothEnabled = mBluetooth.current().method {
-                        name = "isBluetoothEnabled"
-                    }.invoke<Boolean>() ?: return@before
-                    val isBluetoothConnected = mBluetooth.current().method {
+                    val isBluetoothConnected = controller.current().method {
                         name = "isBluetoothConnected"
                     }.invoke<Boolean>() ?: return@before
-                    args().last().set(
-                        visibility && isBluetoothEnabled && isBluetoothConnected
-                    )
+                    args().last().set(isBluetoothEnabled && isBluetoothConnected)
                 }
             }
         }
