@@ -15,7 +15,10 @@ object HookSystemUIFeature : YukiBaseHooker() {
         loadHooker(HookStatusBarFeature)
         loadHooker(HookNotificationAppFeature)
         loadHooker(HookFlavorOneFeature)
-        if (SDK == A14) loadHooker(HookQSFeatureOption)
+        if (SDK == A14) {
+            loadHooker(HookQSFeatureOption)
+            loadHooker(HookVolumeFeatureOption)
+        }
     }
 
     private object HookFeatureOption : YukiBaseHooker() {
@@ -75,8 +78,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
                         if (notifyImportance) replaceToTrue()
                     }
                 }
-                method { name = "isVolumeBlurDisabled" }.hook {
-                    if (volumeBlur > -1) replaceToFalse()
+                //C13
+                if (hasMethod { name = "isVolumeBlurDisabled" }) {
+                    method { name = "isVolumeBlurDisabled" }.hook {
+                        if (volumeBlur > -1) replaceToFalse()
+                    }
                 }
                 //C12
                 if (hasMethod { name = "isAiSdr2HdrSupport" }) {
@@ -240,6 +246,24 @@ object HookSystemUIFeature : YukiBaseHooker() {
                             "2" -> resultTrue()
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private object HookVolumeFeatureOption : YukiBaseHooker() {
+        override fun onHook() {
+            //音量对话框背景透明度
+            var volumeBlur =
+                prefs(ModulePrefs).getInt("custom_volume_dialog_background_transparency", -1)
+            dataChannel.wait<Int>("custom_volume_dialog_background_transparency") {
+                volumeBlur = it
+            }
+
+            //Source VolumeFeatureOption
+            "com.oplusos.systemui.common.feature.VolumeFeatureOption".toClass().apply {
+                method { name = "isVolumeBlurDisabled" }.hook {
+                    if (volumeBlur > -1) replaceToFalse()
                 }
             }
         }
