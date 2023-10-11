@@ -227,6 +227,9 @@
     <string name="custom_control_center_background_transparency">Tùy chỉnh độ trong suốt của nền trung tâm điều khiển</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">Ô thanh trạng thái</string>
+    <string name="MediaPlayer">Media Player</string>
+    <string name="auto_expand_tile_rows_horizontal">Automatically expand the number of horizontal tile rows</string>
+    <string name="auto_expand_tile_rows_horizontal_summary">When the media player is hidden, two rows of tiles will be displayed in horizontal mode</string>
     <string name="TileLongClickEvent">Sự kiện nhấp chuột dài</string>
     <string name="restore_some_tile_long_press_event">Khôi phục một số sự kiện nhấn và giữ ô xếp</string>
     <string name="restore_some_tile_long_press_event_summary">Khôi phục WiFi, Bluetooth, điểm phát sóng cá nhân và các sự kiện nhấn và giữ ô xếp khác để mở trang tương ứng</string>

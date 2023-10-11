@@ -227,6 +227,9 @@
     <string name="custom_control_center_background_transparency">カスタムコントロールセンターの背景の透明度</string>
     <!--StatusBar Tiles-->
     <string name="StatusBarTiles">ステータスバーのタイル</string>
+    <string name="MediaPlayer">Media Player</string>
+    <string name="auto_expand_tile_rows_horizontal">Automatically expand the number of horizontal tile rows</string>
+    <string name="auto_expand_tile_rows_horizontal_summary">When the media player is hidden, two rows of tiles will be displayed in horizontal mode</string>
     <string name="TileLongClickEvent">タイルの長押しイベント</string>
     <string name="restore_some_tile_long_press_event">タイルの長押しイベントを復活させる</string>
     <string name="restore_some_tile_long_press_event_summary">Wi-Fi、Bluetooth、ホットスポットなどのタイルを長押ししたときに対応するページを開くようにします</string>

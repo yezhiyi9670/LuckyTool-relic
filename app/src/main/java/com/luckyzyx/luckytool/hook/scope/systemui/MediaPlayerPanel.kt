@@ -181,7 +181,6 @@ object MediaPlayerPanel : YukiBaseHooker() {
         val mediaPlayerData = clazz.field { name = "INSTANCE" }.get().any() ?: return null
         val firstActiveMediaOrSortKey = mediaPlayerData.current().method {
             name = if (SDK >= A14) "getFirstActiveMediaSortKey" else "firstActiveMedia"
-            emptyParam()
         }.call() ?: return null
         if (SDK >= A14) mediaPlayerData.current().method {
             name = "getMediaDataKey";paramCount = 1

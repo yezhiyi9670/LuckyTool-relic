@@ -261,9 +261,11 @@ object HookSystemUIFeature : YukiBaseHooker() {
             }
 
             //Source VolumeFeatureOption
-            "com.oplusos.systemui.common.feature.VolumeFeatureOption".toClassOrNull()?.apply {
-                method { name = "isVolumeBlurDisabled" }.hook {
-                    if (volumeBlur > -1) replaceToFalse()
+            "com.oplusos.systemui.common.feature.VolumeFeatureOption".toClass().apply {
+                if (hasMethod { name = "isVolumeBlurDisabled" }) {
+                    method { name = "isVolumeBlurDisabled" }.hook {
+                        if (volumeBlur > -1) replaceToFalse()
+                    }
                 }
             }
         }

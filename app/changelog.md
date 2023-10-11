@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.1.0_beta
+### 1.1.0
 
 - [修复] ADB远程调试显示异常
 - [添加] 移除小布识屏应用推荐卡片
@@ -25,6 +25,8 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 状态栏移动数据与蓝牙图标 C14
 - [修复] 媒体播放器导致部分功能异常 C13.0
 - [适配] 浏览器下载对话框应用推荐 v40.8.20.1(4e1a076)
+- [更改] 媒体播放器功能迁移至状态栏磁贴分区
+- [添加] 自动扩展横屏磁贴行数
 
 ### 1.0.19
 

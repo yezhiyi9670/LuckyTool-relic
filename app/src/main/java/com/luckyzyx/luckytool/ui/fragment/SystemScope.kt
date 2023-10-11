@@ -1018,30 +1018,6 @@ class StatusBarControlCenter : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
-                title = getString(R.string.set_media_player_display_mode)
-                summary = getString(R.string.common_words_current_mode) + ": %s"
-                key = "set_media_player_display_mode"
-                entries = resources.getStringArray(R.array.set_media_player_display_mode_entries)
-                entryValues = arrayOf("0", "1", "2", "3")
-                setDefaultValue("0")
-                isVisible = SDK >= A13
-                isIconSpaceReserved = false
-                setOnPreferenceChangeListener { _, newValue ->
-                    context.dataChannel("com.android.systemui").put(key, newValue)
-                    (activity as MainActivity).restart()
-                    true
-                }
-            })
-            if (context.getString(ModulePrefs, "set_media_player_display_mode") == "1") {
-                addPreference(SwitchPreference(context).apply {
-                    title = getString(R.string.force_enable_media_toggle_button)
-                    key = "force_enable_media_toggle_button"
-                    setDefaultValue(false)
-                    isVisible = SDK == A13
-                    isIconSpaceReserved = false
-                })
-            }
-            addPreference(DropDownPreference(context).apply {
                 title = getString(R.string.set_auto_brightness_button_mode)
                 summary = getString(R.string.common_words_current_mode) + ": %s"
                 key = "set_auto_brightness_button_mode"
@@ -1124,6 +1100,45 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
         preferenceManager.sharedPreferencesName = ModulePrefs
         preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
             addPreference(PreferenceCategory(context).apply {
+                title = getString(R.string.MediaPlayer)
+                key = "MediaPlayer"
+                isIconSpaceReserved = false
+            })
+            addPreference(DropDownPreference(context).apply {
+                title = getString(R.string.set_media_player_display_mode)
+                summary = getString(R.string.common_words_current_mode) + ": %s"
+                key = "set_media_player_display_mode"
+                entries = resources.getStringArray(R.array.set_media_player_display_mode_entries)
+                entryValues = arrayOf("0", "1", "2", "3")
+                setDefaultValue("0")
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    (activity as MainActivity).restart()
+                    true
+                }
+            })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.auto_expand_tile_rows_horizontal)
+                summary = getString(R.string.auto_expand_tile_rows_horizontal_summary)
+                key = "auto_expand_tile_rows_horizontal"
+                setDefaultValue(false)
+                isVisible = SDK >= A13
+                isIconSpaceReserved = false
+            })
+            if (context.getString(ModulePrefs, "set_media_player_display_mode") == "1") {
+                addPreference(SwitchPreference(context).apply {
+                    title = getString(R.string.force_enable_media_toggle_button)
+                    key = "force_enable_media_toggle_button"
+                    setDefaultValue(false)
+                    isVisible = SDK == A13
+                    isIconSpaceReserved = false
+                })
+            }
+
+            //磁贴长按事件
+            addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.TileLongClickEvent)
                 key = "TileLongClickEvent"
                 isVisible = SDK >= A13
@@ -1138,6 +1153,7 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
 
+            //磁贴布局相关
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.TileLayoutRelated)
                 key = "TileLayoutRelated"
@@ -1169,6 +1185,7 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                 }
             })
             if (context.getBoolean(ModulePrefs, "control_center_tile_enable", false)) {
+                //C12
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_unexpanded_columns_vertical)
                     key = "tile_unexpanded_columns_vertical"
@@ -1177,8 +1194,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK < A13
                     isIconSpaceReserved = false
-                    isVisible = SDK < 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_unexpanded_columns_horizontal)
@@ -1188,8 +1205,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK < A13
                     isIconSpaceReserved = false
-                    isVisible = SDK < 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_expanded_columns_vertical)
@@ -1199,8 +1216,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK < A13
                     isIconSpaceReserved = false
-                    isVisible = SDK < 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_expanded_columns_horizontal)
@@ -1210,9 +1227,10 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK < A13
                     isIconSpaceReserved = false
-                    isVisible = SDK < 33
                 })
+                //C13
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_unexpanded_columns_vertical)
                     key = "tile_unexpanded_columns_vertical_c13"
@@ -1221,8 +1239,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK >= A13
                     isIconSpaceReserved = false
-                    isVisible = SDK >= 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_expanded_rows_vertical)
@@ -1232,8 +1250,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK >= A13
                     isIconSpaceReserved = false
-                    isVisible = SDK >= 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_expanded_columns_vertical)
@@ -1243,8 +1261,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK >= A13
                     isIconSpaceReserved = false
-                    isVisible = SDK >= 33
                 })
                 addPreference(SeekBarPreference(context).apply {
                     title = getString(R.string.tile_columns_horizontal_c13)
@@ -1254,8 +1272,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                     min = 1
                     showSeekBarValue = true
                     updatesContinuously = false
+                    isVisible = SDK >= A13
                     isIconSpaceReserved = false
-                    isVisible = SDK >= 33
                 })
             }
         }
