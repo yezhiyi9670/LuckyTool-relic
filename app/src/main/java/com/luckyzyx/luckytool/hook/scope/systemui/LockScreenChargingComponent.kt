@@ -5,9 +5,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.allViews
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
+import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
+import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -35,11 +37,11 @@ object LockScreenChargingComponent : YukiBaseHooker() {
             var textLogo =
                 prefs(ModulePrefs).getString("set_lock_screen_charging_text_logo_style", "0")
             dataChannel.wait<String>("set_lock_screen_charging_text_logo_style") { textLogo = it }
-//            var showWattage =
-//                prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
-//            dataChannel.wait<Boolean>("force_lock_screen_charging_show_wattage") {
-//                showWattage = it
-//            }
+            var showWattage =
+                prefs(ModulePrefs).getBoolean("force_lock_screen_charging_show_wattage", false)
+            dataChannel.wait<Boolean>("force_lock_screen_charging_show_wattage") {
+                showWattage = it
+            }
 
             //Source ChargingLevelAndLogoView
             "com.oplus.charge.view.ChargeLevelAndLogoView".toClass().apply {
@@ -62,6 +64,25 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                         }
                     }
                 }
+            }
+
+            //Source OplusChargeAnimImpl -> ChargeUtil
+            "com.oplus.charge.util.ChargeUtil".toClass().apply {
+                method { name = "showWattage" }.hook {
+                    before {
+                        if (!showWattage) return@before
+                        val chargeInfoObserver = args().first().any() ?: return@before
+                        val getChargeWattage = chargeInfoObserver.current().method {
+                            name = "getChargeWattage"
+                            emptyParam()
+                        }.invoke<String>()?.toIntOrNull() ?: return@before
+                        YLog.debug("getChargeWattage -> $getChargeWattage")
+                        if (getChargeWattage != 0) resultTrue()
+                    }
+                }
+//                method { name = "showTechnology" }.hook {
+//                    if (showWattage) replaceToTrue()
+//                }
             }
         }
     }

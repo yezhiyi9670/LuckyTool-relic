@@ -1777,7 +1777,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
                 title = getString(R.string.force_lock_screen_charging_show_wattage)
                 key = "force_lock_screen_charging_show_wattage"
                 setDefaultValue(false)
-                isVisible = SDK == A13
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
@@ -1805,7 +1805,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
                     resources.getStringArray(R.array.set_full_screen_charging_animation_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
-                isVisible = getOSVersionCode >= 27
+                isVisible = getOSVersionCode in 27..29
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
