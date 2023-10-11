@@ -27,6 +27,28 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [适配] 浏览器下载对话框应用推荐 v40.8.20.1(4e1a076)
 - [更改] 媒体播放器功能迁移至状态栏磁贴分区
 - [添加] 自动扩展横屏磁贴行数
+- [Fix] ADB remote debugging display exception
+- [Add] Remove Xiaobu screen recognition application recommendation card
+- [Add] Remove global search app recommendation card
+- [Change] A14 core patch uses A13 configuration
+- [Fix] Global search v11.8.9(4dc2874)
+- [Fix] Number of rows in tile editing page layout C14
+- [Fix] Remove USB connection dialog box C14
+- [Fix] Lock screen and control center clock red one C14
+- [Fix] Status bar battery font style and size C14
+- [Fix] Abnormal battery information notification data in status bar C14
+- [Fix] The status bar tile is stuck abnormally
+- [Fix] Status bar media player Hook exception C14
+- [Fix] Recommended applications on the browser download page v40.8.18.9(e788b75)
+- [Fix] Hook exception on device parameter sharing page C14
+- [Fix] Air gesture Hook exception C14
+- [Fix] Remove the SOS button at the bottom of the unlock page C14
+- [Fix] Lock screen charging animation wattage display C14
+- [Fix] Status bar mobile data and Bluetooth icon C14
+- [Fix] Media player causing some functional abnormalities C13.0
+- [Fix] Browser download dialog application recommendation v40.8.20.1(4e1a076)
+- [Change] Media player function moved to status bar tile partition
+- [Add] Automatically expand the number of horizontal tile rows
 
 ### 1.0.19
 
