@@ -24,9 +24,7 @@ object MediaPlayerPanel : YukiBaseHooker() {
         val isPermanent = VariousClass(
             "com.oplusos.systemui.qs.OplusQSTileMediaContainer", //C13.1
             "com.oplus.systemui.qs.OplusQSTileMediaContainer" //C14
-        ).toClass().hasMethod { name = "setMediaMode" }.not()
-
-//        YLog.debug("isPermanent -> $isPermanent")
+        ).toClassOrNull()?.hasMethod { name = "setMediaMode" }?.not() ?: false
 
         if (isPermanent) loadHooker(MediaPlayerDisplayMode)
         else loadHooker(MediaPlayerDisplayModeC13)

@@ -9,7 +9,7 @@ import org.luckypray.dexkit.query.MethodDataList
 object DexkitUtils {
     const val tag = "LuckyTool"
     const val print = true
-    val debug = false//BuildConfig.DEBUG
+    val debug = false
 
     /**
      * 创建Dexkit实例

@@ -15,7 +15,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
         loadHooker(HookStatusBarFeature)
         loadHooker(HookNotificationAppFeature)
         loadHooker(HookFlavorOneFeature)
-        if (SDK == A14) {
+        if (SDK >= A14) {
             loadHooker(HookQSFeatureOption)
             loadHooker(HookVolumeFeatureOption)
         }
@@ -261,7 +261,7 @@ object HookSystemUIFeature : YukiBaseHooker() {
             }
 
             //Source VolumeFeatureOption
-            "com.oplusos.systemui.common.feature.VolumeFeatureOption".toClass().apply {
+            "com.oplusos.systemui.common.feature.VolumeFeatureOption".toClassOrNull()?.apply {
                 method { name = "isVolumeBlurDisabled" }.hook {
                     if (volumeBlur > -1) replaceToFalse()
                 }

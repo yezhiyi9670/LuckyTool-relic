@@ -3,8 +3,9 @@ package com.luckyzyx.luckytool.hook.scope.browser
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
-import com.highcapable.yukihookapi.hook.type.java.BooleanType
+import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
+import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
 
 object RemoveAdsFromDownloadDialog : YukiBaseHooker() {
@@ -17,15 +18,17 @@ object RemoveAdsFromDownloadDialog : YukiBaseHooker() {
                 matcher {
                     fields {
                         addForType(ContextClass.name)
-                        addForType(BooleanType.name)
                         addForType(StringClass.name)
                         addForType("com.opos.feed.api.FeedAdNative")
                         addForType("com.opos.feed.api.RecyclerAdHelper")
                         addForType("com.opos.feed.api.params.AdInteractionListener")
                     }
                     methods {
+                        add {
+                            paramTypes(ContextClass.name, IntType.name)
+                            returnType(UnitType.name)
+                        }
                         add { returnType("com.opos.feed.api.params.AdRequest") }
-                        add { returnType("com.opos.feed.api.FeedAdNative") }
                         add { returnType("com.opos.feed.api.RecyclerAdHelper") }
                     }
                     usingStrings("DownloadCardAdProvider")

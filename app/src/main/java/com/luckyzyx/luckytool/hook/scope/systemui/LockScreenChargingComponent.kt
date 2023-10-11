@@ -9,7 +9,6 @@ import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.type.android.TextViewClass
 import com.highcapable.yukihookapi.hook.type.android.TypefaceClass
 import com.luckyzyx.luckytool.utils.ModulePrefs
@@ -76,7 +75,6 @@ object LockScreenChargingComponent : YukiBaseHooker() {
                             name = "getChargeWattage"
                             emptyParam()
                         }.invoke<String>()?.toIntOrNull() ?: return@before
-                        YLog.debug("getChargeWattage -> $getChargeWattage")
                         if (getChargeWattage != 0) resultTrue()
                     }
                 }

@@ -25,9 +25,10 @@ object HookFunctionManager : YukiBaseHooker() {
                         add {
                             paramTypes(StringClass.name)
                             returnType(BooleanType.name)
+                            usingStrings("FunctionSwitchManager", "getGroupName", "spKey")
                         }
                         add {
-                            paramCount(3..5)
+                            paramCount(1..5)
                             returnType(UnitType.name)
                         }
                     }

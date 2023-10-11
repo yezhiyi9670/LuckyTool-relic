@@ -592,8 +592,8 @@
     <string name="remove_ads_from_download_dialog">Удалить рекламу из диалога загрузки</string>
     <string name="remove_ads_at_download_page_bottom">Удалить рекламу в нижней части страницы загрузки</string>
     <!--OplusBreeno-->
-    <string name="BreenoTouch">Breeno Touch</string>
-    <string name="remove_app_recommend_card">Remove app recommend card</string>
+    <string name="BreenoTouch">Касание</string>
+    <string name="remove_app_recommend_card">Удалить карточку с рекомендациями приложения</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>
