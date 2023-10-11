@@ -35,7 +35,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdk = 28
         versionCode = getVersionCode()
-        versionName = "1.1.0"
+        versionName = "1.1.1_beta"
         buildConfigField("String", "APP_CENTER_SECRET", "\"${getAppCenterSecret()}\"")
     }
 

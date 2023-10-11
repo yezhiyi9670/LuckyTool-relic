@@ -3,6 +3,10 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
+### 1.1.1_beta
+
+- [修复] 状态栏移动数据图标Hook异常 C12.1
+
 ### 1.1.0
 
 - [修复] ADB远程调试显示异常

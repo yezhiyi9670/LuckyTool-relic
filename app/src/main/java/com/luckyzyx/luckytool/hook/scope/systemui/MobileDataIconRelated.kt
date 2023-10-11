@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.hasMethod
 import com.highcapable.yukihookapi.hook.factory.method
 import com.luckyzyx.luckytool.utils.A12
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -49,8 +50,10 @@ object MobileDataIconRelated : YukiBaseHooker() {
 //                        .cast<ViewGroup>()?.isVisible = false
                         if (removeInout) field { name = "mDataActivity" }.get(instance)
                             .cast<View>()?.isVisible = false
-                        if (removeType) field { name = "mMobileType" }.get(instance)
-                            .cast<View>()?.isVisible = false
+                        if (removeType) field {
+                            name = "mMobileType"
+                            if (SDK < A13) superClass(true)
+                        }.get(instance).cast<View>()?.isVisible = false
                     }
                 }
                 method {
@@ -73,8 +76,10 @@ object MobileDataIconRelated : YukiBaseHooker() {
 //                        .cast<ViewGroup>()?.isVisible = false
                         if (removeInout) field { name = "mDataActivity" }.get(instance)
                             .cast<View>()?.isVisible = false
-                        if (removeType) field { name = "mMobileType" }.get(instance)
-                            .cast<View>()?.isVisible = false
+                        if (removeType) field {
+                            name = "mMobileType"
+                            if (SDK < A13) superClass(true)
+                        }.get(instance).cast<View>()?.isVisible = false
                     }
                 }
             }

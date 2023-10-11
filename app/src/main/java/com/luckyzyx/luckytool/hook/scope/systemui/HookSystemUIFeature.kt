@@ -183,7 +183,10 @@ object HookSystemUIFeature : YukiBaseHooker() {
                 "com.oplusos.systemui.common.util.NotificationAppFeatureOption", //C13
                 "com.oplusos.systemui.common.feature.NotificationFeatureOption" //C14
             ).toClass().apply {
-                if (SDK < A14) method { name = "originNotificationBehavior" }.hook {
+                method {
+                    name = if (SDK >= A14) "isOriginNotificationBehavior"
+                    else "originNotificationBehavior"
+                }.hook {
                     if (notifyImportance) replaceToTrue()
                 }
 
