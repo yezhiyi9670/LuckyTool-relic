@@ -1123,10 +1123,13 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
             })
             addPreference(SwitchPreference(context).apply {
                 title = getString(R.string.auto_expand_tile_rows_horizontal)
-                summary = getString(R.string.auto_expand_tile_rows_horizontal_summary)
+                summary = arraySummaryLine(
+                    getString(R.string.auto_expand_tile_rows_horizontal_summary),
+                    getString(R.string.auto_expand_tile_rows_horizontal_summary_2)
+                )
                 key = "auto_expand_tile_rows_horizontal"
                 setDefaultValue(false)
-                isVisible = SDK >= A13
+                isVisible = SDK >= A14
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)

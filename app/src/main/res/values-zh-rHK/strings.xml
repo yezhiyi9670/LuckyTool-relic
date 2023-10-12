@@ -230,6 +230,7 @@
     <string name="MediaPlayer">媒体播放器</string>
     <string name="auto_expand_tile_rows_horizontal">自动扩展横屏磁贴行数</string>
     <string name="auto_expand_tile_rows_horizontal_summary">当媒体播放器隐藏时，横屏模式将显示两行磁贴</string>
+    <string name="auto_expand_tile_rows_horizontal_summary_2">需要打开下方磁贴功能总开关</string>
     <string name="TileLongClickEvent">磁贴长按事件</string>
     <string name="restore_some_tile_long_press_event">恢复部分磁贴长按事件</string>
     <string name="restore_some_tile_long_press_event_summary">恢复WiFi、蓝牙、个人热点等磁贴的长按打开对应页面事件</string>

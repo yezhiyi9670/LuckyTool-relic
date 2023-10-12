@@ -38,7 +38,10 @@ object MediaPlayerPanel : YukiBaseHooker() {
         @SuppressLint("DiscouragedApi")
         override fun onHook() {
             var mode = prefs(ModulePrefs).getString("set_media_player_display_mode", "0")
-            dataChannel.wait<String>("set_media_player_display_mode") { mode = it }
+            dataChannel.wait<String>("set_media_player_display_mode") {
+                mode = it
+                ControlCenterTiles.callback?.invoke("set_media_player_display_mode", it)
+            }
 
             //Source updateQsMediaPanelView
             VariousClass(

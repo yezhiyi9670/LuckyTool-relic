@@ -5,7 +5,6 @@ import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterClockStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterDateStyle
 import com.luckyzyx.luckytool.hook.scope.systemui.ControlCenterWhiteBackground
 import com.luckyzyx.luckytool.hook.scope.systemui.EnableNotificationAlignBothSides
-import com.luckyzyx.luckytool.hook.scope.systemui.MediaPlayerPanel
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveControlCenterUserSwitcher
 import com.luckyzyx.luckytool.hook.scope.systemui.RemoveStatusBarBottomNetworkWarn
 import com.luckyzyx.luckytool.utils.A13
@@ -19,9 +18,6 @@ object StatusBarControlCenter : YukiBaseHooker() {
 
         //控制中心日期样式
         loadHooker(ControlCenterDateStyle)
-
-        //媒体播放器
-        if (SDK >= A13) loadHooker(MediaPlayerPanel)
 
         //通知两侧对齐
         if (prefs(ModulePrefs).getBoolean("enable_notification_align_both_sides", false)) {

@@ -230,6 +230,7 @@
     <string name="MediaPlayer">Media Player</string>
     <string name="auto_expand_tile_rows_horizontal">Automatically expand the number of horizontal tile rows</string>
     <string name="auto_expand_tile_rows_horizontal_summary">When the media player is hidden, two rows of tiles will be displayed in horizontal mode</string>
+    <string name="auto_expand_tile_rows_horizontal_summary_2">Need to turn on the switch of the tile function below</string>
     <string name="TileLongClickEvent">Událost daždice při dlouhém stisku</string>
     <string name="restore_some_tile_long_press_event">Obnovit některé události dlouhého stisku</string>
     <string name="restore_some_tile_long_press_event_summary">Obnovit WiFi, Bluetooth, osobní hotspot a další události dlouhého stisku pro otevření odpovídající stránky</string>
