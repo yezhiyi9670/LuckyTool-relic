@@ -1102,6 +1102,7 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
             addPreference(PreferenceCategory(context).apply {
                 title = getString(R.string.MediaPlayer)
                 key = "MediaPlayer"
+                isVisible = SDK >= A13
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
@@ -1873,7 +1874,6 @@ class LockScreen : BaseScopePreferenceFeagment() {
                 title = getString(R.string.remove_lock_screen_bottom_left_button)
                 key = "remove_lock_screen_bottom_left_button"
                 setDefaultValue(false)
-                isVisible = SDK < A14
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
@@ -1911,7 +1911,6 @@ class LockScreen : BaseScopePreferenceFeagment() {
                 title = getString(R.string.remove_lock_screen_bottom_right_camera)
                 key = "remove_lock_screen_bottom_right_camera"
                 setDefaultValue(false)
-                isVisible = SDK < A14
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)

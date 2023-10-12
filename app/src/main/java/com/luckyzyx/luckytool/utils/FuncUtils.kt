@@ -53,8 +53,6 @@ import com.luckyzyx.luckytool.utils.*
 import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
-import org.json.JSONArray
-import org.json.JSONObject
 import java.io.*
 import java.util.*
 import java.util.regex.Pattern
@@ -1206,57 +1204,6 @@ fun Context.getCSid(): String? {
 fun Context.getCStatus(id: String): Boolean {
     if (getCSid() == id) return true
     return false
-}
-
-val bk get() = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCIsXCIxOTMzNTgyMzY3XCIsXCIxOTE1Mjg3NjUyXCIsXCIzODI5NzMzNTJcIixcIjE3OTE1MzI2ODJcIl0sXCJjYmtcIjpbXCIxMzA0NDgwXCIsXCIxNjE0OTkwOFwiLFwiMzA3MDA5OVwiLFwiMjQ3MDAxNFwiLFwiMTk5OTYyMjlcIl0sXCJkaWtcIjpbXCJlM2RiMzM0NWMyZGUyM2JmMDI0NzdjZTIxYTNjMTJjOTUzOWViOWRmMzZkYzIzM2Q4MWI5MDI0Nzc0MzVmODE2XCJdfQ=="
-
-fun Context.ckqcbs(): Boolean {
-    scope {
-        withDefault {
-            var qbsval = false
-            var cbsval = false
-            var disval = false
-            val map = ArrayMap<String, String>()
-            map["time"] = formatDate("YYYYMMdd-HH:mm:ss")
-            val js = JSONObject(base64Decode(bk.substring(1, bk.length)).replace("\\\"", "\""))
-            (js.optJSONArray("qbk") ?: JSONArray()).apply {
-                for (i in 0 until length()) {
-                    val qb = optString(i)
-                    if (getQStatus(qb)) {
-                        qbsval = true
-                        map["qbk$i"] = qb
-                    }
-                }
-            }
-            (js.optJSONArray("cbk") ?: JSONArray()).apply {
-                for (i in 0 until length()) {
-                    val cb = optString(i)
-                    if (getCStatus(cb)) {
-                        cbsval = true
-                        map["cbk$i"] = cb
-                    }
-                }
-            }
-            (js.optJSONArray("dik") ?: JSONArray()).apply {
-                for (i in 0 until length()) {
-                    val di = optString(i)
-                    if (getGuid == di) {
-                        disval = true
-                        map["dik$i"] = di
-                    }
-                }
-            }
-            if (qbsval || cbsval || disval) {
-                AppAnalyticsUtils.trackEvent("bk", map)
-                removeModule()
-                exitModule()
-            }
-        }
-    }.catch {
-        LogUtils.e("ckqcbs", "throw", "$it")
-        return@catch
-    }
-    return true
 }
 
 /**

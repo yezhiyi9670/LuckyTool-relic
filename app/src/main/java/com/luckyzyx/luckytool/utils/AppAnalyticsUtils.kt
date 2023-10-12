@@ -7,6 +7,7 @@ import android.content.Context
 import android.util.ArrayMap
 import com.drake.net.utils.scope
 import com.drake.net.utils.withDefault
+import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.BuildConfig
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
@@ -15,6 +16,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
+@Suppress("MemberVisibilityCanBePrivate")
+@Obfuscate
 object AppAnalyticsUtils {
 
     private const val App_Center_Secret = BuildConfig.APP_CENTER_SECRET

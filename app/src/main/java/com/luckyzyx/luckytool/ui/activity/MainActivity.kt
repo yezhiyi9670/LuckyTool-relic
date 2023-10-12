@@ -25,6 +25,7 @@ import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.ui.fragment.HomeFragment
 import com.luckyzyx.luckytool.ui.service.GlobalFuncControllerService
 import com.luckyzyx.luckytool.utils.*
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
 import kotlin.system.exitProcess
 
 @Suppress("PrivatePropertyName")
@@ -96,7 +97,7 @@ open class MainActivity : AppCompatActivity() {
             }
         }
         if (!BuildConfig.DEBUG) putBoolean(SettingsPrefs, "enable_module_print_logs", false)
-        scopeLife { withDefault { putBoolean(SettingsPrefs, "boot_complete", ckqcbs()) } }
+        scopeLife { withDefault { putBoolean(SettingsPrefs, "boot_complete", ckqcbss()) } }
         PermissionUtils(this).checkPermissions()
         UpdateUtils(this).checkBK()
     }
