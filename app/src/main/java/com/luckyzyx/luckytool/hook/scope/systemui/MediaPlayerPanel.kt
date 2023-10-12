@@ -46,83 +46,82 @@ object MediaPlayerPanel : YukiBaseHooker() {
                 "com.oplus.systemui.qs.OplusQSTileMediaContainer" //C14
             ).toClass().apply {
                 method { name = "setListening" }.hook {
-                    after {
-                        method { name = "updateResources" }.get(instance).call()
-                    }
+                    after { method { name = "updateResources" }.get(instance).call() }
                 }
                 method { name = "updateQsMediaPanelView" }.hook {
-                    replaceUnit {
+                    before {
                         val status = when (mode) {
                             "1" -> 0
                             "2" -> 8
                             "3" -> if (getMediaData() == null) 8 else 0
-                            else -> return@replaceUnit
+                            else -> return@before
                         }
-                        val res = args().first().cast<Resources>() ?: return@replaceUnit
-                        val bool = args().last().cast<Boolean>() ?: return@replaceUnit
+                        val res = args().first().cast<Resources>() ?: return@before
+                        val bool = args().last().cast<Boolean>() ?: return@before
                         val linear = field { name = "mQsMediaPanelContainer" }.get(instance)
-                            .cast<LinearLayout>() ?: return@replaceUnit
+                            .cast<LinearLayout>() ?: return@before
                         val mTmpConstraintSet = field { name = "mTmpConstraintSet" }
-                            .get(instance).any() ?: return@replaceUnit
+                            .get(instance).any() ?: return@before
                         val smallHeight = res.getIdentifier(
                             "oplus_qs_media_panel_height_smallspace",
                             "dimen", MediaPlayerDisplayMode.packageName
-                        ).takeIf { it != 0 } ?: return@replaceUnit
+                        ).takeIf { it != 0 } ?: return@before
                         val height = res.getIdentifier(
                             "oplus_qs_media_panel_height",
                             "dimen", MediaPlayerDisplayMode.packageName
-                        ).takeIf { it != 0 } ?: return@replaceUnit
+                        ).takeIf { it != 0 } ?: return@before
                         val heightSize = safeOfNull {
                             res.getDimensionPixelSize(if (bool) smallHeight else height)
-                        } ?: return@replaceUnit
+                        } ?: return@before
                         mTmpConstraintSet.setVisibilitySet(linear.id, status)
                         if (status == 0) mTmpConstraintSet.constrainHeightSet(
                             linear.id, heightSize
                         )
+                        resultNull()
                     }
                 }
                 method { name = "updateQsSecondTileContainer" }.hook {
-                    replaceUnit {
+                    before {
                         val isShow = when (mode) {
                             "1" -> true
                             "2" -> false
                             "3" -> getMediaData() != null
-                            else -> return@replaceUnit
+                            else -> return@before
                         }
-                        val res = args().first().cast<Resources>() ?: return@replaceUnit
-                        val bool = args().last().cast<Boolean>() ?: return@replaceUnit
+                        val res = args().first().cast<Resources>() ?: return@before
+                        val bool = args().last().cast<Boolean>() ?: return@before
                         val linear = field { name = "mSecondTileContainer" }.get(instance)
-                            .cast<LinearLayout>() ?: return@replaceUnit
+                            .cast<LinearLayout>() ?: return@before
                         val mTmpConstraintSet = field { name = "mTmpConstraintSet" }
-                            .get(instance).any() ?: return@replaceUnit
+                            .get(instance).any() ?: return@before
                         val smallSideMargin = res.getIdentifier(
                             "qs_footer_hl_tile_side_margin_smallspace",
                             "dimen", MediaPlayerDisplayMode.packageName
-                        ).takeIf { it != 0 } ?: return@replaceUnit
+                        ).takeIf { it != 0 } ?: return@before
                         val sideMargin = res.getIdentifier(
                             "qs_footer_hl_tile_side_margin",
                             "dimen", MediaPlayerDisplayMode.packageName
-                        ).takeIf { it != 0 } ?: return@replaceUnit
+                        ).takeIf { it != 0 } ?: return@before
                         val sideSize = safeOfNull {
                             res.getDimensionPixelSize(if (bool) smallSideMargin else sideMargin)
-                        } ?: return@replaceUnit
+                        } ?: return@before
                         val guideLine = res.getIdentifier(
                             "guide_line", "id", MediaPlayerDisplayMode.packageName
-                        ).takeIf { it != 0 } ?: return@replaceUnit
+                        ).takeIf { it != 0 } ?: return@before
                         if (isShow) {
                             val firstTile = field { name = "mFirstTileContainer" }.get(instance)
-                                .cast<LinearLayout>() ?: return@replaceUnit
+                                .cast<LinearLayout>() ?: return@before
                             val smallContainerMargin = res.getIdentifier(
                                 "qs_footer_hl_tile_two_container_margin_top_smallspace",
                                 "dimen", MediaPlayerDisplayMode.packageName
-                            ).takeIf { it != 0 } ?: return@replaceUnit
+                            ).takeIf { it != 0 } ?: return@before
                             val containerMargin = res.getIdentifier(
                                 "qs_footer_hl_tile_two_container_margin_top",
                                 "dimen", MediaPlayerDisplayMode.packageName
-                            ).takeIf { it != 0 } ?: return@replaceUnit
+                            ).takeIf { it != 0 } ?: return@before
                             val containerSize = safeOfNull {
                                 res.getDimensionPixelSize(if (bool) smallContainerMargin else containerMargin)
-                            } ?: return@replaceUnit
+                            } ?: return@before
                             mTmpConstraintSet.connectSet(linear.id, 6, 0, 6, 0)
                             mTmpConstraintSet.connectSet(linear.id, 7, guideLine, 6, sideSize)
                             mTmpConstraintSet.connectSet(
@@ -133,6 +132,7 @@ object MediaPlayerPanel : YukiBaseHooker() {
                             mTmpConstraintSet.connectSet(linear.id, 7, 0, 7, 0)
                             mTmpConstraintSet.connectSet(linear.id, 3, 0, 3, 0)
                         }
+                        resultNull()
                     }
                 }
             }

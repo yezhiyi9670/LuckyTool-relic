@@ -17,8 +17,13 @@ object ControlCenterTilesColumn : YukiBaseHooker() {
         val columnExpandedVerticalC13 =
             prefs(ModulePrefs).getInt("tile_expanded_columns_vertical_c13", 4)
         val columnHorizontal = prefs(ModulePrefs).getInt("tile_columns_horizontal_c13", 4)
-        val autoExpandTile =
+        //媒体播放器模式
+        var mediaMode = prefs(ModulePrefs).getString("set_media_player_display_mode", "0")
+        dataChannel.wait<String>("set_media_player_display_mode_for_tile_rows") { mediaMode = it }
+        //自动扩展
+        var autoExpandTile =
             prefs(ModulePrefs).getBoolean("auto_expand_tile_rows_horizontal", false)
+        dataChannel.wait<Boolean>("auto_expand_tile_rows_horizontal") { autoExpandTile = it }
 
         //Source QuickQSPanel
         "com.android.systemui.qs.QuickQSPanel".toClass().apply {
@@ -38,8 +43,17 @@ object ControlCenterTilesColumn : YukiBaseHooker() {
 //                            else rowExpandedVerticalC13
                             rowExpandedVerticalC13
                         } else {
-                            if (autoExpandTile && MediaPlayerPanel.getMediaData() == null) 2
-                            else return@getScreenOrientation
+                            if (autoExpandTile) {
+                                when (mediaMode) {
+                                    "2" -> 2
+                                    "3" -> {
+                                        if (MediaPlayerPanel.getMediaData() == null) 2
+                                        else return@getScreenOrientation
+                                    }
+
+                                    else -> return@getScreenOrientation
+                                }
+                            } else return@getScreenOrientation
                         }
                         field { name = "mRows" }.get(instance).set(newRows)
                         result = mRows != newRows

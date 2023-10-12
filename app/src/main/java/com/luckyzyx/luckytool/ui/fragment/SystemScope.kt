@@ -1115,6 +1115,8 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
                 setOnPreferenceChangeListener { _, newValue ->
                     context.dataChannel("com.android.systemui").put(key, newValue)
+                    context.dataChannel("com.android.systemui")
+                        .put("set_media_player_display_mode_for_tile_rows", newValue)
                     (activity as MainActivity).restart()
                     true
                 }
@@ -1126,6 +1128,10 @@ class StatusBarTiles : BaseScopePreferenceFeagment() {
                 setDefaultValue(false)
                 isVisible = SDK >= A13
                 isIconSpaceReserved = false
+                setOnPreferenceChangeListener { _, newValue ->
+                    context.dataChannel("com.android.systemui").put(key, newValue)
+                    true
+                }
             })
             if (context.getString(ModulePrefs, "set_media_player_display_mode") == "1") {
                 addPreference(SwitchPreference(context).apply {
