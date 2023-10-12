@@ -25,8 +25,8 @@ object RemoveUSBConnectDialog : YukiBaseHooker() {
                     method { name = "changeUsbConfig" }.get(instance).call(context, 1)
                 }
             }
-            if (SDK >= A14) method { name = "showUsbDialog" }.hook {
-                intercept()
+            if (SDK >= A14) method { name = "helpUpdateUsbNotification" }.hook {
+                before { field { name = "mNeedShowUsbDialog" }.get(instance).setFalse() }
             } else method { name = "updateUsbNotification" }.hook {
                 before { field { name = "sNeedShowUsbDialog" }.get().setFalse() }
             }
