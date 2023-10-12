@@ -7,6 +7,7 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
 - [修复] 状态栏移动数据图标Hook异常 C12.1
 - [修复] 锁屏页面底部SOS按钮Hook异常 C13.0
+- [修复] 状态栏电池字体大小Hook异常
 
 ### 1.1.0
 

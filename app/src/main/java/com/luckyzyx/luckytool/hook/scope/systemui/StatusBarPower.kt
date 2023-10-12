@@ -35,6 +35,7 @@ object StatusBarPower : YukiBaseHooker() {
                 }
                 method { name = "onFinishInflate" }.hook {
                     after {
+                        if (!userTypeface) return@after
                         val view = instance<View>()
                         view.findViewById<TextView>(
                             view.resources.getIdentifier(
