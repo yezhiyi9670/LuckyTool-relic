@@ -50,7 +50,7 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbs
 import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
 import java.io.*
@@ -371,10 +371,11 @@ fun TileService.closeCollapse() {
  * @param context Context
  */
 fun jumpEngineermode(context: Context) {
+    val activity = if (SDK >= A14) "aftersale.AfterSalePage" else "EngineerModeMain"
     if (context.checkPackName("com.oppo.engineermode")) {
-        ShellUtils.execCommand("am start -n com.oppo.engineermode/.EngineerModeMain", true)
+        ShellUtils.execCommand("am start -n com.oppo.engineermode/.$activity", true)
     } else if (context.checkPackName("com.oplus.engineermode")) {
-        ShellUtils.execCommand("am start -n com.oplus.engineermode/.EngineerModeMain", true)
+        ShellUtils.execCommand("am start -n com.oplus.engineermode/.$activity", true)
     }
 }
 
@@ -857,7 +858,7 @@ fun Context.restartMain() {
         }
         show()
     }
-    scope { withDefault { ckqcbss() } }
+    scope { withDefault { ckqcbs("ebk") } }
 }
 
 /**
@@ -878,7 +879,7 @@ fun Context.restartScopes(scopes: Array<String>) {
         }
         show()
     }
-    scope { withDefault { ckqcbss() } }
+    scope { withDefault { ckqcbs("bbk") } }
 }
 
 /**

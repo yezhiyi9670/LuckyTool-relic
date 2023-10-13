@@ -54,10 +54,14 @@ object HookSettingsFeature : YukiBaseHooker() {
                             //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
                             "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
                             //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
-        //                            "oplus.software.display.pwm_switch.support" -> resultTrue()
+                            //"oplus.software.display.pwm_switch.support" -> resultTrue()
                         }
                     }
                 }
+                //ro.oplus.audio.support.meta_audio
+//                method { name = "isHoloAudioSupported" }.hook {
+//                    replaceToTrue()
+//                }
             }
         }
     }

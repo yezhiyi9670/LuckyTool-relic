@@ -55,28 +55,25 @@ class UpdateUtils(val context: Context) {
                 result(name, code.toInt()) {
                     MaterialAlertDialogBuilder(context, dialogCentered).apply {
                         setTitle(context.getString(R.string.check_update_hint))
-                        if (!context.getBoolean(SettingsPrefs, "hidden_function"))
-                            setCancelable(false)
-                        setView(
-                            NestedScrollView(context).apply {
-                                addView(
-                                    MaterialTextView(context).apply {
-                                        setPadding(20.dp, 0, 20.dp, 0)
-                                        val version =
-                                            "${context.getString(R.string.version_name)}: $name($code)\n"
-                                        val count =
-                                            "${context.getString(R.string.download_count)}: $downloadCount\n"
-                                        val size =
-                                            "${context.getString(R.string.file_size)}: " + DecimalFormat(
-                                                "0.0"
-                                            ).format(fileSize / (1024 * 1024)).toString() + "MB\n"
-                                        val changelog =
-                                            "${context.getString(R.string.update_logs)}: \n$changeLog"
-                                        text = "${version}${count}${size}${changelog}"
-                                    }
-                                )
-                            }
+                        if (!context.getBoolean(SettingsPrefs, "hidden_function")) setCancelable(
+                            false
                         )
+                        setView(NestedScrollView(context).apply {
+                            addView(MaterialTextView(context).apply {
+                                setPadding(20.dp, 0, 20.dp, 0)
+                                val version =
+                                    "${context.getString(R.string.version_name)}: $name($code)\n"
+                                val count =
+                                    "${context.getString(R.string.download_count)}: $downloadCount\n"
+                                val size =
+                                    "${context.getString(R.string.file_size)}: " + DecimalFormat(
+                                        "0.0"
+                                    ).format(fileSize / (1024 * 1024)).toString() + "MB\n"
+                                val changelog =
+                                    "${context.getString(R.string.update_logs)}: \n$changeLog"
+                                text = "${version}${count}${size}${changelog}"
+                            })
+                        })
                         setPositiveButton(context.getString(R.string.direct_update)) { _, _ ->
                             readyDownload(context, fileName, downloadUrl)
                         }
@@ -95,10 +92,7 @@ class UpdateUtils(val context: Context) {
     private fun readyDownload(context: Context, fileName: String, downloadUrl: String) {
         val list = arrayOf("Github", "gitmirror", "ddlc", "ghproxy")
         val cdn = arrayOf(
-            "",
-            "https://hub.gitmirror.com/",
-            "https://gh.ddlc.top/",
-            "https://ghproxy.com/"
+            "", "https://hub.gitmirror.com/", "https://gh.ddlc.top/", "https://ghproxy.com/"
         )
         MaterialAlertDialogBuilder(context, dialogCentered).apply {
             setTitle(context.getString(R.string.select_download_source))
@@ -196,25 +190,5 @@ class UpdateUtils(val context: Context) {
             )
             context.startActivity(intent)
         }
-    }
-
-    fun checkBK() {
-        scopeNet {
-            val latestUrl =
-                "https://api.github.com/repos/luckyzyx/LuckyTool_Doc/releases/tags/ltbks"
-            val lastBKDate = context.getString(SettingsPrefs, "last_update_bk_date", "null")
-            val db = File(context.filesDir.path + "/bk")
-            val getDoc = Get<String>(latestUrl).await()
-            JSONObject(getDoc).apply {
-                val date = optString("name").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
-                val json = optString("body").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
-                if ((!db.exists()) || (date != lastBKDate)) {
-                    if (!db.exists()) db.createNewFile()
-                    db.writeText(json)
-                    ShellUtils.execCommand("echo $json > /data/local/tmp/bk", true)
-                    context.putString(SettingsPrefs, "last_update_bk_date", date)
-                }
-            }
-        }.catch { return@catch }
     }
 }

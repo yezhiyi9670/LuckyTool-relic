@@ -12,12 +12,12 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.drake.net.utils.scopeLife
-import com.drake.net.utils.withDefault
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.YukiHookAPI
 import com.highcapable.yukihookapi.hook.factory.prefs
+import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
@@ -25,9 +25,12 @@ import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.ui.fragment.HomeFragment
 import com.luckyzyx.luckytool.ui.service.GlobalFuncControllerService
 import com.luckyzyx.luckytool.utils.*
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbss
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcBBK
+import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcEbk
+import kotlinx.coroutines.Dispatchers
 import kotlin.system.exitProcess
 
+@Obfuscate
 @Suppress("PrivatePropertyName")
 open class MainActivity : AppCompatActivity() {
     //检测Prefs状态
@@ -97,9 +100,11 @@ open class MainActivity : AppCompatActivity() {
             }
         }
         if (!BuildConfig.DEBUG) putBoolean(SettingsPrefs, "enable_module_print_logs", false)
-        scopeLife { withDefault { putBoolean(SettingsPrefs, "boot_complete", ckqcbss()) } }
+        scopeLife(dispatcher = Dispatchers.Default) {
+            putBoolean(SettingsPrefs, "boot_complete", ckqcEbk())
+            putBoolean(SettingsPrefs, "boot_complete_final", ckqcBBK())
+        }
         PermissionUtils(this).checkPermissions()
-        UpdateUtils(this).checkBK()
     }
 
     private fun initDynamicShortcuts() {

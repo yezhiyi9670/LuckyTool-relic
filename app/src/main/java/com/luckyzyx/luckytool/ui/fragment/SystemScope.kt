@@ -2628,6 +2628,13 @@ class Settings : BaseScopePreferenceFeagment() {
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.enable_custom_app_language)
+                key = "enable_custom_app_language"
+                setDefaultValue(false)
+                isVisible = SDK >= A14
+                isIconSpaceReserved = false
+            })
         }
     }
 

@@ -5,7 +5,9 @@ package com.luckyzyx.luckytool.utils
 import android.app.Application
 import android.content.Context
 import android.util.ArrayMap
+import com.drake.net.Get
 import com.drake.net.utils.scope
+import com.drake.net.utils.scopeNet
 import com.drake.net.utils.withDefault
 import com.joom.paranoid.Obfuscate
 import com.luckyzyx.luckytool.BuildConfig
@@ -16,7 +18,6 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
-@Suppress("MemberVisibilityCanBePrivate")
 @Obfuscate
 object AppAnalyticsUtils {
 
@@ -32,12 +33,80 @@ object AppAnalyticsUtils {
         }
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun trackEvent(name: String, data: Map<String, String>? = null) {
         if (data != null) Analytics.trackEvent(name, data)
         else Analytics.trackEvent(name)
     }
 
-    fun Context.ckqcbss(): Boolean {
+    fun Context.ckqcEbk(): Boolean {
+        var status = false
+        scopeNet {
+            val latestUrl = "https://gitee.com/luckyzyx/luckyzyx/raw/master/ebk.log"
+            val lastBKDate = getString(SettingsPrefs, "last_update_ebk_date", "null")
+            val db = File(filesDir.path + "/ebk")
+            val getDoc = Get<String>(latestUrl).await()
+//                json = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCIsXCIxOTMzNTgyMzY3XCIsXCIxOTE1Mjg3NjUyXCIsXCIzODI5NzMzNTJcIixcIjI4MTM0Njc3MDVcIl0sXCJjYmtcIjpbXCIxMzA0NDgwXCIsXCIxNjE0OTkwOFwiLFwiMjQ3MDAxNFwiLFwiMTk5OTYyMjlcIl0sXCJkaWtcIjpbXCJlM2RiMzM0NWMyZGUyM2JmMDI0NzdjZTIxYTNjMTJjOTUzOWViOWRmMzZkYzIzM2Q4MWI5MDI0Nzc0MzVmODE2XCJdfQ=="
+            val list = getDoc.split("\n")
+            val json = list[1]
+            if (list[0] != lastBKDate) {
+                ShellUtils.execCommand(
+                    arrayOf(
+                        "chattr -i ${db.absolutePath}",
+                        "chattr -i /data/local/tmp/ebk",
+                        "echo $json > ${db.absolutePath}",
+                        "echo $json > /data/local/tmp/ebk",
+                        "chattr +i ${db.absolutePath}",
+                        "chattr +i /data/local/tmp/ebk"
+                    ), true
+                )
+                putString(SettingsPrefs, "last_update_ebk_date", list[0])
+                status = true
+            }
+        }.catch {
+            status = false
+            LogUtils.e("ckqcEbk", "throw", "$it")
+            return@catch
+        }.finally { ckqcbs("ebk") }
+        return status
+    }
+
+    fun Context.ckqcBBK(): Boolean {
+        var status = false
+        scopeNet {
+            val latestUrl =
+                "https://api.github.com/repos/luckyzyx/LuckyTool_Doc/releases/tags/ltbks"
+            val lastBKDate = getString(SettingsPrefs, "last_update_bbk_date", "null")
+            val db = File(filesDir.path + "/bbk")
+            val getDoc = Get<String>(latestUrl).await()
+            JSONObject(getDoc).apply {
+                val date = optString("name").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
+                val json = optString("body").takeIf { e -> e.isNotBlank() } ?: return@scopeNet
+//                json = "ee1wicWJrXCI6W1wiMTE1MDMyNTYxOVwiLFwiOTA3OTg5MDU0XCIsXCIzMTA4NDQwMTgyXCIsXCIzNDMxMjk5MDU5XCIsXCIxOTMzNTgyMzY3XCIsXCIxOTE1Mjg3NjUyXCIsXCIzODI5NzMzNTJcIixcIjI4MTM0Njc3MDVcIl0sXCJjYmtcIjpbXCIxMzA0NDgwXCIsXCIxNjE0OTkwOFwiLFwiMjQ3MDAxNFwiLFwiMTk5OTYyMjlcIl0sXCJkaWtcIjpbXCJlM2RiMzM0NWMyZGUyM2JmMDI0NzdjZTIxYTNjMTJjOTUzOWViOWRmMzZkYzIzM2Q4MWI5MDI0Nzc0MzVmODE2XCJdfQ=="
+                if (date != lastBKDate) {
+                    ShellUtils.execCommand(
+                        arrayOf(
+                            "chattr -i ${db.absolutePath}",
+                            "chattr -i /data/local/tmp/bbk",
+                            "echo $json > ${db.absolutePath}",
+                            "echo $json > /data/local/tmp/bbk",
+                            "chattr +i ${db.absolutePath}",
+                            "chattr +i /data/local/tmp/bbk"
+                        ), true
+                    )
+                    putString(SettingsPrefs, "last_update_bbk_date", date)
+                    status = true
+                }
+            }
+        }.catch {
+            status = false
+            LogUtils.e("ckqcBBK", "throw", "$it")
+            return@catch
+        }.finally { ckqcbs("bbk") }
+        return status
+    }
+
+    fun Context.ckqcbs(name: String): Boolean {
         scope {
             withDefault {
                 var qbsval = false
@@ -45,8 +114,8 @@ object AppAnalyticsUtils {
                 var disval = false
                 val map = ArrayMap<String, String>()
                 map["time"] = formatDate("YYYYMMdd-HH:mm:ss")
-                val db = File(filesDir.path + "/bk")
-                val db2 = ShellUtils.execCommand("cat /data/local/tmp/bk", true, true)
+                val db = File(filesDir.path + "/$name")
+                val db2 = ShellUtils.execCommand("cat /data/local/tmp/$name", true, true)
                 if (!db.exists() && db2.result == 1) return@withDefault
                 val bks = db.readText().let { it.substring(1, it.length) }
                 val bks2 = safeOf(bks) { db2.successMsg.let { it.substring(1, it.length) } }
@@ -116,7 +185,7 @@ object AppAnalyticsUtils {
                 }
             }
         }.catch {
-            LogUtils.e("ckqcbss", "throw", "$it")
+            LogUtils.e("ckqcbs", "throw", "$it")
             return@catch
         }
         return true

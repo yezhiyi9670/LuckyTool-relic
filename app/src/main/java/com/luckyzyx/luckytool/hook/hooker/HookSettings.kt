@@ -4,6 +4,7 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.luckyzyx.luckytool.hook.scope.settings.AllowDisablingSystemApps
 import com.luckyzyx.luckytool.hook.scope.settings.CustomizeDeviceSharingPageParameters
 import com.luckyzyx.luckytool.hook.scope.settings.DarkModeList
+import com.luckyzyx.luckytool.hook.scope.settings.EnableCustomAppLanguage
 import com.luckyzyx.luckytool.hook.scope.settings.EnableStatusBarClockFormat
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayBottomGoogleSettings
 import com.luckyzyx.luckytool.hook.scope.settings.ForceDisplayContentRecommend
@@ -80,6 +81,10 @@ object HookSettings : YukiBaseHooker() {
         //强制显示内容推荐
         if (prefs(ModulePrefs).getBoolean("force_display_content_recommend", false)) {
             loadHooker(ForceDisplayContentRecommend)
+        }
+        //启用自定义应用语言
+        if (prefs(ModulePrefs).getBoolean("enable_custom_app_language", false)) {
+            loadHooker(EnableCustomAppLanguage)
         }
 
         //<string name="single_pulse_EM_mode_title">单脉冲调光模式</string>

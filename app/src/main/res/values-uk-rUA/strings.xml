@@ -495,6 +495,7 @@
     <string name="click_icon_open_market_page">Натисніть на іконку, щоб відкрити сторінку магазину</string>
     <string name="allow_disabling_system_apps">Allow disabling system apps</string>
     <string name="allow_disabling_system_apps_summary">This module is not responsible if the system application cannot be restored due to user operations.</string>
+    <string name="enable_custom_app_language">Enable custom app language</string>
     <!--Camera-->
     <string name="CameraWaterMark">WaterMark</string>
     <string name="remove_watermark_word_limit">Видалити обмеження на кількість слів водяного знаку</string>

@@ -47,6 +47,7 @@ import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
+import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForU
 import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
 import com.luckyzyx.luckytool.hook.scope.systemui.HookSystemUIFeature
 import com.luckyzyx.luckytool.hook.statusbar.StatusBarBattery
@@ -201,7 +202,8 @@ object MainHook : IYukiHookXposedInit {
             run {
                 if (lpparam.packageName == "android" && lpparam.processName == "android") {
                     when (SDK) {
-                        TIRAMISU, UPSIDE_DOWN_CAKE -> CorePatchForT().handleLoadPackage(lpparam)
+                        UPSIDE_DOWN_CAKE -> CorePatchForU().handleLoadPackage(lpparam)
+                        TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
                         S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
                         S -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
@@ -213,7 +215,8 @@ object MainHook : IYukiHookXposedInit {
         YukiXposedEvent.onInitZygote { startupParam: IXposedHookZygoteInit.StartupParam ->
             run {
                 when (SDK) {
-                    TIRAMISU, UPSIDE_DOWN_CAKE -> CorePatchForT().initZygote(startupParam)
+                    UPSIDE_DOWN_CAKE -> CorePatchForU().initZygote(startupParam)
+                    TIRAMISU -> CorePatchForT().initZygote(startupParam)
                     S_V2 -> CorePatchForSv2().initZygote(startupParam)
                     S -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)

@@ -495,6 +495,7 @@
     <string name="click_icon_open_market_page">点击图标打开商店页面</string>
     <string name="allow_disabling_system_apps">允许停用系统应用</string>
     <string name="allow_disabling_system_apps_summary">由于用户操作导致无法恢复系统应用，本模块概不负责!</string>
+    <string name="enable_custom_app_language">启用自定义应用语言</string>
     <!--Camera-->
     <string name="CameraWaterMark">水印</string>
     <string name="remove_watermark_word_limit">移除水印字数限制</string>

@@ -495,6 +495,7 @@
     <string name="click_icon_open_market_page">Klikněte na ikonu pro otevření Google play obchodu</string>
     <string name="allow_disabling_system_apps">Povolit zakázání systémových aplikací</string>
     <string name="allow_disabling_system_apps_summary">Tento modul neodpovídá za to, že systémovou aplikaci nelze obnovit v důsledku zásahů uživatele.</string>
+    <string name="enable_custom_app_language">Enable custom app language</string>
     <!--Camera-->
     <string name="CameraWaterMark">Vodoznak</string>
     <string name="remove_watermark_word_limit">Odebrat limit délky textu vodoznaku</string>
