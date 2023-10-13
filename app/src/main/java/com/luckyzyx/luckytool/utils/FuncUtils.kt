@@ -15,6 +15,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
+import android.os.PowerManager
 import android.os.SystemClock
 import android.provider.Settings
 import android.service.quicksettings.TileService
@@ -44,6 +45,7 @@ import com.drake.net.utils.withDefault
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.highcapable.yukihookapi.hook.factory.current
 import com.highcapable.yukihookapi.hook.factory.dataChannel
+import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.luckyzyx.luckytool.BuildConfig
 import com.luckyzyx.luckytool.IGlobalFuncController
 import com.luckyzyx.luckytool.R
@@ -1269,8 +1271,8 @@ val Context.is24
  * @param context Context
  */
 fun closeScreen(context: Context) {
-    val service = context.getSystemService(Context.POWER_SERVICE)
-    service.current().method { name = "goToSleep" }.call(SystemClock.uptimeMillis())
+    val service = context.getSystemService(Context.POWER_SERVICE) as PowerManager
+    service.current().method { name = "goToSleep";param(LongType) }.call(SystemClock.uptimeMillis())
 }
 
 /**

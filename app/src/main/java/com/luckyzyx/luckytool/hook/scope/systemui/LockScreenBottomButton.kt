@@ -1,5 +1,6 @@
 package com.luckyzyx.luckytool.hook.scope.systemui
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -32,6 +33,12 @@ object LockScreenBottomButton : YukiBaseHooker() {
         var rightButton =
             prefs(ModulePrefs).getBoolean("remove_lock_screen_bottom_right_camera", false)
         dataChannel.wait<Boolean>("remove_lock_screen_bottom_right_camera") { rightButton = it }
+        var autoCloseScreen = prefs(ModulePrefs).getBoolean(
+            "lock_screen_switch_flashlight_auto_close_screen", false
+        )
+        dataChannel.wait<Boolean>("lock_screen_switch_flashlight_auto_close_screen") {
+            autoCloseScreen = it
+        }
 
         //Source KeyguardBottomAreaViewBinder
         "com.android.systemui.keyguard.ui.binder.KeyguardBottomAreaViewBinder".toClass().apply {
@@ -53,6 +60,19 @@ object LockScreenBottomButton : YukiBaseHooker() {
                 }
             }
         }
+
+        //Source KeyguardQuickAffordanceInteractor
+        "com.android.systemui.keyguard.domain.interactor.KeyguardQuickAffordanceInteractor".toClass()
+            .apply {
+                method { name = "onQuickAffordanceTriggered" }.hook {
+                    after {
+                        if (leftButton || !autoCloseScreen) return@after
+                        val context = field { name = "appContext" }.get(instance).cast<Context>()
+                            ?: return@after
+                        closeScreen(context)
+                    }
+                }
+            }
     }
 
     object LockScreenBottomButtonC13 : YukiBaseHooker() {
@@ -73,11 +93,9 @@ object LockScreenBottomButton : YukiBaseHooker() {
             dataChannel.wait<Boolean>("lock_screen_bottom_left_button_replace_with_flashlight") {
                 useFlashLight = it
             }
-            var autoCloseScreen =
-                prefs(ModulePrefs).getBoolean(
-                    "lock_screen_switch_flashlight_auto_close_screen",
-                    false
-                )
+            var autoCloseScreen = prefs(ModulePrefs).getBoolean(
+                "lock_screen_switch_flashlight_auto_close_screen", false
+            )
             dataChannel.wait<Boolean>("lock_screen_switch_flashlight_auto_close_screen") {
                 autoCloseScreen = it
             }
@@ -95,25 +113,17 @@ object LockScreenBottomButton : YukiBaseHooker() {
                         if (!useFlashLight) return@after
                         val context = instance<ViewGroup>().context
                         method { name = "updateLeftAffordanceVisibility" }.get(instance).call()
-                        val mFlashlightController =
-                            field { name = "mFlashlightController" }.get(instance).any()
-                        val isEnable =
-                            mFlashlightController?.current()?.method { name = "isEnabled" }
-                                ?.invoke<Boolean>() ?: false
+                        val mFlashlightController = field { name = "mFlashlightController" }
+                            .get(instance).any()
+                        val isEnable = mFlashlightController?.getIsEnable() ?: false
                         val resId = if (isEnable) R.drawable.affordance_flashlight_on
                         else R.drawable.affordance_flashlight
-                        val drawable =
-                            safeOfNull {
-                                ResourcesCompat.getDrawable(
-                                    context.resources,
-                                    resId,
-                                    null
-                                )
-                            }
+                        val drawable = safeOfNull {
+                            ResourcesCompat.getDrawable(context.resources, resId, null)
+                        }
                         field { name = "mLeftAffordanceView";superClass() }.get(instance).any()
                             ?.current()?.method {
-                                name = "setImageDrawable"
-                                param(DrawableClass, BooleanType)
+                                name = "setImageDrawable";param(DrawableClass, BooleanType)
                                 superClass()
                             }?.call(drawable, !isEnable)
                     }
@@ -137,9 +147,7 @@ object LockScreenBottomButton : YukiBaseHooker() {
                         method { name = "baseLaunchLeftAffordance" }.get(instance).call()
                         val mFlashlightController =
                             field { name = "mFlashlightController" }.get(instance).any()
-                        val isEnable =
-                            mFlashlightController?.current()?.method { name = "isEnabled" }
-                                ?.invoke<Boolean>() ?: true
+                        val isEnable = mFlashlightController?.getIsEnable() ?: true
                         mFlashlightController?.setFlashlight(!isEnable)
                         method { name = "updateLeftAffordanceIcon" }.get(instance).call()
                         if (autoCloseScreen) closeScreen(instance<ViewGroup>().context)
@@ -156,6 +164,10 @@ object LockScreenBottomButton : YukiBaseHooker() {
                 }
             }
         }
+    }
+
+    private fun Any.getIsEnable(): Boolean? {
+        return this.current().method { name = "isEnabled" }.invoke<Boolean>()
     }
 
     private fun Any.setFlashlight(status: Boolean) {

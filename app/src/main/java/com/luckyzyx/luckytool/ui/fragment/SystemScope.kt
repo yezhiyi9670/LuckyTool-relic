@@ -1897,7 +1897,7 @@ class LockScreen : BaseScopePreferenceFeagment() {
                 title = getString(R.string.lock_screen_switch_flashlight_auto_close_screen)
                 key = "lock_screen_switch_flashlight_auto_close_screen"
                 setDefaultValue(false)
-                isVisible = SDK < A14 && context.getBoolean(
+                isVisible = context.getBoolean(
                     ModulePrefs, "remove_lock_screen_bottom_left_button", false
                 ) == false
                 isIconSpaceReserved = false
