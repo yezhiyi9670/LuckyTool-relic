@@ -14,7 +14,9 @@ import com.luckyzyx.luckytool.hook.scope.launcher.RemoveFolderPreviewBackground
 import com.luckyzyx.luckytool.hook.scope.launcher.RemoveLauncherHighTempreatureProtection
 import com.luckyzyx.luckytool.hook.scope.launcher.StackedTaskLayout
 import com.luckyzyx.luckytool.hook.scope.launcher.UnlockTaskLocks
+import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 
 object HookLauncher : YukiBaseHooker() {
     override fun onHook() {
@@ -23,7 +25,7 @@ object HookLauncher : YukiBaseHooker() {
         //堆叠布局
         loadHooker(StackedTaskLayout)
         //应用徽章
-        loadHooker(HookAppBadge)
+        if (SDK >= A13) loadHooker(HookAppBadge)
         //移除APP更新圆点
         if (prefs(ModulePrefs).getBoolean("remove_the_dot_after_app_update", false)) {
             loadHooker(RemoveAppUpdateDot)

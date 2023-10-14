@@ -140,9 +140,7 @@ object MainHook : IYukiHookXposedInit {
         //指纹相关
         loadApp("com.android.systemui", HookFingerPrintRelated)
         //杂项
-        loadApp(
-            "com.android.systemui", "com.android.externalstorage"
-        ) {
+        loadApp("com.android.systemui", "com.android.externalstorage") {
             loadHooker(HookMiscellaneous)
         }
 
@@ -184,11 +182,7 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.heytap.quicksearchbox", HookQuickSearchBox)
 
         //其他APP
-        loadApp(
-            "com.ruet_cse_1503050.ragib.appbackup.pro",
-            "ru.kslabs.ksweb",
-            "com.dv.adm"
-        ) {
+        loadApp("com.ruet_cse_1503050.ragib.appbackup.pro", "ru.kslabs.ksweb", "com.dv.adm") {
             loadHooker(HookOtherApp)
         }
 
