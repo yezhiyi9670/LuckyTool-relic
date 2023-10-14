@@ -9,11 +9,11 @@ import com.luckyzyx.luckytool.utils.SDK
 
 object HookUIEngine : YukiBaseHooker() {
     override fun onHook() {
-        if (SDK < A13) return
+        if (SDK != A13) return
 
         //移除通知图标白名单
         if (prefs(ModulePrefs).getBoolean("remove_aod_notification_icon_whitelist", false)) {
-            if (SDK >= A13) loadHooker(RemoveAodNotificationWhitelist)
+            loadHooker(RemoveAodNotificationWhitelist)
         }
 
         //设置息屏样式模式

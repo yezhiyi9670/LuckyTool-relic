@@ -203,7 +203,7 @@ object MainHook : IYukiHookXposedInit {
                     when (SDK) {
                         UPSIDE_DOWN_CAKE -> CorePatchForU().handleLoadPackage(lpparam)
                         TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
-                        S,S_V2 -> CorePatchForS().handleLoadPackage(lpparam)
+                        S, S_V2 -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
                         else -> YLog.error("[CorePatch] Unsupported Version of Android -> $SDK")
                     }
@@ -215,7 +215,7 @@ object MainHook : IYukiHookXposedInit {
                 when (SDK) {
                     UPSIDE_DOWN_CAKE -> CorePatchForU().initZygote(startupParam)
                     TIRAMISU -> CorePatchForT().initZygote(startupParam)
-                    S,S_V2 -> CorePatchForS().initZygote(startupParam)
+                    S, S_V2 -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
                 }
             }

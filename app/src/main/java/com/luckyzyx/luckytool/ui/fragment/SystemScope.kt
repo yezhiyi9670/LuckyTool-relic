@@ -1692,6 +1692,7 @@ class Aod : BaseScopePreferenceFeagment() {
                 title = getString(R.string.remove_aod_notification_icon_whitelist)
                 key = "remove_aod_notification_icon_whitelist"
                 setDefaultValue(false)
+                isVisible = SDK == A13
                 isIconSpaceReserved = false
             })
             addPreference(DropDownPreference(context).apply {
@@ -1701,6 +1702,7 @@ class Aod : BaseScopePreferenceFeagment() {
                 entries = resources.getStringArray(R.array.set_aod_style_mode_entries)
                 entryValues = arrayOf("0", "1", "2")
                 setDefaultValue("0")
+                isVisible = SDK == A13
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
