@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">ColorOS官方安装器需要另外开启其他功能使用\n功能列表-应用相关-应用安装相关</string>
     <string name="corepatch">核心破解</string>
-    <string name="corepatch_summary">解除安装限制, 支持 Android 11–13</string>
+    <string name="corepatch_summary">解除安装限制, 支持 Android 11–14</string>
     <string name="downgr">允许降级安装应用</string>
     <string name="downgr_summary">允许应用在安装新版本的情况下直接覆盖安装旧版本</string>
     <string name="authcreak">禁用软件包管理器签名验证</string>

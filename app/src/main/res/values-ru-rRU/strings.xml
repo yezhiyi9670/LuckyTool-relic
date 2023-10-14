@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Официальному установщику Color OS необходимо включить другие функции для использования\nСписок функций-Приложения-Установка приложений</string>
     <string name="corepatch">Патчи ядра</string>
-    <string name="corepatch_summary">Снять ограничения на установку, Android 11–13</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
     <string name="downgr">Разрешить понижение версии</string>
     <string name="downgr_summary">Разрешить приложению перезаписывать установку старой версии непосредственно в случае установки новой версии</string>
     <string name="authcreak">Отключить проверку подписи диспетчера пакетов</string>

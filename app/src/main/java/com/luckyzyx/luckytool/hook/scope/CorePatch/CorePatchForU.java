@@ -9,6 +9,7 @@ public class CorePatchForU extends CorePatchForT {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         super.handleLoadPackage(loadPackageParam);
         
+        // ee11a9c (Rename AndroidPackageApi to AndroidPackage)
         findAndHookMethod("com.android.server.pm.PackageManagerServiceUtils", loadPackageParam.classLoader,
                 "checkDowngrade",
                 "com.android.server.pm.pkg.AndroidPackage",

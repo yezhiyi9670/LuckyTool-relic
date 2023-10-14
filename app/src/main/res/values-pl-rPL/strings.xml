@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Dla oficjalnego instalatora ColorOS należy włączyć dodatkowe funkcje, aby móc z tych korzystać:\nFunkcje &gt; Aplikacje &gt; Instalowanie aplikacji</string>
     <string name="corepatch">Główna łatka</string>
-    <string name="corepatch_summary">Usuń limity instalowania aplikacji (Android 11–13)</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
     <string name="downgr">Obniżanie wersji aplikacji</string>
     <string name="downgr_summary">Umożliwia instalowanie starszych wersji aplikacji na nowszą.</string>
     <string name="authcreak">Wyłącz weryfikację sygnatur\nmenedżera pakietów</string>

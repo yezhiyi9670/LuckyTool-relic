@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">ColorOSの公式インストーラーを使用するには他の機能を有効にする必要があります。\n機能一覧-アプリ関連-アプリインストール関連</string>
     <string name="corepatch">コアのパッチ</string>
-    <string name="corepatch_summary">インストール制限を削除します (Android 11～13対応)</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
     <string name="downgr">アプリのダウングレードを許可</string>
     <string name="downgr_summary">新しいバージョンのアプリがインストールされている状態でも、古いバージョンのアプリをインストール可能にします</string>
     <string name="authcreak">パッケージマネージャの署名チェックを無効化</string>

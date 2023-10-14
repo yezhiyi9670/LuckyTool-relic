@@ -45,7 +45,6 @@ import com.luckyzyx.luckytool.hook.hooker.HookUIEngine
 import com.luckyzyx.luckytool.hook.hooker.StatusBarNotifiyLimit
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
-import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForSv2
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForT
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForU
 import com.luckyzyx.luckytool.hook.scope.alarmclock.AlarmClockWidget
@@ -204,8 +203,7 @@ object MainHook : IYukiHookXposedInit {
                     when (SDK) {
                         UPSIDE_DOWN_CAKE -> CorePatchForU().handleLoadPackage(lpparam)
                         TIRAMISU -> CorePatchForT().handleLoadPackage(lpparam)
-                        S_V2 -> CorePatchForSv2().handleLoadPackage(lpparam)
-                        S -> CorePatchForS().handleLoadPackage(lpparam)
+                        S,S_V2 -> CorePatchForS().handleLoadPackage(lpparam)
                         R -> CorePatchForR().handleLoadPackage(lpparam)
                         else -> YLog.error("[CorePatch] Unsupported Version of Android -> $SDK")
                     }
@@ -217,8 +215,7 @@ object MainHook : IYukiHookXposedInit {
                 when (SDK) {
                     UPSIDE_DOWN_CAKE -> CorePatchForU().initZygote(startupParam)
                     TIRAMISU -> CorePatchForT().initZygote(startupParam)
-                    S_V2 -> CorePatchForSv2().initZygote(startupParam)
-                    S -> CorePatchForS().initZygote(startupParam)
+                    S,S_V2 -> CorePatchForS().initZygote(startupParam)
                     R -> CorePatchForR().initZygote(startupParam)
                 }
             }

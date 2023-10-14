@@ -8,7 +8,7 @@ import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 @SuppressWarnings("ALL")
-public class CorePatchForT extends CorePatchForSv2 {
+public class CorePatchForT extends CorePatchForS {
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         super.handleLoadPackage(loadPackageParam);
@@ -28,8 +28,10 @@ public class CorePatchForT extends CorePatchForSv2 {
                 // Don't handle PERMISSION (grant SIGNATURE permissions to pkgs with this cert)
                 // Or applications will have all privileged permissions
                 // https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/content/pm/PackageParser.java;l=5947?q=CertCapabilities
-                if (((Integer) param.args[1] != 4) && prefs.getBoolean("digestCreak", true)) {
-                    param.setResult(true);
+                if (prefs.getBoolean("digestCreak", true)) {
+                    if ((Integer) param.args[1] != 4) {
+                        param.setResult(true);
+                    }
                 }
             }
         });

@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Oficiální instalátor pro Color OS musí umožnit ostatním funkcím používat\nSeznam funkcí-Vztahující se k aplikacím-Vztahující se k instalaci aplikací</string>
     <string name="corepatch">Hlavní patch</string>
-    <string name="corepatch_summary">Odstranit limity instalace, podporuje Android 11–13</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
     <string name="downgr">Povolit downgrade aplikací</string>
     <string name="downgr_summary">Umožňuje aplikaci přepsat starší verze, pokud jsou nainstalovány novější verze.</string>
     <string name="authcreak">Zákazat ověřování podpisu správce balíčků</string>

@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Bộ cài đặt ColorOS chính thức cần kích hoạt các chức năng khác để sử dụng\nDanh sách chức năng-Ứng dụng-Cài đặt ứng dụng</string>
     <string name="corepatch">Vá lõi hệ thống</string>
-    <string name="corepatch_summary">Xóa giới hạn cài đặt, hỗ trợ Android 11–13</string>
+    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
     <string name="downgr">Cho phép hạ cấp ứng dụng</string>
     <string name="downgr_summary">Cho phép ứng dụng ghi đè các phiên bản cũ hơn nếu các phiên bản mới được cài đặt.</string>
     <string name="authcreak">Tắt xác thực chữ ký của trình quản lý gói</string>
