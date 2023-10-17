@@ -8,7 +8,7 @@ import org.luckypray.dexkit.query.MethodDataList
 @Suppress("MemberVisibilityCanBePrivate")
 object DexkitUtils {
     const val tag = "LuckyTool"
-    val debug = false
+    val debug = true
 
     /**
      * 创建Dexkit安全实例

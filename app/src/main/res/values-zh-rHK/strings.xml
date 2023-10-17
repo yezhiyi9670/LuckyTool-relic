@@ -601,6 +601,8 @@
     <string name="remove_app_recommend_card">移除应用推荐卡片</string>
     <!--OplusMarket-->
     <string name="remove_market_splash_page_app_recommend">移除商店启动页应用推荐</string>
+    <string name="remove_market_update_page_app_recommend">移除商店更新页应用推荐</string>
+    <string name="remove_market_download_page_app_recommend">移除商店下载页应用推荐</string>
     <!--Everyimage-->
     <string name="skip_startup_page">跳过启动页</string>
     <string name="vip_download">下载原图</string>

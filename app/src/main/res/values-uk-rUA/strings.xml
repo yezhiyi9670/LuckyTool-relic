@@ -601,6 +601,8 @@
     <string name="remove_app_recommend_card">Remove app recommend card</string>
     <!--OplusMarket-->
     <string name="remove_market_splash_page_app_recommend">Remove app recommendations from market splash page</string>
+    <string name="remove_market_update_page_app_recommend">Remove app recommendations from market update page</string>
+    <string name="remove_market_download_page_app_recommend">Remove app recommendations from market download page</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустити стартову сторінку</string>
     <string name="vip_download">Завантажити вихідне зображення</string>

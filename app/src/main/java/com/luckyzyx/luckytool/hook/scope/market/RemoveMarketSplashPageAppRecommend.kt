@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveMarketSplashPageAppRecommend : YukiBaseHooker() {
     override fun onHook() {
@@ -17,9 +18,7 @@ object RemoveMarketSplashPageAppRecommend : YukiBaseHooker() {
         val imageDto = "com.heytap.cdo.splash.domain.dto.v2.ImageComponentDto"
 
         //Source SplashTransaction
-        DexkitUtils.searchDexClass(
-            "RemoveMarketSplashPageAppRecommend", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 searchPackages("com.nearme.splash.net")
                 matcher {
@@ -41,10 +40,14 @@ object RemoveMarketSplashPageAppRecommend : YukiBaseHooker() {
                     }
                     usingStrings("getSplashData")
                 }
-            }
-        }.toClass().apply {
-            method { param(BooleanType);returnType(splashDto) }.hook {
-                replaceTo(null)
+            }.apply {
+                checkDataList("RemoveMarketSplashPageAppRecommend")
+                val member = first()
+                member.name.toClass().apply {
+                    method { param(BooleanType);returnType(splashDto) }.hook {
+                        replaceTo(null)
+                    }
+                }
             }
         }
     }

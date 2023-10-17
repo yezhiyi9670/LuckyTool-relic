@@ -354,7 +354,8 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                 }
                 title = context.getAppLabel(key)
                 summary = arraySummaryDot(
-                    getString(R.string.remove_market_splash_page_app_recommend)
+                    getString(R.string.remove_market_splash_page_app_recommend),
+                    getString(R.string.remove_market_update_page_app_recommend)
                 )
                 isVisible = context.checkPackName(key)
                 setOnPreferenceClickListener {
