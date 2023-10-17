@@ -24,6 +24,33 @@ object HookStatusBar : YukiBaseHooker() {
         //res/layout/bubble_expanded_view.xml
         //<string name="bubble_close">关闭对话</string>
         //<string name="open_app">进入应用</string>
+        //flag_conversations
+        //bubble_ic_create_bubble 箭头向右下
+        //bubble_ic_stop_bubble 箭头向左上
+
+//        "com.android.wm.shell.bubbles.BubbleController".toClass().apply {
+//            method { name = "isResizableActivity" }.hook {
+//                replaceToTrue()
+//            }
+//        }
+//
+//        "com.android.systemui.statusbar.notification.row.NotificationContentView".toClass().apply {
+//            method { name = "shouldShowBubbleButton" }.hook {
+//                before {
+//                    val entry = args().first().any() ?: return@before
+//                    result = entry.current().method {
+//                        name = "getBubbleMetadata";emptyParam()
+//                    }.call() != null
+//                    YLog.debug("${method.name} -> $result")
+//                }
+//            }
+//        }
+//
+//        "com.android.systemui.wmshell.BubblesManager".toClass().apply {
+//            method { name = "areBubblesEnabled" }.hook {
+//                replaceToTrue()
+//            }
+//        }
 
     }
 }

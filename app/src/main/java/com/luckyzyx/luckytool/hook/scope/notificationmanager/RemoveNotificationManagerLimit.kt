@@ -19,7 +19,7 @@ object RemoveNotificationManagerLimit : YukiBaseHooker() {
                     replaceToTrue()
                 }
             }
-        //Source ControllerUnimportantChannel -> 通知渠道不重要通知锁
+        //Source ControllerUnimportantChannel -> 通知渠道内不重要通知锁
         "com.oplus.notificationmanager.property.uicontroller.ControllerUnimportantChannel".toClass()
             .apply {
                 method { name = "isNormAppEnabled" }.hook {
@@ -33,5 +33,27 @@ object RemoveNotificationManagerLimit : YukiBaseHooker() {
                     replaceToTrue()
                 }
             }
+//
+//        //Source ControllerAppLockBannerBubble -> 应用内气泡锁
+//        "com.oplus.notificationmanager.property.uicontroller.ControllerAppLockBannerBubble".toClass()
+//            .apply {
+//                method { name = "isBubbleEnabled" }.hook {
+//                    replaceToTrue()
+//                }
+//            }
+//        //Source ControllerAppLockBannerBubble ->
+//        "com.oplus.notificationmanager.property.uicontroller.ControllerChannelLockBannerBubble".toClass()
+//            .apply {
+//                method { name = "isBubbleEnabled" }.hook {
+//                    replaceToTrue()
+//                }
+//            }
+//        //Source ControllerAppLockBannerBubble ->
+//        "com.oplus.notificationmanager.property.uicontroller.ControllerConversationLockBannerBubble".toClass()
+//            .apply {
+//                method { name = "isBubbleEnabled" }.hook {
+//                    replaceToTrue()
+//                }
+//            }
     }
 }

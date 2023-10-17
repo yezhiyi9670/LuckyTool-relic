@@ -599,6 +599,8 @@
     <!--OplusBreeno-->
     <string name="BreenoTouch">Breeno Touch</string>
     <string name="remove_app_recommend_card">Remove app recommend card</string>
+    <!--OplusMarket-->
+    <string name="remove_market_splash_page_app_recommend">Remove app recommendations from market splash page</string>
     <!--Everyimage-->
     <string name="skip_startup_page">スタートアップページをスキップ</string>
     <string name="vip_download">オリジナルをダウンロードする</string>

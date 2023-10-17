@@ -347,6 +347,22 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                 }
             },
             Preference(context).apply {
+                key = "com.heytap.market"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(
+                    getString(R.string.remove_market_splash_page_app_recommend)
+                )
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusMarket, title)
+                    true
+                }
+            },
+            Preference(context).apply {
                 key = "com.heytap.cloud"
                 setPrefsIconRes(key) { resource, show ->
                     icon = resource

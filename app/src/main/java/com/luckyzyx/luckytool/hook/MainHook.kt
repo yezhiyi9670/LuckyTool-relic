@@ -25,6 +25,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookGesture
 import com.luckyzyx.luckytool.hook.hooker.HookGestureRelated
 import com.luckyzyx.luckytool.hook.hooker.HookLauncher
 import com.luckyzyx.luckytool.hook.hooker.HookLockScreen
+import com.luckyzyx.luckytool.hook.hooker.HookMarket
 import com.luckyzyx.luckytool.hook.hooker.HookMiscellaneous
 import com.luckyzyx.luckytool.hook.hooker.HookNotificationManager
 import com.luckyzyx.luckytool.hook.hooker.HookOplusGames
@@ -180,6 +181,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.coloros.directui", HookDirectUI)
         //全局搜索
         loadApp("com.heytap.quicksearchbox", HookQuickSearchBox)
+        //软件商店
+        loadApp("com.heytap.market", HookMarket)
 
         //其他APP
         loadApp("com.ruet_cse_1503050.ragib.appbackup.pro", "ru.kslabs.ksweb", "com.dv.adm") {
