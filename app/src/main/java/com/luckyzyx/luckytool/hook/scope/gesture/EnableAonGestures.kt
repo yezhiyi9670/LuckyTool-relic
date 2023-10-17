@@ -5,7 +5,7 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object EnableAonGestures : YukiBaseHooker() {
     override fun onHook() {
@@ -29,44 +29,39 @@ object EnableAonGestures : YukiBaseHooker() {
                     )
                 }
             }.apply {
-                printLog("EnableAonGestures findClass")
-                if (isNullOrEmpty().not() && size == 1) {
-                    //oplus.software.aon_enable
-                    dexKitBridge.findMethod {
-                        searchPackages(this@apply.first().name)
-                        matcher {
-                            paramTypes(ContextClass.name)
-                            returnType(BooleanType.name)
-                            usingStrings("oplus.software.aon_enable")
-                        }
-                    }.apply {
-                        printLog("EnableAonGestures find aon_enable")
-                        if (isNullOrEmpty().not() && size == 1) {
-                            first().apply {
-                                className.toClass().method {
-                                    name = methodName;param(ContextClass);returnType(BooleanType)
-                                }.hook().replaceToTrue()
-                            }
-                        }
+                checkDataList("EnableAonGestures findClass")
+                val clazz = first()
+                //oplus.software.aon_enable
+                dexKitBridge.findMethod {
+                    searchPackages(clazz.name)
+                    matcher {
+                        paramTypes(ContextClass.name)
+                        returnType(BooleanType.name)
+                        usingStrings("oplus.software.aon_enable")
                     }
-                    //oplus.software.aon_gestureui_enable
-                    dexKitBridge.findMethod {
-                        searchPackages(this@apply.first().name)
-                        matcher {
-                            paramTypes(ContextClass.name)
-                            returnType(BooleanType.name)
-                            usingStrings("oplus.software.aon_gestureui_enable")
-                        }
-                    }.apply {
-                        printLog("EnableAonGestures find aon_enable")
-                        if (isNullOrEmpty().not() && size == 1) {
-                            first().apply {
-                                className.toClass().method {
-                                    name = methodName;param(ContextClass);returnType(BooleanType)
-                                }.hook().replaceToTrue()
-                            }
-                        }
+                }.apply {
+                    checkDataList("EnableAonGestures find aon_enable")
+                    val member = first()
+                    first().apply {
+                        member.className.toClass().method {
+                            name = member.methodName;param(ContextClass);returnType(BooleanType)
+                        }.hook().replaceToTrue()
                     }
+                }
+                //oplus.software.aon_gestureui_enable
+                dexKitBridge.findMethod {
+                    searchPackages(clazz.name)
+                    matcher {
+                        paramTypes(ContextClass.name)
+                        returnType(BooleanType.name)
+                        usingStrings("oplus.software.aon_gestureui_enable")
+                    }
+                }.apply {
+                    checkDataList("EnableAonGestures find aon_enable")
+                    val member = first()
+                    member.className.toClass().method {
+                        name = member.methodName;param(ContextClass);returnType(BooleanType)
+                    }.hook().replaceToTrue()
                 }
             }
         }

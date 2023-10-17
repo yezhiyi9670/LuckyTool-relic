@@ -10,14 +10,13 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object CompetitionModeSound : YukiBaseHooker() {
     const val key = "remove_competition_mode_sound"
     override fun onHook() {
         //Source SoundPoolPlayManager -> competition_mode_sound
-        DexkitUtils.searchDexClass(
-            "CompetitionModeSound", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -38,10 +37,13 @@ object CompetitionModeSound : YukiBaseHooker() {
                         }
                     }
                 }
-            }
-        }.toClass().apply {
-            method { param(IntType) }.hookAll {
-                before { if (args().first().int() == 9) resultNull() }
+            }.apply {
+                checkDataList("CompetitionModeSound")
+                first().name.toClass().apply {
+                    method { param(IntType) }.hookAll {
+                        before { if (args().first().int() == 9) resultNull() }
+                    }
+                }
             }
         }
     }

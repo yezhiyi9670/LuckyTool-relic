@@ -12,6 +12,7 @@ import com.highcapable.yukihookapi.hook.type.android.PowerManagerClass
 import com.highcapable.yukihookapi.hook.type.android.SharedPreferencesClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object LauncherHighTempreatureProtection : YukiBaseHooker() {
     const val key = "LauncherHighTempreatureProtection"
@@ -19,9 +20,7 @@ object LauncherHighTempreatureProtection : YukiBaseHooker() {
     override fun onHook() {
         //Source ThermalHandler high_temperature_shutdown_message / high_temperature_dialog_auto
         //Key oplus_settings_hightemp_protect
-        DexkitUtils.searchDexClass(
-            "LauncherHighTempreatureProtection", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -38,12 +37,15 @@ object LauncherHighTempreatureProtection : YukiBaseHooker() {
                         add { paramTypes(IntType.name, IntType.name) }
                     }
                 }
-            }
-        }.toClass().apply {
-            constructor { paramCount = 3 }.hook {
-                after {
-                    field { type = HandlerClass }.get(instance)
-                        .set(Handler(Looper.getMainLooper()))
+            }.apply {
+                checkDataList("LauncherHighTempreatureProtection")
+                first().name.toClass().apply {
+                    constructor { paramCount = 3 }.hook {
+                        after {
+                            field { type = HandlerClass }.get(instance)
+                                .set(Handler(Looper.getMainLooper()))
+                        }
+                    }
                 }
             }
         }

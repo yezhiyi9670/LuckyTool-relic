@@ -12,13 +12,12 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
     override fun onHook() {
         //Source RiskDialogWrapper
-        DexkitUtils.searchDexClass(
-            "RemoveSecurePayFoundVirusDialog", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 searchPackages("com.coloros.securepay")
                 matcher {
@@ -43,17 +42,20 @@ object RemoveSecurePayFoundVirusDialog : YukiBaseHooker() {
                         }
                     }
                 }
-            }
-        }.toClass().apply {
-            method {
-                param(VagueType, StringClass)
-                returnType = UnitType
-            }.hook { intercept() }
-            method {
-                emptyParam()
-                returnType = UnitType
-            }.hookAll {
-                intercept()
+            }.apply {
+                checkDataList("RemoveSecurePayFoundVirusDialog")
+                first().name.toClass().apply {
+                    method {
+                        param(VagueType, StringClass)
+                        returnType = UnitType
+                    }.hook { intercept() }
+                    method {
+                        emptyParam()
+                        returnType = UnitType
+                    }.hookAll {
+                        intercept()
+                    }
+                }
             }
         }
     }

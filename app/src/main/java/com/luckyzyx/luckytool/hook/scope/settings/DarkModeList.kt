@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.type.java.AtomicBooleanClass
 import com.highcapable.yukihookapi.hook.type.java.InputStreamClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import java.io.Reader
 
@@ -20,7 +21,7 @@ object DarkModeList : YukiBaseHooker() {
         dataChannel.wait<Set<String>>("dark_mode_support_list") { supportlistSet = it }
 
         //Source DarkModeFileUtils
-        DexkitUtils.searchDexClass("DarkModeList", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -34,28 +35,32 @@ object DarkModeList : YukiBaseHooker() {
                     }
                     usingStrings("DarkModeFileUtils")
                 }
-            }
-        }.toClass().apply {
-            val objectName = classes[0]?.simpleName
-            val darkModeData = (canonicalName!! + "\$$objectName").toClass()
-            method { param(Reader::class.java) }.hook {
-                replaceUnit {
-                    val supportListMap = ArrayMap<String, Int>()
-                    supportlistSet.forEach {
-                        if (it.contains("|")) {
-                            val arr = it.split("|").toMutableList()
-                            if (arr.size < 2 || arr[1].isBlank()) arr[1] = (0).toString()
-                            supportListMap[arr[0]] = arr[1].toInt()
-                        } else supportListMap[it] = 0
-                    }
-                    val dataMap = ArrayMap<String, Any>()
-                    supportListMap.forEach {
-                        if (it.value == 0) dataMap[it.key] = darkModeData.buildOf { emptyParam() }
-                        else dataMap[it.key] = darkModeData.buildOf(0L, 0, it.value, 0) {
-                            paramCount = 4
+            }.apply {
+                checkDataList("DarkModeList")
+                first().name.toClass().apply {
+                    val objectName = classes[0]?.simpleName
+                    val darkModeData = (canonicalName!! + "\$$objectName").toClass()
+                    method { param(Reader::class.java) }.hook {
+                        replaceUnit {
+                            val supportListMap = ArrayMap<String, Int>()
+                            supportlistSet.forEach {
+                                if (it.contains("|")) {
+                                    val arr = it.split("|").toMutableList()
+                                    if (arr.size < 2 || arr[1].isBlank()) arr[1] = (0).toString()
+                                    supportListMap[arr[0]] = arr[1].toInt()
+                                } else supportListMap[it] = 0
+                            }
+                            val dataMap = ArrayMap<String, Any>()
+                            supportListMap.forEach {
+                                if (it.value == 0) dataMap[it.key] =
+                                    darkModeData.buildOf { emptyParam() }
+                                else dataMap[it.key] = darkModeData.buildOf(0L, 0, it.value, 0) {
+                                    paramCount = 4
+                                }
+                            }
+                            field { type = MapClass }.get().set(dataMap.toMap())
                         }
                     }
-                    field { type = MapClass }.get().set(dataMap.toMap())
                 }
             }
         }

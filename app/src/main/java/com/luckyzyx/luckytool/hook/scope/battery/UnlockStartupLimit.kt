@@ -9,15 +9,14 @@ import com.highcapable.yukihookapi.hook.type.java.AnyClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object UnlockStartupLimit : YukiBaseHooker() {
 
     override fun onHook() {
         //Source StartupManager.java
         //Search -> ? 5 : 20; -> Method
-        DexkitUtils.searchDexClass(
-            "UnlockStartupLimit", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -31,13 +30,16 @@ object UnlockStartupLimit : YukiBaseHooker() {
                         add { paramTypes(BundleClass.name);returnType(UnitType.name) }
                     }
                 }
-            }
-        }.toClass().apply {
-            method {
-                emptyParam()
-                returnType = IntType
-            }.hook {
-                replaceTo(999)
+            }.apply {
+                checkDataList("UnlockStartupLimit")
+                first().name.toClass().apply {
+                    method {
+                        emptyParam()
+                        returnType = IntType
+                    }.hook {
+                        replaceTo(999)
+                    }
+                }
             }
         }
     }

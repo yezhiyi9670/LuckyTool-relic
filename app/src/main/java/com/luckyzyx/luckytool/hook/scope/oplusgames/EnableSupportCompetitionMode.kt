@@ -7,14 +7,13 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object EnableSupportCompetitionMode : YukiBaseHooker() {
     override fun onHook() {
         //Source CompetitionModeManager
         //Search isSupportCompetitionMode
-        DexkitUtils.searchDexClass(
-            "EnableSupportCompetitionMode", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -26,14 +25,17 @@ object EnableSupportCompetitionMode : YukiBaseHooker() {
                         add { paramTypes(StringClass.name, ArrayListClass.name) }
                     }
                 }
-            }
-        }.toClass().apply {
-            method {
-                emptyParam()
-                returnType = BooleanType
-                order().index(2)
-            }.hook {
-                replaceToTrue()
+            }.apply {
+                checkDataList("EnableSupportCompetitionMode")
+                first().name.toClass().apply {
+                    method {
+                        emptyParam()
+                        returnType = BooleanType
+                        order().index(2)
+                    }.hook {
+                        replaceToTrue()
+                    }
+                }
             }
         }
     }

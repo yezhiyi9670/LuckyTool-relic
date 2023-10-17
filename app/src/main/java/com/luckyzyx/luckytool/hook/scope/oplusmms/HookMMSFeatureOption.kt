@@ -7,6 +7,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookMMSFeatureOption : YukiBaseHooker() {
@@ -17,9 +18,7 @@ object HookMMSFeatureOption : YukiBaseHooker() {
 
         //Source FeatureOption.java
         //com.oplus.common -> C12
-        DexkitUtils.searchDexClass(
-            "HookMMSFeatureOption", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -37,18 +36,22 @@ object HookMMSFeatureOption : YukiBaseHooker() {
                     }
                     usingStrings("FeatureOption")
                 }
-            }
-        }.toClass().apply {
-            method {
-                param(ContextClass, StringClass, StringClass)
-                returnType = BooleanType
-            }.hook {
-                before {
-                    val key = args(1).cast<String>()
-                    val key2 = args(2).cast<String>()
-                    if (key == null) {
-                        when (key2) {
-                            "oplus.software.inputmethod.verify_code_enable" -> if (removeVerifyCode) resultFalse()
+            }.apply {
+                checkDataList("HookMMSFeatureOption")
+                val member = first()
+                member.name.toClass().apply {
+                    method {
+                        param(ContextClass, StringClass, StringClass)
+                        returnType = BooleanType
+                    }.hook {
+                        before {
+                            val key = args(1).cast<String>()
+                            val key2 = args(2).cast<String>()
+                            if (key == null) {
+                                when (key2) {
+                                    "oplus.software.inputmethod.verify_code_enable" -> if (removeVerifyCode) resultFalse()
+                                }
+                            }
                         }
                     }
                 }

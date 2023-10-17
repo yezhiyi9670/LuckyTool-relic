@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookKsWeb : YukiBaseHooker() {
@@ -16,7 +17,7 @@ object HookKsWeb : YukiBaseHooker() {
         val isPro = prefs(ModulePrefs).getBoolean("ksweb_remove_check_license", false)
         if (!isPro) return
         //Source EXTEND TO PRO VERSION / CHECK SERIAL KEY / KSWEB PRO / KSWEB STANDARD
-        DexkitUtils.searchDexClass("HookKsWeb", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -37,12 +38,15 @@ object HookKsWeb : YukiBaseHooker() {
                         "KSWEB STANDARD"
                     )
                 }
-            }
-        }.toClass().apply {
-            method { emptyParam();returnType = BooleanType }.hookAll {
-                before {
-                    field { type = BooleanType }.get(instance).setTrue()
-                    field { type = IntType }.get(instance).set(2)
+            }.apply {
+                checkDataList("HookKsWeb")
+                first().name.toClass().apply {
+                    method { emptyParam();returnType = BooleanType }.hookAll {
+                        before {
+                            field { type = BooleanType }.get(instance).setTrue()
+                            field { type = IntType }.get(instance).set(2)
+                        }
+                    }
                 }
             }
         }

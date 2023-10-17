@@ -12,6 +12,7 @@ import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object CustomModelWaterMark : YukiBaseHooker() {
@@ -26,10 +27,8 @@ object CustomModelWaterMark : YukiBaseHooker() {
             val waterMark = prefs(ModulePrefs).getString("custom_model_watermark", "None")
             if (waterMark.isBlank() || waterMark == "None") return
 
-            //Source MarketUtil
-            DexkitUtils.searchDexClass(
-                "CustomModelWaterMark MarketUtil", appInfo.sourceDir
-            ) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
+                //Source MarketUtil
                 dexKitBridge.findClass {
                     matcher {
                         fields {
@@ -45,21 +44,21 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         }
                         usingStrings("ro.vendor.oplus.market.enname", "ro.vendor.oplus.market.name")
                     }
-                }
-            }.toClass().apply {
-                method { emptyParam();returnType = StringClass }.hookAll {
-                    after {
-                        val res = result<String>() ?: return@after
-                        if (res.contains("getVendorMarketName")) return@after
-                        result = waterMark
+                }.apply {
+                    checkDataList("HookCameraModelWaterMark MarketUtil")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method { emptyParam();returnType = StringClass }.hookAll {
+                            after {
+                                val res = result<String>() ?: return@after
+                                if (res.contains("getVendorMarketName")) return@after
+                                result = waterMark
+                            }
+                        }
                     }
                 }
-            }
 
-            //Source WatermarkHelper
-            DexkitUtils.searchDexClass(
-                "CustomModelWaterMark WatermarkHelper", appInfo.sourceDir
-            ) { dexKitBridge ->
+                //Source WatermarkHelper
                 dexKitBridge.findClass {
                     matcher {
                         methods {
@@ -77,14 +76,18 @@ object CustomModelWaterMark : YukiBaseHooker() {
                         }
                         usingStrings("WatermarkHelper", "removeChineseOfString")
                     }
-                }
-            }.toClass().apply {
-                method { param(StringClass);returnType = StringClass }.hookAll {
-                    after {
-                        val res = result<String>() ?: return@after
-                        if (res.contains("removeChineseOfString")) return@after
-                        if (res.toIntOrNull() != null) return@after
-                        result = waterMark
+                }.apply {
+                    checkDataList("HookCameraModelWaterMark WatermarkHelper")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method { param(StringClass);returnType = StringClass }.hookAll {
+                            after {
+                                val res = result<String>() ?: return@after
+                                if (res.contains("removeChineseOfString")) return@after
+                                if (res.toIntOrNull() != null) return@after
+                                result = waterMark
+                            }
+                        }
                     }
                 }
             }

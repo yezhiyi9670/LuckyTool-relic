@@ -12,6 +12,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.A13
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.SDK
 
@@ -30,7 +31,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("enable_screen_color_temperature_rgb_palette", false)
 
             //Source SysFeatureUtils
-            DexkitUtils.searchDexClass("HookSysFeature", appInfo.sourceDir) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
                 dexKitBridge.findClass {
                     matcher {
                         fields {
@@ -43,25 +44,29 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                         usingStrings("SysFeatureUtils")
                     }
-                }
-            }.toClass().apply {
-                method { param(StringClass);returnType = BooleanType }.hookAll {
-                    before {
-                        when (args().first().string()) {
-                            //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
-                            "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
-                            "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
-                            //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
-                            "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
-                            //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
-                            //"oplus.software.display.pwm_switch.support" -> resultTrue()
+                }.apply {
+                    checkDataList("HookSysFeature")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method { param(StringClass);returnType = BooleanType }.hookAll {
+                            before {
+                                when (args().first().string()) {
+                                    //Source Iris5SettingsFragment -> iris5_motion_fluency_optimization_switch
+                                    "oplus.software.video.rm_memc" -> if (memcVideo) resultFalse()
+                                    "oplus.software.display.pixelworks_enable" -> if (memcVideo) resultTrue()
+                                    //Source ColorModeFragment -> oplus.software.display.rgb_ball_support
+                                    "oplus.software.display.rgb_ball_support" -> if ((rgbPalette)) resultTrue()
+                                    //Source OplusPwmDevelopController -> oplus.software.display.pwm_switch.support
+                                    //"oplus.software.display.pwm_switch.support" -> resultTrue()
+                                }
+                            }
                         }
+//                        ro.oplus.audio.support.meta_audio
+//                        method { name = "isHoloAudioSupported" }.hook {
+//                            replaceToTrue()
+//                        }
                     }
                 }
-                //ro.oplus.audio.support.meta_audio
-//                method { name = "isHoloAudioSupported" }.hook {
-//                    replaceToTrue()
-//                }
             }
         }
     }
@@ -71,7 +76,7 @@ object HookSettingsFeature : YukiBaseHooker() {
             val neverTimeout = prefs(ModulePrefs).getBoolean("enable_show_never_timeout", false)
 
             //Source ExpUstUtils
-            DexkitUtils.searchDexClass("HookExpUst", appInfo.sourceDir) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
                 dexKitBridge.findClass {
                     matcher {
                         methods {
@@ -86,13 +91,17 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                         usingStrings("screen_off_timeout")
                     }
-                }
-            }.toClass().apply {
-                method { param(IntType);returnType = BooleanType }.hookAll {
-                    before {
-                        when (args().first().int()) {
-                            //Source DisplayTimeOutController -> 永不息屏(24H)
-                            11 -> if (SDK < A13 && neverTimeout) resultTrue()
+                }.apply {
+                    checkDataList("HookExpUst")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method { param(IntType);returnType = BooleanType }.hookAll {
+                            before {
+                                when (args().first().int()) {
+                                    //Source DisplayTimeOutController -> 永不息屏(24H)
+                                    11 -> if (SDK < A13 && neverTimeout) resultTrue()
+                                }
+                            }
                         }
                     }
                 }
@@ -110,9 +119,7 @@ object HookSettingsFeature : YukiBaseHooker() {
                 prefs(ModulePrefs).getBoolean("force_display_process_management", false)
 
             //Source AppFeatureProviderUtils
-            DexkitUtils.searchDexClass(
-                "HookAppFeatureProvider", appInfo.sourceDir
-            ) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
                 dexKitBridge.findClass {
                     matcher {
                         methods {
@@ -145,24 +152,28 @@ object HookSettingsFeature : YukiBaseHooker() {
                         }
                         usingStrings("AppFeatureProviderUtils")
                     }
-                }
-            }.toClass().apply {
-                method {
-                    param(ContentResolverClass, StringClass)
-                    returnType = BooleanType
-                }.hook {
-                    before {
-                        when (args().last().string()) {
-                            //Source OplusDefaultAutofillPicker -> autofill_password 自动填充密码
-                            "com.android.settings.cn_version" -> if (isDisableCN) resultFalse()
-                            //Source DisplayTimeOutController -> 永不息屏(24H)
-                            "com.android.settings.show_never_timeout" -> if (neverTimeout) resultTrue()
-                            //com.android.settings.processor_detail
-                            "com.android.settings.processor_detail" -> if (processorDetail != "0") resultTrue()
-                            //com.android.settings.processor_detail_gen2
-                            "com.android.settings.processor_detail_gen2" -> if (processorDetail == "2") resultTrue()
-                            //com.android.settings.ultimate_cleanup
-                            "com.android.settings.ultimate_cleanup" -> if (processManagement) resultTrue()
+                }.apply {
+                    checkDataList("HookAppFeatureProvider")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method {
+                            param(ContentResolverClass, StringClass)
+                            returnType = BooleanType
+                        }.hook {
+                            before {
+                                when (args().last().string()) {
+                                    //Source OplusDefaultAutofillPicker -> autofill_password 自动填充密码
+                                    "com.android.settings.cn_version" -> if (isDisableCN) resultFalse()
+                                    //Source DisplayTimeOutController -> 永不息屏(24H)
+                                    "com.android.settings.show_never_timeout" -> if (neverTimeout) resultTrue()
+                                    //com.android.settings.processor_detail
+                                    "com.android.settings.processor_detail" -> if (processorDetail != "0") resultTrue()
+                                    //com.android.settings.processor_detail_gen2
+                                    "com.android.settings.processor_detail_gen2" -> if (processorDetail == "2") resultTrue()
+                                    //com.android.settings.ultimate_cleanup
+                                    "com.android.settings.ultimate_cleanup" -> if (processManagement) resultTrue()
+                                }
+                            }
                         }
                     }
                 }

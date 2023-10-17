@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookBatteryNotify : YukiBaseHooker() {
@@ -24,9 +25,7 @@ object HookBatteryNotify : YukiBaseHooker() {
 //        val smartRapidCharge = prefs(ModulePrefs).getBoolean("remove_smart_rapid_charging_notification", false)
 
         //Source NotifyUtil
-        val clsName = DexkitUtils.searchDexClass(
-            "HookBatteryNotify", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -42,36 +41,33 @@ object HookBatteryNotify : YukiBaseHooker() {
                     }
                     usingStrings("NotifyUtil")
                 }
-            }
-        }
+            }.apply {
+                checkDataList("HookBatteryNotify NotifyUtil")
+                val clsName = first().name
 
-        if (highPerformance) {
-            DexkitUtils.searchDexMethod(
-                "HookBatteryNotify highPerformance", appInfo.sourceDir
-            ) { dexKitBridge ->
-                dexKitBridge.findMethod {
+                if (highPerformance) dexKitBridge.findMethod {
                     searchPackages(clsName)
                     matcher {
                         addUsingString("high_performance_channel_id")
                         addUsingString("ACTION_HIGH_PERFORMANCE")
                         addUsingNumber(5)
                     }
-                }
-            }?.firstOrNull()?.apply {
-                className.toClass().apply {
-                    method { name = methodName;emptyParam() }.hook {
-                        intercept()
+                }.apply {
+                    checkDataList("HookBatteryNotify highPerformance")
+                    val member = first()
+                    member.className.toClass().apply {
+                        method { name = member.methodName;emptyParam() }.hook {
+                            intercept()
+                        }
                     }
                 }
-            }
-        }
 
-        if (highBatteryConsumption) {
-            clsName.toClass().apply {
-                method {
-                    param(StringClass, BooleanType)
-                    paramCount = 2
-                }.hookAll { intercept() }
+                if (highBatteryConsumption) clsName.toClass().apply {
+                    method {
+                        param(StringClass, BooleanType)
+                        paramCount = 2
+                    }.hookAll { intercept() }
+                }
             }
         }
     }

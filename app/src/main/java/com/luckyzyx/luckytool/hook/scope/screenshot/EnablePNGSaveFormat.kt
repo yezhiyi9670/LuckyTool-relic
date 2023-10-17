@@ -5,12 +5,13 @@ import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object EnablePNGSaveFormat : YukiBaseHooker() {
 
     override fun onHook() {
         //Source ImageFileFormat -> JPEG / PNG
-        DexkitUtils.searchDexClass("EnablePNGSaveFormat", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -24,23 +25,25 @@ object EnablePNGSaveFormat : YukiBaseHooker() {
                     }
                     usingStrings("image/jpeg", "image/png")
                 }
-            }
-        }.toClass().apply {
-            method { returnType = StringClass }.hookAll {
-                after {
-                    result = when (result<String>()) {
-                        "image/jpeg" -> "image/png"
-                        ".jpg" -> ".png"
-                        else -> return@after
+            }.apply {
+                checkDataList("EnablePNGSaveFormat")
+                first().name.toClass().apply {
+                    method { returnType = StringClass }.hookAll {
+                        after {
+                            result = when (result<String>()) {
+                                "image/jpeg" -> "image/png"
+                                ".jpg" -> ".png"
+                                else -> return@after
+                            }
+                        }
                     }
-                }
-            }
-
-            method { returnType = Bitmap.CompressFormat::class.java }.hook {
-                after {
-                    result = when (result<Bitmap.CompressFormat>()) {
-                        Bitmap.CompressFormat.JPEG -> Bitmap.CompressFormat.PNG
-                        else -> return@after
+                    method { returnType = Bitmap.CompressFormat::class.java }.hook {
+                        after {
+                            result = when (result<Bitmap.CompressFormat>()) {
+                                Bitmap.CompressFormat.JPEG -> Bitmap.CompressFormat.PNG
+                                else -> return@after
+                            }
+                        }
                     }
                 }
             }

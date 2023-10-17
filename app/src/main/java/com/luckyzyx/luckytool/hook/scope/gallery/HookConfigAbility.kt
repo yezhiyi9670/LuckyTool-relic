@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookConfigAbility : YukiBaseHooker() {
@@ -22,7 +23,7 @@ object HookConfigAbility : YukiBaseHooker() {
         val notOplus = prefs(ModulePrefs).getBoolean("replace_oneplus_model_watermark", false)
 
         //Source ConfigAbilityImpl
-        DexkitUtils.searchDexClass("HookConfigAbility", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -50,22 +51,26 @@ object HookConfigAbility : YukiBaseHooker() {
                         }
                     }
                 }
-            }
-        }.toClass().apply {
-            method {
-                param(StringClass, BooleanType)
-                returnType = BooleanClass
-            }.hook {
-                after {
-                    when (args().first().string()) {
-                        "is_oneplus_brand" -> if (notOplus) resultFalse()
-                        "feature_is_support_watermark" -> if (waterMark) resultTrue()
-                        "feature_is_support_hassel_watermark" -> if (waterMark) resultTrue()
-                        "feature_is_support_photo_editor_watermark" -> if (waterMark) resultTrue()
-                        "feature_is_support_privacy_watermark" -> if (waterMark) resultTrue()
-                        "feature_is_support_lns" -> {
-    //                            loggerD(msg = "ConfigAbility -> lns call -> $result")
-    //                            resultTrue()
+            }.apply {
+                checkDataList("HookConfigAbility")
+                val member = first()
+                member.name.toClass().apply {
+                    method {
+                        param(StringClass, BooleanType)
+                        returnType = BooleanClass
+                    }.hook {
+                        after {
+                            when (args().first().string()) {
+                                "is_oneplus_brand" -> if (notOplus) resultFalse()
+                                "feature_is_support_watermark" -> if (waterMark) resultTrue()
+                                "feature_is_support_hassel_watermark" -> if (waterMark) resultTrue()
+                                "feature_is_support_photo_editor_watermark" -> if (waterMark) resultTrue()
+                                "feature_is_support_privacy_watermark" -> if (waterMark) resultTrue()
+                                "feature_is_support_lns" -> {
+                                    //                            loggerD(msg = "ConfigAbility -> lns call -> $result")
+                                    //                            resultTrue()
+                                }
+                            }
                         }
                     }
                 }

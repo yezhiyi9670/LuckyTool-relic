@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.replaceSpace
 
@@ -22,9 +23,7 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
         if (scrollList.isBlank() || scrollList == "None") return
 
         //Search com.ss.android.ugc.aweme / com.smile.gifmaker
-        DexkitUtils.searchDexClass(
-            "CustomAonGestureScrollPageWhitelist", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -41,20 +40,24 @@ object CustomAonGestureScrollPageWhitelist : YukiBaseHooker() {
                     }
                     usingStrings("com.ss.android.ugc.aweme", "com.smile.gifmaker")
                 }
-            }
-        }.toClass().apply {
-            method { emptyParam();returnType = ListClass }.hookAll {
-                after {
-                    val field = result<List<String>>() ?: return@after
-                    if (field.isEmpty()) return@after
-                    result = field.toMutableList().apply {
-                        if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
-                            val listString = scrollList.replaceSpace
-                            if (listString.contains("\n")) {
-                                listString.split("\n").forEach { s ->
-                                    if (s.isNotBlank()) add(s)
+            }.apply {
+                checkDataList("CustomAonGestureScrollPageWhitelist")
+                val member = first()
+                member.name.toClass().apply {
+                    method { emptyParam();returnType = ListClass }.hookAll {
+                        after {
+                            val field = result<List<String>>() ?: return@after
+                            if (field.isEmpty()) return@after
+                            result = field.toMutableList().apply {
+                                if (contains("com.ss.android.ugc.aweme") || contains("com.smile.gifmaker")) {
+                                    val listString = scrollList.replaceSpace
+                                    if (listString.contains("\n")) {
+                                        listString.split("\n").forEach { s ->
+                                            if (s.isNotBlank()) add(s)
+                                        }
+                                    } else add(scrollList)
                                 }
-                            } else add(scrollList)
+                            }
                         }
                     }
                 }

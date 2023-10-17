@@ -7,13 +7,12 @@ import com.highcapable.yukihookapi.hook.type.java.ArrayListClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
     override fun onHook() {
         //Source VirusScanNotifyListener
-        DexkitUtils.searchDexClass(
-            "RemoveVirusRiskNotificationInPhoneManager", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -27,10 +26,13 @@ object RemoveVirusRiskNotificationInPhoneManager : YukiBaseHooker() {
                     }
                     usingStrings("VirusScanNotifyListener")
                 }
-            }
-        }.toClass().apply {
-            method { param(ArrayListClass) }.hookAll {
-                intercept()
+            }.apply {
+                checkDataList("RemoveVirusRiskNotificationInPhoneManager")
+                first().name.toClass().apply {
+                    method { param(ArrayListClass) }.hookAll {
+                        intercept()
+                    }
+                }
             }
         }
     }

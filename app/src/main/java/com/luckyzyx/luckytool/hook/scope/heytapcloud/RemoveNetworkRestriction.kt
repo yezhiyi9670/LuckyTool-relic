@@ -7,6 +7,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveNetworkRestriction : YukiBaseHooker() {
     override fun onHook() {
@@ -14,9 +15,7 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
         //Source WifiCheck -> check -> BackupRestoreCode -> NO_WIFI / SUCCESS
         //Source NetworkUtil -> 2 == ?() -> getSystemService -> connectivity
         //Search Const.Callback.NetworkState.NetworkType.NETWORK_MOBILE -> ? 1 : 0 -> Method
-        DexkitUtils.searchDexClass(
-            "RemoveNetworkRestriction", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     methods {
@@ -35,11 +34,14 @@ object RemoveNetworkRestriction : YukiBaseHooker() {
                         "isNetworkConnected"
                     )
                 }
-            }
-        }.toClass().apply {
-            method { emptyParam();returnType = IntType }.giveAll().forEach {
-                it.hook {
-                    after { if (result<Int>() == 1) result = 2 }
+            }.apply {
+                checkDataList("RemoveNetworkRestriction")
+                first().name.toClass().apply {
+                    method { emptyParam();returnType = IntType }.giveAll().forEach {
+                        it.hook {
+                            after { if (result<Int>() == 1) result = 2 }
+                        }
+                    }
                 }
             }
         }

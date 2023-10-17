@@ -17,6 +17,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.HashMapClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookADM : YukiBaseHooker() {
@@ -24,7 +25,7 @@ object HookADM : YukiBaseHooker() {
         val isPro = prefs(ModulePrefs).getBoolean("adm_unlock_pro", false)
         if (!isPro) return
         //Search menu_buy -> firebase.test.lab
-        DexkitUtils.searchDexClass("HookADM", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 searchPackages("com.dv.get")
                 matcher {
@@ -42,19 +43,22 @@ object HookADM : YukiBaseHooker() {
                     }
                     usingStrings("firebase.test.lab")
                 }
-            }
-        }.toClass().apply {
-            method {
-                modifiers { isStatic }
-                param(ActivityClass)
-                returnType = UnitType
-            }.hookAll {
-                after {
-                    field {
-                        name = "n"
+            }.apply {
+                checkDataList("HookADM")
+                first().name.toClass().apply {
+                    method {
                         modifiers { isStatic }
-                        type(BooleanType)
-                    }.get().setTrue()
+                        param(ActivityClass)
+                        returnType = UnitType
+                    }.hookAll {
+                        after {
+                            field {
+                                name = "n"
+                                modifiers { isStatic }
+                                type(BooleanType)
+                            }.get().setTrue()
+                        }
+                    }
                 }
             }
         }

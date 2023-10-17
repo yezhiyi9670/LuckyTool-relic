@@ -17,6 +17,7 @@ import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.safeOfNull
 
@@ -193,7 +194,7 @@ object AlarmClockWidget : YukiBaseHooker() {
     private object AlarmClock13 : YukiBaseHooker() {
         override fun onHook() {
             //OnePlusWidget setTextViewText -> local_hour_txt -> SpannableStringBuilder -> CharSequence
-            DexkitUtils.searchDexClass("AlarmClock13", appInfo.sourceDir) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
                 dexKitBridge.findClass {
                     matcher {
                         fields {
@@ -212,18 +213,22 @@ object AlarmClockWidget : YukiBaseHooker() {
                             }
                         }
                     }
-                }
-            }.toClass().apply {
-                method {
-                    param { it[0] == ContextClass && it[1] == StringClass }
-                    paramCount(2..3)
-                }.hookAll {
-                    after {
-                        if (redMode == "0") return@after
-                        result = when (redMode) {
-                            "1" -> result<CharSequence>()?.let { s -> setCharRedOne(s) }
-                            "2" -> result<CharSequence>().toString()
-                            else -> result
+                }.apply {
+                    checkDataList("AlarmClock13")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method {
+                            param { it[0] == ContextClass && it[1] == StringClass }
+                            paramCount(2..3)
+                        }.hookAll {
+                            after {
+                                if (redMode == "0") return@after
+                                result = when (redMode) {
+                                    "1" -> result<CharSequence>()?.let { s -> setCharRedOne(s) }
+                                    "2" -> result<CharSequence>().toString()
+                                    else -> result
+                                }
+                            }
                         }
                     }
                 }

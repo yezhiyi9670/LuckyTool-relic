@@ -7,7 +7,7 @@ import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
     override fun onHook() {
@@ -47,19 +47,17 @@ object RemoveAdsAtDownloadPageBottom : YukiBaseHooker() {
                     }
                 }
             }.apply {
-                printLog("RemoveAdsAtDownloadPageBottom")
-                if (isNullOrEmpty().not() && size == 1) {
-                    val member = firstOrNull() ?: return@create
-                    member.className.toClass().apply {
-                        method {
-                            name = member.methodName
-                            emptyParam()
-                            returnType(UnitType)
-                        }.hook {
-                            replaceUnit {
-                                field { type("android.widget.LinearLayout") }.get(instance)
-                                    .cast<View>()?.isVisible = false
-                            }
+                checkDataList("RemoveAdsAtDownloadPageBottom")
+                val member = first()
+                member.className.toClass().apply {
+                    method {
+                        name = member.methodName
+                        emptyParam()
+                        returnType(UnitType)
+                    }.hook {
+                        replaceUnit {
+                            field { type("android.widget.LinearLayout") }.get(instance)
+                                .cast<View>()?.isVisible = false
                         }
                     }
                 }

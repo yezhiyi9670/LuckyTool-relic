@@ -12,14 +12,13 @@ import com.highcapable.yukihookapi.hook.type.java.FileClass
 import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveImageSaveWaterMark : YukiBaseHooker() {
     override fun onHook() {
         //Search ImageSaveManager
         //Search getWaterMaskBitmap -> standard_water_mask_template / high_quality_water_mask_template
-        DexkitUtils.searchDexClass(
-            "RemoveImageSaveWaterMark", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -38,13 +37,16 @@ object RemoveImageSaveWaterMark : YukiBaseHooker() {
                         add { paramTypes("com.heytap.pictorial.core.bean.BasePictorialData") }
                     }
                 }
-            }
-        }.toClass().apply {
-            method {
-                param(BooleanType, VagueType, BitmapClass, BooleanType)
-                returnType = BitmapClass
-            }.hook {
-                after { result = args(2).cast<Bitmap>() ?: return@after }
+            }.apply {
+                checkDataList("RemoveImageSaveWaterMark")
+                first().name.toClass().apply {
+                    method {
+                        param(BooleanType, VagueType, BitmapClass, BooleanType)
+                        returnType = BitmapClass
+                    }.hook {
+                        after { result = args(2).cast<Bitmap>() ?: return@after }
+                    }
+                }
             }
         }
     }

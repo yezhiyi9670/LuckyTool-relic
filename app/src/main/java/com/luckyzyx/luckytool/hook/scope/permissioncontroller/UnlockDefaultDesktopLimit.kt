@@ -6,7 +6,7 @@ import com.highcapable.yukihookapi.hook.type.android.ContextClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
-import com.luckyzyx.luckytool.utils.DexkitUtils.printLog
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import org.luckypray.dexkit.query.enums.UsingType
 
 object UnlockDefaultDesktopLimit : YukiBaseHooker() {
@@ -44,9 +44,8 @@ object UnlockDefaultDesktopLimit : YukiBaseHooker() {
                         usingStrings("DefaultApp")
                     }
                 }
-            }.apply {
-                if (size != 2) this.printLog("UnlockDefaultDesktopLimit allMethod")
-            }
+            }.checkDataList("UnlockDefaultDesktopLimit allMethod", false)
+
             val tableMethod = dexKitBridge.findMethod {
                 searchPackages(forceMethod.first().className)
                 matcher {
@@ -87,43 +86,18 @@ object UnlockDefaultDesktopLimit : YukiBaseHooker() {
                         usingStrings("DefaultApp")
                     }
                 }
-            }.printLog("UnlockDefaultDesktopLimit tableMethod")
-            forceMethod.remove(tableMethod?.firstOrNull())
+            }.checkDataList("UnlockDefaultDesktopLimit tableMethod")
+
             forceMethod.apply {
-                printLog("UnlockDefaultDesktopLimit finalMethod")
-                if (size == 1) firstOrNull()?.apply {
-                    className.toClass().apply {
-                        method { name = methodName }.hook {
-                            replaceToTrue()
-                        }
+                remove(tableMethod.first())
+                checkDataList("UnlockDefaultDesktopLimit finalMethod")
+                val member = first()
+                member.className.toClass().apply {
+                    method { name = member.methodName }.hook {
+                        replaceToTrue()
                     }
                 }
             }
         }
-
-//        DexkitUtils.searchDexClass("UnlockDefaultDesktopLimit", appInfo.sourceDir) { dexKitBridge ->
-//            dexKitBridge.findClass {
-//                matcher {
-//                    fields {
-//                        addForType(BooleanType.name)
-//                    }
-//                    methods {
-//                        add { paramCount(1);returnType(UnitType.name) }
-//                        add { paramCount(0);returnType(BooleanType.name) }
-//                        add { paramTypes(ContextClass.name);returnType(UnitType.name) }
-//                    }
-//                    usingStrings(
-//                        "oplus.software.pms_app_frozen",
-//                        "oplus.software.defaultapp.remove_force_launcher",
-//                        "oplus.hardware.type.tablet",
-//                        "persist.sys.permission.enable"
-//                    )
-//                }
-//            }
-//        }?.firstOrNull()?.className?.toClass()?.apply {
-//            method { param(ContextClass) }.hook {
-//                after { field { type(BooleanType).index(1) }.get().setTrue() }
-//            }
-//        }
     }
 }

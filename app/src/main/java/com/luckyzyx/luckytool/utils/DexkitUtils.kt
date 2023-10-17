@@ -8,84 +8,62 @@ import org.luckypray.dexkit.query.MethodDataList
 @Suppress("MemberVisibilityCanBePrivate")
 object DexkitUtils {
     const val tag = "LuckyTool"
-    const val print = true
     val debug = false
 
     /**
-     * 创建Dexkit实例
+     * 创建Dexkit安全实例
      * @param appPath String
-     * @return DexKitBridge?
+     * @param result Function1<DexKitBridge, Unit>
      */
-    fun create(appPath: String): DexKitBridge? {
-        System.loadLibrary("dexkit")
-        return DexKitBridge.create(appPath)
-    }
-
     fun create(appPath: String, result: (DexKitBridge) -> Unit) {
         System.loadLibrary("dexkit")
         DexKitBridge.create(appPath)?.use { result(it) }
     }
 
     /**
-     * 使用规则查找Class
-     * @param tag String
-     * @param appPath String
-     * @param initialization Function1<DexKitBridge, ClassDataList>
-     * @return ClassDataList?
-     */
-    fun searchDexClass(
-        tag: String, appPath: String, initialization: (DexKitBridge) -> ClassDataList?
-    ): String {
-        val result = create(appPath)?.use { initialization(it) }
-        if (print) if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
-        return result?.firstOrNull()?.name ?: tag.ifBlank { appPath }
-    }
-
-    /**
-     * 根据搜索数量处理LOG与缓存
+     * 检查搜索到的类列表并打印LOG
      * @receiver ClassDataList
      * @param instance String
+     * @param onlyOne Boolean
+     * @return ClassDataList
      */
-    fun ClassDataList?.printLog(instance: String): ClassDataList? {
-        if (isNullOrEmpty()) {
-            YLog.error("$instance -> findClass isNullOrEmpty", tag = tag)
-        } else if (size != 1) {
-            var f = ""
-            forEach { f += "[${it.name}]" }
-            YLog.error("$instance -> findClass size ($size) -> $f", tag = tag)
-        } else if (debug) {
-            YLog.debug("$instance -> findclass ${first().name}", tag = tag)
+    fun ClassDataList.checkDataList(instance: String, onlyOne: Boolean = true): ClassDataList {
+        when {
+            isNullOrEmpty() -> YLog.error("$instance -> findMethod isNullOrEmpty", tag = tag)
+            size > 1 && onlyOne -> {
+                var find = ""
+                forEach { find += "[${it.name}]" }
+                YLog.error("$instance -> findMethod size ($size) -> $find", tag = tag)
+            }
+
+            size == 1 -> if (debug) YLog.debug(
+                "$instance -> findMethod ${first().name}",
+                tag = tag
+            )
         }
         return this
     }
 
     /**
-     * 使用规则查找Method
-     * @param tag String
-     * @param appPath String
-     * @param initialization Function1<DexKitBridge, ClassDataList>
-     * @return MethodDataList?
-     */
-    fun searchDexMethod(
-        tag: String, appPath: String, initialization: (DexKitBridge) -> MethodDataList?
-    ): MethodDataList? {
-        val result = create(appPath)?.use { initialization(it) }
-        if (print) if (tag.isBlank()) result.printLog(appPath) else result.printLog(tag)
-        return result
-    }
-
-    /**
-     * 根据搜索数量处理LOG与缓存
+     * 检查搜索到的方法列表并打印LOG
      * @receiver MethodDataList
      * @param instance String
+     * @param onlyOne Boolean
+     * @return MethodDataList
      */
-    fun MethodDataList?.printLog(instance: String): MethodDataList? {
-        if (isNullOrEmpty()) {
-            YLog.error("$instance -> findMethod isNullOrEmpty", tag = tag)
-        } else if (debug) {
-            var f = ""
-            forEach { f += "[${it.className} - ${it.methodName}]" }
-            YLog.debug("$instance -> findMethod size ($size) -> $f", tag = tag)
+    fun MethodDataList.checkDataList(instance: String, onlyOne: Boolean = true): MethodDataList {
+        when {
+            isNullOrEmpty() -> YLog.error("$instance -> findMethod isNullOrEmpty", tag = tag)
+            size > 1 && onlyOne -> {
+                var find = ""
+                forEach { find += "[${it.className}|${it.methodName}]" }
+                YLog.error("$instance -> findMethod size ($size) -> $find", tag = tag)
+            }
+
+            size == 1 -> if (debug) YLog.debug(
+                "$instance -> findMethod ${first().className}|${first().methodName}",
+                tag = tag
+            )
         }
         return this
     }

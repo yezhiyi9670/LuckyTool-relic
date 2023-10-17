@@ -8,6 +8,7 @@ import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.IntType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 
 object RemoveRootCheck : YukiBaseHooker() {
     override fun onHook() {
@@ -15,9 +16,7 @@ object RemoveRootCheck : YukiBaseHooker() {
         //Search getSupportCoolEx new Bundle -> Class
         //Search getFeature -> dynamic_feature_cool_ex
         //isSafe:null; -> isSafe:0
-        DexkitUtils.searchDexClass(
-            "RemoveRootCheck", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -30,10 +29,13 @@ object RemoveRootCheck : YukiBaseHooker() {
                         add { paramCount(0);returnType(BundleClass.name) }
                     }
                 }
-            }
-        }.toClass().apply {
-            method { emptyParam();returnType = BundleClass }.hook {
-                after { result<Bundle>()?.putInt("isSafe", 0) }
+            }.apply {
+                checkDataList("RemoveRootCheck")
+                first().name.toClass().apply {
+                    method { emptyParam();returnType = BundleClass }.hook {
+                        after { result<Bundle>()?.putInt("isSafe", 0) }
+                    }
+                }
             }
         }
     }

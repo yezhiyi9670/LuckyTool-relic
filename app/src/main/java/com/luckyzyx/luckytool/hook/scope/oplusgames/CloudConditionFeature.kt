@@ -9,6 +9,7 @@ import com.highcapable.yukihookapi.hook.type.java.ListClass
 import com.highcapable.yukihookapi.hook.type.java.MapClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker() {
@@ -159,9 +160,7 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                 prefs(ModulePrefs).getBoolean("enable_one_plus_characteristic", false)
 
             //Source CloudApiImpl
-            DexkitUtils.searchDexClass(
-                "HookCloudApiImpl", appInfo.sourceDir
-            ) { dexKitBridge ->
+            DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
                 dexKitBridge.findClass {
                     matcher {
                         usingStrings("cloudKey", "defaultDate", "spFileName")
@@ -171,24 +170,28 @@ class CloudConditionFeature(private val appSet: Array<String>) : YukiBaseHooker(
                             add { paramCount(2);returnType(BooleanType.name) }
                         }
                     }
-                }
-            }.toClass().apply {
-                method {
-                    name = "isFunctionEnabledFromCloud"
-                    paramCount = 2
-                }.hook {
-                    before {
-                        when (args().first().string()) {
-                            //GPU控制器云控 -> isCloudSupportGpuControlPanel
-                            "gpu_control_panel" -> if (gpuControl) resultTrue()
-                            //OnePlus特性
-                            "one_plus_characteristic" -> if (oneplusCharacteristic) resultTrue()
-                            //超级分辨率云控 -> cloudSRSupport
-                            "super_resolution_config" -> if (superResolution) resultTrue()
-                            //全超分辨率云控 -> isSupportFullSupperResolution
-                            "super_resolution_config_full" -> if (superResolution) resultTrue()
-                            //游戏滤镜
-        //                            "game_filter_config" -> resultTrue()
+                }.apply {
+                    checkDataList("HookCloudApiImpl")
+                    val member = first()
+                    member.name.toClass().apply {
+                        method {
+                            name = "isFunctionEnabledFromCloud"
+                            paramCount = 2
+                        }.hook {
+                            before {
+                                when (args().first().string()) {
+                                    //GPU控制器云控 -> isCloudSupportGpuControlPanel
+                                    "gpu_control_panel" -> if (gpuControl) resultTrue()
+                                    //OnePlus特性
+                                    "one_plus_characteristic" -> if (oneplusCharacteristic) resultTrue()
+                                    //超级分辨率云控 -> cloudSRSupport
+                                    "super_resolution_config" -> if (superResolution) resultTrue()
+                                    //全超分辨率云控 -> isSupportFullSupperResolution
+                                    "super_resolution_config_full" -> if (superResolution) resultTrue()
+                                    //游戏滤镜
+                                    //                            "game_filter_config" -> resultTrue()
+                                }
+                            }
                         }
                     }
                 }

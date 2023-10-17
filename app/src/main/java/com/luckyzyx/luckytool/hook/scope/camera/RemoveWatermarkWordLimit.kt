@@ -2,7 +2,6 @@ package com.luckyzyx.luckytool.hook.scope.camera
 
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.method
-import com.highcapable.yukihookapi.hook.log.YLog
 import com.highcapable.yukihookapi.hook.type.android.BundleClass
 import com.highcapable.yukihookapi.hook.type.java.BooleanType
 import com.highcapable.yukihookapi.hook.type.java.CharSequenceClass
@@ -11,6 +10,7 @@ import com.highcapable.yukihookapi.hook.type.java.LongType
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 import com.luckyzyx.luckytool.utils.getAppSet
 
@@ -26,9 +26,7 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
 
         //Source CameraSubSettingFragment -> camera_namelength_outofrange -> filter
         //Source CameraSloganSettingFragment -> camera_namelength_outofrange -> filter
-        val clsName = DexkitUtils.searchDexClass(
-            "RemoveWatermarkWordLimit", appInfo.sourceDir
-        ) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 searchPackages("com.oplus.camera.setting", "com.oplus.camera.ui.menu.setting")
                 matcher {
@@ -53,13 +51,15 @@ object RemoveWatermarkWordLimit : YukiBaseHooker() {
                         "isVideoSloganEnable"
                     )
                 }
+            }.apply {
+                checkDataList("RemoveWatermarkWordLimit")
+                (first().name + clazz).toClass().apply {
+                    method { name = "filter";returnType = CharSequenceClass }.hook {
+                        intercept()
+                    }
+                }
             }
         }
-        (clsName + clazz).toClassOrNull()?.apply {
-            method { name = "filter";returnType = CharSequenceClass }.hook {
-                intercept()
-            }
-        } ?: run { YLog.debug("Error -> RemoveWatermarkWordLimit") }
     }
 }
 

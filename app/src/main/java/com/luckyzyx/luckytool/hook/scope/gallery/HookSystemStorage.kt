@@ -11,6 +11,7 @@ import com.highcapable.yukihookapi.hook.type.java.LongClass
 import com.highcapable.yukihookapi.hook.type.java.StringClass
 import com.highcapable.yukihookapi.hook.type.java.UnitType
 import com.luckyzyx.luckytool.utils.DexkitUtils
+import com.luckyzyx.luckytool.utils.DexkitUtils.checkDataList
 import com.luckyzyx.luckytool.utils.ModulePrefs
 
 object HookSystemStorage : YukiBaseHooker() {
@@ -20,7 +21,7 @@ object HookSystemStorage : YukiBaseHooker() {
         val waterMark = prefs(ModulePrefs).getBoolean("enable_watermark_editing", false)
 
         //Source OtherSystemStorage
-        DexkitUtils.searchDexClass("HookSystemStorage", appInfo.sourceDir) { dexKitBridge ->
+        DexkitUtils.create(appInfo.sourceDir) { dexKitBridge ->
             dexKitBridge.findClass {
                 matcher {
                     fields {
@@ -37,26 +38,29 @@ object HookSystemStorage : YukiBaseHooker() {
                     }
                     usingStrings("configNode")
                 }
-            }
-        }.toClass().apply {
-            method {
-                param(VagueType, BooleanType)
-                returnType = BooleanClass
-            }.hook {
-                after {
-                    val configNode = args().first().any()?.toString() ?: return@after
-                    when {
-                        //com.oplus.camera.support.custom.hasselblad.watermark
-                        configNode.contains("feature_is_support_watermark") -> if (waterMark) resultTrue()
-                        configNode.contains("feature_is_support_hassel_watermark") -> if (waterMark) resultTrue()
-                        //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
-                        configNode.contains("feature_is_support_photo_editor_watermark") -> if (waterMark) resultTrue()
-                        //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
-                        configNode.contains("feature_is_support_privacy_watermark") -> if (waterMark) resultTrue()
-                        //debug.gallery.lns / os.graphic.gallery.photoview.lns
-                        configNode.contains("feature_is_support_lns") -> {
-    //                            loggerD(msg = "configNode -> lns call -> $result")
-    //                            resultTrue()
+            }.apply {
+                checkDataList("HookSystemStorage")
+                first().name.toClass().apply {
+                    method {
+                        param(VagueType, BooleanType)
+                        returnType = BooleanClass
+                    }.hook {
+                        after {
+                            val configNode = args().first().any()?.toString() ?: return@after
+                            when {
+                                //com.oplus.camera.support.custom.hasselblad.watermark
+                                configNode.contains("feature_is_support_watermark") -> if (waterMark) resultTrue()
+                                configNode.contains("feature_is_support_hassel_watermark") -> if (waterMark) resultTrue()
+                                //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
+                                configNode.contains("feature_is_support_photo_editor_watermark") -> if (waterMark) resultTrue()
+                                //is_realme_brand / debug.gallery.photo.editor.watermark.switcher
+                                configNode.contains("feature_is_support_privacy_watermark") -> if (waterMark) resultTrue()
+                                //debug.gallery.lns / os.graphic.gallery.photoview.lns
+                                configNode.contains("feature_is_support_lns") -> {
+                                    //                            loggerD(msg = "configNode -> lns call -> $result")
+                                    //                            resultTrue()
+                                }
+                            }
                         }
                     }
                 }
