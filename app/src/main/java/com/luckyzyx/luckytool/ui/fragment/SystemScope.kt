@@ -2706,9 +2706,9 @@ class Battery : BaseScopePreferenceFeagment() {
                 isIconSpaceReserved = false
             })
             addPreference(SwitchPreference(context).apply {
-                title = getString(R.string.remove_high_temperature_limit)
-                summary = getString(R.string.remove_high_temperature_limit_summary)
-                key = "remove_high_temperature_limit"
+                title = getString(R.string.remove_battery_temperature_control)
+                summary = getString(R.string.remove_battery_temperature_control_summary)
+                key = "remove_battery_temperature_control"
                 setDefaultValue(false)
                 isIconSpaceReserved = false
             })

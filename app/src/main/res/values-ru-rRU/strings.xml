@@ -451,8 +451,8 @@
     <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
     <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
-    <string name="remove_high_temperature_limit">Удалить ограничение высоких температур</string>
-    <string name="remove_high_temperature_limit_summary">Удалите ограничение, согласно которому нельзя использовать различные функции, например: камеру, фонарик, точку доступа, механизм отображения экрана и т. д.\nТеоретическая температура камуфляжа составляет 30°C, и конкретный эффект не гарантируется.</string>
+    <string name="remove_battery_temperature_control">Remove battery temperature control</string>
+    <string name="remove_battery_temperature_control_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
     <string name="BatteryOptimization">Оптимизация батареи</string>
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>

@@ -451,8 +451,8 @@
     <string name="force_enable_systemui_blur_feature">Buộc kích hoạt tính năng làm mờ giao diện hệ thống</string>
     <string name="force_enable_systemui_blur_feature_tips">Điều kiện tiên quyết: Bạn cần bật tùy chọn \"Buộc kích hoạt các tính năng mờ của hệ thống\"\nVị trí chức năng: Khác</string>
     <!--Battery-->
-    <string name="remove_high_temperature_limit">Loại bỏ giới hạn nhiệt độ cao</string>
-    <string name="remove_high_temperature_limit_summary">Loại bỏ giới hạn không thể sử dụng nhiều chức năng khác nhau,Ví dụ: máy ảnh, đèn pin, điểm phát sóng, công cụ hiển thị màn hình, v.v.\nNhiệt độ ngụy trang lý thuyết là 30°C và không đảm bảo hiệu quả cụ thể.</string>
+    <string name="remove_battery_temperature_control">Remove battery temperature control</string>
+    <string name="remove_battery_temperature_control_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
     <string name="BatteryOptimization">Tối ưu hóa pin</string>
     <string name="restore_default_battery_optimization_whitelist">Ngăn chặn sự khôi phục của danh sách trắng tối ưu hoá pin</string>
     <string name="disable_customize_battery_optimization_whiteList">Ngăn chặn sự khôi phục của danh sách trắng tối ưu hoá pin</string>
