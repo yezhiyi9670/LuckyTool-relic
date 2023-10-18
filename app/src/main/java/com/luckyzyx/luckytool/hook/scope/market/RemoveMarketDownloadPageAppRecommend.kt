@@ -24,7 +24,7 @@ object RemoveMarketDownloadPageAppRecommend : YukiBaseHooker() {
                     }
                 }
             }.apply {
-                checkDataList("RemoveMarketDownloadPageAppRecommend")
+                checkDataList("RemoveMarketDownloadPageAppRecommend", false)
                 forEach {
                     it.className.toClass().method { name = it.methodName;param(ListClass) }
                         .hookAll {

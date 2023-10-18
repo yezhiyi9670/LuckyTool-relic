@@ -1,6 +1,7 @@
 package com.luckyzyx.luckytool.utils
 
 import com.highcapable.yukihookapi.hook.log.YLog
+import com.luckyzyx.luckytool.BuildConfig
 import org.luckypray.dexkit.DexKitBridge
 import org.luckypray.dexkit.query.ClassDataList
 import org.luckypray.dexkit.query.MethodDataList
@@ -8,7 +9,7 @@ import org.luckypray.dexkit.query.MethodDataList
 @Suppress("MemberVisibilityCanBePrivate")
 object DexkitUtils {
     const val tag = "LuckyTool"
-    val debug = true
+    const val debug = BuildConfig.DEBUG
 
     /**
      * 创建Dexkit安全实例
