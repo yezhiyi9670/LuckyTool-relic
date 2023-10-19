@@ -63,10 +63,10 @@ class ExtractOTAFragment : Fragment() {
                         val size = table.getStringOrNull(sizeColumn) ?: "Null"
                         val md5Column = table.getColumnIndex("md5")
                         val md5 = table.getStringOrNull(md5Column) ?: "Null"
-                        val urlColumn = table.getColumnIndex("url")
-                        val url = table.getStringOrNull(urlColumn) ?: "Null"
                         val activeUrlColumn = table.getColumnIndex("active_url")
                         val activeUrl = table.getStringOrNull(activeUrlColumn) ?: "Null"
+                        val urlColumn = table.getColumnIndex("url")
+                        val url = table.getStringOrNull(urlColumn) ?: "Null"
                         dataList.add(
                             """
                             PackName -> $packName

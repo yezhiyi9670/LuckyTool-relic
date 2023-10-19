@@ -97,7 +97,7 @@
     <!-- CorePatch -->
     <string name="ColorOSCorePatchTip">Официальному установщику Color OS необходимо включить другие функции для использования\nСписок функций-Приложения-Установка приложений</string>
     <string name="corepatch">Патчи ядра</string>
-    <string name="corepatch_summary">Remove install limits, supports Android 11–14</string>
+    <string name="corepatch_summary">Снять ограничения на установку, Android 11–14</string>
     <string name="downgr">Разрешить понижение версии</string>
     <string name="downgr_summary">Разрешить приложению перезаписывать установку старой версии непосредственно в случае установки новой версии</string>
     <string name="authcreak">Отключить проверку подписи диспетчера пакетов</string>
@@ -451,8 +451,8 @@
     <string name="force_enable_systemui_blur_feature">Включить функцию системного размытия</string>
     <string name="force_enable_systemui_blur_feature_tips">Уловие: Вам необходимо включить опцию \"Включить функцию размытия в системе\"\nРасположение функции: Разное</string>
     <!--Battery-->
-    <string name="remove_battery_temperature_control">Remove battery temperature control</string>
-    <string name="remove_battery_temperature_control_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
+    <string name="remove_battery_temperature_control">Убрать управление температурой батареи</string>
+    <string name="remove_battery_temperature_control_summary">Удалить ограничение, что различные функции не могут быть использованы, например: камера, фонарик, точка доступа, механизм отображения экрана и т.д.</string>
     <string name="BatteryOptimization">Оптимизация батареи</string>
     <string name="restore_default_battery_optimization_whitelist">Восстановить белый список оптимизации батареи по умолчанию</string>
     <string name="disable_customize_battery_optimization_whiteList">Отключить белый список оптимизации батареи</string>
@@ -495,7 +495,7 @@
     <string name="click_icon_open_market_page">Нажмите на иконку, чтобы открыть страницу магазина</string>
     <string name="allow_disabling_system_apps">Разрешить отключение системных приложений</string>
     <string name="allow_disabling_system_apps_summary">Этот модуль не несет ответственности, если системное приложение не может быть восстановлено из-за действий пользователя</string>
-    <string name="enable_custom_app_language">Enable custom app language</string>
+    <string name="enable_custom_app_language">Включить пользовательский язык приложения</string>
     <!--Camera-->
     <string name="CameraWaterMark">Водяной знак</string>
     <string name="remove_watermark_word_limit">Удалить ограничение на количество слов водяного знака</string>
@@ -600,9 +600,9 @@
     <string name="BreenoTouch">Касание</string>
     <string name="remove_app_recommend_card">Удалить карточку с рекомендациями приложения</string>
     <!--OplusMarket-->
-    <string name="remove_market_splash_page_app_recommend">Remove app recommendations from market splash page</string>
-    <string name="remove_market_update_page_app_recommend">Remove app recommendations from market update page</string>
-    <string name="remove_market_download_page_app_recommend">Remove app recommendations from market download page</string>
+    <string name="remove_market_splash_page_app_recommend">Удалить рекомендации приложений со страницы-заставки в магазине</string>
+    <string name="remove_market_update_page_app_recommend">Удалить рекомендации приложений со страницы обновления магазина</string>
+    <string name="remove_market_download_page_app_recommend">Удалить рекомендации приложений со страницы загрузки из магазина</string>
     <!--Everyimage-->
     <string name="skip_startup_page">Пропустить стартовую страницу</string>
     <string name="vip_download">Загрузить исходное изображение</string>

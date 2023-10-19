@@ -9,7 +9,9 @@ import com.highcapable.yukihookapi.hook.bean.VariousClass
 import com.highcapable.yukihookapi.hook.entity.YukiBaseHooker
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
+import com.luckyzyx.luckytool.utils.A14
 import com.luckyzyx.luckytool.utils.ModulePrefs
+import com.luckyzyx.luckytool.utils.SDK
 import com.luckyzyx.luckytool.utils.dp
 
 object LockScreenComponent : YukiBaseHooker() {
@@ -51,6 +53,8 @@ object LockScreenComponent : YukiBaseHooker() {
                 if (userTypeface) intercept()
             }
         }
+
+        if (SDK >= A14) return
         //Source RedHorizontalDualClockView
         VariousClass(
             "com.oplusos.systemui.keyguard.clock.RedHorizontalDualClockView", //C13

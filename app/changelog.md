@@ -3,7 +3,7 @@
 **The beta test version is only released for testing
 in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 
-### 1.1.1_beta
+### 1.1.1
 
 - [修复] 状态栏移动数据图标Hook异常 C12.1
 - [修复] 锁屏页面底部SOS按钮Hook异常 C13.0
@@ -21,6 +21,25 @@ in [TG Discussion Group](https://t.me/+F42pfv-c0h4zNDc9)**
 - [添加] 移除软件商店更新页应用推荐
 - [添加] 移除软件商店下载页应用推荐
 - [更改] 移除电池温度控制功能键值与Hook逻辑
+- [修复] 部分机型系统更新后系统界面功能全部失效问题 C14
+- [Fix] Abnormal hook of mobile data icon in status bar C12.1
+- [Fix] The SOS button Hook at the bottom of the lock screen page is abnormal C13.0
+- [Fix] Abnormal battery font size hook in status bar C14
+- [Fix] Status bar tile extension row number determination logic C14
+- [Change] Automatically expanding the number of horizontal tile rows only takes effect in C14
+- [Fix] Remove the bottom button of the lock screen C14
+- [Fix] USB connection dialog box cannot be displayed when clicking the notification C14
+- [Fix] Status bar battery icon percent sign C14
+- [Fix] Synchronize upstream core crack C14
+- [Add] Enable custom application language C14
+- [Fix] Lock screen switch flashlight automatically closes the screen C14
+- [Fix] Desktop application icon badge C14
+- [Add] Remove app recommendations from app store launch page
+- [Add] Remove app recommendations from software store update page
+- [Add] Remove app recommendations from software store download page
+- [Change] Remove battery temperature control function key value and Hook logic
+- [Fix] The problem that all system interface functions of some models become invalid after system
+  update C14
 
 ### 1.1.0
 

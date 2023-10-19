@@ -451,8 +451,8 @@
     <string name="force_enable_systemui_blur_feature">Vynutit povolení systémového rozostření</string>
     <string name="force_enable_systemui_blur_feature_tips">Podmínky: Musíte zapnout možnost „Vynutit povolení systémové rozostření“\n Umístění funkce: Různé</string>
     <!--Battery-->
-    <string name="remove_battery_temperature_control">Remove battery temperature control</string>
-    <string name="remove_battery_temperature_control_summary">Remove the limitation that various functions cannot be used,For example: camera, flashlight, hotspot, screen display engine, etc.</string>
+    <string name="remove_battery_temperature_control">Odebrat kontrolu teploty baterie</string>
+    <string name="remove_battery_temperature_control_summary">Odstranit omezení, kvůli kterým nelze použít různé funkce, například: fotoaparát, svítilna, hotspot, displej atd.</string>
     <string name="BatteryOptimization">Optimalizace baterie</string>
     <string name="restore_default_battery_optimization_whitelist">Obnovit výchozí optimalizaci baterie v seznamu povolených</string>
     <string name="disable_customize_battery_optimization_whiteList">Zakázat vlastní seznam optimalizovaných aplikací baterie</string>

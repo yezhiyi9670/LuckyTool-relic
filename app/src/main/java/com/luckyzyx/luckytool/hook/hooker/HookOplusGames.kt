@@ -74,15 +74,11 @@ object HookOplusGames : YukiBaseHooker() {
 
             //oplus.software.performance_setting_extension
             //Source GameCpuSettingViewModel -> isSupportCpuFreqCtrlPanel
-//            findClass("business.module.cpusetting.GameCpuSettingViewModel").hook {
-//                injectMember {
-//                    method {
-//                        param(StringClass)
-//                        returnType = BooleanType
-//                    }
-//                    afterHook {
+//            "business.module.cpusetting.GameCpuSettingViewModel".toClass().apply {
+//                method { param(StringClass);returnType = BooleanType }.hook {
+//                    after {
 //                        val key = args().first().string()
-//                        loggerD(msg = "isSupportCpuFreqCtrlPanel ($key) -> $result")
+//                        YLog.debug("isSupportCpuFreqCtrlPanel ($key) -> $result")
 //                        resultTrue()
 //                    }
 //                }

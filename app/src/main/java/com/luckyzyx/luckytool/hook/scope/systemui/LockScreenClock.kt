@@ -118,7 +118,10 @@ object LockScreenClock : YukiBaseHooker() {
                 }
             }
         }
-        if (SDK >= A13) loadHooker(HookRedDuanClock) else loadHooker(HookRedDuanClock12)
+
+        if (SDK >= A14) return
+        else if (SDK == A13) loadHooker(HookRedDuanClock)
+        else loadHooker(HookRedDuanClock12)
     }
 
     @SuppressLint("DiscouragedApi")
