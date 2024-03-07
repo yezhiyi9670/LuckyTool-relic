@@ -38,7 +38,7 @@ class UpdateUtils(val context: Context) {
     ) {
         scopeNet {
             val latestUrl =
-                "https://api.github.com/repos/Xposed-Modules-Repo/com.luckyzyx.luckytool/releases/latest"
+                "https://api.github.com/repos/xixiha5230/LuckyTool/releases/latest"
             val getJson = Get<String>(latestUrl).await()
             JSONObject(getJson).apply {
                 val name = optString("name")
