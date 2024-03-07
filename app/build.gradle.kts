@@ -44,9 +44,6 @@ android {
             isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-            )
             signingConfig = signingConfigs.getByName("release")
         }
         debug {
@@ -101,8 +98,8 @@ dependencies {
     implementation("org.luckypray:dexkit:2.0.0-rc6")
 
     //Material主题
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     //约束布局
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //快速创建Settings
@@ -110,8 +107,8 @@ dependencies {
     //下拉刷新控件
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     //一个强大并且灵活的RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     // 权限请求框架
