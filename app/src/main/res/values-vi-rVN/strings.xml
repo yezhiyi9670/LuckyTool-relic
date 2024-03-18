@@ -754,5 +754,6 @@
     <string name="net_error">Mạng không xác định</string>
     <string name="net_other_error">Lỗi không xác định</string>
     <string name="no_error_message">Thông báo lỗi</string>
+    <string name="remove_ads_from_weather">Xóa quảng cáo ứng dụng thời tiết</string>
     <!--Black-->
 </resources>

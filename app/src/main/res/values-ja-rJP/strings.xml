@@ -754,5 +754,6 @@
     <string name="net_error">不明なネットワークエラー</string>
     <string name="net_other_error">不明なエラー</string>
     <string name="no_error_message">エラーメッセージなし</string>
+    <string name="remove_ads_from_weather">天気予報アプリの広告を削除する</string>
     <!--Black-->
 </resources>

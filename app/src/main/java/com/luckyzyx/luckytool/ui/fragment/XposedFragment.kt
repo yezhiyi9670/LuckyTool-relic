@@ -503,6 +503,20 @@ class XposedFragment : ModulePreferenceFragment(), MenuProvider {
                     navigatePage(R.id.action_nav_function_to_ADM, title)
                     true
                 }
+            },
+            Preference(context).apply {
+                key = "com.coloros.weather2"
+                setPrefsIconRes(key) { resource, show ->
+                    icon = resource
+                    isIconSpaceReserved = show
+                }
+                title = context.getAppLabel(key)
+                summary = arraySummaryDot(getString(R.string.remove_ads_from_weather))
+                isVisible = context.checkPackName(key)
+                setOnPreferenceClickListener {
+                    navigatePage(R.id.action_nav_function_to_oplusWeather, title)
+                    true
+                }
             }
         )
     }

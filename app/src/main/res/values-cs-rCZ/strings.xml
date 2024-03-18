@@ -754,5 +754,6 @@
     <string name="net_error">Neznámá chyba sítě</string>
     <string name="net_other_error">Neznámá chyba</string>
     <string name="no_error_message">Žádná chybová zpráva</string>
+    <string name="remove_ads_from_weather">Odstraňte reklamy na aplikaci počasí</string>
     <!--Black-->
 </resources>

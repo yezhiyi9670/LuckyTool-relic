@@ -754,5 +754,6 @@
     <string name="net_error">Nieznany błąd sieci</string>
     <string name="net_other_error">Nieznany błąd</string>
     <string name="no_error_message">Brak wiadomości o błędzie</string>
+    <string name="remove_ads_from_weather">Usuń reklamy aplikacji pogodowych</string>
     <!--Black-->
 </resources>

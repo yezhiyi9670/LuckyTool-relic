@@ -43,6 +43,7 @@ import com.luckyzyx.luckytool.hook.hooker.HookSettings
 import com.luckyzyx.luckytool.hook.hooker.HookStatusBar
 import com.luckyzyx.luckytool.hook.hooker.HookThemeStore
 import com.luckyzyx.luckytool.hook.hooker.HookUIEngine
+import com.luckyzyx.luckytool.hook.hooker.HookWeather
 import com.luckyzyx.luckytool.hook.hooker.StatusBarNotifiyLimit
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForR
 import com.luckyzyx.luckytool.hook.scope.CorePatch.CorePatchForS
@@ -183,7 +184,8 @@ object MainHook : IYukiHookXposedInit {
         loadApp("com.heytap.quicksearchbox", HookQuickSearchBox)
         //软件商店
         loadApp("com.heytap.market", HookMarket)
-
+        // 天气
+        loadApp("com.coloros.weather2", HookWeather)
         //其他APP
         loadApp("com.ruet_cse_1503050.ragib.appbackup.pro", "ru.kslabs.ksweb", "com.dv.adm") {
             loadHooker(HookOtherApp)

@@ -1,537 +1,547 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/nav_container"
-        app:startDestination="@id/nav_home">
-    
-    <fragment
-            android:id="@+id/nav_home"
-            android:name="com.luckyzyx.luckytool.ui.fragment.HomeFragment"
-            android:label="@string/app_name"
-            tools:layout="@layout/fragment_home">
-        <action
-                android:id="@+id/action_nav_home_to_forceFpsFragment"
-                app:destination="@id/forceFpsFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/nav_other"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OtherFragment"
-            android:label="@string/nav_other"
-            tools:layout="@layout/fragment_other">
-        <action
-                android:id="@+id/action_nav_other_to_systemQuickEntry"
-                app:destination="@id/systemQuickEntry"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/nav_function"
-            android:name="com.luckyzyx.luckytool.ui.fragment.XposedFragment"
-            android:label="@string/nav_function">
-        <action
-                android:id="@+id/action_nav_xposed_to_android"
-                app:destination="@id/android"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_statusBar"
-                app:destination="@id/statusBar"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_miscellaneous"
-                app:destination="@id/miscellaneous"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_application"
-                app:destination="@id/application"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_launcher"
-                app:destination="@id/launcher"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_lockScreen"
-                app:destination="@id/lockScreen"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_screenshot"
-                app:destination="@id/screenshot"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_themeStore"
-                app:destination="@id/themeStore"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_alphaBackupPro"
-                app:destination="@id/alphaBackupPro"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_camera"
-                app:destination="@id/camera"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_oplusGames"
-                app:destination="@id/oplusGames"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_xposed_to_cloudService"
-                app:destination="@id/cloudService"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusOta"
-                app:destination="@id/oplusOta"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_battery"
-                app:destination="@id/battery"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_settings"
-                app:destination="@id/settings"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_ksWeb"
-                app:destination="@id/ksWeb"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_aod"
-                app:destination="@id/aod"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusPictorial"
-                app:destination="@id/oplusPictorial"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusMMS"
-                app:destination="@id/oplusMMS"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusBrowser"
-                app:destination="@id/oplusBrowser"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusGesture"
-                app:destination="@id/oplusGesture"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_ADM"
-                app:destination="@id/ADM"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusGallery"
-                app:destination="@id/oplusGallery"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusBreenoTouch"
-                app:destination="@id/oplusBreenoTouch"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusSearchBox"
-                app:destination="@id/oplusSearchBox"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_function_to_oplusMarket"
-                app:destination="@id/oplusMarket"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/nav_log"
-            android:name="com.luckyzyx.luckytool.ui.fragment.LoggerFragment"
-            android:label="@string/nav_log" />
-    <fragment
-            android:id="@+id/nav_setting"
-            android:name="com.luckyzyx.luckytool.ui.fragment.SettingsFragment"
-            android:label="@string/nav_setting">
-        <action
-                android:id="@+id/action_nav_setting_to_sourceFragment"
-                app:destination="@id/sourceFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_nav_setting_to_donateFragment"
-                app:destination="@id/donateFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/sourceFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.SourceFragment"
-            android:label="{title_label}" />
-    
-    <fragment
-            android:id="@+id/android"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Android"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarNotice"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotify"
-            android:label="{title_label}">
-        <action
-                android:id="@+id/action_statusBarNotice_to_statusBarNotifyRemoval"
-                app:destination="@id/statusBarNotifyRemoval"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/statusBarIcon"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarIcon"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarControlCenter"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarControlCenter"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarClock"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarClock"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/launcher"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Launcher"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/lockScreen"
-            android:name="com.luckyzyx.luckytool.ui.fragment.LockScreen"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/screenshot"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Screenshot"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/application"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Application"
-            android:label="{title_label}">
-        <action
-                android:id="@+id/action_application_to_multiFragment"
-                app:destination="@id/multiAppFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_application_to_zoomWindowFragment"
-                app:destination="@id/zoomWindowFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_application_to_darkModeFragment"
-                app:destination="@id/darkModeFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/camera"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Camera"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusGames"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusGames"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/cloudService"
-            android:name="com.luckyzyx.luckytool.ui.fragment.CloudService"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/themeStore"
-            android:name="com.luckyzyx.luckytool.ui.fragment.ThemeStore"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/multiAppFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.MultiAppFragment"
-            android:label="{title_label}"
-            tools:layout="@layout/fragment_applist_function_layout" />
-    <fragment
-            android:id="@+id/statusBar"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBar"
-            android:label="{title_label}">
-        <action
-                android:id="@+id/action_statusBar_to_statusBarNotice"
-                app:destination="@id/statusBarNotice"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarControlCenter"
-                app:destination="@id/statusBarControlCenter"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarClock"
-                app:destination="@id/statusBarClock"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarIcon"
-                app:destination="@id/statusBarIcon"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarNetWorkSpeed"
-                app:destination="@id/statusBarNetWorkSpeed"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarLayout"
-                app:destination="@id/statusBarLayout"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarBattery"
-                app:destination="@id/statusBarBattery"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_statusBar_to_statusBarTiles"
-                app:destination="@id/statusBarTiles"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/miscellaneous"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Miscellaneous"
-            android:label="{title_label}">
-        <action
-                android:id="@+id/action_miscellaneous_to_dialogRelated"
-                app:destination="@id/dialogRelated"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-        <action
-                android:id="@+id/action_miscellaneous_to_fingerPrintRelated"
-                app:destination="@id/fingerPrintRelated"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/alphaBackupPro"
-            android:name="com.luckyzyx.luckytool.ui.fragment.AlphaBackupPro"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/systemQuickEntry"
-            android:name="com.luckyzyx.luckytool.ui.fragment.SystemQuickEntry"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarNetWorkSpeed"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNetWorkSpeed"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/dialogRelated"
-            android:name="com.luckyzyx.luckytool.ui.fragment.DialogRelated"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusOta"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusOta"
-            android:label="{title_label}">
-        <action
-                android:id="@+id/action_oplusOta_to_extractOTAFragment"
-                app:destination="@id/extractOTAFragment"
-                app:enterAnim="@anim/fragment_enter"
-                app:exitAnim="@anim/fragment_exit"
-                app:popEnterAnim="@anim/fragment_enter_pop"
-                app:popExitAnim="@anim/fragment_exit_pop" />
-    </fragment>
-    <fragment
-            android:id="@+id/zoomWindowFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.ZoomWindowFragment"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/darkModeFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.DarkModeFragment"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/fingerPrintRelated"
-            android:name="com.luckyzyx.luckytool.ui.fragment.FingerPrintRelated"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarLayout"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarLayout"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/battery"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Battery"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/settings"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Settings"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarBattery"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarBattery"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/ksWeb"
-            android:name="com.luckyzyx.luckytool.ui.fragment.KsWeb"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarTiles"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarTiles"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/forceFpsFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.ForceFpsFragment"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/statusBarNotifyRemoval"
-            android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotifyRemoval"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/extractOTAFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.ExtractOTAFragment"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/aod"
-            android:name="com.luckyzyx.luckytool.ui.fragment.Aod"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/donateFragment"
-            android:name="com.luckyzyx.luckytool.ui.fragment.DonateFragment"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusPictorial"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusPictorial"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusMMS"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusMMS"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusBrowser"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusBrowser"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusGesture"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusGesture"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/ADM"
-            android:name="com.luckyzyx.luckytool.ui.fragment.ADM"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusGallery"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusGallery"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusBreenoTouch"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusBreenoTouch"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusSearchBox"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusSearchBox"
-            android:label="{title_label}" />
-    <fragment
-            android:id="@+id/oplusMarket"
-            android:name="com.luckyzyx.luckytool.ui.fragment.OplusMarket"
-            android:label="{title_label}" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_container"
+    app:startDestination="@id/nav_home">
 
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.luckyzyx.luckytool.ui.fragment.HomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_forceFpsFragment"
+            app:destination="@id/forceFpsFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_other"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OtherFragment"
+        android:label="@string/nav_other"
+        tools:layout="@layout/fragment_other">
+        <action
+            android:id="@+id/action_nav_other_to_systemQuickEntry"
+            app:destination="@id/systemQuickEntry"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_function"
+        android:name="com.luckyzyx.luckytool.ui.fragment.XposedFragment"
+        android:label="@string/nav_function">
+        <action
+            android:id="@+id/action_nav_xposed_to_android"
+            app:destination="@id/android"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_statusBar"
+            app:destination="@id/statusBar"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_miscellaneous"
+            app:destination="@id/miscellaneous"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_application"
+            app:destination="@id/application"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_launcher"
+            app:destination="@id/launcher"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_lockScreen"
+            app:destination="@id/lockScreen"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_screenshot"
+            app:destination="@id/screenshot"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_themeStore"
+            app:destination="@id/themeStore"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_alphaBackupPro"
+            app:destination="@id/alphaBackupPro"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_camera"
+            app:destination="@id/camera"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_oplusGames"
+            app:destination="@id/oplusGames"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_xposed_to_cloudService"
+            app:destination="@id/cloudService"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusOta"
+            app:destination="@id/oplusOta"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_battery"
+            app:destination="@id/battery"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_settings"
+            app:destination="@id/settings"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_ksWeb"
+            app:destination="@id/ksWeb"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_aod"
+            app:destination="@id/aod"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusPictorial"
+            app:destination="@id/oplusPictorial"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusMMS"
+            app:destination="@id/oplusMMS"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusBrowser"
+            app:destination="@id/oplusBrowser"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusGesture"
+            app:destination="@id/oplusGesture"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_ADM"
+            app:destination="@id/ADM"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusWeather"
+            app:destination="@id/oplusWeather"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusGallery"
+            app:destination="@id/oplusGallery"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusBreenoTouch"
+            app:destination="@id/oplusBreenoTouch"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusSearchBox"
+            app:destination="@id/oplusSearchBox"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_function_to_oplusMarket"
+            app:destination="@id/oplusMarket"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_log"
+        android:name="com.luckyzyx.luckytool.ui.fragment.LoggerFragment"
+        android:label="@string/nav_log" />
+    <fragment
+        android:id="@+id/nav_setting"
+        android:name="com.luckyzyx.luckytool.ui.fragment.SettingsFragment"
+        android:label="@string/nav_setting">
+        <action
+            android:id="@+id/action_nav_setting_to_sourceFragment"
+            app:destination="@id/sourceFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_nav_setting_to_donateFragment"
+            app:destination="@id/donateFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/sourceFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.SourceFragment"
+        android:label="{title_label}" />
+
+    <fragment
+        android:id="@+id/android"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Android"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarNotice"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotify"
+        android:label="{title_label}">
+        <action
+            android:id="@+id/action_statusBarNotice_to_statusBarNotifyRemoval"
+            app:destination="@id/statusBarNotifyRemoval"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/statusBarIcon"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarIcon"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarControlCenter"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarControlCenter"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarClock"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarClock"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/launcher"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Launcher"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/lockScreen"
+        android:name="com.luckyzyx.luckytool.ui.fragment.LockScreen"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/screenshot"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Screenshot"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/application"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Application"
+        android:label="{title_label}">
+        <action
+            android:id="@+id/action_application_to_multiFragment"
+            app:destination="@id/multiAppFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_application_to_zoomWindowFragment"
+            app:destination="@id/zoomWindowFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_application_to_darkModeFragment"
+            app:destination="@id/darkModeFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/camera"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Camera"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusGames"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusGames"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/cloudService"
+        android:name="com.luckyzyx.luckytool.ui.fragment.CloudService"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/themeStore"
+        android:name="com.luckyzyx.luckytool.ui.fragment.ThemeStore"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/multiAppFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.MultiAppFragment"
+        android:label="{title_label}"
+        tools:layout="@layout/fragment_applist_function_layout" />
+    <fragment
+        android:id="@+id/statusBar"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBar"
+        android:label="{title_label}">
+        <action
+            android:id="@+id/action_statusBar_to_statusBarNotice"
+            app:destination="@id/statusBarNotice"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarControlCenter"
+            app:destination="@id/statusBarControlCenter"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarClock"
+            app:destination="@id/statusBarClock"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarIcon"
+            app:destination="@id/statusBarIcon"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarNetWorkSpeed"
+            app:destination="@id/statusBarNetWorkSpeed"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarLayout"
+            app:destination="@id/statusBarLayout"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarBattery"
+            app:destination="@id/statusBarBattery"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_statusBar_to_statusBarTiles"
+            app:destination="@id/statusBarTiles"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/miscellaneous"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Miscellaneous"
+        android:label="{title_label}">
+        <action
+            android:id="@+id/action_miscellaneous_to_dialogRelated"
+            app:destination="@id/dialogRelated"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+        <action
+            android:id="@+id/action_miscellaneous_to_fingerPrintRelated"
+            app:destination="@id/fingerPrintRelated"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/alphaBackupPro"
+        android:name="com.luckyzyx.luckytool.ui.fragment.AlphaBackupPro"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/systemQuickEntry"
+        android:name="com.luckyzyx.luckytool.ui.fragment.SystemQuickEntry"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarNetWorkSpeed"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNetWorkSpeed"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/dialogRelated"
+        android:name="com.luckyzyx.luckytool.ui.fragment.DialogRelated"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusOta"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusOta"
+        android:label="{title_label}">
+        <action
+            android:id="@+id/action_oplusOta_to_extractOTAFragment"
+            app:destination="@id/extractOTAFragment"
+            app:enterAnim="@anim/fragment_enter"
+            app:exitAnim="@anim/fragment_exit"
+            app:popEnterAnim="@anim/fragment_enter_pop"
+            app:popExitAnim="@anim/fragment_exit_pop" />
+    </fragment>
+    <fragment
+        android:id="@+id/zoomWindowFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.ZoomWindowFragment"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/darkModeFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.DarkModeFragment"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/fingerPrintRelated"
+        android:name="com.luckyzyx.luckytool.ui.fragment.FingerPrintRelated"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarLayout"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarLayout"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/battery"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Battery"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Settings"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarBattery"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarBattery"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/ksWeb"
+        android:name="com.luckyzyx.luckytool.ui.fragment.KsWeb"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarTiles"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarTiles"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/forceFpsFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.ForceFpsFragment"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/statusBarNotifyRemoval"
+        android:name="com.luckyzyx.luckytool.ui.fragment.StatusBarNotifyRemoval"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/extractOTAFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.ExtractOTAFragment"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/aod"
+        android:name="com.luckyzyx.luckytool.ui.fragment.Aod"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/donateFragment"
+        android:name="com.luckyzyx.luckytool.ui.fragment.DonateFragment"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusPictorial"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusPictorial"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusMMS"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusMMS"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusBrowser"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusBrowser"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusGesture"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusGesture"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/ADM"
+        android:name="com.luckyzyx.luckytool.ui.fragment.ADM"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusGallery"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusGallery"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusBreenoTouch"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusBreenoTouch"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusSearchBox"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusSearchBox"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusMarket"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusMarket"
+        android:label="{title_label}" />
+    <fragment
+        android:id="@+id/oplusWeather"
+        android:name="com.luckyzyx.luckytool.ui.fragment.OplusWeather"
+        android:label="{title_label}" />
 </navigation>

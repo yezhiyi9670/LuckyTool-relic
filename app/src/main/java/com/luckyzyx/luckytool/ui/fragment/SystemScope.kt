@@ -3487,3 +3487,20 @@ class OplusMarket : BaseScopePreferenceFeagment() {
 
     override fun isEnableRestartMenu(): Boolean = true
 }
+
+class OplusWeather : BaseScopePreferenceFeagment() {
+    override val scopes = arrayOf("com.coloros.weather2")
+    override fun onCreatePreferencesInModuleApp(savedInstanceState: Bundle?, rootKey: String?) {
+        preferenceManager.sharedPreferencesName = ModulePrefs
+        preferenceScreen = preferenceManager.createPreferenceScreen(requireActivity()).apply {
+            addPreference(SwitchPreference(context).apply {
+                title = getString(R.string.remove_ads_from_weather)
+                key = "remove_onplusWeather_ad"
+                setDefaultValue(true)
+                isIconSpaceReserved = false
+            })
+        }
+    }
+
+    override fun isEnableRestartMenu(): Boolean = true
+}

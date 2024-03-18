@@ -754,5 +754,6 @@
     <string name="net_error">未知网络错误</string>
     <string name="net_other_error">未知错误</string>
     <string name="no_error_message">无错误信息</string>
+    <string name="remove_ads_from_weather">移除天气应用的广告</string>
     <!--Black-->
 </resources>

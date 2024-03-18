@@ -754,5 +754,6 @@
     <string name="net_error">Неизвестная сетевая ошибка</string>
     <string name="net_other_error">Неизвестная ошибка</string>
     <string name="no_error_message">Нет сообщения об ошибке</string>
+    <string name="remove_ads_from_weather">Удалить рекламу приложения погоды</string>
     <!--Black-->
 </resources>

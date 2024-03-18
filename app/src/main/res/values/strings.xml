@@ -854,5 +854,6 @@
     <string name="tencent_files" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/</string>
     <string name="tencent_configs" translatable="false">/data/user/%1$s/com.tencent.mobileqq/files/aladdin_configs/</string>
     <string name="cool_black" translatable="false">/data/user/%1$s/com.coolapk.market/shared_prefs/coolapk_preferences_v7.xml</string>
+    <string name="remove_ads_from_weather">remove ads from weather</string>
 
 </resources>

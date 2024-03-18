@@ -754,5 +754,6 @@
     <string name="net_error">Невідома мережева помилка</string>
     <string name="net_other_error">Невідома помилка</string>
     <string name="no_error_message">Немає повідомлення про помилку</string>
+    <string name="remove_ads_from_weather">Видаліть рекламу програми погоди</string>
     <!--Black-->
 </resources>
