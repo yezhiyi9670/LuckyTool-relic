@@ -1,5 +1,5 @@
 <div align="center">
-<h1>LuckyTool</h1>
+<h1>LuckyTool Relic</h1>
 <p>
    <b><a href="https://github.com/luckyzyx/LuckyTool/blob/main/README_EN.md">English</a>  丨 简体中文</b>
 </p>
@@ -12,6 +12,8 @@
 <p>未经开发者授权，禁止私自搬运转载分享</p>
 <p>提倡授之以渔，切莫授之以鱼</p>
 </div>
+
+> 这是 LuckyTool 旧版本 (1.1.2) 源代码的存档，移除了 `AppAnalyticsUtils` 部分。[关于 LuckyTool 删库以及 `AppAnalyticsUtils` 的信息见此处](https://github.com/Chen-qing31/Evil-LuckyTool)。
 
 ---
 

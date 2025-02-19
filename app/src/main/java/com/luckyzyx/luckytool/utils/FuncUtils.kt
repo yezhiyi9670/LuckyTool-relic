@@ -52,7 +52,6 @@ import com.luckyzyx.luckytool.R
 import com.luckyzyx.luckytool.hook.hooker.HookAndroid.prefs
 import com.luckyzyx.luckytool.ui.activity.MainActivity
 import com.luckyzyx.luckytool.utils.*
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcbs
 import com.topjohnwu.superuser.ipc.RootService
 import kotlinx.coroutines.Dispatchers
 import java.io.*
@@ -860,7 +859,6 @@ fun Context.restartMain() {
         }
         show()
     }
-    scope { withDefault { ckqcbs("ebk") } }
 }
 
 /**
@@ -881,7 +879,6 @@ fun Context.restartScopes(scopes: Array<String>) {
         }
         show()
     }
-    scope { withDefault { ckqcbs("bbk") } }
 }
 
 /**

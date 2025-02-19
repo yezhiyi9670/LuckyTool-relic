@@ -156,7 +156,8 @@ fun getVersionCode(): Int {
         val properties = Properties()
         properties.load(FileInputStream(propsFile))
         var vCode = properties["versionCode"].toString().toInt()
-        properties["versionCode"] = (++vCode).toString()
+        // properties["versionCode"] = (++vCode).toString()
+        properties["versionCode"] = (vCode).toString()
         properties.store(propsFile.writer(), null)
         println("versionCode -> $vCode")
         return vCode

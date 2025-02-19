@@ -1,5 +1,5 @@
 <div align="center">
-<h1>LuckyTool</h1>
+<h1>LuckyTool Relic</h1>
 <p>
    English 丨 <b><a href="https://github.com/luckyzyx/LuckyTool/blob/main/README.md">简体中文</a></b>
 </p>
@@ -11,6 +11,8 @@
 <p>Extended and optimized Xposed module for ColorOS</p>
 <p>Without the authorization of the developer, unauthorized transfer, reprinting and sharing are prohibited</p>
 </div>
+
+> This is the source code of an old version (1.1.2) of LuckyTool, with `AppAnalyticsUtils` removed. [See here for more info about LuckyTool's repository deletion and the `AppAnalyticsUtils`](https://github.com/Chen-qing31/Evil-LuckyTool).
 
 ---
 

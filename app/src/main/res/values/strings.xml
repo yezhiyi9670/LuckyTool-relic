@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">LuckyTool</string>
+    <string name="app_name" translatable="false">LuckyTool Relic</string>
     <!-- Application -->
     <string name="xposeddescription">Xposed module optimized for extensions to ColorOS\nDeveloper: luckyzyx</string>
     <string name="sharedUserLabel" translatable="false">LuckyTool user</string>

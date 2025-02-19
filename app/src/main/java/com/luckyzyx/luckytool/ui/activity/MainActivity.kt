@@ -25,8 +25,6 @@ import com.luckyzyx.luckytool.databinding.ActivityMainBinding
 import com.luckyzyx.luckytool.ui.fragment.HomeFragment
 import com.luckyzyx.luckytool.ui.service.GlobalFuncControllerService
 import com.luckyzyx.luckytool.utils.*
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcBBK
-import com.luckyzyx.luckytool.utils.AppAnalyticsUtils.ckqcEbk
 import kotlinx.coroutines.Dispatchers
 import kotlin.system.exitProcess
 
@@ -101,8 +99,8 @@ open class MainActivity : AppCompatActivity() {
         }
         if (!BuildConfig.DEBUG) putBoolean(SettingsPrefs, "enable_module_print_logs", false)
         scopeLife(dispatcher = Dispatchers.Default) {
-            putBoolean(SettingsPrefs, "boot_complete", ckqcEbk())
-            putBoolean(SettingsPrefs, "boot_complete_final", ckqcBBK())
+            putBoolean(SettingsPrefs, "boot_complete", true)
+            putBoolean(SettingsPrefs, "boot_complete_final", true)
         }
         PermissionUtils(this).checkPermissions()
     }
